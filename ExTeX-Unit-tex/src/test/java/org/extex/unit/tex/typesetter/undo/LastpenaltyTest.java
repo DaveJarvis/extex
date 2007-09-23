@@ -23,7 +23,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\lastpenalty</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Constructor for LastboxTest.
-     *
+     * 
      * @param arg the name
      */
     public LastpenaltyTest(String arg) {
@@ -49,75 +50,122 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
+     * <testcase> Test case checking that <tt>\lastpenalty</tt> is showable.
      * </testcase>
-     *
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        assertOutput(
+        // --- input code ---
+            "a\\penalty123 \\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 123.\n",
+            //
+            null);
+    }
+
+    /**
+     * <testcase> Test case checking that <tt>\lastpenalty</tt> on an empty
+     * list returns 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertOutput(
-        //--- input code ---
-                "a\\penalty123 \\showthe\\lastpenalty\\end",
-                //--- output channel ---
-                "> 123.\n",
-                //
-                null);
+        // --- input code ---
+            "\\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 0.\n",
+            //
+            null);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
+     * <testcase> Test case checking that \relax does not produce a node.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         assertOutput(
-        //--- input code ---
-                "a\\penalty123\\relax\\showthe\\lastpenalty\\end",
-                //--- output channel ---
-                "> 123.\n",
-                //
-                null);
+        // --- input code ---
+            "a\\penalty123\\relax\\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 123.\n",
+            //
+            null);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt\lastpenalty</tt> returns 0 if the
+     * last node is a character node. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
         assertOutput(
-        //--- input code ---
-                "a\\showthe\\lastpenalty\\end",
-                //--- output channel ---
-                "> 0.\n",
-                //
-                null);
+        // --- input code ---
+            "a\\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 0.\n",
+            //
+            null);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt\lastpenalty</tt> returns 0 if the
+     * last node is a kern node. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertOutput(
+        // --- input code ---
+            "a\\kern 12pt\\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 0.\n",
+            //
+            null);
+    }
+
+    /**
+     * <testcase> Test case checking that <tt>\lastpenalty</tt> returns 0 if
+     * the last node is a glue node. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test5() throws Exception {
+
+        assertOutput(
+        // --- input code ---
+            "a\\hfill \\showthe\\lastpenalty\\end",
+            // --- output channel ---
+            "> 0.\n",
+            //
+            null);
+    }
+
+    /**
+     * <testcase> Test case checking that <tt>\lastpenalty</tt> is count
+     * convertible. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test10() throws Exception {
 
         assertOutput(
-        //--- input code ---
-                "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
-                //--- output channel ---
-                "> 123.\n",
-                //
-                null);
+        // --- input code ---
+            "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
+            // --- output channel ---
+            "> 123.\n",
+            //
+            null);
     }
 
 }
