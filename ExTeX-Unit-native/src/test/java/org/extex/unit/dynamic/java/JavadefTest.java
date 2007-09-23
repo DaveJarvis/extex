@@ -42,11 +42,71 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
-     * can assign a Java class to a control sequence. </testcase>
+     * needs a token to assign. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError0() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javadef",
+            // --- log message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * needs a token to assign. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javadef a",
+            // --- log message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * needs a token to assign. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javadef 2",
+            // --- log message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * needs a token to assign. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javadef \\x",
+            // --- log message ---
+            "File ended while scanning text of \\javadef");
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * needs a Java class of type Code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError10() throws Exception {
 
         assertFailure(
         // --- input code ---
@@ -69,6 +129,23 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
         // --- input code ---
             DEFINE_BRACES + "\\javadef\\t{org.extex.unit.tex.info.The}"
                     + "\\t\\count42" + " \\end",
+            // --- log message ---
+            "0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * can assign a Java class to an active character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            DEFINE_BRACES + "\\catcode`\\~=13 "
+                    + "\\javadef~{org.extex.unit.tex.info.The}"
+                    + "~\\count42" + " \\end",
             // --- log message ---
             "0" + TERM);
     }
