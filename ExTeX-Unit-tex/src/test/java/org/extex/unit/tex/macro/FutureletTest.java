@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\futurelet</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,7 +31,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public FutureletTest(String arg) {
@@ -40,95 +40,133 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\futurelet ab",
-                //--- error message ---
-                "Missing control sequence inserted");
+        assertFailure(// --- input code ---
+            "\\futurelet ",
+            // --- error message ---
+            "Missing control sequence inserted");
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> ...
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> needs more than one tokens as arguments.
      * </testcase>
-     *
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\futurelet \\x",
+            // --- error message ---
+            "Unexpected end of file while processing \\futurelet");
+    }
+
+    /**
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> needs a control sequence as first character.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\futurelet x",
+            // --- error message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> needs a control sequence as first character.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError4() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\futurelet ab",
+            // --- error message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> works on two letters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\futurelet \\x ab" + "\\end",
-                //--- output message ---
-                "ab" + TERM);
+        assertSuccess(// --- input code ---
+            "\\futurelet \\x ab" + "\\end",
+            // --- output message ---
+            "ab" + TERM);
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> works on a digit ans a letter. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\futurelet \\x 1b" + "\\end",
-                //--- output message ---
-                "1b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\futurelet \\x 1b" + "\\end",
+            // --- output message ---
+            "1b" + TERM);
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> defines the control sequence
-     *  locally.
-     * </testcase>
-     *
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> defines the control sequence locally. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobalErr1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "{\\futurelet \\x AB}-\\x-",
-                //--- output message ---
-                "Undefined control sequence \\x");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "{\\futurelet \\x AB}-\\x-",
+            // --- output message ---
+            "Undefined control sequence \\x");
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> respects <tt>\global</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> respects <tt>\global</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "{\\global\\futurelet \\x AB}-\\x-" + "\\end",
-                //--- output message ---
-                "AB-B-" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "{\\global\\futurelet \\x AB}-\\x-" + "\\end",
+            // --- output message ---
+            "AB-B-" + TERM);
     }
 
     /**
-     * <testcase primitive="\futurelet">
-     *  Test case checking that <tt>\futurelet</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\futurelet"> Test case checking that
+     * <tt>\futurelet</tt> expands a middle macro. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES + "\\def\\z{-\\x-}\\futurelet \\x\\z B" + "\\end",
-                //--- output message ---
-                "-B-B" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\def\\z{-\\x-}\\futurelet \\x\\z B" + "\\end",
+            // --- output message ---
+            "-B-B" + TERM);
     }
 
 }
