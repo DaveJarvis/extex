@@ -221,19 +221,19 @@ public class NativeDef extends AbstractAssignment
         String name;
         try {
             name = source.getTokens(context, source, typesetter).toText();
+            Configuration cfg = map.get(name);
+            if (cfg == null) {
+                throw new HelpingException(getLocalizer(), "UnknownType", name,
+                    getName());
+            }
+
+            Factory factory = new Factory();
+            factory.enableLogging(logger);
+            factory.configure(cfg);
+            factory.createLoad().define(prefix, context, source, typesetter);
         } catch (EofException e) {
             throw new EofInToksException(printableControlSequence(context));
         }
-        Configuration cfg = map.get(name);
-        if (cfg == null) {
-            throw new HelpingException(getLocalizer(), "UnknownType", name,
-                getName());
-        }
-
-        Factory factory = new Factory();
-        factory.enableLogging(logger);
-        factory.configure(cfg);
-        factory.createLoad().define(prefix, context, source, typesetter);
     }
 
     /**
