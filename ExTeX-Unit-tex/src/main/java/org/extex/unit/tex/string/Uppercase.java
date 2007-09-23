@@ -44,7 +44,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="uppercase">
  * <h3>The Primitive <tt>&#x5c;uppercase</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>&#x5c;uppercase</tt> takes as argument a token list in
+ * braces and translates all letters to their lowercase form. The translation
+ * table is stored in <tt>&#x5c;uccode</tt>. Thus the translation can be
+ * modified freely.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -52,12 +55,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;uppercase&rang;
- *        &rarr; <tt>&#x5c;uppercase</tt> &lang;...&rang; </pre>
+ *        &rarr; <tt>&#x5c;uppercase</tt> {@linkplain
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    &#x5c;uppercase ...  </pre>
+ *    &#x5c;uppercase {ABC}  </pre>
  * 
  * </doc>
  * 
