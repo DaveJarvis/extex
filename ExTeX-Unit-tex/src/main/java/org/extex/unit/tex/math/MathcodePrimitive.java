@@ -56,7 +56,7 @@ import org.extex.typesetter.type.math.MathCode;
  *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
  *        &lang;character code&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} ...
+ *        &lang;equals&rang;} &lang;math code&rang;
  *        </pre>
  * 
  * <h4>Examples</h4>
