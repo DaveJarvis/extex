@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.macro;
 
+import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -49,7 +50,9 @@ import org.extex.typesetter.exception.TypesetterException;
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
- *       &lang;token&rang;} ...  </pre>
+ *       &lang;token&rang;} {@linkplain
+ *       org.extex.interpreter.TokenSource#getToken(Context)
+ *       &lang;token&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
@@ -94,6 +97,9 @@ public class Futurelet extends Let {
         CodeToken cs = source.getControlSequence(context, typesetter);
         Token t1 = source.getToken(context);
         Token t2 = source.getToken(context);
+        if (t1 == null || t2 == null) {
+            throw new EofException(printableControlSequence(context));
+        }
         let(prefix, context, cs, t2);
         source.push(source.scanToken(context));
         source.push(t2);
