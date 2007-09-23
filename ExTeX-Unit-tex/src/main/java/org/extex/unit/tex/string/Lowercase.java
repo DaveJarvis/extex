@@ -45,7 +45,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="lowercase">
  * <h3>The Primitive <tt>\lowercase</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\lowercase</tt> takes as argument a token list in braces
+ * and translates all letters to their lowercase form. The translation table is
+ * stored in <tt>\lccode</tt>. Thus the translation can be modified freely.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -53,12 +55,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;lowercase&rang;
- *        &rarr; <tt>\lowercase</tt> &lang;...&rang; </pre>
+ *        &rarr; <tt>\lowercase</tt> {@linkplain
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    \lowercase ...  </pre>
+ *    \lowercase {ABC}  </pre>
  * 
  * </doc>
  * 
