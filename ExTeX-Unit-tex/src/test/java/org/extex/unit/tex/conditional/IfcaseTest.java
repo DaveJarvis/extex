@@ -230,7 +230,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that ... </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that a negative value
+     * falls through to the default case. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -243,7 +244,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that ... </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that a large value
+     * falls through to the default case. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -256,7 +258,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that ... </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that a large value
+     * reduces to nothing if no default case is present. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -269,7 +272,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that ... </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that a large value
+     * reduces to nothing if no default case is present. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -282,7 +286,8 @@ public class IfcaseTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifcase"> Test case checking that ... </testcase>
+     * <testcase primitive="\ifcase"> Test case checking that <tt>\ifcase</tt>
+     * is expandable. </testcase>
      * 
      * @throws Exception in case of an error
      */
