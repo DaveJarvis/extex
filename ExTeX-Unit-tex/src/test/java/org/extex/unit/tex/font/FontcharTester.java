@@ -24,7 +24,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 /**
  * This is an abstract test suite for the primitives <tt>\hyphenchar</tt> and
  * <tt>\skewchar</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,304 +37,280 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @param primitive the name of the primitive
      * @param arguments the arguments for smoke testing
-     * @param def ...
+     * @param def the default value
      */
-    public FontcharTester(String name, String primitive,
-            String arguments, String def) {
+    public FontcharTester(String name, String primitive, String arguments,
+            String def) {
 
         super(name, primitive, arguments);
         this.def = def;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that an end of file leads to an error.
+     * <testcase> Test case checking that an end of file leads to an error.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\" + getPrimitive() + " ",
-            //--- log message ---
+            // --- log message ---
             "Unexpected end of file while processing \\" + getPrimitive() + "");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that an end of file leads to an error.
+     * <testcase> Test case checking that an end of file leads to an error.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEof2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\" + getPrimitive() + "\\nullfont ",
-            //--- log message ---
+            // --- log message ---
             "Missing number, treated as zero");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar ...
+     * <testcase> Test case checking that the primitive needs a second argument.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEof3() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x",
-            //--- output channel ---
+            // --- output channel ---
             "Missing number, treated as zero");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive needs a second argument
+     * after an =. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof4() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x=",
-            //--- output channel ---
+            // --- output channel ---
             "Missing number, treated as zero");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that an end of file leads to an error.
+     * <testcase> Test case checking that an end of file leads to an error.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEof5() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\count0=\\" + getPrimitive(),
-            //--- log message ---
+            // --- log message ---
             "Unexpected end of file while processing \\" + getPrimitive());
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a missing font identifier leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a missing font identifier leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMissing1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\" + getPrimitive() + " x",
-            //--- log message ---
+            // --- log message ---
             "Missing font identifier");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a missing font identifier leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a missing font identifier leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMissing2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\" + getPrimitive() + " \\x",
-            //--- log message ---
+            // --- log message ---
             "Undefined control sequence \\x");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is not preset for \nullfont.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is not preset for \nullfont. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharNullfont0() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\" + getPrimitive() + "\\nullfont" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             def + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is set to 123 for \nullfont.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is set to 123 for \nullfont. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharNullfont1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\" + getPrimitive() + "\\nullfont =123 \\relax" + "\\the\\"
                     + getPrimitive() + "\\nullfont" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is set to undefined for \nullfont.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is set to undefined for \nullfont. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharNullfont2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\" + getPrimitive() + "\\nullfont =-1 \\relax" + "\\the\\"
                     + getPrimitive() + "\\nullfont" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "-1" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar is countconvertible for \nullfont.
-     * </testcase>
-     *
+     * <testcase> Test case checking that \hyphenchar is countconvertible for
+     * \nullfont. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharNullfont3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\" + getPrimitive() + "\\nullfont =123 \\relax" + "\\count1=\\"
                     + getPrimitive() + "\\nullfont" + "\\the\\count 1"
                     + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is not preset for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is not preset for a loaded \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphenchar0() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\the\\" + getPrimitive() + "\\x" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             def + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is set to 123 for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is set to 123 for a loaded \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphenchar1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =123 \\relax"
                     + "\\the\\" + getPrimitive() + "\\x" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a correct value is produced when the hyphen char
-     *  is set to undefined for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a correct value is produced when the
+     * hyphen char is set to undefined for a loaded \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphenchar2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =-1 \\relax"
                     + "\\the\\" + getPrimitive() + "\\x" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "-1" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar is countconvertible for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that \hyphenchar is countconvertible for a
+     * loaded \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphenchar3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =123 \\relax"
                     + "\\count1=\\" + getPrimitive() + "\\x" + "\\the\\count 1"
                     + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar is countconvertible for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that \hyphenchar is countconvertible for a
+     * loaded \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphenchar4() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =-123 \\relax"
                     + "\\count1=\\" + getPrimitive() + "\\x" + "\\the\\count 1"
                     + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "-1" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar is theable for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that \hyphenchar is theable for a loaded
+     * \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharThe0() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =-123 \\relax"
                     + "\\the\\" + getPrimitive() + "",
-            //--- output channel ---
+            // --- output channel ---
             "Unexpected end of file while processing \\" + getPrimitive() + "");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that \hyphenchar is theable for a loaded \font.
-     * </testcase>
-     *
+     * <testcase> Test case checking that \hyphenchar is theable for a loaded
+     * \font. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHyphencharThe1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\x=cmtt12" + "\\" + getPrimitive() + "\\x =-123 \\relax"
                     + "\\the\\" + getPrimitive() + "\\x" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "-1" + TERM);
     }
 
