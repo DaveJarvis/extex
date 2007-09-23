@@ -86,10 +86,16 @@ public class EpsWriterTest extends TestCase {
             new ArrayList<ByteArrayOutputStream>();
 
     /**
-     * The field <tt>osf</tt> contains the ...
+     * The field <tt>osf</tt> contains the output stream factory.
      */
     private OutputStreamFactory osf = new OutputStreamFactory() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
+         *      java.lang.String, java.lang.String)
+         */
         public OutputStream getOutputStream(String name, String type)
                 throws DocumentWriterException {
 
@@ -98,12 +104,26 @@ public class EpsWriterTest extends TestCase {
             return out;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.outputStream.OutputStreamFactory#register(
+         *      org.extex.backend.outputStream.OutputStreamObserver)
+         */
         public void register(OutputStreamObserver observer) {
 
+            //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
+         *      java.lang.String)
+         */
         public void setExtension(String extension) {
 
+            //
         }
 
     };
