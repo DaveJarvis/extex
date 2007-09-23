@@ -41,7 +41,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that macros (without arguments) are
+     * expanded at definition time. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -56,7 +57,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that macros (with arguments) are expanded
+     * at definition time. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -71,7 +73,8 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that macros are deeply expanded at
+     * definition time. </testcase>
      * 
      * @throws Exception in case of an error
      */
