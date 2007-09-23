@@ -21,7 +21,7 @@ package org.extex.unit.tex.macro;
 
 /**
  * This is a test suite for the primitive <tt>\def</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 2974 $
  */
@@ -29,7 +29,7 @@ public class DefTest extends AbstractDefTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DefTest(String arg) {
@@ -38,83 +38,91 @@ public class DefTest extends AbstractDefTester {
     }
 
     /**
-     * <testcase primitive="\def">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\def"> Test case checking that <tt>\def</tt>
+     * respects <tt>\global</tt>. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal0() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\def\\aaa{BBB}}"
+                    + "--\\aaa--\\end",
+            // --- output message ---
+            "--AAA--" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\def"> Test case checking that <tt>\def</tt>
+     * respects <tt>\global</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\def\\aaa{AAA}"
-                        + "{\\global\\def\\aaa{BBB}}" + "--\\aaa--\\end",
-                //--- output message ---
-                "--BBB--" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\def\\aaa{AAA}" + "{\\global\\def\\aaa{BBB}}"
+                    + "--\\aaa--\\end",
+            // --- output message ---
+            "--BBB--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\def</tt> with a single argument
+     * accepts a single token. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashArgument3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                        + "\\a{\\def\\b##1{B}}" + "\\a \\b2\\end",
-                //--- output channel ---
-                "B" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                    + "\\a{\\def\\b##1{B}}" + "\\a \\b2\\end",
+            // --- output channel ---
+            "B" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\def</tt> with a single argument
+     * inserts the actual value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashArgument4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                        + "\\a{\\def\\b##1{B##1B}}" + "\\a \\b2\\end",
-                //--- output channel ---
-                "B2B" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                    + "\\a{\\def\\b##1{B##1B}}" + "\\a \\b2\\end",
+            // --- output channel ---
+            "B2B" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\def</tt> with one argument
+     * needs something to fill in. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMacroError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                        + "\\a#1{}" + "\\a",
-                //--- output channel ---
-                "File ended while scanning use of \\a");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a",
+            // --- output channel ---
+            "File ended while scanning use of \\a");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\def</tt> with one argument
+     * needs something complete to fill in. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMacroError2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
-                        + "\\a#1{}" + "\\a{",
-                //--- output channel ---
-                "File ended while scanning use of \\a");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#1{}" + "\\a{",
+            // --- output channel ---
+            "File ended while scanning use of \\a");
     }
 
 }
