@@ -58,7 +58,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
-     * @param max ...
+     * @param max the maximal value (unused)
      */
     public AbstractCharMapTester(String arg, String primitive,
             String args, String init, String max) {
@@ -188,7 +188,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
     }
 
     /**
-     * ...
+     * Get he message for a bad character code.
      *
      * @return the message
      */
@@ -296,7 +296,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
 
     /**
      * <testcase>
-     *  Test case showing that ...
+     *  Test case showing that \globaldefs works.
      * </testcase>
      *
      * @throws Exception in case of an error
