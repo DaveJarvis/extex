@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\mathchardef</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,7 +31,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for MathchardefTest.
-     *
+     * 
      * @param arg the name
      */
     public MathchardefTest(String arg) {
@@ -40,212 +40,202 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
+     * <testcase primitive="\mathchardef"> Test case checking that a character
+     * defined with <tt>\mathchardef</tt> is applicable in math mode only.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\mathchardef\\alpha=\"010B " //
-                + "\\alpha\\end",
-                //--- output message ---
-                "Missing $ inserted");
+        // --- input code ---
+            "\\mathchardef\\alpha=\"010B " //
+                    + "\\alpha\\end",
+            // --- output message ---
+            "Missing $ inserted");
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that a math char
+     * of -1 is not accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr2() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\mathchardef\\alpha=-1 ",
-                //--- output message ---
-                "Bad mathchar (-1)");
+        // --- input code ---
+            "\\mathchardef\\alpha=-1 ",
+            // --- output message ---
+            "Bad mathchar (-1)");
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that a math char
+     * of 32769 is not accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr3() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\mathchardef\\alpha=32769 ",
-                //--- output message ---
-                "Bad mathchar (32769)");
+        // --- input code ---
+            "\\mathchardef\\alpha=32769 ",
+            // --- output message ---
+            "Bad mathchar (32769)");
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that a correct
+     * value is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                + "\\mathchardef\\alpha=\"010B" //
-                + "$a\\alpha b$\\end",
-                //--- output message ---
-                "a\013b" + TERM);
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "\\mathchardef\\alpha=\"010B" //
+                    + "$a\\alpha b$\\end",
+            // --- output message ---
+            "a\013b" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> can be used to define an alias. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\mathchardef\\alpha=\"010B " //
-                + "\\mathchardef\\beta=\\alpha " //
-                + "\\the\\beta\\end",
-                //--- output message ---
-                "267" + TERM);
+        // --- input code ---
+            "\\mathchardef\\alpha=\"010B " //
+                    + "\\mathchardef\\beta=\\alpha " //
+                    + "\\the\\beta\\end",
+            // --- output message ---
+            "267" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> defines a control sequence which is convertible
+     * into a count register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\mathchardef\\alpha=\"010B " //
-                + "\\count0=\\alpha \\the\\count0\\end",
-                //--- output message ---
-                "267" + TERM);
+        // --- input code ---
+            "\\mathchardef\\alpha=\"010B " //
+                    + "\\count0=\\alpha \\the\\count0\\end",
+            // --- output message ---
+            "267" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> can define an active character. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\catcode`~=13 "
-                + "\\mathchardef~=\"010B " //
-                + "\\count0=~ \\the\\count0\\end",
-                //--- output message ---
-                "267" + TERM);
+        // --- input code ---
+            "\\catcode`~=13 " + "\\mathchardef~=\"010B " //
+                    + "\\count0=~ \\the\\count0\\end",
+            // --- output message ---
+            "267" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> defines a control sequence which is applicable to
+     * \the. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testThe1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\mathchardef\\alpha=\"010B " //
-                + "\\the\\alpha\\end",
-                //--- output message ---
-                "267" + TERM);
+        // --- input code ---
+            "\\mathchardef\\alpha=\"010B " //
+                    + "\\the\\alpha\\end",
+            // --- output message ---
+            "267" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> respects groups. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGroup1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\begingroup\\global\\mathchardef\\alpha=\"010B \\endgroup" //
-                + "\\the\\alpha\\end",
-                //--- output message ---
-                "267" + TERM);
+        // --- input code ---
+            "\\begingroup\\global\\mathchardef\\alpha=\"010B \\endgroup" //
+                    + "\\the\\alpha\\end",
+            // --- output message ---
+            "267" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> respects groups. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGroup2() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\begingroup\\mathchardef\\alpha=\"010B \\endgroup" //
-                + "\\the\\alpha\\end",
-                //--- output message ---
-                "Undefined control sequence \\alpha");
+        // --- input code ---
+            "\\begingroup\\mathchardef\\alpha=\"010B \\endgroup" //
+                    + "\\the\\alpha\\end",
+            // --- output message ---
+            "Undefined control sequence \\alpha");
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> accepts an extended syntax with a symbolic name.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testExt1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_BRACES
-                + "\\mathchardef\\alpha={ord 1 `A} " //
-                + "\\the\\alpha\\end",
-                //--- output message ---
-                "321" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\mathchardef\\alpha={ord 1 `A} " //
+                    + "\\the\\alpha\\end",
+            // --- output message ---
+            "321" + TERM);
     }
 
     /**
-     * <testcase primitive="\mathchardef">
-     *  Test case checking that ...
+     * <testcase primitive="\mathchardef"> Test case checking that
+     * <tt>\mathchardef</tt> accepts an extended syntax with a numeric class.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testExt2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_BRACES
-                + "\\mathchardef\\alpha={0 1 `A} " //
-                + "\\the\\alpha\\end",
-                //--- output message ---
-                "321" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\mathchardef\\alpha={0 1 `A} " //
+                    + "\\the\\alpha\\end",
+            // --- output message ---
+            "321" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
