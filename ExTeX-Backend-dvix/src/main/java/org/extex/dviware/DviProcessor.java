@@ -82,9 +82,9 @@ public interface DviProcessor {
      *
      * @param off the current byte position in the input stream
      * @param k the number of the font
-     * @param c ...
-     * @param s ...
-     * @param d ...
+     * @param c length of the font area
+     * @param s length of the font name
+     * @param d the font area
      * @param n the name of the font
      */
     void fntDef(int off, int k, int c, int s, int d, String n);
@@ -113,16 +113,16 @@ public interface DviProcessor {
      * A DVI <tt>post</tt> instruction has been encountered.
      *
      * @param off the current byte position in the input stream
-     * @param p ...
+     * @param bop the index of the last BOP instruction
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification
-     * @param l ...
-     * @param u ...
-     * @param sp ...
-     * @param tp ...
+     * @param l the maximum page height
+     * @param u the maximum page width
+     * @param sp stack depth
+     * @param tp number of pages
      */
-    void post(int off, int p, int num, int den, int mag, int l, int u, int sp,
+    void post(int off, int bop, int num, int den, int mag, int l, int u, int sp,
             int tp);
 
     /**
@@ -139,7 +139,7 @@ public interface DviProcessor {
      * A DVI <tt>pre</tt> instruction has been encountered.
      *
      * @param off the current byte position in the input stream
-     * @param id ...
+     * @param id the id of this DVI version. Usually this is 2.
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification in permille
