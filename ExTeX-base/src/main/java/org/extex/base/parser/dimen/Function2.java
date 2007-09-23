@@ -22,7 +22,7 @@ package org.extex.base.parser.dimen;
 import org.extex.core.exception.helping.HelpingException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a binary function.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
