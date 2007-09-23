@@ -256,7 +256,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that macro param character in the
+     * replacement text leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -302,7 +303,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that the macro parameters must be numbered
+     * consecutively. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -316,7 +318,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a macro parameter character must be
+     * followed by a number. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -330,7 +333,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that a ... </testcase>
+     * <testcase> Test case checking that a closing brace after the control
+     * sequence token leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -338,7 +342,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testRight1() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a}",
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a}",
             // --- output channel ---
             "Missing { inserted");
     }
@@ -353,7 +357,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testOuter1() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + DEFINE_HASH + "\\outer\\def\\x{x}\\" + getDef()
+            DEFINE_BRACES + DEFINE_HASH + "\\outer\\def\\x{x}\\" + def
                     + "\\a\\x{}",
             // --- output channel ---
             "Forbidden control sequence found while scanning definition of \\a");
@@ -369,13 +373,14 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\" + getDef() + "\\a",
+            "\\" + def + "\\a",
             // --- output channel ---
             "File ended while scanning definition of \\a");
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that an eof in the replacement text of the
+     * definition of a macro is recognized. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -383,7 +388,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\" + getDef() + "\\a{",
+            DEFINE_BRACES + "\\" + def + "\\a{",
             // --- output channel ---
             "File ended while scanning text of \\a");
     }
@@ -397,4 +402,5 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
 
         return this.def;
     }
+
 }
