@@ -50,7 +50,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that ... </testcase>
+     * <testcase> Test case showing that \hss expands to the width needed.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +64,8 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that ... </testcase>
+     * <testcase> Test case showing that the natural width of \hss is 0pt.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -74,8 +76,6 @@ public class HssTest extends NoFlagsPrimitiveTester {
             // --- error channel ---
             "ab" + TERM);
     }
-
-    // TODO implement primitive specific test cases
 
     /**
      * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
