@@ -66,7 +66,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global">
-     *  Test case checking that ...
+     *  Test case checking that \global set the global flag.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -103,7 +103,7 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * <testcase primitive="\global">
-     *  Test case checking that ...
+     *  Test case checking that \global can be combined with \long.
      * </testcase>
      *
      * @throws Exception in case of an error
