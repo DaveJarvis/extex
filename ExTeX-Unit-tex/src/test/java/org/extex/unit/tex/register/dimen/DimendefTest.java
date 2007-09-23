@@ -21,7 +21,7 @@ package org.extex.unit.tex.register.dimen;
 
 /**
  * This is a test suite for the primitive <tt>\dimendef</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,6 +29,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -38,7 +39,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DimendefTest(String arg) {
@@ -47,83 +48,77 @@ public class DimendefTest extends AbstractDimenRegisterTester {
     }
 
     /**
-     * <testcase primitive="\dimendef">
-     *  Test case checking that <tt>\dimendef</tt> creates a dimen assignable
-     *  control sequence which is equivalent to the <tt>\dimen</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\dimendef"> Test case checking that
+     * <tt>\dimendef</tt> creates a dimen assignable control sequence which is
+     * equivalent to the <tt>\dimen</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\dimendef\\x=42 " + "\\dimen42=123pt "
-                        + "\\the\\dimen42 \\end",
-                //--- output channel ---
-                "123.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\dimendef\\x=42 " + "\\dimen42=123pt " + "\\the\\dimen42 \\end",
+            // --- output channel ---
+            "123.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\dimendef">
-     *  Test case checking that <tt>\dimendef</tt> respects a group.
-     * </testcase>
-     *
+     * <testcase primitive="\dimendef"> Test case checking that
+     * <tt>\dimendef</tt> respects a group. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\begingroup\\dimendef\\x=42 \\endgroup" + "\\the\\x \\end",
-                //--- error channel ---
-                "Undefined control sequence \\x");
+        assertFailure(// --- input code ---
+            "\\begingroup\\dimendef\\x=42 \\endgroup" + "\\the\\x \\end",
+            // --- error channel ---
+            "Undefined control sequence \\x");
     }
 
     /**
-     * <testcase primitive="\dimendef">
-     *  Test case checking that <tt>\dimendef</tt> respects a group.
-     * </testcase>
-     *
+     * <testcase primitive="\dimendef"> Test case checking that
+     * <tt>\dimendef</tt> respects a group. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup\\global\\dimendef\\x=42 \\endgroup"
-                        + "\\the\\x \\end",
-                //--- output channel ---
-                "0.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\dimendef\\x=42 \\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\dimendef">
-     *  Test case checking that <tt>\dimendef</tt> respects <tt>\globaldefs</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\dimendef"> Test case checking that
+     * <tt>\dimendef</tt> respects <tt>\globaldefs</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal10() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\globaldefs=1\\begingroup\\dimendef\\x=42 \\x=123pt\\endgroup"
-                        + "\\the\\x \\end",
-                //--- output channel ---
-                "123.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1\\begingroup\\dimendef\\x=42 \\x=123pt\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "123.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\dimendef">
-     *  Test case checking that <tt>\dimendef</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\dimendef"> Test case checking that
+     * <tt>\dimendef</tt> produces a control sequence which is convertible
+     * into a count. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountAssing1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\dimendef\\x=42 \\x=1pt"
-                        + "\\count0=\\x \\the\\count0\\end",
-                //--- output channel ---
-                "65536" + TERM);
+        assertSuccess(// --- input code ---
+            "\\dimendef\\x=42 \\x=1pt" + "\\count0=\\x \\the\\count0\\end",
+            // --- output channel ---
+            "65536" + TERM);
     }
 
 }
