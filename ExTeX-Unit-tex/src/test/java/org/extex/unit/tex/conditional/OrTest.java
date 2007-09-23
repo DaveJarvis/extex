@@ -66,7 +66,7 @@ public class OrTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\or">
-     *  Test case checking that ...
+     *  Test case checking that \or terminates a case.
      * </testcase>
      *
      * @throws Exception in case of an error
