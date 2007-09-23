@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\javadef</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,110 +31,114 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public JavadefTest(String arg) {
 
-        super(arg, "javadef",
-                "\\t{org.extex.unit.base.Relax}");
+        super(arg, "javadef", "\\t{org.extex.unit.base.Relax}");
         setConfig("native-test");
     }
 
     /**
-     * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * can assign a Java class to a control sequence. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES
+                    + "\\javadef\\t{org.extex.unit.dynamic.java.JavadefTest}",
+            // --- log message ---
+            "The class org.extex.unit.dynamic.java.JavadefTest does not implement the\n"
+                    + "required interface org.extex.interpreter.type.Code.");
+    }
+
+    /**
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * can assign a Java class to a control sequence. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\javadef\\t{org.extex.unit.tex.info.The}"
-                        + "\\t\\count42" + " \\end",
-                //--- log message ---
-                "0" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\javadef\\t{org.extex.unit.tex.info.The}"
+                    + "\\t\\count42" + " \\end",
+            // --- log message ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> respects the global keyword.
-     * </testcase>
-     *
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * respects the global keyword. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\begingroup"
-                        + "\\global\\javadef\\t{org.extex.unit.tex.info.The}"
-                        + "\\endgroup" + "\\t\\count42" + " \\end",
-                //--- log message ---
-                "0" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\begingroup"
+                    + "\\global\\javadef\\t{org.extex.unit.tex.info.The}"
+                    + "\\endgroup" + "\\t\\count42" + " \\end",
+            // --- log message ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> respects the \global keyword.
-     * </testcase>
-     *
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * respects the \global keyword. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal2() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\begingroup"
-                        + "\\javadef\\t{org.extex.unit.tex.info.The}"
-                        + "\\endgroup" + "\\t\\count42" + " \\end",
-                //--- log message ---
-                "Undefined control sequence \\t");
+        // --- input code ---
+            DEFINE_BRACES + "\\begingroup"
+                    + "\\javadef\\t{org.extex.unit.tex.info.The}"
+                    + "\\endgroup" + "\\t\\count42" + " \\end",
+            // --- log message ---
+            "Undefined control sequence \\t");
     }
 
     /**
-     * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> respects \globaldefs.
-     * </testcase>
-     *
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * respects \globaldefs. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGlobal3() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\globaldefs=1 "
-                        + "\\begingroup"
-                        + "\\javadef\\t{org.extex.unit.tex.info.The}"
-                        + "\\endgroup" + "\\t\\count42" + " \\end",
-                //--- log message ---
-                "0" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\globaldefs=1 " + "\\begingroup"
+                    + "\\javadef\\t{org.extex.unit.tex.info.The}"
+                    + "\\endgroup" + "\\t\\count42" + " \\end",
+            // --- log message ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> respects \afterassignment.
-     * </testcase>
-     *
+     * <testcase primitive="\javadef"> Test case checking that <tt>\javadef</tt>
+     * respects \afterassignment. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testAfterassignment1() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\afterassignment\\x "
-                        + "\\begingroup"
-                        + "\\javadef\\t{org.extex.unit.tex.info.The}"
-                        + "\\endgroup",
-                //--- log message ---
-                "Undefined control sequence \\x");
+        // --- input code ---
+            DEFINE_BRACES + "\\afterassignment\\x " + "\\begingroup"
+                    + "\\javadef\\t{org.extex.unit.tex.info.The}"
+                    + "\\endgroup",
+            // --- log message ---
+            "Undefined control sequence \\x");
     }
 
 }

@@ -224,6 +224,9 @@ public class JavaDef extends AbstractAssignment implements Definer {
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);
+        } catch (ClassCastException e) {
+            throw new HelpingException(getLocalizer(), "ClassCast",
+                classname, Code.class.getName());
         }
     }
 
