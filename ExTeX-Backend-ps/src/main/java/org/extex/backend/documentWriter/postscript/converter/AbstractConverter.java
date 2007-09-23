@@ -34,7 +34,7 @@ import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.type.node.SpecialNode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the abstract base class for an PS converter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -156,7 +156,7 @@ public abstract class AbstractConverter implements PsConverter, ResourceAware {
     /**
      * Process a special node.
      * 
-     * @param out ...
+     * @param out the output stream
      * @param specialNode the node
      * 
      * @throws GeneralException in case of an error
