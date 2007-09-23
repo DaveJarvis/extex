@@ -71,8 +71,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> needs
+     * something to follow. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -85,8 +85,22 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> needs
+     * two arguments to follow. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\if \\relax",
+            // --- output channel ---
+            "Unexpected end of file while processing \\if");
+    }
+
+    /**
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
+     * identical letters evaluates the then branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -99,8 +113,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
+     * different letters evaluates the else branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -113,8 +127,11 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase> The TeXbook
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> a
+     * letter and a macro containing just this letter evaluates the then branch.
+     * </testcase>
+     * 
+     * The TeXbook
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +145,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> a macro
+     * containing just a letter and this letter evaluates the then branch.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -143,8 +161,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a
+     * macro and a let character evaluates the then branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -158,8 +176,9 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a
+     * let character and a macro containing this character evaluates the then
+     * branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -173,7 +192,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
+     * macros bound to different characters evaluates the else branch.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -188,8 +208,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on a
+     * macro and a primitive evaluates the else branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -203,8 +223,8 @@ public class IfTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
-     * </testcase>
+     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> on two
+     * different primitives evaluates the then branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -742,14 +762,13 @@ public class IfTest extends ConditionalTester {
 
         public Token expand(Token token, Context context, Typesetter typesetter) {
 
-            // TODO gene: expand unimplemented
             return null;
         }
 
     };
 
     /**
-     * <testcase primitive="\if"> Test case checking that <tt>\if</tt> ...
+     * <testcase> Test case checking that <tt>conditional()</tt> works.
      * </testcase>
      * 
      * @throws Exception in case of an error
