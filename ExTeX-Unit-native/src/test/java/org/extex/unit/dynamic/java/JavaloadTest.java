@@ -30,7 +30,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
-     * The constant <tt>SENSOR</tt> contains the name of te sensor class.
+     * The constant <tt>SENSOR</tt> contains the name of the sensor class.
      */
     private static final String SENSOR = JavaloadSensor.class.getName();
 
@@ -47,7 +47,38 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\javaload"> Test case checking that
-     * <tt>\javaload</tt> ... </testcase>
+     * <tt>\javaload</tt> needs an argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javaload",
+            // --- log message ---
+            "File ended while scanning text of \\javaload");
+    }
+
+    /**
+     * <testcase primitive="\javaload"> Test case checking that
+     * <tt>\javaload</tt> invokes the sensor class. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\javaload" + "{" + getClass().getName() + "}"
+                    + " \\end",
+            // --- log message ---
+            "org.extex.unit.dynamic.java.JavaloadTest");
+    }
+
+    /**
+     * <testcase primitive="\javaload"> Test case checking that
+     * <tt>\javaload</tt> invokes the sensor class. </testcase>
      * 
      * @throws Exception in case of an error
      */
