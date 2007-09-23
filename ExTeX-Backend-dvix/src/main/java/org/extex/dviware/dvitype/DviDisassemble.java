@@ -245,9 +245,9 @@ public class DviDisassemble implements DviProcessor {
      * 
      * @param off the current byte position in the input stream
      * @param k the number of the font
-     * @param c ...
-     * @param s ...
-     * @param d ...
+     * @param c length of the font area
+     * @param s length of the font name
+     * @param d the font area
      * @param name the name of the font
      * 
      * @see org.extex.dviware.DviProcessor#fntDef(int, int, int, int, int,
@@ -301,24 +301,24 @@ public class DviDisassemble implements DviProcessor {
      * A DVI <tt>post</tt> instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
-     * @param p ...
+     * @param bop the index of the last BOP instruction
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification
-     * @param l ...
-     * @param u ...
-     * @param sp ...
-     * @param tp ...
+     * @param l the maximum page height
+     * @param u the maximum page width
+     * @param sp stack depth
+     * @param tp number of pages
      * 
      * @see org.extex.dviware.DviProcessor#post(int, int, int, int, int, int,
      *      int, int, int)
      */
-    public void post(int off, int p, int num, int den, int mag, int l, int u,
+    public void post(int off, int bop, int num, int den, int mag, int l, int u,
             int sp, int tp) {
 
         printLabel(off);
         out.print("post 0x");
-        out.print(Integer.toHexString(p));
+        out.print(Integer.toHexString(bop));
         out.print(' ');
         out.print(num);
         out.print(' ');
@@ -358,7 +358,7 @@ public class DviDisassemble implements DviProcessor {
      * A DVI <tt>pre</tt> instruction has been encountered.
      * 
      * @param off the current byte position in the input stream
-     * @param id ...
+     * @param id the id of this DVI version. Usually this is 2.
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification in permille
