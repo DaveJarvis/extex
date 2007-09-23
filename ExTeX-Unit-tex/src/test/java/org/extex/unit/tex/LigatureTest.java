@@ -41,7 +41,7 @@ public class LigatureTest extends ExTeXLauncher {
     }
 
     /**
-     * Constructor for KerningTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
@@ -52,7 +52,7 @@ public class LigatureTest extends ExTeXLauncher {
 
     /**
      * <testcase>
-     *  Test case checking that ...
+     *  Test case checking that a ligature node is inserted.
      * </testcase>
      *
      * @throws Exception in case of an error
