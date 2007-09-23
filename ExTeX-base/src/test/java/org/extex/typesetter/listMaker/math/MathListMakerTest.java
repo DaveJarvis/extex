@@ -23,27 +23,27 @@ import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the math typesetting.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class MathListMakerTest extends ExTeXLauncher {
 
     /**
-     * The field <tt>DEFINE_MATH_FONTS</tt> contains the ...
+     * The field <tt>DEFINE_MATH_FONTS</tt> contains the definition for the
+     * math fonts needed.
      */
     private static final String DEFINE_MATH_FONTS =
-        "\\font\\f cmsy10 \\textfont2=\\f"
-        + "\\font\\f cmsy7 \\scriptfont2=\\f"
-        + "\\font\\f cmsy5 \\scriptscriptfont2=\\f"
-        + "\\font\\f cmex10 \\textfont3=\\f"
-        + "\\scriptfont3=\\f"
-        + "\\scriptscriptfont3=\\f"
-        + "\\font\\f cmmi10 \\textfont1=\\f ";
+            "\\font\\f cmsy10 \\textfont2=\\f"
+                    + "\\font\\f cmsy7 \\scriptfont2=\\f"
+                    + "\\font\\f cmsy5 \\scriptscriptfont2=\\f"
+                    + "\\font\\f cmex10 \\textfont3=\\f" + "\\scriptfont3=\\f"
+                    + "\\scriptscriptfont3=\\f"
+                    + "\\font\\f cmmi10 \\textfont1=\\f ";
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MathListMakerTest(String arg) {
@@ -52,40 +52,33 @@ public class MathListMakerTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that an empty math environment works.
+     * <testcase> Test case checking that an empty math environment works.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEmpty1() throws Exception {
 
-        assertSuccess(//showNodesProperties(),
-                //--- input code ---
-                DEFINE_MATH + DEFINE_MATH_FONTS
-                + "\\hsize=123pt \\vsize=456pt "
-                + "\\font\\f cmr10 \\f "
-                + "x$ $x"
-                + "\\end ",
-                //--- output channel ---
-                "xx" + TERM);
+        assertSuccess(// showNodesProperties(),
+            // --- input code ---
+            DEFINE_MATH + DEFINE_MATH_FONTS + "\\hsize=123pt \\vsize=456pt "
+                    + "\\font\\f cmr10 \\f " + "x$ $x" + "\\end ",
+            // --- output channel ---
+            "xx" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a single math character works.
+     * <testcase> Test case checking that a single math character works.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testLetter1() throws Exception {
 
-        assertSuccess(//showNodesProperties(),
-                //--- input code ---
-                DEFINE_MATH + DEFINE_MATH_FONTS
-                + "$a$"
-                + "\\end ",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// showNodesProperties(),
+            // --- input code ---
+            DEFINE_MATH + DEFINE_MATH_FONTS + "$a$" + "\\end ",
+            // --- output channel ---
+            "a" + TERM);
     }
 }
