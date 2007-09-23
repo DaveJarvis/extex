@@ -34,8 +34,7 @@ import org.extex.unit.omega.ocp.util.OcplistConvertible;
 import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
- * This abstract base class ...
- * 
+ * This is the abstract base class for &Omega;CP lists.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -51,7 +50,7 @@ public abstract class AbstractOcplist extends AbstractCode
     private static final long serialVersionUID = 2007L;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Scan an &Omega;CP list.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
