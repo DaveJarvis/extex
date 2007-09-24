@@ -188,7 +188,8 @@ public class ColorPrimitive extends AbstractColor {
                 TypesetterException {
 
         Color color =
-                ColorParser.parseColor(context, source, typesetter, getName());
+                ColorParser.parseColor(context, source, typesetter,
+                    printableControlSequence(context));
         context.set(color, prefix.clearGlobal());
     }
 
