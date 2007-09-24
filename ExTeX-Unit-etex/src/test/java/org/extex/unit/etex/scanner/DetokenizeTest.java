@@ -51,7 +51,22 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\detokenize">
-     *  Test case checking that <tt>\detokenize</tt> ...
+     *  Test case checking that <tt>\detokenize</tt> needs an argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\detokenize",
+                //--- output channel ---
+                "File ended while scanning text of \\detokenize");
+    }
+
+    /**
+     * <testcase primitive="\detokenize">
+     *  Test case checking that <tt>\detokenize</tt> consumes a letter.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -66,7 +81,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\detokenize">
-     *  Test case checking that <tt>\detokenize</tt> ...
+     *  Test case checking that <tt>\detokenize</tt> consumes some letters.
      * </testcase>
      *
      * @throws Exception in case of an error

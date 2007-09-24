@@ -51,7 +51,22 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> ...
+     *  Test case checking that <tt>\scantokens</tt> needs an argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scantokens",
+                //--- output channel ---
+                "File ended while scanning text of \\scantokens");
+    }
+
+    /**
+     * <testcase primitive="\scantokens">
+     *  Test case checking that <tt>\scantokens</tt> consumes a letter.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -66,7 +81,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> ...
+     *  Test case checking that <tt>\scantokens</tt> respects \escapechar.
      * </testcase>
      *
      * @throws Exception in case of an error
