@@ -840,8 +840,7 @@ public class ContextImpl
             try {
                 font = new FontImpl(fontFactory.getInstance(null));
             } catch (FontException e) {
-                // TODO gene: error handling unimplemented
-                throw new RuntimeException("unimplemented");
+                return null;
             }
         }
         return font;
