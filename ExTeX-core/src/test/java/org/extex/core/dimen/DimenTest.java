@@ -233,13 +233,6 @@ public class DimenTest extends TestCase {
 
     /**
      * Test case:
-     * The constructor with source parameter 0 delivers a proper result.
-     * ...
-     */
-    //TODO gene: incomplete
-
-    /**
-     * Test case:
      * Setting to the long value 0 delivers a proper result.
      */
     public void testSet10() {
@@ -347,13 +340,6 @@ public class DimenTest extends TestCase {
         d.set(new Dimen(-2L));
         assertEquals(-2L, d.getValue());
     }
-
-    /**
-     * Test case:
-     * Setting to the source parameter 0 delivers a proper result.
-     * ...
-     */
-    //TODO: incomplete
 
     /**
      * Test case:
