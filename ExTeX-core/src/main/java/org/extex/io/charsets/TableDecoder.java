@@ -34,15 +34,15 @@ import java.nio.charset.CoderResult;
 public class TableDecoder extends CharsetDecoder {
 
     /**
-     * The field <tt>table</tt> contains the ...
+     * The field <tt>table</tt> contains the table.
      */
     private char[] table;
 
     /**
      * Creates a new object.
      * 
-     * @param cs ...
-     * @param table ...
+     * @param cs the character set
+     * @param table the table
      */
     public TableDecoder(Charset cs, char[] table) {
 

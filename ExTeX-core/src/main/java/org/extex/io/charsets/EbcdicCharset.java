@@ -24,7 +24,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the definition of character set for the EBCDIC encoding.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,7 +32,7 @@ import java.nio.charset.CharsetEncoder;
 public class EbcdicCharset extends Charset {
 
     /**
-     * The field <tt>CODES</tt> contains the ...
+     * The field <tt>CODES</tt> contains the table of codes.
      */
     public static final char[] CODES = {//
             /* 00 */0,
@@ -293,12 +293,12 @@ public class EbcdicCharset extends Charset {
                     /* FF */0};
 
     /**
-     * The field <tt>decoder</tt> contains the ...
+     * The field <tt>decoder</tt> contains the decoder.
      */
     private CharsetDecoder decoder = null;
 
     /**
-     * The field <tt>encoder</tt> contains the ...
+     * The field <tt>encoder</tt> contains the encoder.
      */
     private TableEncoder encoder = null;
 

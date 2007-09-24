@@ -34,12 +34,12 @@ import java.nio.charset.CoderResult;
 public class TableEncoder extends CharsetEncoder {
 
     /**
-     * The field <tt>table</tt> contains the ...
+     * The field <tt>table</tt> contains the table.
      */
     private char[] table;
 
     /**
-     * The field <tt>reverse</tt> contains the ...
+     * The field <tt>reverse</tt> contains the reverse table.
      */
     private byte[] reverse = new byte[256];
 
