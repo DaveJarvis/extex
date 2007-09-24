@@ -19,12 +19,14 @@
 
 package org.extex.unit.etex.macro;
 
+import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -83,8 +85,12 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        try {
+            Tokens body = source.getTokens(context, source, typesetter);
+            source.push(body);
+        } catch (EofException e) {
+            throw new EofException(printableControlSequence(context));
+        }
     }
 
     /**
