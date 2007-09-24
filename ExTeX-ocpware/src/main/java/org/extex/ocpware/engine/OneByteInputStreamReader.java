@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Reader for single bytes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

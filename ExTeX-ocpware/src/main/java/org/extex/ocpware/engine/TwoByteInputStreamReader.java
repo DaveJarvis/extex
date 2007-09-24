@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Reader for double bytes in high-endian order.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

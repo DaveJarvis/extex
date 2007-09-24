@@ -36,12 +36,14 @@ import org.extex.ocpware.type.OcpProgram;
 public class OcpOmegaWriter extends AbstractWriter {
 
     /**
-     * The field <tt>adjust</tt> contains the ...
+     * The field <tt>adjust</tt> contains the length to adjust the code to
+     * this length.
      */
     private int adjust = 20;
 
     /**
-     * The field <tt>fill</tt> contains the ...
+     * The field <tt>fill</tt> contains the indicator to fill in some spaces
+     * to line up things in columns.
      */
     private boolean fill = true;
 
@@ -67,10 +69,11 @@ public class OcpOmegaWriter extends AbstractWriter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
+     * Generate an alternate description of a character for printable
+     * characters.
+     * 
      * @param value the character code
-     *
+     * 
      * @return the character string
      */
     protected String charString(int value) {

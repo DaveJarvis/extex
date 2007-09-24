@@ -20,7 +20,7 @@
 package org.extex.ocpware.type;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This enumeration names the &Omega;CP modes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
