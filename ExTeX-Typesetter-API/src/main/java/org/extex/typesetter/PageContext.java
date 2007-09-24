@@ -79,15 +79,6 @@ public interface PageContext {
     FixedGlue getGlueOption(String name);
 
     /**
-     * Getter for a muskip register.
-     *
-     * @param name the name of the register
-     *
-     * @return the muskip register value
-     */
-    Muskip getMuskip(String name);
-
-    /**
      * Getter for the lccode mapping of upper case characters to their
      * lower case equivalent.
      *
@@ -98,11 +89,29 @@ public interface PageContext {
     UnicodeChar getLccode(UnicodeChar uc);
 
     /**
+     * Getter for a muskip register.
+     *
+     * @param name the name of the register
+     *
+     * @return the muskip register value
+     */
+    Muskip getMuskip(String name);
+
+    /**
      * Getter for the current name space.
      *
      * @return the current name space
      */
     String getNamespace();
+
+    /**
+     * Getter for an output file descriptor.
+     * 
+     * @param key the name or the number of the file register
+     * 
+     * @return the output file descriptor
+     */
+    OutFile getOutFile(String key);
 
     /**
      * Getter for the paragraph shape.
@@ -135,13 +144,6 @@ public interface PageContext {
     TypesettingContextFactory getTypesettingContextFactory();
 
     /**
-     * Setter for the paragraph shape.
-     *
-     * @param shape the new paragraph shape
-     */
-    void setParshape(ParagraphShape shape);
-
-    /**
      * Setter for a count register.
      *
      * @param name the name of the register
@@ -152,29 +154,29 @@ public interface PageContext {
     void setCountOption(String name, long value) throws GeneralException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for a mark.
+     * The information for first mark and top mark are updated if necessary.
      *
-     * @param key the key for the output file
-     *
-     * @return the output file
-     */
-    OutFile getOutFile(String key);
-
-    /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param index the index of the mark
-     * @param mark the value of the mark
+     * @param index the name of the mark
+     * @param mark the vale of the mark
      */
     void setMark(Object index, Tokens mark);
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param key
-     * @param file
-     * @param b
+     * Setter for a outfile descriptor.
+     * 
+     * @param key the name or the number of the file register
+     * @param file the descriptor of the output file
+     * @param global the indicator for the scope; <code>true</code> means all
+     *        groups; otherwise the current group is affected only
      */
-    void setOutFile(String key, OutFile file, boolean b);
+    void setOutFile(String key, OutFile file, boolean global);
+
+    /**
+     * Setter for the paragraph shape.
+     *
+     * @param shape the new paragraph shape
+     */
+    void setParshape(ParagraphShape shape);
 
 }

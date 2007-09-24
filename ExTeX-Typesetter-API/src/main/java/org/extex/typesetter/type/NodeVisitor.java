@@ -134,17 +134,19 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * 
  * <pre class="JavaSample">
  *
- * public class MyDocumentWriter implements DocumentWriter<b>, NodeVisitor</b> {
+ * public class MyDocumentWriter
+ *     implements DocumentWriter<b>,
+ *                NodeVisitor&lt;Boolean, Integer&gt;</b> {
  *
  *     public void myMethod(Node node) {
  *         <i>// Do something with node depending on its type</i>
  *     }
  * <b>
- *     public Object visitAdjust(AdjustNode node, Object arg) {
+ *     public Boolean visitAdjust(AdjustNode node, Integer arg) {
  *         <i>// do something for adjust nodes</i>
  *     }
  *
- *     public Object visitChar(CharNode node, Object arg) {
+ *     public Boolean visitChar(CharNode node, Integer arg) {
  *         <i>// do something for char nodes</i>
  *     }
  *
@@ -162,13 +164,15 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * appropriate type.
  * </p>
  * <p>
- * In the <tt>visit</tt> methods we can now savely assume that the node is of
+ * In the <tt>visit</tt> methods we can now safely assume that the node is of
  * the named type and cast the object to have access to its public methods.
  * </p>
  * 
  * <pre class="JavaSample">
  *
- * public class MyDocumentWriter implements DocumentWriter, NodeVisitor {
+ * public class MyDocumentWriter
+ *     implements DocumentWriter,
+ *                NodeVisitor&lt;Boolean, Integer&gt; {
  *
  *     public void myMethod(Node node) {
  *         <b>node.visit(this, "some value");</b>
@@ -206,7 +210,6 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * class.
  * </p>
  * 
- * TODO gene: adapt documentation for generics
  * 
  * @param <R> return type
  * @param <A> argument type

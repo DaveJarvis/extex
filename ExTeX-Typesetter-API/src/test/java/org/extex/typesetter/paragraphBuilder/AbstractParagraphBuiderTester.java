@@ -513,8 +513,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          */
         public void setEfCode(UnicodeChar uc, long code) {
 
-            // TODO gene: setEfcode unimplemented
-
+            //
         }
 
         /**
@@ -608,14 +607,12 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                     boolean forall, NodeFactory nodeFactory)
                     throws HyphenationException {
 
-                // TODO gene: hyphenate unimplemented
                 return false;
             }
 
             public int insertLigatures(NodeList list, int start)
                     throws HyphenationException {
 
-                // TODO gene: insertLigatures unimplemented
                 return 0;
             }
 

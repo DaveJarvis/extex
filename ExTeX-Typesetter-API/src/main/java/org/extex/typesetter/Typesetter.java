@@ -189,7 +189,7 @@ public interface Typesetter extends ListMaker {
     void showlists(StringBuffer sb, long depth, long breadth);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Push a list maker onto the stack and return the old value.
      * 
      * @param type the type of the list maker
      * @param locator the locator
