@@ -24,7 +24,7 @@ import org.extex.unit.tex.prefix.PrefixTester;
 
 /**
  * This is a test suite for the primitive <tt>\protected</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4306 $
  */
@@ -32,7 +32,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     *
+     * 
      * @param arg the name
      */
     public ProtectedTest(String arg) {
@@ -52,85 +52,81 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * ...
-     *
+     * Try a prefix which is assumed to be not applicable.
+     * 
      * @param prefix the prefix code
      * @param tag the character to be assigned
      * @param catcode the category
      * @param longName the name of tag
-     *
+     * 
      * @throws Exception in case of an error
      */
-    private void tryFlag(String prefix, String tag,
-            Catcode catcode, String longName) throws Exception {
+    private void tryFlag(String prefix, String tag, Catcode catcode,
+            String longName) throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
-                        + " " + tag + "\\end",
-                //--- log message ---
-                "You can\'t use the prefix `\\" + prefix + "\' with "
-                        + longName);
+        assertFailure(// --- input code ---
+            "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
+                    + " " + tag + "\\end",
+            // --- log message ---
+            "You can\'t use the prefix `\\" + prefix + "\' with " + longName);
     }
 
     /**
-     * <testcase primitive="\protected">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> sets the flag. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void ___test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\protected\\showprefix\\end",
-                //--- error channel ---
-                "protected\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\protected\\showprefix\\end",
+            // --- error channel ---
+            "protected\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\protected">
-     *  Test case checking that double <tt>\protected</tt> has the same effect
-     *  as one.
-     * </testcase>
-     *
+     * <testcase primitive="\protected"> Test case checking that double
+     * <tt>\protected</tt> has the same effect as one. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void ___test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\protected\\protected\\showprefix\\end",
-                //--- error channel ---
-                "protected\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\protected\\protected\\showprefix\\end",
+            // --- error channel ---
+            "protected\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\protected">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> does not interfere with \long. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void ___test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\protected\\long\\showprefix\\end",
-                //--- error channel ---
-                "long and protected\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\protected\\long\\showprefix\\end",
+            // --- error channel ---
+            "long and protected\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before an alignment tab character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testTabNoProtectedFlag() throws Exception {
@@ -139,9 +135,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a subscript character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testSubNoProtectedFlag() throws Exception {
@@ -150,9 +147,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a superscript character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testSuperNoProtectedFlag() throws Exception {
@@ -161,9 +159,9 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
-     * </testcase>
-     *
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a letter. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLetterNoProtectedFlag() throws Exception {
@@ -172,9 +170,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before an other character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testOtherNoProtectedFlag() throws Exception {
@@ -183,9 +182,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a math shift character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testMathshiftNoProtectedFlag() throws Exception {
@@ -194,9 +194,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a begin-group character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testBegingroupNoProtectedFlag() throws Exception {
@@ -205,9 +206,10 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * <testcase>
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before an end-group character.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEndgroupNoProtectedFlag() throws Exception {
