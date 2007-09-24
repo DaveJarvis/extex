@@ -23,7 +23,7 @@ import org.extex.test.NonExecuteTester;
 
 /**
  * This is a test suite for the primitive <tt>\parshapelength</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * Constructor for ParshapelengthTest.
-     *
+     * 
      * @param arg the name
      */
     public ParshapelengthTest(String arg) {
@@ -50,269 +51,248 @@ public class ParshapelengthTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that <tt>\parshapelength</tt> is applicable to
-     *  <tt>\the</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> is applicable to <tt>\the</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapelength0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that <tt>\parshapelength</tt> on a negative index
-     *  returns 0pt.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> on a negative index returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapelength-1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> on a large index returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapelength2 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the length
+     * of the first and only existing pair is read. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape1 12pt 24pt \\the\\parshapelength0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "24.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the length
+     * of the first existing pair of two is read. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapelength0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "24.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that length of
+     * the second pair is read. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapelength1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test7() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapelength2 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test8() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapelength222 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that <tt>\parshapelength</tt> is applicable to
-     *  <tt>\the</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> is applicable to <tt>\the</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test111() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapelength0 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that <tt>\parshapelength</tt> on a negative index
-     *  returns 0pt.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> on a negative index returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test112() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapelength-1 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> is applicable to \the. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test113() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapelength2 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test114() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape1 12pt 24pt "
                     + "\\dimen0=\\parshapelength0 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "24.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test115() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapelength0 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "24.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> can be used as a dimen value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test116() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapelength1 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test117() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapelength2 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test118() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapelength222 \\the\\dimen0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "48.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapelength">
-     *  Test case showing that <tt>\parshapelength</tt> is count-convertible.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapelength"> Test case showing that
+     * <tt>\parshapelength</tt> is count-convertible. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testConvertible1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1=\\parshapelength0 \\the\\count1\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0" + TERM);
     }
 
-    //TODO implement primitive specific test cases
+    // TODO implement primitive specific test cases
 
 }
