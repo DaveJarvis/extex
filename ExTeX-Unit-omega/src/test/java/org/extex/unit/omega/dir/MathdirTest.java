@@ -24,7 +24,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>mathdir</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -32,7 +32,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MathdirTest(String arg) {
@@ -52,52 +52,47 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\mathdir">
-     *  Test case checking that <tt>\mathdir</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
+     * needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr0() throws Exception {
+    public void testError0() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\mathdir",
-                //--- output channel ---
-                "Unexpected end of file");
+        assertFailure(// --- input code ---
+            "\\mathdir",
+            // --- output channel ---
+            "Unexpected end of file");
     }
 
     /**
-     * <testcase primitive="\mathdir">
-     *  Test case checking that <tt>\mathdir</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
+     * needs a direction as argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\mathdir"
-                + "\\end",
-                //--- output channel ---
-                "Bad direction");
+        assertFailure(// --- input code ---
+            "\\mathdir" + "\\end",
+            // --- output channel ---
+            "Bad direction");
     }
 
     /**
-     * <testcase primitive="\mathdir">
-     *  Test case checking that <tt>\mathdir</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
+     * sets the math direction in the context. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        Interpreter in = assertSuccess(//--- input code ---
-                "\\mathdir LRL"
-                + "\\end",
-                //--- output channel ---
-                "");
-        assertEquals("LRL",
-                     in.getContext().getTypesettingContext().getDirection().toString());
+        Interpreter in = assertSuccess(// --- input code ---
+            "\\mathdir LRL" + "\\end",
+            // --- output channel ---
+            "");
+        assertEquals("LRL", in.getContext().getTypesettingContext()
+            .getDirection().toString());
         // TODO gene: correct???
     }
 
