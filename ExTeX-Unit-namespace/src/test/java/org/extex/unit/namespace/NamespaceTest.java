@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\namespace</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,6 +31,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for NamespaceTest.
-     *
+     * 
      * @param arg the name
      */
     public NamespaceTest(String arg) {
@@ -50,81 +51,67 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\namespace">
-     *  Test case checking that <tt>\namespace</tt> is initially empty.
-     * </testcase>
-     *
+     * <testcase primitive="\namespace"> Test case checking that
+     * <tt>\namespace</tt> is initially empty. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                ":\\the\\namespace:"
-                + "\\end ",
-                //--- output channel ---
-                "::" + TERM);
+        assertSuccess(// --- input code ---
+            ":\\the\\namespace:" + "\\end ",
+            // --- output channel ---
+            "::" + TERM);
     }
 
     /**
-     * <testcase primitive="\namespace">
-     *  Test case checking that <tt>\namespace</tt> can be set and read.
-     * </testcase>
-     *
+     * <testcase primitive="\namespace"> Test case checking that
+     * <tt>\namespace</tt> can be set and read. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES
-                + "\\namespace{TeX}"
-                + ":\\the\\namespace:"
-                + "\\end ",
-                //--- output channel ---
-                ":TeX:" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\namespace{TeX}" + ":\\the\\namespace:"
+                    + "\\end ",
+            // --- output channel ---
+            ":TeX:" + TERM);
     }
 
     /**
-     * <testcase primitive="\namespace">
-     *  Test case checking that <tt>\namespace</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\namespace"> Test case checking that
+     * <tt>\namespace</tt> let assignment in different name spaces are
+     * independent. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test10() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES
-                + "\\let\\x a"
-                + "\\namespace{TeX}"
-                + "\\let\\x b"
-                + ".\\x."
-                + "\\namespace{abc}"
-                + "\\the\\namespace:"
-                + ".\\x."
-                + "\\end ",
-                //--- output channel ---
-                ".b.abc:.a." + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\let\\x a" + "\\namespace{TeX}" + "\\let\\x b"
+                    + ".\\x." + "\\namespace{abc}" + "\\the\\namespace:"
+                    + ".\\x." + "\\end ",
+            // --- output channel ---
+            ".b.abc:.a." + TERM);
     }
 
     /**
-     * <testcase primitive="\namespace">
-     *  Test case checking that <tt>\namespace</tt> interacts with groups.
-     * </testcase>
-     *
+     * <testcase primitive="\namespace"> Test case checking that
+     * <tt>\namespace</tt> interacts with groups. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test20() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES
-                + "\\namespace{A}"
-                + "\\begingroup\\global\\namespace{TeX}\\endgroup"
-                + ":\\the\\namespace:"
-                + "\\end ",
-                //--- output channel ---
-                ":TeX:" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\namespace{A}"
+                    + "\\begingroup\\global\\namespace{TeX}\\endgroup"
+                    + ":\\the\\namespace:" + "\\end ",
+            // --- output channel ---
+            ":TeX:" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }
