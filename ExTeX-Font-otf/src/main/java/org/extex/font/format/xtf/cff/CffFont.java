@@ -20,6 +20,8 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -162,7 +164,7 @@ public class CffFont implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param fontname The name of the font.
-     * @param number
+     * @param number The number.
      */
     public CffFont(String fontname, int number) {
 
@@ -313,6 +315,16 @@ public class CffFont implements XMLWriterConvertible {
         }
 
         return null;
+    }
+
+    /**
+     * Getter for cff.
+     * 
+     * @return the cff
+     */
+    public OtfTableCFF getCff() {
+
+        return cff;
     }
 
     /**
@@ -605,6 +617,14 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
+     * @see org.extex.font.format.xtf.cff.T2TDOCharset#getNameForPos(int)
+     */
+    public String getNameForPos(int pos) {
+
+        return charset.getNameForPos(pos);
+    }
+
+    /**
      * Returns the nominalWidthX. (default: 0)
      * 
      * @return Returns the nominalWidthX.
@@ -868,11 +888,11 @@ public class CffFont implements XMLWriterConvertible {
         this.cff = cff;
         numberOfGlyphs = cff.getNumGlyphs();
 
-        Iterator<String> it = topDictIndex.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
-            T2Operator op = topDictIndex.get(key);
-            op.init(rar, cff, baseoffset);
+        T2Operator[] ops = sortT2TopDict();
+
+        for (int i = 0; i < ops.length; i++) {
+            T2Operator op = ops[i];
+            op.init(rar, cff, baseoffset, this);
 
             int id = op.getID();
 
@@ -998,6 +1018,44 @@ public class CffFont implements XMLWriterConvertible {
         return isfixedpitch;
     }
 
+    /**
+     * Sort the top dict entries.
+     * 
+     * @return Returns the sort array.
+     */
+    private T2Operator[] sortT2TopDict() {
+
+        T2Operator[] ops = new T2Operator[topDictIndex.size()];
+        int opidx = 0;
+        Iterator<String> it = topDictIndex.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            T2Operator op = topDictIndex.get(key);
+            ops[opidx++] = op;
+        }
+
+        Arrays.sort(ops, new Comparator<T2Operator>() {
+
+            /**
+             * compare.
+             * 
+             * @param o1 The value 1
+             * @param o2 The value 2
+             * @return Returns -1, 0, +1
+             */
+            public int compare(T2Operator o1, T2Operator o2) {
+
+                return o2.getInitPrio() < o1.getInitPrio() ? -1 : +1;
+            }
+        });
+        return ops;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,38 +19,39 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 
 /**
- * Path construction.
+ * Abstract class for all hint masks.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class T2PathConstruction extends T2Operator {
-
-    /**
-     * Create a new object
-     * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @param ch The char string.
-     */
-    protected T2PathConstruction(List<T2CharString> stack, short[] id,
-            CharString ch) {
-
-        super();
-
-        bytes = convertStackaddID(stack, id);
-    }
+public abstract class T2AbstractHintMask extends T2Hints {
 
     /**
      * bytes
      */
     private short[] bytes;
+
+    /**
+     * Create a new object.
+     * 
+     * @param stack the stack
+     * @param id the operator-id for the value
+     * @param ch The char string.
+     */
+    protected T2AbstractHintMask(List<T2CharString> stack, short[] id,
+            CharString ch) throws IOException {
+
+        super();
+
+        bytes = convertStackaddID(stack, id);
+
+    }
 
     /**
      * {@inheritDoc}

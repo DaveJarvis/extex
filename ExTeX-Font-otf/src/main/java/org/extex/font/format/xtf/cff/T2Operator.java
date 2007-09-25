@@ -20,9 +20,11 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLWriterConvertible;
 
@@ -38,9 +40,97 @@ public abstract class T2Operator extends T2CharString
             XMLWriterConvertible {
 
     /**
-     * rmoveto
+     * Create a new instance.
+     * 
+     * @param rar the input
+     * @param cffFont The cff font.
+     * @return Returns the new T2Operatorr object.
+     * @throws IOException if an IO-error occurs.
      */
-    public static final int RMOVETO = 21;
+    public static T2Operator newInstance(RandomAccessR rar, CharString ch)
+            throws IOException {
+
+        List<T2CharString> stack = new ArrayList<T2CharString>();
+
+        while (true) {
+
+            int b0 = rar.readUnsignedByte();
+
+            switch (b0) {
+                case 0:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case T2HSTEM:
+                    return new T2Hstem(stack, ch);
+                case 2:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case T2VSTEM:
+                    return new T2Vstem(stack, ch);
+                case T2VMOVETO:
+                    return new T2VMoveTo(stack, ch);
+                case T2RLINETO:
+                    return new T2RLineTo(stack, ch);
+                case T2HLINETO:
+                    return new T2HLineTo(stack, ch);
+                case T2VLINETO:
+                    return new T2VLineTo(stack, ch);
+                case T2RRCURVETO:
+                    return new T2RrCurveTo(stack, ch);
+                case 9:
+                    return new T2Dummy(stack, ch, "Reserved");// Reserved
+                case 10:
+                    return new T2Dummy(stack, ch, "callsubr"); // callsubr
+                case 11:
+                    break; // return
+                case ESCAPE_BYTE:
+                    int b1 = rar.readUnsignedByte();
+
+                    return new T2Dummy(stack, ch, "escape");
+                case 13:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case 14:
+                    return new T2Dummy(stack, ch, "endchar"); // endchar
+                case 15:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case 16:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case 17:
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
+                case T2HSTEMHM:
+                    return new T2HstemHm(stack, ch);
+                case T2HINTMASK:
+                    return new T2HintMask(stack, ch, rar);
+                case 20:
+                    return new T2Dummy(stack, ch, "cntrmask"); // cntrmask
+                case T2RMOVETO:
+                    return new T2RMoveTo(stack, ch);
+                case T2HMOVETO:
+                    return new T2HMoveTo(stack, ch);
+                case T2VSTEMHM:
+                    return new T2VstemHm(stack, ch);
+                case 24:
+                    return new T2Dummy(stack, ch, "rcurveline");// rcurveline
+                case 25:
+                    return new T2Dummy(stack, ch, "rlinecurve"); // rlinecurve
+                case 26:
+                    return new T2Dummy(stack, ch, "vvcurveto"); // vvcurveto
+                case 27:
+                    return new T2Dummy(stack, ch, "hhcurveto"); // hhcurveto
+                case 28:
+                    return new T2Dummy(stack, ch, "shortint"); // shortint
+                case 29:
+                    return new T2Dummy(stack, ch, "callgsubr"); // callgsubr
+                case 30:
+                    return new T2Dummy(stack, ch, "vhcurveto"); // vhcurveto
+                case 31:
+                    return new T2Dummy(stack, ch, "hvcurveto"); // hvcurveto
+                default:
+                    // number
+                    T2Number number = T2CharString.readNumber(rar, b0);
+                    stack.add(number);
+                    break;
+            }
+        }
+    }
 
     /**
      * Create a new object.
@@ -51,120 +141,33 @@ public abstract class T2Operator extends T2CharString
     }
 
     /**
-     * Create a new instance.
+     * Check, if a width is set.
      * 
-     * @param rar the input
-     * @return Returns the new T2Operatorr object.
-     * @throws IOException if an IO-error occurs.
+     * <p>
+     * The first stack-clearing operator, which must be one of hstem, hstemhm,
+     * vstem, vstemhm, cntrmask, hintmask, hmoveto, vmoveto, rmoveto, or
+     * endchar, takes an additional argument - the width (as described earlier),
+     * which may be expressed as zero or one numeric argument.
+     * </p>
+     * 
+     * @param stack The stack.
+     * @param ch The char string.
+     * @throws T2MissingNumberException if an error occurred.
      */
-    public static T2Operator newInstance(RandomAccessR rar) throws IOException {
+    protected void checkWidth(List<T2CharString> stack, CharString ch)
+            throws T2MissingNumberException {
 
-        int b0 = rar.readUnsignedByte();
-
-        if (b0 >= 0 && b0 <= 31) {
-
-            switch (b0) {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    break;
-                case 11:
-                    break;
-                case 12:
-                    break;
-                case 13:
-                    break;
-                case 14:
-                    break;
-                case 15:
-                    break;
-                case 16:
-                    break;
-                case 17:
-                    break;
-                case 18:
-                    break;
-                case 19:
-                    break;
-                case 20:
-                    break;
-                case RMOVETO:
-                    return new T2RMOVETO();
-                case 22:
-                    break;
-                case 23:
-                    break;
-                case 24:
-                    break;
-                case 25:
-                    break;
-                case 26:
-                    break;
-                case 27:
-                    break;
-                case 29:
-                    break;
-                case 30:
-                    break;
-                case 31:
-                    break;
-                default:
-                    // fall through
-            }
+        // if (ch.getWidth() != null) {
+        // throw new T2MissingNumberException();
+        // }
+        T2CharString w = stack.get(0);
+        if (w instanceof T2Number) {
+            ch.setWidth((T2Number) w);
+            stack.remove(0);
+        } else {
+            throw new T2MissingNumberException();
         }
-
-        throw new T2NotAOperatorException();
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#isOperator()
-     */
-    @Override
-    public boolean isOperator() {
-
-        return true;
-    }
-
-    /**
-     * Return the name of the operator.
-     * 
-     * @return Return the name of the operator.
-     */
-    public abstract String getName();
-
-    /**
-     * Returns the id of the operator.
-     * 
-     * @return Returns the id of the operator.
-     */
-    public abstract int getID();
-
-    /**
-     * Returns the value of the operator.
-     * 
-     * @return Returns the value of the operator.
-     */
-    public abstract Object getValue();
 
     /**
      * Convert a stack (a List) into an array and add at the top the id-array.
@@ -204,6 +207,27 @@ public abstract class T2Operator extends T2CharString
     }
 
     /**
+     * Returns the id of the operator.
+     * 
+     * @return Returns the id of the operator.
+     */
+    public abstract int getID();
+
+    /**
+     * Return the name of the operator.
+     * 
+     * @return Return the name of the operator.
+     */
+    public abstract String getName();
+
+    /**
+     * Returns the value of the operator.
+     * 
+     * @return Returns the value of the operator.
+     */
+    public abstract Object getValue();
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
@@ -211,10 +235,32 @@ public abstract class T2Operator extends T2CharString
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
     @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
-            throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
-        //
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#isOperator()
+     */
+    @Override
+    public boolean isOperator() {
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return getName();
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,48 +19,49 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 
 /**
- * Path construction.
+ * T2: vstem.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class T2PathConstruction extends T2Operator {
+public class T2Vstem extends T2HintCmd {
 
     /**
-     * Create a new object
+     * Create a new object.
      * 
      * @param stack the stack
-     * @param id the operator-id for the value
      * @param ch The char string.
+     * @param id the operator-id for the value
+     * @throws IOException if an IO-error occurs.
      */
-    protected T2PathConstruction(List<T2CharString> stack, short[] id,
-            CharString ch) {
+    public T2Vstem(List<T2CharString> stack, CharString ch) throws IOException {
 
-        super();
+        super(stack, new short[]{T2VSTEM}, ch);
 
-        bytes = convertStackaddID(stack, id);
     }
 
-    /**
-     * bytes
-     */
-    private short[] bytes;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
-     */
     @Override
-    public short[] getBytes() {
+    public int getID() {
 
-        return bytes;
+        return TYPE_VSTEM;
     }
 
+    @Override
+    public String getName() {
+
+        return "vstem";
+    }
+
+    @Override
+    public int countHints() {
+
+        // TODO mgn: countHints unimplemented
+        return 0;
+    }
 }

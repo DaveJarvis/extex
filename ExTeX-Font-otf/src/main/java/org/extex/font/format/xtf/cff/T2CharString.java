@@ -26,10 +26,11 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * The Type 2 Charstring format.
- *
- * @see <a href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf">
+ * 
+ * @see <a
+ *      href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf">
  *      Adobe Technical Note #5177: Type 2 Charstring Format</a>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -37,110 +38,152 @@ import org.extex.util.file.random.RandomAccessR;
 public abstract class T2CharString {
 
     /**
-     * escape-byte
-     */
-    public static final byte ESCAPE_BYTE = 12;
-
-    /**
      * escape
      */
     public static final T2Escape ESCAPE = new T2Escape();
 
     /**
-     * Create a new object.
+     * escape-byte.
      */
-    protected T2CharString() {
-
-        super();
-    }
+    public static final byte ESCAPE_BYTE = 12;
 
     /**
-     * Check, if the objekt is an operator.
-     * @return Returns <code>true</code>, if the object is an operator.
+     * hstem.
      */
-    public boolean isOperator() {
-
-        return false;
-    }
+    public static final int T2HSTEM = 1;
 
     /**
-     * Check, if the objekt is an escape-marker.
-     * @return Returns <code>true</code>, if the object is an escape-marker.
+     * hstemhm.
      */
-    public boolean isEscape() {
-
-        return false;
-    }
+    public static final int T2HSTEMHM = 18;
 
     /**
-     * Check, if the objekt is a integer.
-     * @return Returns <code>true</code>, if the object is a integer.
+     * rmoveto
      */
-    public boolean isInteger() {
-
-        return false;
-    }
+    public static final int T2RMOVETO = 21;
 
     /**
-     * Check, if the objekt is a double.
-     * @return Returns <code>true</code>, if the object is a double.
+     * hmoveto
      */
-    public boolean isDouble() {
-
-        return false;
-    }
+    public static final int T2HMOVETO = 22;
 
     /**
-     * Check, if the objekt is a boolean.
-     * @return Returns <code>true</code>, if the object is a boolean.
+     * vmoveto
      */
-    public boolean isBoolean() {
-
-        return false;
-    }
+    public static final int T2VMOVETO = 4;
 
     /**
-     * Check, if the objekt is a array.
-     * @return Returns <code>true</code>, if the object is a array.
+     * rlineto
      */
-    public boolean isArray() {
-
-        return false;
-    }
+    public static final int T2RLINETO = 5;
 
     /**
-     * Check, if the objekt is a Top DICT operator.
-     * @return Returns <code>true</code>, if the object is a Top DICT operator.
+     * hlineto
      */
-    public boolean isTopDICTOperator() {
-
-        return false;
-    }
+    public static final int T2HLINETO = 6;
 
     /**
-     * Returns the byte-array as short for the object.
-     * @return Returns the byte-array for the object.
+     * vlineto
      */
-    public abstract short[] getBytes();
+    public static final int T2VLINETO = 7;
+
+    /**
+     * vstem.
+     */
+    public static final int T2VSTEM = 3;
+
+    /**
+     * vstemhm.
+     */
+    public static final int T2VSTEMHM = 23;
+
+    /**
+     * rrcurveto.
+     */
+    public static final int T2RRCURVETO = 8;
+
+    /**
+     * hintmask.
+     */
+    public static final int T2HINTMASK = 19;
+
+    /**
+     * Type hstem.
+     */
+    public static final int TYPE_HSTEM = 1;
+
+    /**
+     * Type hstemhm.
+     */
+    public static final int TYPE_HSTEMHM = 3;
+
+    /**
+     * Type vstem.
+     */
+    public static final int TYPE_VSTEM = 2;
+
+    /**
+     * Type vstemhm.
+     */
+    public static final int TYPE_VSTEMHM = 4;
+
+    /**
+     * Type rmoveto.
+     */
+    public static final int TYPE_RMOVETO = 5;
+
+    /**
+     * Type hmoveto.
+     */
+    public static final int TYPE_HMOVETO = 6;
+
+    /**
+     * Type vmoveto.
+     */
+    public static final int TYPE_VMOVETO = 7;
+
+    /**
+     * Type rlineto.
+     */
+    public static final int TYPE_RLINETO = 8;
+
+    /**
+     * Type hlineto.
+     */
+    public static final int TYPE_HLINETO = 9;
+
+    /**
+     * Type vlineto.
+     */
+    public static final int TYPE_VLINETO = 10;
+
+    /**
+     * Type rrcurveto.
+     */
+    public static final int TYPE_RRCURVETO = 11;
+
+    /**
+     * Type hintmask.
+     */
+    public static final int TYPE_HINTMASK = 12;
 
     /**
      * Read a number.
-     *
-     * @param rar   the input
+     * 
+     * @param rar the input
      * @return Returns the number.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Number readNumber(RandomAccessR rar)
-            throws IOException {
+    public static T2Number readNumber(RandomAccessR rar) throws IOException {
 
         return T2Number.newInstance(rar);
     }
 
     /**
      * Read a number.
-     *
-     * @param rar   the input
-     * @param b0    the first byte
+     * 
+     * @param rar the input
+     * @param b0 the first byte
      * @return Returns the number.
      * @throws IOException if an IO-error occurs.
      */
@@ -152,12 +195,12 @@ public abstract class T2CharString {
 
     /**
      * Read a SID.
-     *
+     * 
      * <p>
-     * SID  (0-64999) 2-byte string identifier
+     * SID (0-64999) 2-byte string identifier
      * </p>
-     *
-     * @param rar   the input
+     * 
+     * @param rar the input
      * @return Returns the SID.
      * @throws IOException if an IO-error occurs.
      */
@@ -167,23 +210,10 @@ public abstract class T2CharString {
     }
 
     /**
-     * Read a operator.
-     *
-     * @param rar   the input
-     * @return Returns the operator.
-     * @throws IOException if an IO-error occurs.
-     */
-    public static T2Operator readOperator(RandomAccessR rar)
-            throws IOException {
-
-        return T2Operator.newInstance(rar);
-    }
-
-    /**
      * Read a top DICT operator.
-     *
-     * @param rar       the input
-     * @return  Return the Top DICT operator
+     * 
+     * @param rar the input
+     * @return Return the Top DICT operator
      * @throws IOException if an IO-error occurs
      */
     public static T2Operator readTopDICTOperator(RandomAccessR rar)
@@ -193,14 +223,124 @@ public abstract class T2CharString {
     }
 
     /**
+     * Create a new object.
+     */
+    protected T2CharString() {
+
+        super();
+    }
+
+    /**
+     * Returns the byte-array as short for the object.
+     * 
+     * @return Returns the byte-array for the object.
+     */
+    public abstract short[] getBytes();
+
+    /**
+     * Returns the priority for the init process.
+     * 
+     * @return Returns the priority.
+     */
+    public int getInitPrio() {
+
+        return 0;
+    }
+
+    /**
      * Initialize.
-     *
-     * @param rar        The input
-     * @param cff        The cff table
+     * 
+     * @param rar The input
+     * @param cff The cff table
      * @param baseoffset The base offset from cff.
+     * @param cffFont The cff font.
      * @throws IOException if an IO-error occurred.
      */
     public abstract void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException;
+            int baseoffset, CffFont cffFont) throws IOException;
+
+    /**
+     * Check, if the objekt is a array.
+     * 
+     * @return Returns <code>true</code>, if the object is a array.
+     */
+    public boolean isArray() {
+
+        return false;
+    }
+
+    /**
+     * Check, if the objekt is a boolean.
+     * 
+     * @return Returns <code>true</code>, if the object is a boolean.
+     */
+    public boolean isBoolean() {
+
+        return false;
+    }
+
+    /**
+     * Check, if the objekt is a double.
+     * 
+     * @return Returns <code>true</code>, if the object is a double.
+     */
+    public boolean isDouble() {
+
+        return false;
+    }
+
+    /**
+     * Check, if the objekt is an escape-marker.
+     * 
+     * @return Returns <code>true</code>, if the object is an escape-marker.
+     */
+    public boolean isEscape() {
+
+        return false;
+    }
+
+    // /**
+    // * Read a operator.
+    // *
+    // * @param rar the input
+    // * @return Returns the operator.
+    // * @throws IOException if an IO-error occurs.
+    // */
+    // public static T2Operator readOperator(RandomAccessR rar) throws
+    // IOException {
+    //
+    // return T2Operator.newInstance(rar);
+    // }
+
+    /**
+     * Check, if the objekt is a integer.
+     * 
+     * @return Returns <code>true</code>, if the object is a integer.
+     */
+    public boolean isInteger() {
+
+        return false;
+    }
+
+    /**
+     * Check, if the objekt is an operator.
+     * 
+     * @return Returns <code>true</code>, if the object is an operator.
+     */
+    public boolean isOperator() {
+
+        return false;
+    }
+
+    /**
+     * Check, if the objekt is a Top DICT operator.
+     * 
+     * @return Returns <code>true</code>, if the object is a Top DICT
+     *         operator.
+     */
+    public boolean isTopDICTOperator() {
+
+        return false;
+    }
 
 }

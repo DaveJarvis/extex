@@ -54,13 +54,20 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         private int ligGlyph;
 
         /**
+         * The index.
+         */
+        private int idx;
+
+        /**
          * Create a new object.
          * 
          * @param rar the input
+         * @param idx
          * @throws IOException if an IO-error occurs
          */
-        Ligature(RandomAccessR rar) throws IOException {
+        Ligature(RandomAccessR rar, int idx) throws IOException {
 
+            this.idx = idx;
             ligGlyph = rar.readUnsignedShort();
             compCount = rar.readUnsignedShort();
             components = new int[compCount - 1];
@@ -98,6 +105,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligature");
+            writer.writeAttribute("id", idx);
             writer.writeAttribute("compcount", compCount);
             writer.writeAttribute("ligglyph", ligGlyph);
             for (int i = 0; i < components.length; i++) {
@@ -107,6 +115,16 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
                 writer.writeEndElement();
             }
             writer.writeEndElement();
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
     }
 
@@ -131,14 +149,21 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         private Ligature[] ligatures;
 
         /**
+         * The index.
+         */
+        private int idx;
+
+        /**
          * Create a new object.
          * 
          * @param rar the input
          * @param offset the offset
+         * @param idx
          * @throws IOException if an IO-error occurs
          */
-        LigatureSet(RandomAccessR rar, int offset) throws IOException {
+        LigatureSet(RandomAccessR rar, int offset, int idx) throws IOException {
 
+            this.idx = idx;
             rar.seek(offset);
             ligatureCount = rar.readUnsignedShort();
             ligatureOffsets = new int[ligatureCount];
@@ -148,7 +173,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             }
             for (int i = 0; i < ligatureCount; i++) {
                 rar.seek(offset + ligatureOffsets[i]);
-                ligatures[i] = new Ligature(rar);
+                ligatures[i] = new Ligature(rar, i);
             }
         }
 
@@ -190,12 +215,23 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("ligatureset");
+            writer.writeAttribute("id", idx);
             writer.writeAttribute("count", ligatureCount);
             for (int i = 0; i < ligatureCount; i++) {
                 Ligature lig = ligatures[i];
                 lig.writeXML(writer);
             }
             writer.writeEndElement();
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
     }
 
@@ -250,7 +286,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             coverage = XtfCoverage.newInstance(rar);
             for (int i = 0; i < ligSetCount; i++) {
                 ligatureSets[i] =
-                        new LigatureSet(rar, offset + ligatureSetOffsets[i]);
+                        new LigatureSet(rar, offset + ligatureSetOffsets[i], i);
             }
         }
 
@@ -314,6 +350,8 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             writer.writeStartElement("ligaturetable");
             writer.writeAttribute("format", getFormat());
             writer.writeAttribute("ligsetcount", ligSetCount);
+
+            coverage.writeXML(writer);
 
             for (int i = 0; i < ligSetCount; i++) {
                 LigatureSet ligset = ligatureSets[i];

@@ -20,45 +20,84 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * rmoveto |- dx1 dy1 rmoveto (21) |
  * 
- * <p>
- * moves the current point to a position at the relative coordinates (dx1, dy1).
- * </p>
- * <p>
- * Note: The first stack-clearing operator, which must be one of hstem, hstemhm,
- * vstem, vstemhm, cntrmask, hintmask, hmoveto, vmoveto, rmoveto, or endchar,
- * takes an additional argument the width (as described earlier), which may be
- * expressed as zero or one numeric argument.
- * </p>
- * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
+public class T2RMoveTo extends T2PathConstruction {
 
-public class T2RMOVETO extends T2PathConstruction {
+    /**
+     * dx.
+     */
+    private T2Number dx;
+
+    /**
+     * dy.
+     */
+    private T2Number dy;
 
     /**
      * Create a new object.
+     * 
+     * @param ch The char string.
+     * @param stack The stack.
      */
-    public T2RMOVETO() {
+    public T2RMoveTo(List<T2CharString> stack, CharString ch)
+            throws IOException {
 
-        super();
+        super(stack, new short[]{T2RMOVETO}, ch);
+
+        int n = stack.size();
+
+        if (n > 2) {
+            checkWidth(stack, ch);
+        }
+        n = stack.size();
+        if (n != 2) {
+            throw new T2MissingNumberException();
+        }
+
+        dx = (T2Number) stack.get(0);
+        dy = (T2Number) stack.get(1);
+
+    }
+
+    /**
+     * Getter for dx.
+     * 
+     * @return the dx
+     */
+    public T2Number getDx() {
+
+        return dx;
+    }
+
+    /**
+     * Getter for dy.
+     * 
+     * @return the dy
+     */
+    public T2Number getDy() {
+
+        return dy;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
      */
     @Override
-    public short[] getBytes() {
+    public int getID() {
 
-        return null;
+        return TYPE_RMOVETO;
     }
 
     /**
@@ -80,8 +119,10 @@ public class T2RMOVETO extends T2PathConstruction {
     @Override
     public Object getValue() {
 
-        // TODO mgn: getValue unimplemented
-        return null;
+        T2Number[] arr = new T2Number[2];
+        arr[0] = dx;
+        arr[1] = dy;
+        return arr;
     }
 
     /**
@@ -92,14 +133,10 @@ public class T2RMOVETO extends T2PathConstruction {
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        // TODO mgn incomplete
-    }
-
-    @Override
-    public int getID() {
-
-        // TODO mgn incomplete
-        return -1;
+        writer.writeStartElement(getName());
+        writer.writeAttribute("dx", dx);
+        writer.writeAttribute("dy", dy);
+        writer.writeEndElement();
     }
 
 }

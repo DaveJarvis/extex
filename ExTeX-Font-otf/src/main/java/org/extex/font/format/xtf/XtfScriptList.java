@@ -268,7 +268,7 @@ public class XtfScriptList implements XMLWriterConvertible {
                 Integer fil = featureIndexList.get(i);
                 writer.writeStartElement("featureindex");
                 writer.writeAttribute("id", i);
-                writer.writeAttribute("value", fil.intValue());
+                writer.writeAttribute("feature", fil.intValue());
                 writer.writeEndElement();
             }
             writer.writeEndElement();

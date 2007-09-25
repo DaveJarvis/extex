@@ -22,71 +22,77 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.util.file.random.RandomAccessR;
+import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all SID-values.
+ * vmoveto |- dy1 vmoveto (4) |
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class T2TDOSID extends T2TopDICTOperator {
-
-    /**
-     * bytes
-     */
-    private short[] bytes;
+public class T2VMoveTo extends T2PathConstruction {
 
     /**
-     * The string for the SID.
+     * dy.
      */
-    private String sidstring;
-
-    /**
-     * value
-     */
-    private int value;
+    private T2Number dy;
 
     /**
      * Create a new object.
      * 
-     * @param stack the stack
-     * @param id the operator-id for the value
-     * @throws IOException if an IO-error occurs.
+     * @param ch The char string.
+     * @param stack The stack.
      */
-    protected T2TDOSID(List<T2CharString> stack, short[] id) throws IOException {
+    public T2VMoveTo(List<T2CharString> stack, CharString ch)
+            throws IOException {
 
-        super();
+        super(stack, new short[]{T2VMOVETO}, ch);
 
-        if (stack.size() < 1) {
+        int n = stack.size();
+
+        if (n > 1) {
+            checkWidth(stack, ch);
+        }
+        n = stack.size();
+        if (n != 1) {
             throw new T2MissingNumberException();
         }
-        value = ((T2Number) stack.get(0)).getInteger();
-        bytes = convertStackaddID(stack, id);
+
+        dy = (T2Number) stack.get(0);
+
+    }
+
+    /**
+     * Getter for dy.
+     * 
+     * @return the dy
+     */
+    public T2Number getDy() {
+
+        return dy;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
      */
     @Override
-    public short[] getBytes() {
+    public int getID() {
 
-        return bytes;
+        return TYPE_VMOVETO;
     }
 
     /**
-     * Returns the SID.
+     * {@inheritDoc}
      * 
-     * @return Returns the SID.
+     * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
-    public int getSID() {
+    @Override
+    public String getName() {
 
-        return value;
+        return "vmoveto";
     }
 
     /**
@@ -97,32 +103,9 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     @Override
     public Object getValue() {
 
-        return sidstring;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int,
-     *      org.extex.font.format.xtf.cff.CffFont)
-     */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
-            CffFont cffFont) throws IOException {
-
-        sidstring = cff.getStringIndex(getSID());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return String.valueOf(value);
+        T2Number[] arr = new T2Number[1];
+        arr[0] = dy;
+        return arr;
     }
 
     /**
@@ -134,8 +117,8 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("value", getValue());
+        writer.writeAttribute("dy", dy);
         writer.writeEndElement();
-
     }
+
 }

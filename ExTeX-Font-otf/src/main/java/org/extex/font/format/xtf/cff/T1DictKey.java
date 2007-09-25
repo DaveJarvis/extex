@@ -249,13 +249,12 @@ public abstract class T1DictKey extends T2CharString
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#init(
-     *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     * @see org.extex.font.format.xtf.cff.T2CharString#init(org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
-    @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
-            throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
         // do nothing
 

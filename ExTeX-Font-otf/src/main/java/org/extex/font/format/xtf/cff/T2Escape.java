@@ -26,7 +26,7 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Escape.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -43,7 +43,7 @@ public class T2Escape extends T2CharString {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isEscape()
      */
     @Override
@@ -54,7 +54,7 @@ public class T2Escape extends T2CharString {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     @Override
@@ -65,14 +65,14 @@ public class T2Escape extends T2CharString {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.cff.T2CharString#init(
-     *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#init(org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
     @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
         //
     }

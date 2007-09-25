@@ -339,17 +339,15 @@ public class T2TDOCharset extends T2TDONumber {
     public static final int FontDefine = -1;
 
     /**
-     * Read the charset entry. Charset data is located via the offset operand to
-     * the charset operator in the Top DICT. Each charset is described by a
-     * format-type identifier byte followed by format-specific data.
+     * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2Operator#init(
-     *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     * @see org.extex.font.format.xtf.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
     @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
-            throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
         this.cff = cff;
 

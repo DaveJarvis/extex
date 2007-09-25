@@ -20,10 +20,14 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * CharStrings.
@@ -71,6 +75,153 @@ import org.extex.util.file.random.RandomAccessR;
 public class T2TDOCharStrings extends T2TDONumber {
 
     /**
+     * Container for each char string.
+     */
+    public static class CharString implements XMLWriterConvertible {
+
+        /**
+         * The cff font.
+         */
+        private CffFont cffFont;
+
+        /**
+         * The index.
+         */
+        protected int idx;
+
+        /**
+         * The t2 operators.
+         */
+        private List<T2Operator> t2Ops = new ArrayList<T2Operator>();
+
+        /**
+         * Count the hints in the commands.
+         * 
+         * @return Returns the hints in the commands.
+         */
+        public int countHints() {
+
+            return 0; // TODO incomplete
+
+        }
+
+        /**
+         * The width.
+         */
+        protected Integer width = null;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param idx The index.
+         */
+        public CharString(CffFont cffFont, int idx) {
+
+            this.cffFont = cffFont;
+            this.idx = idx;
+        }
+
+        /**
+         * Creates a new object.
+         * 
+         * Only fpr sub classes.
+         */
+        protected CharString() {
+
+            super();
+        }
+
+        /**
+         * Add a {@link T2Operator}.
+         * 
+         * @param op The t2 operator to add.
+         */
+        public void add(T2Operator op) {
+
+            t2Ops.add(op);
+        }
+
+        /**
+         * Check, if the width is set.
+         */
+        public void checkWidth() {
+
+            if (width == null) {
+                width = new Integer(cffFont.getDefaultWidthX());
+            }
+        }
+
+        /**
+         * Getter for cffFont.
+         * 
+         * @return the cffFont
+         */
+        public CffFont getCffFont() {
+
+            return cffFont;
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
+        }
+
+        /**
+         * Getter for width.
+         * 
+         * @return the width
+         */
+        public Integer getWidth() {
+
+            return width;
+        }
+
+        /**
+         * Setter for width.
+         * 
+         * @param width the width to set
+         */
+        public void setWidth(T2Number width) {
+
+            if (width != null) {
+                this.width =
+                        new Integer(cffFont.getNominalWidthX()
+                                + width.getInteger());
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("chars");
+            writer.writeAttribute("id", idx);
+
+            writer.writeAttribute("name", cffFont.getNameForPos(idx));
+            writer.writeAttribute("width", width);
+
+            for (int i = 0; i < t2Ops.size(); i++) {
+                t2Ops.get(i).writeXML(writer);
+            }
+            writer.writeEndElement();
+
+        }
+    }
+
+    /**
+     * The array of the char strings.
+     */
+    private CharString[] chars;
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
@@ -79,6 +230,23 @@ public class T2TDOCharStrings extends T2TDONumber {
     public T2TDOCharStrings(List<T2CharString> stack) throws IOException {
 
         super(stack, new short[]{CFF_CHARSTRINGS});
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CHARSTRINGS;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#getInitPrio()
+     */
+    @Override
+    public int getInitPrio() {
+
+        return -1;
     }
 
     /**
@@ -96,34 +264,66 @@ public class T2TDOCharStrings extends T2TDONumber {
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
     @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
-            throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
         int offset = getInteger();
 
         if (offset > 0) {
             rar.seek(baseoffset + offset);
 
-            // TODO mgn incomplete
-            // int charstringtype = cff.getCharstringType();
-            // switch (charstringtype) {
-            // case 1: // Type 1
-            // break;
-            // case 2: // Type 2
-            // break;
-            // default:
-            // break;
-            // }
+            int[] offsetarray = cff.readOffsets(rar);
+
+            chars = new CharString[offsetarray.length - 1];
+
+            // notdef: guid 0
+            // chars[0] = new CharString(cffFont, 0);
+            // chars[0].checkWidth();
+
+            // get data
+            for (int i = 0; i < offsetarray.length - 1; i++) {
+
+                byte[] data =
+                        cff.readDataFromIndex(offsetarray[i],
+                            offsetarray[i + 1], rar);
+
+                chars[i] = new CharString(cffFont, i);
+
+                RandomAccessInputArray arar = new RandomAccessInputArray(data);
+                try {
+                    while (true) {
+                        // read until eof
+                        T2Operator op = T2Operator.newInstance(arar, chars[i]);
+                        chars[i].add(op);
+                        if (arar.isEOF()) {
+                            break;
+                        }
+                    }
+                } catch (IOException e) {
+                    // TODO change to EOFException ignore
+                }
+                chars[i].checkWidth();
+            }
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2TDONumber#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
     @Override
-    public int getID() {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        return T2TopDICTOperator.TYPE_CHARSTRINGS;
+        writer.writeStartElement(getName());
+        writer.writeAttribute("count", chars.length);
+        for (int i = 0; i < chars.length; i++) {
+            chars[i].writeXML(writer);
+        }
+        writer.writeEndElement();
     }
-
 }

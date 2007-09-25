@@ -82,6 +82,28 @@ public class T2TDOPrivate extends T2TDOArray {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_PRIVATE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#getInitPrio()
+     */
+    @Override
+    public int getInitPrio() {
+
+        return 10;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     @Override
@@ -104,13 +126,13 @@ public class T2TDOPrivate extends T2TDOArray {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2Operator#init(
-     *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     * @see org.extex.font.format.xtf.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
     @Override
-    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
-            throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
+            CffFont cffFont) throws IOException {
 
         hashValues = new HashMap<String, T1DictKey>();
 
@@ -169,11 +191,4 @@ public class T2TDOPrivate extends T2TDOArray {
         writer.writeEndElement();
 
     }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_PRIVATE;
-    }
-
 }

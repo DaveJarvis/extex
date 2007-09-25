@@ -190,11 +190,6 @@ public class OtfTableCFF extends AbstractXtfTable
     private Map<String, Integer> stringIndexName = null;
 
     /**
-     * The top dict index. TODO remove
-     */
-    private Map<String, T2Operator> topDictIndex;
-
-    /**
      * Version major
      */
     private int versionmajor;
@@ -243,6 +238,8 @@ public class OtfTableCFF extends AbstractXtfTable
         for (int i = 0; i < fonts.length; i++) {
             fonts[i].init(rar, cff, baseoffset);
         }
+
+        // readCharStrings();
 
         // incomplete
     }
@@ -502,7 +499,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the data
      * @throws IOException if an IO-error occurs
      */
-    private byte[] readDataFromIndex(int start, int end, RandomAccessR rar)
+    public byte[] readDataFromIndex(int start, int end, RandomAccessR rar)
             throws IOException {
 
         byte[] data = new byte[end - start];
@@ -522,6 +519,7 @@ public class OtfTableCFF extends AbstractXtfTable
         for (int i = 0; i < offsetarray.length - 1; i++) {
             byte[] data =
                     readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+
             // stringIndex.add(convertArrayToString(data));
             int x = 0;
         }
@@ -605,7 +603,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the offsets.
      * @throws IOException if a IO-error occurred.
      */
-    private int[] readOffsets(RandomAccessR rar) throws IOException {
+    public int[] readOffsets(RandomAccessR rar) throws IOException {
 
         int count = rar.readUnsignedShort();
         int ioffSize = rar.readUnsignedByte();
@@ -679,8 +677,6 @@ public class OtfTableCFF extends AbstractXtfTable
      */
     private long readTopDictIndex(long offset, RandomAccessR rar)
             throws IOException {
-
-        topDictIndex = new HashMap<String, T2Operator>();
 
         int[] offsetarray = readOffsets(rar);
 

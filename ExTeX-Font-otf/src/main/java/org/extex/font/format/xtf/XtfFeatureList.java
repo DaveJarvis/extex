@@ -119,14 +119,21 @@ public class XtfFeatureList implements XMLWriterConvertible {
         private int[] lookupListIndex;
 
         /**
+         * The index.
+         */
+        private int idx;
+
+        /**
          * Create a new object
          * 
          * @param rar input
          * @param offset offset
+         * @param idx
          * @throws IOException if an IO-error occurs
          */
-        Feature(RandomAccessR rar, int offset) throws IOException {
+        Feature(RandomAccessR rar, int offset, int idx) throws IOException {
 
+            this.idx = idx;
             rar.seek(offset);
 
             featureParams = rar.readUnsignedShort();
@@ -182,16 +189,27 @@ public class XtfFeatureList implements XMLWriterConvertible {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("feature");
+            writer.writeAttribute("id", idx);
             writer.writeAttribute("featureparams", featureParams);
 
             for (int i = 0; i < lookupCount; i++) {
                 int lli = lookupListIndex[i];
                 writer.writeStartElement("lookup");
                 writer.writeAttribute("id", i);
-                writer.writeAttribute("value", lli);
+                writer.writeAttribute("lookupindex", lli);
                 writer.writeEndElement();
             }
             writer.writeEndElement();
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
     }
 
@@ -211,13 +229,20 @@ public class XtfFeatureList implements XMLWriterConvertible {
         private int tag;
 
         /**
+         * The index.
+         */
+        private int idx;
+
+        /**
          * Create a new object
          * 
          * @param rar input
+         * @param idx The index.
          * @throws IOException if an IO-error occurs
          */
-        Record(RandomAccessR rar) throws IOException {
+        Record(RandomAccessR rar, int idx) throws IOException {
 
+            this.idx = idx;
             tag = rar.readInt();
             offset = rar.readUnsignedShort();
         }
@@ -265,9 +290,20 @@ public class XtfFeatureList implements XMLWriterConvertible {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("record");
+            writer.writeAttribute("id", idx);
             writer.writeAttribute("tag", XtfScriptList.tag2String(tag));
             writer.writeEndElement();
 
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
 
     }
@@ -301,11 +337,11 @@ public class XtfFeatureList implements XMLWriterConvertible {
         featureRecords = new Record[featureCount];
         features = new Feature[featureCount];
         for (int i = 0; i < featureCount; i++) {
-            featureRecords[i] = new Record(rar);
+            featureRecords[i] = new Record(rar, i);
         }
         for (int i = 0; i < featureCount; i++) {
             features[i] =
-                    new Feature(rar, offset + featureRecords[i].getOffset());
+                    new Feature(rar, offset + featureRecords[i].getOffset(), i);
         }
     }
 
