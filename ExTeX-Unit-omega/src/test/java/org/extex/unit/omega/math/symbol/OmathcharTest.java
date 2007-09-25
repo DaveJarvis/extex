@@ -23,7 +23,7 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\omathchar</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,7 +31,7 @@ public class OmathcharTest extends AbstractMathTester {
 
     /**
      * Constructor for MathcharTest.
-     *
+     * 
      * @param arg the name
      */
     public OmathcharTest(String arg) {
@@ -41,104 +41,115 @@ public class OmathcharTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase primitive="\omathchar">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\omathchar"> Test case checking that
+     * <tt>\omathchar</tt> needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError0() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_MATH + "$\\omathchar-1 " //
-                        + "\\alpha\\end",
-                //--- output message ---
-                "Bad mathchar (-1)");
+        // --- input code ---
+            DEFINE_MATH + "$\\omathchar",
+            // --- output message ---
+            "Missing number, treated as zero");
     }
 
     /**
-     * <testcase primitive="\omathchar">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\omathchar"> Test case checking that
+     * <tt>\omathchar</tt> doe not accept a negative value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr2() throws Exception {
+    public void testError1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_MATH + "$\\omathchar\"8000001 ",
-                //--- output message ---
-                "Bad mathchar (134217729)");
+        // --- input code ---
+            DEFINE_MATH + "$\\omathchar-1 ",
+            // --- output message ---
+            "Bad mathchar (-1)");
     }
 
     /**
-     * <testcase primitive="\omathchar">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\omathchar"> Test case checking that
+     * <tt>\omathchar</tt> complains about a too large value. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_MATH + "$\\omathchar\"8000001 ",
+            // --- output message ---
+            "Bad mathchar (134217729)");
+    }
+
+    /**
+     * <testcase primitive="\omathchar"> Test case checking that
+     * <tt>\omathchar</tt> inserts ab appropriate character. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "$a\\omathchar\"010B b$\\end",
-                //--- output message ---
-                "a\013b" + TERM);
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "$a\\omathchar\"010B b$\\end",
+            // --- output message ---
+            "a\013b" + TERM);
     }
 
-//    /**
-//     * <testcase primitive="\omathchar">
-//     *  Test case checking that ...
-//     * </testcase>
-//     *
-//     * @throws Exception in case of an error
-//     */
-//    public void testDM1() throws Exception {
-//
-//        assertSuccess(
-//        //--- input code ---
-//                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-//                        + "$$a\\omathchar\"010B b$$\\end",
-//                //--- output message ---
-//                "a\013b" + TERM);
-//    }
-//
-//    /**
-//     * <testcase primitive="\omathchar">
-//     *  Test case checking that ...
-//     * </testcase>
-//     *
-//     * @throws Exception in case of an error
-//     */
-//    public void testDMExt1() throws Exception {
-//
-//        assertSuccess(
-//        //--- input code ---
-//                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-//                        + DEFINE_MATH + "$$\\omathchar{ord 1 `A}$$\\end ",
-//                //--- output message ---
-//                "A" + TERM);
-//    }
+    // /**
+    // * <testcase primitive="\omathchar">
+    // * Test case checking that ...
+    // * </testcase>
+    // *
+    // * @throws Exception in case of an error
+    // */
+    // public void testDM1() throws Exception {
+    //
+    // assertSuccess(
+    // //--- input code ---
+    // AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+    // + "$$a\\omathchar\"010B b$$\\end",
+    // //--- output message ---
+    // "a\013b" + TERM);
+    // }
+    //
+    // /**
+    // * <testcase primitive="\omathchar">
+    // * Test case checking that ...
+    // * </testcase>
+    // *
+    // * @throws Exception in case of an error
+    // */
+    // public void testDMExt1() throws Exception {
+    //
+    // assertSuccess(
+    // //--- input code ---
+    // AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
+    // + DEFINE_MATH + "$$\\omathchar{ord 1 `A}$$\\end ",
+    // //--- output message ---
+    // "A" + TERM);
+    // }
 
     /**
-     * <testcase primitive="\omathchar">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\omathchar"> Test case checking that
+     * <tt>\omathchar</tt> in extended notation works for an ordinary
+     * character. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testExt1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-                        + DEFINE_MATH + "$\\omathchar{ord 1 `A}$\\end ",
-                //--- output message ---
-                "A" + TERM);
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
+                    + "$\\omathchar{ord 1 `A}$\\end ",
+            // --- output message ---
+            "A" + TERM);
     }
 
 }
