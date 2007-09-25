@@ -22,6 +22,7 @@ package org.extex.font.format.ofm;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.extex.font.format.tfm.TfmHeaderArray;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 
@@ -37,6 +38,16 @@ public class OfmReader {
      * The lengths in the file.
      */
     private OfmHeaderLengths lengths;
+
+    /**
+     * The header.
+     */
+    private TfmHeaderArray header;
+
+    /**
+     * The char info array.
+     */
+    private OfmCharInfoArray charinfo;
 
     /**
      * Create e new object.
@@ -69,8 +80,8 @@ public class OfmReader {
 
         // read the input
         lengths = new OfmHeaderLengths(rar);
-        // header = new TfmHeaderArray(rar, lengths.getLh());
-        // charinfo = new TfmCharInfoArray(rar, lengths.getCc());
+        header = new TfmHeaderArray(rar, lengths.getLh());
+        charinfo = new OfmCharInfoArray(rar, lengths.getCc());
         // width = new TfmWidthArray(rar, lengths.getNw());
         // height = new TfmHeightArray(rar, lengths.getNh());
         // depth = new TfmDepthArray(rar, lengths.getNd());
@@ -80,6 +91,9 @@ public class OfmReader {
         // exten = new TfmExtenArray(rar, lengths.getNe());
         // param = new TfmParamArray(rar, lengths.getNp(),
         // header.getFontType());
+
+        // close input
+        rar.close();
 
     }
 
@@ -121,6 +135,26 @@ public class OfmReader {
     public OfmHeaderLengths getLengths() {
 
         return lengths;
+    }
+
+    /**
+     * Getter for header.
+     * 
+     * @return the header
+     */
+    public TfmHeaderArray getHeader() {
+
+        return header;
+    }
+
+    /**
+     * Getter for charinfo.
+     * 
+     * @return the charinfo
+     */
+    public OfmCharInfoArray getCharinfo() {
+
+        return charinfo;
     }
 
 }

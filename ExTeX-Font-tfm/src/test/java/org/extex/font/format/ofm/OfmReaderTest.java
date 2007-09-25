@@ -21,6 +21,8 @@ package org.extex.font.format.ofm;
 
 import java.io.FileInputStream;
 
+import org.extex.font.format.tfm.TfmHeaderArray;
+
 import junit.framework.TestCase;
 
 /**
@@ -61,7 +63,7 @@ public class OfmReaderTest extends TestCase {
     }
 
     /**
-     * Test, if the font exists.
+     * Test the header.
      * 
      * @throws Exception if an error occurred.
      */
@@ -74,6 +76,22 @@ public class OfmReaderTest extends TestCase {
         assertNotNull(l);
 
         assertEquals(0x21, l.getBc());
+    }
+
+    /**
+     * Test the header.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testHeader02() throws Exception {
+
+        assertNotNull(reader);
+
+        TfmHeaderArray h = reader.getHeader();
+        assertNotNull(h);
+        assertEquals("10.0", h.getDesignsize().toString());
+        assertEquals(0x48B7D0D4, h.getChecksum());
+        assertEquals("OMEGA-LGC", h.getCodingscheme());
     }
 
 }

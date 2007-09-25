@@ -189,7 +189,7 @@ public class TfmCharInfoWord implements Serializable {
     /**
      * the char id.
      */
-    private int charid;
+    protected int charid;
 
     /**
      * Character depth.
@@ -202,7 +202,7 @@ public class TfmCharInfoWord implements Serializable {
     private short depthindex;
 
     /**
-     * the glyphname.
+     * the glyph name.
      */
     private String glyphname;
 
@@ -290,7 +290,17 @@ public class TfmCharInfoWord implements Serializable {
     /**
      * the width index.
      */
-    private short widthindex;
+    protected int widthindex;
+
+    /**
+     * Creates a new object.
+     * 
+     * Only for subclasses.
+     */
+    protected TfmCharInfoWord() {
+
+        super();
+    }
 
     /**
      * Create a new object.
@@ -720,7 +730,7 @@ public class TfmCharInfoWord implements Serializable {
      * 
      * @return Returns the width index.
      */
-    public short getWidthindex() {
+    public int getWidthindex() {
 
         return widthindex;
     }

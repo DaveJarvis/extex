@@ -70,14 +70,14 @@ import org.extex.util.file.random.RandomAccessR;
 public class TfmCharInfoArray implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * smallest character code in the font.
      */
-    private int bc;
+    protected int bc;
 
     /**
      * the char info.
@@ -90,7 +90,7 @@ public class TfmCharInfoArray implements Serializable {
     private TfmDepthArray depth;
 
     /**
-     * encdoing table.
+     * Encoding table.
      */
     private String[] enctable;
 
@@ -118,6 +118,16 @@ public class TfmCharInfoArray implements Serializable {
      * the width.
      */
     private TfmWidthArray width;
+
+    /**
+     * Creates a new object.
+     * 
+     * Only for subclasses.
+     */
+    protected TfmCharInfoArray() {
+
+        super();
+    }
 
     /**
      * Create a new object.
@@ -327,7 +337,7 @@ public class TfmCharInfoArray implements Serializable {
      *        error messages.
      * @return Returns the FixWord
      */
-    private TfmFixWord takeDimen(TfmFixWord[] table, short i, int pos) {
+    protected TfmFixWord takeDimen(TfmFixWord[] table, int i, int pos) {
 
         if (i < table.length) {
             return table[i];

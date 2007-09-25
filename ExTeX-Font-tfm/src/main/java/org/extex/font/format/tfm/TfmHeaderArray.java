@@ -86,7 +86,7 @@ public class TfmHeaderArray implements Serializable {
     public static final int HEADER_REST_SIZE = 18;
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -275,7 +275,7 @@ public class TfmHeaderArray implements Serializable {
      * @param rar the input
      * @param size the size of string area in the header.
      * @return the string
-     * @throws IOException if an I/O error occured
+     * @throws IOException if an I/O error occurred.
      */
     private String readBCPL(RandomAccessR rar, int size) throws IOException {
 
