@@ -46,8 +46,10 @@ import org.extex.unit.base.conditional.AbstractIf;
  * 
  * <pre class="syntax">
  *    &lang;iffontchar&rang;
- *      &rarr; <tt>\iffontchar</tt> ... &lang;true text&rang; <tt>\fi</tt>
- *      | <tt>\iffontchar</tt> ... &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      &rarr; <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,String) &lang;font&rang;} {@link 
+ *      TokenSource#scanCharacterCode(Context,Typesetter,String) code&rang; &lang;true text&rang;} <tt>\fi</tt>
+ *      | <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,String) &lang;font&rang;} {@link 
+ *      TokenSource#scanCharacterCode(Context,Typesetter,String) code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * 
  * <h4>Examples</h4>
  * 

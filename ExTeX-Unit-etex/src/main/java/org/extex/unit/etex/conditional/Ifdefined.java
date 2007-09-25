@@ -49,8 +49,8 @@ import org.extex.unit.base.conditional.AbstractIf;
  * 
  * <pre class="syntax">
  *    &lang;ifdefined&rang;
- *      &rarr; <tt>\ifdefined</tt> ...<tt>\else</tt>...<tt>\fi</tt>
- *       |  <tt>\ifdefined</tt> ...<tt>\else</tt>...<tt>\fi</tt>  </pre>
+ *      &rarr; <tt>\ifdefined</tt> &lang;true text&rang; <tt>\else</tt>&lang;false text&rang;<tt>\fi</tt>
+ *       |  <tt>\ifdefined</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>  </pre>
  * 
  * <h4>Examples</h4>
  * 
