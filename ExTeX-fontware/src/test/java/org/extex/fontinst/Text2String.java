@@ -60,7 +60,7 @@ public class Text2String {
             firstline = false;
             out.write('"');
             String xline = line.replaceAll("\\\\", "\\\\\\\\");
-            xline = xline.replaceAll("\"", "\\\"");
+            xline = xline.replaceAll("\\\"", "\\\\\"");
             out.write(xline);
             out.write("\\n\"\n");
         }
