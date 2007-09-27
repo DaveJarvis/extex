@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
@@ -74,6 +73,13 @@ public abstract class T2HintCmd extends T2Hints {
     }
 
     /**
+     * Count the hints in the command.
+     * 
+     * @return Returns the count of the hints.
+     */
+    public abstract int countHints();
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
@@ -82,6 +88,16 @@ public abstract class T2HintCmd extends T2Hints {
     public short[] getBytes() {
 
         return bytes;
+    }
+
+    /**
+     * Getter for pairs.
+     * 
+     * @return the pairs
+     */
+    public T2PairNumber[] getPairs() {
+
+        return pairs;
     }
 
     @Override
@@ -107,11 +123,4 @@ public abstract class T2HintCmd extends T2Hints {
         writer.writeEndElement();
 
     }
-
-    /**
-     * Count the hints in the command.
-     * 
-     * @return Returns the count of the hints.
-     */
-    public abstract int countHints();
 }

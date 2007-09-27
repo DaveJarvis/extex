@@ -239,8 +239,6 @@ public class OtfTableCFF extends AbstractXtfTable
             fonts[i].init(rar, cff, baseoffset);
         }
 
-        // readCharStrings();
-
         // incomplete
     }
 

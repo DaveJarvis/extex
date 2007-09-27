@@ -21,7 +21,6 @@ package org.extex.font.format.xtf.cff;
 
 import java.util.List;
 
-import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 
 /**
  * Path construction.

@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
@@ -101,6 +100,16 @@ public class T2HintMask extends T2AbstractHintMask {
     }
 
     /**
+     * Return the mask as binary string.
+     * 
+     * @return Return the mask as binary string.
+     */
+    public String getMaskBin() {
+
+        return toBin(mask);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
@@ -140,7 +149,7 @@ public class T2HintMask extends T2AbstractHintMask {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("mask", Integer.toBinaryString(mask));
+        writer.writeAttribute("mask", toBin(mask));
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < val.length; i++) {
             buf.append(" ").append(val[i]);
@@ -148,4 +157,32 @@ public class T2HintMask extends T2AbstractHintMask {
         writer.writeAttribute("values", buf.toString().trim());
         writer.writeEndElement();
     }
+
+    /**
+     * Returns the binary value with zeros.
+     * 
+     * @param val The value.
+     * @return Returns the binary string.
+     */
+    private String toBin(int val) {
+
+        StringBuffer buf = new StringBuffer(64);
+        buf.append("00000000000000000000000000000000");
+        String bin = Integer.toBinaryString(val);
+        buf.append(bin);
+        int le = 8;
+        int bl = bin.length();
+        if (bl <= 8) {
+            le = 8;
+        } else if (bl <= 16) {
+            le = 16;
+        } else if (bl <= 24) {
+            le = 24;
+        } else {
+            le = 32;
+        }
+
+        return buf.substring(buf.length() - le);
+    }
+
 }

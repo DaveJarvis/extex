@@ -20,14 +20,14 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
-import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * CharStrings.
@@ -75,146 +75,9 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class T2TDOCharStrings extends T2TDONumber {
 
     /**
-     * Container for each char string.
+     * The map for the charstrings.
      */
-    public static class CharString implements XMLWriterConvertible {
-
-        /**
-         * The cff font.
-         */
-        private CffFont cffFont;
-
-        /**
-         * The index.
-         */
-        protected int idx;
-
-        /**
-         * The t2 operators.
-         */
-        private List<T2Operator> t2Ops = new ArrayList<T2Operator>();
-
-        /**
-         * Count the hints in the commands.
-         * 
-         * @return Returns the hints in the commands.
-         */
-        public int countHints() {
-
-            return 0; // TODO incomplete
-
-        }
-
-        /**
-         * The width.
-         */
-        protected Integer width = null;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param idx The index.
-         */
-        public CharString(CffFont cffFont, int idx) {
-
-            this.cffFont = cffFont;
-            this.idx = idx;
-        }
-
-        /**
-         * Creates a new object.
-         * 
-         * Only fpr sub classes.
-         */
-        protected CharString() {
-
-            super();
-        }
-
-        /**
-         * Add a {@link T2Operator}.
-         * 
-         * @param op The t2 operator to add.
-         */
-        public void add(T2Operator op) {
-
-            t2Ops.add(op);
-        }
-
-        /**
-         * Check, if the width is set.
-         */
-        public void checkWidth() {
-
-            if (width == null) {
-                width = new Integer(cffFont.getDefaultWidthX());
-            }
-        }
-
-        /**
-         * Getter for cffFont.
-         * 
-         * @return the cffFont
-         */
-        public CffFont getCffFont() {
-
-            return cffFont;
-        }
-
-        /**
-         * Getter for idx.
-         * 
-         * @return the idx
-         */
-        public int getIdx() {
-
-            return idx;
-        }
-
-        /**
-         * Getter for width.
-         * 
-         * @return the width
-         */
-        public Integer getWidth() {
-
-            return width;
-        }
-
-        /**
-         * Setter for width.
-         * 
-         * @param width the width to set
-         */
-        public void setWidth(T2Number width) {
-
-            if (width != null) {
-                this.width =
-                        new Integer(cffFont.getNominalWidthX()
-                                + width.getInteger());
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("chars");
-            writer.writeAttribute("id", idx);
-
-            writer.writeAttribute("name", cffFont.getNameForPos(idx));
-            writer.writeAttribute("width", width);
-
-            for (int i = 0; i < t2Ops.size(); i++) {
-                t2Ops.get(i).writeXML(writer);
-            }
-            writer.writeEndElement();
-
-        }
-    }
+    private Map<String, CharString> charmap = new HashMap<String, CharString>();
 
     /**
      * The array of the char strings.
@@ -232,6 +95,39 @@ public class T2TDOCharStrings extends T2TDONumber {
         super(stack, new short[]{CFF_CHARSTRINGS});
     }
 
+    /**
+     * Returns the charstring or <code>null</code>, if not found.
+     * 
+     * @param idx the index.
+     * @return Returns the charstring.
+     */
+    public CharString getCharString(int idx) {
+
+        if (idx >= 0 && idx < chars.length) {
+            return chars[idx];
+        }
+        return null;
+    }
+
+    /**
+     * Returns the charstring or <code>null</code>, if not found.
+     * 
+     * @param name The name of the charstring.
+     * @return Returns the charstring.
+     */
+    public CharString getCharString(String name) {
+
+        if (name != null) {
+            return charmap.get(name);
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
+     */
     @Override
     public int getID() {
 
@@ -307,6 +203,8 @@ public class T2TDOCharStrings extends T2TDONumber {
                     // TODO change to EOFException ignore
                 }
                 chars[i].checkWidth();
+
+                charmap.put(chars[i].getName(), chars[i]);
             }
         }
     }

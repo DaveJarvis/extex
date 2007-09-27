@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLWriterConvertible;
 

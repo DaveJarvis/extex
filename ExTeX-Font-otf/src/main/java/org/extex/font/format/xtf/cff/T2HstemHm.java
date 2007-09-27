@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.cff.T2TDOCharStrings.CharString;
 
 /**
  * T2: hstemhm.

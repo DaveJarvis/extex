@@ -358,6 +358,23 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the {@link CharString} with the name or <code>null</code>, if
+     * not found.
+     * 
+     * @param name The name of the charstring.
+     * @return Returns the {@link CharString} with the name.
+     */
+    public CharString getCharstring(String name) {
+
+        T2Operator op = topDictIndex.get("charstring");
+        if (op != null && op instanceof T2TDOCharStrings) {
+            T2TDOCharStrings val = (T2TDOCharStrings) op;
+            return val.getCharString(name);
+        }
+        return null;
+    }
+
+    /**
      * Getter for copyright.
      * 
      * @return Returns the copyright.
