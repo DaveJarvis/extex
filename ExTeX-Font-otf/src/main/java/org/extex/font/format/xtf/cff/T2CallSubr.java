@@ -25,86 +25,87 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all hints commands.
+ * callsubr subr# callsubr (10).
+ * 
+ * <p>
+ * Calls a charstring subroutine with index subr# (actually the subr number plus
+ * the subroutine bias number, as described in section 2.3) in the Subrs array.
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class T2HintCmd extends T2Hints {
+public class T2CallSubr extends T2Subroutine {
 
     /**
-     * bytes
+     * subroutine index.
      */
-    private short[] bytes;
-
-    /**
-     * The pair array.
-     */
-    private T2PairNumber[] pairs;
+    private T2Number subr;
 
     /**
      * Create a new object.
      * 
      * @param stack the stack
-     * @param id the operator-id for the value
      * @param ch The char string.
+     * @param id the operator-id for the value
+     * @throws IOException if an IO-error occurs.
      */
-    protected T2HintCmd(List<T2CharString> stack, short[] id, CharString ch)
+    public T2CallSubr(List<T2CharString> stack, CharString ch)
             throws IOException {
 
-        super();
+        super(stack, new short[]{T2CALLSUBR}, ch);
 
         int n = stack.size();
-        bytes = convertStackaddID(stack, id);
 
-        if (n % 2 != 0) {
-            checkWidth(stack, ch);
+        if (n != 1) {
+            throw new T2MissingNumberException();
         }
-        n = stack.size();
-        ch.addHints(n);
-        pairs = new T2PairNumber[n / 2];
 
-        for (int i = 0; i < n; i += 2) {
-            T2Number v1 = (T2Number) stack.get(i);
-            T2Number v2 = (T2Number) stack.get(i + 1);
-            T2PairNumber pn = new T2PairNumber(v1, v2);
-            pairs[i / 2] = pn;
-        }
+        subr = (T2Number) stack.get(0);
 
     }
-
-    /**
-     * Count the hints in the command.
-     * 
-     * @return Returns the count of the hints.
-     */
-    public abstract int countHints();
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
      */
     @Override
-    public short[] getBytes() {
+    public int getID() {
 
-        return bytes;
+        return TYPE_CALLSUBR;
     }
 
     /**
-     * Getter for pairs.
+     * {@inheritDoc}
      * 
-     * @return the pairs
+     * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
-    public T2PairNumber[] getPairs() {
+    @Override
+    public String getName() {
 
-        return pairs;
+        return "callsubr";
     }
 
+    /**
+     * Getter for subr.
+     * 
+     * @return the subr
+     */
+    public T2Number getSubr() {
+
+        return subr;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
     @Override
     public Object getValue() {
 
-        return pairs;
+        return subr;
     }
 
     /**
@@ -115,13 +116,9 @@ public abstract class T2HintCmd extends T2Hints {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        for (int i = 0; i < pairs.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", pairs[i].toString());
-            writer.writeEndElement();
-        }
+        writer.writeAttribute("subr", subr.getInteger());
         writer.writeEndElement();
 
     }
+
 }

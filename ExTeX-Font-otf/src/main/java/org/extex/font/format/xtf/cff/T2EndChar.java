@@ -25,12 +25,17 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all hints commands.
+ * endchar - endchar (14).
+ * 
+ * <p>
+ * Finishes a charstring outline definition, and must be the last operator in a
+ * character's outline.
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class T2HintCmd extends T2Hints {
+public class T2EndChar extends T2Operator {
 
     /**
      * bytes
@@ -38,47 +43,21 @@ public abstract class T2HintCmd extends T2Hints {
     private short[] bytes;
 
     /**
-     * The pair array.
-     */
-    private T2PairNumber[] pairs;
-
-    /**
      * Create a new object.
      * 
      * @param stack the stack
-     * @param id the operator-id for the value
      * @param ch The char string.
+     * @param id the operator-id for the value
+     * @throws IOException if an IO-error occurs.
      */
-    protected T2HintCmd(List<T2CharString> stack, short[] id, CharString ch)
+    public T2EndChar(List<T2CharString> stack, CharString ch)
             throws IOException {
 
         super();
 
-        int n = stack.size();
-        bytes = convertStackaddID(stack, id);
-
-        if (n % 2 != 0) {
-            checkWidth(stack, ch);
-        }
-        n = stack.size();
-        ch.addHints(n);
-        pairs = new T2PairNumber[n / 2];
-
-        for (int i = 0; i < n; i += 2) {
-            T2Number v1 = (T2Number) stack.get(i);
-            T2Number v2 = (T2Number) stack.get(i + 1);
-            T2PairNumber pn = new T2PairNumber(v1, v2);
-            pairs[i / 2] = pn;
-        }
+        bytes = convertStackaddID(stack, new short[]{T2ENDCHAR});
 
     }
-
-    /**
-     * Count the hints in the command.
-     * 
-     * @return Returns the count of the hints.
-     */
-    public abstract int countHints();
 
     /**
      * {@inheritDoc}
@@ -92,19 +71,36 @@ public abstract class T2HintCmd extends T2Hints {
     }
 
     /**
-     * Getter for pairs.
+     * {@inheritDoc}
      * 
-     * @return the pairs
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
      */
-    public T2PairNumber[] getPairs() {
+    @Override
+    public int getID() {
 
-        return pairs;
+        return TYPE_ENDCHAR;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getName()
+     */
+    @Override
+    public String getName() {
+
+        return "endchar";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
     @Override
     public Object getValue() {
 
-        return pairs;
+        return null;
     }
 
     /**
@@ -115,13 +111,6 @@ public abstract class T2HintCmd extends T2Hints {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        for (int i = 0; i < pairs.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", pairs[i].toString());
-            writer.writeEndElement();
-        }
         writer.writeEndElement();
-
     }
 }

@@ -98,6 +98,16 @@ public abstract class T2CharString {
     public static final int T2VSTEMHM = 23;
 
     /**
+     * callsubr.
+     */
+    public static final int T2CALLSUBR = 10;
+
+    /**
+     * endchar.
+     */
+    public static final int T2ENDCHAR = 14;
+
+    /**
      * rrcurveto.
      */
     public static final int T2RRCURVETO = 8;
@@ -166,6 +176,16 @@ public abstract class T2CharString {
      * Type hintmask.
      */
     public static final int TYPE_HINTMASK = 12;
+
+    /**
+     * Type callsubr.
+     */
+    public static final int TYPE_CALLSUBR = 13;
+
+    /**
+     * Type endchar.
+     */
+    public static final int TYPE_ENDCHAR = 14;
 
     /**
      * Read a number.

@@ -76,8 +76,8 @@ public abstract class T2Operator extends T2CharString
                     return new T2RrCurveTo(stack, ch);
                 case 9:
                     return new T2Dummy(stack, ch, "Reserved");// Reserved
-                case 10:
-                    return new T2Dummy(stack, ch, "callsubr"); // callsubr
+                case T2CALLSUBR:
+                    return new T2CallSubr(stack, ch);
                 case 11:
                     break; // return
                 case ESCAPE_BYTE:
@@ -86,8 +86,8 @@ public abstract class T2Operator extends T2CharString
                     return new T2Dummy(stack, ch, "escape");
                 case 13:
                     return new T2Dummy(stack, ch, "Reserved"); // Reserved
-                case 14:
-                    return new T2Dummy(stack, ch, "endchar"); // endchar
+                case T2ENDCHAR:
+                    return new T2EndChar(stack, ch);
                 case 15:
                     return new T2Dummy(stack, ch, "Reserved"); // Reserved
                 case 16:

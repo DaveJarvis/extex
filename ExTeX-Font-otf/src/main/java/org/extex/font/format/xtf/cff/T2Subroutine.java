@@ -19,21 +19,47 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Subroutine.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5595 $
  */
 
 public abstract class T2Subroutine extends T2Operator {
 
     /**
-     * Create a new object
+     * bytes
      */
-    protected T2Subroutine() {
+    private short[] bytes;
+
+    /**
+     * Create a new object.
+     * 
+     * @param stack the stack
+     * @param id the operator-id for the value
+     * @param ch The char string.
+     */
+    protected T2Subroutine(List<T2CharString> stack, short[] id, CharString ch)
+            throws IOException {
 
         super();
+
+        bytes = convertStackaddID(stack, id);
+
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
+     */
+    @Override
+    public short[] getBytes() {
+
+        return bytes;
+    }
 }

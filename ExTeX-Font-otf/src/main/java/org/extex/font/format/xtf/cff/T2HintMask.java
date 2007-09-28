@@ -36,7 +36,7 @@ public class T2HintMask extends T2AbstractHintMask {
     /**
      * The hintmask.
      */
-    private int mask;
+    private long mask;
 
     /**
      * The values.
@@ -64,18 +64,7 @@ public class T2HintMask extends T2AbstractHintMask {
             val[i] = (T2Number) stack.get(i);
         }
 
-        // read a number
-        // TODO count the hints
-        if (n <= 8) {
-            mask = rar.readUnsignedByte();
-        } else if (n <= 16) {
-            mask = rar.readUnsignedByte();
-            mask = mask << 8;
-            mask += rar.readUnsignedByte();
-        } else {
-
-        }
-
+        readMask(ch, rar);
     }
 
     /**
@@ -94,7 +83,7 @@ public class T2HintMask extends T2AbstractHintMask {
      * 
      * @return the mask
      */
-    public int getMask() {
+    public long getMask() {
 
         return mask;
     }
@@ -142,20 +131,20 @@ public class T2HintMask extends T2AbstractHintMask {
     }
 
     /**
-     * {@inheritDoc}
+     * Read the mask.
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     * @param ch The charstring.
+     * @param rar The input.
+     * @throws IOException if a IO-error occurred.
      */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
+    private void readMask(CharString ch, RandomAccessR rar) throws IOException {
 
-        writer.writeStartElement(getName());
-        writer.writeAttribute("mask", toBin(mask));
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(" ").append(val[i]);
+        int cnt = (ch.getActualHints() - 1) / 8;
+        mask = rar.readUnsignedByte();
+        for (int i = 0; i < cnt; i++) {
+            mask = mask << 8;
+            mask += rar.readUnsignedByte();
         }
-        writer.writeAttribute("values", buf.toString().trim());
-        writer.writeEndElement();
     }
 
     /**
@@ -164,11 +153,12 @@ public class T2HintMask extends T2AbstractHintMask {
      * @param val The value.
      * @return Returns the binary string.
      */
-    private String toBin(int val) {
+    private String toBin(long val) {
 
-        StringBuffer buf = new StringBuffer(64);
-        buf.append("00000000000000000000000000000000");
-        String bin = Integer.toBinaryString(val);
+        StringBuffer buf =
+                new StringBuffer(
+                    "0000000000000000000000000000000000000000000000000000000000000000");
+        String bin = Long.toBinaryString(val);
         buf.append(bin);
         int le = 8;
         int bl = bin.length();
@@ -183,6 +173,23 @@ public class T2HintMask extends T2AbstractHintMask {
         }
 
         return buf.substring(buf.length() - le);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("mask", toBin(mask));
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < val.length; i++) {
+            buf.append(" ").append(val[i]);
+        }
+        writer.writeAttribute("values", buf.toString().trim());
+        writer.writeEndElement();
     }
 
 }

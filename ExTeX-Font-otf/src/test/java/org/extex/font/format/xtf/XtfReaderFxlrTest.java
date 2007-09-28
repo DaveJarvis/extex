@@ -27,11 +27,14 @@ import junit.framework.TestCase;
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
 import org.extex.font.format.xtf.cff.CffFont;
 import org.extex.font.format.xtf.cff.CharString;
+import org.extex.font.format.xtf.cff.T2CallSubr;
+import org.extex.font.format.xtf.cff.T2EndChar;
 import org.extex.font.format.xtf.cff.T2HintMask;
 import org.extex.font.format.xtf.cff.T2HstemHm;
 import org.extex.font.format.xtf.cff.T2Number;
 import org.extex.font.format.xtf.cff.T2Operator;
 import org.extex.font.format.xtf.cff.T2PairNumber;
+import org.extex.font.format.xtf.cff.T2RLineTo;
 import org.extex.font.format.xtf.cff.T2RMoveTo;
 import org.extex.util.xml.XMLStreamWriter;
 
@@ -251,7 +254,153 @@ public class XtfReaderFxlrTest extends TestCase {
         // -33 callsubr
         op = cs.get(3);
         assertNotNull(op);
-        // assertTrue(op instanceof t2c)
+        assertTrue(op instanceof T2CallSubr);
+        T2CallSubr callsubr = (T2CallSubr) op;
+        assertEquals(-33, callsubr.getSubr().getInteger());
+
+        // hintmask 01111011
+        op = cs.get(4);
+        assertNotNull(op);
+        assertTrue(op instanceof T2HintMask);
+        hintmask = (T2HintMask) op;
+        assertEquals("01111011", hintmask.getMaskBin());
+        hintval = hintmask.getVal();
+        assertNotNull(hintval);
+        assertEquals(0, hintval.length);
+
+        // -32 callsubr
+        op = cs.get(5);
+        assertNotNull(op);
+        assertTrue(op instanceof T2CallSubr);
+        callsubr = (T2CallSubr) op;
+        assertEquals(-32, callsubr.getSubr().getInteger());
+
+        // -64 257 rmoveto
+        op = cs.get(6);
+        assertNotNull(op);
+        assertTrue(op instanceof T2RMoveTo);
+        rmoveto = (T2RMoveTo) op;
+        assertEquals(-64, rmoveto.getDx().getInteger());
+        assertEquals(257, rmoveto.getDy().getInteger());
+
+        // -31 callsubr
+        op = cs.get(7);
+        assertNotNull(op);
+        assertTrue(op instanceof T2CallSubr);
+        callsubr = (T2CallSubr) op;
+        assertEquals(-31, callsubr.getSubr().getInteger());
+
+        // 42 294 rmoveto
+        op = cs.get(8);
+        assertNotNull(op);
+        assertTrue(op instanceof T2RMoveTo);
+        rmoveto = (T2RMoveTo) op;
+        assertEquals(42, rmoveto.getDx().getInteger());
+        assertEquals(294, rmoveto.getDy().getInteger());
+
+        // 82 callsubr
+        op = cs.get(9);
+        assertNotNull(op);
+        assertTrue(op instanceof T2CallSubr);
+        callsubr = (T2CallSubr) op;
+        assertEquals(82, callsubr.getSubr().getInteger());
+
+        // endchar
+        op = cs.get(10);
+        assertNotNull(op);
+        assertTrue(op instanceof T2EndChar);
+
+    }
+
+    /**
+     * test 06.
+     * 
+     * <pre>
+     *   -CharString name="Eacute"
+     *     68 -1 29 -28 39 288 34 82 -20 183 40 -28 28 74 -21 hstemhm
+     *     102 80 194 25 hintmask 0011 1011 1000 0000
+     *     353 606 rmoveto
+     *     -67 callsubr
+     *     hintmask 0011011110000000
+     *     -66 callsubr
+     *     hintmask 0011101110000000
+     *     -65 callsubr
+     *     hintmask 1011011110000000
+     *     -64 callsubr
+     *     hintmask 0111101110000000
+     *     -63 callsubr
+     *     132 215 rmoveto
+     *     -124 -87 rlineto
+     *     -13 -8 -2 -6 0 -7 0 -9 6 -5 9 0 8 0 13 3 22 8 rrcurveto
+     *     144 59 rlineto
+     *     endchar
+     *   -CharString
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test06() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        CharString cs = font.getCharstring("Eacute");
+        assertNotNull(cs);
+
+        assertEquals("Eacute", cs.getName());
+        assertEquals(17, cs.size());
+
+        T2Operator op = cs.get(0);
+        assertNotNull(op);
+        assertTrue(op instanceof T2HstemHm);
+        T2HstemHm hstemhm = (T2HstemHm) op;
+        T2PairNumber[] pairs = hstemhm.getPairs();
+        assertNotNull(pairs);
+
+        // 68 -1 29 -28 39 288 34 82 -20 183 40 -28 28 74 -21 hstemhm
+        assertEquals(7, pairs.length);
+        assertEquals(-1, pairs[0].getA().getInteger());
+        assertEquals(29, pairs[0].getB().getInteger());
+        assertEquals(-28, pairs[1].getA().getInteger());
+        assertEquals(39, pairs[1].getB().getInteger());
+        assertEquals(288, pairs[2].getA().getInteger());
+        assertEquals(34, pairs[2].getB().getInteger());
+        assertEquals(82, pairs[3].getA().getInteger());
+        assertEquals(-20, pairs[3].getB().getInteger());
+        assertEquals(183, pairs[4].getA().getInteger());
+        assertEquals(40, pairs[4].getB().getInteger());
+        assertEquals(-28, pairs[5].getA().getInteger());
+        assertEquals(28, pairs[5].getB().getInteger());
+        assertEquals(74, pairs[6].getA().getInteger());
+        assertEquals(-21, pairs[6].getB().getInteger());
+
+        // 102 80 194 25 hintmask 0011101110000000
+        op = cs.get(1);
+        assertNotNull(op);
+        assertTrue(op instanceof T2HintMask);
+        T2HintMask hintmask = (T2HintMask) op;
+        T2Number[] hintval = hintmask.getVal();
+        assertNotNull(hintval);
+        assertEquals(4, hintval.length);
+        assertEquals(102, hintval[0].getInteger());
+        assertEquals(80, hintval[1].getInteger());
+        assertEquals(194, hintval[2].getInteger());
+        assertEquals(25, hintval[3].getInteger());
+        assertEquals("0011101110000000", hintmask.getMaskBin());
+
+        // 144 59 rlineto
+        op = cs.get(15);
+        assertNotNull(op);
+        assertTrue(op instanceof T2RLineTo);
+        T2RLineTo rlinto = (T2RLineTo) op;
+        pairs = rlinto.getPairs();
+        assertNotNull(pairs);
+        assertEquals(1, pairs.length);
+        assertEquals(144, pairs[0].getA().getInteger());
+        assertEquals(59, pairs[0].getB().getInteger());
 
     }
     // --------------------------------------------------------------
