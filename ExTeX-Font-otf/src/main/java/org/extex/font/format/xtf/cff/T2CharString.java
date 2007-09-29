@@ -118,6 +118,56 @@ public abstract class T2CharString {
     public static final int T2HINTMASK = 19;
 
     /**
+     * hhcurveto.
+     */
+    public static final int T2HHCURVETO = 27;
+
+    /**
+     * hvcurveto.
+     */
+    public static final int T2HVCURVETO = 31;
+
+    /**
+     * rcurveline.
+     */
+    public static final int T2RCURVELINE = 24;
+
+    /**
+     * rlinecurve.
+     */
+    public static final int T2RLINECURVE = 25;
+
+    /**
+     * vhcurveto.
+     */
+    public static final int T2VHCURVETO = 30;
+
+    /**
+     * vvcurveto.
+     */
+    public static final int T2VVCURVETO = 26;
+
+    /**
+     * flex (12 35).
+     */
+    public static final int T2FLEX = 35;
+
+    /**
+     * hflex (12 34).
+     */
+    public static final int T2HFLEX = 34;
+
+    /**
+     * hflex1 (12 36).
+     */
+    public static final int T2HFLEX1 = 36;
+
+    /**
+     * flex1 (12 37).
+     */
+    public static final int T2FLEX1 = 37;
+
+    /**
      * Type hstem.
      */
     public static final int TYPE_HSTEM = 1;
@@ -186,6 +236,56 @@ public abstract class T2CharString {
      * Type endchar.
      */
     public static final int TYPE_ENDCHAR = 14;
+
+    /**
+     * Type hhcurveto.
+     */
+    public static final int TYPE_HHCURVETO = 15;
+
+    /**
+     * Type hvcurveto.
+     */
+    public static final int TYPE_HVCURVETO = 16;
+
+    /**
+     * Type rcurveline.
+     */
+    public static final int TYPE_RCURVELINE = 17;
+
+    /**
+     * Type rlinecurve.
+     */
+    public static final int TYPE_RLINECURVE = 18;
+
+    /**
+     * Type vhcurveto.
+     */
+    public static final int TYPE_VHCURVETO = 19;
+
+    /**
+     * Type vvcurveto.
+     */
+    public static final int TYPE_VVCURVETO = 20;
+
+    /**
+     * Type flex.
+     */
+    public static final int TYPE_FLEX = 21;
+
+    /**
+     * Type hflex.
+     */
+    public static final int TYPE_HFLEX = 22;
+
+    /**
+     * Type hflex1.
+     */
+    public static final int TYPE_HFLEX1 = 23;
+
+    /**
+     * Type flex1.
+     */
+    public static final int TYPE_FLEX1 = 24;
 
     /**
      * Read a number.

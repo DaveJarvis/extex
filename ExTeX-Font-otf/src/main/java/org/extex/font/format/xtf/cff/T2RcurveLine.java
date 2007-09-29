@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,17 +25,27 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * hmoveto: dx1 hmoveto (22).
+ * rcurveline: {dxa dya dxb dyb dxc dyc}+ dxd dyd rcurveline (24).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2HMoveTo extends T2PathConstruction {
+public class T2RcurveLine extends T2PathConstruction {
 
     /**
-     * dx.
+     * The dxd.
      */
-    private T2Number dx;
+    private T2Number dxd;
+
+    /**
+     * The dyd.
+     */
+    private T2Number dyd;
+
+    /**
+     * The six values array.
+     */
+    private T2SixNumber[] eight;
 
     /**
      * Create a new object.
@@ -43,33 +53,59 @@ public class T2HMoveTo extends T2PathConstruction {
      * @param ch The char string.
      * @param stack The stack.
      */
-    public T2HMoveTo(List<T2CharString> stack, CharString ch)
+    public T2RcurveLine(List<T2CharString> stack, CharString ch)
             throws IOException {
 
-        super(stack, new short[]{T2HMOVETO}, ch);
+        super(stack, new short[]{T2RCURVELINE}, ch);
 
         int n = stack.size();
 
-        if (n > 1) {
-            checkWidth(stack, ch);
-        }
-        n = stack.size();
-        if (n != 1) {
-            throw new T2MissingNumberException();
+        eight = new T2SixNumber[n / 6];
+
+        for (int i = 0; i < n; i += 6) {
+            T2Number v1 = (T2Number) stack.remove(0);
+            T2Number v2 = (T2Number) stack.remove(0);
+            T2Number v3 = (T2Number) stack.remove(0);
+            T2Number v4 = (T2Number) stack.remove(0);
+            T2Number v5 = (T2Number) stack.remove(0);
+            T2Number v6 = (T2Number) stack.remove(0);
+            T2SixNumber si = new T2SixNumber(v1, v2, v3, v4, v5, v6);
+            eight[i / 6] = si;
         }
 
-        dx = (T2Number) stack.get(0);
+        dxd = (T2Number) stack.remove(0);
+        dyd = (T2Number) stack.remove(0);
 
     }
 
     /**
-     * Getter for dx.
+     * Getter for dxd.
      * 
-     * @return the dx
+     * @return the dxd
      */
-    public T2Number getDx() {
+    public T2Number getDxd() {
 
-        return dx;
+        return dxd;
+    }
+
+    /**
+     * Getter for dyd.
+     * 
+     * @return the dyd
+     */
+    public T2Number getDyd() {
+
+        return dyd;
+    }
+
+    /**
+     * Getter for eight.
+     * 
+     * @return the eight
+     */
+    public T2SixNumber[] getEight() {
+
+        return eight;
     }
 
     /**
@@ -80,7 +116,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public int getID() {
 
-        return TYPE_HMOVETO;
+        return TYPE_RCURVELINE;
     }
 
     /**
@@ -91,7 +127,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public String getName() {
 
-        return "hmoveto";
+        return "rcurveline";
     }
 
     /**
@@ -102,9 +138,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public Object getValue() {
 
-        T2Number[] arr = new T2Number[1];
-        arr[0] = dx;
-        return arr;
+        return eight;
     }
 
     /**
@@ -116,7 +150,14 @@ public class T2HMoveTo extends T2PathConstruction {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("dx", dx);
+        writer.writeAttribute("dxd", dxd);
+        writer.writeAttribute("dyd", dyd);
+        for (int i = 0; i < eight.length; i++) {
+            writer.writeStartElement("pair");
+            writer.writeAttribute("id", i);
+            writer.writeAttribute("value", eight[i].toString());
+            writer.writeEndElement();
+        }
         writer.writeEndElement();
     }
 

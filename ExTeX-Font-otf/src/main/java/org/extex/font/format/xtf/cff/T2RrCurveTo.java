@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * rrcurveto |- {dxa dya dxb dyb dxc dyc}+ rrcurveto (8) |
+ * rrcurveto: {dxa dya dxb dyb dxc dyc}+ rrcurveto (8).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

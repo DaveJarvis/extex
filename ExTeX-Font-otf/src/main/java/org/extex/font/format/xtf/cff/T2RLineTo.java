@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * rlineto |- {dxa dya}+ rlineto (5) |
+ * rlineto: {dxa dya}+ rlineto (5).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

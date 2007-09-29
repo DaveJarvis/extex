@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * rmoveto |- dx1 dy1 rmoveto (21) |
+ * rmoveto : dx1 dy1 rmoveto (21).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

@@ -79,11 +79,92 @@ public abstract class T2Operator extends T2CharString
                 case T2CALLSUBR:
                     return new T2CallSubr(stack, ch);
                 case 11:
-                    break; // return
+                    return new T2Dummy(stack, ch, "return");
                 case ESCAPE_BYTE:
-                    int b1 = rar.readUnsignedByte();
 
-                    return new T2Dummy(stack, ch, "escape");
+                    int b1 = rar.readUnsignedByte();
+                    switch (b1) {
+                        case 0:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 1:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 2:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 3:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 4:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 5:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 6:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 7:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 8:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 9:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 10:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 11:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 12:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 13:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 14:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 15:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 16:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 17:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 18:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 19:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 20:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 21:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 22:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 23:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 24:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 25:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 26:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 27:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 28:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 29:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 30:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 31:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 32:
+                            return new T2Dummy(stack, ch, "escape 0");
+                        case 33:
+                            return new T2Dummy(stack, ch, "escape 0");
+
+                        case T2HFLEX:
+                            return new T2Flex(stack, ch);
+                        case T2FLEX:
+                            return new T2Flex(stack, ch);
+                        case T2HFLEX1:
+                            return new T2HFlex1(stack, ch);
+                        case 37:
+                            return new T2Flex1(stack, ch);
+                        default:
+                            return new T2Dummy(stack, ch, "escape");
+                    }
+
                 case 13:
                     return new T2Dummy(stack, ch, "Reserved"); // Reserved
                 case T2ENDCHAR:
@@ -106,22 +187,22 @@ public abstract class T2Operator extends T2CharString
                     return new T2HMoveTo(stack, ch);
                 case T2VSTEMHM:
                     return new T2VstemHm(stack, ch);
-                case 24:
-                    return new T2Dummy(stack, ch, "rcurveline");// rcurveline
-                case 25:
-                    return new T2Dummy(stack, ch, "rlinecurve"); // rlinecurve
-                case 26:
-                    return new T2Dummy(stack, ch, "vvcurveto"); // vvcurveto
-                case 27:
-                    return new T2Dummy(stack, ch, "hhcurveto"); // hhcurveto
+                case T2RCURVELINE:
+                    return new T2RcurveLine(stack, ch);
+                case T2RLINECURVE:
+                    return new T2RlineCurve(stack, ch);
+                case T2VVCURVETO:
+                    return new T2VvcurveTo(stack, ch);
+                case T2HHCURVETO:
+                    return new T2HhcurveTo(stack, ch);
                 case 28:
                     return new T2Dummy(stack, ch, "shortint"); // shortint
                 case 29:
                     return new T2Dummy(stack, ch, "callgsubr"); // callgsubr
-                case 30:
-                    return new T2Dummy(stack, ch, "vhcurveto"); // vhcurveto
-                case 31:
-                    return new T2Dummy(stack, ch, "hvcurveto"); // hvcurveto
+                case T2VHCURVETO:
+                    return new T2VhcurveTo(stack, ch);
+                case T2HVCURVETO:
+                    return new T2HvcurveTo(stack, ch);
                 default:
                     // number
                     T2Number number = T2CharString.readNumber(rar, b0);

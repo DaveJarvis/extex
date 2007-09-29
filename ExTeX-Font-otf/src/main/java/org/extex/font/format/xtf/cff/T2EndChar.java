@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * endchar - endchar (14).
+ * endchar: endchar (14).
  * 
  * <p>
  * Finishes a charstring outline definition, and must be the last operator in a

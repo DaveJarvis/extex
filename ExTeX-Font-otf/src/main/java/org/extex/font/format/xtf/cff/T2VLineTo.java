@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * vlineto |- dy1 {dxa dyb}* vlineto (7) | |- {dya dxb}+ vlineto (7) |
+ * vlineto: dy1 {dxa dyb}* vlineto (7) : {dya dxb}+ vlineto (7).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

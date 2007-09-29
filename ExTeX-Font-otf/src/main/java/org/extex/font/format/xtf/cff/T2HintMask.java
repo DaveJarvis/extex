@@ -26,7 +26,7 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * hintmask |- hintmask (19 + mask) |.
+ * hintmask: hintmask (19 + mask).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

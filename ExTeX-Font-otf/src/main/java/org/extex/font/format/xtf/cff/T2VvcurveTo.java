@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,17 +25,22 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * hmoveto: dx1 hmoveto (22).
+ * vvcurveto: dx1? {dya dxb dyb dyc}+ vvcurveto (26).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2HMoveTo extends T2PathConstruction {
+public class T2VvcurveTo extends T2PathConstruction {
 
     /**
-     * dx.
+     * The dx1.
      */
-    private T2Number dx;
+    private T2Number dx1;
+
+    /**
+     * The four values array.
+     */
+    private T2FourNumber[] four;
 
     /**
      * Create a new object.
@@ -43,33 +48,55 @@ public class T2HMoveTo extends T2PathConstruction {
      * @param ch The char string.
      * @param stack The stack.
      */
-    public T2HMoveTo(List<T2CharString> stack, CharString ch)
+    public T2VvcurveTo(List<T2CharString> stack, CharString ch)
             throws IOException {
 
-        super(stack, new short[]{T2HMOVETO}, ch);
+        super(stack, new short[]{T2HHCURVETO}, ch);
 
         int n = stack.size();
 
-        if (n > 1) {
-            checkWidth(stack, ch);
+        if (n % 4 != 0) {
+            // dx1 exists
+            dx1 = (T2Number) stack.remove(0);
         }
+
         n = stack.size();
-        if (n != 1) {
+
+        if (n % 4 != 0) {
             throw new T2MissingNumberException();
         }
 
-        dx = (T2Number) stack.get(0);
+        four = new T2FourNumber[n / 4];
+
+        for (int i = 0; i < n; i += 4) {
+            T2Number v1 = (T2Number) stack.get(i);
+            T2Number v2 = (T2Number) stack.get(i + 1);
+            T2Number v3 = (T2Number) stack.get(i + 2);
+            T2Number v4 = (T2Number) stack.get(i + 3);
+            T2FourNumber si = new T2FourNumber(v1, v2, v3, v4);
+            four[i / 4] = si;
+        }
 
     }
 
     /**
-     * Getter for dx.
+     * Getter for dx1.
      * 
-     * @return the dx
+     * @return the dx1
      */
-    public T2Number getDx() {
+    public T2Number getDx1() {
 
-        return dx;
+        return dx1;
+    }
+
+    /**
+     * Getter for four.
+     * 
+     * @return the four
+     */
+    public T2FourNumber[] getFour() {
+
+        return four;
     }
 
     /**
@@ -80,7 +107,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public int getID() {
 
-        return TYPE_HMOVETO;
+        return TYPE_VVCURVETO;
     }
 
     /**
@@ -91,7 +118,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public String getName() {
 
-        return "hmoveto";
+        return "vvcurveto";
     }
 
     /**
@@ -102,9 +129,7 @@ public class T2HMoveTo extends T2PathConstruction {
     @Override
     public Object getValue() {
 
-        T2Number[] arr = new T2Number[1];
-        arr[0] = dx;
-        return arr;
+        return four;
     }
 
     /**
@@ -116,7 +141,15 @@ public class T2HMoveTo extends T2PathConstruction {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("dx", dx);
+        if (dx1 != null) {
+            writer.writeAttribute("dx1", dx1);
+        }
+        for (int i = 0; i < four.length; i++) {
+            writer.writeStartElement("pair");
+            writer.writeAttribute("id", i);
+            writer.writeAttribute("value", four[i].toString());
+            writer.writeEndElement();
+        }
         writer.writeEndElement();
     }
 
