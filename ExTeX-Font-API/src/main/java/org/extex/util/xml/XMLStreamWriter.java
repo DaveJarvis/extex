@@ -372,6 +372,9 @@ public class XMLStreamWriter {
      */
     private String createEntity(String text) {
 
+        if (text == null) {
+            return "null";
+        }
         StringBuffer buf = new StringBuffer(text.length());
 
         for (int i = 0, n = text.length(); i < n; i++) {
@@ -679,7 +682,11 @@ public class XMLStreamWriter {
      */
     public void writeAttribute(String name, Object value) throws IOException {
 
-        writeAttribute(name, value.toString());
+        if (value != null) {
+            writeAttribute(name, value.toString());
+        } else {
+            writeAttribute(name, "null");
+        }
     }
 
     /**
@@ -691,7 +698,11 @@ public class XMLStreamWriter {
      */
     public void writeAttribute(String name, String value) throws IOException {
 
-        writeAttribute(null, name, value);
+        if (value != null) {
+            writeAttribute(null, name, value);
+        } else {
+            writeAttribute(null, name, "null");
+        }
     }
 
     /**
