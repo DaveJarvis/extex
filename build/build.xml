@@ -274,6 +274,7 @@
               to="\1" />
       <fileset dir="..">
         <include name="ExTeX-*/src/test/**/*" />
+        <include name="Test-*/src/test/**/*" />
         <exclude name="**/*.java" />
         <exclude name="**/*.class" />
         <exclude name="**/*.html" />

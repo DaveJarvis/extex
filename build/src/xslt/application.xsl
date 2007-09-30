@@ -65,6 +65,10 @@
     </fileset>
   </path>
 
+  <fileset dir=".." id="test.resource.files">
+    <xsl:apply-templates select="component" mode="test.resource"/>
+  </fileset>
+
   <path id="test.source.path">
     <dirset dir="..">
       <xsl:apply-templates select="component" mode="test"/>
@@ -94,6 +98,11 @@
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="resource">
   <include name="{@name}/src/main/resources/**/*"/>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="test.resource">
+  <include name="{@name}/src/test/resources/**/*"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
