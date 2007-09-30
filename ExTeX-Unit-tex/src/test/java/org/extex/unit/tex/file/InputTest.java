@@ -23,20 +23,21 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\input</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
-     * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     * The constant <tt>EMPTY_TEX</tt> contains the location of an empty file.
      */
-    private static final String EMPTY_TEX = "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+    private static final String EMPTY_TEX =
+            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -46,7 +47,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public InputTest(String arg) {
@@ -55,33 +56,31 @@ public class InputTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\input">
-     *  Test case checking that a <tt>\input</tt> works.
-     * </testcase>
-     *
+     * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\input " + EMPTY_TEX,
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\input " + EMPTY_TEX,
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\input">
-     *  Test case checking that a <tt>\input</tt> works.
-     * </testcase>
-     *
+     * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\input DoesNotExist",
-                //--- output channel ---
-                "I can't find file `DoesNotExist'");
+        assertFailure(// --- input code ---
+            "\\input DoesNotExist",
+            // --- output channel ---
+            "I can't find file `DoesNotExist'");
     }
 
 }

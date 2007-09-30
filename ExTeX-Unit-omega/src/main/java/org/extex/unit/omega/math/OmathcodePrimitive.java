@@ -40,7 +40,19 @@ import org.extex.typesetter.type.math.MathCode;
  * <doc name="omathcode">
  * <h3>The Math Primitive <tt>\omathcode</tt></h3>
  * <p>
+ * The math primitive <tt>\omathcode</tt> sets a math code for a character.
+ * For this purpose it takes a character and a math code as arguments.
+ * </p>
+ * <p>
+ * The math code is made up of three components: the class, the family, and a
+ * character.
+ * </p>
+ * <p>
  * TODO missing documentation
+ * </p>
+ * <p>
+ * If the math code of a character has the special value "8000000 then it is
+ * treated like an active character. In this case the expansion is initiated.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -52,13 +64,16 @@ import org.extex.typesetter.type.math.MathCode;
  *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
  *        &lang;character code&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} ...
+ *        &lang;equals&rang;} &lang;omega math code&rang;
  *        </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
  *    \omathcode`.="41  </pre>
+ * 
+ * <pre class="TeXSample">
+ *    \omathcode`.={}  </pre>
  * 
  * </doc>
  * 

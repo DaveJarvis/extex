@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\DefaultOutputMode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,7 +31,7 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -41,7 +41,7 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DefaultOutputModeTest(String arg) {
@@ -51,35 +51,34 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\DefaultOutputMode">
-     *  Test case checking that <tt>\DefaultOutputMode</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\DefaultOutputMode"> Test case checking that
+     * <tt>\DefaultOutputMode</tt> works needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErrEof1() throws Exception {
+    public void testErrorEof1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\DefaultOutputMode",
-                //--- output channel ---
-                "Unexpected end of file");
+        assertFailure(// --- input code ---
+            "\\DefaultOutputMode",
+            // --- output channel ---
+            "Unexpected end of file");
     }
 
     /**
-     * <testcase primitive="\DefaultOutputMode">
-     *  Test case checking that <tt>\DefaultOutputMode</tt> works ...
+     * <testcase primitive="\DefaultOutputMode"> Test case checking that
+     * <tt>\DefaultOutputMode</tt> needs a known output mode as argument.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\DefaultOutputMode xxx",
-                //--- output channel ---
-                "Bad output mode");
+        assertFailure(// --- input code ---
+            "\\DefaultOutputMode xxx",
+            // --- output channel ---
+            "Bad output mode");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

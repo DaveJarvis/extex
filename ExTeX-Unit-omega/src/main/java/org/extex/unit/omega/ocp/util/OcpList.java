@@ -40,7 +40,8 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.Addafterocplist;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a primitive which acts as container for a pipe of
+ * &Omega;CP programs.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -57,7 +58,7 @@ public class OcpList extends AbstractCode
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the pipe.
      */
     private Map<Long, List<OcpProgram>> map =
             new HashMap<Long, List<OcpProgram>>();
@@ -73,7 +74,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add an &Omega;CP program at the end of the pipe.
      * 
      * @param scaled the index
      * @param program the program
@@ -91,7 +92,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add an &Omega;CP program at the beginning of the pipe.
      * 
      * @param scaled the index
      * @param program the program
@@ -146,19 +147,20 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Remove an &Omega;CP program from the pipe.
      * 
+     * @return the popped element
      */
-    public void pop() {
+    public OcpList pop() {
 
         // TODO gene: pop unimplemented
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Push an &Omega;CP program to the pipe.
      * 
-     * @param ocpList
+     * @param ocpList the list to push
      */
     public void push(OcpList ocpList) {
 
@@ -167,7 +169,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Remove an &Omega;CP program at the end of the pipe.
      * 
      * @param scaled the index
      * @param program the program
@@ -179,7 +181,7 @@ public class OcpList extends AbstractCode
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Remove an &Omega;CP program at the beginning of the pipe.
      * 
      * @param scaled the index
      * @param program the program

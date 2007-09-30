@@ -49,7 +49,7 @@ public class IfdimTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * ... </testcase>
+     * needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -63,11 +63,25 @@ public class IfdimTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
-     * ... </testcase>
+     * needs an operator after the first argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testEof2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "x\\ifdim 0pt",
+            // --- output channel ---
+            "Unexpected end of file while processing \\ifdim");
+    }
+
+    /**
+     * <testcase primitive="\ifdim"> Test case checking that <tt>\ifdim</tt>
+     * does not accept ! as operator. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
             "x\\ifdim 0pt!",

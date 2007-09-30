@@ -152,8 +152,8 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt> ...
-     * </testcase>
+     * <testcase primitive="\ocp"> Test case checking that <tt>\ocp</tt>
+     * stores the &Omega;CP program in the Context. </testcase>
      * 
      * @throws Exception in case of an error
      */

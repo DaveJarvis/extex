@@ -49,7 +49,7 @@ public class SfcodeTest extends AbstractCharMapTester {
     }
 
     /**
-     * ...
+     * Get he message for a bad character code.
      *
      * @return the message
      */

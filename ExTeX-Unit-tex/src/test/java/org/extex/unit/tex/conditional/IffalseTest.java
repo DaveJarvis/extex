@@ -77,7 +77,7 @@ public class IffalseTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
-     * ... </testcase>
+     * works for a deeply nestes invocation. </testcase>
      * 
      * @throws Exception in case of an error
      */

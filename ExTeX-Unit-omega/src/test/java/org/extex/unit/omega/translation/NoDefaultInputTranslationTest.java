@@ -23,15 +23,17 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\noDefaultInputTranslation</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4531 $
  */
-public class NoDefaultInputTranslationTest extends NoFlagsButGlobalPrimitiveTester {
+public class NoDefaultInputTranslationTest
+        extends
+            NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -41,7 +43,7 @@ public class NoDefaultInputTranslationTest extends NoFlagsButGlobalPrimitiveTest
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public NoDefaultInputTranslationTest(String arg) {
@@ -51,35 +53,34 @@ public class NoDefaultInputTranslationTest extends NoFlagsButGlobalPrimitiveTest
     }
 
     /**
-     * <testcase primitive="\noDefaultInputTranslation">
-     *  Test case checking that <tt>\noDefaultInputTranslation</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\noDefaultInputTranslation"> Test case checking that
+     * <tt>\noDefaultInputTranslation</tt> needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErrEof1() throws Exception {
+    public void testErrorEof1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\noDefaultInputTranslation",
-                //--- output channel ---
-                "Unexpected end of file");
+        assertFailure(// --- input code ---
+            "\\noDefaultInputTranslation",
+            // --- output channel ---
+            "Unexpected end of file");
     }
 
     /**
-     * <testcase primitive="\noDefaultInputTranslation">
-     *  Test case checking that <tt>\noDefaultInputTranslation</tt> works ...
-     * </testcase>
-     *
+     * <testcase primitive="\noDefaultInputTranslation"> Test case checking that
+     * <tt>\noDefaultInputTranslation</tt> needs a known input translation as
+     * argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\noDefaultInputTranslation xxx",
-                //--- output channel ---
-                "Bad input mode");
+        assertFailure(// --- input code ---
+            "\\noDefaultInputTranslation xxx",
+            // --- output channel ---
+            "Bad input mode");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

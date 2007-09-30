@@ -33,12 +33,12 @@ import org.extex.interpreter.context.Context;
 public class OmegaInputStream extends InputStream {
 
     /**
-     * The field <tt>context</tt> contains the ...
+     * The field <tt>context</tt> contains the interpreter context.
      */
     private Context context;
 
     /**
-     * The field <tt>stream</tt> contains the ...
+     * The field <tt>stream</tt> contains the input stream itself.
      */
     private InputStream stream;
 

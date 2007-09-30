@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for horizontal filling primitives.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -42,85 +42,78 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for HfillTest.
-     *
+     * 
      * @param arg the name
      * @param primitive the name of the primitive
      * @param args the arguments for the invocation
      */
-    public AbstractHfillTester(String arg, String primitive,
-            String args) {
+    public AbstractHfillTester(String arg, String primitive, String args) {
 
         super(arg, primitive, args);
         this.invocation = primitive + args;
     }
 
     /**
-     * <testcase>
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive in vertical mode appears
+     * like a space. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVbox1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\vbox to 12pt{a\\" + invocation + " b} \\end",
-                //--- error channel ---
-                "a b\n\n" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\vbox to 12pt{a\\" + invocation + " b} \\end",
+            // --- error channel ---
+            "a b\n\n" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive i horizontal mode has a
+     * natural width of 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHbox1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\hbox{a\\" + invocation + " b} \\end",
-                //--- error channel ---
-                "ab" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\hbox{a\\" + invocation + " b} \\end",
+            // --- error channel ---
+            "ab" + TERM);
     }
 
-    //TODO implement primitive specific test cases
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\hfi*</tt> is ignored at the beginning of
-     *  a paragraph.
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
+     * beginning of a paragraph. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\" + invocation + "\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
-                + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
+        // --- input code ---
+            "\\" + invocation + "\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\hfi*</tt> is ignored at the beginning of
-     *  a paragraph.
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
+     * beginning of a paragraph. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testIgnore2() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\font\\f cmr10 \\f\\hsize=100pt \\" + invocation + " x\\end ",
-                //--- output channel ---
-                "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                "..x\n");
+        // --- input code ---
+            "\\font\\f cmr10 \\f\\hsize=100pt \\" + invocation + " x\\end ",
+            // --- output channel ---
+            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                    "..x\n");
     }
 
+    // TODO implement more primitive specific test cases
 }

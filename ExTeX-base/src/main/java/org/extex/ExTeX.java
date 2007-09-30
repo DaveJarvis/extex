@@ -1869,6 +1869,7 @@ public class ExTeX {
         String jobname = determineJobname();
         File logFile = makeLogFile(jobname);
         Handler logHandler = null;
+        boolean showTrailer = true;
 
         try {
 
@@ -1904,6 +1905,9 @@ public class ExTeX {
             throw e;
         } catch (Exception e) {
             throw logError(e);
+        } catch (OutOfMemoryError e) {
+            showTrailer = false;
+            throw new InterpreterException("OOM");
         } catch (Throwable e) {
             logInternalError(e);
             if (getBooleanProperty(PROP_INTERNAL_STACKTRACE)) {
@@ -1913,9 +1917,11 @@ public class ExTeX {
             if (logHandler != null) {
                 logHandler.close();
                 logger.removeHandler(logHandler);
-                // see "TeX -- The Program [1333]"
-                logger.log((noBanner ? Level.FINE : Level.INFO), //
-                    localizer.format("ExTeX.Logfile", logFile));
+                if (showTrailer) {
+                    // see "TeX -- The Program [1333]"
+                    logger.log((noBanner ? Level.FINE : Level.INFO), //
+                        localizer.format("ExTeX.Logfile", logFile));
+                }
             }
         }
         return null;

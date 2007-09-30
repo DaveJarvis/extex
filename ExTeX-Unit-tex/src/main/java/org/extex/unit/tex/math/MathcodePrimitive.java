@@ -40,11 +40,19 @@ import org.extex.typesetter.type.math.MathCode;
  * <doc name="mathcode">
  * <h3>The Math Primitive <tt>\mathcode</tt></h3>
  * <p>
+ * The math primitive <tt>\mathcode</tt> sets a math code for a character.
+ * For this purpose it takes a character and a math code as arguments.
+ * </p>
+ * <p>
+ * The math code is made up of three components: the class, the family, and a
+ * character.
+ * </p>
+ * <p>
  * TODO missing documentation
  * </p>
  * <p>
  * If the math code of a character has the special value "8000 then it is
- * treated like an active character. In this case the expansion is intiated.
+ * treated like an active character. In this case the expansion is initiated.
  * </p>
  * 
  * <h4>Syntax</h4>

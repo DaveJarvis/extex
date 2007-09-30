@@ -66,7 +66,8 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\tracinglostchars"> Test case checking that
-     * <tt>\tracinglostchars</tt> ... <testcase>
+     * <tt>\tracinglostchars</tt> on an non-existing character does produce an
+     * error message. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -82,7 +83,8 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\tracinglostchars"> Test case checking that
-     * <tt>\tracinglostchars</tt> ... <testcase>
+     * <tt>\tracinglostchars</tt> on an existing character does not produce a
+     * message. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -98,7 +100,8 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * <testcase primitive="\tracinglostchars"> Test case checking that
-     * <tt>\tracinglostchars</tt> ... <testcase>
+     * <tt>\tracinglostchars</tt> on a non-existing character appearing later
+     * does produce a message. <testcase>
      * 
      * @throws Exception in case of an error
      */

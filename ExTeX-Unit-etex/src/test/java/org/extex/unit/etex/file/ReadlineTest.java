@@ -34,7 +34,7 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
      * for reading.
      */
     private static final String DATA_FILE =
-            "../ExTeX-Unit-tex/src/test/data/read_data.tex";
+            "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
 
     /**
      * Method for running the tests standalone.

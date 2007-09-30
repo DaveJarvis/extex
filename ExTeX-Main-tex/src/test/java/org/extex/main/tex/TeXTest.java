@@ -66,10 +66,10 @@ public class TeXTest extends TestCase {
                     + " (TeX compatibility mode)\n";
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty ex file.
+     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty TeX file.
      */
     private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
     /**
      * The constant <tt>EXIT_ERROR</tt> contains the exit code for an error.
@@ -1052,8 +1052,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname sets
-     * the program name. </testcase>
+     * <testcase> This test case validates that the option -progname sets the
+     * program name. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1065,8 +1065,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname sets
-     * the program name. </testcase>
+     * <testcase> This test case validates that the option -progname sets the
+     * program name. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1078,8 +1078,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase> This test case validates that the option -progname= sets
-     * the program name. </testcase>
+     * <testcase> This test case validates that the option -progname= sets the
+     * program name. </testcase>
      * 
      * @throws Exception in case of an error
      */

@@ -23,7 +23,7 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is an abstract tester for a symbol primitive.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,7 +31,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
 
     /**
      * Constructor for MathbinTest.
-     *
+     * 
      * @param arg the name
      * @param primitive the name of the primitive
      */
@@ -41,89 +41,82 @@ public class AbstractOperatorTester extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive complains when the argument is
-     *  missing.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive complains when the
+     * argument is missing. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\" + getPrimitive(),
-                //--- output message ---
-                "Unexpected end of file while processing \\" + getPrimitive());
+        // --- input code ---
+            DEFINE_MATH_FONTS + DEFINE_MATH + "$\\" + getPrimitive(),
+            // --- output message ---
+            "Unexpected end of file while processing \\" + getPrimitive());
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive needs a defined control
+     * sequence as argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\" + getPrimitive() + "\\undef$\\end",
-                //--- output message ---
-                "Undefined control sequence \\undef");
+        // --- input code ---
+            DEFINE_MATH_FONTS + DEFINE_MATH + "$\\" + getPrimitive()
+                    + "\\undef$\\end",
+            // --- output message ---
+            "Undefined control sequence \\undef");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive can take a character
+     * defined with <tt>\chardef</tt> as argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testChardef1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH + "\\chardef\\x `x"
-                        + "$\\" + getPrimitive() + "\\x$",
-                //--- output message ---
-                "x" + TERM);
+        // --- input code ---
+            DEFINE_MATH_FONTS + DEFINE_MATH + "\\chardef\\x `x" + "$\\"
+                    + getPrimitive() + "\\x$",
+            // --- output message ---
+            "x" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive can take a character
+     * defined with <tt>\let</tt> as argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLet1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH + "\\let\\x x"
-                        + "$\\" + getPrimitive() + "\\x$",
-                //--- output message ---
-                "x" + TERM);
+        // --- input code ---
+            DEFINE_MATH_FONTS + DEFINE_MATH + "\\let\\x x" + "$\\"
+                    + getPrimitive() + "\\x$",
+            // --- output message ---
+            "x" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive can take a character
+     * enclosed in braces as argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testBraces1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                        + "$\\" + getPrimitive() + "{x}$",
-                //--- output message ---
-                "x" + TERM);
+        // --- input code ---
+            DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES + "$\\"
+                    + getPrimitive() + "{x}$",
+            // --- output message ---
+            "x" + TERM);
     }
 
 }

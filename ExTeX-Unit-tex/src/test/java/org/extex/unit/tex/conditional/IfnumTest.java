@@ -49,7 +49,7 @@ public class IfnumTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * ... </testcase>
+     * needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +63,21 @@ public class IfnumTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * ... </testcase>
+     * needs an operator after the first argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "x\\ifnum 0",
+            // --- output channel ---
+            "Unexpected end of file while processing \\ifnum");
+    }
+
+    /**
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * complains if no valid operator is given. </testcase>
      * 
      * @throws Exception in case of an error
      */

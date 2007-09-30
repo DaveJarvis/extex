@@ -31,7 +31,14 @@ public class IfeofTest extends ConditionalTester {
      * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
      */
     private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+
+    /**
+     * The field <tt>NON_EMPTY_TEX</tt> contains the location of an non-empty
+     * file.
+     */
+    private static final String NON_EMPTY_TEX =
+            "../ExTeX-Unit-tex/src/test/resources/tex/read_data.tex";
 
     /**
      * Method for running the tests standalone.
@@ -55,11 +62,11 @@ public class IfeofTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * ... </testcase>
+     * needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErr0() throws Exception {
+    public void testError0() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifeof ",
@@ -69,21 +76,21 @@ public class IfeofTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * ... </testcase>
+     * needs a file descriptor (number). </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ifeof x true\\else false\\fi \\end",
+            "\\ifeof x ",
             // --- output channel ---
             "Missing number, treated as zero");
     }
 
     /**
      * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * ... </testcase>
+     * expands the then branch on an unused file descriptor. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -97,7 +104,8 @@ public class IfeofTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * ... </testcase>
+     * expands the then branch on a newly opened and empty file descriptor.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -110,6 +118,39 @@ public class IfeofTest extends ConditionalTester {
             "true" + TERM);
     }
 
-    // TODO implement the primitive specific test cases
+    /**
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * expands the then branch on a file descriptor for an empty
+     * file. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\openin8 " + EMPTY_TEX + " " //
+                    + "\\read8 to \\x " //
+                    + "\\ifeof8 true\\else false\\fi \\end",
+            // --- output channel ---
+            "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * expands the else branch on a newly opened file descriptor for a non-empty
+     * file. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\openin8 " + NON_EMPTY_TEX + " " //
+                    + "\\ifeof8 true\\else false\\fi \\end",
+            // --- output channel ---
+            "false" + TERM);
+    }
+
+    // TODO implement more primitive specific test cases
 
 }

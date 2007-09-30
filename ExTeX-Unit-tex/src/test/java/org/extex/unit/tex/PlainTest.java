@@ -17,7 +17,7 @@
  *
  */
 
-package tex;
+package org.extex.unit.tex;
 
 import java.io.File;
 
@@ -63,7 +63,7 @@ public class PlainTest extends ExTeXLauncher {
         File fmt = new File(".", "texput.fmt");
         File log = new File(".", "texput.log");
         assertFailure(
-                "\\input ../ExTeX-Unit-tex/src/test/tex/plain-dump \\end",
+                "\\input ../ExTeX-Unit-tex/src/test/resources/tex/plain-dump \\end",
                 "Preloading the plain format: codes, registers, parameters, fonts, more fonts,\n"
                         + "macros, math definitions, output routines, hyphenation\n"
                         + "Beginning to dump on file " + fmt.toString() + "\n");

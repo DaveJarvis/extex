@@ -83,12 +83,17 @@ public class MacroCode extends AbstractCode
     /**
      * This inner class provides the tokens of a macro as a token stream.
      */
-    private class MacroTokenStream implements TokenStream {
+    private static class MacroTokenStream implements TokenStream {
 
         /**
          * The field <tt>locator</tt> contains the locator.
          */
         private Locator locator;
+
+        /**
+         * The field <tt>name</tt> contains the name of the primitive.
+         */
+        private String name;
 
         /**
          * The field <tt>tokens</tt> contains the tokens.
@@ -100,12 +105,14 @@ public class MacroCode extends AbstractCode
          * 
          * @param tokens the tokens
          * @param locator the locator of the invocation
+         * @param name the name of the primitive
          */
-        public MacroTokenStream(Tokens tokens, Locator locator) {
+        public MacroTokenStream(Tokens tokens, Locator locator, String name) {
 
             super();
             this.tokens = tokens;
             this.locator = locator;
+            this.name = name;
         }
 
         /**
@@ -154,7 +161,7 @@ public class MacroCode extends AbstractCode
          */
         public Locator getLocator() {
 
-            Locator loc = new Locator(getName(), -1, null, -1);
+            Locator loc = new Locator(name, -1, null, -1);
             loc.setCause(locator);
             return loc;
         }
@@ -233,9 +240,14 @@ public class MacroCode extends AbstractCode
         @Override
         public String toString() {
 
-            return getName() + " -> " + locator.toString();
+            return name + " -> " + locator.toString();
         }
     }
+
+    /**
+     * The constant <tt>NO_TOKENS</tt> contains the empty tokens array.
+     */
+    private static final Tokens[] NO_TOKENS = new Tokens[0];
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -255,11 +267,6 @@ public class MacroCode extends AbstractCode
     private transient Logger logger;
 
     /**
-     * The field <tt>outerP</tt> contains the indicator for outer definitions.
-     */
-    private boolean outerP;
-
-    /**
      * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag.
      * This field indicates that no macros <tt>\par</tt> are allowed in macro
      * parameter values.
@@ -267,11 +274,37 @@ public class MacroCode extends AbstractCode
     private boolean notLong;
 
     /**
+     * The field <tt>outerP</tt> contains the indicator for outer definitions.
+     */
+    private boolean outerP;
+
+    /**
      * The field <tt>pattern</tt> contains the specification for the argument
      * matching. A value of <code>null</code> means that no argument are
      * expected.
      */
     private MacroPattern pattern;
+
+    /**
+     * The field <tt>TRACER</tt> contains the observer for the argument
+     * parsing.
+     */
+    private transient final ArgumentMatchingObserver TRACER =
+            new ArgumentMatchingObserver() {
+
+                public void observeArgument(int index, Tokens value,
+                        CodeToken cs) {
+
+                    // // see [TTP; 400]
+                    StringBuffer sb = new StringBuffer("#");
+                    sb.append(index + 1);
+                    sb.append("<-");
+                    sb.append(value.toText());
+                    sb.append('\n');
+                    logger.info(sb.toString());
+                }
+
+            };
 
     /**
      * Creates a new object.
@@ -295,6 +328,25 @@ public class MacroCode extends AbstractCode
         } else {
             this.pattern = pattern;
         }
+    }
+
+    /**
+     * Compare two patterns. This involves the treatment of <code>null</code>
+     * values which are equivalent to empty patterns.
+     * 
+     * @param p1 the first pattern
+     * @param p2 the second pattern
+     * 
+     * @return <code>true</code> iff the two patterns are equivalent
+     */
+    private boolean compare(MacroPattern p1, MacroPattern p2) {
+
+        if (p1 == null) {
+            return (p2 == null || p2.length() == 0);
+        } else if (p2 == null) {
+            return p1.length() == 0;
+        }
+        return p1.equals(p2);
     }
 
     /**
@@ -324,25 +376,6 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * Compare two patterns. This involves the treatment of <code>null</code>
-     * values which are equivalent to empty patterns.
-     * 
-     * @param p1 the first pattern
-     * @param p2 the second pattern
-     * 
-     * @return <code>true</code> iff the two patterns are equivalent
-     */
-    private boolean compare(MacroPattern p1, MacroPattern p2) {
-
-        if (p1 == null) {
-            return (p2 == null || p2.length() == 0);
-        } else if (p2 == null) {
-            return p1.length() == 0;
-        }
-        return p1.equals(p2);
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
@@ -352,32 +385,6 @@ public class MacroCode extends AbstractCode
 
         this.logger = logger;
     }
-
-    /**
-     * The field <tt>TRACER</tt> contains the observer for the argument
-     * parsing.
-     */
-    private final ArgumentMatchingObserver TRACER =
-            new ArgumentMatchingObserver() {
-
-                public void observeArgument(int index, Tokens value,
-                        CodeToken cs) {
-
-                    // // see [TTP; 400]
-                    StringBuffer sb = new StringBuffer("#");
-                    sb.append(index + 1);
-                    sb.append("<-");
-                    sb.append(value.toText());
-                    sb.append('\n');
-                    logger.info(sb.toString());
-                }
-
-            };
-
-    /**
-     * The constant <tt>NO_TOKENS</tt> contains the empty tokens array.
-     */
-    private static final Tokens[] NO_TOKENS = new Tokens[0];
 
     /**
      * {@inheritDoc}
@@ -435,7 +442,8 @@ public class MacroCode extends AbstractCode
             }
         }
 
-        source.addStream(new MacroTokenStream(toks, source.getLocator()));
+        source.addStream(new MacroTokenStream(toks, source.getLocator(),
+            getName()));
     }
 
     /**

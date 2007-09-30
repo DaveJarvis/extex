@@ -87,7 +87,8 @@ public class OmathcharTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="\omathchar"> Test case checking that
-     * <tt>\omathchar</tt> inserts ab appropriate character. </testcase>
+     * <tt>\omathchar</tt> inserts ab appropriate character in math mode.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -102,8 +103,8 @@ public class OmathcharTest extends AbstractMathTester {
     }
 
     // /**
-    // * <testcase primitive="\omathchar">
-    // * Test case checking that ...
+    // * <testcase primitive="\omathchar"> Test case checking that
+    // * <tt>\omathchar</tt> inserts ab appropriate character in display math mode.
     // * </testcase>
     // *
     // * @throws Exception in case of an error
@@ -119,8 +120,9 @@ public class OmathcharTest extends AbstractMathTester {
     // }
     //
     // /**
-    // * <testcase primitive="\omathchar">
-    // * Test case checking that ...
+    // * <testcase primitive="\omathchar"> Test case checking that
+    // * <tt>\omathchar</tt> inserts ab appropriate character in display math mode.
+    // * with extended codesyntax
     // * </testcase>
     // *
     // * @throws Exception in case of an error

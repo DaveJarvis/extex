@@ -23,15 +23,21 @@ import org.extex.test.NoFlagsButImmediatePrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\openin</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
+     * The constant <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     */
+    private static final String EMPTY_TEX =
+            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+
+    /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,43 +47,40 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public OpeninTest(String arg) {
 
-        super(arg, "openin", "1 develop/test/data/empty.tex ");
+        super(arg, "openin", "1 " + EMPTY_TEX + " ");
     }
 
     /**
-     * <testcase primitive="\openin">
-     *  Test case checking that a lonely <tt>\openin</tt> leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\openin"> Test case checking that a lonely
+     * <tt>\openin</tt> leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\openin ",
-                //--- log message ---
-                "Missing number, treated as zero");
+        assertFailure(// --- input code ---
+            "\\openin ",
+            // --- log message ---
+            "Missing number, treated as zero");
     }
 
     /**
-     * <testcase primitive="\openin">
-     *  Test case checking that a lonely <tt>\openin</tt> with an index
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\openin"> Test case checking that a lonely
+     * <tt>\openin</tt> with an index leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof2() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\openin 2",
-                //--- log message ---
-                "Unexpected end of file while processing \\openin");
+        assertFailure(// --- input code ---
+            "\\openin 2",
+            // --- log message ---
+            "Unexpected end of file while processing \\openin");
     }
 
 }
