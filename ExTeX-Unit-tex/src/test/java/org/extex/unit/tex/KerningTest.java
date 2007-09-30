@@ -20,10 +20,12 @@
 package org.extex.unit.tex;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the kerning.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4527 $
  */
@@ -31,16 +33,17 @@ public class KerningTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(KerningTest.class);
+        (new JUnitCore()).run(KerningTest.class);
     }
 
     /**
      * Constructor for KerningTest.
-     *
+     * 
      * @param arg the name
      */
     public KerningTest(String arg) {
@@ -49,45 +52,43 @@ public class KerningTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAVAV() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\font\\f=cmr10 \\f " + "AVA",
-                //--- output channel ---
-                "\\vbox(6.83331pt+0.0pt)x3000.0pt\n" //
-                        + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n" //
-                        + "..A\n" //
-                        + "..\\kern -1.11113pt\n" //
-                        + "..V\n" //
-                        + "..\\kern -1.11113pt\n" //
-                        + "..A\n");
+        // --- input code ---
+            "\\font\\f=cmr10 \\f " + "AVA",
+            // --- output channel ---
+            "\\vbox(6.83331pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n" //
+                    + "..A\n" //
+                    + "..\\kern -1.11113pt\n" //
+                    + "..V\n" //
+                    + "..\\kern -1.11113pt\n" //
+                    + "..A\n");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testXyz() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\font\\f=cmr10 \\f " + "xyz",
-                //--- output channel ---
-                "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n" //
-                        + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n" //
-                        + "..x\n" //
-                        + "..y\n" //
-                        + "..z\n");
+        // --- input code ---
+            "\\font\\f=cmr10 \\f " + "xyz",
+            // --- output channel ---
+            "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n" //
+                    + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n" //
+                    + "..x\n" //
+                    + "..y\n" //
+                    + "..z\n");
     }
 
 }

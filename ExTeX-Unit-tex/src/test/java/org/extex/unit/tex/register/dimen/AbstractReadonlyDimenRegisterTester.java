@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.dimen;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for read-only dimen registers.
@@ -84,6 +85,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorVerticalMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -100,6 +102,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorVerticalMode2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -115,6 +118,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorHorizonalMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -131,6 +135,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorHorizonalMode2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -147,6 +152,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorMathMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -162,6 +168,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorMathMode2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -178,6 +185,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDefaultValue1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -193,6 +201,7 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenAssignment1() throws Exception {
 
         assertSuccess(//--- input code ---

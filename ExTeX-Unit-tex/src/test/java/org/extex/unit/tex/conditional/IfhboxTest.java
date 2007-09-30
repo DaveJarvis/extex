@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\ifhbox</tt>.
  * 
@@ -34,7 +37,7 @@ public class IfhboxTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfhboxTest.class);
+        (new JUnitCore()).run(IfhboxTest.class);
     }
 
     /**
@@ -53,6 +56,7 @@ public class IfhboxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -68,6 +72,7 @@ public class IfhboxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -82,6 +87,7 @@ public class IfhboxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -97,6 +103,7 @@ public class IfhboxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---

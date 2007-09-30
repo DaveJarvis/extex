@@ -20,6 +20,7 @@
 package org.extex.unit.tex;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\ignorespaces</tt>.
@@ -36,7 +37,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IgnorespacesTest.class);
+        (new JUnitCore()).run(IgnorespacesTest.class);
     }
 
     /**

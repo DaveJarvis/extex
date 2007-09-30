@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\splitbotmark</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class SplitbotmarkTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SplitbotmarkTest.class);
+        (new JUnitCore()).run(SplitbotmarkTest.class);
     }
 
     /**
      * Constructor for SplitbotmarkTest.
-     *
+     * 
      * @param arg the name
      */
     public SplitbotmarkTest(String arg) {
@@ -48,6 +50,5 @@ public class SplitbotmarkTest extends NoFlagsPrimitiveTester {
         super(arg, "splitbotmark", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

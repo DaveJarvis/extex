@@ -20,10 +20,11 @@
 package org.extex.interpreter.primitives.file;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\inputfilename</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,17 +32,17 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(InputfilenameTest.class);
+        (new JUnitCore()).run(InputfilenameTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public InputfilenameTest(String arg) {

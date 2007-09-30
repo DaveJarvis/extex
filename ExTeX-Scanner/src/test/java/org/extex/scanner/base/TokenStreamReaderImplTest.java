@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.extex.scanner.api.TokenStream;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the string implementation of a token stream.
@@ -39,7 +40,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TokenStreamReaderImplTest.class);
+        (new JUnitCore()).run(TokenStreamReaderImplTest.class);
     }
 
     /**

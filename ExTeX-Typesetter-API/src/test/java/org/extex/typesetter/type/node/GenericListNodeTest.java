@@ -29,6 +29,7 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is the test suite for a horizontal list node.
@@ -174,7 +175,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GenericListNodeTest.class);
+        (new JUnitCore()).run(GenericListNodeTest.class);
     }
 
     /**
@@ -416,7 +417,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
     /**
      * Test method for
      * {@link org.extex.typesetter.type.node.HorizontalListNode#spreadWidth(
-     * org.extex.core.dimen.FixedDimen, org.extex.core.glue.FixedGlueComponent)}.
+     * org.extex.core.dimen.FixedDimen,
+     * org.extex.core.glue.FixedGlueComponent)}.
      */
     @Test
     public final void testSpreadWidth() {

@@ -24,9 +24,11 @@ import java.util.logging.LogRecord;
 
 import junit.framework.TestCase;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This class contains test cases for the log formatter.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -34,17 +36,17 @@ public class LogFormatterTest extends TestCase {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LogFormatterTest.class);
+        (new JUnitCore()).run(LogFormatterTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      */
     public LogFormatterTest(String name) {
@@ -53,10 +55,9 @@ public class LogFormatterTest extends TestCase {
     }
 
     /**
-     * <testcase class="LogFormatter">
-     *   Test case checking that a simple string comes through.
-     * <testcase>
-     *
+     * <testcase class="LogFormatter"> Test case checking that a simple string
+     * comes through. <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -68,10 +69,9 @@ public class LogFormatterTest extends TestCase {
     }
 
     /**
-     * <testcase class="LogFormatter">
-     *   Test case checking that a simple string comes through.
-     * <testcase>
-     *
+     * <testcase class="LogFormatter"> Test case checking that a simple string
+     * comes through. <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
@@ -84,10 +84,9 @@ public class LogFormatterTest extends TestCase {
     }
 
     /**
-     * <testcase class="LogFormatter">
-     *   Test case checking that a simple string comes through.
-     * <testcase>
-     *
+     * <testcase class="LogFormatter"> Test case checking that a simple string
+     * comes through. <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {

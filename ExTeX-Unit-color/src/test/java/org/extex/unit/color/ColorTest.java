@@ -19,11 +19,15 @@
 
 package org.extex.unit.color;
 
+import static org.junit.Assert.*;
+
 import org.extex.color.Color;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\color</tt>.
@@ -60,7 +64,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ColorTest.class);
+        (new JUnitCore()).run(ColorTest.class);
     }
 
     /**
@@ -80,6 +84,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -94,6 +99,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissing1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -108,6 +114,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissing2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -123,6 +130,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDefault1() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -146,6 +154,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDefault2() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -169,6 +178,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRgb1() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -192,6 +202,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRgb2() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -215,6 +226,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRgb3() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -238,6 +250,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGray1() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -260,6 +273,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGray2() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---
@@ -281,6 +295,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGray3() throws Exception {
 
         Interpreter interpreter = assertSuccess(// --- input code ---

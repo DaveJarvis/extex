@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.box;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite.
@@ -55,6 +56,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\dimen0=\\" + primitive, //
@@ -68,6 +70,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof3() throws Exception {
 
         assertFailure("\\the\\" + primitive, //
@@ -81,6 +84,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testAfterassignment1() throws Exception {
 
         assertSuccess(//
@@ -96,6 +100,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(//
@@ -110,6 +115,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testHbox1() throws Exception {
 
         assertSuccess(//
@@ -125,6 +131,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(//
@@ -139,6 +146,7 @@ public abstract class AbstractBoxDimenTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen1() throws Exception {
 
         assertSuccess(//
@@ -147,5 +155,4 @@ public abstract class AbstractBoxDimenTester
     }
 
     //TODO implement more primitive specific test cases
-
 }

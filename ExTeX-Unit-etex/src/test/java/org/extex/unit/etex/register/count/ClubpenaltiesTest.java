@@ -20,10 +20,11 @@
 package org.extex.unit.etex.register.count;
 
 import org.extex.test.count.AbstractCountArrayTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\clubpenalties</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ClubpenaltiesTest.class);
+        (new JUnitCore()).run(ClubpenaltiesTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ClubpenaltiesTest(String arg) {
@@ -49,6 +51,5 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
         setConfig("etex-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

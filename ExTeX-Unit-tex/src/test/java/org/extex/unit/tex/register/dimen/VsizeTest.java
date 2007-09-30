@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\vsize</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class VsizeTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VsizeTest.class);
+        (new JUnitCore()).run(VsizeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public VsizeTest(String arg) {
@@ -46,6 +49,5 @@ public class VsizeTest extends AbstractDimenRegisterTester {
         super(arg, "vsize", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

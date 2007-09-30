@@ -19,7 +19,8 @@
 
 package org.extex.engine.typesetter.page;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.junit.Test;
@@ -30,7 +31,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PageImplTest extends TestCase {
+public class PageImplTest {
 
     /**
      * <testcase> The default color is undefined. </testcase>

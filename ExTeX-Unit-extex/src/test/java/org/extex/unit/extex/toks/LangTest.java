@@ -20,10 +20,11 @@
 package org.extex.unit.extex.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lang</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class LangTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LangTest.class);
+        (new JUnitCore()).run(LangTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public LangTest(String arg) {
@@ -49,6 +51,5 @@ public class LangTest extends AbstractToksRegisterTester {
         setConfig("extex-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

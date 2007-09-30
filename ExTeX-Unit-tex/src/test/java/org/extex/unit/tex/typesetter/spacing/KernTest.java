@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\kern</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class KernTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(KernTest.class);
+        (new JUnitCore()).run(KernTest.class);
     }
 
     /**
      * Constructor for KernTest.
-     *
+     * 
      * @param arg the name
      */
     public KernTest(String arg) {
@@ -50,36 +53,35 @@ public class KernTest extends NoFlagsPrimitiveTester {
 
     /**
      * Test case checking that a missing dimen leads to an error.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "x\\kern ",
-                //--- log message ---
-                "Missing number, treated as zero");
+        assertFailure(// --- input code ---
+            "x\\kern ",
+            // --- log message ---
+            "Missing number, treated as zero");
     }
 
     /**
      * Test case checking that a correct value is produced.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testKern1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-                //--- input code ---
-                "x\\kern 123ptx"
-                + "\\end ",
-                //--- output channel ---
-                "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
-                + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n"
-                + "..x\n"
-                + "..\\kern123.0pt\n"
-                + "..x\n");
+        // --- input code ---
+            "x\\kern 123ptx" + "\\end ",
+            // --- output channel ---
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                    + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..x\n"
+                    + "..\\kern123.0pt\n" + "..x\n");
     }
 
-    //TODO implement primitive specific test cases
+    // TODO implement primitive specific test cases
 
 }

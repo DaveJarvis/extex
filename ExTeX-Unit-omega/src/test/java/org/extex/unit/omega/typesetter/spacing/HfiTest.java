@@ -20,6 +20,7 @@
 package org.extex.unit.omega.typesetter.spacing;
 
 import org.extex.unit.tex.typesetter.spacing.AbstractHfillTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\hfi</tt>.
@@ -36,7 +37,7 @@ public class HfiTest extends AbstractHfillTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HfiTest.class);
+        (new JUnitCore()).run(HfiTest.class);
     }
 
     /**
@@ -50,6 +51,5 @@ public class HfiTest extends AbstractHfillTester {
         setConfig("omega-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

@@ -22,6 +22,7 @@ package org.extex.unit.tex.info;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\jobname</tt>.
@@ -49,6 +50,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testJobname1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -64,6 +66,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testJobname2() throws Exception {
 
         Properties properties = System.getProperties();

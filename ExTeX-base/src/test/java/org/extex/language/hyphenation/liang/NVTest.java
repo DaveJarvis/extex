@@ -22,8 +22,6 @@ package org.extex.language.hyphenation.liang;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -38,6 +36,9 @@ import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.impl.NullFont;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is the test class for NV.
@@ -45,7 +46,7 @@ import org.extex.typesetter.tc.font.impl.NullFont;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
-public class NVTest extends TestCase {
+public class NVTest {
 
     /**
      * This is a mock implementation of a font.
@@ -247,7 +248,7 @@ public class NVTest extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.tc.font.impl.NullFont#setSkewChar(org.extex.core.UnicodeChar)
          */
         @Override
@@ -258,8 +259,9 @@ public class NVTest extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar, long)
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar,
+         *      long)
          */
         @Override
         public void setEfCode(UnicodeChar uc, long code) {
@@ -269,7 +271,7 @@ public class NVTest extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.tc.font.impl.NullFont#getEfCode(org.extex.core.UnicodeChar)
          */
         @Override
@@ -340,7 +342,7 @@ public class NVTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NVTest.class);
+        (new JUnitCore()).run(NVTest.class);
     }
 
     /**
@@ -372,10 +374,9 @@ public class NVTest extends TestCase {
      * 
      * @see junit.framework.TestCase#setUp()
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
-        super.setUp();
         font = new MockFont();
         // cnf = new CachingNodeFactory();
         // tokenFactory = new TokenFactoryImpl();
@@ -395,6 +396,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test00000000() throws Exception {
 
         //
@@ -405,6 +407,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+//    @Test
     // public void test1() throws Exception {
     //
     // NodeList list = new HorizontalListNode();
@@ -431,6 +434,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+//    @Test
     // public void test2() throws Exception {
     //
     // NodeList list = new HorizontalListNode();
@@ -457,6 +461,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+//    @Test
     // public void testDouble() throws Exception {
     //
     // NodeList list = new HorizontalListNode();
@@ -480,6 +485,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+//    @Test
     // public void testNone() throws Exception {
     //
     // NodeList list = new HorizontalListNode();
@@ -503,6 +509,7 @@ public class NVTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+//    @Test
     // public void testPre() throws Exception {
     //
     // NodeList list = new HorizontalListNode();

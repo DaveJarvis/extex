@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\boxmaxdepth</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class BoxmaxdepthTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BoxmaxdepthTest.class);
+        (new JUnitCore()).run(BoxmaxdepthTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public BoxmaxdepthTest(String arg) {
@@ -46,6 +49,5 @@ public class BoxmaxdepthTest extends AbstractDimenRegisterTester {
         super(arg, "boxmaxdepth", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

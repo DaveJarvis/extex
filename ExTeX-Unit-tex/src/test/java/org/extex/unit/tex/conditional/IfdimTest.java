@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\ifdim</tt>.
  * 
@@ -34,7 +37,7 @@ public class IfdimTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfdimTest.class);
+        (new JUnitCore()).run(IfdimTest.class);
     }
 
     /**
@@ -53,6 +56,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -67,6 +71,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -81,6 +86,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -95,6 +101,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -109,6 +116,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -123,6 +131,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -137,6 +146,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -151,6 +161,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -165,6 +176,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -179,6 +191,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -193,6 +206,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -207,6 +221,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -221,6 +236,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -235,6 +251,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -249,6 +266,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -263,6 +281,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -277,6 +296,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -291,6 +311,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -305,6 +326,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -319,6 +341,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -333,6 +356,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -347,6 +371,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess21() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -361,6 +386,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess22() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -375,6 +401,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLess23() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -389,6 +416,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals21() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -403,6 +431,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals22() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -417,6 +446,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEquals23() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -431,6 +461,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater21() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -445,6 +476,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater22() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -459,6 +491,7 @@ public class IfdimTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGreater23() throws Exception {
 
         assertSuccess(// --- input code ---

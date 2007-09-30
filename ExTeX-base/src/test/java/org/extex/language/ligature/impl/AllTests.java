@@ -22,9 +22,11 @@ package org.extex.language.ligature.impl;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Test cases for the ligature builder.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -40,25 +42,27 @@ public final class AllTests {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(suite());
+        (new JUnitCore()).run(suite());
     }
 
     /**
      * Combines all test in this package into one suite.
-     *
+     * 
      * @return the suite
      */
     public static Test suite() {
 
-        TestSuite suite = new TestSuite("Test for org.extex.typesetter.ligatureBuilder.impl");
-        //$JUnit-BEGIN$
-        suite.addTestSuite(LigatureBuilderImplTest.class);
-        //$JUnit-END$
+        TestSuite suite =
+                new TestSuite(
+                    "Test for org.extex.typesetter.ligatureBuilder.impl");
+        // $JUnit-BEGIN$
+//        suite.addTest(LigatureBuilderImplTest.class);
+        // $JUnit-END$
         return suite;
     }
 }

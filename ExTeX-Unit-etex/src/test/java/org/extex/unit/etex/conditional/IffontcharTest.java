@@ -20,6 +20,8 @@
 package org.extex.unit.etex.conditional;
 
 import org.extex.unit.tex.conditional.ConditionalTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\iffontchar</tt>.
@@ -36,7 +38,7 @@ public class IffontcharTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IffontcharTest.class);
+        (new JUnitCore()).run(IffontcharTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -70,6 +73,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -85,6 +89,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -100,6 +105,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -115,6 +121,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError5() throws Exception {
 
         assertFailure(// --- input code ---
@@ -130,6 +137,7 @@ public class IffontcharTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -139,5 +147,4 @@ public class IffontcharTest extends ConditionalTester {
     }
 
     // TODO implement more primitive specific test cases
-
 }

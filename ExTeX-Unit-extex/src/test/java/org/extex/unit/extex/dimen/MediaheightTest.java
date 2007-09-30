@@ -20,10 +20,11 @@
 package org.extex.unit.extex.dimen;
 
 import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\mediaheight</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +32,17 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MediaheightTest.class);
+        (new JUnitCore()).run(MediaheightTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MediaheightTest(String arg) {
@@ -49,6 +51,5 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
         setConfig("extex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

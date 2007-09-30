@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\abovedisplayshortskip</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class AbovedisplayshortskipTest extends AbstractSkipRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AbovedisplayshortskipTest.class);
+        (new JUnitCore()).run(AbovedisplayshortskipTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public AbovedisplayshortskipTest(String arg) {
@@ -46,6 +49,5 @@ public class AbovedisplayshortskipTest extends AbstractSkipRegisterTester {
         super(arg, "abovedisplayshortskip", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

@@ -38,10 +38,12 @@ import org.extex.typesetter.tc.TypesettingContextFactory;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * ...
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -49,7 +51,7 @@ public class ParagraphBuilderImplTest extends TestCase {
 
     /**
      * Inner class for the typesetter options.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -57,11 +59,11 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for a count register.
-         *
+         * 
          * @param name the name of the register
-         *
+         * 
          * @return the content of the count register
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
          */
         public FixedCount getCountOption(String name) {
@@ -82,11 +84,11 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for a dimen register.
-         *
+         * 
          * @param name the name of the register
-         *
+         * 
          * @return the content of the dimen register
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
          */
         public FixedDimen getDimenOption(String name) {
@@ -99,11 +101,11 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for a current font register.
-         *
+         * 
          * @param name the name or the number of the register
-         *
+         * 
          * @return the named font register or <code>null</code> if none is set
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getFont(
          *      java.lang.String)
          */
@@ -114,11 +116,11 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for a glue register.
-         *
+         * 
          * @param name the name of the register
-         *
+         * 
          * @return the content of the glue register
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
          *      java.lang.String)
          */
@@ -131,13 +133,13 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * Getter for the lccode mapping of upper case characters to their
-         * lower case equivalent.
-         *
+         * Getter for the lccode mapping of upper case characters to their lower
+         * case equivalent.
+         * 
          * @param uc the upper case character
-         *
+         * 
          * @return the lower case equivalent or null if none exists
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getLccode(
          *      org.extex.core.UnicodeChar)
          */
@@ -148,9 +150,9 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for the current name space.
-         *
+         * 
          * @return the current name space
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getNamespace()
          */
         public String getNamespace() {
@@ -160,10 +162,10 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for the paragraph shape.
-         *
-         * @return the paragraph shape or <code>null</code> if no special shape
-         *   is present
-         *
+         * 
+         * @return the paragraph shape or <code>null</code> if no special
+         *         shape is present
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getParshape()
          */
         public ParagraphShape getParshape() {
@@ -172,11 +174,11 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * Getter for the token factory. The token factory can be used to get new
-         * tokens of some kind.
-         *
+         * Getter for the token factory. The token factory can be used to get
+         * new tokens of some kind.
+         * 
          * @return the token factory
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTokenFactory()
          */
         public TokenFactory getTokenFactory() {
@@ -186,9 +188,9 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for the typesetting context.
-         *
+         * 
          * @return the typesetting context
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTypesettingContext()
          */
         public TypesettingContext getTypesettingContext() {
@@ -198,9 +200,9 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for the typesetting context factory.
-         *
+         * 
          * @return the typesetting context factory
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
          */
         public TypesettingContextFactory getTypesettingContextFactory() {
@@ -210,9 +212,9 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Setter for the paragraph shape.
-         *
+         * 
          * @param shape the new paragraph shape
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#setParshape(
          *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
@@ -223,8 +225,9 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String, long)
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String,
+         *      long)
          */
         public void setCountOption(String name, long value) {
 
@@ -233,11 +236,11 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * Getter for a muskip register.
-         *
+         * 
          * @param name the name of the register
-         *
+         * 
          * @return the muskip register value
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
          */
         public Muskip getMuskip(String name) {
@@ -249,18 +252,20 @@ public class ParagraphBuilderImplTest extends TestCase {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ParagraphBuilderImplTest.class);
+        (new JUnitCore()).run(ParagraphBuilderImplTest.class);
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         ParagraphBuilder builder = new ParagraphBuilderImpl();

@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.paragraph;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\noindent</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class NoindentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NoindentTest.class);
+        (new JUnitCore()).run(NoindentTest.class);
     }
 
     /**
      * Constructor for NoindentTest.
-     *
+     * 
      * @param arg the name
      */
     public NoindentTest(String arg) {
@@ -48,6 +50,5 @@ public class NoindentTest extends NoFlagsPrimitiveTester {
         super(arg, "noindent", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

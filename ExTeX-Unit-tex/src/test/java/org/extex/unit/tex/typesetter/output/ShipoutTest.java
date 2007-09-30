@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.output;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\shipout</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ShipoutTest.class);
+        (new JUnitCore()).run(ShipoutTest.class);
     }
 
     /**
      * Constructor for ShipoutTest.
-     *
+     * 
      * @param arg the name
      */
     public ShipoutTest(String arg) {
@@ -49,35 +52,34 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\shipout">
-     *  Test case showing that a void box is simply ignored.
-     * </testcase>
-     *
+     * <testcase primitive="\shipout"> Test case showing that a void box is
+     * simply ignored. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\shipout\\box0 \\end",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\shipout\\box0 \\end",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\shipout">
-     *  Test case showing that an empty box is shipped.
-     * </testcase>
-     *
+     * <testcase primitive="\shipout"> Test case showing that an empty box is
+     * shipped. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\shipout\\hbox{} \\end",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\shipout\\hbox{} \\end",
+            // --- output channel ---
+            "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

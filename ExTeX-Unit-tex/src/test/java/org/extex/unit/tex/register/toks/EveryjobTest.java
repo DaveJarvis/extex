@@ -20,10 +20,11 @@
 package org.extex.unit.tex.register.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\everyjob</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class EveryjobTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EveryjobTest.class);
+        (new JUnitCore()).run(EveryjobTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EveryjobTest(String arg) {
@@ -48,6 +50,5 @@ public class EveryjobTest extends AbstractToksRegisterTester {
         super(arg, "everyjob", "", "");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

@@ -19,9 +19,13 @@
 
 package org.extex.unit.tex.interaction;
 
+import static org.junit.Assert.assertEquals;
+
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\scrollmode</tt>.
@@ -38,7 +42,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ScrollmodeTest.class);
+        (new JUnitCore()).run(ScrollmodeTest.class);
     }
 
     /**
@@ -58,6 +62,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         Interpreter interpreter = assertSuccess(//--- input code ---
@@ -75,6 +80,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Interpreter interpreter = assertSuccess(//--- input code ---

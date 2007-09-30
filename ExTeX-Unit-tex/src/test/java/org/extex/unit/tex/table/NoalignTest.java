@@ -20,10 +20,12 @@
 package org.extex.unit.tex.table;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\noalign</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class NoalignTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NoalignTest.class);
+        (new JUnitCore()).run(NoalignTest.class);
     }
 
     /**
      * Constructor for NoalignTest.
-     *
+     * 
      * @param arg the name
      */
     public NoalignTest(String arg) {
@@ -49,19 +52,18 @@ public class NoalignTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\noalign">
-     *  Test case checking that <tt>\noalign</tt> needs to be used in a
-     *  tabulating context.
-     * </testcase>
-     *
+     * <testcase primitive="\noalign"> Test case checking that <tt>\noalign</tt>
+     * needs to be used in a tabulating context. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLonelyCr() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\noalign" + "\\end ",
-                //--- log message ---
-                "Misplaced \\noalign");
+        assertFailure(// --- input code ---
+            "\\noalign" + "\\end ",
+            // --- log message ---
+            "Misplaced \\noalign");
     }
 
 }

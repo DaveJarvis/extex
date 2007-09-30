@@ -20,6 +20,7 @@
 package org.extex.test.count;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing count registers. It provides some
@@ -112,6 +113,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(
@@ -127,6 +129,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterLongPrefix1() throws Exception {
 
         assertFailure(
@@ -142,6 +145,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterOuterPrefix1() throws Exception {
 
         assertFailure(
@@ -157,6 +161,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -169,6 +174,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -181,6 +187,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -193,6 +200,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterShowthe1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -205,6 +213,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterShowthe1b() throws Exception {
 
         assertOutput(// --- input code ---
@@ -217,6 +226,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterShowthe1c() throws Exception {
 
         assertOutput(// --- input code ---
@@ -229,6 +239,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1() throws Exception {
 
         assertSuccess(
@@ -243,6 +254,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -256,6 +268,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -269,6 +282,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2() throws Exception {
 
         assertSuccess(
@@ -283,6 +297,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -296,6 +311,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -309,6 +325,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -322,6 +339,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -335,6 +353,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -348,6 +367,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4() throws Exception {
 
         assertSuccess(
@@ -362,6 +382,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -375,6 +396,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -388,6 +410,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign5() throws Exception {
 
         assertSuccess(
@@ -403,6 +426,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign5b() throws Exception {
 
         assertSuccess(
@@ -418,6 +442,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign5c() throws Exception {
 
         assertSuccess(
@@ -433,6 +458,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -446,6 +472,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -459,6 +486,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -472,6 +500,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -485,6 +514,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -498,6 +528,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -511,6 +542,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -524,6 +556,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -537,6 +570,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -550,6 +584,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -563,6 +598,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1b() throws Exception {
 
         assertSuccess(
@@ -578,6 +614,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1c() throws Exception {
 
         assertSuccess(
@@ -593,6 +630,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -606,6 +644,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2b() throws Exception {
 
         assertSuccess(
@@ -621,6 +660,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2c() throws Exception {
 
         assertSuccess(
@@ -636,6 +676,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -649,6 +690,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -662,6 +704,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -675,6 +718,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -688,6 +732,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance2b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -702,6 +747,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance2c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -716,6 +762,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -729,6 +776,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance3b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -742,6 +790,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance3c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -755,6 +804,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -769,6 +819,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -783,6 +834,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance4c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -797,6 +849,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance5() throws Exception {
 
         assertSuccess(
@@ -812,6 +865,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance5b() throws Exception {
 
         assertSuccess(
@@ -827,6 +881,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance5c() throws Exception {
 
         assertSuccess(
@@ -842,6 +897,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -856,6 +912,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment2b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -870,6 +927,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment2c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -884,6 +942,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup2() throws Exception {
 
         assertSuccess(
@@ -899,6 +958,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup2b() throws Exception {
 
         assertSuccess(
@@ -914,6 +974,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup2c() throws Exception {
 
         assertSuccess(
@@ -929,6 +990,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply0() throws Exception {
 
         assertSuccess(
@@ -943,6 +1005,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply0b() throws Exception {
 
         assertSuccess(
@@ -957,6 +1020,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply0c() throws Exception {
 
         assertSuccess(
@@ -971,6 +1035,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -984,6 +1049,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -997,6 +1063,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1010,6 +1077,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1023,6 +1091,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply2b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1037,6 +1106,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply2c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1051,6 +1121,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1064,6 +1135,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply3b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1077,6 +1149,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply3c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1090,6 +1163,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1104,6 +1178,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1118,6 +1193,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply4c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1132,6 +1208,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1146,6 +1223,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply5b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1161,6 +1239,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply5c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1176,6 +1255,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1190,6 +1270,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment3b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1204,6 +1285,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment3c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1218,6 +1300,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup3() throws Exception {
 
         assertSuccess(
@@ -1233,6 +1316,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup3b() throws Exception {
 
         assertSuccess(
@@ -1248,6 +1332,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup3c() throws Exception {
 
         assertSuccess(
@@ -1263,6 +1348,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide0() throws Exception {
 
         assertFailure(
@@ -1278,6 +1364,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide0b() throws Exception {
 
         assertFailure(
@@ -1293,6 +1380,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide0c() throws Exception {
 
         assertFailure(
@@ -1308,6 +1396,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1321,6 +1410,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1334,6 +1424,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide1c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1347,6 +1438,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1360,6 +1452,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide2b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1373,6 +1466,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide2c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1386,6 +1480,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1399,6 +1494,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide3b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1412,6 +1508,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide3c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1425,6 +1522,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1439,6 +1537,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1453,6 +1552,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide4c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1467,6 +1567,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1481,6 +1582,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide5b() throws Exception {
 
         assertSuccess(
@@ -1497,6 +1599,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide5c() throws Exception {
 
         assertSuccess(
@@ -1513,6 +1616,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide7() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1526,6 +1630,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide7b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1539,6 +1644,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide7c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1552,6 +1658,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1565,6 +1672,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1578,6 +1686,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment4c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1591,6 +1700,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1604,6 +1714,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide6b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1618,6 +1729,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide6c() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1631,6 +1743,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1644,6 +1757,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup4b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -1657,6 +1771,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup4c() throws Exception {
 
         assertSuccess(// --- input code ---

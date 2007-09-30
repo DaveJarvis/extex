@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>&#x5c;unhcopy</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class UnhcopyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UnhcopyTest.class);
+        (new JUnitCore()).run(UnhcopyTest.class);
     }
 
     /**
      * Constructor for UnhcopyTest.
-     *
+     * 
      * @param arg the name
      */
     public UnhcopyTest(String arg) {
@@ -48,6 +50,5 @@ public class UnhcopyTest extends NoFlagsPrimitiveTester {
         super(arg, "unhcopy", "42 ");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

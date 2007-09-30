@@ -20,6 +20,8 @@
 package org.extex.unit.etex.conditional.analyze;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\currentiflevel</tt>.
@@ -36,7 +38,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CurrentiflevelTest.class);
+        (new JUnitCore()).run(CurrentiflevelTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -70,6 +73,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -84,6 +88,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -98,6 +103,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---

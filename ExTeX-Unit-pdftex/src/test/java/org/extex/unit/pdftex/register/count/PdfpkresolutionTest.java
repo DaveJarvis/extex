@@ -20,10 +20,11 @@
 package org.extex.unit.pdftex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\pdfpkresolution</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class PdfpkresolutionTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PdfpkresolutionTest.class);
+        (new JUnitCore()).run(PdfpkresolutionTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfpkresolutionTest(String arg) {
@@ -49,6 +51,5 @@ public class PdfpkresolutionTest extends AbstractCountRegisterTester {
         setConfig("pdftex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

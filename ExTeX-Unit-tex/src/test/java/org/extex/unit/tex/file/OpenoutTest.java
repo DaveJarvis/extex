@@ -19,9 +19,13 @@
 
 package org.extex.unit.tex.file;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.extex.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\openout</tt>.
@@ -38,7 +42,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OpenoutTest.class);
+        (new JUnitCore()).run(OpenoutTest.class);
     }
 
     /**
@@ -57,6 +61,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -71,6 +76,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -85,6 +91,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         String enc = System.setProperty("extex.encoding", "uuu");
@@ -112,6 +119,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         String enc = System.setProperty("extex.encoding", "uuu");
@@ -138,6 +146,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         String enc = System.setProperty("extex.encoding", "UTF-8");
@@ -165,6 +174,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         String enc = System.setProperty("extex.encoding", "UTF-8");

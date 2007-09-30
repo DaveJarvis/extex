@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\meaning</tt>.
@@ -46,6 +47,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -76,6 +79,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOther1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -92,6 +96,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLeft1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -108,6 +113,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testRight1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -124,6 +130,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMath1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -140,6 +147,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTab1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -156,6 +164,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testHash1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -172,6 +181,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuper1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -188,6 +198,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSub1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -204,6 +215,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testActive1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -220,6 +232,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testActive2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -237,6 +250,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testActive3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -254,6 +268,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -269,6 +284,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -284,6 +300,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -300,6 +317,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro0() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -316,6 +334,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -332,6 +351,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -348,6 +368,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testRegister1() throws Exception {
 
         assertSuccess(//--- input code ---

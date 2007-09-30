@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.symbol;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is an abstract tester for a symbol primitive.
@@ -46,6 +47,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(
@@ -61,6 +63,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(
@@ -77,6 +80,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testChardef1() throws Exception {
 
         assertSuccess(
@@ -93,6 +97,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLet1() throws Exception {
 
         assertSuccess(
@@ -109,6 +114,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBraces1() throws Exception {
 
         assertSuccess(

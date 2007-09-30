@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\newlinechar</tt>.
@@ -35,7 +36,7 @@ public class NewlinecharTest extends AbstractCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NewlinecharTest.class);
+        (new JUnitCore()).run(NewlinecharTest.class);
     }
 
     /**
@@ -49,5 +50,4 @@ public class NewlinecharTest extends AbstractCountRegisterTester {
     }
 
     //TODO implement the primitive specific test cases
-
 }

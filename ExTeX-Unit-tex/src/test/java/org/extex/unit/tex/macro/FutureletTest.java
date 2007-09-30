@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\futurelet</tt>.
@@ -45,6 +46,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -60,6 +62,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -75,6 +78,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -90,6 +94,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -104,6 +109,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -118,6 +124,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -132,6 +139,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobalErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -146,6 +154,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -160,6 +169,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(

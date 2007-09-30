@@ -23,10 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\year</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -34,7 +35,7 @@ public class YearTest extends AbstractCountRegisterTester {
 
     /**
      * Provide the current year as default value for the comparison.
-     *
+     * 
      * @return the current year as string
      */
     private static String getDefaultValue() {
@@ -44,16 +45,17 @@ public class YearTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(YearTest.class);
+        (new JUnitCore()).run(YearTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public YearTest(String arg) {

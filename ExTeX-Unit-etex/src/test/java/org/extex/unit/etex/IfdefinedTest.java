@@ -19,12 +19,16 @@
 
 package org.extex.unit.etex;
 
-import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+import de.dante.tex.TestTeX;
 
 /**
  * Test for the primitive \currentgrouplevel.
- *
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
@@ -32,20 +36,21 @@ public class IfdefinedTest extends TestCase {
 
     /**
      * main
-     * @param  args command line args
+     * 
+     * @param args command line args
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfdefinedTest.class);
+        (new JUnitCore()).run(IfdefinedTest.class);
     }
 
     /**
      * Test the primitive \ifdefined.
-     *
+     * 
      * @throws Exception in case of an error
      */
-    public void testIfdefined()
-        throws Exception {
+    @Test
+    public void testIfdefined() throws Exception {
 
         TestTeX.test("juifdefined", "ExTeX-Unit-etex", "etex");
     }

@@ -45,6 +45,7 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
+import org.junit.runner.JUnitCore;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.
@@ -114,7 +115,7 @@ public class DviDocumentWriterTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DviDocumentWriterTest.class);
+        (new JUnitCore()).run(DviDocumentWriterTest.class);
     }
 
     /**

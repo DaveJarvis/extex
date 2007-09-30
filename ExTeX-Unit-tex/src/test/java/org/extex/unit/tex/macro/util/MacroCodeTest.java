@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro.util;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the macro code defined with the primitive
@@ -46,6 +47,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -60,6 +62,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -74,6 +77,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -89,6 +93,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -104,6 +109,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -119,6 +125,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -133,6 +140,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -147,6 +155,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -161,6 +170,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -175,6 +185,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -189,6 +200,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -203,6 +215,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError5() throws Exception {
 
         assertFailure(// --- input code ---
@@ -217,6 +230,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError6() throws Exception {
 
         assertFailure(// --- input code ---
@@ -231,6 +245,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -246,6 +261,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertOutput(// --- input code ---
@@ -262,6 +278,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertOutput(// --- input code ---
@@ -279,6 +296,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertFailure(// --- input code ---
@@ -293,6 +311,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test14() throws Exception {
 
         assertFailure(// --- input code ---
@@ -307,6 +326,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test15() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -321,6 +341,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test16() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -336,6 +357,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -353,6 +375,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -370,6 +393,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -387,6 +411,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -404,6 +429,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -421,6 +447,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow6() throws Exception {
 
         assertOutput(// --- input code ---
@@ -437,6 +464,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow7() throws Exception {
 
         assertOutput(// --- input code ---
@@ -453,6 +481,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow8() throws Exception {
 
         assertOutput(// --- input code ---
@@ -470,6 +499,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow9() throws Exception {
 
         assertOutput(// --- input code ---
@@ -487,6 +517,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow10() throws Exception {
 
         assertOutput(// --- input code ---
@@ -504,6 +535,7 @@ public class MacroCodeTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShow11() throws Exception {
 
         assertOutput(// --- input code ---

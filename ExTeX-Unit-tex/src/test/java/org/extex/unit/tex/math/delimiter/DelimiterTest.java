@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\delimiter</tt>.
@@ -45,6 +46,7 @@ public class DelimiterTest extends AbstractMathTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),

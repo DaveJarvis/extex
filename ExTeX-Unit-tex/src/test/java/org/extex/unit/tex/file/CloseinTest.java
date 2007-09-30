@@ -20,10 +20,12 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\closein</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CloseinTest.class);
+        (new JUnitCore()).run(CloseinTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public CloseinTest(String arg) {
@@ -50,19 +52,18 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\closein">
-     *  Test case checking that a <tt>\closein</tt> works on unopened file
-     *  handles.
-     * </testcase>
-     *
+     * <testcase primitive="\closein"> Test case checking that a
+     * <tt>\closein</tt> works on unopened file handles. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\closein 1",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\closein 1",
+            // --- output channel ---
+            "");
     }
 
 }

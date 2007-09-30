@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\hskip</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class HskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HskipTest.class);
+        (new JUnitCore()).run(HskipTest.class);
     }
 
     /**
      * Constructor for HskipTest.
-     *
+     * 
      * @param arg the name
      */
     public HskipTest(String arg) {
@@ -49,64 +52,64 @@ public class HskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hskip">
-     *  Test case checking that a lonely <tt>\hskip</tt> is discarded.
-     * </testcase>
-     *
+     * <testcase primitive="\hskip"> Test case checking that a lonely
+     * <tt>\hskip</tt> is discarded. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\hskip 123pt\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
-                + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
+        // --- input code ---
+            "\\hskip 123pt\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
     }
 
     /**
-     * <testcase primitive="\hskip">
-     *  Test case checking that <tt>\hskip</tt> switches to horizontal mode and
-     *  inserts a glue node with the appropriate value.
-     * </testcase>
-     *
+     * <testcase primitive="\hskip"> Test case checking that <tt>\hskip</tt>
+     * switches to horizontal mode and inserts a glue node with the appropriate
+     * value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "x\\hskip 123pt x\\end ",
-                //--- output channel ---
-                "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                "..x\n" + //
-                "..\\glue123.0pt\n" + //
-                "..x\n");
+        // --- input code ---
+            "x\\hskip 123pt x\\end ",
+            // --- output channel ---
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    "..x\n" + //
+                    "..\\glue123.0pt\n" + //
+                    "..x\n");
     }
 
     /**
-     * <testcase primitive="\hskip">
-     *  Test case checking that <tt>\hskip</tt> switches to horizontal mode and
-     *  inserts a glue node with the appropriate value.
-     * </testcase>
-     *
+     * <testcase primitive="\hskip"> Test case checking that <tt>\hskip</tt>
+     * switches to horizontal mode and inserts a glue node with the appropriate
+     * value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "x\\hskip 123pt plus 1.2fil x\\end ",
-                //--- output channel ---
-                "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                "..x\n" + //
-                "..\\glue123.0pt plus 1.2fil\n" + //
-                "..x\n");
+        // --- input code ---
+            "x\\hskip 123pt plus 1.2fil x\\end ",
+            // --- output channel ---
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    "..x\n" + //
+                    "..\\glue123.0pt plus 1.2fil\n" + //
+                    "..x\n");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

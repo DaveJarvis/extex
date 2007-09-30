@@ -20,10 +20,12 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsButImmediatePrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\closeout</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CloseoutTest.class);
+        (new JUnitCore()).run(CloseoutTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public CloseoutTest(String arg) {
@@ -50,35 +52,33 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\closeout">
-     *  Test case checking that a <tt>\closeout</tt> works on unopened file
-     *  handles.
-     * </testcase>
-     *
+     * <testcase primitive="\closeout"> Test case checking that a
+     * <tt>\closeout</tt> works on unopened file handles. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\closeout1\\end",
-                //--- output channel ---
-                "\n");
+        assertSuccess(// --- input code ---
+            "\\closeout1\\end",
+            // --- output channel ---
+            "\n");
     }
 
     /**
-     * <testcase primitive="\closeout">
-     *  Test case checking that a <tt>\closeout</tt> works on unopened file
-     *  handles.
-     * </testcase>
-     *
+     * <testcase primitive="\closeout"> Test case checking that a
+     * <tt>\closeout</tt> works on unopened file handles. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\immediate\\closeout1\\end",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\immediate\\closeout1\\end",
+            // --- output channel ---
+            "");
     }
 
 }

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.dimen;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing dimen registers.
@@ -93,6 +94,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -110,6 +112,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterLongPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -128,6 +131,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterNoSkip1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -144,6 +148,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterOuterPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -162,6 +167,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDefault1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -177,6 +183,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenShowthe1() throws Exception {
 
         assertOutput(//--- input code ---
@@ -194,6 +201,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -211,6 +219,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -228,6 +237,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAssign3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -245,6 +255,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAssign4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -262,6 +273,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAssign5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -279,6 +291,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAfterassignment1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -295,6 +308,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterConvertible1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -311,6 +325,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterConvertible2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -327,6 +342,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGroup1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -344,6 +360,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -362,6 +379,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -379,6 +397,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAdvance1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -397,6 +416,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAdvance2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -414,6 +434,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAdvance3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -432,6 +453,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAdvance4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -450,6 +472,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAdvance5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -467,6 +490,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAfterassignment2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -484,6 +508,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGroup2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -501,6 +526,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply0() throws Exception {
 
         assertSuccess(
@@ -518,6 +544,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -536,6 +563,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -553,6 +581,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -571,6 +600,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -589,6 +619,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterMultiply5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -606,6 +637,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAfterassignment3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -623,6 +655,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGroup3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -640,6 +673,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide0() throws Exception {
 
         assertFailure(
@@ -657,6 +691,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -675,6 +710,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -692,6 +728,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -710,6 +747,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -728,6 +766,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -745,6 +784,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterAfterassignment4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -762,6 +802,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterDivide6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -779,6 +820,7 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterGroup4() throws Exception {
 
         assertSuccess(

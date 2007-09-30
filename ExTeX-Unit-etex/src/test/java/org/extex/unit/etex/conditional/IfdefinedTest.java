@@ -20,6 +20,8 @@
 package org.extex.unit.etex.conditional;
 
 import org.extex.unit.tex.conditional.ConditionalTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\ifdefined</tt>.
@@ -36,7 +38,7 @@ public class IfdefinedTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfdefinedTest.class);
+        (new JUnitCore()).run(IfdefinedTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class IfdefinedTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -70,6 +73,7 @@ public class IfdefinedTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -85,6 +89,7 @@ public class IfdefinedTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -100,6 +105,7 @@ public class IfdefinedTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(

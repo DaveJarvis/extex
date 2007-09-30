@@ -19,7 +19,10 @@
 
 package org.extex.unit.dynamic.java;
 
+import static org.junit.Assert.assertTrue;
+
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\javaload</tt>.
@@ -51,6 +54,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -66,6 +70,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -82,6 +87,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(

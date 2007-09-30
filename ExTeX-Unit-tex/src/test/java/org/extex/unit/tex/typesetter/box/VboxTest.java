@@ -21,6 +21,7 @@ package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vbox</tt>.
@@ -37,7 +38,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VboxTest.class);
+        (new JUnitCore()).run(VboxTest.class);
     }
 
     /**

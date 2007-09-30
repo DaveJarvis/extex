@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for math.
@@ -45,6 +46,7 @@ public class MathTest extends ExTeXLauncher {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathError1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -59,6 +61,7 @@ public class MathTest extends ExTeXLauncher {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testMath1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -73,6 +76,7 @@ public class MathTest extends ExTeXLauncher {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubscript1() throws Exception {
 
         assertSuccess(
@@ -95,6 +99,7 @@ public class MathTest extends ExTeXLauncher {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperscript1() throws Exception {
 
         assertSuccess(

@@ -19,9 +19,12 @@
 
 package org.extex.backend.util;
 
-import org.extex.backend.documentWriter.util.PageManager;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import junit.framework.TestCase;
+import org.extex.backend.documentWriter.util.PageManager;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class contains a test suite for the PageManager.
@@ -29,7 +32,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
-public class PageManagerTest extends TestCase {
+public class PageManagerTest {
 
     /**
      * Command line interface for the tests.
@@ -38,7 +41,7 @@ public class PageManagerTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PageManagerTest.class);
+        (new JUnitCore()).run(PageManagerTest.class);
     }
 
     /**
@@ -69,6 +72,7 @@ public class PageManagerTest extends TestCase {
      *  Check that initially all pages are accepted.
      * </testcase>
      */
+    @Test
     public void testInit() {
 
         run("____________________", null);
@@ -79,6 +83,7 @@ public class PageManagerTest extends TestCase {
      *  Check that no pages are accepted for the empty specification.
      * </testcase>
      */
+    @Test
     public void testEmpty() {
 
         run("01234567890123456789", "");
@@ -89,69 +94,77 @@ public class PageManagerTest extends TestCase {
      *  Check that no pages are accepted for the empty specification.
      * </testcase>
      */
+    @Test
     public void testSpace() {
 
         run("01234567890123456789", " ");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test1() {
 
         run("0_234567890123456789", "1");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test2() {
 
         run("01_34567890123456789", "2");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test3() {
 
         run("0_2_4567890123456789", "1,3");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test4() {
 
         run("___34567890123456789", "-2");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test5() {
 
         run("012345678901________", "12-");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test10() {
 
         run("0_2_4567_____3456789", "1,3,8-12");
     }
 
     /**
-     * <testcase>
+     * <testcase> ...
      * </testcase>
      */
+    @Test
     public void test11() {
 
         run("0____________3456789", "1-9,8-12");

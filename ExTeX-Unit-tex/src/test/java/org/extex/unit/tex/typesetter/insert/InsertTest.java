@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.insert;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\insert</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class InsertTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(InsertTest.class);
+        (new JUnitCore()).run(InsertTest.class);
     }
 
     /**
      * Constructor for InsertTest.
-     *
+     * 
      * @param arg the name
      */
     public InsertTest(String arg) {
@@ -48,6 +50,5 @@ public class InsertTest extends NoFlagsPrimitiveTester {
         super(arg, "insert", "42{abc}");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.exception.ScannerException;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the string implementation of a token stream.
@@ -45,7 +46,7 @@ public class TokenStreamStreamImplBufferedTest
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TokenStreamStreamImplBufferedTest.class);
+        (new JUnitCore()).run(TokenStreamStreamImplBufferedTest.class);
     }
 
     /**

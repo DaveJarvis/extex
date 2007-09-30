@@ -22,24 +22,25 @@ package org.extex.unit.tex.register.count;
 import java.util.Calendar;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\time</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class TimeTest extends AbstractCountRegisterTester {
 
     /**
-     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes per
-     * hour.
+     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes
+     * per hour.
      */
     private static final int MINUTES_PER_HOUR = 60;
 
     /**
      * Provide the current time as default value for the comparison.
-     *
+     * 
      * @return the current time as string
      */
     private static String getDefaultValue() {
@@ -51,16 +52,17 @@ public class TimeTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TimeTest.class);
+        (new JUnitCore()).run(TimeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public TimeTest(String arg) {

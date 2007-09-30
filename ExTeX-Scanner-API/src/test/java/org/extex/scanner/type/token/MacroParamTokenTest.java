@@ -22,6 +22,7 @@ package org.extex.scanner.type.token;
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Tests for the macro parameter tokens.
@@ -46,7 +47,7 @@ public class MacroParamTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LeftBraceTokenTest.class);
+        (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
     /**

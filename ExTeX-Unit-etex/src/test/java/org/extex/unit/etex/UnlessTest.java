@@ -19,12 +19,16 @@
 
 package org.extex.unit.etex;
 
-import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+import de.dante.tex.TestTeX;
 
 /**
  * Test for the primitive &#5c;unless.
- *
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
@@ -32,20 +36,21 @@ public class UnlessTest extends TestCase {
 
     /**
      * Main entry function for running alone.
+     * 
      * @param args command line args
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UnlessTest.class);
+        (new JUnitCore()).run(UnlessTest.class);
     }
 
     /**
      * Test the primitive <tt>&#5c;unless</tt>.
-     *
+     * 
      * @throws Exception in case of an error
      */
-    public void testUnless()
-        throws Exception {
+    @Test
+    public void testUnless() throws Exception {
 
         TestTeX.test("juunless", "ExTeX-Unit-etex", "etex");
     }

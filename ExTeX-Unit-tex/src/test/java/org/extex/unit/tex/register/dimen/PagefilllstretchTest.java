@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\pagefilllstretch</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class PagefilllstretchTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PagefilllstretchTest.class);
+        (new JUnitCore()).run(PagefilllstretchTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PagefilllstretchTest(String arg) {
@@ -46,6 +49,5 @@ public class PagefilllstretchTest extends AbstractDimenRegisterTester {
         super(arg, "pagefilllstretch", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

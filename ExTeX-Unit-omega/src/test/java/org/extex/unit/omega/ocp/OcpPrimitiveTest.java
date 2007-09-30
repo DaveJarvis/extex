@@ -19,6 +19,9 @@
 
 package org.extex.unit.omega.ocp;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.context.Context;
@@ -29,6 +32,8 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.unit.omega.ocp.util.Ocp;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\Ocp</tt>.
@@ -45,7 +50,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcpPrimitiveTest.class);
+        (new JUnitCore()).run(OcpPrimitiveTest.class);
     }
 
     /**
@@ -66,6 +71,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -80,6 +86,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -94,6 +101,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -110,6 +118,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -126,6 +135,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -143,6 +153,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -157,6 +168,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Interpreter interp = assertSuccess(// --- input code ---
@@ -182,6 +194,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAfterassignment1() throws Exception {
 
         assertSuccess(// --- input code ---

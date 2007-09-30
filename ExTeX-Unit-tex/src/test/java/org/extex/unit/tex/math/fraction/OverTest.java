@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.fraction;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\over</tt>.
@@ -46,6 +47,7 @@ public class OverTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class OverTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -74,6 +77,7 @@ public class OverTest extends AbstractMathTester {
      * Test case checking that \mathaccent needs the math mode.
      * @throws Exception in case of an error
      */
+    @Test
     public void testMath2() throws Exception {
 
         assertSuccess(//--- input code ---

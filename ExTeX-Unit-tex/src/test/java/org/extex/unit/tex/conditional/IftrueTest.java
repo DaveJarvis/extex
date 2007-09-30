@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\iftrue</tt>.
  * 
@@ -34,7 +37,7 @@ public class IftrueTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IftrueTest.class);
+        (new JUnitCore()).run(IftrueTest.class);
     }
 
     /**
@@ -53,6 +56,7 @@ public class IftrueTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -67,6 +71,7 @@ public class IftrueTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---

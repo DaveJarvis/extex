@@ -20,6 +20,8 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsButImmediatePrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\openin</tt>.
@@ -42,7 +44,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OpeninTest.class);
+        (new JUnitCore()).run(OpeninTest.class);
     }
 
     /**
@@ -61,6 +63,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -75,6 +78,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---

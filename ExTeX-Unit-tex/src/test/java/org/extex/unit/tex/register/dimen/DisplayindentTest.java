@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\displayindent</tt>.
  *
@@ -33,7 +35,7 @@ public class DisplayindentTest extends AbstractDimenRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DisplayindentTest.class);
+        (new JUnitCore()).run(DisplayindentTest.class);
     }
 
     /**
@@ -47,5 +49,4 @@ public class DisplayindentTest extends AbstractDimenRegisterTester {
     }
 
     //TODO implement the primitive specific test cases
-
 }

@@ -21,6 +21,7 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for math shift tokens.
@@ -44,7 +45,7 @@ public class MathShiftTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MathShiftTokenTest.class);
+        (new JUnitCore()).run(MathShiftTokenTest.class);
     }
 
     /**

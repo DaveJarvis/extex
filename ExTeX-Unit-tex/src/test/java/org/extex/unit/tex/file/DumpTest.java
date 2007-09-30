@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.file;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -75,6 +77,8 @@ import org.extex.typesetter.tc.TypesettingContextFactory;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\dump</tt>.
@@ -91,7 +95,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DumpTest.class);
+        (new JUnitCore()).run(DumpTest.class);
     }
 
     /**
@@ -112,6 +116,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGroupError1() throws Exception {
 
         assertFailure(DEFINE_BRACES + "{\\dump}", //
@@ -124,6 +129,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -144,6 +150,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         int count1 = 128;
@@ -188,6 +195,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test100() throws Exception {
 
         try {
@@ -1150,6 +1158,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test101() throws Exception {
 
         try {

@@ -20,10 +20,12 @@
 package org.extex.unit.omega.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vfi</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class VfiTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VfiTest.class);
+        (new JUnitCore()).run(VfiTest.class);
     }
 
     /**
      * Constructor for VfiTest.
-     *
+     * 
      * @param arg the name
      */
     public VfiTest(String arg) {
@@ -50,23 +53,21 @@ public class VfiTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vfi">
-     *  Test case checking that <tt>\vfi</tt> switches to vertical mode and
-     *  inserts a glue node with 1fi.
-     * </testcase>
-     *
+     * <testcase primitive="\vfi"> Test case checking that <tt>\vfi</tt>
+     * switches to vertical mode and inserts a glue node with 1fi. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vfi\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
-                ".\\glue0.0pt plus 1.0fi\n");
+        // --- input code ---
+            "\\vfi\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                    ".\\glue0.0pt plus 1.0fi\n");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

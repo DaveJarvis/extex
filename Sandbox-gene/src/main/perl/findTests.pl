@@ -61,6 +61,8 @@ GetOptions("h|help"	=> \&usage,
 	   "v|verbose"	=> \$verbose,
 	  );
 
+my $count = 0;
+
 find { 
   no_chdir => 1,
   wanted   => sub {
@@ -68,7 +70,7 @@ find {
       $File::Find::prune = 1;
       return;
     }
-    return if not -f $_ or not m|test/java.*Test\.java$|;
+    return if not -f $_ or not m|test/java.*Test.*\.java$|;
     my $file = $_;
     print "--- $file\n" if $verbose;
     my $t  = undef;
@@ -76,8 +78,12 @@ find {
     while(<$fd>) {
       if (m|\@Test|) {
 	$t = 1;
-      } elsif (m|void .*test.*()|) {
-	print "$file: $_" if not $t;
+      } elsif (m|\@Ignore|) {
+      } elsif (m|public void .*test.*()|) {
+	if (not $t) {
+	  print "$file: $_";
+	  $count++;
+	}
       } else {
 	$t = undef;
       }
@@ -85,6 +91,7 @@ find {
     $fd->close();
   }}, @ARGV;
 
+print "[$count]\n";
 
 #------------------------------------------------------------------------------
 # Local Variables: 

@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\penalty</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PenaltyTest.class);
+        (new JUnitCore()).run(PenaltyTest.class);
     }
 
     /**
      * Constructor for PenaltyTest.
-     *
+     * 
      * @param arg the name
      */
     public PenaltyTest(String arg) {
@@ -49,23 +52,23 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\penalty">
-     *  Test case checking that <tt>\penalty</tt> inserts a penalty node.
-     * </testcase>
-     *
+     * <testcase primitive="\penalty"> Test case checking that <tt>\penalty</tt>
+     * inserts a penalty node. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "x\\penalty -12 x\\end ",
-                //--- output channel ---
-                "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                "..x\n" + //
-                "..\\penalty -12\n" + //
-                "..x\n");
+        // --- input code ---
+            "x\\penalty -12 x\\end ",
+            // --- output channel ---
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    "..x\n" + //
+                    "..\\penalty -12\n" + //
+                    "..x\n");
     }
 
 }

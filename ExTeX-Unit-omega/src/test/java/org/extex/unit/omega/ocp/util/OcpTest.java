@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp.util;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitives defined with <tt>\ocp</tt>.
@@ -36,7 +38,7 @@ public class OcpTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcpTest.class);
+        (new JUnitCore()).run(OcpTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class OcpTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -68,10 +71,12 @@ public class OcpTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\show\\x ",
+            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
+                    + "\\show\\x ",
             // --- output channel ---
             "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.\n");
     }

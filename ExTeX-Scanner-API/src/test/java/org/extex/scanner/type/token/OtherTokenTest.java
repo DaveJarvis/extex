@@ -21,6 +21,7 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for other tokens.
@@ -44,7 +45,7 @@ public class OtherTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LeftBraceTokenTest.class);
+        (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
     /**

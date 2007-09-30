@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\addafterocplist</tt>.
@@ -36,7 +38,7 @@ public class AddafterocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AddafterocplistTest.class);
+        (new JUnitCore()).run(AddafterocplistTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class AddafterocplistTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---

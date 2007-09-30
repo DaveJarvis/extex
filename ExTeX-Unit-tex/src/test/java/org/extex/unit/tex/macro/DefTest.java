@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.macro;
 
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\def</tt>.
  * 
@@ -43,6 +45,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -58,6 +61,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -73,6 +77,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashArgument3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -88,6 +93,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashArgument4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -103,6 +109,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacroError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -117,6 +124,7 @@ public class DefTest extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacroError2() throws Exception {
 
         assertFailure(// --- input code ---

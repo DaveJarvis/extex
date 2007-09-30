@@ -19,11 +19,14 @@
 
 package org.extex.unit.tex.math;
 
+import static org.junit.Assert.*;
+
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.typesetter.type.math.MathClass;
 import org.extex.typesetter.type.math.MathCode;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\mathcode</tt>.
@@ -49,6 +52,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(
@@ -64,6 +68,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -79,6 +84,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -94,6 +100,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(
@@ -109,6 +116,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange0() throws Exception {
 
         assertSuccess(
@@ -124,6 +132,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange1() throws Exception {
 
         assertSuccess(
@@ -139,6 +148,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange2() throws Exception {
 
         assertSuccess(
@@ -154,6 +164,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOrdinary1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -174,6 +185,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLarge1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -194,6 +206,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBin1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -214,6 +227,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRel1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -234,6 +248,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOpen1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -254,6 +269,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testClose1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -274,6 +290,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPunc1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -294,6 +311,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVar1() throws Exception {
 
         Interpreter interpreter = assertSuccess(
@@ -314,6 +332,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(
@@ -329,6 +348,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testThe1() throws Exception {
 
         assertSuccess(
@@ -344,6 +364,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test100() throws Exception {
 
         assertSuccess(
@@ -360,6 +381,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testActiveErr1() throws Exception {
 
         assertFailure(
@@ -376,6 +398,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testActive1() throws Exception {
 
         assertSuccess(

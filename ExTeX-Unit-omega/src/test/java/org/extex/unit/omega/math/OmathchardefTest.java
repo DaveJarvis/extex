@@ -21,6 +21,7 @@ package org.extex.unit.omega.math;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\omathchardef</tt>.
@@ -47,6 +48,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(
@@ -63,6 +65,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -79,6 +82,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -95,6 +99,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(
@@ -110,6 +115,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -127,6 +133,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(
@@ -145,6 +152,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCross1() throws Exception {
 
         assertSuccess(
@@ -163,6 +171,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCross2() throws Exception {
 
         assertSuccess(
@@ -180,6 +189,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(
@@ -197,6 +207,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertSuccess(
@@ -214,6 +225,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testThe1() throws Exception {
 
         assertSuccess(
@@ -230,6 +242,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGroup1() throws Exception {
 
         assertSuccess(
@@ -246,6 +259,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGroup2() throws Exception {
 
         assertFailure(
@@ -263,6 +277,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExt1() throws Exception {
 
         assertSuccess(
@@ -280,6 +295,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExt2() throws Exception {
 
         assertSuccess(
@@ -296,6 +312,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOmathchardef1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -305,5 +322,4 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     // TODO implement more primitive specific test cases
-
 }

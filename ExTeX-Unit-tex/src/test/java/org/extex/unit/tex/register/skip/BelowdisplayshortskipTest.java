@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\belowdisplayshortskip</tt>.
  *
@@ -33,7 +35,7 @@ public class BelowdisplayshortskipTest extends AbstractSkipRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BelowdisplayshortskipTest.class);
+        (new JUnitCore()).run(BelowdisplayshortskipTest.class);
     }
 
     /**
@@ -47,5 +49,4 @@ public class BelowdisplayshortskipTest extends AbstractSkipRegisterTester {
     }
 
     //TODO implement the primitive specific test cases
-
 }

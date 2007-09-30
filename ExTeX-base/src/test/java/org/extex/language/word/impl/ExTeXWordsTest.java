@@ -19,7 +19,9 @@
 
 package org.extex.language.word.impl;
 
-import junit.framework.TestCase;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.UnicodeChar;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
@@ -36,18 +38,20 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for ExTeXWords.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4805 $
  */
-public class ExTeXWordsTest extends TestCase {
+public class ExTeXWordsTest {
 
     /**
-     * The field <tt>wt</tt> contains the word tokenizer to test.
-     * The word tokenizer is stateless. Thus a single instance suffices.
+     * The field <tt>wt</tt> contains the word tokenizer to test. The word
+     * tokenizer is stateless. Thus a single instance suffices.
      */
     private static WordTokenizer wt = new ExTeXWords();
 
@@ -124,19 +128,19 @@ public class ExTeXWordsTest extends TestCase {
 
     /**
      * The main method.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ExTeXWordsTest.class);
+        (new JUnitCore()).run(ExTeXWordsTest.class);
     }
 
     /**
      * Translate a string into a list of nodes.
-     *
+     * 
      * @param s the characters to insert into the list
-     *
+     * 
      * @return a node list made of te characters
      */
     private static NodeList makeList(CharSequence s) {
@@ -183,12 +187,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that the empty spec is accepted.
-     * </testcase>
-     *
+     * <testcase> Test that the empty spec is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -197,12 +200,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that the empty spec is accepted.
-     * </testcase>
-     *
+     * <testcase> Test that the empty spec is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy2() throws Exception {
 
         NodeList nodes = makeList("a");
@@ -211,12 +213,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that the empty spec is accepted.
-     * </testcase>
-     *
+     * <testcase> Test that the empty spec is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy3() throws Exception {
 
         NodeList nodes = makeList("a");
@@ -225,12 +226,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that the one element spec is accepted.
-     * </testcase>
-     *
+     * <testcase> Test that the one element spec is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy10() throws Exception {
 
         NodeList nodes = makeList("ab");
@@ -242,12 +242,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that the one element spec is accepted.
-     * </testcase>
-     *
+     * <testcase> Test that the one element spec is accepted. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy11() throws Exception {
 
         NodeList nodes = makeList("ab");
@@ -258,12 +257,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy20() throws Exception {
 
         NodeList nodes = makeList("ab");
@@ -275,12 +273,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy21() throws Exception {
 
         NodeList nodes = makeList("abc");
@@ -293,12 +290,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy31() throws Exception {
 
         NodeList nodes = makeList("a\13b");
@@ -311,12 +307,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy32() throws Exception {
 
         NodeList nodes = makeList("a\13b");
@@ -328,12 +323,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy33() throws Exception {
 
         NodeList nodes = makeList("a\13b");
@@ -346,12 +340,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy41() throws Exception {
 
         NodeList nodes = makeList("a\17b");
@@ -367,12 +360,11 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that ...
-     * </testcase>
-     *
+     * <testcase> Test that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInsertShy42() throws Exception {
 
         NodeList nodes = makeList("a\17b");
@@ -383,10 +375,10 @@ public class ExTeXWordsTest extends TestCase {
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
         DiscretionaryNode d = (DiscretionaryNode) nodes.get(1);
         assertNotNull(d);
-        //        assertTrue(d.getPreBreak().get(0) instanceof CharNode);
-        //        assertTrue(d.getPostBreak().get(0) instanceof LigatureNode);
-        //        assertTrue(nodes.get(2) instanceof CharNode);
+        // assertTrue(d.getPreBreak().get(0) instanceof CharNode);
+        // assertTrue(d.getPostBreak().get(0) instanceof LigatureNode);
+        // assertTrue(nodes.get(2) instanceof CharNode);
     }
 
-    //TODO gene: add test cases for handling of implicit kerns
+    // TODO gene: add test cases for handling of implicit kerns
 }

@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\hss</tt>.
@@ -36,7 +38,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HssTest.class);
+        (new JUnitCore()).run(HssTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVbox1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -69,6 +72,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHbox1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -83,6 +87,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -99,6 +104,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore2() throws Exception {
 
         assertSuccess(showNodesProperties(),

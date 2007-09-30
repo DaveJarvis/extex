@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.paragraph;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\indent</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class IndentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IndentTest.class);
+        (new JUnitCore()).run(IndentTest.class);
     }
 
     /**
      * Constructor for IndentTest.
-     *
+     * 
      * @param arg the name
      */
     public IndentTest(String arg) {
@@ -48,6 +50,5 @@ public class IndentTest extends NoFlagsPrimitiveTester {
         super(arg, "indent", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

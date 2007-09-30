@@ -20,6 +20,8 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\input</tt>.
@@ -42,7 +44,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(InputTest.class);
+        (new JUnitCore()).run(InputTest.class);
     }
 
     /**
@@ -61,6 +63,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -75,6 +78,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---

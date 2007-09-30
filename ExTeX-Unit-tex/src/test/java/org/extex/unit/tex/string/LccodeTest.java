@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.string;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\lccode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class LccodeTest extends AbstractCharMapTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LccodeTest.class);
+        (new JUnitCore()).run(LccodeTest.class);
     }
 
     /**
      * Constructor for LccodeTest.
-     *
+     * 
      * @param arg the name
      */
     public LccodeTest(String arg) {

@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\hfilneg</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class HfilnegTest extends AbstractHfillTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HfilnegTest.class);
+        (new JUnitCore()).run(HfilnegTest.class);
     }
 
     /**
      * Constructor for HfilnegTest.
-     *
+     * 
      * @param arg the name
      */
     public HfilnegTest(String arg) {
@@ -46,6 +49,5 @@ public class HfilnegTest extends AbstractHfillTester {
         super(arg, "hfilneg", "");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

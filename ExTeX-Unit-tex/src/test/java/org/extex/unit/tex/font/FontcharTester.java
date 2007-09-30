@@ -20,6 +20,7 @@
 package org.extex.unit.tex.font;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is an abstract test suite for the primitives <tt>\hyphenchar</tt> and
@@ -56,6 +57,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -70,6 +72,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -84,6 +87,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -98,6 +102,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -112,6 +117,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof5() throws Exception {
 
         assertFailure(// --- input code ---
@@ -126,6 +132,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissing1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -140,6 +147,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissing2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -154,6 +162,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharNullfont0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -168,6 +177,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharNullfont1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -183,6 +193,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharNullfont2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -198,6 +209,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharNullfont3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -214,6 +226,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphenchar0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -228,6 +241,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphenchar1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -243,6 +257,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphenchar2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -258,6 +273,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphenchar3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -274,6 +290,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphenchar4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -290,6 +307,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharThe0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -305,6 +323,7 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHyphencharThe1() throws Exception {
 
         assertSuccess(// --- input code ---

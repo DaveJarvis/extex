@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\showbox</tt>.
@@ -45,6 +46,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -59,6 +61,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -73,6 +76,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVoid1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -87,6 +91,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHbox1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -101,6 +106,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVbox1() throws Exception {
 
         assertFailure(// --- input code ---

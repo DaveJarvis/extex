@@ -19,9 +19,12 @@
 
 package org.extex.test;
 
+import org.junit.Test;
+
 /**
- * This is a test suite for ...
- *
+ * This is a test suite for primitives which can not be executed. They lead to
+ * an error in each mode.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -45,13 +48,12 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name of the test case
      * @param primitive the name of the primitive
      * @param arguments additional arguments for the flag test
      */
-    public NonExecuteTester(String name, String primitive,
-            String arguments) {
+    public NonExecuteTester(String name, String primitive, String arguments) {
 
         super(name);
         this.primitive = primitive;
@@ -60,111 +62,107 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      */
-    public NonExecuteTester(String arg, String primitive,
-            String arguments, String prepare) {
+    public NonExecuteTester(String arg, String primitive, String arguments,
+            String prepare) {
 
         this(arg, primitive, arguments);
         this.prepare = DEFINE_CATCODES + prepare;
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in vertical mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVerticalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\" + primitive + arguments,
-                //--- error channel ---
-                "You can't use `\\" + primitive + "' in vertical mode");
+        assertFailure(// --- input code ---
+            prepare + "\\" + primitive + arguments,
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in inner
-     *  vertical mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in inner
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInnerVerticalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\vbox{\\" + primitive + arguments + "}\\end",
-                //--- error channel ---
-                "You can't use `\\" + primitive + "' in inner vertical mode");
+        assertFailure(// --- input code ---
+            prepare + "\\vbox{\\" + primitive + arguments + "}\\end",
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in inner vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in vertical mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHorizontalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "x\\" + primitive + arguments + "\\end",
-                //--- error channel ---
-                "You can't use `\\" + primitive + "' in horizontal mode");
+        assertFailure(// --- input code ---
+            prepare + "x\\" + primitive + arguments + "\\end",
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in restricted
-     *  horizontal mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in
+     * restricted horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRestrictedHorizontalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\hbox{\\" + primitive + arguments + "}\\end",
-                //--- error channel ---
-                "You can't use `\\" + primitive
-                        + "' in restricted horizontal mode");
+        assertFailure(// --- input code ---
+            prepare + "\\hbox{\\" + primitive + arguments + "}\\end",
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in restricted horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in math
+     * mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "$\\" + primitive + arguments + "$\\end",
-                //--- error channel ---
-                "You can't use `\\" + primitive + "' in math mode");
+        assertFailure(// --- input code ---
+            prepare + "$\\" + primitive + arguments + "$\\end",
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in math mode");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive can not be used in display math
-     *  mode.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive can not be used in
+     * display math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisplayMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "$$\\" + primitive + arguments + "$$\\end",
-                //--- error channel ---
-                "You can't use `\\" + primitive + "' in displaymath mode");
+        assertFailure(// --- input code ---
+            prepare + "$$\\" + primitive + arguments + "$$\\end",
+            // --- error channel ---
+            "You can't use `\\" + primitive + "' in displaymath mode");
     }
 
 }

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\expandafter</tt>.
@@ -46,6 +47,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpandafterLetterLetter1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -76,6 +79,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -93,6 +97,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---

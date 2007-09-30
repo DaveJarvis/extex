@@ -20,6 +20,7 @@
 package org.extex.unit.etex.file;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\readline</tt>.
@@ -43,7 +44,7 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ReadlineTest.class);
+        (new JUnitCore()).run(ReadlineTest.class);
     }
 
     /**

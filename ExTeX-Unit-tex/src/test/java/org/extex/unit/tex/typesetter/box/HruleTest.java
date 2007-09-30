@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\hrule</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class HruleTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HruleTest.class);
+        (new JUnitCore()).run(HruleTest.class);
     }
 
     /**
      * Constructor for HruleTest.
-     *
+     * 
      * @param name the name
      */
     public HruleTest(String name) {
@@ -49,72 +52,72 @@ public class HruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hrule">
-     *  Test case checking that <tt>\hrule</tt> switches to vertical mode and
-     *  inserts a rule node. The default height is 0.4pt.
-     * </testcase>
-     *
+     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * switches to vertical mode and inserts a rule node. The default height is
+     * 0.4pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
+        // --- input code ---
             "\\hrule\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(0.4pt+0.0pt)x0.0pt\n" + //
                     ".\\rule0.4pt+0.0ptx0.0pt\n");
     }
 
     /**
-     * <testcase primitive="\hrule">
-     *  Test case checking that <tt>\hrule</tt> switches to vertical mode and
-     *  inserts a rule node of given height.
+     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * switches to vertical mode and inserts a rule node of given height.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
+        // --- input code ---
             "\\hrule height 1pt\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(1.0pt+0.0pt)x0.0pt\n" + //
                     ".\\rule1.0pt+0.0ptx0.0pt\n");
     }
 
     /**
-     * <testcase primitive="\hrule">
-     *  Test case checking that <tt>\hrule</tt> switches to vertical mode and
-     *  inserts a rule node of given height, width, and depth.
-     * </testcase>
-     *
+     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * switches to vertical mode and inserts a rule node of given height, width,
+     * and depth. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
+        // --- input code ---
             "\\hrule height 2pt depth 1pt width 42pt\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(2.0pt+1.0pt)x42.0pt\n" + //
                     ".\\rule2.0pt+1.0ptx42.0pt\n");
     }
 
     /**
-     * <testcase primitive="\hrule">
-     *  Test case checking that <tt>\hrule</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\hrule"> Test case checking that <tt>\hrule</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
+        // --- input code ---
             "x\\hrule height 1pt\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
                     + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..x\n"
                     + "\\vbox(1.0pt+0.0pt)x0.0pt\n"

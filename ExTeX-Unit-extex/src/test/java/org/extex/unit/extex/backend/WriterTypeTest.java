@@ -20,6 +20,7 @@
 package org.extex.unit.extex.backend;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for \writeType.
@@ -45,6 +46,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndef1() throws Exception {
 
         assertFailure(DEFINE_BRACES + " \\writerType={undef}\\end",
@@ -57,6 +59,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(DEFINE_BRACES + "\\writerType",
@@ -70,6 +73,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertOutput(DEFINE_BRACES + "\\shipout\\vbox{a} \\writerType={dvi} ",
@@ -83,6 +87,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(DEFINE_BRACES + "\\def\\x{}\\writerType={d\\x vix} ",
@@ -95,6 +100,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShowthe1() throws Exception {
 
         assertOutput("\\showthe\\writerType\\end",
@@ -107,6 +113,7 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTokensConvertible1() throws Exception {
 
         assertOutput("\\toks0=\\writerType\\showthe\\toks0\\end",

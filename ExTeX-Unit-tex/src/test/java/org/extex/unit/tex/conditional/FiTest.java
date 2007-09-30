@@ -20,10 +20,12 @@
 package org.extex.unit.tex.conditional;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\fi</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class FiTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(FiTest.class);
+        (new JUnitCore()).run(FiTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public FiTest(String arg) {
@@ -50,18 +52,18 @@ public class FiTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\fi">
-     *  Test case checking that a lonely <tt>\fi</tt> leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\fi"> Test case checking that a lonely <tt>\fi</tt>
+     * leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst0() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\fi",
-                //--- log message ---
-                "Extra \\fi");
+        assertFailure(// --- input code ---
+            "\\fi",
+            // --- log message ---
+            "Extra \\fi");
     }
 
 }

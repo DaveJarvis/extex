@@ -20,10 +20,11 @@
 package org.extex.unit.etex.register.count;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lastnodetype</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LastnodetypeTest.class);
+        (new JUnitCore()).run(LastnodetypeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public LastnodetypeTest(String arg) {
@@ -49,6 +51,5 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
         setConfig("etex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

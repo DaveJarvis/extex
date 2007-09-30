@@ -20,10 +20,11 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\delcode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DelcodeTest.class);
+        (new JUnitCore()).run(DelcodeTest.class);
     }
 
     /**
      * Constructor for DelcodeTest.
-     *
+     * 
      * @param arg the name
      */
     public DelcodeTest(String arg) {
@@ -48,6 +50,5 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
         super(arg, "delcode", "23 32");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

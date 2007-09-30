@@ -20,6 +20,8 @@
 package org.extex.unit.etex.conditional;
 
 import org.extex.unit.tex.conditional.ConditionalTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\ifcsname</tt>.
@@ -36,7 +38,7 @@ public class IfcsnameTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfcsnameTest.class);
+        (new JUnitCore()).run(IfcsnameTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -70,6 +73,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -84,6 +88,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -98,6 +103,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -112,6 +118,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -126,6 +133,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -141,6 +149,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -156,6 +165,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -172,6 +182,7 @@ public class IfcsnameTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -181,5 +192,4 @@ public class IfcsnameTest extends ConditionalTester {
     }
 
     // TODO implement more primitive specific test cases
-
 }

@@ -20,6 +20,8 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\read</tt>.
@@ -43,7 +45,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ReadTest.class);
+        (new JUnitCore()).run(ReadTest.class);
     }
 
     /**
@@ -62,6 +64,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTerm0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -76,6 +79,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTerm1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -90,6 +94,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTerm2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -104,6 +109,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -118,6 +124,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -132,6 +139,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -148,6 +156,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -164,6 +173,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertFailure(// --- input code ---

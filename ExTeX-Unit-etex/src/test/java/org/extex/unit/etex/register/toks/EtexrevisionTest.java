@@ -20,10 +20,11 @@
 package org.extex.unit.etex.register.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\eTeXrevision</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class EtexrevisionTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EtexrevisionTest.class);
+        (new JUnitCore()).run(EtexrevisionTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EtexrevisionTest(String arg) {

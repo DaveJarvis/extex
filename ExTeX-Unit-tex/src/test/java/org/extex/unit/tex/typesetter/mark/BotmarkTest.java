@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\botmark</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class BotmarkTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BotmarkTest.class);
+        (new JUnitCore()).run(BotmarkTest.class);
     }
 
     /**
      * Constructor for BotmarkTest.
-     *
+     * 
      * @param arg the name
      */
     public BotmarkTest(String arg) {
@@ -48,6 +50,5 @@ public class BotmarkTest extends NoFlagsPrimitiveTester {
         super(arg, "botmark", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

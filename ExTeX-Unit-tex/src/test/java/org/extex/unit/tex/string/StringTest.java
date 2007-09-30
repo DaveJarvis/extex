@@ -20,10 +20,11 @@
 package org.extex.unit.tex.string;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\string</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class StringTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(StringTest.class);
+        (new JUnitCore()).run(StringTest.class);
     }
 
     /**
      * Constructor for StringprimitiveTest.
-     *
+     * 
      * @param arg the name
      */
     public StringTest(String arg) {
@@ -48,6 +50,5 @@ public class StringTest extends NoFlagsPrimitiveTester {
         super(arg, "string", "{}");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

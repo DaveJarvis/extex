@@ -20,10 +20,11 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\pretolerance</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PretoleranceTest.class);
+        (new JUnitCore()).run(PretoleranceTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PretoleranceTest(String arg) {
@@ -48,6 +50,5 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
         super(arg, "pretolerance", "", "0");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

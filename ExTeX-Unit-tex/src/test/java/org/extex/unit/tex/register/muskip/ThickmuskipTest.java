@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.muskip;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\thickmuskip</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class ThickmuskipTest extends AbstractMuskipRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ThickmuskipTest.class);
+        (new JUnitCore()).run(ThickmuskipTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ThickmuskipTest(String arg) {
@@ -46,6 +49,5 @@ public class ThickmuskipTest extends AbstractMuskipRegisterTester {
         super(arg, "thickmuskip", "", "0.0mu");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

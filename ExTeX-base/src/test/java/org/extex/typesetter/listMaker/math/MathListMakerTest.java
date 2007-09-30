@@ -20,6 +20,7 @@
 package org.extex.typesetter.listMaker.math;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the math typesetting.
@@ -57,6 +58,7 @@ public class MathListMakerTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty1() throws Exception {
 
         assertSuccess(// showNodesProperties(),
@@ -73,6 +75,7 @@ public class MathListMakerTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter1() throws Exception {
 
         assertSuccess(// showNodesProperties(),

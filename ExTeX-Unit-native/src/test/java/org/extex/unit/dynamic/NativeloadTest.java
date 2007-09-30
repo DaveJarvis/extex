@@ -19,7 +19,11 @@
 
 package org.extex.unit.dynamic;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\nativeload</tt>.
@@ -49,6 +53,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -70,6 +75,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -88,6 +94,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(
@@ -107,6 +114,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(

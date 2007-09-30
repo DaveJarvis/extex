@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\toks</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class ToksTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ToksTest.class);
+        (new JUnitCore()).run(ToksTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ToksTest(String arg) {
@@ -49,19 +52,18 @@ public class ToksTest extends AbstractToksRegisterTester {
     }
 
     /**
-     * <testcase primitive="\toks">
-     *   Test case checking that the assignment of a tokens register works.
-     * </testcase>
-     *
+     * <testcase primitive="\toks"> Test case checking that the assignment of a
+     * tokens register works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\toks12=\\toks23 "
-                + "\\end",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\toks12=\\toks23 " + "\\end",
+            // --- output channel ---
+            "");
     }
 
 }

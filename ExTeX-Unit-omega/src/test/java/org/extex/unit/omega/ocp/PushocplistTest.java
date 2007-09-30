@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\pushocplist</tt>.
@@ -36,7 +38,7 @@ public class PushocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PushocplistTest.class);
+        (new JUnitCore()).run(PushocplistTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class PushocplistTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---

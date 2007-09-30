@@ -20,6 +20,8 @@
 package org.extex.unit.etex.typesetter.paragraph;
 
 import org.extex.test.NonExecuteTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\parshapeindent</tt>.
@@ -36,7 +38,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ParshapeindentTest.class);
+        (new JUnitCore()).run(ParshapeindentTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -70,6 +73,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -84,6 +88,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -99,6 +104,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -114,6 +120,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -129,6 +136,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -143,6 +151,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test7() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -157,6 +166,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test8() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -171,6 +181,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test111() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -185,6 +196,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test112() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -200,6 +212,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test113() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -215,6 +228,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test114() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -231,6 +245,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test115() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -247,6 +262,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test116() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -262,6 +278,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test117() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -277,6 +294,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test118() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -292,6 +310,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConvertible1() throws Exception {
 
         assertSuccess(// --- input code ---

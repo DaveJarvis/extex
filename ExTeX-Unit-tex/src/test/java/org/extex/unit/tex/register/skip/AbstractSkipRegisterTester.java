@@ -20,6 +20,8 @@
 package org.extex.unit.tex.register.skip;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing skip registers. It provides some
@@ -92,6 +94,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -107,21 +110,24 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
-    // public void testSkipRegisterProtectedPrefix1() throws Exception {
-    //
-    // assertFailure(//--- input code ---
-    // prepare + "\\protected\\" + invocation + "= 2pt ",
-    // //--- error channel ---
-    // "You can't use the prefix `\\protected' with the control sequence"
-    // + (primitive.length() > 14 ? "\n" : " ") + "\\"
-    // + primitive);
-    // }
+    @Test
+    @Ignore
+    public void testSkipRegisterProtectedPrefix1() throws Exception {
+
+        assertFailure(// --- input code ---
+            prepare + "\\protected\\" + invocation + "= 2pt ",
+            // --- error channel ---
+            "You can't use the prefix `\\protected' with the control sequence"
+                    + (primitive.length() > 14 ? "\n" : " ") + "\\" + primitive);
+    }
+
     /**
      * <testcase> Test case showing that the prefix <tt>\long</tt> is not
      * applicable. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterLongPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -137,6 +143,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterOuterPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -152,6 +159,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDefault1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -166,6 +174,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterShowthe1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -180,6 +189,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -196,6 +206,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -212,6 +223,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -228,6 +240,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -244,6 +257,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -260,6 +274,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign10() throws Exception {
 
         assertFailure(// --- input code ---
@@ -275,6 +290,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign11() throws Exception {
 
         assertOutput(// --- input code ---
@@ -290,6 +306,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign12() throws Exception {
 
         assertOutput(// --- input code ---
@@ -305,6 +322,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign13() throws Exception {
 
         assertOutput(// --- input code ---
@@ -320,6 +338,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign14() throws Exception {
 
         assertOutput(// --- input code ---
@@ -335,6 +354,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign15() throws Exception {
 
         assertOutput(// --- input code ---
@@ -350,6 +370,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign16() throws Exception {
 
         assertOutput(// --- input code ---
@@ -365,6 +386,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAssign20() throws Exception {
 
         assertOutput(// --- input code ---
@@ -381,6 +403,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAfterassignment1() throws Exception {
 
         String pre = ("leftskip".equals(primitive) ? " " : "");
@@ -400,7 +423,9 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testSkipRegisterConvertible1() throws Exception {
+    @Test
+    @Ignore
+    public void testSkipRegisterConvertible1() throws Exception {
 
         assertSuccess(// --- input code ---
             prepare + "\\" + invocation + "-12.3pt \\dimen0=\\" + invocation
@@ -415,7 +440,9 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testSkipRegisterConvertible2() throws Exception {
+    @Test
+    @Ignore
+    public void testSkipRegisterConvertible2() throws Exception {
 
         assertSuccess(// --- input code ---
             prepare + "\\" + invocation + "-12.3pt \\count0=\\" + invocation
@@ -430,6 +457,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGroup1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -446,6 +474,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGlobalAssign1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -462,6 +491,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGlobalAssign2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -478,6 +508,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAdvance1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -494,6 +525,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAdvance2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -510,6 +542,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAdvance3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -526,6 +559,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAdvance4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -542,6 +576,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAdvance5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -558,6 +593,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAfterassignment2() throws Exception {
 
         String pre = ("leftskip".equals(primitive) ? " " : "");
@@ -579,6 +615,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGroup2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -595,6 +632,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -611,6 +649,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -627,6 +666,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -643,6 +683,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -659,6 +700,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -675,6 +717,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterMultiply5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -692,6 +735,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAfterassignment3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -708,6 +752,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGroup3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -724,6 +769,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide0() throws Exception {
 
         assertFailure(
@@ -740,6 +786,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -756,6 +803,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -772,6 +820,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -788,6 +837,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -804,6 +854,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -820,6 +871,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterAfterassignment4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -835,6 +887,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterDivide6() throws Exception {
 
         assertOutput(// --- input code ---
@@ -850,6 +903,7 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSkipRegisterGroup4() throws Exception {
 
         assertOutput(

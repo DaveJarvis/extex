@@ -20,6 +20,7 @@
 package org.extex.unit.tex.conditional;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test class for conditional primitives.
@@ -81,6 +82,7 @@ public abstract class ConditionalTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOpenIf() throws Exception {
 
         assertFailure(// --- input code ---

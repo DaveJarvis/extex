@@ -20,10 +20,11 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\tracingonline</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TracingonlineTest.class);
+        (new JUnitCore()).run(TracingonlineTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public TracingonlineTest(String arg) {
@@ -48,6 +50,5 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
         super(arg, "tracingonline", "", "0");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

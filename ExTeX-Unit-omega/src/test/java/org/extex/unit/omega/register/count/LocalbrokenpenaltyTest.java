@@ -20,10 +20,11 @@
 package org.extex.unit.omega.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\localbrokenpenalty</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +32,17 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LocalbrokenpenaltyTest.class);
+        (new JUnitCore()).run(LocalbrokenpenaltyTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public LocalbrokenpenaltyTest(String arg) {
@@ -49,6 +51,5 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
         setConfig("omega-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

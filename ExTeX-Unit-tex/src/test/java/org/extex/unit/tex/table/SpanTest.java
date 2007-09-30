@@ -20,10 +20,12 @@
 package org.extex.unit.tex.table;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\span</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class SpanTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SpanTest.class);
+        (new JUnitCore()).run(SpanTest.class);
     }
 
     /**
      * Constructor for SpanTest.
-     *
+     * 
      * @param arg the name
      */
     public SpanTest(String arg) {
@@ -49,19 +52,18 @@ public class SpanTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\span">
-     *  Test case checking that <tt>\span</tt> needs to be used in a
-     *  tabuling context.
-     * </testcase>
-     *
+     * <testcase primitive="\span"> Test case checking that <tt>\span</tt>
+     * needs to be used in a tabuling context. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLonelyCr() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\span" + "\\end ",
-                //--- log message ---
-                "Misplaced \\span");
+        assertFailure(// --- input code ---
+            "\\span" + "\\end ",
+            // --- log message ---
+            "Misplaced \\span");
     }
 
 }

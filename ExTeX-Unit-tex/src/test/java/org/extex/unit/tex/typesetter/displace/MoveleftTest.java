@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.displace;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\moveleft</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class MoveleftTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MoveleftTest.class);
+        (new JUnitCore()).run(MoveleftTest.class);
     }
 
     /**
      * Constructor for MoveleftTest.
-     *
+     * 
      * @param arg the name
      */
     public MoveleftTest(String arg) {
@@ -49,19 +52,18 @@ public class MoveleftTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\moveleft">
-     *  Test case checking that <tt>\moveleft</tt> on a void box works.
-     * </testcase>
-     *
+     * <testcase primitive="\moveleft"> Test case checking that
+     * <tt>\moveleft</tt> on a void box works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVoid1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\moveleft1pt\\box0 \\end",
         //
-                "");
+            "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

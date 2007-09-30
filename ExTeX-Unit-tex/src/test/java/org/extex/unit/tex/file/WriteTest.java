@@ -20,6 +20,8 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsButImmediatePrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\write</tt>.
@@ -36,7 +38,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(WriteTest.class);
+        (new JUnitCore()).run(WriteTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -69,6 +72,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -83,6 +87,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -97,6 +102,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -111,6 +117,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testImmediate1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -125,6 +132,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -139,6 +147,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -155,6 +164,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertOutput(// --- input code ---

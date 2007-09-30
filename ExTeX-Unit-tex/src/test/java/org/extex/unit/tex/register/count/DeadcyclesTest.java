@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\deadcycles</tt>.
@@ -35,7 +36,7 @@ public class DeadcyclesTest extends AbstractCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DeadcyclesTest.class);
+        (new JUnitCore()).run(DeadcyclesTest.class);
     }
 
     /**
@@ -49,5 +50,4 @@ public class DeadcyclesTest extends AbstractCountRegisterTester {
     }
 
     //TODO implement the primitive specific test cases
-
 }

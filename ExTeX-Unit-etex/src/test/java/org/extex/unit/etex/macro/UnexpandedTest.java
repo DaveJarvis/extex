@@ -20,6 +20,8 @@
 package org.extex.unit.etex.macro;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>&#005c;unexpanded</tt>.
@@ -36,7 +38,7 @@ public class UnexpandedTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UnexpandedTest.class);
+        (new JUnitCore()).run(UnexpandedTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class UnexpandedTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -71,6 +74,7 @@ public class UnexpandedTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -86,6 +90,7 @@ public class UnexpandedTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(

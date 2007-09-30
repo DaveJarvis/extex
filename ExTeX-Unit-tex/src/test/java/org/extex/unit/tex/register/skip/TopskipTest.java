@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\topskip</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class TopskipTest extends AbstractSkipRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TopskipTest.class);
+        (new JUnitCore()).run(TopskipTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public TopskipTest(String arg) {
@@ -46,6 +49,5 @@ public class TopskipTest extends AbstractSkipRegisterTester {
         super(arg, "topskip", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

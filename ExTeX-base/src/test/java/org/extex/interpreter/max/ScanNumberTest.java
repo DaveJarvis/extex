@@ -20,6 +20,7 @@
 package org.extex.interpreter.max;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the scanner routines.
@@ -46,6 +47,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -63,6 +65,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -80,6 +83,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -97,6 +101,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -114,6 +119,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -131,6 +137,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -148,6 +155,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumberErr1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -163,6 +171,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber11() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -181,6 +190,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -199,6 +209,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber13() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -217,6 +228,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber21() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -235,6 +247,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber22() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -253,6 +266,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber23() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -271,6 +285,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber31() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -289,6 +304,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber32() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -307,6 +323,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber33() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -325,6 +342,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber34() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -343,6 +361,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber35() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -360,6 +379,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber40() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -379,6 +399,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber41() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -398,6 +419,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testscanNumber42() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -417,6 +439,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanNumber43() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -436,6 +459,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanNumber44() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -455,6 +479,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanNumber45() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -474,6 +499,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanNumber46() throws Exception {
 
         assertSuccess(//--- input code ---

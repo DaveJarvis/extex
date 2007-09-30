@@ -20,10 +20,11 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\tracingparagraphs</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,24 +32,25 @@ public class TracingparagraphsTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TracingparagraphsTest.class);
+        (new JUnitCore()).run(TracingparagraphsTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public TracingparagraphsTest(String arg) {
 
         super(arg, "tracingparagraphs", "", "0");
-        setDefaultLog(null); // ignore log output in some inherited test cases
+        setDefaultLog(null); // ignore log output in some inherited test
+                                // cases
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

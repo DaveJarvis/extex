@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.string;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>&#x5c;uccode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class UccodeTest extends AbstractCharMapTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UccodeTest.class);
+        (new JUnitCore()).run(UccodeTest.class);
     }
 
     /**
      * Constructor for UccodeTest.
-     *
+     * 
      * @param arg the name
      */
     public UccodeTest(String arg) {
@@ -46,4 +49,5 @@ public class UccodeTest extends AbstractCharMapTester {
         super(arg, "uccode", "65", "65", "1114111");
     }
 
+    // TODO implement primitive specific test cases
 }

@@ -19,12 +19,16 @@
 
 package org.extex.unit.tex;
 
-import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+import de.dante.tex.TestTeX;
 
 /**
  * Test for the primitive <tt>jobname</tt>.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -32,19 +36,21 @@ public class JobnameTest extends TestCase {
 
     /**
      * main
+     * 
      * @param args commandlineparams
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(JobnameTest.class);
+        (new JUnitCore()).run(JobnameTest.class);
     }
 
     /**
      * Test 01 for jobname
+     * 
      * @exception Exception iff test failed
      */
-    public void testJobname01()
-        throws Exception {
+    @Test
+    public void testJobname01() throws Exception {
 
         TestTeX.test("jujobnametest", "ExTeX-Unit-tex");
     }

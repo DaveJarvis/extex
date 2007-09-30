@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vss</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class VssTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VssTest.class);
+        (new JUnitCore()).run(VssTest.class);
     }
 
     /**
      * Constructor for VssTest.
-     *
+     * 
      * @param arg the name
      */
     public VssTest(String arg) {
@@ -49,23 +52,21 @@ public class VssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vss">
-     *  Test case checking that <tt>\vss</tt> switches to vertical mode and
-     *  inserts a glue node with 1fil.
-     * </testcase>
-     *
+     * <testcase primitive="\vss"> Test case checking that <tt>\vss</tt>
+     * switches to vertical mode and inserts a glue node with 1fil. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vss\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
-                ".\\glue0.0pt plus 1.0fil minus 1.0fil\n");
+        // --- input code ---
+            "\\vss\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                    ".\\glue0.0pt plus 1.0fil minus 1.0fil\n");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.displace;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lower</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class LowerTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LowerTest.class);
+        (new JUnitCore()).run(LowerTest.class);
     }
 
     /**
      * Constructor for LowerTest.
-     *
+     * 
      * @param arg the name
      */
     public LowerTest(String arg) {
@@ -49,19 +52,18 @@ public class LowerTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\lower">
-     *  Test case checking that <tt>\lower</tt> on a void box works.
-     * </testcase>
-     *
+     * <testcase primitive="\lower"> Test case checking that <tt>\lower</tt>
+     * on a void box works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVoid1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\lower1pt\\box0 \\end",
         //
-                "");
+            "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

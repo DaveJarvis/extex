@@ -20,10 +20,11 @@
 package org.extex.unit.etex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\insertpenalties</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class InsertpenaltiesTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(InsertpenaltiesTest.class);
+        (new JUnitCore()).run(InsertpenaltiesTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public InsertpenaltiesTest(String arg) {
@@ -49,6 +51,5 @@ public class InsertpenaltiesTest extends AbstractCountRegisterTester {
         setConfig("etex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

@@ -20,6 +20,7 @@
 package org.extex.unit.dynamic.java;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\javadef</tt>.
@@ -46,6 +47,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(
@@ -61,6 +63,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -76,6 +79,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -91,6 +95,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(
@@ -106,6 +111,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError10() throws Exception {
 
         assertFailure(
@@ -123,6 +129,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -139,6 +146,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(
@@ -156,6 +164,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(
@@ -173,6 +182,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertFailure(
@@ -190,6 +200,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertSuccess(
@@ -207,6 +218,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAfterassignment1() throws Exception {
 
         assertFailure(

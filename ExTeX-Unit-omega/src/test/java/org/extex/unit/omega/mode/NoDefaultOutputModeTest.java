@@ -20,10 +20,11 @@
 package org.extex.unit.omega.mode;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\noDefaultOutputMode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,17 +32,17 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NoDefaultOutputModeTest.class);
+        (new JUnitCore()).run(NoDefaultOutputModeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public NoDefaultOutputModeTest(String arg) {
@@ -50,6 +51,5 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
         setConfig("omega-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

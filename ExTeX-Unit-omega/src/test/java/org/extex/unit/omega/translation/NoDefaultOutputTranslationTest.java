@@ -20,6 +20,8 @@
 package org.extex.unit.omega.translation;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\noDefaultOutputTranslation</tt>.
@@ -38,7 +40,7 @@ public class NoDefaultOutputTranslationTest
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NoDefaultOutputTranslationTest.class);
+        (new JUnitCore()).run(NoDefaultOutputTranslationTest.class);
     }
 
     /**
@@ -59,6 +61,7 @@ public class NoDefaultOutputTranslationTest
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -74,6 +77,7 @@ public class NoDefaultOutputTranslationTest
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -83,5 +87,4 @@ public class NoDefaultOutputTranslationTest
     }
 
     // TODO implement more primitive specific test cases
-
 }

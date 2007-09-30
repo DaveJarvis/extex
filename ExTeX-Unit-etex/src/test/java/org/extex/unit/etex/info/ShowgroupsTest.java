@@ -22,6 +22,7 @@ package org.extex.unit.etex.info;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\showgroups</tt>.
@@ -62,6 +63,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(prepare(),
@@ -78,6 +80,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(prepare(),
@@ -95,6 +98,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertOutput(prepare(),
@@ -113,6 +117,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertOutput(prepare(),
@@ -132,6 +137,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertOutput(prepare(),
@@ -151,6 +157,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertOutput(prepare(),
@@ -170,6 +177,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test7() throws Exception {
 
         assertOutput(prepare(),
@@ -189,6 +197,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMulti1() throws Exception {
 
         assertOutput(prepare(),

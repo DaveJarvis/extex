@@ -34,6 +34,7 @@ import junit.framework.TestCase;
 import org.extex.ExTeX;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.exception.InteractionUnknownException;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class contains test cases for the command line interface of <logo>ExTeX</logo>.
@@ -100,7 +101,7 @@ public class TeXTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TeXTest.class);
+        (new JUnitCore()).run(TeXTest.class);
     }
 
     /**

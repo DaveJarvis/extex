@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\box</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +33,17 @@ public class BoxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BoxTest.class);
+        (new JUnitCore()).run(BoxTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public BoxTest(String arg) {
@@ -49,18 +52,17 @@ public class BoxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\box">
-     *  Test case checking that <tt>\box</tt> needs a key.
-     * </testcase>
-     *
+     * <testcase primitive="\box"> Test case checking that <tt>\box</tt> needs
+     * a key. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\box ", //
             "Missing number, treated as zero");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

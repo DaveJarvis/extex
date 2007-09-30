@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\message</tt>.
@@ -46,6 +47,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingBrace1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -61,6 +63,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingBrace2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -75,6 +78,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessage1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -90,6 +94,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessage2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -105,6 +110,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessage3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -120,6 +126,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessage4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -135,6 +142,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -150,6 +158,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageErr2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -164,6 +173,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageErr3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -178,6 +188,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageErr4() throws Exception {
 
         assertFailure(// --- input code ---
@@ -192,6 +203,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessage10() throws Exception {
 
         assertFailure(// --- input code ---
@@ -207,6 +219,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageUndef1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -221,6 +234,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageLog1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -235,6 +249,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageLog2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -249,6 +264,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     // *
     // * @throws Exception in case of an error
     // */
+    //@Test
     // public void testMessageProtected1() throws Exception {
     //
     // assertFailure(//--- input code ---

@@ -20,6 +20,8 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\tracinglostchars</tt>.
@@ -36,7 +38,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TracinglostcharsTest.class);
+        (new JUnitCore()).run(TracinglostcharsTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -71,6 +74,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test01() throws Exception {
 
         assertOutput(// --- input code ---
@@ -88,6 +92,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -105,6 +110,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test02() throws Exception {
 
         assertOutput(// --- input code ---
@@ -121,6 +127,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -133,5 +140,4 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     // TODO implement more primitive specific test cases (lost chars in math
     // mode, etc)
-
 }

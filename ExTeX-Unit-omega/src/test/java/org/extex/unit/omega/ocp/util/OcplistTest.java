@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp.util;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitives defined with <tt>\ocplist</tt>.
@@ -36,7 +38,7 @@ public class OcplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcplistTest.class);
+        (new JUnitCore()).run(OcplistTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class OcplistTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -68,6 +71,7 @@ public class OcplistTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertFailure(// --- input code ---

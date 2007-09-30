@@ -20,10 +20,12 @@
 package org.extex.unit.tex.string;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\char</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class CharTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CharTest.class);
+        (new JUnitCore()).run(CharTest.class);
     }
 
     /**
      * Constructor for CharTest.
-     *
+     * 
      * @param arg the name
      */
     public CharTest(String arg) {
@@ -49,17 +52,17 @@ public class CharTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\char">
-     *  Test case checking that <tt>\char</tt> of 65 produces an A.
-     * </testcase>
-     *
+     * <testcase primitive="\char"> Test case checking that <tt>\char</tt> of
+     * 65 produces an A. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\char 65\\end",
-            //--- output channel ---
+            // --- output channel ---
             "A" + TERM);
     }
 

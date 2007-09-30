@@ -19,6 +19,8 @@
 
 package org.extex.test;
 
+import org.junit.Test;
+
 /**
  * This class is an abstract base class for test suited containing some test
  * cases to verify that the prefixes <tt>\global</tt>, <tt>\long</tt>,
@@ -62,6 +64,7 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoGlobalFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -78,6 +81,7 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoLongFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -94,6 +98,7 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -103,13 +108,14 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
                         + primitive);
     }
 
-    /**
-     * <testcase>
-     *  Test case checking that the <tt>\protected</tt> flag leads to an error.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
+//    /**
+//     * <testcase>
+//     *  Test case checking that the <tt>\protected</tt> flag leads to an error.
+//     * </testcase>
+//     *
+//     * @throws Exception in case of an error
+//     */
+//    @Test
 //    public void testNoProtectedFlag() throws Exception {
 //
 //        assertFailure(//--- input code ---

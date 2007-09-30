@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\day</tt>.
@@ -48,7 +49,7 @@ public class DayTest extends AbstractCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DayTest.class);
+        (new JUnitCore()).run(DayTest.class);
     }
 
     /**

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.register.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\everyvbox</tt>.
@@ -35,7 +36,7 @@ public class EveryvboxTest extends AbstractToksRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EveryvboxTest.class);
+        (new JUnitCore()).run(EveryvboxTest.class);
     }
 
     /**
@@ -49,5 +50,4 @@ public class EveryvboxTest extends AbstractToksRegisterTester {
     }
 
     //TODO implement the primitive specific test cases
-
 }

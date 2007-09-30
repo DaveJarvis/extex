@@ -26,6 +26,7 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This file contains test cases for the vertical list node.
@@ -169,7 +170,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VerticalListNodeTest.class);
+        (new JUnitCore()).run(VerticalListNodeTest.class);
     }
 
     /**

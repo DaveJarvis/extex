@@ -20,10 +20,12 @@
 package org.extex.unit.namespace;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\export</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +33,17 @@ public class ExportTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ExportTest.class);
+        (new JUnitCore()).run(ExportTest.class);
     }
 
     /**
      * Constructor for NamespaceTest.
-     *
+     * 
      * @param arg the name
      */
     public ExportTest(String arg) {
@@ -50,20 +53,19 @@ public class ExportTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\export">
-     *  Test case checking that <tt>\export</tt> needs an argument.
-     * </testcase>
-     *
+     * <testcase primitive="\export"> Test case checking that <tt>\export</tt>
+     * needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\export",
-                //--- output channel ---
-                "File ended while scanning text of \\export");
+        assertFailure(// --- input code ---
+            "\\export",
+            // --- output channel ---
+            "File ended while scanning text of \\export");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

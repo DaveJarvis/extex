@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\ocplist</tt>.
@@ -36,7 +38,7 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcplistPrimitiveTest.class);
+        (new JUnitCore()).run(OcplistPrimitiveTest.class);
     }
 
     /**
@@ -51,11 +53,12 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\ocplist"> Test case checking that
-     * <tt>\ocplist</tt> can not be used in a normal mode. </testcase>
+     * <testcase primitive="\ocplist"> Test case checking that <tt>\ocplist</tt>
+     * can not be used in a normal mode. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -65,11 +68,12 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\ocplist"> Test case checking that
-     * <tt>\ocplist</tt> ... </testcase>
+     * <testcase primitive="\ocplist"> Test case checking that <tt>\ocplist</tt>
+     * \relax is no ocp list </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.fraction;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\abovewithdelims</tt>.
@@ -43,6 +44,7 @@ public class AbovewithdelimsTest extends ExTeXLauncher {
      * Test case checking that \abovewithdelims needs the math mode.
      * @throws Exception in case of an error
      */
+    @Test
     public void testNonMathMode() throws Exception {
 
         assertFailure(//--- input code ---

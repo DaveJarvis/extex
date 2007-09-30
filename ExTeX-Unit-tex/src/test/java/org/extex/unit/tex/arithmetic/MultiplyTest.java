@@ -20,10 +20,12 @@
 package org.extex.unit.tex.arithmetic;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\multiply</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MultiplyTest.class);
+        (new JUnitCore()).run(MultiplyTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MultiplyTest(String arg) {
@@ -50,164 +52,161 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\advance</tt> needs one arguments.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\advance</tt> needs one arguments. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\multiply ",
-            //--- log message ---
+            // --- log message ---
             "Unexpected end of file while processing \\multiply");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> needs a defined control
-     *  sequence as first argument.
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> needs a defined control sequence as first argument.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndef1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\multiply \\x ",
-            //--- log message ---
+            // --- log message ---
             "Undefined control sequence \\x");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a letter leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a letter leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\multiply a",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the letter a\' after \\multiply");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a other token leads to an
-     *  error.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a other token leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOther1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\multiply 12 ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the character 1\' after \\multiply");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a macro parameter token
-     *  leads to an error.
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a macro parameter token leads to an error.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\catcode`#=6 " + "\\multiply #2 ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `macro parameter character #\' after \\multiply");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a non-multipliable
-     *  primitive (\\relax) leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a non-multipliable primitive (\\relax) leads to
+     * an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRelax1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\multiply \\relax ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the control sequence \\relax\' after \\multiply");
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a count register name
-     *  works.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a count register name works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1 8 " + "\\multiply \\count1 16 " + "\\the\\count1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "128" + TERM);
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a count register name
-     *  works with the global flag.
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a count register name works with the global flag.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1 8 "
                     + "\\begingroup\\global\\multiply \\count1 16 \\endgroup "
                     + "\\the\\count1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "128" + TERM);
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a dimen register name
-     *  works.
-     * </testcase>
-     *
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a dimen register name works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen1 8pt " + "\\multiply \\dimen1 16 " + "\\the\\dimen1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "128.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\multiply">
-     *  Test case checking that <tt>\multiply</tt> on a dimen register name
-     *  works with the global flag.
+     * <testcase primitive="\multiply"> Test case checking that
+     * <tt>\multiply</tt> on a dimen register name works with the global flag.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen1 8pt "
                     + "\\begingroup\\global\\multiply \\dimen1 16 \\endgroup "
                     + "\\the\\dimen1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "128.0pt" + TERM);
     }
 

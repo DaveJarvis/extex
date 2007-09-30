@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.font;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\skewchar</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -29,17 +31,17 @@ public class SkewcharTest extends FontcharTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SkewcharTest.class);
+        (new JUnitCore()).run(SkewcharTest.class);
     }
 
     /**
      * Constructor for SkewcharTest.
-     *
+     * 
      * @param arg the name
      */
     public SkewcharTest(String arg) {

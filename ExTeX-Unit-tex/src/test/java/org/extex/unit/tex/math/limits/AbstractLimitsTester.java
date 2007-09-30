@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.limits;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is an abstract base class for testing math primitives.
@@ -88,6 +89,7 @@ public class AbstractLimitsTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNonMathMode1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -102,6 +104,7 @@ public class AbstractLimitsTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNonMathMode2() throws Exception {
 
         assertFailure(// --- input code ---

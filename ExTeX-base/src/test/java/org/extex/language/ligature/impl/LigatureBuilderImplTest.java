@@ -19,7 +19,8 @@
 
 package org.extex.language.ligature.impl;
 
-import junit.framework.TestCase;
+import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.glue.Glue;
@@ -33,14 +34,17 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.LigatureNode;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the <tt>LigatureBuilderImpl</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
-public class LigatureBuilderImplTest extends TestCase {
+public class LigatureBuilderImplTest {
 
     /**
      * This class provides a mock implementation for a font.
@@ -48,7 +52,8 @@ public class LigatureBuilderImplTest extends TestCase {
     private static class MockFont extends NullFont {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -61,12 +66,13 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * Determine whether the glyph for a given character is present in this font.
-         *
+         * Determine whether the glyph for a given character is present in this
+         * font.
+         * 
          * @param uc the character
-         *
+         * 
          * @return <code>true</code> iff the glyph is present
-         *
+         * 
          * @see org.extex.typesetter.tc.font.Font#hasGlyph(
          *      org.extex.core.UnicodeChar)
          */
@@ -89,18 +95,16 @@ public class LigatureBuilderImplTest extends TestCase {
 
         /**
          * Returns the ligature for two chars.
-         *
+         * 
          * @param uc1 the first char
          * @param uc2 the second char
          * @return the ligature for two chars
-         *
+         * 
          * @see org.extex.typesetter.tc.font.Font#getLigature(
-         *      org.extex.core.UnicodeChar,
-         *      org.extex.core.UnicodeChar)
+         *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
          */
         @Override
-        public UnicodeChar getLigature(UnicodeChar uc1,
-                UnicodeChar uc2) {
+        public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
             switch (uc1.getCodePoint()) {
                 case 'f':
@@ -128,35 +132,32 @@ public class LigatureBuilderImplTest extends TestCase {
     private static LigatureBuilder builder = new LigatureBuilderImpl();
 
     /**
-     * The constant <tt>CC_FF</tt> contains the ...
+     * The constant <tt>CC_FF</tt> contains the faked FF ligature.
      */
     private static final int CC_FF = '§';
 
     /**
-     * The constant <tt>CC_FFL</tt> contains the ...
+     * The constant <tt>CC_FFL</tt> contains the faked FFL ligature.
      */
     private static final int CC_FFL = '&';
 
     /**
-     * The constant <tt>CC_FL</tt> contains the ...
+     * The constant <tt>CC_FL</tt> contains the faked FL ligature..
      */
     private static final int CC_FL = '$';
 
     /**
      * The constant <tt>FF</tt> contains the ...
      */
-//    private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
-
+    // private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
     /**
      * The constant <tt>FFL</tt> contains the ...
      */
-//    private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
-
+    // private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
     /**
      * The constant <tt>FL</tt> contains the ...
      */
-//    private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
-
+    // private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
     /**
      * The field <tt>tc1</tt> contains the typesetting context.
      */
@@ -164,24 +165,22 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LigatureBuilderImplTest.class);
+        (new JUnitCore()).run(LigatureBuilderImplTest.class);
     }
 
     /**
      * Set up the test suite.
-     *
+     * 
      * @throws Exception in case of an error
-     *
-     * @see junit.framework.TestCase#setUp()
      */
-    @Override
+    @Before
     protected void setUp() throws Exception {
 
-        super.setUp();
         if (tc1 == null) {
             tc1 = new TypesettingContextImpl(new MockFont());
         }
@@ -189,8 +188,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -200,8 +201,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFour1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -221,8 +224,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOne1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -235,8 +240,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOne2() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -249,8 +256,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testThree0() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -263,8 +272,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testThree1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -280,8 +291,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testThree2() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -298,8 +311,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTwo1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
@@ -314,8 +329,10 @@ public class LigatureBuilderImplTest extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTwo2() throws Exception {
 
         NodeList nodes = new HorizontalListNode();

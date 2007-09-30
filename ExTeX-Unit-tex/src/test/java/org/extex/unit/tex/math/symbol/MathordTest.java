@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.math.symbol;
 
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\mathord</tt>.
  *
@@ -44,6 +46,7 @@ public class MathordTest extends AbstractOperatorTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter1() throws Exception {
 
         assertSuccess(showNodesProperties(),

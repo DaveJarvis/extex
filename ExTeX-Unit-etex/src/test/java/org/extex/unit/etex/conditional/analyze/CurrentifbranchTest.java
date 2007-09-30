@@ -20,6 +20,8 @@
 package org.extex.unit.etex.conditional.analyze;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\currentifbranch</tt>.
@@ -36,7 +38,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CurrentifbranchTest.class);
+        (new JUnitCore()).run(CurrentifbranchTest.class);
     }
 
     /**
@@ -58,6 +60,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -74,6 +77,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -90,6 +94,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -106,6 +111,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -122,6 +128,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -138,6 +145,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(//--- input code ---

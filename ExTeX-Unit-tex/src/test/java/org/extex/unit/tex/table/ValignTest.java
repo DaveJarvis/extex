@@ -20,10 +20,11 @@
 package org.extex.unit.tex.table;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\valign</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class ValignTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ValignTest.class);
+        (new JUnitCore()).run(ValignTest.class);
     }
 
     /**
      * Constructor for ValignTest.
-     *
+     * 
      * @param arg the name
      */
     public ValignTest(String arg) {
@@ -48,4 +50,5 @@ public class ValignTest extends NoFlagsPrimitiveTester {
         super(arg, "valign", "{#\\cr}", DEFINE_HASH);
     }
 
+    // TODO implement primitive specific test cases
 }

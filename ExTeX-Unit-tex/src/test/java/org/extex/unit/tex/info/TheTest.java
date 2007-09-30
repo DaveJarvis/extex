@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\the</tt>.
@@ -46,6 +47,7 @@ public class TheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorLetter() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class TheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorOther() throws Exception {
 
         assertFailure(//--- input code ---
@@ -76,6 +79,7 @@ public class TheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -91,6 +95,7 @@ public class TheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertSuccess(//--- input code ---

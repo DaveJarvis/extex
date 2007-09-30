@@ -20,10 +20,11 @@
 package org.extex.unit.extex.count;
 
 import org.extex.test.count.AbstractNonGroupIntegerTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\maxError</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,25 +32,24 @@ public class MaxErrorTest extends AbstractNonGroupIntegerTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MaxErrorTest.class);
+        (new JUnitCore()).run(MaxErrorTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MaxErrorTest(String arg) {
 
-        super(arg, "maxError", "", "100", DEFINE_BRACES
-                + "\\namespace{system}");
+        super(arg, "maxError", "", "100", DEFINE_BRACES + "\\namespace{system}");
         setConfig("extex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

@@ -41,6 +41,8 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the base hyphenation table.
@@ -300,7 +302,7 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BaseHyphenationTableTest.class);
+        (new JUnitCore()).run(BaseHyphenationTableTest.class);
     }
 
     /**
@@ -393,6 +395,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         HorizontalListNode nodes = hlist("");
@@ -405,6 +408,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         HorizontalListNode nodes = hlist("abc");
@@ -417,6 +421,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         HorizontalListNode nodes = hlist("abcdef");
@@ -431,6 +436,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         HorizontalListNode nodes = hlist("abcdefgh");
@@ -443,6 +449,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         HorizontalListNode nodes = hlist("def");

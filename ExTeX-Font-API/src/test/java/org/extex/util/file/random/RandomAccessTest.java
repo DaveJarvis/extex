@@ -24,6 +24,8 @@ import java.io.RandomAccessFile;
 
 import junit.framework.TestCase;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * Test cases for RandomAccessInputStream.
  * 
@@ -45,7 +47,7 @@ public class RandomAccessTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(RandomAccessTest.class);
+        (new JUnitCore()).run(RandomAccessTest.class);
     }
 
     /**

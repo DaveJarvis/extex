@@ -19,6 +19,10 @@
 
 package org.extex.test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,8 +38,6 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
-
-import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
@@ -90,7 +92,7 @@ import org.extex.test.font.LauncherFont;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExTeXLauncher extends TestCase {
+public class ExTeXLauncher {
 
     /**
      * Inner class for the error handler.
@@ -290,7 +292,7 @@ public class ExTeXLauncher extends TestCase {
      */
     public ExTeXLauncher(String arg) {
 
-        super(arg);
+        super();
         Locale.setDefault(Locale.ENGLISH);
     }
 

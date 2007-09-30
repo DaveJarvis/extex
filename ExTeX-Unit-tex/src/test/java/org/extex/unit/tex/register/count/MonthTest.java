@@ -23,10 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\month</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -34,7 +35,7 @@ public class MonthTest extends AbstractCountRegisterTester {
 
     /**
      * Provide the current month as default value for the comparison.
-     *
+     * 
      * @return the current mont as string
      */
     private static String getDefaultValue() {
@@ -44,16 +45,17 @@ public class MonthTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MonthTest.class);
+        (new JUnitCore()).run(MonthTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public MonthTest(String arg) {

@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.leaders;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\leaders</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LeadersTest.class);
+        (new JUnitCore()).run(LeadersTest.class);
     }
 
     /**
      * Constructor for LeadersTest.
-     *
+     * 
      * @param arg the name
      */
     public LeadersTest(String arg) {
@@ -48,6 +50,5 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
         super(arg, "leaders", "\\vrule\\vfil");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

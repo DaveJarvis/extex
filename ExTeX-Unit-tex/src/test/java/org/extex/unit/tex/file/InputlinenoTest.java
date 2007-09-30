@@ -20,27 +20,30 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\inputlineno</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InputlinenoTest extends AbstractReadonlyCountRegisterTester  {
+public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(InputlinenoTest.class);
+        (new JUnitCore()).run(InputlinenoTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public InputlinenoTest(String arg) {
@@ -49,51 +52,50 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester  {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive is applicable for \showthe.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive is applicable for
+     * \showthe. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterShowthe1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\showthe\\inputlineno\\end",
-                //--- output channel ---
-                "> 1.\n");
+        assertFailure(// --- input code ---
+            "\\showthe\\inputlineno\\end",
+            // --- output channel ---
+            "> 1.\n");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive is applicable for \the.
+     * <testcase> Test case showing that the primitive is applicable for \the.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterThe1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\the\\inputlineno\\end",
-                //--- output channel ---
-                "1" + TERM);
+        assertSuccess(// --- input code ---
+            "\\the\\inputlineno\\end",
+            // --- output channel ---
+            "1" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 123 works
+     * when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\count0=\\inputlineno \\the\\count0\\end",
-                //--- output channel ---
-                "1" + TERM);
+        assertSuccess(// --- input code ---
+            "\\count0=\\inputlineno \\the\\count0\\end",
+            // --- output channel ---
+            "1" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }

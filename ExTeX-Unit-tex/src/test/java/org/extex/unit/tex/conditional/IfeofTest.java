@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\ifeof</tt>.
  * 
@@ -47,7 +50,7 @@ public class IfeofTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfeofTest.class);
+        (new JUnitCore()).run(IfeofTest.class);
     }
 
     /**
@@ -66,6 +69,7 @@ public class IfeofTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -80,6 +84,7 @@ public class IfeofTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -94,6 +99,7 @@ public class IfeofTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -109,6 +115,7 @@ public class IfeofTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -120,11 +127,12 @@ public class IfeofTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
-     * expands the then branch on a file descriptor for an empty
-     * file. </testcase>
+     * expands the then branch on a file descriptor for an empty file.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -142,6 +150,7 @@ public class IfeofTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---

@@ -19,13 +19,17 @@
 
 package org.extex.unit.tex;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is the test suite for plain.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,17 +37,17 @@ public class PlainTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PlainTest.class);
+        (new JUnitCore()).run(PlainTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PlainTest(String arg) {
@@ -52,21 +56,21 @@ public class PlainTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that plain leads to a format file.
+     * <testcase> Test case checking that plain leads to a format file.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPlain() throws Exception {
 
         File fmt = new File(".", "texput.fmt");
         File log = new File(".", "texput.log");
         assertFailure(
-                "\\input ../ExTeX-Unit-tex/src/test/resources/tex/plain-dump \\end",
-                "Preloading the plain format: codes, registers, parameters, fonts, more fonts,\n"
-                        + "macros, math definitions, output routines, hyphenation\n"
-                        + "Beginning to dump on file " + fmt.toString() + "\n");
+            "\\input ../ExTeX-Unit-tex/src/test/resources/tex/plain-dump \\end",
+            "Preloading the plain format: codes, registers, parameters, fonts, more fonts,\n"
+                    + "macros, math definitions, output routines, hyphenation\n"
+                    + "Beginning to dump on file " + fmt.toString() + "\n");
 
         assertTrue("Missing format file", fmt.exists());
         assertTrue("Format file is of wrong type", fmt.isFile());

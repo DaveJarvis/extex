@@ -20,10 +20,12 @@
 package org.extex.unit.tex.group;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\endgroup</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EndgroupTest.class);
+        (new JUnitCore()).run(EndgroupTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EndgroupTest(String arg) {
@@ -50,33 +52,33 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\endgroup"> Test case checking that a lonely
+     * <tt>\endgroup</tt> leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
+        assertFailure(// --- input code ---
+            "\\endgroup",
+            // --- log message ---
+            "Too many }'s");
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
+     * <testcase primitive="\endgroup"> Test case checking that
+     * <tt>\endgroup</tt> works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup \\endgroup",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\begingroup \\endgroup",
+            // --- output channel ---
+            "");
     }
 
 }

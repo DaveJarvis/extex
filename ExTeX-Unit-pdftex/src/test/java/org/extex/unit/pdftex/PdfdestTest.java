@@ -20,6 +20,7 @@
 package org.extex.unit.pdftex;
 
 import org.extex.test.NoFlagsButProtectedPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\pdfdest</tt>.
@@ -45,6 +46,7 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -58,6 +60,7 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---

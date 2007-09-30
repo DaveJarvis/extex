@@ -20,6 +20,8 @@
 package org.extex.unit.etex.register.skip;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\glueshrinkorder</tt>.
@@ -35,7 +37,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GlueshrinkorderTest.class);
+        (new JUnitCore()).run(GlueshrinkorderTest.class);
     }
 
     /**
@@ -59,6 +61,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -78,6 +81,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -98,6 +102,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -118,6 +123,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -137,6 +143,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -157,6 +164,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -177,6 +185,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test21() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -196,6 +205,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test22() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -216,6 +226,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test23() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -236,6 +247,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test31() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -255,6 +267,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test32() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -275,6 +288,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test33() throws Exception {
 
         assertSuccess(//--- input code ---

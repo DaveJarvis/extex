@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\showthe</tt>.
@@ -47,6 +48,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testFailure1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -63,6 +65,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testFailure2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -79,6 +82,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -95,6 +99,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -112,6 +117,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -128,6 +134,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -145,6 +152,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlue1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -161,6 +169,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlue2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -178,6 +187,7 @@ public class ShowtheTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testToks1() throws Exception {
 
         assertFailure(//--- input code ---

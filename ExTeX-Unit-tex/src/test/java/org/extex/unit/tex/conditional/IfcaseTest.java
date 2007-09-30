@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\ifcase</tt>.
  * 
@@ -34,7 +37,7 @@ public class IfcaseTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfcaseTest.class);
+        (new JUnitCore()).run(IfcaseTest.class);
     }
 
     /**
@@ -53,7 +56,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    @Test
+    public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 0 ",
@@ -67,7 +71,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr2() throws Exception {
+    @Test
+    public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 0 a\\or ",
@@ -81,7 +86,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr3() throws Exception {
+    @Test
+    public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 1 a\\or ",
@@ -95,7 +101,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr4() throws Exception {
+    @Test
+    public void testError4() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 2 a\\or ",
@@ -109,7 +116,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr10() throws Exception {
+    @Test
+    public void testError10() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 0 a\\or \\else e",
@@ -123,7 +131,8 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
-    public void testErr11() throws Exception {
+    @Test
+    public void testError11() throws Exception {
 
         assertFailure(// --- input code ---
             "\\ifcase 0 a\\else \\else e",
@@ -137,6 +146,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst0() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -151,6 +161,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -165,6 +176,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -179,6 +191,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -193,6 +206,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst12b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -207,6 +221,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConstMinus1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -221,6 +236,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConstMinus1b() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -235,6 +251,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -249,6 +266,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -263,6 +281,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -277,6 +296,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test20() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -291,6 +311,7 @@ public class IfcaseTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand1() throws Exception {
 
         assertSuccess(// --- input code ---

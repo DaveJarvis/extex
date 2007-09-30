@@ -19,9 +19,13 @@
 
 package org.extex.unit.tex.prefix;
 
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\global</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4306 $
  */
@@ -29,17 +33,17 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GlobalTest.class);
+        (new JUnitCore()).run(GlobalTest.class);
     }
 
     /**
      * Constructor for RelaxTest.
-     *
+     * 
      * @param arg the name
      */
     public GlobalTest(String arg) {
@@ -48,75 +52,76 @@ public class GlobalTest extends PrefixTester {
     }
 
     /**
-     * <testcase primitive="\global">
-     *  Test case checking that double <tt>\global</tt> has the same effect as
-     *  one.
-     * </testcase>
-     *
+     * <testcase primitive="\global"> Test case checking that double
+     * <tt>\global</tt> has the same effect as one. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup\\global\\global\\count0=123\\endgroup"
-                        + "\\the\\count0\\end",
-                //--- output channel ---
-                "123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\global\\count0=123\\endgroup"
+                    + "\\the\\count0\\end",
+            // --- output channel ---
+            "123" + TERM);
     }
 
     /**
-     * <testcase primitive="\global">
-     *  Test case checking that \global set the global flag.
-     * </testcase>
-     *
+     * <testcase primitive="\global"> Test case checking that \global set the
+     * global flag. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test10() throws Exception {
+    @Test
+    @Ignore
+    public void test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\global\\showprefix\\end",
-                //--- error channel ---
-                "global\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\global\\showprefix\\end",
+            // --- error channel ---
+            "global\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\global">
-     *  Test case checking that double <tt>\global</tt> has the same effect as
-     *  one.
-     * </testcase>
-     *
+     * <testcase primitive="\global"> Test case checking that double
+     * <tt>\global</tt> has the same effect as one. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test11() throws Exception {
+    @Test
+    @Ignore
+    public void test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\global\\global\\showprefix\\end",
-                //--- error channel ---
-                "global\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\global\\global\\showprefix\\end",
+            // --- error channel ---
+            "global\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\global">
-     *  Test case checking that \global can be combined with \long.
-     * </testcase>
-     *
+     * <testcase primitive="\global"> Test case checking that \global can be
+     * combined with \long. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test12() throws Exception {
+    @Test
+    @Ignore
+    public void test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\global\\long\\showprefix\\end",
-                //--- error channel ---
-                "global and long\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\global\\long\\showprefix\\end",
+            // --- error channel ---
+            "global and long\n",
+            // --- output channel ---
+            "");
     }
 
 }

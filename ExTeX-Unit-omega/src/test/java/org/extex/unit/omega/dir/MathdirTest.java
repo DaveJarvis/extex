@@ -19,8 +19,12 @@
 
 package org.extex.unit.omega.dir;
 
+import static org.junit.Assert.*;
+
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>mathdir</tt>.
@@ -37,7 +41,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MathdirTest.class);
+        (new JUnitCore()).run(MathdirTest.class);
     }
 
     /**
@@ -57,6 +61,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -71,6 +76,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -85,6 +91,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Interpreter in = assertSuccess(// --- input code ---

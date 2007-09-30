@@ -20,10 +20,11 @@
 package org.extex.unit.etex.typesetter.mark;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\splitfirstmarks</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class SplitfirstmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SplitfirstmarksTest.class);
+        (new JUnitCore()).run(SplitfirstmarksTest.class);
     }
 
     /**
      * Constructor for SplitfirstmarkTest.
-     *
+     * 
      * @param arg the name
      */
     public SplitfirstmarksTest(String arg) {
@@ -49,6 +51,5 @@ public class SplitfirstmarksTest extends NoFlagsPrimitiveTester {
         setConfig("etex-test");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

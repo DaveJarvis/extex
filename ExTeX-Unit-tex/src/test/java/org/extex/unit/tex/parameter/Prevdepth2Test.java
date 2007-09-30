@@ -20,10 +20,11 @@
 package org.extex.unit.tex.parameter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\prevdepth</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +32,17 @@ public class Prevdepth2Test extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(Prevdepth2Test.class);
+        (new JUnitCore()).run(Prevdepth2Test.class);
     }
 
     /**
      * Constructor for PenaltyTest.
-     *
+     * 
      * @param arg the name
      */
     public Prevdepth2Test(String arg) {

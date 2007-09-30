@@ -20,10 +20,12 @@
 package org.extex.unit.etex.scanner;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\detokenize</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DetokenizeTest.class);
+        (new JUnitCore()).run(DetokenizeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DetokenizeTest(String arg) {
@@ -50,50 +53,49 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\detokenize">
-     *  Test case checking that <tt>\detokenize</tt> needs an argument.
-     * </testcase>
-     *
+     * <testcase primitive="\detokenize"> Test case checking that
+     * <tt>\detokenize</tt> needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\detokenize",
-                //--- output channel ---
-                "File ended while scanning text of \\detokenize");
+        assertFailure(// --- input code ---
+            "\\detokenize",
+            // --- output channel ---
+            "File ended while scanning text of \\detokenize");
     }
 
     /**
-     * <testcase primitive="\detokenize">
-     *  Test case checking that <tt>\detokenize</tt> consumes a letter.
-     * </testcase>
-     *
+     * <testcase primitive="\detokenize"> Test case checking that
+     * <tt>\detokenize</tt> consumes a letter. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\detokenize{a}\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\detokenize{a}\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\detokenize">
-     *  Test case checking that <tt>\detokenize</tt> consumes some letters.
-     * </testcase>
-     *
+     * <testcase primitive="\detokenize"> Test case checking that
+     * <tt>\detokenize</tt> consumes some letters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\detokenize{abc}\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\detokenize{abc}\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

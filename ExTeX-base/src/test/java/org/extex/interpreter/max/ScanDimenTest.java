@@ -20,6 +20,7 @@
 package org.extex.interpreter.max;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the scanner routines.
@@ -46,6 +47,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen0() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -61,6 +63,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -77,6 +80,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -93,6 +97,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -109,6 +114,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -125,6 +131,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -141,6 +148,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimenErr1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -156,6 +164,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen11() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -173,6 +182,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -190,6 +200,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen13() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -207,6 +218,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen21() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -224,6 +236,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen22() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -241,6 +254,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen23() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -258,6 +272,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen31() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -275,6 +290,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen32() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -292,6 +308,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen33() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -309,6 +326,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen34() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -326,6 +344,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen35() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -342,6 +361,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen40() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -359,6 +379,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen41() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -376,6 +397,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen42() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -393,6 +415,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen43() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -410,6 +433,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen44() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -427,6 +451,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testScanDimen45() throws Exception {
 
         assertSuccess(//--- input code ---

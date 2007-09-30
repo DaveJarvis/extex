@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.numbering;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is an abstract base class for numbering primitives.
@@ -48,6 +49,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testVerticalMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -64,6 +66,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testHorizontalMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -80,6 +83,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -96,6 +100,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -112,6 +117,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode3() throws Exception {
 
         assertFailure(//--- input code ---

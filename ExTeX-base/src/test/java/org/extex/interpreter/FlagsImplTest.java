@@ -19,9 +19,15 @@
 
 package org.extex.interpreter;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotSame;
+import static junit.framework.Assert.assertTrue;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the flags implementation.
@@ -29,7 +35,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
-public class FlagsImplTest extends TestCase {
+public class FlagsImplTest {
 
     /**
      * Command line interface.
@@ -38,11 +44,12 @@ public class FlagsImplTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(FlagsImplTest.class);
+        (new JUnitCore()).run(FlagsImplTest.class);
     }
 
     /**
      */
+    @Test
     public void testClear() {
 
         Flags f = new FlagsImpl();
@@ -61,6 +68,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearGlobal1() {
 
         Flags f = new FlagsImpl();
@@ -75,6 +83,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearGlobal2() {
 
         Flags f = new FlagsImpl();
@@ -88,6 +97,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearImmediate1() {
 
         Flags f = new FlagsImpl();
@@ -102,6 +112,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearImmediate2() {
 
         Flags f = new FlagsImpl();
@@ -115,6 +126,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearLong1() {
 
         Flags f = new FlagsImpl();
@@ -129,6 +141,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearLong2() {
 
         Flags f = new FlagsImpl();
@@ -142,6 +155,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearOuter1() {
 
         Flags f = new FlagsImpl();
@@ -156,6 +170,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearOuter2() {
 
         Flags f = new FlagsImpl();
@@ -169,6 +184,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearProtected1() {
 
         Flags f = new FlagsImpl();
@@ -183,6 +199,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testClearProtected2() {
 
         Flags f = new FlagsImpl();
@@ -196,6 +213,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testCopy0() {
 
         Flags fl = new FlagsImpl();
@@ -206,6 +224,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testCopy1() {
 
         Flags fl = new FlagsImpl();
@@ -221,6 +240,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testCopy2() {
 
         Flags fl = new FlagsImpl();
@@ -233,6 +253,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty0() {
 
         Flags f = new FlagsImpl();
@@ -241,6 +262,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty1() {
 
         Flags f = new FlagsImpl();
@@ -250,6 +272,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty2() {
 
         Flags f = new FlagsImpl();
@@ -259,6 +282,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty3() {
 
         Flags f = new FlagsImpl();
@@ -268,6 +292,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty5() {
 
         Flags f = new FlagsImpl();
@@ -277,6 +302,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty6() {
 
         Flags f = new FlagsImpl();
@@ -286,6 +312,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsDirty7() {
 
         Flags f = new FlagsImpl();
@@ -299,6 +326,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsGlobal() {
 
         Flags f = new FlagsImpl();
@@ -307,6 +335,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsImmediate() {
 
         Flags f = new FlagsImpl();
@@ -315,6 +344,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsLong() {
 
         Flags f = new FlagsImpl();
@@ -323,6 +353,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsOuter() {
 
         Flags f = new FlagsImpl();
@@ -331,6 +362,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testIsProtected() {
 
         Flags f = new FlagsImpl();
@@ -339,6 +371,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSet1() {
 
         Flags fl = new FlagsImpl();
@@ -349,6 +382,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSet2() {
 
         Flags fl = new FlagsImpl();
@@ -360,6 +394,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSet3() {
 
         Flags fl = new FlagsImpl();
@@ -375,6 +410,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetGlobal() {
 
         Flags f = new FlagsImpl();
@@ -388,6 +424,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetGlobalBoolean1() {
 
         Flags f = new FlagsImpl();
@@ -401,6 +438,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetGlobalBoolean2() {
 
         Flags f = new FlagsImpl();
@@ -414,6 +452,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetImmediate() {
 
         Flags f = new FlagsImpl();
@@ -427,6 +466,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetLong() {
 
         Flags f = new FlagsImpl();
@@ -440,6 +480,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetOuter() {
 
         Flags f = new FlagsImpl();
@@ -453,6 +494,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testSetProtected() {
 
         Flags f = new FlagsImpl();
@@ -466,6 +508,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToString0() {
 
         Flags f = new FlagsImpl();
@@ -474,6 +517,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToString1() {
 
         Flags f = new FlagsImpl();
@@ -484,6 +528,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToString2() {
 
         Flags f = new FlagsImpl();
@@ -493,6 +538,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToString3() {
 
         Flags f = new FlagsImpl();
@@ -506,6 +552,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToText0() {
 
         Flags f = new FlagsImpl();
@@ -514,6 +561,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToText1() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -523,12 +571,13 @@ public class FlagsImplTest extends TestCase {
         f.setOuter();
         f.setProtected();
         f.setImmediate();
-        assertEquals("global, long, outer, immediate, and protected",
-            f.toText());
+        assertEquals("global, long, outer, immediate, and protected", f
+            .toText());
     }
 
     /**
      */
+    @Test
     public void testToText2() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -537,12 +586,12 @@ public class FlagsImplTest extends TestCase {
         f.setOuter();
         f.setProtected();
         f.setImmediate();
-        assertEquals("long, outer, immediate, and protected", f
-            .toText());
+        assertEquals("long, outer, immediate, and protected", f.toText());
     }
 
     /**
      */
+    @Test
     public void testToText3() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -555,6 +604,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToText4() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -566,6 +616,7 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
+    @Test
     public void testToText5() {
 
         Locale.setDefault(Locale.ENGLISH);

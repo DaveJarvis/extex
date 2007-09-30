@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.count.AbstractCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\escapechar</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class EscapecharTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EscapecharTest.class);
+        (new JUnitCore()).run(EscapecharTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EscapecharTest(String arg) {
@@ -49,37 +52,35 @@ public class EscapecharTest extends AbstractCountRegisterTester {
     }
 
     /**
-     * <testcase primitive="\escapechar">
-     *  Test case checking that <tt>\escapechar</tt> works with
-     *  <tt>\meaning</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\escapechar"> Test case checking that
+     * <tt>\escapechar</tt> works with <tt>\meaning</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\escapechar=`\\:\\meaning\\relax" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             ":relax=:relax" + TERM);
     }
 
     /**
-     * <testcase primitive="\escapechar">
-     *  Test case checking that <tt>\escapechar</tt> works with
-     *  <tt>\string</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\escapechar"> Test case checking that
+     * <tt>\escapechar</tt> works with <tt>\string</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\escapechar=`\\:\\string\\relax" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             ":relax" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }

@@ -19,9 +19,13 @@
 
 package org.extex.unit.tex.interaction;
 
+import static org.junit.Assert.*;
+
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\batchmode</tt>.
@@ -38,7 +42,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(BatchmodeTest.class);
+        (new JUnitCore()).run(BatchmodeTest.class);
     }
 
     /**
@@ -58,6 +62,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testBatchmode1() throws Exception {
 
         Interpreter interpreter = assertSuccess(//--- input code ---
@@ -75,6 +80,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorstopmode2() throws Exception {
 
         Interpreter interpreter =

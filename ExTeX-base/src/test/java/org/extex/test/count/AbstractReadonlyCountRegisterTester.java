@@ -20,6 +20,7 @@
 package org.extex.test.count;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for read-only count registers.
@@ -108,6 +109,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorVerticalMode1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -122,6 +124,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorVerticalMode2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -136,6 +139,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorHorizonalMode1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -150,6 +154,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorHorizonalMode2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -164,6 +169,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorMathMode1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -178,6 +184,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErrorMathMode2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -192,6 +199,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDefaultValue1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -206,6 +214,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountAssignment1() throws Exception {
 
         assertFailure(// --- input code ---

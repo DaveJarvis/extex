@@ -20,10 +20,12 @@
 package org.extex.unit.tex.string;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\number</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class NumberTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NumberTest.class);
+        (new JUnitCore()).run(NumberTest.class);
     }
 
     /**
      * Constructor for NumberTest.
-     *
+     * 
      * @param arg the name
      */
     public NumberTest(String arg) {
@@ -49,62 +52,60 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\number">
-     *  Test case checking that <tt>\number</tt> on a count with the value
-     *  2 gives <tt>2</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
+     * on a count with the value 2 gives <tt>2</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess("\\count0=2 \\number\\count0 \\end",
         //
-                "2" + TERM);
+            "2" + TERM);
     }
 
     /**
-     * <testcase primitive="\number">
-     *  Test case checking that <tt>\number</tt> on a count with the value
-     *  32 gives <tt>32</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
+     * on a count with the value 32 gives <tt>32</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertSuccess("\\count0=32 \\number\\count0 \\end",
         //
-                "32" + TERM);
+            "32" + TERM);
     }
 
     /**
-     * <testcase primitive="\number">
-     *  Test case checking that <tt>\number</tt> on a count with the value
-     *  -2 gives <tt>-2</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
+     * on a count with the value -2 gives <tt>-2</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount3() throws Exception {
 
         assertSuccess("\\count0=-2 \\number\\count0 \\end",
         //
-                "-2" + TERM);
+            "-2" + TERM);
     }
 
     /**
-     * <testcase primitive="\number">
-     *  Test case checking that <tt>\number</tt> is expandable.
-     * </testcase>
-     *
+     * <testcase primitive="\number"> Test case checking that <tt>\number</tt>
+     * is expandable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConvert1() throws Exception {
 
-        assertSuccess("\\count0=-2 \\count1=\\number\\count0\\relax\\the\\count1\\end",
-        //
-                "-2" + TERM);
+        assertSuccess(
+            "\\count0=-2 \\count1=\\number\\count0\\relax\\the\\count1\\end",
+            //
+            "-2" + TERM);
     }
 
 }

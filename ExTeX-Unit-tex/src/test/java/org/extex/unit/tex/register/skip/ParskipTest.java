@@ -19,9 +19,11 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\parskip</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +31,17 @@ public class ParskipTest extends AbstractSkipRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ParskipTest.class);
+        (new JUnitCore()).run(ParskipTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ParskipTest(String arg) {
@@ -46,6 +49,5 @@ public class ParskipTest extends AbstractSkipRegisterTester {
         super(arg, "parskip", "", "0.0pt");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.font;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\hyphenchar</tt>.
  *
@@ -34,7 +36,7 @@ public class HyphencharTest extends FontcharTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HyphencharTest.class);
+        (new JUnitCore()).run(HyphencharTest.class);
     }
 
     /**

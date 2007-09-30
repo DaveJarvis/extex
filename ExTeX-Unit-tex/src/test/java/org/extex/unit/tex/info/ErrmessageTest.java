@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\errmessage</tt>.
@@ -46,6 +47,7 @@ public class ErrmessageTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertFailure(//--- input code ---

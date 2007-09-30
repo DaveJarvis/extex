@@ -22,6 +22,7 @@ package org.extex.scanner.type.token;
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test class for ActiveCharacterToken.
@@ -38,7 +39,7 @@ public class ActiveCharacterTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ActiveCharacterTokenTest.class);
+        (new JUnitCore()).run(ActiveCharacterTokenTest.class);
     }
 
     /**

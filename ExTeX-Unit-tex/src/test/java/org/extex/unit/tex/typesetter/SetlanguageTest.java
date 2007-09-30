@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\setlanguage</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class SetlanguageTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SetlanguageTest.class);
+        (new JUnitCore()).run(SetlanguageTest.class);
     }
 
     /**
      * Constructor for SetlanguageTest.
-     *
+     * 
      * @param arg the name
      */
     public SetlanguageTest(String arg) {
@@ -48,6 +50,5 @@ public class SetlanguageTest extends NoFlagsPrimitiveTester {
         super(arg, "setlanguage", "1");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

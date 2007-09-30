@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\noboundary</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class NoboundaryTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NoboundaryTest.class);
+        (new JUnitCore()).run(NoboundaryTest.class);
     }
 
     /**
      * Constructor for NoboundaryTest.
-     *
+     * 
      * @param arg the name
      */
     public NoboundaryTest(String arg) {
@@ -48,4 +50,5 @@ public class NoboundaryTest extends ExTeXLauncher {
         super(arg);
     }
 
+    // TODO implement primitive specific test cases
 }

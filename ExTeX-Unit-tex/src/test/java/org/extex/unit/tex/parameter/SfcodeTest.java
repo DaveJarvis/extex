@@ -20,10 +20,11 @@
 package org.extex.unit.tex.parameter;
 
 import org.extex.unit.tex.string.AbstractCharMapTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\sfcode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4156 $
  */
@@ -31,16 +32,17 @@ public class SfcodeTest extends AbstractCharMapTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SfcodeTest.class);
+        (new JUnitCore()).run(SfcodeTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public SfcodeTest(String arg) {
@@ -50,7 +52,7 @@ public class SfcodeTest extends AbstractCharMapTester {
 
     /**
      * Get he message for a bad character code.
-     *
+     * 
      * @return the message
      */
     @Override

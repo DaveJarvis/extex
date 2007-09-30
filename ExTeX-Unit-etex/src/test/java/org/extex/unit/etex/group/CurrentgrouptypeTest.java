@@ -21,6 +21,8 @@ package org.extex.unit.etex.group;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\currentgrouptype</tt>.
@@ -37,7 +39,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CurrentgrouptypeTest.class);
+        (new JUnitCore()).run(CurrentgrouptypeTest.class);
     }
 
     /**
@@ -59,6 +61,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -75,6 +78,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -91,6 +95,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -107,6 +112,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -123,6 +129,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -140,6 +147,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -156,6 +164,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -176,6 +185,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test14() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -186,5 +196,4 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     }
 
     //TODO implement more primitive specific test cases
-
 }

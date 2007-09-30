@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vadjust</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VadjustTest.class);
+        (new JUnitCore()).run(VadjustTest.class);
     }
 
     /**
      * Constructor for VadjustTest.
-     *
+     * 
      * @param arg the name
      */
     public VadjustTest(String arg) {
@@ -49,21 +52,21 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vadjust">
-     *  Test case checking that <tt>\vadjust</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\vadjust"> Test case checking that <tt>\vadjust</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertFailure(//showNodesProperties(),
-        //--- input code ---
-                "\\vadjust ",
-                //--- output channel ---
-                "You can't use `\\vadjust' in vertical mode");
+        assertFailure(// showNodesProperties(),
+            // --- input code ---
+            "\\vadjust ",
+            // --- output channel ---
+            "You can't use `\\vadjust' in vertical mode");
     }
 
-    //TODO implement primitive specific test cases
+    // TODO implement primitive specific test cases
 
 }

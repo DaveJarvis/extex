@@ -33,6 +33,7 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the string implementation of a token stream.
@@ -66,7 +67,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TokenStreamStringImpl32Test.class);
+        (new JUnitCore()).run(TokenStreamStringImpl32Test.class);
     }
 
     /**

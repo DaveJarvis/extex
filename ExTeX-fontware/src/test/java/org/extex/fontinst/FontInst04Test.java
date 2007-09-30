@@ -19,6 +19,9 @@
 
 package org.extex.fontinst;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Calendar;

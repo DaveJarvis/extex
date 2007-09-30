@@ -22,6 +22,7 @@ package org.extex.unit.tex.table;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\halign</tt>.
@@ -46,6 +47,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingBrace1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -75,6 +78,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOuter1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -92,6 +96,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOuter2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -109,6 +114,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOuter3() throws Exception {
 
         assertFailure(//--- input code ---
@@ -126,6 +132,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingSharp1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -141,6 +148,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingSharp2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -156,6 +164,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSharp1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -171,6 +180,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testHalign1() throws Exception {
 
         Properties properties = System.getProperties();

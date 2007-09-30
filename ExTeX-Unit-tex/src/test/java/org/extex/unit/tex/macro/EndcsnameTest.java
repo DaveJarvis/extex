@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\endcsname</tt>.
@@ -46,6 +47,7 @@ public class EndcsnameTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetters1() throws Exception {
 
         assertFailure(//--- input code ---

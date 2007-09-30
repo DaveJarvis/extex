@@ -20,6 +20,7 @@
 package org.extex.unit.tex.hyphen;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\hyphenation</tt>.
@@ -46,6 +47,7 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -65,6 +67,7 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---

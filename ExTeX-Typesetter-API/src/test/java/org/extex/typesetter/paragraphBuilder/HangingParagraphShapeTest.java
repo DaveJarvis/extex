@@ -22,12 +22,13 @@ package org.extex.typesetter.paragraphBuilder;
 import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the class HangingParagraphShape.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5952 $
  */
 public class HangingParagraphShapeTest extends TestCase {
 
@@ -43,12 +44,12 @@ public class HangingParagraphShapeTest extends TestCase {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HangingParagraphShapeTest.class);
+        (new JUnitCore()).run(HangingParagraphShapeTest.class);
     }
 
     /**
@@ -57,8 +58,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void test0() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(0, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(0, new Dimen(INDENT),
+                    new Dimen(RIGHT));
 
         assertEquals(0, shape.getIndent(0).getValue());
         assertEquals(0, shape.getIndent(1).getValue());
@@ -76,8 +78,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void test1() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(1, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(1, new Dimen(INDENT),
+                    new Dimen(RIGHT));
 
         assertEquals(0, shape.getIndent(0).getValue());
         assertEquals(INDENT, shape.getIndent(1).getValue());
@@ -95,8 +98,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void test2() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(2, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(2, new Dimen(INDENT),
+                    new Dimen(RIGHT));
 
         assertEquals(0, shape.getIndent(0).getValue());
         assertEquals(0, shape.getIndent(1).getValue());
@@ -113,8 +117,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void test3() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(3, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(3, new Dimen(INDENT),
+                    new Dimen(RIGHT));
 
         assertEquals(0, shape.getIndent(0).getValue());
         assertEquals(0, shape.getIndent(1).getValue());
@@ -131,8 +136,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void testM1() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(-1, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(-1, new Dimen(INDENT), new Dimen(
+                    RIGHT));
 
         assertEquals(INDENT, shape.getIndent(0).getValue());
         assertEquals(0, shape.getIndent(1).getValue());
@@ -149,8 +155,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void testM2() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(-2, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(-2, new Dimen(INDENT), new Dimen(
+                    RIGHT));
 
         assertEquals(INDENT, shape.getIndent(0).getValue());
         assertEquals(INDENT, shape.getIndent(1).getValue());
@@ -167,8 +174,9 @@ public class HangingParagraphShapeTest extends TestCase {
      */
     public void testM3() {
 
-        HangingParagraphShape shape = new HangingParagraphShape(-3, new Dimen(
-                INDENT), new Dimen(RIGHT));
+        HangingParagraphShape shape =
+                new HangingParagraphShape(-3, new Dimen(INDENT), new Dimen(
+                    RIGHT));
 
         assertEquals(INDENT, shape.getIndent(0).getValue());
         assertEquals(INDENT, shape.getIndent(1).getValue());

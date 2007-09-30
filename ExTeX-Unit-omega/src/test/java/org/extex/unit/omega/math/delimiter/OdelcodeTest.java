@@ -20,10 +20,11 @@
 package org.extex.unit.omega.math.delimiter;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\odelcode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OdelcodeTest.class);
+        (new JUnitCore()).run(OdelcodeTest.class);
     }
 
     /**
      * Constructor for DelcodeTest.
-     *
+     * 
      * @param arg the name
      */
     public OdelcodeTest(String arg) {
@@ -49,6 +51,5 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
         setConfig("omega-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

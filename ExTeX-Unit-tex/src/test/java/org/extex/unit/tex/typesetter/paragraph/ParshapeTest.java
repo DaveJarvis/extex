@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.paragraph;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\parshape</tt>.
@@ -36,7 +38,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ParshapeTest.class);
+        (new JUnitCore()).run(ParshapeTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -70,6 +73,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -84,6 +88,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -98,6 +103,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -112,6 +118,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -121,5 +128,4 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
     }
 
     // TODO implement more primitive specific test cases
-
 }

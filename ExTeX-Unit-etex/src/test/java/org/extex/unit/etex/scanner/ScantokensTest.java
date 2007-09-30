@@ -20,10 +20,12 @@
 package org.extex.unit.etex.scanner;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\scantokens</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ScantokensTest.class);
+        (new JUnitCore()).run(ScantokensTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ScantokensTest(String arg) {
@@ -50,69 +53,68 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> needs an argument.
-     * </testcase>
-     *
+     * <testcase primitive="\scantokens"> Test case checking that
+     * <tt>\scantokens</tt> needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\scantokens",
-                //--- output channel ---
-                "File ended while scanning text of \\scantokens");
+        assertFailure(// --- input code ---
+            "\\scantokens",
+            // --- output channel ---
+            "File ended while scanning text of \\scantokens");
     }
 
     /**
-     * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> consumes a letter.
-     * </testcase>
-     *
+     * <testcase primitive="\scantokens"> Test case checking that
+     * <tt>\scantokens</tt> consumes a letter. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\scantokens{a}\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\scantokens{a}\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> respects \escapechar.
-     * </testcase>
-     *
+     * <testcase primitive="\scantokens"> Test case checking that
+     * <tt>\scantokens</tt> respects \escapechar. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEscapechar1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\escapechar=65 \\scantokens{\\xxx}\\end",
-                //--- output channel ---
-                "Axxx" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\escapechar=65 \\scantokens{\\xxx}\\end",
+            // --- output channel ---
+            "Axxx" + TERM);
     }
 
     /**
-     * <testcase primitive="\scantokens">
-     *  Test case checking that <tt>\scantokens</tt> inserts the tokens from
-     *  <tt>\everyeof</tt>.
+     * <testcase primitive="\scantokens"> Test case checking that
+     * <tt>\scantokens</tt> inserts the tokens from <tt>\everyeof</tt>.
      * </testcase>
-     *
-     * Note: The white-space inserted by \scantokens is correct
-     * (checked with e-TeX)
-     *
+     * 
+     * Note: The white-space inserted by \scantokens is correct (checked with
+     * e-TeX)
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEveryeof1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\everyeof{x}\\scantokens{a}b\\end",
-                //--- output channel ---
-                "a xb" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\everyeof{x}\\scantokens{a}b\\end",
+            // --- output channel ---
+            "a xb" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

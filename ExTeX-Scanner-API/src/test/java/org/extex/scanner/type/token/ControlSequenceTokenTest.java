@@ -22,6 +22,7 @@ package org.extex.scanner.type.token;
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for control sequence tokens.
@@ -46,7 +47,7 @@ public class ControlSequenceTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ControlSequenceTokenTest.class);
+        (new JUnitCore()).run(ControlSequenceTokenTest.class);
     }
 
     /**

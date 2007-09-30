@@ -21,6 +21,8 @@ package org.extex.unit.etex.conditional;
 
 import org.extex.test.ExTeXLauncher;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\u005cnless</tt>.
@@ -37,7 +39,7 @@ public class UnlessTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UnlessTest.class);
+        (new JUnitCore()).run(UnlessTest.class);
     }
 
     /**
@@ -57,6 +59,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(
@@ -72,6 +75,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(
@@ -87,6 +91,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(
@@ -102,6 +107,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(
@@ -117,6 +123,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError4() throws Exception {
 
         assertFailure(
@@ -132,6 +139,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError5() throws Exception {
 
         assertFailure(
@@ -148,6 +156,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -163,6 +172,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(
@@ -178,6 +188,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -192,6 +203,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -207,6 +219,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -221,6 +234,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -235,6 +249,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -249,6 +264,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -263,6 +279,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA8() throws Exception {
 
         assertSuccess(
@@ -279,6 +296,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -293,6 +311,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -307,6 +326,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -321,6 +341,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -335,6 +356,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA14() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -349,6 +371,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA15() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -363,6 +386,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA16() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -377,6 +401,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA19() throws Exception {
 
         assertSuccess(
@@ -392,6 +417,7 @@ public class UnlessTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA20() throws Exception {
 
         assertSuccess(// --- input code ---

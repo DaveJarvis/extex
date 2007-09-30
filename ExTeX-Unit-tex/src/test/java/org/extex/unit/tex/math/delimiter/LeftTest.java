@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\left</tt>.
@@ -46,6 +47,7 @@ public class LeftTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(
@@ -62,6 +64,7 @@ public class LeftTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr2() throws Exception {
 
         assertFailure(
@@ -78,6 +81,7 @@ public class LeftTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr3() throws Exception {
 
         assertFailure(
@@ -94,6 +98,7 @@ public class LeftTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(

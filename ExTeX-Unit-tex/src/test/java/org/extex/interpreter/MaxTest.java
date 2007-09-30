@@ -21,6 +21,7 @@ package org.extex.interpreter;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the interpreter Max.
@@ -68,6 +69,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabMark() throws Exception {
 
         assertFailure(//--- input code ---
@@ -81,6 +83,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSupMark() throws Exception {
 
         assertFailure(//--- input code ---
@@ -94,6 +97,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubMark() throws Exception {
 
         assertFailure(//--- input code ---
@@ -107,6 +111,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacroParam() throws Exception {
 
         assertFailure(//--- input code ---
@@ -121,6 +126,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndefinedAcive() throws Exception {
 
         assertFailure(//--- input code ---
@@ -135,6 +141,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndefinedCs() throws Exception {
 
         assertFailure(//--- input code ---
@@ -149,6 +156,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabNoGlobalFlag() throws Exception {
 
         tryFlag("global", "&", Catcode.TABMARK, "alignment tab character &");
@@ -160,6 +168,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "&", Catcode.TABMARK, "alignment tab character &");
@@ -171,6 +180,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabNoLongFlag() throws Exception {
 
         tryFlag("long", "&", Catcode.TABMARK, "alignment tab character &");
@@ -182,6 +192,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabNoOuterFlag() throws Exception {
 
         tryFlag("outer", "&", Catcode.TABMARK, "alignment tab character &");
@@ -193,6 +204,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubNoGlobalFlag() throws Exception {
 
         tryFlag("global", "_", Catcode.SUBMARK, "subscript character _");
@@ -204,6 +216,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "_", Catcode.SUBMARK, "subscript character _");
@@ -215,6 +228,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubNoLongFlag() throws Exception {
 
         tryFlag("long", "_", Catcode.SUBMARK, "subscript character _");
@@ -226,6 +240,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubNoOuterFlag() throws Exception {
 
         tryFlag("outer", "_", Catcode.SUBMARK, "subscript character _");
@@ -237,6 +252,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperNoGlobalFlag() throws Exception {
 
         tryFlag("global", "^", Catcode.SUPMARK, "superscript character ^");
@@ -248,6 +264,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "^", Catcode.SUPMARK, "superscript character ^");
@@ -259,6 +276,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperNoLongFlag() throws Exception {
 
         tryFlag("long", "^", Catcode.SUPMARK, "superscript character ^");
@@ -270,6 +288,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperNoOuterFlag() throws Exception {
 
         tryFlag("outer", "^", Catcode.SUPMARK, "superscript character ^");
@@ -281,6 +300,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetterNoGlobalFlag() throws Exception {
 
         tryFlag("global", "A", Catcode.LETTER, "the letter A");
@@ -292,6 +312,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetterNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "A", Catcode.LETTER, "the letter A");
@@ -303,6 +324,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetterNoLongFlag() throws Exception {
 
         tryFlag("long", "A", Catcode.LETTER, "the letter A");
@@ -314,6 +336,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetterNoOuterFlag() throws Exception {
 
         tryFlag("outer", "A", Catcode.LETTER, "the letter A");
@@ -325,6 +348,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOtherNoGlobalFlag() throws Exception {
 
         tryFlag("global", "1", Catcode.OTHER, "the character 1");
@@ -336,6 +360,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOtherNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "1", Catcode.OTHER, "the character 1");
@@ -347,6 +372,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOtherNoLongFlag() throws Exception {
 
         tryFlag("long", "1", Catcode.OTHER, "the character 1");
@@ -358,6 +384,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOtherNoOuterFlag() throws Exception {
 
         tryFlag("outer", "1", Catcode.OTHER, "the character 1");
@@ -369,6 +396,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshiftNoGlobalFlag() throws Exception {
 
         tryFlag("global", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -380,6 +408,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshiftNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -391,6 +420,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshiftNoLongFlag() throws Exception {
 
         tryFlag("long", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -402,6 +432,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshiftNoOuterFlag() throws Exception {
 
         tryFlag("outer", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -413,6 +444,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testBegingroupNoGlobalFlag() throws Exception {
 
         tryFlag("global", "{", Catcode.LEFTBRACE, "begin-group character {");
@@ -424,6 +456,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testBegingroupNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "{", Catcode.LEFTBRACE, "begin-group character {");
@@ -435,6 +468,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testBegingroupNoLongFlag() throws Exception {
 
         tryFlag("long", "{", Catcode.LEFTBRACE, "begin-group character {");
@@ -446,6 +480,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testBegingroupNoOuterFlag() throws Exception {
 
         tryFlag("outer", "{", Catcode.LEFTBRACE, "begin-group character {");
@@ -457,6 +492,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroupNoGlobalFlag() throws Exception {
 
         tryFlag("global", "}", Catcode.RIGHTBRACE, "end-group character }");
@@ -468,6 +504,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroupNoImmediateFlag() throws Exception {
 
         tryFlag("immediate", "}", Catcode.RIGHTBRACE, "end-group character }");
@@ -479,6 +516,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroupNoLongFlag() throws Exception {
 
         tryFlag("long", "}", Catcode.RIGHTBRACE, "end-group character }");
@@ -490,6 +528,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroupNoOuterFlag() throws Exception {
 
         tryFlag("outer", "}", Catcode.RIGHTBRACE, "end-group character }");
@@ -501,6 +540,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroup1() throws Exception {
 
         assertFailure(//

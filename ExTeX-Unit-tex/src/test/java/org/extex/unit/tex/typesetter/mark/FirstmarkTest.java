@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\firstmark</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class FirstmarkTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(FirstmarkTest.class);
+        (new JUnitCore()).run(FirstmarkTest.class);
     }
 
     /**
      * Constructor for FirstmarkTest.
-     *
+     * 
      * @param arg the name
      */
     public FirstmarkTest(String arg) {
@@ -48,6 +50,5 @@ public class FirstmarkTest extends NoFlagsPrimitiveTester {
         super(arg, "firstmark", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

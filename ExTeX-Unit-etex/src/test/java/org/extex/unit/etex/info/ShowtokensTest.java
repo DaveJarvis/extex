@@ -20,6 +20,7 @@
 package org.extex.unit.etex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\showtokens</tt>.
@@ -46,6 +47,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError0() throws Exception {
 
         assertFailure(// --- input code ---
@@ -60,6 +62,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -74,6 +77,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -88,6 +92,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -102,6 +107,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertOutput(// --- input code ---
@@ -116,6 +122,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertOutput(// --- input code ---
@@ -130,6 +137,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -144,6 +152,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertOutput(// --- input code ---
@@ -159,6 +168,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertOutput(// --- input code ---
@@ -174,6 +184,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test21() throws Exception {
 
         assertFailure(// --- input code ---
@@ -189,6 +200,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test22() throws Exception {
 
         assertOutput(// --- input code ---
@@ -203,6 +215,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test23() throws Exception {
 
         assertOutput(// --- input code ---
@@ -217,6 +230,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test31() throws Exception {
 
         assertOutput(// --- input code ---
@@ -233,6 +247,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test32() throws Exception {
 
         assertOutput(// --- input code ---

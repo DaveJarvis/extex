@@ -20,6 +20,8 @@
 package org.extex.unit.namespace;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\namespace</tt>.
@@ -36,7 +38,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NamespaceTest.class);
+        (new JUnitCore()).run(NamespaceTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -70,6 +73,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -86,6 +90,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -102,6 +107,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test20() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -113,5 +119,4 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     // TODO implement the primitive specific test cases
-
 }

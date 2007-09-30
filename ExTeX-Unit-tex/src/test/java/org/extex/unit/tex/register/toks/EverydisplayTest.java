@@ -21,10 +21,12 @@ package org.extex.unit.tex.register.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\everydisplay</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -32,16 +34,17 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EverydisplayTest.class);
+        (new JUnitCore()).run(EverydisplayTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EverydisplayTest(String arg) {
@@ -50,52 +53,51 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
     }
 
     /**
-     * <testcase primitive="\everydisplay">
-     *  Test case showing that the token is absorbed if no math happens.
-     * </testcase>
-     *
+     * <testcase primitive="\everydisplay"> Test case showing that the token is
+     * absorbed if no math happens. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_MATH + "\\everydisplay{x}BC" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "BC" + TERM);
     }
 
     /**
-     * <testcase primitive="\everydisplay">
-     *  Test case showing that the token is absorbed if inline math happens.
-     * </testcase>
-     *
+     * <testcase primitive="\everydisplay"> Test case showing that the token is
+     * absorbed if inline math happens. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
                     + "\\everydisplay{x}B$ z $C" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "BzC" + TERM);
     }
 
     /**
-     * <testcase primitive="\everydisplay">
-     *  Test case showing that the token is inserted if display math happens.
-     * </testcase>
-     *
+     * <testcase primitive="\everydisplay"> Test case showing that the token is
+     * inserted if display math happens. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
                     + "\\everydisplay{x}BC$$ z $$" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "BCxz" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

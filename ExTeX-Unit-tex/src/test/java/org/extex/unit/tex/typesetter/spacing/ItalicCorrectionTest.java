@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\/</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ItalicCorrectionTest.class);
+        (new JUnitCore()).run(ItalicCorrectionTest.class);
     }
 
     /**
      * Constructor for ItaliccorrectionTest.
-     *
+     * 
      * @param arg the name
      */
     public ItalicCorrectionTest(String arg) {
@@ -48,6 +50,5 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
         super(arg, "/", "");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

@@ -20,6 +20,8 @@
 package org.extex.unit.tex.register;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\chardef</tt>.
@@ -36,7 +38,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ChardefTest.class);
+        (new JUnitCore()).run(ChardefTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\chardef ", //
@@ -67,6 +70,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure("\\chardef\\x ", //
@@ -79,10 +83,10 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
-        assertFailure(DEFINE_BRACES
-                + "\\chardef\\x -1 \\x\\end", //
+        assertFailure(DEFINE_BRACES + "\\chardef\\x -1 \\x\\end", //
             "Bad character code (-1)");
     }
 
@@ -93,6 +97,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess("\\chardef\\x 65 \\x\\end", //
@@ -106,6 +111,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess("\\chardef\\x 65 \\count0=\\x \\the\\count0\\end", //
@@ -119,6 +125,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess("\\chardef\\x 65 \\the\\x\\end", //
@@ -132,6 +139,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertOutput("\\chardef\\x 65 \\show\\x\\end", //
@@ -144,6 +152,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(DEFINE_BRACES
@@ -157,6 +166,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(DEFINE_BRACES

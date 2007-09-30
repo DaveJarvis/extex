@@ -20,10 +20,12 @@
 package org.extex.unit.tex.string;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lowercase</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LowercaseTest.class);
+        (new JUnitCore()).run(LowercaseTest.class);
     }
 
     /**
      * Constructor for LowercaseTest.
-     *
+     * 
      * @param arg the name
      */
     public LowercaseTest(String arg) {
@@ -49,81 +52,78 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\lowercase">
-     *  Test case checking that <tt>\lowercase</tt> throws an error on eof.
-     * </testcase>
-     *
+     * <testcase primitive="\lowercase"> Test case checking that
+     * <tt>\lowercase</tt> throws an error on eof. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEOF1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\lowercase",
-                //--- log message ---
-                "File ended while scanning text of \\lowercase");
+        assertFailure(// --- input code ---
+            "\\lowercase",
+            // --- log message ---
+            "File ended while scanning text of \\lowercase");
     }
 
     /**
-     * <testcase primitive="\lowercase">
-     *  Test case checking that <tt>\lowercase</tt> is invariant on
-     *  lowercase letters.
-     * </testcase>
-     *
+     * <testcase primitive="\lowercase"> Test case checking that
+     * <tt>\lowercase</tt> is invariant on lowercase letters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\lowercase{abc}\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\lowercase{abc}\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase primitive="\lowercase">
-     *  Test case checking that <tt>\lowercase</tt> translates
-     *  uppercase letters.
-     * </testcase>
-     *
+     * <testcase primitive="\lowercase"> Test case checking that
+     * <tt>\lowercase</tt> translates uppercase letters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\lowercase{ABC}\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\lowercase{ABC}\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase primitive="\lowercase">
-     *  Test case checking that <tt>\lowercase</tt> translates
-     *  mixed letters.
-     * </testcase>
-     *
+     * <testcase primitive="\lowercase"> Test case checking that
+     * <tt>\lowercase</tt> translates mixed letters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\lowercase{aBc}\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\lowercase{aBc}\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase primitive="\lowercase">
-     *  Test case checking that <tt>\lowercase</tt> respects lccode.
-     * </testcase>
-     *
+     * <testcase primitive="\lowercase"> Test case checking that
+     * <tt>\lowercase</tt> respects lccode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\lccode`B=`1 " + "\\lowercase{ABC}\\end",
-                //--- output channel ---
-                "a1c" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\lccode`B=`1 " + "\\lowercase{ABC}\\end",
+            // --- output channel ---
+            "a1c" + TERM);
     }
 
 }

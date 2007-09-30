@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\afterassignment</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +33,17 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AfterassignmentTest.class);
+        (new JUnitCore()).run(AfterassignmentTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public AfterassignmentTest(String arg) {
@@ -49,18 +52,17 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\afterassignment">
-     *  Test case checking that <tt>\afterassignment</tt> needs a token.
-     * </testcase>
-     *
+     * <testcase primitive="\afterassignment"> Test case checking that
+     * <tt>\afterassignment</tt> needs a token. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\afterassignment ", //
             "Unexpected end of file while processing \\afterassignment");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

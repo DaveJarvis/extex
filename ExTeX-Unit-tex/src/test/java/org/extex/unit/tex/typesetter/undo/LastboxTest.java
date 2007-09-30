@@ -21,10 +21,12 @@ package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.test.ExTeXLauncher;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lastbox</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -32,16 +34,17 @@ public class LastboxTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LastboxTest.class);
+        (new JUnitCore()).run(LastboxTest.class);
     }
 
     /**
      * Constructor for LastboxTest.
-     *
+     * 
      * @param arg the name
      */
     public LastboxTest(String arg) {
@@ -50,120 +53,116 @@ public class LastboxTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case showing that the primitive can not be used in vertical mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case showing that the primitive can
+     * not be used in vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVerticalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\lastbox",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in vertical mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case showing that the primitive can not be used in math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case showing that the primitive can
+     * not be used in math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_CATCODES + "$\\lastbox$\\end",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in math mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case showing that the primitive can not be used in display math
-     *  mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case showing that the primitive can
+     * not be used in display math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisplayMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_CATCODES + "$$\\lastbox$$\\end",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in displaymath mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case checking that <tt>\lastbox</tt> can not be used in math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
+     * can not be used in math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(
-        //--- input code ---
+        // --- input code ---
             DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
                     + "$\\setbox0=\\lastbox $",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in math mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case checking that <tt>\lastbox</tt> can not be used in math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
+     * can not be used in math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr2() throws Exception {
 
         assertFailure(
-        //--- input code ---
+        // --- input code ---
             DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS + "$\\lastbox $",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in math mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case checking that <tt>\lastbox</tt> can not be used in display
-     *  math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
+     * can not be used in display math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr11() throws Exception {
 
         assertFailure(
-        //--- input code ---
+        // --- input code ---
             DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
                     + "$$\\setbox0=\\lastbox $$",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in displaymath mode");
     }
 
     /**
-     * <testcase primitive="\lastbox">
-     *  Test case checking that <tt>\lastbox</tt> can not be used in display
-     *  math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\lastbox"> Test case checking that <tt>\lastbox</tt>
+     * can not be used in display math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr12() throws Exception {
 
         assertFailure(
-        //--- input code ---
+        // --- input code ---
             DEFINE_MATH + AbstractMathTester.DEFINE_MATH_FONTS
                     + "$$\\lastbox $$",
-            //--- error channel ---
+            // --- error channel ---
             "You can't use `\\lastbox' in displaymath mode");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

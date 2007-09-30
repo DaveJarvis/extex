@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\catcode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +33,17 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CatcodePrimitiveTest.class);
+        (new JUnitCore()).run(CatcodePrimitiveTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public CatcodePrimitiveTest(String arg) {
@@ -49,12 +52,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> needs a char.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * needs a char. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\catcode ", //
@@ -62,12 +65,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> needs a token.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * needs a token. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure("\\catcode 65 ", //
@@ -75,12 +78,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> needs a range for the value.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * needs a range for the value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange1() throws Exception {
 
         assertFailure("\\catcode 1=-1", //
@@ -88,12 +91,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> needs a range for the value.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * needs a range for the value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange2() throws Exception {
 
         assertFailure("\\catcode 1=16", //
@@ -101,12 +104,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> needs a range for the value.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * needs a range for the value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRange4() throws Exception {
 
         assertFailure("\\catcode -1=1", //
@@ -114,12 +117,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 0.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue0() throws Exception {
 
         assertSuccess("\\catcode 1=0 \\end", //
@@ -127,12 +130,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 1.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 1. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue1() throws Exception {
 
         assertSuccess("\\catcode 1=1 \\end", //
@@ -140,12 +143,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 2.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 2. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue2() throws Exception {
 
         assertSuccess("\\catcode 1=2 \\end", //
@@ -153,12 +156,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 3.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 3. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue3() throws Exception {
 
         assertSuccess("\\catcode 1=3 \\end", //
@@ -166,12 +169,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 4.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 4. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue4() throws Exception {
 
         assertSuccess("\\catcode 1=4 \\end", //
@@ -179,12 +182,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 5.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 5. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue5() throws Exception {
 
         assertSuccess("\\catcode 1=5 \\end", //
@@ -192,12 +195,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of 6.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 6. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue6() throws Exception {
 
         assertSuccess("\\catcode 1=6 \\end", //
@@ -205,12 +208,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  7.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 7. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue7() throws Exception {
 
         assertSuccess("\\catcode 1= 7 \\end", //
@@ -218,12 +221,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  8.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 8. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue8() throws Exception {
 
         assertSuccess("\\catcode 1= 8 \\end", //
@@ -231,12 +234,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  9.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 9. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue9() throws Exception {
 
         assertSuccess("\\catcode 1= 9 \\end", //
@@ -244,12 +247,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  10.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 10. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue10() throws Exception {
 
         assertSuccess("\\catcode 1= 10 \\end", //
@@ -257,12 +260,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  11.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 11. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue11() throws Exception {
 
         assertSuccess("\\catcode 1= 11 \\end", //
@@ -270,12 +273,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  12.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 12. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue12() throws Exception {
 
         assertSuccess("\\catcode 1= 12 \\end", //
@@ -283,12 +286,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  13.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 13. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue13() throws Exception {
 
         assertSuccess("\\catcode 1= 13 \\end", //
@@ -296,12 +299,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  14.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 14. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue14() throws Exception {
 
         assertSuccess("\\catcode 1= 14 \\end", //
@@ -309,12 +312,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> takes a value of  15.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * takes a value of 15. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue15() throws Exception {
 
         assertSuccess("\\catcode 1= 15 \\end", //
@@ -322,12 +325,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> is count convertible.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * is count convertible. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess("\\catcode 1=15 \\count0=\\catcode1 \\the\\count0\\end", //
@@ -335,12 +338,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> respects \afterassignment.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * respects \afterassignment. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAfterassignment1() throws Exception {
 
         assertSuccess("\\afterassignment x--\\catcode 1=15 \\end", //
@@ -348,12 +351,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> respects \global.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * respects \global. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertSuccess(DEFINE_BRACES
@@ -362,12 +365,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> respects \global.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * respects \global. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "{\\global\\catcode 1=15}"
@@ -376,12 +379,12 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>\catcode</tt> respects \globaldefs.
-     * </testcase>
-     *
+     * <testcase primitive="\catcode"> Test case checking that <tt>\catcode</tt>
+     * respects \globaldefs. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\globaldefs=1{\\catcode 1=15}"
@@ -389,6 +392,5 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
             "15" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

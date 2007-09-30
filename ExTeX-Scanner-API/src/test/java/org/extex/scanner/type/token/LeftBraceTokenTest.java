@@ -21,6 +21,7 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class contains the test cases for left brace tokens.
@@ -45,7 +46,7 @@ public class LeftBraceTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LeftBraceTokenTest.class);
+        (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
     /**

@@ -21,6 +21,8 @@ package org.extex.unit.etex.conditional.analyze;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\currentiftype</tt>.
@@ -37,7 +39,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CurrentiftypeTest.class);
+        (new JUnitCore()).run(CurrentiftypeTest.class);
     }
 
     /**
@@ -58,6 +60,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -73,6 +76,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -88,6 +92,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -103,6 +108,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -118,6 +124,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -133,6 +140,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -148,6 +156,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test8() throws Exception {
 
         assertOutput(
@@ -166,6 +175,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -181,6 +191,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -196,6 +207,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -211,6 +223,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -226,6 +239,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test14() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -243,6 +257,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test15() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -258,6 +273,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test16() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -273,6 +289,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test17() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -288,6 +305,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test19() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -303,6 +321,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test20() throws Exception {
 
         assertSuccess(
@@ -319,6 +338,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -334,6 +354,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -349,6 +370,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -364,6 +386,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -379,6 +402,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -394,6 +418,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -409,6 +434,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg8() throws Exception {
 
         assertOutput(
@@ -427,6 +453,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg10() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -442,6 +469,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg11() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -457,6 +485,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg12() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -472,6 +501,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg13() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -487,6 +517,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg14() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -504,6 +535,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg15() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -519,6 +551,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg16() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -534,6 +567,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg19() throws Exception {
 
         assertSuccess(
@@ -551,6 +585,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNeg20() throws Exception {
 
         assertSuccess(

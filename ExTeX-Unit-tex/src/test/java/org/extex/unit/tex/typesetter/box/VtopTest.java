@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vtop</tt>.
@@ -36,7 +38,7 @@ public class VtopTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VtopTest.class);
+        (new JUnitCore()).run(VtopTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class VtopTest extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),

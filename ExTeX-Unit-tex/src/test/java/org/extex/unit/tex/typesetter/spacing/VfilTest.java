@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vfil</tt>.
@@ -35,7 +37,7 @@ public class VfilTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VfilTest.class);
+        (new JUnitCore()).run(VfilTest.class);
     }
 
     /**
@@ -49,13 +51,12 @@ public class VfilTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vfil">
-     *  Test case checking that <tt>\vfil</tt> switches to vertical mode and
-     *  inserts a glue node with 1fil.
-     * </testcase>
-     *
+     * <testcase primitive="\vfil"> Test case checking that <tt>\vfil</tt>
+     * switches to vertical mode and inserts a glue node with 1fil. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -67,5 +68,4 @@ public class VfilTest extends NoFlagsPrimitiveTester {
     }
 
     //TODO implement primitive specific test cases
-
 }

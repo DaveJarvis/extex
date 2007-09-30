@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.test.count.AbstractReadonlyCountRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lastpenalty</tt>.
@@ -36,7 +38,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LastpenaltyTest.class);
+        (new JUnitCore()).run(LastpenaltyTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertOutput(
@@ -72,6 +75,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(
@@ -89,6 +93,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(
@@ -106,6 +111,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertOutput(
@@ -123,6 +129,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertOutput(
@@ -140,6 +147,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertOutput(
@@ -157,6 +165,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertOutput(

@@ -29,6 +29,7 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is the test suite for a horizontal list node.
@@ -172,7 +173,7 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(HorizontalListNodeTest.class);
+        (new JUnitCore()).run(HorizontalListNodeTest.class);
     }
 
     /**

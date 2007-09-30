@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.math;
 
-import org.extex.base.parser.MathClassParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;

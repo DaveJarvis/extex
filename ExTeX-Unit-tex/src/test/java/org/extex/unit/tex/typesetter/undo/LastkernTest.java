@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.unit.tex.register.dimen.AbstractReadonlyDimenRegisterTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\lastkern</tt>.
@@ -36,7 +38,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LastkernTest.class);
+        (new JUnitCore()).run(LastkernTest.class);
     }
 
     /**
@@ -55,6 +57,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertOutput(
@@ -72,6 +75,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(
@@ -89,6 +93,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(
@@ -106,6 +111,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertOutput(
@@ -123,6 +129,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertOutput(
@@ -140,6 +147,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertOutput(

@@ -20,6 +20,8 @@
 package org.extex.unit.extex.count;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\integer</tt>.
@@ -36,7 +38,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IntegerTest.class);
+        (new JUnitCore()).run(IntegerTest.class);
     }
 
     /**
@@ -57,6 +59,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -72,6 +75,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -87,6 +91,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -102,6 +107,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -116,6 +122,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAdvance1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -130,6 +137,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMultiply1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -144,6 +152,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDivide1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -159,6 +168,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertOutput(// --- input code ---
@@ -174,6 +184,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertOutput(// --- input code ---
@@ -189,6 +200,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertOutput(// --- input code ---
@@ -198,5 +210,4 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     // TODO implement more primitive specific test cases
-
 }

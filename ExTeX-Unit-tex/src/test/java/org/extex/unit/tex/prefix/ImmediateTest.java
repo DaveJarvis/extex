@@ -19,9 +19,13 @@
 
 package org.extex.unit.tex.prefix;
 
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\immediate</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4306 $
  */
@@ -29,17 +33,17 @@ public class ImmediateTest extends PrefixTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ImmediateTest.class);
+        (new JUnitCore()).run(ImmediateTest.class);
     }
 
     /**
      * Constructor for RelaxTest.
-     *
+     * 
      * @param arg the name
      */
     public ImmediateTest(String arg) {
@@ -48,58 +52,60 @@ public class ImmediateTest extends PrefixTester {
     }
 
     /**
-     * <testcase primitive="\immediate">
-     *  Test case checking that \immediate sets the immediate flag.
-     * </testcase>
-     *
+     * <testcase primitive="\immediate"> Test case checking that \immediate sets
+     * the immediate flag. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test10() throws Exception {
+    @Test
+    @Ignore
+    public void test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\immediate\\showprefix\\end",
-                //--- error channel ---
-                "immediate\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\immediate\\showprefix\\end",
+            // --- error channel ---
+            "immediate\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\immediate">
-     *  Test case checking that double <tt>\immediate</tt> has the same effect as
-     *  one.
-     * </testcase>
-     *
+     * <testcase primitive="\immediate"> Test case checking that double
+     * <tt>\immediate</tt> has the same effect as one. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test11() throws Exception {
+    @Test
+    @Ignore
+    public void test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\immediate\\immediate\\showprefix\\end",
-                //--- error channel ---
-                "immediate\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\immediate\\immediate\\showprefix\\end",
+            // --- error channel ---
+            "immediate\n",
+            // --- output channel ---
+            "");
     }
 
     /**
-     * <testcase primitive="\immediate">
-     *  Test case checking that immediate does not interfere with \long.
-     * </testcase>
-     *
+     * <testcase primitive="\immediate"> Test case checking that immediate does
+     * not interfere with \long. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___test12() throws Exception {
+    @Test
+    @Ignore
+    public void test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
-        //--- input code ---
-                "\\immediate\\long\\showprefix\\end",
-                //--- error channel ---
-                "long and immediate\n",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\immediate\\long\\showprefix\\end",
+            // --- error channel ---
+            "long and immediate\n",
+            // --- output channel ---
+            "");
     }
 
 }

@@ -20,10 +20,11 @@
 package org.extex.unit.extex.toks;
 
 import org.extex.test.toks.AbstractToksRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\everymathend</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4697 $
  */
@@ -31,16 +32,17 @@ public class EverymathendTest extends AbstractToksRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EverymathendTest.class);
+        (new JUnitCore()).run(EverymathendTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EverymathendTest(String arg) {
@@ -49,6 +51,5 @@ public class EverymathendTest extends AbstractToksRegisterTester {
         setConfig("extex-test");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

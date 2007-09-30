@@ -20,10 +20,12 @@
 package org.extex.unit.tex.conditional;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\else</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class ElseTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ElseTest.class);
+        (new JUnitCore()).run(ElseTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ElseTest(String arg) {
@@ -50,18 +52,18 @@ public class ElseTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\else">
-     *  Test case checking that a lonely <tt>\else</tt> leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\else"> Test case checking that a lonely
+     * <tt>\else</tt> leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConst0() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\else",
-                //--- log message ---
-                "Extra \\else");
+        assertFailure(// --- input code ---
+            "\\else",
+            // --- log message ---
+            "Extra \\else");
     }
 
 }

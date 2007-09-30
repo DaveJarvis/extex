@@ -20,10 +20,12 @@
 package org.extex.unit.tex.file;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\endinput</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(EndinputTest.class);
+        (new JUnitCore()).run(EndinputTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EndinputTest(String arg) {
@@ -50,18 +52,18 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\endinput">
-     *  Test case checking that a <tt>\endinput</tt> works.
-     * </testcase>
-     *
+     * <testcase primitive="\endinput"> Test case checking that a
+     * <tt>\endinput</tt> works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\endinput abc",
-                //--- output channel ---
-                "");
+        assertSuccess(// --- input code ---
+            "\\endinput abc",
+            // --- output channel ---
+            "");
     }
 
 }

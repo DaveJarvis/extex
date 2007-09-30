@@ -31,6 +31,7 @@ import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.context.ContextImpl;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.typesetter.exception.TypesetterException;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class is a test suite for the expression evaluator.
@@ -47,7 +48,7 @@ public class TeXEvaluatorTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TeXEvaluatorTest.class);
+        (new JUnitCore()).run(TeXEvaluatorTest.class);
     }
 
     /**

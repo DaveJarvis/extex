@@ -20,6 +20,7 @@
 package org.extex.unit.pdftex;
 
 import org.extex.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\pdfannot</tt>.
@@ -47,6 +48,7 @@ public class PdfannotTest
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -56,5 +58,4 @@ public class PdfannotTest
     }
 
     // TODO implement more primitive specific test cases
-
 }

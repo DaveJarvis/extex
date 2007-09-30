@@ -19,7 +19,7 @@
 
 package org.extex.base.parser;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
@@ -29,6 +29,8 @@ import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.context.MockContext;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for dimen registers.
@@ -36,17 +38,7 @@ import org.extex.scanner.stream.TokenStreamFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4766 $
  */
-public class DimenRegisterTest extends TestCase {
-
-    /**
-     * Creates a new object.
-     * 
-     * @param arg0 the name
-     */
-    public DimenRegisterTest(String arg0) {
-
-        super(arg0);
-    }
+public class DimenRegisterTest {
 
     /**
      * Command line interface.
@@ -55,7 +47,17 @@ public class DimenRegisterTest extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DimenRegisterTest.class);
+        (new JUnitCore()).run(DimenRegisterTest.class);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param arg0 the name
+     */
+    public DimenRegisterTest(String arg0) {
+
+        super();
     }
 
     /**
@@ -84,198 +86,12 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of scaled points works. A value in the middle
-     * (1234sp) is used.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testSp1() throws Exception {
-
-        assertEquals(1234, doTest("1234 sp"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.000pt) is
-     * used. This results into 65536sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt1() throws Exception {
-
-        assertEquals(65536, doTest("1.000pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.000pt) is
-     * used. This results into 65536sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt1b() throws Exception {
-
-        assertEquals(65536, doTest("1 pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.000pt) is
-     * used. This results into 65536sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt1c() throws Exception {
-
-        assertEquals(65536, doTest("1. pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.5pt) is
-     * used. This results into 98304sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt2() throws Exception {
-
-        assertEquals(98304, doTest("1.5pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.50pt) is
-     * used. This results into 98304sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt3() throws Exception {
-
-        assertEquals(98304, doTest("1.50pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.33pt) is
-     * used. This results into 87163sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt4() throws Exception {
-
-        assertEquals(87163, doTest("1.33pt"));
-    }
-
-    /**
-     * Test that the parsing of points works. A value in the middle (1.333pt) is
-     * used. This results into 87359sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPt5() throws Exception {
-
-        assertEquals(87359, doTest("1.333pt"));
-    }
-
-    /**
-     * Test that the parsing of millimeter works. A value in the middle (1mm) is
-     * used. This results into 186467sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMm1() throws Exception {
-
-        assertEquals(186467, doTest("1mm"));
-    }
-
-    /**
-     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
-     * is used. This results into 248002sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMm2() throws Exception {
-
-        assertEquals(248002, doTest("1.33mm"));
-    }
-
-    /**
-     * Test that the parsing of centimeter works. A value in the middle (1cm) is
-     * used. This results into 1864679sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testCm1() throws Exception {
-
-        assertEquals(1864679, doTest("1cm"));
-    }
-
-    /**
-     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
-     * is used. This results into 2480027sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testCm2() throws Exception {
-
-        assertEquals(2480027, doTest("1.33cm"));
-    }
-
-    /**
-     * Test that the parsing of inch works. A value in the middle (1in) is used.
-     * This results into 4736286sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testIn1() throws Exception {
-
-        assertEquals(4736286, doTest("1in"));
-    }
-
-    /**
-     * Test that the parsing of didot points works. A value in the middle (1dd)
-     * is used. This results into 70124sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testDd1() throws Exception {
-
-        assertEquals(70124, doTest("1dd"));
-    }
-
-    /**
-     * Test that the parsing of didot points works. A value in the middle
-     * (1.25dd) is used. This results into 87655sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testDd2() throws Exception {
-
-        assertEquals(87655, doTest("1.25dd"));
-    }
-
-    /**
-     * Test that the parsing of picas works. A value in the middle (1.25pc) is
-     * used. This results into 983040sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPc1() throws Exception {
-
-        assertEquals(983040, doTest("1.25pc"));
-    }
-
-    /**
-     * Test that the parsing of picas works. A value in the middle (1.7pc) is
-     * used. This results into 1336932sp.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testPc2() throws Exception {
-
-        assertEquals(1336932, doTest("1.7pc"));
-    }
-
-    /**
      * Test that the parsing of big points works. A value in the middle (1.25bp)
      * is used. This results into 82227sp.
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBp1() throws Exception {
 
         assertEquals(82227, doTest("1.25bp"));
@@ -287,9 +103,214 @@ public class DimenRegisterTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCc1() throws Exception {
 
         assertEquals(6544254, doTest("7,777cc"));
+    }
+
+    /**
+     * Test that the parsing of centimeter works. A value in the middle (1cm) is
+     * used. This results into 1864679sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCm1() throws Exception {
+
+        assertEquals(1864679, doTest("1cm"));
+    }
+
+    /**
+     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
+     * is used. This results into 2480027sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCm2() throws Exception {
+
+        assertEquals(2480027, doTest("1.33cm"));
+    }
+
+    /**
+     * Test that the parsing of didot points works. A value in the middle (1dd)
+     * is used. This results into 70124sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDd1() throws Exception {
+
+        assertEquals(70124, doTest("1dd"));
+    }
+
+    /**
+     * Test that the parsing of didot points works. A value in the middle
+     * (1.25dd) is used. This results into 87655sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDd2() throws Exception {
+
+        assertEquals(87655, doTest("1.25dd"));
+    }
+
+    /**
+     * Test that the parsing of inch works. A value in the middle (1in) is used.
+     * This results into 4736286sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIn1() throws Exception {
+
+        assertEquals(4736286, doTest("1in"));
+    }
+
+    /**
+     * Test that the parsing of millimeter works. A value in the middle (1mm) is
+     * used. This results into 186467sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMm1() throws Exception {
+
+        assertEquals(186467, doTest("1mm"));
+    }
+
+    /**
+     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
+     * is used. This results into 248002sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMm2() throws Exception {
+
+        assertEquals(248002, doTest("1.33mm"));
+    }
+
+    /**
+     * Test that the parsing of picas works. A value in the middle (1.25pc) is
+     * used. This results into 983040sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPc1() throws Exception {
+
+        assertEquals(983040, doTest("1.25pc"));
+    }
+
+    /**
+     * Test that the parsing of picas works. A value in the middle (1.7pc) is
+     * used. This results into 1336932sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPc2() throws Exception {
+
+        assertEquals(1336932, doTest("1.7pc"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt1() throws Exception {
+
+        assertEquals(65536, doTest("1.000pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt1b() throws Exception {
+
+        assertEquals(65536, doTest("1 pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt1c() throws Exception {
+
+        assertEquals(65536, doTest("1. pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.5pt) is
+     * used. This results into 98304sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt2() throws Exception {
+
+        assertEquals(98304, doTest("1.5pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.50pt) is
+     * used. This results into 98304sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt3() throws Exception {
+
+        assertEquals(98304, doTest("1.50pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.33pt) is
+     * used. This results into 87163sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt4() throws Exception {
+
+        assertEquals(87163, doTest("1.33pt"));
+    }
+
+    /**
+     * Test that the parsing of points works. A value in the middle (1.333pt) is
+     * used. This results into 87359sp.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPt5() throws Exception {
+
+        assertEquals(87359, doTest("1.333pt"));
+    }
+
+    /**
+     * Test that the parsing of scaled points works. A value in the middle
+     * (1234sp) is used.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSp1() throws Exception {
+
+        assertEquals(1234, doTest("1234 sp"));
     }
 
 }

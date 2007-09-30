@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\globaldefs</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class GlobaldefsTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GlobaldefsTest.class);
+        (new JUnitCore()).run(GlobaldefsTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public GlobaldefsTest(String arg) {
@@ -49,7 +52,8 @@ public class GlobaldefsTest extends ExTeXLauncher {
     }
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field <tt>primitive</tt> contains the name of the primitive to
+     * test.
      */
     private String primitive = "globaldefs";
 
@@ -65,584 +69,562 @@ public class GlobaldefsTest extends ExTeXLauncher {
     private String init = "0";
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\immediate</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterImmediatePrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\immediate\\" + invocation + "=92 ",
-                //--- error channel ---
-                "You can't use the prefix `\\immediate' with the control sequence"
-                        + (primitive.length() > 14 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            "\\immediate\\" + invocation + "=92 ",
+            // --- error channel ---
+            "You can't use the prefix `\\immediate' with the control sequence"
+                    + (primitive.length() > 14 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\long</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterLongPrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\long\\" + invocation + "=92 ",
-                //--- error channel ---
-                "You can't use the prefix `\\long' with the control sequence"
-                        + (primitive.length() > 19 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            "\\long\\" + invocation + "=92 ",
+            // --- error channel ---
+            "You can't use the prefix `\\long' with the control sequence"
+                    + (primitive.length() > 19 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\outer</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterOuterPrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\outer\\" + invocation + "=92 ",
-                //--- error channel ---
-                "You can't use the prefix `\\outer' with the control sequence"
-                        + (primitive.length() > 18 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            "\\outer\\" + invocation + "=92 ",
+            // --- error channel ---
+            "You can't use the prefix `\\outer' with the control sequence"
+                    + (primitive.length() > 18 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive is defined and its default value
-     *  is 0.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive is defined and its
+     * default value is 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                init + TERM);
+        assertSuccess(// --- input code ---
+            "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            init + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 123 works
+     * when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=123 \\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=123 \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 123 works
+     * when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + " 123 \\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + " 123 \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant -123 works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant -123 works
+     * when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=-123 \\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=-123 \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant -123 works when using
-     *  no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant -123 works
+     * when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "-123 \\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "-123 \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant -123 works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant -123 works
+     * when using <tt>\globaldefs</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                        + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1 " + "\\begingroup\\" + invocation
+                    + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\\afterassignment</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\afterassignment b a" + "\\" + invocation + "-123 c\\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                "abc-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\afterassignment b a" + "\\" + invocation + "-123 c\\the\\"
+                    + invocation + "\\end",
+            // --- output channel ---
+            "abc-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the value is count convertible.
+     * <testcase> Test case showing that the value is count convertible.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "-123 \\count0=\\" + invocation
-                        + " \\the\\count0 \\end",
-                //--- output channel ---
-                "-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "-123 \\count0=\\" + invocation
+                    + " \\the\\count0 \\end",
+            // --- output channel ---
+            "-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects grouping.
+     * <testcase> Test case showing that an assignment respects grouping.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup\\" + invocation + "=123 \\endgroup" + " \\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                init + TERM);
+        assertSuccess(// --- input code ---
+            "\\begingroup\\" + invocation + "=123 \\endgroup" + " \\the\\"
+                    + invocation + "\\end",
+            // --- output channel ---
+            init + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 123 works
+     * when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup\\global\\" + invocation + "=123 \\endgroup"
-                        + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\" + invocation + "=123 \\endgroup"
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 123 works
+     * when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\begingroup\\global\\" + invocation + " 123 \\endgroup"
-                        + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\" + invocation + " 123 \\endgroup"
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancement by the constant 12 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an advancement by the constant 12
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                        + " 12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "35" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=23 " + "\\advance\\" + invocation + " 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "35" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancement by the constant 12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an advancement by the constant 12 works
+     * when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                        + " by 12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "35" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=23 " + "\\advance\\" + invocation + " by 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "35" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancement by the constant -12 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an advancement by the constant -12
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                        + "-12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "11" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=23 " + "\\advance\\" + invocation + "-12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "11" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancement by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an advancement by the constant -12
+     * works when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                        + " by -12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "11" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=23 " + "\\advance\\" + invocation
+                    + " by -12 " + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "11" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancement by the constant -123 works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an advancement by the constant -123
+     * works when using <tt>\globaldefs</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                        + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1 " + "\\begingroup\\" + invocation
+                    + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\\afterassignment</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=0 " + "\\afterassignment b a"
-                        + "\\advance\\" + invocation + "-123 c\\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                "abc-123" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=0 " + "\\afterassignment b a" + "\\advance\\"
+                    + invocation + "-123 c\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "abc-123" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an advancing respects grouping.
+     * <testcase> Test case showing that an advancing respects grouping.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\begingroup\\advance\\" + invocation + " 123 \\endgroup"
-                        + " \\the\\" + invocation + "\\end",
-                //--- output channel ---
-                init + TERM);
+        // --- input code ---
+            "\\begingroup\\advance\\" + invocation + " 123 \\endgroup"
+                    + " \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            init + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication with the constant 0 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication with the constant 0
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply0() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\" + invocation + "=3 " + "\\multiply\\" + invocation + " 0 "
-                        + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "0" + TERM);
+        // --- input code ---
+            "\\" + invocation + "=3 " + "\\multiply\\" + invocation + " 0 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication with the constant 12 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication with the constant 12
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                        + " 12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "36" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=3 " + "\\multiply\\" + invocation + " 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "36" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication with the constant 12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication with the constant 12
+     * works when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                        + " by 12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "36" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=3 " + "\\multiply\\" + invocation + " by 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "36" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication by the constant -12 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication by the constant -12
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                        + "-12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-36" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=3 " + "\\multiply\\" + invocation + "-12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-36" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication by the constant -12
+     * works when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                        + " by -12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-36" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=3 " + "\\multiply\\" + invocation
+                    + " by -12 " + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-36" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that a multiplication by a constant -123 works when
-     *  using <tt>\globaldefs</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that a multiplication by a constant -123
+     * works when using <tt>\globaldefs</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\globaldefs=1 " + "\\" + invocation + "=12 "
-                        + "\\begingroup\\multiply\\" + invocation
-                        + " 3 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "36" + TERM);
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1 " + "\\" + invocation + "=12 "
+                    + "\\begingroup\\multiply\\" + invocation + " 3 \\endgroup"
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "36" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\\afterassignment</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=0 " + "\\afterassignment b a"
-                        + "\\multiply\\" + invocation + "-123 c\\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                "abc0" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=0 " + "\\afterassignment b a"
+                    + "\\multiply\\" + invocation + "-123 c\\the\\"
+                    + invocation + "\\end",
+            // --- output channel ---
+            "abc0" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an division by the constant 12 works.
+     * <testcase> Test case showing that an division by the constant 12 works.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide0() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\" + invocation + "=36 " + "\\divide\\" + invocation + " 0 "
-                        + "\\the\\" + invocation + "\\end",
-                //--- error channel ---
-                "Arithmetic overflow");
+        // --- input code ---
+            "\\" + invocation + "=36 " + "\\divide\\" + invocation + " 0 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- error channel ---
+            "Arithmetic overflow");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an division by the constant 12 works.
+     * <testcase> Test case showing that an division by the constant 12 works.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=36 " + "\\divide\\" + invocation + " 12 "
-                        + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "3" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=36 " + "\\divide\\" + invocation + " 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "3" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an division by the constant 12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an division by the constant 12 works
+     * when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                        + " by 12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "3" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=36 " + "\\divide\\" + invocation + " by 12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "3" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication by the constant -12 works.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication by the constant -12
+     * works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=36 " + "\\divide\\" + invocation + "-12 "
-                        + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-3" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=36 " + "\\divide\\" + invocation + "-12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-3" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an multiplication by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an multiplication by the constant -12
+     * works when using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                        + " by -12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-3" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=36 " + "\\divide\\" + invocation + " by -12 "
+                    + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "-3" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\\afterassignment</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\afterassignment b a" + "\\divide\\" + invocation
-                        + "-123 c\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            "\\afterassignment b a" + "\\divide\\" + invocation + "-123 c\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that division by the constant -12 works when
-     *  using the keyword <tt>by</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that division by the constant -12 works when
+     * using the keyword <tt>by</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide6() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\" + invocation + "=-36 " + "\\divide\\" + invocation
-                        + " by -12 " + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "3" + TERM);
+        assertSuccess(// --- input code ---
+            "\\" + invocation + "=-36 " + "\\divide\\" + invocation
+                    + " by -12 " + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "3" + TERM);
     }
 
 }

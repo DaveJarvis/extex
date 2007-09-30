@@ -21,6 +21,9 @@ package org.extex.unit.etex.prefix;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.unit.tex.prefix.PrefixTester;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\protected</tt>.
@@ -37,7 +40,7 @@ public class ProtectedTest extends PrefixTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ProtectedTest.class);
+        (new JUnitCore()).run(ProtectedTest.class);
     }
 
     /**
@@ -77,7 +80,9 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
-    public void ___test10() throws Exception {
+    @Test
+    @Ignore
+    public void test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
         // --- input code ---
@@ -94,7 +99,9 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
-    public void ___test11() throws Exception {
+    @Test
+    @Ignore
+    public void test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
         // --- input code ---
@@ -111,7 +118,9 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
-    public void ___test12() throws Exception {
+    @Test
+    @Ignore
+    public void test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
         // --- input code ---
@@ -129,6 +138,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTabNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "&", Catcode.TABMARK, "alignment tab character &");
@@ -141,6 +151,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "_", Catcode.SUBMARK, "subscript character _");
@@ -153,6 +164,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSuperNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "^", Catcode.SUPMARK, "superscript character ^");
@@ -164,6 +176,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetterNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "A", Catcode.LETTER, "the letter A");
@@ -176,6 +189,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOtherNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "1", Catcode.OTHER, "the character 1");
@@ -188,6 +202,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshiftNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -200,6 +215,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBegingroupNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "{", Catcode.LEFTBRACE, "begin-group character {");
@@ -212,6 +228,7 @@ public class ProtectedTest extends PrefixTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEndgroupNoProtectedFlag() throws Exception {
 
         tryFlag("protected", "}", Catcode.RIGHTBRACE, "end-group character }");

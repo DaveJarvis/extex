@@ -21,10 +21,11 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for subscript mark tokens.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
@@ -40,11 +41,12 @@ public class SubMarkTokenTest extends TokenTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SubMarkTokenTest.class);
+        (new JUnitCore()).run(SubMarkTokenTest.class);
     }
 
     /**

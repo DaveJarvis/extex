@@ -20,10 +20,12 @@
 package org.extex.unit.tex.arithmetic;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\divide</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DivideTest.class);
+        (new JUnitCore()).run(DivideTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DivideTest(String arg) {
@@ -50,196 +52,186 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\advance</tt> needs one arguments.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\advance</tt>
+     * needs one arguments. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\divide ",
-            //--- log message ---
+            // --- log message ---
             "Unexpected end of file while processing \\divide");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> needs a defined control
-     *  sequence as first argument.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * needs a defined control sequence as first argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndef1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\divide \\x ",
-            //--- log message ---
+            // --- log message ---
             "Undefined control sequence \\x");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a letter leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a letter leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\divide a",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the letter a\' after \\divide");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a other token leads to an
-     *  error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a other token leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOther1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\divide 12 ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the character 1\' after \\divide");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a macro parameter token
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a macro parameter token leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\catcode`#=6 " + "\\divide #2 ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `macro parameter character #\' after \\divide");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a non-dividable
-     *  primitive (\\relax) leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a non-dividable primitive (\\relax) leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRelax1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\divide \\relax ",
-            //--- log message ---
+            // --- log message ---
             "You can\'t use `the control sequence \\relax\' after \\divide");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> by 0 on a count register name
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * by 0 on a count register name leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount0() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\count1 16 " + "\\divide \\count1 0 " + "\\the\\count1 \\end",
-            //--- log message ---
+            // --- log message ---
             "Arithmetic overflow");
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a count register name
-     *  works.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a count register name works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1 16 " + "\\divide \\count1 8 " + "\\the\\count1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "2" + TERM);
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a count register name
-     *  works with the global flag.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a count register name works with the global flag. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1 16 "
                     + "\\begingroup\\global\\divide \\count1 8 \\endgroup "
                     + "\\the\\count1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "2" + TERM);
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a dimen register name
-     *  works.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a dimen register name works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen1 8pt " + "\\divide \\dimen1 16 " + "\\the\\dimen1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.5pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> on a dimen register name
-     *  works with the global flag.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * on a dimen register name works with the global flag. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen1 8pt "
                     + "\\begingroup\\global\\divide \\dimen1 16 \\endgroup "
                     + "\\the\\dimen1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.5pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\divide">
-     *  Test case checking that <tt>\divide</tt> by 0 on a dimen register name
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\divide"> Test case checking that <tt>\divide</tt>
+     * by 0 on a dimen register name leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimen0() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\dimen1 8pt " + "\\divide \\dimen1 0 " + "\\the\\dimen1 \\end",
-            //--- log message ---
+            // --- log message ---
             "Arithmetic overflow");
     }
 

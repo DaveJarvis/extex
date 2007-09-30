@@ -19,9 +19,12 @@
 
 package org.extex.unit.tex.register.box;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\wd</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -29,16 +32,17 @@ public class WdTest extends AbstractBoxDimenTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(WdTest.class);
+        (new JUnitCore()).run(WdTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public WdTest(String arg) {
@@ -47,12 +51,12 @@ public class WdTest extends AbstractBoxDimenTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is count convertible on a hbox.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is count convertible on
+     * a hbox. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount2() throws Exception {
 
         assertSuccess(//
@@ -61,6 +65,5 @@ public class WdTest extends AbstractBoxDimenTester {
             "1572864" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

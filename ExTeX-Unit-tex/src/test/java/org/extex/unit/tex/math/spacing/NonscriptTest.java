@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.spacing;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\nonscript</tt>.
@@ -46,6 +47,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -68,6 +70,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -90,6 +93,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -111,6 +115,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -132,6 +137,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMKern1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -154,6 +160,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMKern2() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -176,6 +183,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMKern3() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -197,6 +205,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMKern4() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -218,6 +227,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testKern1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -240,6 +250,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testKern2() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -262,6 +273,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testKern3() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -283,6 +295,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testKern4() throws Exception {
 
         assertSuccess(showNodesProperties(),

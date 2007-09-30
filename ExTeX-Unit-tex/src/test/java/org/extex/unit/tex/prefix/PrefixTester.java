@@ -22,6 +22,7 @@ package org.extex.unit.tex.prefix;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the prefix primitives.
@@ -68,6 +69,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixLetter1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -83,6 +85,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixOther1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -100,6 +103,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixBeginGroup1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -117,6 +121,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixEndGroup1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -134,6 +139,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixMathShift1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -151,6 +157,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixTab1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -168,6 +175,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixSub1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -185,6 +193,7 @@ public abstract class PrefixTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrefixSuper1() throws Exception {
 
         assertFailure(//--- input code ---

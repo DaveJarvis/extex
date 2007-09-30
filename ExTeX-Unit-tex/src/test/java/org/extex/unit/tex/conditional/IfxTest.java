@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\ifx</tt>.
  * 
@@ -34,7 +37,7 @@ public class IfxTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfxTest.class);
+        (new JUnitCore()).run(IfxTest.class);
     }
 
     /**
@@ -53,6 +56,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -67,6 +71,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -81,6 +86,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -96,6 +102,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -111,6 +118,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -126,6 +134,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -141,6 +150,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -156,6 +166,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -171,6 +182,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -186,6 +198,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCsname1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -209,6 +222,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTeXbook() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -234,6 +248,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFont1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -249,6 +264,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFont2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -264,6 +280,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFont3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -279,6 +296,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFont4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -294,6 +312,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -308,6 +327,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -322,6 +342,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -337,6 +358,7 @@ public class IfxTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertSuccess(// --- input code ---

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\let</tt>.
@@ -46,6 +47,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -61,6 +63,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetLetter1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -76,6 +79,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetLetterLocal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -92,6 +96,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetLetterGlobal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -109,6 +114,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetOther1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -124,6 +130,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLet1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -139,6 +146,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetOtherLocal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -155,6 +163,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetOtherGlobal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -172,6 +181,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetCs1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -187,6 +197,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetCsLocal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -203,6 +214,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetCsGlobal1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -220,6 +232,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetDefSpace1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -237,6 +250,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOpenBrace1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -254,6 +268,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testOpenBrace2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -271,6 +286,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCloseBrace1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -288,6 +304,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCloseBrace2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -305,6 +322,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacroParam1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -322,6 +340,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubmark1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -338,6 +357,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testSupermark1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -354,6 +374,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathshift1() throws Exception {
 
         assertFailure(//--- input code ---

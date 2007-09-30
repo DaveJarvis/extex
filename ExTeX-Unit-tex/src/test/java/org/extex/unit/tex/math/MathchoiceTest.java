@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.math;
 
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\mathchoice</tt>.
  *
@@ -44,6 +46,7 @@ public class MathchoiceTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisplay1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -60,6 +63,7 @@ public class MathchoiceTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testText1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -76,6 +80,7 @@ public class MathchoiceTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisplay2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -92,6 +97,7 @@ public class MathchoiceTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testScript1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -108,6 +114,7 @@ public class MathchoiceTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void testScriptScript1() throws Exception {
 
         assertSuccess(//--- input code ---

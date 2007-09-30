@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vrule</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class VruleTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VruleTest.class);
+        (new JUnitCore()).run(VruleTest.class);
     }
 
     /**
      * Constructor for VruleTest.
-     *
+     * 
      * @param arg the name
      */
     public VruleTest(String arg) {
@@ -49,77 +52,77 @@ public class VruleTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vrule">
-     *  Test case checking that <tt>\vrule</tt> switches to vertical mode and
-     *  inserts a glue node with the given value.
+     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * switches to vertical mode and inserts a glue node with the given value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vrule \\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x0.4pt\n" + //
-                ".\\rule0.0pt+0.0ptx0.4pt\n");
+        // --- input code ---
+            "\\vrule \\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x0.4pt\n" + //
+                    ".\\rule0.0pt+0.0ptx0.4pt\n");
     }
 
     /**
-     * <testcase primitive="\vrule">
-     *  Test case checking that <tt>\vrule</tt> switches to vertical mode and
-     *  inserts a glue node with the given value.
+     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * switches to vertical mode and inserts a glue node with the given value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vrule width 12pt\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x12.0pt\n" + //
-                ".\\rule0.0pt+0.0ptx12.0pt\n");
+        // --- input code ---
+            "\\vrule width 12pt\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x12.0pt\n" + //
+                    ".\\rule0.0pt+0.0ptx12.0pt\n");
     }
 
     /**
-     * <testcase primitive="\vrule">
-     *  Test case checking that <tt>\vrule</tt> switches to vertical mode and
-     *  inserts a glue node with the given value.
+     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * switches to vertical mode and inserts a glue node with the given value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vrule height 12pt\\end ",
-                //--- output channel ---
-                "\\vbox(12.0pt+0.0pt)x0.4pt\n" + //
-                ".\\rule12.0pt+0.0ptx0.4pt\n");
+        // --- input code ---
+            "\\vrule height 12pt\\end ",
+            // --- output channel ---
+            "\\vbox(12.0pt+0.0pt)x0.4pt\n" + //
+                    ".\\rule12.0pt+0.0ptx0.4pt\n");
     }
 
     /**
-     * <testcase primitive="\vrule">
-     *  Test case checking that <tt>\vrule</tt> switches to vertical mode and
-     *  inserts a glue node with the given value.
+     * <testcase primitive="\vrule"> Test case checking that <tt>\vrule</tt>
+     * switches to vertical mode and inserts a glue node with the given value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vrule depth 12pt\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+12.0pt)x0.4pt\n" + //
-                ".\\rule0.0pt+12.0ptx0.4pt\n");
+        // --- input code ---
+            "\\vrule depth 12pt\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+12.0pt)x0.4pt\n" + //
+                    ".\\rule0.0pt+12.0ptx0.4pt\n");
     }
 
-    //TODO implement primitive specific test cases
+    // TODO implement primitive specific test cases
 
 }

@@ -19,12 +19,16 @@
 
 package org.extex.unit.tex;
 
-import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+import de.dante.tex.TestTeX;
 
 /**
  * Test for grouping.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -32,17 +36,20 @@ public class GroupingTest extends TestCase {
 
     /**
      * Main entry function for running alone.
-     * @param  args command line args
+     * 
+     * @param args command line args
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GroupingTest.class);
+        (new JUnitCore()).run(GroupingTest.class);
     }
 
     /**
      * Test the primitive <tt>&#x5c;unless</tt>.
+     * 
      * @exception Exception iff test failed
      */
+    @Test
     public void testGroup() throws Exception {
 
         TestTeX.test("jugrouping", "ExTeX-Unit-tex");

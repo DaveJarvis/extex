@@ -20,6 +20,7 @@
 package org.extex.unit.tex.string;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a base test class containing tests for array of counts.
@@ -77,6 +78,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -94,6 +96,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterLongPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -111,6 +114,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterOuterPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -129,6 +133,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -145,6 +150,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -162,6 +168,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -179,6 +186,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3() throws Exception {
 
         assertFailure(//--- input code ---
@@ -205,6 +213,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4() throws Exception {
 
         assertFailure(//--- input code ---
@@ -219,6 +228,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -235,6 +245,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -251,6 +262,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGroup1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -268,6 +280,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -285,6 +298,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -301,6 +315,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -317,6 +332,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDimenRegisterConvertible1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -333,6 +349,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testArrayAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -349,6 +366,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testArrayAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -365,6 +383,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testAfterassignment1() throws Exception {
 
         assertFailure(

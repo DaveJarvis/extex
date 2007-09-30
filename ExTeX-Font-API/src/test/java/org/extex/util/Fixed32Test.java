@@ -22,6 +22,7 @@ package org.extex.util;
 import junit.framework.TestCase;
 
 import org.extex.font.format.Fixed32;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test for a fixed point format.
@@ -39,7 +40,7 @@ public class Fixed32Test extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(Fixed32Test.class);
+        (new JUnitCore()).run(Fixed32Test.class);
     }
 
     /**

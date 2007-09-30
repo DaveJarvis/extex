@@ -20,6 +20,7 @@
 package org.extex.test.count;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing count registers. It provides some
@@ -96,6 +97,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -111,6 +113,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterLongPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -126,6 +129,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterOuterPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -141,6 +145,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDefault1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -155,6 +160,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -169,6 +175,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -183,6 +190,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -198,6 +206,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -212,6 +221,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAssign5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -227,6 +237,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -242,6 +253,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterConvertible1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -257,6 +269,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -272,6 +285,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -287,6 +301,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -302,6 +317,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -317,6 +333,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -332,6 +349,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -347,6 +365,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAdvance5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -362,6 +381,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -378,6 +398,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply0() throws Exception {
 
         assertSuccess(
@@ -394,6 +415,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -409,6 +431,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -424,6 +447,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -439,6 +463,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -454,6 +479,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterMultiply5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -470,6 +496,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -486,6 +513,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide0() throws Exception {
 
         assertFailure(
@@ -502,6 +530,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -517,6 +546,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -532,6 +562,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -547,6 +578,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -562,6 +594,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -578,6 +611,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterAfterassignment4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -593,6 +627,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountRegisterDivide6() throws Exception {
 
         assertSuccess(// --- input code ---

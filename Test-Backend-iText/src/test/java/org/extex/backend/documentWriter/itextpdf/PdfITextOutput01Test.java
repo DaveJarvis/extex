@@ -51,7 +51,11 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
 
     }
 
-    @Override
+    /**
+     * TODO 
+     *
+     * @throws Exception
+     */
     protected void setUp() throws Exception {
 
         prop = new Properties(System.getProperties());

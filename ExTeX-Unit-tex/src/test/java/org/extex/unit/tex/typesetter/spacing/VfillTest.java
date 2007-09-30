@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vfill</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class VfillTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VfillTest.class);
+        (new JUnitCore()).run(VfillTest.class);
     }
 
     /**
      * Constructor for VfillTest.
-     *
+     * 
      * @param arg the name
      */
     public VfillTest(String arg) {
@@ -49,21 +52,20 @@ public class VfillTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vfill">
-     *  Test case checking that <tt>\vfill</tt> switches to vertical mode and
-     *  inserts a glue node with 1fill.
-     * </testcase>
-     *
+     * <testcase primitive="\vfill"> Test case checking that <tt>\vfill</tt>
+     * switches to vertical mode and inserts a glue node with 1fill. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\vfill\\end ",
-                //--- output channel ---
-                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
-                ".\\glue0.0pt plus 1.0fill\n");
+        // --- input code ---
+            "\\vfill\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                    ".\\glue0.0pt plus 1.0fill\n");
     }
 
 }

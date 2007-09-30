@@ -19,6 +19,8 @@
 
 package org.extex.test;
 
+import org.junit.Test;
+
 /**
  * This class provides an abstract base class containing some test cases for
  * primitives. They verify that prefix macros always lead to an error.
@@ -105,6 +107,7 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoGlobalFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -122,6 +125,7 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoImmediateFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -141,6 +145,7 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoLongFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -158,6 +163,7 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(//--- input code ---

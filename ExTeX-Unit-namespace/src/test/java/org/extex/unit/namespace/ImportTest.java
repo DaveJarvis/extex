@@ -20,10 +20,11 @@
 package org.extex.unit.namespace;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\import</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +32,17 @@ public class ImportTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ImportTest.class);
+        (new JUnitCore()).run(ImportTest.class);
     }
 
     /**
      * Constructor for NamespaceTest.
-     *
+     * 
      * @param arg the name
      */
     public ImportTest(String arg) {
@@ -49,6 +51,6 @@ public class ImportTest extends NoFlagsPrimitiveTester {
         setConfig("namespace-test");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

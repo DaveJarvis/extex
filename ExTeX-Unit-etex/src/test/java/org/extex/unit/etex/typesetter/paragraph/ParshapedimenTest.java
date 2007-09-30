@@ -20,6 +20,8 @@
 package org.extex.unit.etex.typesetter.paragraph;
 
 import org.extex.test.NonExecuteTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\parshapedimen</tt>.
@@ -36,7 +38,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ParshapedimenTest.class);
+        (new JUnitCore()).run(ParshapedimenTest.class);
     }
 
     /**
@@ -56,6 +58,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInnerVerticalMode11() throws Exception {
 
         assertFailure(// --- input code ---
@@ -70,6 +73,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRestrictedHorizontalMode11() throws Exception {
 
         assertFailure(// --- input code ---
@@ -85,6 +89,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -99,6 +104,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -113,6 +119,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -128,6 +135,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -143,6 +151,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -158,6 +167,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -172,6 +182,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test7() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -186,6 +197,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test8() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -200,6 +212,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test9() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -214,6 +227,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -228,6 +242,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test20() throws Exception {
 
         assertSuccess(
@@ -243,6 +258,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -257,6 +273,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -271,6 +288,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -285,6 +303,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -300,6 +319,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign5() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -315,6 +335,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign6() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -330,6 +351,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign7() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -345,6 +367,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign8() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -360,6 +383,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign9() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -375,6 +399,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -390,6 +415,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAssign20() throws Exception {
 
         assertSuccess(
@@ -406,6 +432,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConvertible1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -415,5 +442,4 @@ public class ParshapedimenTest extends NonExecuteTester {
     }
 
     // TODO implement primitive specific test cases
-
 }

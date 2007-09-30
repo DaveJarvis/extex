@@ -21,6 +21,7 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for superscript mark tokens.
@@ -44,7 +45,7 @@ public class SupMarkTokenTest extends TokenTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SupMarkTokenTest.class);
+        (new JUnitCore()).run(SupMarkTokenTest.class);
     }
 
     /**

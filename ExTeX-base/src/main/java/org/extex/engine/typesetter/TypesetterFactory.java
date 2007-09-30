@@ -63,7 +63,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  *     &lt;develop class="org.extex.typesetter.impl.TypesetterImpl"
  *            direction="lr"&gt;
  *       &lt;PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/&gt;
- *       &lt;ParagraphBuilder class="org.extex.typesetter.core.paragraphBuilder.trivial.TrivialBuilder"/&gt;
+ *       &lt;ParagraphBuilder class="org.extex.typesetter.(new JUnitCore())"/&gt;
  *       &lt;NodeFactory class="org.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/&gt;
  *     &lt;/develop&gt;
  *   &lt;/Typesetter&gt;

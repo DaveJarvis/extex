@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\csname</tt>.
@@ -45,6 +46,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetters1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -61,6 +63,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetters2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -76,6 +79,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testString1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -91,6 +95,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMixed1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -107,6 +112,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMixed2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -123,6 +129,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -137,6 +144,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -152,6 +160,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMessageErr5() throws Exception {
 
         assertFailure(// --- input code ---
@@ -167,6 +176,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndef1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -181,6 +191,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -195,6 +206,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEOF1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -209,6 +221,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand0() throws Exception {
 
         assertOutput(
@@ -229,6 +242,7 @@ public class CsnameTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand1() throws Exception {
 
         assertOutput(

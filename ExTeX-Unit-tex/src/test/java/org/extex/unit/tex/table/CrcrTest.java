@@ -20,6 +20,7 @@
 package org.extex.unit.tex.table;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\crcr</tt>.
@@ -47,6 +48,7 @@ public class CrcrTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testLonelyCr() throws Exception {
 
         assertFailure(//--- input code ---

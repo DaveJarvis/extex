@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is an abstract base class for testing math primitives.
@@ -93,6 +94,7 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNonMathMode1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -109,6 +111,7 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNonMathMode2() throws Exception {
 
         assertFailure(//--- input code ---

@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
 /**
  * This is a test suite for the primitive <tt>\dimendef</tt>.
  * 
@@ -34,7 +37,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(DimendefTest.class);
+        (new JUnitCore()).run(DimendefTest.class);
     }
 
     /**
@@ -54,6 +57,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -68,6 +72,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -82,6 +87,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -97,6 +103,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -113,6 +120,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCountAssing1() throws Exception {
 
         assertSuccess(// --- input code ---

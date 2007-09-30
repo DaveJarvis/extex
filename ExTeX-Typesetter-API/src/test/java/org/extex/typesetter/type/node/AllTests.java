@@ -22,6 +22,8 @@ package org.extex.typesetter.type.node;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.junit.runner.JUnitCore;
+
 /**
  * test suite for the node types.
  * 
@@ -40,31 +42,31 @@ public class AllTests {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(suite());
+        (new JUnitCore()).run(suite());
     }
 
     /**
      * Create a new test suite.
-     *
+     * 
      * @return the suite
      */
     public static Test suite() {
 
         TestSuite suite =
                 new TestSuite("Test for org.extex.typesetter.type.node");
-        //$JUnit-BEGIN$
+        // $JUnit-BEGIN$
         suite.addTestSuite(CenteredLeadersNodeTest.class);
         suite.addTestSuite(AlignedLeadersNodeTest.class);
         suite.addTestSuite(VerticalListNodeTest.class);
         suite.addTestSuite(ExpandedLeadersNodeTest.class);
         suite.addTestSuite(GenericListNodeTest.class);
         suite.addTestSuite(HorizontalListNodeTest.class);
-        //$JUnit-END$
+        // $JUnit-END$
         return suite;
     }
 

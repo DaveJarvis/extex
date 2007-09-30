@@ -20,6 +20,7 @@
 package org.extex.unit.etex.font;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\fontcharic</tt>.
@@ -48,6 +49,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testVertical1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -64,6 +66,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -80,6 +83,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -96,6 +100,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCmslPoint() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -113,6 +118,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCmslL() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -130,6 +136,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCmslX() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -147,6 +154,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCmslPlus2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -164,6 +172,7 @@ public class FontcharicTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testCmslPlus3() throws Exception {
 
         assertSuccess(//--- input code ---

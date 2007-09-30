@@ -22,10 +22,12 @@ package org.extex.unit.tex;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the ligature.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4527 $
  */
@@ -33,16 +35,17 @@ public class LigatureTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LigatureTest.class);
+        (new JUnitCore()).run(LigatureTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public LigatureTest(String arg) {
@@ -51,12 +54,12 @@ public class LigatureTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a ligature node is inserted.
+     * <testcase> Test case checking that a ligature node is inserted.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testXyz() throws Exception {
 
         Properties properties = getProps();
@@ -64,9 +67,9 @@ public class LigatureTest extends ExTeXLauncher {
         properties.setProperty("extex.output", "dump");
 
         assertSuccess(properties,
-        //--- input code ---
+        // --- input code ---
             "\\font\\f=cmr10 \\f " + "Affe",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(6.94444pt+0.0pt)x3000.0pt\n" //
                     + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
                     + "..A\n" //

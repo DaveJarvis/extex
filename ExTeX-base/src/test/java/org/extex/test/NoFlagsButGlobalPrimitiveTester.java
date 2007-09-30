@@ -19,6 +19,8 @@
 
 package org.extex.test;
 
+import org.junit.Test;
+
 /**
  * This abstract test suite contains some tests to check that all flags but the
  * global flag lead to an error.
@@ -103,6 +105,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoImmediateFlag() throws Exception {
 
         assertFailure(
@@ -122,6 +125,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoLongFlag() throws Exception {
 
         assertFailure(
@@ -141,6 +145,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(
@@ -160,6 +165,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+//    @Test
 //    public void testNoProtectedFlag() throws Exception {
 //
 //        assertFailure(

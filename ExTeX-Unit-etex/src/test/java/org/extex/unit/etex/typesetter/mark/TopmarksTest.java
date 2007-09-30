@@ -20,10 +20,11 @@
 package org.extex.unit.etex.typesetter.mark;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\topmarks</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class TopmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(TopmarksTest.class);
+        (new JUnitCore()).run(TopmarksTest.class);
     }
 
     /**
      * Constructor for TopmarkTest.
-     *
+     * 
      * @param arg the name
      */
     public TopmarksTest(String arg) {
@@ -49,6 +51,5 @@ public class TopmarksTest extends NoFlagsPrimitiveTester {
         setConfig("etex-test");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

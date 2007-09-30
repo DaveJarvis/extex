@@ -19,12 +19,16 @@
 
 package org.extex.unit.tex;
 
-import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+import de.dante.tex.TestTeX;
 
 /**
  * Test for the register <tt>count</tt>.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -32,19 +36,21 @@ public class CountTest extends TestCase {
 
     /**
      * main
-     * @param  args commandlineargs
+     * 
+     * @param args commandlineargs
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CountTest.class);
+        (new JUnitCore()).run(CountTest.class);
     }
 
     /**
      * count01
+     * 
      * @exception Exception iff test failed
      */
-    public void testCount01()
-        throws Exception {
+    @Test
+    public void testCount01() throws Exception {
 
         TestTeX.test("jucount01", "ExTeX-Unit-tex");
     }

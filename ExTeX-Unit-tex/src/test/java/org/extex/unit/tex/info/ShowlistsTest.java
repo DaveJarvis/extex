@@ -22,6 +22,7 @@ package org.extex.unit.tex.info;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\showlists</tt>.
@@ -48,6 +49,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Properties p = prepare();
@@ -67,6 +69,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         Properties p = prepare();

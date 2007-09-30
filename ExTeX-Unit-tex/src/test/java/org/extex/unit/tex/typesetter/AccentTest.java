@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\accent</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class AccentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AccentTest.class);
+        (new JUnitCore()).run(AccentTest.class);
     }
 
     /**
      * Constructor for MathaccentTest.
-     *
+     * 
      * @param arg the name
      */
     public AccentTest(String arg) {
@@ -49,33 +52,32 @@ public class AccentTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\accent</tt> does not work in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\accent</tt> does not work in
+     * math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAccentInMathMode() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_MATH + "$\\accent $\\end",
-            //--- log message ---
+            // --- log message ---
             "Please use \\mathaccent for accents in math mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that <tt>\accent</tt> does not work in display math
-     *  mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that <tt>\accent</tt> does not work in
+     * display math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAccentInDisplayMathMode() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_MATH + "$$\\accent ",
-            //--- log message ---
+            // --- log message ---
             "Please use \\mathaccent for accents in math mode");
     }
 

@@ -20,10 +20,12 @@
 package org.extex.unit.tex.debugging;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\relax</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,17 +33,17 @@ public class AllocTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AllocTest.class);
+        (new JUnitCore()).run(AllocTest.class);
     }
 
     /**
      * Constructor for RelaxTest.
-     *
+     * 
      * @param name the name
      */
     public AllocTest(String name) {
@@ -50,18 +52,16 @@ public class AllocTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case from docstrip.
-     * </testcase>
-     *
+     * <testcase> Test case from docstrip. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-            "\\dimendef\\z=10 \\z=0pt "
-            + "\\count0\\z\\end",
-            //--- output channel ---
+        assertSuccess(// --- input code ---
+            "\\dimendef\\z=10 \\z=0pt " + "\\count0\\z\\end",
+            // --- output channel ---
             "");
     }
 

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.typesetter.spacing;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for horizontal filling primitives.
@@ -59,6 +60,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVbox1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -73,6 +75,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHbox1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -88,6 +91,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -104,6 +108,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore2() throws Exception {
 
         assertSuccess(showNodesProperties(),

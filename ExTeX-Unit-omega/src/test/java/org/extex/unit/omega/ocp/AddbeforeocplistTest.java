@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\addbeforeocplist</tt>.
@@ -36,7 +38,7 @@ public class AddbeforeocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AddbeforeocplistTest.class);
+        (new JUnitCore()).run(AddbeforeocplistTest.class);
     }
 
     /**
@@ -52,10 +54,12 @@ public class AddbeforeocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\addbeforeocplist"> Test case checking that
-     * <tt>\addbeforeocplist</tt> can not be used in a normal mode. </testcase>
+     * <tt>\addbeforeocplist</tt> can not be used in a normal mode.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---

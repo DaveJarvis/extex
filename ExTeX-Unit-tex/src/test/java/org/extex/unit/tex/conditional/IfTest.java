@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.conditional;
 
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
@@ -41,6 +43,8 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\if</tt>.
@@ -57,7 +61,7 @@ public class IfTest extends ConditionalTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(IfTest.class);
+        (new JUnitCore()).run(IfTest.class);
     }
 
     /**
@@ -76,6 +80,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -90,6 +95,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -104,6 +110,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -118,6 +125,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -135,6 +143,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test10() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -151,6 +160,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -166,6 +176,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -182,6 +193,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -198,6 +210,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test14() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -213,6 +226,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test15() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -228,6 +242,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test16() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -773,6 +788,7 @@ public class IfTest extends ConditionalTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test20() throws Exception {
 
         assertTrue(new If("if").conditional(null, X_SOURCE, null));

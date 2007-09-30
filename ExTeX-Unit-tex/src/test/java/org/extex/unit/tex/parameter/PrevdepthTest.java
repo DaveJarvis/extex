@@ -20,10 +20,12 @@
 package org.extex.unit.tex.parameter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\prevdepth</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PrevdepthTest.class);
+        (new JUnitCore()).run(PrevdepthTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PrevdepthTest(String arg) {
@@ -49,113 +52,108 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> in horizontal mode
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> in horizontal mode leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHorizontalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "a\\prevdepth=12pt ",
-                //--- error channel ---
-                "You can't use `\\prevdepth' in horizontal mode");
+        assertFailure(// --- input code ---
+            "a\\prevdepth=12pt ",
+            // --- error channel ---
+            "You can't use `\\prevdepth' in horizontal mode");
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> in horizontal mode
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> in horizontal mode leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHorizontalMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\hbox{\\prevdepth=12pt} ",
-                //--- error channel ---
-                "You can't use `\\prevdepth' in restricted horizontal mode");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\hbox{\\prevdepth=12pt} ",
+            // --- error channel ---
+            "You can't use `\\prevdepth' in restricted horizontal mode");
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> in math mode
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> in math mode leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "$\\prevdepth=12pt $",
-                //--- error channel ---
-                "You can't use `\\prevdepth' in math mode");
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "$\\prevdepth=12pt $",
+            // --- error channel ---
+            "You can't use `\\prevdepth' in math mode");
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> in display math mode
-     *  leads to an error.
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> in display math mode leads to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "$$\\prevdepth=12pt $$",
-                //--- error channel ---
-                "You can't use `\\prevdepth' in displaymath mode");
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "$$\\prevdepth=12pt $$",
+            // --- error channel ---
+            "You can't use `\\prevdepth' in displaymath mode");
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> has a default value of
-     *  -1000pt.
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> has a default value of -1000pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\the\\prevdepth\\end",
-                //--- error channel ---
-                "-1000.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\the\\prevdepth\\end",
+            // --- error channel ---
+            "-1000.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\prevdepth=12pt \\the\\prevdepth\\end",
-                //--- error channel ---
-                "12.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\prevdepth=12pt \\the\\prevdepth\\end",
+            // --- error channel ---
+            "12.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\prevdepth">
-     *  Test case checking that <tt>\prevdepth</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\prevdepth"> Test case checking that
+     * <tt>\prevdepth</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\prevdepth=12pt \\dimen1=\\prevdepth \\the\\dimen1\\end",
-                //--- error channel ---
-                "12.0pt" + TERM);
+        assertSuccess(// --- input code ---
+            "\\prevdepth=12pt \\dimen1=\\prevdepth \\the\\dimen1\\end",
+            // --- error channel ---
+            "12.0pt" + TERM);
     }
 
 }

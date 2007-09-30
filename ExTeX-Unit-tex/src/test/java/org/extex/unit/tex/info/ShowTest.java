@@ -20,6 +20,7 @@
 package org.extex.unit.tex.info;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\show</tt>.
@@ -47,6 +48,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testL1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -63,6 +65,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testL2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -79,6 +82,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testD1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -95,6 +99,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testX1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -111,6 +116,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testB1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -127,6 +133,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testB2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -143,6 +150,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testH1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -159,6 +167,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testM1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -175,6 +184,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testM2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -191,6 +201,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testA1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -207,6 +218,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testTab2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -223,6 +235,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testM3() throws Exception {
 
         assertFailure(//--- input code ---
@@ -239,6 +252,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndef() throws Exception {
 
         assertFailure(//--- input code ---
@@ -255,6 +269,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -271,6 +286,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -287,6 +303,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -303,6 +320,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro2() throws Exception {
 
         assertFailure(//--- input code ---
@@ -319,6 +337,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro3() throws Exception {
 
         assertFailure(//--- input code ---
@@ -335,6 +354,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro4() throws Exception {
 
         assertFailure(//--- input code ---
@@ -351,6 +371,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro5() throws Exception {
 
         assertFailure(//--- input code ---
@@ -367,6 +388,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro6() throws Exception {
 
         assertFailure(//--- input code ---
@@ -383,6 +405,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro7() throws Exception {
 
         assertFailure(//--- input code ---
@@ -399,6 +422,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testChardef1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -415,6 +439,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathchardef1() throws Exception {
 
         assertFailure(//--- input code ---

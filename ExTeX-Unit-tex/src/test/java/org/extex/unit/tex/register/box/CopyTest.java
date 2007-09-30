@@ -20,10 +20,12 @@
 package org.extex.unit.tex.register.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\copy</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,16 +33,17 @@ public class CopyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CopyTest.class);
+        (new JUnitCore()).run(CopyTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public CopyTest(String arg) {
@@ -49,18 +52,17 @@ public class CopyTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\copy">
-     *  Test case checking that <tt>\copy</tt> needs a key.
-     * </testcase>
-     *
+     * <testcase primitive="\copy"> Test case checking that <tt>\copy</tt>
+     * needs a key. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure("\\copy ", //
             "Missing number, treated as zero");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

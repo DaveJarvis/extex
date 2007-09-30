@@ -19,9 +19,14 @@
 
 package org.extex.unit.tex;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for expansion.
@@ -38,7 +43,7 @@ public class MemoryTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(MemoryTest.class);
+        (new JUnitCore()).run(MemoryTest.class);
     }
 
     /**
@@ -57,6 +62,7 @@ public class MemoryTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Properties properties = getProps();

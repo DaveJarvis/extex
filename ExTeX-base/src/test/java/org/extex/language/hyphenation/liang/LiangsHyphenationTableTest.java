@@ -19,7 +19,7 @@
 
 package org.extex.language.hyphenation.liang;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
@@ -27,33 +27,35 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.scanner.type.tokens.Tokens;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class contains soem test cases fro liang's hyphenation table.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
-public class LiangsHyphenationTableTest extends TestCase {
+public class LiangsHyphenationTableTest {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LiangsHyphenationTableTest.class);
+        (new JUnitCore()).run(LiangsHyphenationTableTest.class);
     }
 
     /**
      * Create new tokens from a string. Letters and the period are LETTERs,
      * spaces are SPACEs, and anything else is an OTHER token.
-     *
+     * 
      * @param s the string to translate
-     *
+     * 
      * @return the tokens crated from the string's characters
-     *
+     * 
      * @throws CatcodeException in case of an error
      */
     private static Tokens newTokens(String s) throws CatcodeException {
@@ -78,9 +80,10 @@ public class LiangsHyphenationTableTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         LiangsHyphenationTable table = new LiangsHyphenationTable();
@@ -98,9 +101,10 @@ public class LiangsHyphenationTableTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         LiangsHyphenationTable table = new LiangsHyphenationTable();
@@ -121,9 +125,10 @@ public class LiangsHyphenationTableTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         LiangsHyphenationTable table = new LiangsHyphenationTable();

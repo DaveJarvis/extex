@@ -120,6 +120,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLong2() throws Exception {
 
         assertSuccess(// --- input code ---

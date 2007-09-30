@@ -52,7 +52,11 @@ public class XmlOutput02Test extends ExTeXLauncher {
 
     }
 
-    @Override
+    /**
+     * TODO
+     *
+     * @throws Exception
+     */
     protected void setUp() throws Exception {
 
         prop = new Properties(System.getProperties());

@@ -20,6 +20,8 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\removeafterocplist</tt>.
@@ -36,7 +38,7 @@ public class RemoveafterocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(RemoveafterocplistTest.class);
+        (new JUnitCore()).run(RemoveafterocplistTest.class);
     }
 
     /**
@@ -52,10 +54,12 @@ public class RemoveafterocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\removeafterocplist"> Test case checking that
-     * <tt>\removeafterocplist</tt> can not be used in a normal mode. </testcase>
+     * <tt>\removeafterocplist</tt> can not be used in a normal mode.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---

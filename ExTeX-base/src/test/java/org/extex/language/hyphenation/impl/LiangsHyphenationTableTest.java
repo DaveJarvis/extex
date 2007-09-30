@@ -19,7 +19,8 @@
 
 package org.extex.language.hyphenation.impl;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.MockContext;
@@ -31,25 +32,28 @@ import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for LiangsHyphenationTable.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
-public class LiangsHyphenationTableTest extends TestCase {
+public class LiangsHyphenationTableTest {
 
     /**
      * This mock implementation is for test purposes only.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
     private static class MyMockContext extends MockContext {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -57,22 +61,22 @@ public class LiangsHyphenationTableTest extends TestCase {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LiangsHyphenationTableTest.class);
+        (new JUnitCore()).run(LiangsHyphenationTableTest.class);
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
-     * @param s the string specifiction
+     * 
+     * @param s the string specification
      * @param context the context
-     *
+     * 
      * @return the tokens
-     *
+     * 
      * @throws CatcodeException in case of problems in token creation
      */
     private static Tokens makeTokens(String s, Context context)
@@ -92,9 +96,10 @@ public class LiangsHyphenationTableTest extends TestCase {
     /**
      * This test case checks that the insertion of two different pattern does
      * not lead to an exception.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Context context = new MyMockContext();
@@ -107,9 +112,10 @@ public class LiangsHyphenationTableTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         Context context = new MyMockContext();
@@ -123,9 +129,10 @@ public class LiangsHyphenationTableTest extends TestCase {
     /**
      * This test case tests that the addPattern() method with identical
      * arguments leads to an exception.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         Context context = new MyMockContext();
@@ -143,9 +150,10 @@ public class LiangsHyphenationTableTest extends TestCase {
     /**
      * This test case tests that the addPattern() method with identical
      * arguments on the character positions leads to an exception.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr2() throws Exception {
 
         Context context = new MyMockContext();

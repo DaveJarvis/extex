@@ -19,7 +19,7 @@
 
 package org.extex.interpreter;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.backend.BackendDriver;
 import org.extex.core.Locator;
@@ -50,12 +50,14 @@ import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
-public class Max1 extends TestCase {
+public class Max1 {
 
     /**
      * Inner class to collect the things the typesetter sees.
@@ -557,7 +559,7 @@ public class Max1 extends TestCase {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(Max1.class);
+        (new JUnitCore()).run(Max1.class);
     }
 
     /**
@@ -567,7 +569,7 @@ public class Max1 extends TestCase {
      */
     public Max1(String arg0) {
 
-        super(arg0);
+        super();
     }
 
     /**
@@ -607,6 +609,7 @@ public class Max1 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
         assertEquals("", doTest(""));
@@ -615,6 +618,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro1() throws Exception {
 
         assertEquals("", doTest("\\relax"));
@@ -623,6 +627,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testMacro2() throws Exception {
 
         assertEquals("\n\\par\n", doTest("\\par"));
@@ -631,6 +636,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testSingle1() throws Exception {
 
         assertEquals("a", doTest("a"));
@@ -639,6 +645,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testSingle2() throws Exception {
 
         assertEquals("A", doTest("A"));
@@ -647,6 +654,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testSingle3() throws Exception {
 
         assertEquals("2", doTest("2"));
@@ -655,6 +663,7 @@ public class Max1 extends TestCase {
     /**
      * @throws Exception in case of an error
      */
+    @Test
     public void testSingle4() throws Exception {
 
         assertEquals(".", doTest("."));

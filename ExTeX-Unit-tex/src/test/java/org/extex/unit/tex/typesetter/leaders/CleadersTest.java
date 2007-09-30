@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.leaders;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\cleaders</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CleadersTest.class);
+        (new JUnitCore()).run(CleadersTest.class);
     }
 
     /**
      * Constructor for CleadersTest.
-     *
+     * 
      * @param arg the name
      */
     public CleadersTest(String arg) {
@@ -48,6 +50,5 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
         super(arg, "cleaders", "\\vrule\\vfill");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

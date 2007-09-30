@@ -20,10 +20,11 @@
 package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\vsplit</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +32,17 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(VsplitTest.class);
+        (new JUnitCore()).run(VsplitTest.class);
     }
 
     /**
      * Constructor for VsplitTest.
-     *
+     * 
      * @param arg the name
      */
     public VsplitTest(String arg) {
@@ -48,6 +50,5 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
         super(arg, "vsplit", "42 to 1pt", "\\setbox42=\\vbox{A}");
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement primitive specific test cases
 }

@@ -19,6 +19,8 @@
 
 package org.extex.test;
 
+import org.junit.Test;
+
 /**
  * This abstract base class for tests contains some tests which check that
  * all flag primitives but <tt>\global</tt> and <tt>\immediate</tt> lead to
@@ -64,6 +66,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoLongFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -80,6 +83,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(//--- input code ---
@@ -96,6 +100,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      *
      * @throws Exception in case of an error
      */
+//    @Test
 //    public void testNoProtectedFlag() throws Exception {
 //
 //        assertFailure(//--- input code ---

@@ -24,10 +24,11 @@ import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.expression.term.TBoolean;
 import org.extex.interpreter.expression.term.TCount;
 import org.extex.interpreter.expression.term.TDouble;
+import org.junit.runner.JUnitCore;
 
 /**
  * This class is a test suite for the expression evaluator.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4733 $
  */
@@ -35,17 +36,17 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
 
     /**
      * Main program.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(ExTeXEvaluatorTest.class);
+        (new JUnitCore()).run(ExTeXEvaluatorTest.class);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
      */
     @Override
@@ -55,10 +56,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount111() throws Exception {
@@ -71,10 +70,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount112() throws Exception {
@@ -87,10 +84,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount113() throws Exception {
@@ -103,10 +98,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount114() throws Exception {
@@ -119,10 +112,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount5() throws Exception {
@@ -135,10 +126,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq1() throws Exception {
@@ -151,10 +140,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq2() throws Exception {
@@ -167,10 +154,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq2s() throws Exception {
@@ -183,10 +168,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq3() throws Exception {
@@ -199,10 +182,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq4() throws Exception {
@@ -215,10 +196,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountEq5() throws Exception {
@@ -231,10 +210,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountLe1() throws Exception {
@@ -247,10 +224,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountLe1u() throws Exception {
@@ -263,10 +238,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountPlus11() throws Exception {
@@ -279,10 +252,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPi1() throws Exception {
@@ -295,10 +266,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPi2() throws Exception {
@@ -311,10 +280,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLogic1() throws Exception {
@@ -327,10 +294,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLogic2() throws Exception {
@@ -343,10 +308,8 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {

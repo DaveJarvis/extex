@@ -20,6 +20,7 @@
 package org.extex.test.toks;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing tokens registers. It provides some
@@ -91,6 +92,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -106,6 +108,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterLongPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -121,6 +124,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterOuterPrefix1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -136,6 +140,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterDefault1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -150,6 +155,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterShowthe1() throws Exception {
 
         assertOutput(// --- input code ---
@@ -164,6 +170,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAssign1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -179,6 +186,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAssign2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -194,6 +202,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAssign3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -209,6 +218,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAssign4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -224,6 +234,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAssign5() throws Exception {
 
         assertOutput(// --- input code ---
@@ -241,6 +252,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterAfterassignment1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -256,6 +268,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterGroup1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -271,6 +284,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(
@@ -287,6 +301,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToksRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(
@@ -303,6 +318,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(
@@ -318,6 +334,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(

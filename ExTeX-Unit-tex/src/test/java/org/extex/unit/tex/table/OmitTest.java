@@ -20,10 +20,12 @@
 package org.extex.unit.tex.table;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\omit</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class OmitTest extends ExTeXLauncher {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OmitTest.class);
+        (new JUnitCore()).run(OmitTest.class);
     }
 
     /**
      * Constructor for OmitTest.
-     *
+     * 
      * @param arg the name
      */
     public OmitTest(String arg) {
@@ -49,19 +52,18 @@ public class OmitTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\omit">
-     *  Test case checking that <tt>\omit</tt> needs to be used in a
-     *  tabuling context.
-     * </testcase>
-     *
+     * <testcase primitive="\omit"> Test case checking that <tt>\omit</tt>
+     * needs to be used in a tabuling context. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLonelyCr() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\omit" + "\\end ",
-                //--- log message ---
-                "Misplaced \\omit");
+        assertFailure(// --- input code ---
+            "\\omit" + "\\end ",
+            // --- log message ---
+            "Misplaced \\omit");
     }
 
 }

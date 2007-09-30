@@ -22,6 +22,7 @@ package org.extex.interpreter;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the typesetter.
@@ -46,6 +47,7 @@ public class TypesetterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Properties properties = getProps();

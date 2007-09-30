@@ -20,10 +20,11 @@
 package org.extex.unit.pdftex.register.dimen;
 
 import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\pdfpagewidth</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4824 $
  */
@@ -31,16 +32,17 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(PdfpagewidthTest.class);
+        (new JUnitCore()).run(PdfpagewidthTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfpagewidthTest(String arg) {
@@ -49,6 +51,5 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
         setConfig("pdftex-test");
     }
 
-    //TODO implement the primitive specific test cases
-
+    // TODO implement the primitive specific test cases
 }

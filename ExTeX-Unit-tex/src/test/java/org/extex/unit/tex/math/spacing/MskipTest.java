@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.spacing;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\mskip</tt>.
@@ -46,6 +47,7 @@ public class MskipTest extends AbstractMathTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),

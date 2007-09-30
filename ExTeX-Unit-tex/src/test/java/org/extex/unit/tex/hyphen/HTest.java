@@ -20,6 +20,7 @@
 package org.extex.unit.tex.hyphen;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for the hyphenation.
@@ -44,6 +45,7 @@ public class HTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPattern1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -57,6 +59,7 @@ public class HTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPattern2() throws Exception {
 
         assertSuccess(// --- input code ---

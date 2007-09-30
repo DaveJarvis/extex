@@ -20,10 +20,12 @@
 package org.extex.unit.tex.typesetter.undo;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>&#x5c;unkern</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,16 +33,17 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(UnkernTest.class);
+        (new JUnitCore()).run(UnkernTest.class);
     }
 
     /**
      * Constructor for UnkernTest.
-     *
+     * 
      * @param arg the name
      */
     public UnkernTest(String arg) {
@@ -49,79 +52,76 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="&#x5c;unkern">
-     *  Test case checking that <tt>&#x5c;unkern</tt> need some node in the
-     *  current list.
-     * </testcase>
-     *
+     * <testcase primitive="&#x5c;unkern"> Test case checking that
+     * <tt>&#x5c;unkern</tt> need some node in the current list. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\unkern\\end ",
-                //--- error channel ---
-                "You can't use `\\unkern' in vertical mode");
+        // --- input code ---
+            "\\unkern\\end ",
+            // --- error channel ---
+            "You can't use `\\unkern' in vertical mode");
     }
 
     /**
-     * <testcase primitive="&#x5c;unkern">
-     *  Test case checking that <tt>&#x5c;unkern</tt> need some node in the
-     *  current list.
-     * </testcase>
-     *
+     * <testcase primitive="&#x5c;unkern"> Test case checking that
+     * <tt>&#x5c;unkern</tt> need some node in the current list. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testErr2() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\kern1pt\\unkern\\unkern\\end ",
-                //--- error channel ---
-                "You can't use `\\unkern' in vertical mode");
+        // --- input code ---
+            "\\kern1pt\\unkern\\unkern\\end ",
+            // --- error channel ---
+            "You can't use `\\unkern' in vertical mode");
     }
 
     /**
-     * <testcase primitive="&#x5c;unkern">
-     *  Test case checking that <tt>&#x5c;unkern</tt> does not touch a char node
-     *  at the end of the current list.
-     * </testcase>
-     *
+     * <testcase primitive="&#x5c;unkern"> Test case checking that
+     * <tt>&#x5c;unkern</tt> does not touch a char node at the end of the
+     * current list. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-                //--- input code ---
-                "a\\unkern\\end ",
-                //--- output channel ---
-                "" + //
-                        "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                        ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                        "..a\n");
+        // --- input code ---
+            "a\\unkern\\end ",
+            // --- output channel ---
+            "" + //
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    "..a\n");
     }
 
     /**
-     * <testcase primitive="&#x5c;unkern">
-     *  Test case checking that <tt>&#x5c;unkern</tt> takes the last kern from
-     *  the current list.
+     * <testcase primitive="&#x5c;unkern"> Test case checking that
+     * <tt>&#x5c;unkern</tt> takes the last kern from the current list.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "a\\kern1pt\\unkern\\end ",
-                //--- output channel ---
-                "" + //
-                        "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                        ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                        "..a\n");
+        // --- input code ---
+            "a\\kern1pt\\unkern\\end ",
+            // --- output channel ---
+            "" + //
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+                    "..a\n");
     }
 
-    //TODO implement more primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }

@@ -20,6 +20,8 @@
 package org.extex.unit.tex.register.muskip;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * This is a abstract base class for testing muskip registers.
@@ -93,6 +95,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterImmediatePrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -110,6 +113,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterLongPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -127,6 +131,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterOuterPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
@@ -145,6 +150,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDefault1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -161,6 +167,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -179,6 +186,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -197,6 +205,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAssign3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -215,6 +224,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAssign4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -233,6 +243,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAssign5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -250,6 +261,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAfterassignment1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -266,7 +278,9 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void ___testMuskipRegisterConvertible1() throws Exception {
+    @Test
+    @Ignore
+    public void testMuskipRegisterConvertible1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "-12.3mu \\dimen0=\\"
@@ -282,7 +296,9 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void ___testMuskipRegisterConvertible2() throws Exception {
+    @Test
+    @Ignore
+    public void testMuskipRegisterConvertible2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "-12.3mu \\count0=\\"
@@ -298,6 +314,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGroup1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -316,6 +333,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -334,6 +352,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -351,6 +370,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAdvance1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -369,6 +389,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAdvance2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -386,6 +407,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAdvance3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -404,6 +426,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAdvance4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -422,6 +445,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAdvance5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -439,6 +463,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAfterassignment2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -457,6 +482,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGroup2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -474,6 +500,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply0() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -491,6 +518,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -509,6 +537,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -526,6 +555,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -544,6 +574,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -562,6 +593,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterMultiply5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -580,6 +612,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAfterassignment3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -597,6 +630,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGroup3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -614,6 +648,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide0() throws Exception {
 
         assertFailure(
@@ -631,6 +666,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -649,6 +685,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide2() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -666,6 +703,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide3() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -684,6 +722,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -702,6 +741,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide5() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -719,6 +759,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterAfterassignment4() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -736,6 +777,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterDivide6() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -753,6 +795,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMuskipRegisterGroup4() throws Exception {
 
         assertSuccess(

@@ -20,10 +20,12 @@
 package org.extex.unit.tex.group;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\aftergroup</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,17 +33,17 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(AftergroupTest.class);
+        (new JUnitCore()).run(AftergroupTest.class);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public AftergroupTest(String arg) {
@@ -50,50 +52,50 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\aftergroup">
-     *  Test case checking that <tt>\aftergroup</tt> needs a token argument.
-     * </testcase>
-     *
+     * <testcase primitive="\aftergroup"> Test case checking that
+     * <tt>\aftergroup</tt> needs a token argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\aftergroup",
-            //--- output channel ---
+            // --- output channel ---
             "Unexpected end of file while processing \\aftergroup");
     }
 
     /**
-     * <testcase primitive="\aftergroup">
-     *  Test case checking that a <tt>\aftergroup</tt> token of type letter
-     *  is shifted to the end of the group.
-     * </testcase>
-     *
+     * <testcase primitive="\aftergroup"> Test case checking that a
+     * <tt>\aftergroup</tt> token of type letter is shifted to the end of the
+     * group. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\catcode`{=1" + "\\catcode`}=2" + "a{b\\aftergroup xd}e\\end",
-            //--- output channel ---
+            // --- output channel ---
             "abdxe" + TERM);
     }
 
     /**
-     * <testcase primitive="\aftergroup">
-     *  Test case checking that a <tt>\aftergroup</tt> token of type control
-     *  sequence is expanded after the end of the group.
-     * </testcase>
-     *
+     * <testcase primitive="\aftergroup"> Test case checking that a
+     * <tt>\aftergroup</tt> token of type control sequence is expanded after
+     * the end of the group. </testcase>
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\catcode`{=1" + "\\catcode`}=2" + "\\def\\x{ttt}"
                     + "a{b\\aftergroup\\x d}e\\end",
-            //--- output channel ---
+            // --- output channel ---
             "abdttte" + TERM);
     }
 

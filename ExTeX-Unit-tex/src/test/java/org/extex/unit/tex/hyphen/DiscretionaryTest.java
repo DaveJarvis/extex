@@ -20,6 +20,7 @@
 package org.extex.unit.tex.hyphen;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\discretionary</tt>.
@@ -46,6 +47,7 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisc1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -62,6 +64,7 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    @Test
     public void testMath1() throws Exception {
 
         assertSuccess(//--- input code ---

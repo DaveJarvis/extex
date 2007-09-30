@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.math;
 
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\overline</tt>.
  *
@@ -43,6 +45,7 @@ public class OverlineTest extends AbstractMathTester {
      * </testcase>
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
