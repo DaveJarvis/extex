@@ -22,13 +22,15 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 /**
- * T2: vstemhm: x dx {dxa dxb}* vstemhm (23).
+ * T2: return: return (11).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2VstemHm extends T2HintCmd {
+public class T2Return extends T2Subroutine {
 
     /**
      * Create a new object.
@@ -38,10 +40,9 @@ public class T2VstemHm extends T2HintCmd {
      * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    public T2VstemHm(List<T2CharString> stack, CharString ch)
-            throws IOException {
+    public T2Return(List<T2CharString> stack, CharString ch) throws IOException {
 
-        super(stack, new short[]{T2VSTEMHM}, ch);
+        super(stack, new short[]{T2CALLGSUBR}, ch);
 
     }
 
@@ -53,7 +54,7 @@ public class T2VstemHm extends T2HintCmd {
     @Override
     public int getID() {
 
-        return TYPE_VSTEMHM;
+        return TYPE_RETURN;
     }
 
     /**
@@ -64,7 +65,28 @@ public class T2VstemHm extends T2HintCmd {
     @Override
     public String getName() {
 
-        return "vstemhm";
+        return "return";
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
+    @Override
+    public Object getValue() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeEndElement();
+    }
 }

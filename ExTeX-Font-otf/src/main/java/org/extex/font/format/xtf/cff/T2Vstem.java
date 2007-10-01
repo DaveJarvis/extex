@@ -22,9 +22,8 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
- * T2: vstem.
+ * T2: vstem: x dx {dxa dxb}* vstem (3).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -45,22 +44,26 @@ public class T2Vstem extends T2HintCmd {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
+     */
     @Override
     public int getID() {
 
         return TYPE_VSTEM;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getName()
+     */
     @Override
     public String getName() {
 
         return "vstem";
     }
 
-    @Override
-    public int countHints() {
-
-        // TODO mgn: countHints unimplemented
-        return 0;
-    }
 }

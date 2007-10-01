@@ -78,8 +78,8 @@ public abstract class T2Operator extends T2CharString
                     return new T2Dummy(stack, ch, "Reserved");// Reserved
                 case T2CALLSUBR:
                     return new T2CallSubr(stack, ch);
-                case 11:
-                    return new T2Dummy(stack, ch, "return");
+                case T2RETURN:
+                    return new T2Return(stack, ch);
                 case ESCAPE_BYTE:
 
                     int b1 = rar.readUnsignedByte();
@@ -179,8 +179,8 @@ public abstract class T2Operator extends T2CharString
                     return new T2HstemHm(stack, ch);
                 case T2HINTMASK:
                     return new T2HintMask(stack, ch, rar);
-                case 20:
-                    return new T2Dummy(stack, ch, "cntrmask"); // cntrmask
+                case T2CNTRMASK:
+                    return new T2CntrMask(stack, ch, rar);
                 case T2RMOVETO:
                     return new T2RMoveTo(stack, ch);
                 case T2HMOVETO:
@@ -197,8 +197,8 @@ public abstract class T2Operator extends T2CharString
                     return new T2HhcurveTo(stack, ch);
                 case 28:
                     return new T2Dummy(stack, ch, "shortint"); // shortint
-                case 29:
-                    return new T2Dummy(stack, ch, "callgsubr"); // callgsubr
+                case T2CALLGSUBR:
+                    return new T2CallGSubr(stack, ch);
                 case T2VHCURVETO:
                     return new T2VhcurveTo(stack, ch);
                 case T2HVCURVETO:
@@ -343,4 +343,13 @@ public abstract class T2Operator extends T2CharString
         return getName();
     }
 
+    /**
+     * Returns a test string from the command.
+     * 
+     * @return Returns a text string from the command.
+     */
+    public String toText() {
+
+        return toString();
+    }
 }

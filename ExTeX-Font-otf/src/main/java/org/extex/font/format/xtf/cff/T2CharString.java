@@ -103,6 +103,11 @@ public abstract class T2CharString {
     public static final int T2CALLSUBR = 10;
 
     /**
+     * callgsubr.
+     */
+    public static final int T2CALLGSUBR = 29;
+
+    /**
      * endchar.
      */
     public static final int T2ENDCHAR = 14;
@@ -153,6 +158,11 @@ public abstract class T2CharString {
     public static final int T2FLEX = 35;
 
     /**
+     * return (11).
+     */
+    public static final int T2RETURN = 11;
+
+    /**
      * hflex (12 34).
      */
     public static final int T2HFLEX = 34;
@@ -166,6 +176,11 @@ public abstract class T2CharString {
      * flex1 (12 37).
      */
     public static final int T2FLEX1 = 37;
+
+    /**
+     * cntrmask (20).
+     */
+    public static final int T2CNTRMASK = 20;
 
     /**
      * Type hstem.
@@ -286,6 +301,21 @@ public abstract class T2CharString {
      * Type flex1.
      */
     public static final int TYPE_FLEX1 = 24;
+
+    /**
+     * Type cntrmask.
+     */
+    public static final int TYPE_CNTRMASK = 25;
+
+    /**
+     * Type callgsubr.
+     */
+    public static final int TYPE_CALLGSUBR = 26;
+
+    /**
+     * Type return.
+     */
+    public static final int TYPE_RETURN = 27;
 
     /**
      * Read a number.

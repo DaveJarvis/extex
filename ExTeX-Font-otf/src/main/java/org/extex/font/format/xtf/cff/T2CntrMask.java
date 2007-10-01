@@ -26,15 +26,15 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * hintmask: hintmask (19 + mask).
+ * T2: cntrmask: cntrmask (20 + mask).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2HintMask extends T2AbstractHintMask {
+public class T2CntrMask extends T2AbstractHintMask {
 
     /**
-     * The hintmask.
+     * The cntrmask.
      */
     private long mask;
 
@@ -52,17 +52,13 @@ public class T2HintMask extends T2AbstractHintMask {
      * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    public T2HintMask(List<T2CharString> stack, CharString ch, RandomAccessR rar)
+    public T2CntrMask(List<T2CharString> stack, CharString ch, RandomAccessR rar)
             throws IOException {
 
-        super(stack, new short[]{T2HINTMASK}, ch);
+        super(stack, new short[]{T2CNTRMASK}, ch);
 
         int n = stack.size();
         val = new T2Number[n];
-
-        if (n > ch.getActualHints()) {
-            ch.setHints(n);
-        }
 
         for (int i = 0; i < n; i++) {
             val[i] = (T2Number) stack.get(i);
@@ -79,7 +75,7 @@ public class T2HintMask extends T2AbstractHintMask {
     @Override
     public int getID() {
 
-        return TYPE_HINTMASK;
+        return TYPE_CNTRMASK;
     }
 
     /**
@@ -110,7 +106,7 @@ public class T2HintMask extends T2AbstractHintMask {
     @Override
     public String getName() {
 
-        return "hintmask";
+        return "cntrmask";
     }
 
     /**

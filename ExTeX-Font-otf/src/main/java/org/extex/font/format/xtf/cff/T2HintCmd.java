@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all hints commands.
+ * Abstract class for all T2 hints commands.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -74,13 +74,6 @@ public abstract class T2HintCmd extends T2Hints {
     }
 
     /**
-     * Count the hints in the command.
-     * 
-     * @return Returns the count of the hints.
-     */
-    public abstract int countHints();
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
@@ -101,6 +94,11 @@ public abstract class T2HintCmd extends T2Hints {
         return pairs;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
     @Override
     public Object getValue() {
 
@@ -122,6 +120,5 @@ public abstract class T2HintCmd extends T2Hints {
             writer.writeEndElement();
         }
         writer.writeEndElement();
-
     }
 }

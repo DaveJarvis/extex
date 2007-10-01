@@ -217,6 +217,16 @@ public class CharString implements XMLWriterConvertible {
     }
 
     /**
+     * Set the hints.
+     * 
+     * @param cnt The new hints.
+     */
+    public void setHints(int cnt) {
+
+        hints = cnt;
+    }
+
+    /**
      * Setter for width.
      * 
      * @param width the width to set

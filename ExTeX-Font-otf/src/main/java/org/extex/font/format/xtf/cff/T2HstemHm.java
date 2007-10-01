@@ -22,9 +22,8 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
- * T2: hstemhm.
+ * T2: hstemhm: y dy {dya dyb}* hstemhm (18).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -46,22 +45,26 @@ public class T2HstemHm extends T2HintCmd {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getID()
+     */
     @Override
     public int getID() {
 
         return TYPE_HSTEMHM;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getName()
+     */
     @Override
     public String getName() {
 
         return "hstemhm";
     }
 
-    @Override
-    public int countHints() {
-
-        // TODO mgn: countHints unimplemented
-        return 0;
-    }
 }

@@ -22,13 +22,25 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 /**
- * T2: vstemhm: x dx {dxa dxb}* vstemhm (23).
+ * T2: callgsubr: globalsubr# callgsubr (29).
+ * 
+ * <p>
+ * Operates in the same manner as callsubr except that it calls a global
+ * subroutine.
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2VstemHm extends T2HintCmd {
+public class T2CallGSubr extends T2Subroutine {
+
+    /**
+     * subroutine index.
+     */
+    private T2Number subr;
 
     /**
      * Create a new object.
@@ -38,10 +50,18 @@ public class T2VstemHm extends T2HintCmd {
      * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    public T2VstemHm(List<T2CharString> stack, CharString ch)
+    public T2CallGSubr(List<T2CharString> stack, CharString ch)
             throws IOException {
 
-        super(stack, new short[]{T2VSTEMHM}, ch);
+        super(stack, new short[]{T2CALLGSUBR}, ch);
+
+        int n = stack.size();
+
+        if (n != 1) {
+            throw new T2MissingNumberException();
+        }
+
+        subr = (T2Number) stack.get(0);
 
     }
 
@@ -53,7 +73,7 @@ public class T2VstemHm extends T2HintCmd {
     @Override
     public int getID() {
 
-        return TYPE_VSTEMHM;
+        return TYPE_CALLGSUBR;
     }
 
     /**
@@ -64,7 +84,41 @@ public class T2VstemHm extends T2HintCmd {
     @Override
     public String getName() {
 
-        return "vstemhm";
+        return "callgsubr";
+    }
+
+    /**
+     * Getter for subr.
+     * 
+     * @return the subr
+     */
+    public T2Number getSubr() {
+
+        return subr;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
+    @Override
+    public Object getValue() {
+
+        return subr;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("subr", subr.getInteger());
+        writer.writeEndElement();
+
     }
 
 }

@@ -33,14 +33,14 @@ import org.extex.util.xml.XMLStreamWriter;
 public class T2Dummy extends T2Operator {
 
     /**
-     * The values of the stack.
-     */
-    private T2CharString[] cs;
-
-    /**
      * The command.
      */
     private String cmd;
+
+    /**
+     * The values of the stack.
+     */
+    private T2CharString[] cs;
 
     /**
      * Create a new object.
@@ -109,6 +109,17 @@ public class T2Dummy extends T2Operator {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        return "dummy";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -124,5 +135,4 @@ public class T2Dummy extends T2Operator {
         }
         writer.writeEndElement();
     }
-
 }
