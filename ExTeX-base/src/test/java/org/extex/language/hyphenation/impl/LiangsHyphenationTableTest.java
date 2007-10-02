@@ -70,7 +70,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Translate a String into {@link Tokens}.
      * 
      * @param s the string specification
      * @param context the context
@@ -94,8 +94,8 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * This test case checks that the insertion of two different pattern does
-     * not lead to an exception.
+     * <testcase> This test case checks that the insertion of two different
+     * pattern does not lead to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -111,7 +111,8 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> This test case checks that the insertion of two different
+     * pattern does not lead to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -127,44 +128,36 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * This test case tests that the addPattern() method with identical
-     * arguments leads to an exception.
+     * <testcase> This test case tests that the addPattern() method with
+     * identical arguments leads to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    @Test
+    @Test(expected = DuplicateHyphenationException.class)
     public void testErr1() throws Exception {
 
         Context context = new MyMockContext();
         Language table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a2b1c0", context));
-        try {
-            table.addPattern(makeTokens("0a2b1c0", context));
-            assertFalse(true);
-        } catch (DuplicateHyphenationException e) {
-            assertTrue(true);
-        }
+        table.addPattern(makeTokens("0a2b1c0", context));
     }
 
     /**
-     * This test case tests that the addPattern() method with identical
-     * arguments on the character positions leads to an exception.
+     * <testcase> This test case tests that the addPattern() method with
+     * identical arguments on the character positions leads to an exception.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    @Test
+    @Test(expected = DuplicateHyphenationException.class)
     public void testErr2() throws Exception {
 
         Context context = new MyMockContext();
         Language table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a2b1c0", context));
-        try {
-            table.addPattern(makeTokens("0a3b2c0", context));
-            assertFalse(true);
-        } catch (DuplicateHyphenationException e) {
-            assertTrue(true);
-        }
+        table.addPattern(makeTokens("0a3b2c0", context));
     }
+
 }
