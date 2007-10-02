@@ -78,7 +78,7 @@ find {
     while(<$fd>) {
       if (m|\@Test|) {
 	$t = 1;
-      } elsif (m|\@Ignore|) {
+      } elsif (m|\@Ignore| or m|\@Over| or m|\@SuppressWarning|) {
       } elsif (m|public void .*test.*()|) {
 	if (not $t) {
 	  print "$file: $_";
