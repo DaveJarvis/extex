@@ -42,12 +42,10 @@ public class IfscaledTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfscaledTest(String arg) {
+    public IfscaledTest() {
 
-        super(arg);
+        super();
     }
 
     /**

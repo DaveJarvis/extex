@@ -36,7 +36,7 @@ public class XmlOutput01Test extends ExTeXLauncher {
      */
     public XmlOutput01Test() {
 
-        super("xml backend test 01");
+        super();
     }
 
     /**

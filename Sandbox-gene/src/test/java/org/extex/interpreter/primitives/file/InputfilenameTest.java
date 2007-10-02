@@ -42,12 +42,10 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public InputfilenameTest(String arg) {
+    public InputfilenameTest() {
 
-        super(arg, "inputfilename", "", "\\javadef\\inputfilename{"
+        super("inputfilename", "", "\\javadef\\inputfilename{"
                 + Inputfilename.class.getName() + "}");
         setConfig("extex-jx");
     }

@@ -43,12 +43,10 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ScaledTest(String arg) {
+    public ScaledTest() {
 
-        super(arg, "scaled", "\\x=0", "");
+        super("scaled", "\\x=0", "");
     }
 
     /**
