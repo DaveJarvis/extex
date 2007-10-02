@@ -27,6 +27,7 @@ import org.extex.font.CoreFontFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.resource.ResourceFinder;
+import org.junit.Before;
 
 /**
  * ExTeX-TestRunner.
@@ -46,6 +47,7 @@ public class ExTeXRunner extends TestCase {
      * @throws Exception ...
      * @see junit.framework.TestCase#setUp()
      */
+    @Before
     @Override
     protected void setUp() throws Exception {
 

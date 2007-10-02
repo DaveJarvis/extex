@@ -41,6 +41,8 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -378,11 +380,10 @@ public class BaseHyphenationTableTest extends TestCase {
      * Set-up the test suite.
      * 
      * @throws Exception in case of an error
-     * 
-     * @see junit.framework.TestCase#setUp()
      */
+    @Before
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         context = new MyMockContext();
         language = makeLanguage();
@@ -433,7 +434,6 @@ public class BaseHyphenationTableTest extends TestCase {
     /**
      * <testcase> Test case checking that ... </testcase>
      * 
-     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -450,6 +450,7 @@ public class BaseHyphenationTableTest extends TestCase {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test5() throws Exception {
 
         HorizontalListNode nodes = hlist("def");

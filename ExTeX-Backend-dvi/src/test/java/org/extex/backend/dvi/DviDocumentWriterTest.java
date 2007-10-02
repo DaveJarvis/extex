@@ -45,6 +45,7 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
+import org.junit.Before;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -132,6 +133,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Before
     @Override
     public void setUp() throws Exception {
 

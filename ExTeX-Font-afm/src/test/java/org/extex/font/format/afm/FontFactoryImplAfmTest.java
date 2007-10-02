@@ -33,6 +33,7 @@ import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.unicode.GlyphName;
+import org.junit.Before;
 
 /**
  * Test for the font factory (afm).
@@ -67,8 +68,9 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Before
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         if (factory == null) {
             factory = makeFontFactory();

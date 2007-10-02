@@ -25,6 +25,7 @@ import java.util.Properties;
 import org.extex.test.EqualityValidator;
 import org.extex.test.ExTeXLauncher;
 import org.extex.test.Validator;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -57,7 +58,8 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      *
      * @throws Exception
      */
-    protected void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
         prop = new Properties(System.getProperties());
         prop.setProperty("extex.output", "itext");

@@ -21,6 +21,8 @@ package org.extex.font.fontparameter;
 
 import java.io.FileInputStream;
 
+import org.junit.Before;
+
 import junit.framework.TestCase;
 
 /**
@@ -42,6 +44,7 @@ public class FontParameterTest extends TestCase {
     private static final String file =
             "../texmf/src/texmf/fonts/afm/fxlr.fontinfo";
 
+    @Before
     @Override
     protected void setUp() throws Exception {
 

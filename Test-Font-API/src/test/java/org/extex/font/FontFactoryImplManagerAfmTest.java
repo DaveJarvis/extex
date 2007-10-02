@@ -25,6 +25,7 @@ import java.util.List;
 
 import org.extex.core.UnicodeChar;
 import org.extex.font.manager.ManagerInfo;
+import org.junit.Before;
 
 /**
  * Test for the font factory (manager).
@@ -44,6 +45,7 @@ public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
      */
     private static FontKey key;
 
+    @Before
     @Override
     protected void setUp() throws Exception {
 

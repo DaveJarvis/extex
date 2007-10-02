@@ -60,7 +60,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * @throws Exception
      */
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         prop = new Properties(System.getProperties());
         prop.setProperty("extex.output", "xml");

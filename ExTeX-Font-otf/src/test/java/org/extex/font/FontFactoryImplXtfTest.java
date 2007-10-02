@@ -25,6 +25,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.junit.Before;
 
 /**
  * Test for the font factory (xtf). (At the moment only ttf!)
@@ -54,6 +55,7 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Before
     @Override
     protected void setUp() throws Exception {
 

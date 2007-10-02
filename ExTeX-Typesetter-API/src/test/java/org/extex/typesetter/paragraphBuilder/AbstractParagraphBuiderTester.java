@@ -61,6 +61,7 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.junit.Before;
 
 /**
  * This is the abstract base class to test a paragraph builder.
@@ -826,8 +827,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Before
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         super.setUp();
 
