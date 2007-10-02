@@ -42,12 +42,10 @@ public class IfvboxTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfvboxTest(String arg) {
+    public IfvboxTest() {
 
-        super(arg, "ifvbox", "0", DEFINE_BRACES + "\\setbox0=\\vbox{}");
+        super("ifvbox", "0", DEFINE_BRACES + "\\setbox0=\\vbox{}");
     }
 
     /**

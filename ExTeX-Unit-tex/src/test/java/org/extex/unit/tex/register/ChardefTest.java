@@ -43,12 +43,10 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ChardefTest(String arg) {
+    public ChardefTest() {
 
-        super(arg, "chardef", "\\x=123", "");
+        super("chardef", "\\x=123", "");
     }
 
     /**

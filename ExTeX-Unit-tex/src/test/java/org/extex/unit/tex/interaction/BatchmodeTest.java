@@ -47,12 +47,10 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RelaxTest.
-     *
-     * @param arg the name
      */
-    public BatchmodeTest(String arg) {
+    public BatchmodeTest() {
 
-        super(arg, "batchmode", "");
+        super("batchmode", "");
     }
 
     /**

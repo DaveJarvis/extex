@@ -41,12 +41,10 @@ public class PagetotalTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PagetotalTest(String arg) {
+    public PagetotalTest() {
 
-        super(arg, "pagetotal", "", "0.0pt");
+        super("pagetotal", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

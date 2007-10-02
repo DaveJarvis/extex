@@ -42,12 +42,10 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MediaheightTest(String arg) {
+    public MediaheightTest() {
 
-        super(arg, "mediaheight", "", "845.04684pt");
+        super("mediaheight", "", "845.04684pt");
         setConfig("extex-test");
     }
 

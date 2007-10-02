@@ -42,12 +42,10 @@ public class PdfvoriginTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfvoriginTest(String arg) {
+    public PdfvoriginTest() {
 
-        super(arg, "pdfvorigin", "", "72.26999pt");
+        super("pdfvorigin", "", "72.26999pt");
         setConfig("pdftex-test");
     }
 

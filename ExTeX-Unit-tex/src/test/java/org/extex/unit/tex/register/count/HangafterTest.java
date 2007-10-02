@@ -42,12 +42,10 @@ public class HangafterTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HangafterTest(String arg) {
+    public HangafterTest() {
 
-        super(arg, "hangafter", "", "0");
+        super("hangafter", "", "0");
     }
 
     // TODO implement the primitive specific test cases

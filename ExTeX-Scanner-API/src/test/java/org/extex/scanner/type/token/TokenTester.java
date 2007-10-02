@@ -19,7 +19,10 @@
 
 package org.extex.scanner.type.token;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
@@ -32,7 +35,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokenTester extends TestCase {
+public class TokenTester {
 
     /** The constant <tt>ACTIVE_TOKEN</tt> contains an active character token. */
     public static final ActiveCharacterToken ACTIVE_TOKEN =
@@ -208,7 +211,7 @@ public class TokenTester extends TestCase {
      */
     public TokenTester(Token t, Catcode catcode, String text, String str) {
 
-        super("");
+        super();
         this.token = t;
         this.catcode = catcode;
         this.text = text;

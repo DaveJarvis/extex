@@ -43,12 +43,10 @@ public class EndTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EndTest(String arg) {
+    public EndTest() {
 
-        super(arg, "end", "");
+        super("end", "");
     }
 
     /**

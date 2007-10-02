@@ -43,12 +43,10 @@ public class GlobaldefsTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public GlobaldefsTest(String arg) {
+    public GlobaldefsTest() {
 
-        super(arg);
+        super();
     }
 
     /**

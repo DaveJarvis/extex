@@ -42,12 +42,10 @@ public class PdfpkresolutionTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfpkresolutionTest(String arg) {
+    public PdfpkresolutionTest() {
 
-        super(arg, "pdfpkresolution", "", "600");
+        super("pdfpkresolution", "", "600");
         setConfig("pdftex-test");
     }
 

@@ -43,12 +43,10 @@ public class AddafterocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AddafterocplistTest(String arg) {
+    public AddafterocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

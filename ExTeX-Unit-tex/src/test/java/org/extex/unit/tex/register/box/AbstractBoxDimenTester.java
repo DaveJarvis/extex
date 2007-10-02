@@ -39,13 +39,11 @@ public abstract class AbstractBoxDimenTester
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      * @param primitive the name of the integer register to test
      */
-    public AbstractBoxDimenTester(String arg, String primitive) {
+    public AbstractBoxDimenTester(String primitive) {
 
-        super(arg, primitive, "1=0pt", "0");
+        super(primitive, "1=0pt", "0");
         this.primitive = primitive;
     }
 

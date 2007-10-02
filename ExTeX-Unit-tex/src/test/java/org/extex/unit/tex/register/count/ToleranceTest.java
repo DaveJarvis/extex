@@ -42,12 +42,10 @@ public class ToleranceTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ToleranceTest(String arg) {
+    public ToleranceTest() {
 
-        super(arg, "tolerance", "", "10000");
+        super("tolerance", "", "10000");
     }
 
     // TODO implement the primitive specific test cases

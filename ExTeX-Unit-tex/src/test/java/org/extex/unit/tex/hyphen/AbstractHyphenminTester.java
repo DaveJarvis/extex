@@ -55,16 +55,14 @@ public abstract class AbstractHyphenminTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the arguments
      * @param init the initial value returned by the primitive
      */
-    public AbstractHyphenminTester(String arg, String primitive,
-            String args, String init) {
+    public AbstractHyphenminTester(String primitive, String args,
+            String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
@@ -83,7 +81,7 @@ public abstract class AbstractHyphenminTester extends ExTeXLauncher {
     public AbstractHyphenminTester(String arg, String primitive,
             String args, String init, String prepare) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;

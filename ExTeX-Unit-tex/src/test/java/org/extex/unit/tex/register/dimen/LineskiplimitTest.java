@@ -41,12 +41,10 @@ public class LineskiplimitTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LineskiplimitTest(String arg) {
+    public LineskiplimitTest() {
 
-        super(arg, "lineskiplimit", "", "0.0pt");
+        super("lineskiplimit", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

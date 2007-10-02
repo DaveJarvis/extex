@@ -43,12 +43,10 @@ public class IfinnerTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfinnerTest(String arg) {
+    public IfinnerTest() {
 
-        super(arg, "ifinner", "\\else");
+        super("ifinner", "\\else");
     }
 
     /**

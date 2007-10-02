@@ -29,14 +29,11 @@ public class MathcloseTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathcloseTest.
-     *
-     * @param arg the name
      */
-    public MathcloseTest(String arg) {
+    public MathcloseTest() {
 
-        super(arg, "mathclose");
+        super("mathclose");
     }
 
     //TODO implement more primitive specific test cases
-
 }

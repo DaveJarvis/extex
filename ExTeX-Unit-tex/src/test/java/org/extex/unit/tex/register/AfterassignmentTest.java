@@ -43,12 +43,10 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AfterassignmentTest(String arg) {
+    public AfterassignmentTest() {
 
-        super(arg, "afterassignment", " x", "");
+        super("afterassignment", " x", "");
     }
 
     /**

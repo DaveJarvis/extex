@@ -32,12 +32,10 @@ public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfobjTest(String arg) {
+    public PdfobjTest() {
 
-        super(arg, "pdfobj", "{}", "\\pdfoutput=1 ");
+        super("pdfobj", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

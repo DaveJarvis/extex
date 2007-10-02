@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.register.real;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * A test for the the mathematical expression function.
@@ -38,7 +39,7 @@ public class MathExprTest extends ExTeXLauncher {
      */
     public MathExprTest() {
 
-        super("MathExprTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -52,6 +53,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr01() throws Exception {
 
         assertSuccess(
@@ -70,6 +72,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr02() throws Exception {
 
         assertSuccess(
@@ -88,6 +91,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr03() throws Exception {
 
         assertFailure(// --- input code ---
@@ -105,6 +109,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr04() throws Exception {
 
         assertSuccess(
@@ -123,6 +128,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr05() throws Exception {
 
         assertFailure(// --- input code ---
@@ -140,6 +146,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr06() throws Exception {
 
         assertSuccess(
@@ -158,6 +165,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr07() throws Exception {
 
         assertSuccess(
@@ -176,6 +184,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr08() throws Exception {
 
         assertSuccess(
@@ -194,6 +203,7 @@ public class MathExprTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExpr09() throws Exception {
 
         assertSuccess(

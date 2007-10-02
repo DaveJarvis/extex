@@ -47,12 +47,10 @@ public class PlainTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PlainTest(String arg) {
+    public PlainTest() {
 
-        super(arg);
+        super();
     }
 
     /**

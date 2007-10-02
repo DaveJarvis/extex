@@ -31,12 +31,10 @@ public class OverlineTest extends AbstractMathTester {
 
     /**
      * Constructor for OverlineTest.
-     *
-     * @param arg the name
      */
-    public OverlineTest(String arg) {
+    public OverlineTest() {
 
-        super(arg, "overline", " x");
+        super("overline", " x");
     }
 
     /**

@@ -42,12 +42,10 @@ public class DisplaywidowpenaltiesTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DisplaywidowpenaltiesTest(String arg) {
+    public DisplaywidowpenaltiesTest() {
 
-        super(arg, "displaywidowpenalties", "255", "0");
+        super("displaywidowpenalties", "255", "0");
         setConfig("etex-test");
     }
 

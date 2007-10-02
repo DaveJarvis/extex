@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,12 +32,10 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     * 
-     * @param arg the name
      */
-    public ShowtokensTest(String arg) {
+    public ShowtokensTest() {
 
-        super(arg, "showtokens", "{abc}", "", "> abc.\n");
+        super("showtokens", "{abc}", "", "> abc.\n");
         setConfig("etex-test");
     }
 

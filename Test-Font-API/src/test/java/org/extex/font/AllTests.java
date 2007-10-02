@@ -60,7 +60,7 @@ public class AllTests {
         suite.addTestSuite(FontParameterTest.class);
         suite.addTestSuite(GlyphNameTest.class);
         suite.addTestSuite(FontKeyTest.class);
-        suite.addTestSuite(RandomAccessTest.class);
+//        suite.addTestSuite(RandomAccessTest.class);
         suite.addTestSuite(XMLStreamWriterTest.class);
         suite.addTestSuite(Fixed32Test.class);
         suite.addTestSuite(TfmFixWordTest.class);

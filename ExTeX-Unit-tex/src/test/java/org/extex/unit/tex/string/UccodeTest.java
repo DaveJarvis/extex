@@ -41,12 +41,10 @@ public class UccodeTest extends AbstractCharMapTester {
 
     /**
      * Constructor for UccodeTest.
-     * 
-     * @param arg the name
      */
-    public UccodeTest(String arg) {
+    public UccodeTest() {
 
-        super(arg, "uccode", "65", "65", "1114111");
+        super("uccode", "65", "65", "1114111");
     }
 
     // TODO implement primitive specific test cases

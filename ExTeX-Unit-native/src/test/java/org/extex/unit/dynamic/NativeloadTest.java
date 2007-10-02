@@ -35,13 +35,10 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public NativeloadTest(String arg) {
+    public NativeloadTest() {
 
-        super(arg, "nativeload",
-            "{java}{org.extex.unit.dynamic.NativeloadSensor}");
+        super("nativeload", "{java}{org.extex.unit.dynamic.NativeloadSensor}");
         setConfig("native-test");
     }
 

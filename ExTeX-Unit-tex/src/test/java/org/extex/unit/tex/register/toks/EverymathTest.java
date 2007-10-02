@@ -44,12 +44,10 @@ public class EverymathTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EverymathTest(String arg) {
+    public EverymathTest() {
 
-        super(arg, "everymath", "", "");
+        super("everymath", "", "");
     }
 
     /**

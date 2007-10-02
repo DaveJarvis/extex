@@ -43,12 +43,10 @@ public class GluetomuTest extends NonExecuteTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public GluetomuTest(String arg) {
+    public GluetomuTest() {
 
-        super(arg, "gluetomu", "");
+        super("gluetomu", "");
         setConfig("etex-test");
     }
 

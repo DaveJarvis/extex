@@ -43,12 +43,10 @@ public class ToksTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ToksTest(String arg) {
+    public ToksTest() {
 
-        super(arg, "toks", "42", "");
+        super("toks", "42", "");
     }
 
     /**

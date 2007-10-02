@@ -19,6 +19,11 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
@@ -33,12 +38,9 @@ import org.junit.runner.JUnitCore;
 public class CrTokenTest extends TokenTester {
 
     /**
-     * Creates a new object.
+     * The field <tt>t</tt> contains the reference token.
      */
-    public CrTokenTest() {
-
-        super(token, Catcode.CR, "[]", "end of alignment template");
-    }
+    private static CrToken token = new CrToken(null);
 
     /**
      * Command line interface.
@@ -51,9 +53,12 @@ public class CrTokenTest extends TokenTester {
     }
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * Creates a new object.
      */
-    private static CrToken token = new CrToken(null);
+    public CrTokenTest() {
+
+        super(token, Catcode.CR, "[]", "end of alignment template");
+    }
 
     /**
      * A CR token ignores the character value.
@@ -78,19 +83,11 @@ public class CrTokenTest extends TokenTester {
     /**
      */
     @Test
-    @Override
-    public void testToTextString0() {
+    public void testEqualsToken1() {
 
-        assertEquals("", token.toText(null));
-    }
-
-    /**
-     */
-    @Test
-    @Override
-    public void testToTextString1() {
-
-        assertEquals("", token.toText(UnicodeChar.get(65)));
+        Token t1 = new CrToken(null);
+        Token t2 = new SpaceToken(" ");
+        assertFalse(t1.equals(t2));
     }
 
     /**
@@ -113,11 +110,19 @@ public class CrTokenTest extends TokenTester {
     /**
      */
     @Test
-    public void testEqualsToken1() {
+    @Override
+    public void testToTextString0() {
 
-        Token t1 = new CrToken(null);
-        Token t2 = new SpaceToken(" ");
-        assertFalse(t1.equals(t2));
+        assertEquals("", token.toText(null));
+    }
+
+    /**
+     */
+    @Test
+    @Override
+    public void testToTextString1() {
+
+        assertEquals("", token.toText(UnicodeChar.get(65)));
     }
 
 }

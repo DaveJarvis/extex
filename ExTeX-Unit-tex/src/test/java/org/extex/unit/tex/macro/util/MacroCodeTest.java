@@ -33,12 +33,10 @@ public class MacroCodeTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MacroCodeTest(String arg) {
+    public MacroCodeTest() {
 
-        super(arg);
+        super();
     }
 
     /**

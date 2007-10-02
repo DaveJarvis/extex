@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.format;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * Test for {@link PrintFormat}.
@@ -34,7 +35,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      */
     public PrintFormatTest() {
 
-        super("PrintFormatTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -48,6 +49,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCount1() throws Exception {
 
         assertSuccess(
@@ -67,6 +69,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPair1() throws Exception {
 
         assertSuccess(
@@ -86,6 +89,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testReal1() throws Exception {
 
         assertSuccess(
@@ -105,6 +109,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testReal2() throws Exception {
 
         assertSuccess(
@@ -124,6 +129,7 @@ public class PrintFormatTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testReal3() throws Exception {
 
         assertSuccess(

@@ -29,14 +29,11 @@ public class MathrelTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathrelTest.
-     *
-     * @param arg the name
      */
-    public MathrelTest(String arg) {
+    public MathrelTest() {
 
-        super(arg, "mathrel");
+        super("mathrel");
     }
 
     //TODO implement more primitive specific test cases
-
 }

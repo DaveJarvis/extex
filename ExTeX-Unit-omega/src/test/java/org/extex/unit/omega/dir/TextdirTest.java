@@ -46,12 +46,10 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TextdirTest(String arg) {
+    public TextdirTest() {
 
-        super(arg, "textdir", " LRL");
+        super("textdir", " LRL");
         setConfig("omega-test");
     }
 

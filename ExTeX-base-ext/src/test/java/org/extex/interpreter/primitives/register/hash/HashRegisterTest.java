@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.register.hash;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * A test for the hash register.
@@ -38,7 +39,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      */
     public HashRegisterTest() {
 
-        super("HashRegisterTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -53,6 +54,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -73,6 +75,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -91,6 +94,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -110,6 +114,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -130,6 +135,7 @@ public class HashRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal4() throws Exception {
 
         assertSuccess(// --- input code ---

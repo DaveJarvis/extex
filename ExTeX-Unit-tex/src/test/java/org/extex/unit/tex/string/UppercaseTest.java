@@ -43,12 +43,10 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UppercaseTest.
-     * 
-     * @param arg the name
      */
-    public UppercaseTest(String arg) {
+    public UppercaseTest() {
 
-        super(arg, "uppercase", "{abc}");
+        super("uppercase", "{abc}");
     }
 
     /**

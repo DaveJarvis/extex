@@ -19,17 +19,35 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertFalse;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for right brace tokens.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
 public class RightBraceTokenTest extends TokenTester {
+
+    /**
+     * The field <tt>token</tt> contains the reference token.
+     */
+    private static Token token = new RightBraceToken(UnicodeChar.get('x'));
+
+    /**
+     * Command line interface.
+     * 
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+
+        (new JUnitCore()).run(LeftBraceTokenTest.class);
+    }
 
     /**
      * Creates a new object.
@@ -40,21 +58,8 @@ public class RightBraceTokenTest extends TokenTester {
     }
 
     /**
-     * Command line interface.
-     * @param args the arguments
      */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
-    }
-
-    /**
-     * The field <tt>token</tt> contains the reference token.
-     */
-    private static Token token = new RightBraceToken(UnicodeChar.get('x'));
-
-    /**
-     */
+    @Test
     public void testEqualsToken1() {
 
         Token t1 = new RightBraceToken(UnicodeChar.get(' '));

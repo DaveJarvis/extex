@@ -45,12 +45,10 @@ public class NoDefaultOutputTranslationTest
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NoDefaultOutputTranslationTest(String arg) {
+    public NoDefaultOutputTranslationTest() {
 
-        super(arg, "noDefaultOutputTranslation", " onebyte ");
+        super("noDefaultOutputTranslation", " onebyte ");
         setConfig("omega-test");
     }
 

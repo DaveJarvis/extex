@@ -42,12 +42,10 @@ public class IfcaseTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfcaseTest(String arg) {
+    public IfcaseTest() {
 
-        super(arg, "ifcase", "0 ");
+        super("ifcase", "0 ");
     }
 
     /**

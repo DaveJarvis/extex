@@ -57,16 +57,14 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
      */
-    public AbstractCountRegisterTester(String arg, String primitive,
-            String args, String init) {
+    public AbstractCountRegisterTester(String primitive, String args,
+            String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
@@ -74,17 +72,15 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the arguments for the invocation
      * @param init the default value
      * @param prepare the preparation code inserted before each test
      */
-    public AbstractCountRegisterTester(String arg, String primitive,
-            String args, String init, String prepare) {
+    public AbstractCountRegisterTester(String primitive, String args,
+            String init, String prepare) {
 
-        this(arg, primitive, args, init);
+        this(primitive, args, init);
         this.prepare = prepare;
     }
 

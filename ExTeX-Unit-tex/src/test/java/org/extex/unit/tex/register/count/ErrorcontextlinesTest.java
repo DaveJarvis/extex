@@ -42,12 +42,10 @@ public class ErrorcontextlinesTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ErrorcontextlinesTest(String arg) {
+    public ErrorcontextlinesTest() {
 
-        super(arg, "errorcontextlines", "", "0");
+        super("errorcontextlines", "", "0");
     }
 
     // TODO implement the primitive specific test cases

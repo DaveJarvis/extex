@@ -41,12 +41,10 @@ public class DeadcyclesTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public DeadcyclesTest(String arg) {
+    public DeadcyclesTest() {
 
-        super(arg, "deadcycles", "", "0");
+        super("deadcycles", "", "0");
     }
 
     //TODO implement the primitive specific test cases

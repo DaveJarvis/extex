@@ -42,12 +42,10 @@ public class IfhboxTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfhboxTest(String arg) {
+    public IfhboxTest() {
 
-        super(arg, "ifhbox", "0", DEFINE_BRACES + "\\setbox0=\\hbox{}");
+        super("ifhbox", "0", DEFINE_BRACES + "\\setbox0=\\hbox{}");
     }
 
     /**

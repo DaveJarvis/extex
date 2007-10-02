@@ -32,13 +32,11 @@ public class AbstractOperatorTester extends AbstractMathTester {
 
     /**
      * Constructor for MathbinTest.
-     * 
-     * @param arg the name
      * @param primitive the name of the primitive
      */
-    public AbstractOperatorTester(String arg, String primitive) {
+    public AbstractOperatorTester(String primitive) {
 
-        super(arg, primitive, " x");
+        super(primitive, " x");
     }
 
     /**

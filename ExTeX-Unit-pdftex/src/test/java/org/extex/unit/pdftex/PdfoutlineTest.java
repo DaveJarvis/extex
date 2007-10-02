@@ -32,12 +32,10 @@ public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfoutlineTest(String arg) {
+    public PdfoutlineTest() {
 
-        super(arg, "pdfoutline", " thread name {a}{}", "\\pdfoutput=1 ");
+        super("pdfoutline", " thread name {a}{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

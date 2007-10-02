@@ -19,11 +19,12 @@
 
 package org.extex.logging;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-import junit.framework.TestCase;
-
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -32,7 +33,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
-public class LogFormatterTest extends TestCase {
+public class LogFormatterTest {
 
     /**
      * Command line interface.
@@ -46,12 +47,10 @@ public class LogFormatterTest extends TestCase {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      */
-    public LogFormatterTest(String name) {
+    public LogFormatterTest() {
 
-        super(name);
+        super();
     }
 
     /**
@@ -60,6 +59,7 @@ public class LogFormatterTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         StringBuffer res = new StringBuffer();
@@ -74,6 +74,7 @@ public class LogFormatterTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         StringBuffer res = new StringBuffer();
@@ -89,6 +90,7 @@ public class LogFormatterTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         StringBuffer res = new StringBuffer();

@@ -19,6 +19,10 @@
 
 package org.extex.main.tex;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,11 +33,10 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Properties;
 
-import junit.framework.TestCase;
-
 import org.extex.ExTeX;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.exception.InteractionUnknownException;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -42,7 +45,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4708 $
  */
-public class TeXTest extends TestCase {
+public class TeXTest {
 
     /**
      * The constant <tt>BANNER</tt> contains the default banner.
@@ -248,22 +251,12 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * Creates a new object.
-     * 
-     * @param name the name
-     */
-    public TeXTest(String name) {
-
-        super(name);
-        Locale.setDefault(Locale.ENGLISH);
-    }
-
-    /**
      * <testcase> This test case validates that a code argument is used.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCode() throws Exception {
 
         runSuccess(new String[]{"-ini", "\\end"}, //
@@ -277,6 +270,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCommandInput1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
@@ -291,6 +285,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConfgurationError1() throws Exception {
 
         runFailure(new String[]{"-conf=xyz"}, //
@@ -305,6 +300,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConfgurationError2() throws Exception {
 
         runFailure(new String[]{"-conf", "xyz"}, //
@@ -319,6 +315,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCopying() throws Exception {
 
         String s = runSuccess(new String[]{"-copying"}, null);
@@ -332,6 +329,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCopyright() throws Exception {
 
         runSuccess(
@@ -351,6 +349,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
         runSuccess(new String[]{"", "-version"}, BANNER);
@@ -362,6 +361,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEncodingError1() throws Exception {
 
         runFailure(
@@ -379,6 +379,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEncodingError2() throws Exception {
 
         runFailure(
@@ -396,6 +397,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExternal1() throws Exception {
 
         runSuccess(new String[]{"-abc", "-init", "\\end"}, //
@@ -409,6 +411,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExternal2() throws Exception {
 
         String CFG = "p-p-p";
@@ -430,6 +433,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExTeXBanner1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
@@ -443,6 +447,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFile1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -458,10 +463,11 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFile10() throws Exception {
 
         runSuccess(new String[]{"-ini", EMPTY_TEX}, //
-            BANNER_TEX + "(../ExTeX-Unit-tex/src/test/tex/empty.tex )\n"
+            BANNER_TEX + "(../ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
                     + "*\n" + "No pages of output.\n" + transcript("empty"));
         new File(".", "empty.log").delete();
     }
@@ -472,6 +478,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFile11() throws Exception {
 
         System.setIn(new ByteArrayInputStream((EMPTY_TEX + "\n\\end\n")
@@ -488,6 +495,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFile2() throws Exception {
 
         runSuccess(new String[]{"-ini", "UndefinedFile.tex"}, //
@@ -502,6 +510,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFile3() throws Exception {
 
         runSuccess(new String[]{"-ini", "-", "-UndefinedFile"}, //
@@ -516,6 +525,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFmt1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\n".getBytes()));
@@ -534,6 +544,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFmt2() throws Exception {
 
         runFailure(
@@ -551,6 +562,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFmt3() throws Exception {
 
         runFailure(
@@ -569,6 +581,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat2() throws Exception {
 
         runFailure(
@@ -587,6 +600,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat3() throws Exception {
 
         runFailure(
@@ -605,6 +619,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHaltOnError() throws Exception {
 
         runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"}, //
@@ -620,6 +635,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHelp() throws Exception {
 
         String s = runSuccess(new String[]{"-help"}, null);
@@ -633,6 +649,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHelp2() throws Exception {
 
         String s = runSuccess(new String[]{"-prog=abc", "-help"}, null);
@@ -646,6 +663,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction1() throws Exception {
 
         runFailure(new String[]{"-interaction"}, //
@@ -658,6 +676,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction12() throws Exception {
 
         runFailure(new String[]{"-interaction", "xxx"}, //
@@ -670,6 +689,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction14() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -684,6 +704,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction15() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -698,6 +719,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction16() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -711,6 +733,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction2() throws Exception {
 
         runFailure(new String[]{"-interaction=xxx"}, //
@@ -723,6 +746,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction20() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -742,6 +766,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction3() throws Exception {
 
         runFailure(new String[]{"-interaction="}, //
@@ -755,6 +780,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction4() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -769,6 +795,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction5() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -783,6 +810,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteraction6() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -796,6 +824,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testJobname1() throws Exception {
 
         runSuccess(new String[]{"-jobname=abc", "-ini",
@@ -810,6 +839,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testJobname2() throws Exception {
 
         runSuccess(new String[]{"-jobname", "abc", "-ini",
@@ -825,6 +855,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLanguageVersion() throws Exception {
 
         runSuccess(new String[]{"-l=de", "-version"}, //
@@ -838,6 +869,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLanguageVersion2() throws Exception {
 
         runSuccess(new String[]{"-lan", "de", "-version"}, //
@@ -850,6 +882,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMain1() throws Exception {
 
         System.setErr(new PrintStream(new ByteArrayOutputStream()));
@@ -862,6 +895,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMainError1() throws Exception {
 
         System.setErr(new PrintStream(new ByteArrayOutputStream()));
@@ -874,6 +908,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMinus() throws Exception {
 
         runSuccess(new String[]{"-ini", "-"}, //
@@ -889,6 +924,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMissingProperty() throws Exception {
 
         runFailure(new String[]{"--"}, //
@@ -901,6 +937,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNobanner1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
@@ -915,6 +952,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputError1() throws Exception {
 
         runFailure(new String[]{"-out"}, //
@@ -927,6 +965,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputError2() throws Exception {
 
         runFailure(
@@ -944,6 +983,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputError3() throws Exception {
 
         runFailure(
@@ -961,6 +1001,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputpath2() throws Exception {
 
         runSuccess(new String[]{"-ini", "-output-path=.", "\\end"}, //
@@ -974,6 +1015,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputpath3() throws Exception {
 
         runSuccess(new String[]{"-ini", "-output-path", ".", "\\end"}, //
@@ -987,6 +1029,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputpath4() throws Exception {
 
         runSuccess(new String[]{"-ini", "-output-path=.", "-output-dir=.",
@@ -1001,6 +1044,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOutputpathError1() throws Exception {
 
         runFailure(new String[]{"-output-path"}, //
@@ -1012,6 +1056,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testParseFirstLine() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
@@ -1025,6 +1070,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testParseFirstLine2() throws Exception {
 
         runSuccess(new String[]{"-ini", "-parse", EMPTY_TEX}, //
@@ -1038,6 +1084,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testParseFirstLine3() throws Exception {
 
         runSuccess(
@@ -1058,6 +1105,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testProgname1() throws Exception {
 
         runSuccess(new String[]{"-progname", "abc", "-version"},
@@ -1071,6 +1119,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testProgname2() throws Exception {
 
         runSuccess(new String[]{"-prog", "abc", "-version"},
@@ -1084,6 +1133,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testProgname3() throws Exception {
 
         runSuccess(new String[]{"-progname=abc", "-version"},
@@ -1097,6 +1147,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testProgname4() throws Exception {
 
         runSuccess(new String[]{"-prog=abc", "-version"},
@@ -1110,6 +1161,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPropertyName1() throws Exception {
 
         runSuccess(new String[]{"--extex.name", "abc", "-version"},
@@ -1123,6 +1175,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPropertyName2() throws Exception {
 
         runSuccess(new String[]{"--extex.name=abc", "-version"},
@@ -1136,6 +1189,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPropertyName3() throws Exception {
 
         runSuccess(new String[]{"--", "extex.name=abc", "-version"},
@@ -1149,6 +1203,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testStarStar1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("xyzzy\n".getBytes()));
@@ -1164,6 +1219,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexinputs1() throws Exception {
 
         runSuccess(new String[]{"-texinputs=.", "-ini", "\\end"}, //
@@ -1177,6 +1233,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexinputs2() throws Exception {
 
         runSuccess(new String[]{"-texinputs", ".", "-ini", "\\end"}, //
@@ -1190,6 +1247,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexinputsError1() throws Exception {
 
         runFailure(new String[]{"-texinputs"}, //
@@ -1202,6 +1260,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexmfoutputs2() throws Exception {
 
         runSuccess(new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
@@ -1215,6 +1274,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexmfoutputs3() throws Exception {
 
         runSuccess(new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
@@ -1228,6 +1288,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexmfoutputsError1() throws Exception {
 
         runFailure(new String[]{"-texmfoutputs"}, //
@@ -1240,6 +1301,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexoutputs2() throws Exception {
 
         runSuccess(new String[]{"-ini", "-texoutputs=.", "\\end"}, //
@@ -1253,6 +1315,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexoutputs3() throws Exception {
 
         runSuccess(new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
@@ -1266,6 +1329,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTexoutputsError1() throws Exception {
 
         runFailure(new String[]{"-texoutputs"}, //
@@ -1278,6 +1342,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTrace1() throws Exception {
 
         runSuccess(new String[]{"-d=fFTM", "-ini", "\\end"}, //
@@ -1291,6 +1356,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTrace11() throws Exception {
 
         runSuccess(new String[]{"-d", "fFTM", "-ini", "\\end"}, //
@@ -1304,6 +1370,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTrace12() throws Exception {
 
         runSuccess(new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
@@ -1317,6 +1384,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTrace2() throws Exception {
 
         runSuccess(new String[]{"-debug=fFTM", "-ini", "\\end"}, //
@@ -1330,6 +1398,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTraceError1() throws Exception {
 
         runFailure(new String[]{"-d=^"}, //
@@ -1343,6 +1412,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTraceError2() throws Exception {
 
         runFailure(new String[]{"-d"}, //
@@ -1355,6 +1425,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUndefinedProperty() throws Exception {
 
         runFailure(new String[]{"--undefined"}, //
@@ -1367,6 +1438,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnknown1() throws Exception {
 
         runFailure(new String[]{"-xxx"}, //
@@ -1379,6 +1451,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnknown2() throws Exception {
 
         for (char c = 'a'; c <= 'z'; c++) {
@@ -1393,6 +1466,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnknown3() throws Exception {
 
         for (char c = 'A'; c <= 'Z'; c++) {
@@ -1407,6 +1481,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVer() throws Exception {
 
         runSuccess(new String[]{"-ver"}, //
@@ -1419,6 +1494,7 @@ public class TeXTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVersion() throws Exception {
 
         runSuccess(new String[]{"-version"}, //

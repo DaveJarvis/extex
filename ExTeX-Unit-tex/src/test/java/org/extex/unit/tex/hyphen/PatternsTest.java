@@ -31,12 +31,11 @@ public class PatternsTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param name the name
      */
-    public PatternsTest(String name) {
+    public PatternsTest() {
 
-        super(name, "patterns", "{}");
+        super("patterns", "{}");
     }
 
+    //TODO: write more primitive specific test cases
 }

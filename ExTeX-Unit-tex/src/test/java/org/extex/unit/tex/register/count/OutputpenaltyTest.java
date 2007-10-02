@@ -42,12 +42,10 @@ public class OutputpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OutputpenaltyTest(String arg) {
+    public OutputpenaltyTest() {
 
-        super(arg, "outputpenalty", "", "0");
+        super("outputpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

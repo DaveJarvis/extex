@@ -43,12 +43,10 @@ public class PopocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PopocplistTest(String arg) {
+    public PopocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

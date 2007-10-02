@@ -44,12 +44,10 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public UnlessTest(String arg) {
+    public UnlessTest() {
 
-        super(arg);
+        super();
         setConfig("etex-test");
     }
 

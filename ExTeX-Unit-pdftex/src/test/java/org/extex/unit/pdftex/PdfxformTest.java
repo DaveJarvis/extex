@@ -32,12 +32,10 @@ public class PdfxformTest extends NoFlagsButImmediateAndProtectedPrimitiveTester
 
     /**
      * Creates a new instance.
-     *
-     * @param arg the name
      */
-    public PdfxformTest(String arg) {
+    public PdfxformTest() {
 
-        super(arg, "pdfxform", "0", "\\pdfoutput=1 ");
+        super("pdfxform", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

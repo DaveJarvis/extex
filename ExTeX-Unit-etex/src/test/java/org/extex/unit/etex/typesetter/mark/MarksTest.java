@@ -42,12 +42,10 @@ public class MarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for MarksTest.
-     * 
-     * @param arg the name
      */
-    public MarksTest(String arg) {
+    public MarksTest() {
 
-        super(arg, "marks", "1{}");
+        super("marks", "1{}");
         setConfig("etex-test");
     }
 

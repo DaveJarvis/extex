@@ -43,12 +43,10 @@ public class InteractionmodeTest extends ExTeXLauncher {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public InteractionmodeTest(String arg) {
+    public InteractionmodeTest() {
 
-        super(arg);
+        super();
         setConfig("etex-test");
     }
 

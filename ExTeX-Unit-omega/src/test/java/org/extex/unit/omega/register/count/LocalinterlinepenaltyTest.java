@@ -42,12 +42,10 @@ public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LocalinterlinepenaltyTest(String arg) {
+    public LocalinterlinepenaltyTest() {
 
-        super(arg, "localinterlinepenalty", " ", "0");
+        super("localinterlinepenalty", " ", "0");
         setConfig("omega-test");
     }
 

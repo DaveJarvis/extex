@@ -39,12 +39,10 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public JavaloadTest(String arg) {
+    public JavaloadTest() {
 
-        super(arg, "javaload", "{" + SENSOR + "}");
+        super("javaload", "{" + SENSOR + "}");
         setConfig("native-test");
     }
 

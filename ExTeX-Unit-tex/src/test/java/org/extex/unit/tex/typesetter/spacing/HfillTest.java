@@ -42,12 +42,10 @@ public class HfillTest extends AbstractHfillTester {
 
     /**
      * Constructor for HfillTest.
-     * 
-     * @param arg the name
      */
-    public HfillTest(String arg) {
+    public HfillTest() {
 
-        super(arg, "hfill", "");
+        super("hfill", "");
     }
 
     /**

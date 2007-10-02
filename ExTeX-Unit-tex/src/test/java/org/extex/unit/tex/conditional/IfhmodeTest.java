@@ -42,12 +42,10 @@ public class IfhmodeTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfhmodeTest(String arg) {
+    public IfhmodeTest() {
 
-        super(arg, "ifhmode", "\\else");
+        super("ifhmode", "\\else");
     }
 
     /**

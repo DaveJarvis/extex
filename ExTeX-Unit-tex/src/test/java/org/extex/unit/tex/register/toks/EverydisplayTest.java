@@ -44,12 +44,10 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EverydisplayTest(String arg) {
+    public EverydisplayTest() {
 
-        super(arg, "everydisplay", "", "");
+        super("everydisplay", "", "");
     }
 
     /**

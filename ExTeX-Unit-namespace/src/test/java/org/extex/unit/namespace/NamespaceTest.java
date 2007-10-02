@@ -43,12 +43,10 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for NamespaceTest.
-     * 
-     * @param arg the name
      */
-    public NamespaceTest(String arg) {
+    public NamespaceTest() {
 
-        super(arg, "namespace", "{a}", DEFINE_BRACES);
+        super("namespace", "{a}", DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

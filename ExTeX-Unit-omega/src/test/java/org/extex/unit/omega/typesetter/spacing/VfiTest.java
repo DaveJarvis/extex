@@ -43,12 +43,10 @@ public class VfiTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VfiTest.
-     * 
-     * @param arg the name
      */
-    public VfiTest(String arg) {
+    public VfiTest() {
 
-        super(arg, "vfi", "");
+        super("vfi", "");
         setConfig("omega-test");
     }
 

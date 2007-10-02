@@ -25,7 +25,7 @@ import org.junit.Test;
  * This class is an abstract base class for test suited containing some test
  * cases to verify that the prefixes <tt>\global</tt>, <tt>\long</tt>,
  * <tt>\outer</tt>, and <tt>\protected</tt> lead to an error.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,92 +37,87 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
     private String primitive;
 
     /**
-     * The field <tt>args</tt> contains the additional arguments for the
-     * flag test.
+     * The field <tt>args</tt> contains the additional arguments for the flag
+     * test.
      */
     private String args;
 
     /**
      * Creates a new object.
-     *
-     * @param name the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      */
-    public NoFlagsButImmediatePrimitiveTester(String name,
-            String primitive, String args) {
+    public NoFlagsButImmediatePrimitiveTester(String primitive, String args) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.args = args;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\global</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\global</tt> flag leads to
+     * an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoGlobalFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\global\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\global\' with the control sequence \\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\global\\" + primitive + args,
+            // --- log message ---
+            "You can\'t use the prefix `\\global\' with the control sequence \\"
+                    + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\long</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\long</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoLongFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\long\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\long\' with the control sequence \\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\long\\" + primitive + args,
+            // --- log message ---
+            "You can\'t use the prefix `\\long\' with the control sequence \\"
+                    + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\outer</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\outer</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoOuterFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\outer\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\outer\' with the control sequence \\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\outer\\" + primitive + args,
+            // --- log message ---
+            "You can\'t use the prefix `\\outer\' with the control sequence \\"
+                    + primitive);
     }
 
-//    /**
-//     * <testcase>
-//     *  Test case checking that the <tt>\protected</tt> flag leads to an error.
-//     * </testcase>
-//     *
-//     * @throws Exception in case of an error
-//     */
-//    @Test
-//    public void testNoProtectedFlag() throws Exception {
-//
-//        assertFailure(//--- input code ---
-//                DEFINE_CATCODES + "\\protected\\" + primitive + args,
-//                //--- log message ---
-//                "You can\'t use the prefix `\\protected\' with the control sequence \\"
-//                        + primitive);
-//    }
+    // /**
+    // * <testcase>
+    // * Test case checking that the <tt>\protected</tt> flag leads to an error.
+    // * </testcase>
+    // *
+    // * @throws Exception in case of an error
+    // */
+    // @Test
+    // public void testNoProtectedFlag() throws Exception {
+    //
+    // assertFailure(//--- input code ---
+    // DEFINE_CATCODES + "\\protected\\" + primitive + args,
+    // //--- log message ---
+    // "You can\'t use the prefix `\\protected\' with the control sequence \\"
+    // + primitive);
+    // }
 
 }

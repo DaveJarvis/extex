@@ -32,12 +32,10 @@ public class NonscriptTest extends AbstractMathTester {
 
     /**
      * Constructor for NonscriptTest.
-     *
-     * @param arg the name
      */
-    public NonscriptTest(String arg) {
+    public NonscriptTest() {
 
-        super(arg, "nonscript", "");
+        super("nonscript", "");
     }
 
     /**

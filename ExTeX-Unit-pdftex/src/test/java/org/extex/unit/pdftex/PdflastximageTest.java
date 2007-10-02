@@ -31,12 +31,10 @@ public class PdflastximageTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new ximageect.
-     * 
-     * @param arg the name
      */
-    public PdflastximageTest(String arg) {
+    public PdflastximageTest() {
 
-        super(arg, "pdflastximage", "", "0", "\\pdfoutput=1 ");
+        super("pdflastximage", "", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

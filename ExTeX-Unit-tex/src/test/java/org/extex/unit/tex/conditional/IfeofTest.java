@@ -55,12 +55,10 @@ public class IfeofTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfeofTest(String arg) {
+    public IfeofTest() {
 
-        super(arg, "ifeof", " 11");
+        super("ifeof", " 11");
     }
 
     /**

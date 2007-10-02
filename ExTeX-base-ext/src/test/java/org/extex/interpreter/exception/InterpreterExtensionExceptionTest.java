@@ -19,21 +19,24 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.baseext.exception.InterpreterExtensionException;
+import static org.junit.Assert.assertEquals;
 
-import junit.framework.TestCase;
+import org.extex.baseext.exception.InterpreterExtensionException;
+import org.junit.Test;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InterpreterExtensionExceptionTest extends TestCase {
+public class InterpreterExtensionExceptionTest {
 
     /**
-     * Test method for {@link org.extex.baseext.exception.InterpreterExtensionException#getLocalizedMessage()}.
+     * Test method for
+     * {@link org.extex.baseext.exception.InterpreterExtensionException#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage() {
 
         assertEquals("ExTeX extension not available:\n\t?\n",

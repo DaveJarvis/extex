@@ -43,12 +43,10 @@ public class EscapecharTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EscapecharTest(String arg) {
+    public EscapecharTest() {
 
-        super(arg, "escapechar", "", "92");
+        super("escapechar", "", "92");
     }
 
     /**

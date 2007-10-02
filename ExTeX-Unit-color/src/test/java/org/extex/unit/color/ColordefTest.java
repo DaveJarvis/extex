@@ -43,12 +43,10 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ColordefTest(String arg) {
+    public ColordefTest() {
 
-        super(arg, "colordef", "\\x{.1 .2 .3}", "");
+        super("colordef", "\\x{.1 .2 .3}", "");
         setConfig("colorextex-test");
     }
 

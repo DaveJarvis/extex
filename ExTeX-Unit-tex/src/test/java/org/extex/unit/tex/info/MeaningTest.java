@@ -32,12 +32,10 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     *
-     * @param arg the name
      */
-    public MeaningTest(String arg) {
+    public MeaningTest() {
 
-        super(arg, "meaning", "\\count1 ");
+        super("meaning", "\\count1 ");
     }
 
     /**

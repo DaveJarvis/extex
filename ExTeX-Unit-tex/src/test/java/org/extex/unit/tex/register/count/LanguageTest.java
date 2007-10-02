@@ -42,12 +42,10 @@ public class LanguageTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LanguageTest(String arg) {
+    public LanguageTest() {
 
-        super(arg, "language", "", "0");
+        super("language", "", "0");
     }
 
     // TODO implement the primitive specific test cases

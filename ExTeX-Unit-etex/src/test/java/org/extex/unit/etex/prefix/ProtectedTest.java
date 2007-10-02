@@ -45,12 +45,10 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public ProtectedTest(String arg) {
+    public ProtectedTest() {
 
-        super(arg, "protected");
+        super("protected");
         setConfig("etex-test");
     }
 

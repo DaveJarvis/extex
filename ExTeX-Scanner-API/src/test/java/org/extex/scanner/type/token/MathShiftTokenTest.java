@@ -19,17 +19,34 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertFalse;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for math shift tokens.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
 public class MathShiftTokenTest extends TokenTester {
+
+    /**
+     */
+    private static Token token = new MathShiftToken(UnicodeChar.get('x'));
+
+    /**
+     * Command line interface.
+     * 
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+
+        (new JUnitCore()).run(MathShiftTokenTest.class);
+    }
 
     /**
      * Creates a new object.
@@ -40,20 +57,8 @@ public class MathShiftTokenTest extends TokenTester {
     }
 
     /**
-     * Command line interface.
-     * @param args the arguments
      */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(MathShiftTokenTest.class);
-    }
-
-    /**
-     */
-    private static Token token = new MathShiftToken(UnicodeChar.get('x'));
-
-    /**
-     */
+    @Test
     public void testEqualsToken1() {
 
         Token t1 = new MathShiftToken(UnicodeChar.get(' '));

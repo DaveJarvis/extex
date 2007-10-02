@@ -31,12 +31,10 @@ public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public PdfendthreadTest(String arg) {
+    public PdfendthreadTest() {
 
-        super(arg, "pdfendthread", "", "\\pdfoutput=1 ");
+        super("pdfendthread", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

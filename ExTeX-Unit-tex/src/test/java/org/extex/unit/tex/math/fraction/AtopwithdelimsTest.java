@@ -31,12 +31,11 @@ public class AtopwithdelimsTest extends AbstractMathTester {
 
     /**
      * Constructor for AtopwithdelimsTest.
-     *
-     * @param arg the name
      */
-    public AtopwithdelimsTest(String arg) {
+    public AtopwithdelimsTest() {
 
-        super(arg, "atopwithdelims", " 123 456 a$", "b");
+        super("atopwithdelims", " 123 456 a$", "b");
     }
 
+    //TODO: write more primitive specific test cases
 }

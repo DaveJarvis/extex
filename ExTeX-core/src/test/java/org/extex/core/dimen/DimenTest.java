@@ -19,7 +19,10 @@
 
 package org.extex.core.dimen;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
  * This is a test suite for the data type Dimen.
@@ -27,7 +30,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
-public class DimenTest extends TestCase {
+public class DimenTest {
 
     /**
      * The constant <tt>INITIAL</tt> contains the initial value which should be
@@ -37,18 +40,17 @@ public class DimenTest extends TestCase {
 
     /**
      * Constructor for DimenTest.
-     *
-     * @param arg the argument
      */
-    public DimenTest(String arg) {
+    public DimenTest() {
 
-        super(arg);
+        super();
     }
 
     /**
      * Test case:
      * The constant ONE has a proper value.
      */
+    @Test
     public void testONE() {
 
         assertEquals(65536L, Dimen.ONE);
@@ -58,6 +60,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constant ONE_PT has a proper value.
      */
+    @Test
     public void testONEpt() {
 
         assertEquals(65536L, Dimen.ONE_PT.getValue());
@@ -67,6 +70,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constant ONE_PT has a proper value.
      */
+    @Test
     public void testONEinch() {
 
         assertEquals(4736286L, Dimen.ONE_INCH.getValue());
@@ -76,6 +80,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor without parameters delivers a proper result.
      */
+    @Test
     public void test1() {
 
         assertEquals(0L, new Dimen().getValue());
@@ -85,6 +90,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with long parameter 0 delivers a proper result.
      */
+    @Test
     public void test10() {
 
         assertEquals(0L, new Dimen(0L).getValue());
@@ -94,6 +100,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with long parameter 1 delivers a proper result.
      */
+    @Test
     public void test11() {
 
         assertEquals(1L, new Dimen(1L).getValue());
@@ -103,6 +110,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with long parameter 2 delivers a proper result.
      */
+    @Test
     public void test12() {
 
         assertEquals(2L, new Dimen(2L).getValue());
@@ -112,6 +120,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with long parameter -1 delivers a proper result.
      */
+    @Test
     public void test13() {
 
         assertEquals(-1L, new Dimen(-1L).getValue());
@@ -121,6 +130,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with long parameter -2 delivers a proper result.
      */
+    @Test
     public void test14() {
 
         assertEquals(-2L, new Dimen(-2L).getValue());
@@ -130,6 +140,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter 0 delivers a proper result.
      */
+    @Test
     public void test20() {
 
         assertEquals(0L, new Dimen(0).getValue());
@@ -139,6 +150,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter 1 delivers a proper result.
      */
+    @Test
     public void test21() {
 
         assertEquals(1L, new Dimen(1).getValue());
@@ -148,6 +160,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter 2 delivers a proper result.
      */
+    @Test
     public void test22() {
 
         assertEquals(2L, new Dimen(2).getValue());
@@ -157,6 +170,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -1 delivers a proper result.
      */
+    @Test
     public void test23() {
 
         assertEquals(-1L, new Dimen(-1).getValue());
@@ -166,6 +180,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void test24() {
 
         assertEquals(-2L, new Dimen(-2).getValue());
@@ -175,6 +190,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with Dimen parameter null delivers a proper result.
      */
+    @Test
     public void test3null() {
 
         Dimen d = null;
@@ -185,6 +201,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with Dimen parameter 0 delivers a proper result.
      */
+    @Test
     public void test30() {
 
         Dimen d = new Dimen(0);
@@ -195,6 +212,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with Dimen parameter 1 delivers a proper result.
      */
+    @Test
     public void test31() {
 
         Dimen d = new Dimen(1);
@@ -205,6 +223,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with Dimen parameter 2 delivers a proper result.
      */
+    @Test
     public void test32() {
 
         Dimen d = new Dimen(2);
@@ -215,6 +234,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with Dimen parameter -1 delivers a proper result.
      */
+    @Test
     public void test33() {
 
         Dimen d = new Dimen(-1);
@@ -225,6 +245,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void test34() {
 
         Dimen d = new Dimen(-2);
@@ -235,6 +256,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the long value 0 delivers a proper result.
      */
+    @Test
     public void testSet10() {
 
         Dimen d = new Dimen(INITIAL);
@@ -246,6 +268,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the long value 1 delivers a proper result.
      */
+    @Test
     public void testSet11() {
 
         Dimen d = new Dimen(INITIAL);
@@ -257,6 +280,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the long value 2 delivers a proper result.
      */
+    @Test
     public void testSet12() {
 
         Dimen d = new Dimen(INITIAL);
@@ -268,6 +292,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the long value -1 delivers a proper result.
      */
+    @Test
     public void testSet13() {
 
         Dimen d = new Dimen(INITIAL);
@@ -279,6 +304,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void testSet14() {
 
         Dimen d = new Dimen(INITIAL);
@@ -290,6 +316,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the Dimen value 0 delivers a proper result.
      */
+    @Test
     public void testSet20() {
 
         Dimen d = new Dimen(INITIAL);
@@ -301,6 +328,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the Dimen value 1 delivers a proper result.
      */
+    @Test
     public void testSet21() {
 
         Dimen d = new Dimen(INITIAL);
@@ -312,6 +340,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the Dimen value 2 delivers a proper result.
      */
+    @Test
     public void testSet22() {
 
         Dimen d = new Dimen(INITIAL);
@@ -323,6 +352,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Setting to the Dimen value -1 delivers a proper result.
      */
+    @Test
     public void testSet23() {
 
         Dimen d = new Dimen(INITIAL);
@@ -334,6 +364,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void testSet24() {
 
         Dimen d = new Dimen(INITIAL);
@@ -345,6 +376,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 0 delivers a proper result.
      */
+    @Test
     public void testAdd00() {
 
         Dimen d = new Dimen(0);
@@ -356,6 +388,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 1 delivers a proper result.
      */
+    @Test
     public void testAdd01() {
 
         Dimen d = new Dimen(0);
@@ -367,6 +400,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 2 delivers a proper result.
      */
+    @Test
     public void testAdd02() {
 
         Dimen d = new Dimen(0);
@@ -378,6 +412,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding -1 delivers a proper result.
      */
+    @Test
     public void testAdd03() {
 
         Dimen d = new Dimen(0);
@@ -389,6 +424,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void testAdd04() {
 
         Dimen d = new Dimen(0);
@@ -400,6 +436,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 0 delivers a proper result.
      */
+    @Test
     public void testAdd10() {
 
         Dimen d = new Dimen(1);
@@ -411,6 +448,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 1 delivers a proper result.
      */
+    @Test
     public void testAdd11() {
 
         Dimen d = new Dimen(1);
@@ -422,6 +460,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding 2 delivers a proper result.
      */
+    @Test
     public void testAdd12() {
 
         Dimen d = new Dimen(1);
@@ -433,6 +472,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * Adding -1 delivers a proper result.
      */
+    @Test
     public void testAdd13() {
 
         Dimen d = new Dimen(1);
@@ -444,6 +484,7 @@ public class DimenTest extends TestCase {
      * Test case:
      * The constructor with int parameter -2 delivers a proper result.
      */
+    @Test
     public void testAdd14() {
 
         Dimen d = new Dimen(1);
@@ -1462,6 +1503,7 @@ public class DimenTest extends TestCase {
      * The printable representation as produced by toString() has to be
      * identical to the 1000 values in STRING which have been produced by TeX.
      */
+    @Test
     public void testToString() {
 
         Dimen d = new Dimen();

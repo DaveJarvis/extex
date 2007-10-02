@@ -41,12 +41,10 @@ public class VoffsetTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public VoffsetTest(String arg) {
+    public VoffsetTest() {
 
-        super(arg, "voffset", "", "0.0pt");
+        super("voffset", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

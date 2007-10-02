@@ -42,12 +42,10 @@ public class IfvmodeTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfvmodeTest(String arg) {
+    public IfvmodeTest() {
 
-        super(arg, "ifvmode", "");
+        super("ifvmode", "");
     }
 
     /**

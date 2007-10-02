@@ -43,12 +43,10 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MultiplyTest(String arg) {
+    public MultiplyTest() {
 
-        super(arg, "multiply", "\\count1 1 ");
+        super("multiply", "\\count1 1 ");
     }
 
     /**

@@ -43,12 +43,10 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfdefinedTest(String arg) {
+    public IfdefinedTest() {
 
-        super(arg, "ifdefined", "\\relax");
+        super("ifdefined", "\\relax");
         setConfig("etex-test");
     }
 

@@ -41,12 +41,10 @@ public class HyphencharTest extends FontcharTester {
 
     /**
      * Constructor for HyphencharTest.
-     *
-     * @param arg the name
      */
-    public HyphencharTest(String arg) {
+    public HyphencharTest() {
 
-        super(arg, "hyphenchar", "\\nullfont=123 ", "45");
+        super("hyphenchar", "\\nullfont=123 ", "45");
     }
 
 }

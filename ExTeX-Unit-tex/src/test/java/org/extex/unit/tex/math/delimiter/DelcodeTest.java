@@ -42,12 +42,10 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for DelcodeTest.
-     * 
-     * @param arg the name
      */
-    public DelcodeTest(String arg) {
+    public DelcodeTest() {
 
-        super(arg, "delcode", "23 32");
+        super("delcode", "23 32");
     }
 
     // TODO implement more primitive specific test cases

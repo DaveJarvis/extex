@@ -33,12 +33,10 @@ public class LengthParserTest extends ExTeXLauncher {
 
     /**
      * Constructor for DimenTest.
-     * 
-     * @param arg the argument
      */
-    public LengthParserTest(String arg) {
+    public LengthParserTest() {
 
-        super(arg);
+        super();
     }
 
     /**

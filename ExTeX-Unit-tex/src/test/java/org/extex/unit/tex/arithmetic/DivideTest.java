@@ -43,12 +43,10 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DivideTest(String arg) {
+    public DivideTest() {
 
-        super(arg, "divide", "\\count1 1 ");
+        super("divide", "\\count1 1 ");
     }
 
     /**

@@ -43,12 +43,10 @@ public class RemovebeforeocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public RemovebeforeocplistTest(String arg) {
+    public RemovebeforeocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

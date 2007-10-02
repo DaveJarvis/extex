@@ -41,12 +41,10 @@ public class MedmuskipTest extends AbstractMuskipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MedmuskipTest(String arg) {
+    public MedmuskipTest() {
 
-        super(arg, "medmuskip", "", "0.0mu");
+        super("medmuskip", "", "0.0mu");
     }
 
     // TODO implement the primitive specific test cases

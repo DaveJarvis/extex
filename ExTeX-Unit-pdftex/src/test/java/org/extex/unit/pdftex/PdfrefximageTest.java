@@ -32,12 +32,10 @@ public class PdfrefximageTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public PdfrefximageTest(String arg) {
+    public PdfrefximageTest() {
 
-        super(arg, "pdfrefximage", "1", "\\pdfoutput=1 ");
+        super("pdfrefximage", "1", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

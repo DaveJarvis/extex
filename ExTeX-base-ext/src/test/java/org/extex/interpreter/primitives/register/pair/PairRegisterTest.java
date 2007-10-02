@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.register.pair;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * A test for the pair register.
@@ -38,7 +39,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      */
     public PairRegisterTest() {
 
-        super("PairRegisterTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -53,6 +54,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -71,6 +73,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -88,6 +91,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -106,6 +110,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -124,6 +129,7 @@ public class PairRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal4() throws Exception {
 
         assertSuccess(// --- input code ---

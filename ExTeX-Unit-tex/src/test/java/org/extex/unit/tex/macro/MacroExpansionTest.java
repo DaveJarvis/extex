@@ -32,12 +32,10 @@ public class MacroExpansionTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public MacroExpansionTest(String arg) {
+    public MacroExpansionTest() {
 
-        super(arg);
+        super();
     }
 
     /**

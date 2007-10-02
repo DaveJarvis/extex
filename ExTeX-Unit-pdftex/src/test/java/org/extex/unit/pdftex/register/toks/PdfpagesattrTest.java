@@ -42,12 +42,10 @@ public class PdfpagesattrTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfpagesattrTest(String arg) {
+    public PdfpagesattrTest() {
 
-        super(arg, "pdfpagesattr", "", "");
+        super("pdfpagesattr", "", "");
         setConfig("pdftex-test");
     }
 

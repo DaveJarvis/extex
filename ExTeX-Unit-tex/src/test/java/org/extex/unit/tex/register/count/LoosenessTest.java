@@ -42,12 +42,10 @@ public class LoosenessTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LoosenessTest(String arg) {
+    public LoosenessTest() {
 
-        super(arg, "looseness", " ", "0");
+        super("looseness", " ", "0");
     }
 
     // TODO implement the primitive specific test cases

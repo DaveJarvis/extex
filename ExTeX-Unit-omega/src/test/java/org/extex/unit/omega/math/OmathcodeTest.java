@@ -39,12 +39,10 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for MathcodeTest.
-     * 
-     * @param arg the name
      */
-    public OmathcodeTest(String arg) {
+    public OmathcodeTest() {
 
-        super(arg, "omathcode", "12=32 ");
+        super("omathcode", "12=32 ");
         setConfig("omega-test");
     }
 

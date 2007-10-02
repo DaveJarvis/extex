@@ -42,12 +42,10 @@ public class IfvoidTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfvoidTest(String arg) {
+    public IfvoidTest() {
 
-        super(arg, "ifvoid", "0");
+        super("ifvoid", "0");
     }
 
     /**

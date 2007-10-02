@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 20052007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,12 +41,11 @@ public class LccodeTest extends AbstractCharMapTester {
 
     /**
      * Constructor for LccodeTest.
-     * 
-     * @param arg the name
      */
-    public LccodeTest(String arg) {
+    public LccodeTest() {
 
-        super(arg, "lccode", "65", "97", "1114111");
+        super("lccode", "65", "97", "1114111");
     }
 
+    //TODO: write more primitive specific test cases
 }

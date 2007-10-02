@@ -31,13 +31,11 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      * @param def the name of the primitive
      */
-    public AbstractXdefTester(String name, String def) {
+    public AbstractXdefTester(String def) {
 
-        super(name, def);
+        super(def);
     }
 
     /**

@@ -19,7 +19,7 @@
 
 package org.extex.core.count;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CountConstantTest extends TestCase {
+public class CountConstantTest {
 
     /**
      * Test method for

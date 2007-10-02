@@ -43,12 +43,10 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * Constructor for ParshapelengthTest.
-     * 
-     * @param arg the name
      */
-    public ParshapeindentTest(String arg) {
+    public ParshapeindentTest() {
 
-        super(arg, "parshapeindent", "");
+        super("parshapeindent", "");
         setConfig("etex-test");
     }
 

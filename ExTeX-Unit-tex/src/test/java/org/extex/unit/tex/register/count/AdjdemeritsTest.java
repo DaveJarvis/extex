@@ -42,12 +42,10 @@ public class AdjdemeritsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AdjdemeritsTest(String arg) {
+    public AdjdemeritsTest() {
 
-        super(arg, "adjdemerits", "", "0");
+        super("adjdemerits", "", "0");
     }
 
     // TODO implement the primitive specific test cases

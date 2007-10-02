@@ -41,12 +41,10 @@ public class MaxdepthTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MaxdepthTest(String arg) {
+    public MaxdepthTest() {
 
-        super(arg, "maxdepth", "", "0.0pt");
+        super("maxdepth", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

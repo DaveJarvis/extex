@@ -42,12 +42,10 @@ public class TopmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for TopmarkTest.
-     * 
-     * @param arg the name
      */
-    public TopmarksTest(String arg) {
+    public TopmarksTest() {
 
-        super(arg, "topmarks", "0");
+        super("topmarks", "0");
         setConfig("etex-test");
     }
 

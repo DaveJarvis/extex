@@ -29,12 +29,10 @@ public class GdefTest extends AbstractDefTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public GdefTest(String arg) {
+    public GdefTest() {
 
-        super(arg, "gdef");
+        super("gdef");
     }
 
 }

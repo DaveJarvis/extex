@@ -43,12 +43,10 @@ public class RemoveafterocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public RemoveafterocplistTest(String arg) {
+    public RemoveafterocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

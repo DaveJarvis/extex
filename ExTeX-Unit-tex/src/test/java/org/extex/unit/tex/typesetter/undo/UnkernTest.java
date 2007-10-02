@@ -43,12 +43,10 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UnkernTest.
-     * 
-     * @param arg the name
      */
-    public UnkernTest(String arg) {
+    public UnkernTest() {
 
-        super(arg, "unkern", "", "\\kern1pt");
+        super("unkern", "", "\\kern1pt");
     }
 
     /**

@@ -31,12 +31,11 @@ public class ScriptstyleTest extends AbstractMathTester {
 
     /**
      * Constructor for ScriptstyleTest.
-     *
-     * @param arg the name
      */
-    public ScriptstyleTest(String arg) {
+    public ScriptstyleTest() {
 
-        super(arg, "scriptstyle", "");
+        super("scriptstyle", "");
     }
 
+    //TODO: write more primitive specific test cases
 }

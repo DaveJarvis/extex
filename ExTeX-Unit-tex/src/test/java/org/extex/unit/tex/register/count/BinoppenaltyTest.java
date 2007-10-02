@@ -42,12 +42,10 @@ public class BinoppenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public BinoppenaltyTest(String arg) {
+    public BinoppenaltyTest() {
 
-        super(arg, "binoppenalty", "", "0");
+        super("binoppenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

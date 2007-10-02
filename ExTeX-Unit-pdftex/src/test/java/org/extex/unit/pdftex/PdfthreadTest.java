@@ -34,12 +34,10 @@ public class PdfthreadTest
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfthreadTest(String arg) {
+    public PdfthreadTest() {
 
-        super(arg, "pdfthread", " name {a}{}", "\\pdfoutput=1 ");
+        super("pdfthread", " name {a}{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

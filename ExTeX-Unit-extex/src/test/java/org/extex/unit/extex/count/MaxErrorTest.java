@@ -42,12 +42,10 @@ public class MaxErrorTest extends AbstractNonGroupIntegerTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MaxErrorTest(String arg) {
+    public MaxErrorTest() {
 
-        super(arg, "maxError", "", "100", DEFINE_BRACES + "\\namespace{system}");
+        super("maxError", "", "100", DEFINE_BRACES + "\\namespace{system}");
         setConfig("extex-test");
     }
 

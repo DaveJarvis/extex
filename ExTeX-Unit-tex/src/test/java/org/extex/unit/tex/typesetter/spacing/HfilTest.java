@@ -41,12 +41,10 @@ public class HfilTest extends AbstractHfillTester {
 
     /**
      * Constructor for HfilTest.
-     * 
-     * @param arg the name
      */
-    public HfilTest(String arg) {
+    public HfilTest() {
 
-        super(arg, "hfil", "");
+        super("hfil", "");
     }
 
     // TODO implement more primitive specific test cases

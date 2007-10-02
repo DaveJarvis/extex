@@ -42,12 +42,10 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SkipdefTest(String arg) {
+    public SkipdefTest() {
 
-        super(arg, "x", "", "0.0pt", "\\skipdef\\x=42 ");
+        super("x", "", "0.0pt", "\\skipdef\\x=42 ");
     }
 
     /**

@@ -42,12 +42,10 @@ public class HoldinginsertsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HoldinginsertsTest(String arg) {
+    public HoldinginsertsTest() {
 
-        super(arg, "holdinginserts", "", "0");
+        super("holdinginserts", "", "0");
     }
 
     // TODO implement the primitive specific test cases

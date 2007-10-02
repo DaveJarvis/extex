@@ -42,12 +42,10 @@ public class DefaultskewcharTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DefaultskewcharTest(String arg) {
+    public DefaultskewcharTest() {
 
-        super(arg, "defaultskewchar", "", "0");
+        super("defaultskewchar", "", "0");
     }
 
     // TODO implement the primitive specific test cases

@@ -42,12 +42,10 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfdecimaldigitsTest(String arg) {
+    public PdfdecimaldigitsTest() {
 
-        super(arg, "pdfdecimaldigits", "", "3");
+        super("pdfdecimaldigits", "", "3");
         setConfig("pdftex-test");
     }
 

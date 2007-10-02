@@ -31,12 +31,10 @@ public class UnderlineTest extends AbstractMathTester {
 
     /**
      * Constructor for UnderlineTest.
-     * 
-     * @param arg the name
      */
-    public UnderlineTest(String arg) {
+    public UnderlineTest() {
 
-        super(arg, "underline", " x");
+        super("underline", " x");
     }
 
     /**

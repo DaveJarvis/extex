@@ -43,12 +43,10 @@ public class GlobalTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public GlobalTest(String arg) {
+    public GlobalTest() {
 
-        super(arg, "global");
+        super("global");
     }
 
     /**

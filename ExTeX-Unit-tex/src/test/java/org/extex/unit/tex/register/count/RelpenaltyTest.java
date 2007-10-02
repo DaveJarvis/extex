@@ -42,12 +42,10 @@ public class RelpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public RelpenaltyTest(String arg) {
+    public RelpenaltyTest() {
 
-        super(arg, "relpenalty", "", "0");
+        super("relpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

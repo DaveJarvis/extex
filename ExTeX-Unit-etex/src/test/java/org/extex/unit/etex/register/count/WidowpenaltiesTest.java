@@ -42,12 +42,10 @@ public class WidowpenaltiesTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public WidowpenaltiesTest(String arg) {
+    public WidowpenaltiesTest() {
 
-        super(arg, "widowpenalties", "255", "0");
+        super("widowpenalties", "255", "0");
         setConfig("etex-test");
     }
 

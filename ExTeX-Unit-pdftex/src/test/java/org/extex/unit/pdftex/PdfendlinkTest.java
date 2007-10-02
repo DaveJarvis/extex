@@ -31,15 +31,12 @@ public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public PdfendlinkTest(String arg) {
+    public PdfendlinkTest() {
 
-        super(arg, "pdfendlink", "", "\\pdfoutput=1 ");
+        super("pdfendlink", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     //TODO implement more primitive specific test cases
-
 }

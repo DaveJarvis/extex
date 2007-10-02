@@ -43,13 +43,10 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MaxRegisterTest(String arg) {
+    public MaxRegisterTest() {
 
-        super(arg, "maxRegister", "", "-1", DEFINE_BRACES
-                + "\\namespace{system}");
+        super("maxRegister", "", "-1", DEFINE_BRACES + "\\namespace{system}");
         setConfig("extex-test");
     }
 

@@ -32,12 +32,10 @@ public class MskipTest extends AbstractMathTester {
 
     /**
      * Constructor for MskipTest.
-     *
-     * @param arg the name
      */
-    public MskipTest(String arg) {
+    public MskipTest() {
 
-        super(arg, "mskip", " 1mu");
+        super("mskip", " 1mu");
     }
 
     /**

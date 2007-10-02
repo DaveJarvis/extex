@@ -43,12 +43,10 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for PenaltyTest.
-     * 
-     * @param arg the name
      */
-    public PenaltyTest(String arg) {
+    public PenaltyTest() {
 
-        super(arg, "penalty", "12");
+        super("penalty", "12");
     }
 
     /**

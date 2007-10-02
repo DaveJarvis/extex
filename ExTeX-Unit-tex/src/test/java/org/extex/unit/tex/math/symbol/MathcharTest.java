@@ -33,12 +33,10 @@ public class MathcharTest extends AbstractMathTester {
 
     /**
      * Constructor for MathcharTest.
-     *
-     * @param arg the name
      */
-    public MathcharTest(String arg) {
+    public MathcharTest() {
 
-        super(arg, "mathchar", "123 ");
+        super("mathchar", "123 ");
     }
 
     /**

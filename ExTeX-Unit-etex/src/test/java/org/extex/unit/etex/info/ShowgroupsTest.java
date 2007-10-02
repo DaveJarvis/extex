@@ -34,12 +34,10 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ShowgroupsTest(String arg) {
+    public ShowgroupsTest() {
 
-        super(arg, "showgroups", "", "", "### bottom level group\n");
+        super("showgroups", "", "", "### bottom level group\n");
         setConfig("etex-test");
     }
 

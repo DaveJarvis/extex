@@ -42,12 +42,10 @@ public class InterlinepenaltiesTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public InterlinepenaltiesTest(String arg) {
+    public InterlinepenaltiesTest() {
 
-        super(arg, "interlinepenalties", "255", "0");
+        super("interlinepenalties", "255", "0");
         setConfig("etex-test");
     }
 

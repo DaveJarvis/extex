@@ -43,12 +43,10 @@ public class BoxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public BoxTest(String arg) {
+    public BoxTest() {
 
-        super(arg, "box", "1", "0");
+        super("box", "1", "0");
     }
 
     /**

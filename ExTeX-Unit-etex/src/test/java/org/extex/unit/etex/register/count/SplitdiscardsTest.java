@@ -42,12 +42,10 @@ public class SplitdiscardsTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SplitdiscardsTest(String arg) {
+    public SplitdiscardsTest() {
 
-        super(arg, "splitdiscards", "255", "0");
+        super("splitdiscards", "255", "0");
         setConfig("etex-test");
     }
 

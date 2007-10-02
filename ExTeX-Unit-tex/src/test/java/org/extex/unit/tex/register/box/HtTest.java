@@ -42,12 +42,10 @@ public class HtTest extends AbstractBoxDimenTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HtTest(String arg) {
+    public HtTest() {
 
-        super(arg, "ht");
+        super("ht");
     }
 
     /**

@@ -55,13 +55,10 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OcpPrimitiveTest(String arg) {
+    public OcpPrimitiveTest() {
 
-        super(arg, "ocp",
-            "\\abc=../ExTeX-Unit-omega/src/test/resources/destroy");
+        super("ocp", "\\abc=../ExTeX-Unit-omega/src/test/resources/destroy");
         setConfig("omega-test");
     }
 

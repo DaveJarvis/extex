@@ -42,12 +42,10 @@ public class LinepenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LinepenaltyTest(String arg) {
+    public LinepenaltyTest() {
 
-        super(arg, "linepenalty", " ", "0");
+        super("linepenalty", " ", "0");
     }
 
     // TODO implement the primitive specific test cases

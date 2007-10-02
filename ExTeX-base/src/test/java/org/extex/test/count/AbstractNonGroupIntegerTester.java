@@ -57,15 +57,14 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
     /**
      * Creates a new object.
      * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the arguments
      * @param init the default value
      */
-    public AbstractNonGroupIntegerTester(String arg, String primitive,
-            String args, String init) {
+    public AbstractNonGroupIntegerTester(String primitive, String args,
+            String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
@@ -75,16 +74,15 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
     /**
      * Creates a new object.
      * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the arguments
      * @param init the default value
      * @param prepare the prepartion code
      */
-    public AbstractNonGroupIntegerTester(String arg, String primitive,
-            String args, String init, String prepare) {
+    public AbstractNonGroupIntegerTester(String primitive, String args,
+            String init, String prepare) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;

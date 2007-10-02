@@ -42,12 +42,10 @@ public class IfxTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfxTest(String arg) {
+    public IfxTest() {
 
-        super(arg, "ifx", " aa");
+        super("ifx", " aa");
     }
 
     /**

@@ -57,16 +57,14 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the skip register to test
      * @param args the parameters for the invocation
      * @param init the default value
      */
-    public AbstractSkipRegisterTester(String arg, String primitive,
-            String args, String init) {
+    public AbstractSkipRegisterTester(String primitive, String args,
+            String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
@@ -74,17 +72,15 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the skip register to test
      * @param args the arguments for the invocation
      * @param init the default value
      * @param prepare the preparation code inserted before each test
      */
-    public AbstractSkipRegisterTester(String arg, String primitive,
-            String args, String init, String prepare) {
+    public AbstractSkipRegisterTester(String primitive, String args,
+            String init, String prepare) {
 
-        this(arg, primitive, args, init);
+        this(primitive, args, init);
         this.prepare = this.prepare + prepare;
     }
 

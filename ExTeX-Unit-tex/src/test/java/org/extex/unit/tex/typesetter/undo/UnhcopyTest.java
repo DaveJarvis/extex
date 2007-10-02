@@ -42,12 +42,10 @@ public class UnhcopyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UnhcopyTest.
-     * 
-     * @param arg the name
      */
-    public UnhcopyTest(String arg) {
+    public UnhcopyTest() {
 
-        super(arg, "unhcopy", "42 ");
+        super("unhcopy", "42 ");
     }
 
     // TODO implement primitive specific test cases

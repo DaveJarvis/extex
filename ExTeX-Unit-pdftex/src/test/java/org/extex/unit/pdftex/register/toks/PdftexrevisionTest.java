@@ -42,12 +42,10 @@ public class PdftexrevisionTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdftexrevisionTest(String arg) {
+    public PdftexrevisionTest() {
 
-        super(arg, "pdftexrevision", "", "r");
+        super("pdftexrevision", "", "r");
         setConfig("pdftex-test");
     }
 

@@ -92,7 +92,7 @@ import org.extex.test.font.LauncherFont;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExTeXLauncher {
+public abstract class ExTeXLauncher {
 
     /**
      * Inner class for the error handler.
@@ -287,10 +287,8 @@ public class ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ExTeXLauncher(String arg) {
+    public ExTeXLauncher() {
 
         super();
         Locale.setDefault(Locale.ENGLISH);

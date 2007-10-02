@@ -43,12 +43,10 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public WriteTest(String arg) {
+    public WriteTest() {
 
-        super(arg, "write", "1 {abc}");
+        super("write", "1 {abc}");
     }
 
     /**

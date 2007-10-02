@@ -42,12 +42,10 @@ public class EndlinecharTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EndlinecharTest(String arg) {
+    public EndlinecharTest() {
 
-        super(arg, "endlinechar", "", "13");
+        super("endlinechar", "", "13");
     }
 
     // TODO implement the primitive specific test cases

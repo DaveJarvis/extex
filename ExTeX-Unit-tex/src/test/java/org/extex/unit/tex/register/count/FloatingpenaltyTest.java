@@ -42,12 +42,10 @@ public class FloatingpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public FloatingpenaltyTest(String arg) {
+    public FloatingpenaltyTest() {
 
-        super(arg, "floatingpenalty", "", "0");
+        super("floatingpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

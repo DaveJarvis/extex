@@ -49,13 +49,12 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     /**
      * Creates a new object.
      * 
-     * @param name the name of the test case
      * @param primitive the name of the primitive
      * @param arguments additional arguments for the flag test
      */
-    public NonExecuteTester(String name, String primitive, String arguments) {
+    public NonExecuteTester(String primitive, String arguments) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.arguments = arguments;
     }
@@ -63,15 +62,13 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
     /**
      * Creates a new object.
      * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      */
-    public NonExecuteTester(String arg, String primitive, String arguments,
-            String prepare) {
+    public NonExecuteTester(String primitive, String arguments, String prepare) {
 
-        this(arg, primitive, arguments);
+        this(primitive, arguments);
         this.prepare = DEFINE_CATCODES + prepare;
     }
 

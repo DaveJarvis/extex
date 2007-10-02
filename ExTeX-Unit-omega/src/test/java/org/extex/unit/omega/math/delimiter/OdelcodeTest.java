@@ -42,12 +42,10 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for DelcodeTest.
-     * 
-     * @param arg the name
      */
-    public OdelcodeTest(String arg) {
+    public OdelcodeTest() {
 
-        super(arg, "odelcode", "23 32");
+        super("odelcode", "23 32");
         setConfig("omega-test");
     }
 

@@ -44,12 +44,10 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public CurrentiftypeTest(String arg) {
+    public CurrentiftypeTest() {
 
-        super(arg, "currentiftype", "0");
+        super("currentiftype", "0");
         setConfig("etex-test");
     }
 

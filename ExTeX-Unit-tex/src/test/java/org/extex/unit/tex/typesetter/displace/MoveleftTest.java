@@ -43,12 +43,10 @@ public class MoveleftTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for MoveleftTest.
-     * 
-     * @param arg the name
      */
-    public MoveleftTest(String arg) {
+    public MoveleftTest() {
 
-        super(arg, "moveleft", "1pt\\hbox{}");
+        super("moveleft", "1pt\\hbox{}");
     }
 
     /**

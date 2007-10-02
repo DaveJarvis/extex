@@ -42,12 +42,10 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdftexversionTest(String arg) {
+    public PdftexversionTest() {
 
-        super(arg, "pdftexversion", "", "112");
+        super("pdftexversion", "", "112");
         setConfig("pdftex-test");
     }
 

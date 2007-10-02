@@ -29,14 +29,11 @@ public class RighthyphenminTest extends AbstractHyphenminTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public RighthyphenminTest(String arg) {
+    public RighthyphenminTest() {
 
-        super(arg, "righthyphenmin", "", "0");
+        super("righthyphenmin", "", "0");
     }
 
     //TODO: write more primitive specific test cases
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class InsertTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for InsertTest.
-     * 
-     * @param arg the name
      */
-    public InsertTest(String arg) {
+    public InsertTest() {
 
-        super(arg, "insert", "42{abc}");
+        super("insert", "42{abc}");
     }
 
     // TODO implement primitive specific test cases

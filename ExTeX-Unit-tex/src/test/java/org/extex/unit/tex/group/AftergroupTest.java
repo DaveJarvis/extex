@@ -43,12 +43,10 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AftergroupTest(String arg) {
+    public AftergroupTest() {
 
-        super(arg, "aftergroup", " x");
+        super("aftergroup", " x");
     }
 
     /**

@@ -43,12 +43,10 @@ public class AddbeforeocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AddbeforeocplistTest(String arg) {
+    public AddbeforeocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

@@ -42,12 +42,10 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for ItaliccorrectionTest.
-     * 
-     * @param arg the name
      */
-    public ItalicCorrectionTest(String arg) {
+    public ItalicCorrectionTest() {
 
-        super(arg, "/", "");
+        super("/", "");
     }
 
     // TODO implement primitive specific test cases

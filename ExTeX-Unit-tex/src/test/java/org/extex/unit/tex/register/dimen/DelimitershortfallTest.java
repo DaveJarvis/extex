@@ -41,12 +41,10 @@ public class DelimitershortfallTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DelimitershortfallTest(String arg) {
+    public DelimitershortfallTest() {
 
-        super(arg, "delimitershortfall", "", "0.0pt");
+        super("delimitershortfall", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

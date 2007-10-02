@@ -29,12 +29,11 @@ public class DisplaylimitsTest extends AbstractLimitsTester {
 
     /**
      * Constructor for DisplaylimitsTest.
-     *
-     * @param arg the name
      */
-    public DisplaylimitsTest(String arg) {
+    public DisplaylimitsTest() {
 
-        super(arg, "displaylimits", "", "\\mathop123 ");
+        super("", "\\mathop123 ");
     }
 
+    //TODO: write more primitive specific test cases
 }

@@ -29,12 +29,11 @@ public class NolimitsTest extends AbstractLimitsTester {
 
     /**
      * Constructor for NolimitsTest.
-     *
-     * @param arg the name
      */
-    public NolimitsTest(String arg) {
+    public NolimitsTest() {
 
-        super(arg, "nolimits", "", "\\mathop 123");
+        super("", "\\mathop 123");
     }
 
+    //TODO: write more primitive specific test cases
 }

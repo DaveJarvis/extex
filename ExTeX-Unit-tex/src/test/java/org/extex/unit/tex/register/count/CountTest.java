@@ -42,12 +42,11 @@ public class CountTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CountTest(String arg) {
+    public CountTest() {
 
-        super(arg, "count", "255", "0");
+        super("count", "255", "0");
     }
 
+    //TODO: write more primitive specific test cases
 }

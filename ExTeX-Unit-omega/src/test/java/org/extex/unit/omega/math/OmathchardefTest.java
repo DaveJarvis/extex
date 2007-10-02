@@ -33,12 +33,10 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for MathchardefTest.
-     * 
-     * @param arg the name
      */
-    public OmathchardefTest(String arg) {
+    public OmathchardefTest() {
 
-        super(arg, "omathchardef", "\\a=\"32 ");
+        super("omathchardef", "\\a=\"32 ");
         setConfig("omega-test");
     }
 

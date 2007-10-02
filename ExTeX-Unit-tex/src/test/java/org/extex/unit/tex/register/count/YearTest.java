@@ -55,12 +55,10 @@ public class YearTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public YearTest(String arg) {
+    public YearTest() {
 
-        super(arg, "year", "", getDefaultValue());
+        super("year", "", getDefaultValue());
     }
 
 }

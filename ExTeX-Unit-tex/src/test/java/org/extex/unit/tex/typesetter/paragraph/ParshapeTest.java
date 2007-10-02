@@ -43,12 +43,10 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for ParshapeTest.
-     * 
-     * @param arg the name
      */
-    public ParshapeTest(String arg) {
+    public ParshapeTest() {
 
-        super(arg, "parshape", "0");
+        super("parshape", "0");
     }
 
     /**

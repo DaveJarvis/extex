@@ -136,7 +136,7 @@ public class FontInst04Test extends ExTeXLauncher {
      */
     public FontInst04Test() {
 
-        super("FontInst04Test");
+        super();
 
         setConfig("fontinst-test.xml");
 

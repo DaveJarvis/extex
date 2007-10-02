@@ -43,12 +43,10 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CatcodePrimitiveTest(String arg) {
+    public CatcodePrimitiveTest() {
 
-        super(arg, "catcode", "1=1 ", "");
+        super("catcode", "1=1 ", "");
     }
 
     /**

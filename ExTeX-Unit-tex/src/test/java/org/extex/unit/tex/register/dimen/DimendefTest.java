@@ -42,12 +42,10 @@ public class DimendefTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DimendefTest(String arg) {
+    public DimendefTest() {
 
-        super(arg, "x", "", "0.0pt", "\\dimendef\\x=42 ");
+        super("x", "", "0.0pt", "\\dimendef\\x=42 ");
     }
 
     /**

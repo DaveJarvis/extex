@@ -41,12 +41,10 @@ public class PagegoalTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PagegoalTest(String arg) {
+    public PagegoalTest() {
 
-        super(arg, "pagegoal", "", "0.0pt");
+        super("pagegoal", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

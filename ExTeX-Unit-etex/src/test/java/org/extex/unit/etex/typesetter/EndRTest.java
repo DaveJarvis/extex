@@ -31,15 +31,12 @@ public class EndRTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public EndRTest(String arg) {
+    public EndRTest() {
 
-        super(arg, "endR", "", "\\TeXXeTstate=1\\beginR");
+        super("endR", "", "\\TeXXeTstate=1\\beginR");
         setConfig("etex-test");
     }
 
     //TODO implement more primitive specific test cases
-
 }

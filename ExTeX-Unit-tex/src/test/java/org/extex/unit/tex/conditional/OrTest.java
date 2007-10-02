@@ -43,12 +43,10 @@ public class OrTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OrTest(String arg) {
+    public OrTest() {
 
-        super(arg);
+        super();
     }
 
     /**

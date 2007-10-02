@@ -42,12 +42,10 @@ public class SplitbotmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for SplitbotmarksTest.
-     * 
-     * @param arg the name
      */
-    public SplitbotmarksTest(String arg) {
+    public SplitbotmarksTest() {
 
-        super(arg, "splitbotmarks", "0");
+        super("splitbotmarks", "0");
         setConfig("etex-test");
     }
 

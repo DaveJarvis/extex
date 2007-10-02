@@ -42,12 +42,10 @@ public class PdfmovecharsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfmovecharsTest(String arg) {
+    public PdfmovecharsTest() {
 
-        super(arg, "pdfmovechars", "", "0");
+        super("pdfmovechars", "", "0");
         setConfig("pdftex-test");
     }
 

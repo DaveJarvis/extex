@@ -43,12 +43,10 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for FontnameTest.
-     * 
-     * @param arg the name
      */
-    public FontnameTest(String arg) {
+    public FontnameTest() {
 
-        super(arg, "fontname", "\\nullfont");
+        super("fontname", "\\nullfont");
     }
 
     /**

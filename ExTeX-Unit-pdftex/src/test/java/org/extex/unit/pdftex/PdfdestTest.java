@@ -32,12 +32,10 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfdestTest(String arg) {
+    public PdfdestTest() {
 
-        super(arg, "pdfdest", " name {abc} fit", "a " + "\\pdfoutput=1 ");
+        super("pdfdest", " name {abc} fit", "a " + "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

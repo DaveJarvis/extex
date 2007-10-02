@@ -42,12 +42,10 @@ public class FamTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public FamTest(String arg) {
+    public FamTest() {
 
-        super(arg, "fam", "", "0");
+        super("fam", "", "0");
     }
 
     // TODO implement the primitive specific test cases

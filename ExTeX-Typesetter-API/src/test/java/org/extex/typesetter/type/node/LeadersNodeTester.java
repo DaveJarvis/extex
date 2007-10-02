@@ -19,7 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
@@ -35,16 +36,15 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class LeadersNodeTester extends TestCase {
+public abstract class LeadersNodeTester {
 
-    
     /**
      * Getter for visitor.
-     *
+     * 
      * @return the visitor
      */
     public NodeVisitor<Node, Boolean> getVisitor() {
-    
+
         return visitor;
     }
 
@@ -261,8 +261,8 @@ public abstract class LeadersNodeTester extends TestCase {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", Dimen.ONE == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()),
-            0 == n.getDepth().getValue());
+        assertTrue("depth " + Long.toString(n.getDepth().getValue()), 0 == n
+            .getDepth().getValue());
         assertTrue("height " + Long.toString(n.getHeight().getValue()),
             Dimen.ONE * 12 == n.getHeight().getValue());
     }
@@ -305,8 +305,8 @@ public abstract class LeadersNodeTester extends TestCase {
         Node n = node.atShipping(null, null, null, null);
         assertTrue(n instanceof RuleNode);
         assertTrue("width", Dimen.ONE == n.getWidth().getValue());
-        assertTrue("depth " + Long.toString(n.getDepth().getValue()),
-            0 == n.getDepth().getValue());
+        assertTrue("depth " + Long.toString(n.getDepth().getValue()), 0 == n
+            .getDepth().getValue());
         assertTrue("height " + Long.toString(n.getHeight().getValue()), 0 == n
             .getHeight().getValue());
     }

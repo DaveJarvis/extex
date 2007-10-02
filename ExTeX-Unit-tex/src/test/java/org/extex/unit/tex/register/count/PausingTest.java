@@ -42,12 +42,10 @@ public class PausingTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PausingTest(String arg) {
+    public PausingTest() {
 
-        super(arg, "pausing", "", "0");
+        super("pausing", "", "0");
     }
 
     // TODO implement the primitive specific test cases

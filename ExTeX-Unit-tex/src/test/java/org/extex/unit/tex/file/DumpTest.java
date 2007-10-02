@@ -100,12 +100,10 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DumpTest(String arg) {
+    public DumpTest() {
 
-        super(arg, "dump", "", "", "Beginning to dump on file ."
+        super("dump", "", "", "Beginning to dump on file ."
                 + System.getProperty("file.separator") + "texput.fmt\n");
         new File("texput.fmt").delete();
     }

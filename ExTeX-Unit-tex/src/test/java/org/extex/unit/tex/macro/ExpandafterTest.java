@@ -32,12 +32,10 @@ public class ExpandafterTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ExpandafterTest(String arg) {
+    public ExpandafterTest() {
 
-        super(arg);
+        super();
     }
 
     /**

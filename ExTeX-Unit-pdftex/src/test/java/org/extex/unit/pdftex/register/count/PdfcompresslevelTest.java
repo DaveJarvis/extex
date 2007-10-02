@@ -42,12 +42,10 @@ public class PdfcompresslevelTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfcompresslevelTest(String arg) {
+    public PdfcompresslevelTest() {
 
-        super(arg, "pdfcompresslevel", "", "9");
+        super("pdfcompresslevel", "", "9");
         setConfig("pdftex-test");
     }
 

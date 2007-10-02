@@ -43,12 +43,10 @@ public class NumberTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for NumberTest.
-     * 
-     * @param arg the name
      */
-    public NumberTest(String arg) {
+    public NumberTest() {
 
-        super(arg, "number", "\\count42");
+        super("number", "\\count42");
     }
 
     /**

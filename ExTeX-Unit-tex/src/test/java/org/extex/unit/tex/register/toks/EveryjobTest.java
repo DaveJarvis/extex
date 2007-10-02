@@ -42,12 +42,10 @@ public class EveryjobTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EveryjobTest(String arg) {
+    public EveryjobTest() {
 
-        super(arg, "everyjob", "", "");
+        super("everyjob", "", "");
     }
 
     // TODO implement the primitive specific test cases

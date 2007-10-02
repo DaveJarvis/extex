@@ -31,12 +31,11 @@ public class AboveTest extends AbstractMathTester {
 
     /**
      * Constructor for AboveTest.
-     *
-     * @param arg the name
      */
-    public AboveTest(String arg) {
+    public AboveTest() {
 
-        super(arg, "above", "1pt b$", "a");
+        super("above", "1pt b$", "a");
     }
 
+    //TODO: write more primitive specific test cases
 }

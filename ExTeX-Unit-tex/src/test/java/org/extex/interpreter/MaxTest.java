@@ -56,12 +56,10 @@ public class MaxTest extends ExTeXLauncher {
 
     /**
      * Constructor for MaxTest.
-     *
-     * @param arg the name
      */
-    public MaxTest(String arg) {
+    public MaxTest() {
 
-        super(arg);
+        super();
     }
 
     /**

@@ -42,12 +42,10 @@ public class NoDefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NoDefaultInputModeTest(String arg) {
+    public NoDefaultInputModeTest() {
 
-        super(arg, "noDefaultInputMode", "");
+        super("noDefaultInputMode", "");
         setConfig("omega-test");
     }
 

@@ -41,12 +41,10 @@ public class EmergencystretchTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EmergencystretchTest(String arg) {
+    public EmergencystretchTest() {
 
-        super(arg, "emergencystretch", "", "0.0pt");
+        super("emergencystretch", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

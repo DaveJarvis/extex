@@ -54,31 +54,26 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      * @param primitive the name of the primitive
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
-            String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String primitive, String defaultValue) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
     }
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
-            String argument, String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String primitive, String argument,
+            String defaultValue) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
         this.argument = argument;
@@ -86,17 +81,15 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
      * @param prepare the preparation code inserted before the invocation
      */
-    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
-            String argument, String defaultValue, String prepare) {
+    public AbstractReadonlyCountRegisterTester(String primitive, String argument,
+            String defaultValue, String prepare) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
         this.argument = argument;

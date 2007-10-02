@@ -42,12 +42,10 @@ public class IfcatTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfcatTest(String arg) {
+    public IfcatTest() {
 
-        super(arg, "ifcat", " xx");
+        super("ifcat", " xx");
     }
 
     /**

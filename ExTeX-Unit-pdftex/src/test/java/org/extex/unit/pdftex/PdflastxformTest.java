@@ -31,15 +31,12 @@ public class PdflastxformTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public PdflastxformTest(String arg) {
+    public PdflastxformTest() {
 
-        super(arg, "pdflastxform", "", "0", "\\pdfoutput=1 ");
+        super("pdflastxform", "", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     //TODO implement more primitive specific test cases
-
 }

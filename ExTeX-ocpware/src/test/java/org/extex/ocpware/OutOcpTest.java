@@ -19,19 +19,21 @@
 
 package org.extex.ocpware;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test suite for outocp.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
-public class OutOcpTest extends TestCase {
+public class OutOcpTest {
 
     /**
      * Driver for the test cases.
@@ -60,6 +62,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -72,6 +75,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1de() throws Exception {
 
         Locale.setDefault(Locale.GERMAN);
@@ -83,6 +87,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -95,6 +100,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2de() throws Exception {
 
         Locale.setDefault(Locale.GERMAN);
@@ -106,6 +112,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -119,6 +126,7 @@ public class OutOcpTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3de() throws Exception {
 
         Locale.setDefault(Locale.GERMAN);

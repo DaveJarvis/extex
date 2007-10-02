@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class XleadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for XleadersTest.
-     * 
-     * @param arg the name
      */
-    public XleadersTest(String arg) {
+    public XleadersTest() {
 
-        super(arg, "xleaders", "\\vrule\\vfill");
+        super("xleaders", "\\vrule\\vfill");
     }
 
     // TODO implement primitive specific test cases

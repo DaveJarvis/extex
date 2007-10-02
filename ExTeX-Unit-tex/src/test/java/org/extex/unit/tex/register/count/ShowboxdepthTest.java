@@ -42,12 +42,10 @@ public class ShowboxdepthTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ShowboxdepthTest(String arg) {
+    public ShowboxdepthTest() {
 
-        super(arg, "showboxdepth", "", "0");
+        super("showboxdepth", "", "0");
     }
 
     // TODO implement the primitive specific test cases

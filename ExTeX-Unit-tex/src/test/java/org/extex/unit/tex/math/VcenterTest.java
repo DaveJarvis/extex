@@ -29,14 +29,11 @@ public class VcenterTest extends AbstractMathTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public VcenterTest(String arg) {
+    public VcenterTest() {
 
-        super(arg, "vcenter", "{x}");
+        super("vcenter", "{x}");
     }
 
     //TODO implement more primitive specific test cases
-
 }

@@ -43,12 +43,10 @@ public class HskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for HskipTest.
-     * 
-     * @param arg the name
      */
-    public HskipTest(String arg) {
+    public HskipTest() {
 
-        super(arg, "hskip", "12pt", "A");
+        super("hskip", "12pt", "A");
     }
 
     /**

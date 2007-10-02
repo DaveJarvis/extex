@@ -41,12 +41,10 @@ public class NulldelimiterspaceTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NulldelimiterspaceTest(String arg) {
+    public NulldelimiterspaceTest() {
 
-        super(arg, "nulldelimiterspace", "", "0.0pt");
+        super("nulldelimiterspace", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

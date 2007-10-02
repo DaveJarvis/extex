@@ -43,12 +43,10 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
 
     /**
      * Constructor for LastboxTest.
-     * 
-     * @param arg the name
      */
-    public LastkernTest(String arg) {
+    public LastkernTest() {
 
-        super(arg, "lastkern", "", "0.0pt");
+        super("lastkern", "", "0.0pt");
     }
 
     /**

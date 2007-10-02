@@ -43,12 +43,10 @@ public class CountdefTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CountdefTest(String arg) {
+    public CountdefTest() {
 
-        super(arg, "cc", "", "0", "\\countdef\\cc=42 ");
+        super("cc", "", "0", "\\countdef\\cc=42 ");
     }
 
     /**

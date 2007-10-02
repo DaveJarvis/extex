@@ -42,12 +42,10 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TracingonlineTest(String arg) {
+    public TracingonlineTest() {
 
-        super(arg, "tracingonline", "", "0");
+        super("tracingonline", "", "0");
     }
 
     // TODO implement the primitive specific test cases

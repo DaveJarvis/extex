@@ -19,17 +19,36 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
  * This class provides the test cases for the letter tokens.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
 public class LetterTokenTest extends TokenTester {
+
+    /**
+     * The field <tt>t</tt> contains the reference token.
+     */
+    private static Token t = new LetterToken(UnicodeChar.get('x'));
+
+    /**
+     * Command line interface.
+     * 
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+
+        (new JUnitCore()).run(LeftBraceTokenTest.class);
+    }
 
     /**
      * Creates a new object.
@@ -40,21 +59,18 @@ public class LetterTokenTest extends TokenTester {
     }
 
     /**
-     * Command line interface.
-     * @param args the arguments
      */
-    public static void main(String[] args) {
+    @Test
+    public void testEqualsToken1() {
 
-        (new JUnitCore()).run(LeftBraceTokenTest.class);
+        Token t1 = new LetterToken(UnicodeChar.get(' '));
+        Token t2 = new OtherToken(UnicodeChar.get(' '));
+        assertFalse(t1.equals(t2));
     }
 
     /**
-     * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new LetterToken(UnicodeChar.get('x'));
-
-    /**
-     */
+    @Test
     public void testToString2() {
 
         assertEquals("the letter ^^@", new LetterToken(UnicodeChar.get(0))
@@ -63,6 +79,7 @@ public class LetterTokenTest extends TokenTester {
 
     /**
      */
+    @Test
     public void testToString3() {
 
         assertEquals("the letter ^^A", new LetterToken(UnicodeChar.get(1))
@@ -71,6 +88,7 @@ public class LetterTokenTest extends TokenTester {
 
     /**
      */
+    @Test
     public void testToString4() {
 
         assertEquals("the letter ^^B", new LetterToken(UnicodeChar.get(2))
@@ -79,6 +97,7 @@ public class LetterTokenTest extends TokenTester {
 
     /**
      */
+    @Test
     public void testToString5() {
 
         assertEquals("the letter ^^?", new LetterToken(UnicodeChar.get(127))
@@ -87,20 +106,12 @@ public class LetterTokenTest extends TokenTester {
 
     /**
      */
+    @Test
     public void testToStringBuffer2() {
 
         StringBuffer sb = new StringBuffer();
         new LetterToken(UnicodeChar.get(1)).toString(sb);
         assertEquals("the letter ^^A", sb.toString());
-    }
-
-    /**
-     */
-    public void testEqualsToken1() {
-
-        Token t1 = new LetterToken(UnicodeChar.get(' '));
-        Token t2 = new OtherToken(UnicodeChar.get(' '));
-        assertFalse(t1.equals(t2));
     }
 
 }

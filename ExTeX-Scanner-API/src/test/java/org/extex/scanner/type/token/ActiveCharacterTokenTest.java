@@ -19,6 +19,11 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
@@ -31,6 +36,12 @@ import org.junit.runner.JUnitCore;
  * @version $Revision: 4756 $
  */
 public class ActiveCharacterTokenTest extends TokenTester {
+
+    /**
+     * The field <tt>token</tt> contains the reference token
+     */
+    private static ActiveCharacterToken token =
+            new ActiveCharacterToken(UnicodeChar.get('x'), "abc");
 
     /**
      * Command line interface.
@@ -51,34 +62,26 @@ public class ActiveCharacterTokenTest extends TokenTester {
     }
 
     /**
-     * The field <tt>token</tt> contains the reference token
-     */
-    private static ActiveCharacterToken token =
-            new ActiveCharacterToken(UnicodeChar.get('x'), "abc");
-
-    /**
      */
     @Test
-    public void testEqualsToken1() {
+    public void testCloneInDefaultNamespace0() {
 
-        Token t2 = new OtherToken(UnicodeChar.get('x'));
-        assertFalse(token.equals(t2));
+        CodeToken x = token.cloneInDefaultNamespace();
+        assertNotNull(x);
+        assertEquals("", x.getNamespace());
+        assertEquals(token.getCatcode(), x.getCatcode());
+        assertEquals(token.getChar(), x.getChar());
     }
 
     /**
      */
     @Test
-    public void testGetName1() {
+    public void testCloneInDefaultNamespace1() {
 
-        assertEquals("", token.getName());
-    }
-
-    /**
-     */
-    @Test
-    public void testGetNamespace1() {
-
-        assertEquals("abc", token.getNamespace());
+        CodeToken y = token.cloneInNamespace("");
+        CodeToken x = y.cloneInDefaultNamespace();
+        assertNotNull(x);
+        assertTrue("the same", x == y);
     }
 
     /**
@@ -116,24 +119,26 @@ public class ActiveCharacterTokenTest extends TokenTester {
     /**
      */
     @Test
-    public void testCloneInDefaultNamespace0() {
+    public void testEqualsToken1() {
 
-        CodeToken x = token.cloneInDefaultNamespace();
-        assertNotNull(x);
-        assertEquals("", x.getNamespace());
-        assertEquals(token.getCatcode(), x.getCatcode());
-        assertEquals(token.getChar(), x.getChar());
+        Token t2 = new OtherToken(UnicodeChar.get('x'));
+        assertFalse(token.equals(t2));
     }
 
     /**
      */
     @Test
-    public void testCloneInDefaultNamespace1() {
+    public void testGetName1() {
 
-        CodeToken y = token.cloneInNamespace("");
-        CodeToken x = y.cloneInDefaultNamespace();
-        assertNotNull(x);
-        assertTrue("the same", x == y);
+        assertEquals("", token.getName());
+    }
+
+    /**
+     */
+    @Test
+    public void testGetNamespace1() {
+
+        assertEquals("abc", token.getNamespace());
     }
 
 }

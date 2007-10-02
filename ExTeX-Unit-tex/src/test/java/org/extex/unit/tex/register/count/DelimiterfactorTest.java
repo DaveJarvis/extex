@@ -42,12 +42,10 @@ public class DelimiterfactorTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DelimiterfactorTest(String arg) {
+    public DelimiterfactorTest() {
 
-        super(arg, "delimiterfactor", "", "0");
+        super("delimiterfactor", "", "0");
     }
 
     // TODO implement the primitive specific test cases

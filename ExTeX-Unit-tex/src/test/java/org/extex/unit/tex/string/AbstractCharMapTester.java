@@ -54,17 +54,15 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
      * @param max the maximal value (unused)
      */
-    public AbstractCharMapTester(String arg, String primitive,
-            String args, String init, String max) {
+    public AbstractCharMapTester(String primitive, String args,
+            String init, String max) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;

@@ -19,11 +19,15 @@
 
 package org.extex.framework.configuration;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
-
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.Test;
 
 /**
  * Test suite for the configuration factory.
@@ -31,7 +35,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationFactoryTest extends TestCase {
+public class ConfigurationFactoryTest {
 
     /**
      * Creates a new object.
@@ -43,20 +47,10 @@ public class ConfigurationFactoryTest extends TestCase {
     }
 
     /**
-     * Creates a new object.
-     * 
-     * @param name the name
-     */
-    public ConfigurationFactoryTest(String name) {
-
-        super(name);
-        Locale.setDefault(Locale.ENGLISH);
-    }
-
-    /**
      * <testcase> Test that null leads to an appropriate error message.
      * </testcase>
      */
+    @Test
     public void testNewInstance1() {
 
         try {
@@ -73,6 +67,7 @@ public class ConfigurationFactoryTest extends TestCase {
      * <testcase> Test that null leads to an appropriate error message.
      * </testcase>
      */
+    @Test
     public void testNewInstance2() {
 
         try {
@@ -89,6 +84,7 @@ public class ConfigurationFactoryTest extends TestCase {
      * <testcase> Test that an undefined configuration leads to an appropriate
      * error message. </testcase>
      */
+    @Test
     public void testNewInstance3() {
 
         try {
@@ -104,6 +100,7 @@ public class ConfigurationFactoryTest extends TestCase {
      * <testcase> Test that an invalid configuration leads to an appropriate
      * error message. </testcase>
      */
+    @Test
     public void testNewInstance4() {
 
         try {
@@ -120,6 +117,7 @@ public class ConfigurationFactoryTest extends TestCase {
      * 
      * @throws ConfigurationException in case of an error
      */
+    @Test
     public void testNewInstance10() throws ConfigurationException {
 
         Configuration cfg =

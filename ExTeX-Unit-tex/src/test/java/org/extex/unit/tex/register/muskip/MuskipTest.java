@@ -42,12 +42,10 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MuskipTest(String arg) {
+    public MuskipTest() {
 
-        super(arg, "muskip", "42", "0.0mu");
+        super("muskip", "42", "0.0mu");
     }
 
     /**

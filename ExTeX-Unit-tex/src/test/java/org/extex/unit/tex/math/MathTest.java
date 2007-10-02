@@ -32,12 +32,10 @@ public class MathTest extends ExTeXLauncher {
 
     /**
      * Constructor for MathaccentTest.
-     *
-     * @param arg the name
      */
-    public MathTest(String arg) {
+    public MathTest() {
 
-        super(arg);
+        super();
     }
 
     /**

@@ -45,12 +45,10 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      */
-    public TokenStreamReaderImplTest(String name) {
+    public TokenStreamReaderImplTest() {
 
-        super(name);
+        super();
     }
 
     /**

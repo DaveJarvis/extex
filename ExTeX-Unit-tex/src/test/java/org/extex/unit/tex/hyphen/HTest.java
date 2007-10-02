@@ -32,12 +32,10 @@ public class HTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HTest(String arg) {
+    public HTest() {
 
-        super(arg);
+        super();
     }
 
     /**

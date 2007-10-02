@@ -41,12 +41,10 @@ public class SkewcharTest extends FontcharTester {
 
     /**
      * Constructor for SkewcharTest.
-     * 
-     * @param arg the name
      */
-    public SkewcharTest(String arg) {
+    public SkewcharTest() {
 
-        super(arg, "skewchar", "\\nullfont=123 ", "-1");
+        super("skewchar", "\\nullfont=123 ", "-1");
     }
 
 }

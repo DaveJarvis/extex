@@ -42,12 +42,10 @@ public class SfcodeTest extends AbstractCharMapTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SfcodeTest(String arg) {
+    public SfcodeTest() {
 
-        super(arg, "sfcode", "65", "999", "32767");
+        super("sfcode", "65", "999", "32767");
     }
 
     /**

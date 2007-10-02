@@ -42,12 +42,10 @@ public class HfiTest extends AbstractHfillTester {
 
     /**
      * Constructor for HfiTest.
-     * 
-     * @param arg the name
      */
-    public HfiTest(String arg) {
+    public HfiTest() {
 
-        super(arg, "hfi", "");
+        super("hfi", "");
         setConfig("omega-test");
     }
 

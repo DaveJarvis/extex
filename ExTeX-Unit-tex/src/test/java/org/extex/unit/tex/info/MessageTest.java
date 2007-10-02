@@ -32,12 +32,10 @@ public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     * 
-     * @param arg the name
      */
-    public MessageTest(String arg) {
+    public MessageTest() {
 
-        super(arg, "message", "{}");
+        super("message", "{}");
     }
 
     /**

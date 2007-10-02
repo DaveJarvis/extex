@@ -19,7 +19,7 @@
 
 package org.extex.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is the test suite for the class Switch.
@@ -27,7 +27,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SwitchTest extends TestCase {
+public class SwitchTest {
 
     /**
      * Test method for {@link org.extex.core.Switch#isOn()}.

@@ -43,12 +43,10 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SetboxTest(String arg) {
+    public SetboxTest() {
 
-        super(arg, "setbox", "1=\\hbox{}", "0");
+        super("setbox", "1=\\hbox{}", "0");
     }
 
     /**

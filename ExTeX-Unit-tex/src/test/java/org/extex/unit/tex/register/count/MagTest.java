@@ -43,12 +43,10 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MagTest(String arg) {
+    public MagTest() {
 
-        super(arg, "mag", "=999");
+        super("mag", "=999");
     }
 
     /**

@@ -32,12 +32,10 @@ public class OverTest extends AbstractMathTester {
 
     /**
      * Constructor for OverTest.
-     *
-     * @param arg the name
      */
-    public OverTest(String arg) {
+    public OverTest() {
 
-        super(arg, "over", " b$", "a ");
+        super("over", " b$", "a ");
     }
 
     /**
@@ -87,4 +85,5 @@ public class OverTest extends AbstractMathTester {
                 "???"); //TODO gene: check
     }
 
+    //TODO: write more primitive specific test cases
 }

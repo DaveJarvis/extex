@@ -42,12 +42,10 @@ public class IftrueTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IftrueTest(String arg) {
+    public IftrueTest() {
 
-        super(arg, "iftrue", "");
+        super("iftrue", "");
     }
 
     /**

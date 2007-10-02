@@ -43,12 +43,10 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DetokenizeTest(String arg) {
+    public DetokenizeTest() {
 
-        super(arg, "detokenize", "{}");
+        super("detokenize", "{}");
         setConfig("etex-test");
     }
 

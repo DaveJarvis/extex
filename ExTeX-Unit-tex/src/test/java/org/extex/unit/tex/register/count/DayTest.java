@@ -54,12 +54,10 @@ public class DayTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public DayTest(String arg) {
+    public DayTest() {
 
-        super(arg, "day", "", getDefaultValue());
+        super("day", "", getDefaultValue());
     }
 
 }

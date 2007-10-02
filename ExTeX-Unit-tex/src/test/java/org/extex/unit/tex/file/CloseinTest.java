@@ -43,12 +43,10 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CloseinTest(String arg) {
+    public CloseinTest() {
 
-        super(arg, "closein", "1");
+        super("closein", "1");
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,12 +41,10 @@ public class LineskipTest extends AbstractSkipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LineskipTest(String arg) {
+    public LineskipTest() {
 
-        super(arg, "lineskip", "", "0.0pt");
+        super("lineskip", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

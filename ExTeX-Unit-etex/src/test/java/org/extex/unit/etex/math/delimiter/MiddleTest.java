@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,7 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\middle</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,12 +31,10 @@ public class MiddleTest extends AbstractMathTester {
 
     /**
      * Constructor for LeftTest.
-     *
-     * @param arg the name
      */
-    public MiddleTest(String arg) {
+    public MiddleTest() {
 
-        super(arg, "middle", "123 ");
+        super("middle", "123 ");
         setConfig("etex-test");
     }
 

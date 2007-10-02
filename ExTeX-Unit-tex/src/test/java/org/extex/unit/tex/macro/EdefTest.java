@@ -29,12 +29,10 @@ public class EdefTest extends AbstractXdefTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public EdefTest(String arg) {
+    public EdefTest() {
 
-        super(arg, "edef");
+        super("edef");
     }
 
 }

@@ -44,12 +44,10 @@ public class MathListMakerTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MathListMakerTest(String arg) {
+    public MathListMakerTest() {
 
-        super(arg);
+        super();
     }
 
     /**

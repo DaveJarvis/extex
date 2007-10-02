@@ -42,12 +42,10 @@ public class HyphenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HyphenpenaltyTest(String arg) {
+    public HyphenpenaltyTest() {
 
-        super(arg, "hyphenpenalty", "", "0");
+        super("hyphenpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

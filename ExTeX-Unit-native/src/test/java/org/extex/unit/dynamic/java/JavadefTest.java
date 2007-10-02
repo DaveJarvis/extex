@@ -32,13 +32,21 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
+     */
+    public JavadefTest() {
+
+        super("javadef", "\\t{org.extex.unit.base.Relax}");
+        setConfig("native-test");
+    }
+
+    /**
+     * Creates a new object. This constructor is needed for a test case.
      * 
-     * @param arg the name
+     * @param arg the (ignored) argument
      */
     public JavadefTest(String arg) {
 
-        super(arg, "javadef", "\\t{org.extex.unit.base.Relax}");
-        setConfig("native-test");
+        super(null, null);
     }
 
     /**
@@ -116,10 +124,9 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         // --- input code ---
-            DEFINE_BRACES
-                    + "\\javadef\\t{org.extex.unit.dynamic.java.JavadefTest}",
+            DEFINE_BRACES + "\\javadef\\t{" + getClass().getName() + "}",
             // --- log message ---
-            "The class org.extex.unit.dynamic.java.JavadefTest does not implement the\n"
+            "The class " + getClass().getName() + " does not implement the\n"
                     + "required interface org.extex.interpreter.type.Code.");
     }
 
@@ -152,8 +159,8 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
         // --- input code ---
             DEFINE_BRACES + "\\catcode`\\~=13 "
-                    + "\\javadef~{org.extex.unit.tex.info.The}"
-                    + "~\\count42" + " \\end",
+                    + "\\javadef~{org.extex.unit.tex.info.The}" + "~\\count42"
+                    + " \\end",
             // --- log message ---
             "0" + TERM);
     }

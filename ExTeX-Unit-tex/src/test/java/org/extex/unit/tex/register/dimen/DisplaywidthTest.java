@@ -41,12 +41,10 @@ public class DisplaywidthTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DisplaywidthTest(String arg) {
+    public DisplaywidthTest() {
 
-        super(arg, "displaywidth", "", "0.0pt");
+        super("displaywidth", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

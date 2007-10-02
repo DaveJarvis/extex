@@ -31,12 +31,10 @@ public class MathordTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathordTest.
-     *
-     * @param arg the name
      */
-    public MathordTest(String arg) {
+    public MathordTest() {
 
-        super(arg, "mathord");
+        super("mathord");
     }
 
     /**

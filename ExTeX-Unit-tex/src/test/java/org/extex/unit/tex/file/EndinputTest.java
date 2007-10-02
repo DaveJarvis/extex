@@ -43,12 +43,10 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EndinputTest(String arg) {
+    public EndinputTest() {
 
-        super(arg, "endinput", "");
+        super("endinput", "");
     }
 
     /**

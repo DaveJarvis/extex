@@ -42,12 +42,10 @@ public class PdfhoriginTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfhoriginTest(String arg) {
+    public PdfhoriginTest() {
 
-        super(arg, "pdfhorigin", "", "0.0pt");
+        super("pdfhorigin", "", "0.0pt");
         setConfig("pdftex-test");
     }
 

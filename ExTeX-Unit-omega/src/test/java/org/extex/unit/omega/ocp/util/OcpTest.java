@@ -43,12 +43,10 @@ public class OcpTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OcpTest(String arg) {
+    public OcpTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

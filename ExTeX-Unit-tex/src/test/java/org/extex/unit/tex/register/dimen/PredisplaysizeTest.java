@@ -41,12 +41,10 @@ public class PredisplaysizeTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PredisplaysizeTest(String arg) {
+    public PredisplaysizeTest() {
 
-        super(arg, "predisplaysize", "", "0.0pt");
+        super("predisplaysize", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

@@ -43,12 +43,10 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RomannumeralTest.
-     * 
-     * @param arg the name
      */
-    public RomannumeralTest(String arg) {
+    public RomannumeralTest() {
 
-        super(arg, "romannumeral", "1");
+        super("romannumeral", "1");
     }
 
     /**

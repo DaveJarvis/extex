@@ -43,12 +43,10 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TracinglostcharsTest(String arg) {
+    public TracinglostcharsTest() {
 
-        super(arg, "tracinglostchars", "", "0");
+        super("tracinglostchars", "", "0");
     }
 
     /**

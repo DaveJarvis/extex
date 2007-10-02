@@ -43,12 +43,10 @@ public class PushocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PushocplistTest(String arg) {
+    public PushocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

@@ -43,12 +43,10 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AdvanceTest(String arg) {
+    public AdvanceTest() {
 
-        super(arg, "advance", "\\count0 1 ");
+        super("advance", "\\count0 1 ");
     }
 
     /**

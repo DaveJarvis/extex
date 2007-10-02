@@ -49,12 +49,10 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ReadlineTest(String arg) {
+    public ReadlineTest() {
 
-        super(arg, "readline", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
+        super("readline", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
         setConfig("etex-test");
     }
 

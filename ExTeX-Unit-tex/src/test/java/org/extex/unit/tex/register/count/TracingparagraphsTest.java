@@ -42,12 +42,10 @@ public class TracingparagraphsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TracingparagraphsTest(String arg) {
+    public TracingparagraphsTest() {
 
-        super(arg, "tracingparagraphs", "", "0");
+        super("tracingparagraphs", "", "0");
         setDefaultLog(null); // ignore log output in some inherited test
                                 // cases
     }

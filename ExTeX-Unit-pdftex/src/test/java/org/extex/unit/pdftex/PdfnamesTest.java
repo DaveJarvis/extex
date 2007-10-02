@@ -32,12 +32,10 @@ public class PdfnamesTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new namesect.
-     *
-     * @param arg the name
      */
-    public PdfnamesTest(String arg) {
+    public PdfnamesTest() {
 
-        super(arg, "pdfnames", "{}", "\\pdfoutput=1 ");
+        super("pdfnames", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

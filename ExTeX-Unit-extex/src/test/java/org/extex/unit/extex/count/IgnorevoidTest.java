@@ -43,12 +43,10 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IgnorevoidTest(String arg) {
+    public IgnorevoidTest() {
 
-        super(arg, "ignorevoid", "", "0");
+        super("ignorevoid", "", "0");
         setConfig("extex-test");
     }
 

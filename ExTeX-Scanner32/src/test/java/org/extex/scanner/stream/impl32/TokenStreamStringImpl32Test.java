@@ -19,10 +19,10 @@
 
 package org.extex.scanner.stream.impl32;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 import java.io.StringReader;
-
-import junit.framework.TestCase;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.api.TokenStream;
@@ -33,6 +33,10 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -42,7 +46,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class TokenStreamStringImpl32Test extends TestCase {
+public class TokenStreamStringImpl32Test {
 
     /**
      * const 32
@@ -72,12 +76,10 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      */
-    public TokenStreamStringImpl32Test(String name) {
+    public TokenStreamStringImpl32Test() {
 
-        super(name);
+        super();
     }
 
     /**
@@ -85,7 +87,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testCr2() throws Exception {
+    @Test
+    @Ignore
+    public void testCr2() throws Exception {
 
         TokenStream stream = makeStream("x\n\n");
         assertEquals("the letter x", stream.get(fac, tokenizer).toString());
@@ -104,7 +108,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testCr3() throws Exception {
+    @Test
+    @Ignore
+    public void testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
         assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
@@ -118,7 +124,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testCr4() throws Exception {
+    @Test
+    @Ignore
+    public void testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
         assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
@@ -133,7 +141,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testSpace() throws Exception {
+    @Test
+    @Ignore
+    public void testSpace() throws Exception {
 
         TokenStream stream = makeStream(" ");
         assertNull(stream.get(fac, tokenizer));
@@ -144,7 +154,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void ___testSpaces() throws Exception {
+    @Test
+    @Ignore
+    public void testSpaces() throws Exception {
 
         TokenStream stream = makeStream("  ");
         assertNull(stream.get(fac, tokenizer));
@@ -166,10 +178,9 @@ public class TokenStreamStringImpl32Test extends TestCase {
     /**
      * @see junit.framework.TestCase#setUp()
      */
-    @Override
+    @Before
     protected void setUp() throws Exception {
 
-        super.setUp();
         fac = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
@@ -216,19 +227,11 @@ public class TokenStreamStringImpl32Test extends TestCase {
     }
 
     /**
-     * @see junit.framework.TestCase#tearDown()
-     */
-    @Override
-    protected void tearDown() throws Exception {
-
-        super.tearDown();
-    }
-
-    /**
      * The digit 1 is parsed as other character and nothing more.
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         TokenStream stream = makeStream("1");
@@ -244,6 +247,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         TokenStream stream = makeStream("12");
@@ -260,6 +264,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCaret1() throws Exception {
 
         TokenStream stream = makeStream("^1");
@@ -277,6 +282,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCaretA() throws Exception {
 
         TokenStream stream = makeStream("^^41");
@@ -292,6 +298,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCaretA2() throws Exception {
 
         TokenStream stream = makeStream("^^A");
@@ -307,6 +314,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCaretA3() throws Exception {
 
         TokenStream stream = makeStream("^^A;");
@@ -323,6 +331,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCaretEnd() throws Exception {
 
         TokenStream stream = makeStream("^");
@@ -339,6 +348,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCr1() throws Exception {
 
         TokenStream stream = makeStream("x\nx");
@@ -356,6 +366,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
         TokenStream stream = makeStream("");
@@ -367,6 +378,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHex1() throws Exception {
 
         TokenStream stream = makeStream("^^^^41 ");
@@ -383,6 +395,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHex2() throws Exception {
 
         TokenStream stream = makeStream("^^^^fffe");
@@ -403,6 +416,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHex3() throws Exception {
 
         TokenStream stream = makeStream("^^^^016e ");
@@ -416,6 +430,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIgnore() throws Exception {
 
         TokenStream stream = makeStream("\f.");
@@ -431,6 +446,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLetter() throws Exception {
 
         TokenStream stream = makeStream("A");
@@ -446,6 +462,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMixed() throws Exception {
 
         TokenStream stream = makeStream("12 34");
@@ -466,6 +483,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSpace2() throws Exception {
 
         TokenStream stream = makeStream(". ");
@@ -480,6 +498,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSpace3() throws Exception {
 
         TokenStream stream = makeStream(".  ");
@@ -493,6 +512,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnicodeName1() throws Exception {
 
         TokenStream stream = makeStream("^^^LATIN SMALL LETTER A;");
@@ -509,6 +529,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnicodeName2() throws Exception {
 
         TokenStream stream = makeStream("^^^LATIN CAPITAL LETTER A;");
@@ -525,6 +546,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testUnicodeName3() throws Exception {
 
         TokenStream stream = makeStream("^^^LATIN ERROR LETTER A;");

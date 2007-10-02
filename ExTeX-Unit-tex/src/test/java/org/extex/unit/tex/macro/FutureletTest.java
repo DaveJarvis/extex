@@ -32,12 +32,10 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public FutureletTest(String arg) {
+    public FutureletTest() {
 
-        super(arg, "futurelet", "\\relax\\relax\\relax");
+        super("futurelet", "\\relax\\relax\\relax");
     }
 
     /**

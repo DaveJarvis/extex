@@ -34,12 +34,10 @@ public class HalignTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public HalignTest(String arg) {
+    public HalignTest() {
 
-        super(arg, "halign", "{#\\cr}", DEFINE_HASH);
+        super("halign", "{#\\cr}", DEFINE_HASH);
     }
 
     /**

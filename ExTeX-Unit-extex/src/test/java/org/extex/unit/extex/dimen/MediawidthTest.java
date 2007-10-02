@@ -42,12 +42,10 @@ public class MediawidthTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MediawidthTest(String arg) {
+    public MediawidthTest() {
 
-        super(arg, "mediawidth", "", "597.50787pt");
+        super("mediawidth", "", "597.50787pt");
         setConfig("extex-test");
     }
 

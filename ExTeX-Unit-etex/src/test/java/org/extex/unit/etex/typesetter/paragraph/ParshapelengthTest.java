@@ -43,12 +43,10 @@ public class ParshapelengthTest extends NonExecuteTester {
 
     /**
      * Constructor for ParshapelengthTest.
-     * 
-     * @param arg the name
      */
-    public ParshapelengthTest(String arg) {
+    public ParshapelengthTest() {
 
-        super(arg, "parshapelength", "");
+        super("parshapelength", "");
         setConfig("etex-test");
     }
 

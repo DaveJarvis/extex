@@ -29,12 +29,11 @@ public class LeqnoTest extends AbstractNumberingTester {
 
     /**
      * Constructor for LeqnoTest.
-     *
-     * @param arg the name
      */
-    public LeqnoTest(String arg) {
+    public LeqnoTest() {
 
-        super(arg, "leqno");
+        super("leqno");
     }
-
+    
+    //TODO: write more primitive specific test cases
 }

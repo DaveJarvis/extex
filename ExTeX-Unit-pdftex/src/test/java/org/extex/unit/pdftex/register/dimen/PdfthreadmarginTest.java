@@ -42,12 +42,10 @@ public class PdfthreadmarginTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfthreadmarginTest(String arg) {
+    public PdfthreadmarginTest() {
 
-        super(arg, "pdfthreadmargin", "", "0.0pt");
+        super("pdfthreadmargin", "", "0.0pt");
         setConfig("pdftex-test");
     }
 

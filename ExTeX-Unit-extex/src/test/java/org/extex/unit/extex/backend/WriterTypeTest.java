@@ -32,12 +32,10 @@ public class WriterTypeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the argument
      */
-    public WriterTypeTest(String arg) {
+    public WriterTypeTest() {
 
-        super(arg, "writerType", "{test-plain}");
+        super("writerType", "{test-plain}");
         setConfig("extex-test");
     }
 

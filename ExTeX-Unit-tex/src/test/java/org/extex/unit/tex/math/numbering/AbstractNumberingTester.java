@@ -32,13 +32,11 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param name the name
      * @param primitive the name of the primitive
      */
-    public AbstractNumberingTester(String name, String primitive) {
+    public AbstractNumberingTester(String primitive) {
 
-        super(name, primitive, "$$", DEFINE_MATH + "$$");
+        super(primitive, "$$", DEFINE_MATH + "$$");
     }
 
     /**

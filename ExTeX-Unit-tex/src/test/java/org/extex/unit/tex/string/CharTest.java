@@ -43,12 +43,10 @@ public class CharTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for CharTest.
-     * 
-     * @param arg the name
      */
-    public CharTest(String arg) {
+    public CharTest() {
 
-        super(arg, "char", "65");
+        super("char", "65");
     }
 
     /**

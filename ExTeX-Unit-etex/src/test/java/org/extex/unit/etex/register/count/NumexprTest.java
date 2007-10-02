@@ -43,12 +43,10 @@ public class NumexprTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NumexprTest(String arg) {
+    public NumexprTest() {
 
-        super(arg);
+        super();
         setConfig("etex-test");
     }
 

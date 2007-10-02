@@ -42,12 +42,10 @@ public class BotmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for BotmarkTest.
-     * 
-     * @param arg the name
      */
-    public BotmarksTest(String arg) {
+    public BotmarksTest() {
 
-        super(arg, "botmarks", "0");
+        super("botmarks", "0");
         setConfig("etex-test");
     }
 

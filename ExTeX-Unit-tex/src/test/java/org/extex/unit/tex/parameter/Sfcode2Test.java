@@ -42,12 +42,10 @@ public class Sfcode2Test extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public Sfcode2Test(String arg) {
+    public Sfcode2Test() {
 
-        super(arg, "sfcode", "1 1000");
+        super("sfcode", "1 1000");
     }
 
     // TODO implement the primitive specific test cases

@@ -42,12 +42,10 @@ public class UnhboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UnhboxTest.
-     * 
-     * @param arg the name
      */
-    public UnhboxTest(String arg) {
+    public UnhboxTest() {
 
-        super(arg, "unhbox", "42 ");
+        super("unhbox", "42 ");
     }
 
     // TODO implement primitive specific test cases

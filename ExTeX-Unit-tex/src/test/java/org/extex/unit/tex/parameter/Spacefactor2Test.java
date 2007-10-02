@@ -42,12 +42,10 @@ public class Spacefactor2Test extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for Spacefactor2Test.
-     * 
-     * @param arg the name
      */
-    public Spacefactor2Test(String arg) {
+    public Spacefactor2Test() {
 
-        super(arg, "spacefactor", "42", "a");
+        super("spacefactor", "42", "a");
     }
 
     // TODO implement more primitive specific test cases

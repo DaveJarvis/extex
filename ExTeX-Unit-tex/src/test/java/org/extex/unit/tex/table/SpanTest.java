@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,12 +43,10 @@ public class SpanTest extends ExTeXLauncher {
 
     /**
      * Constructor for SpanTest.
-     * 
-     * @param arg the name
      */
-    public SpanTest(String arg) {
+    public SpanTest() {
 
-        super(arg);
+        super();
     }
 
     /**

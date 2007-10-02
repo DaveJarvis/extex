@@ -43,12 +43,10 @@ public class HruleTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for HruleTest.
-     * 
-     * @param name the name
      */
-    public HruleTest(String name) {
+    public HruleTest() {
 
-        super(name, "hrule", "");
+        super("hrule", "");
     }
 
     /**

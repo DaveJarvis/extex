@@ -19,12 +19,14 @@
 
 package org.extex.interpreter.interaction;
 
-import java.util.Locale;
+import static org.junit.Assert.*;
 
-import junit.framework.TestCase;
+import java.util.Locale;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.exception.InteractionUnknownException;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for the interaction constants.
@@ -32,7 +34,7 @@ import org.extex.interpreter.exception.InteractionUnknownException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InteractionTest extends TestCase {
+public class InteractionTest {
 
     /**
      * Sensor for the interaction mode.
@@ -134,14 +136,13 @@ public class InteractionTest extends TestCase {
     };
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
+     * Set up the test case.
+     *
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     protected void setUp() throws Exception {
 
-        super.setUp();
         Locale.setDefault(Locale.ENGLISH);
     }
 
@@ -149,7 +150,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(int)}.
      */
-    public final void testGetInt01() {
+    @Test
+    public void testGetInt01() {
 
         try {
             Interaction.get(-1);
@@ -163,7 +165,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(int)}.
      */
-    public final void testGetInt02() {
+    @Test
+    public void testGetInt02() {
 
         try {
             Interaction.get(4);
@@ -179,7 +182,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInt1() throws Exception {
+    @Test
+    public void testGetInt1() throws Exception {
 
         assertEquals(Interaction.BATCHMODE, Interaction.get(0));
     }
@@ -190,7 +194,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInt2() throws Exception {
+    @Test
+    public void testGetInt2() throws Exception {
 
         assertEquals(Interaction.NONSTOPMODE, Interaction.get(1));
     }
@@ -201,7 +206,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInt3() throws Exception {
+    @Test
+    public void testGetInt3() throws Exception {
 
         assertEquals(Interaction.SCROLLMODE, Interaction.get(2));
     }
@@ -212,7 +218,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInt4() throws Exception {
+    @Test
+    public void testGetInt4() throws Exception {
 
         assertEquals(Interaction.ERRORSTOPMODE, Interaction.get(3));
     }
@@ -221,7 +228,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link org.extex.interpreter.interaction.Interaction#get(
      * org.extex.interpreter.interaction.Interaction)}.
      */
-    public final void testGetInteraction0() {
+    @Test
+    public void testGetInteraction0() {
 
         try {
             Interaction.get((Interaction) null);
@@ -239,7 +247,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInteraction1() throws Exception {
+    @Test
+    public void testGetInteraction1() throws Exception {
 
         assertEquals(0, Interaction.get(Interaction.BATCHMODE));
     }
@@ -250,7 +259,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInteraction2() throws Exception {
+    @Test
+    public void testGetInteraction2() throws Exception {
 
         assertEquals(1, Interaction.get(Interaction.NONSTOPMODE));
     }
@@ -261,7 +271,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInteraction3() throws Exception {
+    @Test
+    public void testGetInteraction3() throws Exception {
 
         assertEquals(2, Interaction.get(Interaction.SCROLLMODE));
     }
@@ -272,7 +283,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetInteraction4() throws Exception {
+    @Test
+    public void testGetInteraction4() throws Exception {
 
         assertEquals(3, Interaction.get(Interaction.ERRORSTOPMODE));
     }
@@ -281,7 +293,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
      */
-    public final void testGetString01() {
+    @Test
+    public void testGetString01() {
 
         try {
             Interaction.get((String) null);
@@ -295,7 +308,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
      */
-    public final void testGetString02() {
+    @Test
+    public void testGetString02() {
 
         try {
             Interaction.get("");
@@ -309,7 +323,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
      */
-    public final void testGetString03() {
+    @Test
+    public void testGetString03() {
 
         try {
             Interaction.get("abc");
@@ -325,7 +340,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
      */
-    public final void testGetString04() {
+    @Test
+    public void testGetString04() {
 
         try {
             Interaction.get("Batchmode");
@@ -343,7 +359,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString1() throws Exception {
+    @Test
+    public void testGetString1() throws Exception {
 
         assertEquals(Interaction.BATCHMODE, Interaction.get("batchmode"));
     }
@@ -354,7 +371,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString11() throws Exception {
+    @Test
+    public void testGetString11() throws Exception {
 
         assertEquals(Interaction.BATCHMODE, Interaction.get("batchmod"));
     }
@@ -365,7 +383,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString12() throws Exception {
+    @Test
+    public void testGetString12() throws Exception {
 
         assertEquals(Interaction.BATCHMODE, Interaction.get("batch"));
     }
@@ -376,7 +395,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString13() throws Exception {
+    @Test
+    public void testGetString13() throws Exception {
 
         assertEquals(Interaction.BATCHMODE, Interaction.get("b"));
     }
@@ -387,7 +407,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString2() throws Exception {
+    @Test
+    public void testGetString2() throws Exception {
 
         assertEquals(Interaction.NONSTOPMODE, Interaction.get("nonstopmode"));
     }
@@ -398,7 +419,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString3() throws Exception {
+    @Test
+    public void testGetString3() throws Exception {
 
         assertEquals(Interaction.SCROLLMODE, Interaction.get("scrollmode"));
     }
@@ -409,7 +431,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testGetString4() throws Exception {
+    @Test
+    public void testGetString4() throws Exception {
 
         assertEquals(Interaction.ERRORSTOPMODE, Interaction
             .get("errorstopmode"));
@@ -419,7 +442,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#getIndex()}.
      */
-    public final void testGetIndex1() {
+    @Test
+    public void testGetIndex1() {
 
         assertEquals("0", Interaction.BATCHMODE.getIndex());
     }
@@ -428,7 +452,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#getIndex()}.
      */
-    public final void testGetIndex2() {
+    @Test
+    public void testGetIndex2() {
 
         assertEquals("1", Interaction.NONSTOPMODE.getIndex());
     }
@@ -437,7 +462,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#getIndex()}.
      */
-    public final void testGetIndex3() {
+    @Test
+    public void testGetIndex3() {
 
         assertEquals("2", Interaction.SCROLLMODE.getIndex());
     }
@@ -446,7 +472,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#getIndex()}.
      */
-    public final void testGetIndex4() {
+    @Test
+    public void testGetIndex4() {
 
         assertEquals("3", Interaction.ERRORSTOPMODE.getIndex());
     }
@@ -459,7 +486,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testVisit0() throws Exception {
+    @Test
+    public void testVisit0() throws Exception {
 
         Sensor visitor = new Sensor();
         Interaction.BATCHMODE.visit(visitor, "arg1", "arg2", "arg3");
@@ -474,7 +502,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testVisit1() throws Exception {
+    @Test
+    public void testVisit1() throws Exception {
 
         Sensor visitor = new Sensor();
         Interaction.NONSTOPMODE.visit(visitor, "arg1", "arg2", "arg3");
@@ -489,7 +518,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testVisit2() throws Exception {
+    @Test
+    public void testVisit2() throws Exception {
 
         Sensor visitor = new Sensor();
         Interaction.SCROLLMODE.visit(visitor, "arg1", "arg2", "arg3");
@@ -504,7 +534,8 @@ public class InteractionTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testVisit3() throws Exception {
+    @Test
+    public void testVisit3() throws Exception {
 
         Sensor visitor = new Sensor();
         Interaction.ERRORSTOPMODE.visit(visitor, "arg1", "arg2", "arg3");

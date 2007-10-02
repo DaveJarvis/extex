@@ -43,12 +43,10 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EveryhboxTest(String arg) {
+    public EveryhboxTest() {
 
-        super(arg, "everyhbox", "", "");
+        super("everyhbox", "", "");
     }
 
     /**

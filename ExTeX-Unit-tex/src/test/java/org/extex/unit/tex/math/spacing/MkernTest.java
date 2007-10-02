@@ -32,12 +32,10 @@ public class MkernTest extends AbstractMathTester {
 
     /**
      * Constructor for MkernTest.
-     *
-     * @param arg the name
      */
-    public MkernTest(String arg) {
+    public MkernTest() {
 
-        super(arg, "mkern", "1mu");
+        super("mkern", "1mu");
     }
 
     /**

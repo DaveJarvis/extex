@@ -42,12 +42,10 @@ public class FinalhyphendemeritsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public FinalhyphendemeritsTest(String arg) {
+    public FinalhyphendemeritsTest() {
 
-        super(arg, "finalhyphendemerits", "", "0");
+        super("finalhyphendemerits", "", "0");
     }
 
     // TODO implement the primitive specific test cases

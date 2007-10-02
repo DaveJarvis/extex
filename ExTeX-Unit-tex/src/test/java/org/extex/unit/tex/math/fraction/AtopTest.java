@@ -31,12 +31,11 @@ public class AtopTest extends AbstractMathTester {
 
     /**
      * Constructor for AtopTest.
-     *
-     * @param arg the name
      */
-    public AtopTest(String arg) {
+    public AtopTest() {
 
-        super(arg, "atop", " a$", "b");
+        super("atop", " a$", "b");
     }
 
+    //TODO: write more primitive specific test cases
 }

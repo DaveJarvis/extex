@@ -43,12 +43,10 @@ public class VtopTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VtopTest.
-     * 
-     * @param arg the name
      */
-    public VtopTest(String arg) {
+    public VtopTest() {
 
-        super(arg, "vtop", "{}");
+        super("vtop", "{}");
     }
 
     /**

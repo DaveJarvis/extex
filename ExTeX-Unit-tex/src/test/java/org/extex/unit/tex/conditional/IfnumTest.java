@@ -42,12 +42,10 @@ public class IfnumTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfnumTest(String arg) {
+    public IfnumTest() {
 
-        super(arg, "ifnum", " 1=1");
+        super("ifnum", " 1=1");
     }
 
     /**

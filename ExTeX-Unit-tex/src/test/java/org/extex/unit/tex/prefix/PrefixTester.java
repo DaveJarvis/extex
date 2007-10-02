@@ -40,13 +40,11 @@ public abstract class PrefixTester extends ExTeXLauncher {
 
     /**
      * Constructor for PrefixTester.
-     *
-     * @param name the name of the test suite
      * @param primitive the name of the primitive to be tested
      */
-    public PrefixTester(String name, String primitive) {
+    public PrefixTester(String primitive) {
 
-        super(name);
+        super();
         this.primitive = primitive;
     }
 

@@ -41,12 +41,10 @@ public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SplitmaxdepthTest(String arg) {
+    public SplitmaxdepthTest() {
 
-        super(arg, "splitmaxdepth", "", "0.0pt");
+        super("splitmaxdepth", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

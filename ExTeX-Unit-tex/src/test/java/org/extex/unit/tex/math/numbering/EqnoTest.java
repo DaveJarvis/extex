@@ -29,12 +29,11 @@ public class EqnoTest extends AbstractNumberingTester {
 
     /**
      * Constructor for EqnoTest.
-     *
-     * @param arg the name
      */
-    public EqnoTest(String arg) {
+    public EqnoTest() {
 
-        super(arg, "eqno");
+        super("eqno");
     }
 
+    //TODO: write more primitive specific test cases
 }

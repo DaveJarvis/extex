@@ -43,12 +43,10 @@ public class ParshapedimenTest extends NonExecuteTester {
 
     /**
      * Constructor for ParshapedimenTest.
-     * 
-     * @param arg the name
      */
-    public ParshapedimenTest(String arg) {
+    public ParshapedimenTest() {
 
-        super(arg, "parshapedimen", "0");
+        super("parshapedimen", "0");
         setConfig("etex-test");
     }
 

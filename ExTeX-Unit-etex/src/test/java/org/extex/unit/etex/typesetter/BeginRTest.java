@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\beginR</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,13 +31,12 @@ public class BeginRTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public BeginRTest(String arg) {
+    public BeginRTest() {
 
-        super(arg, "beginR", "", "\\TeXXeTstate=1");
+        super("beginR", "", "\\TeXXeTstate=1");
         setConfig("etex-test");
     }
 
+    // TODO implement primitive specific test cases
 }

@@ -43,12 +43,10 @@ public class KerningTest extends ExTeXLauncher {
 
     /**
      * Constructor for KerningTest.
-     * 
-     * @param arg the name
      */
-    public KerningTest(String arg) {
+    public KerningTest() {
 
-        super(arg);
+        super();
     }
 
     /**

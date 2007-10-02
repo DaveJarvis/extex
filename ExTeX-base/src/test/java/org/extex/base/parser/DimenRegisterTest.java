@@ -52,10 +52,8 @@ public class DimenRegisterTest {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg0 the name
      */
-    public DimenRegisterTest(String arg0) {
+    public DimenRegisterTest() {
 
         super();
     }

@@ -43,12 +43,10 @@ public class OuterTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public OuterTest(String arg) {
+    public OuterTest() {
 
-        super(arg, "outer");
+        super("outer");
     }
 
     /**

@@ -22,10 +22,10 @@ package org.extex.test;
 import org.junit.Test;
 
 /**
- * This abstract base class for tests contains some tests which check that
- * all flag primitives but <tt>\global</tt> and <tt>\immediate</tt> lead to
- * an error.
- *
+ * This abstract base class for tests contains some tests which check that all
+ * flag primitives but <tt>\global</tt> and <tt>\immediate</tt> lead to an
+ * error.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -39,75 +39,70 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
     private String primitive;
 
     /**
-     * The field <tt>args</tt> contains the additional arguments for the
-     * flag test.
+     * The field <tt>args</tt> contains the additional arguments for the flag
+     * test.
      */
     private String args;
 
     /**
      * Creates a new object.
-     *
-     * @param name the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      */
-    public NoFlagsButGlobalAndImmediatePrimitiveTester(String name,
-            String primitive, String args) {
+    public NoFlagsButGlobalAndImmediatePrimitiveTester(String primitive,
+            String args) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.args = args;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\long</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\long</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoLongFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\long\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\long\' with the control sequence \\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\long\\" + primitive + args,
+            // --- log message ---
+            "You can\'t use the prefix `\\long\' with the control sequence \\"
+                    + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\outer</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\outer</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoOuterFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\outer\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\outer\' with the control sequence \\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\outer\\" + primitive + args,
+            // --- log message ---
+            "You can\'t use the prefix `\\outer\' with the control sequence \\"
+                    + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\protected</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\protected</tt> flag leads
+     * to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-//    @Test
-//    public void testNoProtectedFlag() throws Exception {
-//
-//        assertFailure(//--- input code ---
-//                DEFINE_CATCODES + "\\protected\\" + primitive + args,
-//                //--- log message ---
-//                "You can\'t use the prefix `\\protected\' with the control sequence \\"
-//                        + primitive);
-//    }
-
+    // @Test
+    // public void testNoProtectedFlag() throws Exception {
+    //
+    // assertFailure(//--- input code ---
+    // DEFINE_CATCODES + "\\protected\\" + primitive + args,
+    // //--- log message ---
+    // "You can\'t use the prefix `\\protected\' with the control sequence \\"
+    // + primitive);
+    // }
 }

@@ -32,12 +32,10 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     * 
-     * @param arg the name
      */
-    public ShowboxTest(String arg) {
+    public ShowboxTest() {
 
-        super(arg, "showbox", "1 ", "", "\\box1=void\nOK\n");
+        super("showbox", "1 ", "", "\\box1=void\nOK\n");
     }
 
     /**

@@ -42,12 +42,10 @@ public class PdfoutputTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfoutputTest(String arg) {
+    public PdfoutputTest() {
 
-        super(arg, "pdfoutput", "", "1");
+        super("pdfoutput", "", "1");
         setConfig("pdftex-test");
     }
 

@@ -42,12 +42,10 @@ public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfthreadhoffsetTest(String arg) {
+    public PdfthreadhoffsetTest() {
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
+        super("pdfthreadhoffset", "", "0.0pt");
         setConfig("pdftex-test");
     }
 

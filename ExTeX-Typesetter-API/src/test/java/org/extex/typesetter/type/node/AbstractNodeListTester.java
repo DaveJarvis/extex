@@ -19,9 +19,13 @@
 
 package org.extex.typesetter.type.node;
 
-import java.util.Iterator;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
-import junit.framework.TestCase;
+import java.util.Iterator;
 
 import org.extex.color.Color;
 import org.extex.core.UnicodeChar;
@@ -40,6 +44,7 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
+import org.junit.Test;
 
 /**
  * This is a base class for node list test suites.
@@ -47,7 +52,7 @@ import org.extex.typesetter.type.NodeVisitor;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public abstract class AbstractNodeListTester extends TestCase {
+public abstract class AbstractNodeListTester {
 
     /**
      * The field <tt>tc</tt> contains the mock typesetting context.
@@ -268,7 +273,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a <code>null</code> node is silently ignored.
      * </testcase>
      */
-    public final void testAddIntNode0() {
+    @Test
+    public void testAddIntNode0() {
 
         NodeList list = makeList();
         list.add(0, null);
@@ -279,7 +285,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a <code>null</code> node is silently ignored.
      * </testcase>
      */
-    public final void testAddIntNode1() {
+    @Test
+    public void testAddIntNode1() {
 
         NodeList list = makeList();
         list.add(-1, null);
@@ -290,7 +297,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a <code>null</code> node is silently ignored.
      * </testcase>
      */
-    public final void testAddIntNode2() {
+    @Test
+    public void testAddIntNode2() {
 
         NodeList list = makeList();
         list.add(1, null);
@@ -301,7 +309,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a non-null node at a negative position lead to an
      * exception. </testcase>
      */
-    public final void testAddIntNode3() {
+    @Test
+    public void testAddIntNode3() {
 
         NodeList list = makeList();
         try {
@@ -316,7 +325,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a non-null node at position past the end lead to an
      * exception. </testcase>
      */
-    public final void testAddIntNode4() {
+    @Test
+    public void testAddIntNode4() {
 
         NodeList list = makeList();
         try {
@@ -330,7 +340,8 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a ... </testcase>
      */
-    public final void testAddIntNode5() {
+    @Test
+    public void testAddIntNode5() {
 
         NodeList list = makeList();
         list.add(0, new PenaltyNode(123));
@@ -340,7 +351,8 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a ... </testcase>
      */
-    public final void testAddIntNode6() {
+    @Test
+    public void testAddIntNode6() {
 
         PenaltyNode n = new PenaltyNode(999);
         NodeList list = makeList(n);
@@ -354,7 +366,8 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a ... </testcase>
      */
-    public final void testAddIntNode7() {
+    @Test
+    public void testAddIntNode7() {
 
         PenaltyNode n = new PenaltyNode(999);
         NodeList list = makeList(n);
@@ -369,7 +382,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * <testcase> Adding a <code>null</code> node is silently ignored.
      * </testcase>
      */
-    public final void testAddNode0() {
+    @Test
+    public void testAddNode0() {
 
         NodeList list = makeList();
         list.add(null);
@@ -379,6 +393,7 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a rule node puts the node into the list. </testcase>
      */
+    @Test
     public void testAddNode1() {
 
         NodeList list = makeList();
@@ -395,7 +410,8 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a penalty node puts the node into the list. </testcase>
      */
-    public final void testAddNode2() {
+    @Test
+    public void testAddNode2() {
 
         NodeList list = makeList();
         list.add(new PenaltyNode(123));
@@ -405,7 +421,8 @@ public abstract class AbstractNodeListTester extends TestCase {
     /**
      * <testcase> Adding a penalty node puts the node into the list. </testcase>
      */
-    public final void testAddNode3() {
+    @Test
+    public void testAddNode3() {
 
         NodeList list = makeList();
         list.add(new PenaltyNode(123));
@@ -418,7 +435,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * 
      * @throws GeneralException in case of an error
      */
-    public final void testAtShipping0() throws GeneralException {
+    @Test
+    public void testAtShipping0() throws GeneralException {
 
         NodeList list = makeList();
         // NodeVisitor<Node, Boolean> v = makeVisitor();
@@ -431,7 +449,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * 
      * @throws GeneralException in case of an error
      */
-    public final void testAtShipping1() throws GeneralException {
+    @Test
+    public void testAtShipping1() throws GeneralException {
 
         NodeList list = makeList(new PenaltyNode(123));
         // NodeVisitor<Node, Boolean> v = makeVisitor();
@@ -440,9 +459,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testClear0() {
+    @Test
+    public void testClear0() {
 
         NodeList list = makeList();
         list.clear();
@@ -453,9 +474,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testClear1() {
+    @Test
+    public void testClear1() {
 
         NodeList list = makeList(new PenaltyNode(123));
         list.clear();
@@ -466,9 +489,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testClear2() {
+    @Test
+    public void testClear2() {
 
         NodeList list = makeList(new PenaltyNode(123));
         list.add(new PenaltyNode(456));
@@ -480,9 +505,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testCopy1() {
+    @Test
+    public void testCopy1() {
 
         NodeList list = makeList();
         NodeList copy = list.copy();
@@ -493,9 +520,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testCopy2() {
+    @Test
+    public void testCopy2() {
 
         NodeList list = makeList(new PenaltyNode(123));
         NodeList copy = list.copy();
@@ -506,9 +535,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars0() {
+    @Test
+    public void testGetChars0() {
 
         NodeList list = makeList();
         CharNode[] chars = list.getChars();
@@ -517,9 +548,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars1() {
+    @Test
+    public void testGetChars1() {
 
         NodeList list = makeList();
         list.add(new PenaltyNode(456));
@@ -529,9 +562,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars2() {
+    @Test
+    public void testGetChars2() {
 
         CharNode ca = new CharNode(TC, UnicodeChar.get('A'));
         HorizontalListNode list = new HorizontalListNode(ca);
@@ -543,9 +578,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars3() {
+    @Test
+    public void testGetChars3() {
 
         CharNode ca = new CharNode(TC, UnicodeChar.get('A'));
         CharNode cb = new CharNode(TC, UnicodeChar.get('B'));
@@ -560,9 +597,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars4() {
+    @Test
+    public void testGetChars4() {
 
         CharNode ca = new CharNode(TC, UnicodeChar.get('A'));
         CharNode cb = new CharNode(TC, UnicodeChar.get('B'));
@@ -577,9 +616,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testGetChars5() {
+    @Test
+    public void testGetChars5() {
 
         CharNode ca = new CharNode(TC, UnicodeChar.get('A'));
         CharNode cb = new CharNode(TC, UnicodeChar.get('B'));
@@ -594,9 +635,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testIterator1() {
+    @Test
+    public void testIterator1() {
 
         NodeList list = makeList();
         Iterator<Node> iterator = list.iterator();
@@ -605,9 +648,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testIterator2() {
+    @Test
+    public void testIterator2() {
 
         PenaltyNode n = new PenaltyNode(123);
         NodeList list = makeList(n);
@@ -619,9 +664,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testRemove1() {
+    @Test
+    public void testRemove1() {
 
         NodeList list = makeList();
         try {
@@ -633,9 +680,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testRemove2() {
+    @Test
+    public void testRemove2() {
 
         NodeList list = makeList();
         try {
@@ -647,9 +696,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testRemove3() {
+    @Test
+    public void testRemove3() {
 
         NodeList list = makeList(new PenaltyNode(123));
         try {
@@ -661,9 +712,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testRemove4() {
+    @Test
+    public void testRemove4() {
 
         NodeList list = makeList(new PenaltyNode(123));
         try {
@@ -675,9 +728,11 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
+     * <testcase> ... </testcase>
      * 
      */
-    public final void testRemove5() {
+    @Test
+    public void testRemove5() {
 
         NodeList list = makeList(new PenaltyNode(123));
         list.remove(0);
@@ -690,7 +745,8 @@ public abstract class AbstractNodeListTester extends TestCase {
      * 
      * @throws GeneralException in case of an error
      */
-    public final void testVisit() throws GeneralException {
+    @Test
+    public void testVisit() throws GeneralException {
 
         NodeList list = makeList();
         NodeVisitor<Node, Boolean> nv = makeVisitor();

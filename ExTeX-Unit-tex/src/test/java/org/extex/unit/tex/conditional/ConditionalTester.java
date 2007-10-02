@@ -48,30 +48,25 @@ public abstract class ConditionalTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      * @param primitive the name pf the primitive to be tested
      * @param arguments the arguments for the primitive
      */
-    public ConditionalTester(String arg, String primitive, String arguments) {
+    public ConditionalTester(String primitive, String arguments) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.arguments = arguments;
     }
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      * @param primitive the name pf the primitive to be tested
      * @param arguments the arguments for the primitive
      * @param init the initializing code
      */
-    public ConditionalTester(String arg, String primitive, String arguments,
-            String init) {
+    public ConditionalTester(String primitive, String arguments, String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.arguments = arguments;
         this.init = init;

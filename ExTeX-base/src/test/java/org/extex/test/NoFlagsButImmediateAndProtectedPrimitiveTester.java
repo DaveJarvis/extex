@@ -52,14 +52,13 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     /**
      * Creates a new object.
      * 
-     * @param name the name of the test case
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      */
-    public NoFlagsButImmediateAndProtectedPrimitiveTester(String name,
-            String primitive, String args) {
+    public NoFlagsButImmediateAndProtectedPrimitiveTester(String primitive,
+            String args) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.args = args;
     }
@@ -67,15 +66,14 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     /**
      * Creates a new object.
      * 
-     * @param name the name of the test case
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      * @param prepare the preparing code
      */
-    public NoFlagsButImmediateAndProtectedPrimitiveTester(String name,
-            String primitive, String args, String prepare) {
+    public NoFlagsButImmediateAndProtectedPrimitiveTester(String primitive,
+            String args, String prepare) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.args = args;
         this.prepare = prepare;

@@ -42,12 +42,10 @@ public class PredisplaypenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PredisplaypenaltyTest(String arg) {
+    public PredisplaypenaltyTest() {
 
-        super(arg, "predisplaypenalty", "", "0");
+        super("predisplaypenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

@@ -49,12 +49,10 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OpeninTest(String arg) {
+    public OpeninTest() {
 
-        super(arg, "openin", "1 " + EMPTY_TEX + " ");
+        super("openin", "1 " + EMPTY_TEX + " ");
     }
 
     /**

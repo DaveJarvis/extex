@@ -43,12 +43,10 @@ public class AllocTest extends ExTeXLauncher {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param name the name
      */
-    public AllocTest(String name) {
+    public AllocTest() {
 
-        super(name);
+        super();
     }
 
     /**

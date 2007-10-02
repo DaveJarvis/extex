@@ -43,12 +43,10 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UnskipTest.
-     * 
-     * @param arg the name
      */
-    public UnskipTest(String arg) {
+    public UnskipTest() {
 
-        super(arg, "unskip", "", "a");
+        super("unskip", "", "a");
     }
 
     /**

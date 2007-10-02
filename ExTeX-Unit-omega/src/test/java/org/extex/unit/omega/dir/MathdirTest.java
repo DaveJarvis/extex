@@ -46,12 +46,10 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MathdirTest(String arg) {
+    public MathdirTest() {
 
-        super(arg, "mathdir", " LRL");
+        super("mathdir", " LRL");
         setConfig("omega-test");
     }
 

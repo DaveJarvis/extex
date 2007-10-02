@@ -42,12 +42,10 @@ public class WdTest extends AbstractBoxDimenTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public WdTest(String arg) {
+    public WdTest() {
 
-        super(arg, "wd");
+        super("wd");
     }
 
     /**

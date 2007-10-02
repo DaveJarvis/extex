@@ -19,8 +19,11 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertFalse;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -32,12 +35,9 @@ import org.junit.runner.JUnitCore;
 public class SubMarkTokenTest extends TokenTester {
 
     /**
-     * Creates a new object.
+     * The field <tt>t</tt> contains the reference token.
      */
-    public SubMarkTokenTest() {
-
-        super(token, Catcode.SUBMARK, "x", "subscript character x");
-    }
+    private static Token token = new SubMarkToken(UnicodeChar.get('x'));
 
     /**
      * Command line interface.
@@ -50,12 +50,16 @@ public class SubMarkTokenTest extends TokenTester {
     }
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * Creates a new object.
      */
-    private static Token token = new SubMarkToken(UnicodeChar.get('x'));
+    public SubMarkTokenTest() {
+
+        super(token, Catcode.SUBMARK, "x", "subscript character x");
+    }
 
     /**
      */
+    @Test
     public void testEqualsToken1() {
 
         Token t1 = new SubMarkToken(UnicodeChar.get(' '));

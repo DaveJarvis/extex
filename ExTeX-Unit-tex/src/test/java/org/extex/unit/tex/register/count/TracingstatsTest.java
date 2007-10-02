@@ -42,12 +42,10 @@ public class TracingstatsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TracingstatsTest(String arg) {
+    public TracingstatsTest() {
 
-        super(arg, "tracingstats", "", "0");
+        super("tracingstats", "", "0");
     }
 
     // TODO implement the primitive specific test cases

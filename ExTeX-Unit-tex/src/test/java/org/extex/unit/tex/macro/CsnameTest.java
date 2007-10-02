@@ -32,12 +32,10 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CsnameTest(String arg) {
+    public CsnameTest() {
 
-        super(arg);
+        super();
     }
 
     /**

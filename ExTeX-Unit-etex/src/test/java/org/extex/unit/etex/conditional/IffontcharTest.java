@@ -43,12 +43,10 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IffontcharTest(String arg) {
+    public IffontcharTest() {
 
-        super(arg, "iffontchar", "\\nullfont `x\\else");
+        super("iffontchar", "\\nullfont `x\\else");
         setConfig("etex-test");
     }
 

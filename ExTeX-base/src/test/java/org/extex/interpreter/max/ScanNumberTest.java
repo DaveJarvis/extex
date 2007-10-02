@@ -32,12 +32,10 @@ public class ScanNumberTest extends ExTeXLauncher {
 
     /**
      * Constructor for MaxTest.
-     *
-     * @param arg the name
      */
-    public ScanNumberTest(String arg) {
+    public ScanNumberTest() {
 
-        super(arg);
+        super();
     }
 
     /**

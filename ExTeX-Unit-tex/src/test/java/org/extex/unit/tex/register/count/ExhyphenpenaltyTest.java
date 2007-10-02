@@ -42,12 +42,10 @@ public class ExhyphenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ExhyphenpenaltyTest(String arg) {
+    public ExhyphenpenaltyTest() {
 
-        super(arg, "exhyphenpenalty", "", "0");
+        super("exhyphenpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

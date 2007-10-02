@@ -55,12 +55,10 @@ public class MonthTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MonthTest(String arg) {
+    public MonthTest() {
 
-        super(arg, "month", "", getDefaultValue());
+        super("month", "", getDefaultValue());
     }
 
 }

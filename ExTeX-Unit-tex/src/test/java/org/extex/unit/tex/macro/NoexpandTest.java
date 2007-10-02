@@ -31,12 +31,10 @@ public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public NoexpandTest(String arg) {
+    public NoexpandTest() {
 
-        super(arg, "noexpand", "\\relax");
+        super("noexpand", "\\relax");
     }
 
 }

@@ -24,14 +24,15 @@ import org.junit.Test;
 
 /**
  * This is a test suite for read-only dimen registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field <tt>primitive</tt> contains the name of the primitive to
+     * test.
      */
     private String primitive;
 
@@ -47,167 +48,152 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
+     * 
      * @param primitive the name of the primitive
      * @param defaultValue the default value
      */
-    public AbstractReadonlyDimenRegisterTester(String arg,
-            String primitive, String defaultValue) {
+    public AbstractReadonlyDimenRegisterTester(String primitive,
+            String defaultValue) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
+     * 
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
      */
-    public AbstractReadonlyDimenRegisterTester(String arg,
-            String primitive, String argument,
-            String defaultValue) {
+    public AbstractReadonlyDimenRegisterTester(String primitive,
+            String argument, String defaultValue) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
         this.argument = argument;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in vertical mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorVerticalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\" + primitive + " ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in vertical mode");
+        assertFailure(// --- input code ---
+            "\\" + primitive + " ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in inner vertical
-     *  mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in inner
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorVerticalMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\vbox{\\" + primitive + "} ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in inner vertical mode");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\vbox{\\" + primitive + "} ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in inner vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in horizontal mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorHorizonalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "x\\" + primitive + " ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in horizontal mode");
+        assertFailure(// --- input code ---
+            "x\\" + primitive + " ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in restricted
-     *  horizontal mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * restricted horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorHorizonalMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\hbox{\\" + primitive + "} ",
-                //--- log message ---
-                "You can't use `\\" + primitive
-                        + "' in restricted horizontal mode");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\hbox{\\" + primitive + "} ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in restricted horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in math
+     * mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_MATH + "$\\" + primitive + "$ ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in math mode");
+        assertFailure(// --- input code ---
+            DEFINE_MATH + "$\\" + primitive + "$ ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in math mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in math
+     * mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testErrorMathMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_MATH + "$$\\" + primitive + "$$ ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in displaymath mode");
+        assertFailure(// --- input code ---
+            DEFINE_MATH + "$$\\" + primitive + "$$ ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in displaymath mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is theable and has the default
-     *  value 0.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is theable and has the
+     * default value 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testDefaultValue1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\the\\" + primitive + argument + " \\end",
-                //--- log message ---
-                defaultValue + TERM);
+        assertSuccess(// --- input code ---
+            "\\the\\" + primitive + argument + " \\end",
+            // --- log message ---
+            defaultValue + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is assignable to a dimen register.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is assignable to a dimen
+     * register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testDimenAssignment1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\dimen0=\\" + primitive + argument + "\\the\\dimen0\\end",
-                //--- log message ---
-                defaultValue + TERM);
+        assertSuccess(// --- input code ---
+            "\\dimen0=\\" + primitive + argument + "\\the\\dimen0\\end",
+            // --- log message ---
+            defaultValue + TERM);
     }
 
 }

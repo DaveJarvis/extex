@@ -31,12 +31,11 @@ public class DisplaystyleTest extends AbstractMathTester {
 
     /**
      * Constructor for DisplaystyleTest.
-     *
-     * @param arg the name
      */
-    public DisplaystyleTest(String arg) {
+    public DisplaystyleTest() {
 
-        super(arg, "displaystyle", "");
+        super("displaystyle", "");
     }
 
+    //TODO: write more primitive specific test cases
 }

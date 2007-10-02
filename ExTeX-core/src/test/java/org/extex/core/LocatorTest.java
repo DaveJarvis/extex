@@ -19,7 +19,7 @@
 
 package org.extex.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LocatorTest extends TestCase {
+public class LocatorTest {
 
     /**
      * Test method for {@link org.extex.core.Locator#toString()}.

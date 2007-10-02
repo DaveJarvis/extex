@@ -43,12 +43,10 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for FontdimenTest.
-     * 
-     * @param arg the name
      */
-    public FontdimenTest(String arg) {
+    public FontdimenTest() {
 
-        super(arg, "fontdimen", "0\\nullfont=123pt ");
+        super("fontdimen", "0\\nullfont=123pt ");
     }
 
     /**

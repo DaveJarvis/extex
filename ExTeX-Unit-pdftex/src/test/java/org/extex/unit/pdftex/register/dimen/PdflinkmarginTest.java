@@ -42,12 +42,10 @@ public class PdflinkmarginTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdflinkmarginTest(String arg) {
+    public PdflinkmarginTest() {
 
-        super(arg, "pdflinkmargin", "", "0.0pt");
+        super("pdflinkmargin", "", "0.0pt");
         setConfig("pdftex-test");
     }
 

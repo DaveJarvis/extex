@@ -43,12 +43,10 @@ public class ParTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for ParTest.
-     * 
-     * @param arg the name
      */
-    public ParTest(String arg) {
+    public ParTest() {
 
-        super(arg, "par", "");
+        super("par", "");
     }
 
     /**

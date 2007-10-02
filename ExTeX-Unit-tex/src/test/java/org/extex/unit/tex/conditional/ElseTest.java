@@ -43,12 +43,10 @@ public class ElseTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ElseTest(String arg) {
+    public ElseTest() {
 
-        super(arg);
+        super();
     }
 
     /**

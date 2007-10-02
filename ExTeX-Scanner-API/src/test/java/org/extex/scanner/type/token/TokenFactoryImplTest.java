@@ -124,7 +124,7 @@ public class TokenFactoryImplTest {
     /**
      */
     @Test
-    public final void testTokenFactoryImpl() {
+    public void testTokenFactoryImpl() {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -135,7 +135,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
-    public final void testCreateTokenCatcodeIntString01() throws Exception {
+    public void testCreateTokenCatcodeIntString01() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -147,7 +147,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeVisitorException.class)
-    public final void testCreateTokenCatcodeIntString02() throws Exception {
+    public void testCreateTokenCatcodeIntString02() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -159,7 +159,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString1() throws Exception {
+    public void testCreateTokenCatcodeIntString1() throws Exception {
 
         checkCodeToken(Catcode.ACTIVE, 'c');
     }
@@ -169,7 +169,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString2() throws Exception {
+    public void testCreateTokenCatcodeIntString2() throws Exception {
 
         checkCodeToken(Catcode.ESCAPE, 'c');
     }
@@ -179,7 +179,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString3() throws Exception {
+    public void testCreateTokenCatcodeIntString3() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -194,7 +194,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString4() throws Exception {
+    public void testCreateTokenCatcodeIntString4() throws Exception {
 
         Token t = checkToken(Catcode.LEFTBRACE, 'c');
         assertTrue(t instanceof LeftBraceToken);
@@ -205,7 +205,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString5() throws Exception {
+    public void testCreateTokenCatcodeIntString5() throws Exception {
 
         Token t = checkToken(Catcode.LETTER, 'c');
         assertTrue(t instanceof LetterToken);
@@ -216,7 +216,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString6() throws Exception {
+    public void testCreateTokenCatcodeIntString6() throws Exception {
 
         Token t = checkToken(Catcode.MACROPARAM, 'c');
         assertTrue(t instanceof MacroParamToken);
@@ -227,7 +227,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString7() throws Exception {
+    public void testCreateTokenCatcodeIntString7() throws Exception {
 
         Token t = checkToken(Catcode.MATHSHIFT, 'c');
         assertTrue(t instanceof MathShiftToken);
@@ -238,7 +238,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString8() throws Exception {
+    public void testCreateTokenCatcodeIntString8() throws Exception {
 
         Token t = checkToken(Catcode.OTHER, 'c');
         assertTrue(t instanceof OtherToken);
@@ -249,7 +249,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString9() throws Exception {
+    public void testCreateTokenCatcodeIntString9() throws Exception {
 
         Token t = checkToken(Catcode.RIGHTBRACE, 'c');
         assertTrue(t instanceof RightBraceToken);
@@ -260,7 +260,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString10() throws Exception {
+    public void testCreateTokenCatcodeIntString10() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -276,7 +276,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString11() throws Exception {
+    public void testCreateTokenCatcodeIntString11() throws Exception {
 
         Token t = checkToken(Catcode.SUBMARK, 'c');
         assertTrue(t instanceof SubMarkToken);
@@ -287,7 +287,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString12() throws Exception {
+    public void testCreateTokenCatcodeIntString12() throws Exception {
 
         Token t = checkToken(Catcode.SUPMARK, 'c');
         assertTrue(t instanceof SupMarkToken);
@@ -298,7 +298,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeIntString13() throws Exception {
+    public void testCreateTokenCatcodeIntString13() throws Exception {
 
         Token t = checkToken(Catcode.TABMARK, 'c');
         assertTrue(t instanceof TabMarkToken);
@@ -310,7 +310,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenSpace1() throws Exception {
+    public void testCreateTokenSpace1() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -327,7 +327,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenSpace2() throws Exception {
+    public void testCreateTokenSpace2() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -346,7 +346,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenIgnore1() throws Exception {
+    public void testCreateTokenIgnore1() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -359,7 +359,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenInvalid1() throws Exception {
+    public void testCreateTokenInvalid1() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -372,7 +372,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenComment1() throws Exception {
+    public void testCreateTokenComment1() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -384,7 +384,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
-    public final void testCreateTokenCatcodeUnicodecharString01()
+    public void testCreateTokenCatcodeUnicodecharString01()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -397,7 +397,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
-    public final void testCreateTokenCatcodeUnicodecharString02()
+    public void testCreateTokenCatcodeUnicodecharString02()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -410,7 +410,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
-    public final void testCreateTokenCatcodeUnicodecharString03()
+    public void testCreateTokenCatcodeUnicodecharString03()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -423,7 +423,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
-    public final void testCreateTokenCatcodeUnicodecharString04()
+    public void testCreateTokenCatcodeUnicodecharString04()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -436,7 +436,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = NullPointerException.class)
-    public final void testCreateTokenCatcodeUnicodecharString0()
+    public void testCreateTokenCatcodeUnicodecharString0()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -449,7 +449,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString1()
+    public void testCreateTokenCatcodeUnicodecharString1()
             throws Exception {
 
         Token t = checkCodeToken(Catcode.ACTIVE, UnicodeChar.get('c'));
@@ -461,7 +461,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString2()
+    public void testCreateTokenCatcodeUnicodecharString2()
             throws Exception {
 
         Token t = checkCodeToken(Catcode.ESCAPE, UnicodeChar.get('c'));
@@ -473,7 +473,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString2b()
+    public void testCreateTokenCatcodeUnicodecharString2b()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -491,7 +491,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString3()
+    public void testCreateTokenCatcodeUnicodecharString3()
             throws Exception {
 
         Catcode catcode = Catcode.CR;
@@ -508,7 +508,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString4()
+    public void testCreateTokenCatcodeUnicodecharString4()
             throws Exception {
 
         Token t = checkToken(Catcode.LEFTBRACE, UnicodeChar.get('c'));
@@ -520,7 +520,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString5()
+    public void testCreateTokenCatcodeUnicodecharString5()
             throws Exception {
 
         Token t = checkToken(Catcode.LETTER, UnicodeChar.get('c'));
@@ -532,7 +532,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString6()
+    public void testCreateTokenCatcodeUnicodecharString6()
             throws Exception {
 
         Token t = checkToken(Catcode.MACROPARAM, UnicodeChar.get('c'));
@@ -544,7 +544,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString7()
+    public void testCreateTokenCatcodeUnicodecharString7()
             throws Exception {
 
         Token t = checkToken(Catcode.MATHSHIFT, UnicodeChar.get('c'));
@@ -556,7 +556,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString8()
+    public void testCreateTokenCatcodeUnicodecharString8()
             throws Exception {
 
         Token t = checkToken(Catcode.OTHER, UnicodeChar.get('c'));
@@ -568,7 +568,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString9()
+    public void testCreateTokenCatcodeUnicodecharString9()
             throws Exception {
 
         Token t = checkToken(Catcode.RIGHTBRACE, UnicodeChar.get('c'));
@@ -580,7 +580,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString10()
+    public void testCreateTokenCatcodeUnicodecharString10()
             throws Exception {
 
         Catcode catcode = Catcode.SPACE;
@@ -598,7 +598,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString11()
+    public void testCreateTokenCatcodeUnicodecharString11()
             throws Exception {
 
         Token t = checkToken(Catcode.SUBMARK, UnicodeChar.get('c'));
@@ -610,7 +610,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString12()
+    public void testCreateTokenCatcodeUnicodecharString12()
             throws Exception {
 
         Token t = checkToken(Catcode.SUPMARK, UnicodeChar.get('c'));
@@ -622,7 +622,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodecharString13()
+    public void testCreateTokenCatcodeUnicodecharString13()
             throws Exception {
 
         Token t = checkToken(Catcode.TABMARK, UnicodeChar.get('c'));
@@ -636,7 +636,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodeCharStringString1()
+    public void testCreateTokenCatcodeUnicodeCharStringString1()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -658,7 +658,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodeCharStringString21()
+    public void testCreateTokenCatcodeUnicodeCharStringString21()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -679,7 +679,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
-    public final void testCreateTokenCatcodeUnicodeCharStringString22()
+    public void testCreateTokenCatcodeUnicodeCharStringString22()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -694,7 +694,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test(expected = CatcodeException.class)
-    public final void testCreateTokenCatcodeUnicodeCharStringString23()
+    public void testCreateTokenCatcodeUnicodeCharStringString23()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -709,7 +709,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCreateTokenCatcodeUnicodeCharStringString2()
+    public void testCreateTokenCatcodeUnicodeCharStringString2()
             throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
@@ -731,7 +731,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testToTokensCharSequence0() throws Exception {
+    public void testToTokensCharSequence0() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -746,7 +746,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testToTokensCharSequence1() throws Exception {
+    public void testToTokensCharSequence1() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -761,7 +761,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testToTokensCharSequence2() throws Exception {
+    public void testToTokensCharSequence2() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -777,7 +777,7 @@ public class TokenFactoryImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testToTokensCharSequence3() throws Exception {
+    public void testToTokensCharSequence3() throws Exception {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -793,7 +793,7 @@ public class TokenFactoryImplTest {
      * @throws CatcodeException in case of an error
      */
     @Test
-    public final void testToTokensLong1() throws CatcodeException {
+    public void testToTokensLong1() throws CatcodeException {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -809,7 +809,7 @@ public class TokenFactoryImplTest {
      * @throws CatcodeException in case of an error
      */
     @Test
-    public final void testToTokensLong2() throws CatcodeException {
+    public void testToTokensLong2() throws CatcodeException {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -825,7 +825,7 @@ public class TokenFactoryImplTest {
      * @throws CatcodeException in case of an error
      */
     @Test
-    public final void testToTokensLong3() throws CatcodeException {
+    public void testToTokensLong3() throws CatcodeException {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
@@ -841,7 +841,7 @@ public class TokenFactoryImplTest {
      * @throws CatcodeException in case of an error
      */
     @Test
-    public final void testToTokensLong4() throws CatcodeException {
+    public void testToTokensLong4() throws CatcodeException {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);

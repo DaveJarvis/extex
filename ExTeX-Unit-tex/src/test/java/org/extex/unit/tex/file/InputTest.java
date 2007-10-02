@@ -49,12 +49,10 @@ public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public InputTest(String arg) {
+    public InputTest() {
 
-        super(arg, "input", " " + EMPTY_TEX + " ", "\\nonstopmode");
+        super("input", " " + EMPTY_TEX + " ", "\\nonstopmode");
     }
 
     /**

@@ -42,12 +42,10 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NoDefaultOutputModeTest(String arg) {
+    public NoDefaultOutputModeTest() {
 
-        super(arg, "noDefaultOutputMode", "");
+        super("noDefaultOutputMode", "");
         setConfig("omega-test");
     }
 

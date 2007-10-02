@@ -29,14 +29,11 @@ public class MathinnerTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathinnerTest.
-     *
-     * @param arg the name
      */
-    public MathinnerTest(String arg) {
+    public MathinnerTest() {
 
-        super(arg, "mathinner");
+        super("mathinner");
     }
 
     //TODO implement more primitive specific test cases
-
 }

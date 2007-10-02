@@ -19,6 +19,10 @@
 
 package org.extex.scanner.type.token;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
@@ -33,12 +37,9 @@ import org.junit.runner.JUnitCore;
 public class SpaceTokenTest extends TokenTester {
 
     /**
-     * Creates a new object.
+     * The field <tt>token</tt> contains the reference token.
      */
-    public SpaceTokenTest() {
-
-        super(token, Catcode.SPACE, " ", "blank space  ");
-    }
+    private static Token token = new SpaceToken("x");
 
     /**
      * Command line interface.
@@ -51,9 +52,12 @@ public class SpaceTokenTest extends TokenTester {
     }
 
     /**
-     * The field <tt>token</tt> contains the reference token.
+     * Creates a new object.
      */
-    private static Token token = new SpaceToken("x");
+    public SpaceTokenTest() {
+
+        super(token, Catcode.SPACE, " ", "blank space  ");
+    }
 
     /**
      */

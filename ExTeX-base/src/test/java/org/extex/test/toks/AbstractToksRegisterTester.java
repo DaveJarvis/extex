@@ -55,16 +55,14 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
      */
-    public AbstractToksRegisterTester(String arg, String primitive,
-            String args, String init) {
+    public AbstractToksRegisterTester(String primitive, String args,
+            String init) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
@@ -72,17 +70,15 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
      * @param prepare the preparation code
      */
-    public AbstractToksRegisterTester(String arg, String primitive,
-            String args, String init, String prepare) {
+    public AbstractToksRegisterTester(String primitive, String args,
+            String init, String prepare) {
 
-        this(arg, primitive, args, init);
+        this(primitive, args, init);
         this.prepare = DEFINE_BRACES + prepare;
     }
 

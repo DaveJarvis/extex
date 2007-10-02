@@ -19,6 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
+import static org.junit.Assert.*;
+
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;

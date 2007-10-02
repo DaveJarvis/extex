@@ -19,6 +19,9 @@
 
 package org.extex.scanner.base;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +30,7 @@ import java.io.InputStreamReader;
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.exception.ScannerException;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -51,12 +55,10 @@ public class TokenStreamStreamImplBufferedTest
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      */
-    public TokenStreamStreamImplBufferedTest(String name) {
+    public TokenStreamStreamImplBufferedTest() {
 
-        super(name);
+        super();
     }
 
     /**
@@ -84,6 +86,7 @@ public class TokenStreamStreamImplBufferedTest
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testException1() throws Exception {
 
         TokenStreamImpl stream =

@@ -43,12 +43,10 @@ public class LongTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public LongTest(String arg) {
+    public LongTest() {
 
-        super(arg, "long");
+        super("long");
     }
 
     /**

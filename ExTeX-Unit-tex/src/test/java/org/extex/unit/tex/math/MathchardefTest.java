@@ -32,12 +32,10 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Constructor for MathchardefTest.
-     * 
-     * @param arg the name
      */
-    public MathchardefTest(String arg) {
+    public MathchardefTest() {
 
-        super(arg, "mathchardef", "\\a=\"32 ");
+        super("mathchardef", "\\a=\"32 ");
     }
 
     /**

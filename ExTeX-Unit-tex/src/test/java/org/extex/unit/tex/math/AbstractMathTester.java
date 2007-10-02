@@ -24,7 +24,7 @@ import org.junit.Test;
 
 /**
  * This is an abstract base class for testing math primitives.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -35,19 +35,19 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      * required fonts.
      */
     public static final String DEFINE_MATH_FONTS =
-        "\\font\\f cmsy10 \\textfont2=\\f"
-        + "\\font\\f cmsy7 \\scriptfont2=\\f"
-        + "\\font\\f cmsy5 \\scriptscriptfont2=\\f"
-        + "\\font\\f cmex10 \\textfont3=\\f"
-        + "\\scriptfont3=\\f"
-        + "\\scriptscriptfont3=\\f"
-        + "\\font\\f cmmi10 \\textfont1=\\f "
-        + "\\textfont0=\\f " // additionally for testing
-        + "\\font\\f cmmi7 \\scriptfont1=\\f "
-        + "\\font\\f cmmi5 \\scriptscriptfont1=\\f ";
+            "\\font\\f cmsy10 \\textfont2=\\f"
+                    + "\\font\\f cmsy7 \\scriptfont2=\\f"
+                    + "\\font\\f cmsy5 \\scriptscriptfont2=\\f"
+                    + "\\font\\f cmex10 \\textfont3=\\f" + "\\scriptfont3=\\f"
+                    + "\\scriptscriptfont3=\\f"
+                    + "\\font\\f cmmi10 \\textfont1=\\f "
+                    + "\\textfont0=\\f " // additionally for testing
+                    + "\\font\\f cmmi7 \\scriptfont1=\\f "
+                    + "\\font\\f cmmi5 \\scriptscriptfont1=\\f ";
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field <tt>primitive</tt> contains the name of the primitive to
+     * test.
      */
     private String primitive;
 
@@ -59,65 +59,57 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
+     * 
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      */
-    public AbstractMathTester(String arg, String primitive,
-            String arguments) {
+    public AbstractMathTester(String primitive, String arguments) {
 
-        this(arg, primitive, arguments, "");
+        this(primitive, arguments, "");
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
+     * 
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      * @param prepare the code to insert before the invocation
      */
-    public AbstractMathTester(String arg, String primitive,
-            String arguments, String prepare) {
+    public AbstractMathTester(String primitive, String arguments, String prepare) {
 
-        super(arg, primitive, arguments + "$", "\\catcode`\\$=3 $" + prepare);
+        super(primitive, arguments + "$", "\\catcode`\\$=3 $" + prepare);
         this.primitive = primitive;
         this.arguments = arguments;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive needs the math mode.
-     *  Vertical mode is not enough.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive needs the math mode.
+     * Vertical mode is not enough. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNonMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\" + primitive + arguments + " ",
-                //--- log message ---
-                "Missing $ inserted");
+        assertFailure(// --- input code ---
+            "\\" + primitive + arguments + " ",
+            // --- log message ---
+            "Missing $ inserted");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive needs the math mode.
-     *  Horizontal mode is not enough.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive needs the math mode.
+     * Horizontal mode is not enough. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNonMathMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                "a\\" + primitive + arguments + " ",
-                //--- log message ---
-                "Missing $ inserted");
+        assertFailure(// --- input code ---
+            "a\\" + primitive + arguments + " ",
+            // --- log message ---
+            "Missing $ inserted");
     }
 
 }

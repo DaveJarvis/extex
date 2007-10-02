@@ -41,12 +41,10 @@ public class DimenTest extends AbstractDimenRegisterTester {
 
     /**
      * Constructor for DimenTest.
-     * 
-     * @param arg the name
      */
-    public DimenTest(String arg) {
+    public DimenTest() {
 
-        super(arg, "dimen", "42 ", "0.0pt");
+        super("dimen", "42 ", "0.0pt");
     }
 
 }

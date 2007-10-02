@@ -43,12 +43,10 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VadjustTest.
-     * 
-     * @param arg the name
      */
-    public VadjustTest(String arg) {
+    public VadjustTest() {
 
-        super(arg, "vadjust", "{}", "a");
+        super("vadjust", "{}", "a");
     }
 
     /**

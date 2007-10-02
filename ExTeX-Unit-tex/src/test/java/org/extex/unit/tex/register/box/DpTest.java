@@ -42,12 +42,10 @@ public class DpTest extends AbstractBoxDimenTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DpTest(String arg) {
+    public DpTest() {
 
-        super(arg, "dp");
+        super("dp");
     }
 
     /**

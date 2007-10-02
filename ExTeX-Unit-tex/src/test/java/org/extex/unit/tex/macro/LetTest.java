@@ -32,12 +32,10 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public LetTest(String arg) {
+    public LetTest() {
 
-        super(arg, "let", "\\relax\\relax");
+        super("let", "\\relax\\relax");
     }
 
     /**

@@ -43,12 +43,10 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public MathsurroundTest(String arg) {
+    public MathsurroundTest() {
 
-        super(arg, "mathsurround", "", "0.0pt");
+        super("mathsurround", "", "0.0pt");
     }
 
     /**

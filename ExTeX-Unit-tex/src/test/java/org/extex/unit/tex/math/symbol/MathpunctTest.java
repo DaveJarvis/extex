@@ -29,14 +29,11 @@ public class MathpunctTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathpunctTest.
-     *
-     * @param arg the name
      */
-    public MathpunctTest(String arg) {
+    public MathpunctTest() {
 
-        super(arg, "mathpunct");
+        super("mathpunct");
     }
 
     //TODO implement more primitive specific test cases
-
 }

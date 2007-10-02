@@ -32,12 +32,10 @@ public class TheTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     *
-     * @param arg the name
      */
-    public TheTest(String arg) {
+    public TheTest() {
 
-        super(arg, "the", "\\count1 ");
+        super("the", "\\count1 ");
     }
 
     /**

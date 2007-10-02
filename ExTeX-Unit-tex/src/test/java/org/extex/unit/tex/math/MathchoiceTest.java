@@ -31,12 +31,10 @@ public class MathchoiceTest extends AbstractMathTester {
 
     /**
      * Constructor for MathchoiceTest.
-     *
-     * @param arg the name
      */
-    public MathchoiceTest(String arg) {
+    public MathchoiceTest() {
 
-        super(arg, "mathchoice", "{}{}{}{}");
+        super("mathchoice", "{}{}{}{}");
     }
 
     /**

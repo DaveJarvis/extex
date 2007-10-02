@@ -42,12 +42,10 @@ public class SavingvdiscardsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public SavingvdiscardsTest(String arg) {
+    public SavingvdiscardsTest() {
 
-        super(arg, "savingvdiscards", "", "0");
+        super("savingvdiscards", "", "0");
         setConfig("etex-test");
     }
 

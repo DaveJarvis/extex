@@ -41,12 +41,10 @@ public class PageshrinkTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PageshrinkTest(String arg) {
+    public PageshrinkTest() {
 
-        super(arg, "pageshrink", "", "0.0pt");
+        super("pageshrink", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

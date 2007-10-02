@@ -31,12 +31,10 @@ public class OmathaccentTest extends AbstractMathTester {
 
     /**
      * Constructor for MathaccentTest.
-     *
-     * @param arg the name
      */
-    public OmathaccentTest(String arg) {
+    public OmathaccentTest() {
 
-        super(arg, "omathaccent", "12 a");
+        super("omathaccent", "12 a");
         setConfig("omega-test");
     }
 

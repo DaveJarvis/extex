@@ -42,12 +42,10 @@ public class PrevgrafTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PrevgrafTest(String arg) {
+    public PrevgrafTest() {
 
-        super(arg, "prevgraf", "0", "0");
+        super("prevgraf", "0", "0");
     }
 
     // TODO implement the primitive specific test cases

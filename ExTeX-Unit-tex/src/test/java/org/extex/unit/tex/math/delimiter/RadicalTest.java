@@ -31,14 +31,11 @@ public class RadicalTest extends AbstractMathTester {
 
     /**
      * Constructor for RadicalTest.
-     *
-     * @param arg the name
      */
-    public RadicalTest(String arg) {
+    public RadicalTest() {
 
-        super(arg, "radical", "12 32");
+        super("radical", "12 32");
     }
 
     //TODO implement more primitive specific test cases
-
 }

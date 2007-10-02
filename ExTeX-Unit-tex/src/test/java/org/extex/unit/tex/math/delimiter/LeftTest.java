@@ -32,12 +32,10 @@ public class LeftTest extends AbstractMathTester {
 
     /**
      * Constructor for LeftTest.
-     *
-     * @param arg the name
      */
-    public LeftTest(String arg) {
+    public LeftTest() {
 
-        super(arg, "left", "123 ");
+        super("left", "123 ");
     }
 
     /**

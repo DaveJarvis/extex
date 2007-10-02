@@ -38,16 +38,13 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name for debugging
      * @param primitive the name of the primitive
      * @param arguments the arguments for smoke testing
      * @param def the default value
      */
-    public FontcharTester(String name, String primitive, String arguments,
-            String def) {
+    public FontcharTester(String primitive, String arguments, String def) {
 
-        super(name, primitive, arguments);
+        super(primitive, arguments);
         this.def = def;
     }
 

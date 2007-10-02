@@ -32,12 +32,10 @@ public class DelimiterTest extends AbstractMathTester {
 
     /**
      * Constructor for MathdelimiterTest.
-     * 
-     * @param arg the name
      */
-    public DelimiterTest(String arg) {
+    public DelimiterTest() {
 
-        super(arg, "delimiter", ". ");
+        super("delimiter", ". ");
     }
 
     /**

@@ -42,12 +42,10 @@ public class StringTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for StringprimitiveTest.
-     * 
-     * @param arg the name
      */
-    public StringTest(String arg) {
+    public StringTest() {
 
-        super(arg, "string", "{}");
+        super("string", "{}");
     }
 
     // TODO implement primitive specific test cases

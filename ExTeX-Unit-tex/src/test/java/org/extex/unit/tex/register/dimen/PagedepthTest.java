@@ -41,12 +41,10 @@ public class PagedepthTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PagedepthTest(String arg) {
+    public PagedepthTest() {
 
-        super(arg, "pagedepth", "", "0.0pt");
+        super("pagedepth", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

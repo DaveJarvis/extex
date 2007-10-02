@@ -32,12 +32,10 @@ public class AbovewithdelimsTest extends ExTeXLauncher {
 
     /**
      * Constructor for AbovewithdelimsTest.
-     *
-     * @param arg the name
      */
-    public AbovewithdelimsTest(String arg) {
+    public AbovewithdelimsTest() {
 
-        super(arg);
+        super();
     }
 
     /**
@@ -53,4 +51,5 @@ public class AbovewithdelimsTest extends ExTeXLauncher {
                 "Missing $ inserted");
     }
 
+    //TODO: write more primitive specific test cases
 }

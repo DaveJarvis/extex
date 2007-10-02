@@ -42,12 +42,10 @@ public class SplitfirstmarksTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for SplitfirstmarkTest.
-     * 
-     * @param arg the name
      */
-    public SplitfirstmarksTest(String arg) {
+    public SplitfirstmarksTest() {
 
-        super(arg, "splitfirstmarks", "0");
+        super("splitfirstmarks", "0");
         setConfig("etex-test");
     }
 

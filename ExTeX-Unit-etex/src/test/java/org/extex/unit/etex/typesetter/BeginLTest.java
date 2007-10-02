@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\beginL</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,13 +31,12 @@ public class BeginLTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public BeginLTest(String arg) {
+    public BeginLTest() {
 
-        super(arg, "beginL", "", "\\TeXXeTstate=1");
+        super("beginL", "", "\\TeXXeTstate=1");
         setConfig("etex-test");
     }
 
+    // TODO implement primitive specific test cases
 }

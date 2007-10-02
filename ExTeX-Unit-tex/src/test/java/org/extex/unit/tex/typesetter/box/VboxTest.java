@@ -43,12 +43,10 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VboxTest.
-     * 
-     * @param arg the name
      */
-    public VboxTest(String arg) {
+    public VboxTest() {
 
-        super(arg, "vbox", "{}");
+        super("vbox", "{}");
     }
 
     /**

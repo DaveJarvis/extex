@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VsplitTest.
-     * 
-     * @param arg the name
      */
-    public VsplitTest(String arg) {
+    public VsplitTest() {
 
-        super(arg, "vsplit", "42 to 1pt", "\\setbox42=\\vbox{A}");
+        super("vsplit", "42 to 1pt", "\\setbox42=\\vbox{A}");
     }
 
     // TODO implement primitive specific test cases

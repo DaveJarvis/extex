@@ -42,12 +42,10 @@ public class BadnessTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public BadnessTest(String arg) {
+    public BadnessTest() {
 
-        super(arg, "badness", "", "0");
+        super("badness", "", "0");
     }
 
     // TODO implement the primitive specific test cases

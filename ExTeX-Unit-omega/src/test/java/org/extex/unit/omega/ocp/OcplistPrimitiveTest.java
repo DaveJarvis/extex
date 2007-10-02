@@ -43,12 +43,10 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OcplistPrimitiveTest(String arg) {
+    public OcplistPrimitiveTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

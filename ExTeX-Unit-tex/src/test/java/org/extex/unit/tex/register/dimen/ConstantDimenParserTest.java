@@ -32,12 +32,10 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ConstantDimenParserTest(String arg) {
+    public ConstantDimenParserTest() {
 
-        super(arg);
+        super();
     }
 
     /**

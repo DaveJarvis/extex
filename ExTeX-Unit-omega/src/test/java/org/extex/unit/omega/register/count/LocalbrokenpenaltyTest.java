@@ -42,12 +42,10 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LocalbrokenpenaltyTest(String arg) {
+    public LocalbrokenpenaltyTest() {
 
-        super(arg, "localbrokenpenalty", " ", "0");
+        super("localbrokenpenalty", " ", "0");
         setConfig("omega-test");
     }
 

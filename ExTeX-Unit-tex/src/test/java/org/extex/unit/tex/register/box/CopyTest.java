@@ -43,12 +43,10 @@ public class CopyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CopyTest(String arg) {
+    public CopyTest() {
 
-        super(arg, "copy", "1", "0");
+        super("copy", "1", "0");
     }
 
     /**

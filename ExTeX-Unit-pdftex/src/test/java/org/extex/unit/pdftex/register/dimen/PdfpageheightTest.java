@@ -42,12 +42,10 @@ public class PdfpageheightTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfpageheightTest(String arg) {
+    public PdfpageheightTest() {
 
-        super(arg, "pdfpageheight", "", "845.04684pt");
+        super("pdfpageheight", "", "845.04684pt");
         setConfig("pdftex-test");
     }
 

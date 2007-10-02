@@ -66,12 +66,10 @@ public class IfTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfTest(String arg) {
+    public IfTest() {
 
-        super(arg, "if", " xx");
+        super("if", " xx");
     }
 
     /**

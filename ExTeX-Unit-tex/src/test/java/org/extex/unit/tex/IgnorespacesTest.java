@@ -42,12 +42,11 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RelaxTest.
-     *
-     * @param arg the name
      */
-    public IgnorespacesTest(String arg) {
+    public IgnorespacesTest() {
 
-        super(arg, "ignorespaces", "");
+        super("ignorespaces", "");
     }
 
+    //TODO: write more primitive specific test cases
 }

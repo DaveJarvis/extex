@@ -43,12 +43,10 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CloseoutTest(String arg) {
+    public CloseoutTest() {
 
-        super(arg, "closeout", "1");
+        super("closeout", "1");
     }
 
     /**

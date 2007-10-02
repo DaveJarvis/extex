@@ -41,12 +41,10 @@ public class AbovedisplayskipTest extends AbstractSkipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public AbovedisplayskipTest(String arg) {
+    public AbovedisplayskipTest() {
 
-        super(arg, "abovedisplayskip", "", "0.0pt");
+        super("abovedisplayskip", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

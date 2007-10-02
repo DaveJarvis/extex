@@ -42,12 +42,10 @@ public class ImportTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for NamespaceTest.
-     * 
-     * @param arg the name
      */
-    public ImportTest(String arg) {
+    public ImportTest() {
 
-        super(arg, "import", "{a.b.c}", DEFINE_BRACES);
+        super("import", "{a.b.c}", DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

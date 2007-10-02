@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class BotmarkTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for BotmarkTest.
-     * 
-     * @param arg the name
      */
-    public BotmarkTest(String arg) {
+    public BotmarkTest() {
 
-        super(arg, "botmark", "");
+        super("botmark", "");
     }
 
     // TODO implement primitive specific test cases

@@ -32,12 +32,10 @@ public class PdfincludecharsTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfincludecharsTest(String arg) {
+    public PdfincludecharsTest() {
 
-        super(arg, "pdfincludechars", "\\f{}", "\\font\\f=cmr10 "
+        super("pdfincludechars", "\\f{}", "\\font\\f=cmr10 "
                 + "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }

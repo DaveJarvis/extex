@@ -43,12 +43,10 @@ public class ExportTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for NamespaceTest.
-     * 
-     * @param arg the name
      */
-    public ExportTest(String arg) {
+    public ExportTest() {
 
-        super(arg, "export", "{\\a}", DEFINE_BRACES);
+        super("export", "{\\a}", DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

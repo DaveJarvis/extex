@@ -19,6 +19,11 @@
 
 package org.extex.typesetter.type.node;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
@@ -28,6 +33,7 @@ import org.extex.core.glue.GlueComponent;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -180,7 +186,9 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      * Test method for
      * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(java.lang.StringBuffer, java.lang.String, int, int)}.
      */
-    public final void ___testToStringStringBufferStringIntInt() {
+    @Test
+    @Ignore
+    public final void testToStringStringBufferStringIntInt() {
 
         fail("Not yet implemented"); // TODO
     }

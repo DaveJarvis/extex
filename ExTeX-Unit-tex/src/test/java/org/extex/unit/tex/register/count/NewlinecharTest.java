@@ -41,12 +41,10 @@ public class NewlinecharTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public NewlinecharTest(String arg) {
+    public NewlinecharTest() {
 
-        super(arg, "newlinechar", "", "0");
+        super("newlinechar", "", "0");
     }
 
     //TODO implement the primitive specific test cases

@@ -42,12 +42,10 @@ public class IfdimTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfdimTest(String arg) {
+    public IfdimTest() {
 
-        super(arg, "ifdim", " 0pt=0in ");
+        super("ifdim", " 0pt=0in ");
     }
 
     /**

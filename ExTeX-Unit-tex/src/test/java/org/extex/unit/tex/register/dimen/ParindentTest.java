@@ -41,12 +41,10 @@ public class ParindentTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ParindentTest(String arg) {
+    public ParindentTest() {
 
-        super(arg, "parindent", "", "0.0pt");
+        super("parindent", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

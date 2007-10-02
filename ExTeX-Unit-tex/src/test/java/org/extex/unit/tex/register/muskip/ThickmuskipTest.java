@@ -41,12 +41,10 @@ public class ThickmuskipTest extends AbstractMuskipRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ThickmuskipTest(String arg) {
+    public ThickmuskipTest() {
 
-        super(arg, "thickmuskip", "", "0.0mu");
+        super("thickmuskip", "", "0.0mu");
     }
 
     // TODO implement the primitive specific test cases

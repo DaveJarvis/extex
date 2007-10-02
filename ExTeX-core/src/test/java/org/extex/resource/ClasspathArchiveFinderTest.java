@@ -19,16 +19,20 @@
 
 package org.extex.resource;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.TestCase;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationLoader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
+import org.junit.Test;
 
 /**
  * This is a test suite for the classpath archive finder.
@@ -36,7 +40,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5417 $
  */
-public class ClasspathArchiveFinderTest extends TestCase {
+public class ClasspathArchiveFinderTest {
 
     /**
      * The constant <tt>CFG</tt> contains the configuration.
@@ -200,7 +204,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void test1() throws Exception {
+    @Test
+    public void test1() throws Exception {
 
         try {
             new ClasspathArchiveFinder(null);
@@ -216,7 +221,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource0() throws Exception {
+    @Test
+    public void testFindResource0() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
@@ -229,7 +235,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource1() throws Exception {
+    @Test
+    public void testFindResource1() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
@@ -242,7 +249,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource2() throws Exception {
+    @Test
+    public void testFindResource2() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
@@ -255,7 +263,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource3() throws Exception {
+    @Test
+    public void testFindResource3() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
@@ -268,7 +277,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource4() throws Exception {
+    @Test
+    public void testFindResource4() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
@@ -281,7 +291,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public final void testFindResource5() throws Exception {
+    @Test
+    public void testFindResource5() throws Exception {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 

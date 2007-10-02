@@ -43,12 +43,10 @@ public class UnexpandedTest extends ExTeXLauncher {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public UnexpandedTest(String arg) {
+    public UnexpandedTest() {
 
-        super(arg);
+        super();
         setConfig("etex-test");
     }
 

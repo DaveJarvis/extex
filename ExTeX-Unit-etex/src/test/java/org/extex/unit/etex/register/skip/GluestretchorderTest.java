@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,12 +43,10 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public GluestretchorderTest(String arg) {
+    public GluestretchorderTest() {
 
-        super(arg, "gluestretchorder", "\\skip0 ", "0");
+        super("gluestretchorder", "\\skip0 ", "0");
         setConfig("etex-test");
     }
 

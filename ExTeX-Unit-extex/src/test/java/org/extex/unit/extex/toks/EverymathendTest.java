@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class EverymathendTest extends AbstractToksRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EverymathendTest(String arg) {
+    public EverymathendTest() {
 
-        super(arg, "everymathend", "", "");
+        super("everymathend", "", "");
         setConfig("extex-test");
     }
 

@@ -43,12 +43,10 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IntegerTest(String arg) {
+    public IntegerTest() {
 
-        super(arg, "integer", "\\x=123", "123");
+        super("integer", "\\x=123", "123");
         setConfig("extex-test");
     }
 

@@ -42,12 +42,10 @@ public class InterlinepenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public InterlinepenaltyTest(String arg) {
+    public InterlinepenaltyTest() {
 
-        super(arg, "interlinepenalty", "", "0");
+        super("interlinepenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

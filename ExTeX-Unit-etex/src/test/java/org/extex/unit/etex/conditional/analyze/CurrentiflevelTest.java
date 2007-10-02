@@ -43,12 +43,10 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public CurrentiflevelTest(String arg) {
+    public CurrentiflevelTest() {
 
-        super(arg, "currentiflevel", "0");
+        super("currentiflevel", "0");
         setConfig("etex-test");
     }
 

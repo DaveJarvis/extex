@@ -45,12 +45,10 @@ public class NoDefaultInputTranslationTest
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NoDefaultInputTranslationTest(String arg) {
+    public NoDefaultInputTranslationTest() {
 
-        super(arg, "noDefaultInputTranslation", " onebyte ");
+        super("noDefaultInputTranslation", " onebyte ");
         setConfig("omega-test");
     }
 

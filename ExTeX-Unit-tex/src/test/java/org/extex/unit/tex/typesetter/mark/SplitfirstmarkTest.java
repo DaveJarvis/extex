@@ -42,12 +42,10 @@ public class SplitfirstmarkTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for SplitfirstmarkTest.
-     * 
-     * @param arg the name
      */
-    public SplitfirstmarkTest(String arg) {
+    public SplitfirstmarkTest() {
 
-        super(arg, "splitfirstmark", "");
+        super("splitfirstmark", "");
     }
 
     // TODO implement primitive specific test cases

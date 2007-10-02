@@ -42,12 +42,10 @@ public class IfoddTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfoddTest(String arg) {
+    public IfoddTest() {
 
-        super(arg, "ifodd", "3");
+        super("ifodd", "3");
     }
 
     /**

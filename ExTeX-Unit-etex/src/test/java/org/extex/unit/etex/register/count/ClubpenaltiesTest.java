@@ -42,12 +42,10 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ClubpenaltiesTest(String arg) {
+    public ClubpenaltiesTest() {
 
-        super(arg, "clubpenalties", "255", "0");
+        super("clubpenalties", "255", "0");
         setConfig("etex-test");
     }
 

@@ -32,12 +32,10 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EnsureloadedTest(String arg) {
+    public EnsureloadedTest() {
 
-        super(arg, "ensureloaded", "{tex}");
+        super("ensureloaded", "{tex}");
         setConfig("extex-test");
     }
 

@@ -43,12 +43,10 @@ public class FiTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public FiTest(String arg) {
+    public FiTest() {
 
-        super(arg);
+        super();
     }
 
     /**

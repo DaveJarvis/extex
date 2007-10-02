@@ -29,14 +29,11 @@ public class MathbinTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathbinTest.
-     *
-     * @param arg the name
      */
-    public MathbinTest(String arg) {
+    public MathbinTest() {
 
-        super(arg, "mathbin");
+        super("mathbin");
     }
 
     //TODO implement more primitive specific test cases
-
 }

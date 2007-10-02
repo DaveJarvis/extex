@@ -32,12 +32,10 @@ public class ErrmessageTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ErrmessageTest(String arg) {
+    public ErrmessageTest() {
 
-        super(arg);
+        super();
     }
 
     /**

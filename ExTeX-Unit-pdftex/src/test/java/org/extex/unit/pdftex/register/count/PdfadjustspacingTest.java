@@ -42,12 +42,10 @@ public class PdfadjustspacingTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfadjustspacingTest(String arg) {
+    public PdfadjustspacingTest() {
 
-        super(arg, "pdfadjustspacing", "", "0");
+        super("pdfadjustspacing", "", "0");
         setConfig("pdftex-test");
     }
 

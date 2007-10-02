@@ -29,14 +29,11 @@ public class MathaccentTest extends AbstractMathTester {
 
     /**
      * Constructor for MathaccentTest.
-     *
-     * @param arg the name
      */
-    public MathaccentTest(String arg) {
+    public MathaccentTest() {
 
-        super(arg, "mathaccent", "12 a");
+        super("mathaccent", "12 a");
     }
 
     //TODO implement the primitive specific test cases
-
 }

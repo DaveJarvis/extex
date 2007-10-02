@@ -43,12 +43,10 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for HboxTest.
-     * 
-     * @param arg the name
      */
-    public HboxTest(String arg) {
+    public HboxTest() {
 
-        super(arg, "hbox", "{} ");
+        super("hbox", "{} ");
     }
 
     /**

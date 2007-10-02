@@ -43,12 +43,10 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ScantokensTest(String arg) {
+    public ScantokensTest() {
 
-        super(arg, "scantokens", "{}");
+        super("scantokens", "{}");
         setConfig("etex-test");
     }
 

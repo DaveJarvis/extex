@@ -34,12 +34,10 @@ public class TypesetterTest extends ExTeXLauncher {
 
     /**
      * Constructor for MathaccentTest.
-     *
-     * @param arg the name
      */
-    public TypesetterTest(String arg) {
+    public TypesetterTest() {
 
-        super(arg);
+        super();
     }
 
     /**

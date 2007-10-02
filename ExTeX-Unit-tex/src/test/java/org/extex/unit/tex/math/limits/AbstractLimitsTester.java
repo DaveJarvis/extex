@@ -58,27 +58,25 @@ public class AbstractLimitsTester extends ExTeXLauncher {
     /**
      * Creates a new object.
      * 
-     * @param arg the name
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      */
-    public AbstractLimitsTester(String arg, String primitive, String arguments) {
+    public AbstractLimitsTester(String primitive, String arguments) {
 
-        this(arg, primitive, arguments, "");
+        this(primitive, arguments, "");
     }
 
     /**
      * Creates a new object.
      * 
-     * @param arg the name
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      * @param prepare the code to insert before the invocation
      */
-    public AbstractLimitsTester(String arg, String primitive, String arguments,
+    public AbstractLimitsTester(String primitive, String arguments,
             String prepare) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.arguments = arguments;
     }

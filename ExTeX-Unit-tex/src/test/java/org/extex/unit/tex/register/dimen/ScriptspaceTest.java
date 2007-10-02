@@ -41,12 +41,10 @@ public class ScriptspaceTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ScriptspaceTest(String arg) {
+    public ScriptspaceTest() {
 
-        super(arg, "scriptspace", "", "0.0pt");
+        super("scriptspace", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

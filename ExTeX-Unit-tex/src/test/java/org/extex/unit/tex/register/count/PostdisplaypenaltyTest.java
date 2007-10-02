@@ -42,12 +42,10 @@ public class PostdisplaypenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PostdisplaypenaltyTest(String arg) {
+    public PostdisplaypenaltyTest() {
 
-        super(arg, "postdisplaypenalty", "", "0");
+        super("postdisplaypenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

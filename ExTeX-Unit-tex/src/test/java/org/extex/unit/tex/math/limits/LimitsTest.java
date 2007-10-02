@@ -29,12 +29,11 @@ public class LimitsTest extends AbstractLimitsTester {
 
     /**
      * Constructor for LimitsTest.
-     *
-     * @param arg the name
      */
-    public LimitsTest(String arg) {
+    public LimitsTest() {
 
-        super(arg, "limits", "");
+        super("limits", "");
     }
 
+    //TODO: write more primitive specific test cases
 }

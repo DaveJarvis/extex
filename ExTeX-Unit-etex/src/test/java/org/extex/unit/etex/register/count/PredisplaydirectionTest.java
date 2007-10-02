@@ -42,12 +42,10 @@ public class PredisplaydirectionTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PredisplaydirectionTest(String arg) {
+    public PredisplaydirectionTest() {
 
-        super(arg, "predisplaydirection", "", "0");
+        super("predisplaydirection", "", "0");
         setConfig("etex-test");
     }
 

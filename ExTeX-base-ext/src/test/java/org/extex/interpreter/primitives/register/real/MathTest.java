@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.register.real;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * A test for the the mathematical function with real register.
@@ -38,7 +39,7 @@ public class MathTest extends ExTeXLauncher {
      */
     public MathTest() {
 
-        super("MathTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -52,6 +53,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathAbs01() throws Exception {
 
         assertSuccess(
@@ -70,6 +72,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathAbs02() throws Exception {
 
         assertSuccess(
@@ -88,6 +91,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathACos01() throws Exception {
 
         assertSuccess(
@@ -106,6 +110,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathAdd01() throws Exception {
 
         assertSuccess(
@@ -124,6 +129,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathASin01() throws Exception {
 
         assertSuccess(
@@ -142,6 +148,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathATan01() throws Exception {
 
         assertSuccess(
@@ -160,6 +167,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathATanTwo01() throws Exception {
 
         assertSuccess(
@@ -178,6 +186,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathCeil01() throws Exception {
 
         assertSuccess(
@@ -196,6 +205,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathCos01() throws Exception {
 
         assertSuccess(
@@ -214,6 +224,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathDiv01() throws Exception {
 
         assertSuccess(
@@ -232,6 +243,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathE01() throws Exception {
 
         assertSuccess(
@@ -250,6 +262,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathExp01() throws Exception {
 
         assertSuccess(
@@ -268,6 +281,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathFloor01() throws Exception {
 
         assertSuccess(
@@ -286,6 +300,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathLog01() throws Exception {
 
         assertSuccess(
@@ -304,6 +319,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMax01() throws Exception {
 
         assertSuccess(
@@ -322,6 +338,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMin01() throws Exception {
 
         assertSuccess(
@@ -340,6 +357,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMPow01() throws Exception {
 
         assertSuccess(
@@ -358,6 +376,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathMul01() throws Exception {
 
         assertSuccess(
@@ -376,6 +395,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathPi01() throws Exception {
 
         assertSuccess(
@@ -394,6 +414,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathPi02() throws Exception {
 
         assertSuccess(
@@ -413,6 +434,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathRint01() throws Exception {
 
         assertSuccess(
@@ -431,6 +453,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathRound01() throws Exception {
 
         assertSuccess(
@@ -449,6 +472,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathSin01() throws Exception {
 
         assertSuccess(
@@ -467,6 +491,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathSqrt01() throws Exception {
 
         assertSuccess(
@@ -485,6 +510,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathSub01() throws Exception {
 
         assertSuccess(
@@ -503,6 +529,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathTan01() throws Exception {
 
         assertSuccess(
@@ -521,6 +548,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathToDegrees01() throws Exception {
 
         assertSuccess(
@@ -539,6 +567,7 @@ public class MathTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testMathToRadians01() throws Exception {
 
         assertSuccess(

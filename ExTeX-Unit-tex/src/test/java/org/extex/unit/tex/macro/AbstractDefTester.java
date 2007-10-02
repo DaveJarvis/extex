@@ -42,13 +42,11 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name
      * @param def the name of the primitive
      */
-    public AbstractDefTester(String name, String def) {
+    public AbstractDefTester(String def) {
 
-        super(name);
+        super();
         this.def = def;
     }
 

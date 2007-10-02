@@ -34,12 +34,10 @@ public class PdfannotTest
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfannotTest(String arg) {
+    public PdfannotTest() {
 
-        super(arg, "pdfannot", "{}", "\\pdfoutput=1 ");
+        super("pdfannot", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

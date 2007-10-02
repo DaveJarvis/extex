@@ -32,12 +32,10 @@ public class HyphenTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public HyphenTest(String arg) {
+    public HyphenTest() {
 
-        super(arg, "-", "");
+        super("-", "");
     }
 
     /**

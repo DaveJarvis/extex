@@ -47,12 +47,10 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RelaxTest.
-     *
-     * @param arg the name
      */
-    public ScrollmodeTest(String arg) {
+    public ScrollmodeTest() {
 
-        super(arg, "scrollmode", "");
+        super("scrollmode", "");
     }
 
     /**

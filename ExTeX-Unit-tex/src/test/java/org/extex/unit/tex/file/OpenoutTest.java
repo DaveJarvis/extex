@@ -47,12 +47,10 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public OpenoutTest(String arg) {
+    public OpenoutTest() {
 
-        super(arg, "openout", "1 texput.test");
+        super("openout", "1 texput.test");
     }
 
     /**

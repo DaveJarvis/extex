@@ -42,12 +42,10 @@ public class HbadnessTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HbadnessTest(String arg) {
+    public HbadnessTest() {
 
-        super(arg, "hbadness", "", "0");
+        super("hbadness", "", "0");
     }
 
     // TODO implement the primitive specific test cases

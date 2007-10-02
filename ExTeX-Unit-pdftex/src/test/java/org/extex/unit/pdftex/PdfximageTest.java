@@ -32,12 +32,10 @@ public class PdfximageTest extends NoFlagsButImmediateAndProtectedPrimitiveTeste
 
     /**
      * Creates a new instance.
-     *
-     * @param arg the name
      */
-    public PdfximageTest(String arg) {
+    public PdfximageTest() {
 
-        super(arg, "pdfximage", "{}", "\\pdfoutput=1 ");
+        super("pdfximage", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

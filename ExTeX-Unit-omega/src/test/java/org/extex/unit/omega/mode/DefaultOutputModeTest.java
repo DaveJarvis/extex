@@ -43,12 +43,10 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DefaultOutputModeTest(String arg) {
+    public DefaultOutputModeTest() {
 
-        super(arg, "DefaultOutputMode", " onebyte ");
+        super("DefaultOutputMode", " onebyte ");
         setConfig("omega-test");
     }
 

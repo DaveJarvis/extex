@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.register.transform;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * A test for the transform register.
@@ -38,7 +39,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      */
     public TransformRegisterTest() {
 
-        super("TransformRegisterTest");
+        super();
 
         setConfig("base-ext-test.xml");
     }
@@ -54,6 +55,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(
@@ -73,6 +75,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -90,6 +93,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -108,6 +112,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -127,6 +132,7 @@ public class TransformRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGlobal4() throws Exception {
 
         assertSuccess(// --- input code ---

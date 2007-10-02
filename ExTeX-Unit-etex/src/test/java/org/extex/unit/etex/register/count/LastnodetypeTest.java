@@ -42,12 +42,10 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LastnodetypeTest(String arg) {
+    public LastnodetypeTest() {
 
-        super(arg, "lastnodetype", "", "-1");
+        super("lastnodetype", "", "-1");
         setConfig("etex-test");
     }
 

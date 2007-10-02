@@ -41,12 +41,10 @@ public class PagefillstretchTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PagefillstretchTest(String arg) {
+    public PagefillstretchTest() {
 
-        super(arg, "pagefillstretch", "", "0.0pt");
+        super("pagefillstretch", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

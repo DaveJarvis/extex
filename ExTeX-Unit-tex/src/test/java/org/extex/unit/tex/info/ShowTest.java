@@ -32,12 +32,10 @@ public class ShowTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ShowTest(String arg) {
+    public ShowTest() {
 
-        super(arg, "show", "\\count", "", "> \\count=\\count.\n");
+        super("show", "\\count", "", "> \\count=\\count.\n");
     }
 
     /**

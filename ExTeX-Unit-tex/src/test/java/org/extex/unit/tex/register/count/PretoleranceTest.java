@@ -42,12 +42,10 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PretoleranceTest(String arg) {
+    public PretoleranceTest() {
 
-        super(arg, "pretolerance", "", "0");
+        super("pretolerance", "", "0");
     }
 
     // TODO implement the primitive specific test cases

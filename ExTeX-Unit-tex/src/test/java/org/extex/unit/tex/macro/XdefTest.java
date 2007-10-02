@@ -29,12 +29,10 @@ public class XdefTest extends AbstractXdefTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public XdefTest(String arg) {
+    public XdefTest() {
 
-        super(arg, "xdef");
+        super("xdef");
     }
 
 }

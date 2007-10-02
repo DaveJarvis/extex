@@ -41,12 +41,10 @@ public class ClubpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ClubpenaltyTest(String arg) {
+    public ClubpenaltyTest() {
 
-        super(arg, "clubpenalty", "", "0");
+        super("clubpenalty", "", "0");
     }
 
     //TODO implement the primitive specific test cases

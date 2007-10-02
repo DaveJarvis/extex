@@ -24,7 +24,7 @@ import org.junit.Test;
 /**
  * This abstract test suite contains some tests to check that all flags but the
  * global flag lead to an error.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -53,129 +53,116 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param args the arguments for assignment
      */
-    public NoFlagsButGlobalPrimitiveTester(String arg,
-            String primitive, String args) {
+    public NoFlagsButGlobalPrimitiveTester(String primitive, String args) {
 
-        super(arg);
+        super();
         this.primitive = primitive;
         this.arguments = args;
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param args the arguments for assignment
      * @param prepare the preparation code
      */
-    public NoFlagsButGlobalPrimitiveTester(String arg,
-            String primitive, String args, String prepare) {
+    public NoFlagsButGlobalPrimitiveTester(String primitive, String args,
+            String prepare) {
 
-        this(arg, primitive, args);
+        this(primitive, args);
         this.prepare = DEFINE_BRACES + prepare;
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param args the arguments for assignment
      * @param prepare the preparation code
      * @param out prefix of the output message
      */
-    public NoFlagsButGlobalPrimitiveTester(String arg,
-            String primitive, String args, String prepare,
-            String out) {
+    public NoFlagsButGlobalPrimitiveTester(String primitive, String args,
+            String prepare, String out) {
 
-        this(arg, primitive, args, prepare);
+        this(primitive, args, prepare);
         this.out = out;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\immediate</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\immediate</tt> flag leads
+     * to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoImmediateFlag() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                prepare + "\\immediate\\" + primitive + arguments,
-                //--- log message ---
-                out + "You can\'t use the prefix `\\immediate\' "
-                        + "with the control sequence"
-                        + (primitive.length() < 16 ? " " : "\n") + "\\"
-                        + primitive);
+        // --- input code ---
+            prepare + "\\immediate\\" + primitive + arguments,
+            // --- log message ---
+            out + "You can\'t use the prefix `\\immediate\' "
+                    + "with the control sequence"
+                    + (primitive.length() < 16 ? " " : "\n") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\long</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\long</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoLongFlag() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                prepare + "\\long\\" + primitive + arguments,
-                //--- log message ---
-                out + "You can\'t use the prefix `\\long\' "
-                        + "with the control sequence"
-                        + (primitive.length() > 19 ? "\n" : " ") + "\\"
-                        + primitive);
+        // --- input code ---
+            prepare + "\\long\\" + primitive + arguments,
+            // --- log message ---
+            out + "You can\'t use the prefix `\\long\' "
+                    + "with the control sequence"
+                    + (primitive.length() > 19 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\outer</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\outer</tt> flag leads to an
+     * error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                prepare + "\\outer\\" + primitive + arguments,
-                //--- log message ---
-                out + "You can\'t use the prefix `\\outer\' "
-                + "with the control sequence"
-                + (primitive.length() > 18 ? "\n" : " ") + "\\"
-                + primitive);
+        // --- input code ---
+            prepare + "\\outer\\" + primitive + arguments,
+            // --- log message ---
+            out + "You can\'t use the prefix `\\outer\' "
+                    + "with the control sequence"
+                    + (primitive.length() > 18 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the <tt>\protected</tt> flag leads to an error.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the <tt>\protected</tt> flag leads
+     * to an error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-//    @Test
-//    public void testNoProtectedFlag() throws Exception {
-//
-//        assertFailure(
-//        //--- input code ---
-//                prepare + "\\protected\\" + primitive + arguments,
-//                //--- log message ---
-//                out + "You can\'t use the prefix `\\protected\' "
-//                        + "with the control sequence"
-//                        + (primitive.length() < 16 ? " " : "\n") + "\\"
-//                        + primitive);
-//    }
-
+    // @Test
+    // public void testNoProtectedFlag() throws Exception {
+    //
+    // assertFailure(
+    // //--- input code ---
+    // prepare + "\\protected\\" + primitive + arguments,
+    // //--- log message ---
+    // out + "You can\'t use the prefix `\\protected\' "
+    // + "with the control sequence"
+    // + (primitive.length() < 16 ? " " : "\n") + "\\"
+    // + primitive);
+    // }
 }

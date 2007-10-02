@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for CleadersTest.
-     * 
-     * @param arg the name
      */
-    public CleadersTest(String arg) {
+    public CleadersTest() {
 
-        super(arg, "cleaders", "\\vrule\\vfill");
+        super("cleaders", "\\vrule\\vfill");
     }
 
     // TODO implement primitive specific test cases

@@ -31,12 +31,10 @@ public class DefTest extends AbstractDefTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DefTest(String arg) {
+    public DefTest() {
 
-        super(arg, "def");
+        super("def");
     }
 
     /**

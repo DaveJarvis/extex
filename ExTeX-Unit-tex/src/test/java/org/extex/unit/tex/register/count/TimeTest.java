@@ -62,12 +62,10 @@ public class TimeTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public TimeTest(String arg) {
+    public TimeTest() {
 
-        super(arg, "time", "", getDefaultValue());
+        super("time", "", getDefaultValue());
     }
 
 }

@@ -32,12 +32,10 @@ public class EndcsnameTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public EndcsnameTest(String arg) {
+    public EndcsnameTest() {
 
-        super(arg);
+        super();
     }
 
     /**

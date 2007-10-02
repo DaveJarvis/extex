@@ -44,12 +44,10 @@ public class LastboxTest extends ExTeXLauncher {
 
     /**
      * Constructor for LastboxTest.
-     * 
-     * @param arg the name
      */
-    public LastboxTest(String arg) {
+    public LastboxTest() {
 
-        super(arg);
+        super();
     }
 
     /**

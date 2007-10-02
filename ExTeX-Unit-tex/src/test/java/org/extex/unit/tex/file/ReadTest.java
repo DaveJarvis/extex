@@ -50,12 +50,10 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public ReadTest(String arg) {
+    public ReadTest() {
 
-        super(arg, "read", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
+        super("read", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
     }
 
     /**

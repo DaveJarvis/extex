@@ -42,12 +42,10 @@ public class PagediscardsTest extends AbstractCountArrayTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PagediscardsTest(String arg) {
+    public PagediscardsTest() {
 
-        super(arg, "pagediscards", "255", "0");
+        super("pagediscards", "255", "0");
         setConfig("etex-test");
     }
 

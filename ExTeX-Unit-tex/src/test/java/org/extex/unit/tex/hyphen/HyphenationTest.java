@@ -32,12 +32,10 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public HyphenationTest(String arg) {
+    public HyphenationTest() {
 
-        super(arg, "hyphenation", "{}", DEFINE_BRACES);
+        super("hyphenation", "{}", DEFINE_BRACES);
     }
 
     /**

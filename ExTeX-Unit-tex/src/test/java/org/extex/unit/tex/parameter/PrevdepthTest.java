@@ -43,12 +43,10 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PrevdepthTest(String arg) {
+    public PrevdepthTest() {
 
-        super(arg, "prevdepth", "2pt");
+        super("prevdepth", "2pt");
     }
 
     /**

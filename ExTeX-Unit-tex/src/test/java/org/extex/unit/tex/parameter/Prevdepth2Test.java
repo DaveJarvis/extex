@@ -42,12 +42,11 @@ public class Prevdepth2Test extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for PenaltyTest.
-     * 
-     * @param arg the name
      */
-    public Prevdepth2Test(String arg) {
+    public Prevdepth2Test() {
 
-        super(arg, "prevdepth", "12pt");
+        super("prevdepth", "12pt");
     }
 
+    //TODO: write more primitive specific test cases
 }

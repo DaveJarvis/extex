@@ -43,12 +43,10 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public CurrentifbranchTest(String arg) {
+    public CurrentifbranchTest() {
 
-        super(arg, "currentifbranch", "0");
+        super("currentifbranch", "0");
         setConfig("etex-test");
     }
 

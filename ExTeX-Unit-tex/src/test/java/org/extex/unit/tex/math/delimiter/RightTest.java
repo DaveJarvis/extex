@@ -31,15 +31,12 @@ public class RightTest extends AbstractMathTester {
 
     /**
      * Constructor for RightTest.
-     *
-     * @param arg the name
      */
-    public RightTest(String arg) {
+    public RightTest() {
 
-        super(arg, "right", ". ");
+        super("right", ". ");
         appendToPrepare("\\left. ");
     }
 
     //TODO implement the primitive specific test cases
-
 }

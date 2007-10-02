@@ -43,12 +43,10 @@ public class AccentTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for MathaccentTest.
-     * 
-     * @param arg the name
      */
-    public AccentTest(String arg) {
+    public AccentTest() {
 
-        super(arg, "accent", "13 a");
+        super("accent", "13 a");
     }
 
     /**

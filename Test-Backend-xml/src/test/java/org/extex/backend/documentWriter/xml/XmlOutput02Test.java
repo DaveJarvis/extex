@@ -43,7 +43,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      */
     public XmlOutput02Test() {
 
-        super("xml backend test 02");
+        super();
 
         setConfig("base-xml.xml");
 

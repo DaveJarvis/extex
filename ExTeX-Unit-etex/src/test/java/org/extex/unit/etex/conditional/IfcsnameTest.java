@@ -43,12 +43,10 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public IfcsnameTest(String arg) {
+    public IfcsnameTest() {
 
-        super(arg, "ifcsname", " relax\\endcsname");
+        super("ifcsname", " relax\\endcsname");
         setConfig("etex-test");
     }
 

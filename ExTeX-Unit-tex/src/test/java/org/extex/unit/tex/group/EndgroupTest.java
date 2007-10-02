@@ -43,12 +43,10 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public EndgroupTest(String arg) {
+    public EndgroupTest() {
 
-        super(arg, "endgroup", "", "\\begingroup");
+        super("endgroup", "", "\\begingroup");
     }
 
     /**

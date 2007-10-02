@@ -47,12 +47,10 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RelaxTest.
-     *
-     * @param arg the name
      */
-    public ErrorstopmodeTest(String arg) {
+    public ErrorstopmodeTest() {
 
-        super(arg, "errorstopmode", "");
+        super("errorstopmode", "");
     }
 
     /**

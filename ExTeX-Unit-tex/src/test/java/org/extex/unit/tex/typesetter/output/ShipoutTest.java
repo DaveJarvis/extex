@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,12 +43,10 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for ShipoutTest.
-     * 
-     * @param arg the name
      */
-    public ShipoutTest(String arg) {
+    public ShipoutTest() {
 
-        super(arg, "shipout", "\\box0");
+        super("shipout", "\\box0");
     }
 
     /**

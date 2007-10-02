@@ -44,7 +44,7 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      */
     public PdfITextOutput01Test() {
 
-        super("pdf (iText) backend test 01");
+        super();
 
         // delete temp files after the test
         new File("texput.log").deleteOnExit();

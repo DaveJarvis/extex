@@ -43,12 +43,10 @@ public class ImmediateTest extends PrefixTester {
 
     /**
      * Constructor for RelaxTest.
-     * 
-     * @param arg the name
      */
-    public ImmediateTest(String arg) {
+    public ImmediateTest() {
 
-        super(arg, "immediate");
+        super("immediate");
     }
 
     /**

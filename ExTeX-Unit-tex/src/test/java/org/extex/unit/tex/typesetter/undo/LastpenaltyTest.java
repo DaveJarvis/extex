@@ -43,12 +43,10 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Constructor for LastboxTest.
-     * 
-     * @param arg the name
      */
-    public LastpenaltyTest(String arg) {
+    public LastpenaltyTest() {
 
-        super(arg, "lastpenalty", "", "0");
+        super("lastpenalty", "", "0");
     }
 
     /**

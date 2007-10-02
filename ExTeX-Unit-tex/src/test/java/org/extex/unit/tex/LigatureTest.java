@@ -45,12 +45,10 @@ public class LigatureTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public LigatureTest(String arg) {
+    public LigatureTest() {
 
-        super(arg);
+        super();
     }
 
     /**

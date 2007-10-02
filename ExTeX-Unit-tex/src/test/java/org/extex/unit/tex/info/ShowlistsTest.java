@@ -34,12 +34,10 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public ShowlistsTest(String arg) {
+    public ShowlistsTest() {
 
-        super(arg, "showlists", "");
+        super("showlists", "");
     }
 
     /**

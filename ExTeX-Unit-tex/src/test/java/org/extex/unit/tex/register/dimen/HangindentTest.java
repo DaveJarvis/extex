@@ -41,12 +41,10 @@ public class HangindentTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HangindentTest(String arg) {
+    public HangindentTest() {
 
-        super(arg, "hangindent", "", "0.0pt");
+        super("hangindent", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

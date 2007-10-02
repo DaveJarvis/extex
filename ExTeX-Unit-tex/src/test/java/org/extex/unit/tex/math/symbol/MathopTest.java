@@ -29,12 +29,10 @@ public class MathopTest extends AbstractOperatorTester {
 
     /**
      * Constructor for MathopTest.
-     *
-     * @param arg the name
      */
-    public MathopTest(String arg) {
+    public MathopTest() {
 
-        super(arg, "mathop");
+        super("mathop");
     }
 
     //TODO implement more primitive specific test cases

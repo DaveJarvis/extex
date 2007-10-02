@@ -41,12 +41,10 @@ public class HfuzzTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HfuzzTest(String arg) {
+    public HfuzzTest() {
 
-        super(arg, "hfuzz", "", "0.0pt");
+        super("hfuzz", "", "0.0pt");
     }
 
     // TODO implement the primitive specific test cases

@@ -42,12 +42,10 @@ public class UchyphTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public UchyphTest(String arg) {
+    public UchyphTest() {
 
-        super(arg, "uchyph", "", "0");
+        super("uchyph", "", "0");
     }
 
     // TODO implement the primitive specific test cases

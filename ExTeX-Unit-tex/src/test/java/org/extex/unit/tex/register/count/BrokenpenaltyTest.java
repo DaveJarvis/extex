@@ -42,12 +42,10 @@ public class BrokenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public BrokenpenaltyTest(String arg) {
+    public BrokenpenaltyTest() {
 
-        super(arg, "brokenpenalty", "", "0");
+        super("brokenpenalty", "", "0");
     }
 
     // TODO implement the primitive specific test cases

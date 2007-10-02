@@ -42,12 +42,10 @@ public class DefaulthyphencharTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public DefaulthyphencharTest(String arg) {
+    public DefaulthyphencharTest() {
 
-        super(arg, "defaulthyphenchar", "", "45");
+        super("defaulthyphenchar", "", "45");
     }
 
     // TODO implement the primitive specific test cases

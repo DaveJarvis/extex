@@ -43,12 +43,10 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for UnpenaltyTest.
-     * 
-     * @param arg the name
      */
-    public UnpenaltyTest(String arg) {
+    public UnpenaltyTest() {
 
-        super(arg, "unpenalty", "", "a");
+        super("unpenalty", "", "a");
     }
 
     /**

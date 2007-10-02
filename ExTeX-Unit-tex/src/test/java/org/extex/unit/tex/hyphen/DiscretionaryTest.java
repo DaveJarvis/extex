@@ -32,12 +32,10 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public DiscretionaryTest(String arg) {
+    public DiscretionaryTest() {
 
-        super(arg, "discretionary", "{-}{}{}", DEFINE_BRACES);
+        super("discretionary", "{-}{}{}", DEFINE_BRACES);
     }
 
     /**

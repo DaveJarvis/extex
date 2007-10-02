@@ -31,12 +31,11 @@ public class TextstyleTest extends AbstractMathTester {
 
     /**
      * Constructor for TextstyleTest.
-     *
-     * @param arg the name
      */
-    public TextstyleTest(String arg) {
+    public TextstyleTest() {
 
-        super(arg, "textstyle", "");
+        super("textstyle", "");
     }
 
+    //TODO: write more primitive specific test cases
 }

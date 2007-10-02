@@ -43,12 +43,10 @@ public class NullocplistTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public NullocplistTest(String arg) {
+    public NullocplistTest() {
 
-        super(arg);
+        super();
         setConfig("omega-test");
     }
 

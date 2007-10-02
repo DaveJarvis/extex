@@ -19,11 +19,12 @@
 
 package org.extex.util.file.random;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileInputStream;
 import java.io.RandomAccessFile;
 
-import junit.framework.TestCase;
-
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -32,7 +33,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 5476 $
  */
-public class RandomAccessTest extends TestCase {
+public class RandomAccessTest {
 
     /**
      * The field <tt>SRC_FONT</tt>.
@@ -52,12 +53,10 @@ public class RandomAccessTest extends TestCase {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg0 the name
      */
-    public RandomAccessTest(String arg0) {
+    public RandomAccessTest() {
 
-        super(arg0);
+        super();
     }
 
     /**
@@ -65,6 +64,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         RandomAccessInputStream rar =
@@ -84,6 +84,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         RandomAccessInputStream rar =
@@ -103,6 +104,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         RandomAccessInputStream rar =
@@ -134,6 +136,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         RandomAccessInputStream rar =
@@ -156,6 +159,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         RandomAccessInputStream rar =
@@ -182,6 +186,7 @@ public class RandomAccessTest extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test5() throws Exception {
 
         RandomAccessInputStream rar =

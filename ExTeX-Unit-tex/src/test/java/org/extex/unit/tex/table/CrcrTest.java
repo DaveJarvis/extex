@@ -32,12 +32,10 @@ public class CrcrTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public CrcrTest(String arg) {
+    public CrcrTest() {
 
-        super(arg, "crcr", "}", DEFINE_HASH + "\\halign{#\\cr");
+        super("crcr", "}", DEFINE_HASH + "\\halign{#\\cr");
     }
 
     /**

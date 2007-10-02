@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,10 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for LeadersTest.
-     * 
-     * @param arg the name
      */
-    public LeadersTest(String arg) {
+    public LeadersTest() {
 
-        super(arg, "leaders", "\\vrule\\vfil");
+        super("leaders", "\\vrule\\vfil");
     }
 
     // TODO implement primitive specific test cases

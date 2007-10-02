@@ -43,12 +43,10 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public InputlinenoTest(String arg) {
+    public InputlinenoTest() {
 
-        super(arg, "inputlineno", "1");
+        super("inputlineno", "1");
     }
 
     /**

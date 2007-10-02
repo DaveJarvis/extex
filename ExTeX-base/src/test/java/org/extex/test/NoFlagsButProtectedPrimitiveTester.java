@@ -24,7 +24,7 @@ import org.junit.Test;
 /**
  * This class provides an abstract base class containing some test cases for
  * primitives. They verify that prefix macros always lead to an error.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -47,130 +47,118 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
     private String prepare = DEFINE_BRACES;
 
     /**
-     * The field <tt>out</tt> contains the prefix expected on the output stream.
+     * The field <tt>out</tt> contains the prefix expected on the output
+     * stream.
      */
     private String out = "";
 
     /**
      * Creates a new object.
-     *
-     * @param name the name of the test case
+     * 
      * @param primitive the name of the primitive
      * @param arguments additional arguments for the flag test
      */
-    public NoFlagsButProtectedPrimitiveTester(String name,
-            String primitive, String arguments) {
+    public NoFlagsButProtectedPrimitiveTester(String primitive, String arguments) {
 
-        super(name);
+        super();
         this.primitive = primitive;
         this.arguments = arguments;
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test suite
+     * 
      * @param primitive the name of the integer register to test
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      */
-    public NoFlagsButProtectedPrimitiveTester(String arg,
-            String primitive, String arguments, String prepare) {
+    public NoFlagsButProtectedPrimitiveTester(String primitive,
+            String arguments, String prepare) {
 
-        this(arg, primitive, arguments);
+        this(primitive, arguments);
         this.prepare = DEFINE_BRACES + prepare;
     }
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name of the test suite
+     * 
      * @param primitive the name of the integer register to test
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      * @param out the prefix of the expected output
      */
-    public NoFlagsButProtectedPrimitiveTester(String arg,
-            String primitive, String arguments,
-            String prepare, String out) {
+    public NoFlagsButProtectedPrimitiveTester(String primitive,
+            String arguments, String prepare, String out) {
 
-        this(arg, primitive, arguments);
+        this(primitive, arguments);
         this.prepare = DEFINE_BRACES + prepare;
         this.out = out;
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the prefix <tt>\global</tt> leads to the
-     *  expected error message
-     * </testcase>
-     *
+     * <testcase> Test case checking that the prefix <tt>\global</tt> leads to
+     * the expected error message </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoGlobalFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\global\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\global\' with"
-                        + " the control sequence \\" + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\global\\" + primitive + arguments + "\\end",
+            // --- log message ---
+            out + "You can\'t use the prefix `\\global\' with"
+                    + " the control sequence \\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the prefix <tt>\immediate</tt> leads to the
-     *  expected error message
-     * </testcase>
-     *
+     * <testcase> Test case checking that the prefix <tt>\immediate</tt> leads
+     * to the expected error message </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoImmediateFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\immediate\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\immediate\' with"
-                        + " the control sequence"
-                        + (primitive.length() >= 15 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\immediate\\" + primitive + arguments + "\\end",
+            // --- log message ---
+            out + "You can\'t use the prefix `\\immediate\' with"
+                    + " the control sequence"
+                    + (primitive.length() >= 15 ? "\n" : " ") + "\\"
+                    + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the prefix <tt>\long</tt> leads to the
-     *  expected error message
-     * </testcase>
-     *
+     * <testcase> Test case checking that the prefix <tt>\long</tt> leads to
+     * the expected error message </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoLongFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\long\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\long\' with"
-                        + " the control sequence \\" + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\long\\" + primitive + arguments + "\\end",
+            // --- log message ---
+            out + "You can\'t use the prefix `\\long\' with"
+                    + " the control sequence \\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the prefix <tt>\outer</tt> leads to the
-     *  expected error message
-     * </testcase>
-     *
+     * <testcase> Test case checking that the prefix <tt>\outer</tt> leads to
+     * the expected error message </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testNoOuterFlag() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\outer\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\outer\' with"
-                        + " the control sequence \\" + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\outer\\" + primitive + arguments + "\\end",
+            // --- log message ---
+            out + "You can\'t use the prefix `\\outer\' with"
+                    + " the control sequence \\" + primitive);
     }
 
 }

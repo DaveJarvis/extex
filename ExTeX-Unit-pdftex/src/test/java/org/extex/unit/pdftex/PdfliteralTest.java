@@ -32,12 +32,10 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public PdfliteralTest(String arg) {
+    public PdfliteralTest() {
 
-        super(arg, "pdfliteral", "{}", "\\pdfoutput=1 ");
+        super("pdfliteral", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

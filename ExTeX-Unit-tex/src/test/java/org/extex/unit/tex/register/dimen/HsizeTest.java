@@ -41,12 +41,10 @@ public class HsizeTest extends AbstractDimenRegisterTester {
 
     /**
      * Creates a new object.
-     * 
-     * @param arg the name
      */
-    public HsizeTest(String arg) {
+    public HsizeTest() {
 
-        super(arg, "hsize", "", "0.0pt");
+        super("hsize", "", "0.0pt");
         setHsize(false);
     }
 

@@ -47,12 +47,10 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for RelaxTest.
-     *
-     * @param arg the name
      */
-    public NonstopmodeTest(String arg) {
+    public NonstopmodeTest() {
 
-        super(arg, "nonstopmode", "");
+        super("nonstopmode", "");
     }
 
     /**

@@ -48,12 +48,10 @@ public class MemoryTest extends ExTeXLauncher {
 
     /**
      * Constructor for KerningTest.
-     * 
-     * @param arg the name
      */
-    public MemoryTest(String arg) {
+    public MemoryTest() {
 
-        super(arg);
+        super();
     }
 
     /**
