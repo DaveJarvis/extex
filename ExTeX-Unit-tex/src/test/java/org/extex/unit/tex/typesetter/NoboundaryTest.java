@@ -20,6 +20,8 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -46,6 +48,19 @@ public class NoboundaryTest extends ExTeXLauncher {
     public NoboundaryTest() {
 
         super();
+    }
+
+    /**
+     * <testcase> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void test1() throws Exception {
+        
+        assertSuccess("","");
     }
 
     // TODO implement primitive specific test cases

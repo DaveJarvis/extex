@@ -25,6 +25,7 @@ import java.util.Properties;
 import org.extex.test.EqualityValidator;
 import org.extex.test.ExTeXLauncher;
 import org.extex.test.Validator;
+import org.junit.Test;
 
 /**
  * Test for the xml backend.
@@ -67,6 +68,7 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDefaultOutput() throws Exception {
 
         // use default output
@@ -83,6 +85,7 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testOutput() throws Exception {
 
         assertOutput(prop, // --- input code ---

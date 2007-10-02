@@ -24,6 +24,8 @@ import java.util.Properties;
 
 import org.extex.test.EqualityValidator;
 import org.extex.test.ExTeXLauncher;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test for the xml backend (ttf).
@@ -57,6 +59,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      *
      * @throws Exception
      */
+    @Before
     protected void setUp() throws Exception {
 
         prop = new Properties(System.getProperties());
@@ -71,6 +74,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDefaultOutput() throws Exception {
 
         // use default output
@@ -87,6 +91,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testPageSize() throws Exception {
 
         String[] comment = new String[]{"pagesize" // 1
@@ -118,6 +123,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager01() throws Exception {
 
         String[] comment = new String[]{"manager exists" // 1
@@ -150,6 +156,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager02() throws Exception {
 
         String[] comment = new String[]{"manager exists" // 1
@@ -183,6 +190,7 @@ public class XmlOutput02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager03() throws Exception {
 
         String[] comment = new String[]{"manager exists" // 1

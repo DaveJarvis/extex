@@ -28,6 +28,7 @@ import java.util.Calendar;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * Test for fontinst.
@@ -183,6 +184,7 @@ public class FontInst04Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestT1() throws Exception {
 
         setConfig("tex");
@@ -212,6 +214,7 @@ public class FontInst04Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestT2() throws Exception {
 
         setConfig("tex");
@@ -253,6 +256,7 @@ public class FontInst04Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestT3() throws Exception {
 
         setConfig("tex");
@@ -294,6 +298,7 @@ public class FontInst04Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestT4() throws Exception {
 
         setConfig("tex");

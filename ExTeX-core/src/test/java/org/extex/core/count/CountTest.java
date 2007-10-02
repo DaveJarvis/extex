@@ -45,8 +45,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#add(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#add(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -64,12 +63,7 @@ public class CountTest {
     public final void testDivideLong0() {
 
         Count count = new Count(123L);
-        try {
-            count.divide(0);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+        count.divide(0);
     }
 
     /**
@@ -85,24 +79,17 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#divide(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test(expected = ArithmeticException.class)
     public final void testDivideCount0() {
 
         Count count = new Count(123L);
-        try {
-            count.divide(new Count(0));
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+        count.divide(new Count(0));
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#divide(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -126,8 +113,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#set(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#set(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -139,8 +125,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -176,8 +161,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#divide(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -189,8 +173,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#divide(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -226,8 +209,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -239,8 +221,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -264,8 +245,7 @@ public class CountTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.core.count.Count#set(FixedCount)}.
+     * Test method for {@link org.extex.core.count.Count#set(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")

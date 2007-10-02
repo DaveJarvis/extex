@@ -146,17 +146,17 @@ public class LigatureBuilderImplTest {
      */
     private static final int CC_FL = '$';
 
-    /**
-     * The constant <tt>FF</tt> contains the ...
-     */
+    // /**
+    // * The constant <tt>FF</tt> contains the ff ligature.
+    // */
     // private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
-    /**
-     * The constant <tt>FFL</tt> contains the ...
-     */
+    // /**
+    // * The constant <tt>FFL</tt> contains the ffl ligature.
+    // */
     // private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
-    /**
-     * The constant <tt>FL</tt> contains the ...
-     */
+    // /**
+    // * The constant <tt>FL</tt> contains the fl ligature.
+    // */
     // private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
     /**
      * The field <tt>tc1</tt> contains the typesetting context.
@@ -179,7 +179,7 @@ public class LigatureBuilderImplTest {
      * @throws Exception in case of an error
      */
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         if (tc1 == null) {
             tc1 = new TypesettingContextImpl(new MockFont());
@@ -187,7 +187,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -200,7 +200,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -223,7 +223,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -239,7 +239,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -255,7 +255,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -271,7 +271,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -290,7 +290,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -310,7 +310,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -328,7 +328,7 @@ public class LigatureBuilderImplTest {
     }
 
     /**
-     * ...
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */

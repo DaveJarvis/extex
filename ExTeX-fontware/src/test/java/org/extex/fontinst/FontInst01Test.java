@@ -29,6 +29,7 @@ import java.util.Properties;
 
 import org.extex.font.format.texencoding.EncReader;
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * Test for fontinst.
@@ -84,6 +85,7 @@ public class FontInst01Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testMisc01() throws Exception {
 
         setConfig("tex");
@@ -441,6 +443,7 @@ public class FontInst01Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testMisc02() throws Exception {
 
         setConfig("tex");

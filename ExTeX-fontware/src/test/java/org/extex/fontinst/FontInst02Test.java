@@ -27,6 +27,8 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * Test for fontinst.
@@ -89,7 +91,9 @@ public class FontInst02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
-    public void _test1() throws Exception {
+    @Test
+    @Ignore
+    public void test1() throws Exception {
 
         setConfig("tex");
         assertOutput(getMyProps(), // --- input code ---
@@ -122,6 +126,7 @@ public class FontInst02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestOutput() throws Exception {
 
         setConfig("tex");
@@ -152,6 +157,7 @@ public class FontInst02Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestFXLRPL() throws Exception {
 
         setConfig("tex");

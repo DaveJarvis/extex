@@ -141,7 +141,7 @@ public class InteractionTest {
      * @throws Exception in case of an error
      */
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
     }

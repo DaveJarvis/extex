@@ -179,7 +179,7 @@ public class TokenStreamStringImpl32Test {
      * @see junit.framework.TestCase#setUp()
      */
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         fac = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {

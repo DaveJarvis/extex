@@ -30,6 +30,7 @@ import java.io.FileReader;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * Test for fontinst.
@@ -98,6 +99,7 @@ public class FontInst03Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestFXLRMTX() throws Exception {
 
         setConfig("tex");
@@ -148,6 +150,7 @@ public class FontInst03Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestFXLR8RMTX() throws Exception {
 
         setConfig("tex");
@@ -198,6 +201,7 @@ public class FontInst03Test extends ExTeXLauncher {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testTransformTestFXLR8RPL() throws Exception {
 
         setConfig("tex");

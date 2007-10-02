@@ -21,6 +21,8 @@ package org.extex.core;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+
 /**
  * This is the test suite for the class Switch.
  * 
@@ -32,6 +34,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#isOn()}.
      */
+    @Test
     public final void testIsOn1() {
 
         Switch s = new Switch(true);
@@ -41,6 +44,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#isOn()}.
      */
+    @Test
     public final void testIsOn2() {
 
         Switch s = new Switch(false);
@@ -50,6 +54,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#set(boolean)}.
      */
+    @Test
     public final void testSet1() {
 
         Switch s = new Switch(true);
@@ -60,6 +65,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#set(boolean)}.
      */
+    @Test
     public final void testSet2() {
 
         Switch s = new Switch(true);
@@ -70,6 +76,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#set(boolean)}.
      */
+    @Test
     public final void testSet3() {
 
         Switch s = new Switch(false);
@@ -80,6 +87,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#set(boolean)}.
      */
+    @Test
     public final void testSet4() {
 
         Switch s = new Switch(false);
@@ -90,6 +98,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#toString()}.
      */
+    @Test
     public final void testToString1() {
 
         Switch s = new Switch(false);
@@ -99,6 +108,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#toString()}.
      */
+    @Test
     public final void testToString2() {
 
         Switch s = new Switch(true);
@@ -108,6 +118,7 @@ public class SwitchTest {
     /**
      * Test method for {@link org.extex.core.Switch#toString()}.
      */
+    @Test
     public final void testToString3() {
 
         Switch s = new Switch(true);
