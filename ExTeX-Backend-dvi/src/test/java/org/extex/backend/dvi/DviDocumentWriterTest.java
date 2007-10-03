@@ -20,6 +20,7 @@
 package org.extex.backend.dvi;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import junit.framework.TestCase;
@@ -155,24 +156,20 @@ public class DviDocumentWriterTest extends TestCase {
      * org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      * shipout()}.
      * 
-     * @throws Exception if an error occurs
+     * @throws IOException if an error occurs
      */
-    public void testNoOutputStream() throws Exception {
-
-        boolean noOutputStream = false;
+    public void testNoOutputStream() throws IOException {
 
         documentWriter =
                 new DviDocumentWriter(configuration, documentWriterOptions);
         try {
             FixedCount[] pageNo = null;
             documentWriter.shipout(new PageImpl(nodeList, pageNo));
+        } catch (NoOutputStreamException e) {
+            assertTrue(true);
         } catch (GeneralException e) {
-            if (e instanceof NoOutputStreamException) {
-                noOutputStream = true;
-            }
+            assertTrue(false);
         }
-
-        assertTrue(noOutputStream);
     }
 
     /**

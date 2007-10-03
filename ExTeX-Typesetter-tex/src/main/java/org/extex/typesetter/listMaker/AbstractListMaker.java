@@ -45,7 +45,7 @@ import org.extex.typesetter.listMaker.math.MathListMaker;
  * This abstract class provides some methods common to all ListMakers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 5947 $
  */
 public abstract class AbstractListMaker implements TokenDelegateListMaker {
 
@@ -175,14 +175,14 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
         if (next == null) {
             throw new TypesetterException(
                 new MissingMathException(t.toString()));
-        } else if (!next.isa(Catcode.MATHSHIFT)) {
+        } else if (next.isa(Catcode.MATHSHIFT)) {
+            manager.push(//
+                new DisplaymathListMaker(manager, source.getLocator()));
+            source.push(context.getToks("everydisplay"));
+        } else {
             source.push(next);
             manager.push(new MathListMaker(manager, source.getLocator()));
             source.push(context.getToks("everymath"));
-        } else {
-            manager
-                .push(new DisplaymathListMaker(manager, source.getLocator()));
-            source.push(context.getToks("everydisplay"));
         }
         context.setCount("fam", -1, false);
 

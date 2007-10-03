@@ -393,30 +393,21 @@ public class DviDisassemble implements DviProcessor {
 
         if (inString) {
             inString = false;
-            out.print("\"\n");
+            out.println('"');
         }
 
-        if (!showLabel) {
-            // ignore
-        } else if (hexLabel) {
-            String s = Integer.toHexString(off);
-            switch (s.length()) {
-                case 0:
+        if (showLabel) {
+            if (hexLabel) {
+                String s = Integer.toHexString(off);
+                for (int i = 4 - s.length(); i > 0; i--) {
                     out.print('0');
-                case 1:
-                    out.print('0');
-                case 2:
-                    out.print('0');
-                case 3:
-                    out.print('0');
-                default:
-                    // continue
+                }
+                out.print(s);
+            } else {
+                out.print(Integer.toString(off));
             }
-            out.print(s);
-        } else {
-            out.print(Integer.toString(off));
+            out.print('\t');
         }
-        out.print('\t');
     }
 
     /**
