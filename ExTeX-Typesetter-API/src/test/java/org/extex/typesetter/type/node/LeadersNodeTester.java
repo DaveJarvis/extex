@@ -19,6 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -186,41 +187,48 @@ public abstract class LeadersNodeTester {
             };
 
     /**
-     * <testcase> </testcase>
+     * <testcase>Test that null values act like en empty box. </testcase>
      */
-    @Test(expected = NullPointerException.class)
-    public final void testAtShippingError1h() {
+    @Test
+    public final void testNullNull() {
 
-        makeNode(null, null);
+        AbstractLeadersNode node = makeNode(null, null);
+        assertTrue(node.getDepth().eq(Dimen.ZERO));
+        assertTrue(node.getHeight().eq(Dimen.ZERO));
+        assertTrue(node.getWidth().eq(Dimen.ZERO));
+        assertNull(node.getRepeat());
     }
 
     /**
-     * <testcase> </testcase>
+     * <testcase> ... </testcase>
      */
-    @Test(expected = NullPointerException.class)
-    public final void testAtShippingError1v() {
-
-        makeNode(null, null);
-    }
-
-    /**
-     * <testcase> </testcase>
-     */
-    @Test(expected = NullPointerException.class)
+    @Test
     public final void testAtShippingError2h() {
 
-        makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT, null,
-            true), null);
+        AbstractLeadersNode node =
+                makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
+                    null, true), null);
+        assertTrue(node.getDepth().eq(Dimen.ONE_PT));
+        assertTrue(node.getHeight().eq(Dimen.ONE_PT));
+        assertTrue(node.getWidth().eq(Dimen.ZERO));
+        assertNotNull(node.getRepeat());
+        assertTrue(node.getRepeat() instanceof RuleNode);
     }
 
     /**
-     * <testcase> </testcase>
+     * <testcase> ... </testcase>
      */
-    @Test(expected = NullPointerException.class)
+    @Test
     public final void testAtShippingError2v() {
 
-        makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT, null,
-            true), null);
+        AbstractLeadersNode node =
+                makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
+                    null, false), null);
+        assertTrue(node.getDepth().eq(Dimen.ZERO));
+        assertTrue(node.getHeight().eq(Dimen.ZERO));
+        assertTrue(node.getWidth().eq(Dimen.ONE_PT));
+        assertNotNull(node.getRepeat());
+        assertTrue(node.getRepeat() instanceof RuleNode);
     }
 
     /**
