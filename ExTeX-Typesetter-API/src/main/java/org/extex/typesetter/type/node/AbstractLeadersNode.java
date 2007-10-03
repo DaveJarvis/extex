@@ -32,7 +32,7 @@ import org.extex.typesetter.type.OrientedNode;
  * <tt>\leaders</tt>, <tt>\cleaders</tt>, and <tt>\xleaders</tt>.
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -55,7 +55,8 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
     /**
      * Creates a new object.
      * 
-     * @param node the node or node list to stretch or repeat
+     * @param node the node or node list to stretch or repeat; if the node is
+     *        <code>null</code> then it is treated like an empty list
      * @param glue the desired size
      */
     public AbstractLeadersNode(OrientedNode node, FixedGlue glue) {
