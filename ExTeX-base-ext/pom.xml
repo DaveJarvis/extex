@@ -22,6 +22,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>jeval</groupId>
+      <artifactId>jeval</artifactId>
+      <version>0.9.3</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
       <version>0.1-SNAPSHOT</version>

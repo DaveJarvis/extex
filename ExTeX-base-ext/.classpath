@@ -18,6 +18,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-etex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-extex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
-	<classpathentry kind="lib" path="lib/jeval.jar"/>
+	<classpathentry kind="lib" path="../maven2/jeval/jeval/0.9.3/jeval-0.9.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
