@@ -467,7 +467,8 @@ public class TeXTest {
     public void testFile10() throws Exception {
 
         runSuccess(new String[]{"-ini", EMPTY_TEX}, //
-            BANNER_TEX + "(../ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
+            BANNER_TEX
+                    + "(../ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
                     + "*\n" + "No pages of output.\n" + transcript("empty"));
         new File(".", "empty.log").delete();
     }
@@ -1052,7 +1053,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase> This test case validates that -parse_first-line does no harm
+     * when using without a file.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1066,7 +1068,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a existent file ... </testcase>
+     * <testcase> This test case validates that -parse_first-line does no harm
+     * when using on an empty file.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1080,7 +1083,9 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that a existent file ... </testcase>
+     * <testcase> This test case validates that -parse_first-line does evaluate
+     * the first line if one is given. For instance a reference to an undefined
+     * format should lead to an error.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1501,5 +1506,4 @@ public class TeXTest {
             BANNER);
     }
 
-    // TODO add more test cases
 }
