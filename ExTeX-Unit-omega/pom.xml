@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>ExTeX-Typesetter-tex</artifactId>
-  <name>ExTeX Typesetter tex</name>
+  <artifactId>ExTeX-Unit-omega</artifactId>
+  <name>ExTeX Unit omege</name>
   <description>
-    This is the ExTeX typesetter tex.
+    This is the ExTeX unit omega.
   </description>
 
   <packaging>jar</packaging>
