@@ -145,26 +145,28 @@
    <module>ExTeX-Backend-pdfbox</module>
    <module>ExTeX-Backend-ps</module>
    <module>ExTeX-Backend-rtf</module>
-   <!-- <module>ExTeX-Backend-svg</module> -->
-   <!-- <module>ExTeX-Backend-text</module> -->
-   <!-- <module>ExTeX-Backend-xml</module> -->
+   <module>ExTeX-Backend-svg</module>
+   <module>ExTeX-Backend-text</module>
+   <module>ExTeX-Backend-xml</module>
    <module>ExTeX-base</module>
-   <!-- <module>ExTeX-base-ext</module> -->
+   <module>ExTeX-base-ext</module>
    <module>ExTeX-core</module>
-   <module>ExTeX-Font</module>
    <module>ExTeX-Font-API</module>
    <module>ExTeX-Font-tfm</module>
    <module>ExTeX-Font-afm</module>
    <module>ExTeX-Font-otf</module>
-   <!-- <module>ExTeX-fontware</module> -->
+   <module>ExTeX-fontware</module>
    <module>ExTeX-Interpreter-API</module>
-   <module>ExTeX-Interpreter-tex</module>
+   <module>ExTeX-Interpreter-max</module>
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
-   <module>ExTeX-Scanner</module>
    <module>ExTeX-Pdf-API</module>
-   <!-- <module>ExTeX-Scanner32</module> -->
+   <module>ExTeX-Scanner</module>
+   <module>ExTeX-Scanner32</module>
    <module>ExTeX-Scanner-API</module>
+   <module>ExTeX-Typesetter-API</module>
+   <module>ExTeX-Typesetter-core</module>
+   <module>ExTeX-Typesetter-tex</module>
    <module>ExTeX-Unit-color</module>
    <module>ExTeX-Unit-etex</module>
    <module>ExTeX-Unit-extex</module>
