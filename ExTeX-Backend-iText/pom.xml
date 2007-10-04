@@ -23,6 +23,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>itext</groupId>
+      <artifactId>itext</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Pdf-API</artifactId>
       <version>0.1-SNAPSHOT</version>
