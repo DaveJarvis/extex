@@ -66,9 +66,7 @@ import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
  * registers are in fact used with their meaning when the page is shipped in the
  * case of delayed writing.
  * </p>
- * <p>
- * TODO missing documentation
- * </p>
+ *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
@@ -76,7 +74,8 @@ import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
  *    &lang;write&rang;
  *      &rarr; &lang;modifier&rang; <tt>\write</tt> {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
- *        &lang;outfile&nbsp;name&rang;} ...
+ *        &lang;outfile&nbsp;name&rang;} {@link TokenSource#getToken(Context)
+ *        &lang;replacement&nbsp;text&rang;}
  *
  *    &lang;modifier&rang;
  *      &rarr;
