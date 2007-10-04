@@ -63,7 +63,7 @@ public class WhatsItOpenNode extends WhatsItNode {
     /**
      * The field <tt>factory</tt> contains the token stream factory.
      */
-    private TokenStreamFactory factory;
+    private transient TokenStreamFactory factory = null;
 
     /**
      * Creates a new object.

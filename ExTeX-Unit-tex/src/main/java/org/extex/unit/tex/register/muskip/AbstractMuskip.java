@@ -37,6 +37,13 @@ import org.extex.typesetter.exception.TypesetterException;
 public abstract class AbstractMuskip extends AbstractAssignment {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    static final long serialVersionUID = 2007L;
+
+
+    /**
      * Creates a new object.
      * 
      * @param name the name for debugging

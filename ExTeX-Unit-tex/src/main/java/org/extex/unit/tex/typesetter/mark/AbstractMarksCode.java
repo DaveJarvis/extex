@@ -42,6 +42,13 @@ public abstract class AbstractMarksCode extends AbstractCode
             TokensConvertible {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    static final long serialVersionUID = 2007L;
+
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the primitive

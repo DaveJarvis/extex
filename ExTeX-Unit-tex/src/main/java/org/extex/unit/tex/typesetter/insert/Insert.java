@@ -93,7 +93,7 @@ public class Insert extends AbstractCode {
             GroupType.INSERT_GROUP, source.getLastToken());
 
         Mode mode = typesetter.getMode();
-        if (mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {
+        if (mode.isVmode()) {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedInsert");
         }
         typesetter.add(new InsertionNode(index, box.getNodes()));

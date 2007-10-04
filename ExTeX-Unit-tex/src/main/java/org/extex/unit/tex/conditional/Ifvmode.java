@@ -85,7 +85,7 @@ public class Ifvmode extends AbstractIf {
             Typesetter typesetter) throws HelpingException {
 
         Mode mode = typesetter.getMode();
-        return (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL);
+        return mode.isVmode();
     }
 
 }

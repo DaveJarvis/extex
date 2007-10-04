@@ -64,7 +64,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
             throws HelpingException {
 
         Mode mode = typesetter.getMode();
-        if (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL) {
+        if (mode.isVmode()) {
             throw new HelpingException(LocalizerFactory
                     .getLocalizer(AbstractHorizontalCode.class),
                     "TTP.MissingInserted", "}");
@@ -85,7 +85,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
             throws HelpingException, TypesetterException {
 
         Mode mode = typesetter.getMode();
-        if (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL) {
+        if (mode.isVmode()) {
             ListManager man = typesetter.getManager();
             ListMaker hlist = new HorizontalListMaker(man, typesetter
                     .getLocator());

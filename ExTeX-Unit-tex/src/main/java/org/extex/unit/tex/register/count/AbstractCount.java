@@ -32,7 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered count registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -41,8 +41,14 @@ public abstract class AbstractCount extends AbstractAssignment
             InitializableCode {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    static final long serialVersionUID = 2007L;
+
+    /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractCount(String name) {
@@ -53,15 +59,15 @@ public abstract class AbstractCount extends AbstractAssignment
     /**
      * Return the key (the name of the primitive) for the numbered count
      * register.
-     *
+     * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the current register
-     *
-     * @throws HelpingException in case that a derived class need to throw
-     *  an Exception this one is declared.
+     * 
+     * @throws HelpingException in case that a derived class need to throw an
+     *         Exception this one is declared.
      * @throws TypesetterException in case of an error in the typesetter
      */
     protected String getKey(Context context, TokenSource source,
@@ -78,18 +84,18 @@ public abstract class AbstractCount extends AbstractAssignment
 
     /**
      * Initialize the Code with some value coming from a String.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
-     *
+     * 
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public void init(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
 
         if (source == null) {
             return;

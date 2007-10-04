@@ -40,7 +40,6 @@ import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
-import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.CharCode;
 
 /**
@@ -119,7 +118,8 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
             Token token) throws HelpingException, CatcodeException {
 
         UnicodeCharList word = new UnicodeCharList();
-        UnicodeChar uc, lc;
+        UnicodeChar uc;
+        UnicodeChar lc;
 
         for (Token t = token; t != null; t = source.getToken(context)) {
 
@@ -154,7 +154,10 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      */
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+            Typesetter typesetter)
+            throws HelpingException,
+                MissingLeftBraceException,
+                NoHelpException {
 
         Language table = getHyphenationTable(context);
         Token t = source.getNonSpace(context);

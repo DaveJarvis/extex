@@ -30,6 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
+import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
 import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
 import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
@@ -60,6 +61,10 @@ import org.extex.typesetter.Typesetter;
  * 
  * <doc name="patterns">
  * <h3>The Primitive <tt>\patterns</tt></h3>
+ * <p>
+ * The primitive <tt>\patterns</tt> adds values to the set of patterns of the
+ * hyphenation algorithm.
+ * </p>
  * <p>
  * TODO missing documentation
  * </p>
@@ -93,12 +98,14 @@ public class Patterns extends AbstractHyphenationCode {
 
     /**
      * This class provides the token visitor which processes all tokens in the
-     * argument of the <tt>\pattern</tt> macro.
+     * argument of the <tt>\pattern</tt> macro. The return value of the
+     * visitor methods indicates whether or not a continuation of the processing
+     * is necessary.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4770 $
      */
-    private class TV implements TokenVisitor<Object, Object> {
+    private class TV implements TokenVisitor<Boolean, Object> {
 
         /**
          * The field <tt>table</tt> contains the associated table.
@@ -141,9 +148,8 @@ public class Patterns extends AbstractHyphenationCode {
             super();
             this.table = table;
             this.context = context;
-            zero =
-                    context.getTokenFactory().createToken(Catcode.OTHER, '0',
-                        Namespace.DEFAULT_NAMESPACE);
+            zero = context.getTokenFactory().createToken(Catcode.OTHER, '0', //
+                Namespace.DEFAULT_NAMESPACE);
         }
 
         /**
@@ -153,16 +159,16 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the active token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(ActiveCharacterToken token, Object arg)
-                throws Exception {
+        public Boolean visitActive(ActiveCharacterToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -174,14 +180,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the cr token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
          *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
-        public Object visitCr(CrToken token, Object arg) throws Exception {
+        public Boolean visitCr(CrToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -194,16 +201,16 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the control sequence token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(ControlSequenceToken token, Object arg)
-                throws Exception {
+        public Boolean visitEscape(ControlSequenceToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -215,15 +222,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the left brace token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
          *      org.extex.scanner.type.token.LeftBraceToken, java.lang.Object)
          */
-        public Object visitLeftBrace(LeftBraceToken token, Object arg)
-                throws Exception {
+        public Boolean visitLeftBrace(LeftBraceToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -235,15 +242,17 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the letter token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return Boolean.TRUE
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException in case of an error
+         * @throws CatcodeException in case of an error in the token factory
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
          *      org.extex.scanner.type.token.LetterToken, java.lang.Object)
          */
-        public Object visitLetter(LetterToken token, Object arg)
-                throws Exception {
+        public Boolean visitLetter(LetterToken token, Object arg)
+                throws InterpreterException,
+                    CatcodeException {
 
             if (letter) {
                 tokens.add(zero);
@@ -261,7 +270,7 @@ public class Patterns extends AbstractHyphenationCode {
                     Catcode.LETTER, lc, Namespace.DEFAULT_NAMESPACE));
             }
             letter = true;
-            return null;
+            return Boolean.TRUE;
         }
 
         /**
@@ -271,15 +280,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the macro parameter token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
          *      org.extex.scanner.type.token.MacroParamToken, java.lang.Object)
          */
-        public Object visitMacroParam(MacroParamToken token, Object arg)
-                throws Exception {
+        public Boolean visitMacroParam(MacroParamToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -292,15 +301,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the math shift token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
          *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
          */
-        public Object visitMathShift(MathShiftToken token, Object arg)
-                throws Exception {
+        public Boolean visitMathShift(MathShiftToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -312,14 +321,17 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the other token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return Boolean.TRUE
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException in case of an error
+         * @throws CatcodeException in case of an error on the token factory
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
          *      org.extex.scanner.type.token.OtherToken, java.lang.Object)
          */
-        public Object visitOther(OtherToken token, Object arg) throws Exception {
+        public Boolean visitOther(OtherToken token, Object arg)
+                throws InterpreterException,
+                    CatcodeException {
 
             UnicodeChar c = token.getChar();
 
@@ -350,7 +362,7 @@ public class Patterns extends AbstractHyphenationCode {
                 letter = true;
             }
 
-            return null;
+            return Boolean.TRUE;
         }
 
         /**
@@ -360,15 +372,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
          *      org.extex.scanner.type.token.RightBraceToken, java.lang.Object)
          */
-        public Object visitRightBrace(RightBraceToken token, Object arg)
-                throws Exception {
+        public Boolean visitRightBrace(RightBraceToken token, Object arg)
+                throws HyphenationException {
 
             if (tokens.length() > 0) {
                 table.addPattern(tokens);
                 tokens.clear();
             }
             letter = true;
-            return this;
+            return Boolean.FALSE;
         }
 
         /**
@@ -377,21 +389,22 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the space token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return Boolean.TRUE
          * 
-         * @throws Exception in case of an error
+         * @throws HyphenationException in case of an error
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
          *      org.extex.scanner.type.token.SpaceToken, java.lang.Object)
          */
-        public Object visitSpace(SpaceToken token, Object arg) throws Exception {
+        public Boolean visitSpace(SpaceToken token, Object arg)
+                throws HyphenationException {
 
             if (tokens.length() > 0) {
                 table.addPattern(tokens);
                 tokens.clear();
             }
             letter = true;
-            return null;
+            return Boolean.TRUE;
         }
 
         /**
@@ -401,15 +414,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the sub mark token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
          *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
          */
-        public Object visitSubMark(SubMarkToken token, Object arg)
-                throws Exception {
+        public Boolean visitSubMark(SubMarkToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -422,15 +435,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the sup mark token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
          *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
          */
-        public Object visitSupMark(SupMarkToken token, Object arg)
-                throws Exception {
+        public Boolean visitSupMark(SupMarkToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -443,15 +456,15 @@ public class Patterns extends AbstractHyphenationCode {
          * @param token the tab mark token to visit
          * @param arg the first argument to pass
          * 
-         * @return some value
+         * @return nothing
          * 
-         * @throws Exception in case of an error
+         * @throws InterpreterException always
          * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
          *      org.extex.scanner.type.token.TabMarkToken, java.lang.Object)
          */
-        public Object visitTabMark(TabMarkToken token, Object arg)
-                throws Exception {
+        public Boolean visitTabMark(TabMarkToken token, Object arg)
+                throws InterpreterException {
 
             throw new InterpreterException(getLocalizer().format(
                 "TTP.NonLetter", token.toString()));
@@ -481,7 +494,11 @@ public class Patterns extends AbstractHyphenationCode {
      */
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+            Typesetter typesetter)
+            throws HelpingException,
+                EofException,
+                MissingLeftBraceException,
+                NoHelpException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -495,7 +512,7 @@ public class Patterns extends AbstractHyphenationCode {
 
             do {
                 t = source.getToken(context);
-            } while (t != null && t.visit(tv, null) == null);
+            } while (t != null && ((Boolean) t.visit(tv, null)).booleanValue());
 
         } catch (DuplicateHyphenationException e) {
             throw new HelpingException(getLocalizer(), "TTP.DuplicatePattern");

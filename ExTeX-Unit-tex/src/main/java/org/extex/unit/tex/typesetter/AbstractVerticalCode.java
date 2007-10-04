@@ -29,20 +29,21 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This an abstract base class for primitives in vertical mode.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public abstract class AbstractVerticalCode extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name of the code
      */
     public AbstractVerticalCode(String codeName) {
@@ -51,17 +52,19 @@ public abstract class AbstractVerticalCode extends AbstractCode {
     }
 
     /**
-     * Check that the current mode is a vertical mode and throw an exception
-     * if another mode is detected.
-     *
+     * Check that the current mode is a vertical mode and throw an exception if
+     * another mode is detected.
+     * 
      * @param typesetter the typesetter to ask for the mode
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     protected void ensureVerticalMode(Typesetter typesetter)
-            throws HelpingException, TypesetterException, ConfigurationException {
+            throws HelpingException,
+                TypesetterException,
+                ConfigurationException {
 
         Mode mode = typesetter.getMode();
         if (typesetter.getMode() == Mode.HORIZONTAL) { // see TTP[1094]
@@ -70,7 +73,7 @@ public abstract class AbstractVerticalCode extends AbstractCode {
             mode = typesetter.getMode();
         }
 
-        if (!(mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL)) {
+        if (!mode.isVmode()) {
             throw new HelpingException(LocalizerFactory
                 .getLocalizer(AbstractVerticalCode.class),
                 "TTP.MissingInserted", "}");

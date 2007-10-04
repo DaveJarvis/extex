@@ -103,6 +103,13 @@ import org.extex.typesetter.Typesetter;
 public abstract class AbstractHyphenationCode extends AbstractCode {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    static final long serialVersionUID = 2007L;
+
+
+    /**
      * The field <tt>LANGUAGE_COUNT</tt> contains the name of the count register
      * to determine the language.
      */

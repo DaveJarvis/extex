@@ -102,7 +102,7 @@ public class TexUnitInfo extends UnitInfo
         /**
          * The field <tt>source</tt> contains the token source.
          */
-        private TokenSource source;
+        private transient TokenSource source = null;
 
         /**
          * Creates a new object.

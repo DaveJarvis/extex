@@ -123,7 +123,8 @@ public class Hyphenation extends HyphenationPrimitive {
             throws CatcodeException, HelpingException {
 
         UnicodeCharList word = new UnicodeCharList();
-        UnicodeChar uc, lc;
+        UnicodeChar uc;
+        UnicodeChar lc;
         boolean hyphen = false;
 
         for (Token t = token; t != null; t = source.getToken(context)) {

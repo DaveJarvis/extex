@@ -84,7 +84,7 @@ public class Ifmmode extends AbstractIf {
             Typesetter typesetter) throws HelpingException {
 
         Mode mode = typesetter.getMode();
-        return (mode == Mode.MATH || mode == Mode.DISPLAYMATH);
+        return mode.isMath();
     }
 
 }

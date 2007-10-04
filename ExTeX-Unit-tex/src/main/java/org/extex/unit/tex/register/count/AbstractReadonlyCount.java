@@ -45,6 +45,13 @@ public abstract class AbstractReadonlyCount extends AbstractCode
             Theable {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    static final long serialVersionUID = 2007L;
+
+
+    /**
      * Creates a new object.
      * 
      * @param name the name for debugging

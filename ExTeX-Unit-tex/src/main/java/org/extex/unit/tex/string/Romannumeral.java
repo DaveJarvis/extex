@@ -117,7 +117,10 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+            Typesetter typesetter)
+            throws HelpingException,
+                NoHelpException,
+                TypesetterException {
 
         long n = source.parseInteger(context, source, typesetter);
         Tokens toks = new Tokens();
@@ -145,7 +148,8 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
                     u = u / (MAGIC[k - 1] - '0');
                 }
                 if (n + u >= v) {
-                    toks.add(factory.createToken(Catcode.LETTER, MAGIC[k], ""));
+                    toks.add(factory.createToken(Catcode.LETTER, MAGIC[k],
+                        Namespace.DEFAULT_NAMESPACE));
                     n = n + u;
                 } else {
                     j = j + 2;

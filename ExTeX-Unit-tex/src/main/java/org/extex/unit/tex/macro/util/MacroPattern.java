@@ -327,6 +327,12 @@ public class MacroPattern extends Tokens {
     private interface Matcher extends Serializable {
 
         /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        static final long serialVersionUID = 2007L;
+
+        /**
          * Perform a match and digest the required tokens. As a side effect the
          * argument array can be filled with recognized argument values.
          * 
