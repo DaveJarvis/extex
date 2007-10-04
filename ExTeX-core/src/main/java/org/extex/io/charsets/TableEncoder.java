@@ -26,7 +26,7 @@ import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CoderResult;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a table-based {@link CharsetEncoder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
