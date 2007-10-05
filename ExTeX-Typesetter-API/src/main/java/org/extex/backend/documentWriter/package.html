@@ -90,7 +90,7 @@
   </p>
   <p>
    The document writer can implement the interface {@link
-   org.extex.resource.PropertyConfigurable PropertyConfigurable}.
+   org.extex.resource.PropertyAware PropertyAware}.
    In this case the properties with the user's settings are passed to
    the document writer at startup.
   </p>
@@ -111,7 +111,7 @@
   <h4>Resource Access</h4>
   <p>
    The document writer can implement the interface {@link
-   org.extex.resource.ResourceConsumer ResourceConsumer}. In this
+   org.extex.resource.ResourceAware ResourceAware}. In this
    case a resource finder is passed to the document writer.
   </p>
 
