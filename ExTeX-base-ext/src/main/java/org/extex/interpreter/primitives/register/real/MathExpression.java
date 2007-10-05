@@ -34,8 +34,8 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * Math. Expressions to get a real-value. It use the JEval
- * {@link http://jeval.sourceforge.net/}.
+ * Math. Expressions to get a real-value. It uses the JEval
+ * http://jeval.sourceforge.net/.
  * 
  * <p>
  * Example
@@ -91,9 +91,11 @@ public class MathExpression extends AbstractMath
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
