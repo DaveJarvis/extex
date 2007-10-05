@@ -38,7 +38,7 @@ public interface BackendFont {
 
     /**
      * Returns the afm data, or <code>null</code>, if not available.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns the afm data, or <code>null</code>, if not available.
      */
     byte[] getAfm();
@@ -53,7 +53,7 @@ public interface BackendFont {
     /**
      * Returns the encoding vectors as list of string array (without a '/') or
      * <code>null</code>, if no one exists.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns the encoding vectors.
      */
     List<String[]> getEncodingVectors();
@@ -67,21 +67,21 @@ public interface BackendFont {
 
     /**
      * Returns the pfa data, or <code>null</code>, if not available.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns the pfa data, or <code>null</code>, if not available.
      */
     byte[] getPfa();
 
     /**
      * Returns the pfb data, or <code>null</code>, if not available.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns the pfb data, or <code>null</code>, if not available.
      */
     byte[] getPfb();
 
     /**
      * Returns the xtf data, or <code>null</code>, if not available.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns the xtf data, or <code>null</code>, if not available.
      */
     byte[] getXtf();
@@ -89,7 +89,7 @@ public interface BackendFont {
     /**
      * Returns <code>true</code>, if the font has an encoding vector,
      * otherwise <code>false</code>.
-     * @TODO mgn raus
+     * TODO mgn raus
      */
     boolean hasEncodingVector();
 
@@ -103,7 +103,7 @@ public interface BackendFont {
     /**
      * Returns the number of the encoding vector for the codepoint. If no
      * enocding vector exists, -1 is returned.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @param codepoint The codepoint of the char.
      * @return Returns the number of the encoding vector for the codepoint.
      */
@@ -112,7 +112,7 @@ public interface BackendFont {
     /**
      * Returns <code>true</code>, if the font is a type 1 font (with
      * afm/pfb), otherwise <code>false</code>.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns <code>true</code>, if the font is a type 1 font (with
      *         afm/pfb), otherwise <code>false</code>.
      */
@@ -121,7 +121,7 @@ public interface BackendFont {
     /**
      * Returns <code>true</code>, if the font is a ttf/otf font, otherwise
      * <code>false</code>.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns <code>true</code>, if the font is a ttf/otf font,
      *         otherwise <code>false</code>.
      */
@@ -129,7 +129,7 @@ public interface BackendFont {
 
     /**
      * Tells the font, which character is used.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @param bc The character.
      */
     void usedCharacter(BackendCharacter bc);
