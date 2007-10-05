@@ -312,6 +312,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getAscender()
      */
     public float getAscender() {
@@ -320,6 +324,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getCapheight()
      */
     public float getCapheight() {
@@ -328,6 +336,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getCharacterset()
      */
     public String getCharacterset() {
@@ -336,7 +348,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * @return
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getComment()
      */
     public String getComment() {
@@ -345,6 +360,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO missing JavaDoc
+     *
+     * @return TODO
+     *
      * @see org.extex.font.format.afm.AfmHeader#getDescender()
      */
     public float getDescender() {
@@ -353,6 +372,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getEncodingscheme()
      */
     public String getEncodingscheme() {
@@ -361,6 +384,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getFamilyname()
      */
     public String getFamilyname() {
@@ -379,6 +406,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getFontname()
      */
     public String getFontname() {
@@ -387,6 +418,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getFullname()
      */
     public String getFullname() {
@@ -432,6 +467,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getItalicangle()
      */
     public float getItalicangle() {
@@ -440,6 +479,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getLlx()
      */
     public float getLlx() {
@@ -448,6 +491,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getLly()
      */
     public float getLly() {
@@ -456,7 +503,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * @return
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getNotice()
      */
     public String getNotice() {
@@ -475,6 +525,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getStdhw()
      */
     public float getStdhw() {
@@ -483,6 +537,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getStdvw()
      */
     public float getStdvw() {
@@ -491,6 +549,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getUnderlineposition()
      */
     public float getUnderlineposition() {
@@ -499,6 +561,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getUnderlinethickness()
      */
     public float getUnderlinethickness() {
@@ -507,6 +573,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getUrx()
      */
     public float getUrx() {
@@ -515,6 +585,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getUry()
      */
     public float getUry() {
@@ -523,6 +597,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getWeight()
      */
     public String getWeight() {
@@ -531,6 +609,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getXheight()
      */
     public float getXheight() {
@@ -539,6 +621,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#isFixedpitch()
      */
     public boolean isFixedpitch() {
@@ -547,7 +633,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * @return
+     * TODO
+     *  
+     * @return TODO
+     * 
      * @see org.extex.font.format.afm.AfmHeader#isIsfixedpitch()
      */
     public boolean isIsfixedpitch() {
