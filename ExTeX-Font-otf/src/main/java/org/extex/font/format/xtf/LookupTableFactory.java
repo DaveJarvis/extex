@@ -32,7 +32,7 @@ import org.extex.util.file.random.RandomAccessR;
 public interface LookupTableFactory {
 
     /**
-     * Read the {@link LookupTable} or <code>null</code>, if not found.
+     * Read the LookupTable or <code>null</code>, if not found.
      * 
      * <p>
      * Type:
