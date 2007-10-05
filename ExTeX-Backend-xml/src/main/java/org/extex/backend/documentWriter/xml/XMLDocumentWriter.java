@@ -484,8 +484,8 @@ public class XMLDocumentWriter
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontFactoryConsumer#setFontFactory(org.extex.font.CoreFontFactory)
+     *
+     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(CoreFontFactory factory) {
 
