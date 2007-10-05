@@ -20,6 +20,21 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <repositories>
+    <repository>
+      <id>extexSnapshots</id>
+      <name>ExTeX Snapshots</name>
+      <url>http://www.extex.org/maven2</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>jeval</groupId>
