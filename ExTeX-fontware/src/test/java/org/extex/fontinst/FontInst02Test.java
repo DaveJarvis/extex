@@ -29,6 +29,7 @@ import java.util.Properties;
 import org.extex.test.ExTeXLauncher;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test for fontinst.
@@ -42,6 +43,16 @@ public class FontInst02Test extends ExTeXLauncher {
      * The field <tt>SEP</tt> contains the separator for properties.
      */
     private static final String SEP = System.getProperty("path.separator", ":");
+
+    /**
+     * Method for running the tests standalone.
+     * 
+     * @param args command line parameter
+     */
+    public static void main(String[] args) {
+
+        (new JUnitCore()).run(FontInst02Test.class);
+    }
 
     /**
      * Creates a new object.

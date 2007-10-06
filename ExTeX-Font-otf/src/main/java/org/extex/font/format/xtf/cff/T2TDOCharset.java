@@ -293,7 +293,8 @@ public class T2TDOCharset extends T2TDONumber {
     /**
      * Returns the sid for a value. If the value is not found, 0 is returned.
      * 
-     * @param value The value.
+     * @param stringIndexpos TODO
+     *
      * @return Returns the sid for a value.
      */
     public int getSidForStringIndex(int stringIndexpos) {

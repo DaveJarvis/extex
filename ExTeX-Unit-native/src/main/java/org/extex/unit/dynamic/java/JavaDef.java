@@ -132,8 +132,7 @@ import org.extex.unit.dynamic.Definer;
  * </p>
  * <p>
  * There is more to say about primitives like how to write expandable primitives
- * or ifs. Those details can be found in section
- * {@linkplain org.extex.interpreter.primitives Primitives}.
+ * or ifs. Those details can be found in section <i>Primitives</i>.
  * </p>
  * </doc>
  * 
@@ -225,8 +224,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);
         } catch (ClassCastException e) {
-            throw new HelpingException(getLocalizer(), "ClassCast",
-                classname, Code.class.getName());
+            throw new HelpingException(getLocalizer(), "ClassCast", classname,
+                Code.class.getName());
         }
     }
 

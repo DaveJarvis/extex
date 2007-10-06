@@ -73,6 +73,10 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
+     * TODO missing JavaDoc
+     *
+     * @return TODO
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     @Override
@@ -82,7 +86,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
+     * TODO missing JavaDoc
+     *
+     * @return TODO
      */
     public double getDouble() {
 
@@ -90,7 +96,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
+     * TODO missing JavaDoc
+     *
+     * @return TODO
      */
     public int getInteger() {
 
@@ -98,6 +106,10 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
+     * TODO missing JavaDoc
+     *
+     * @return TODO
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     @Override
@@ -129,6 +141,10 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
+     * TODO missing JavaDoc
+     *
+     * @return TODO
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

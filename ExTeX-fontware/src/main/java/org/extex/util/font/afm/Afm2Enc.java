@@ -168,7 +168,7 @@ public class Afm2Enc extends AbstractFontUtil {
         /**
          * Create a new object.
          * 
-         * @param font The font.
+         * @param fontname The font.
          * @param fontfamily The font family.
          * @param enc The encoding.
          * @param gn The glyph name.
