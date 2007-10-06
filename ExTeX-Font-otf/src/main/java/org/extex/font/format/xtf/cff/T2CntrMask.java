@@ -49,7 +49,6 @@ public class T2CntrMask extends T2AbstractHintMask {
      * @param stack the stack
      * @param ch The char string.
      * @param rar The input.
-     * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
     public T2CntrMask(List<T2CharString> stack, CharString ch, RandomAccessR rar)

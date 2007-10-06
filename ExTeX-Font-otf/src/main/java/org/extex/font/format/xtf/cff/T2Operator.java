@@ -42,7 +42,7 @@ public abstract class T2Operator extends T2CharString
      * Create a new instance.
      * 
      * @param rar the input
-     * @param cffFont The cff font.
+     * @param ch TODO
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
@@ -312,7 +312,8 @@ public abstract class T2Operator extends T2CharString
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
      *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     *      org.extex.font.format.xtf.OtfTableCFF, int,
+     *      org.extex.font.format.xtf.cff.CffFont)
      */
     @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,

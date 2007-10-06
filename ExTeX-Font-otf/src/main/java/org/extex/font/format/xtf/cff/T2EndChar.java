@@ -47,7 +47,6 @@ public class T2EndChar extends T2Operator {
      * 
      * @param stack the stack
      * @param ch The char string.
-     * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
     public T2EndChar(List<T2CharString> stack, CharString ch)
