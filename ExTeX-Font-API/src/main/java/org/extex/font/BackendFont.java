@@ -45,7 +45,7 @@ public interface BackendFont {
 
     /**
      * Returns the checksum of the font.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return the checksum.
      */
     int getCheckSum();
@@ -95,7 +95,7 @@ public interface BackendFont {
 
     /**
      * If <code>true</code>, the font has more the one font in it.
-     * @TODO mgn raus
+     * TODO mgn raus
      * @return Returns <code>true</code>, if the font has more fonts in it.
      */
     boolean hasMultiFonts();
