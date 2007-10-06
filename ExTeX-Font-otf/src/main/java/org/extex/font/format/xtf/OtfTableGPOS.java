@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLWriterConvertible;
 /**
  * Table gpos.
  * <p>
- * {@see http://partners.adobe.com/public/developer/opentype/index_table_formats2.html}
+ * http://partners.adobe.com/public/developer/opentype/index_table_formats2.html
  * </p>
  * <p>
  * The Glyph Positioning table (GPOS) provides precise control over glyph
