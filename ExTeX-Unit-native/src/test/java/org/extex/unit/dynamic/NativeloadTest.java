@@ -99,8 +99,8 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
             DEFINE_BRACES + "\\nativeload{java}" + "{java.lang.String}"
                     + " \\end",
             //--- error message ---
-            "The class java.lang.String does not implement\n"
-            + "the required interface org.extex.unit.dynamic.java.Loadable.");
+            "The class java.lang.String does not implement "
+            + "the required interface\norg.extex.unit.dynamic.java.Loadable.");
     }
 
     /**
