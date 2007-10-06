@@ -705,7 +705,8 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceConsumer#setResourceFinder(org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 
@@ -715,7 +716,8 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
+     * @see org.extex.font.BackendFont#usedCharacter(
+     *      org.extex.font.BackendCharacter)
      */
     public void usedCharacter(BackendCharacter bc) {
 
