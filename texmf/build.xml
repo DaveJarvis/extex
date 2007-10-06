@@ -71,6 +71,7 @@
           failonerror="true"
           inputstring="">
       <classpath refid="extex.jars" />
+      <arg value="--extex.nobanner=true" />
       <arg value="-ini" />
       <arg value="-config=extex" />
       <arg value="-jobname=extex" />
@@ -83,6 +84,7 @@
           failonerror="true"
           inputstring="">
       <classpath refid="extex.jars" />
+      <arg value="--extex.nobanner=true" />
       <arg value="-ini" />
       <arg value="-config=tex" />
       <arg value="-jobname=tex" />
