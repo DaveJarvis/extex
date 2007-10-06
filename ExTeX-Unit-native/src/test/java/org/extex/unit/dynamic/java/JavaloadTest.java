@@ -76,7 +76,8 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
             DEFINE_BRACES + "\\javaload" + "{" + getClass().getName() + "}"
                     + " \\end",
             // --- log message ---
-            "org.extex.unit.dynamic.java.JavaloadTest");
+            "The class org.extex.unit.dynamic.java.JavaloadTest does not implement the\n"
+                    + "required interface org.extex.unit.dynamic.java.Loadable.");
     }
 
     /**
