@@ -987,7 +987,8 @@ public class XtfReader implements XMLWriterConvertible {
      * Check, if the font has the glpyh.
      * 
      * @param glyphname The glyph name.
-     * @param fontname The font number.
+     * @param fontnumber The font number.
+     *
      * @return Returns <code>true</code>, if the font has the glyph.
      */
     public boolean hasGlyph(String glyphname, int fontnumber) {
