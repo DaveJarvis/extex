@@ -31,6 +31,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -113,7 +114,7 @@ public abstract class AbstractCode implements Code, Serializable {
      *
      * @return the token
      */
-    protected CodeToken getToken() {
+    public CodeToken getToken() {
     
         return token;
     }

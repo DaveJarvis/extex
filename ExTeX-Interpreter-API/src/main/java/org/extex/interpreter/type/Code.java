@@ -24,6 +24,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -67,6 +68,13 @@ public interface Code {
      * @deprecated access the token instead
      */
     String getName();
+
+    /**
+     * Getter for the token.
+     *
+     * @return the token
+     */
+    CodeToken getToken();
 
     /**
      * This method takes the first token and executes it. The result is placed
