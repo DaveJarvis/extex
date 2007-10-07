@@ -45,6 +45,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -284,6 +285,17 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.type.Code#getToken()
+     */
+    public CodeToken getToken() {
+
+        // TODO gene: getToken unimplemented
+        return null;
     }
 
 }
