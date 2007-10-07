@@ -275,7 +275,7 @@ public class IfnumTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
-     * ... </testcase>
+     * complains about an outer macro when skipping tokens. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -283,9 +283,9 @@ public class IfnumTest extends ConditionalTester {
     public void testOuter1() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\outer\\def\\x{}\\iffalse\\x\\fi\\end",
+            DEFINE_BRACES + "\\outer\\def\\x{}\\ifnum1=2 \\x\\fi\\end",
             // --- output channel ---
-            "Incomplete \\iffalse; all text was ignored after line 1");
+            "Incomplete \\ifnum; all text was ignored after line 1");
     }
 
 }
