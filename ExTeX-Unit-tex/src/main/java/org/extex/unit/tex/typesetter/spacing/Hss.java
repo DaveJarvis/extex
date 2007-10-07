@@ -24,6 +24,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
@@ -67,11 +68,11 @@ public class Hss extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Hss(String name) {
+    public Hss(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.node.PdfRefXImage;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
@@ -69,11 +70,11 @@ public class Pdfximage extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfximage(String name) {
+    public Pdfximage(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -103,9 +104,7 @@ public class Pdfximage extends AbstractPdftexCode {
             } else if (source.getKeyword(context, "depth")) {
                 depth = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
-                attr =
-                        source.scanTokensAsString(context,
-                            printableControlSequence(context));
+                attr = source.scanTokensAsString(context, getToken());
             } else if (source.getKeyword(context, "page")) {
                 page = source.parseInteger(context, source, typesetter);
             } else {
@@ -113,9 +112,7 @@ public class Pdfximage extends AbstractPdftexCode {
             }
         }
 
-        String resource =
-                source.scanTokensAsString(context,
-                    printableControlSequence(context));
+        String resource = source.scanTokensAsString(context, getToken());
 
         PdfRefXImage image =
                 writer.getXImage(resource, new RuleNode(width, height, depth,

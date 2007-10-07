@@ -39,9 +39,9 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides a parser for color specifications.
- * Several color models are supported.
- *
+ * This class provides a parser for color specifications. Several color models
+ * are supported.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4781 $
  */
@@ -50,7 +50,7 @@ public final class ColorParser {
     /**
      * This internal interface is used to describe the parsers for the different
      * color models.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4781 $
      */
@@ -58,20 +58,22 @@ public final class ColorParser {
 
         /**
          * Parse a color value.
-         *
+         * 
          * @param context the interpreter context
          * @param source the token source
          * @param typesetter the typesetter
          * @param alpha the alpha channel
-         * @param name the name of the primitive
-         *
+         * @param primitive the name of the primitive
+         * 
          * @return the color found
          * 
          * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
+         * @throws TypesetterException in case of an error in the typesetter
          */
         Color parse(Context context, TokenSource source, Typesetter typesetter,
-                int alpha, String name) throws HelpingException, TypesetterException;
+                int alpha, CodeToken primitive)
+                throws HelpingException,
+                    TypesetterException;
     }
 
     /**
@@ -83,25 +85,25 @@ public final class ColorParser {
          * @see org.extex.unit.color.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      int,
-         *      java.lang.String)
+         *      org.extex.typesetter.Typesetter, int, CodeToken)
          */
         public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, String name)
-                throws HelpingException, TypesetterException {
+                Typesetter typesetter, int alpha, CodeToken primitive)
+                throws HelpingException,
+                    TypesetterException {
 
-            int c = scanColorComponent(context, source, typesetter, name);
-            int m = scanColorComponent(context, source, typesetter, name);
-            int y = scanColorComponent(context, source, typesetter, name);
-            int k = scanColorComponent(context, source, typesetter, name);
+            int c = scanColorComponent(context, source, typesetter, primitive);
+            int m = scanColorComponent(context, source, typesetter, primitive);
+            int y = scanColorComponent(context, source, typesetter, primitive);
+            int k = scanColorComponent(context, source, typesetter, primitive);
             return ColorFactory.getCmyk(c, m, y, k, alpha);
         }
 
     };
 
     /**
-     * The field <tt>GRAY_MODE</tt> contains the parser for a gray-scale color.
+     * The field <tt>GRAY_MODE</tt> contains the parser for a gray-scale
+     * color.
      */
     private static final ColorMode GRAY_MODE = new ColorMode() {
 
@@ -109,15 +111,14 @@ public final class ColorParser {
          * @see org.extex.unit.color.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      int,
-         *      java.lang.String)
+         *      org.extex.typesetter.Typesetter, int, CodeToken)
          */
         public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, String name)
-                throws HelpingException, TypesetterException {
+                Typesetter typesetter, int alpha, CodeToken primitive)
+                throws HelpingException,
+                    TypesetterException {
 
-            int gray = scanColorComponent(context, source, typesetter, name);
+            int gray = scanColorComponent(context, source, typesetter, primitive);
             return ColorFactory.getGray(gray, alpha);
         }
 
@@ -132,17 +133,16 @@ public final class ColorParser {
          * @see org.extex.unit.color.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      int,
-         *      java.lang.String)
+         *      org.extex.typesetter.Typesetter, int, CodeToken)
          */
         public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, String name)
-                throws HelpingException, TypesetterException {
+                Typesetter typesetter, int alpha, CodeToken primitive)
+                throws HelpingException,
+                    TypesetterException {
 
-            int h = scanColorComponent(context, source, typesetter, name);
-            int s = scanColorComponent(context, source, typesetter, name);
-            int v = scanColorComponent(context, source, typesetter, name);
+            int h = scanColorComponent(context, source, typesetter, primitive);
+            int s = scanColorComponent(context, source, typesetter, primitive);
+            int v = scanColorComponent(context, source, typesetter, primitive);
             return ColorFactory.getHsv(h, s, v, alpha);
         }
 
@@ -151,73 +151,70 @@ public final class ColorParser {
     /**
      * @see org.extex.unit.color.ColorParser.ColorMode#parse(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter,
-     *      int,
-     *      java.lang.String)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+     *      int, CodeToken)
      */
     private static final ColorMode RGB_MODE = new ColorMode() {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.unit.color.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      int,
-         *      java.lang.String)
+         *      org.extex.typesetter.Typesetter, int, CodeToken)
          */
         public Color parse(Context context, TokenSource source,
-                Typesetter typesetter, int alpha, String name)
-                throws HelpingException, TypesetterException {
+                Typesetter typesetter, int alpha, CodeToken primitive)
+                throws HelpingException,
+                    TypesetterException {
 
-            int r = scanColorComponent(context, source, typesetter, name);
-            int g = scanColorComponent(context, source, typesetter, name);
-            int b = scanColorComponent(context, source, typesetter, name);
+            int r = scanColorComponent(context, source, typesetter, primitive);
+            int g = scanColorComponent(context, source, typesetter, primitive);
+            int b = scanColorComponent(context, source, typesetter, primitive);
             return ColorFactory.getRgb(r, g, b, alpha);
         }
 
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20060528L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Parse a color specification made up of a color constant for one of the
-     * supported color models or a control sequence which is bound to
-     * color convertible code.
-     *
+     * supported color models or a control sequence which is bound to color
+     * convertible code.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the invoking primitive
-     *
+     * @param primitive the name of the invoking primitive
+     * 
      * @return the color found
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Color parseColor(Context context,
-            TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+    public static Color parseColor(Context context, TokenSource source,
+            Typesetter typesetter, CodeToken primitive)
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.getNonSpace(context);
         Color color = null;
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof ColorConvertible) {
-                color =
-                    ((ColorConvertible) code).convertColor(context, source,
-                            typesetter);
+                color = ((ColorConvertible) code).convertColor(context, source, //
+                    typesetter);
             }
         } else {
             source.push(t);
-            color =
-                    ColorParser.parseColorConstant(context, source, typesetter,
-                        name);
+            color = ColorParser.parseColorConstant(context, source, typesetter, //
+                primitive);
         }
         if (color == null) {
             throw new HelpingException(LocalizerFactory
@@ -230,27 +227,29 @@ public final class ColorParser {
     /**
      * Parse a color specification made up of a color constant for one of the
      * supported color models.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the invoking primitive
-     *
+     * @param primitive the name of the invoking primitive
+     * 
      * @return the color found
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Color parseColorConstant(Context context,
-            TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+    public static Color parseColorConstant(Context context, TokenSource source,
+            Typesetter typesetter, CodeToken primitive)
+            throws HelpingException,
+                TypesetterException {
 
         int alpha = 0;
         ColorMode mode = RGB_MODE;
 
         for (;;) {
             if (source.getKeyword(context, "alpha")) {
-                alpha = scanColorComponent(context, source, typesetter, name);
+                alpha = scanColorComponent(context, source, typesetter, //
+                    primitive);
             } else if (source.getKeyword(context, "rgb")) {
                 mode = RGB_MODE;
             } else if (source.getKeyword(context, "gray")) {
@@ -265,13 +264,13 @@ public final class ColorParser {
         }
         Token t = source.getNonSpace(context);
         if (t == null) {
-            throw new EofException(name);
+            throw new EofException(primitive.toText());
         } else if (!(t instanceof LeftBraceToken)) {
             throw new HelpingException(LocalizerFactory
                 .getLocalizer(ColorParser.class), "MissingLeftBrace");
         }
 
-        Color color = mode.parse(context, source, typesetter, alpha, name);
+        Color color = mode.parse(context, source, typesetter, alpha, primitive);
         t = source.getNonSpace(context);
         if (!(t instanceof RightBraceToken)) {
             throw new HelpingException(LocalizerFactory
@@ -282,26 +281,27 @@ public final class ColorParser {
 
     /**
      * Scan a color component and translate it into a color value.
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     * @param name the name of the primitive for error messages
-     *
+     * @param primitive the name of the primitive for error messages
+     * 
      * @return the color component in units of Color.MAX_VALUE
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    private static int scanColorComponent(Context context,
-            TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+    private static int scanColorComponent(Context context, TokenSource source,
+            Typesetter typesetter, CodeToken primitive)
+            throws HelpingException,
+                TypesetterException {
 
         long cc;
         try {
             cc = ScaledNumberParser.parse(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofException(name);
+            throw new EofException(primitive.toText());
         }
         if (cc < 0 || cc > ScaledNumber.ONE) {
             throw new HelpingException(LocalizerFactory

@@ -36,17 +36,18 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\divide</code>.
- *
+ * 
  * <doc name="divide">
  * <h3>The Primitive <tt>\divide</tt></h3>
  * <p>
- *  This primitive implements an assignment. The variable given as next tokens
- *  is divided by the quantity given after the optional <tt>by</tt>.
+ * This primitive implements an assignment. The variable given as next tokens is
+ * divided by the quantity given after the optional <tt>by</tt>.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *   &lang;divide&rang;
  *     &rarr; &lang;optional prefix&rang; <tt>\divide</tt> &lang;dividable&rang;
  *
@@ -71,18 +72,19 @@ import org.extex.typesetter.exception.TypesetterException;
  *   &lang;optional <tt>by</tt>&rang;
  *     &rarr; [by]
  *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
-*            &lang;optional spaces&rang;}
+ *            &lang;optional spaces&rang;}
  *   </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \divide\count12 345  </pre>
  *  <pre class="TeXSample">
  *    \divide\count12 by -345  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @see org.extex.interpreter.type.code.Divideable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
@@ -90,18 +92,19 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Divide extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
-     * @param name the name for debugging
+     * 
+     * @param token the initial token for the primitive
      */
-    public Divide(String name) {
+    public Divide(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -112,9 +115,8 @@ public class Divide extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 
@@ -127,14 +129,12 @@ public class Divide extends AbstractAssignment {
                 return;
 
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(//
-                        printable(context, cs));
+                throw new UndefinedControlSequenceException(cs.toText());
             }
         } else if (cs == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
-        throw new CantUseAfterException(cs.toString(),
-                printableControlSequence(context));
+        throw new CantUseAfterException(cs.toString(), toText());
     }
 
 }

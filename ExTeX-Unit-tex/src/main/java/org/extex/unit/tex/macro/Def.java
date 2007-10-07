@@ -107,11 +107,11 @@ public class Def extends AbstractAssignment implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Def(String name) {
+    public Def(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -143,12 +143,9 @@ public class Def extends AbstractAssignment implements LogEnabled {
             throw new EofInToksException(cs.toText(context.escapechar()));
         }
 
-        String csName = printable(context, cs);
-        MacroCode macroCode =
-                (protect //
-                        ? new ProtectedMacroCode(csName, prefix, notLong,
-                            pattern, body) //
-                        : new MacroCode(csName, prefix, notLong, pattern, body));
+        MacroCode macroCode = (protect //
+                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body) //
+                : new MacroCode(cs, prefix, notLong, pattern, body));
         macroCode.enableLogging(logger);
 
         context.setCode(cs, macroCode, global);

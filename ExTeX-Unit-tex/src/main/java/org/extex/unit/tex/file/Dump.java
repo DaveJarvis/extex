@@ -37,6 +37,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.loader.SerialLoader;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -106,11 +107,11 @@ public class Dump extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Dump(String name) {
+    public Dump(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -148,7 +149,7 @@ public class Dump extends AbstractCode
         Tokens jobnameTokens = context.getToks("jobname");
         if (jobnameTokens == null) {
             throw new InterpreterPanicException(getLocalizer(),
-                "Dump.MissingJobname", printableControlSequence(context));
+                "Dump.MissingJobname", toText(context));
         }
         String jobname = jobnameTokens.toText();
         Calendar calendar = Calendar.getInstance();

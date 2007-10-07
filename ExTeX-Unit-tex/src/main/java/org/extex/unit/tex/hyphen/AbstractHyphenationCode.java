@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.language.Language;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
@@ -124,11 +125,11 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
     /**
      * Creates a new object.
      *
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractHyphenationCode(String name) {
+    public AbstractHyphenationCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

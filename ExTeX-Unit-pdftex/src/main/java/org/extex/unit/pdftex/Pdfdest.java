@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.destination.DestType;
 import org.extex.pdf.api.id.IdSpec;
 import org.extex.pdf.api.node.PdfDest;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -66,11 +67,11 @@ public class Pdfdest extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfdest(String name) {
+    public Pdfdest(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -86,9 +87,9 @@ public class Pdfdest extends AbstractPdftexCode {
 
         ensurePdftex(context, typesetter);
 
-        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
+        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getToken());
         DestType type =
-                DestType.parseDestType(context, source, typesetter, getName());
+                DestType.parseDestType(context, source, typesetter, getToken());
 
         typesetter.add(new PdfDest(id, type));
     }

@@ -70,7 +70,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 
         logger.severe(localizer.format(prompt));
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int c = System.in.read(); c > 0; c = System.in.read()) {
             if (c == '\n') {

@@ -29,7 +29,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.GlueConvertible;
 import org.extex.interpreter.parser.GlueParser;
 import org.extex.interpreter.parser.Parser;
-import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
@@ -104,8 +103,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
                 stretch = new GlueComponent(g.getStretch());
                 return new Glue(length, stretch, shrink);
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(AbstractCode
-                    .printable(context, t));
+                throw new UndefinedControlSequenceException(t.toText());
             }
         }
         source.push(t);

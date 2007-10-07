@@ -27,6 +27,7 @@ import org.extex.core.glue.GlueComponent;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractVerticalCode;
@@ -77,11 +78,11 @@ public class Vfil extends AbstractVerticalCode implements VerticalSkip {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Vfil(String name) {
+    public Vfil(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
@@ -73,11 +74,11 @@ public class Lastbox extends AbstractCode implements Boxable {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Lastbox(String name) {
+    public Lastbox(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,7 +95,7 @@ public class Lastbox extends AbstractCode implements Boxable {
         Mode mode = typesetter.getMode();
         if (mode.isMath() || mode == Mode.VERTICAL) {
             throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-                context.esc(getName()), mode.toString());
+                toText(), mode.toString());
         }
 
         // TODO gene: what's to do?
@@ -117,7 +118,7 @@ public class Lastbox extends AbstractCode implements Boxable {
         Mode mode = typesetter.getMode();
         if (mode.isMath() /* || mode == Mode.VERTICAL */) {
             throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-                context.esc(getName()), mode.toString());
+                toText(), mode.toString());
         }
 
         Node nodes = typesetter.getLastNode();

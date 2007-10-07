@@ -29,6 +29,7 @@ import org.extex.interpreter.type.Theable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -61,16 +62,16 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public HyphenActive(String name) {
+    public HyphenActive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -25,6 +25,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -70,11 +71,11 @@ public class Oradical extends AbstractOmegaDelimiter {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Oradical(String name) {
+    public Oradical(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -93,9 +94,9 @@ public class Oradical extends AbstractOmegaDelimiter {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         MathDelimiter delcode =
-                parseDelimiter(context, source, typesetter, getName());
+                parseDelimiter(context, source, typesetter, getToken());
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
-            getName(), GroupType.MATH_GROUP);
+            getToken(), GroupType.MATH_GROUP);
         nc.add(new RadicalNoad(delcode, noad, context.getTypesettingContext()));
     }
 

@@ -344,8 +344,7 @@ public abstract class AbstractFactory
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(argClass)) {
-                            instance = constructors[i].newInstance(//
-                                new Object[]{arg});
+                            instance = constructors[i].newInstance(arg);
                             enableLogging(instance, logger);
                             configure(instance, config);
                             return instance;
@@ -357,13 +356,13 @@ public abstract class AbstractFactory
                             if (args[0].isAssignableFrom(Configuration.class)
                                     && args[1].isAssignableFrom(argClass)) {
                                 instance = constructors[i].newInstance(//
-                                    new Object[]{config, arg});
+                                    config, arg);
                                 enableLogging(instance, logger);
                                 return instance;
                             } else if (args[0].isAssignableFrom(Logger.class)
                                     && args[1].isAssignableFrom(argClass)) {
                                 instance = constructors[i].newInstance(//
-                                    new Object[]{config, arg});
+                                    config, arg);
                                 configure(instance, config);
                                 return instance;
                             }
@@ -398,7 +397,7 @@ public abstract class AbstractFactory
      * 
      * @param config the configuration to use
      * @param target the expected class or interface
-     * @param arg1 the first (String) constructor argument
+     * @param arg the constructor argument
      * 
      * @return a new instance
      * 
@@ -406,7 +405,7 @@ public abstract class AbstractFactory
      */
     @SuppressWarnings("unchecked")
     protected Object createInstanceForConfiguration(Configuration config,
-            Class<?> target, String arg1) throws ConfigurationException {
+            Class<?> target, Object arg) throws ConfigurationException {
 
         String className = config.getAttribute(CLASS_ATTRIBUTE);
 
@@ -430,9 +429,8 @@ public abstract class AbstractFactory
                 Class<?>[] args = constructors[i].getParameterTypes();
                 switch (args.length) {
                     case 1:
-                        if (args[0].isAssignableFrom(String.class)) {
-                            instance = constructors[i].newInstance(//
-                                new Object[]{arg1});
+                        if (args[0].isAssignableFrom(arg.getClass())) {
+                            instance = constructors[i].newInstance(arg);
                             enableLogging(instance, logger);
                             configure(instance, config);
                             return instance;
@@ -498,7 +496,7 @@ public abstract class AbstractFactory
      * @param target the expected class or interface
      * @param className the name of the class to instantiate
      * @param constructor the constructor to use
-     * @param arg0 the first and only argument for the constructor
+     * @param arg the only argument for the constructor
      * 
      * @return a new instance or <code>null</code> if the constructor is not
      *         of a supported type
@@ -510,19 +508,19 @@ public abstract class AbstractFactory
      */
     private Object createInstanceForConfiguration1(Configuration config,
             Class<?> target, String className, Constructor<?> constructor,
-            Class<?> arg0)
+            Class<?> arg)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException,
                 ConfigurationException {
 
         Object instance;
-        if (arg0.isAssignableFrom(Configuration.class)) {
-            instance = constructor.newInstance(new Object[]{config});
+        if (arg.isAssignableFrom(Configuration.class)) {
+            instance = constructor.newInstance(config);
             enableLogging(instance, logger);
             return instance;
-        } else if (arg0.isAssignableFrom(Logger.class)) {
-            instance = constructor.newInstance(new Object[]{logger});
+        } else if (arg.isAssignableFrom(Logger.class)) {
+            instance = constructor.newInstance(logger);
             configure(instance, config);
             return instance;
         } else {
@@ -538,8 +536,8 @@ public abstract class AbstractFactory
      * @param target the expected class or interface
      * @param className the name of the class to instantiate
      * @param constructor the constructor to use
-     * @param arg0 the first argument for the constructor
-     * @param arg1 the second argument for the constructor
+     * @param arg1 the first argument for the constructor
+     * @param arg2 the second argument for the constructor
      * 
      * @return a new instance or <code>null</code> if the constructor is not
      *         of a supported type
@@ -550,19 +548,19 @@ public abstract class AbstractFactory
      */
     private Object createInstanceForConfiguration2(Configuration config,
             Class<?> target, String className, Constructor<?> constructor,
-            Class<?> arg0, Class<?> arg1)
+            Class<?> arg1, Class<?> arg2)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException {
 
         Object instance;
-        if (arg0.isAssignableFrom(Configuration.class)
-                && arg1.isAssignableFrom(Logger.class)) {
-            instance = constructor.newInstance(new Object[]{config, logger});
+        if (arg1.isAssignableFrom(Configuration.class)
+                && arg2.isAssignableFrom(Logger.class)) {
+            instance = constructor.newInstance(config, logger);
             return instance;
-        } else if (arg0.isAssignableFrom(Logger.class)
-                && arg1.isAssignableFrom(Configuration.class)) {
-            instance = constructor.newInstance(new Object[]{logger, config});
+        } else if (arg1.isAssignableFrom(Logger.class)
+                && arg2.isAssignableFrom(Configuration.class)) {
+            instance = constructor.newInstance(logger, config);
             return instance;
         } else {
             return null;

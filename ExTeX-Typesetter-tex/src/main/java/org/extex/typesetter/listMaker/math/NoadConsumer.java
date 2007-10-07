@@ -27,6 +27,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -145,7 +146,7 @@ public interface NoadConsumer extends ListMaker {
      * @throws HelpingException in case of an error
      */
     Noad scanNoad(Flags flags, Context context, TokenSource source,
-            Typesetter typesetter, String primitive, GroupType groupType)
+            Typesetter typesetter, Token primitive, GroupType groupType)
             throws TypesetterException, HelpingException;
 
     /**

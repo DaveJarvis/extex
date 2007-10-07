@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.box.Box;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.node.PdfXForm;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
@@ -68,11 +69,11 @@ public class Pdfxform extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfxform(String name) {
+    public Pdfxform(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -93,13 +94,9 @@ public class Pdfxform extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "attr")) {
-                attr =
-                        source.scanTokensAsString(context,
-                            printableControlSequence(context));
+                attr = source.scanTokensAsString(context, getToken());
             } else if (source.getKeyword(context, "resources")) {
-                resources =
-                        source.scanTokensAsString(context,
-                            printableControlSequence(context));
+                resources = source.scanTokensAsString(context, getToken());
             } else {
                 break;
             }
@@ -107,7 +104,7 @@ public class Pdfxform extends AbstractPdftexCode {
 
         long b = source.parseInteger(context, source, typesetter);
         Box box = context.getBox(Long.toString(b));
-        NodeList nodes = (box == null? null: box.getNodes());
+        NodeList nodes = (box == null ? null : box.getNodes());
         PdfXForm form = writer.getXForm(attr, resources, nodes);
 
         typesetter.add(form);

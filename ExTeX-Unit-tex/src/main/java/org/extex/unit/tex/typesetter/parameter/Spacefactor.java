@@ -29,6 +29,7 @@ import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
@@ -80,11 +81,11 @@ public class Spacefactor extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Spacefactor(String name) {
+    public Spacefactor(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -102,7 +103,7 @@ public class Spacefactor extends AbstractCode
             spacefactor = typesetter.getListMaker().getSpacefactor();
         } catch (TypesetterUnsupportedException e) {
             throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                printableControlSequence(context));
+                toText());
         }
 
         return spacefactor;
@@ -125,7 +126,7 @@ public class Spacefactor extends AbstractCode
         try {
             typesetter.setSpacefactor(new Count(factor));
         } catch (TypesetterUnsupportedException e) {
-            throw new CantUseInException(printableControlSequence(context),
+            throw new CantUseInException(toText(context),
                 typesetter.getMode().toString());
         } catch (InvalidSpacefactorException e) {
             throw new HelpingException(getLocalizer(), "TTP.BadSpaceFactor",

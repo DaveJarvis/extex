@@ -135,7 +135,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("(resource");
+        StringBuilder sb = new StringBuilder("(resource");
         for (ResourceFinder finder : list) {
             sb.append(' ');
             sb.append(finder.toString());

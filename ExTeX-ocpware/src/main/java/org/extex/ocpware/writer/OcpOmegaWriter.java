@@ -80,7 +80,7 @@ public class OcpOmegaWriter extends AbstractWriter {
 
         String s = "";
         if (value >= ' ' && value <= 0x7e) {
-            StringBuffer sb = new StringBuffer(",`");
+            StringBuilder sb = new StringBuilder(",`");
             sb.append((char) value);
             sb.append('\'');
             s = sb.toString();

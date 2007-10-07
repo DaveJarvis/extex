@@ -54,7 +54,7 @@ public class OcpReaderTest {
      * The field <tt>buffer</tt> contains the buffer for transporting
      * information from a visitor out.
      */
-    private StringBuffer buffer = new StringBuffer();
+    private StringBuilder buffer = new StringBuilder();
 
     /**
      * Attach an observer for debugging.

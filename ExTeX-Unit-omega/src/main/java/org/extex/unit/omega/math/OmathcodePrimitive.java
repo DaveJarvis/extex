@@ -28,6 +28,7 @@ import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -61,7 +62,7 @@ import org.extex.typesetter.type.math.MathCode;
  * <pre class="syntax">
  *    &lang;omathcode&rang;
  *      &rarr; <tt>\omathcode</tt> {@link
- *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
  *        &lang;character code&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;omega math code&rang;
@@ -89,16 +90,16 @@ public class OmathcodePrimitive extends AbstractAssignment
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public OmathcodePrimitive(String name) {
+    public OmathcodePrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -113,11 +114,11 @@ public class OmathcodePrimitive extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getOptionalEquals(context);
         MathCode mathchar =
                 AbstractOmegaMathCode.parseMathCode(context, source,
-                    typesetter, getName());
+                    typesetter, getToken());
         context.setMathcode(charCode, mathchar, prefix.clearGlobal());
     }
 
@@ -132,7 +133,7 @@ public class OmathcodePrimitive extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         return AbstractOmegaMathCode.mathCodeToLong(context
             .getMathcode(charCode));
     }

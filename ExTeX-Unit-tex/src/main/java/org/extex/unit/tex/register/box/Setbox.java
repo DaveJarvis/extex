@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -54,7 +55,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;setbox&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\setbox</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} &lang;box&rang;
  *
  *    &lang;optional prefix&rang;
@@ -127,7 +128,7 @@ public class Setbox extends AbstractAssignment {
      * <pre class="syntax">
      *   &lang;box register name&rang;
      *       &rarr; {@linkplain
-     *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+     *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
      *        &lang;tokens&rang;}
      *        | {@linkplain org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
@@ -145,7 +146,7 @@ public class Setbox extends AbstractAssignment {
      * @param context the interpreter context to use
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the primitive for error messages
+     * @param primitive the name of the primitive for error messages
      * 
      * @return the key for the box register
      * 
@@ -153,11 +154,12 @@ public class Setbox extends AbstractAssignment {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static String getKey(Context context, TokenSource source,
-            Typesetter typesetter, String name)
+            Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
-        String key = source.scanRegisterName(context, source, typesetter, name);
+        String key =
+                source.scanRegisterName(context, source, typesetter, primitive);
 
         if (Namespace.SUPPORT_NAMESPACE_BOX) {
             String namespace = context.getNamespace();
@@ -169,11 +171,11 @@ public class Setbox extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Setbox(String name) {
+    public Setbox(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -187,7 +189,7 @@ public class Setbox extends AbstractAssignment {
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         source.getOptionalEquals(context);
         Flags f = prefix.copy();
         prefix.clear();

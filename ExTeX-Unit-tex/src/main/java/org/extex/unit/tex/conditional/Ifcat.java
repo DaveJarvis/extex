@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
@@ -75,11 +76,11 @@ public class Ifcat extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Ifcat(String name) {
+    public Ifcat(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -96,7 +97,7 @@ public class Ifcat extends AbstractIf {
         Token t1 = source.getToken(context);
         Token t2 = source.getToken(context);
         if (t1 == null || t2 == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
         return t1.getCatcode() == t2.getCatcode();
     }

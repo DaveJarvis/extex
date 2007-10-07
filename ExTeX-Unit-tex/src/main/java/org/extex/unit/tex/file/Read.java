@@ -104,11 +104,11 @@ public class Read extends AbstractAssignment implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Read(String name) {
+    public Read(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -127,7 +127,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
 
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead",
-                printableControlSequence(context));
+                toText());
         }
         CodeToken cs = source.getControlSequence(context, typesetter);
 
@@ -137,31 +137,31 @@ public class Read extends AbstractAssignment implements LogEnabled {
             file = context.getInFile(null);
             if (!file.isOpen()) {
                 throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                    printableControlSequence(context));
+                    toText());
             }
         }
         if (!file.isFileStream()) {
             Interaction interaction = context.getInteraction();
             if (interaction != Interaction.ERRORSTOPMODE) {
                 throw new HelpingException(getLocalizer(), "TTP.NoTermRead",
-                    printableControlSequence(context));
+                    toText());
             }
         }
 
         if (file.isStandardStream()) {
-            logger.severe(printable(context, cs) + "=");
+            logger.severe(cs.toText() + "=");
         }
 
         Tokens toks =
                 file.read(context.getTokenFactory(), context.getTokenizer());
         if (toks == null) {
             throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                printableControlSequence(context));
+                toText());
         }
         Flags f = prefix.copy();
         f.setGlobal(prefix.isGlobal());
-        context.setCode(cs, new MacroCode(cs.getName(), f, false,
-            MacroPattern.EMPTY, toks), prefix.clearGlobal());
+        context.setCode(cs, new MacroCode(cs, f, false, MacroPattern.EMPTY,
+            toks), prefix.clearGlobal());
     }
 
     /**

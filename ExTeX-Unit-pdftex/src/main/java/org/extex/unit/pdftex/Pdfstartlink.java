@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.action.ActionSpec;
 import org.extex.pdf.api.node.PdfStartLink;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
@@ -69,11 +70,11 @@ public class Pdfstartlink extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfstartlink(String name) {
+    public Pdfstartlink(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -101,17 +102,15 @@ public class Pdfstartlink extends AbstractPdftexCode {
             } else if (source.getKeyword(context, "depth")) {
                 depth = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
-                attr =
-                        source.scanTokensAsString(context,
-                            printableControlSequence(context));
+                attr = source.scanTokensAsString(context, getToken());
             } else {
                 break;
             }
         }
 
         ActionSpec action =
-                ActionSpec.parseActionSpec(context, source, typesetter,
-                    getName());
+                ActionSpec.parseActionSpec(context, source, typesetter, 
+                    getToken());
 
         typesetter.add(new PdfStartLink(new RuleNode(width, height, depth,
             context.getTypesettingContext(), true), attr, action));

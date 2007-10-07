@@ -24,6 +24,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -84,11 +85,11 @@ public abstract class AbstractModeCode extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param codeName the name for tracing
+     * @param token the initial token for the primitive
      */
-    public AbstractModeCode(String codeName) {
+    public AbstractModeCode(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**

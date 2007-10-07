@@ -79,7 +79,7 @@ public class Showtokens extends AbstractCode implements LogEnabled {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060603L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
@@ -89,11 +89,11 @@ public class Showtokens extends AbstractCode implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Showtokens(String name) {
+    public Showtokens(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -157,7 +157,7 @@ public class Showtokens extends AbstractCode implements LogEnabled {
                 tokens.add(token);
             }
 
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
 
         } else if (token instanceof CodeToken) {
             Code code = context.getCode((CodeToken) token);

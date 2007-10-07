@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
@@ -73,11 +74,11 @@ public class Ifvoid extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Ifvoid(String name) {
+    public Ifvoid(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -91,7 +92,7 @@ public class Ifvoid extends AbstractIf {
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         Box box = context.getBox(key);
         return (box == null || box.isVoid());
     }

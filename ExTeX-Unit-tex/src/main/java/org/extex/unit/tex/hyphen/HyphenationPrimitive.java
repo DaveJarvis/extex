@@ -95,11 +95,11 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public HyphenationPrimitive(String name) {
+    public HyphenationPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -163,7 +163,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
         Token t = source.getNonSpace(context);
         if (!(t instanceof LeftBraceToken)) {
             throw new MissingLeftBraceException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         try {
@@ -175,7 +175,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
 
                 if (!isWordConstituent(t, context)) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.ImproperHyphen", printableControlSequence(context));
+                        "TTP.ImproperHyphen", toText(context));
                 }
                 word = collectWord(context, source, t);
                 table.addHyphenation(word, (TypesetterOptions) context);

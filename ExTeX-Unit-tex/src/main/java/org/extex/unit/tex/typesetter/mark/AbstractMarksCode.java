@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -47,15 +48,14 @@ public abstract class AbstractMarksCode extends AbstractCode
      */
     static final long serialVersionUID = 2007L;
 
-
     /**
      * Creates a new object.
      * 
-     * @param name the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public AbstractMarksCode(String name) {
+    public AbstractMarksCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -155,7 +155,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      * <pre class="syntax">
      *   &lang;register name&rang;
      *       &rarr; {@linkplain
-     *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+     *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
      *        &lang;tokens&rang;}
      *        | {@linkplain org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
@@ -182,8 +182,7 @@ public abstract class AbstractMarksCode extends AbstractCode
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return source.scanRegisterName(context, source, typesetter,
-            printableControlSequence(context));
+        return source.scanRegisterName(context, source, typesetter, getToken());
     }
 
     /**

@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -32,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * expansion of arguments of primitives like <tt>\edef</tt>, <tt>\xdef</tt>,
  * <tt>\message</tt>, and others..
  * 
- * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean, String)
+ * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean, CodeToken)
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -116,7 +116,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * This interface describes a binary operation on two longs.
@@ -204,11 +204,11 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Numexpr(String name) {
+    public Numexpr(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -253,7 +253,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
             Token t = source.getNonSpace(context);
             if (t == null) {
-                throw new EofException(getName());
+                throw new EofException(toText());
 
             } else if (t.eq(Catcode.OTHER, '*')) {
                 val *= evalOperand(context, source, typesetter);
@@ -261,7 +261,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
             } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = evalOperand(context, source, typesetter);
                 if (x == 0) {
-                    throw new ArithmeticOverflowException(getName());
+                    throw new ArithmeticOverflowException(toText());
                 }
                 val /= x;
 
@@ -299,7 +299,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
-            throw new EofException(getName());
+            throw new EofException(toText());
 
         } else if (t.eq(Catcode.OTHER, '(')) {
             long val = evalExpr(context, source, typesetter);

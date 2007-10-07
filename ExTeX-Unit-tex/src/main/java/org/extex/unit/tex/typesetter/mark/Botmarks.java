@@ -20,6 +20,7 @@
 package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -76,11 +77,11 @@ public class Botmarks extends AbstractMarksCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Botmarks(String name) {
+    public Botmarks(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

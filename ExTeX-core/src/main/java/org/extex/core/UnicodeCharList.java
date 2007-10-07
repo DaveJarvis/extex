@@ -101,11 +101,11 @@ public class UnicodeCharList extends ArrayList<UnicodeChar> {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(size());
+        StringBuilder buffer = new StringBuilder(size());
         for (UnicodeChar uc : this) {
-            buf.append(uc.toString());
+            buffer.append(uc.toString());
         }
-        return buf.toString();
+        return buffer.toString();
     }
 
 }

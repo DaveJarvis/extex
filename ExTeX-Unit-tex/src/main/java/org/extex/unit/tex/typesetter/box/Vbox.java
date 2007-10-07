@@ -28,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -118,11 +119,11 @@ public class Vbox extends AbstractBoxPrimitive {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Vbox(String name) {
+    public Vbox(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -157,10 +158,10 @@ public class Vbox extends AbstractBoxPrimitive {
                             insert);
             }
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         } catch (MissingLeftBraceException e) {
             throw new MissingLeftBraceException(
-                printableControlSequence(context));
+                toText(context));
         }
         return box;
     }

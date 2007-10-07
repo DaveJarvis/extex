@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
@@ -71,11 +72,11 @@ public class DefaultOutputMode extends AbstractModeCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public DefaultOutputMode(String name) {
+    public DefaultOutputMode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

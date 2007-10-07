@@ -25,6 +25,7 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.ocpware.type.OcpProgram;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
@@ -71,11 +72,11 @@ public class Addafterocplist extends AbstractOcplist {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Addafterocplist(String name) {
+    public Addafterocplist(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -96,7 +97,7 @@ public class Addafterocplist extends AbstractOcplist {
         }
         OcpProgram prog =
                 OcpUtil.scanOcpCode(context, source, typesetter,
-                    printableControlSequence(context));
+                    toText(context));
         OcpList list = scanOcplist(context, source, typesetter);
         list.addAfter(scaled, prog);
         return list;

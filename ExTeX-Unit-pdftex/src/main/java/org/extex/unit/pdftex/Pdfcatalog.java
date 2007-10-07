@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.action.ActionSpec;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -66,11 +67,11 @@ public class Pdfcatalog extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfcatalog(String name) {
+    public Pdfcatalog(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -86,14 +87,12 @@ public class Pdfcatalog extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        String text =
-                source.scanTokensAsString(context,
-                    printableControlSequence(context));
+        String text = source.scanTokensAsString(context, getToken());
 
         ActionSpec action = null;
         if (source.getKeyword(context, "openaction")) {
             action = ActionSpec.parseActionSpec(context, source, typesetter, //
-                getName());
+                getToken());
         }
 
         writer.pdfcatalog(text, action);

@@ -88,16 +88,16 @@ public class Scaled extends AbstractAssignment {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060606L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Scaled(String name) {
+    public Scaled(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Scaled extends AbstractAssignment {
         ScaledNumber scaled =
                 ScaledNumberParser
                     .scanScaledNumber(context, source, typesetter);
-        context.setCode(cs, new ScaledCode(getName(), scaled), prefix
+        context.setCode(cs, new ScaledCode(cs, scaled), prefix
             .clearGlobal());
     }
 

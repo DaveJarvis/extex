@@ -237,7 +237,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("(");
+        StringBuilder sb = new StringBuilder("(");
         sb.append(font.getFontKey().toString());
         sb.append(' ');
         sb.append(language.getName());

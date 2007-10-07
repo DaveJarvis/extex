@@ -92,11 +92,11 @@ public class Chardef extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Chardef(String name) {
+    public Chardef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -113,9 +113,9 @@ public class Chardef extends AbstractAssignment {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
 
-        context.setCode(cs, new CharCode(uc), prefix.clearGlobal());
+        context.setCode(cs, new CharCode(cs, uc), prefix.clearGlobal());
     }
 
 }

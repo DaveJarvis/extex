@@ -69,7 +69,7 @@ public class Max1 {
 
         /**
          */
-        private StringBuffer sb = new StringBuffer();
+        private StringBuilder sb = new StringBuilder();
 
         /**
          * {@inheritDoc}

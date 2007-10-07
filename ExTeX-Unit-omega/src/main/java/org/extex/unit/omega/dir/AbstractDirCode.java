@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.Direction;
@@ -41,16 +42,16 @@ public class AbstractDirCode extends AbstractCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param codeName the name of the primitive for tracing
+     * @param token the initial token for the primitive
      */
-    public AbstractDirCode(String codeName) {
+    public AbstractDirCode(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**

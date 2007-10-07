@@ -502,7 +502,7 @@ public class Expression {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("  ");
+        StringBuilder sb = new StringBuilder("  ");
 
         if (leftState != null) {
             sb.append("<");

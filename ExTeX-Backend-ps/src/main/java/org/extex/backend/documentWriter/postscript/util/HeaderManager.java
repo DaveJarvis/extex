@@ -34,7 +34,7 @@ public class HeaderManager {
     /**
      * The field <tt>header</tt> contains the buffer for the header.
      */
-    private StringBuffer header = new StringBuffer();
+    private StringBuilder header = new StringBuilder();
 
     /**
      * Creates a new object.
@@ -87,7 +87,7 @@ public class HeaderManager {
      */
     public void reset() {
 
-        header = new StringBuffer();
+        header = new StringBuilder();
     }
 
     /**

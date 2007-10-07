@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -62,16 +63,16 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060415L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Unexpanded(String name) {
+    public Unexpanded(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -89,7 +90,7 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
             Tokens body = source.getTokens(context, source, typesetter);
             source.push(body);
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
     }
 

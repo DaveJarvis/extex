@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -69,11 +70,11 @@ public class Vadjust extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Vadjust(String name) {
+    public Vadjust(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -89,7 +90,7 @@ public class Vadjust extends AbstractCode {
 
         Mode mode = typesetter.getMode();
         if (!mode.isHmode()) {
-            throw new CantUseInException(printableControlSequence(context),
+            throw new CantUseInException(toText(context),
                 mode.toString());
         }
         Flags flags = prefix.copy();

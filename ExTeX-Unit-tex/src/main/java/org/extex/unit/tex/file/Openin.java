@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -96,11 +97,11 @@ public class Openin extends AbstractFileCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Openin(String name) {
+    public Openin(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

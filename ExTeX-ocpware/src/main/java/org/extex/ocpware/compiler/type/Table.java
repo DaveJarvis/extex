@@ -78,7 +78,7 @@ public class Table {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("  ");
+        StringBuilder sb = new StringBuilder("  ");
         sb.append(name);
         sb.append("[@\"");
         sb.append(Integer.toHexString(contents.length));

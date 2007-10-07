@@ -57,7 +57,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;}
  *
  *    &lang;modifier&rang;
@@ -110,11 +110,11 @@ public class Skipdef extends AbstractSkip {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Skipdef(String name) {
+    public Skipdef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -131,7 +131,7 @@ public class Skipdef extends AbstractSkip {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
-        context.setCode(cs, new SkipParameter(key), prefix.clearGlobal());
+        context.setCode(cs, new SkipParameter(cs, key), prefix.clearGlobal());
     }
 
 }

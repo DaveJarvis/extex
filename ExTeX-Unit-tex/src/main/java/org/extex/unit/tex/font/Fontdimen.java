@@ -32,6 +32,7 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -63,7 +64,7 @@ import org.extex.typesetter.tc.font.Font;
  *       &rarr; <tt>\fontdimen</tt> {@linkplain
  *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,String)
+ *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
@@ -102,11 +103,11 @@ public class Fontdimen extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Fontdimen(String name) {
+    public Fontdimen(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -122,7 +123,7 @@ public class Fontdimen extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.skipSpace();
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         source.getOptionalEquals(context);
         Dimen size = source.parseDimen(context, source, typesetter);
         font.setFontDimen(key, size);
@@ -159,14 +160,12 @@ public class Fontdimen extends AbstractAssignment
 
         Token t = source.getNonSpace(context);
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
-            String key =
-                    source.scanTokensAsString(context,
-                        printableControlSequence(context));
+            String key = source.scanTokensAsString(context, getToken());
             if (key == null) {
-                throw new EofException(printableControlSequence(context));
+                throw new EofException(toText());
             }
             return key;
         }
@@ -185,7 +184,7 @@ public class Fontdimen extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.skipSpace();
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         FixedDimen size = font.getFontDimen(key);
         if (null == size) {
             size = Dimen.ZERO_PT;

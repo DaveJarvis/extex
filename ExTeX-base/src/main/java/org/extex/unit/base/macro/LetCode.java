@@ -58,7 +58,7 @@ public class LetCode extends AbstractCode implements ExpandableCode {
      */
     public LetCode(Token token) {
 
-        super(token.toString());
+        super(null);
         this.token = token;
     }
 
@@ -96,7 +96,7 @@ public class LetCode extends AbstractCode implements ExpandableCode {
      * 
      * @return the token
      */
-    public Token getToken() {
+    public Token getLetToken() {
 
         return token;
     }

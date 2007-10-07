@@ -29,6 +29,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -71,11 +72,11 @@ public class Valign extends AbstractAlign {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Valign(String name) {
+    public Valign(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -116,13 +117,13 @@ public class Valign extends AbstractAlign {
         }
         Token t = source.getToken(context);
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             List<PreambleItem> preamble = getPreamble(context, source);
             applyPreamble(preamble, height, context, source, typesetter);
         } else {
             throw new MissingLeftBraceException(
-                printableControlSequence(context));
+                toText(context));
         }
     }
 

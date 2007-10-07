@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -71,11 +72,11 @@ public class Unhbox extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Unhbox(String name) {
+    public Unhbox(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -89,7 +90,7 @@ public class Unhbox extends AbstractCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         Box box = context.getBox(key);
         if (box == null || box.isVoid()) {
             return;

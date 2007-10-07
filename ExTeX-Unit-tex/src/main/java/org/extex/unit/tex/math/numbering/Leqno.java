@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.CantUseInException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.EqConsumer;
@@ -30,50 +31,53 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive <code>\leqno</code>.
- *
+ * 
  * <doc name="leqno">
  * <h3>The Math Primitive <tt>\leqno</tt></h3>
  * <p>
- *  The math primitive <tt>\leqno</tt> arranges that the following material is
- *  typeset in math mode and placed on the left side of the preceding material.
+ * The math primitive <tt>\leqno</tt> arranges that the following material is
+ * typeset in math mode and placed on the left side of the preceding material.
  * </p>
  * <p>
- *  The primitive can be used in display math mode only. If used in another mode
- *  an error is raised. An error is also raised when more than one invocations
- *  appear in one display math list or <tt>\leqno</tt> appears together with
- *  <tt>\eqno</tt> in a display math list.
+ * The primitive can be used in display math mode only. If used in another mode
+ * an error is raised. An error is also raised when more than one invocations
+ * appear in one display math list or <tt>\leqno</tt> appears together with
+ * <tt>\eqno</tt> in a display math list.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;span&rang;
  *       &rarr; <tt>\leqno</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    $$ 12 \leqno 34 $$ </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Leqno extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
-     * @param name the name for tracing and debugging
+     * 
+     * @param token the initial token for the primitive
      */
-    public Leqno(String name) {
+    public Leqno(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -84,9 +88,8 @@ public class Leqno extends AbstractMathCode {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws CantUseInException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws CantUseInException {
 
         ListMaker lm = typesetter.getListMaker();
 
@@ -98,10 +101,10 @@ public class Leqno extends AbstractMathCode {
             }
 
         } catch (CantUseInException e) {
-            throw new CantUseInException(printableControlSequence(context),
+            throw new CantUseInException(toText(context),
                 "math mode");
         }
-        throw new CantUseInException(printableControlSequence(context), //
+        throw new CantUseInException(toText(context), //
             typesetter.getMode().toString());
     }
 

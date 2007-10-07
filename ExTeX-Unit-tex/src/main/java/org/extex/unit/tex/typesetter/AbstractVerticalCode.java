@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -39,16 +40,16 @@ public abstract class AbstractVerticalCode extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the code
+     * @param token the initial token for the primitive
      */
-    public AbstractVerticalCode(String codeName) {
+    public AbstractVerticalCode(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**

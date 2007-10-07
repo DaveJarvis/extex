@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -69,11 +70,11 @@ public class Unkern extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Unkern(String name) {
+    public Unkern(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -92,7 +93,7 @@ public class Unkern extends AbstractCode {
             typesetter.removeLastNode();
         } else if (node == null) {
             throw new HelpingException(getLocalizer(),
-                "TTP.CantDeleteLastKern", printableControlSequence(context),
+                "TTP.CantDeleteLastKern", toText(context),
                 typesetter.getMode().toString());
         }
     }

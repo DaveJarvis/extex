@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -50,18 +51,16 @@ public class MathE extends AbstractMath
     /**
      * The field <tt>serialVersionUID</tt>.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
-     * 
-     * @throws HelpingException if an error occurred.
+     * @param token the initial token for the primitive
      */
-    public MathE(String name) throws HelpingException {
+    public MathE(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -71,6 +70,7 @@ public class MathE extends AbstractMath
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 

@@ -28,6 +28,7 @@ import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -87,11 +88,11 @@ public class Glueshrinkorder extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Glueshrinkorder(String name) {
+    public Glueshrinkorder(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

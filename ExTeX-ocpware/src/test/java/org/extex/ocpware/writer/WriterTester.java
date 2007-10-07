@@ -83,7 +83,7 @@ public abstract class WriterTester {
     protected void runOmega(String name, String dir, OcpWriter writer)
             throws Exception {
 
-        StringBuffer expect = new StringBuffer();
+        StringBuilder expect = new StringBuilder();
         String in = "org/extex/ocpware/" + dir + name + ".out";
         InputStream s = getClass().getClassLoader().getResourceAsStream(in);
         assertNotNull("Missing " + in, s);

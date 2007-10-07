@@ -183,14 +183,14 @@ public final class StyleNoad implements Noad {
      * some methods-
      */
     private static final StyleNoad[] STYLE = {//
-            new StyleNoad(0, "displaystyle", "textfont"),
-                    new StyleNoad(1, "displaystyle", "textfont"),
-                    new StyleNoad(2, "textstyle", "textfont"),
-                    new StyleNoad(3, "textstyle", "textfont"),
-                    new StyleNoad(4, "scriptstyle", "scriptfont"),
-                    new StyleNoad(5, "scriptstyle", "scriptfont"),
-                    new StyleNoad(6, "scriptscriptstyle", "scriptscriptfont"),
-                    new StyleNoad(7, "scriptscriptstyle", "scriptscriptfont")};
+            new StyleNoad(0, "displaystyle", "\\textfont"),
+                    new StyleNoad(1, "displaystyle", "\\textfont"),
+                    new StyleNoad(2, "textstyle", "\\textfont"),
+                    new StyleNoad(3, "textstyle", "\\textfont"),
+                    new StyleNoad(4, "scriptstyle", "\\scriptfont"),
+                    new StyleNoad(5, "scriptstyle", "\\scriptfont"),
+                    new StyleNoad(6, "scriptscriptstyle", "\\scriptscriptfont"),
+                    new StyleNoad(7, "scriptscriptstyle", "\\scriptscriptfont")};
 
     /**
      * The field <tt>CRAMPED</tt> contains the mapping to cramped styles.

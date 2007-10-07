@@ -112,7 +112,7 @@ public class Fixed32 {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append("0x").append(Integer.toHexString(fp)).append(" = ");
         buf.append(convert(fp));
         return buf.toString();

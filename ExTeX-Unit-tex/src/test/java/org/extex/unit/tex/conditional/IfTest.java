@@ -36,7 +36,9 @@ import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.scanner.type.tokens.Tokens;
@@ -392,9 +394,9 @@ public class IfTest extends ConditionalTester {
          * {@inheritDoc}
          * 
          * @see org.extex.interpreter.TokenSource#getFont(
-         *      org.extex.interpreter.context.Context, java.lang.String)
+         *      org.extex.interpreter.context.Context, CodeToken)
          */
-        public Font getFont(Context context, String primitive)
+        public Font getFont(Context context, CodeToken primitive)
                 throws TypesetterException {
 
             return null;
@@ -571,10 +573,10 @@ public class IfTest extends ConditionalTester {
          * 
          * @see org.extex.interpreter.TokenSource#scanCharacterCode(
          *      org.extex.interpreter.context.Context,
-         *      org.extex.typesetter.Typesetter, java.lang.String)
+         *      org.extex.typesetter.Typesetter, CodeToken)
          */
         public UnicodeChar scanCharacterCode(Context context,
-                Typesetter typesetter, String primitive)
+                Typesetter typesetter, CodeToken primitive)
                 throws TypesetterException {
 
             return null;
@@ -611,10 +613,10 @@ public class IfTest extends ConditionalTester {
          * @see org.extex.interpreter.TokenSource#scanRegisterName(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter, java.lang.String)
+         *      org.extex.typesetter.Typesetter, CodeToken)
          */
         public String scanRegisterName(Context context, TokenSource source,
-                Typesetter typesetter, String primitive)
+                Typesetter typesetter, CodeToken primitive)
                 throws TypesetterException {
 
             return null;
@@ -650,10 +652,10 @@ public class IfTest extends ConditionalTester {
          * 
          * @see org.extex.interpreter.TokenSource#scanTokens(
          *      org.extex.interpreter.context.Context, boolean, boolean,
-         *      java.lang.String)
+         *      CodeToken)
          */
         public Tokens scanTokens(Context context, boolean reportUndefined,
-                boolean ignoreUndefined, String primitive)
+                boolean ignoreUndefined, CodeToken primitive)
                 throws TypesetterException {
 
             return null;
@@ -672,9 +674,9 @@ public class IfTest extends ConditionalTester {
          * @return the next tokens as <code>String</code> or <code>null</code>
          * 
          * @see org.extex.interpreter.TokenSource#scanTokensAsString(
-         *      org.extex.interpreter.context.Context, java.lang.String)
+         *      org.extex.interpreter.context.Context, CodeToken)
          */
-        public String scanTokensAsString(Context context, String primitive)
+        public String scanTokensAsString(Context context, CodeToken primitive)
                 throws TypesetterException {
 
             return null;
@@ -700,11 +702,11 @@ public class IfTest extends ConditionalTester {
          * 
          * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(
          *      org.extex.interpreter.context.Context, boolean, boolean,
-         *      java.lang.String)
+         *      CodeToken)
          */
         public Tokens scanUnprotectedTokens(Context context,
                 boolean reportUndefined, boolean ignoreUndefined,
-                String primitive) throws TypesetterException {
+                CodeToken primitive) throws TypesetterException {
 
             return null;
         }
@@ -789,7 +791,11 @@ public class IfTest extends ConditionalTester {
     @Test
     public void test20() throws Exception {
 
-        assertTrue(new If("if").conditional(null, X_SOURCE, null));
+        ControlSequenceToken cs =
+            (ControlSequenceToken) new TokenFactoryImpl().createToken(
+                Catcode.ESCAPE, UnicodeChar.get('\\'), "if",
+                Namespace.DEFAULT_NAMESPACE);
+        assertTrue(new If(cs).conditional(null, X_SOURCE, null));
     }
 
 }

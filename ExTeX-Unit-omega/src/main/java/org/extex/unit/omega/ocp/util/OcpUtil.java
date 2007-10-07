@@ -78,12 +78,12 @@ public final class OcpUtil {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static String scanOcpFileName(Context context, TokenSource source,
-            String primitive) throws HelpingException, TypesetterException {
+            CodeToken primitive) throws HelpingException, TypesetterException {
 
         Token t = source.scanNonSpace(context);
 
         if (t == null) {
-            throw new EofException(primitive);
+            throw new EofException(primitive.toText());
         } else if (t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
             String name = source.scanTokensAsString(context, primitive);
@@ -91,7 +91,7 @@ public final class OcpUtil {
 
         }
 
-        StringBuffer sb = new StringBuffer(t.toText());
+        StringBuilder sb = new StringBuilder(t.toText());
 
         for (t = source.getToken(context); //
         t != null && !(t instanceof SpaceToken); //
@@ -115,7 +115,7 @@ public final class OcpUtil {
     public static String scanOcpFileName(TokenSource source, Context context)
             throws HelpingException {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (Token t = source.getToken(context); //
         t != null && !(t instanceof SpaceToken); //

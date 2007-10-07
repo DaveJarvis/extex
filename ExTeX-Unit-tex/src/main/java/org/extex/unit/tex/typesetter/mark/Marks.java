@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -79,11 +80,11 @@ public class Marks extends AbstractMarkCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Marks(String name) {
+    public Marks(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -99,7 +100,7 @@ public class Marks extends AbstractMarkCode {
 
         String index = getKey(context, source, typesetter);
         Tokens toks =
-                source.scanUnprotectedTokens(context, false, false, getName());
+                source.scanUnprotectedTokens(context, false, false, getToken());
         typesetter.add(new MarkNode(toks, index));
     }
 

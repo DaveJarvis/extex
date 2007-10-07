@@ -271,7 +271,7 @@ public abstract class ArithExpr {
      */
     public static String toString(ArithExpr x, String op, ArithExpr y) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         if (x.needsParen()) {
             sb.append("(");

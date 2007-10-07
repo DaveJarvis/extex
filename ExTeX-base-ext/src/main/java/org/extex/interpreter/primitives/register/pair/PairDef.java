@@ -48,16 +48,16 @@ public class PairDef extends AbstractAssignment {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public PairDef(String name) {
+    public PairDef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -67,6 +67,7 @@ public class PairDef extends AbstractAssignment {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -77,6 +78,6 @@ public class PairDef extends AbstractAssignment {
                 "pair#"
                         + Long.toString(source.parseInteger(context, source,
                             typesetter));
-        context.setCode(tok, new NamedPair(key), prefix.clearGlobal());
+        context.setCode(tok, new NamedPair(tok, key), prefix.clearGlobal());
     }
 }

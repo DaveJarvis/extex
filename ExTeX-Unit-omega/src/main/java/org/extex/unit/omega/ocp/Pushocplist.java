@@ -68,11 +68,11 @@ public class Pushocplist extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Pushocplist(String name) {
+    public Pushocplist(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -33,6 +33,7 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -64,6 +65,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \writerType  </pre>
+ * 
  * <p>
  * This invocation might expand to "dvi" or "ps".
  * </p>
@@ -87,11 +89,11 @@ public class WriterType extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public WriterType(String name) {
+    public WriterType(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -124,9 +126,7 @@ public class WriterType extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getOptionalEquals(context);
-        String type =
-                source.scanTokensAsString(context,
-                    printableControlSequence(context));
+        String type = source.scanTokensAsString(context, getToken());
         try {
             BackendDriver backendDriver = typesetter.getBackendDriver();
             backendDriver.setDocumentWriterType(type);

@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -50,7 +51,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;muskip&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\muskip</tt>  {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -85,11 +86,11 @@ public class MuskipPrimitive extends MuskipParameter {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public MuskipPrimitive(String name) {
+    public MuskipPrimitive(CodeToken token) {
 
-        super(name);
+        super(token, null);
     }
 
     /**

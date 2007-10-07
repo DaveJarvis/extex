@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner-API"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

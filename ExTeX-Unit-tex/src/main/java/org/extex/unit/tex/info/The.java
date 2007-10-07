@@ -84,11 +84,11 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public The(String name) {
+    public The(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -105,7 +105,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         Token cs = source.getToken(context);
 
         if (cs == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         if (cs instanceof CodeToken) {
 
@@ -127,7 +127,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         }
 
         throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
-            cs.toString(), printableControlSequence(context));
+            cs.toString(), toText(context));
     }
 
     /**
@@ -165,7 +165,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         Token cs = source.getToken(context);
 
         if (cs == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         if (cs instanceof CodeToken) {
 
@@ -183,6 +183,6 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         }
 
         throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
-            cs.toString(), printableControlSequence(context));
+            cs.toString(), toText(context));
     }
 }

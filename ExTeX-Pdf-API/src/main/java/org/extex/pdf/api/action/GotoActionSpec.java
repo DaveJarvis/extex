@@ -26,6 +26,7 @@ import org.extex.pdf.api.exception.PdftexActionTypeException;
 import org.extex.pdf.api.exception.PdftexIdentifierTypeException;
 import org.extex.pdf.api.id.NameIdSpec;
 import org.extex.pdf.api.id.NumIdSpec;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -43,7 +44,7 @@ public abstract class GotoActionSpec extends ActionSpec {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the primitive
+     * @param primitive the name of the primitive
      *
      * @return the action spec found
      *
@@ -52,28 +53,28 @@ public abstract class GotoActionSpec extends ActionSpec {
      */
     public static ActionSpec parseActionSpec(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+            CodeToken primitive) throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "num")) {
             long num = source.parseNumber(context, source, typesetter);
             return new GotoIdActionSpec(null, new NumIdSpec(num), null);
 
         } else if (source.getKeyword(context, "name")) {
-            String id = source.scanTokensAsString(context, name);
+            String id = source.scanTokensAsString(context, primitive);
             return new GotoIdActionSpec(null, new NameIdSpec(id), null);
 
         } else if (source.getKeyword(context, "page")) {
             long page = source.parseNumber(context, source, typesetter);
-            String text = source.scanTokensAsString(context, name);
+            String text = source.scanTokensAsString(context, primitive);
             return new GotoPageActionSpec(null, page, text, null);
 
         } else if (!source.getKeyword(context, "file")) {
-            throw new PdftexIdentifierTypeException(name);
+            throw new PdftexIdentifierTypeException(primitive.toText());
         }
-        String file = source.scanTokensAsString(context, name);
+        String file = source.scanTokensAsString(context, primitive);
 
         if (source.getKeyword(context, "name")) {
-            String id = source.scanTokensAsString(context, name);
+            String id = source.scanTokensAsString(context, primitive);
             Boolean newWindow = null;
             if (source.getKeyword(context, "newwindow")) {
                 newWindow = Boolean.TRUE;
@@ -84,7 +85,7 @@ public abstract class GotoActionSpec extends ActionSpec {
 
         } else if (source.getKeyword(context, "page")) {
             long page = source.parseNumber(context, source, typesetter);
-            String text = source.scanTokensAsString(context, name);
+            String text = source.scanTokensAsString(context, primitive);
             Boolean newWindow = null;
             if (source.getKeyword(context, "newwindow")) {
                 newWindow = Boolean.TRUE;
@@ -94,7 +95,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             return new GotoPageActionSpec(file, page, text, newWindow);
         }
 
-        throw new PdftexActionTypeException(name);
+        throw new PdftexActionTypeException(primitive.toText());
     }
 
 }

@@ -192,7 +192,7 @@ public class CmykColor implements Color {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         ColorUtil.formatAlpha(sb, alpha);
         sb.append("cmyk {");
         ColorUtil.formatComponent(sb, cyan);

@@ -143,11 +143,11 @@ public class Leaders extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Leaders(String name) {
+    public Leaders(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -165,7 +165,7 @@ public class Leaders extends AbstractCode {
         Code code = context.getCode(cs);
 
         if (code == null) {
-            throw new UndefinedControlSequenceException(printable(context, cs));
+            throw new UndefinedControlSequenceException(cs.toText());
         }
 
         boolean horizontal;

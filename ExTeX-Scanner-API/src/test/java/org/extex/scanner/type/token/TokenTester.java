@@ -483,6 +483,16 @@ public class TokenTester {
     /**
      */
     @Test
+    public void testToStringBuilder1() {
+
+        StringBuilder sb = new StringBuilder();
+        token.toString(sb);
+        assertEquals(str, sb.toString());
+    }
+
+    /**
+     */
+    @Test
     public void testToText0() {
 
         assertEquals(text, token.toText());

@@ -102,11 +102,11 @@ public class Ifcase extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Ifcase(String name) {
+    public Ifcase(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -122,7 +122,7 @@ public class Ifcase extends AbstractIf {
 
         long branch = source.parseInteger(context, source, typesetter);
         if (branch < 0) {
-            if (skipToElseOrFi(context, source, getName())) {
+            if (skipToElseOrFi(context, source, getToken())) {
                 context.pushConditional(source.getLocator(), true, this, -1,
                     false);
             }
@@ -204,7 +204,7 @@ public class Ifcase extends AbstractIf {
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
-            printableControlSequence(context), Integer.toString(locator
+            toText(context), Integer.toString(locator
                 .getLineNumber()));
     }
 

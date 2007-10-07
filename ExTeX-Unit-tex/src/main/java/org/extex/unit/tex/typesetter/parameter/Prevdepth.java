@@ -32,6 +32,7 @@ import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -95,11 +96,11 @@ public class Prevdepth extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Prevdepth(String name) {
+    public Prevdepth(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -121,7 +122,7 @@ public class Prevdepth extends AbstractAssignment
         try {
             typesetter.setPrevDepth(pd);
         } catch (TypesetterUnsupportedException e) {
-            throw new CantUseInException(printableControlSequence(context),
+            throw new CantUseInException(toText(),
                 typesetter.getMode().toString());
         }
     }
@@ -141,7 +142,7 @@ public class Prevdepth extends AbstractAssignment
             prevDepth = typesetter.getListMaker().getPrevDepth();
         } catch (TypesetterUnsupportedException e) {
             throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                printableControlSequence(context));
+                toText());
         }
 
         return prevDepth != null ? prevDepth.getValue() : IGNORE;
@@ -161,7 +162,7 @@ public class Prevdepth extends AbstractAssignment
             prevDepth = typesetter.getListMaker().getPrevDepth();
         } catch (TypesetterUnsupportedException e) {
             throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                printableControlSequence(context));
+                toText());
         }
 
         return prevDepth != null ? prevDepth.getValue() : IGNORE;
@@ -182,7 +183,7 @@ public class Prevdepth extends AbstractAssignment
             prevDepth = typesetter.getListMaker().getPrevDepth();
         } catch (TypesetterUnsupportedException e) {
             throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
-                printableControlSequence(context));
+                toText(context));
         }
 
         if (prevDepth == null) {

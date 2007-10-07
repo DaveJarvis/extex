@@ -64,6 +64,7 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.file.InFile;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
@@ -197,7 +198,11 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     public void test100() throws Exception {
 
         try {
-            new Dump("dump").execute(Flags.NONE, new Context() {
+            ControlSequenceToken cs =
+                (ControlSequenceToken) new TokenFactoryImpl().createToken(
+                    Catcode.ESCAPE, UnicodeChar.get('\\'), "dump",
+                    Namespace.DEFAULT_NAMESPACE);
+            new Dump(cs).execute(Flags.NONE, new Context() {
 
                 /**
                  * The field <tt>serialVersionUID</tt> contains the version
@@ -1160,7 +1165,11 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     public void test101() throws Exception {
 
         try {
-            Dump dump = new Dump("dump");
+            ControlSequenceToken cs =
+                (ControlSequenceToken) new TokenFactoryImpl().createToken(
+                    Catcode.ESCAPE, UnicodeChar.get('\\'), "dump",
+                    Namespace.DEFAULT_NAMESPACE);
+            Dump dump = new Dump(cs);
             dump.setOutputStreamFactory(new OutputStreamFactory() {
 
                 /**

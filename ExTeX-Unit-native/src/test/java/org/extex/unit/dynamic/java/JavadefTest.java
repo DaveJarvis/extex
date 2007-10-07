@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,6 +19,7 @@
 
 package org.extex.unit.dynamic.java;
 
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @param arg the (ignored) argument
      */
-    public JavadefTest(String arg) {
+    public JavadefTest(CodeToken arg) {
 
         super(null, null);
     }

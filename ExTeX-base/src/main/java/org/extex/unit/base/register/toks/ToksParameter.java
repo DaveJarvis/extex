@@ -32,6 +32,7 @@ import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -89,23 +90,23 @@ public class ToksParameter extends AbstractToks
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public ToksParameter(String name) {
+    public ToksParameter(CodeToken token) {
 
-        super(name);
-        key = name;
+        super(token);
+        key = token.getName();
     }
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      * @param key the key
      */
-    public ToksParameter(String name, String key) {
+    public ToksParameter(CodeToken token, String key) {
 
-        super(name);
+        super(token);
         this.key = key;
     }
 
@@ -180,7 +181,7 @@ public class ToksParameter extends AbstractToks
         try {
             tokens = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText());
         }
         context.setToks(key, tokens, prefix.clearGlobal());
     }

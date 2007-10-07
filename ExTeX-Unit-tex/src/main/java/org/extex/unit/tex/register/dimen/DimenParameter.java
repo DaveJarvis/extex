@@ -27,20 +27,24 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.InitializableCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\dimen</code>.
- * It sets the named length register to the value given,
- * and as a side effect all prefixes are zeroed.
- *
- * <p>Example</p>
+ * It sets the named length register to the value given, and as a side effect
+ * all prefixes are zeroed.
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \day=345
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -50,7 +54,8 @@ public class DimenParameter extends DimenPrimitive
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -61,27 +66,38 @@ public class DimenParameter extends DimenPrimitive
 
     /**
      * Creates a new object.
-     *
-     * @param name the name for debugging
+     * 
+     * @param token the initial token for the primitive
      */
-    public DimenParameter(String name) {
+    public DimenParameter(CodeToken token) {
 
-        super(name);
-        key = name;
+        super(token);
+        this.key = token.getName();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param token the initial token for the primitive
+     * @param key the key
+     */
+    public DimenParameter(CodeToken token, String key) {
+
+        super(token);
+        this.key = key;
     }
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
         String k = config.getAttribute("key");
         if (k != null) {
@@ -91,16 +107,15 @@ public class DimenParameter extends DimenPrimitive
 
     /**
      * Return the key (the name of the primitive) for the register.
-     *
+     * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
-     *
+     * 
      * @return the key for the current register
-     *
+     * 
      * @see org.extex.unit.tex.register.dimen.AbstractDimen#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     protected String getKey(Context context, TokenSource source,
@@ -111,16 +126,17 @@ public class DimenParameter extends DimenPrimitive
 
     /**
      * Initialize the Code with some value coming from a Token source.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
-     *
+     * 
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
-    public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public void init(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
 
         if (source == null) {
             return;

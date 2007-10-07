@@ -28,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.MuskipConvertible;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -72,11 +73,11 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Gluetomu(String name) {
+    public Gluetomu(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -105,7 +106,7 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new CantUseInException(printableControlSequence(context),
+        throw new CantUseInException(toText(context),
             typesetter.getMode().toString());
     }
 

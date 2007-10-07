@@ -92,7 +92,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean sep = false;
 
         for (Left left : this) {

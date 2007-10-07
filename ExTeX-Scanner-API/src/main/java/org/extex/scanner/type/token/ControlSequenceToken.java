@@ -53,7 +53,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>value</tt> contains the string value.
@@ -273,6 +273,19 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Print the token into a StringBuilder.
+     * 
+     * @param sb the target string builder
+     * 
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+     */
+    public void toString(StringBuilder sb) {
+
+        sb.append(getLocalizer().format("ControlSequenceToken.Text",
+            getChar().toString(), name, namespace));
+    }
+
+    /**
      * Return the text representation of this object.
      * 
      * @return the text representation
@@ -282,9 +295,9 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     @Override
     public String toText() {
 
-        UnicodeChar c = getChar();
-        if (c != null && c.getCodePoint() != 0) {
-            return c.toString() + name;
+        UnicodeChar esc = getChar();
+        if (esc != null && esc.getCodePoint() != 0) {
+            return esc.toString() + name;
         }
 
         return name;

@@ -28,6 +28,7 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -53,11 +54,11 @@ public class NamedFont extends AbstractAssignment
     /**
      * Creates a new object.
      *
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public NamedFont(String name) {
+    public NamedFont(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -77,7 +78,7 @@ public class NamedFont extends AbstractAssignment
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         context.setFont(key, font, prefix.clearGlobal());
     }
 

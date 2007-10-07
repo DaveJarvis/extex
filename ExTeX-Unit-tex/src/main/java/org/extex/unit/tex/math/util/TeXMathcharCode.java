@@ -29,6 +29,7 @@ import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -65,12 +66,12 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      * @param charCode the code of the math char
      */
-    public TeXMathcharCode(String name, MathCode charCode) {
+    public TeXMathcharCode(CodeToken token, MathCode charCode) {
 
-        super(name);
+        super(token);
         mathchar = charCode;
     }
 

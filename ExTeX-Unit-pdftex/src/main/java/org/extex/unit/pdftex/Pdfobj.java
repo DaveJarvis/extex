@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.node.PdfObject;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -80,11 +81,11 @@ public class Pdfobj extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfobj(String name) {
+    public Pdfobj(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -106,9 +107,7 @@ public class Pdfobj extends AbstractPdftexCode {
         boolean isStream = false;
 
         if (source.getKeyword(context, "attr")) {
-            attr =
-                    source.scanTokensAsString(context,
-                        printableControlSequence(context));
+            attr = source.scanTokensAsString(context, getToken());
         }
         if (source.getKeyword(context, "stream")) {
             isStream = true;
@@ -116,9 +115,7 @@ public class Pdfobj extends AbstractPdftexCode {
             isStream = false;
         }
 
-        String text =
-            source.scanTokensAsString(context,
-                printableControlSequence(context));
+        String text = source.scanTokensAsString(context, getToken());
 
         PdfObject a = writer.getObject(attr, isStream, text);
         typesetter.add(a);

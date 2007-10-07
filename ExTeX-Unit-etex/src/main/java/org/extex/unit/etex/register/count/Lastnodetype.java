@@ -24,6 +24,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -570,16 +571,16 @@ public class Lastnodetype extends AbstractReadonlyCount {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Lastnodetype(String name) {
+    public Lastnodetype(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

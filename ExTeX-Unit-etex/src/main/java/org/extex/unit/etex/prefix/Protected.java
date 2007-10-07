@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.PrefixCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -70,11 +71,11 @@ public class Protected extends AbstractCode implements PrefixCode {
     /**
      * Creates a new object.
      *
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Protected(String name) {
+    public Protected(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -87,11 +87,11 @@ public class Ifx extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Ifx(String name) {
+    public Ifx(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -109,7 +109,7 @@ public class Ifx extends AbstractIf {
         Token t2 = source.getToken(context);
 
         if (t1 == null || t2 == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         } else if (t1 instanceof CodeToken) {
             Code c1 = context.getCode((CodeToken) t1);
 

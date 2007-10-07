@@ -32,6 +32,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -114,11 +115,11 @@ public class Mag extends AbstractCount
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Mag(String name) {
+    public Mag(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -191,7 +192,7 @@ public class Mag extends AbstractCount
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         value = context.getMagnification() / value;

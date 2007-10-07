@@ -68,8 +68,8 @@ public class LogFormatter extends Formatter {
     public String format(LogRecord record) {
 
         String message = record.getMessage();
-        StringBuffer msg = new StringBuffer(message == null ? "" : message);
-        StringBuffer out = new StringBuffer();
+        StringBuilder msg = new StringBuilder(message == null ? "" : message);
+        StringBuilder out = new StringBuilder();
         int start = 0;
 
         for (int i = msg.indexOf("\n", start); i >= 0; i = msg.indexOf("\n",
@@ -102,7 +102,7 @@ public class LogFormatter extends Formatter {
      * @param out the target buffer
      * @param msg the message to process
      */
-    private void print(StringBuffer out, CharSequence msg) {
+    private void print(StringBuilder out, CharSequence msg) {
 
         CharSequence s = msg;
         int length = msg.length();
@@ -147,7 +147,7 @@ public class LogFormatter extends Formatter {
      *
      * @return the message
      */
-    private CharSequence breakLine(StringBuffer out,
+    private CharSequence breakLine(StringBuilder out,
             CharSequence msg) {
 
         for (int i = LINE_LENGTH - col - 1; i >= 0; i--) {

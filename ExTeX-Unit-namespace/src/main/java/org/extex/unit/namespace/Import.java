@@ -77,16 +77,16 @@ public class Import extends Let {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Import(String name) {
+    public Import(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Import extends Let {
         try {
             ns = source.getTokens(context, source, typesetter).toText();
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText());
         }
         Tokens export = context.getToks(ns + "\bexport");
         String namespace = context.getNamespace();

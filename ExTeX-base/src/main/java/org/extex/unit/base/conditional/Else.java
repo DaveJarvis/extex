@@ -28,6 +28,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -73,16 +74,16 @@ public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Else(String name) {
+    public Else(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -107,9 +108,9 @@ public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
         Conditional cond = context.popConditional();
 
         if (cond == null
-                || AbstractIf.skipToElseOrFi(context, source, getName())) {
+                || AbstractIf.skipToElseOrFi(context, source, getToken())) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 
@@ -129,9 +130,9 @@ public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
         Conditional cond = context.popConditional();
 
         if (cond == null
-                || AbstractIf.skipToElseOrFi(context, source, getName())) {
+                || AbstractIf.skipToElseOrFi(context, source, getToken())) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 

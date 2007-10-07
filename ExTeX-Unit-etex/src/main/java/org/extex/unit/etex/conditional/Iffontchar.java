@@ -23,6 +23,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
@@ -46,10 +47,10 @@ import org.extex.unit.base.conditional.AbstractIf;
  * 
  * <pre class="syntax">
  *    &lang;iffontchar&rang;
- *      &rarr; <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,String) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,String) code&rang; &lang;true text&rang;} <tt>\fi</tt>
- *      | <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,String) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,String) code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      &rarr; <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) code&rang; &lang;true text&rang;} <tt>\fi</tt>
+ *      | <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * 
  * <h4>Examples</h4>
  * 
@@ -67,16 +68,16 @@ public class Iffontchar extends AbstractIf {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Iffontchar(String name) {
+    public Iffontchar(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -90,9 +91,9 @@ public class Iffontchar extends AbstractIf {
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         return font.hasGlyph(uc);
     }
 

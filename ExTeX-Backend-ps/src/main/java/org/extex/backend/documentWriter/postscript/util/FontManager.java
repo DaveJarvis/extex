@@ -68,7 +68,7 @@ public class FontManager implements Iterable<ManagerInfo> {
      * The field <tt>texdict</tt> contains the definition of font changing
      * functions.
      */
-    private StringBuffer texdict = null;
+    private StringBuilder texdict = null;
 
     /**
      * The field <tt>recognizedCharId</tt> contains the most recently
@@ -117,7 +117,7 @@ public class FontManager implements Iterable<ManagerInfo> {
                     currentFont = fnt;
                     String n = Integer.toString(fntNo++);
                     if (texdict == null) {
-                        texdict = new StringBuffer("TeXDict begin\n");
+                        texdict = new StringBuilder("TeXDict begin\n");
                     }
                     texdict.append("/F");
                     texdict.append(n);

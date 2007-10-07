@@ -30,6 +30,7 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -82,11 +83,11 @@ public class Efcode extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public Efcode(String codeName) {
+    public Efcode(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -100,9 +101,9 @@ public class Efcode extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getOptionalEquals(context);
         long code = source.parseInteger(context, source, typesetter);
         font.setEfCode(uc, code);
@@ -118,9 +119,9 @@ public class Efcode extends AbstractCode
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
 
         return font.getEfCode(uc);
     }

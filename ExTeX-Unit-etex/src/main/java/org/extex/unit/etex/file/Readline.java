@@ -42,22 +42,24 @@ import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 
 /**
- * This class provides an implementation for the primitive <code>\readline</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\readline</code>.
+ * 
  * <doc name="readline">
  * <h3>The Primitive <tt>\readline</tt></h3>
  * <p>
- *  The primitive <tt>\readline</tt> read characters from an input stream until
- *  the end of line is encountered. The characters are translated to tokens
- *  with the category code OTHER except the white-space characters which receive
- *  the category code SPACE. This mapping is performed ignoring the setting of
- *  {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>}.
- *  The resulting token list is bound to the control sequence given.
+ * The primitive <tt>\readline</tt> read characters from an input stream until
+ * the end of line is encountered. The characters are translated to tokens with
+ * the category code OTHER except the white-space characters which receive the
+ * category code SPACE. This mapping is performed ignoring the setting of
+ * {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>}. The
+ * resulting token list is bound to the control sequence given.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;readline&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\readline</tt> {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
@@ -68,22 +70,25 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt> &lang;optional prefix&rang; </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  * \openin3= abc.def
  * \readline3 to \line
  * \closein3 </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public class Readline extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -95,11 +100,11 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         /**
          * Getter for the category code of a character.
-         *
+         * 
          * @param c the Unicode character to analyze
-         *
+         * 
          * @return the category code of a character
-         *
+         * 
          * @see org.extex.scanner.api.Tokenizer#getCatcode(
          *      org.extex.core.UnicodeChar)
          */
@@ -110,9 +115,9 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         /**
          * Getter for the name space.
-         *
+         * 
          * @return the name space
-         *
+         * 
          * @see org.extex.scanner.api.Tokenizer#getNamespace()
          */
         public String getNamespace() {
@@ -129,12 +134,12 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
     /**
      * Creates a new object.
-     *
-     * @param name the name for debugging
+     * 
+     * @param token the initial token for the primitive
      */
-    public Readline(String name) {
+    public Readline(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -143,28 +148,25 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      * This method is preferable to <tt>execute()</tt> since the
      * <tt>execute()</tt> method provided in this class takes care of
      * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
+     * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key =
                 AbstractFileCode.scanInFileKey(context, source, typesetter);
 
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead",
-                printableControlSequence(context));
+                toText());
         }
         CodeToken cs = source.getControlSequence(context, typesetter);
 
@@ -174,19 +176,19 @@ public class Readline extends AbstractAssignment implements LogEnabled {
             file = context.getInFile(null);
             if (file == null || !file.isOpen()) {
                 throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
-                    printableControlSequence(context));
+                    toText());
             }
         }
         if (!file.isFileStream()) {
             Interaction interaction = context.getInteraction();
             if (interaction != Interaction.ERRORSTOPMODE) {
                 throw new HelpingException(getLocalizer(), "TTP.NoTermRead",
-                    printableControlSequence(context));
+                    toText());
             }
         }
 
         if (file.isStandardStream()) {
-            logger.severe(printable(context, cs) + "=");
+            logger.severe(cs.toText(context.escapechar()) + "=");
         }
 
         Tokens toks = file.read(context.getTokenFactory(), TOKENIZER);
@@ -197,7 +199,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         boolean longP = prefix.clearLong();
         boolean outerP = prefix.clearOuter();
-        context.setCode(cs, new MacroCode(cs.getName(), prefix, false,
+        context.setCode(cs, new MacroCode(cs, prefix, false,
             MacroPattern.EMPTY, toks), prefix.clearGlobal());
         if (longP) {
             prefix.setLong();
@@ -209,9 +211,9 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */

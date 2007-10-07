@@ -114,4 +114,14 @@ public class LetterTokenTest extends TokenTester {
         assertEquals("the letter ^^A", sb.toString());
     }
 
+    /**
+     */
+    @Test
+    public void testToStringBuilder2() {
+
+        StringBuilder sb = new StringBuilder();
+        new LetterToken(UnicodeChar.get(1)).toString(sb);
+        assertEquals("the letter ^^A", sb.toString());
+    }
+
 }

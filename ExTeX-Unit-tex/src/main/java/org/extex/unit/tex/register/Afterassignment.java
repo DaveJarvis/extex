@@ -25,6 +25,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
@@ -76,11 +77,11 @@ public class Afterassignment extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Afterassignment(String name) {
+    public Afterassignment(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -96,7 +97,7 @@ public class Afterassignment extends AbstractCode {
 
         Token t = source.getToken(context);
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         context.setAfterassignment(t);
     }

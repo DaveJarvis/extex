@@ -37,6 +37,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -86,18 +87,19 @@ import de.dante.util.xslt.Transform;
 public class InputXslt extends AbstractFileCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Create a new object.
      * 
-     * @param codeName the CodeName
+     * @param token the initial token for the primitive
      */
-    public InputXslt(String codeName) {
+    public InputXslt(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -107,6 +109,7 @@ public class InputXslt extends AbstractFileCode {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -149,13 +152,16 @@ public class InputXslt extends AbstractFileCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
+    @Override
     protected String scanFileName(Context context, TokenSource source)
             throws HelpingException,
                 TypesetterException {
 
-        return source.scanTokensAsString(context, getName());
+        return source.scanTokensAsString(context, getToken());
     }
+
 }

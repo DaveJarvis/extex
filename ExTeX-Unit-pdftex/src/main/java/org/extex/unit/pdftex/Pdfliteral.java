@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.node.PdfLiteral;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -73,11 +74,11 @@ public class Pdfliteral extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfliteral(String name) {
+    public Pdfliteral(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,9 +95,7 @@ public class Pdfliteral extends AbstractPdftexCode {
         ensurePdftex(context, typesetter);
 
         boolean direct = source.getKeyword(context, "direct");
-        String text =
-            source.scanTokensAsString(context,
-                printableControlSequence(context));
+        String text = source.scanTokensAsString(context, getToken());
 
         typesetter.add(new PdfLiteral(text, direct));
     }

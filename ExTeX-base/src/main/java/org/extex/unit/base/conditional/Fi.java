@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -62,16 +63,16 @@ public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Fi(String name) {
+    public Fi(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
 
         if (context.popConditional() == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 
@@ -103,7 +104,7 @@ public class Fi extends AbstractCode implements ExpandableCode, PrefixCode  {
 
         if (context.popConditional() == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 

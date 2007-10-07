@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -51,7 +52,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;box&rang;
  *      &rarr; <tt>\box</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -76,11 +77,11 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public BoxPrimitive(String name) {
+    public BoxPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,7 +95,7 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         Box box = context.getBox(key);
         if (box != null) {
             typesetter.add(box.getNodes());
@@ -125,7 +126,7 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
                 HelpingException,
                 TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         Box b = context.getBox(key);
         Box box = new Box(b);
         if (b != null) {

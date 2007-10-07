@@ -208,7 +208,7 @@ public abstract class AbstractToken implements Token, Serializable {
         } else if (character.isPrintable()) {
             return character.toString();
         }
-        StringBuffer sb = new StringBuffer("^^");
+        StringBuilder sb = new StringBuilder("^^");
         int c = character.getCodePoint();
         sb.append((char) (c < 64 ? c + 64 : c - 64));
         return sb.toString();

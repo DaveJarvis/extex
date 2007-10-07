@@ -37,6 +37,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -112,11 +113,11 @@ public class EnsureLoaded extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public EnsureLoaded(String codeName) {
+    public EnsureLoaded(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -143,9 +144,7 @@ public class EnsureLoaded extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String configName =
-                source.scanTokensAsString(context,
-                    printableControlSequence(context));
+        String configName = source.scanTokensAsString(context, getToken());
 
         try {
             Configuration configuration =

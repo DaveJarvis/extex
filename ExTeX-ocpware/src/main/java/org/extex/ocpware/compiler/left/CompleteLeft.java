@@ -116,7 +116,7 @@ public class CompleteLeft implements Left {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer(left.toString());
+        StringBuilder sb = new StringBuilder(left.toString());
         sb.append("<");
         sb.append(from);
         sb.append(",");

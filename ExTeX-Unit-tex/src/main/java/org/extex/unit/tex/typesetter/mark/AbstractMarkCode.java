@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -43,15 +44,14 @@ public abstract class AbstractMarkCode extends AbstractCode {
      */
     static final long serialVersionUID = 2007L;
 
-
     /**
      * Creates a new object.
      * 
-     * @param name the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public AbstractMarkCode(String name) {
+    public AbstractMarkCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -72,7 +72,8 @@ public abstract class AbstractMarkCode extends AbstractCode {
         Token t = source.getNonSpace(context);
         source.push(t);
         if (t instanceof LeftBraceToken) {
-            Tokens tokens = source.scanTokens(context, false, false, getName());
+            Tokens tokens =
+                    source.scanTokens(context, false, false, getToken());
             return (tokens == null ? "" : tokens.toText());
         }
 

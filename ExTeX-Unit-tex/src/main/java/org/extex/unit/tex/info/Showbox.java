@@ -28,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.box.Setbox;
@@ -50,7 +51,7 @@ import org.extex.unit.tex.register.box.Setbox;
  * <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; <tt>\showbox</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -132,11 +133,11 @@ public class Showbox extends AbstractCode implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Showbox(String name) {
+    public Showbox(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -163,7 +164,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         Box b = context.getBox(key);
 
         if (b == null) {

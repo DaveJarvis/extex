@@ -28,6 +28,7 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -75,11 +76,11 @@ public class Pdflastobj extends AbstractPdftexCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdflastobj(String name) {
+    public Pdflastobj(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

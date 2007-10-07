@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.node.PdfAnnotation;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
@@ -69,11 +70,11 @@ public class Pdfannot extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfannot(String name) {
+    public Pdfannot(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -89,9 +90,12 @@ public class Pdfannot extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default;
-        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default;
-        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default;
+        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct
+                                            // default;
+        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct
+                                            // default;
+        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct
+                                            // default;
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
@@ -105,9 +109,7 @@ public class Pdfannot extends AbstractPdftexCode {
             }
         }
 
-        String annotation =
-                source.scanTokensAsString(context,
-                    printableControlSequence(context));
+        String annotation = source.scanTokensAsString(context, getToken());
         PdfAnnotation a =
                 writer.getAnnotation(new RuleNode(width, height, depth, //
                     context.getTypesettingContext(), true), annotation);

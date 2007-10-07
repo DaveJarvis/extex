@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -85,11 +86,11 @@ public class Expandafter extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Expandafter(String name) {
+    public Expandafter(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -106,7 +107,7 @@ public class Expandafter extends AbstractCode
         Token t = source.getToken(context);
         Token token = source.getToken(context);
         if (t == null || token == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         source.execute(token, context, typesetter);
         source.push(t);
@@ -125,7 +126,7 @@ public class Expandafter extends AbstractCode
         Token t = source.getToken(context);
         Token token = source.getToken(context);
         if (t == null || token == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         source.push(source.expand(token, context, typesetter));
         source.push(t);

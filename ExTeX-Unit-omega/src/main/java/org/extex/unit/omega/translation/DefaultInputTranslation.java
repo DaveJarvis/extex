@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
@@ -74,7 +75,7 @@ public class DefaultInputTranslation extends AbstractModeCode
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>finder</tt> contains the resource finder.
@@ -84,11 +85,11 @@ public class DefaultInputTranslation extends AbstractModeCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public DefaultInputTranslation(String name) {
+    public DefaultInputTranslation(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

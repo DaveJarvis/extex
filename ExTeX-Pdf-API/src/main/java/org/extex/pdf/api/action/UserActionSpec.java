@@ -22,6 +22,7 @@ package org.extex.pdf.api.action;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -54,7 +55,7 @@ public class UserActionSpec extends ActionSpec {
      */
     public static ActionSpec parseActionSpec(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+            CodeToken name) throws HelpingException, TypesetterException {
 
         String user = source.scanTokensAsString(context, name);
         return new UserActionSpec(user);

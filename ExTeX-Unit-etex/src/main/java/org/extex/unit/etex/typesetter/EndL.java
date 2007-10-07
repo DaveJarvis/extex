@@ -26,6 +26,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.Direction;
@@ -69,16 +70,16 @@ public class EndL extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public EndL(String name) {
+    public EndL(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,7 +95,7 @@ public class EndL extends AbstractCode {
 
         if (context.getCount("TeXXeTstate").le(Count.ZERO)) {
             throw new ExtensionDisabledException(
-                printableControlSequence(context));
+                toText(context));
         }
         Direction dir = context.popDirection();
         if (dir == null) {

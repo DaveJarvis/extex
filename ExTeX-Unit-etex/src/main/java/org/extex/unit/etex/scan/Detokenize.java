@@ -29,6 +29,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -67,16 +68,16 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param codeName the name
+     * @param token the initial token for the primitive
      */
-    public Detokenize(String codeName) {
+    public Detokenize(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -98,7 +99,7 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
             tokens = source.getTokens(context, source, typesetter);
             source.push(context.getTokenFactory().toTokens(tokens.toText()));
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
@@ -121,7 +122,7 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
         try {
             tokens = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
         try {
             source.push(context.getTokenFactory().toTokens(tokens.toText()));

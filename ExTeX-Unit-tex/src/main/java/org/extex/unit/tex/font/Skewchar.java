@@ -31,6 +31,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -89,11 +90,11 @@ public class Skewchar extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Skewchar(String name) {
+    public Skewchar(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -107,7 +108,7 @@ public class Skewchar extends AbstractAssignment
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         source.getOptionalEquals(context);
         long c = source.parseInteger(context, source, typesetter);
         font.setSkewChar(UnicodeChar.get((int) c));
@@ -124,11 +125,11 @@ public class Skewchar extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            Font font = source.getFont(context, getName());
+            Font font = source.getFont(context, getToken());
             UnicodeChar uc = font.getSkewChar();
             return (uc == null ? -1 : uc.getCodePoint());
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
     }
 
@@ -161,7 +162,7 @@ public class Skewchar extends AbstractAssignment
                 HelpingException,
                 TypesetterException {
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
         UnicodeChar uc = font.getSkewChar();
         return context.getTokenFactory().toTokens( //
             uc == null ? "-1" : Integer.toString(uc.getCodePoint()));

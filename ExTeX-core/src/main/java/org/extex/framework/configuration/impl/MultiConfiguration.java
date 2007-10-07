@@ -42,9 +42,10 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 public class MultiConfiguration implements Configuration {
 
     /**
-     * The field <tt>configs</tt> contains the internal array of configs.
+     * The field <tt>configurations</tt> contains the internal array of
+     * configurations.
      */
-    private Configuration[] configs;
+    private Configuration[] configurations;
 
     /**
      * The field <tt>loader</tt> contains the optional loader.
@@ -62,7 +63,7 @@ public class MultiConfiguration implements Configuration {
             throws ConfigurationException {
 
         super();
-        this.configs = parts.clone();
+        this.configurations = parts.clone();
     }
 
     /**
@@ -92,8 +93,8 @@ public class MultiConfiguration implements Configuration {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configs.length; i++) {
-            Configuration cfg = configs[i].findConfiguration(key);
+        for (int i = 0; i < configurations.length; i++) {
+            Configuration cfg = configurations[i].findConfiguration(key);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -122,8 +123,9 @@ public class MultiConfiguration implements Configuration {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configs.length; i++) {
-            Configuration cfg = configs[i].findConfiguration(key, attribute);
+        for (int i = 0; i < configurations.length; i++) {
+            Configuration cfg =
+                    configurations[i].findConfiguration(key, attribute);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -154,8 +156,8 @@ public class MultiConfiguration implements Configuration {
      */
     public String getAttribute(String name) {
 
-        for (int i = 0; i < configs.length; i++) {
-            String att = configs[i].getAttribute(name);
+        for (int i = 0; i < configurations.length; i++) {
+            String att = configurations[i].getAttribute(name);
             if (att != null) {
                 return att;
             }
@@ -172,8 +174,8 @@ public class MultiConfiguration implements Configuration {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configs.length; i++) {
-            Configuration cfg = configs[i].findConfiguration(key);
+        for (int i = 0; i < configurations.length; i++) {
+            Configuration cfg = configurations[i].findConfiguration(key);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -198,8 +200,9 @@ public class MultiConfiguration implements Configuration {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configs.length; i++) {
-            Configuration cfg = configs[i].findConfiguration(key, attribute);
+        for (int i = 0; i < configurations.length; i++) {
+            Configuration cfg =
+                    configurations[i].findConfiguration(key, attribute);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -227,10 +230,10 @@ public class MultiConfiguration implements Configuration {
      */
     public String getValue() throws ConfigurationException {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < configs.length; i++) {
-            String val = configs[i].getValue();
+        for (int i = 0; i < configurations.length; i++) {
+            String val = configurations[i].getValue();
             if (val != null) {
                 sb.append(val);
             }
@@ -244,8 +247,8 @@ public class MultiConfiguration implements Configuration {
      */
     public String getValue(String key) throws ConfigurationException {
 
-        for (int i = 0; i < configs.length; i++) {
-            String val = configs[i].getValue(key);
+        for (int i = 0; i < configurations.length; i++) {
+            String val = configurations[i].getValue(key);
 
             if (val != null) {
                 return val;
@@ -262,8 +265,8 @@ public class MultiConfiguration implements Configuration {
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
-        for (int i = 0; i < configs.length; i++) {
-            int val = configs[i].getValueAsInteger(key, defaultValue);
+        for (int i = 0; i < configurations.length; i++) {
+            int val = configurations[i].getValueAsInteger(key, defaultValue);
 
             if (val != defaultValue) {
                 return val;
@@ -281,7 +284,7 @@ public class MultiConfiguration implements Configuration {
      */
     public void getValues(List<String> list, String key) {
 
-        for (Configuration cfg : configs) {
+        for (Configuration cfg : configurations) {
             cfg.getValues(list, key);
         }
     }
@@ -301,7 +304,7 @@ public class MultiConfiguration implements Configuration {
      */
     public Iterator<Configuration> iterator() throws ConfigurationException {
 
-        return new MultiConfigurationIterator(configs, null);
+        return new MultiConfigurationIterator(configurations, null);
     }
 
     /**
@@ -318,7 +321,7 @@ public class MultiConfiguration implements Configuration {
     public Iterator<Configuration> iterator(String key)
             throws ConfigurationException {
 
-        return new MultiConfigurationIterator(configs, key);
+        return new MultiConfigurationIterator(configurations, key);
     }
 
     /**

@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.RuleConvertible;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -92,7 +93,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 15022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
@@ -102,11 +103,11 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Hrule(String name) {
+    public Hrule(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

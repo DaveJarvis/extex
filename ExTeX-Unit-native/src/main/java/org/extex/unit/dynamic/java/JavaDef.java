@@ -152,17 +152,17 @@ public class JavaDef extends AbstractAssignment implements Definer {
      */
     public JavaDef() {
 
-        super("");
+        super(null);
     }
 
     /**
      * Creates a new object.
      * 
-     * @param codeName the name for debugging
+     * @param token the initial token for the primitive
      */
-    public JavaDef(String codeName) {
+    public JavaDef(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -194,7 +194,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
         try {
             classname = source.getTokens(context, source, typesetter).toText();
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
@@ -202,10 +202,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
         }
 
         try {
-            Code code =
-                    (Code) (Class.forName(classname).getConstructor(
-                        new Class[]{String.class}).newInstance(new Object[]{cs
-                        .getName()}));
+            Code code = (Code) (Class.forName(classname).getConstructor(//
+                new Class[]{CodeToken.class}).newInstance(cs));
             context.setCode(cs, code, prefix.clearGlobal());
 
         } catch (IllegalArgumentException e) {

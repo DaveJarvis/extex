@@ -81,7 +81,7 @@ public class LeftList implements Left {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (Left l : list) {
             sb.append(l.toString());
         }

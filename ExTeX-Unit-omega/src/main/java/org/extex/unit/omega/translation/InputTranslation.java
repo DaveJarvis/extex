@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -76,11 +77,11 @@ public class InputTranslation extends AbstractModeCode implements ResourceAware 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public InputTranslation(String name) {
+    public InputTranslation(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

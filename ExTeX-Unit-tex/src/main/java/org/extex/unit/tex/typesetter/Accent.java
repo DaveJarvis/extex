@@ -29,6 +29,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -82,11 +83,11 @@ public class Accent extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Accent(String name) {
+    public Accent(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -104,11 +105,11 @@ public class Accent extends AbstractCode {
         if (typesetter.getMode().isMath()) {
             throw new HelpingException(
                 getLocalizer(), //
-                "TTP.AccentInMathMode", printableControlSequence(context),
+                "TTP.AccentInMathMode", toText(context),
                 context.esc("mathaccent"));
         }
         UnicodeChar accent =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         Token token = source.getToken(context);
         TypesettingContext tc = context.getTypesettingContext();
         Font currentFont = tc.getFont();
@@ -124,7 +125,7 @@ public class Accent extends AbstractCode {
 
         if (token == null) {
 
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
 
         } else if (token.isa(Catcode.LETTER) || token.isa(Catcode.OTHER)) {
             UnicodeChar c = token.getChar();

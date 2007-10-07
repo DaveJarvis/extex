@@ -22,6 +22,7 @@ package org.extex.unit.tex.macro.util;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.type.ProtectedCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -42,19 +43,19 @@ public class ProtectedMacroCode extends MacroCode implements ProtectedCode {
     /**
      * Creates a new object.
      * 
-     * @param name the initial name of the macro
+     * @param token the initial token for the primitive
      * @param flags the flags controlling the behavior of the macro
      * @param thePattern the pattern for the acquiring of the arguments
      * @param theBody the expansion text
-     * @param notLong ...
+     * @param notLong the indicator that the macro does not allow embedded pars
      * 
      * @throws HelpingException in case of an error
      */
-    public ProtectedMacroCode(String name, Flags flags, boolean notLong,
+    public ProtectedMacroCode(CodeToken token, Flags flags, boolean notLong,
             MacroPattern thePattern, Tokens theBody)
             throws HelpingException {
 
-        super(name, flags, notLong, thePattern, theBody);
+        super(token, flags, notLong, thePattern, theBody);
     }
 
 }

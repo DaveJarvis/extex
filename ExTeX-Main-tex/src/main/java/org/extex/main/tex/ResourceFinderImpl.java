@@ -168,7 +168,7 @@ public class ResourceFinderImpl
      */
     private String readLine() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         try {
             for (int c = System.in.read(); c > 0 && c != '\n'; c =

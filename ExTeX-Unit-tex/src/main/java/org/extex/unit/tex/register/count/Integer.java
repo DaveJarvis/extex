@@ -93,11 +93,11 @@ public class Integer extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Integer(String name) {
+    public Integer(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -114,8 +114,7 @@ public class Integer extends AbstractAssignment {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         long value = source.parseInteger(context, source, typesetter);
-        context.setCode(cs, new IntegerCode(getName(), value), prefix
-            .clearGlobal());
+        context.setCode(cs, new IntegerCode(cs, value), prefix.clearGlobal());
     }
 
 }

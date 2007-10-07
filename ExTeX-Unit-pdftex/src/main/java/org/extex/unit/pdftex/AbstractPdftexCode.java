@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.exception.PdftexException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -46,11 +47,11 @@ public abstract class AbstractPdftexCode extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractPdftexCode(String name) {
+    public AbstractPdftexCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -79,7 +80,7 @@ public abstract class AbstractPdftexCode extends AbstractCode {
                 && context.getCount("pdfoutput").gt(Count.ZERO)) {
             return (PdftexSupport) documentWriter;
         }
-        throw new PdftexException(printableControlSequence(context));
+        throw new PdftexException(toText(context));
     }
 
 }

@@ -37,30 +37,31 @@ import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
  * This is the abstract base class for alignments.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public abstract class AbstractAlign extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
-     * @param codeName the name of the primitive for error messages
+     * 
+     * @param token the initial token for the primitive
      */
-    public AbstractAlign(String codeName) {
+    public AbstractAlign(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
      * Getter for the Localizer.
-     *
+     * 
      * @return the localizer
      */
     Localizer getMyLocalizer() {
@@ -69,44 +70,41 @@ public abstract class AbstractAlign extends AbstractCode {
     }
 
     /**
-     * Get the preamble.
-     * The preamble is composed of PreambleItems.
-     *
+     * Get the preamble. The preamble is composed of PreambleItems.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return the preamble as list of PreambleItems
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    protected List<PreambleItem> getPreamble(Context context,
-            TokenSource source) throws HelpingException {
+    protected List<PreambleItem> getPreamble(Context context, TokenSource source)
+            throws HelpingException {
 
         List<PreambleItem> preamble = new ArrayList<PreambleItem>();
 
         while (addPreambleItem(context, source, preamble)) {
-            //nothing more to do
+            // nothing more to do
         }
         return preamble;
     }
 
     /**
-     * Parse an item of a preamble and add it to the given list.
-     * If the item is ended by a & then <code>true</code> is returned.
-     * If the item is ended by a <tt>\cr</tt> then <code>false</code> is
-     * returned.
-     *
+     * Parse an item of a preamble and add it to the given list. If the item is
+     * ended by a & then <code>true</code> is returned. If the item is ended
+     * by a <tt>\cr</tt> then <code>false</code> is returned.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param preamble the list to add something to
-     *
+     * 
      * @return <code>true</code> iff the item has been ended by <tt>&</tt>.
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    private boolean addPreambleItem(Context context,
-            TokenSource source, List<PreambleItem> preamble)
-            throws HelpingException {
+    private boolean addPreambleItem(Context context, TokenSource source,
+            List<PreambleItem> preamble) throws HelpingException {
 
         Tokens pre = new Tokens();
         Tokens post = new Tokens();
@@ -116,16 +114,15 @@ public abstract class AbstractAlign extends AbstractCode {
 
             if (t.isa(Catcode.TABMARK)) {
                 throw new HelpingException(getMyLocalizer(),
-                    "TTP.MissingSharp", printableControlSequence(context));
+                    "TTP.MissingSharp", toText());
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Cr) {
                     throw new HelpingException(getMyLocalizer(),
-                        "TTP.MissingSharp", printableControlSequence(context));
+                        "TTP.MissingSharp", toText());
                 } else if (code != null && code.isOuter()) {
                     throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInPreamble",
-                        printableControlSequence(context));
+                        "TTP.OuterInPreamble", toText());
                 }
             }
             pre.add(t);
@@ -136,7 +133,7 @@ public abstract class AbstractAlign extends AbstractCode {
 
             if (t.isa(Catcode.MACROPARAM)) {
                 throw new HelpingException(getMyLocalizer(),
-                    "TTP.SecondSharpInTab", printableControlSequence(context));
+                    "TTP.SecondSharpInTab", toText(context));
             } else if (t.isa(Catcode.TABMARK)) {
                 preamble.add(new PreambleItem(pre, post));
                 return true;
@@ -147,15 +144,14 @@ public abstract class AbstractAlign extends AbstractCode {
                     return false;
                 } else if (code != null && code.isOuter()) {
                     throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInPreamble",
-                        printableControlSequence(context));
+                        "TTP.OuterInPreamble", toText(context));
                 }
             }
             post.add(t);
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinPreamble",
-            printableControlSequence(context));
+            toText(context));
     }
 
 }

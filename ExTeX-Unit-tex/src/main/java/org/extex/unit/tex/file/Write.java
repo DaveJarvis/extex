@@ -36,6 +36,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.TokensWriter;
 import org.extex.scanner.type.file.OutFile;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -66,7 +67,7 @@ import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
  * registers are in fact used with their meaning when the page is shipped in the
  * case of delayed writing.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
@@ -121,11 +122,11 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Write(String name) {
+    public Write(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -157,9 +158,8 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
 
         if (prefix.clearImmediate()) {
 
-            Tokens toks =
-                    source.scanUnprotectedTokens(context, false, false,
-                        printableControlSequence(context));
+            Tokens toks = source.scanUnprotectedTokens(context, false, false, //
+                getToken());
             try {
                 toks = source.expand(toks, typesetter);
             } catch (HelpingException e) {
@@ -184,7 +184,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
             try {
                 tokens = source.getTokens(context, source, typesetter);
             } catch (EofException e) {
-                throw new EofInToksException(printableControlSequence(context));
+                throw new EofInToksException(toText(context));
             }
 
             typesetter.add(new WhatsItWriteNode(key, tokens, source, this));

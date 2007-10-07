@@ -116,11 +116,11 @@ public class Show extends AbstractCode implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Show(String name) {
+    public Show(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -149,7 +149,7 @@ public class Show extends AbstractCode implements LogEnabled {
 
         Token t = source.getToken(context);
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         logger.info("\n> " + meaning(t, context).toText() + ".\n");
     }

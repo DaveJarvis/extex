@@ -66,11 +66,11 @@ public class OcplistPrimitive extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public OcplistPrimitive(String name) {
+    public OcplistPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

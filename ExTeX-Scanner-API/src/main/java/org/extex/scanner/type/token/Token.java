@@ -102,7 +102,7 @@ public interface Token extends Serializable {
      *
      * @param cc the catcode to compare against
      *
-     * @return <code>true</code> iff the catcodes coincide
+     * @return <code>true</code> iff the category codes coincide
      */
     boolean isa(Catcode cc);
 
@@ -112,6 +112,13 @@ public interface Token extends Serializable {
      * @param sb the target string buffer
      */
     void toString(StringBuffer sb);
+
+    /**
+     * Print the token into a StringBuilder.
+     *
+     * @param sb the target string builder
+     */
+    void toString(StringBuilder sb);
 
     /**
      * This method returns the textual representation for the Token.

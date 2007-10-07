@@ -22,6 +22,7 @@ package org.extex.unit.tex.typesetter;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Mode;
@@ -40,16 +41,16 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param codeName the name of the code
+     * @param token the initial token for the primitive
      */
-    public AbstractHorizontalCode(String codeName) {
+    public AbstractHorizontalCode(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**

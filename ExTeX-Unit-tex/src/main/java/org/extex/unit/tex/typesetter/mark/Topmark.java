@@ -21,6 +21,7 @@ package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -74,11 +75,11 @@ public class Topmark extends Topmarks {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Topmark(String name) {
+    public Topmark(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

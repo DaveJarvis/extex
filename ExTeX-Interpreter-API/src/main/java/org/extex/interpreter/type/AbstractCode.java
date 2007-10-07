@@ -30,8 +30,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -50,23 +49,7 @@ public abstract class AbstractCode implements Code, Serializable {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
-     * Return the printable version of a token for error messages.
-     * 
-     * @param context the processing context
-     * @param token the token to get a printable representation for
-     * 
-     * @return the control sequence including the escape character
-     */
-    public static String printable(Context context, Token token) {
-
-        if (token instanceof ControlSequenceToken) {
-            return context.esc("") + ((ControlSequenceToken) token).getName();
-        }
-        return token.getChar().toString();
-    }
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>localizer</tt> contains the localizer or
@@ -75,19 +58,19 @@ public abstract class AbstractCode implements Code, Serializable {
     private transient Localizer localizer = null;
 
     /**
-     * The field <tt>name</tt> contains the name of this code for debugging.
+     * The field <tt>token</tt> contains the name of this code for debugging.
      */
-    private String name;
+    private CodeToken token;
 
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public AbstractCode(String codeName) {
+    public AbstractCode(CodeToken token) {
 
         super();
-        this.name = codeName;
+        this.token = token;
     }
 
     /**
@@ -98,11 +81,10 @@ public abstract class AbstractCode implements Code, Serializable {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new CantUseInException(printableControlSequence(context),
-            typesetter.getMode().toString());
+        throw new CantUseInException(toText(context), typesetter.getMode()
+            .toString());
     }
 
     /**
@@ -123,7 +105,17 @@ public abstract class AbstractCode implements Code, Serializable {
      */
     public String getName() {
 
-        return name;
+        return token == null ? "" : token.toText();
+    }
+
+    /**
+     * Getter for token.
+     *
+     * @return the token
+     */
+    protected CodeToken getToken() {
+    
+        return token;
     }
 
     /**
@@ -140,23 +132,6 @@ public abstract class AbstractCode implements Code, Serializable {
     public boolean isOuter() {
 
         return false;
-    }
-
-    /**
-     * Attach the current escape character in front of the name and return the
-     * result.
-     * <p>
-     * This method is meant to produce a printable version of the control
-     * sequence for error messages.
-     * </p>
-     * 
-     * @param context the processing context
-     * 
-     * @return the control sequence including the escape character
-     */
-    protected String printableControlSequence(Context context) {
-
-        return context.esc(name);
     }
 
     /**
@@ -177,7 +152,44 @@ public abstract class AbstractCode implements Code, Serializable {
     @Override
     public String toString() {
 
-        return name;
+        return token == null ? "" : token.toString();
+    }
+
+    /**
+     * Determine the printable representation of the control sequence or active
+     * character initially bound to the primitive. For the control sequence
+     * attach the escape character in front of the name and return the result.
+     * Otherwise just use the character.
+     * <p>
+     * If the token is not known then the empty string is returned.
+     * </p>
+     * 
+     * @return the control sequence including the escape character, the active
+     *         character or the empty string
+     */
+    public String toText() {
+
+        return token == null ? "" : token.toText();
+    }
+
+    
+    /**
+     * Determine the printable representation of the control sequence or active
+     * character initially bound to the primitive. For the control sequence
+     * attach the current escape character from the context in front of the name
+     * and return the result. Otherwise just use the character.
+     * <p>
+     * If the token is not known then the empty string is returned.
+     * </p>
+     * 
+     * @param context the processing context
+     * 
+     * @return the control sequence including the escape character, the active
+     *         character or the empty string
+     */
+    public String toText(Context context) {
+
+        return token == null ? "" : token.toText(context.escapechar());
     }
 
 }

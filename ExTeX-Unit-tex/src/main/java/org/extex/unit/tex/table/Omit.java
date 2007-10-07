@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -66,11 +67,11 @@ public class Omit extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Omit(String name) {
+    public Omit(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -93,7 +94,7 @@ public class Omit extends AbstractCode {
         ListMaker maker = typesetter.getListMaker();
         if (!(maker instanceof AlignmentList)) {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedOmit",
-                printableControlSequence(context));
+                toText(context));
         }
         ((AlignmentList) maker).omit();
     }

@@ -24,6 +24,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -67,11 +68,11 @@ public class Meaning extends Show {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Meaning(String name) {
+    public Meaning(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Meaning extends Show {
 
         Token t = source.getToken(context);
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
         source.push(meaning(t, context));
     }

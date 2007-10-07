@@ -22,6 +22,7 @@ package org.extex.unit.tex.math;
 import org.extex.core.exception.helping.MissingMathException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -38,16 +39,16 @@ public abstract class AbstractMathCode extends AbstractCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 24012007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractMathCode(String name) {
+    public AbstractMathCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -67,7 +68,7 @@ public abstract class AbstractMathCode extends AbstractCode {
 
         ListMaker lm = typesetter.getListMaker();
         if (!(lm instanceof NoadConsumer)) {
-            throw new MissingMathException(printableControlSequence(context));
+            throw new MissingMathException(toText(context));
         }
         return (NoadConsumer) lm;
     }

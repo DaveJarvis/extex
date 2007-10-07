@@ -74,25 +74,26 @@ public class PrintFormat extends AbstractCode implements Theable {
     /**
      * The field <tt>serialVersionUID</tt>.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public PrintFormat(String name) {
+    public PrintFormat(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -111,7 +112,7 @@ public class PrintFormat extends AbstractCode implements Theable {
 
         // \the\printformat{pattern}\real7
 
-        String pattern = source.scanTokensAsString(context, getName());
+        String pattern = source.scanTokensAsString(context, getToken());
 
         if (pattern == null || pattern.trim().length() == 0) {
             pattern = "0.00";
@@ -122,13 +123,13 @@ public class PrintFormat extends AbstractCode implements Theable {
 
         if (!(cs instanceof ControlSequenceToken)) {
             throw new CantUseAfterException(cs.toText(),
-                printableControlSequence(context));
+                toText(context));
         }
 
         Code code = context.getCode((CodeToken) cs);
 
         if (code == null) {
-            throw new UndefinedControlSequenceException(printable(context, cs));
+            throw new UndefinedControlSequenceException(cs.toText());
 
         } else if (code instanceof RealConvertible) {
             Real val =
@@ -165,7 +166,8 @@ public class PrintFormat extends AbstractCode implements Theable {
 
         } else {
             throw new CantUseAfterException(cs.toText(),
-                printableControlSequence(context));
+                toText(context));
         }
     }
+
 }

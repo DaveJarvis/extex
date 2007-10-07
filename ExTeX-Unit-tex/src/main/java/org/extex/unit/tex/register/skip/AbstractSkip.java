@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -46,11 +47,11 @@ public abstract class AbstractSkip extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractSkip(String name) {
+    public AbstractSkip(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -70,7 +71,7 @@ public abstract class AbstractSkip extends AbstractAssignment {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String name =
-                source.scanRegisterName(context, source, typesetter, getName());
+                source.scanRegisterName(context, source, typesetter, getToken());
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "skip#" + name;

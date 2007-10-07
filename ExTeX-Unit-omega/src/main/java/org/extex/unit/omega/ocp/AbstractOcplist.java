@@ -78,11 +78,11 @@ public abstract class AbstractOcplist extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractOcplist(String name) {
+    public AbstractOcplist(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -96,7 +96,7 @@ public abstract class AbstractOcplist extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new OmegaOcpException(getName());
+        throw new OmegaOcpException(toText());
     }
 
 }

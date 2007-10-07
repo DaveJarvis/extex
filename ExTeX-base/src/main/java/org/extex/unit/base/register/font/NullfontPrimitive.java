@@ -78,7 +78,7 @@ public class NullfontPrimitive extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>nullFont</tt> contains the font encapsulated in this
@@ -89,11 +89,11 @@ public class NullfontPrimitive extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public NullfontPrimitive(String name) {
+    public NullfontPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -53,7 +53,7 @@ public class FontCode extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>font</tt> contains the font enclosed in this code.
@@ -63,12 +63,12 @@ public class FontCode extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      * @param fnt the font for this primitive
      */
-    public FontCode(String name, Font fnt) {
+    public FontCode(CodeToken token, Font fnt) {
 
-        super(name);
+        super(token);
         this.font = fnt;
     }
 

@@ -24,6 +24,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -86,11 +88,11 @@ public class Mathchoice extends AbstractMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Mathchoice(String name) {
+    public Mathchoice(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -107,18 +109,18 @@ public class Mathchoice extends AbstractMathCode {
         Flags f = prefix.copy();
         prefix.clear();
         NoadConsumer nc = getListMaker(context, typesetter);
-        String n = getName();
+        Token t = getToken();
         Noad display =
-                nc.scanNoad(prefix, context, source, typesetter, n,
+                nc.scanNoad(prefix, context, source, typesetter, t,
                     GroupType.MATH_GROUP);
         Noad text =
-                nc.scanNoad(prefix, context, source, typesetter, n,
+                nc.scanNoad(prefix, context, source, typesetter, t,
                     GroupType.MATH_GROUP);
         Noad script =
-                nc.scanNoad(prefix, context, source, typesetter, n,
+                nc.scanNoad(prefix, context, source, typesetter, t,
                     GroupType.MATH_GROUP);
         Noad scriptScript =
-                nc.scanNoad(prefix, context, source, typesetter, n,
+                nc.scanNoad(prefix, context, source, typesetter, t,
                     GroupType.MATH_GROUP);
         nc.add(new ChoiceNoad(display, text, script, scriptScript));
         prefix.set(f);

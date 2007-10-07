@@ -36,6 +36,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.LoaderFactory;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -160,7 +161,7 @@ public class NativeLoad extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the logger to use.
@@ -177,11 +178,11 @@ public class NativeLoad extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public NativeLoad(String codeName) {
+    public NativeLoad(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -231,12 +232,12 @@ public class NativeLoad extends AbstractCode
         try {
             name = source.getTokens(context, source, typesetter).toText();
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
         Configuration cfg = map.get(name);
         if (cfg == null) {
             throw new HelpingException(getLocalizer(), "UnknownType", name,
-                getName());
+                toText());
         }
 
         LoaderFactory factory = new LoaderFactory();

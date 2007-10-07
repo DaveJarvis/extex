@@ -33,6 +33,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -135,11 +136,11 @@ public class Odelcode extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Odelcode(String name) {
+    public Odelcode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -153,7 +154,7 @@ public class Odelcode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getKeyword(context, "by");
 
         long value = source.parseInteger(context, source, null);
@@ -178,11 +179,11 @@ public class Odelcode extends AbstractAssignment
                 TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getOptionalEquals(context);
         MathDelimiter del =
                 AbstractOmegaDelimiter.parseDelimiter(context, source,
-                    typesetter, getName());
+                    typesetter, getToken());
         context.setDelcode(charCode, del, prefix.clearGlobal());
     }
 
@@ -227,7 +228,7 @@ public class Odelcode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         MathDelimiter delcode = context.getDelcode(charCode);
         return AbstractOmegaDelimiter.delimiterToLong(delcode);
     }
@@ -243,14 +244,14 @@ public class Odelcode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getKeyword(context, "by");
 
         long value = source.parseInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         value = AbstractOmegaDelimiter.delimiterToLong(delcode) / value;
@@ -268,7 +269,7 @@ public class Odelcode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getKeyword(context, "by");
 
         long value = source.parseInteger(context, source, null);
@@ -290,7 +291,7 @@ public class Odelcode extends AbstractAssignment
                 TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         MathDelimiter delcode = context.getDelcode(charCode);
         long value = AbstractOmegaDelimiter.delimiterToLong(delcode);
         return context.getTokenFactory().toTokens(value);

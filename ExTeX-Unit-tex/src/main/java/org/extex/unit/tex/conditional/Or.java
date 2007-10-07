@@ -26,6 +26,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
@@ -70,11 +71,11 @@ public class Or extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Or(String name) {
+    public Or(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -92,10 +93,10 @@ public class Or extends AbstractCode {
 
         if (cond == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
-        } else if (AbstractIf.skipToElseOrFi(context, source, getName())) {
+                toText(context));
+        } else if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
             // \else has been found; search for the \fi
-            if (AbstractIf.skipToElseOrFi(context, source, getName())) {
+            if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
                 // just another \else is too much
                 throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     context.esc("else"));
@@ -130,12 +131,10 @@ public class Or extends AbstractCode {
 
         if (cond == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                printableControlSequence(context));
-        } else if (AbstractIf.skipToElseOrFi(context, source,
-            getName())) {
+                toText(context));
+        } else if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
             // \else has been found; search for the \fi
-            if (AbstractIf.skipToElseOrFi(context, source,
-                getName())) {
+            if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
                 // just another \else is too much
                 throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     context.esc("else"));

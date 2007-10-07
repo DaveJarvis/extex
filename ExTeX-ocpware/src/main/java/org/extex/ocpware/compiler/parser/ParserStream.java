@@ -38,7 +38,7 @@ public class ParserStream extends PushbackInputStream {
      * The field <tt>line</tt> contains the characters encountered on the
      * current line so far.
      */
-    private StringBuffer line = new StringBuffer();
+    private StringBuilder line = new StringBuilder();
 
     /**
      * The field <tt>lineno</tt> contains the number of the current line.
@@ -112,7 +112,7 @@ public class ParserStream extends PushbackInputStream {
      * 
      * @return the line
      */
-    public StringBuffer getLine() {
+    public CharSequence getLine() {
 
         return line;
     }
@@ -139,7 +139,7 @@ public class ParserStream extends PushbackInputStream {
      */
     public String parseId() throws IOException, SyntaxException {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int c = skipSpace();
         if ((c >= 'a' && c <= 'z') //
@@ -268,7 +268,7 @@ public class ParserStream extends PushbackInputStream {
      */
     public String parseString() throws IOException {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int c = read(); c >= 0; c = read()) {
             if (c == '"') {
                 c = read();

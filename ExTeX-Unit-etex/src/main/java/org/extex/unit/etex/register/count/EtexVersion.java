@@ -22,6 +22,7 @@ package org.extex.unit.etex.register.count;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.count.AbstractReadonlyCount;
@@ -40,7 +41,7 @@ public class EtexVersion extends AbstractReadonlyCount {
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The eTeX version this class returns.
@@ -51,11 +52,11 @@ public class EtexVersion extends AbstractReadonlyCount {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public EtexVersion(String name) {
+    public EtexVersion(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

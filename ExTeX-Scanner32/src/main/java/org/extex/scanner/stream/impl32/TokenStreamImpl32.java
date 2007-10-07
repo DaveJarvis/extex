@@ -206,7 +206,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
     private UnicodeChar scanHex(int n, Tokenizer tokenizer)
             throws ScannerException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         UnicodeChar uc = null;
         for (int i = 0; i < n; i++) {
 
@@ -242,7 +242,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      */
     private String scanUnicodeName() throws ScannerException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         while (true) {
             UnicodeChar uc = getRawChar();
 

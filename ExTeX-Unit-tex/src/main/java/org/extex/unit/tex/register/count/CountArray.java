@@ -22,6 +22,7 @@ package org.extex.unit.tex.register.count;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -42,11 +43,11 @@ public class CountArray extends CountPrimitive {
     /**
      * Creates a new object.
      * 
-     * @param name the name of the primitive
+     * @param token the initial token for the primitive
      */
-    public CountArray(String name) {
+    public CountArray(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

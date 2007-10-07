@@ -208,7 +208,7 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static MathCode parseMathCode(Context context, TokenSource source,
-            Typesetter typesetter, String primitive)
+            Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -260,11 +260,11 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractTeXMathCode(String name) {
+    public AbstractTeXMathCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
 }

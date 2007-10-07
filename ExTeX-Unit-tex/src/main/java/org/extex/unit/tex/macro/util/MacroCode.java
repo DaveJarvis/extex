@@ -296,7 +296,7 @@ public class MacroCode extends AbstractCode
                         CodeToken cs) {
 
                     // // see [TTP; 400]
-                    StringBuffer sb = new StringBuffer("#");
+                    StringBuilder sb = new StringBuilder("#");
                     sb.append(index + 1);
                     sb.append("<-");
                     sb.append(value.toText());
@@ -309,17 +309,17 @@ public class MacroCode extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the initial name of the macro
+     * @param token the initial token for the macro
      * @param flags the flags controlling the behavior of the macro
      * @param notLong inverted indicator for the long macros
      * @param pattern the pattern for the acquiring of the arguments. The value
      *        of <code>null</code> means that no arguments are expected
      * @param body the expansion text
      */
-    public MacroCode(String name, Flags flags, boolean notLong,
+    public MacroCode(CodeToken token, Flags flags, boolean notLong,
             MacroPattern pattern, Tokens body) {
 
-        super(name);
+        super(token);
         this.body = body;
         this.outerP = flags.clearOuter();
         this.notLong = notLong;
@@ -418,14 +418,14 @@ public class MacroCode extends AbstractCode
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof LetCode) {
-                    t = ((LetCode) code).getToken();
+                    t = ((LetCode) code).getLetToken();
                 }
             }
 
             if (t instanceof MacroParamToken) {
                 t = body.get(++i);
                 if (t == null) {
-                    throw new EofInDefException(getName());
+                    throw new EofInDefException(toText());
                 } else if (t instanceof MacroParamToken) {
                     toks.add(t);
                 } else if (t instanceof OtherToken && t.getChar().isDigit()) {
@@ -443,7 +443,7 @@ public class MacroCode extends AbstractCode
         }
 
         source.addStream(new MacroTokenStream(toks, source.getLocator(),
-            getName()));
+            toText()));
     }
 
     /**

@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -60,13 +61,11 @@ public class MathDiv extends AbstractMath
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
-     * 
-     * @throws HelpingException in case of an error
+     * @param token the initial token for the primitive
      */
-    public MathDiv(String name) throws HelpingException {
+    public MathDiv(CodeToken token) {
 
-        super(name);
+        super(token);
 
     }
 
@@ -83,6 +82,7 @@ public class MathDiv extends AbstractMath
      * @throws ConfigurationException in case of an configuration error
      * @throws TypesetterException in case of an error in the typesetter
      */
+    @Override
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter)
             throws ConfigurationException,

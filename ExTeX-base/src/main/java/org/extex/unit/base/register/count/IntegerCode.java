@@ -34,6 +34,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -68,23 +69,23 @@ public class IntegerCode extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the first name of the primitive
+     * @param token the initial token for the primitive
      */
-    public IntegerCode(String name) {
+    public IntegerCode(CodeToken token) {
 
-        super(name);
+        super(token);
         this.value = 0;
     }
 
     /**
      * Creates a new object.
      * 
-     * @param name the first name of the primitive
+     * @param token the initial token for the primitive
      * @param value the initial value
      */
-    public IntegerCode(String name, long value) {
+    public IntegerCode(CodeToken token, long value) {
 
-        super(name);
+        super(token);
         this.value = value;
     }
 
@@ -146,7 +147,7 @@ public class IntegerCode extends AbstractAssignment
         long v = source.parseInteger(context, source, typesetter);
         if (v == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
         value /= v;
     }

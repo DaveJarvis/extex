@@ -34,6 +34,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupTypeVisitor;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -382,11 +383,11 @@ public class Showgroups extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Showgroups(String name) {
+    public Showgroups(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

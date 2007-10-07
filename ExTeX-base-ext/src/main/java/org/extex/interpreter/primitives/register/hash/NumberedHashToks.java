@@ -22,6 +22,7 @@ package org.extex.interpreter.primitives.register.hash;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -60,11 +61,11 @@ public class NumberedHashToks extends NamedHashToks {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public NumberedHashToks(String name) {
+    public NumberedHashToks(CodeToken token) {
 
-        super(name);
+        super(token, null);
     }
 
     /**
@@ -74,6 +75,7 @@ public class NumberedHashToks extends NamedHashToks {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

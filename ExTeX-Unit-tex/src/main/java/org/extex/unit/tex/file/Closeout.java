@@ -29,6 +29,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.file.OutFile;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -89,11 +90,11 @@ public class Closeout extends AbstractCode implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Closeout(String name) {
+    public Closeout(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

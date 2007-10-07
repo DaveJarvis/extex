@@ -80,16 +80,16 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
      * The field <tt>serialVersionUID</tt> contains the version number for the
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Unless(String name) {
+    public Unless(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -108,12 +108,12 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
 
         if (!code.isIf() || code instanceof Ifcase) {
             throw new CantUseAfterException(token.toText(context.escapechar()),
-                printableControlSequence(context));
+                toText(context));
         }
 
         if (!((AbstractIf) code).conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, code, 1, true);
-        } else if (AbstractIf.skipToElseOrFi(context, source, getName())) {
+        } else if (AbstractIf.skipToElseOrFi(context, source, getToken())) {
             context.pushConditional(source.getLocator(), true, code, -1, true);
         }
     }

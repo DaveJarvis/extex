@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
@@ -46,7 +47,7 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;pdfincludechars&rang;
  *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,String)
+ *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;} </pre>
@@ -73,11 +74,11 @@ public class Pdfincludechars extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfincludechars(String name) {
+    public Pdfincludechars(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -93,10 +94,8 @@ public class Pdfincludechars extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        Font font = source.getFont(context, getName());
-        String text =
-            source.scanTokensAsString(context,
-                printableControlSequence(context));
+        Font font = source.getFont(context, getToken());
+        String text = source.scanTokensAsString(context, getToken());
 
         writer.pdfincludechars(font, text);
     }

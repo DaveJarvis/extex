@@ -70,11 +70,11 @@ public class Cr extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Cr(String name) {
+    public Cr(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -109,7 +109,7 @@ public class Cr extends AbstractCode {
             ((AlignmentList) maker).cr(context, source, noalign);
         } else {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 

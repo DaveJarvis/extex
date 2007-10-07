@@ -420,7 +420,7 @@ public class XMLDocumentWriter
      */
     private void printParameterComment() throws IOException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append("\n");
         Iterator<String> it = param.keySet().iterator();
         while (it.hasNext()) {

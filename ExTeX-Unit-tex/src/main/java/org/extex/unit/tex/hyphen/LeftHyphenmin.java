@@ -35,6 +35,7 @@ import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -96,11 +97,11 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public LeftHyphenmin(String name) {
+    public LeftHyphenmin(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -212,7 +213,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         long arg = source.parseInteger(context, source, typesetter);
         if (arg == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
         lefthyphenmin /= arg;
 

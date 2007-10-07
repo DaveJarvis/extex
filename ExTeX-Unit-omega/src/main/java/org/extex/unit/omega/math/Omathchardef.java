@@ -72,11 +72,11 @@ public class Omathchardef extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Omathchardef(String name) {
+    public Omathchardef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,10 +94,10 @@ public class Omathchardef extends AbstractAssignment {
         source.getOptionalEquals(context);
         MathCode mathchar =
                 AbstractOmegaMathCode.parseMathCode(context, source,
-                    typesetter, getName());
+                    typesetter, getToken());
 
         context.setCode(cs, //
-            new OmegaMathcharCode(cs.toString(), mathchar), //
+            new OmegaMathcharCode(cs, mathchar), //
             prefix.clearGlobal());
     }
 

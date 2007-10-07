@@ -31,6 +31,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -88,11 +89,11 @@ public class Namespace extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Namespace(String name) {
+    public Namespace(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -110,7 +111,7 @@ public class Namespace extends AbstractAssignment
         try {
             toks = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText());
         }
         context.setNamespace(toks.toText(), prefix.clearGlobal());
     }

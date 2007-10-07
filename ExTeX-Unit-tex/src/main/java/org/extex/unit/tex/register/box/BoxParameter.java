@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -47,11 +48,11 @@ public class BoxParameter extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name of the box
+     * @param token the initial token for the primitive
      */
-    public BoxParameter(String name) {
+    public BoxParameter(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

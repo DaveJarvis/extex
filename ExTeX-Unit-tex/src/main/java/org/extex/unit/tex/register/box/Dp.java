@@ -33,6 +33,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -59,7 +60,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;dp&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\dp</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -144,11 +145,11 @@ public class Dp extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Dp(String name) {
+    public Dp(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -162,7 +163,7 @@ public class Dp extends AbstractAssignment
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         source.getOptionalEquals(context);
         Dimen d = source.parseDimen(context, source, typesetter);
 
@@ -198,7 +199,7 @@ public class Dp extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Box box = context.getBox(//
-            Setbox.getKey(context, source, typesetter, getName()));
+            Setbox.getKey(context, source, typesetter, getToken()));
         return (box == null ? 0 : box.getDepth().getValue());
     }
 
@@ -232,7 +233,7 @@ public class Dp extends AbstractAssignment
                 TypesetterException {
 
         Box box = context.getBox(//
-            Setbox.getKey(context, source, typesetter, getName()));
+            Setbox.getKey(context, source, typesetter, getToken()));
         FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getDepth());
         try {
             return context.getTokenFactory().toTokens(d.toString());

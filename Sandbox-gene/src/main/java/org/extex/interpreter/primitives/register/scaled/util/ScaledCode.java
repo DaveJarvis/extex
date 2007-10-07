@@ -34,6 +34,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -68,12 +69,12 @@ public class ScaledCode extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the initial name of the primitive
+     * @param token the initial token for the primitive
      * @param scaled the initial value
      */
-    public ScaledCode(String name, ScaledNumber scaled) {
+    public ScaledCode(CodeToken token, ScaledNumber scaled) {
 
-        super(name);
+        super(token);
         value.set(scaled);
     }
 
@@ -134,7 +135,7 @@ public class ScaledCode extends AbstractAssignment
         long scaled = ScaledNumberParser.parse(context, source, typesetter);
         if (scaled == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
         value.divide(scaled);
     }

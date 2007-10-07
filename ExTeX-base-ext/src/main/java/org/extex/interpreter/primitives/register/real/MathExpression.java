@@ -22,7 +22,6 @@ package org.extex.interpreter.primitives.register.real;
 import net.sourceforge.jeval.EvaluationException;
 import net.sourceforge.jeval.Evaluator;
 
-import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -30,6 +29,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -59,19 +59,17 @@ public class MathExpression extends AbstractMath
     /**
      * The field <tt>serialVersionUID</tt>.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
-     * @throws GeneralException if an error occurred.
+     * @param token the initial token for the primitive
      */
     @SuppressWarnings("unchecked")
-    public MathExpression(String name) throws GeneralException {
+    public MathExpression(CodeToken token) {
 
-        super(name);
-
+        super(token);
         evaluator = new Evaluator();
 
     }
@@ -102,7 +100,7 @@ public class MathExpression extends AbstractMath
         Real real = new Real(0);
 
         // \mathexpr{7+5+3}
-        String expr = source.scanTokensAsString(context, getName());
+        String expr = source.scanTokensAsString(context, getToken());
 
         try {
             String result = evaluator.evaluate(expr);

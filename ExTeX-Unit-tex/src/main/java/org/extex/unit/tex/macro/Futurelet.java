@@ -76,11 +76,11 @@ public class Futurelet extends Let {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Futurelet(String name) {
+    public Futurelet(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -98,7 +98,7 @@ public class Futurelet extends Let {
         Token t1 = source.getToken(context);
         Token t2 = source.getToken(context);
         if (t1 == null || t2 == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
         let(prefix, context, cs, t2);
         source.push(source.scanToken(context));

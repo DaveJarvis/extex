@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.action.ActionSpec;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -68,11 +69,11 @@ public class Pdfoutline extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfoutline(String name) {
+    public Pdfoutline(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -90,15 +91,13 @@ public class Pdfoutline extends AbstractPdftexCode {
 
         ActionSpec action =
                 ActionSpec.parseActionSpec(context, source, typesetter,
-                    getName());
+                    getToken());
         long count = 0;
         if (source.getKeyword(context, "count")) {
             count = source.parseInteger(context, source, typesetter);
         }
 
-        String text =
-            source.scanTokensAsString(context,
-                printableControlSequence(context));
+        String text = source.scanTokensAsString(context, getToken());
 
         writer.pdfoutline(action, count, text);
     }

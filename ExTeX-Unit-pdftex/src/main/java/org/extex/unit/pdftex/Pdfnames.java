@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.PdftexSupport;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -67,11 +68,11 @@ public class Pdfnames extends AbstractPdftexCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdfnames(String name) {
+    public Pdfnames(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -87,9 +88,7 @@ public class Pdfnames extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        String text =
-            source.scanTokensAsString(context,
-                printableControlSequence(context));
+        String text = source.scanTokensAsString(context, getToken());
 
         writer.pdfnames(text);
     }

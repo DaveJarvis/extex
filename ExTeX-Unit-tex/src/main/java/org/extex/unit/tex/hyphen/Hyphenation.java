@@ -98,11 +98,11 @@ public class Hyphenation extends HyphenationPrimitive {
     /**
      * Creates a new object.
      *
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Hyphenation(String name) {
+    public Hyphenation(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

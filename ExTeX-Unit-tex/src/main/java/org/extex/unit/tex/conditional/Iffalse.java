@@ -22,6 +22,7 @@ package org.extex.unit.tex.conditional;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
@@ -64,11 +65,11 @@ public class Iffalse extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Iffalse(String name) {
+    public Iffalse(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

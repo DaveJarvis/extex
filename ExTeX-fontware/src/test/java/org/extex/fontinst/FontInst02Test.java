@@ -138,6 +138,7 @@ public class FontInst02Test extends ExTeXLauncher {
      * @throws Exception if an error occurred.
      */
     @Test
+    @Ignore
     public void testTransformTestOutput() throws Exception {
 
         setConfig("tex");
@@ -197,6 +198,7 @@ public class FontInst02Test extends ExTeXLauncher {
         stream.close();
         assertEquals("generated file", TEXT_FXLR_PL, sb.toString());
 
+        pl.delete();
     }
 
     /**

@@ -29,6 +29,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -56,7 +57,7 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;fontname&rang;
  *       &rarr; <tt>\fontname</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,String)
+ *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;}  </pre>
  * 
  * <h4>Example</h4>
@@ -90,11 +91,11 @@ public class Fontname extends AbstractCode implements ExpandableCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Fontname(String name) {
+    public Fontname(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -113,10 +114,10 @@ public class Fontname extends AbstractCode implements ExpandableCode {
         Tokens fontname;
         TokenFactory tokenFactory = context.getTokenFactory();
         try {
-            font = source.getFont(context, getName());
+            font = source.getFont(context, getToken());
             fontname = tokenFactory.toTokens(font.getFontName());
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }

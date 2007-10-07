@@ -25,6 +25,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -166,11 +167,11 @@ public class ColorPrimitive extends AbstractColor {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public ColorPrimitive(String name) {
+    public ColorPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -188,8 +189,7 @@ public class ColorPrimitive extends AbstractColor {
                 TypesetterException {
 
         Color color =
-                ColorParser.parseColor(context, source, typesetter,
-                    printableControlSequence(context));
+                ColorParser.parseColor(context, source, typesetter, getToken());
         context.set(color, prefix.clearGlobal());
     }
 

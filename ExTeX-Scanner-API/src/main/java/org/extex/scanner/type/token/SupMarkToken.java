@@ -38,7 +38,7 @@ public class SupMarkToken extends AbstractToken implements Token {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -84,6 +84,18 @@ public class SupMarkToken extends AbstractToken implements Token {
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
+
+        sb.append(getLocalizer().format("SupMarkToken.Text", super.toString()));
+    }
+
+    /**
+     * Print the token into a StringBuilder.
+     *
+     * @param sb the target string builder
+     *
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+     */
+    public void toString(StringBuilder sb) {
 
         sb.append(getLocalizer().format("SupMarkToken.Text", super.toString()));
     }

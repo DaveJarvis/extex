@@ -166,6 +166,22 @@ public class MathListMaker extends HorizontalListMaker
             LogEnabled {
 
     /**
+     * The field <tt>SCRIPTSCRIPTFONT</tt> contains the key for the
+     * scriptscriptfont.
+     */
+    private static final String SCRIPTSCRIPTFONT = "\\scriptscriptfont";
+
+    /**
+     * The field <tt>SCRIPTFONT</tt> contains the key for the scriptfont.
+     */
+    private static final String SCRIPTFONT = "\\scriptfont";
+
+    /**
+     * The field <tt>TEXTFONT</tt> contains the key for the textfont.
+     */
+    private static final String TEXTFONT = "\\textfont";
+
+    /**
      * This inner class is a memento of the state of the math list maker. It is
      * used to store to the stack and restore the state from the stack.
      * 
@@ -273,22 +289,21 @@ public class MathListMaker extends HorizontalListMaker
             TypesetterOptions options) {
 
         Font textfont3 =
-                options
-                    .getFont(MathFontParameter.key(options, "textfont", "3"));
+                options.getFont(MathFontParameter.key(options, TEXTFONT, "3"));
         if (textfont3.getFontDimen("8") == null) {
             return true;
         }
 
         Font scriptfont3 =
-                options.getFont(MathFontParameter.key(options, "scriptfont",
-                    "3"));
+                options
+                    .getFont(MathFontParameter.key(options, SCRIPTFONT, "3"));
         if (scriptfont3.getFontDimen("8") == null) {
             return true;
         }
 
         Font scriptscriptfont3 =
                 options.getFont(MathFontParameter.key(options,
-                    "scriptscriptfont", "3"));
+                    SCRIPTSCRIPTFONT, "3"));
         if (scriptscriptfont3.getFontDimen("8") == null) {
             return true;
         }
@@ -310,20 +325,19 @@ public class MathListMaker extends HorizontalListMaker
     protected static boolean insufficientSymbolFonts(TypesetterOptions options) {
 
         Font textfont2 =
-                options
-                    .getFont(MathFontParameter.key(options, "textfont", "2"));
+                options.getFont(MathFontParameter.key(options, TEXTFONT, "2"));
         if (textfont2.getFontDimen("8") == null) {
             return true;
         }
         Font scriptfont2 =
-                options.getFont(MathFontParameter.key(options, "scriptfont",
-                    "2"));
+                options
+                    .getFont(MathFontParameter.key(options, SCRIPTFONT, "2"));
         if (scriptfont2.getFontDimen("8") == null) {
             return true;
         }
         Font scriptscriptfont2 =
                 options.getFont(MathFontParameter.key(options,
-                    "scriptscriptfont", "2"));
+                    SCRIPTSCRIPTFONT, "2"));
         if (scriptscriptfont2.getFontDimen("8") == null) {
             return true;
         }
@@ -510,8 +524,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext,
-     *      FixedCount)
+     *      org.extex.typesetter.tc.TypesettingContext, FixedCount)
      */
     @Override
     public void addSpace(TypesettingContext typesettingContext,
@@ -906,10 +919,10 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      java.lang.String, org.extex.interpreter.context.group.GroupType)
+     *      Token, org.extex.interpreter.context.group.GroupType)
      */
     public Noad scanNoad(Flags flags, Context context, TokenSource source,
-            Typesetter typesetter, String primitive, GroupType groupType)
+            Typesetter typesetter, Token primitive, GroupType groupType)
             throws TypesetterException,
                 HelpingException {
 
@@ -922,7 +935,7 @@ public class MathListMaker extends HorizontalListMaker
         try {
             Token t = source.getToken(context);
             if (t == null) {
-                throw new EofException(primitive);
+                throw new EofException(primitive.toText());
             }
             MathListMaker lm = new MathListMaker(man, source.getLocator());
             man.push(lm);
@@ -977,6 +990,7 @@ public class MathListMaker extends HorizontalListMaker
     @Override
     public void showlist(StringBuffer sb, long depth, long breadth) {
 
+        //
     }
 
     /**
@@ -994,7 +1008,7 @@ public class MathListMaker extends HorizontalListMaker
                 HelpingException {
 
         Noad sub =
-                scanNoad(null, context, source, typesetter, token.toString(),
+                scanNoad(null, context, source, typesetter, token,
                     GroupType.MATH_GROUP);
         if (insertionPoint.size() == 0) {
             add(new MathList());
@@ -1023,7 +1037,7 @@ public class MathListMaker extends HorizontalListMaker
                 HelpingException {
 
         Noad sup =
-                scanNoad(null, context, source, typesetter, token.toString(),
+                scanNoad(null, context, source, typesetter, token,
                     GroupType.MATH_GROUP);
         if (insertionPoint.size() == 0) {
             add(new MathList());

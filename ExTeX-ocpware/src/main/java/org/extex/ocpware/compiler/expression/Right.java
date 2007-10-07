@@ -84,7 +84,7 @@ public class Right {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer(" => ");
+        StringBuilder sb = new StringBuilder(" => ");
         for (Expr r : right) {
             sb.append(r.toString());
         }

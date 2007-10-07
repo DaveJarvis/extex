@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.CantUseInException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.EqConsumer;
@@ -72,11 +73,11 @@ public class Eqno extends AbstractMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Eqno(String name) {
+    public Eqno(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -100,10 +101,10 @@ public class Eqno extends AbstractMathCode {
             }
 
         } catch (CantUseInException e) {
-            throw new CantUseInException(printableControlSequence(context),
+            throw new CantUseInException(toText(context),
                 "math mode");
         }
-        throw new CantUseInException(printableControlSequence(context), //
+        throw new CantUseInException(toText(context), //
             typesetter.getMode().toString());
     }
 

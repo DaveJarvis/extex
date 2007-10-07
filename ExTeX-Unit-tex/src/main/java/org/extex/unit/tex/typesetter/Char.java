@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.TokenDelegateListMaker;
@@ -83,11 +84,11 @@ public class Char extends AbstractCode implements ExpandableCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Char(String name) {
+    public Char(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -115,7 +116,7 @@ public class Char extends AbstractCode implements ExpandableCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar uc =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         try {
             ((TokenDelegateListMaker) typesetter).letter(uc, context
                 .getTypesettingContext(), context, source, source.getLocator());

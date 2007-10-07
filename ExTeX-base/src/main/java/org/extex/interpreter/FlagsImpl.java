@@ -352,7 +352,7 @@ public class FlagsImpl implements Flags {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(globalP ? 'G' : '-');
         sb.append(longP ? 'L' : '-');
         sb.append(outerP ? 'O' : '-');

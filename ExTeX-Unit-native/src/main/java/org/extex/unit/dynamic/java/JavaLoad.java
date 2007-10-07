@@ -28,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.Loader;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -117,17 +118,17 @@ public class JavaLoad extends AbstractCode implements Loader {
      */
     public JavaLoad() {
 
-        super("");
+        super(null);
     }
 
     /**
      * Creates a new object.
      * 
-     * @param codeName the name for debugging
+     * @param token the initial token for the primitive
      */
-    public JavaLoad(String codeName) {
+    public JavaLoad(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -159,7 +160,7 @@ public class JavaLoad extends AbstractCode implements Loader {
         try {
             classname = source.getTokens(context, source, typesetter).toText();
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
@@ -173,11 +174,11 @@ public class JavaLoad extends AbstractCode implements Loader {
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);
-        } catch (HelpingException e) {
-            throw e;
         } catch (ClassCastException e) {
             throw new HelpingException(getLocalizer(), "ClassCast", classname,
-                Loadable.class.getName(), getName());
+                Loadable.class.getName(), toText());
+        } catch (HelpingException e) {
+            throw e;
         } catch (Exception e) {
             throw new NoHelpException(e);
         }

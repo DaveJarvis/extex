@@ -72,7 +72,6 @@ import org.extex.interpreter.parser.CountParser;
 import org.extex.interpreter.parser.DimenParser;
 import org.extex.interpreter.parser.GlueParser;
 import org.extex.interpreter.parser.Parser;
-import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CsConvertible;
 import org.extex.interpreter.type.box.Box;
@@ -204,7 +203,7 @@ public class Moritz extends Max
      * values have a special meaning indicating that arbitrary token lists are
      * allowed in addition to arbitrary numbers.
      */
-    private IntegerCode maxRegister = new IntegerCode("maxRegister", 255);
+    private IntegerCode maxRegister = new IntegerCode(null, 255);
 
     /**
      * The field <tt>observersCloseStream</tt> contains the observer list is
@@ -492,9 +491,9 @@ public class Moritz extends Max
 
     /**
      * @see org.extex.interpreter.TokenSource#getFont(
-     *      org.extex.interpreter.context.Context, java.lang.String)
+     *      org.extex.interpreter.context.Context, CodeToken)
      */
-    public Font getFont(Context context, String primitive)
+    public Font getFont(Context context, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -506,8 +505,7 @@ public class Moritz extends Max
         } else if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code == null) {
-                throw new UndefinedControlSequenceException(AbstractCode
-                    .printable(context, t));
+                throw new UndefinedControlSequenceException(t.toText());
 
             } else if (code instanceof FontConvertible) {
                 return ((FontConvertible) code).convertFont(context, this,
@@ -1149,10 +1147,10 @@ public class Moritz extends Max
      * 
      * @see org.extex.interpreter.TokenSource#scanCharacterCode(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter, java.lang.String)
+     *      org.extex.typesetter.Typesetter, CodeToken)
      */
     public UnicodeChar scanCharacterCode(Context context,
-            Typesetter typesetter, String primitive)
+            Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -1204,10 +1202,10 @@ public class Moritz extends Max
      * @see org.extex.interpreter.TokenSource#scanRegisterName(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      java.lang.String)
+     *      CodeToken)
      */
     public String scanRegisterName(Context context, TokenSource source,
-            Typesetter typesetter, String primitive)
+            Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -1253,10 +1251,10 @@ public class Moritz extends Max
      * 
      * @see org.extex.interpreter.TokenSource#scanTokens(
      *      org.extex.interpreter.context.Context, boolean, boolean,
-     *      java.lang.String)
+     *      org.extex.scanner.type.token.CodeToken)
      */
     public Tokens scanTokens(Context context, boolean reportUndefined,
-            boolean ignoreUndefined, String primitive)
+            boolean ignoreUndefined, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -1265,16 +1263,16 @@ public class Moritz extends Max
         Token token = scanToken(context);
 
         if (token == null) {
-            throw new EofException(primitive);
+            throw new EofException(primitive.toText());
         } else if (token instanceof CodeToken) {
             Code code = context.getCode((CodeToken) token);
             if (code instanceof TokensConvertible) {
                 return ((TokensConvertible) code).convertTokens(context, this,
                     getTypesetter());
             }
-            throw new MissingLeftBraceException(primitive);
+            throw new MissingLeftBraceException(primitive.toText());
         } else if (!(token instanceof LeftBraceToken)) {
-            throw new MissingLeftBraceException(primitive);
+            throw new MissingLeftBraceException(primitive.toText());
         }
 
         int balance = 1;
@@ -1315,15 +1313,15 @@ public class Moritz extends Max
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.TokenSource#scanTokensAsString(
-     *      org.extex.interpreter.context.Context, java.lang.String)
+     *      org.extex.interpreter.context.Context, CodeToken)
      */
-    public String scanTokensAsString(Context context, String primitive)
+    public String scanTokensAsString(Context context, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
         Tokens tokens = scanTokens(context, false, false, primitive);
         if (tokens == null) {
-            throw new EofException(primitive);
+            throw new EofException(primitive.toText());
         }
         return tokens.toText();
     }
@@ -1333,10 +1331,10 @@ public class Moritz extends Max
      * 
      * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(
      *      org.extex.interpreter.context.Context, boolean, boolean,
-     *      java.lang.String)
+     *      CodeToken)
      */
     public Tokens scanUnprotectedTokens(Context context,
-            boolean reportUndefined, boolean ignoreUndefined, String primitive)
+            boolean reportUndefined, boolean ignoreUndefined, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -1345,9 +1343,9 @@ public class Moritz extends Max
         Token token = getToken(context);
 
         if (token == null) {
-            throw new EofException(primitive);
+            throw new EofException(primitive.toText());
         } else if (!token.isa(Catcode.LEFTBRACE)) {
-            throw new MissingLeftBraceException(primitive);
+            throw new MissingLeftBraceException(primitive.toText());
         }
 
         int balance = 1;

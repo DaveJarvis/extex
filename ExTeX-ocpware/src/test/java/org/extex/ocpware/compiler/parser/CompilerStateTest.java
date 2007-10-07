@@ -376,7 +376,7 @@ public class CompilerStateTest {
 
         Locale.setDefault(Locale.ENGLISH);
 
-        StringBuffer expect = new StringBuffer();
+        StringBuilder expect = new StringBuilder();
         String in =
                 "org/extex/ocpware/" + "compiler/" + name + ".out";
         InputStream s = OTP.class.getClassLoader().getResourceAsStream(in);

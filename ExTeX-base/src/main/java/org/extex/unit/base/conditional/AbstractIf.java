@@ -80,7 +80,7 @@ public abstract class AbstractIf extends AbstractCode
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param name the name of the invoking primitive
+     * @param primitive the name of the invoking primitive
      * 
      * @return <code>true</code> if a matching <tt>\else</tt> has been
      *         found; otherwise return <code>false</code> if a matching
@@ -89,7 +89,7 @@ public abstract class AbstractIf extends AbstractCode
      * @throws HelpingException in case of en error
      */
     public static boolean skipToElseOrFi(Context context, TokenSource source,
-            String name) throws HelpingException {
+            CodeToken primitive) throws HelpingException {
 
         Code code;
         int n = 0;
@@ -114,25 +114,25 @@ public abstract class AbstractIf extends AbstractCode
                     n++;
                 } else if (code.isOuter()) {
                     throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInSkipped", context.esc(name), //
+                        "TTP.OuterInSkipped", context.esc(primitive), //
                         Integer.toString(locator.getLineNumber()));
                 }
             }
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
-            context.esc(name), // 
+            context.esc(primitive), // 
             locator != null ? Integer.toString(locator.getLineNumber()) : "");
     }
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractIf(String name) {
+    public AbstractIf(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class AbstractIf extends AbstractCode
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source, getName())) {
+        } else if (skipToElseOrFi(context, source, getToken())) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
@@ -184,7 +184,7 @@ public abstract class AbstractIf extends AbstractCode
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source, getName())) {
+        } else if (skipToElseOrFi(context, source, getToken())) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }

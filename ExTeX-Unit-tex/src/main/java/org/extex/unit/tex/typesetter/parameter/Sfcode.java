@@ -33,6 +33,7 @@ import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -83,16 +84,16 @@ public class Sfcode extends AbstractAssignment implements
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Sfcode(String name) {
+    public Sfcode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -107,7 +108,7 @@ public class Sfcode extends AbstractAssignment implements
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getOptionalEquals(context);
         long sfCode = source.parseInteger(context, source, typesetter);
 
@@ -130,7 +131,7 @@ public class Sfcode extends AbstractAssignment implements
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         return context.getSfcode(ucCode).getValue();
     }
 

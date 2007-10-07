@@ -29,6 +29,7 @@ import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -48,14 +49,11 @@ public abstract class AbstractMath extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
-     * 
-     * @throws HelpingException in case of an error
+     * @param token the initial token for the primitive
      */
-    public AbstractMath(String name) throws HelpingException {
+    public AbstractMath(CodeToken token) {
 
-        super(name);
-
+        super(token);
     }
 
     /**
@@ -65,6 +63,7 @@ public abstract class AbstractMath extends AbstractCode
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -117,7 +116,8 @@ public abstract class AbstractMath extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

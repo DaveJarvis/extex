@@ -24,6 +24,7 @@ import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -77,11 +78,11 @@ public class If extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public If(String name) {
+    public If(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -99,7 +100,7 @@ public class If extends AbstractIf {
         Token t2 = source.scanToken(context);
 
         if (t1 == null || t2 == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
 
         UnicodeChar c1 = t1.getChar();

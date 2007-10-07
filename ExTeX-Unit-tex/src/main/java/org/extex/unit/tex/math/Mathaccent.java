@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -69,11 +70,11 @@ public class Mathaccent extends AbstractTeXMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Mathaccent(String name) {
+    public Mathaccent(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -90,11 +91,10 @@ public class Mathaccent extends AbstractTeXMathCode {
         NoadConsumer nc = getListMaker(context, typesetter);
 
         MathCode accent =
-                parseMathCode(context, source, typesetter,
-                    printableControlSequence(context));
+                parseMathCode(context, source, typesetter, getToken());
 
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
-            getName(), GroupType.MATH_GROUP);
+            getToken(), GroupType.MATH_GROUP);
         nc.add(new AccentNoad(accent, noad, context.getTypesettingContext()));
     }
 

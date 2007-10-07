@@ -25,6 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.exception.PdftexActionTypeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -42,7 +43,7 @@ public abstract class ActionSpec implements Serializable {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the primitive
+     * @param primitive the name of the primitive
      *
      * @return the action spec found
      *
@@ -51,20 +52,20 @@ public abstract class ActionSpec implements Serializable {
      */
     public static ActionSpec parseActionSpec(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+            CodeToken primitive) throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "user")) {
             return UserActionSpec.parseActionSpec(context, source, typesetter,
-                name);
+                primitive);
         } else if (source.getKeyword(context, "goto")) {
             return GotoActionSpec.parseActionSpec(context, source, typesetter,
-                name);
+                primitive);
         } else if (source.getKeyword(context, "thread")) {
             return ThreadActionSpec.parseActionSpec(context, source,
-                typesetter, name);
+                typesetter, primitive);
         }
 
-        throw new PdftexActionTypeException(name);
+        throw new PdftexActionTypeException(primitive.toText());
     }
 
     /**

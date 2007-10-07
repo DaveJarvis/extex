@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.SpecialNode;
@@ -47,7 +48,7 @@ import org.extex.typesetter.type.node.SpecialNode;
  * <pre class="syntax">
  *    &lang;special&rang;
  *        &rarr; <tt>\special</tt> {@linkplain
- *           org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *           org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *           &lang;general text&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -79,11 +80,11 @@ public class Special extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Special(String name) {
+    public Special(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -98,7 +99,7 @@ public class Special extends AbstractCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String text =
-                source.scanUnprotectedTokens(context, true, false, getName())
+                source.scanUnprotectedTokens(context, true, false, getToken())
                     .toText();
         typesetter.add(new SpecialNode(text));
     }

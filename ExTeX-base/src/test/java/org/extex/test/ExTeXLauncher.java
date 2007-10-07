@@ -478,7 +478,7 @@ public abstract class ExTeXLauncher {
             if (Boolean.valueOf(properties.getProperty("extex.launcher.time", //
                 "false")).booleanValue()) {
                 t = System.currentTimeMillis() - t;
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 sb.append(t % 1000);
                 sb.append("ms");
                 t = t / 1000;

@@ -184,11 +184,11 @@ public class FontPrimitive extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public FontPrimitive(String name) {
+    public FontPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -229,7 +229,7 @@ public class FontPrimitive extends AbstractAssignment
             long s = source.parseInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
-                    Long.toString(s), "32768"); // max, as reported by TeX 
+                    Long.toString(s), "32768"); // max, as reported by TeX
             }
             scale = new Count(s);
         }
@@ -285,7 +285,7 @@ public class FontPrimitive extends AbstractAssignment
         }
 
         context.setCode(fontId, //
-            new FontCode(fontId.getName(), new FontImpl(fnt)), //
+            new FontCode(fontId, new FontImpl(fnt)), //
             prefix.clearGlobal());
     }
 
@@ -342,10 +342,10 @@ public class FontPrimitive extends AbstractAssignment
 
         if (t == null) {
             throw new HelpingException(getLocalizer(), "TTP.EOFinDef",
-                printableControlSequence(context));
+                toText(context));
         }
 
-        StringBuffer sb = new StringBuffer((char) t.getChar().getCodePoint());
+        StringBuilder sb = new StringBuilder();
 
         while (t != null && !(t instanceof SpaceToken)) {
             if (t instanceof ControlSequenceToken) {

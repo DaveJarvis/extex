@@ -29,6 +29,7 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.pdf.api.PdftexSupport;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -52,7 +53,7 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;pdffontname&rang;
  *       &rarr; <tt>\pdffontname</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context, String)
+ *          org.extex.interpreter.TokenSource#getFont(Context, CodeToken)
  *          &lang;font&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -81,11 +82,11 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Pdffontname(String name) {
+    public Pdffontname(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -109,7 +110,7 @@ public class Pdffontname extends AbstractPdftexCode
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        Font font = source.getFont(context, getName());
+        Font font = source.getFont(context, getToken());
 
         String name = writer.pdffontname(font);
         try {

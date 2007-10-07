@@ -648,7 +648,7 @@ public class TeX extends ExTeX {
                     stream.mark(8);
                     try {
                         if (stream.read() == '%' && stream.read() == '&') {
-                            StringBuffer fmt = new StringBuffer();
+                            StringBuilder fmt = new StringBuilder();
                             int c;
                             for (c = stream.read(); c > 0
                                     && !Character.isWhitespace((char) c); c =
@@ -658,9 +658,8 @@ public class TeX extends ExTeX {
                             while (c > 0 && c != '\n') {
                                 c = stream.read();
                             }
-                            String format = fmt.toString();
-                            if (!format.equals("")) {
-                                loadFormat(format, interpreter, finder,
+                            if (fmt.length() != 0) {
+                                loadFormat(fmt.toString(), interpreter, finder,
                                     getProperty(PROP_JOBNAME), null, null, null);
                             }
                         } else {
@@ -1607,7 +1606,7 @@ public class TeX extends ExTeX {
             throws MainException {
 
         if (position < arguments.length) {
-            StringBuffer in = new StringBuffer();
+            StringBuilder in = new StringBuilder();
 
             for (int i = position; i < arguments.length; i++) {
                 in.append(" ");

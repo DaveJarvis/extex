@@ -33,6 +33,7 @@ import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -58,7 +59,7 @@ public class CharCode extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 28022006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>character</tt> contains the encapsulated Unicode
@@ -69,11 +70,12 @@ public class CharCode extends AbstractCode
     /**
      * Creates a new object.
      * 
+     * @param token the initial token for the primitive
      * @param uc the Unicode character to encapsulate
      */
-    public CharCode(UnicodeChar uc) {
+    public CharCode(CodeToken token, UnicodeChar uc) {
 
-        super(uc.toString());
+        super(token);
         this.character = uc;
     }
 

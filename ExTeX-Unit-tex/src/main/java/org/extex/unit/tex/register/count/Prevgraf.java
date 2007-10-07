@@ -24,6 +24,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -67,11 +68,11 @@ public class Prevgraf extends CountPrimitive {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Prevgraf(String name) {
+    public Prevgraf(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -115,13 +116,12 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value =
-                source.parseInteger(context, source, null)
-                        + context.getCount(key).getValue();
+        long value = source.parseInteger(context, source, null) //
+                + context.getCount(key).getValue();
 
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
-                printableControlSequence(context), Long.toString(value));
+                toText(), Long.toString(value));
         }
         context.setCount(key, value, prefix.clearGlobal());
     }
@@ -143,7 +143,7 @@ public class Prevgraf extends CountPrimitive {
         long value = source.parseInteger(context, source, typesetter);
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
-                printableControlSequence(context), Long.toString(value));
+                toText(), Long.toString(value));
         }
         context.setCount(key, value, prefix.clearGlobal());
     }
@@ -165,14 +165,13 @@ public class Prevgraf extends CountPrimitive {
         long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
-            throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
 
         value = context.getCount(key).getValue() / value;
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
-                printableControlSequence(context), Long.toString(value));
+                toText(context), Long.toString(value));
         }
         context.setCount(key, value, prefix.clearGlobal());
     }
@@ -195,7 +194,7 @@ public class Prevgraf extends CountPrimitive {
         value *= context.getCount(key).getValue();
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
-                printableControlSequence(context), Long.toString(value));
+                toText(context), Long.toString(value));
         }
         context.setCount(key, value, prefix.clearGlobal());
     }

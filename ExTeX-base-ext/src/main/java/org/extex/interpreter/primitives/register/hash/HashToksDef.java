@@ -49,16 +49,16 @@ public class HashToksDef extends AbstractAssignment {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public HashToksDef(String name) {
+    public HashToksDef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -68,6 +68,7 @@ public class HashToksDef extends AbstractAssignment {
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -78,6 +79,6 @@ public class HashToksDef extends AbstractAssignment {
                 "hashtoks#"
                         + Long.toString(source.parseInteger(context, source,
                             typesetter));
-        context.setCode(tok, new NamedHashToks(key), prefix.clearGlobal());
+        context.setCode(tok, new NamedHashToks(tok, key), prefix.clearGlobal());
     }
 }

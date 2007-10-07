@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -80,11 +81,11 @@ public class Mathop extends AbstractMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Mathop(String name) {
+    public Mathop(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -100,7 +101,7 @@ public class Mathop extends AbstractMathCode {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
-            printableControlSequence(context), GroupType.MATH_GROUP);
+            getToken(), GroupType.MATH_GROUP);
         nc.add(new OperatorNoad(noad, context.getTypesettingContext()));
     }
 

@@ -411,7 +411,7 @@ public class MacroPattern extends Tokens {
                     throw new OuterInDefException(cs.toText(context
                         .escapechar()));
                 } else if (code instanceof LetCode) {
-                    t = ((LetCode) code).getToken();
+                    t = ((LetCode) code).getLetToken();
                 }
             } else if (t instanceof LeftBraceToken) {
                 source.push(t);
@@ -820,7 +820,7 @@ public class MacroPattern extends Tokens {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int n = this.length();
         for (int i = 0; i < n; i++) {
             sb.append(get(i).toText());

@@ -287,9 +287,22 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
+    }
+
+    /**
+     * Print the token into a StringBuilder.
+     * 
+     * @param sb the target string builder
+     */
+    public void toString(StringBuilder sb) {
+
+        for (int i = 0; i < tokens.size(); i++) {
+            tokens.get(i).toString(sb);
+            sb.append("\n  ");
+        }
     }
 
     /**

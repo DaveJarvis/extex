@@ -33,6 +33,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -91,11 +92,11 @@ public class Lccode extends AbstractAssignment
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Lccode(String name) {
+    public Lccode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -110,11 +111,11 @@ public class Lccode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         source.getOptionalEquals(context);
         try {
             UnicodeChar lcCode =
-                    source.scanCharacterCode(context, typesetter, getName());
+                    source.scanCharacterCode(context, typesetter, getToken());
             context.setLccode(ucCode, lcCode, prefix.clearGlobal());
         } catch (InvalidCharacterException e) {
             throw new InvalidCodeException(e.getChar(), Integer
@@ -133,7 +134,7 @@ public class Lccode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getName());
+                source.scanCharacterCode(context, typesetter, getToken());
         return context.getLccode(ucCode).getCodePoint();
     }
 

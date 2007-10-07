@@ -34,6 +34,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -69,13 +70,31 @@ public class MuskipParameter extends AbstractAssignment
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>key</tt> contains the reference key.
+     */
+    private String key;
+
+    /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public MuskipParameter(String name) {
+    public MuskipParameter(CodeToken token) {
 
-        super(name);
+        super(token);
+        this.key = token.getName();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param token the initial token for the primitive
+     * @param key the reference key
+     */
+    public MuskipParameter(CodeToken token, String key) {
+
+        super(token);
+        this.key = key;
     }
 
     /**
@@ -144,7 +163,7 @@ public class MuskipParameter extends AbstractAssignment
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         Muskip ms = new Muskip(context.getMuskip(key));
@@ -168,9 +187,9 @@ public class MuskipParameter extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
-            return context.getNamespace() + "\b" + getName();
+            return context.getNamespace() + "\b" + key;
         }
-        return getName();
+        return key;
     }
 
     /**

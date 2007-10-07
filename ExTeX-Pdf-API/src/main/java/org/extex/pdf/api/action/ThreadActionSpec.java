@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.id.IdSpec;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -46,7 +47,7 @@ public class ThreadActionSpec extends ActionSpec {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param name the name of the primitive
+     * @param primitive the name of the primitive
      *
      * @return the action spec found
      *
@@ -55,14 +56,14 @@ public class ThreadActionSpec extends ActionSpec {
      */
     public static ActionSpec parseActionSpec(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException,TypesetterException {
+            CodeToken primitive) throws HelpingException,TypesetterException {
 
         String file = null;
         if (source.getKeyword(context, "file")) {
-            file = source.scanTokensAsString(context, name);
+            file = source.scanTokensAsString(context, primitive);
         }
 
-        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, name);
+        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, primitive);
 
         return new ThreadActionSpec(file, id);
     }
@@ -123,7 +124,7 @@ public class ThreadActionSpec extends ActionSpec {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("thread file ");
+        StringBuilder sb = new StringBuilder("thread file ");
         sb.append(file);
         sb.append(" ");
         sb.append(id.toString());

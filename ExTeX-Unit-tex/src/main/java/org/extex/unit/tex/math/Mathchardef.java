@@ -72,11 +72,11 @@ public class Mathchardef extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Mathchardef(String name) {
+    public Mathchardef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,10 +94,10 @@ public class Mathchardef extends AbstractAssignment {
         source.getOptionalEquals(context);
         MathCode mathchar =
                 AbstractTeXMathCode.parseMathCode(context, source, typesetter,
-                    getName());
+                    getToken());
 
         context.setCode(cs, //
-            new TeXMathcharCode(cs.toString(), mathchar), //
+            new TeXMathcharCode(cs, mathchar), //
             prefix.clearGlobal());
     }
 

@@ -117,7 +117,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @param token the token to expand
      * @param context the interpreter context
      * @param typesetter the typesetter
-     *
+     * 
      * @return the next token
      * 
      * @throws HelpingException in case of an error
@@ -270,7 +270,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    Font getFont(Context context, String primitive)
+    Font getFont(Context context, CodeToken primitive)
             throws HelpingException,
                 TypesetterException;
 
@@ -456,7 +456,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @return the object obtained or <code>null</code> if at end of file
      * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException
+     * @throws TypesetterException in case of an error in the typesetter
      */
     @SuppressWarnings("unchecked")
     Object parse(Class c, Context context, TokenSource source,
@@ -499,7 +499,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * @return the old parser for this class or <code>null</code> if none has
      *         been registered
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     @SuppressWarnings("unchecked")
@@ -547,7 +547,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws TypesetterException in case of an error in the typesetter
      */
     UnicodeChar scanCharacterCode(Context context, Typesetter typesetter,
-            String primitive) throws HelpingException, TypesetterException;
+            CodeToken primitive) throws HelpingException, TypesetterException;
 
     /**
      * Scan the input for the next token which has not the category code SPACE.
@@ -636,7 +636,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws TypesetterException in case of an error in the typesetter
      */
     String scanRegisterName(Context context, TokenSource source,
-            Typesetter typesetter, String primitive)
+            Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 TypesetterException;
 
@@ -697,7 +697,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws TypesetterException in case of an error in the typesetter
      */
     Tokens scanTokens(Context context, boolean reportUndefined,
-            boolean ignoreUndefined, String primitive)
+            boolean ignoreUndefined, CodeToken primitive)
             throws HelpingException,
                 TypesetterException;
 
@@ -715,7 +715,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    String scanTokensAsString(Context context, String primitive)
+    String scanTokensAsString(Context context, CodeToken primitive)
             throws HelpingException,
                 TypesetterException;
 
@@ -743,7 +743,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws TypesetterException in case of an error in the typesetter
      */
     Tokens scanUnprotectedTokens(Context context, boolean reportUndefined,
-            boolean ignoreUndefined, String primitive)
+            boolean ignoreUndefined, CodeToken primitive)
             throws HelpingException,
                 TypesetterException;
 

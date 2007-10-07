@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -96,11 +97,11 @@ public class Input extends AbstractFileCode implements ExpandableCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Input(String name) {
+    public Input(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

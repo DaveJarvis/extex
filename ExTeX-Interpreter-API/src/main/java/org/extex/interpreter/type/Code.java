@@ -63,6 +63,8 @@ public interface Code {
      * Getter for the name.
      *
      * @return the name
+     * 
+     * @deprecated access the token instead
      */
     String getName();
 

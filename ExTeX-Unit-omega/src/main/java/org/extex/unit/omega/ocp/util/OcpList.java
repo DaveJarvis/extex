@@ -34,6 +34,7 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Showable;
 import org.extex.ocpware.type.OcpProgram;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -66,11 +67,11 @@ public class OcpList extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param codeName the name for debugging
+     * @param token the initial token for the primitive
      */
-    public OcpList(String codeName) {
+    public OcpList(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -119,7 +120,7 @@ public class OcpList extends AbstractCode
     public OcpList convertOcplist(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        OcpList result = new OcpList("");
+        OcpList result = new OcpList(null);
 
         for (Long k : map.keySet()) {
             List<OcpProgram> progList = new ArrayList<OcpProgram>();
@@ -200,7 +201,7 @@ public class OcpList extends AbstractCode
      */
     public Tokens show(Context context) throws HelpingException {
 
-        StringBuffer sb = new StringBuffer("select ocp list ");
+        StringBuilder sb = new StringBuilder("select ocp list ");
 
         // TODO gene: show content?
 

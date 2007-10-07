@@ -187,7 +187,7 @@ public class Ps {
      * @param text the text
      * @param x the x coordinate
      */
-    public void putText(PrintStream out, StringBuffer text, Dimen x) {
+    public void putText(PrintStream out, CharSequence text, Dimen x) {
 
         out.write('(');
         out.append(text);

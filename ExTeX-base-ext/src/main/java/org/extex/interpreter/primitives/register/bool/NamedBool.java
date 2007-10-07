@@ -29,6 +29,7 @@ import org.extex.interpreter.context.ContextExtension;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -62,16 +63,23 @@ public class NamedBool extends AbstractAssignment
     /**
      * The field <tt>serialVersionUID</tt>.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>key</tt> contains the reference key.
+     */
+    private String key;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
+     * @param key the reference key
      */
-    public NamedBool(String name) {
+    public NamedBool(CodeToken token, String key) {
 
-        super(name);
+        super(token);
+        this.key = key;
     }
 
     /**
@@ -79,6 +87,7 @@ public class NamedBool extends AbstractAssignment
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws ConfigurationException,
@@ -166,7 +175,7 @@ public class NamedBool extends AbstractAssignment
      * 
      * @param context the context
      * @param source the token source
-     * @param typesetter TODO
+     * @param typesetter the typesetter
      * 
      * @return the key
      * @throws HelpingException in case of an error
@@ -175,7 +184,7 @@ public class NamedBool extends AbstractAssignment
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return getName();
+        return key;
     }
 
     /**

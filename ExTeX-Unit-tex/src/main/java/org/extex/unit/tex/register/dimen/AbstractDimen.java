@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -46,11 +47,11 @@ public abstract class AbstractDimen extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractDimen(String name) {
+    public AbstractDimen(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -71,7 +72,7 @@ public abstract class AbstractDimen extends AbstractAssignment {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String name =
-                source.scanRegisterName(context, source, typesetter, getName());
+                source.scanRegisterName(context, source, typesetter, getToken());
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
             return context.getNamespace() + "dimen#" + name;

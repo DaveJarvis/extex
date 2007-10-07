@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -65,11 +66,11 @@ public class Crcr extends Cr {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Crcr(String name) {
+    public Crcr(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -88,7 +89,7 @@ public class Crcr extends Cr {
             ((AlignmentList) maker).crcr(context, source, typesetter);
         } else {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
-                printableControlSequence(context));
+                toText(context));
         }
     }
 

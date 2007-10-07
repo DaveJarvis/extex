@@ -23,6 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -77,11 +78,11 @@ public class Mathchar extends AbstractTeXMathCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Mathchar(String name) {
+    public Mathchar(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -94,8 +95,7 @@ public class Mathchar extends AbstractTeXMathCode
     public MathCode convertMathCode(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return parseMathCode(context, source, typesetter,
-            printableControlSequence(context));
+        return parseMathCode(context, source, typesetter, getToken());
     }
 
     /**
@@ -110,8 +110,7 @@ public class Mathchar extends AbstractTeXMathCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathCode mc = parseMathCode(context, source, typesetter, //
-            printableControlSequence(context));
+        MathCode mc = parseMathCode(context, source, typesetter, getToken());
 
         nc.add(mc, context.getTypesettingContext());
     }

@@ -256,7 +256,7 @@ public abstract class PsUnit {
      */
     public static void toPoint(FixedDimen d, PrintStream  out, boolean strip) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toPoint(d, sb, strip);
         out.append(sb);
     }
@@ -270,7 +270,7 @@ public abstract class PsUnit {
      * @param strip indicator whether rounding to the next higher integral
      *        number is desirable
      */
-    public static void toPoint(FixedDimen d, StringBuffer out, boolean strip) {
+    public static void toPoint(FixedDimen d, StringBuilder out, boolean strip) {
 
         long val = d.getValue() * BP100_PER_IN / POINT_PER_100_IN;
 

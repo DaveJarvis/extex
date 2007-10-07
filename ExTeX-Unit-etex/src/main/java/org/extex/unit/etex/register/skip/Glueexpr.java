@@ -25,6 +25,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.MuskipConvertible;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -70,11 +71,11 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
     /**
      * Creates a new object.
      * 
-     * @param codeName the name
+     * @param token the initial token for the primitive
      */
-    public Glueexpr(String codeName) {
+    public Glueexpr(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**

@@ -85,11 +85,11 @@ public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public OcpPrimitive(String name) {
+    public OcpPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -105,9 +105,7 @@ public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        String resource =
-                OcpUtil.scanOcpFileName(context, source,
-                    printableControlSequence(context));
+        String resource = OcpUtil.scanOcpFileName(context, source, getToken());
         Ocp ocp = Ocp.load(resource, finder);
         if (ocp == null) {
             throw new HelpingException(getLocalizer(), "message", resource);

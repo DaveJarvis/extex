@@ -93,11 +93,11 @@ public class Showthe extends AbstractCode implements LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Showthe(String name) {
+    public Showthe(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -143,7 +143,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
         }
 
         throw new CantUseAfterException(cs.toString(),
-            printableControlSequence(context));
+            toText(context));
     }
 
 }

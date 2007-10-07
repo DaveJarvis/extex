@@ -659,7 +659,7 @@ public final class CompilerState {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("input:  ");
         sb.append(Integer.toString(in));
         sb.append(";\n");

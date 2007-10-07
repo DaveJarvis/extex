@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Showable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -77,11 +78,11 @@ public class Nullocplist extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Nullocplist(String name) {
+    public Nullocplist(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -95,7 +96,7 @@ public class Nullocplist extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new OmegaOcpException(getName());
+        throw new OmegaOcpException(toText());
     }
 
     /**
@@ -123,7 +124,7 @@ public class Nullocplist extends AbstractCode
     public OcpList convertOcplist(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        return new OcpList("");
+        return new OcpList(null);
     }
 
 }

@@ -417,7 +417,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * @throws TypesetterException in case of an error in the typesetter
      */
     private static MathDelimiter parse(Context context, TokenSource source,
-            Typesetter typesetter, MathClass mClass, String primitive)
+            Typesetter typesetter, MathClass mClass, CodeToken primitive)
             throws HelpingException,
                 TypesetterException {
 
@@ -452,7 +452,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static MathDelimiter parseDelimiter(Context context,
-            TokenSource source, Typesetter typesetter, String primitive)
+            TokenSource source, Typesetter typesetter, CodeToken primitive)
             throws HelpingException,
                 ConfigurationException,
                 TypesetterException {
@@ -547,11 +547,11 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractTeXDelimiter(String name) {
+    public AbstractTeXDelimiter(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
 }

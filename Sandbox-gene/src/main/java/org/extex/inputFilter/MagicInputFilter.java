@@ -81,7 +81,7 @@ public class MagicInputFilter extends InputStream {
         if (c < 0 || context.getCatcode(UnicodeChar.get(c)) != Catcode.COMMENT) {
             return c;
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int cc = stream.read(); cc != 0 && cc != '\n'; cc = stream.read()) {
             sb.append((char) cc);
         }

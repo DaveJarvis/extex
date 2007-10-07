@@ -832,7 +832,7 @@ public class TokenStreamStringImplTest {
         TokenStream stream = makeStream("%abc\nx");
         Token t = stream.get(FACTORY, TOKENIZER);
         assertNotNull(t);
-        assertEquals('x', t.getChar().getCodePoint());
+        assertEquals(120, t.getChar().getCodePoint());
     }
 
     /**

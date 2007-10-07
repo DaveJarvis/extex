@@ -59,7 +59,7 @@ import org.extex.unit.base.register.toks.ToksParameter;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -112,11 +112,11 @@ public class Toksdef extends AbstractToks {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Toksdef(String name) {
+    public Toksdef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Toksdef extends AbstractToks {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
-        context.setCode(cs, new ToksParameter(cs.getName(), key), //
+        context.setCode(cs, new ToksParameter(cs, key), //
             prefix.clearGlobal());
     }
 

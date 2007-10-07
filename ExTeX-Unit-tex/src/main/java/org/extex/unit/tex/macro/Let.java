@@ -79,11 +79,11 @@ public class Let extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Let(String name) {
+    public Let(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -102,7 +102,7 @@ public class Let extends AbstractAssignment {
         Token t = source.getToken(context);
 
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
 
         let(prefix, context, cs, t);

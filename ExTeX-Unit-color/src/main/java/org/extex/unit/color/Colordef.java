@@ -119,18 +119,19 @@ public class Colordef extends AbstractAssignment {
          * Creates a new object.
          * 
          * @param color the color
-         * @param name the name of the primitive
+         * @param token the initial token for the primitive
          */
-        public ColorCode(Color color, String name) {
+        public ColorCode(Color color, CodeToken token) {
 
-            super(name);
+            super(token);
             this.color = color;
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+         * @see org.extex.interpreter.type.AbstractAssignment#assign(
+         *      org.extex.interpreter.Flags,
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
@@ -142,7 +143,7 @@ public class Colordef extends AbstractAssignment {
                     TypesetterException {
 
             color = ColorParser.parseColor(context, source, typesetter, //
-                getName());
+                getToken());
         }
 
         /**
@@ -174,16 +175,16 @@ public class Colordef extends AbstractAssignment {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060528L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the primitive for tracing
+     * @param token the initial token for the primitive
      */
-    public Colordef(String name) {
+    public Colordef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -197,9 +198,10 @@ public class Colordef extends AbstractAssignment {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
+     * 
      * @throws
-     *        org.extex.framework.configuration.exception.ConfigurationException
-     *        in case of an configuration error
+     * org.extex.framework.configuration.exception.ConfigurationException in
+     * case of an configuration error
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -211,9 +213,8 @@ public class Colordef extends AbstractAssignment {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         Color color =
-                ColorParser.parseColor(context, source, typesetter, getName());
-        context.setCode(cs, new ColorCode(color, cs.getName()), prefix
-            .clearGlobal());
+                ColorParser.parseColor(context, source, typesetter, getToken());
+        context.setCode(cs, new ColorCode(color, cs), prefix.clearGlobal());
     }
 
 }

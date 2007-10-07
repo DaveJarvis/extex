@@ -62,7 +62,7 @@ public class LogFormatterTest {
     @Test
     public void test1() throws Exception {
 
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         LogFormatter formatter = new LogFormatter();
         res.append(formatter.format(new LogRecord(Level.ALL, "abc")));
         assertEquals("abc", res.toString());
@@ -77,7 +77,7 @@ public class LogFormatterTest {
     @Test
     public void test2() throws Exception {
 
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         LogFormatter formatter = new LogFormatter();
         res.append(formatter.format(new LogRecord(Level.ALL, "abc")));
         res.append(formatter.format(new LogRecord(Level.ALL, "def")));
@@ -93,7 +93,7 @@ public class LogFormatterTest {
     @Test
     public void test3() throws Exception {
 
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         LogFormatter formatter = new LogFormatter();
         res.append(formatter.format(new LogRecord(Level.ALL,
             "abc def ghi jkl mno pqr stu vwx yz "

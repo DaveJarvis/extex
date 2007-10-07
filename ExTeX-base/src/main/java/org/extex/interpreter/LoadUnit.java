@@ -224,8 +224,10 @@ public final class LoadUnit extends AbstractFactory {
             Configuration cfg = iterator.next();
 
             String name = cfg.getAttribute(NAME_ATTRIBUTE);
+            Token t = tokenFactory.createToken(Catcode.ESCAPE, //
+                UnicodeChar.get('\\'), name, Namespace.DEFAULT_NAMESPACE);
             Code code =
-                    (Code) createInstanceForConfiguration(cfg, Code.class, name);
+                    (Code) createInstanceForConfiguration(cfg, Code.class, t);
 
             String namespace = cfg.getAttribute(NAMESPACE_ATTRIBUTE);
             if (namespace == null) {
@@ -249,5 +251,4 @@ public final class LoadUnit extends AbstractFactory {
             }
         }
     }
-
 }

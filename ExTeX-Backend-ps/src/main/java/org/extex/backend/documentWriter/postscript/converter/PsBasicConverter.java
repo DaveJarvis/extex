@@ -85,7 +85,7 @@ public class PsBasicConverter extends AbstractConverter
         /**
          * The field <tt>charBuffer</tt> contains the dynamic text.
          */
-        private StringBuffer text = new StringBuffer();
+        private StringBuilder text = new StringBuilder();
 
         /**
          * The field <tt>currX</tt> contains the x coordinate for the first

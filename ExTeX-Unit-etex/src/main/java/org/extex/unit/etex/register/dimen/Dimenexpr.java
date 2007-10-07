@@ -133,16 +133,16 @@ public class Dimenexpr extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Dimenexpr(String name) {
+    public Dimenexpr(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -208,7 +208,7 @@ public class Dimenexpr extends AbstractCode
 
             Token t = source.getNonSpace(context);
             if (t == null) {
-                throw new EofException(getName());
+                throw new EofException(toText());
 
             } else if (t.eq(Catcode.OTHER, '+')) {
                 val += evalOperand(context, source, typesetter);
@@ -253,7 +253,7 @@ public class Dimenexpr extends AbstractCode
             } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = evalOperand(context, source, typesetter);
                 if (x == 0) {
-                    throw new ArithmeticOverflowException(getName());
+                    throw new ArithmeticOverflowException(toText());
                 }
                 val /= x;
             } else {

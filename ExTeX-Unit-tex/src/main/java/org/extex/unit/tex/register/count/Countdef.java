@@ -20,10 +20,15 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -58,7 +63,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;}
  *
  *    &lang;modifier&rang;
@@ -112,11 +117,11 @@ public class Countdef extends AbstractCount {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Countdef(String name) {
+    public Countdef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -133,7 +138,14 @@ public class Countdef extends AbstractCount {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
-        context.setCode(cs, new IntegerParameter(key), prefix.clearGlobal());
+        try {
+            context.setCode(cs, new IntegerParameter(
+                (ControlSequenceToken) context.getTokenFactory().createToken(
+                    Catcode.ESCAPE, context.escapechar(), "",
+                    Namespace.DEFAULT_NAMESPACE), key), prefix.clearGlobal());
+        } catch (CatcodeException e) {
+            throw new NoHelpException(e);
+        }
     }
 
 }

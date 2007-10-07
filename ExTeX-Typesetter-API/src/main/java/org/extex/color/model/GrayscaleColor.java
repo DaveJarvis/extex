@@ -133,7 +133,7 @@ public class GrayscaleColor implements Color {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         ColorUtil.formatAlpha(sb, alpha);
         sb.append("gray {");
         ColorUtil.formatComponent(sb, gray);

@@ -30,6 +30,7 @@ import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -80,16 +81,16 @@ public class Parshapedimen extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Parshapedimen(String name) {
+    public Parshapedimen(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

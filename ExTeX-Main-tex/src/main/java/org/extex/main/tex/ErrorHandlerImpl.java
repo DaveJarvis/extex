@@ -365,7 +365,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
 
         logger.severe(prompt);
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         try {
             for (int c = System.in.read(); c > 0; c = System.in.read()) {
@@ -413,7 +413,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
             return;
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (Locator loc = locator; loc != null; loc = loc.getCause()) {
 

@@ -38,7 +38,7 @@ public class SpaceToken extends AbstractToken implements Token {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The Constant <tt>SPACE</tt> contains the space character.
@@ -91,6 +91,18 @@ public class SpaceToken extends AbstractToken implements Token {
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
+
+        sb.append(getLocalizer().format("SpaceToken.Text", super.toString()));
+    }
+
+    /**
+     * Print the token into a StringBuilder.
+     *
+     * @param sb the target string builder
+     *
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+     */
+    public void toString(StringBuilder sb) {
 
         sb.append(getLocalizer().format("SpaceToken.Text", super.toString()));
     }

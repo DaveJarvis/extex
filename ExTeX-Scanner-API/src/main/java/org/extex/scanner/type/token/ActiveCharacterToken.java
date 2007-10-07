@@ -41,7 +41,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
@@ -192,6 +192,19 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
+
+        sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
+            super.toString()));
+    }
+
+    /**
+     * Print the token into a StringBuilder.
+     *
+     * @param sb the target string builder
+     *
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+     */
+    public void toString(StringBuilder sb) {
 
         sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
             super.toString()));

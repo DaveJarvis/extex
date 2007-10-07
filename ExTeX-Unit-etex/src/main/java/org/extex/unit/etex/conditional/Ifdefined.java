@@ -74,11 +74,11 @@ public class Ifdefined extends AbstractIf {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Ifdefined(String name) {
+    public Ifdefined(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -149,8 +149,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
 
                 } else if (code == null) {
 
-                    throw new UndefinedControlSequenceException(printable(
-                        context, t));
+                    throw new UndefinedControlSequenceException(t.toText());
 
                 } else {
 
@@ -169,11 +168,11 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Csname(String name) {
+    public Csname(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -195,7 +194,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
                         Catcode.ESCAPE, context.escapechar(), s,
                         context.getNamespace());
             if (context.getCode(t) == null) {
-                context.setCode(t, new Relax(s), true);
+                context.setCode(t, new Relax(t), true);
             }
             source.push(t);
         } catch (CatcodeException e) {
@@ -224,7 +223,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
                         Catcode.ESCAPE, context.escapechar(), s,
                         context.getNamespace());
             if (context.getCode(t) == null) {
-                context.setCode(t, new Relax(s), true);
+                context.setCode(t, new Relax(t), true);
             }
             source.push(t);
         } catch (CatcodeException e) {

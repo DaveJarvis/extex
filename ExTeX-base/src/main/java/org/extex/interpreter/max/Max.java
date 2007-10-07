@@ -259,8 +259,7 @@ public abstract class Max
      * the run is terminated. This value can be overwritten in the
      * configuration.
      */
-    private IntegerCode maxErrors =
-            new IntegerCode("maxErrors", MAX_ERRORS_DEFAULT);
+    private IntegerCode maxErrors = new IntegerCode(null, MAX_ERRORS_DEFAULT);
 
     /**
      * This observer list is used for the observers which are registered to
@@ -351,8 +350,8 @@ public abstract class Max
                             arg, typesetter);
                         return null;
                     } else if (code == null) {
-                        throw new UndefinedControlSequenceException(
-                            AbstractCode.printable(context, token));
+                        throw new UndefinedControlSequenceException(token
+                            .toText());
                     } else {
                         return token;
                     }
@@ -401,8 +400,8 @@ public abstract class Max
                             arg, typesetter);
                         return null;
                     } else if (code == null) {
-                        throw new UndefinedControlSequenceException(
-                            AbstractCode.printable(context, token));
+                        throw new UndefinedControlSequenceException(token
+                            .toText());
                     } else {
                         return token;
                     }
@@ -1424,7 +1423,7 @@ public abstract class Max
             String endPrimitive = loc.format("TTP.EndPrimitive");
             HelpingException e = new HelpingException(loc, "TTP.EndIf", //
                 context.esc(endPrimitive), //
-                context.esc(cond.getPrimitiveName()), //
+                cond.getPrimitiveName(), //
                 cond.getLocator().toString());
             if (observersError != null) {
                 observersError.update(e);
@@ -1577,8 +1576,7 @@ public abstract class Max
         if (code == null) {
             Count ignoreVoid = context.getCount("ignorevoid");
             if (ignoreVoid.le(Count.ZERO)) {
-                throw new UndefinedControlSequenceException(AbstractCode
-                    .printable(context, token));
+                throw new UndefinedControlSequenceException(token.toText());
             }
         } else {
 
@@ -1640,8 +1638,7 @@ public abstract class Max
         if (code == null) {
             Count ignoreVoid = context.getCount("ignorevoid");
             if (ignoreVoid.le(Count.ZERO)) {
-                throw new UndefinedControlSequenceException(AbstractCode
-                    .printable(context, token));
+                throw new UndefinedControlSequenceException(token.toText());
             }
         } else {
 

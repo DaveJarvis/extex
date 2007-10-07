@@ -37,17 +37,18 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * <code>\multiply</code>.
- *
+ * 
  * <doc name="multiply">
  * <h3>The Primitive <tt>\advance</tt></h3>
  * <p>
- *  This primitive implements an assignment. The variable given as next tokens
- *  is multiplied by the quantity given after the optional <tt>by</tt>.
+ * This primitive implements an assignment. The variable given as next tokens is
+ * multiplied by the quantity given after the optional <tt>by</tt>.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *   &lang;multiply&rang;
  *     &rarr; &lang;optional prefix&rang; <tt>\multiply</tt> &lang;multiplyable&rang;
  *
@@ -74,16 +75,17 @@ import org.extex.typesetter.exception.TypesetterException;
  *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
  *            &lang;optional spaces&rang;}
  *   </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \multiply\count12 345  </pre>
  *  <pre class="TeXSample">
  *    \multiply\count12 by -345  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @see org.extex.interpreter.type.code.Multiplyable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
@@ -91,18 +93,19 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Multiply extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
-     * @param name the name for debugging
+     * 
+     * @param token the initial token for the primitive
      */
-    public Multiply(String name) {
+    public Multiply(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -113,9 +116,8 @@ public class Multiply extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 
@@ -124,18 +126,17 @@ public class Multiply extends AbstractAssignment {
 
             if (code instanceof Multiplyable) {
 
-                ((Multiplyable) code).multiply(prefix, context, source, typesetter);
+                ((Multiplyable) code).multiply(prefix, context, source,
+                    typesetter);
                 return;
 
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(//
-                        printable(context, cs));
+                throw new UndefinedControlSequenceException(cs.toText());
             }
         } else if (cs == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
-        throw new CantUseAfterException(cs.toString(),
-                printableControlSequence(context));
+        throw new CantUseAfterException(cs.toString(), toText());
     }
 
 }

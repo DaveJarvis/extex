@@ -26,6 +26,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -92,16 +93,16 @@ public class Export extends AbstractAssignment {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Export(String name) {
+    public Export(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -119,7 +120,7 @@ public class Export extends AbstractAssignment {
         try {
             export = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText());
         }
         context.setToks(context.getNamespace() + "\bexport", export, true);
     }

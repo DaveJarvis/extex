@@ -33,6 +33,7 @@ import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
@@ -185,16 +186,16 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param codeName the name of the primitive for debugging
+     * @param token the initial token for the primitive
      */
-    public Scantokens(String codeName) {
+    public Scantokens(CodeToken token) {
 
-        super(codeName);
+        super(token);
     }
 
     /**
@@ -212,7 +213,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         try {
             tokens = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
         TokenStreamFactory factory = source.getTokenStreamFactory();
         String t = tokens.toText(context.escapechar());

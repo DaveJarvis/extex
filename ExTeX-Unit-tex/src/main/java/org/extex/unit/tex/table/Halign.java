@@ -35,6 +35,7 @@ import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
@@ -92,11 +93,11 @@ public class Halign extends AbstractAlign implements Boxable {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Halign(String name) {
+    public Halign(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -168,14 +169,14 @@ public class Halign extends AbstractAlign implements Boxable {
         Token t = source.getToken(context);
         Locator locator = source.getLocator();
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             List<PreambleItem> preamble = getPreamble(context, source);
             typesetter.push(new HAlignListMaker(typesetter.getManager(),
                 context, source, preamble, width, spread));
         } else {
             throw new MissingLeftBraceException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         context.openGroup(GroupType.ALIGN_GROUP, locator, t); // gene: correct

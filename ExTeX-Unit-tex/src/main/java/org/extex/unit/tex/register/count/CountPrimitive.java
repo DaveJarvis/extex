@@ -33,6 +33,7 @@ import org.extex.interpreter.type.code.Advanceable;
 import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -54,7 +55,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;count&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\count</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -100,11 +101,11 @@ public class CountPrimitive extends AbstractCount
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public CountPrimitive(String name) {
+    public CountPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -182,7 +183,7 @@ public class CountPrimitive extends AbstractCount
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                printableControlSequence(context));
+                toText(context));
         }
 
         value = context.getCount(key).getValue() / value;

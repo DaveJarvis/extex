@@ -58,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;}
  *
  *    &lang;modifier&rang;
@@ -111,11 +111,11 @@ public class Muskipdef extends AbstractMuskip {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Muskipdef(String name) {
+    public Muskipdef(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -132,7 +132,7 @@ public class Muskipdef extends AbstractMuskip {
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(source, context, typesetter);
-        context.setCode(cs, new MuskipParameter(key), prefix.clearGlobal());
+        context.setCode(cs, new MuskipParameter(cs, key), prefix.clearGlobal());
     }
 
 }

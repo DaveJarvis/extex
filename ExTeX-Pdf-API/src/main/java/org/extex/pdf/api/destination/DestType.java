@@ -27,6 +27,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.exception.PdftexDestinationTypeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
@@ -396,7 +397,7 @@ public abstract class DestType implements Serializable {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static DestType parseDestType(Context context, TokenSource source,
-            Typesetter typesetter, String name)
+            Typesetter typesetter, CodeToken name)
             throws HelpingException,
                 TypesetterException {
 
@@ -440,7 +441,7 @@ public abstract class DestType implements Serializable {
             return new ZoomDestType(zoom);
         }
 
-        throw new PdftexDestinationTypeException(name);
+        throw new PdftexDestinationTypeException(name.toText());
     }
 
     /**

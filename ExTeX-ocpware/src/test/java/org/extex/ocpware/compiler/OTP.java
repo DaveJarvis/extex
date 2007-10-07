@@ -48,7 +48,7 @@ public final class OTP {
         }
 
         try {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (int c = stream.read(); c >= 0; c = stream.read()) {
                 if (c != '\r') {
                     sb.append((char) c);

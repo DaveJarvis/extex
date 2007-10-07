@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -56,26 +57,27 @@ public class MathASin extends AbstractMath
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
-     * @throws GeneralException if an error occurred.
+     * @param token the initial token for the primitive
      */
-    public MathASin(String name) throws GeneralException {
+    public MathASin(CodeToken token) {
 
-        super(name);
+        super(token);
 
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter)
             throws ConfigurationException,

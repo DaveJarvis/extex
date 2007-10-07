@@ -35,6 +35,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.color.ColorConvertible;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -67,7 +68,7 @@ public abstract class AbstractColor extends AbstractAssignment
         public Object visitCmyk(CmykColor color, Object c)
                 throws GeneralException {
 
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             ColorUtil.formatAlpha(sb, color.getAlpha());
             sb.append("cmyk {");
             ColorUtil.formatComponent(sb, color.getCyan());
@@ -91,7 +92,7 @@ public abstract class AbstractColor extends AbstractAssignment
         public Object visitGray(GrayscaleColor color, Object c)
                 throws GeneralException {
 
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             ColorUtil.formatAlpha(sb, color.getAlpha());
             sb.append("gray {");
             ColorUtil.formatComponent(sb, color.getGray());
@@ -109,7 +110,7 @@ public abstract class AbstractColor extends AbstractAssignment
         public Object visitHsv(HsvColor color, Object c)
                 throws GeneralException {
 
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             ColorUtil.formatAlpha(sb, color.getAlpha());
             sb.append("hsv {");
             ColorUtil.formatComponent(sb, color.getHue());
@@ -129,7 +130,7 @@ public abstract class AbstractColor extends AbstractAssignment
         public Object visitRgb(RgbColor color, Object c)
                 throws GeneralException {
 
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             ColorUtil.formatAlpha(sb, color.getAlpha());
             sb.append("rgb {");
             ColorUtil.formatComponent(sb, color.getRed());
@@ -146,11 +147,11 @@ public abstract class AbstractColor extends AbstractAssignment
     /**
      * Creates a new object.
      *
-     * @param name the name for tracing
+     * @param token the initial token for the primitive
      */
-    public AbstractColor(String name) {
+    public AbstractColor(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

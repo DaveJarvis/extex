@@ -335,7 +335,7 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
                         c = in.read();
                     } while (c >= 0 && c != 10 && c != 13);
                 } else if (c >= ' ') {
-                    StringBuffer line = new StringBuffer();
+                    StringBuilder line = new StringBuilder();
                     do {
                         line.append((char) c);
                         c = in.read();

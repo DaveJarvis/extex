@@ -165,11 +165,11 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public AbstractFileCode(String name) {
+    public AbstractFileCode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -242,7 +242,7 @@ public abstract class AbstractFileCode extends AbstractCode
         Token t = source.scanNonSpace(context);
 
         if (t == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
             // } else if (t.isa(Catcode.LEFTBRACE)) {
             // source.push(t);
             // String name =
@@ -252,7 +252,7 @@ public abstract class AbstractFileCode extends AbstractCode
         }
 
         int depth = 0;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (; t != null && !(t instanceof SpaceToken); t =
                 source.getToken(context)) {

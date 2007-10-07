@@ -152,6 +152,7 @@ public class CountConstant implements FixedCount, Serializable {
      * @return the printable representation
      * 
      * @see #toString(StringBuffer)
+     * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
@@ -167,6 +168,7 @@ public class CountConstant implements FixedCount, Serializable {
      * @param sb the target string buffer
      * 
      * @see #toString()
+     * @see org.extex.core.count.FixedCount#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
 

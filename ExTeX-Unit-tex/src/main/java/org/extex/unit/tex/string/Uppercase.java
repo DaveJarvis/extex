@@ -29,6 +29,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
@@ -81,11 +82,11 @@ public class Uppercase extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Uppercase(String name) {
+    public Uppercase(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -127,7 +128,7 @@ public class Uppercase extends AbstractCode {
         try {
             toks = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText(context));
         }
 
         String namespace = context.getNamespace();

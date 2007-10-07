@@ -24,6 +24,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.info.util.FixedHelpingException;
@@ -46,7 +47,7 @@ import org.extex.unit.tex.info.util.FixedHelpingException;
  * <pre class="syntax">
  *    &lang;errmessage&rang;
  *       &rarr; <tt>\errmessage</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -102,11 +103,11 @@ public class Errmessage extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Errmessage(String name) {
+    public Errmessage(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -121,7 +122,7 @@ public class Errmessage extends AbstractCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String message =
-                source.scanUnprotectedTokens(context, false, false, getName())
+                source.scanUnprotectedTokens(context, false, false, getToken())
                     .toText();
         String help = context.getToks("errhelp").toText();
         throw new FixedHelpingException(message, help);

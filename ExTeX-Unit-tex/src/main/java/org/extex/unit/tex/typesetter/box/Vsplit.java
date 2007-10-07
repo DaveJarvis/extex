@@ -33,6 +33,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -54,7 +55,7 @@ import org.extex.unit.tex.register.box.Setbox;
  * <pre class="syntax">
  *    &lang;vsplit&rang;
  *       &rarr; <tt>\vsplit</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;box register name&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -83,11 +84,11 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Vsplit(String name) {
+    public Vsplit(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -151,7 +152,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     private NodeList vsplit(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = Setbox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getToken());
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
@@ -159,7 +160,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
         Box b = context.getBox(key);
         if (b == null || !b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
-                printableControlSequence(context), context.esc("vbox"));
+                toText(context), context.esc("vbox"));
         }
         // TODO gene: set splitmark etc
         try {
@@ -171,7 +172,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
         } catch (OperationNotSupportedException e) {
             // just to be sure. This should not happen
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
-                printableControlSequence(context), context.esc("vbox"));
+                toText(context), context.esc("vbox"));
         }
     }
 

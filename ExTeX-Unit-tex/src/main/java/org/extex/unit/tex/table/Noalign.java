@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -68,11 +69,11 @@ public class Noalign extends AbstractCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for tracing and debugging
+     * @param token the initial token for the primitive
      */
-    public Noalign(String name) {
+    public Noalign(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Noalign extends AbstractCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         throw new HelpingException(getLocalizer(), "TTP.MisplacedNoalign",
-            printableControlSequence(context));
+            toText(context));
     }
 
     /**

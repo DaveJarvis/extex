@@ -25,6 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.pdf.api.exception.PdftexIdentifierTypeException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -49,7 +50,7 @@ public abstract class IdSpec implements Serializable {
      * @param source the source for new tokens
      * @param context the interpreter context
      * @param typesetter the typesetter
-     * @param name the name of the current primitive
+     * @param prmitive the name of the current primitive
      *
      * @return the id instance
      *
@@ -57,17 +58,17 @@ public abstract class IdSpec implements Serializable {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static IdSpec parseIdSpec(Context context,
-            TokenSource source, Typesetter typesetter, String name)
+            TokenSource source, Typesetter typesetter, CodeToken prmitive)
             throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "num")) {
             long num = source.parseNumber(context, source, typesetter);
             return new NumIdSpec(num);
         } else if (source.getKeyword(context, "name")) {
-            String id = source.scanTokensAsString(context, name);
+            String id = source.scanTokensAsString(context, prmitive);
             return new NameIdSpec(id);
         } else {
-            throw new PdftexIdentifierTypeException(name);
+            throw new PdftexIdentifierTypeException(prmitive.toText());
         }
     }
 

@@ -22,6 +22,7 @@ package org.extex.unit.tex.register.skip;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -57,13 +58,31 @@ public class SkipParameter extends SkipPrimitive {
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>key</tt> contains the reference key.
+     */
+    private String key;
+
+    /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public SkipParameter(String name) {
+    public SkipParameter(CodeToken token) {
 
-        super(name);
+        super(token);
+        this.key = token.getName();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param token the initial token for the primitive
+     * @param key the reference key
+     */
+    public SkipParameter(CodeToken token, String key) {
+
+        super(token);
+        this.key = key;
     }
 
     /**
@@ -78,9 +97,9 @@ public class SkipParameter extends SkipPrimitive {
             Typesetter typesetter) throws TypesetterException {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
-            return context.getNamespace() + "\b" + getName();
+            return context.getNamespace() + "\b" + key;
         }
-        return getName();
+        return key;
     }
 
 }

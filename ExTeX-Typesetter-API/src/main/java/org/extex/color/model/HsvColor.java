@@ -175,7 +175,7 @@ public class HsvColor implements Color {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         ColorUtil.formatAlpha(sb, alpha);
         sb.append("hsv {");
         ColorUtil.formatComponent(sb, hue);

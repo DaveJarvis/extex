@@ -42,7 +42,7 @@ public class DoubleLeft implements Left {
      * @param sb the target buffer
      * @param n the number
      */
-    private static void toString(StringBuffer sb, int n) {
+    private static void toString(StringBuilder sb, int n) {
 
         if (n >= ' ' && n < 126) {
             sb.append("`");
@@ -104,7 +104,7 @@ public class DoubleLeft implements Left {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, from);
         sb.append("-");
         toString(sb, to);

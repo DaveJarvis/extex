@@ -285,7 +285,7 @@ public class PropertiesConfiguration implements Configuration {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (resource != null) {
             sb.append("document(\"");
             sb.append(resource);

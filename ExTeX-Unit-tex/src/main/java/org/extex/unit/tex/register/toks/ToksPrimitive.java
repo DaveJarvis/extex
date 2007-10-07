@@ -27,6 +27,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -60,7 +61,7 @@ import org.extex.unit.base.register.toks.AbstractToks;
  * <pre class="syntax">
  *    &lang;toks&rang;
  *      &rarr; <tt>\toks</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -107,11 +108,11 @@ public class ToksPrimitive extends AbstractToks
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public ToksPrimitive(String name) {
+    public ToksPrimitive(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -131,7 +132,7 @@ public class ToksPrimitive extends AbstractToks
         try {
             toks = source.getTokens(context, source, typesetter);
         } catch (EofException e) {
-            throw new EofInToksException(printableControlSequence(context));
+            throw new EofInToksException(toText());
         }
         context.setToks(key, toks, prefix.clearGlobal());
     }

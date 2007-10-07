@@ -22,6 +22,7 @@ package org.extex.unit.omega.mode;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
@@ -64,11 +65,11 @@ public class NoDefaultInputMode extends AbstractModeCode {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public NoDefaultInputMode(String name) {
+    public NoDefaultInputMode(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**

@@ -237,7 +237,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                             namespace);
 
                     } else if (tokenizer.getCatcode(uc) == Catcode.LETTER) {
-                        StringBuffer sb = new StringBuffer();
+                        StringBuilder sb = new StringBuilder();
                         sb.append((char) (uc.getCodePoint()));
                         state = SKIP_BLANKS;
 

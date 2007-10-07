@@ -161,7 +161,7 @@ public class Locator implements Serializable {
      */
     public String toString(int causeLimit) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (causeLimit >= 0) {
             Locator c = cause;
             for (int i = 0; c != null && i < causeLimit; i++) {

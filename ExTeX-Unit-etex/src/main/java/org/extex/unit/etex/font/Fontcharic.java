@@ -34,6 +34,7 @@ import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -57,9 +58,9 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;fontcharic&rang;
  *       &rarr; <tt>\fontcharic</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,String)
+ *          org.extex.interpreter.TokenSource#getFont(Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
+ *          org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,CodeToken)
  *          &lang;character code&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -84,16 +85,16 @@ public class Fontcharic extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Fontcharic(String name) {
+    public Fontcharic(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -151,7 +152,7 @@ public class Fontcharic extends AbstractCode
     private FixedDimen get(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Font fnt = source.getFont(context, getName());
+        Font fnt = source.getFont(context, getToken());
         try {
             UnicodeChar uc =
                     source.scanCharacterCode(context, typesetter, null);
@@ -159,7 +160,7 @@ public class Fontcharic extends AbstractCode
             return (ic != null ? ic : Dimen.ZERO_PT);
 
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText(context));
         }
     }
 

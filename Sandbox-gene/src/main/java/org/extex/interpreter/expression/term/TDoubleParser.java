@@ -86,7 +86,7 @@ public final class TDoubleParser implements ETypeParser {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         boolean period = false;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         Token t = source.getNonSpace(context);
         char c;
 

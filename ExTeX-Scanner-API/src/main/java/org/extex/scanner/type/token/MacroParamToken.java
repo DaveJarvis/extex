@@ -39,7 +39,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -112,6 +112,32 @@ public class MacroParamToken extends AbstractToken implements Token {
     }
 
     /**
+     * Print the token into a StringBuffer.
+     * 
+     * @param sb the target string buffer
+     * 
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
+     */
+    public void toString(StringBuffer sb) {
+
+        sb.append(getLocalizer().format("MacroParamToken.Text",
+            super.toString()));
+    }
+
+    /**
+     * Print the token into a StringBuilder.
+     * 
+     * @param sb the target string builder
+     * 
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
+     */
+    public void toString(StringBuilder sb) {
+
+        sb.append(getLocalizer().format("MacroParamToken.Text",
+            super.toString()));
+    }
+
+    /**
      * Return the text representation of this object.
      * 
      * @return the text representation
@@ -124,19 +150,6 @@ public class MacroParamToken extends AbstractToken implements Token {
             return "";
         }
         return uc.toString() + uc.toString();
-    }
-
-    /**
-     * Print the token into a StringBuffer.
-     * 
-     * @param sb the target string buffer
-     * 
-     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
-     */
-    public void toString(StringBuffer sb) {
-
-        sb.append(getLocalizer().format("MacroParamToken.Text",
-            super.toString()));
     }
 
     /**

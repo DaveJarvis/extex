@@ -100,11 +100,11 @@ public class Advance extends AbstractAssignment {
     /**
      * Creates a new object.
      * 
-     * @param name the name for debugging
+     * @param token the initial token for the primitive
      */
-    public Advance(String name) {
+    public Advance(CodeToken token) {
 
-        super(name);
+        super(token);
     }
 
     /**
@@ -130,14 +130,12 @@ public class Advance extends AbstractAssignment {
                 return;
 
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(printable(context,
-                    cs));
+                throw new UndefinedControlSequenceException(cs.toText());
             }
         } else if (cs == null) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofException(toText());
         }
-        throw new CantUseAfterException(cs.toString(),
-            printableControlSequence(context));
+        throw new CantUseAfterException(cs.toString(), toText());
     }
 
 }
