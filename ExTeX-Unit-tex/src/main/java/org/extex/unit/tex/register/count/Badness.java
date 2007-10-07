@@ -93,8 +93,7 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getName();
-        Count c = context.getCount(key);
+        Count c = context.getCount(getName());
         return (c != null ? c.getValue() : 0);
     }
 
