@@ -68,6 +68,11 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Badness extends AbstractCode implements CountConvertible, Theable {
 
     /**
+     * The constant <tt>BADNESS</tt> contains the key for the register value.
+     */
+    private static final String BADNESS = "badness";
+
+    /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
@@ -93,7 +98,7 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Count c = context.getCount(getName());
+        Count c = context.getCount(BADNESS);
         return (c != null ? c.getValue() : 0);
     }
 
@@ -109,9 +114,8 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
                 HelpingException,
                 TypesetterException {
 
-        String key = getName();
         return context.getTokenFactory().toTokens( //
-            context.getCount(key).toString());
+            context.getCount(BADNESS).toString());
     }
 
 }
