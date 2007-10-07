@@ -198,7 +198,7 @@ public class Show extends AbstractCode implements LogEnabled {
             } else {
 
                 toks.add(context.getTokenFactory().toTokens(
-                    context.esc(code.getName())));
+                    code.getToken().toText(context.escapechar())));
 
                 // } else {
                 //
