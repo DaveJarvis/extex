@@ -106,7 +106,7 @@ public abstract class AbstractCode implements Code, Serializable {
      */
     public String getName() {
 
-        return token == null ? "" : token.toText();
+        return token == null ? "" : token.getName();
     }
 
     /**

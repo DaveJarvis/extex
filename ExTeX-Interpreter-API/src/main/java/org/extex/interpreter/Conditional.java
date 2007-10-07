@@ -23,6 +23,7 @@ import java.io.Serializable;
 
 import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.CodeToken;
 
 /**
  * This class represents a conditional for a normal <tt>\if \else \fi</tt>
@@ -116,9 +117,9 @@ public class Conditional implements Serializable {
      *
      * @return the primitive name
      */
-    public String getPrimitiveName() {
+    public CodeToken getPrimitiveToken() {
 
-        return this.primitive.getName();
+        return this.primitive.getToken();
     }
 
     /**

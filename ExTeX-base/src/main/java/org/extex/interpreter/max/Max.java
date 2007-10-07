@@ -1423,7 +1423,7 @@ public abstract class Max
             String endPrimitive = loc.format("TTP.EndPrimitive");
             HelpingException e = new HelpingException(loc, "TTP.EndIf", //
                 context.esc(endPrimitive), //
-                cond.getPrimitiveName(), //
+                cond.getPrimitiveToken().toText(), //
                 cond.getLocator().toString());
             if (observersError != null) {
                 observersError.update(e);
