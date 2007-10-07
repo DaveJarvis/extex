@@ -178,7 +178,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.ORDINARY, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -200,7 +200,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.LARGE, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -222,7 +222,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.BINARY, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -244,7 +244,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.RELATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -266,7 +266,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.OPENING, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -288,7 +288,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.CLOSING, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -310,7 +310,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.PUNCTATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
@@ -332,7 +332,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.VARIABLE, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
