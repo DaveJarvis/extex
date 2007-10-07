@@ -51,7 +51,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
         assertFailure(// --- input code ---
             "\\showtokens",
             // --- output channel ---
-            "File ended while scanning text of \\showtokens");
+            "Unexpected end of file while processing tokens");
     }
 
     /**
