@@ -40,10 +40,10 @@ use File::Find;
 use FileHandle;
 
 #------------------------------------------------------------------------------
-# Function:	usage
-# Arguments:	
-# Returns:	
-# Description:	
+# Function:     usage
+# Arguments:    
+# Returns:      
+# Description:  
 #
 sub usage
 { use Pod::Text;
@@ -51,15 +51,15 @@ sub usage
 }
 
 #------------------------------------------------------------------------------
-# Variable:	$verbose
-# Description:	
+# Variable:     $verbose
+# Description:  
 #
 my $verbose = 0;
 
 use Getopt::Long;
-GetOptions("h|help"	=> \&usage,
-	   "v|verbose"	=> \$verbose,
-	  );
+GetOptions("h|help"     => \&usage,
+           "v|verbose"  => \$verbose,
+          );
 
 my $count = 0;
 
@@ -77,15 +77,15 @@ find {
     my $fd = new FileHandle($file, "r") || die "$!\n";
     while(<$fd>) {
       if (m|\@Test|) {
-	$t = 1;
+        $t = 1;
       } elsif (m|\@Ignore| or m|\@Over| or m|\@SuppressWarning|) {
       } elsif (m|public void .*test.*()|) {
-	if (not $t) {
-	  print "$file: $_";
-	  $count++;
-	}
+        if (not $t) {
+          print "$file: $_";
+          $count++;
+        }
       } else {
-	$t = undef;
+        $t = undef;
       }
     }
     $fd->close();
