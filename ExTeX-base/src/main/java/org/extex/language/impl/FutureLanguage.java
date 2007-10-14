@@ -131,14 +131,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenmin()
+     * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenMin()
      */
-    public long getLeftHyphenmin() throws HyphenationException {
+    public long getLeftHyphenMin() throws HyphenationException {
 
         if (language == null) {
             language = creator.loadLanguageInstance(name);
         }
-        return language.getLeftHyphenmin();
+        return language.getLeftHyphenMin();
     }
 
     /**
@@ -171,14 +171,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#getRightHyphenmin()
+     * @see org.extex.language.hyphenation.Hyphenator#getRightHyphenMin()
      */
-    public long getRightHyphenmin() throws HyphenationException {
+    public long getRightHyphenMin() throws HyphenationException {
 
         if (language == null) {
             language = creator.loadLanguageInstance(name);
         }
-        return language.getRightHyphenmin();
+        return language.getRightHyphenMin();
     }
 
     /**
@@ -241,14 +241,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#isHyphenActive()
+     * @see org.extex.language.hyphenation.Hyphenator#isHyphenating()
      */
-    public boolean isHyphenActive() throws HyphenationException {
+    public boolean isHyphenating() throws HyphenationException {
 
         if (language == null) {
             language = creator.loadLanguageInstance(name);
         }
-        return language.isHyphenActive();
+        return language.isHyphenating();
     }
 
     /**
@@ -293,28 +293,28 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#setHyphenActive(boolean)
+     * @see org.extex.language.hyphenation.Hyphenator#setHyphenating(boolean)
      */
-    public void setHyphenActive(boolean active)
+    public void setHyphenating(boolean active)
             throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
         }
-        language.setHyphenActive(active);
+        language.setHyphenating(active);
     }
 
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#setLeftHyphenmin(long)
+     * @see org.extex.language.hyphenation.Hyphenator#setLeftHyphenMin(long)
      */
-    public void setLeftHyphenmin(long left) throws HyphenationException {
+    public void setLeftHyphenMin(long left) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
         }
-        language.setLeftHyphenmin(left);
+        language.setLeftHyphenMin(left);
     }
 
     /**
@@ -330,14 +330,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.hyphenation.Hyphenator#setRightHyphenmin(long)
+     * @see org.extex.language.hyphenation.Hyphenator#setRightHyphenMin(long)
      */
-    public void setRightHyphenmin(long right) throws HyphenationException {
+    public void setRightHyphenMin(long right) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
         }
-        language.setRightHyphenmin(right);
+        language.setRightHyphenMin(right);
     }
 
 }

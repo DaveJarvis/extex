@@ -42,6 +42,10 @@ import org.extex.typesetter.type.OrientedNodeList;
  * <p>
  * 
  * </p>
+ * <p>
+ * The <logo>TeX</logo> definition of a hlist states that a box is not variable
+ * neither in width nor in height. Thus this method is simply a noop.
+ * </p>
  * 
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [135]"
@@ -130,7 +134,7 @@ public class HorizontalListNode extends GenericNodeList
 
         if (node != null) {
             super.add(index, node);
-            advanceWidth(node.getWidth());
+            advanceNaturalWidth(node.getWidth());
             maxHeight(node.getHeight());
             maxDepth(node.getDepth());
         }
@@ -155,7 +159,7 @@ public class HorizontalListNode extends GenericNodeList
 
         if (node != null) {
             super.add(node);
-            advanceWidth(node.getWidth());
+            advanceNaturalWidth(node.getWidth());
             maxHeight(node.getHeight());
             maxDepth(node.getDepth());
         }
@@ -172,9 +176,7 @@ public class HorizontalListNode extends GenericNodeList
     @Override
     public void addSkip(FixedGlue glue) {
 
-        Node node = new GlueNode(glue, true);
-        node.setWidth(glue.getLength());
-        add(node);
+        add(new GlueNode(glue, true));
     }
 
     /**
@@ -184,9 +186,7 @@ public class HorizontalListNode extends GenericNodeList
 
         Dimen wd = new Dimen();
         WideGlue wg = new WideGlue();
-        int size = size();
-        for (int i = 0; i < size; i++) {
-            Node node = get(i);
+        for (Node node : this) {
             wd.add(node.getWidth());
             node.addWidthTo(wg);
         }
@@ -198,8 +198,8 @@ public class HorizontalListNode extends GenericNodeList
             FixedGlueComponent s = (wd.le(Dimen.ZERO) //
                     ? wg.getShrink() //
                     : wg.getStretch());
-            for (int i = 0; i < size; i++) {
-                get(i).spreadWidth(wd, s);
+            for (Node node : this) {
+                node.spreadWidth(wd, s);
             }
             setWidth(target);
         } else {
@@ -229,21 +229,73 @@ public class HorizontalListNode extends GenericNodeList
     }
 
     /**
-     * The <logo>TeX</logo> definition of a hlist states that a box is not
-     * variable neither in width nor in height. Thus this method is simply a
-     * noop.
+     * {@inheritDoc}
      * 
-     * @param w the desired width
-     * @param sum the total sum of the glues
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#spreadWidth(
-     *      org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.node.GenericNodeList#remove(int)
      */
     @Override
-    public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
+    public Node remove(int index) {
 
-        // noop
+        Node node = super.remove(index);
+
+        if (isEmpty()) {
+            setNaturalHeight(Dimen.ZERO);
+            setNaturalDepth(Dimen.ZERO);
+            setNaturalWidth(Dimen.ZERO);
+            return node;
+        }
+
+        Dimen x = new Dimen(getNaturalWidth());
+        x.subtract(node.getWidth());
+        setNaturalWidth(x);
+
+        FixedDimen h = node.getNaturalHeight();
+        if (h.eq(getNaturalHeight())) {
+            removeAdjustHeight(h);
+        }
+
+        FixedDimen d = node.getNaturalDepth();
+        if (d.eq(getNaturalDepth())) {
+            removeAdjustDepth(d);
+        }
+
+        return node;
+    }
+
+    /**
+     * Adjust the depth after a node as been removed.
+     * 
+     * @param d the old depth
+     */
+    private void removeAdjustDepth(FixedDimen d) {
+
+        Dimen x = new Dimen();
+        for (Node n : this) {
+            FixedDimen nd = n.getNaturalDepth();
+            if (d.eq(nd)) {
+                return;
+            }
+            x.max(nd);
+        }
+        setNaturalDepth(x);
+    }
+
+    /**
+     * Adjust the height after a node as been removed.
+     * 
+     * @param h the old height
+     */
+    private void removeAdjustHeight(FixedDimen h) {
+
+        Dimen x = new Dimen();
+        for (Node n : this) {
+            FixedDimen nh = n.getNaturalHeight();
+            if (h.eq(nh)) {
+                return;
+            }
+            x.max(nh);
+        }
+        setNaturalHeight(x);
     }
 
     /**

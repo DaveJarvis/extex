@@ -19,22 +19,25 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.core.exception.ImpossibleException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import junit.framework.TestCase;
+import org.extex.core.exception.ImpossibleException;
+import org.junit.Test;
 
 /**
  * Test suite for the exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
-public class ImpossibleExceptionTest extends TestCase {
+public class ImpossibleExceptionTest {
 
     /**
      * Test method for {@link
      * org.extex.core.exception.ImpossibleException#ImpossibleException(java.lang.String)}.
      */
+    @Test
     public final void testImpossibleExceptionString() {
 
         ImpossibleException e = new ImpossibleException("xxx");
@@ -46,6 +49,7 @@ public class ImpossibleExceptionTest extends TestCase {
      * Test method for {@link
      * org.extex.core.exception.ImpossibleException#ImpossibleException(java.lang.Throwable)}.
      */
+    @Test
     public final void testImpossibleExceptionThrowable() {
 
         Throwable t = new NullPointerException();
@@ -60,6 +64,7 @@ public class ImpossibleExceptionTest extends TestCase {
      * org.extex.core.exception.ImpossibleException#ImpossibleException(
      * java.lang.String, java.lang.Throwable)}.
      */
+    @Test
     public final void testImpossibleExceptionStringThrowable() {
 
         Throwable t = new NullPointerException();

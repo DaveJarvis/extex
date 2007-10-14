@@ -49,7 +49,7 @@ import org.extex.typesetter.tc.font.Font;
  *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,CodeToken)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;} </pre>
  * 
  * <h4>Examples</h4>

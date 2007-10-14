@@ -30,6 +30,7 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.noad.CloseNoad;
 import org.extex.typesetter.type.noad.Noad;
+import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
@@ -103,7 +104,13 @@ public class Mathclose extends AbstractMathCode {
         NoadConsumer nc = getListMaker(context, typesetter);
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
             getToken(), GroupType.MATH_GROUP);
-        nc.add(new CloseNoad(noad, context.getTypesettingContext()));
+
+        if (noad != null) {
+            noad.setSpacingClass(MathSpacing.BIN);
+            nc.add(noad);
+        } else {
+            nc.add(new CloseNoad(noad, context.getTypesettingContext()));
+        }
     }
 
 }

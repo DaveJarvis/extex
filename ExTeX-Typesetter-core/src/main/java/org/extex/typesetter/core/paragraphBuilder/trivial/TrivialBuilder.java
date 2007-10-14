@@ -34,6 +34,7 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.logging.LogFormatter;
 import org.extex.typesetter.Discardable;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.common.Parameter;
 import org.extex.typesetter.paragraphBuilder.FixedParagraphShape;
 import org.extex.typesetter.paragraphBuilder.HangingParagraphShape;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
@@ -162,7 +163,10 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         if (end >= 0) {
             g.subtract(vlist.get(end).getDepth());
         }
-        vlist.add(new GlueNode(g.lt(lineskiplimit) ? lineskip : g, false));
+        FixedGlue fg = g.lt(lineskiplimit) ? lineskip : g;
+        if (fg.ne(FixedGlue.ZERO)) {
+            vlist.add(new GlueNode(fg, false));
+        }
 
         vlist.add(hlist);
     }
@@ -250,16 +254,20 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         nodes.add(new PenaltyNode(EJECT_PENALTY));
 
         VerticalListNode vlist = new VerticalListNode();
-        vlist.add(new GlueNode(options.getGlueOption("parskip"), false));
+        FixedGlue parskip = options.getGlueOption("parskip");
+        if (parskip.ne(FixedGlue.ZERO)) {
+            vlist.add(new GlueNode(parskip, false));
+        }
 
         int i = 0;
         int line = 0;
         Dimen wd = new Dimen();
         Dimen adjustLeftRight = new Dimen(leftskip.getLength());
         adjustLeftRight.add(rightskip.getLength());
-        FixedGlue baselineskip = options.getGlueOption("baselineskip");
-        FixedGlue lineskip = options.getGlueOption("lineskip");
-        FixedDimen lineskiplimit = options.getDimenOption("lineskiplimit");
+        FixedGlue baselineskip = options.getGlueOption(Parameter.BASELINESKIP);
+        FixedGlue lineskip = options.getGlueOption(Parameter.LINESKIP);
+        FixedDimen lineskiplimit =
+                options.getDimenOption(Parameter.LINESKIPLIMIT);
         WideGlue accumulator = new WideGlue();
 
         while (i < len) {
@@ -294,6 +302,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param start the index to start at
      * @param len the length of the node list
      * @param nodes the node list to take into account
+     * 
      * @return the index of the next non-discardable node
      */
     private int discardNodes(int start, int len, NodeList nodes) {
@@ -418,6 +427,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param accumulator the accumulator for the glue of the saved nodes
      * @param height the accumulator for the height
      * @param depth the accumulator for the depth
+     * 
      * @return the index of the first node which has not been copied
      */
     private int saveNodes(HorizontalListNode nodes, int start, int end,
@@ -430,12 +440,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             if (!(node instanceof PenaltyNode)) {
                 hlist.add(node);
                 node.addWidthTo(accumulator);
-            }
-            if (height.lt(node.getHeight())) {
-                hlist.setHeight(node.getHeight());
-            }
-            if (depth.lt(node.getDepth())) {
-                hlist.setDepth(node.getDepth());
             }
         }
         return end;

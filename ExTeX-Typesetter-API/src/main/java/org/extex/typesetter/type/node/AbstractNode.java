@@ -152,7 +152,7 @@ public abstract class AbstractNode implements Node {
      * 
      * @param x the length to add
      */
-    public void advanceDepth(FixedDimen x) {
+    public void advanceNaturalDepth(FixedDimen x) {
 
         depth.add(x);
     }
@@ -162,7 +162,7 @@ public abstract class AbstractNode implements Node {
      * 
      * @param x the length to add
      */
-    public void advanceHeight(FixedDimen x) {
+    public void advanceNaturalHeight(FixedDimen x) {
 
         height.add(x);
     }
@@ -172,7 +172,7 @@ public abstract class AbstractNode implements Node {
      * 
      * @param x the length to add
      */
-    public void advanceWidth(FixedDimen x) {
+    public void advanceNaturalWidth(FixedDimen x) {
 
         width.add(x);
     }
@@ -188,6 +188,21 @@ public abstract class AbstractNode implements Node {
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#clone()
+     */
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+
+        AbstractNode clone = (AbstractNode) super.clone();
+        clone.width = new Glue(width);
+        clone.height = new Glue(height);
+        clone.depth = new Glue(depth);
+        return clone;
     }
 
     /**
@@ -282,6 +297,38 @@ public abstract class AbstractNode implements Node {
             this.localizer = LocalizerFactory.getLocalizer(this.getClass());
         }
         return this.localizer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.Node#getNaturalDepth()
+     */
+    public FixedDimen getNaturalDepth() {
+
+        return depth.getLength();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.Node#getNaturalHeight()
+     */
+    public FixedDimen getNaturalHeight() {
+
+        return height.getLength();
+    }
+
+    /**
+     * Getter for the natural width of the node.
+     * 
+     * @return the width
+     * 
+     * @see #getWidth()
+     */
+    public FixedDimen getNaturalWidth() {
+
+        return width.getLength();
     }
 
     /**
@@ -414,8 +461,7 @@ public abstract class AbstractNode implements Node {
      * @param sum the total sum of the glues
      * 
      * @see org.extex.typesetter.type.Node#spreadHeight(
-     *      org.extex.core.dimen.FixedDimen,
-     *      FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen, FixedGlueComponent)
      */
     public void spreadHeight(FixedDimen h, FixedGlueComponent sum) {
 

@@ -92,7 +92,7 @@ public class DimenRegisterTest {
     @Test
     public void testBp1() throws Exception {
 
-        assertEquals(82227, doTest("1.25bp"));
+        assertEquals(82227L, doTest("1.25bp"));
     }
 
     /**
@@ -104,7 +104,7 @@ public class DimenRegisterTest {
     @Test
     public void testCc1() throws Exception {
 
-        assertEquals(6544254, doTest("7,777cc"));
+        assertEquals(6544254L, doTest("7,777cc"));
     }
 
     /**
@@ -116,7 +116,7 @@ public class DimenRegisterTest {
     @Test
     public void testCm1() throws Exception {
 
-        assertEquals(1864679, doTest("1cm"));
+        assertEquals(1864679L, doTest("1cm"));
     }
 
     /**
@@ -128,7 +128,7 @@ public class DimenRegisterTest {
     @Test
     public void testCm2() throws Exception {
 
-        assertEquals(2480027, doTest("1.33cm"));
+        assertEquals(2480027L, doTest("1.33cm"));
     }
 
     /**
@@ -140,7 +140,7 @@ public class DimenRegisterTest {
     @Test
     public void testDd1() throws Exception {
 
-        assertEquals(70124, doTest("1dd"));
+        assertEquals(70124L, doTest("1dd"));
     }
 
     /**
@@ -152,7 +152,7 @@ public class DimenRegisterTest {
     @Test
     public void testDd2() throws Exception {
 
-        assertEquals(87655, doTest("1.25dd"));
+        assertEquals(87655L, doTest("1.25dd"));
     }
 
     /**
@@ -164,7 +164,7 @@ public class DimenRegisterTest {
     @Test
     public void testIn1() throws Exception {
 
-        assertEquals(4736286, doTest("1in"));
+        assertEquals(4736286L, doTest("1in"));
     }
 
     /**
@@ -176,7 +176,7 @@ public class DimenRegisterTest {
     @Test
     public void testMm1() throws Exception {
 
-        assertEquals(186467, doTest("1mm"));
+        assertEquals(186467L, doTest("1mm"));
     }
 
     /**
@@ -188,7 +188,7 @@ public class DimenRegisterTest {
     @Test
     public void testMm2() throws Exception {
 
-        assertEquals(248002, doTest("1.33mm"));
+        assertEquals(248002L, doTest("1.33mm"));
     }
 
     /**
@@ -200,7 +200,7 @@ public class DimenRegisterTest {
     @Test
     public void testPc1() throws Exception {
 
-        assertEquals(983040, doTest("1.25pc"));
+        assertEquals(983040L, doTest("1.25pc"));
     }
 
     /**
@@ -212,7 +212,7 @@ public class DimenRegisterTest {
     @Test
     public void testPc2() throws Exception {
 
-        assertEquals(1336932, doTest("1.7pc"));
+        assertEquals(1336932L, doTest("1.7pc"));
     }
 
     /**
@@ -224,7 +224,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt1() throws Exception {
 
-        assertEquals(65536, doTest("1.000pt"));
+        assertEquals(65536L, doTest("1.000pt"));
     }
 
     /**
@@ -236,7 +236,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt1b() throws Exception {
 
-        assertEquals(65536, doTest("1 pt"));
+        assertEquals(65536L, doTest("1 pt"));
     }
 
     /**
@@ -248,7 +248,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt1c() throws Exception {
 
-        assertEquals(65536, doTest("1. pt"));
+        assertEquals(65536L, doTest("1. pt"));
     }
 
     /**
@@ -260,7 +260,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt2() throws Exception {
 
-        assertEquals(98304, doTest("1.5pt"));
+        assertEquals(98304L, doTest("1.5pt"));
     }
 
     /**
@@ -272,7 +272,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt3() throws Exception {
 
-        assertEquals(98304, doTest("1.50pt"));
+        assertEquals(98304L, doTest("1.50pt"));
     }
 
     /**
@@ -284,7 +284,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt4() throws Exception {
 
-        assertEquals(87163, doTest("1.33pt"));
+        assertEquals(87163L, doTest("1.33pt"));
     }
 
     /**
@@ -296,7 +296,7 @@ public class DimenRegisterTest {
     @Test
     public void testPt5() throws Exception {
 
-        assertEquals(87359, doTest("1.333pt"));
+        assertEquals(87359L, doTest("1.333pt"));
     }
 
     /**
@@ -308,7 +308,7 @@ public class DimenRegisterTest {
     @Test
     public void testSp1() throws Exception {
 
-        assertEquals(1234, doTest("1234 sp"));
+        assertEquals(1234L, doTest("1234 sp"));
     }
 
 }

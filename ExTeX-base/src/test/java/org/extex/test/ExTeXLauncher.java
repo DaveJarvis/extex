@@ -541,10 +541,10 @@ public abstract class ExTeXLauncher {
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      * 
-     * @throws Exception in case of an error
+     * @throws HelpingException in case of an error
      */
     public Interpreter assertSuccess(Properties properties, String code,
-            String expect) throws Exception {
+            String expect) throws HelpingException {
 
         return assertOutput(properties, code, defaultLog, expect);
     }

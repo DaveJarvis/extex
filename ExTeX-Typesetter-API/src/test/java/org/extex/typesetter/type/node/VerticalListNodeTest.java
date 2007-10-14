@@ -19,7 +19,9 @@
 
 package org.extex.typesetter.type.node;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
@@ -307,7 +309,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         vlist.addSkip(FixedGlue.S_S);
         Dimen h = new Dimen(Dimen.ONE_INCH);
         h.multiply(2);
-        assertEquals(0, vlist.vpack(h));
+        assertEquals(0L, vlist.vpack(h));
         assertFalse(vlist.isEmpty());
         assertEquals("\\vbox(144.53998pt+0.0pt)x72.26999pt\n"
                 + ".\\glue0.0pt plus 1.0fil minus 1.0fil\n"

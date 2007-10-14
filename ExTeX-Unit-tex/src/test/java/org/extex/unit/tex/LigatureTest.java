@@ -21,12 +21,13 @@ package org.extex.unit.tex;
 
 import java.util.Properties;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the ligature.
+ * This is a test suite for the ligature management.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4527 $
@@ -55,13 +56,12 @@ public class LigatureTest extends ExTeXLauncher {
      * <testcase> Test case checking that a ligature node is inserted.
      * </testcase>
      * 
-     * @throws Exception in case of an error
+     * @throws HelpingException in case of an error
      */
     @Test
-    public void testXyz() throws Exception {
+    public void testXyz() throws HelpingException {
 
         Properties properties = getProps();
-        properties.setProperty("extex.jobname", "job");
         properties.setProperty("extex.output", "dump");
 
         assertSuccess(properties,

@@ -55,12 +55,12 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
+     * 
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
      */
-    public AbstractToksRegisterTester(String primitive, String args,
-            String init) {
+    public AbstractToksRegisterTester(String primitive, String args, String init) {
 
         super();
         this.primitive = primitive;
@@ -70,6 +70,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
+     * 
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
@@ -83,81 +84,51 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
-     * applicable. </testcase>
+     * <testcase> Test case showing that the tokens register needs a parameter.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testToksRegisterImmediatePrefix1() throws Exception {
+    public void testEof1() throws Exception {
 
-        assertFailure(// --- input code ---
-            prepare + "\\immediate\\" + invocation + "= {} ",
-            // --- error channel ---
-            "You can't use the prefix `\\immediate' with the control sequence"
-                    + (primitive.length() > 14 ? "\n" : " ") + "\\" + primitive);
+        assertFailure(
+        // --- input code ---
+            prepare + "\\" + invocation,
+            // --- output channel ---
+            "File ended while scanning text of \\" + primitive);
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
-     * applicable. </testcase>
+     * <testcase> Test case showing that the tokens register needs a complete
+     * parameter. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testToksRegisterLongPrefix1() throws Exception {
+    public void testEof2() throws Exception {
 
-        assertFailure(// --- input code ---
-            prepare + "\\long\\" + invocation + "= {} ",
-            // --- error channel ---
-            "You can't use the prefix `\\long' with the control sequence"
-                    + (primitive.length() > 19 ? "\n" : " ") + "\\" + primitive);
+        assertFailure(
+        // --- input code ---
+            prepare + "\\" + invocation + "{",
+            // --- output channel ---
+            "File ended while scanning text of \\" + primitive);
     }
 
     /**
-     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
-     * applicable. </testcase>
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\afterassignment</tt>. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testToksRegisterOuterPrefix1() throws Exception {
-
-        assertFailure(// --- input code ---
-            prepare + "\\outer\\" + invocation + "= {} ",
-            // --- error channel ---
-            "You can't use the prefix `\\outer' with the control sequence"
-                    + (primitive.length() > 18 ? "\n" : " ") + "\\" + primitive);
-    }
-
-    /**
-     * <testcase> Test case showing that the primitive is defined and has its
-     * default value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testToksRegisterDefault1() throws Exception {
+    public void testToksRegisterAfterassignment1() throws Exception {
 
         assertSuccess(// --- input code ---
-            prepare + "\\the\\" + invocation + "\\end",
+            prepare + "\\afterassignment b a" + "\\" + invocation
+                    + "{xyz}c\\the\\" + invocation + "\\end",
             // --- output channel ---
-            init + (init.length() != 0 ? TERM : ""));
-    }
-
-    /**
-     * <testcase> Test case showing that the primitive is applicable to
-     * \showthe. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testToksRegisterShowthe1() throws Exception {
-
-        assertOutput(// --- input code ---
-            prepare + "\\showthe\\" + invocation + "\\end",
-            // --- output channel ---
-            out(init), "");
+            "abcxyz" + TERM);
     }
 
     /**
@@ -234,7 +205,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     public void testToksRegisterAssign5() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\" + invocation + " {a#c}\\showthe\\"
+            DEFINE_CATCODES + prepare + "\\" + invocation + " {a#c}\\showthe\\"
                     + invocation + "\\end",
             // --- error channel ---
             "> a##c.\n",
@@ -243,35 +214,18 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that an assignment respects
-     * <tt>\afterassignment</tt>. </testcase>
+     * <testcase> Test case showing that the primitive is defined and has its
+     * default value. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testToksRegisterAfterassignment1() throws Exception {
+    public void testToksRegisterDefault1() throws Exception {
 
         assertSuccess(// --- input code ---
-            prepare + "\\afterassignment b a" + "\\" + invocation
-                    + "{xyz}c\\the\\" + invocation + "\\end",
+            prepare + "\\the\\" + invocation + "\\end",
             // --- output channel ---
-            "abcxyz" + TERM);
-    }
-
-    /**
-     * <testcase> Test case showing that an assignment respects grouping.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testToksRegisterGroup1() throws Exception {
-
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "={xyz}\\begingroup\\" + invocation
-                    + "={abc}\\endgroup" + " \\the\\" + invocation + "\\end",
-            // --- output channel ---
-            "xyz" + TERM);
+            init + (init.length() != 0 ? TERM : ""));
     }
 
     /**
@@ -309,35 +263,82 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case showing that the tokens register needs a parameter.
+     * <testcase> Test case showing that an assignment respects grouping.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testEof1() throws Exception {
+    public void testToksRegisterGroup1() throws Exception {
 
-        assertFailure(
-        // --- input code ---
-            prepare + "\\" + invocation,
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + "={xyz}\\begingroup\\" + invocation
+                    + "={abc}\\endgroup" + " \\the\\" + invocation + "\\end",
             // --- output channel ---
-            "File ended while scanning text of \\" + primitive);
+            "xyz" + TERM);
     }
 
     /**
-     * <testcase> Test case showing that the tokens register needs a complete
-     * parameter. </testcase>
+     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
+     * applicable. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testEof2() throws Exception {
+    public void testToksRegisterImmediatePrefix1() throws Exception {
 
-        assertFailure(
-        // --- input code ---
-            prepare + "\\" + invocation + "{",
+        assertFailure(// --- input code ---
+            prepare + "\\immediate\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\immediate' with the control sequence"
+                    + (primitive.length() > 14 ? "\n" : " ") + "\\" + primitive);
+    }
+
+    /**
+     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
+     * applicable. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToksRegisterLongPrefix1() throws Exception {
+
+        assertFailure(// --- input code ---
+            prepare + "\\long\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\long' with the control sequence"
+                    + (primitive.length() > 19 ? "\n" : " ") + "\\" + primitive);
+    }
+
+    /**
+     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
+     * applicable. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToksRegisterOuterPrefix1() throws Exception {
+
+        assertFailure(// --- input code ---
+            prepare + "\\outer\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\outer' with the control sequence"
+                    + (primitive.length() > 18 ? "\n" : " ") + "\\" + primitive);
+    }
+
+    /**
+     * <testcase> Test case showing that the primitive is applicable to
+     * \showthe. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToksRegisterShowthe1() throws Exception {
+
+        assertOutput(// --- input code ---
+            prepare + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "File ended while scanning text of \\" + primitive);
+            out(init), "");
     }
 
     // TODO gene: add more test cases

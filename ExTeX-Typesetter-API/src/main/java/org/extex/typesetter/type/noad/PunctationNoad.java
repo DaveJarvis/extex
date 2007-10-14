@@ -30,9 +30,9 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 
 /**
  * This Noad represents a punctation mark.
- *
+ * 
  * @see "TTP [682]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -40,7 +40,7 @@ public class PunctationNoad extends AbstractNucleusNoad implements SimpleNoad {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param nucleus the nucleus
      * @param tc the typesetting context for the color
      */
@@ -52,14 +52,13 @@ public class PunctationNoad extends AbstractNucleusNoad implements SimpleNoad {
 
     /**
      * Add some information in the middle of the default toString method.
-     *
+     * 
      * @param sb the target string buffer
      * @param depth the recursion depth
-     *
+     * 
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
-     *      java.lang.StringBuffer,
-     *      int)
+     *      java.lang.StringBuffer, int)
      */
     @Override
     protected void toStringAdd(StringBuffer sb, int depth) {
@@ -69,38 +68,38 @@ public class PunctationNoad extends AbstractNucleusNoad implements SimpleNoad {
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
+     * 
      * @see "TTP [728]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
         getSpacingClass().addClearance(
             (previousNoad != null ? previousNoad.getSpacingClass() : null),
             list, mathContext);
-        getNucleus().typeset(previousNoad, noads, index, list, mathContext,
-            logger);
+        Noad n = getNucleus();
+        if (n != null) {
+            n.typeset(previousNoad, noads, index, list, mathContext, logger);
+        }
     }
 
 }

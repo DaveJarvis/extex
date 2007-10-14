@@ -19,11 +19,14 @@
 
 package org.extex.font.fontparameter;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import java.io.FileInputStream;
 
 import org.junit.Before;
-
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test for FontParameterTest.
@@ -31,7 +34,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontParameterTest extends TestCase {
+public class FontParameterTest {
 
     /**
      * The font parameter.
@@ -45,8 +48,7 @@ public class FontParameterTest extends TestCase {
             "../texmf/src/texmf/fonts/afm/fxlr.fontinfo";
 
     @Before
-    @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
 
         if (param == null) {
             param = new FontParameter(new FileInputStream(file));
@@ -58,6 +60,7 @@ public class FontParameterTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(param);
@@ -68,13 +71,13 @@ public class FontParameterTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         assertEquals(0xFB00, param.getUnicode("f_f").getCodePoint());
         assertEquals(0xFB01, param.getUnicode("f_i").getCodePoint());
         assertEquals(0xFB03, param.getUnicode("f_f_i").getCodePoint());
         assertEquals(0xFB04, param.getUnicode("f_f_l").getCodePoint());
-
     }
 
     /**
@@ -82,6 +85,7 @@ public class FontParameterTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         assertEquals(0x0041, param.getUnicode("A").getCodePoint());
@@ -91,7 +95,6 @@ public class FontParameterTest extends TestCase {
 
         param.setUseGlyphName(true);
         assertEquals(0x0042, param.getUnicode("B").getCodePoint());
-
     }
 
     /**
@@ -99,6 +102,7 @@ public class FontParameterTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         assertNull(param.getFontDimen("NOT_EXISTS"));
@@ -106,4 +110,5 @@ public class FontParameterTest extends TestCase {
         assertEquals(431, param.getFontDimen("XHEIGHT").intValue());
         assertEquals(111, param.getFontDimen("EXTRASPACE").intValue());
     }
+
 }

@@ -19,19 +19,24 @@
 
 package org.extex.interpreter.exception;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InterpreterExceptionTest extends TestCase {
+public class InterpreterExceptionTest {
 
     /**
-     * Test method for {@link org.extex.interpreter.exception.InterpreterException#isProcessed()}.
+     * Test method for
+     * {@link org.extex.interpreter.exception.InterpreterException#isProcessed()}.
      */
+    @Test
     public final void testProcessed() {
 
         InterpreterException e = new InterpreterException();

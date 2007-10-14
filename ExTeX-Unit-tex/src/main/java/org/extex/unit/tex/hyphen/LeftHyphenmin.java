@@ -129,14 +129,14 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         source.getKeyword(context, "by");
         long lefthyphenmin;
         try {
-            lefthyphenmin = language.getLeftHyphenmin();
+            lefthyphenmin = language.getLeftHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
         lefthyphenmin += source.parseInteger(context, source, typesetter);
 
         try {
-            language.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenMin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -164,7 +164,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return getHyphenationTable(context).getLeftHyphenmin();
+            return getHyphenationTable(context).getLeftHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -181,7 +181,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return getHyphenationTable(context).getLeftHyphenmin();
+            return getHyphenationTable(context).getLeftHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -206,7 +206,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         source.getKeyword(context, "by");
         long lefthyphenmin;
         try {
-            lefthyphenmin = language.getLeftHyphenmin();
+            lefthyphenmin = language.getLeftHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -218,7 +218,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         lefthyphenmin /= arg;
 
         try {
-            language.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenMin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -256,7 +256,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         long lefthyphenmin = source.parseInteger(context, source, typesetter);
 
         try {
-            language.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenMin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -291,9 +291,9 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         Language language = getHyphenationTable(context);
         source.getKeyword(context, "by");
         try {
-            long lefthyphenmin = language.getLeftHyphenmin();
+            long lefthyphenmin = language.getLeftHyphenMin();
             lefthyphenmin *= source.parseInteger(context, source, typesetter);
-            language.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenMin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -331,7 +331,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         Language language = getHyphenationTable(context);
         try {
             return context.getTokenFactory().toTokens( //
-                language.getLeftHyphenmin());
+                language.getLeftHyphenMin());
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();

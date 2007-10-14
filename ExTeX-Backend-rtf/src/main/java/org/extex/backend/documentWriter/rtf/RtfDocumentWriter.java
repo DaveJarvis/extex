@@ -102,11 +102,6 @@ public class RtfDocumentWriter extends RtfDocument
     private long fontSize = 24;
 
     /**
-     * The field <tt>options</tt> contains the options to use.
-     */
-    private DocumentWriterOptions options;
-
-    /**
      * The field <tt>posX</tt> contains the x position on the current page.
      */
     private long posX;
@@ -687,7 +682,6 @@ public class RtfDocumentWriter extends RtfDocument
     public RtfDocumentWriter(DocumentWriterOptions options) {
 
         super();
-        this.options = options;
     }
 
     /**

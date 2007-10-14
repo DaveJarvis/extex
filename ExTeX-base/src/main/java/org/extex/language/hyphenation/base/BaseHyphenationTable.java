@@ -97,11 +97,11 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
             new HashMap<UnicodeCharList, boolean[]>();
 
     /**
-     * The field <tt>hyphenactive</tt> contains the indicator whether these
+     * The field <tt>hyphenating</tt> contains the indicator whether this
      * hyphenation is active. If the value is <code>false</code> then no
      * hyphenation points will be inserted.
      */
-    private boolean hyphenactive = true;
+    private boolean hyphenating = true;
 
     /**
      * The field <tt>lefthyphenmin</tt> contains the minimum distance from the
@@ -117,7 +117,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * The field <tt>name</tt> contains the name.
      */
-    private String name;
+    private String name = null;
 
     /**
      * The field <tt>righthyphenmin</tt> contains the minimum distance from the
@@ -182,9 +182,9 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#getLeftHyphenmin()
+     * @see org.extex.language.Language#getLeftHyphenMin()
      */
-    public long getLeftHyphenmin() throws HyphenationException {
+    public long getLeftHyphenMin() throws HyphenationException {
 
         return lefthyphenmin;
     }
@@ -216,9 +216,9 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#getRightHyphenmin()
+     * @see org.extex.language.Language#getRightHyphenMin()
      */
-    public long getRightHyphenmin() throws HyphenationException {
+    public long getRightHyphenMin() throws HyphenationException {
 
         return righthyphenmin;
     }
@@ -239,7 +239,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
             int start, boolean forall, NodeFactory nodeFactory)
             throws HyphenationException {
 
-        if (hyphen == null || !hyphenactive || nodes.size() == 0
+        if (hyphen == null || !hyphenating || nodes.size() == 0
                 || wordTokenizer == null) {
             return false;
         }
@@ -332,11 +332,11 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#isHyphenActive()
+     * @see org.extex.language.Language#isHyphenating()
      */
-    public boolean isHyphenActive() throws HyphenationException {
+    public boolean isHyphenating() throws HyphenationException {
 
-        return hyphenactive;
+        return hyphenating;
     }
 
     /**
@@ -367,20 +367,20 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#setHyphenActive(boolean)
+     * @see org.extex.language.Language#setHyphenating(boolean)
      */
-    public void setHyphenActive(boolean active)
+    public void setHyphenating(boolean active)
             throws HyphenationException {
 
-        hyphenactive = active;
+        hyphenating = active;
     }
 
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#setLeftHyphenmin(long)
+     * @see org.extex.language.Language#setLeftHyphenMin(long)
      */
-    public void setLeftHyphenmin(long left) throws HyphenationException {
+    public void setLeftHyphenMin(long left) throws HyphenationException {
 
         lefthyphenmin = left;
     }
@@ -409,9 +409,9 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.language.Language#setRightHyphenmin(long)
+     * @see org.extex.language.Language#setRightHyphenMin(long)
      */
-    public void setRightHyphenmin(long right) throws HyphenationException {
+    public void setRightHyphenMin(long right) throws HyphenationException {
 
         righthyphenmin = right;
     }

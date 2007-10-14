@@ -121,6 +121,27 @@ public interface Node extends Serializable {
     FixedDimen getHeight();
 
     /**
+     * Getter for the natural depth of the node.
+     * 
+     * @return the natural depth
+     */
+    FixedDimen getNaturalDepth();
+
+    /**
+     * Getter for the natural height of the node.
+     * 
+     * @return the natural height
+     */
+    FixedDimen getNaturalHeight();
+
+    /**
+     * Getter for the natural width of the node.
+     * 
+     * @return the natural width
+     */
+    FixedDimen getNaturalWidth();
+
+    /**
      * Compute the vertical size of a node. The vertical size is the size of the
      * box enclosing the bounding box and containing the base line (see figure).
      * <img src="doc-files/verticalSize.png" alt="" align="right"/>

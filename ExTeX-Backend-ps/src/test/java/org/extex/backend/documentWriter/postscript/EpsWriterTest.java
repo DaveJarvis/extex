@@ -19,14 +19,14 @@
 
 package org.extex.backend.documentWriter.postscript;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
-
-import junit.framework.TestCase;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
@@ -48,7 +48,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EpsWriterTest extends TestCase {
+public class EpsWriterTest {
 
     /**
      * Create and initialize a writer to be tested.

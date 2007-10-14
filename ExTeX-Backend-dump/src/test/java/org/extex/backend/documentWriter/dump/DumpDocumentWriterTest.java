@@ -19,10 +19,10 @@
 
 package org.extex.backend.documentWriter.dump;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-
-import junit.framework.TestCase;
 
 import org.extex.core.count.Count;
 import org.extex.engine.typesetter.page.PageImpl;
@@ -36,18 +36,21 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DumpDocumentWriterTest extends TestCase {
+public class DumpDocumentWriterTest {
 
     /**
-     * 
+     * <testcase> Test that the default extension is <tt>out</tt>.
+     * </testcase>
      */
     @Test
-    public final void testgetExtension() {
+    public final void testGetExtension1() {
 
         assertEquals("out", new DumpDocumentWriter(null).getExtension());
     }
 
     /**
+     * <testcase> Test that a <code>null</code> page is not shipped.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -61,6 +64,8 @@ public class DumpDocumentWriterTest extends TestCase {
     }
 
     /**
+     * <testcase> Test that ...
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -75,6 +80,8 @@ public class DumpDocumentWriterTest extends TestCase {
     }
 
     /**
+     * <testcase> Test that ...
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

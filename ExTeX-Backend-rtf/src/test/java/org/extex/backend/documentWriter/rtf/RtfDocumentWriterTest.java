@@ -19,8 +19,18 @@
 
 package org.extex.backend.documentWriter.rtf;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationIOException;
+import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
+import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.junit.Test;
 
 /**
@@ -29,18 +39,112 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RtfDocumentWriterTest extends TestCase {
+public class RtfDocumentWriterTest {
 
     /**
-     * 
+     * <testcase> Test that the default extension is <tt>rtf</tt>.
+     * </testcase>
      */
     @Test
-    public final void testgetExtension() {
+    public final void testGetExtension1() {
 
         assertEquals("rtf", new RtfDocumentWriter(null).getExtension());
     }
 
     /**
+     * <testcase> Test that the extension is <tt>rtf</tt>. </testcase>
+     */
+    @Test
+    public final void testConfigure1() {
+
+        RtfDocumentWriter rtfDocumentWriter = new RtfDocumentWriter(null);
+        rtfDocumentWriter.configure(new Configuration() {
+
+            public Configuration findConfiguration(String key)
+                    throws ConfigurationInvalidResourceException,
+                        ConfigurationNotFoundException,
+                        ConfigurationSyntaxException,
+                        ConfigurationIOException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public Configuration findConfiguration(String key, String attribute)
+                    throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public String getAttribute(String name) {
+
+                if (name.equals("extension")) {
+                    return "abc";
+                }
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public Configuration getConfiguration(String key)
+                    throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public Configuration getConfiguration(String key, String attribute)
+                    throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public String getValue() throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public String getValue(String key) throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public int getValueAsInteger(String key, int defaultValue)
+                    throws ConfigurationException {
+
+                return 42;
+            }
+
+            public List<String> getValues(String key) {
+
+                return null;
+            }
+
+            public void getValues(List<String> list, String key) {
+
+                // nothing to do
+            }
+
+            public Iterator<Configuration> iterator()
+                    throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public Iterator<Configuration> iterator(String key)
+                    throws ConfigurationException {
+
+                throw new ConfigurationNotFoundException("", "");
+            }
+
+            public void setConfigurationLoader(ConfigurationLoader loader) {
+
+                // nothing to do
+            }
+
+        });
+        assertEquals("abc", rtfDocumentWriter.getExtension());
+    }
+
+    /**
+     * <testcase> Test that a <code>null</code> page is not shipped.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

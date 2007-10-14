@@ -72,8 +72,8 @@ public class ExTeXWordsTest {
         lan.setLigatureBuilder(new LigatureBuilderImpl());
         lan.setWordTokenizer(wt);
         try {
-            lan.setLeftHyphenmin(1L);
-            lan.setRightHyphenmin(1L);
+            lan.setLeftHyphenMin(1L);
+            lan.setRightHyphenMin(1L);
         } catch (HyphenationException e) {
             e.printStackTrace();
         }

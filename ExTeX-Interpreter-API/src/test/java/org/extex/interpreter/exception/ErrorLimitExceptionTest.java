@@ -19,9 +19,12 @@
 
 package org.extex.interpreter.exception;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Locale;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test suite for the exception.
@@ -29,11 +32,12 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ErrorLimitExceptionTest extends TestCase {
+public class ErrorLimitExceptionTest {
 
     /**
      * Test method for {@link org.extex.interpreter.exception.ErrorLimitException#ErrorLimitException(long)}.
      */
+    @Test
     public final void testErrorLimitException() {
 
         Exception e = new ErrorLimitException(-123);
@@ -43,6 +47,7 @@ public class ErrorLimitExceptionTest extends TestCase {
     /**
      * Test method for {@link org.extex.interpreter.exception.ErrorLimitException#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage1() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -53,6 +58,7 @@ public class ErrorLimitExceptionTest extends TestCase {
     /**
      * Test method for {@link org.extex.interpreter.exception.ErrorLimitException#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);
@@ -64,6 +70,7 @@ public class ErrorLimitExceptionTest extends TestCase {
     /**
      * Test method for {@link org.extex.interpreter.exception.ErrorLimitException#getMessage()}.
      */
+    @Test
     public final void testGetMessage() {
 
         Locale.setDefault(Locale.ENGLISH);

@@ -42,29 +42,22 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     private String prepare = DEFINE_BRACES;
 
     /**
+     * The field <tt>fil</tt> contains the the unit inserted.
+     */
+    private String fil;
+
+    /**
      * Constructor for HfillTest.
+     * 
      * @param primitive the name of the primitive
      * @param args the arguments for the invocation
+     * @param fil the unit inserted
      */
-    public AbstractHfillTester(String primitive, String args) {
+    public AbstractHfillTester(String primitive, String args, String fil) {
 
         super(primitive, args);
         this.invocation = primitive + args;
-    }
-
-    /**
-     * <testcase> Test case showing that the primitive in vertical mode appears
-     * like a space. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVbox1() throws Exception {
-
-        assertSuccess(// --- input code ---
-            prepare + "\\vbox to 12pt{a\\" + invocation + " b} \\end",
-            // --- error channel ---
-            "a b\n\n" + TERM);
+        this.fil = fil;
     }
 
     /**
@@ -82,7 +75,6 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
             "ab" + TERM);
     }
 
-
     /**
      * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
      * beginning of a paragraph. </testcase>
@@ -96,8 +88,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\" + invocation + "\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
+            "");
     }
 
     /**
@@ -115,7 +106,23 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
             // --- output channel ---
             "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
                     ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    "..x\n");
+
+                    "..\\glue0.0pt plus " + fil + "\n" + "..x\n");
+    }
+
+    /**
+     * <testcase> Test case showing that the primitive in vertical mode appears
+     * like a space. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVbox1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            prepare + "\\vbox to 12pt{a\\" + invocation + " b} \\end",
+            // --- error channel ---
+            "a b\n\n" + TERM);
     }
 
     // TODO implement more primitive specific test cases

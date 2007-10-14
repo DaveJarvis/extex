@@ -40,16 +40,16 @@ import org.extex.language.word.WordTokenizer;
  * This class manages the <code>HyphenationTable</code>s. It is a container
  * which can be asked to provide an appropriate instance. This instance is
  * either taken from existing instances or a new instance is created.
- *
+ * 
  * <h2>Configuration</h2>
- *
+ * 
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}.
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4757 $
@@ -60,9 +60,10 @@ public class BaseLanguageManager extends AbstractFactory
             Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20060827L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>tables</tt> contains the mapping from index to
@@ -72,7 +73,7 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public BaseLanguageManager() {
 
@@ -81,11 +82,11 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * Create a new language and put it into the table.
-     *
+     * 
      * @param name the name of the language
-     *
+     * 
      * @return the new instance of a language
-     *
+     * 
      * @throws ConfigurationException in case of a configuration error
      */
     protected Language createLanguage(String name)
@@ -93,9 +94,8 @@ public class BaseLanguageManager extends AbstractFactory
 
         ModifiableLanguage lang;
         Configuration cfg = selectConfiguration(name);
-        lang =
-                (ModifiableLanguage) createInstanceForConfiguration(cfg,
-                    ModifiableLanguage.class);
+        lang = (ModifiableLanguage) createInstanceForConfiguration(cfg, //
+            ModifiableLanguage.class);
 
         Configuration config = cfg.findConfiguration("LigatureBuilder");
         lang.setLigatureBuilder(//
@@ -114,7 +114,7 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
      */
     public Language getLanguage(String name) {
@@ -129,7 +129,7 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * Getter for a localizer
-     *
+     * 
      * @return the localizer
      */
     protected Localizer getLocalizer() {
@@ -139,7 +139,7 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * Getter for the tables.
-     *
+     * 
      * @return the tables map
      */
     protected Map<String, Language> getTables() {
@@ -149,9 +149,9 @@ public class BaseLanguageManager extends AbstractFactory
 
     /**
      * Restore the internal state when the instance is loaded from file.
-     *
+     * 
      * @return the object which should be used instead of the one read
-     *
+     * 
      * @throws ObjectStreamException in case of an error
      */
     protected Object readResolve() throws ObjectStreamException {

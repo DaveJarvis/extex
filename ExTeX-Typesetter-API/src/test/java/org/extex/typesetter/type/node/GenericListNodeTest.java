@@ -47,7 +47,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * The constant <tt>VISITOR</tt> contains the a node visitor which return
-     * a horizontal list node only. The other ndes are mapped to
+     * a horizontal list node only. The other nodes are mapped to
      * <code>null</code>.
      */
     private static final NodeVisitor<Object, Object> VISITOR =
@@ -185,18 +185,6 @@ public class GenericListNodeTest extends AbstractNodeListTester {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(
-     * java.lang.StringBuffer, java.lang.String, int, int)}.
-     */
-    @Test
-    @Ignore
-    public final void testToStringStringBufferStringIntInt() {
-
-        fail("Not yet implemented"); // TODO
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
@@ -268,7 +256,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
         NodeList list = makeList();
         assertTrue(list.isEmpty());
         assertList(list, 0, 0, 0, 0, 0, 0);
-        assertEquals(0, list.getVerticalSize().getValue());
+        assertEquals(0L, list.getVerticalSize().getValue());
     }
 
     /**
@@ -309,8 +297,6 @@ public class GenericListNodeTest extends AbstractNodeListTester {
         assertList(list, 1, 1, 2, 3, 0, 0);
     }
 
-    // TODO gene more test cases for hpack()
-
     /**
      * Test method for
      * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(
@@ -325,6 +311,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
         assertFalse(list.isEmpty());
         assertList(list, 2, 0, 0, 0, 0, 0);
     }
+
+    // TODO gene more test cases for hpack()
 
     /**
      * Test method for
@@ -402,7 +390,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
         list.add(n);
         list.hpack(Dimen.ZERO_PT);
         assertList(list, 1, 0, 0, 0, 0, 0);
-        assertEquals(0, n.getWidth().getValue());
+        assertEquals(0L, n.getWidth().getValue());
     }
 
     /**
@@ -491,6 +479,18 @@ public class GenericListNodeTest extends AbstractNodeListTester {
         NodeList list = makeList(new CharNode(TC, UnicodeChar.get('A')));
         list.setMove(Dimen.ONE_PT);
         assertEquals("(0.0pt+0.0pt)x0.0pt, moved 1.0pt\n.A", list.toString());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(
+     * java.lang.StringBuffer, java.lang.String, int, int)}.
+     */
+    @Test
+    @Ignore
+    public final void testToStringStringBufferStringIntInt() {
+
+        fail("Not yet implemented"); // TODO
     }
 
     /**

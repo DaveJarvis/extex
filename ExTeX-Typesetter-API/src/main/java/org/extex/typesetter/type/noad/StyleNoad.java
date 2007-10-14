@@ -31,147 +31,198 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 /**
  * This Noad indicates a change in the style to be used for the further
  * processing.
- *
+ * 
  * <p>
- *  <logo>TeX</logo> defined a set of variations to a style.
- *  They are defined in the following table:
+ * <logo>TeX</logo> defined a set of variations to a style. They are defined in
+ * the following table:
  * </p>
  * <table>
- *  <tr>
- *   <th>Style</th><th>No.</th><th>Cramped</th><th>Sub</th>
- *   <th>Sup</th><th>Num</th><th>Denom</th>
- *  </tr>
- *  <tr>
- *   <td>display style</td>
- *   <td>0</td><td>1</td><td>5</td><td>4</td><td>2</td><td>3</td>
- *  </tr>
- *  <tr>
- *   <td>cramped display style</td>
- *   <td>1</td><td>1</td><td>5</td><td>5</td><td>3</td><td>3</td>
- *  </tr>
- *  <tr>
- *   <td>text style</td>
- *   <td>2</td><td>3</td><td>5</td><td>4</td><td>4</td><td>5</td>
- *  </tr>
- *  <tr>
- *   <td>cramped text style</td>
- *   <td>3</td><td>3</td><td>5</td><td>5</td><td>5</td><td>5</td>
- *  </tr>
- *  <tr>
- *   <td>script style</td>
- *   <td>4</td><td>5</td><td>7</td><td>6</td><td>6</td><td>7</td>
- *  </tr>
- *  <tr>
- *   <td>cramped script style</td>
- *   <td>5</td><td>5</td><td>7</td><td>7</td><td>7</td><td>7</td>
- *  </tr>
- *  <tr>
- *   <td>script script style</td>
- *   <td>6</td><td>7</td><td>7</td><td>6</td><td>6</td><td>7</td>
- *  </tr>
- *  <tr>
- *   <td>cramped script script style</td>
- *   <td>7</td><td>7</td><td>7</td><td>7</td><td>7</td><td>7</td>
- *  </tr>
+ * <tr>
+ * <th>Style</th>
+ * <th>No.</th>
+ * <th>Cramped</th>
+ * <th>Sub</th>
+ * <th>Sup</th>
+ * <th>Num</th>
+ * <th>Denom</th>
+ * </tr>
+ * <tr>
+ * <td>display style</td>
+ * <td>0</td>
+ * <td>1</td>
+ * <td>5</td>
+ * <td>4</td>
+ * <td>2</td>
+ * <td>3</td>
+ * </tr>
+ * <tr>
+ * <td>cramped display style</td>
+ * <td>1</td>
+ * <td>1</td>
+ * <td>5</td>
+ * <td>5</td>
+ * <td>3</td>
+ * <td>3</td>
+ * </tr>
+ * <tr>
+ * <td>text style</td>
+ * <td>2</td>
+ * <td>3</td>
+ * <td>5</td>
+ * <td>4</td>
+ * <td>4</td>
+ * <td>5</td>
+ * </tr>
+ * <tr>
+ * <td>cramped text style</td>
+ * <td>3</td>
+ * <td>3</td>
+ * <td>5</td>
+ * <td>5</td>
+ * <td>5</td>
+ * <td>5</td>
+ * </tr>
+ * <tr>
+ * <td>script style</td>
+ * <td>4</td>
+ * <td>5</td>
+ * <td>7</td>
+ * <td>6</td>
+ * <td>6</td>
+ * <td>7</td>
+ * </tr>
+ * <tr>
+ * <td>cramped script style</td>
+ * <td>5</td>
+ * <td>5</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * </tr>
+ * <tr>
+ * <td>script script style</td>
+ * <td>6</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>6</td>
+ * <td>6</td>
+ * <td>7</td>
+ * </tr>
+ * <tr>
+ * <td>cramped script script style</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * <td>7</td>
+ * </tr>
  * </table>
- *
+ * 
  * <p>
- *  This mapping and the numbers therein are not visible directly. Instead
- *  symbolic constants and methods are provided.
+ * This mapping and the numbers therein are not visible directly. Instead
+ * symbolic constants and methods are provided.
  * <p>
- *
- *
- *
+ * 
+ * 
+ * 
  * <doc name="textfont" type="register">
  * <h3>The Font Parameter <tt>\textfont</tt></h3>
  * <p>
- *  The font parameter <tt>\textfont</tt> contains font to be used in math
- *  mode for text style typesetting.
+ * The font parameter <tt>\textfont</tt> contains font to be used in math mode
+ * for text style typesetting.
  * </p>
  * <p>
- *  Three families are used for math typesetting. The family 0 contains the
- *  characters for text. The family 1 contains the characters for the symbols.
- *  The family 2 contains the extended characters.
+ * Three families are used for math typesetting. The family 0 contains the
+ * characters for text. The family 1 contains the characters for the symbols.
+ * The family 2 contains the extended characters.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;textfont&rang;
  *       &rarr; <tt>\textfont</tt> &lang;register name&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(org.extex.interpreter.context.Context)
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,String)
  *          &lang;font&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \font\fnt=cmsy12
  *    \textfont0 =\fnt </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <doc name="scriptfont" type="register">
  * <h3>The Font Parameter <tt>\scriptfont</tt></h3>
  * <p>
- *  The font parameter <tt>\scriptfont</tt> contains font to be used in math
- *  mode for script style typesetting.
+ * The font parameter <tt>\scriptfont</tt> contains font to be used in math
+ * mode for script style typesetting.
  * </p>
  * <p>
- *  Three families are used for math typesetting. The family 0 contains the
- *  characters for text. The family 1 contains the characters for the symbols.
- *  The family 2 contains the extended characters.
+ * Three families are used for math typesetting. The family 0 contains the
+ * characters for text. The family 1 contains the characters for the symbols.
+ * The family 2 contains the extended characters.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;scriptfont&rang;
  *       &rarr; <tt>\scriptfont</tt> &lang;register name&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \font\fnt=cmsy12
  *    \scriptfont0 =\fnt </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <doc name="scriptscriptfont" type="register">
  * <h3>The Font Parameter <tt>\scriptscriptfont</tt></h3>
  * <p>
- *  The font parameter <tt>\scriptscriptfont</tt> contains font to be used in
- *  math mode for script-script style typesetting.
+ * The font parameter <tt>\scriptscriptfont</tt> contains font to be used in
+ * math mode for script-script style typesetting.
  * </p>
  * <p>
- *  Three families are used for math typesetting. The family 0 contains the
- *  characters for text. The family 1 contains the characters for the symbols.
- *  The family 2 contains the extended characters.
+ * Three families are used for math typesetting. The family 0 contains the
+ * characters for text. The family 1 contains the characters for the symbols.
+ * The family 2 contains the extended characters.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;scriptscriptfont&rang;
  *       &rarr; <tt>\scriptscriptfont</tt> &lang;register name&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \font\fnt=cmsy12
  *    \scriptscriptfont0 =\fnt </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -179,18 +230,18 @@ public final class StyleNoad implements Noad {
 
     /**
      * The field <tt>styles</tt> contains the list of styles prepared for use.
-     * Some of them are available via constants; others can be acquired via
-     * some methods-
+     * Some of them are available via constants; others can be acquired via some
+     * methods-
      */
     private static final StyleNoad[] STYLE = {//
-            new StyleNoad(0, "displaystyle", "\\textfont"),
-                    new StyleNoad(1, "displaystyle", "\\textfont"),
-                    new StyleNoad(2, "textstyle", "\\textfont"),
-                    new StyleNoad(3, "textstyle", "\\textfont"),
-                    new StyleNoad(4, "scriptstyle", "\\scriptfont"),
-                    new StyleNoad(5, "scriptstyle", "\\scriptfont"),
-                    new StyleNoad(6, "scriptscriptstyle", "\\scriptscriptfont"),
-                    new StyleNoad(7, "scriptscriptstyle", "\\scriptscriptfont")};
+            new StyleNoad(0, "displaystyle", "textfont"),
+                    new StyleNoad(1, "displaystyle", "textfont"),
+                    new StyleNoad(2, "textstyle", "textfont"),
+                    new StyleNoad(3, "textstyle", "textfont"),
+                    new StyleNoad(4, "scriptstyle", "scriptfont"),
+                    new StyleNoad(5, "scriptstyle", "scriptfont"),
+                    new StyleNoad(6, "scriptscriptstyle", "scriptscriptfont"),
+                    new StyleNoad(7, "scriptscriptstyle", "scriptscriptfont")};
 
     /**
      * The field <tt>CRAMPED</tt> contains the mapping to cramped styles.
@@ -246,8 +297,7 @@ public final class StyleNoad implements Noad {
                     STYLE[6], STYLE[7]};
 
     /**
-     * The constant <tt>TEXTSTYLE</tt> contains the value for the text
-     * style.
+     * The constant <tt>TEXTSTYLE</tt> contains the value for the text style.
      */
     public static final StyleNoad TEXTSTYLE = STYLE[2];
 
@@ -269,17 +319,16 @@ public final class StyleNoad implements Noad {
 
     /**
      * The field <tt>style</tt> contains the <logo>TeX</logo> name for the
-     * style. It has the values <tt>textstyle</tt>, <tt>scriptstyle</tt>, or
-     * <tt>scriptscriptstyle</tt>.
+     * style. It has the values <tt>textstyle</tt>, <tt>scriptstyle</tt>,
+     * or <tt>scriptscriptstyle</tt>.
      */
     private String style;
 
     /**
-     * Creates a new object.
-     * This constructor is private since nobody is supposed to use it to create
-     * new instances. The constants defined in this class should be used
-     * instead.
-     *
+     * Creates a new object. This constructor is private since nobody is
+     * supposed to use it to create new instances. The constants defined in this
+     * class should be used instead.
+     * 
      * @param no the index of this style
      * @param style the style
      * @param fontName the name of the font to use
@@ -294,9 +343,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the cramped style for this one.
-     *
+     * 
      * @return the cramped style
-     *
+     * 
      * @see "TTP [702]"
      */
     public StyleNoad cramped() {
@@ -306,9 +355,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the denominator style for this one.
-     *
+     * 
      * @return the denominator style
-     *
+     * 
      * @see "TTP [702]"
      */
     public StyleNoad denom() {
@@ -318,7 +367,7 @@ public final class StyleNoad implements Noad {
 
     /**
      * Getter for font name.
-     *
+     * 
      * @return the font name
      */
     public String getFontName() {
@@ -328,9 +377,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Getter for spacing class.
-     *
+     * 
      * @return the spacing class
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
@@ -340,7 +389,7 @@ public final class StyleNoad implements Noad {
 
     /**
      * Getter for style.
-     *
+     * 
      * @return the style
      */
     public String getStyleName() {
@@ -350,9 +399,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -362,9 +411,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -374,7 +423,7 @@ public final class StyleNoad implements Noad {
 
     /**
      * Test whether the current style is a cramped style.
-     *
+     * 
      * @return <code>true</code> iff the current style is a cramped style
      */
     public boolean isCramped() {
@@ -384,11 +433,11 @@ public final class StyleNoad implements Noad {
 
     /**
      * Ordering on the styles.
-     *
+     * 
      * @param other the style to compare to
-     *
+     * 
      * @return <code>true</code> iff the current style is less than the other
-     *  according to the list in the description of StyleNoad.
+     *         according to the list in the description of StyleNoad.
      */
     public boolean less(StyleNoad other) {
 
@@ -397,9 +446,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the numerator style for this one.
-     *
+     * 
      * @return the numerator style
-     *
+     * 
      * @see "TTP [702]"
      */
     public StyleNoad num() {
@@ -408,13 +457,12 @@ public final class StyleNoad implements Noad {
     }
 
     /**
-     * Return the singleton constant object after the serialized instance
-     * has been read back in.
-     * This is one of the magic methods of Java which is invoked when a
-     * serialized object is deserialized.
-     *
+     * Return the singleton constant object after the serialized instance has
+     * been read back in. This is one of the magic methods of Java which is
+     * invoked when a serialized object is deserialized.
+     * 
      * @return the one and only instance of this object
-     *
+     * 
      * @throws ObjectStreamException never
      */
     protected Object readResolve() throws ObjectStreamException {
@@ -423,10 +471,21 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
+     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     */
+    public void setSpacingClass(MathSpacing spacingClass) {
+
+        this.spacingClass = spacingClass;
+    }
+
+    /**
      * Setter for the subscript.
-     *
+     * 
      * @param subscript the subscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -437,9 +496,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Setter for the superscript.
-     *
+     * 
      * @param superscript the superscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -450,9 +509,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the sub style for this one.
-     *
+     * 
      * @return the sub style
-     *
+     * 
      * @see "TTP [702]"
      */
     public StyleNoad sub() {
@@ -462,9 +521,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the sup style for this one.
-     *
+     * 
      * @return the sup style
-     *
+     * 
      * @see "TTP [702]"
      */
     public StyleNoad sup() {
@@ -474,9 +533,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -487,9 +546,9 @@ public final class StyleNoad implements Noad {
 
     /**
      * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * 
      * @param sb the string buffer
-     *
+     * 
      * @see "TTP [694]"
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
@@ -501,12 +560,12 @@ public final class StyleNoad implements Noad {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
-     *       java.lang.StringBuffer, int)
+     *      java.lang.StringBuffer, int)
      */
     public void toString(StringBuffer sb, int depth) {
 
@@ -515,29 +574,27 @@ public final class StyleNoad implements Noad {
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

@@ -89,7 +89,6 @@ import org.extex.interpreter.observer.start.StartObserverList;
 import org.extex.interpreter.observer.stop.StopObservable;
 import org.extex.interpreter.observer.stop.StopObserver;
 import org.extex.interpreter.observer.stop.StopObserverList;
-import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CodeExpander;
 import org.extex.interpreter.type.ExpandableCode;

@@ -122,7 +122,6 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         }
     }
 
-    
     /**
      * Add some glue to the node list. The other attributes (width, height,
      * depth) are not modified.
@@ -148,9 +147,36 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     public void clear() {
 
         list.clear();
-        setWidth(Dimen.ZERO_PT);
-        setHeight(Dimen.ZERO_PT);
-        setDepth(Dimen.ZERO_PT);
+        setNaturalWidth(Dimen.ZERO_PT);
+        setNaturalHeight(Dimen.ZERO_PT);
+        setNaturalDepth(Dimen.ZERO_PT);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#clone()
+     */
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+
+        GenericNodeList clone = (GenericNodeList) super.clone();
+        if (shift != null) {
+            clone.shift = new Dimen(shift);
+        }
+        if (move != null) {
+            clone.move = new Dimen(move);
+        }
+        if (targetWidth != null) {
+            clone.targetWidth = new Dimen(targetWidth);
+        }
+        if (targetHeight != null) {
+            clone.targetHeight = new Dimen(targetHeight);
+        }
+        if (targetDepth != null) {
+            clone.targetDepth = new Dimen(targetDepth);
+        }
+        return clone;
     }
 
     /**
@@ -277,6 +303,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @return the natural depth
      */
+    @Override
     public FixedDimen getNaturalDepth() {
 
         return super.getDepth();
@@ -287,19 +314,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @return the natural height
      */
+    @Override
     public FixedDimen getNaturalHeight() {
 
         return super.getHeight();
-    }
-
-    /**
-     * Getter for the natural width.
-     * 
-     * @return the natural width
-     */
-    public FixedDimen getNaturalWidth() {
-
-        return super.getWidth();
     }
 
     /**
@@ -402,6 +420,28 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setDepth(org.extex.core.dimen.FixedDimen)
+     */
+    @Override
+    public void setDepth(FixedDimen depth) {
+
+        setTargetDepth(depth);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setHeight(org.extex.core.dimen.FixedDimen)
+     */
+    @Override
+    public void setHeight(FixedDimen height) {
+
+        setTargetHeight(height);
+    }
+
+    /**
      * Setter for the move value of the node list. The move parameter describes
      * how far from its original position the box is moved leftwards or
      * rightwards. Positive values indicate a move rightwards.
@@ -414,6 +454,45 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     public void setMove(FixedDimen d) {
 
         move.set(d);
+    }
+
+    /**
+     * Setter for the natural depth.
+     * 
+     * @param depth the natural depth
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setDepth(
+     *      org.extex.core.dimen.FixedDimen)
+     */
+    public void setNaturalDepth(FixedDimen depth) {
+
+        super.setDepth(depth);
+    }
+
+    /**
+     * Setter for the natural height.
+     * 
+     * @param height the natural height
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setHeight(
+     *      org.extex.core.dimen.FixedDimen)
+     */
+    public void setNaturalHeight(FixedDimen height) {
+
+        super.setHeight(height);
+    }
+
+    /**
+     * Setter for the natural width.
+     * 
+     * @param width the natural width
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(
+     *      org.extex.core.dimen.FixedDimen)
+     */
+    public void setNaturalWidth(FixedDimen width) {
+
+        super.setWidth(width);
     }
 
     /**
@@ -477,6 +556,18 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         } else {
             this.targetWidth.set(width);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(
+     *      org.extex.core.dimen.FixedDimen)
+     */
+    @Override
+    public void setWidth(FixedDimen width) {
+
+        setTargetWidth(width);
     }
 
     /**

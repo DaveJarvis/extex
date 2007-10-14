@@ -402,7 +402,7 @@ public class Moritz extends Max
             push(context.getToks(ToksParameter.getKey("everyeof", context)));
             return true;
         }
-        skipSpaces = false; // macro code needs this
+        // skipSpaces = false; // macro code needs this and \ignorespaces disagrees
         return false;
     }
 
@@ -1330,13 +1330,11 @@ public class Moritz extends Max
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(
-     *      org.extex.interpreter.context.Context, boolean, boolean,
-     *      CodeToken)
+     *      org.extex.interpreter.context.Context, boolean, boolean, CodeToken)
      */
     public Tokens scanUnprotectedTokens(Context context,
-            boolean reportUndefined, boolean ignoreUndefined, CodeToken primitive)
-            throws HelpingException,
-                TypesetterException {
+            boolean reportUndefined, boolean ignoreUndefined,
+            CodeToken primitive) throws HelpingException, TypesetterException {
 
         Tokens toks = new Tokens();
         skipSpaces = true;

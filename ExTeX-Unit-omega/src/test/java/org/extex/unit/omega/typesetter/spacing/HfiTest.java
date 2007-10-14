@@ -45,7 +45,7 @@ public class HfiTest extends AbstractHfillTester {
      */
     public HfiTest() {
 
-        super("hfi", "");
+        super("hfi", "", "1.0fi");
         setConfig("omega-test");
     }
 

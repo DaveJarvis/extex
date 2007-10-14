@@ -106,19 +106,19 @@ public class VerticalListNode extends GenericNodeList
             setDepth(node.getDepth());
         } else if (top) {
             if (index == 0) {
-                advanceDepth(getHeight());
+                advanceNaturalDepth(getHeight());
                 setHeight(node.getHeight());
             } else {
-                advanceDepth(node.getHeight());
+                advanceNaturalDepth(node.getHeight());
             }
-            advanceDepth(node.getDepth());
+            advanceNaturalDepth(node.getDepth());
         } else if (index == size) {
-            advanceHeight(getDepth());
-            advanceHeight(node.getHeight());
+            advanceNaturalHeight(getDepth());
+            advanceNaturalHeight(node.getHeight());
             setDepth(node.getDepth());
         } else {
-            advanceHeight(node.getHeight());
-            advanceHeight(node.getDepth());
+            advanceNaturalHeight(node.getHeight());
+            advanceNaturalHeight(node.getDepth());
         }
     }
 
@@ -141,15 +141,15 @@ public class VerticalListNode extends GenericNodeList
         maxWidth(node.getWidth());
 
         if (size() == 1) {
-            setHeight(node.getHeight());
-            setDepth(node.getDepth());
+            setNaturalHeight(node.getHeight());
+            setNaturalDepth(node.getDepth());
         } else if (top) {
-            advanceDepth(node.getDepth());
-            advanceDepth(node.getHeight());
+            advanceNaturalDepth(node.getDepth());
+            advanceNaturalDepth(node.getHeight());
         } else {
-            advanceHeight(getDepth());
-            advanceHeight(node.getHeight());
-            setDepth(node.getDepth());
+            advanceNaturalHeight(getDepth());
+            advanceNaturalHeight(node.getHeight());
+            setNaturalDepth(node.getDepth());
         }
     }
 
@@ -171,6 +171,19 @@ public class VerticalListNode extends GenericNodeList
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.typesetter.type.node.GenericNodeList#clone()
+     */
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+
+        VerticalListNode clone = (VerticalListNode) super.clone();
+        clone.top = top;
+        return clone;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
      */
     public boolean isHorizontal() {
@@ -179,17 +192,71 @@ public class VerticalListNode extends GenericNodeList
     }
 
     /**
-     * Getter for <tt>top</tt>.
-     * The field <tt>top</tt> contains the indicator that the adjustment
-     * should use the reference point of the fist box. This is the mode for
-     * <tt>\vtop</tt>. In contrast the last box is used. This is the mode for
-     * <tt>\vbox</tt>.
+     * Getter for <tt>top</tt>. The field <tt>top</tt> contains the
+     * indicator that the adjustment should use the reference point of the fist
+     * box. This is the mode for <tt>\vtop</tt>. In contrast the last box is
+     * used. This is the mode for <tt>\vbox</tt>.
      * 
      * @return the top indicator
      */
     public boolean isTop() {
 
         return this.top;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.GenericNodeList#remove(int)
+     */
+    @Override
+    public Node remove(int index) {
+
+        Node node = super.remove(index);
+
+        if (isEmpty()) {
+            setNaturalHeight(Dimen.ZERO);
+            setNaturalDepth(Dimen.ZERO);
+            setNaturalWidth(Dimen.ZERO);
+            return node;
+        }
+
+        if (top) {
+            Dimen x = new Dimen(getNaturalDepth());
+            x.subtract(node.getDepth());
+            x.subtract(node.getHeight());
+            setNaturalDepth(x);
+        } else {
+            Dimen x = new Dimen(getNaturalHeight());
+            x.subtract(node.getDepth());
+            x.subtract(node.getHeight());
+            setNaturalHeight(x);
+        }
+
+        FixedDimen h = node.getNaturalWidth();
+        if (h.eq(getNaturalWidth())) {
+            removeAdjustWidth(h);
+        }
+
+        return node;
+    }
+
+    /**
+     * Adjust the width after a node as been removed.
+     * 
+     * @param d the old depth
+     */
+    private void removeAdjustWidth(FixedDimen d) {
+
+        Dimen x = new Dimen();
+        for (Node n : this) {
+            FixedDimen nw = n.getNaturalWidth();
+            if (d.eq(nw)) {
+                return;
+            }
+            x.max(nw);
+        }
+        setNaturalWidth(x);
     }
 
     /**
@@ -297,23 +364,6 @@ public class VerticalListNode extends GenericNodeList
         }
 
         return Badness.badness(height.getValue(), length.getValue());
-    }
-
-    /**
-     * Adjust the height of a flexible node. This method is a noop for any but
-     * the flexible nodes.
-     * 
-     * @param height the desired height
-     * @param sum the total sum of the glues
-     * 
-     * @see org.extex.typesetter.type.Node#spreadHeight(
-     *      org.extex.core.dimen.FixedDimen,
-     *      FixedGlueComponent)
-     */
-    @Override
-    public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
-
-        //
     }
 
     /**

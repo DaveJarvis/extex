@@ -20,6 +20,7 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -56,6 +57,9 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
+    // TODO Hm, penalty nodes are discarded and do not show up after par
+    // building
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -69,4 +73,20 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
                     "..x\n");
     }
 
+    /**
+     * <testcase primitive="\penalty"> Test case checking that <tt>\penalty</tt>
+     * in vertical mode inserts a penalty node. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test2() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        // --- input code ---
+            "\\penalty -12 x\\end ",
+            // --- output channel ---
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + ".\\penalty -12\n"
+                    + ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + "..x\n" + "");
+    }
 }

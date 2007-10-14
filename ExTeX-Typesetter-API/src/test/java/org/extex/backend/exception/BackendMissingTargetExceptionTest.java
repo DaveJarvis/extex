@@ -19,19 +19,24 @@
 
 package org.extex.backend.exception;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import org.junit.Test;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BackendMissingTargetExceptionTest extends TestCase {
+public class BackendMissingTargetExceptionTest {
 
     /**
-     * Test method for {@link org.extex.backend.exception.BackendMissingTargetException#BackendMissingTargetException()}.
+     * Test method for
+     * {@link org.extex.backend.exception.BackendMissingTargetException#BackendMissingTargetException()}.
      */
+    @Test
     public final void testBackendMissingTargetException() {
 
         Exception e = new BackendMissingTargetException();
@@ -41,6 +46,7 @@ public class BackendMissingTargetExceptionTest extends TestCase {
     /**
      * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage0() {
 
         Exception e = new BackendMissingTargetException();
@@ -50,6 +56,7 @@ public class BackendMissingTargetExceptionTest extends TestCase {
     /**
      * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage1() {
 
         Exception e = new BackendMissingTargetException();

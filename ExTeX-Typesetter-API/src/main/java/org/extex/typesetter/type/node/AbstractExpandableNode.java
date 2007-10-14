@@ -24,7 +24,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.Glue;
-import org.extex.core.glue.GlueComponent;
 import org.extex.core.glue.WideGlue;
 import org.extex.typesetter.type.OrientedNode;
 
@@ -51,7 +50,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060320L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>horizontal</tt> contains the indicator that the expansion
@@ -191,8 +190,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
     }
 
     /**
-     * Adjust the height of a flexible node. This method is a noop for any but
-     * the flexible nodes.
+     * Adjust the height of a flexible node.
      * 
      * @param height the desired height
      * @param sum the total sum of the glues
@@ -207,11 +205,11 @@ public abstract class AbstractExpandableNode extends AbstractNode
             return;
         }
 
-        long adjust =
-                computeAdjustment(height.getValue(), this.size,
-                    new GlueComponent(sum));
+        long adjust = computeAdjustment(height.getValue(), this.size, sum);
         if (adjust != 0) {
-            advanceHeight(new Dimen(adjust));
+            Dimen w = new Dimen(getHeight());
+            w.add(adjust);
+            setHeight(w);
         }
     }
 
@@ -234,7 +232,9 @@ public abstract class AbstractExpandableNode extends AbstractNode
 
         long adjust = computeAdjustment(width.getValue(), this.size, sum);
         if (adjust != 0) {
-            advanceWidth(new Dimen(adjust));
+            Dimen w = new Dimen(getWidth());
+            w.add(adjust);
+            setWidth(w);
         }
     }
 

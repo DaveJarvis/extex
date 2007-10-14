@@ -20,11 +20,12 @@
 package org.extex.unit.tex;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\ignorespaces</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -32,7 +33,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -48,5 +49,46 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
         super("ignorespaces", "");
     }
 
-    //TODO: write more primitive specific test cases
+    /**
+     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces in
+     * a group. The open group character does not consume following spaces.</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test1() throws Exception {
+
+        assertSuccess(DEFINE_BRACES + "x\\expandafter\\ignorespaces{    }x", //
+            "xx" + TERM);
+    }
+
+    /**
+     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces if
+     * let to an active character. The active character does not consume
+     * following spaces.</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test2() throws Exception {
+
+        assertSuccess("\\catcode`\\~=13 \\let~\\ignorespaces x~    x", //
+            "xx" + TERM);
+    }
+
+    /**
+     * <testcase>Test that <tt>\ignorespaces</tt> absorbs following spaces if
+     * used as last primitive in a macro (with arguments). The argument avoids
+     * that the following spaces are consumed by the scanner.</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test3() throws Exception {
+
+        assertSuccess(DEFINE_BRACES + DEFINE_HASH
+                + "\\def\\x#1{x\\ignorespaces}\\x.    x", //
+            "xx" + TERM);
+    }
+
 }

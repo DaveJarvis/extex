@@ -19,10 +19,10 @@
 
 package org.extex.backend.documentWriter.dump;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-
-import junit.framework.TestCase;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
@@ -39,7 +39,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MultiDumpDocumentWriterTest extends TestCase {
+public class MultiDumpDocumentWriterTest {
 
     /**
      * The field <tt>stream</tt> contains the output stream.
@@ -72,15 +72,18 @@ public class MultiDumpDocumentWriterTest extends TestCase {
             };
 
     /**
-     * 
+     * <testcase> Test that the default extension is <tt>out</tt>.
+     * </testcase>
      */
     @Test
-    public final void testgetExtension() {
+    public final void testGetExtension() {
 
         assertEquals("out", new MultiDumpDocumentWriter(null).getExtension());
     }
 
     /**
+     * <testcase> Test that a <code>null</code> page is not shipped.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -92,6 +95,8 @@ public class MultiDumpDocumentWriterTest extends TestCase {
     }
 
     /**
+     * <testcase> Test that ...
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -105,6 +110,8 @@ public class MultiDumpDocumentWriterTest extends TestCase {
     }
 
     /**
+     * <testcase> Test that ...
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

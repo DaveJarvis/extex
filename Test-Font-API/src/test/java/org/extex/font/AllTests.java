@@ -22,7 +22,6 @@ package org.extex.font;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.extex.font.fontparameter.FontParameterTest;
 import org.extex.font.format.afm.AfmParserTest;
 import org.extex.font.format.afm.FontFactoryImplAfmTest;
 import org.extex.font.format.ofm.OfmReaderTest;
@@ -40,7 +39,6 @@ import org.extex.font.format.xtf.XtfReaderLmRoman10Regular02Test;
 import org.extex.font.format.xtf.XtfReaderLmRoman10Regular03Test;
 import org.extex.font.unicode.GlyphNameTest;
 import org.extex.util.Fixed32Test;
-import org.extex.util.file.random.RandomAccessTest;
 import org.extex.util.xml.XMLStreamWriterTest;
 
 /**
@@ -57,10 +55,10 @@ public class AllTests {
         // $JUnit-BEGIN$
         suite.addTestSuite(AfmParserTest.class);
         suite.addTestSuite(FontFactoryImplAfmTest.class);
-        suite.addTestSuite(FontParameterTest.class);
+        // suite.addTestSuite(FontParameterTest.class);
         suite.addTestSuite(GlyphNameTest.class);
-        suite.addTestSuite(FontKeyTest.class);
-//        suite.addTestSuite(RandomAccessTest.class);
+        // suite.addTestSuite(FontKeyTest.class);
+        // suite.addTestSuite(RandomAccessTest.class);
         suite.addTestSuite(XMLStreamWriterTest.class);
         suite.addTestSuite(Fixed32Test.class);
         suite.addTestSuite(TfmFixWordTest.class);

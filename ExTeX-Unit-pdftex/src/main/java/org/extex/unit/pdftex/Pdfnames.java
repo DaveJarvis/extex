@@ -44,7 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;pdfnames&rang;
  *       &rarr; <tt>\pdfnames</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;} </pre>
  * 
  * <h4>Examples</h4>

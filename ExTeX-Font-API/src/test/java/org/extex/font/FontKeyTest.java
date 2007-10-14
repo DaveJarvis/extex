@@ -19,10 +19,11 @@
 
 package org.extex.font;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.junit.Test;
 
 /**
  * Test suite for the font key.
@@ -31,11 +32,12 @@ import org.extex.core.dimen.FixedDimen;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontKeyTest extends TestCase {
+public class FontKeyTest {
 
     /**
      * Test method for {@link java.lang.Object#toString()}.
      */
+    @Test
     public final void testToString1() {
 
         FontKey key = new FontKey("cmr10");
@@ -47,6 +49,7 @@ public class FontKeyTest extends TestCase {
     /**
      * Test method for {@link java.lang.Object#toString()}.
      */
+    @Test
     public final void testToString2() {
 
         FontKey key = new FontKey("cmr10");

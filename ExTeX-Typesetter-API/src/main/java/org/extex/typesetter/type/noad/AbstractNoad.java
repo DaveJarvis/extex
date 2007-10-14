@@ -233,7 +233,8 @@ public abstract class AbstractNoad implements Noad {
             sub = new HorizontalListNode();
             mc.setStyle(style.sub());
             subscript.typeset(null, null, 0, sub, mc, logger);
-            sub.advanceWidth(options.getDimenOption("scriptspace"));
+            sub.advanceNaturalWidth(options.getDimenOption("scriptspace")); // TODO:
+                                                                            // incorrect
             mc.setStyle(style);
         }
 
@@ -259,7 +260,7 @@ public abstract class AbstractNoad implements Noad {
         mc.setStyle(style.sup());
         superscript.typeset(null, null, 0, sup, mc, logger);
         mc.setStyle(style);
-        sup.advanceWidth(options.getDimenOption("scriptspace"));
+        sup.advanceNaturalWidth(options.getDimenOption("scriptspace"));
 
         if (style.isCramped()) {
             clr.set(mc.mathParameter(MathFontParameter.SUP3));
@@ -335,7 +336,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @param spacingClass the spacingClass to set
      */
-    protected void setSpacingClass(MathSpacing spacingClass) {
+    public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
     }

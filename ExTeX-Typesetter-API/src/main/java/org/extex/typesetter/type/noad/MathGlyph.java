@@ -31,14 +31,15 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 
 /**
  * This class provides a container for a mathematical glyph.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
 public class MathGlyph implements Noad, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -53,8 +54,13 @@ public class MathGlyph implements Noad, Serializable {
     private int family;
 
     /**
+     * The field <tt>spacingClass</tt> contains the spacing class.
+     */
+    private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
+
+    /**
      * Creates a new object.
-     *
+     * 
      * @param family the math family of the glyph
      * @param character the character in the font
      */
@@ -67,7 +73,7 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Getter for character.
-     *
+     * 
      * @return the character.
      */
     public UnicodeChar getCharacter() {
@@ -77,7 +83,7 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Getter for family.
-     *
+     * 
      * @return the family.
      */
     public int getFamily() {
@@ -87,21 +93,21 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Getter for spacing class.
-     *
+     * 
      * @return the spacing class
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
 
-        return MathSpacing.ORD; // gene: correct?
+        return spacingClass;
     }
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -111,9 +117,9 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -122,12 +128,23 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
+     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     */
+    public void setSpacingClass(MathSpacing spacingClass) {
+
+        this.spacingClass = spacingClass;
+    }
+
+    /**
      * Setter for the subscript.
-     *
+     * 
      * @param subscript the subscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
-     *       org.extex.typesetter.type.noad.Noad)
+     *      org.extex.typesetter.type.noad.Noad)
      */
     public void setSubscript(Noad subscript) {
 
@@ -136,11 +153,11 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Setter for the superscript.
-     *
+     * 
      * @param superscript the superscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
-     *       org.extex.typesetter.type.noad.Noad)
+     *      org.extex.typesetter.type.noad.Noad)
      */
     public void setSuperscript(Noad superscript) {
 
@@ -149,9 +166,9 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -164,11 +181,11 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * 
      * @param sb the string buffer
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
-     *       java.lang.StringBuffer)
+     *      java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
 
@@ -177,13 +194,13 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see "TTP [691]"
      * @see org.extex.typesetter.type.noad.Noad#toString(
-     *       java.lang.StringBuffer, int)
+     *      java.lang.StringBuffer, int)
      */
     public void toString(StringBuffer sb, int depth) {
 
@@ -202,33 +219,31 @@ public class MathGlyph implements Noad, Serializable {
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
-        //TODO gene: typeset() unimplemented
+        // TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

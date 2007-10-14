@@ -93,7 +93,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
         boolean active =
                 (source.parseInteger(context, source, typesetter) == 0);
         try {
-            table.setHyphenActive(active);
+            table.setHyphenating(active);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -124,7 +124,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
         Language table = getHyphenationTable(context);
         try {
             return context.getTokenFactory().toTokens( //
-                (table.isHyphenActive() ? "0" : "1"));
+                (table.isHyphenating() ? "0" : "1"));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();

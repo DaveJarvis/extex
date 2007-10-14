@@ -345,7 +345,7 @@ public abstract class AbstractNodeListTester {
 
         NodeList list = makeList();
         list.add(0, new PenaltyNode(123));
-        assertEquals(1, list.size());
+        assertEquals(1L, list.size());
     }
 
     /**
@@ -459,8 +459,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
-     * 
+     * <testcase> Test that clearing an empty list removes all nodes and resets
+     * all dimensions to 0. </testcase>
      */
     @Test
     public void testClear0() {
@@ -474,8 +474,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
-     * 
+     * <testcase> Test that clearing a list with one element removes all nodes
+     * and resets all dimensions to 0. </testcase>
      */
     @Test
     public void testClear1() {
@@ -489,8 +489,8 @@ public abstract class AbstractNodeListTester {
     }
 
     /**
-     * <testcase> ... </testcase>
-     * 
+     * <testcase> Test that clearing a list with two elements removes all nodes
+     * and resets all dimensions to 0. </testcase>
      */
     @Test
     public void testClear2() {

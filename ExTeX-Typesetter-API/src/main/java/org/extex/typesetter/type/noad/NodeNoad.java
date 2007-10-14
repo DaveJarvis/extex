@@ -32,7 +32,7 @@ import org.extex.typesetter.type.node.KernNode;
 
 /**
  * This noad contains a node which is passed through the math apparatus.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -44,8 +44,13 @@ public class NodeNoad implements Noad {
     private Node node;
 
     /**
+     * The field <tt>spacingClass</tt> contains the spacing class.
+     */
+    private MathSpacing spacingClass = MathSpacing.ORD; // gene: correct?
+
+    /**
      * Creates a new object.
-     *
+     * 
      * @param node the node to
      */
     public NodeNoad(Node node) {
@@ -56,21 +61,21 @@ public class NodeNoad implements Noad {
 
     /**
      * Getter for spacing class.
-     *
+     * 
      * @return the spacing class
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
 
-        return MathSpacing.UNDEF; // TODO gene: correct?
+        return spacingClass;
     }
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -80,9 +85,9 @@ public class NodeNoad implements Noad {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -91,11 +96,22 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * Setter for the subscript.
-     * This operation is not supported and leads to an exception.
-     *
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
+     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     */
+    public void setSpacingClass(MathSpacing spacingClass) {
+
+        this.spacingClass = spacingClass;
+    }
+
+    /**
+     * Setter for the subscript. This operation is not supported and leads to an
+     * exception.
+     * 
      * @param subscript the subscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -105,11 +121,11 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * Setter for the superscript.
-     * This operation is not supported and leads to an exception.
-     *
+     * Setter for the superscript. This operation is not supported and leads to
+     * an exception.
+     * 
      * @param superscript the superscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -120,9 +136,9 @@ public class NodeNoad implements Noad {
 
     /**
      * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * 
      * @param sb the string buffer
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
@@ -133,10 +149,10 @@ public class NodeNoad implements Noad {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
@@ -147,29 +163,27 @@ public class NodeNoad implements Noad {
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

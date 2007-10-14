@@ -50,23 +50,6 @@ public class HskipTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hskip"> Test case checking that a lonely
-     * <tt>\hskip</tt> is discarded. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIgnore1() throws Exception {
-
-        assertSuccess(showNodesProperties(),
-        // --- input code ---
-            "\\hskip 123pt\\end ",
-            // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
-    }
-
-    /**
      * <testcase primitive="\hskip"> Test case checking that <tt>\hskip</tt>
      * switches to horizontal mode and inserts a glue node with the appropriate
      * value. </testcase>
@@ -106,6 +89,22 @@ public class HskipTest extends NoFlagsPrimitiveTester {
                     "..x\n" + //
                     "..\\glue123.0pt plus 1.2fil\n" + //
                     "..x\n");
+    }
+
+    /**
+     * <testcase primitive="\hskip"> Test case checking that a lonely
+     * <tt>\hskip</tt> is discarded. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIgnore1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        // --- input code ---
+            "\\hskip 123pt\\end ",
+            // --- output channel ---
+            "");
     }
 
     // TODO implement more primitive specific test cases

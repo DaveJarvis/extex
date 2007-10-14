@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.paragraphBuilder.impl;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -42,12 +42,12 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * ...
+ * This is a test suite for the ParagraphBuilderImpl.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ParagraphBuilderImplTest extends TestCase {
+public class ParagraphBuilderImplTest {
 
     /**
      * Inner class for the typesetter options.
@@ -245,7 +245,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          */
         public Muskip getMuskip(String name) {
 
-            // TODO gene: getMuskip unimplemented
+            // getMuskip unimplemented
             return null;
         }
     }
@@ -261,7 +261,9 @@ public class ParagraphBuilderImplTest extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase>
+     * TODO
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

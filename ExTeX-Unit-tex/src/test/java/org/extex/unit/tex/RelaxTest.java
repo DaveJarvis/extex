@@ -119,7 +119,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\relax %1234 \n\r\\end",
+            "\\relax %1234 \n\\end",
             // --- output channel ---
             "");
     }

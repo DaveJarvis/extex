@@ -129,14 +129,14 @@ public class RightHyphenmin extends AbstractHyphenationCode
         source.getKeyword(context, "by");
         long righthyphenmin;
         try {
-            righthyphenmin = table.getRightHyphenmin();
+            righthyphenmin = table.getRightHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
         righthyphenmin += source.parseInteger(context, source, typesetter);
 
         try {
-            table.setRightHyphenmin(righthyphenmin);
+            table.setRightHyphenMin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -164,7 +164,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return getHyphenationTable(context).getRightHyphenmin();
+            return getHyphenationTable(context).getRightHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -181,7 +181,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return getHyphenationTable(context).getRightHyphenmin();
+            return getHyphenationTable(context).getRightHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -206,7 +206,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         source.getKeyword(context, "by");
         long righthyphenmin;
         try {
-            righthyphenmin = table.getRightHyphenmin();
+            righthyphenmin = table.getRightHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -218,7 +218,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         righthyphenmin /= arg;
 
         try {
-            table.setRightHyphenmin(righthyphenmin);
+            table.setRightHyphenMin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -256,7 +256,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         long righthyphenmin = source.parseInteger(context, source, typesetter);
 
         try {
-            table.setRightHyphenmin(righthyphenmin);
+            table.setRightHyphenMin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -292,14 +292,14 @@ public class RightHyphenmin extends AbstractHyphenationCode
         source.getKeyword(context, "by");
         long righthyphenmin;
         try {
-            righthyphenmin = table.getRightHyphenmin();
+            righthyphenmin = table.getRightHyphenMin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
         righthyphenmin *= source.parseInteger(context, source, typesetter);
 
         try {
-            table.setRightHyphenmin(righthyphenmin);
+            table.setRightHyphenMin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -337,7 +337,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         try {
             return context.getTokenFactory().toTokens( //
-                String.valueOf(table.getRightHyphenmin()));
+                String.valueOf(table.getRightHyphenMin()));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();

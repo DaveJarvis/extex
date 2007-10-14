@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.math;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
@@ -42,6 +42,116 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
     public MathcodeTest() {
 
         super("mathcode", "12=32 ");
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code
+     * can be used to define a replacement character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test100() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "\\mathcode`. \"41" + "$a.b$\\end",
+            // --- output message ---
+            "aAb" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that mathcode can be
+     * used to invoke an active character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testActive1() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                    + "\\catcode`\\.=13 \\def.{xxx}" + "\\catcode`\\.=12 "
+                    + "\\mathcode`. \"8000" + "$a.b$\\end",
+            // --- output message ---
+            "axxxb" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that mathcode can be
+     * used to define an active character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testActiveErr1() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                    + "\\mathcode`. \"8000" + "$a.b$\\end",
+            // --- output message ---
+            "Undefined control sequence .");
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type bin is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testBin1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"2041" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.BINARY, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type close is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testClose1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"5041" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.CLOSING, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that
+     * <tt>\mathcode</tt> is convertible into a count. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCount1() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\mathcode`.=1234 " + "\\count0=\\mathcode`.\\the\\count0\\end",
+            // --- output message ---
+            "1234" + TERM);
     }
 
     /**
@@ -109,6 +219,90 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type large is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLarge1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"1041" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.LARGE, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type open is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOpen1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"4041" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.OPENING, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type ord is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOrdinary1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"41" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.ORDINARY, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
+     * <testcase primitive="\mathcode"> Test case checking that the math code of
+     * type punct is correct stored in the context. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPunc1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(
+        // --- input code ---
+            "\\mathcode`. \"6041" + "\\end",
+            // --- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
+        assertEquals(MathClass.PUNCTATION, mc.getMathClass());
+        assertEquals(0, mc.getMathGlyph().getFamily());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
+    }
+
+    /**
      * <testcase primitive="\mathcode"> Test case checking that a math code of 0
      * is acceptable. </testcase>
      * 
@@ -158,69 +352,6 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type ord is correct stored in the context. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testOrdinary1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(
-        // --- input code ---
-            "\\mathcode`. \"41" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.ORDINARY, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type large is correct stored in the context. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLarge1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(
-        // --- input code ---
-            "\\mathcode`. \"1041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.LARGE, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type bin is correct stored in the context. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testBin1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(
-        // --- input code ---
-            "\\mathcode`. \"2041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.BINARY, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
      * type rel is correct stored in the context. </testcase>
      * 
      * @throws Exception in case of an error
@@ -237,70 +368,23 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.RELATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type open is correct stored in the context. </testcase>
+     * <testcase primitive="\mathcode"> Test case checking that
+     * <tt>\mathcode</tt> is theable. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testOpen1() throws Exception {
+    public void testThe1() throws Exception {
 
-        Interpreter interpreter = assertSuccess(
+        assertSuccess(
         // --- input code ---
-            "\\mathcode`. \"4041" + "\\end",
+            "\\mathcode`.=1234 " + "\\the\\mathcode`.\\end",
             // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.OPENING, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type close is correct stored in the context. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testClose1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(
-        // --- input code ---
-            "\\mathcode`. \"5041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.CLOSING, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code of
-     * type punct is correct stored in the context. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testPunc1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(
-        // --- input code ---
-            "\\mathcode`. \"6041" + "\\end",
-            // --- output message ---
-            "");
-        MathCode mc =
-                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.PUNCTATION, mc.getMathClass());
-        assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
+            "1234" + TERM);
     }
 
     /**
@@ -321,91 +405,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.VARIABLE, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
-        assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> is convertible into a count. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCount1() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            "\\mathcode`.=1234 " + "\\count0=\\mathcode`.\\the\\count0\\end",
-            // --- output message ---
-            "1234" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that
-     * <tt>\mathcode</tt> is theable. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testThe1() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            "\\mathcode`.=1234 " + "\\the\\mathcode`.\\end",
-            // --- output message ---
-            "1234" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that the math code
-     * can be used to define a replacement character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test100() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                    + "\\mathcode`. \"41" + "$a.b$\\end",
-            // --- output message ---
-            "aAb" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that mathcode can be
-     * used to define an active character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testActiveErr1() throws Exception {
-
-        assertFailure(
-        // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                    + "\\mathcode`. \"8000" + "$a.b$\\end",
-            // --- output message ---
-            "Undefined control sequence .");
-    }
-
-    /**
-     * <testcase primitive="\mathcode"> Test case checking that mathcode can be
-     * used to invoke an active character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testActive1() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                    + "\\catcode`\\.=13 \\def.{xxx}" + "\\catcode`\\.=12 "
-                    + "\\mathcode`. \"8000" + "$a.b$\\end",
-            // --- output message ---
-            "axxxb" + TERM);
+        assertEquals(65, mc.getMathGlyph().getCharacter().getCodePoint());
     }
 
     // TODO implement more primitive specific test cases

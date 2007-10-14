@@ -44,7 +44,7 @@ public class HfilTest extends AbstractHfillTester {
      */
     public HfilTest() {
 
-        super("hfil", "");
+        super("hfil", "", "1.0fil");
     }
 
     // TODO implement more primitive specific test cases

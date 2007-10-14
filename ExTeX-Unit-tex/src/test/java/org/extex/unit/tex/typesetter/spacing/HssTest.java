@@ -50,21 +50,6 @@ public class HssTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase> Test case showing that \hss expands to the width needed.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVbox1() throws Exception {
-
-        assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\vbox to 12pt{a\\hss b} \\end",
-            // --- error channel ---
-            "a b\n\n" + TERM);
-    }
-
-    /**
      * <testcase> Test case showing that the natural width of \hss is 0pt.
      * </testcase>
      * 
@@ -92,8 +77,7 @@ public class HssTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\hss\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
+            "");
     }
 
     /**
@@ -109,9 +93,24 @@ public class HssTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\font\\f cmr10 \\f\\hsize=100pt \\hss x\\end ",
             // --- output channel ---
-            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    "..x\n");
+            "\\vbox(4.30554pt+0.0pt)x100.0pt\n"
+                    + ".\\hbox(4.30554pt+0.0pt)x100.0pt\n"
+                    + "..\\glue0.0pt plus 1.0fil minus 1.0fil\n" + "..x\n" + "");
+    }
+
+    /**
+     * <testcase> Test case showing that \hss expands to the width needed.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVbox1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\vbox to 12pt{a\\hss b} \\end",
+            // --- error channel ---
+            "a b\n\n" + TERM);
     }
 
     // TODO implement more primitive specific test cases

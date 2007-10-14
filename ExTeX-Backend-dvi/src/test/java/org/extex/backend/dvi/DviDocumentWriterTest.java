@@ -19,11 +19,11 @@
 
 package org.extex.backend.dvi;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
-import junit.framework.TestCase;
 
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
@@ -47,6 +47,7 @@ import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -55,7 +56,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision:4458 $
  */
-public class DviDocumentWriterTest extends TestCase {
+public class DviDocumentWriterTest {
 
     /**
      * The field <tt>documentWriter</tt> contains the document writer.
@@ -135,7 +136,6 @@ public class DviDocumentWriterTest extends TestCase {
      * @throws Exception if an error occurs
      */
     @Before
-    @Override
     public void setUp() throws Exception {
 
         // TODO: do not use null for configuration (TE)
@@ -158,6 +158,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws IOException if an error occurs
      */
+    @Test
     public void testNoOutputStream() throws IOException {
 
         documentWriter =
@@ -178,6 +179,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Test
     public void testEmptyList() throws Exception {
 
         FixedCount[] pageNo = null;
@@ -189,6 +191,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Test
     public void testMarkNode() throws Exception {
 
         checkException(new MarkNode(Tokens.EMPTY, "0"), PanicException.class);
@@ -199,6 +202,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Test
     public void testInsertionNode() throws Exception {
 
         checkException(new InsertionNode(42, null), PanicException.class);
@@ -209,6 +213,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Test
     public void testValidNodes() throws Exception {
 
         // TODO: nodeList.add(new CharNode()); (TE)
@@ -244,6 +249,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Test
     public void testMagnification() throws Exception {
 
         boolean gotRangeException = false;
@@ -263,8 +269,7 @@ public class DviDocumentWriterTest extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
-     * 
+     * TODO missing JavaDoc.
      */
     private class MockFixedCount implements FixedCount {
 

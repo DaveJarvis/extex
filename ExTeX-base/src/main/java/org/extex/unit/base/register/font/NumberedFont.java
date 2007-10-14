@@ -43,6 +43,23 @@ public class NumberedFont extends NamedFont {
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * Construct the reference key for a numbered font.
+     * 
+     * @param context the interpreter context
+     * @param theName the base name of the font
+     * @param theNumber the number of the font
+     * 
+     * @return the key
+     */
+    public static String key(Context context, String theName, String theNumber) {
+
+        if (Namespace.SUPPORT_NAMESPACE_FONT) {
+            return context.getNamespace() + "\b" + theName + "#" + theNumber;
+        }
+        return theName + "#" + theNumber;
+    }
+
+    /**
      * Creates a new object.
      * 
      * @param token the initial token for the primitive
@@ -63,27 +80,9 @@ public class NumberedFont extends NamedFont {
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String theName = getName();
-        String theNumber =
+        String number =
                 Long.toString(source.parseInteger(context, source, typesetter));
-        return key(context, theName, theNumber);
-    }
-
-    /**
-     * Construct the reference key for a numbered font.
-     * 
-     * @param context the interpreter context
-     * @param theName the base name of the font
-     * @param theNumber the number of the font
-     * 
-     * @return the key
-     */
-    public static String key(Context context, String theName, String theNumber) {
-
-        if (Namespace.SUPPORT_NAMESPACE_FONT) {
-            return context.getNamespace() + "\b" + theName + "#" + theNumber;
-        }
-        return theName + "#" + theNumber;
+        return key(context, getName(), number);
     }
 
 }

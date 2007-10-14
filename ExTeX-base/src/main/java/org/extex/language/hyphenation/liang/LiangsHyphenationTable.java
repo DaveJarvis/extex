@@ -250,7 +250,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
             int start, boolean forall, NodeFactory nodeFactory)
             throws HyphenationException {
 
-        if (hyphen == null || !isHyphenActive() || nodelist.size() < 2) {
+        if (hyphen == null || !isHyphenating() || nodelist.size() < 2) {
             return false;
         }
 
@@ -301,8 +301,8 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
             return true;
         }
 
-        int leftHyphenMin = (int) getLeftHyphenmin();
-        int rightHyphenMin = (int) getRightHyphenmin();
+        int leftHyphenMin = (int) getLeftHyphenMin();
+        int rightHyphenMin = (int) getRightHyphenMin();
         if (len < leftHyphenMin + rightHyphenMin) {
             return false;
         }

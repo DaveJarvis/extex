@@ -77,7 +77,7 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    long getLeftHyphenmin() throws HyphenationException;
+    long getLeftHyphenMin() throws HyphenationException;
 
     /**
      * Return the value for the minimum number of characters before a
@@ -87,7 +87,7 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    long getRightHyphenmin() throws HyphenationException;
+    long getRightHyphenMin() throws HyphenationException;
 
     /**
      * Insert the hyphenation marks for a horizontal list of nodes. The
@@ -119,7 +119,7 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    boolean isHyphenActive() throws HyphenationException;
+    boolean isHyphenating() throws HyphenationException;
 
     /**
      * Activate or deactivate the hyphenation for this language.
@@ -130,7 +130,7 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    void setHyphenActive(boolean active) throws HyphenationException;
+    void setHyphenating(boolean active) throws HyphenationException;
 
     /**
      * Set the value for the minimum number of characters before a
@@ -140,7 +140,7 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    void setLeftHyphenmin(long left) throws HyphenationException;
+    void setLeftHyphenMin(long left) throws HyphenationException;
 
     /**
      * Set the value for the minimum number of characters before a
@@ -150,6 +150,6 @@ public interface Hyphenator extends Serializable {
      *
      * @throws HyphenationException in case of an error
      */
-    void setRightHyphenmin(long right) throws HyphenationException;
+    void setRightHyphenMin(long right) throws HyphenationException;
 
 }

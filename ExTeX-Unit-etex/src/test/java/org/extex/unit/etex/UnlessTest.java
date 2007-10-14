@@ -19,8 +19,6 @@
 
 package org.extex.unit.etex;
 
-import junit.framework.TestCase;
-
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -32,7 +30,7 @@ import de.dante.tex.TestTeX;
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
-public class UnlessTest extends TestCase {
+public class UnlessTest {
 
     /**
      * Main entry function for running alone.

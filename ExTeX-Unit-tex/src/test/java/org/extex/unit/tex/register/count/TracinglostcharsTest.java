@@ -62,7 +62,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
         assertSuccess(// --- input code ---
             "\\nullfont a \\end",
             // --- output stream ---
-            "\n");
+            "");
     }
 
     /**
@@ -80,25 +80,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
             // --- log message ---
             "Missing character: There is no a in font nullfont!\n",
             // --- output stream ---
-            "\n");
-    }
-
-    /**
-     * <testcase primitive="\tracinglostchars"> Test case checking that
-     * <tt>\tracinglostchars</tt> on an existing character does not produce a
-     * message. <testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void test1() throws Exception {
-
-        assertOutput(// --- input code ---
-            "\\tracinglostchars=1 a \\end",
-            // --- log message ---
-            "",
-            // --- output stream ---
-            "a" + TERM);
+            "");
     }
 
     /**
@@ -117,6 +99,24 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
             "Missing character: There is no a in font nullfont!\n",
             // --- output stream ---
             TERM);
+    }
+
+    /**
+     * <testcase primitive="\tracinglostchars"> Test case checking that
+     * <tt>\tracinglostchars</tt> on an existing character does not produce a
+     * message. <testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test1() throws Exception {
+
+        assertOutput(// --- input code ---
+            "\\tracinglostchars=1 a \\end",
+            // --- log message ---
+            "",
+            // --- output stream ---
+            "a" + TERM);
     }
 
     /**

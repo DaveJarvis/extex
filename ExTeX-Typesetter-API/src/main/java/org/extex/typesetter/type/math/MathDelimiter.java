@@ -35,16 +35,17 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 /**
  * This class provides a container for a delimiter consisting of a class, a
  * large, and a small math glyph.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class MathDelimiter implements Noad, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20060420L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>largeChar</tt> contains the code of the large character.
@@ -62,8 +63,13 @@ public class MathDelimiter implements Noad, Serializable {
     private MathGlyph smallChar;
 
     /**
+     * The field <tt>spaceingClass</tt> contains the spacing class.
+     */
+    private MathSpacing spacingClass = MathSpacing.UNDEF; // gene: correct?
+
+    /**
      * Creates a new object.
-     *
+     * 
      * @param mathClass the class
      * @param smallChar the small character
      * @param largeChar the large character
@@ -79,7 +85,7 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Getter for largeChar.
-     *
+     * 
      * @return the largeChar.
      */
     public MathGlyph getLargeChar() {
@@ -89,7 +95,7 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Getter for mathClass.
-     *
+     * 
      * @return the mathClass.
      */
     public MathClass getMathClass() {
@@ -99,7 +105,7 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Getter for smallChar.
-     *
+     * 
      * @return the smallChar.
      */
     public MathGlyph getSmallChar() {
@@ -109,21 +115,21 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Getter for spacing class.
-     *
+     * 
      * @return the spacing class
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
 
-        return MathSpacing.UNDEF; // gene: correct?
+        return spacingClass;
     }
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -133,9 +139,9 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -144,10 +150,21 @@ public class MathDelimiter implements Noad, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
+     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     */
+    public void setSpacingClass(MathSpacing spacingClass) {
+
+        this.spacingClass = spacingClass;
+    }
+
+    /**
      * Setter for the subscript.
-     *
+     * 
      * @param subscript the subscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -158,9 +175,9 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Setter for the superscript.
-     *
+     * 
      * @param superscript the superscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -171,9 +188,9 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
+     * 
+     * @return a string representation of the object.
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -185,16 +202,16 @@ public class MathDelimiter implements Noad, Serializable {
     }
 
     /**
-     * Append the printable representation of the current instance to the
-     * string buffer.
-     *
+     * Append the printable representation of the current instance to the string
+     * buffer.
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see "TTP [691]"
      */
     public void toString(StringBuffer sb) {
 
-        //sb.append('\"');
+        // sb.append('\"');
         mathClass.toString(sb);
         smallChar.toString(sb);
         largeChar.toString(sb);
@@ -202,10 +219,10 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
@@ -216,18 +233,16 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException {
 
         typeset(list, mathContext, null, null);
@@ -235,27 +250,28 @@ public class MathDelimiter implements Noad, Serializable {
 
     /**
      * Translate a MathDelimter into a NodeList.
-     *
+     * 
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param height the target height. If <code>null</code> then the natural
-     *  height is used
+     *        height is used
      * @param depth the target depth. If <code>null</code> then the natural
-     *  depth is used
-     *
+     *        depth is used
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      */
     public void typeset(NodeList list, MathContext mathContext,
             FixedDimen height, FixedDimen depth)
-            throws TypesetterException, ConfigurationException {
+            throws TypesetterException,
+                ConfigurationException {
 
         if (mathClass == null && smallChar == null && largeChar == null) {
             return;
         }
 
-        //TODO gene: typeset() unimplemented
+        // TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented MathDelimiter");
     }
 

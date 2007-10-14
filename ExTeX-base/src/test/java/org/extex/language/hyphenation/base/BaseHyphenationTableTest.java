@@ -19,6 +19,7 @@
 
 package org.extex.language.hyphenation.base;
 
+import static org.junit.Assert.*;
 import junit.framework.TestCase;
 
 import org.extex.core.UnicodeChar;
@@ -31,6 +32,7 @@ import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
 import org.extex.interpreter.context.MockContext;
 import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.word.impl.TeXWords;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
@@ -52,7 +54,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4805 $
  */
-public class BaseHyphenationTableTest extends TestCase {
+public class BaseHyphenationTableTest {
 
     /**
      * Mock implementation of a font.
@@ -128,7 +130,8 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(java.lang.String)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(
+         *      java.lang.String)
          */
         @Override
         public FixedDimen getFontDimen(String key) {
@@ -195,7 +198,8 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#hasGlyph(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#hasGlyph(
+         *      org.extex.core.UnicodeChar)
          */
         @Override
         public boolean hasGlyph(UnicodeChar uc) {
@@ -206,20 +210,20 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar,
-         *      long)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(
+         *      org.extex.core.UnicodeChar, long)
          */
         @Override
         public void setEfCode(UnicodeChar uc, long code) {
 
-            // TODO gene: setEfcode unimplemented
+            // setEfcode unimplemented
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
-         *      org.extex.core.dimen.Dimen)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(
+         *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         @Override
         public void setFontDimen(String name, Dimen value) {
@@ -230,7 +234,8 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(
+         *      org.extex.core.UnicodeChar)
          */
         @Override
         public void setHyphenChar(UnicodeChar h) {
@@ -379,11 +384,10 @@ public class BaseHyphenationTableTest extends TestCase {
     /**
      * Set-up the test suite.
      * 
-     * @throws Exception in case of an error
+     * @throws HyphenationException in case of an error
      */
     @Before
-    @Override
-    public void setUp() throws Exception {
+    public void setUp() throws HyphenationException {
 
         context = new MyMockContext();
         language = makeLanguage();
@@ -462,6 +466,122 @@ public class BaseHyphenationTableTest extends TestCase {
                 + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
                 + "...-}{}{}\n" + ".f", //
             nodes.toString());
+    }
+
+    /**
+     * <testcase> Test case checking that initially the name is
+     * <code>null</code>. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetName1() throws Exception {
+
+        assertNull(language.getName());
+    }
+
+    /**
+     * <testcase> Test case checking that the name set with setName() is
+     * retrieved by getName(). </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetName2() throws Exception {
+
+        String name = "abc";
+        language.setName(name);
+        assertEquals(name, language.getName());
+    }
+
+    /**
+     * <testcase> Test case checking that initially the left hyphen min is 0.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetLeftHyphenMin1() throws Exception {
+
+        assertEquals(0, language.getLeftHyphenMin());
+    }
+
+    /**
+     * <testcase> Test case checking that the left hyphen min set with
+     * setLeftHyphenmin() can be read with getLeftHyphenmin(). </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetLeftHyphenMin2() throws Exception {
+
+        language.setLeftHyphenMin(123);
+        assertEquals(123, language.getLeftHyphenMin());
+    }
+
+    /**
+     * <testcase> Test case checking that initially the right hyphen min is 0.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetRightHyphenMin1() throws Exception {
+
+        assertEquals(0, language.getRightHyphenMin());
+    }
+
+    /**
+     * <testcase> Test case checking that the right hyphen min set with
+     * setRightHyphenmin() can be read with getRightHyphenmin(). </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetRightHyphenMin2() throws Exception {
+
+        language.setRightHyphenMin(123);
+        assertEquals(123, language.getRightHyphenMin());
+    }
+
+    /**
+     * <testcase> Test case checking that initially the language is hyphenating.
+     * </testcase>
+     * 
+     * @throws HyphenationException in case of an error
+     */
+    @Test
+    public void testIsHyphenating1() throws HyphenationException {
+
+        assertTrue(language.isHyphenating());
+    }
+
+    /**
+     * <testcase> Test case checking that the hyphenating indicator set with
+     * setHyphenating() can be read with isHyphenating(). </testcase>
+     * 
+     * @throws HyphenationException in case of an error
+     */
+    @Test
+    public void testIsHyphenating2() throws HyphenationException {
+
+        language.setHyphenating(false);
+        assertFalse(language.isHyphenating());
+    }
+
+    /**
+     * <testcase> Test case checking that the hyphenating indicator set with
+     * setHyphenating() can be read with isHyphenating(). </testcase>
+     * 
+     * @throws HyphenationException in case of an error
+     */
+    @Test
+    public void testIsHyphenating3() throws HyphenationException {
+
+        language.setHyphenating(false);
+        assertFalse(language.isHyphenating());
+        language.setHyphenating(true);
+        assertTrue(language.isHyphenating());
     }
 
 }

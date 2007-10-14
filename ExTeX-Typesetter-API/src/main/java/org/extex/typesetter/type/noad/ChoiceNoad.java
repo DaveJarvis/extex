@@ -30,9 +30,9 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 
 /**
  * This noad provides a switch construction depending on the current style.
- *
+ * 
  * @see "TTP [689]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -66,14 +66,14 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param displayMath the noads used in display style
      * @param textMath the noads used in text style
      * @param scriptMath the noads used in script style
      * @param scriptscriptMath the noads used in scriptscript style
      */
-    public ChoiceNoad(Noad displayMath, Noad textMath,
-            Noad scriptMath, Noad scriptscriptMath) {
+    public ChoiceNoad(Noad displayMath, Noad textMath, Noad scriptMath,
+            Noad scriptscriptMath) {
 
         super();
         display = displayMath;
@@ -84,9 +84,9 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Getter for spacing class.
-     *
+     * 
      * @return the spacing class
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
@@ -96,9 +96,9 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -108,9 +108,9 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -119,10 +119,21 @@ public class ChoiceNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
+     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     */
+    public void setSpacingClass(MathSpacing spacingClass) {
+
+        this.spacingClass = spacingClass;
+    }
+
+    /**
      * Setter for the subscript.
-     *
+     * 
      * @param subscript the subscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -133,9 +144,9 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Setter for the superscript.
-     *
+     * 
      * @param superscript the superscript to set.
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -146,9 +157,9 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * 
      * @param sb the string buffer
-     *
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
@@ -159,10 +170,10 @@ public class ChoiceNoad implements Noad {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see "TTP [695]"
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
@@ -182,19 +193,17 @@ public class ChoiceNoad implements Noad {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see "TTP [731]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

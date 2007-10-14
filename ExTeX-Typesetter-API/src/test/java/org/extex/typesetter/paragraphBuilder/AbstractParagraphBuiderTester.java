@@ -19,14 +19,15 @@
 
 package org.extex.typesetter.paragraphBuilder;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import junit.framework.TestCase;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
@@ -62,6 +63,8 @@ import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * This is the abstract base class to test a paragraph builder.
@@ -69,7 +72,7 @@ import org.junit.Before;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5952 $
  */
-public abstract class AbstractParagraphBuiderTester extends TestCase {
+public abstract class AbstractParagraphBuiderTester {
 
     /**
      * Inner class for the typesetter options.
@@ -244,14 +247,14 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     private static Pattern pDisc = null;
 
     /**
-     * The field <tt>pRule</tt> contains the pattern to discover a rule.
-     */
-    private static Pattern pRule = null;
-
-    /**
      * The field <tt>pGlue</tt> contains the pattern to discover a glue.
      */
     private static Pattern pGlue = null;
+
+    /**
+     * The field <tt>pRule</tt> contains the pattern to discover a rule.
+     */
+    private static Pattern pRule = null;
 
     /**
      * The field <tt>tracer</tt> contains the logger for the output.
@@ -580,9 +583,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenmin()
+             * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenMin()
              */
-            public long getLeftHyphenmin() throws HyphenationException {
+            public long getLeftHyphenMin() throws HyphenationException {
 
                 return 0;
             }
@@ -598,7 +601,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 throw new RuntimeException("unimplemented");
             }
 
-            public long getRightHyphenmin() throws HyphenationException {
+            public long getRightHyphenMin() throws HyphenationException {
 
                 return 0;
             }
@@ -624,7 +627,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 throw new RuntimeException("unimplemented");
             }
 
-            public boolean isHyphenActive() throws HyphenationException {
+            public boolean isHyphenating() throws HyphenationException {
 
                 return false;
             }
@@ -635,13 +638,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 throw new RuntimeException("unimplemented");
             }
 
-            public void setHyphenActive(boolean active)
+            public void setHyphenating(boolean active)
                     throws HyphenationException {
 
                 // not needed
             }
 
-            public void setLeftHyphenmin(long left) throws HyphenationException {
+            public void setLeftHyphenMin(long left) throws HyphenationException {
 
                 // not needed
             }
@@ -651,113 +654,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 throw new RuntimeException("unimplemented");
             }
 
-            public void setRightHyphenmin(long right)
+            public void setRightHyphenMin(long right)
                     throws HyphenationException {
 
                 // not needed
             }
 
         });
-    }
-
-    /**
-     * <testcase> Test case checking that ... </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void _test4() throws Exception {
-
-        HorizontalListNode nodes = new HorizontalListNode();
-        nodes.add(new GlueNode(VPT, true));
-        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
-        nodes.add(new DiscretionaryNode(null, null, null));
-        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('f')));
-
-        NodeList list = pb.build(nodes);
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(2, list.size());
-    }
-
-    /**
-     * <testcase> Test case checking that ... </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void _test5() throws Exception {
-
-        HorizontalListNode nodes = new HorizontalListNode();
-        nodes.add(new GlueNode(VPT, true));
-        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
-        nodes.add(new DiscretionaryNode(new HorizontalListNode(),
-            new HorizontalListNode(), new HorizontalListNode()));
-        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('f')));
-
-        NodeList list = pb.build(nodes);
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(2, list.size());
-    }
-
-    /**
-     * <testcase> Test case checking that ... </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void _testBreak2() throws Exception {
-
-        HorizontalListNode nodes = new HorizontalListNode();
-        nodes.add(new GlueNode(VPT, true));
-        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
-
-        NodeList list = pb.build(nodes);
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(2, list.size());
-    }
-
-    /**
-     * <testcase> Test case checking that discretionary without content may be
-     * contained in the non-broken text. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void _testDisc2() throws Exception {
-
-        HorizontalListNode nodes = new HorizontalListNode();
-        nodes.add(new GlueNode(VPT, true));
-        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
-        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
-        nodes.add(new DiscretionaryNode(new HorizontalListNode(),
-            new HorizontalListNode(), new HorizontalListNode()));
-        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
-        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
-        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
-
-        NodeList list = pb.build(nodes);
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(2, list.size());
     }
 
     /**
@@ -789,7 +692,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c == ' ') {
+             if (c == ' ') {
                 nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
             } else if (c == '\\') {
                 Matcher m = pDisc.matcher(s.substring(i));
@@ -823,15 +726,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
+     * Set up for each test case.
      */
     @Before
-    @Override
-    public void setUp() throws Exception {
-
-        super.setUp();
+    public void setUp() {
 
         if (tracer == null) {
             tracer = Logger.getLogger(//
@@ -858,6 +756,62 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
+    @Ignore
+    public void test4() throws Exception {
+
+        HorizontalListNode nodes = new HorizontalListNode();
+        nodes.add(new GlueNode(VPT, true));
+        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
+        nodes.add(new DiscretionaryNode(null, null, null));
+        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('f')));
+
+        NodeList list = pb.build(nodes);
+
+        assertTrue(list instanceof VerticalListNode);
+        assertEquals(2, list.size());
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void test5() throws Exception {
+
+        HorizontalListNode nodes = new HorizontalListNode();
+        nodes.add(new GlueNode(VPT, true));
+        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
+        nodes.add(new DiscretionaryNode(new HorizontalListNode(),
+            new HorizontalListNode(), new HorizontalListNode()));
+        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('f')));
+
+        NodeList list = pb.build(nodes);
+
+        assertTrue(list instanceof VerticalListNode);
+        assertEquals(2, list.size());
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
     public void test6() throws Exception {
 
         HorizontalListNode nodes = new HorizontalListNode();
@@ -901,6 +855,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBreak1() throws Exception {
 
         NodeList list = pb.build(makeList("a"));
@@ -918,11 +873,37 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void testBreak2() throws Exception {
+
+        HorizontalListNode nodes = new HorizontalListNode();
+        nodes.add(new GlueNode(VPT, true));
+        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
+
+        NodeList list = pb.build(nodes);
+
+        assertTrue(list instanceof VerticalListNode);
+        assertEquals(2, list.size());
+    }
+
+    /**
      * <testcase> Test case checking that discretionary without content may be
      * contained in the non-broken text. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testDisc1() throws Exception {
 
         HorizontalListNode nodes = new HorizontalListNode();
@@ -955,11 +936,40 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
+     * <testcase> Test case checking that discretionary without content may be
+     * contained in the non-broken text. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void testDisc2() throws Exception {
+
+        HorizontalListNode nodes = new HorizontalListNode();
+        nodes.add(new GlueNode(VPT, true));
+        nodes.add(new CharNode(tc, UnicodeChar.get('a')));
+        nodes.add(new CharNode(tc, UnicodeChar.get('b')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('c')));
+        nodes.add(new DiscretionaryNode(new HorizontalListNode(),
+            new HorizontalListNode(), new HorizontalListNode()));
+        nodes.add(new CharNode(tc, UnicodeChar.get('d')));
+        nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
+        nodes.add(new CharNode(tc, UnicodeChar.get('e')));
+
+        NodeList list = pb.build(nodes);
+
+        assertTrue(list instanceof VerticalListNode);
+        assertEquals(2, list.size());
+    }
+
+    /**
      * <testcase> Test case checking that the empty list is treated correctly.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty1() throws Exception {
 
         NodeList list = pb.build(new HorizontalListNode());

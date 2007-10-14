@@ -45,7 +45,7 @@ public class HfillTest extends AbstractHfillTester {
      */
     public HfillTest() {
 
-        super("hfill", "");
+        super("hfill", "", "1.0fill");
     }
 
     /**

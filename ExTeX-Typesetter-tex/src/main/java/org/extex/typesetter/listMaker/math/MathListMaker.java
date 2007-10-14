@@ -166,22 +166,6 @@ public class MathListMaker extends HorizontalListMaker
             LogEnabled {
 
     /**
-     * The field <tt>SCRIPTSCRIPTFONT</tt> contains the key for the
-     * scriptscriptfont.
-     */
-    private static final String SCRIPTSCRIPTFONT = "\\scriptscriptfont";
-
-    /**
-     * The field <tt>SCRIPTFONT</tt> contains the key for the scriptfont.
-     */
-    private static final String SCRIPTFONT = "\\scriptfont";
-
-    /**
-     * The field <tt>TEXTFONT</tt> contains the key for the textfont.
-     */
-    private static final String TEXTFONT = "\\textfont";
-
-    /**
      * This inner class is a memento of the state of the math list maker. It is
      * used to store to the stack and restore the state from the stack.
      * 
@@ -271,6 +255,22 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * The field <tt>SCRIPTSCRIPTFONT</tt> contains the key for the
+     * scriptscriptfont.
+     */
+    private static final String SCRIPTSCRIPTFONT = "scriptscriptfont";
+
+    /**
+     * The field <tt>SCRIPTFONT</tt> contains the key for the scriptfont.
+     */
+    private static final String SCRIPTFONT = "scriptfont";
+
+    /**
+     * The field <tt>TEXTFONT</tt> contains the key for the textfont.
+     */
+    private static final String TEXTFONT = "textfont";
+
+    /**
      * The constant <tt>noadFactory</tt> contains the noad factory.
      */
     private static final NoadFactory NOAD_FACTORY = new NoadFactory();
@@ -324,20 +324,18 @@ public class MathListMaker extends HorizontalListMaker
      */
     protected static boolean insufficientSymbolFonts(TypesetterOptions options) {
 
-        Font textfont2 =
-                options.getFont(MathFontParameter.key(options, TEXTFONT, "2"));
+        Font textfont2 = options.getFont(MathFontParameter.key(options, //
+            TEXTFONT, "2"));
         if (textfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptfont2 =
-                options
-                    .getFont(MathFontParameter.key(options, SCRIPTFONT, "2"));
+        Font scriptfont2 = options.getFont(MathFontParameter.key(options, //
+            SCRIPTFONT, "2"));
         if (scriptfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptscriptfont2 =
-                options.getFont(MathFontParameter.key(options,
-                    SCRIPTSCRIPTFONT, "2"));
+        Font scriptscriptfont2 = options.getFont(MathFontParameter.key(options, //
+            SCRIPTSCRIPTFONT, "2"));
         if (scriptscriptfont2.getFontDimen("8") == null) {
             return true;
         }

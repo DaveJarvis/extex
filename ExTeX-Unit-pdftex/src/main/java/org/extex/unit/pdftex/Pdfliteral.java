@@ -44,7 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;pdfliteral&rang;
  *       &rarr; <tt>\pdfliteral</tt> &lang;optional direct&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
  *          &lang;general text&rang;}
  *
  *    &lang;optional direct&rang;

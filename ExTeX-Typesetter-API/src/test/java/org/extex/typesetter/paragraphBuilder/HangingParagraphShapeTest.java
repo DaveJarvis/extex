@@ -19,9 +19,10 @@
 
 package org.extex.typesetter.paragraphBuilder;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.core.dimen.Dimen;
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
@@ -30,7 +31,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5952 $
  */
-public class HangingParagraphShapeTest extends TestCase {
+public class HangingParagraphShapeTest {
 
     /**
      * The constant <tt>INDENT</tt> contains the amount of indentation to use.
@@ -56,6 +57,7 @@ public class HangingParagraphShapeTest extends TestCase {
      * Test case checking that parshape of length 0 repeats 0 as left and the
      * right margin.
      */
+    @Test
     public void test0() {
 
         HangingParagraphShape shape =
@@ -76,6 +78,7 @@ public class HangingParagraphShapeTest extends TestCase {
      * Test case checking that parshape of length 1 repeats 0 as left and the
      * right margin.
      */
+    @Test
     public void test1() {
 
         HangingParagraphShape shape =
@@ -96,6 +99,7 @@ public class HangingParagraphShapeTest extends TestCase {
      * Test case checking that parshape of length 2 repeats 0 as left and the
      * right margin.
      */
+    @Test
     public void test2() {
 
         HangingParagraphShape shape =
@@ -115,6 +119,7 @@ public class HangingParagraphShapeTest extends TestCase {
     /**
      * ...
      */
+    @Test
     public void test3() {
 
         HangingParagraphShape shape =
@@ -134,6 +139,7 @@ public class HangingParagraphShapeTest extends TestCase {
     /**
      * ...
      */
+    @Test
     public void testM1() {
 
         HangingParagraphShape shape =
@@ -153,6 +159,7 @@ public class HangingParagraphShapeTest extends TestCase {
     /**
      * ...
      */
+    @Test
     public void testM2() {
 
         HangingParagraphShape shape =
@@ -172,6 +179,7 @@ public class HangingParagraphShapeTest extends TestCase {
     /**
      * ...
      */
+    @Test
     public void testM3() {
 
         HangingParagraphShape shape =

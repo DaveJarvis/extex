@@ -93,28 +93,6 @@ public class TokenTester {
             new TabMarkToken(UnicodeChar.get('x'));
 
     /**
-     * The field <tt>catcode</tt> contains the expected result for
-     * getCatcode().
-     */
-    private Catcode catcode;
-
-    /**
-     * The field <tt>str</tt> contains the expected result for toString().
-     */
-    private String str;
-
-    /**
-     * The field <tt>text</tt> contains the expected result for toText().
-     */
-    private String text;
-
-    /**
-     * The field <tt>token</tt> contains the default token to perform the
-     * tests on.
-     */
-    private Token token;
-
-    /**
      * The constant <tt>TV</tt> contains the token visitor returning the
      * catcode.
      */
@@ -202,6 +180,28 @@ public class TokenTester {
             };
 
     /**
+     * The field <tt>catcode</tt> contains the expected result for
+     * getCatcode().
+     */
+    private Catcode catcode;
+
+    /**
+     * The field <tt>str</tt> contains the expected result for toString().
+     */
+    private String str;
+
+    /**
+     * The field <tt>text</tt> contains the expected result for toText().
+     */
+    private String text;
+
+    /**
+     * The field <tt>token</tt> contains the default token to perform the
+     * tests on.
+     */
+    private Token token;
+
+    /**
      * Creates a new object.
      * 
      * @param t the token
@@ -219,14 +219,7 @@ public class TokenTester {
     }
 
     /**
-     */
-    // public void testEqualsToken1() {
-    //
-    // Token t1 = new ActiveCharacterToken(UnicodeChar.get(' '), "");
-    // Token t2 = new OtherToken(UnicodeChar.get(' '));
-    // assertFalse(t1.equals(t2));
-    // }
-    /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq0() {
@@ -235,6 +228,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq1() {
@@ -243,14 +237,7 @@ public class TokenTester {
     }
 
     /**
-     */
-    @Test
-    public void testEq2() {
-
-        assertFalse(token.eq(Catcode.ESCAPE, "x"));
-    }
-
-    /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq10() {
@@ -259,6 +246,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq11() {
@@ -267,6 +255,16 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
+     */
+    @Test
+    public void testEq2() {
+
+        assertFalse(token.eq(Catcode.ESCAPE, "x"));
+    }
+
+    /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq20() {
@@ -275,6 +273,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEq21() {
@@ -283,6 +282,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testEquals0() {
@@ -291,6 +291,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testGetCatcode0() {
@@ -299,6 +300,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testGetChar0() {
@@ -309,30 +311,7 @@ public class TokenTester {
     }
 
     /**
-     */
-    // public void testEqualsCatcodechar0() {
-    //
-    // assertTrue(t.eq(Catcode.ACTIVE, 'x'));
-    // }
-    /**
-     */
-    // public void testEqualsCatcodechar1() {
-    //
-    // assertFalse(t.eq(Catcode.OTHER, 'x'));
-    // }
-    /**
-     */
-    // public void testEqualschar0() {
-    //
-    // assertTrue(t.eq('x'));
-    // }
-    /**
-     */
-    // public void testEqualsChar1() {
-    //
-    // assertFalse(token.eq('.'));
-    // }
-    /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa0() {
@@ -341,6 +320,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa1() {
@@ -349,6 +329,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa10() {
@@ -357,6 +338,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa11() {
@@ -365,6 +347,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa12() {
@@ -374,6 +357,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa13() {
@@ -382,6 +366,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa14() {
@@ -390,6 +375,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa15() {
@@ -398,6 +384,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa2() {
@@ -406,6 +393,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa3() {
@@ -414,6 +402,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa4() {
@@ -422,6 +411,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa5() {
@@ -430,6 +420,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa6() {
@@ -438,6 +429,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa7() {
@@ -446,6 +438,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa8() {
@@ -454,6 +447,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testIsa9() {
@@ -463,6 +457,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToString0() {
@@ -471,6 +466,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToString1() {
@@ -481,6 +477,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToStringBuilder1() {
@@ -491,6 +488,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToText0() {
@@ -499,6 +497,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToTextString0() {
@@ -507,6 +506,7 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that ... </testcase>
      */
     @Test
     public void testToTextString1() {
@@ -515,6 +515,8 @@ public class TokenTester {
     }
 
     /**
+     * <testcase> Test that the corrct visit method is invoked. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
