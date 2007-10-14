@@ -1,0 +1,6 @@
+%
+% Definitions for LaTeX2e
+%
+\documentclass[][1]
+\usepackage[][1]
+%
