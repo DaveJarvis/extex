@@ -17,32 +17,53 @@
  *
  */
 
-package org.extex.latexParser.impl;
+package org.extex.latexParser.impl.macro.latex;
 
-import java.io.IOException;
+import java.util.Map;
 
+import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.Macro;
+import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
 
 /**
- * This LaTeX parser preloads some common packages to get things started.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXParserImpl extends EmptyLaTeXParser {
+public class Begin implements Macro {
 
     /**
      * Creates a new object.
-     * 
-     * @throws IOException
-     * @throws ScannerException
      */
-    public LaTeXParserImpl() throws IOException, ScannerException {
+    public Begin(String s) {
 
         super();
-        load("TeX");
-        load("plain");
-        load("LaTeX2e");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Macro#parse(
+     *      org.extex.scanner.type.token.Token,
+     *      org.extex.latexParser.impl.Parser)
+     */
+    public Node parse(Token token, Parser parser) throws ScannerException {
+
+        GroupNode x = parser.parseGroup();
+
+        Map<String, Object> context = parser.getContext();
+        Object obj = context.get("environment");
+        if (obj == null) {
+
+        }
+
+        // TODO gene: parse unimplemented
+        throw new RuntimeException(" begin unimplemented");
+
     }
 
 }

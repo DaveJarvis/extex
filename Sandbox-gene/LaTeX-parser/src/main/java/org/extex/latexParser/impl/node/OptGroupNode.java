@@ -20,9 +20,11 @@
 package org.extex.latexParser.impl.node;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.extex.latexParser.api.Node;
-import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.OtherToken;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -30,39 +32,56 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MacroNode implements Node {
+public class OptGroupNode implements Node {
 
     /**
-     * The field <tt>token</tt> contains the ...
+     * The field <tt>list</tt> contains the ...
      */
-    private Token token;
+    private List<Node> list = new ArrayList<Node>();
 
-    private Node opt;
+    /**
+     * The field <tt>openToken</tt> contains the ...
+     */
+    private OtherToken openToken;
 
-    private Node[] args;
+    /**
+     * The field <tt>closeToken</tt> contains the ...
+     */
+    private OtherToken closeToken;
 
     /**
      * Creates a new object.
      * 
      * @param t the token to add
-     * @param opt
      */
-    public MacroNode(Token t, Node opt, Node[] args) {
+    public OptGroupNode(OtherToken t) {
 
         super();
-        token = t;
-        this.opt = opt;
-        this.args = args;
+        openToken = t;
     }
 
     /**
-     * Getter for token.
+     * Add a token to the list.
      * 
-     * @return the token
+     * @param n the node to add
+     * 
+     * @return <code>true</code>
+     * 
+     * @see java.util.List#add(java.lang.Object)
      */
-    public Token getToken() {
+    public boolean add(Node n) {
 
-        return token;
+        return list.add(n);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param t
+     */
+    public void close(OtherToken t) {
+
+        closeToken = t;
     }
 
     /**
@@ -72,27 +91,11 @@ public class MacroNode implements Node {
      */
     public void print(PrintStream stream) {
 
-        stream.print(token.toText());
-        if (opt != null) {
-            opt.print(stream);
-        }
-        for (Node n : args) {
+        stream.print(openToken.toText());
+        for (Node n : list) {
             n.print(stream);
         }
-    }
-
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(token.toText());
-        if (opt != null) {
-            sb.append(opt.toString());
-        }
-        for (Node n : args) {
-            sb.append(n.toString());
-        }
-        return sb.toString();
+        stream.print(closeToken.toText());
     }
 
 }

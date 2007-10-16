@@ -20,8 +20,12 @@
 package org.extex.latexParser.impl;
 
 import java.io.IOException;
+import java.util.Map;
 
+import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -32,17 +36,90 @@ import org.extex.scanner.type.token.Token;
  */
 public interface Parser {
 
+    /**
+     * Define an active character.
+     * 
+     * @param c the letter
+     * @param macro the code
+     */
     void def(char c, Macro macro);
 
+    /**
+     * Define a macro.
+     * 
+     * @param name the name without leading \
+     * @param macro the code
+     */
     void def(String name, Macro macro);
+
+    /**
+     * Getter for the context. The context can be used to store arbitrary data.
+     * 
+     * @return the context
+     */
+    Map<String, Object> getContext();
+
+    /**
+     * Get a token from the input stream.
+     * 
+     * @return the token read or <code>null</code> at EOF
+     * 
+     * @throws ScannerException in case of an error
+     */
+    Token getToken() throws ScannerException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param c
+     * @return
+     */
+    boolean isDefined(char c);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name
+     * @return
+     */
+    boolean isDefined(String name);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ScannerException in case of an error
+     */
+    void load(String name) throws IOException, ScannerException;
 
     /**
      * TODO gene: missing JavaDoc
      * 
      * @return
-     * @throws ScannerException
+     * 
+     * @throws ScannerException in case of an error
      */
-    Token getToken() throws ScannerException;
+    GroupNode parseGroup() throws ScannerException;
 
-    void load(String name) throws IOException;
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param t the starting left bracket
+     * 
+     * @return
+     * 
+     * @throws ScannerException in case of an error
+     */
+    Node parseOptionalArgument(OtherToken t) throws ScannerException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     * 
+     * @throws ScannerException in case of an error
+     */
+    Node parseTokenOrGroup() throws ScannerException;
 }

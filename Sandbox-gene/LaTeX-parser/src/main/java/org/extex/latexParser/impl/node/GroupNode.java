@@ -19,11 +19,13 @@
 
 package org.extex.latexParser.impl.node;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.latexParser.api.Node;
-import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.RightBraceToken;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -36,11 +38,17 @@ public class GroupNode implements Node {
     /**
      * The field <tt>list</tt> contains the ...
      */
-    private List<Token> list = new ArrayList<Token>();
+    private List<Node> list = new ArrayList<Node>();
 
-    private Token openToken;
+    /**
+     * The field <tt>openToken</tt> contains the ...
+     */
+    private LeftBraceToken openToken;
 
-    private Token closeToken;
+    /**
+     * The field <tt>closeToken</tt> contains the ...
+     */
+    private RightBraceToken closeToken;
 
     /**
      * Creates a new object.
@@ -55,7 +63,7 @@ public class GroupNode implements Node {
      * 
      * @param t the token to add
      */
-    public GroupNode(Token t) {
+    public GroupNode(LeftBraceToken t) {
 
         super();
         openToken = t;
@@ -64,20 +72,81 @@ public class GroupNode implements Node {
     /**
      * Add a token to the list.
      * 
-     * @param t the token to add
+     * @param n the node to add
      * 
      * @return <code>true</code>
      * 
      * @see java.util.List#add(java.lang.Object)
      */
-    public boolean add(Token t) {
+    public boolean add(Node n) {
 
-        return list.add(t);
+        return list.add(n);
     }
 
-    public void close(Token t) {
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param t
+     */
+    public void close(RightBraceToken t) {
 
         closeToken = t;
+    }
+
+    /**
+     * Getter for closeToken.
+     * 
+     * @return the closeToken
+     */
+    public RightBraceToken getCloseToken() {
+
+        return closeToken;
+    }
+
+    /**
+     * Getter for list.
+     * 
+     * @return the list
+     */
+    public List<Node> getList() {
+
+        return list;
+    }
+
+    /**
+     * Getter for openToken.
+     * 
+     * @return the openToken
+     */
+    public LeftBraceToken getOpenToken() {
+
+        return openToken;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(openToken.toText());
+        for (Node n : list) {
+            n.print(stream);
+        }
+        stream.print(closeToken.toText());
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(openToken.toText());
+        for (Node n : list) {
+            sb.append(n.toString());
+        }
+        sb.append(closeToken.toText());
+        return sb.toString();
     }
 
 }

@@ -19,6 +19,8 @@
 
 package org.extex.latexParser.impl.node;
 
+import java.io.PrintStream;
+
 import org.extex.latexParser.api.Node;
 import org.extex.scanner.type.token.Token;
 
@@ -54,6 +56,22 @@ public class TokenNode implements Node {
     public Token getToken() {
 
         return token;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(token.toText());
+    }
+
+    @Override
+    public String toString() {
+
+        return token.toText();
     }
 
 }

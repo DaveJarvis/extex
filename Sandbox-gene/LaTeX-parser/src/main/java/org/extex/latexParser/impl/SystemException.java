@@ -19,30 +19,25 @@
 
 package org.extex.latexParser.impl;
 
-import java.io.IOException;
-
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
- * This LaTeX parser preloads some common packages to get things started.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXParserImpl extends EmptyLaTeXParser {
+public class SystemException extends ScannerException {
 
     /**
      * Creates a new object.
      * 
-     * @throws IOException
-     * @throws ScannerException
+     * @param message
+     * @param cause
      */
-    public LaTeXParserImpl() throws IOException, ScannerException {
+    public SystemException(String message, Throwable cause) {
 
-        super();
-        load("TeX");
-        load("plain");
-        load("LaTeX2e");
+        super(message, cause);
     }
 
 }

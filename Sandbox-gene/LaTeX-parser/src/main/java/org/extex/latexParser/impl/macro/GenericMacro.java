@@ -27,6 +27,7 @@ import org.extex.latexParser.impl.node.MacroNode;
 import org.extex.latexParser.impl.node.TokenNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -62,21 +63,20 @@ public class GenericMacro implements Macro {
 
         if (spec == null || "".equals(spec)) {
             return new TokenNode(token);
-        } else if (spec.matches("\\[[1-9]\\]")) {
+        } else if (spec.matches("\\[[0-9]\\]")) {
             int n = spec.charAt(1) - '0';
             Node[] args = new Node[n];
             parseArgs(args, parser);
             return new MacroNode(token, null, args);
 
-        } else if (spec.matches("\\[.*\\]\\[[1-9]\\]")) {
+        } else if (spec.matches("\\[.*\\]\\[[0-9]\\]")) {
             int n = spec.charAt(spec.length() - 2) - '0';
             Node opt = null;
             Token t = parser.getToken();
             if (t == null) {
                 throw new SyntaxError("Unexpected EOF");
             } else if (t.eq(Catcode.OTHER, '[')) {
-                // TODO parse optional argument
-                throw new RuntimeException("unimplemented");
+                opt = parser.parseOptionalArgument((OtherToken) t);
             }
 
             Node[] args = new Node[n];
@@ -84,8 +84,7 @@ public class GenericMacro implements Macro {
             return new MacroNode(token, opt, args);
         }
 
-        // TODO gene: parse unimplemented
-        throw new RuntimeException("unimplemented");
+        throw new RuntimeException("unknown spec encountered");
     }
 
     /**
@@ -93,11 +92,14 @@ public class GenericMacro implements Macro {
      * 
      * @param args
      * @param parser
+     * 
+     * @throws ScannerException in case of an error
      */
-    private void parseArgs(Node[] args, Parser parser) {
+    private void parseArgs(Node[] args, Parser parser) throws ScannerException {
 
-        // TODO gene: enclosing_method unimplemented
-        throw new RuntimeException("unimplemented");
+        for (int i = 0; i < args.length; i++) {
+            args[i] = parser.parseTokenOrGroup();
+        }
     }
 
 }

@@ -19,12 +19,22 @@
 
 package org.extex.latexParser.api;
 
+import java.io.PrintStream;
+
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This is a top level interface where implementing class can put in
+ * functionality.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface Node {
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param stream
+     */
+    void print(PrintStream stream);
 
 }

@@ -30,18 +30,29 @@ import org.extex.scanner.api.exception.ScannerException;
 public class SyntaxError extends ScannerException {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * The field <tt>lineNo</tt> contains the line number.
+     */
+    private int lineNumber = -1;
+
+    /**
      * Creates a new object.
      * 
      */
     public SyntaxError() {
 
-        // TODO gene: SyntaxError constructor unimplemented
+        super();
     }
 
     /**
      * Creates a new object.
      * 
-     * @param message
+     * @param message the message
      */
     public SyntaxError(String message) {
 
@@ -51,12 +62,32 @@ public class SyntaxError extends ScannerException {
     /**
      * Creates a new object.
      * 
-     * @param message
-     * @param cause
+     * @param message the message
+     * @param cause the cause exception
      */
     public SyntaxError(String message, Throwable cause) {
 
         super(message, cause);
+    }
+
+    /**
+     * Getter for the line number.
+     * 
+     * @return the line number
+     */
+    public int getLineNumber() {
+
+        return lineNumber;
+    }
+
+    /**
+     * Setter for the line number.
+     * 
+     * @param lineNumber the line number
+     */
+    public void setLineNumber(int lineNumber) {
+
+        this.lineNumber = lineNumber;
     }
 
 }

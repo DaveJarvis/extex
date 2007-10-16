@@ -34,8 +34,10 @@ import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.LaTeXParser;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.latexParser.impl.node.OptGroupNode;
 import org.extex.latexParser.impl.node.TokenNode;
 import org.extex.latexParser.impl.node.TokensNode;
+import org.extex.latexParser.impl.util.DefinitionLoader;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.TokenStream;
@@ -62,7 +64,8 @@ import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.scanner.type.token.TokenVisitor;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the empty LaTeX parser in the sense that no macros or
+ * active characters are known.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -152,6 +155,11 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
     /**
+     * The field <tt>context</tt> contains the ...
+     */
+    private Map<String, Object> context = new HashMap<String, Object>();
+
+    /**
      * The field <tt>active</tt> contains the ...
      */
     private Map<UnicodeChar, Macro> active = new HashMap<UnicodeChar, Macro>();
@@ -161,32 +169,6 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     private final TokenVisitor<Node, TokenStream> visitor =
             new TokenVisitor<Node, TokenStream>() {
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws ScannerException
-                 */
-                private Node collectTokens(Token token, TokenStream stream)
-                        throws ScannerException {
-
-                    TokensNode list = new TokensNode(token);
-                    for (Token t = stream.get(FACTORY, TOKENIZER); t != null; t =
-                            stream.get(FACTORY, TOKENIZER)) {
-                        if (t instanceof LetterToken || t instanceof OtherToken
-                                || t instanceof SpaceToken) {
-                            list.add(t);
-                        } else {
-                            stream.put(t);
-                            return list;
-                        }
-                    }
-
-                    return list;
-                }
 
                 /**
                  * TODO gene: missing JavaDoc
@@ -250,7 +232,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 public Node visitLeftBrace(LeftBraceToken token,
                         TokenStream stream) throws Exception {
 
-                    return collectGroup(token, stream);
+                    return parseGroup(token);
                 }
 
                 /**
@@ -264,7 +246,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 public Node visitLetter(LetterToken token, TokenStream stream)
                         throws Exception {
 
-                    return collectTokens(token, stream);
+                    return parseTokens(token);
                 }
 
                 /**
@@ -314,7 +296,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 public Node visitOther(OtherToken token, TokenStream stream)
                         throws Exception {
 
-                    return collectTokens(token, stream);
+                    return parseTokens(token);
                 }
 
                 /**
@@ -342,7 +324,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 public Node visitSpace(SpaceToken token, TokenStream stream)
                         throws ScannerException {
 
-                    return collectTokens(token, stream);
+                    return parseTokens(token);
                 }
 
                 /**
@@ -388,10 +370,14 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private ResourceFinder finder;
 
     /**
-     * The field <tt>parser</tt> contains the ...
+     * The field <tt>parser</tt> contains the reference to the parser used;
+     * i.e. it is a self reference.
      */
     private Parser parser;
 
+    /**
+     * The field <tt>scanner</tt> contains the ...
+     */
     private TokenStream scanner;
 
     /**
@@ -401,36 +387,6 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
         super();
         parser = this;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param token
-     * @param stream
-     * @return
-     * @throws ScannerException
-     */
-    private Node collectGroup(LeftBraceToken token, TokenStream stream)
-            throws ScannerException {
-
-        int depth = 1;
-        GroupNode list = new GroupNode(token);
-        for (Token t = stream.get(FACTORY, TOKENIZER); t != null; t =
-                stream.get(FACTORY, TOKENIZER)) {
-            if (t instanceof LeftBraceToken) {
-                depth++;
-            } else if (t instanceof RightBraceToken) {
-                depth--;
-                if (depth <= 0) {
-                    list.close(t);
-                    return list;
-                }
-            }
-            list.add(t);
-        }
-
-        throw new SyntaxError("missing right brace");
     }
 
     /**
@@ -471,6 +427,16 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.latexParser.impl.Parser#getContext()
+     */
+    public Map<String, Object> getContext() {
+
+        return context;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.latexParser.impl.Parser#getToken()
      */
     public Token getToken() throws ScannerException {
@@ -479,6 +445,28 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#isDefined(char)
+     */
+    public boolean isDefined(char c) {
+
+        return active.containsKey(UnicodeChar.get(c));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#isDefined(java.lang.String)
+     */
+    public boolean isDefined(String name) {
+
+        return macros.containsKey(name);
+    }
+
+    /**
+     * Load the definition of macros and active characters from a resource on
+     * the classpath.
      * 
      * <pre>
      * % comment
@@ -491,31 +479,19 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @see org.extex.latexParser.impl.Parser#load(java.lang.String)
      */
-    public void load(String name) throws IOException {
+    public void load(String name) throws IOException, ScannerException {
 
         String resource = "sty/" + name;
         InputStream stream =
                 getClass().getClassLoader().getResourceAsStream(resource);
-
         if (stream == null) {
             throw new FileNotFoundException(resource);
         }
-        LineNumberReader r =
-                new LineNumberReader(new InputStreamReader(stream));
+
         try {
-            for (String s = r.readLine(); s != null; s = r.readLine()) {
-                if (s.startsWith("\\")) {
-                    // TODO gene: load unimplemented
-                    throw new RuntimeException("load unimplemented");
-                } else if (s.startsWith("[ ]*%")) {
-                    // ignore comments
-                } else {
-                    // TODO gene: load unimplemented
-                    throw new RuntimeException("load unimplemented");
-                }
-            }
+            DefinitionLoader.load(stream, this);
         } finally {
-            r.close();
+            stream.close();
         }
     }
 
@@ -525,7 +501,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * @param reader
      * @param source
      * @param content
-     * @throws Exception
+     * 
+     * @throws Exception in case of an error
      */
     private void parse(Reader reader, String source, List<Node> content)
             throws Exception {
@@ -536,8 +513,6 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 scanner.get(FACTORY, TOKENIZER)) {
             content.add((Node) t.visit(visitor, scanner));
         }
-
-        // TODO gene: parse unimplemented
     }
 
     /**
@@ -552,11 +527,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         if (stream == null) {
             throw new FileNotFoundException(source);
         }
+        LineNumberReader reader =
+                new LineNumberReader(new InputStreamReader(stream));
         try {
-            parse(new InputStreamReader(stream), source, content);
-        } catch (IOException e) {
-            throw e;
+            parse(reader, source, content);
         } catch (SyntaxError e) {
+            e.setLineNumber(reader.getLineNumber());
             throw e;
         } catch (ScannerException e) {
             throw e;
@@ -568,6 +544,122 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             stream.close();
         }
         return content;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#parseGroup()
+     */
+    public GroupNode parseGroup() throws ScannerException {
+
+        Token t = getToken();
+        if (t == null) {
+            throw new SyntaxError("Unexpected EOF");
+        } else if (!(t instanceof LeftBraceToken)) {
+            throw new SyntaxError("Brace expected");
+        }
+
+        return parseGroup((LeftBraceToken) t);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param token the opening token
+     * 
+     * @return
+     * 
+     * @throws ScannerException in case of an error
+     */
+    private GroupNode parseGroup(LeftBraceToken token) throws ScannerException {
+
+        GroupNode content = new GroupNode(token);
+        try {
+            for (Token t = getToken(); t != null; t = getToken()) {
+                if (t instanceof RightBraceToken) {
+                    content.close((RightBraceToken) t);
+                    return content;
+                }
+                content.add((Node) t.visit(visitor, scanner));
+            }
+        } catch (ScannerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException("unimplemented");
+        }
+
+        throw new SyntaxError("missing right brace");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#parseOptionalArgument( OtherToken)
+     */
+    public OptGroupNode parseOptionalArgument(OtherToken token)
+            throws ScannerException {
+
+        OptGroupNode content = new OptGroupNode(token);
+
+        try {
+            for (Token t = getToken(); t != null; t = getToken()) {
+
+                if (t.eq(Catcode.OTHER, ']')) {
+                    content.close((OtherToken) t);
+                    return content;
+                }
+                content.add((Node) t.visit(visitor, scanner));
+            }
+        } catch (ScannerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException("unimplemented");
+        }
+
+        throw new SyntaxError("Unexpected EOF in optional argument");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#parseTokenOrGroup()
+     */
+    public Node parseTokenOrGroup() throws ScannerException {
+
+        Token t = getToken();
+        if (t == null) {
+            throw new SyntaxError("Unexpected EOF");
+        } else if (!(t instanceof LeftBraceToken)) {
+            return new TokenNode(t);
+        }
+
+        return parseGroup((LeftBraceToken) t);
+    }
+
+    /**
+     * Collect a sequence of letter, other or space tokens.
+     * 
+     * @param token the first token
+     * 
+     * @return the node containing the tokens collected
+     * 
+     * @throws ScannerException in case of an error
+     */
+    private TokensNode parseTokens(Token token) throws ScannerException {
+
+        TokensNode list = new TokensNode(token);
+        for (Token t = getToken(); t != null; t = getToken()) {
+            if (t instanceof LetterToken || t instanceof OtherToken
+                    || t instanceof SpaceToken) {
+                list.add(t);
+            } else {
+                scanner.put(t);
+                return list;
+            }
+        }
+
+        return list;
     }
 
     /**

@@ -36,7 +36,7 @@ public class LaTeXValidatorTest {
     @Test
     public void test1() {
 
-        LaTeXValidator.main(new String[]{"src/test/resources/sample.tex"});
+        LaTeXValidator.main(new String[]{"src/test/resources/sample"});
     }
 
 }

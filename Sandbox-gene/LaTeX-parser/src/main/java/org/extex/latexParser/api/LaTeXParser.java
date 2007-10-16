@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a parser for LaTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,12 +33,14 @@ import org.extex.scanner.api.exception.ScannerException;
 public interface LaTeXParser {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse the source and return the syntax tree as list of nodes.
      * 
-     * @param source
+     * @param source the source to read from
+     * 
      * @return
-     * @throws IOException
-     * @throws ScannerException TODO
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ScannerException in case of an error
      */
     List<Node> parse(String source) throws IOException, ScannerException;
 

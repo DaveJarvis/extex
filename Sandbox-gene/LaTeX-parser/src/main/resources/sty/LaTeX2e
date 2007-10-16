@@ -1,0 +1,17 @@
+%
+% Definitions for LaTeX2e
+%
+\documentclass[][1]
+\usepackage[][1]
+\begin=org.extex.latexParser.impl.macro.latex.Begin
+\end=org.extex.latexParser.impl.macro.latex.End
+\item[][0]
+\paragraph[][1]
+\section[][1]
+\subsection[][1]
+\subsubsection[][1]
+\title[1]
+\author[1]
+\date[1]
+\maketitle
+%

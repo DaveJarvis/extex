@@ -19,6 +19,7 @@
 
 package org.extex.latexParser.impl.node;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,28 @@ public class TokensNode implements Node {
     public boolean add(Token t) {
 
         return list.add(t);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        for (Token t : list) {
+            stream.print(t.toText());
+        }
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        for (Token t : list) {
+            sb.append(t.toText());
+        }
+        return sb.toString();
     }
 
 }

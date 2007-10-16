@@ -26,6 +26,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.latexParser.impl.LaTeXParserImpl;
 import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.SystemException;
 import org.extex.resource.FileFinder;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.exception.ScannerException;
@@ -79,11 +80,14 @@ public class LaTeXValidator {
             parser.parse(source);
 
         } catch (SyntaxError e) {
-            System.err.println(source + ": " + e.getMessage());
+            System.err.println(source + ":" + e.getLineNumber() + ": "
+                    + e.getMessage());
+        } catch (SystemException e) {
+            System.err.println(source + ": " + e.getCause().toString());
         } catch (ScannerException e) {
             System.err.println(source + ": " + e.getMessage());
         } catch (FileNotFoundException e) {
-            System.err.println(source + ": file not found");
+            System.err.println(source + ": file not found " + e.getMessage());
         } catch (IOException e) {
             System.err.println(source + ": IO error: " + e.toString());
         } catch (RuntimeException e) {
