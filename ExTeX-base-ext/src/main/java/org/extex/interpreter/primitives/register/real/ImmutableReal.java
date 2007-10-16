@@ -53,71 +53,81 @@ public class ImmutableReal extends Real {
     }
 
     /**
-     * Setter for the value.
+     * {@inheritDoc}
      * 
-     * @param d the new value
+     * @see org.extex.interpreter.primitives.register.real.Real#add(double)
      */
-    public void setValue(double d) {
-
-        throw new RuntimeException("Unable to set an immutable object");
-    }
-
-    /**
-     * ...
-     * 
-     * @param val ...
-     */
+    @Override
     public void add(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * ...
+     * {@inheritDoc}
      * 
-     * @param real ...
+     * @see org.extex.interpreter.primitives.register.real.Real#add(
+     *      org.extex.interpreter.primitives.register.real.Real)
      */
+    @Override
     public void add(Real real) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * ...
+     * {@inheritDoc}
      * 
-     * @param val ...
+     * @see org.extex.interpreter.primitives.register.real.Real#divide(double)
      */
+    @Override
     public void divide(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * ...
+     * {@inheritDoc}
      * 
-     * @param val ...
+     * @see org.extex.interpreter.primitives.register.real.Real#divide(
+     *      org.extex.interpreter.primitives.register.real.Real)
      */
+    @Override
     public void divide(Real val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * ...
+     * {@inheritDoc}
      * 
-     * @param val ...
+     * @see org.extex.interpreter.primitives.register.real.Real#multiply(double)
      */
+    @Override
     public void multiply(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
 
     /**
-     * ...
+     * {@inheritDoc}
      * 
-     * @param val ...
+     * @see org.extex.interpreter.primitives.register.real.Real#multiply(
+     *      org.extex.interpreter.primitives.register.real.Real)
      */
+    @Override
     public void multiply(Real val) {
+
+        throw new RuntimeException("Unable to set an immutable object");
+    }
+
+    /**
+     * Setter for the value.
+     * 
+     * @param d the new value
+     */
+    @Override
+    public void setValue(double d) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }

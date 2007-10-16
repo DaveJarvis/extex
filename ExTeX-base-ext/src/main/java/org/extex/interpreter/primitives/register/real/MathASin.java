@@ -19,7 +19,6 @@
 
 package org.extex.interpreter.primitives.register.real;
 
-import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
