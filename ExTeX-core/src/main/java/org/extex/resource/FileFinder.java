@@ -129,7 +129,7 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
     /**
      * The field <tt>properties</tt> contains the properties instance to use.
      */
-    private Properties properties = null;
+    private Properties properties = new Properties();
 
     /**
      * Creates a new object.
@@ -142,6 +142,31 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
             throws ConfigurationMissingException {
 
         super(configuration);
+    }
+
+    /**
+     * Try to find a file on some paths by adding extensions.
+     * 
+     * @param name the name of the file to find
+     * @param paths a list of paths to explore
+     * @param cfg the configuration
+     * @param type the current type
+     * 
+     * @return the input stream for the file or <code>null</code> if none was
+     *         found.
+     */
+    private InputStream find(String name, List<String> paths,
+            Configuration cfg, String type) {
+
+        InputStream stream = null;
+        Iterator<String> iterator = paths.iterator();
+
+        while (stream == null && iterator.hasNext()) {
+            String p = iterator.next();
+            stream = find(name, p, cfg, type);
+        }
+
+        return stream;
     }
 
     /**
@@ -180,31 +205,6 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
             }
         }
         return null;
-    }
-
-    /**
-     * Try to find a file on some paths by adding extensions.
-     * 
-     * @param name the name of the file to find
-     * @param paths a list of paths to explore
-     * @param cfg the configuration
-     * @param type the current type
-     * 
-     * @return the input stream for the file or <code>null</code> if none was
-     *         found.
-     */
-    private InputStream find(String name, List<String> paths,
-            Configuration cfg, String type) {
-
-        InputStream stream = null;
-        Iterator<String> iterator = paths.iterator();
-
-        while (stream == null && iterator.hasNext()) {
-            String p = iterator.next();
-            stream = find(name, p, cfg, type);
-        }
-
-        return stream;
     }
 
     /**
