@@ -122,7 +122,10 @@
   <distributionManagement>
     <site>
       <id>www.extex.org</id>
+<!--
       <url>file://serv/www/extex/maven2</url>
+-->
+      <url>http://www.extex.org/maven2</url>
     </site>
   </distributionManagement>
 
@@ -160,6 +163,7 @@
    <module>ExTeX-Interpreter-max</module>
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
+   <module>ExTeX-ocpware</module>
    <module>ExTeX-Pdf-API</module>
    <module>ExTeX-Scanner</module>
    <module>ExTeX-Scanner32</module>
