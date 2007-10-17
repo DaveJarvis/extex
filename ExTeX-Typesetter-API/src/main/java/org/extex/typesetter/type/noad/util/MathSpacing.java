@@ -19,6 +19,8 @@
 
 package org.extex.typesetter.type.noad.util;
 
+import java.io.Serializable;
+
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.muskip.Muskip;
 import org.extex.typesetter.exception.TypesetterException;
@@ -29,38 +31,44 @@ import org.extex.typesetter.type.node.GlueNode;
 /**
  * Thus utility class contains some constants which describe the spacing between
  * elements in math typesetting.
- *
+ * 
  * <doc name="thinmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\thinmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\thinmuskip</tt> determines the amount of spacing
- *  to be inserted where a thin skip is required.
+ * The muskip parameter <tt>\thinmuskip</tt> determines the amount of spacing
+ * to be inserted where a thin skip is required.
  * </p>
  * </doc>
- *
+ * 
  * <doc name="medmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\medmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\medmuskip</tt> determines the amount of spacing
- *  to be inserted where a medium skip is required.
+ * The muskip parameter <tt>\medmuskip</tt> determines the amount of spacing
+ * to be inserted where a medium skip is required.
  * </p>
  * </doc>
- *
+ * 
  * <doc name="thickmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\thickmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\thickmuskip</tt> determines the amount of spacing
- *  to be inserted where a thick skip is required.
+ * The muskip parameter <tt>\thickmuskip</tt> determines the amount of spacing
+ * to be inserted where a thick skip is required.
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @see "TTP [764]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
-public final class MathSpacing {
+public final class MathSpacing implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>BIN</tt> contains the spacing class for binary operators.
@@ -88,12 +96,14 @@ public final class MathSpacing {
     public static final MathSpacing OPEN = new MathSpacing(4, "00*00000");
 
     /**
-     * The field <tt>ORD</tt> contains the spacing class for ordinary characters.
+     * The field <tt>ORD</tt> contains the spacing class for ordinary
+     * characters.
      */
     public static final MathSpacing ORD = new MathSpacing(0, "02340001");
 
     /**
-     * The field <tt>PUNCT</tt> contains the spacing class for punctation marks.
+     * The field <tt>PUNCT</tt> contains the spacing class for punctation
+     * marks.
      */
     public static final MathSpacing PUNCT = new MathSpacing(6, "11*11111");
 
@@ -120,10 +130,10 @@ public final class MathSpacing {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param id the internal id
      * @param spec the string to determine the actual distance to a following
-     *  noad
+     *        noad
      */
     private MathSpacing(int id, String spec) {
 
@@ -134,13 +144,13 @@ public final class MathSpacing {
 
     /**
      * Add some spacing to a list of nodes.
-     *
+     * 
      * @param previous the previous spacing class
      * @param list the list to add the spacing to
      * @param mathContext the math context
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see "TTP [766]"
      */
     public void addClearance(MathSpacing previous, NodeList list,
@@ -150,7 +160,7 @@ public final class MathSpacing {
             return;
         }
 
-        if (previous.id < 0) { //TODO gene: correct?
+        if (previous.id < 0) { // TODO gene: correct?
             return;
         }
 
