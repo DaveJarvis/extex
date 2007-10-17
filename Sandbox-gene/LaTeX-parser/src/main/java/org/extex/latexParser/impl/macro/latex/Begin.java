@@ -19,12 +19,17 @@
 
 package org.extex.latexParser.impl.macro.latex;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.macro.latex.util.EnvironmentInfo;
 import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
@@ -35,6 +40,12 @@ import org.extex.scanner.type.token.Token;
  * @version $Revision$
  */
 public class Begin implements Macro {
+
+    /**
+     * The field <tt>ENVIRONMENT</tt> contains the key for the environment
+     * list.
+     */
+    public final static String ENVIRONMENT = "environment";
 
     /**
      * Creates a new object.
@@ -54,16 +65,30 @@ public class Begin implements Macro {
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         GroupNode x = parser.parseGroup();
-
-        Map<String, Object> context = parser.getContext();
-        Object obj = context.get("environment");
-        if (obj == null) {
-
+        if (x.size() != 1) {
+            throw new SyntaxError("environment expected");
+        }
+        Node node = x.get(0);
+        if (!(node instanceof TokensNode)) {
+            throw new SyntaxError("environment expected");
+        }
+        String name = node.toString();
+        Macro macro = parser.getDefinition("begin." + name);
+        if (macro == null) {
+            throw new SyntaxError("environment " + name + " undefined");
         }
 
-        // TODO gene: parse unimplemented
-        throw new RuntimeException(" begin unimplemented");
+        Map<String, Object> context = parser.getContext();
+        List<EnvironmentInfo> stack =
+                (List<EnvironmentInfo>) context.get(ENVIRONMENT);
+        if (stack == null) {
+            stack = new ArrayList<EnvironmentInfo>();
+            context.put(ENVIRONMENT, stack);
+        }
+        stack.add(new EnvironmentInfo(name, //
+            parser.getSource(), parser.getLineno()));
 
+        System.err.println("opening " + name);
+        return macro.parse(null, parser);
     }
-
 }

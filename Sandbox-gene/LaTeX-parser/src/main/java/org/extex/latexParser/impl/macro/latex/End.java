@@ -19,9 +19,16 @@
 
 package org.extex.latexParser.impl.macro.latex;
 
+import java.util.List;
+import java.util.Map;
+
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.macro.latex.util.EnvironmentInfo;
+import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
@@ -50,10 +57,35 @@ public class End implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        Node name = parser.parseGroup();
+        GroupNode x = parser.parseGroup();
+        if (x.size() != 1) {
+            throw new SyntaxError("environment expected");
+        }
+        Node node = x.get(0);
+        if (!(node instanceof TokensNode)) {
+            throw new SyntaxError("environment expected");
+        }
+        String name = node.toString();
+        Macro macro = parser.getDefinition("end." + name);
+        if (macro == null) {
+            throw new SyntaxError("environment " + name + " undefined");
+        }
 
-        // TODO gene: parse unimplemented
-        return null;
+        Map<String, Object> context = parser.getContext();
+        List<EnvironmentInfo> info =
+                (List<EnvironmentInfo>) context.get(Begin.ENVIRONMENT);
+        if (info == null) {
+            throw new SyntaxError("environment " + name
+                    + " closed without being opened");
+        }
+        String iname = info.get(0).getName();
+        if (!iname.equals(name)) {
+            throw new SyntaxError("environment " + iname
+                    + " not closed when closing " + name);
+        }
+
+        System.err.println("closing " + name);
+
+        return macro.parse(null, parser);
     }
-
 }

@@ -60,6 +60,38 @@ public interface Parser {
     Map<String, Object> getContext();
 
     /**
+     * Getter for the definition of an active character.
+     * 
+     * @param c the character
+     * 
+     * @return the definition or <code>null</code>
+     */
+    Macro getDefinition(char c);
+
+    /**
+     * Getter for macros definition.
+     * 
+     * @param name the name of the macro
+     * 
+     * @return the definition or <code>null</code>
+     */
+    Macro getDefinition(String name);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    public int getLineno();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    public String getSource();
+
+    /**
      * Get a token from the input stream.
      * 
      * @return the token read or <code>null</code> at EOF
@@ -72,7 +104,8 @@ public interface Parser {
      * TODO gene: missing JavaDoc
      * 
      * @param c
-     * @return
+     * 
+     * @return <code>true</code> iff the active character is defined
      */
     boolean isDefined(char c);
 
@@ -80,7 +113,8 @@ public interface Parser {
      * TODO gene: missing JavaDoc
      * 
      * @param name
-     * @return
+     * 
+     * @return <code>true</code> iff the macro is defined
      */
     boolean isDefined(String name);
 

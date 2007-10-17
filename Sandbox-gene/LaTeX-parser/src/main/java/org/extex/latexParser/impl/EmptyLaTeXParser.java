@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -376,9 +375,19 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private Parser parser;
 
     /**
-     * The field <tt>scanner</tt> contains the ...
+     * The field <tt>scanner</tt> contains the reference to the scanner.
      */
     private TokenStream scanner;
+
+    /**
+     * The field <tt>source</tt> contains the ...
+     */
+    private String source;
+
+    /**
+     * The field <tt>reader</tt> contains the ...
+     */
+    private LineNumberReader reader;
 
     /**
      * Creates a new object.
@@ -405,8 +414,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param c
-     * @param code
+     * @param c the character
+     * @param code the code
      */
     public void def(char c, Macro code) {
 
@@ -416,8 +425,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param name
-     * @param code
+     * @param name the name of the macro
+     * @param code the code
      */
     public void def(String name, Macro code) {
 
@@ -432,6 +441,46 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public Map<String, Object> getContext() {
 
         return context;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#getDefinition(char)
+     */
+    public Macro getDefinition(char c) {
+
+        return active.get(UnicodeChar.get(c));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#getDefinition(java.lang.String)
+     */
+    public Macro getDefinition(String name) {
+
+        return macros.get(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#getLineno()
+     */
+    public int getLineno() {
+
+        return reader == null ? -1 : reader.getLineNumber();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    public String getSource() {
+
+        return source;
     }
 
     /**
@@ -504,9 +553,10 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @throws Exception in case of an error
      */
-    private void parse(Reader reader, String source, List<Node> content)
-            throws Exception {
+    private void parse(LineNumberReader reader, String source,
+            List<Node> content) throws Exception {
 
+        this.reader = reader;
         scanner = new TokenStreamImpl(null, null, reader, Boolean.TRUE, source);
 
         for (Token t = scanner.get(FACTORY, TOKENIZER); t != null; t =
@@ -522,6 +572,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     public List<Node> parse(String source) throws IOException, ScannerException {
 
+        this.source = source;
         List<Node> content = new ArrayList<Node>();
         InputStream stream = finder.findResource(source, "tex");
         if (stream == null) {

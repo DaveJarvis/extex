@@ -94,6 +94,16 @@ public class GroupNode implements Node {
     }
 
     /**
+     * @param index
+     * @return
+     * @see java.util.List#get(int)
+     */
+    public Node get(int index) {
+
+        return list.get(index);
+    }
+
+    /**
      * Getter for closeToken.
      * 
      * @return the closeToken
@@ -135,6 +145,15 @@ public class GroupNode implements Node {
             n.print(stream);
         }
         stream.print(closeToken.toText());
+    }
+
+    /**
+     * @return
+     * @see java.util.List#size()
+     */
+    public int size() {
+
+        return list.size();
     }
 
     @Override
