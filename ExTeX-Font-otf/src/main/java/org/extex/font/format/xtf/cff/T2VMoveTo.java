@@ -38,6 +38,11 @@ public class T2VMoveTo extends T2PathConstruction {
     private T2Number dy;
 
     /**
+     * The width (optional).
+     */
+    private T2Number width = null;
+
+    /**
      * Create a new object.
      * 
      * @param ch The char string.
@@ -51,7 +56,7 @@ public class T2VMoveTo extends T2PathConstruction {
         int n = stack.size();
 
         if (n > 1) {
-            checkWidth(stack, ch);
+            width = checkWidth(stack, ch);
         }
         n = stack.size();
         if (n != 1) {
@@ -118,6 +123,23 @@ public class T2VMoveTo extends T2PathConstruction {
         writer.writeStartElement(getName());
         writer.writeAttribute("dy", dy);
         writer.writeEndElement();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (width != null) {
+            buf.append(width.toString()).append(" ");
+        }
+        buf.append(dy.toString()).append(" ");
+        buf.append(getName());
+        return buf.toString();
     }
 
 }

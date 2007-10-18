@@ -120,4 +120,18 @@ public class T2CallGSubr extends T2Subroutine {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append(subr.toString()).append(" ");
+        buf.append(getName());
+        return buf.toString();
+    }
+
 }

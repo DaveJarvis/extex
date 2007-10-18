@@ -88,4 +88,18 @@ public class T2Return extends T2Subroutine {
         writer.writeStartElement(getName());
         writer.writeEndElement();
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append(getName());
+        return buf.toString();
+    }
+
 }

@@ -161,4 +161,23 @@ public class T2RcurveLine extends T2PathConstruction {
         writer.writeEndElement();
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+
+        buf.append(dxd.toString()).append(" ");
+        buf.append(dyd.toString()).append(" ");
+        for (int i = 0; i < eight.length; i++) {
+            buf.append(eight[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
 }

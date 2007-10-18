@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * rrcurveto: {dxa dya dxb dyb dxc dyc}+ rrcurveto (8).
+ * T2 rrcurveto: {dxa dya dxb dyb dxc dyc}+ rrcurveto (8).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -110,6 +110,23 @@ public class T2RrCurveTo extends T2PathConstruction {
     public Object getValue() {
 
         return six;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+
+        for (int i = 0; i < six.length; i++) {
+            buf.append(six[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
     }
 
     /**

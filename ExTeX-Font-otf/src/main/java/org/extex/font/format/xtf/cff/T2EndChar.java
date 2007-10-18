@@ -43,6 +43,11 @@ public class T2EndChar extends T2Operator {
     private short[] bytes;
 
     /**
+     * The width (optional).
+     */
+    private T2Number width = null;
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
@@ -55,6 +60,12 @@ public class T2EndChar extends T2Operator {
         super();
 
         bytes = convertStackaddID(stack, new short[]{T2ENDCHAR});
+
+        int n = stack.size();
+
+        if (n > 0) {
+            width = checkWidth(stack, ch);
+        }
 
     }
 
@@ -105,6 +116,22 @@ public class T2EndChar extends T2Operator {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (width != null) {
+            buf.append(width.toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -112,4 +139,5 @@ public class T2EndChar extends T2Operator {
         writer.writeStartElement(getName());
         writer.writeEndElement();
     }
+
 }

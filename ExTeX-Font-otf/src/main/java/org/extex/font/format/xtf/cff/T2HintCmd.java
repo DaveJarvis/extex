@@ -43,6 +43,11 @@ public abstract class T2HintCmd extends T2Hints {
     private T2PairNumber[] pairs;
 
     /**
+     * The width (optional).
+     */
+    private T2Number width = null;
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
@@ -58,7 +63,7 @@ public abstract class T2HintCmd extends T2Hints {
         bytes = convertStackaddID(stack, id);
 
         if (n % 2 != 0) {
-            checkWidth(stack, ch);
+            width = checkWidth(stack, ch);
         }
         n = stack.size();
         ch.addHints(n);
@@ -121,4 +126,24 @@ public abstract class T2HintCmd extends T2Hints {
         }
         writer.writeEndElement();
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (width != null) {
+            buf.append(width.toString()).append(" ");
+        }
+        for (int i = 0; i < pairs.length; i++) {
+            buf.append(pairs[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
 }

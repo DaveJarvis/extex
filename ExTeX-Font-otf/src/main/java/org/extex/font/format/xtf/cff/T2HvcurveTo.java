@@ -64,6 +64,11 @@ public class T2HvcurveTo extends T2PathConstruction {
     private T2EightNumber[] eight;
 
     /**
+     * Type 1 command.
+     */
+    private boolean type1;
+
+    /**
      * Create a new object.
      * 
      * @param ch The char string.
@@ -78,7 +83,7 @@ public class T2HvcurveTo extends T2PathConstruction {
 
         try {
 
-            boolean type1 = true;
+            type1 = true;
             if (n % 8 == 0 || n % 8 == 1) {
                 type1 = false;
             }
@@ -209,6 +214,35 @@ public class T2HvcurveTo extends T2PathConstruction {
     public Object getValue() {
 
         return eight;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+
+        if (type1) {
+            buf.append(dx1.toString()).append(" ");
+            buf.append(dx2.toString()).append(" ");
+            buf.append(dy2.toString()).append(" ");
+            buf.append(dy3.toString()).append(" ");
+        }
+
+        for (int i = 0; i < eight.length; i++) {
+            buf.append(eight[i].toString()).append(" ");
+        }
+
+        if (dxf != null) {
+            buf.append(dxf.toString()).append(" ");
+        }
+
+        buf.append(getName());
+        return buf.toString();
     }
 
     /**

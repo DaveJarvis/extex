@@ -232,21 +232,23 @@ public abstract class T2Operator extends T2CharString
      * 
      * @param stack The stack.
      * @param ch The char string.
-     * @throws T2MissingNumberException if an error occurred.
+     * @return Returns the with or <code>null</code>, if no exists.
      */
-    protected void checkWidth(List<T2CharString> stack, CharString ch)
-            throws T2MissingNumberException {
+    protected T2Number checkWidth(List<T2CharString> stack, CharString ch) {
 
+        // TODO mgn incomplete
         // if (ch.getWidth() != null) {
         // throw new T2MissingNumberException();
         // }
-        T2CharString w = stack.get(0);
-        if (w instanceof T2Number) {
-            ch.setWidth((T2Number) w);
-            stack.remove(0);
-        } else {
-            throw new T2MissingNumberException();
+        if (stack.size() > 0) {
+            T2CharString w = stack.get(0);
+            if (w instanceof T2Number) {
+                ch.setWidth((T2Number) w);
+                stack.remove(0);
+                return (T2Number) w;
+            }
         }
+        return null;
     }
 
     /**

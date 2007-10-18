@@ -72,7 +72,7 @@ public class T2VhcurveTo extends T2PathConstruction {
         int n = stack.size();
         try {
 
-            boolean type1 = true;
+            type1 = true;
             if (n % 8 == 0 || n % 8 == 1) {
                 type1 = false;
             }
@@ -115,6 +115,11 @@ public class T2VhcurveTo extends T2PathConstruction {
      * The dxf.
      */
     private T2Number dxf;
+
+    /**
+     * Type 1 command.
+     */
+    private boolean type1;
 
     /**
      * Getter for dx2.
@@ -232,6 +237,35 @@ public class T2VhcurveTo extends T2PathConstruction {
     public T2Number getDxf() {
 
         return dxf;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+
+        if (type1) {
+            buf.append(dy1.toString()).append(" ");
+            buf.append(dx2.toString()).append(" ");
+            buf.append(dy2.toString()).append(" ");
+            buf.append(dx3.toString()).append(" ");
+        }
+
+        for (int i = 0; i < eight.length; i++) {
+            buf.append(eight[i].toString()).append(" ");
+        }
+
+        if (dxf != null) {
+            buf.append(dxf.toString()).append(" ");
+        }
+
+        buf.append(getName());
+        return buf.toString();
     }
 
 }

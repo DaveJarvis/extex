@@ -177,6 +177,23 @@ public class T2CntrMask extends T2AbstractHintMask {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < val.length; i++) {
+            buf.append(val[i].toString()).append(" ");
+        }
+        buf.append(getName()).append(" ");
+        buf.append(toBin(mask));
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

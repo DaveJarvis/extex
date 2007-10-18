@@ -169,4 +169,23 @@ public class T2HLineTo extends T2PathConstruction {
         writer.writeEndElement();
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (dx != null) {
+            buf.append(dx.toString()).append(" ");
+        }
+        for (int i = 0; i < pairs.length; i++) {
+            buf.append(pairs[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
 }

@@ -151,6 +151,25 @@ public class T2VLineTo extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (dy != null) {
+            buf.append(dy.toString()).append(" ");
+        }
+        for (int i = 0; i < pairs.length; i++) {
+            buf.append(pairs[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

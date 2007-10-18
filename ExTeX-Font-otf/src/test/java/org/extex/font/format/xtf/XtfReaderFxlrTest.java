@@ -403,5 +403,57 @@ public class XtfReaderFxlrTest extends TestCase {
         assertEquals(59, pairs[0].getB().getInteger());
 
     }
+
+    /**
+     * test 07.
+     * 
+     * <pre>
+     * -CharString name="amacron"
+     *     -50 -12 48 -48 41 383 30 97 44 hstemhm
+     *     39 72 -61 73 168 74 53 25 hintmask 10110111
+     *     355 -12 rmoveto
+     *     -33 callsubr
+     *     hintmask 01111011
+     *     -32 callsubr
+     *     -64 257 rmoveto
+     *     -31 callsubr
+     *     42 294 rmoveto
+     *     82 callsubr
+     *     endchar
+     * -CharString
+     *
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test07() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        CharString cs = font.getCharstring("amacron");
+        assertNotNull(cs);
+
+        assertEquals("amacron", cs.getName());
+        assertEquals(11, cs.size());
+
+        // size -50
+        // nominalWidthX value="501"
+        assertEquals(501 - 50, cs.getWidth().intValue());
+
+        // -50 -12 48 -48 41 383 30 97 44 hstemhm
+        T2Operator op = cs.get(0);
+        assertNotNull(op);
+
+        String text = op.toText();
+        assertNotNull(text);
+
+        assertEquals("-50 -12 48 -48 41 383 30 97 44 hstemhm", text);
+
+    }
     // --------------------------------------------------------------
+
 }

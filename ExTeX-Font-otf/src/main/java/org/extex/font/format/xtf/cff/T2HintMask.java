@@ -195,4 +195,21 @@ public class T2HintMask extends T2AbstractHintMask {
         writer.writeEndElement();
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < val.length; i++) {
+            buf.append(val[i].toString()).append(" ");
+        }
+        buf.append(getName()).append(" ");
+        buf.append(toBin(mask));
+        return buf.toString();
+    }
+
 }
