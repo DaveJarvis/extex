@@ -72,6 +72,207 @@ import org.extex.scanner.type.token.TokenVisitor;
 public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
     /**
+     * TODO gene: missing JavaDoc.
+     * 
+     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+     * @version $Revision$
+     */
+    private class ToVi implements TokenVisitor<Node, TokenStream> {
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitActive(ActiveCharacterToken token, TokenStream stream)
+                throws Exception {
+
+            Macro m = macros.get(token.getChar());
+            if (m == null) {
+                throw new SyntaxError("undefined active character");
+            }
+            return m.parse(token, parser);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitCr(CrToken token, TokenStream stream) throws Exception {
+
+            return new TokenNode(token);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitEscape(ControlSequenceToken token, TokenStream stream)
+                throws Exception {
+
+            Macro m = macros.get(token.getName());
+            if (m == null) {
+                throw new SyntaxError(token.toText()
+                        + ": undefined control sequence");
+            }
+            return m.parse(token, parser);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitLeftBrace(LeftBraceToken token, TokenStream stream)
+                throws Exception {
+
+            return parseGroup(token);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitLetter(LetterToken token, TokenStream stream)
+                throws Exception {
+
+            return parseTokens(token, null);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitMacroParam(MacroParamToken token, TokenStream stream)
+                throws Exception {
+
+            return new TokenNode(token);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitMathShift(MathShiftToken token, TokenStream stream)
+                throws Exception {
+
+            Token t = stream.get(FACTORY, tokenizer);
+            if (t == null) {
+                throw new SyntaxError("Unexpected EOF in math");
+            }
+            if (t instanceof MathShiftToken) {
+                return collectMath(token, t);
+            }
+            stream.put(t);
+            return collectMath(token, null);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitOther(OtherToken token, TokenStream stream)
+                throws Exception {
+
+            return parseTokens(token, null);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws Exception
+         */
+        public Node visitRightBrace(RightBraceToken token, TokenStream stream)
+                throws Exception {
+
+            throw new SyntaxError("Extra right brace encountered");
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         * @throws ScannerException in case of an error
+         */
+        public Node visitSpace(SpaceToken token, TokenStream stream)
+                throws ScannerException {
+
+            return parseTokens(token, null);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         */
+        public Node visitSubMark(SubMarkToken token, TokenStream stream) {
+
+            return new TokenNode(token);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         */
+        public Node visitSupMark(SupMarkToken token, TokenStream stream) {
+
+            return new TokenNode(token);
+        }
+
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param token
+         * @param stream
+         * @return
+         */
+        public Node visitTabMark(TabMarkToken token, TokenStream stream) {
+
+            return new TokenNode(token);
+        }
+    }
+
+    /**
      * The field <tt>factory</tt> contains the token factory to use.
      */
     protected static final TokenFactory FACTORY = new TokenFactoryImpl();
@@ -166,202 +367,34 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * The field <tt>visitor</tt> contains the ...
      */
-    private final TokenVisitor<Node, TokenStream> visitor =
-            new TokenVisitor<Node, TokenStream>() {
+    private final TokenVisitor<Node, TokenStream> visitor = new ToVi();
 
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitActive(ActiveCharacterToken token,
-                        TokenStream stream) throws Exception {
+    /**
+     * The field <tt>visitor</tt> contains the ...
+     */
+    private final TokenVisitor<Node, TokenStream> visitorOpt = new ToVi() {
 
-                    Macro m = macros.get(token.getChar());
-                    if (m == null) {
-                        throw new SyntaxError("undefined active character");
-                    }
-                    return m.parse(token, parser);
-                }
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitOther(
+         *      org.extex.scanner.type.token.OtherToken,
+         *      org.extex.scanner.api.TokenStream)
+         */
+        @Override
+        public Node visitOther(OtherToken token, TokenStream stream)
+                throws Exception {
 
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitCr(CrToken token, TokenStream stream)
-                        throws Exception {
+            return parseTokens(token, //
+                FACTORY.createToken(Catcode.OTHER, ']', ""));
+        }
 
-                    return new TokenNode(token);
-                }
+    };
 
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitEscape(ControlSequenceToken token,
-                        TokenStream stream) throws Exception {
-
-                    Macro m = macros.get(token.getName());
-                    if (m == null) {
-                        throw new SyntaxError(token.toText()
-                                + ": undefined control sequence");
-                    }
-                    return m.parse(token, parser);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitLeftBrace(LeftBraceToken token,
-                        TokenStream stream) throws Exception {
-
-                    return parseGroup(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitLetter(LetterToken token, TokenStream stream)
-                        throws Exception {
-
-                    return parseTokens(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitMacroParam(MacroParamToken token,
-                        TokenStream stream) throws Exception {
-
-                    return new TokenNode(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitMathShift(MathShiftToken token,
-                        TokenStream stream) throws Exception {
-
-                    Token t = stream.get(FACTORY, TOKENIZER);
-                    if (t == null) {
-                        throw new SyntaxError("Unexpected EOF in math");
-                    }
-                    if (t instanceof MathShiftToken) {
-                        return collectMath(token, t);
-                    }
-                    stream.put(t);
-                    return collectMath(token, null);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitOther(OtherToken token, TokenStream stream)
-                        throws Exception {
-
-                    return parseTokens(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws Exception
-                 */
-                public Node visitRightBrace(RightBraceToken token,
-                        TokenStream stream) throws Exception {
-
-                    throw new SyntaxError("Extra right brace encountered");
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 * @throws ScannerException in case of an error
-                 */
-                public Node visitSpace(SpaceToken token, TokenStream stream)
-                        throws ScannerException {
-
-                    return parseTokens(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 */
-                public Node visitSubMark(SubMarkToken token, TokenStream stream) {
-
-                    return new TokenNode(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 */
-                public Node visitSupMark(SupMarkToken token, TokenStream stream) {
-
-                    return new TokenNode(token);
-                }
-
-                /**
-                 * TODO gene: missing JavaDoc
-                 * 
-                 * @param token
-                 * @param stream
-                 * @return
-                 */
-                public Node visitTabMark(TabMarkToken token, TokenStream stream) {
-
-                    return new TokenNode(token);
-                }
-            };
+    /**
+     * The field <tt>tokenizer</tt> contains the ...
+     */
+    private Tokenizer tokenizer = TOKENIZER;
 
     /**
      * The field <tt>finder</tt> contains the resource finder.
@@ -490,7 +523,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     public Token getToken() throws ScannerException {
 
-        return scanner.get(FACTORY, TOKENIZER);
+        return scanner.get(FACTORY, tokenizer);
     }
 
     /**
@@ -559,8 +592,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         this.reader = reader;
         scanner = new TokenStreamImpl(null, null, reader, Boolean.TRUE, source);
 
-        for (Token t = scanner.get(FACTORY, TOKENIZER); t != null; t =
-                scanner.get(FACTORY, TOKENIZER)) {
+        for (Token t = scanner.get(FACTORY, tokenizer); t != null; t =
+                scanner.get(FACTORY, tokenizer)) {
             content.add((Node) t.visit(visitor, scanner));
         }
     }
@@ -660,7 +693,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                     content.close((OtherToken) t);
                     return content;
                 }
-                content.add((Node) t.visit(visitor, scanner));
+                content.add((Node) t.visit(visitorOpt, scanner));
             }
         } catch (ScannerException e) {
             throw e;
@@ -692,16 +725,21 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * Collect a sequence of letter, other or space tokens.
      * 
      * @param token the first token
+     * @param endToken TODO
      * 
      * @return the node containing the tokens collected
      * 
      * @throws ScannerException in case of an error
      */
-    private TokensNode parseTokens(Token token) throws ScannerException {
+    private TokensNode parseTokens(Token token, Token endToken)
+            throws ScannerException {
 
         TokensNode list = new TokensNode(token);
         for (Token t = getToken(); t != null; t = getToken()) {
-            if (t instanceof LetterToken || t instanceof OtherToken
+            if (t.equals(endToken)) {
+                scanner.put(t);
+                return list;
+            } else if (t instanceof LetterToken || t instanceof OtherToken
                     || t instanceof SpaceToken) {
                 list.add(t);
             } else {
@@ -722,6 +760,19 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#setTokenizer(
+     *      org.extex.scanner.api.Tokenizer)
+     */
+    public Tokenizer setTokenizer(Tokenizer tokenizer) {
+
+        Tokenizer t = this.tokenizer;
+        this.tokenizer = tokenizer;
+        return t;
     }
 
 }

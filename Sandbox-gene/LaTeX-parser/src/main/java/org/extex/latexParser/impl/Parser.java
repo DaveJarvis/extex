@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
@@ -156,4 +157,12 @@ public interface Parser {
      * @throws ScannerException in case of an error
      */
     Node parseTokenOrGroup() throws ScannerException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param tokenizer
+     * @return
+     */
+    Tokenizer setTokenizer(Tokenizer tokenizer);
 }
