@@ -11,7 +11,9 @@
 \subsection[][1]
 \subsubsection[][1]
 \title[1]
-\author[1]
+\author[][1]
 \date[1]
 \maketitle
+\begin.document=org.extex.latexParser.impl.macro.Environment
+\end.document=org.extex.latexParser.impl.macro.EndEnvironment
 %
