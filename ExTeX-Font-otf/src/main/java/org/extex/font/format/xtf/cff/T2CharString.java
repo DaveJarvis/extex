@@ -48,54 +48,9 @@ public abstract class T2CharString {
     public static final byte ESCAPE_BYTE = 12;
 
     /**
-     * hstem.
+     * callgsubr.
      */
-    public static final int T2HSTEM = 1;
-
-    /**
-     * hstemhm.
-     */
-    public static final int T2HSTEMHM = 18;
-
-    /**
-     * rmoveto
-     */
-    public static final int T2RMOVETO = 21;
-
-    /**
-     * hmoveto
-     */
-    public static final int T2HMOVETO = 22;
-
-    /**
-     * vmoveto
-     */
-    public static final int T2VMOVETO = 4;
-
-    /**
-     * rlineto
-     */
-    public static final int T2RLINETO = 5;
-
-    /**
-     * hlineto
-     */
-    public static final int T2HLINETO = 6;
-
-    /**
-     * vlineto
-     */
-    public static final int T2VLINETO = 7;
-
-    /**
-     * vstem.
-     */
-    public static final int T2VSTEM = 3;
-
-    /**
-     * vstemhm.
-     */
-    public static final int T2VSTEMHM = 23;
+    public static final int T2CALLGSUBR = 29;
 
     /**
      * callsubr.
@@ -103,9 +58,9 @@ public abstract class T2CharString {
     public static final int T2CALLSUBR = 10;
 
     /**
-     * callgsubr.
+     * cntrmask (20).
      */
-    public static final int T2CALLGSUBR = 29;
+    public static final int T2CNTRMASK = 20;
 
     /**
      * endchar.
@@ -113,54 +68,14 @@ public abstract class T2CharString {
     public static final int T2ENDCHAR = 14;
 
     /**
-     * rrcurveto.
-     */
-    public static final int T2RRCURVETO = 8;
-
-    /**
-     * hintmask.
-     */
-    public static final int T2HINTMASK = 19;
-
-    /**
-     * hhcurveto.
-     */
-    public static final int T2HHCURVETO = 27;
-
-    /**
-     * hvcurveto.
-     */
-    public static final int T2HVCURVETO = 31;
-
-    /**
-     * rcurveline.
-     */
-    public static final int T2RCURVELINE = 24;
-
-    /**
-     * rlinecurve.
-     */
-    public static final int T2RLINECURVE = 25;
-
-    /**
-     * vhcurveto.
-     */
-    public static final int T2VHCURVETO = 30;
-
-    /**
-     * vvcurveto.
-     */
-    public static final int T2VVCURVETO = 26;
-
-    /**
      * flex (12 35).
      */
     public static final int T2FLEX = 35;
 
     /**
-     * return (11).
+     * flex1 (12 37).
      */
-    public static final int T2RETURN = 11;
+    public static final int T2FLEX1 = 37;
 
     /**
      * hflex (12 34).
@@ -173,74 +88,104 @@ public abstract class T2CharString {
     public static final int T2HFLEX1 = 36;
 
     /**
-     * flex1 (12 37).
+     * hhcurveto.
      */
-    public static final int T2FLEX1 = 37;
+    public static final int T2HHCURVETO = 27;
 
     /**
-     * cntrmask (20).
+     * hintmask.
      */
-    public static final int T2CNTRMASK = 20;
+    public static final int T2HINTMASK = 19;
 
     /**
-     * Type hstem.
+     * hlineto
      */
-    public static final int TYPE_HSTEM = 1;
+    public static final int T2HLINETO = 6;
 
     /**
-     * Type hstemhm.
+     * hmoveto
      */
-    public static final int TYPE_HSTEMHM = 3;
+    public static final int T2HMOVETO = 22;
 
     /**
-     * Type vstem.
+     * hstem.
      */
-    public static final int TYPE_VSTEM = 2;
+    public static final int T2HSTEM = 1;
 
     /**
-     * Type vstemhm.
+     * hstemhm.
      */
-    public static final int TYPE_VSTEMHM = 4;
+    public static final int T2HSTEMHM = 18;
 
     /**
-     * Type rmoveto.
+     * hvcurveto.
      */
-    public static final int TYPE_RMOVETO = 5;
+    public static final int T2HVCURVETO = 31;
 
     /**
-     * Type hmoveto.
+     * rcurveline.
      */
-    public static final int TYPE_HMOVETO = 6;
+    public static final int T2RCURVELINE = 24;
 
     /**
-     * Type vmoveto.
+     * return (11).
      */
-    public static final int TYPE_VMOVETO = 7;
+    public static final int T2RETURN = 11;
 
     /**
-     * Type rlineto.
+     * rlinecurve.
      */
-    public static final int TYPE_RLINETO = 8;
+    public static final int T2RLINECURVE = 25;
 
     /**
-     * Type hlineto.
+     * rlineto
      */
-    public static final int TYPE_HLINETO = 9;
+    public static final int T2RLINETO = 5;
 
     /**
-     * Type vlineto.
+     * rmoveto
      */
-    public static final int TYPE_VLINETO = 10;
+    public static final int T2RMOVETO = 21;
 
     /**
-     * Type rrcurveto.
+     * rrcurveto.
      */
-    public static final int TYPE_RRCURVETO = 11;
+    public static final int T2RRCURVETO = 8;
 
     /**
-     * Type hintmask.
+     * vhcurveto.
      */
-    public static final int TYPE_HINTMASK = 12;
+    public static final int T2VHCURVETO = 30;
+
+    /**
+     * vlineto
+     */
+    public static final int T2VLINETO = 7;
+
+    /**
+     * vmoveto
+     */
+    public static final int T2VMOVETO = 4;
+
+    /**
+     * vstem.
+     */
+    public static final int T2VSTEM = 3;
+
+    /**
+     * vstemhm.
+     */
+    public static final int T2VSTEMHM = 23;
+
+    /**
+     * vvcurveto.
+     */
+    public static final int T2VVCURVETO = 26;
+
+    /**
+     * Type callgsubr.
+     */
+    public static final int TYPE_CALLGSUBR = 26;
 
     /**
      * Type callsubr.
@@ -248,44 +193,24 @@ public abstract class T2CharString {
     public static final int TYPE_CALLSUBR = 13;
 
     /**
+     * Type cntrmask.
+     */
+    public static final int TYPE_CNTRMASK = 25;
+
+    /**
      * Type endchar.
      */
     public static final int TYPE_ENDCHAR = 14;
 
     /**
-     * Type hhcurveto.
-     */
-    public static final int TYPE_HHCURVETO = 15;
-
-    /**
-     * Type hvcurveto.
-     */
-    public static final int TYPE_HVCURVETO = 16;
-
-    /**
-     * Type rcurveline.
-     */
-    public static final int TYPE_RCURVELINE = 17;
-
-    /**
-     * Type rlinecurve.
-     */
-    public static final int TYPE_RLINECURVE = 18;
-
-    /**
-     * Type vhcurveto.
-     */
-    public static final int TYPE_VHCURVETO = 19;
-
-    /**
-     * Type vvcurveto.
-     */
-    public static final int TYPE_VVCURVETO = 20;
-
-    /**
      * Type flex.
      */
     public static final int TYPE_FLEX = 21;
+
+    /**
+     * Type flex1.
+     */
+    public static final int TYPE_FLEX1 = 24;
 
     /**
      * Type hflex.
@@ -298,24 +223,99 @@ public abstract class T2CharString {
     public static final int TYPE_HFLEX1 = 23;
 
     /**
-     * Type flex1.
+     * Type hhcurveto.
      */
-    public static final int TYPE_FLEX1 = 24;
+    public static final int TYPE_HHCURVETO = 15;
 
     /**
-     * Type cntrmask.
+     * Type hintmask.
      */
-    public static final int TYPE_CNTRMASK = 25;
+    public static final int TYPE_HINTMASK = 12;
 
     /**
-     * Type callgsubr.
+     * Type hlineto.
      */
-    public static final int TYPE_CALLGSUBR = 26;
+    public static final int TYPE_HLINETO = 9;
+
+    /**
+     * Type hmoveto.
+     */
+    public static final int TYPE_HMOVETO = 6;
+
+    /**
+     * Type hstem.
+     */
+    public static final int TYPE_HSTEM = 1;
+
+    /**
+     * Type hstemhm.
+     */
+    public static final int TYPE_HSTEMHM = 3;
+
+    /**
+     * Type hvcurveto.
+     */
+    public static final int TYPE_HVCURVETO = 16;
+
+    /**
+     * Type rcurveline.
+     */
+    public static final int TYPE_RCURVELINE = 17;
 
     /**
      * Type return.
      */
     public static final int TYPE_RETURN = 27;
+
+    /**
+     * Type rlinecurve.
+     */
+    public static final int TYPE_RLINECURVE = 18;
+
+    /**
+     * Type rlineto.
+     */
+    public static final int TYPE_RLINETO = 8;
+
+    /**
+     * Type rmoveto.
+     */
+    public static final int TYPE_RMOVETO = 5;
+
+    /**
+     * Type rrcurveto.
+     */
+    public static final int TYPE_RRCURVETO = 11;
+
+    /**
+     * Type vhcurveto.
+     */
+    public static final int TYPE_VHCURVETO = 19;
+
+    /**
+     * Type vlineto.
+     */
+    public static final int TYPE_VLINETO = 10;
+
+    /**
+     * Type vmoveto.
+     */
+    public static final int TYPE_VMOVETO = 7;
+
+    /**
+     * Type vstem.
+     */
+    public static final int TYPE_VSTEM = 2;
+
+    /**
+     * Type vstemhm.
+     */
+    public static final int TYPE_VSTEMHM = 4;
+
+    /**
+     * Type vvcurveto.
+     */
+    public static final int TYPE_VVCURVETO = 20;
 
     /**
      * Read a number.
@@ -410,7 +410,7 @@ public abstract class T2CharString {
             int baseoffset, CffFont cffFont) throws IOException;
 
     /**
-     * Check, if the objekt is a array.
+     * Check, if the object is a array.
      * 
      * @return Returns <code>true</code>, if the object is a array.
      */
@@ -420,7 +420,7 @@ public abstract class T2CharString {
     }
 
     /**
-     * Check, if the objekt is a boolean.
+     * Check, if the object is a boolean.
      * 
      * @return Returns <code>true</code>, if the object is a boolean.
      */
@@ -430,7 +430,7 @@ public abstract class T2CharString {
     }
 
     /**
-     * Check, if the objekt is a double.
+     * Check, if the object is a double.
      * 
      * @return Returns <code>true</code>, if the object is a double.
      */
@@ -440,7 +440,7 @@ public abstract class T2CharString {
     }
 
     /**
-     * Check, if the objekt is an escape-marker.
+     * Check, if the object is an escape-marker.
      * 
      * @return Returns <code>true</code>, if the object is an escape-marker.
      */
@@ -449,21 +449,8 @@ public abstract class T2CharString {
         return false;
     }
 
-    // /**
-    // * Read a operator.
-    // *
-    // * @param rar the input
-    // * @return Returns the operator.
-    // * @throws IOException if an IO-error occurs.
-    // */
-    // public static T2Operator readOperator(RandomAccessR rar) throws
-    // IOException {
-    //
-    // return T2Operator.newInstance(rar);
-    // }
-
     /**
-     * Check, if the objekt is a integer.
+     * Check, if the object is a integer.
      * 
      * @return Returns <code>true</code>, if the object is a integer.
      */
@@ -473,7 +460,7 @@ public abstract class T2CharString {
     }
 
     /**
-     * Check, if the objekt is an operator.
+     * Check, if the object is an operator.
      * 
      * @return Returns <code>true</code>, if the object is an operator.
      */
@@ -483,7 +470,7 @@ public abstract class T2CharString {
     }
 
     /**
-     * Check, if the objekt is a Top DICT operator.
+     * Check, if the object is a Top DICT operator.
      * 
      * @return Returns <code>true</code>, if the object is a Top DICT
      *         operator.

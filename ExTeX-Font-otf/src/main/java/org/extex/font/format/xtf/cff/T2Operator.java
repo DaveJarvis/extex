@@ -42,7 +42,7 @@ public abstract class T2Operator extends T2CharString
      * Create a new instance.
      * 
      * @param rar the input
-     * @param ch TODO
+     * @param ch The charstring
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
@@ -196,7 +196,9 @@ public abstract class T2Operator extends T2CharString
                 case T2HHCURVETO:
                     return new T2HhcurveTo(stack, ch);
                 case 28:
-                    return new T2Dummy(stack, ch, "shortint"); // shortint
+                    T2Number number28 = new T2Number16(rar, b0);
+                    stack.add(number28);
+                    break;
                 case T2CALLGSUBR:
                     return new T2CallGSubr(stack, ch);
                 case T2VHCURVETO:
@@ -233,13 +235,14 @@ public abstract class T2Operator extends T2CharString
      * @param stack The stack.
      * @param ch The char string.
      * @return Returns the with or <code>null</code>, if no exists.
+     * @throws T2MissingNumberException if a error occurred.
      */
-    protected T2Number checkWidth(List<T2CharString> stack, CharString ch) {
+    protected T2Number checkWidth(List<T2CharString> stack, CharString ch)
+            throws T2MissingNumberException {
 
-        // TODO mgn incomplete
-        // if (ch.getWidth() != null) {
-        // throw new T2MissingNumberException();
-        // }
+        if (ch.getWidth() != null) {
+            throw new T2MissingNumberException();
+        }
         if (stack.size() > 0) {
             T2CharString w = stack.get(0);
             if (w instanceof T2Number) {

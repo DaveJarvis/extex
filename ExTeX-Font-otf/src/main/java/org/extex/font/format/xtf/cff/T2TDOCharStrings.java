@@ -200,6 +200,7 @@ public class T2TDOCharStrings extends T2TDONumber {
                         }
                     }
                 } catch (IOException e) {
+                    e.printStackTrace();
                     // TODO change to EOFException ignore
                 }
                 chars[i].checkWidth();

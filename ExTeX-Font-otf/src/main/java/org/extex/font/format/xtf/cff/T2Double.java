@@ -46,7 +46,7 @@ import org.extex.util.file.random.RandomAccessR;
 public class T2Double extends T2Number {
 
     /**
-     * ID: identifier
+     * ID: identifier (30)
      */
     static final int ID = 30;
 
@@ -158,7 +158,7 @@ public class T2Double extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     @Override
@@ -185,7 +185,7 @@ public class T2Double extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Number#getDouble()
      */
     @Override
@@ -196,7 +196,7 @@ public class T2Double extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Number#getInteger()
      */
     @Override

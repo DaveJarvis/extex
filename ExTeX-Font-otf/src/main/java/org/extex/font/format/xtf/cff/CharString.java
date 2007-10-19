@@ -251,6 +251,23 @@ public class CharString implements XMLWriterConvertible {
     /**
      * {@inheritDoc}
      * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append(getName()).append(" (").append(idx).append(")\n");
+        for (int i = 0, n = t2Ops.size(); i < n; i++) {
+            buf.append(t2Ops.get(i).toText()).append("\n");
+        }
+        return buf.toString();
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

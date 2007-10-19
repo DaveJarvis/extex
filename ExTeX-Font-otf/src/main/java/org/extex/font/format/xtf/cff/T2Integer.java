@@ -26,7 +26,7 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Integer.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -74,10 +74,25 @@ public class T2Integer extends T2Number {
     static final int R8 = 29;
 
     /**
+     * range 255: fraction
+     */
+    static final int R9 = 255;
+
+    /**
+     * the bytes as short-array
+     */
+    private short[] bytes;
+
+    /**
+     * the value
+     */
+    private int value;
+
+    /**
      * Create a new object.
-     *
-     * @param rar   the input
-     * @param b0    the b0
+     * 
+     * @param rar the input
+     * @param b0 the b0
      * @throws IOException if an IO-error occurs.
      */
     T2Integer(RandomAccessR rar, int b0) throws IOException {
@@ -111,8 +126,9 @@ public class T2Integer extends T2Number {
             int b2 = rar.readUnsignedByte();
             int b3 = rar.readUnsignedByte();
             int b4 = rar.readUnsignedByte();
-            value = b1 << XtfConstants.SHIFT24 | b2 << XtfConstants.SHIFT16
-                    | b3 << XtfConstants.SHIFT8 | b4;
+            value =
+                    b1 << XtfConstants.SHIFT24 | b2 << XtfConstants.SHIFT16
+                            | b3 << XtfConstants.SHIFT8 | b4;
             bytes = new short[5];
             bytes[0] = (short) b0;
             bytes[1] = (short) b1;
@@ -123,18 +139,8 @@ public class T2Integer extends T2Number {
     }
 
     /**
-     * the value
-     */
-    private int value;
-
-    /**
-     * the bytes as short-array
-     */
-    private short[] bytes;
-
-    /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     @Override
@@ -145,18 +151,7 @@ public class T2Integer extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.cff.T2CharString#isInteger()
-     */
-    @Override
-    public boolean isInteger() {
-
-        return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Number#getDouble()
      */
     @Override
@@ -167,7 +162,7 @@ public class T2Integer extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Number#getInteger()
      */
     @Override
@@ -178,7 +173,18 @@ public class T2Integer extends T2Number {
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#isInteger()
+     */
+    @Override
+    public boolean isInteger() {
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

@@ -122,14 +122,6 @@ import org.extex.util.file.random.RandomAccessR;
 public abstract class T2Number extends T2CharString {
 
     /**
-     * Create a new object.
-     */
-    protected T2Number() {
-
-        super();
-    }
-
-    /**
      * Create a new instance.
      * 
      * @param rar the input
@@ -160,16 +152,19 @@ public abstract class T2Number extends T2CharString {
             }
             return new T2Integer(rar, b0);
 
+        } else if (b0 == T2Integer.R9) {
+            return new T2NumberFraction(rar, b0);
         }
         throw new T2NotANumberException();
     }
 
     /**
-     * Returns the value as int.
-     * 
-     * @return Returns the value as int.
+     * Create a new object.
      */
-    public abstract int getInteger();
+    protected T2Number() {
+
+        super();
+    }
 
     /**
      * Returns the value as double.
@@ -177,6 +172,13 @@ public abstract class T2Number extends T2CharString {
      * @return Returns the value as double.
      */
     public abstract double getDouble();
+
+    /**
+     * Returns the value as int.
+     * 
+     * @return Returns the value as int.
+     */
+    public abstract int getInteger();
 
     /**
      * {@inheritDoc}
@@ -189,7 +191,7 @@ public abstract class T2Number extends T2CharString {
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
             CffFont cffFont) throws IOException {
 
-        //
+        // ignore
     }
 
 }
