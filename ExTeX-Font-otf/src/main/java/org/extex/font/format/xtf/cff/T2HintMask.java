@@ -26,7 +26,7 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * hintmask: hintmask (19 + mask).
+ * T2: hintmask: hintmask (19 + mask).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -58,10 +58,7 @@ public class T2HintMask extends T2AbstractHintMask {
 
         int n = stack.size();
         val = new T2Number[n];
-
-        if (n > ch.getActualHints()) {
-            ch.setHints(n);
-        }
+        ch.addHints(n);
 
         for (int i = 0; i < n; i++) {
             val[i] = (T2Number) stack.get(i);
@@ -142,7 +139,7 @@ public class T2HintMask extends T2AbstractHintMask {
      */
     private void readMask(CharString ch, RandomAccessR rar) throws IOException {
 
-        int cnt = (ch.getActualHints() - 1) / 8;
+        int cnt = (ch.getActualHints() / 2 - 1) / 8;
         mask = rar.readUnsignedByte();
         for (int i = 0; i < cnt; i++) {
             mask = mask << 8;
@@ -153,15 +150,17 @@ public class T2HintMask extends T2AbstractHintMask {
     /**
      * Returns the binary value with zeros.
      * 
-     * @param val The value.
+     * @param valueMask The value.
      * @return Returns the binary string.
      */
-    private String toBin(long val) {
+    static String toBin(long valueMask) {
 
-        StringBuffer buf =
-                new StringBuffer(
-                    "0000000000000000000000000000000000000000000000000000000000000000");
-        String bin = Long.toBinaryString(val);
+        StringBuffer buf = new StringBuffer(128);
+        String bin = Long.toBinaryString(valueMask);
+        buf
+            .append("0000000000000000000000000000000000000000000000000000000000000000");
+        buf
+            .append("0000000000000000000000000000000000000000000000000000000000000000");
         buf.append(bin);
         int le = 8;
         int bl = bin.length();
@@ -171,28 +170,15 @@ public class T2HintMask extends T2AbstractHintMask {
             le = 16;
         } else if (bl <= 24) {
             le = 24;
-        } else {
+        } else if (bl <= 32) {
             le = 32;
+        } else if (bl <= 40) {
+            le = 40;
+        } else {
+            le = 48;
         }
 
         return buf.substring(buf.length() - le);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("mask", toBin(mask));
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(" ").append(val[i]);
-        }
-        writer.writeAttribute("values", buf.toString().trim());
-        writer.writeEndElement();
     }
 
     /**
@@ -210,6 +196,23 @@ public class T2HintMask extends T2AbstractHintMask {
         buf.append(getName()).append(" ");
         buf.append(toBin(mask));
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("mask", toBin(mask));
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < val.length; i++) {
+            buf.append(" ").append(val[i]);
+        }
+        writer.writeAttribute("values", buf.toString().trim());
+        writer.writeEndElement();
     }
 
 }

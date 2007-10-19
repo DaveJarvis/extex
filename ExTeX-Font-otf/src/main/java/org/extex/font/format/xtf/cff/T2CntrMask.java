@@ -58,6 +58,7 @@ public class T2CntrMask extends T2AbstractHintMask {
 
         int n = stack.size();
         val = new T2Number[n];
+        ch.addHints(n);
 
         for (int i = 0; i < n; i++) {
             val[i] = (T2Number) stack.get(i);
@@ -94,7 +95,7 @@ public class T2CntrMask extends T2AbstractHintMask {
      */
     public String getMaskBin() {
 
-        return toBin(mask);
+        return T2HintMask.toBin(mask);
     }
 
     /**
@@ -138,40 +139,12 @@ public class T2CntrMask extends T2AbstractHintMask {
      */
     private void readMask(CharString ch, RandomAccessR rar) throws IOException {
 
-        int cnt = (ch.getActualHints() - 1) / 8;
+        int cnt = (ch.getActualHints() / 2 - 1) / 8;
         mask = rar.readUnsignedByte();
         for (int i = 0; i < cnt; i++) {
             mask = mask << 8;
             mask += rar.readUnsignedByte();
         }
-    }
-
-    /**
-     * Returns the binary value with zeros.
-     * 
-     * @param val The value.
-     * @return Returns the binary string.
-     */
-    private String toBin(long val) {
-
-        StringBuffer buf =
-                new StringBuffer(
-                    "0000000000000000000000000000000000000000000000000000000000000000");
-        String bin = Long.toBinaryString(val);
-        buf.append(bin);
-        int le = 8;
-        int bl = bin.length();
-        if (bl <= 8) {
-            le = 8;
-        } else if (bl <= 16) {
-            le = 16;
-        } else if (bl <= 24) {
-            le = 24;
-        } else {
-            le = 32;
-        }
-
-        return buf.substring(buf.length() - le);
     }
 
     /**
@@ -187,7 +160,7 @@ public class T2CntrMask extends T2AbstractHintMask {
             buf.append(val[i].toString()).append(" ");
         }
         buf.append(getName()).append(" ");
-        buf.append(toBin(mask));
+        buf.append(T2HintMask.toBin(mask));
         return buf.toString();
     }
 
@@ -199,7 +172,7 @@ public class T2CntrMask extends T2AbstractHintMask {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("mask", toBin(mask));
+        writer.writeAttribute("mask", T2HintMask.toBin(mask));
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < val.length; i++) {
             buf.append(" ").append(val[i]);

@@ -67,10 +67,11 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
             if (cmd == null || cmd.trim().length() == 0) {
                 break;
             }
-            assertFalse(i >= cs.size());
+            assertFalse("IndexOutOfBoundsException", i >= cs.size());
             T2Operator c = cs.get(i);
             assertNotNull(c);
-            assertEquals(cmd.trim(), c.toText());
+            String text2 = c.toText();
+            assertEquals("CharStringCommand", cmd.trim(), text2);
         }
 
     }
@@ -7762,8 +7763,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "0 19 -2 1 rlineto",
                         "-52 0 -25 -1 -49 0 rrcurveto",
                         "-124 hlineto",
-                        "hintmask 1010",
-                        "1111",
+                        "hintmask 10101111",
                         "-137 0 -62 3 -45 0 rrcurveto",
                         "-1 -2 0 -18 rlineto",
                         "-9 3 -1 18 49 8 -12 -121 vhcurveto",
@@ -11314,7 +11314,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-12 hlineto",
                         "-31 0 -9 10 6 21 9 27 13 49 14 54 5 9 15 0 27 0 rrcurveto",
                         "100 hlineto", "27 0 9 -2 3 -10 rrcurveto",
-                        "22 -113 rlineto", "6 -32 -7 -13 -40 0 rr", "curveto",
+                        "22 -113 rlineto", "6 -32 -7 -13 -40 0 rrcurveto",
                         "-7 hlineto", "-4 -2 -3 -3 hvcurveto",
                         "0 -21 1 -2 rlineto", "0 64 2 28 vhcurveto",
                         "-61 -33 -40 -59 0 -48 0 -54 39 -31 54 0 rrcurveto",
@@ -12035,7 +12035,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "23 0 49 -2 56 0 155 0 45 64 0 62 0 65 -36 49 -83 18 rrcurveto",
                         "hintmask 00101110",
                         "40 18 33 38 0 39 0 48 -26 62 -146 0 -27 0 -57 -2 -26 0 rrcurveto",
-                        "hintmask 01110101", "-25 0 -41 1 -", "34 1 rrcurveto",
+                        "hintmask 01110101", "-25 0 -41 1 -34 1 rrcurveto",
                         "-24 vlineto", "-2 1 -2 5 vhcurveto", "23 hlineto",
                         "32 8 -9 -24 hvcurveto", "-340 vlineto",
                         "-25 -9 -8 -31 vhcurveto", "-23 hlineto",
@@ -15512,8 +15512,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "67 1 27 363 39 132 119 -28 28 -18 35 hstemhm",
                         "92 75 191 75 hintmask 11010110",
                         "368 564 rmoveto",
-                        "-9 -36 -1 -39",
-                        "0 -20 rrcurveto",
+                        "-9 -36 -1 -39 0 -20 rrcurveto",
                         "-39 -191 8 vlineto",
                         "0 68 5 35 6 19 21 80 42 13 15 0 11 0 8 -2 16 -10 rrcurveto",
                         "hintmask 11100110",
@@ -15808,8 +15807,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-3 -26 -4 -31 -34 61 -15 29 hvcurveto",
                         "25 0 29 12 26 26 56 56 9 55 0 131 rrcurveto",
                         "384 -15 vlineto",
-                        "-13 0 -32 -1",
-                        "4 -35 0 rrcurveto",
+                        "-13 0 -32 -14 -35 0 rrcurveto",
                         "-189 59 hlineto",
                         "154 67 24 33 vhcurveto",
                         "33 0 31 -12 8 -42 12 -55 16 -24 32 0 20 0 20 18 0 21 0 37 -34 39 -37 24 -25 17 -27 10 -37 0 -66 0 -58 -40 -27 -35 rrcurveto",
@@ -17175,7 +17173,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "hintmask 11110110", "-185 0 rlineto",
                         "hintmask 11101110", "-78 hlineto",
                         "-13 -115 2 0 hvcurveto", "-1 -2 0 -18 rlineto",
-                        "-5 3 -3 4 vhcurveto", "30", "hlineto",
+                        "-5 3 -3 4 vhcurveto", "30 hlineto",
                         "43 9 -10 -35 hvcurveto",
                         "-142 -87 -39 87 -47 -87 -39 87 -162 vlineto",
                         "-31 -15 -13 -40 vhcurveto", "-26 hlineto",
@@ -29514,8 +29512,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "27 -3 rlineto",
                         "hintmask 01010111",
                         "20 73 34 17 30 0 rrcurveto",
-                        "135 0 -",
-                        "243 -359 rlineto",
+                        "135 0 -243 -359 rlineto",
                         "-8 -12 -1 -3 0 -5 rrcurveto",
                         "-7 7 -5 16 vhcurveto",
                         "303 hlineto",
@@ -29589,12 +29586,11 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-17 -14 -13 -25 -30 52 -21 41 hvcurveto",
                         "24 0 30 12 26 27 rrcurveto", "hintmask 10000101",
                         "56 55 9 55 0 131 rrcurveto", "375 -15 vlineto",
-                        "-10 0 -4 -3 -7 -4 -12 -6 -23",
-                        "-12 -73 -12 rrcurveto", "5 -28 rlineto",
-                        "17 4 11 1 14 0 rrcurveto", "13 9 -9 -52 hvcurveto",
-                        "-284 vlineto", "-142 -30 -79 -44 vhcurveto",
-                        "hintmask 10010110", "53 755 rmoveto", "149 callsubr",
-                        "endchar", "", null};
+                        "-10 0 -4 -3 -7 -4 -12 -6 -23 -12 -73 -12 rrcurveto",
+                        "5 -28 rlineto", "17 4 11 1 14 0 rrcurveto",
+                        "13 9 -9 -52 hvcurveto", "-284 vlineto",
+                        "-142 -30 -79 -44 vhcurveto", "hintmask 10010110",
+                        "53 755 rmoveto", "149 callsubr", "endchar", "", null};
         check(cs, text);
     }
 
@@ -30752,8 +30748,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "4 31 11 47 17 58 rrcurveto",
                         "-27 7 -13 -29 rlineto",
                         "-23 -53 -17 -22 -58 0 rrcurveto",
-                        "-130 0 2",
-                        "36 348 rlineto",
+                        "-130 0 236 348 rlineto",
                         "23 33 -1 5 0 4 0 5 -8 1 -5 0 -2 0 -36 -5 -29 0 rrcurveto",
                         "endchar", "", null};
         check(cs, text);
@@ -31890,8 +31885,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "21 1 -16 -52 hvcurveto",
                         "-154 vlineto",
                         "-36 24 -44 3 -20 0 rrcurveto",
-                        "-82 -124 -58 -173 -104 65 -119 124 hvcurv",
-                        "eto",
+                        "-82 -124 -58 -173 -104 65 -119 124 hvcurveto",
                         "47 0 38 20 32 33 11 -41 27 -9 31 -9 -20 -32 -17 -32 -19 -34 rrcurveto",
                         "25 -9 59 102 rlineto", "hintmask 10111111",
                         "7 -1 11 -1 4 0 rrcurveto", "83 75 46 88 hvcurveto",
@@ -32834,7 +32828,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-12 -10 -18 -11 -7 3 -8 9 hvcurveto",
                         "87 -93 hlineto", "-35 -12 -11 -40 vhcurveto",
                         "-30 hlineto", "-5 0 -1 -5 -1 -3 rrcurveto",
-                        "170 555 rmoveto", "hintmask 0011101100", "000000",
+                        "170 555 rmoveto", "hintmask 0011101100000000",
                         "-72 callsubr", "endchar", "", null};
         check(cs, text);
     }
@@ -35370,8 +35364,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "20 10 -17 -56 hvcurveto",
                         "-153 vlineto",
                         "hintmask 10011110",
-                        "-24 13 -43 9 -20 0 -67 0 -43 -22 -41 -38 -42 -43 -20 -62 0 -74 0 -123 65 -92 109 0 50 0 39 30 38",
-                        "39 rrcurveto",
+                        "-24 13 -43 9 -20 0 -67 0 -43 -22 -41 -38 -42 -43 -20 -62 0 -74 0 -123 65 -92 109 0 50 0 39 30 38 39 rrcurveto",
                         "-2 -69 23 0 rlineto",
                         "14 11 25 8 31 8 rrcurveto",
                         "-3 vlineto",
@@ -38182,10 +38175,9 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "27 0 27 -6 27 0 50 0 35 39 12 54 rrcurveto",
                         "-11 5 rlineto", "-13 -16 -23 -9 -20 0 rrcurveto",
                         "hintmask 10110100", "-103 hlineto",
-                        "-46 0 -29 -35 -13 -39 8 113 -28",
-                        "144 162 -4 rrcurveto", "hintmask 10001100",
-                        "91 hlineto", "55 0 26 35 17 53 rrcurveto", "endchar",
-                        "", null};
+                        "-46 0 -29 -35 -13 -39 8 113 -28 144 162 -4 rrcurveto",
+                        "hintmask 10001100", "91 hlineto",
+                        "55 0 26 35 17 53 rrcurveto", "endchar", "", null};
         check(cs, text);
     }
 
@@ -38791,8 +38783,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "137 -198 27 601 -20 248 27 hstemhm",
                         "71 70 -54 67 128 75 127 68 -54 69 hintmask 11110100",
                         "282 20 rmoveto",
-                        "-83 10 -58 52 0 160 rrcurve",
-                        "to",
+                        "-83 10 -58 52 0 160 rrcurveto",
                         "hintmask 11101100",
                         "0 39 13 44 0 38 rrcurveto",
                         "36 -12 31 -43 vhcurveto",
@@ -39030,7 +39021,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-23 -15 -15 -29 -43 52 -59 106 120 65 108 124 200 -164 31 -109 hvcurveto",
                         "112 vlineto", "42 6 8 33 vhcurveto", "39 hlineto",
                         "hintmask 11110110", "58 0 22 -58 13 -58 rrcurveto",
-                        "27 4 rlineto", "-", "6 51 -4 47 -2 53 rrcurveto",
+                        "27 4 rlineto", "-6 51 -4 47 -2 53 rrcurveto",
                         "-185 0 -38 -1 rlineto", "hintmask 11101101",
                         "283 callsubr", "endchar", "", null};
         check(cs, text);
@@ -39858,7 +39849,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "0 -44 9 -62 24 -60 -130 32 -45 126 0 140 0 126 81 166 118 0 37 0 34 -3 28 -52 16 -29 14 -15 26 0 22 0 12 20 0 20 rrcurveto",
                         "0 22 -17 21 -22 17 -25 20 -42 18 -63 0 -159 0 -152 -149 0 -181 0 -193 98 -127 188 -18 41 -76 71 -63 113 0 rrcurveto",
                         "65 hlineto", "hintmask 11111110",
-                        "18 16 -18 -17 hvcurve", "to", "23 2 rlineto",
+                        "18 16 -18 -17 hvcurveto", "23 2 rlineto",
                         "-2 19 -2 30 0 19 rrcurveto", "hintmask 11111101",
                         "0 27 2 27 2 28 rrcurveto", "-21 2 rlineto",
                         "-39 -12 -40 -84 vhcurveto", "endchar", "", null};
@@ -40471,7 +40462,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "3 2 2 3 hvcurveto",
                         "0 22 -1 2 -113 -2 -92 2 -2 -2 0 -22 rlineto",
                         "-4 2 -1 4 vhcurveto", "15 hlineto",
-                        "36 5 -9 -39 hvurveto", "-129 vlineto",
+                        "36 5 -9 -39 hvcurveto", "-129 vlineto",
                         "-17 -17 -19 -11 -21 -7 rrcurveto",
                         "126 -44 -134 vlineto", "-6 -1 -7 0 -6 0 rrcurveto",
                         "-62 -7 34 78 hvcurveto", "67 vlineto",
@@ -40794,8 +40785,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-33 -10 15 29 hvcurveto",
                         "85 506 rmoveto",
                         "19 -15 13 -24 -18 -16 -14 -17 vhcurveto",
-                        "0 -3",
-                        "0 -2 1 -2 0 -3 1 -3 0 -3 rrcurveto",
+                        "0 -3 0 -2 1 -2 0 -3 1 -3 0 -3 rrcurveto",
                         "-22 -21 -20 -29 -30 -20 21 21 vhcurveto",
                         "0 3 0 3 1 3 0 3 1 2 0 3 rrcurveto",
                         "16 -13 14 -22 -23 -15 -15 -18 -54 54 -33 66 63 59 33 55 vhcurveto",
@@ -41469,10 +41459,10 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                 {"160 1 27 182 34 127 67 -36 27 98 91 hstemhm",
                         "204 91 -2 75 -3 91 hintmask 11101010",
                         "368 210 rmoveto", "284 callsubr", "hintmask 11011010",
-                        "285 callsubr", "hintm", "ask 11101010",
-                        "286 callsubr", "hintmask 11001100",
-                        "-164 500 rmoveto", "70 callsubr", "hintmask 11001001",
-                        "161 hmoveto", "56 callsubr", "endchar", "", null};
+                        "285 callsubr", "hintmask 11101010", "286 callsubr",
+                        "hintmask 11001100", "-164 500 rmoveto", "70 callsubr",
+                        "hintmask 11001001", "161 hmoveto", "56 callsubr",
+                        "endchar", "", null};
         check(cs, text);
     }
 
@@ -41882,7 +41872,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                 {"-67 -12 31 161 49 -22 41 163 31 85 91 hstemhm",
                         "40 27 20 91 70 91 -25 77 hintmask 1101111010000000",
                         "313 236 rmoveto", "-12 -5 -14 -2 -16 0 rrcurveto",
-                        "hintmask 1011111010000", "000", "297 callsubr",
+                        "hintmask 1011111010000000", "297 callsubr",
                         "hintmask 1101111010000000", "298 callsubr",
                         "-226 336 rmoveto", "72 callsubr",
                         "hintmask 1001111100000000", "161 hmoveto",
@@ -43538,7 +43528,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         String[] text =
                 {"-208 1 27 590 27 58 91 hstem", "6 91 9 81 9 91 vstem",
                         "cntrmask 00011100", "187 574 rmoveto", "-58 callsubr",
-                        "-181 678 rmoveto", "28 callsubr", "19", "0 hmoveto",
+                        "-181 678 rmoveto", "28 callsubr", "190 hmoveto",
                         "39 callsubr", "29 141 rmoveto", "345 callsubr",
                         "endchar", "", null};
         check(cs, text);
@@ -48860,9 +48850,9 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "44 79 -60 71 1 51 hintmask 10111101",
                         "123 119 rmoveto", "172 callsubr", "hintmask 11011011",
                         "173 callsubr", "hintmask 10111011", "174 callsubr",
-                        "hintmask 10111101", "175 c", "allsubr",
-                        "2 576 rmoveto", "357 callsubr", "113 -40 rmoveto",
-                        "358 callsubr", "endchar", "", null};
+                        "hintmask 10111101", "175 callsubr", "2 576 rmoveto",
+                        "357 callsubr", "113 -40 rmoveto", "358 callsubr",
+                        "endchar", "", null};
         check(cs, text);
     }
 
@@ -48953,9 +48943,10 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "hintmask 10011010", "11 576 rmoveto",
                         "hintmask 10011001", "-38 -22 -37 -35 hvcurveto",
                         "0 -26 15 -76 91 -4 rrcurveto", "4 17 rlineto",
-                        "-42 8 -18 37 0 23 rrcurveto", "11 4",
-                        "7 7 41 5 25 17 vhcurveto", "16 -11 17 -36 vhcurveto",
-                        "174 4 rmoveto", "383 callsubr", "endchar", "", null};
+                        "-42 8 -18 37 0 23 rrcurveto",
+                        "11 4 7 7 41 5 25 17 vhcurveto",
+                        "16 -11 17 -36 vhcurveto", "174 4 rmoveto",
+                        "383 callsubr", "endchar", "", null};
         check(cs, text);
     }
 
@@ -50914,8 +50905,8 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "34 74 163 51 -14 26 27 27 195 79 hintmask 11110111",
                         "662 206 rmoveto", "432 callsubr", "-301 31 rmoveto",
                         "251 callsubr", "-99 446 rmoveto", "113 callsubr",
-                        "hintmask", "11111011", "436 callsubr",
-                        "169 6 rmoveto", "424 callsubr", "endchar", "", null};
+                        "hintmask 11111011", "436 callsubr", "169 6 rmoveto",
+                        "424 callsubr", "endchar", "", null};
         check(cs, text);
     }
 
@@ -51114,8 +51105,8 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                 {"358 0 59 565 34 -13 75 hstemhm",
                         "23 50 135 25 -17 88 423 88 -23 26 hintmask 11010110",
                         "623 117 rmoveto", "232 callsubr", "hintmask 11011000",
-                        "454 callsubr", "hintmask 11", "010110",
-                        "455 callsubr", "hintmask 11010001", "235 callsubr",
+                        "454 callsubr", "hintmask 11010110", "455 callsubr",
+                        "hintmask 11010001", "235 callsubr",
                         "hintmask 10110000", "-605 661 rmoveto", "88 callsubr",
                         "169 6 rmoveto", "456 callsubr", "hintmask 10010100",
                         "457 callsubr", "endchar", "", null};
@@ -53884,8 +53875,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "72 callsubr",
                         "24 145 rmoveto",
                         "-40 0 -21 45 -55 0 -41 0 -21 -29 -12 -55 rrcurveto",
-                        "22 -5 rli",
-                        "neto",
+                        "22 -5 rlineto",
                         "10 30 15 14 21 0 38 0 30 -44 42 0 43 0 27 26 11 56 rrcurveto",
                         "-22 7 rlineto", "-13 -35 -13 -10 -21 0 rrcurveto",
                         "endchar", "", null};
@@ -54438,7 +54428,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "221 vlineto", "23 -7 18 -3 35 0 rrcurveto",
                         "182 52 119 85 59 -36 109 -185 hvcurveto",
                         "-25 0 -61 -2 -51 -3 rrcurveto",
-                        "hintmask 11110011100000", "00", "-47 callsubr",
+                        "hintmask 1111001110000000", "-47 callsubr",
                         "81 31 rmoveto", "hintmask 1110101110000000",
                         "19 7 44 7 19 0 rrcurveto",
                         "69 74 -25 -127 -108 -56 -45 -98 hvcurveto",
@@ -54548,9 +54538,9 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "34 74 200 26 -25 73 -21 27 195 79 hintmask 11111011",
                         "662 206 rmoveto", "432 callsubr", "-301 31 rmoveto",
                         "251 callsubr", "-92 428 rmoveto", "465 callsubr",
-                        "hintmask 11110101", "40 -740 rmoveto", "472 calls",
-                        "ubr", "hintmask 11110011", "-21 6 rlineto", "endchar",
-                        "", null};
+                        "hintmask 11110101", "40 -740 rmoveto", "472 callsubr",
+                        "hintmask 11110011", "-21 6 rlineto", "endchar", "",
+                        null};
         check(cs, text);
     }
 
@@ -54770,7 +54760,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "457 117 rmoveto", "232 callsubr", "hintmask 01110001",
                         "233 callsubr", "hintmask 01101101", "234 callsubr",
                         "hintmask 01100011", "235 callsubr", "266 253 rmoveto",
-                        "-22", "8 vlineto", "hintmask 10100001",
+                        "-228 vlineto", "hintmask 10100001",
                         "-58 34 -26 44 vhcurveto",
                         "44 0 30 15 14 69 rrcurveto", "-25 5 rlineto",
                         "-5 -35 -8 -16 -26 0 rrcurveto",
@@ -55832,8 +55822,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "hintmask 01100000",
                         "0 46 2 20 21 44 -2 0 vhcurveto",
                         "6 6 rlineto",
-                        "hintma",
-                        "sk 10100000",
+                        "hintmask 10100000",
                         "8 vlineto",
                         "hintmask 01100000",
                         "5 -6 2 -13 vhcurveto",
@@ -58741,11 +58730,11 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "53 75 -17 -107 -126 -94 -33 -33 hvcurveto",
                         "-48 0 -17 24 -12 17 -9 13 -9 10 -19 0 rrcurveto",
                         "-20 -14 -17 -15 -38 79 -25 57 113 100 71 132 hvcurveto",
-                        "0 104 -73 41 -57 9 rrcurveto", "hintmask 11111010",
+                        "0 104 -73 41 -57 9 rrcurveto",
+                        "hintmask 11111010",
                         "90 57 8 50 0 25 rrcurveto",
-                        "40 -29 61 -97 -139 -41 -92 -31 -3 2 -29",
-                        "26 27 7 31 18 61 74 14 25 vhcurveto", "endchar", "",
-                        null};
+                        "40 -29 61 -97 -139 -41 -92 -31 -3 2 -29 26 27 7 31 18 61 74 14 25 vhcurveto",
+                        "endchar", "", null};
         check(cs, text);
     }
 
@@ -58911,7 +58900,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-24 -17 -20 -17 -24 -21 rrcurveto",
                         "hintmask 11110011", "-39 -34 -15 -43 0 -37 rrcurveto",
                         "-97 68 -53 100 124 59 93 72 vhcurveto",
-                        "0 55 -26 43 -48 32", "rrcurveto", "-58 40 rlineto",
+                        "0 55 -26 43 -48 32 rrcurveto", "-58 40 rlineto",
                         "42 28 69 47 0 61 rrcurveto", "-153 95 rmoveto",
                         "hintmask 11101101", "-91 callsubr", "endchar", "",
                         null};
@@ -61997,8 +61986,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-57 40 -31 59 72 34 54 43 vhcurveto",
                         "0 32 -15 25 -28 19 rrcurveto", "-33 23 rlineto",
                         "24 16 40 28 0 36 rrcurveto", "-89 55 rmoveto",
-                        "hintmask 11111111011011", "00",
-                        "36 19 -29 -26 hvcurveto",
+                        "hintmask 1111111101101100", "36 19 -29 -26 hvcurveto",
                         "0 -30 -35 -26 -15 -11 rrcurveto", "-17 10 rlineto",
                         "-35 23 -8 20 0 17 rrcurveto", "26 21 26 34 vhcurveto",
                         "endchar", "", null};
@@ -64615,8 +64603,8 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "26 hlineto", "5 3 3 5 hvcurveto", "0 19 -2 1 rlineto",
                         "0 -93 -1 -36 -39 -87 1 0 vhcurveto",
                         "-2 -1 0 -19 rlineto", "-5 4 -3 4 vhcurveto",
-                        "27 hlineto", "39 15 -14 -30 hvcurveto", "-145 -86 -",
-                        "39 86 -64 -86 -39 86 -215 vlineto",
+                        "27 hlineto", "39 15 -14 -30 hvcurveto",
+                        "-145 -86 -39 86 -64 -86 -39 86 -215 vlineto",
                         "-35 -9 -9 -42 vhcurveto", "-30 hlineto",
                         "-4 -4 -3 -5 hvcurveto", "0 -19 2 -2 rlineto",
                         "0 115 2 12 vhcurveto", "hintmask 01111100",
@@ -64684,8 +64672,8 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "15 -8 16 -6 16 0 24 0 65 12 31 107 rrcurveto",
                         "-17 7 rlineto",
                         "-22 -51 -49 -16 -29 0 -15 0 -17 8 -18 10 rrcurveto",
-                        "215 vlineto", "28 14 16 41 vhcu", "rveto",
-                        "26 hlineto", "5 3 3 5 hvcurveto", "0 19 -2 1 rlineto",
+                        "215 vlineto", "28 14 16 41 vhcurveto", "26 hlineto",
+                        "5 3 3 5 hvcurveto", "0 19 -2 1 rlineto",
                         "0 -93 -1 -36 -39 -87 1 0 vhcurveto",
                         "-2 -1 0 -19 rlineto", "-5 4 -3 4 vhcurveto",
                         "27 hlineto", "39 15 -14 -30 hvcurveto",
@@ -64759,8 +64747,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "30 3 7 0 rlineto",
                         "26 4 -17 -28 hvcurveto",
                         "-479 vlineto",
-                        "0 -64 5",
-                        "-56 12 -45 11 -43 18 -36 27 -28 26 -26 33 -17 30 0 23 0 19 4 16 7 19 8 12 8 7 10 6 9 2 11 0 10 rrcurveto",
+                        "0 -64 5 -56 12 -45 11 -43 18 -36 27 -28 26 -26 33 -17 30 0 23 0 19 4 16 7 19 8 12 8 7 10 6 9 2 11 0 10 rrcurveto",
                         "0 9 -3 9 -6 5 -7 5 -8 2 -8 0 -9 0 -9 -4 -5 -6 -8 -7 -5 -11 -3 -15 -3 -16 -11 -7 -19 0 -16 0 -13 5 -10 8 rrcurveto",
                         "-28 22 -15 80 0 146 rrcurveto",
                         "198 301 rmoveto",
@@ -65290,8 +65277,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "hintmask 11101111",
                         "20 11 48 16 73 0 90 0 59 -36 33 -28 35 -31 25 -37 0 -27 0 -20 -16 -23 -27 0 -30 0 -11 24 -23 19 -5 -15 -2 -12 0 -11 rrcurveto",
                         "-93 66 -23 40 32 68 32 70 vhcurveto",
-                        "0 28 -5 37 -11 24 9 -4 40 -6 38 0 46 0 64 15 52 20 -66 77 -52 52 -86 35 77 20 25 58 0 43 0 49 -45 53 -60 0",
-                        "rrcurveto",
+                        "0 28 -5 37 -11 24 9 -4 40 -6 38 0 46 0 64 15 52 20 -66 77 -52 52 -86 35 77 20 25 58 0 43 0 49 -45 53 -60 0 rrcurveto",
                         "-40 0 -39 -30 -21 -52 13 5 12 3 12 0 rrcurveto",
                         "26 21 -16 -35 -34 -44 -17 -34 hvcurveto",
                         "-11 0 -25 2 -30 5 -49 7 -67 7 -50 0 -67 0 -70 -18 -42 -26 -39 -25 -108 -80 0 -157 -8 -2 -9 -1 -10 0 rrcurveto",
@@ -65574,7 +65560,6 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "106 81 175 57 -44 44 -24 74 -57 57 54 45 104 58 -45 45 -33 47 44 45 28 45 49 47 22 45 12 44 5 45 122 48 hintmask 1001000010011100110100100011111110000000",
                         "419 414 rmoveto",
                         "222 -9 vlineto",
-                        "",
                         "hintmask 1001000010011100110010100011111110000000",
                         "-4 0 -5 -2 -6 -3 -17 -8 -7 -3 -38 -6 rrcurveto",
                         "3 -16 rlineto",
@@ -65629,8 +65614,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-17 -6 -9 -20 vhcurveto",
                         "-12 hlineto",
                         "-2 -2 -2 -3 hvcurveto",
-                        "0 -11 1 -2 rli",
-                        "neto",
+                        "0 -11 1 -2 rlineto",
                         "0 41 2 21 23 47 -2 0 vhcurveto",
                         "2 2 0 11 rlineto",
                         "3 -3 2 -3 vhcurveto",
@@ -65688,8 +65672,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "4 -17 rlineto",
                         "10 3 7 0 8 0 rrcurveto",
                         "8 5 -4 -32 hvcurveto",
-                        "-150 vlinet",
-                        "o",
+                        "-150 vlineto",
                         "-17 -6 -9 -20 vhcurveto",
                         "-11 hlineto",
                         "-3 -2 -2 -3 hvcurveto",
@@ -66141,8 +66124,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "0 -244 23 10 22 178 23 192 23 192 23 191 24 26 23 -23 37 -23 23 80 23 45 23 hstemhm",
                         "245 23 hintmask 1111110011110000",
                         "17 697 rmoveto",
-                        "228 -470 -21 -23 21 -192 -134 -23 134 -178 -",
-                        "158 -22 158 -33 11 hlineto",
+                        "228 -470 -21 -23 21 -192 -134 -23 134 -178 -158 -22 158 -33 11 hlineto",
                         "12 0 213 0 0 23 -213 0 0 210 139 0 0 23 -139 0 0 192 181 0 0 23 -181 0 0 192 213 0 0 23 rlineto",
                         "-213 191 213 24 -213 hlineto",
                         "hintmask 1111110101110000", "26 vlineto",
