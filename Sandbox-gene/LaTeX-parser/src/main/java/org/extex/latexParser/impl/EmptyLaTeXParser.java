@@ -527,7 +527,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @param token
      * @param t
-     * @return
+     * 
+     * @return the math nodes
      */
     public Node collectMath(MathShiftToken token, Token t) {
 

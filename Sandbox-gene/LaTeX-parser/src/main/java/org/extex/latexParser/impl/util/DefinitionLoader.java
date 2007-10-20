@@ -42,10 +42,11 @@ public final class DefinitionLoader {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param stream
-     * @param parser
-     * @throws IOException
-     * @throws ScannerException
+     * @param stream the stream
+     * @param parser the parser
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ScannerException in case of an error
      */
     public static void load(InputStream stream, Parser parser)
             throws IOException,
@@ -73,7 +74,7 @@ public final class DefinitionLoader {
      * TODO gene: missing JavaDoc
      * 
      * @param s
-     * @param parser
+     * @param parser the parser
      */
     private static void loadActive(String s, Parser parser) {
 
@@ -89,8 +90,9 @@ public final class DefinitionLoader {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param s
-     * @param parser
+     * @param s the string to parse
+     * @param parser the parser
+     * 
      * @throws SystemException in case of an error
      */
     private static void loadMacro(String s, Parser parser)
@@ -120,9 +122,11 @@ public final class DefinitionLoader {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param className
-     * @param spec
-     * @return
+     * @param className the name of the class
+     * @param spec the specification
+     * 
+     * @return the new macro
+     * 
      * @throws SystemException in case of an error
      */
     private static Macro makeMacro(String className, String spec)

@@ -37,6 +37,8 @@ public class Par implements Macro, Node {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Par(String s) {
 

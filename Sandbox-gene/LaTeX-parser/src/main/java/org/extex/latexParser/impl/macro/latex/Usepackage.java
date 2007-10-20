@@ -42,12 +42,12 @@ import org.extex.scanner.type.token.Token;
 public class Usepackage implements Macro, Node {
 
     /**
-     * The field <tt>opt</tt> contains the ...
+     * The field <tt>opt</tt> contains the optional arguments.
      */
     private Node opt;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the packages.
      */
     private String name;
 
@@ -58,6 +58,8 @@ public class Usepackage implements Macro, Node {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Usepackage(String s) {
 

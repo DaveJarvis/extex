@@ -20,7 +20,7 @@
 package org.extex.latexParser.impl.macro.latex;
 
 import org.extex.latexParser.api.Node;
-import org.extex.latexParser.impl.LaTeXParserImpl;
+import org.extex.latexParser.impl.EmptyLaTeXParser;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.node.MacroNode;
@@ -37,6 +37,8 @@ public class Makeatother implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Makeatother(String s) {
 
@@ -52,7 +54,7 @@ public class Makeatother implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        parser.setTokenizer(LaTeXParserImpl.TOKENIZER);
+        parser.setTokenizer(EmptyLaTeXParser.TOKENIZER);
         return new MacroNode(token, null, new Node[0]);
     }
 }

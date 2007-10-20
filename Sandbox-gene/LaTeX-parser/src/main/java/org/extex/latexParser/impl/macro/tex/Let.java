@@ -39,6 +39,8 @@ public class Let implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Let(String s) {
 

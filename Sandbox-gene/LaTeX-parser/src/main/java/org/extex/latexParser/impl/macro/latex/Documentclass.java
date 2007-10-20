@@ -42,22 +42,24 @@ import org.extex.scanner.type.token.Token;
 public class Documentclass implements Macro, Node {
 
     /**
-     * The field <tt>opt</tt> contains the ...
+     * The field <tt>opt</tt> contains the optional arguments.
      */
     private Node opt;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the document class.
      */
     private String name;
 
     /**
-     * The field <tt>token</tt> contains the ...
+     * The field <tt>token</tt> contains the token evaluated for this command.
      */
     private Token token;
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Documentclass(String s) {
 

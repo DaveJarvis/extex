@@ -44,6 +44,8 @@ public class End implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public End(String s) {
 
@@ -72,8 +74,8 @@ public class End implements Macro {
         String name = node.toString();
 
         Map<String, Object> context = parser.getContext();
-        List<EnvironmentNode> info =
-                (List<EnvironmentNode>) context.get(Begin.ENVIRONMENT);
+        Object envStack = context.get(Begin.ENVIRONMENT);
+        List<EnvironmentNode> info = (List<EnvironmentNode>) envStack;
         if (info == null) {
             throw new SyntaxError("environment " + name
                     + " closed without being opened");

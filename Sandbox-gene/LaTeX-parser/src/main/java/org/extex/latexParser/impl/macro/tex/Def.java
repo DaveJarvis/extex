@@ -32,7 +32,7 @@ import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class implements some definition-like macros.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -41,6 +41,8 @@ public class Def implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Def(String s) {
 

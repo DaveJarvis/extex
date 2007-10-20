@@ -32,12 +32,14 @@ import org.extex.latexParser.api.Node;
 public class EndNode implements Node {
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the environment.
      */
     private String name;
 
     /**
      * Creates a new object.
+     * 
+     * @param name the name of the environment
      */
     public EndNode(String name) {
 
@@ -45,7 +47,7 @@ public class EndNode implements Node {
     }
 
     /**
-     * Getter for name.
+     * Getter for name of the environment.
      * 
      * @return the name
      */
@@ -61,6 +63,7 @@ public class EndNode implements Node {
      */
     public void print(PrintStream stream) {
 
+        // not really
     }
 
 }

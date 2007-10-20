@@ -43,6 +43,9 @@ public class EnvironmentNode extends NodeList {
      */
     private Node[] args;
 
+    /**
+     * The field <tt>opt</tt> contains the optional argument.
+     */
     private Node opt;
 
     /**
@@ -54,6 +57,7 @@ public class EnvironmentNode extends NodeList {
      * Creates a new object.
      * 
      * @param name the name of the environment
+     * @param opt the optional argument or <code>null</code>
      * @param args the arguments
      * @param source the source of the environment
      * @param line the line number

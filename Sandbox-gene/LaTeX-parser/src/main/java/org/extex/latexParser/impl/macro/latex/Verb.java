@@ -19,12 +19,15 @@
 
 package org.extex.latexParser.impl.macro.latex;
 
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.node.VerbNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
@@ -37,7 +40,7 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Verb implements Macro {
+public class Verb implements Macro, Node {
 
     /**
      * The field <tt>tokenizer</tt> contains the tokenizer to use for
@@ -45,11 +48,15 @@ public class Verb implements Macro {
      */
     class VerbTokenizer implements Tokenizer {
 
+        /**
+         * The field <tt>c</tt> contains the end character.
+         */
         protected UnicodeChar c;
 
         /**
          * Creates a new object.
          * 
+         * @param c the end character
          */
         public VerbTokenizer(UnicodeChar c) {
 
@@ -90,6 +97,21 @@ public class Verb implements Macro {
     };
 
     /**
+     * The field <tt>list</tt> contains the contents.
+     */
+    private List<Token> list = new ArrayList<Token>();
+
+    /**
+     * The field <tt>openToken</tt> contains the opening and closing token.
+     */
+    private Token openToken;
+
+    /**
+     * The field <tt>cmd</tt> contains the command.
+     */
+    private Token cmd;
+
+    /**
      * Creates a new object.
      * 
      * @param s
@@ -97,6 +119,33 @@ public class Verb implements Macro {
     public Verb(String s) {
 
         super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param cmd the command
+     * @param t the token to add
+     */
+    public Verb(Token cmd, Token t) {
+
+        super();
+        this.cmd = cmd;
+        openToken = t;
+    }
+
+    /**
+     * Add a token to the list.
+     * 
+     * @param n the node to add
+     * 
+     * @return <code>true</code>
+     * 
+     * @see java.util.List#add(java.lang.Object)
+     */
+    public boolean add(Token n) {
+
+        return list.add(n);
     }
 
     /**
@@ -112,7 +161,7 @@ public class Verb implements Macro {
         if (start == null) {
             throw new SyntaxError("unexpected EOF");
         }
-        final VerbNode verb = new VerbNode(token, start);
+        final Verb verb = new Verb(token, start);
 
         Tokenizer tokenizer =
                 parser.setTokenizer(new VerbTokenizer(start.getChar()));
@@ -126,4 +175,38 @@ public class Verb implements Macro {
         }
         throw new SyntaxError("unexpected EOF in \\verb");
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(cmd.toText());
+        stream.print(openToken.toText());
+        for (Token n : list) {
+            stream.print(n.toText());
+        }
+        stream.print(openToken.toText());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(cmd.toText());
+        sb.append(openToken.toText());
+        for (Token n : list) {
+            sb.append(n.toText());
+        }
+        sb.append(openToken.toText());
+        return super.toString();
+    }
+
 }

@@ -53,6 +53,8 @@ public class Begin implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s the initial name
      */
     public Begin(String s) {
 
@@ -85,8 +87,8 @@ public class Begin implements Macro {
         }
 
         Map<String, Object> context = parser.getContext();
-        List<EnvironmentNode> stack =
-                (List<EnvironmentNode>) context.get(ENVIRONMENT);
+        Object envStack = context.get(Begin.ENVIRONMENT);
+        List<EnvironmentNode> stack = (List<EnvironmentNode>) envStack;
         if (stack == null) {
             stack = new ArrayList<EnvironmentNode>();
             context.put(ENVIRONMENT, stack);

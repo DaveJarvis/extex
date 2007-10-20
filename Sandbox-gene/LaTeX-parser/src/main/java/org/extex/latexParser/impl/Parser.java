@@ -84,16 +84,16 @@ public interface Parser {
     Macro getDefinition(String name);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the line number
      * 
-     * @return
+     * @return the line number
      */
     public int getLineno();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the source.
      * 
-     * @return
+     * @return the source
      */
     public String getSource();
 
@@ -107,27 +107,27 @@ public interface Parser {
     Token getToken() throws ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether an active character is already defined.
      * 
-     * @param c
+     * @param c the active character
      * 
      * @return <code>true</code> iff the active character is defined
      */
     boolean isDefined(char c);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether a macro is already defined.
      * 
-     * @param name
+     * @param name the name of the macro
      * 
      * @return <code>true</code> iff the macro is defined
      */
     boolean isDefined(String name);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Load some definitions from an external resource.
      * 
-     * @param name
+     * @param name the name of the resource
      * 
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error
@@ -135,29 +135,31 @@ public interface Parser {
     void load(String name) throws IOException, ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a group enclosed in braces.
      * 
-     * @return
+     * @return the groups as node
      * 
      * @throws ScannerException in case of an error
      */
     GroupNode parseGroup() throws ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a node.
      * 
-     * @return
-     * @throws ScannerException
+     * @return the node found or <code>null</code> at EOF
+     * 
+     * @throws ScannerException in case of an error
      */
     Node parseNode() throws ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse an optional argument enclosed in brackets. The opening bracket has
+     * already been read and is passed in as argument.
      * 
-     * @param token
+     * @param token the control sequence we are active for
      * @param t the starting left bracket
      * 
-     * @return
+     * @return the optional argument as node
      * 
      * @throws ScannerException in case of an error
      */
@@ -165,9 +167,9 @@ public interface Parser {
             throws ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * parse a token or a group if the first token is a left brace.
      * 
-     * @return
+     * @return the node of the tokens read
      * 
      * @throws ScannerException in case of an error
      */
@@ -181,10 +183,11 @@ public interface Parser {
     void put(Token t);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for the tokenizer.
      * 
-     * @param tokenizer
-     * @return
+     * @param tokenizer the new tokenizer
+     * 
+     * @return the old tokenizer
      */
     Tokenizer setTokenizer(Tokenizer tokenizer);
 

@@ -88,10 +88,11 @@ public class LaTeXValidator {
      * Perform one run and take care of all exceptions.
      * 
      * @param source the name of the source
-     * @return
      * 
-     * @throws IOException
-     * @throws ScannerException
+     * @return the node list of the read entities
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ScannerException in case of an error
      */
     public NodeList run(String source) throws ScannerException, IOException {
 
