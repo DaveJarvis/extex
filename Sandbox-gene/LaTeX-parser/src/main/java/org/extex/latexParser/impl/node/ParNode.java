@@ -17,12 +17,11 @@
  *
  */
 
-package org.extex.latexParser.main;
+package org.extex.latexParser.impl.node;
 
-import static org.junit.Assert.assertNotNull;
+import java.io.PrintStream;
 
-import org.extex.latexParser.api.NodeList;
-import org.junit.Test;
+import org.extex.latexParser.api.Node;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -30,19 +29,25 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXValidatorTest {
+public class ParNode implements Node {
 
     /**
-     * Test driver to start the main program and check that no error occur.
-     * 
-     * @throws Exception in case of an error
+     * Creates a new object.
      */
-    @Test
-    public void test1() throws Exception {
+    public ParNode(String name) {
 
-        NodeList n = new LaTeXValidator().run("src/test/resources/sample");
-        assertNotNull(n);
-        n.print(System.out);
+        super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.println();
+        stream.println();
     }
 
 }

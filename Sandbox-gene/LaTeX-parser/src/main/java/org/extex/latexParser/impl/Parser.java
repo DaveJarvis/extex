@@ -146,6 +146,14 @@ public interface Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
+     * @return
+     * @throws ScannerException
+     */
+    Node parseNode() throws ScannerException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
      * @param token
      * @param t the starting left bracket
      * 
@@ -179,4 +187,5 @@ public interface Parser {
      * @return
      */
     Tokenizer setTokenizer(Tokenizer tokenizer);
+
 }

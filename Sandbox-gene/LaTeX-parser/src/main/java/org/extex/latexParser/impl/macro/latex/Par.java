@@ -19,17 +19,10 @@
 
 package org.extex.latexParser.impl.macro.latex;
 
-import java.util.List;
-import java.util.Map;
-
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.node.EndNode;
-import org.extex.latexParser.impl.node.EnvironmentNode;
-import org.extex.latexParser.impl.node.GroupNode;
-import org.extex.latexParser.impl.node.TokensNode;
+import org.extex.latexParser.impl.node.ParNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
@@ -39,12 +32,12 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class End implements Macro {
+public class Par implements Macro {
 
     /**
      * Creates a new object.
      */
-    public End(String s) {
+    public Par(String s) {
 
         super();
     }
@@ -58,36 +51,6 @@ public class End implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        GroupNode x = parser.parseGroup();
-        if (x.size() != 1) {
-            throw new SyntaxError("environment expected");
-        }
-        Node node = x.get(0);
-        if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("environment expected");
-        }
-        String name = node.toString();
-
-        Map<String, Object> context = parser.getContext();
-        List<EnvironmentNode> info =
-                (List<EnvironmentNode>) context.get(Begin.ENVIRONMENT);
-        if (info == null) {
-            throw new SyntaxError("environment " + name
-                    + " closed without being opened");
-        }
-        EnvironmentNode env = info.get(info.size() - 1);
-        String iname = env.getName();
-        if (!iname.equals(name)) {
-            throw new SyntaxError("environment " + iname
-                    + " not closed when closing " + name);
-        }
-
-        Macro macro = parser.getDefinition("end." + name);
-        if (macro == null) {
-            info.remove(info.size() - 1);
-        } else {
-            macro.parse(null, parser);
-        }
-        return new EndNode(name);
+        return new ParNode("");
     }
 }

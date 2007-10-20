@@ -65,6 +65,26 @@ public class MacroNode implements Node {
     }
 
     /**
+     * Getter for args.
+     * 
+     * @return the args
+     */
+    public Node[] getArgs() {
+
+        return args;
+    }
+
+    /**
+     * Getter for opt.
+     * 
+     * @return the opt
+     */
+    public Node getOpt() {
+
+        return opt;
+    }
+
+    /**
      * Getter for token.
      * 
      * @return the token

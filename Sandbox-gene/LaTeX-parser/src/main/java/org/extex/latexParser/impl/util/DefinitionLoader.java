@@ -133,21 +133,21 @@ public final class DefinitionLoader {
             return (Macro) theClass.getConstructor(String.class).newInstance(
                 spec);
         } catch (ClassNotFoundException e) {
-            throw new SystemException("", e);
+            throw new SystemException("class not found: " + className, e);
         } catch (ClassCastException e) {
-            throw new SystemException("", e);
+            throw new SystemException("class cast", e);
         } catch (InstantiationException e) {
-            throw new SystemException("", e);
+            throw new SystemException("instantiation", e);
         } catch (IllegalAccessException e) {
-            throw new SystemException("", e);
+            throw new SystemException("illegal access", e);
         } catch (IllegalArgumentException e) {
-            throw new SystemException("", e);
+            throw new SystemException("illegal argument", e);
         } catch (SecurityException e) {
-            throw new SystemException("", e);
+            throw new SystemException("security", e);
         } catch (InvocationTargetException e) {
-            throw new SystemException("", e);
+            throw new SystemException("invocation target", e);
         } catch (NoSuchMethodException e) {
-            throw new SystemException("", e);
+            throw new SystemException("no such method", e);
         }
     }
 

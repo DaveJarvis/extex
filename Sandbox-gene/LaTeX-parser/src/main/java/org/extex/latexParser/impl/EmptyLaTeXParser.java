@@ -757,6 +757,26 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.latexParser.impl.Parser#parseNode()
+     */
+    public Node parseNode() throws ScannerException {
+
+        Token t = getToken();
+        if (t == null) {
+            return null;
+        }
+        try {
+            return (Node) t.visit(visitor, scanner);
+        } catch (ScannerException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new SystemException("error", e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.latexParser.impl.Parser#parseOptionalArgument(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.scanner.type.token.OtherToken)

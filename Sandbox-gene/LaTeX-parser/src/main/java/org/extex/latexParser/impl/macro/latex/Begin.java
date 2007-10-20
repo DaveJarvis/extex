@@ -27,8 +27,11 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.SystemException;
+import org.extex.latexParser.impl.node.EndNode;
 import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.latexParser.impl.node.MacroNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
@@ -87,10 +90,27 @@ public class Begin implements Macro {
         }
         String source = parser.getSource();
         int lineno = parser.getLineno();
-        stack.add(new EnvironmentNode(null, name, source, lineno));
 
-        Node args = null;
-        new EnvironmentNode(args, name, source, lineno);
-        return macro.parse(null, parser);
+        Node mac = macro.parse(null, parser);
+        if (!(mac instanceof MacroNode)) {
+            throw new SystemException("type mismatch", null);
+        }
+        MacroNode m = (MacroNode) mac;
+
+        EnvironmentNode environmentNode =
+                new EnvironmentNode(name, m.getOpt(), m.getArgs(), source,
+                    lineno);
+        stack.add(environmentNode);
+
+        for (;;) {
+            Node n = parser.parseNode();
+            if (n == null) {
+                throw new SyntaxError("unexpected EOF in environment " + name);
+            } else if (n instanceof EndNode) {
+                break;
+            }
+            environmentNode.add(n);
+        }
+        return environmentNode;
     }
 }

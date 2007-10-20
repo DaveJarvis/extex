@@ -39,9 +39,11 @@ public class EnvironmentNode extends NodeList {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>args</tt> contains the arguments.
+     * The field <tt>args</tt> contains the optional arguments.
      */
-    private Node args;
+    private Node[] args;
+
+    private Node opt;
 
     /**
      * The field <tt>name</tt> contains the name of the environment.
@@ -51,17 +53,18 @@ public class EnvironmentNode extends NodeList {
     /**
      * Creates a new object.
      * 
-     * @param args
-     * 
      * @param name the name of the environment
+     * @param args the arguments
      * @param source the source of the environment
      * @param line the line number
      */
-    public EnvironmentNode(Node args, String name, String source, int line) {
+    public EnvironmentNode(String name, Node opt, Node[] args, String source,
+            int line) {
 
         super(source, line);
         this.name = name;
         this.args = args;
+        this.opt = opt;
     }
 
     /**
@@ -85,10 +88,17 @@ public class EnvironmentNode extends NodeList {
         stream.print("\\begin{");
         stream.print(name);
         stream.print("}");
-        if (args != null) {
+        if (opt != null) {
             stream.print('[');
-            args.print(stream);
+            opt.print(stream);
             stream.print('}');
+        }
+        if (args != null) {
+            for (Node n : args) {
+                stream.print('{');
+                n.print(stream);
+                stream.print('}');
+            }
         }
         super.print(stream);
         stream.print("\\end{");
@@ -108,10 +118,17 @@ public class EnvironmentNode extends NodeList {
         sb.append("\\begin{");
         sb.append(name);
         sb.append("}");
-        if (args != null) {
+        if (opt != null) {
             sb.append('[');
-            sb.append(args.toString());
+            sb.append(opt.toString());
             sb.append('}');
+        }
+        if (args != null) {
+            for (Node n : args) {
+                sb.append('{');
+                sb.append(n.toString());
+                sb.append('}');
+            }
         }
         super.toString(sb);
         sb.append("\\end{");

@@ -82,6 +82,7 @@
 \pagenumbering[1]
 \pageref[1]
 \pagestyle[1]
+\par=org.extex.latexParser.impl.macro.latex.Par
 \paragraph[][1]
 \parbox[][2]
 \raggedright
