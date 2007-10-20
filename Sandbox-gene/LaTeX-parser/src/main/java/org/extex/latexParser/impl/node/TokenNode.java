@@ -25,7 +25,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a single token.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,7 +33,7 @@ import org.extex.scanner.type.token.Token;
 public class TokenNode implements Node {
 
     /**
-     * The field <tt>token</tt> contains the ...
+     * The field <tt>token</tt> contains the token contained.
      */
     private Token token;
 

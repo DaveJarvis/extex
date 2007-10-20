@@ -22,10 +22,11 @@ package org.extex.latexParser.impl.node;
 import java.io.PrintStream;
 
 import org.extex.latexParser.api.Node;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an invocation of a macro or active character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,24 +34,32 @@ import org.extex.scanner.type.token.Token;
 public class MacroNode implements Node {
 
     /**
-     * The field <tt>token</tt> contains the ...
+     * The field <tt>token</tt> contains the command token.
      */
     private Token token;
 
+    /**
+     * The field <tt>opt</tt> contains the optional argument. it can be
+     * <code>null</code> if none are present.
+     */
     private Node opt;
 
+    /**
+     * The field <tt>args</tt> contains the arguments.
+     */
     private Node[] args;
 
     /**
      * Creates a new object.
      * 
-     * @param t the token to add
-     * @param opt
+     * @param token the token to add
+     * @param opt the optional arguments
+     * @param args the arguments
      */
-    public MacroNode(Token t, Node opt, Node[] args) {
+    public MacroNode(Token token, Node opt, Node[] args) {
 
         super();
-        token = t;
+        this.token = token;
         this.opt = opt;
         this.args = args;
     }
@@ -79,8 +88,16 @@ public class MacroNode implements Node {
         for (Node n : args) {
             n.print(stream);
         }
+        if (args.length == 0 && token instanceof ControlSequenceToken) {
+            stream.print(' ');
+        }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 
@@ -91,6 +108,9 @@ public class MacroNode implements Node {
         }
         for (Node n : args) {
             sb.append(n.toString());
+        }
+        if (args.length == 0 && token instanceof ControlSequenceToken) {
+            sb.append(' ');
         }
         return sb.toString();
     }

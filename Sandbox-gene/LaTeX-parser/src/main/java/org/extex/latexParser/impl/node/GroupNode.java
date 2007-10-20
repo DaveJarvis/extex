@@ -20,33 +20,32 @@
 package org.extex.latexParser.impl.node;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GroupNode implements Node {
+public class GroupNode extends NodeList {
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private List<Node> list = new ArrayList<Node>();
+    private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>openToken</tt> contains the ...
+     * The field <tt>openToken</tt> contains the opening token.
      */
     private LeftBraceToken openToken;
 
     /**
-     * The field <tt>closeToken</tt> contains the ...
+     * The field <tt>closeToken</tt> contains the closing token.
      */
     private RightBraceToken closeToken;
 
@@ -70,37 +69,13 @@ public class GroupNode implements Node {
     }
 
     /**
-     * Add a token to the list.
+     * Close the group.
      * 
-     * @param n the node to add
-     * 
-     * @return <code>true</code>
-     * 
-     * @see java.util.List#add(java.lang.Object)
-     */
-    public boolean add(Node n) {
-
-        return list.add(n);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param t
+     * @param t the closing token
      */
     public void close(RightBraceToken t) {
 
         closeToken = t;
-    }
-
-    /**
-     * @param index
-     * @return
-     * @see java.util.List#get(int)
-     */
-    public Node get(int index) {
-
-        return list.get(index);
     }
 
     /**
@@ -111,16 +86,6 @@ public class GroupNode implements Node {
     public RightBraceToken getCloseToken() {
 
         return closeToken;
-    }
-
-    /**
-     * Getter for list.
-     * 
-     * @return the list
-     */
-    public List<Node> getList() {
-
-        return list;
     }
 
     /**
@@ -138,32 +103,25 @@ public class GroupNode implements Node {
      * 
      * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
      */
+    @Override
     public void print(PrintStream stream) {
 
         stream.print(openToken.toText());
-        for (Node n : list) {
-            n.print(stream);
-        }
+        super.print(stream);
         stream.print(closeToken.toText());
     }
 
     /**
-     * @return
-     * @see java.util.List#size()
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
      */
-    public int size() {
-
-        return list.size();
-    }
-
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
         sb.append(openToken.toText());
-        for (Node n : list) {
-            sb.append(n.toString());
-        }
+        super.toString(sb);
         sb.append(closeToken.toText());
         return sb.toString();
     }

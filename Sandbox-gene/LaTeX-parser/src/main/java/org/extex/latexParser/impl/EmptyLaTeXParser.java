@@ -24,14 +24,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.LaTeXParser;
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.OptGroupNode;
 import org.extex.latexParser.impl.node.TokenNode;
@@ -258,7 +257,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * The field <tt>tokenizer</tt> contains the tokenizer to use for
      * categorizing characters.
      */
-    protected static final Tokenizer TOKENIZER = new Tokenizer() {
+    public static final Tokenizer TOKENIZER = new Tokenizer() {
 
         /**
          * Getter for the category code of a character.
@@ -327,12 +326,87 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
-     * The field <tt>active</tt> contains the ...
+     * The field <tt>AT_TOKENIZER</tt> contains the tokenizer to use for
+     * categorizing characters -- including the @ character as letter.
+     */
+    public static final Tokenizer AT_TOKENIZER = new Tokenizer() {
+
+        /**
+         * Getter for the category code of a character.
+         * 
+         * @param c the Unicode character to analyze
+         * 
+         * @return the category code of a character
+         * 
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(
+         *      org.extex.core.UnicodeChar)
+         */
+        public Catcode getCatcode(UnicodeChar c) {
+
+            if (c.isLetter()) {
+                return Catcode.LETTER;
+            }
+            switch (c.getCodePoint()) {
+                case '@':
+                    return Catcode.LETTER;
+                case '$':
+                    return Catcode.MATHSHIFT;
+                case '^':
+                    return Catcode.SUPMARK;
+                case '_':
+                    return Catcode.SUBMARK;
+                case '%':
+                    return Catcode.COMMENT;
+                case '&':
+                    return Catcode.TABMARK;
+                case '#':
+                    return Catcode.MACROPARAM;
+                case '{':
+                    return Catcode.LEFTBRACE;
+                case '}':
+                    return Catcode.RIGHTBRACE;
+                case '\\':
+                    return Catcode.ESCAPE;
+                case '~':
+                    return Catcode.ACTIVE;
+                case '\r':
+                case '\n':
+                    return Catcode.CR;
+                case '\t':
+                case ' ':
+                    return Catcode.SPACE;
+                case '\0':
+                case '\f':
+                    return Catcode.IGNORE;
+                case '\b':
+                    return Catcode.INVALID;
+                default:
+                    return Catcode.OTHER;
+            }
+        }
+
+        /**
+         * Getter for the name space.
+         * 
+         * @return the name space
+         * 
+         * @see org.extex.scanner.api.Tokenizer#getNamespace()
+         */
+        public String getNamespace() {
+
+            return "";
+        }
+
+    };
+
+    /**
+     * The field <tt>active</tt> contains the definition of active characters.
      */
     private Map<UnicodeChar, Macro> active = new HashMap<UnicodeChar, Macro>();
 
     /**
-     * The field <tt>context</tt> contains the ...
+     * The field <tt>context</tt> contains the context. The context can be
+     * used to store arbitrary data
      */
     private Map<String, Object> context = new HashMap<String, Object>();
 
@@ -342,7 +416,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private ResourceFinder finder;
 
     /**
-     * The field <tt>macros</tt> contains the ...
+     * The field <tt>macros</tt> contains the definition of macros.
      */
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
@@ -368,17 +442,19 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private String source;
 
     /**
-     * The field <tt>tokenizer</tt> contains the ...
+     * The field <tt>tokenizer</tt> contains the tokenizer.
      */
     private Tokenizer tokenizer = TOKENIZER;
 
     /**
-     * The field <tt>visitor</tt> contains the ...
+     * The field <tt>visitor</tt> contains the token visitor for normal
+     * processing.
      */
     private final TokenVisitor<Node, TokenStream> visitor = new ToVi();
 
     /**
-     * The field <tt>visitor</tt> contains the ...
+     * The field <tt>visitor</tt> contains the token visitor for processing an
+     * optional argument.
      */
     private final TokenVisitor<Node, TokenStream> visitorOpt = new ToVi() {
 
@@ -453,7 +529,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * @param t
      * @return
      */
-    private Node collectMath(MathShiftToken token, Token t) {
+    public Node collectMath(MathShiftToken token, Token t) {
 
         // TODO gene: collectMath unimplemented
         return null;
@@ -597,10 +673,10 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @see org.extex.latexParser.api.LaTeXParser#parse(java.lang.String)
      */
-    public List<Node> parse(String source) throws IOException, ScannerException {
+    public NodeList parse(String source) throws IOException, ScannerException {
 
         this.source = source;
-        List<Node> content = new ArrayList<Node>();
+        NodeList content = new NodeList();
         InputStream stream = finder.findResource(source, "tex");
         if (stream == null) {
             throw new FileNotFoundException(source);
@@ -650,11 +726,11 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a group enclosed in braces.
      * 
      * @param token the opening token
      * 
-     * @return
+     * @return the group node
      * 
      * @throws ScannerException in case of an error
      */
@@ -730,7 +806,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * Collect a sequence of letter, other or space tokens.
      * 
      * @param token the first token
-     * @param endToken TODO
+     * @param endToken the last token
      * 
      * @return the node containing the tokens collected
      * 

@@ -24,7 +24,6 @@ import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
 import org.extex.latexParser.impl.node.MacroNode;
-import org.extex.latexParser.impl.node.TokenNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.OtherToken;
@@ -62,7 +61,7 @@ public class GenericMacro implements Macro {
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         if (spec == null || "".equals(spec)) {
-            return new TokenNode(token);
+            return new MacroNode(token, null, new Node[]{});
         } else if (spec.matches("\\[[0-9]\\]")) {
             int n = spec.charAt(1) - '0';
             Node[] args = new Node[n];

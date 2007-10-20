@@ -17,59 +17,77 @@
  *
  */
 
-package org.extex.latexParser.impl.node;
+package org.extex.latexParser.api;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.List;
 
-import org.extex.latexParser.api.Node;
-import org.extex.scanner.type.token.Token;
 
 /**
- * This class represents a list of tokens.
+ * This class represents a list of nodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokensNode implements Node {
+public class NodeList extends ArrayList<Node> implements Node {
 
     /**
-     * The field <tt>list</tt> contains the contents.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private List<Token> list = new ArrayList<Token>();
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * The field <tt>source</tt> contains the source the tokens are read from.
+     */
+    private String source;
+
+    /**
+     * The field <tt>line</tt> contains the line number of the start.
+     */
+    private int line;
 
     /**
      * Creates a new object.
      */
-    public TokensNode() {
+    public NodeList() {
 
         super();
+        this.source = "";
+        this.line = -1;
     }
 
     /**
      * Creates a new object.
      * 
-     * @param t the token to add
+     * @param source the source of the nodes
+     * @param line the line number
      */
-    public TokensNode(Token t) {
+    public NodeList(String source, int line) {
 
         super();
-        add(t);
+        this.source = source;
+        this.line = line;
     }
 
     /**
-     * Add a token to the list.
+     * Getter for line.
      * 
-     * @param t the token to add
-     * 
-     * @return <code>true</code>
-     * 
-     * @see java.util.List#add(java.lang.Object)
+     * @return the line
      */
-    public boolean add(Token t) {
+    public int getLine() {
 
-        return list.add(t);
+        return line;
+    }
+
+    /**
+     * Getter for source.
+     * 
+     * @return the source
+     */
+    public String getSource() {
+
+        return source;
     }
 
     /**
@@ -79,8 +97,8 @@ public class TokensNode implements Node {
      */
     public void print(PrintStream stream) {
 
-        for (Token t : list) {
-            stream.print(t.toText());
+        for (Node n : this) {
+            n.print(stream);
         }
     }
 
@@ -92,11 +110,22 @@ public class TokensNode implements Node {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        for (Token t : list) {
-            sb.append(t.toText());
+        return toString(new StringBuilder()).toString();
+    }
+
+    /**
+     * Print the contents into a buffer.
+     * 
+     * @param sb the target
+     * 
+     * @return the string builder
+     */
+    public StringBuilder toString(StringBuilder sb) {
+
+        for (Node n : this) {
+            sb.append(n.toString());
         }
-        return sb.toString();
+        return sb;
     }
 
 }

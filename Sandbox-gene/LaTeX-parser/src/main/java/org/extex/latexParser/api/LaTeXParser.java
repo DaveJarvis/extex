@@ -20,7 +20,6 @@
 package org.extex.latexParser.api;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.extex.scanner.api.exception.ScannerException;
 
@@ -37,11 +36,11 @@ public interface LaTeXParser {
      * 
      * @param source the source to read from
      * 
-     * @return
+     * @return the syntax tree for the entities read
      * 
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error
      */
-    List<Node> parse(String source) throws IOException, ScannerException;
+    NodeList parse(String source) throws IOException, ScannerException;
 
 }

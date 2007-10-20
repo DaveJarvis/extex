@@ -64,11 +64,11 @@ public class Begin implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        GroupNode x = parser.parseGroup();
-        if (x.size() != 1) {
+        GroupNode group = parser.parseGroup();
+        if (group.size() != 1) {
             throw new SyntaxError("environment expected");
         }
-        Node node = x.get(0);
+        Node node = group.get(0);
         if (!(node instanceof TokensNode)) {
             throw new SyntaxError("environment expected");
         }
@@ -85,9 +85,12 @@ public class Begin implements Macro {
             stack = new ArrayList<EnvironmentNode>();
             context.put(ENVIRONMENT, stack);
         }
-        stack.add(new EnvironmentNode(null, name, //
-            parser.getSource(), parser.getLineno()));
+        String source = parser.getSource();
+        int lineno = parser.getLineno();
+        stack.add(new EnvironmentNode(null, name, source, lineno));
 
+        Node args = null;
+        new EnvironmentNode(args, name, source, lineno);
         return macro.parse(null, parser);
     }
 }

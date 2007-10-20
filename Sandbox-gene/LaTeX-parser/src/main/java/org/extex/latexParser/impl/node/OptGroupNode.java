@@ -27,7 +27,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.scanner.type.token.OtherToken;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an optional argument group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -75,9 +75,9 @@ public class OptGroupNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Close the optional group.
      * 
-     * @param t
+     * @param t the closing token
      */
     public void close(OtherToken t) {
 

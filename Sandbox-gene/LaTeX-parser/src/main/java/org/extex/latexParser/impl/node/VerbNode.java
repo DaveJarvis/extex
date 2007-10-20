@@ -27,7 +27,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \verb macro invocation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,20 +35,24 @@ import org.extex.scanner.type.token.Token;
 public class VerbNode implements Node {
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>list</tt> contains the contents.
      */
     private List<Token> list = new ArrayList<Token>();
 
     /**
-     * The field <tt>openToken</tt> contains the ...
+     * The field <tt>openToken</tt> contains the opening and closing token.
      */
     private Token openToken;
 
+    /**
+     * The field <tt>cmd</tt> contains the command.
+     */
     private Token cmd;
 
     /**
      * Creates a new object.
      * 
+     * @param cmd the command
      * @param t the token to add
      */
     public VerbNode(Token cmd, Token t) {

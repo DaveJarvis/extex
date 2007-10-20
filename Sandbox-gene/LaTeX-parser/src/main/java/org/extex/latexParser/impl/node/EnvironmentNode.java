@@ -20,100 +20,48 @@
 package org.extex.latexParser.impl.node;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an environment.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EnvironmentNode implements Node {
+public class EnvironmentNode extends NodeList {
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private List<Node> list = new ArrayList<Node>();
+    private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>args</tt> contains the ...
+     * The field <tt>args</tt> contains the arguments.
      */
     private Node args;
 
+    /**
+     * The field <tt>name</tt> contains the name of the environment.
+     */
     private String name;
-
-    private String source;
-
-    private int line;
 
     /**
      * Creates a new object.
      * 
-     * @param t the token to add
+     * @param args
+     * 
+     * @param name the name of the environment
+     * @param source the source of the environment
+     * @param line the line number
      */
     public EnvironmentNode(Node args, String name, String source, int line) {
 
-        super();
+        super(source, line);
         this.name = name;
-        this.source = source;
-        this.line = line;
         this.args = args;
-    }
-
-    /**
-     * Creates a new object.
-     */
-    public EnvironmentNode(String name) {
-
-        super();
-        this.name = name;
-    }
-
-    /**
-     * Add a token to the list.
-     * 
-     * @param n the node to add
-     * 
-     * @return <code>true</code>
-     * 
-     * @see java.util.List#add(java.lang.Object)
-     */
-    public boolean add(Node n) {
-
-        return list.add(n);
-    }
-
-    /**
-     * @param index
-     * @return
-     * @see java.util.List#get(int)
-     */
-    public Node get(int index) {
-
-        return list.get(index);
-    }
-
-    /**
-     * Getter for line.
-     * 
-     * @return the line
-     */
-    public int getLine() {
-
-        return line;
-    }
-
-    /**
-     * Getter for list.
-     * 
-     * @return the list
-     */
-    public List<Node> getList() {
-
-        return list;
     }
 
     /**
@@ -127,20 +75,11 @@ public class EnvironmentNode implements Node {
     }
 
     /**
-     * Getter for source.
-     * 
-     * @return the source
-     */
-    public String getSource() {
-
-        return source;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
      */
+    @Override
     public void print(PrintStream stream) {
 
         stream.print("\\begin{");
@@ -151,21 +90,10 @@ public class EnvironmentNode implements Node {
             args.print(stream);
             stream.print('}');
         }
-        for (Node n : list) {
-            n.print(stream);
-        }
+        super.print(stream);
         stream.print("\\end{");
         stream.print(name);
         stream.print("}");
-    }
-
-    /**
-     * @return
-     * @see java.util.List#size()
-     */
-    public int size() {
-
-        return list.size();
     }
 
     /**
@@ -185,9 +113,7 @@ public class EnvironmentNode implements Node {
             sb.append(args.toString());
             sb.append('}');
         }
-        for (Node n : list) {
-            sb.append(n.toString());
-        }
+        super.toString(sb);
         sb.append("\\end{");
         sb.append(name);
         sb.append("}");

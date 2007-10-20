@@ -33,10 +33,13 @@ public interface Macro {
 
     /**
      * TODO gene: missing JavaDoc
+     * 
      * @param token TODO
      * @param parser TODO
+     * 
      * @return
-     * @throws ScannerException TODO
+     * 
+     * @throws ScannerException in case of an error
      */
     public Node parse(Token token, Parser parser) throws ScannerException;
 
