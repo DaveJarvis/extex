@@ -19,6 +19,11 @@
 
 package org.extex.latexParser.main;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
+import org.extex.latexParser.api.Node;
 import org.junit.Test;
 
 /**
@@ -30,13 +35,13 @@ import org.junit.Test;
 public class LaTeXValidatorTest {
 
     /**
-     * Test driver to start the main program.
-     * 
+     * Test driver to start the main program and check that no error occur.
      */
     @Test
-    public void test1() {
+    public void test1() throws Exception {
 
-        LaTeXValidator.main(new String[]{"src/test/resources/sample"});
+        List<Node> n = new LaTeXValidator().run("src/test/resources/sample");
+        assertNotNull(n);
     }
 
 }

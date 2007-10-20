@@ -3,8 +3,6 @@
 %
 \documentclass[][1]
 \usepackage[][1]
-\begin=org.extex.latexParser.impl.macro.latex.Begin
-\end=org.extex.latexParser.impl.macro.latex.End
 \item[][0]
 \paragraph[][1]
 \section[][1]
@@ -14,6 +12,9 @@
 \author[][1]
 \date[1]
 \maketitle
+\verb=org.extex.latexParser.impl.macro.latex.Verb
+\begin=org.extex.latexParser.impl.macro.latex.Begin
+\end=org.extex.latexParser.impl.macro.latex.End
 \begin.document=org.extex.latexParser.impl.macro.Environment
-\end.document=org.extex.latexParser.impl.macro.EndEnvironment
+\end.document=org.extex.latexParser.impl.macro.latex.EndDocument
 %
