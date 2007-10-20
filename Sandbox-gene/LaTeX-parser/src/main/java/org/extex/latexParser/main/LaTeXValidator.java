@@ -21,11 +21,10 @@ package org.extex.latexParser.main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
-import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.LaTeXParserImpl;
 import org.extex.latexParser.impl.SyntaxError;
 import org.extex.latexParser.impl.SystemException;
@@ -94,7 +93,7 @@ public class LaTeXValidator {
      * @throws IOException
      * @throws ScannerException
      */
-    public List<Node> run(String source) throws ScannerException, IOException {
+    public NodeList run(String source) throws ScannerException, IOException {
 
         return new LaTeXParserImpl(finder).parse(source);
     }
