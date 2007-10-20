@@ -17,11 +17,13 @@
  *
  */
 
-package org.extex.latexParser.impl.node;
-
-import java.io.PrintStream;
+package org.extex.latexParser.impl.macro.tex;
 
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.Macro;
+import org.extex.latexParser.impl.Parser;
+import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,12 +31,14 @@ import org.extex.latexParser.api.Node;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ParNode implements Node {
+public class Endinput implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s
      */
-    public ParNode(String name) {
+    public Endinput(String s) {
 
         super();
     }
@@ -42,12 +46,13 @@ public class ParNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     * @see org.extex.latexParser.impl.Macro#parse(
+     *      org.extex.scanner.type.token.Token,
+     *      org.extex.latexParser.impl.Parser)
      */
-    public void print(PrintStream stream) {
+    public Node parse(Token token, Parser parser) throws ScannerException {
 
-        stream.println();
-        stream.println();
+        parser.closeFileStream();
+        return null;
     }
-
 }

@@ -20,21 +20,17 @@
 package org.extex.latexParser.impl.macro.latex;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintStream;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.SystemException;
-import org.extex.latexParser.impl.node.EndNode;
-import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
-import org.extex.latexParser.impl.node.MacroNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -43,20 +39,44 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Begin implements Macro {
+public class Documentclass implements Macro, Node {
 
     /**
-     * The field <tt>ENVIRONMENT</tt> contains the key for the environment
-     * list.
+     * The field <tt>opt</tt> contains the ...
      */
-    public final static String ENVIRONMENT = "environment";
+    private Node opt;
+
+    /**
+     * The field <tt>name</tt> contains the ...
+     */
+    private String name;
+
+    /**
+     * The field <tt>token</tt> contains the ...
+     */
+    private Token token;
 
     /**
      * Creates a new object.
      */
-    public Begin(String s) {
+    public Documentclass(String s) {
 
         super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param t
+     * @param opt
+     * @param name
+     */
+    public Documentclass(Token t, Node opt, String name) {
+
+        super();
+        this.token = t;
+        this.opt = opt;
+        this.name = name;
     }
 
     /**
@@ -70,50 +90,42 @@ public class Begin implements Macro {
             throws ScannerException,
                 IOException {
 
-        GroupNode group = parser.parseGroup();
-        if (group.size() != 1) {
+        Token t = parser.getToken();
+        if (t == null) {
+            throw new SyntaxError("unexpected EOF");
+        }
+        Node o = null;
+        if (t.eq(Catcode.OTHER, '[')) {
+            o = parser.parseOptionalArgument(token, (OtherToken) t);
+        }
+        GroupNode a = parser.parseGroup();
+        if (a.size() != 1) {
             throw new SyntaxError("environment expected");
         }
-        Node node = group.get(0);
+        Node node = a.get(0);
         if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError("document class");
         }
         String name = node.toString();
-        Macro macro = parser.getDefinition("begin." + name);
-        if (macro == null) {
-            throw new SyntaxError("environment " + name + " undefined");
-        }
 
-        Map<String, Object> context = parser.getContext();
-        List<EnvironmentNode> stack =
-                (List<EnvironmentNode>) context.get(ENVIRONMENT);
-        if (stack == null) {
-            stack = new ArrayList<EnvironmentNode>();
-            context.put(ENVIRONMENT, stack);
-        }
-        String source = parser.getSource();
-        int lineno = parser.getLineno();
+        parser.load("latex/cls/" + name);
 
-        Node mac = macro.parse(null, parser);
-        if (!(mac instanceof MacroNode)) {
-            throw new SystemException("type mismatch", null);
-        }
-        MacroNode m = (MacroNode) mac;
+        return new Documentclass(token, o, name);
+    }
 
-        EnvironmentNode environmentNode =
-                new EnvironmentNode(name, m.getOpt(), m.getArgs(), source,
-                    lineno);
-        stack.add(environmentNode);
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
 
-        for (;;) {
-            Node n = parser.parseNode();
-            if (n == null) {
-                throw new SyntaxError("unexpected EOF in environment " + name);
-            } else if (n instanceof EndNode) {
-                break;
-            }
-            environmentNode.add(n);
+        stream.print(token.toText());
+        if (opt != null) {
+            opt.print(stream);
         }
-        return environmentNode;
+        stream.print("{");
+        stream.print(name);
+        stream.print("}");
     }
 }

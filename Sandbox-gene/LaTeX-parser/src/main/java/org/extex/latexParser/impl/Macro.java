@@ -19,6 +19,8 @@
 
 package org.extex.latexParser.impl;
 
+import java.io.IOException;
+
 import org.extex.latexParser.api.Node;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
@@ -34,13 +36,16 @@ public interface Macro {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param token TODO
-     * @param parser TODO
+     * @param token the name of the initiating control sequence
+     * @param parser the parser to use
      * 
-     * @return
+     * @return the node parsed
      * 
      * @throws ScannerException in case of an error
+     * @throws IOException in case of an I/O error
      */
-    public Node parse(Token token, Parser parser) throws ScannerException;
+    public Node parse(Token token, Parser parser)
+            throws ScannerException,
+                IOException;
 
 }

@@ -17,12 +17,18 @@
  *
  */
 
-package org.extex.latexParser.impl.macro.latex;
+package org.extex.latexParser.impl.macro.tex;
 
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.macro.GenericMacro;
+import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -31,14 +37,12 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Endinput implements Macro {
+public class Def implements Macro {
 
     /**
      * Creates a new object.
-     * 
-     * @param s
      */
-    public Endinput(String s) {
+    public Def(String s) {
 
         super();
     }
@@ -52,7 +56,31 @@ public class Endinput implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        parser.closeFileStream();
-        return null;
+        NodeList list = new NodeList(parser.getSource(), parser.getLineno());
+        TokensNode tokens = new TokensNode(token);
+        Token name = parser.getToken();
+        if (name == null) {
+            throw new SyntaxError("unexpected EOF in definition");
+        }
+        tokens.add(name);
+        for (Token t = parser.getToken(); t != null; t = parser.getToken()) {
+
+            if (t instanceof LeftBraceToken) {
+                list.add(tokens);
+                parser.put(t);
+                list.add(parser.parseGroup());
+                if (name instanceof ControlSequenceToken) {
+                    parser.def(((ControlSequenceToken) name).getName(),
+                        new GenericMacro(""));
+                } else {
+                    parser.def((char) name.getChar().getCodePoint(),
+                        new GenericMacro(""));
+                }
+                return list;
+            }
+            tokens.add(t);
+        }
+        throw new SyntaxError("unexpected EOF in definition of "
+                + name.toText());
     }
 }

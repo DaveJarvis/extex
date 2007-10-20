@@ -43,7 +43,7 @@ public class LaTeXParserImpl extends EmptyLaTeXParser {
         super();
         load("TeX");
         load("plain");
-        load("LaTeX2e");
+        load("latex/LaTeX2e");
     }
 
     /**

@@ -654,7 +654,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     public void load(String name) throws IOException, ScannerException {
 
-        String resource = "sty/" + name;
+        String resource = "tex/" + name;
         InputStream stream =
                 getClass().getClassLoader().getResourceAsStream(resource);
         if (stream == null) {

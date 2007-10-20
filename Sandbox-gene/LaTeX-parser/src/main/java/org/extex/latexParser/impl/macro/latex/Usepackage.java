@@ -20,18 +20,17 @@
 package org.extex.latexParser.impl.macro.latex;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintStream;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.node.EndNode;
-import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -40,14 +39,44 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class End implements Macro {
+public class Usepackage implements Macro, Node {
+
+    /**
+     * The field <tt>opt</tt> contains the ...
+     */
+    private Node opt;
+
+    /**
+     * The field <tt>name</tt> contains the ...
+     */
+    private String name;
+
+    /**
+     * The field <tt>token</tt> contains the ...
+     */
+    private Token token;
 
     /**
      * Creates a new object.
      */
-    public End(String s) {
+    public Usepackage(String s) {
 
         super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param t
+     * @param opt
+     * @param name
+     */
+    public Usepackage(Token t, Node opt, String name) {
+
+        super();
+        this.token = t;
+        this.opt = opt;
+        this.name = name;
     }
 
     /**
@@ -61,36 +90,44 @@ public class End implements Macro {
             throws ScannerException,
                 IOException {
 
-        GroupNode x = parser.parseGroup();
-        if (x.size() != 1) {
-            throw new SyntaxError("environment expected");
+        Token t = parser.getToken();
+        if (t == null) {
+            throw new SyntaxError("unexpected EOF");
         }
-        Node node = x.get(0);
+        Node o = null;
+        if (t.eq(Catcode.OTHER, '[')) {
+            o = parser.parseOptionalArgument(token, (OtherToken) t);
+        }
+        GroupNode a = parser.parseGroup();
+        if (a.size() != 1) {
+            throw new SyntaxError("package expected");
+        }
+        Node node = a.get(0);
         if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError("document class");
         }
         String name = node.toString();
 
-        Map<String, Object> context = parser.getContext();
-        List<EnvironmentNode> info =
-                (List<EnvironmentNode>) context.get(Begin.ENVIRONMENT);
-        if (info == null) {
-            throw new SyntaxError("environment " + name
-                    + " closed without being opened");
-        }
-        EnvironmentNode env = info.get(info.size() - 1);
-        String iname = env.getName();
-        if (!iname.equals(name)) {
-            throw new SyntaxError("environment " + iname
-                    + " not closed when closing " + name);
+        for (String s : name.split(",")) {
+            parser.load("latex/sty/" + s);
         }
 
-        Macro macro = parser.getDefinition("end." + name);
-        if (macro == null) {
-            info.remove(info.size() - 1);
-        } else {
-            macro.parse(null, parser);
+        return new Usepackage(token, o, name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(token.toText());
+        if (opt != null) {
+            opt.print(stream);
         }
-        return new EndNode(name);
+        stream.print("{");
+        stream.print(name);
+        stream.print("}");
     }
 }

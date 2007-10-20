@@ -17,14 +17,16 @@
  *
  */
 
-package org.extex.latexParser.impl.macro.latex;
-
-import java.io.PrintStream;
+package org.extex.latexParser.impl.macro.tex;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.macro.GenericMacro;
+import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -33,12 +35,12 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Par implements Macro, Node {
+public class Let implements Macro {
 
     /**
      * Creates a new object.
      */
-    public Par(String s) {
+    public Let(String s) {
 
         super();
     }
@@ -52,18 +54,20 @@ public class Par implements Macro, Node {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        return new Par(null);
+        TokensNode tokens = new TokensNode(token);
+        Token name = parser.getToken();
+        if (name == null) {
+            throw new SyntaxError("unexpected EOF in definition");
+        }
+        tokens.add(name);
+        if (name instanceof ControlSequenceToken) {
+            parser.def(((ControlSequenceToken) name).getName(),
+                new GenericMacro(""));
+        } else {
+            parser.def((char) name.getChar().getCodePoint(), new GenericMacro(
+                ""));
+        }
+
+        return tokens;
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        stream.println();
-        stream.println();
-    }
-
 }

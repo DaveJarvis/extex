@@ -35,7 +35,7 @@
 \caption[1]
 \cite[][1]
 \date[1]
-\documentclass[][1]
+\documentclass=org.extex.latexParser.impl.macro.latex.Documentclass
 \em
 \emph[1]
 \end.document=org.extex.latexParser.impl.macro.latex.EndDocument
@@ -123,7 +123,7 @@
 \ttfam
 \twocolumn
 \typeout[1]
-\usepackage[][1]
+\usepackage=org.extex.latexParser.impl.macro.latex.Usepackage
 \verb=org.extex.latexParser.impl.macro.latex.Verb
 \vspace[1]
 %
