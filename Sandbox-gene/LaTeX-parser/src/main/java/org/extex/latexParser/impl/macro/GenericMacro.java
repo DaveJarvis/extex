@@ -76,7 +76,9 @@ public class GenericMacro implements Macro {
             if (t == null) {
                 throw new SyntaxError("Unexpected EOF");
             } else if (t.eq(Catcode.OTHER, '[')) {
-                opt = parser.parseOptionalArgument((OtherToken) t);
+                opt = parser.parseOptionalArgument(token, (OtherToken) t);
+            } else {
+                parser.put(t);
             }
 
             Node[] args = new Node[n];

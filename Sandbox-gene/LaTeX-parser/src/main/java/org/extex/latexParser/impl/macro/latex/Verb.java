@@ -91,8 +91,10 @@ public class Verb implements Macro {
 
     /**
      * Creates a new object.
+     * 
+     * @param s
      */
-    public Verb() {
+    public Verb(String s) {
 
         super();
     }

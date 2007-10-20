@@ -87,4 +87,22 @@ public class VerbNode implements Node {
         stream.print(openToken.toText());
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(cmd.toText());
+        sb.append(openToken.toText());
+        for (Token n : list) {
+            sb.append(n.toText());
+        }
+        sb.append(openToken.toText());
+        return super.toString();
+    }
+
 }

@@ -38,6 +38,11 @@ import org.extex.scanner.type.token.Token;
 public interface Parser {
 
     /**
+     * Close the file stream currently read from.
+     */
+    void closeFileStream();
+
+    /**
      * Define an active character.
      * 
      * @param c the letter
@@ -141,13 +146,15 @@ public interface Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
+     * @param token
      * @param t the starting left bracket
      * 
      * @return
      * 
      * @throws ScannerException in case of an error
      */
-    Node parseOptionalArgument(OtherToken t) throws ScannerException;
+    Node parseOptionalArgument(Token token, OtherToken t)
+            throws ScannerException;
 
     /**
      * TODO gene: missing JavaDoc
@@ -157,6 +164,13 @@ public interface Parser {
      * @throws ScannerException in case of an error
      */
     Node parseTokenOrGroup() throws ScannerException;
+
+    /**
+     * Push a token back for the next get();
+     * 
+     * @param t the token
+     */
+    void put(Token t);
 
     /**
      * TODO gene: missing JavaDoc

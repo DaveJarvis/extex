@@ -21,9 +21,11 @@ package org.extex.latexParser.main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.LaTeXParserImpl;
 import org.extex.latexParser.impl.SyntaxError;
 import org.extex.latexParser.impl.SystemException;
@@ -46,8 +48,25 @@ public class LaTeXValidator {
      */
     public static void main(String[] args) {
 
-        for (String s : args) {
-            new LaTeXValidator().run(s);
+        for (String source : args) {
+            try {
+                new LaTeXValidator().run(source);
+
+            } catch (SyntaxError e) {
+                System.err.println(source + ":" + e.getLineNumber() + ": "
+                        + e.getMessage());
+            } catch (SystemException e) {
+                System.err.println(source + ": " + e.getCause().toString());
+            } catch (ScannerException e) {
+                System.err.println(source + ": " + e.getMessage());
+            } catch (FileNotFoundException e) {
+                System.err.println(source + ": file not found "
+                        + e.getMessage());
+            } catch (IOException e) {
+                System.err.println(source + ": IO error: " + e.toString());
+            } catch (RuntimeException e) {
+                System.err.println(source + ": " + e.toString());
+            }
         }
     }
 
@@ -67,31 +86,16 @@ public class LaTeXValidator {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform one run and take care of all exceptions.
      * 
      * @param source the name of the source
+     * @return
+     * 
+     * @throws IOException
+     * @throws ScannerException
      */
-    private void run(String source) {
+    public List<Node> run(String source) throws ScannerException, IOException {
 
-        try {
-            LaTeXParserImpl parser = new LaTeXParserImpl();
-            parser.setResourceFinder(finder);
-
-            parser.parse(source);
-
-        } catch (SyntaxError e) {
-            System.err.println(source + ":" + e.getLineNumber() + ": "
-                    + e.getMessage());
-        } catch (SystemException e) {
-            System.err.println(source + ": " + e.getCause().toString());
-        } catch (ScannerException e) {
-            System.err.println(source + ": " + e.getMessage());
-        } catch (FileNotFoundException e) {
-            System.err.println(source + ": file not found " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println(source + ": IO error: " + e.toString());
-        } catch (RuntimeException e) {
-            System.err.println(source + ": " + e.toString());
-        }
+        return new LaTeXParserImpl(finder).parse(source);
     }
 }

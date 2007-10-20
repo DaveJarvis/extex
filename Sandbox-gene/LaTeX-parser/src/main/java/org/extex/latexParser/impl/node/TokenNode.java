@@ -65,13 +65,23 @@ public class TokenNode implements Node {
      */
     public void print(PrintStream stream) {
 
-        stream.print(token.toText());
+        if (token != null) {
+            stream.print(token.toText());
+        }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 
-        return token.toText();
+        if (token != null) {
+            return token.toText();
+        }
+        return "";
     }
 
 }

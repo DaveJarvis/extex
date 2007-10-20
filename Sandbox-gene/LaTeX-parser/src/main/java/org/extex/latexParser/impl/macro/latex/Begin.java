@@ -27,7 +27,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.macro.latex.util.EnvironmentInfo;
+import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -79,16 +79,15 @@ public class Begin implements Macro {
         }
 
         Map<String, Object> context = parser.getContext();
-        List<EnvironmentInfo> stack =
-                (List<EnvironmentInfo>) context.get(ENVIRONMENT);
+        List<EnvironmentNode> stack =
+                (List<EnvironmentNode>) context.get(ENVIRONMENT);
         if (stack == null) {
-            stack = new ArrayList<EnvironmentInfo>();
+            stack = new ArrayList<EnvironmentNode>();
             context.put(ENVIRONMENT, stack);
         }
-        stack.add(new EnvironmentInfo(name, //
+        stack.add(new EnvironmentNode(null, name, //
             parser.getSource(), parser.getLineno()));
 
-        System.err.println("opening " + name);
         return macro.parse(null, parser);
     }
 }

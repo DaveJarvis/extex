@@ -17,7 +17,13 @@
  *
  */
 
-package org.extex.latexParser.impl.macro.latex.util;
+package org.extex.latexParser.impl.macro.latex;
+
+import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.Macro;
+import org.extex.latexParser.impl.Parser;
+import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,55 +31,28 @@ package org.extex.latexParser.impl.macro.latex.util;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EnvironmentInfo {
-
-    private String name;
-
-    private String source;
-
-    private int line;
+public class Endinput implements Macro {
 
     /**
      * Creates a new object.
      * 
-     * @param name
+     * @param s
      */
-    public EnvironmentInfo(String name, String source, int line) {
+    public Endinput(String s) {
 
         super();
-        this.name = name;
-        this.source = source;
-        this.line = line;
     }
 
     /**
-     * Getter for line.
+     * {@inheritDoc}
      * 
-     * @return the line
+     * @see org.extex.latexParser.impl.Macro#parse(
+     *      org.extex.scanner.type.token.Token,
+     *      org.extex.latexParser.impl.Parser)
      */
-    public int getLine() {
+    public Node parse(Token token, Parser parser) throws ScannerException {
 
-        return line;
+        parser.closeFileStream();
+        return null;
     }
-
-    /**
-     * Getter for name.
-     * 
-     * @return the name
-     */
-    public String getName() {
-
-        return name;
-    }
-
-    /**
-     * Getter for source.
-     * 
-     * @return the source
-     */
-    public String getSource() {
-
-        return source;
-    }
-
 }

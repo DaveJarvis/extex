@@ -17,47 +17,42 @@
  *
  */
 
-package org.extex.latexParser.impl;
+package org.extex.latexParser.impl.macro.latex;
 
-import java.io.IOException;
-
-import org.extex.resource.ResourceFinder;
+import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.scanner.api.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
 
 /**
- * This LaTeX parser preloads some common packages to get things started.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXParserImpl extends EmptyLaTeXParser {
+public class EndDocument extends GenericMacro {
 
     /**
      * Creates a new object.
      * 
-     * @throws IOException
-     * @throws ScannerException
+     * @param spec
      */
-    public LaTeXParserImpl() throws IOException, ScannerException {
+    public EndDocument(String spec) {
 
-        super();
-        load("TeX");
-        load("plain");
-        load("LaTeX2e");
+        super(spec);
     }
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
      * 
-     * @throws IOException
-     * @throws ScannerException
+     * @see org.extex.latexParser.impl.Macro#parse( Token, Parser)
      */
-    public LaTeXParserImpl(ResourceFinder finder)
-            throws IOException,
-                ScannerException {
+    @Override
+    public Node parse(Token token, Parser parser) throws ScannerException {
 
-        this();
-        setResourceFinder(finder);
+        parser.closeFileStream();
+        return null;
     }
 
 }

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.latexParser.api.Node;
-import org.extex.scanner.type.token.OtherToken;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -32,32 +31,45 @@ import org.extex.scanner.type.token.OtherToken;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OptGroupNode implements Node {
+public class EnvironmentNode implements Node {
 
     /**
-     * The field <tt>list</tt> contains the main nodes contained.
+     * The field <tt>list</tt> contains the ...
      */
     private List<Node> list = new ArrayList<Node>();
 
     /**
-     * The field <tt>openToken</tt> contains the open token.
+     * The field <tt>args</tt> contains the ...
      */
-    private OtherToken openToken;
+    private Node args;
 
-    /**
-     * The field <tt>closeToken</tt> contains the close token.
-     */
-    private OtherToken closeToken;
+    private String name;
+
+    private String source;
+
+    private int line;
 
     /**
      * Creates a new object.
      * 
      * @param t the token to add
      */
-    public OptGroupNode(OtherToken t) {
+    public EnvironmentNode(Node args, String name, String source, int line) {
 
         super();
-        openToken = t;
+        this.name = name;
+        this.source = source;
+        this.line = line;
+        this.args = args;
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public EnvironmentNode(String name) {
+
+        super();
+        this.name = name;
     }
 
     /**
@@ -75,13 +87,53 @@ public class OptGroupNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param t
+     * @param index
+     * @return
+     * @see java.util.List#get(int)
      */
-    public void close(OtherToken t) {
+    public Node get(int index) {
 
-        closeToken = t;
+        return list.get(index);
+    }
+
+    /**
+     * Getter for line.
+     * 
+     * @return the line
+     */
+    public int getLine() {
+
+        return line;
+    }
+
+    /**
+     * Getter for list.
+     * 
+     * @return the list
+     */
+    public List<Node> getList() {
+
+        return list;
+    }
+
+    /**
+     * Getter for name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
+    }
+
+    /**
+     * Getter for source.
+     * 
+     * @return the source
+     */
+    public String getSource() {
+
+        return source;
     }
 
     /**
@@ -91,11 +143,29 @@ public class OptGroupNode implements Node {
      */
     public void print(PrintStream stream) {
 
-        stream.print(openToken.toText());
+        stream.print("\\begin{");
+        stream.print(name);
+        stream.print("}");
+        if (args != null) {
+            stream.print('[');
+            args.print(stream);
+            stream.print('}');
+        }
         for (Node n : list) {
             n.print(stream);
         }
-        stream.print(closeToken.toText());
+        stream.print("\\end{");
+        stream.print(name);
+        stream.print("}");
+    }
+
+    /**
+     * @return
+     * @see java.util.List#size()
+     */
+    public int size() {
+
+        return list.size();
     }
 
     /**
@@ -107,12 +177,21 @@ public class OptGroupNode implements Node {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append(openToken.toText());
+        sb.append("\\begin{");
+        sb.append(name);
+        sb.append("}");
+        if (args != null) {
+            sb.append('[');
+            sb.append(args.toString());
+            sb.append('}');
+        }
         for (Node n : list) {
             sb.append(n.toString());
         }
-        sb.append(closeToken.toText());
-        return super.toString();
+        sb.append("\\end{");
+        sb.append(name);
+        sb.append("}");
+        return sb.toString();
     }
 
 }
