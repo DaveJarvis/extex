@@ -2,4 +2,7 @@
 % Definitions for plainTeX
 %
 ~
+\centerline[1]
+\loop
+\repeat
 %
