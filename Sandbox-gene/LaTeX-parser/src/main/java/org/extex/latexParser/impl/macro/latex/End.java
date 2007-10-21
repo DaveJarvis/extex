@@ -73,11 +73,11 @@ public class End extends AbstractNode implements Macro {
             throws ScannerException,
                 IOException {
 
-        GroupNode x = parser.parseGroup();
-        if (x.size() != 1) {
+        GroupNode group = parser.parseGroup();
+        if (group.size() != 1) {
             throw new SyntaxError("environment expected");
         }
-        Node node = x.get(0);
+        Node node = group.get(0);
         if (!(node instanceof TokensNode)) {
             throw new SyntaxError("environment expected");
         }
@@ -90,7 +90,7 @@ public class End extends AbstractNode implements Macro {
                     + " not closed when closing " + name);
         }
 
-        Macro macro = parser.getDefinition("end." + name);
+        Macro macro = parser.getDefinition("end{" + name + "}");
         if (macro != null) {
             macro.parse(null, parser);
         }

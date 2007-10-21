@@ -71,7 +71,7 @@ public class Begin implements Macro {
             throw new SyntaxError("environment expected");
         }
         String name = node.toString();
-        Macro macro = parser.getDefinition("begin." + name);
+        Macro macro = parser.getDefinition("begin{" + name + "}");
         if (macro == null) {
             throw new SyntaxError("environment " + name + " undefined");
         }
