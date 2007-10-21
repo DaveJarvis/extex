@@ -167,19 +167,40 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
          *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
          */
-        public Node visitMathShift(MathShiftToken token, TokenStream stream)
+        public Node visitMathShift(MathShiftToken start, TokenStream stream)
                 throws Exception {
 
             Token t = stream.get(FACTORY, tokenizer);
             if (t == null) {
                 throw new SyntaxError("Unexpected EOF in math");
             }
-            if (t instanceof MathShiftToken) {
-                return collectDisplayMath(token, t);
+            if (!(t instanceof MathShiftToken)) {
+                stream.put(t);
+                return org.extex.latexParser.impl.macro.latex.Math.collectMath(
+                    parser, start, start);
             }
-            stream.put(t);
-            return org.extex.latexParser.impl.macro.latex.Math.collectMath(
-                parser, token, token);
+
+            EnvironmentNode env = peek();
+            if (env instanceof MathEnvironment) {
+                throw new SyntaxError("trying to use math when already in math");
+            }
+
+            env = new MathEnvironment(start, t, start, t, //
+                getSource(), getLineno());
+            push(env);
+            for (Node n = parseNode(start); n != null; n = parseNode(start)) {
+                env.add(n);
+            }
+            Token t1 = getToken();
+            if (!t1.equals(t)) {
+                throw new SyntaxError("closing math is missing");
+            }
+
+            EnvironmentNode pop = pop();
+            if (pop != env) {
+                throw new SyntaxError("closing math is missing");
+            }
+            return env;
         }
 
         /**
@@ -224,8 +245,14 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
          *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
          */
-        public Node visitSubMark(SubMarkToken token, TokenStream stream) {
+        public Node visitSubMark(SubMarkToken token, TokenStream stream)
+                throws SyntaxError {
 
+            EnvironmentNode env = parser.peek();
+            if (!(env instanceof MathEnvironment)) {
+                throw new SyntaxError(token.toText()
+                        + " is defined in math mode only");
+            }
             return new TokenNode(token, getSource(), getLineno());
         }
 
@@ -235,8 +262,14 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
          *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
          */
-        public Node visitSupMark(SupMarkToken token, TokenStream stream) {
+        public Node visitSupMark(SupMarkToken token, TokenStream stream)
+                throws SyntaxError {
 
+            EnvironmentNode env = parser.peek();
+            if (!(env instanceof MathEnvironment)) {
+                throw new SyntaxError(token.toText()
+                        + " is defined in math mode only");
+            }
             return new TokenNode(token, getSource(), getLineno());
         }
 
@@ -530,42 +563,6 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public void closeFileStream() {
 
         scanner.closeFileStream();
-    }
-
-    /**
-     * parse a bunch of mathematical material.
-     * 
-     * @param start the initial token
-     * @param start2 the second token
-     * 
-     * @return the math nodes
-     * 
-     * @throws ScannerException in case of an error
-     */
-    public Node collectDisplayMath(MathShiftToken start, Token start2)
-            throws ScannerException {
-
-        EnvironmentNode env = peek();
-        if (env instanceof MathEnvironment) {
-            throw new SyntaxError("trying to use math when already in math");
-        }
-
-        env = new MathEnvironment(start, start2, start, start2, //
-            getSource(), getLineno());
-        push(env);
-        for (Node n = parseNode(start); n != null; n = parseNode(start)) {
-            env.add(n);
-        }
-        Token t = getToken();
-        if (!t.equals(start2)) {
-            throw new SyntaxError("closing math is missing");
-        }
-
-        EnvironmentNode pop = pop();
-        if (pop != env) {
-            throw new SyntaxError("closing math is missing");
-        }
-        return env;
     }
 
     /**
