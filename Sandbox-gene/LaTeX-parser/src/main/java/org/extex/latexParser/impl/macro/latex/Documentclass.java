@@ -103,6 +103,8 @@ public class Documentclass extends AbstractNode implements Macro {
         Node o = null;
         if (t.eq(Catcode.OTHER, '[')) {
             o = parser.parseOptionalArgument(token, (OtherToken) t);
+        } else {
+            parser.put(t);
         }
         GroupNode a = parser.parseGroup();
         if (a.size() != 1) {
@@ -136,4 +138,24 @@ public class Documentclass extends AbstractNode implements Macro {
         stream.print(name);
         stream.print("}");
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(token.toText());
+        if (opt != null) {
+            sb.append(opt.toString());
+        }
+        sb.append("{");
+        sb.append(name);
+        sb.append("}");
+        return sb.toString();
+    }
+
 }

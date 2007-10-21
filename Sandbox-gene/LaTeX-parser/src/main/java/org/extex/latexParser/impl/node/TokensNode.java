@@ -20,8 +20,6 @@
 package org.extex.latexParser.impl.node;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.extex.latexParser.api.Node;
 import org.extex.scanner.type.token.Token;
@@ -35,9 +33,10 @@ import org.extex.scanner.type.token.Token;
 public class TokensNode extends AbstractNode implements Node {
 
     /**
-     * The field <tt>list</tt> contains the contents.
+     * The field <tt>buffer</tt> contains the buffer for the characters
+     * contained.
      */
-    private List<Token> list = new ArrayList<Token>();
+    private StringBuilder buffer = new StringBuilder();
 
     /**
      * Creates a new object.
@@ -71,7 +70,8 @@ public class TokensNode extends AbstractNode implements Node {
      */
     public boolean add(Token t) {
 
-        return list.add(t);
+        buffer.append(t.toText());
+        return true;
     }
 
     /**
@@ -81,9 +81,7 @@ public class TokensNode extends AbstractNode implements Node {
      */
     public void print(PrintStream stream) {
 
-        for (Token t : list) {
-            stream.print(t.toText());
-        }
+        stream.print(buffer);
     }
 
     /**
@@ -94,10 +92,6 @@ public class TokensNode extends AbstractNode implements Node {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        for (Token t : list) {
-            sb.append(t.toText());
-        }
         return sb.toString();
     }
 

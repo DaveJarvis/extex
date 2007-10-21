@@ -85,11 +85,15 @@ public class End extends AbstractNode implements Macro {
         String name = node.toString();
 
         GroupNode env = parser.pop();
+        if (env == null) {
+            throw new SyntaxError(parser,
+                "end of environemnt {0} has been found without begin", name);
+        }
         String iname = env.getName();
         if (!iname.equals(name)) {
             parser.push(env);
-            throw new SyntaxError(parser, "environment " + iname
-                    + " not closed when closing " + name);
+            throw new SyntaxError(parser,
+                "end of environemnt {0} has been found without begin", name);
         }
 
         Macro macro = parser.getDefinition("end{" + name + "}");

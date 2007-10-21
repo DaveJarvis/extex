@@ -51,7 +51,7 @@ public class LaTeXParserImpl extends EmptyLaTeXParser {
      * Creates a new object.
      * 
      * @param finder the resource finder
-     * @param logger TODO
+     * @param logger the logger
      * 
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error

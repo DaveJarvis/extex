@@ -17,38 +17,29 @@
  *
  */
 
-package org.extex.latexParser.impl.exception;
-
-import java.text.MessageFormat;
-
-import org.extex.latexParser.impl.Locator;
-import org.extex.scanner.api.exception.ScannerException;
+package org.extex.latexParser.impl;
 
 /**
- * This class represents a syntax error.
+ * This interface describes the ability to retrieve information about a location
+ * in a resource.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SyntaxError extends ScannerException {
+public interface Locator {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Creates a new object.
+     * Getter for the line number
      * 
-     * @param locator the locator to acquire the current position from
-     * @param message the message format
-     * @param args the arguments to be inserted into the format
+     * @return the line number
      */
-    public SyntaxError(Locator locator, String message, Object... args) {
+    public abstract int getLineno();
 
-        super(locator.getSource() + ":" + Integer.toString(locator.getLineno())
-                + ": " + MessageFormat.format(message, args));
-    }
+    /**
+     * Getter for the source.
+     * 
+     * @return the source
+     */
+    public abstract String getSource();
 
 }

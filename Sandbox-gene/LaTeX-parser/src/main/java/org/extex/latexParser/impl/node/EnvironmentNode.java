@@ -126,9 +126,9 @@ public class EnvironmentNode extends GroupNode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param sb the target
+     * @see org.extex.latexParser.api.NodeList#toString(java.lang.StringBuilder)
      */
     @Override
     public StringBuilder toString(StringBuilder sb) {

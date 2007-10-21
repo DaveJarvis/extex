@@ -36,7 +36,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Parser {
+public interface Parser extends Locator {
 
     /**
      * Close the file stream currently read from.
@@ -85,20 +85,6 @@ public interface Parser {
     Macro getDefinition(String name);
 
     /**
-     * Getter for the line number
-     * 
-     * @return the line number
-     */
-    public int getLineno();
-
-    /**
-     * Getter for the source.
-     * 
-     * @return the source
-     */
-    public String getSource();
-
-    /**
      * Get a token from the input stream.
      * 
      * @return the token read or <code>null</code> at EOF
@@ -141,6 +127,14 @@ public interface Parser {
      * @throws ScannerException in case of an error
      */
     void load(String name) throws IOException, ScannerException;
+
+    /**
+     * Write a formatted log message.
+     * 
+     * @param format the format
+     * @param args the arguments
+     */
+    void log(String format, Object... args);
 
     /**
      * Parse a group enclosed in braces.

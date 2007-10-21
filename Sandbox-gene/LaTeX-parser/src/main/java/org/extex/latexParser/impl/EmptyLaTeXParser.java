@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -45,6 +46,7 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.base.TokenStreamImpl;
 import org.extex.scanner.type.Catcode;
@@ -736,6 +738,18 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.latexParser.impl.Parser#log(java.lang.String,
+     *      java.lang.Object[])
+     */
+    public void log(String format, Object... args) {
+
+        logger.severe(getSource() + ":" + Integer.toString(getLineno()) + ": "
+                + MessageFormat.format(format, args));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.latexParser.api.LaTeXParser#parse(java.io.InputStream,
      *      java.lang.String)
      */
@@ -764,7 +778,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
-            throw new RuntimeException(e); // TODO
+            throw new SystemException("", e);
         } finally {
             stream.close();
         }
@@ -823,8 +837,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                     GroupNode pop = pop();
                     if (pop != group) {
                         push(pop);
-                        throw new SyntaxError(parser,
-                            "right brace expected instead of ", t.toText());
+                        log("right brace expected instead of ", t.toText());
                     }
                     return group;
                 }
@@ -833,10 +846,19 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         } catch (ScannerException e) {
             throw e;
         } catch (Exception e) {
-            throw new RuntimeException("unimplemented");
+            // this should not happen
+            throw new RuntimeException("severe programming mistake");
         }
 
-        throw new SyntaxError(parser, "missing right brace");
+        log("missing right brace for group started at {0}:{1}", getSource(),
+            Integer.toString(getLineno()));
+        try {
+            group.close((RightBraceToken) getTokenFactory().createToken(
+                Catcode.RIGHTBRACE, UnicodeChar.get('}'), ""));
+        } catch (CatcodeException e) {
+            throw new SystemException("impossible", e);
+        }
+        return group;
     }
 
     /**

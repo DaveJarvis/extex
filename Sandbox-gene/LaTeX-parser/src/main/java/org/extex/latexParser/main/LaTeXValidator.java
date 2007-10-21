@@ -84,8 +84,7 @@ public class LaTeXValidator {
         try {
             return new LaTeXParserImpl(finder, logger).parse(source);
         } catch (SyntaxError e) {
-            logger.severe(source + ":" + e.getLineNumber() + ": "
-                    + e.getMessage() + "\n");
+            logger.severe(e.getMessage() + "\n");
         } catch (SystemException e) {
             logger.severe(source + ": " + e.getCause().toString() + "\n");
         } catch (ScannerException e) {
@@ -101,9 +100,9 @@ public class LaTeXValidator {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run from the command line arguments.
      * 
-     * @param args
+     * @param args the arguments
      */
     private void run(String[] args) {
 

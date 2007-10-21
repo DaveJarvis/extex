@@ -53,20 +53,20 @@ public final class DefinitionLoader {
             throws IOException,
                 ScannerException {
 
-        LineNumberReader r =
+        LineNumberReader reader =
                 new LineNumberReader(new InputStreamReader(stream));
         try {
-            for (String s = r.readLine(); s != null; s = r.readLine()) {
-                if (s.startsWith("\\")) {
-                    loadMacro(s, parser);
-                } else if (s.matches("[ ]*%.*")) {
-                    // ignore comments
+            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                if (line.startsWith("\\")) {
+                    loadMacro(line, parser);
+                } else if (line.matches("[ ]*%.*") || line.matches("[ ]*")) {
+                    // ignore comments and empty lines
                 } else {
-                    loadActive(s, parser);
+                    loadActive(line, parser);
                 }
             }
         } finally {
-            r.close();
+            reader.close();
         }
 
     }

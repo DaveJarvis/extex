@@ -93,8 +93,8 @@ public class Begin implements Macro {
         for (;;) {
             Node n = parser.parseNode(null);
             if (n == null) {
-                throw new SyntaxError(parser,
-                    "unexpected end of file in environment {0}", name);
+                parser.log("unexpected end of file in environment {0}", name);
+                break;
             } else if (n instanceof End) {
                 break;
             }

@@ -111,9 +111,10 @@ public class MathEnvironment extends EnvironmentNode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param sb
+     * @see org.extex.latexParser.impl.node.EnvironmentNode#toString(
+     *      java.lang.StringBuilder)
      */
     @Override
     public StringBuilder toString(StringBuilder sb) {

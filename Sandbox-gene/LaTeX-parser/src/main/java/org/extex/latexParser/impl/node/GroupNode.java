@@ -119,9 +119,13 @@ public class GroupNode extends NodeList {
     @Override
     public void print(PrintStream stream) {
 
-        stream.print(openToken.toText());
+        if (openToken != null) {
+            stream.print(openToken.toText());
+        }
         super.print(stream);
-        stream.print(closeToken.toText());
+        if (closeToken != null) {
+            stream.print(closeToken.toText());
+        }
     }
 
     /**
@@ -133,9 +137,13 @@ public class GroupNode extends NodeList {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append(openToken.toText());
+        if (openToken != null) {
+            sb.append(openToken.toText());
+        }
         super.toString(sb);
-        sb.append(closeToken.toText());
+        if (closeToken != null) {
+            sb.append(closeToken.toText());
+        }
         return sb.toString();
     }
 
