@@ -23,14 +23,16 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a parser and central memory for the LaTeX processor.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -107,6 +109,13 @@ public interface Parser {
     Token getToken() throws ScannerException;
 
     /**
+     * Getter for the token factory.
+     * 
+     * @return the token factory
+     */
+    TokenFactory getTokenFactory();
+
+    /**
      * Check whether an active character is already defined.
      * 
      * @param c the active character
@@ -146,11 +155,13 @@ public interface Parser {
     /**
      * Parse a node.
      * 
+     * @param end the optional end token
+     * 
      * @return the node found or <code>null</code> at EOF
      * 
      * @throws ScannerException in case of an error
      */
-    Node parseNode() throws ScannerException;
+    Node parseNode(Token end) throws ScannerException;
 
     /**
      * Parse an optional argument enclosed in brackets. The opening bracket has
@@ -174,6 +185,27 @@ public interface Parser {
      * @throws ScannerException in case of an error
      */
     Node parseTokenOrGroup() throws ScannerException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the top of stack
+     */
+    EnvironmentNode peek();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the top of stack
+     */
+    EnvironmentNode pop();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param env the node to push
+     */
+    void push(EnvironmentNode env);
 
     /**
      * Push a token back for the next get();

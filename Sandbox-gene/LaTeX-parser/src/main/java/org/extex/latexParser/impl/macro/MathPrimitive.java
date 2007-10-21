@@ -19,38 +19,53 @@
 
 package org.extex.latexParser.impl.macro;
 
+import java.io.IOException;
+
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.node.EnvironmentNode;
+import org.extex.latexParser.impl.node.MacroNode;
+import org.extex.latexParser.impl.node.MathEnvironment;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * This class represents a \end instruction.
+ * This class represents a math instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndEnvironment extends GenericMacro {
+public class MathPrimitive implements Macro {
 
     /**
      * Creates a new object.
      * 
-     * @param spec
+     * @param s the initial name
      */
-    public EndEnvironment(String spec) {
+    public MathPrimitive(String s) {
 
-        super(spec);
+        super();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Macro#parse( Token, Parser)
+     * @see org.extex.latexParser.impl.Macro#parse(
+     *      org.extex.scanner.type.token.Token,
+     *      org.extex.latexParser.impl.Parser)
      */
-    @Override
-    public Node parse(Token token, Parser parser) throws ScannerException {
+    public Node parse(Token token, Parser parser)
+            throws ScannerException,
+                IOException {
 
-        return super.parse(token, parser);
+        EnvironmentNode env = parser.peek();
+        if (!(env instanceof MathEnvironment)) {
+            throw new SyntaxError(token.toText()
+                    + " is defined in math mode only");
+        }
+        return new MacroNode(token, null, null, //
+            parser.getSource(), parser.getLineno());
     }
-
 }

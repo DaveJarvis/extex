@@ -24,16 +24,17 @@ import java.io.PrintStream;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \par instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Par implements Macro, Node {
+public class Par extends AbstractNode implements Macro, Node {
 
     /**
      * Creates a new object.
@@ -42,7 +43,18 @@ public class Par implements Macro, Node {
      */
     public Par(String s) {
 
-        super();
+        super(null, 0);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param source the source
+     * @param lineNumber the line number
+     */
+    public Par(String source, int lineNumber) {
+
+        super(source, lineNumber);
     }
 
     /**
@@ -54,7 +66,7 @@ public class Par implements Macro, Node {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        return new Par(null);
+        return new Par(parser.getSource(), parser.getLineno());
     }
 
     /**
@@ -66,6 +78,17 @@ public class Par implements Macro, Node {
 
         stream.println();
         stream.println();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "\n\n";
     }
 
 }

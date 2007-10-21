@@ -30,7 +30,7 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a generic macro.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,14 +38,15 @@ import org.extex.scanner.type.token.Token;
 public class GenericMacro implements Macro {
 
     /**
-     * The field <tt>spec</tt> contains the ...
+     * The field <tt>spec</tt> contains the specification for parsing of
+     * arguments.
      */
     private String spec;
 
     /**
      * Creates a new object.
      * 
-     * @param spec
+     * @param spec the specification for parsing the arguments
      */
     public GenericMacro(String spec) {
 
@@ -61,12 +62,14 @@ public class GenericMacro implements Macro {
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         if (spec == null || "".equals(spec)) {
-            return new MacroNode(token, null, new Node[]{});
+            return new MacroNode(token, null, new Node[]{}, parser.getSource(),
+                parser.getLineno());
         } else if (spec.matches("\\[[0-9]\\]")) {
             int n = spec.charAt(1) - '0';
             Node[] args = new Node[n];
             parseArgs(args, parser);
-            return new MacroNode(token, null, args);
+            return new MacroNode(token, null, args, parser.getSource(), parser
+                .getLineno());
 
         } else if (spec.matches("\\[.*\\]\\[[0-9]\\]")) {
             int n = spec.charAt(spec.length() - 2) - '0';
@@ -82,17 +85,18 @@ public class GenericMacro implements Macro {
 
             Node[] args = new Node[n];
             parseArgs(args, parser);
-            return new MacroNode(token, opt, args);
+            return new MacroNode(token, opt, args, parser.getSource(), parser
+                .getLineno());
         }
 
         throw new RuntimeException("unknown spec encountered");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Fill the arguments array.
      * 
-     * @param args
-     * @param parser
+     * @param args the array or arguments to be filled
+     * @param parser the parser
      * 
      * @throws ScannerException in case of an error
      */

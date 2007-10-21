@@ -30,7 +30,8 @@ import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a macro which consumes the first following token
+ * uninterpreted.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -56,7 +57,8 @@ public class Let implements Macro {
      */
     public Node parse(Token token, Parser parser) throws ScannerException {
 
-        TokensNode tokens = new TokensNode(token);
+        TokensNode tokens =
+                new TokensNode(token, parser.getSource(), parser.getLineno());
         Token name = parser.getToken();
         if (name == null) {
             throw new SyntaxError("unexpected EOF in definition");

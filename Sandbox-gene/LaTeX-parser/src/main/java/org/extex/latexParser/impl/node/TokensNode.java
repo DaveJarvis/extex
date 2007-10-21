@@ -32,7 +32,7 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokensNode implements Node {
+public class TokensNode extends AbstractNode implements Node {
 
     /**
      * The field <tt>list</tt> contains the contents.
@@ -44,17 +44,19 @@ public class TokensNode implements Node {
      */
     public TokensNode() {
 
-        super();
+        super(null, 0);
     }
 
     /**
      * Creates a new object.
      * 
      * @param t the token to add
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public TokensNode(Token t) {
+    public TokensNode(Token t, String source, int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         add(t);
     }
 

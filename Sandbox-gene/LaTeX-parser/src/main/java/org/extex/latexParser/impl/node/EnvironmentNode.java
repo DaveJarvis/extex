@@ -89,9 +89,11 @@ public class EnvironmentNode extends NodeList {
     @Override
     public void print(PrintStream stream) {
 
-        stream.print("\\begin{");
-        stream.print(name);
-        stream.print("}");
+        if (name != null) {
+            stream.print("\\begin{");
+            stream.print(name);
+            stream.print("}");
+        }
         if (opt != null) {
             stream.print('[');
             opt.print(stream);
@@ -105,9 +107,11 @@ public class EnvironmentNode extends NodeList {
             }
         }
         super.print(stream);
-        stream.print("\\end{");
-        stream.print(name);
-        stream.print("}");
+        if (name != null) {
+            stream.print("\\end{");
+            stream.print(name);
+            stream.print("}");
+        }
     }
 
     /**
@@ -118,10 +122,22 @@ public class EnvironmentNode extends NodeList {
     @Override
     public String toString() {
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("\\begin{");
-        sb.append(name);
-        sb.append("}");
+        return toString(new StringBuilder()).toString();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param sb the target
+     */
+    @Override
+    public StringBuilder toString(StringBuilder sb) {
+
+        if (name != null) {
+            sb.append("\\begin{");
+            sb.append(name);
+            sb.append("}");
+        }
         if (opt != null) {
             sb.append('[');
             sb.append(opt.toString());
@@ -135,10 +151,12 @@ public class EnvironmentNode extends NodeList {
             }
         }
         super.toString(sb);
-        sb.append("\\end{");
-        sb.append(name);
-        sb.append("}");
-        return sb.toString();
+        if (name != null) {
+            sb.append("\\end{");
+            sb.append(name);
+            sb.append("}");
+        }
+        return sb;
     }
 
 }

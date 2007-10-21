@@ -26,12 +26,15 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.LaTeXParser;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.api.NodeList;
+import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
+import org.extex.latexParser.impl.node.MathEnvironment;
 import org.extex.latexParser.impl.node.OptGroupNode;
 import org.extex.latexParser.impl.node.TokenNode;
 import org.extex.latexParser.impl.node.TokensNode;
@@ -71,7 +74,7 @@ import org.extex.scanner.type.token.TokenVisitor;
 public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This class provides a token visitor to switch according to the catcode.
      */
     private class ToVi implements TokenVisitor<Node, TokenStream> {
 
@@ -100,7 +103,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          */
         public Node visitCr(CrToken token, TokenStream stream) throws Exception {
 
-            return new TokenNode(token);
+            return new TokenNode(token, getSource(), getLineno());
         }
 
         /**
@@ -155,7 +158,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitMacroParam(MacroParamToken token, TokenStream stream)
                 throws Exception {
 
-            return new TokenNode(token);
+            return new TokenNode(token, getSource(), getLineno());
         }
 
         /**
@@ -172,10 +175,11 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 throw new SyntaxError("Unexpected EOF in math");
             }
             if (t instanceof MathShiftToken) {
-                return collectMath(token, t);
+                return collectDisplayMath(token, t);
             }
             stream.put(t);
-            return collectMath(token, null);
+            return org.extex.latexParser.impl.macro.latex.Math.collectMath(
+                parser, token, token);
         }
 
         /**
@@ -222,7 +226,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          */
         public Node visitSubMark(SubMarkToken token, TokenStream stream) {
 
-            return new TokenNode(token);
+            return new TokenNode(token, getSource(), getLineno());
         }
 
         /**
@@ -233,7 +237,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          */
         public Node visitSupMark(SupMarkToken token, TokenStream stream) {
 
-            return new TokenNode(token);
+            return new TokenNode(token, getSource(), getLineno());
         }
 
         /**
@@ -244,7 +248,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          */
         public Node visitTabMark(TabMarkToken token, TokenStream stream) {
 
-            return new TokenNode(token);
+            return new TokenNode(token, getSource(), getLineno());
         }
     }
 
@@ -504,6 +508,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
+     * The field <tt>environmentStack</tt> contains the ...
+     */
+    private Stack<EnvironmentNode> environmentStack =
+            new Stack<EnvironmentNode>();
+
+    /**
      * Creates a new object.
      */
     public EmptyLaTeXParser() {
@@ -523,17 +533,39 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * parse a bunch of mathematical material.
      * 
-     * @param token
-     * @param t
+     * @param start the initial token
+     * @param start2 the second token
      * 
      * @return the math nodes
+     * 
+     * @throws ScannerException in case of an error
      */
-    public Node collectMath(MathShiftToken token, Token t) {
+    public Node collectDisplayMath(MathShiftToken start, Token start2)
+            throws ScannerException {
 
-        // TODO gene: collectMath unimplemented
-        return null;
+        EnvironmentNode env = peek();
+        if (env instanceof MathEnvironment) {
+            throw new SyntaxError("trying to use math when already in math");
+        }
+
+        env = new MathEnvironment(start, start2, start, start2, //
+            getSource(), getLineno());
+        push(env);
+        for (Node n = parseNode(start); n != null; n = parseNode(start)) {
+            env.add(n);
+        }
+        Token t = getToken();
+        if (!t.equals(start2)) {
+            throw new SyntaxError("closing math is missing");
+        }
+
+        EnvironmentNode pop = pop();
+        if (pop != env) {
+            throw new SyntaxError("closing math is missing");
+        }
+        return env;
     }
 
     /**
@@ -616,6 +648,16 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public Token getToken() throws ScannerException {
 
         return scanner.get(FACTORY, tokenizer);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#getTokenFactory()
+     */
+    public TokenFactory getTokenFactory() {
+
+        return FACTORY;
     }
 
     /**
@@ -758,12 +800,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Parser#parseNode()
+     * @see org.extex.latexParser.impl.Parser#parseNode(Token)
      */
-    public Node parseNode() throws ScannerException {
+    public Node parseNode(Token end) throws ScannerException {
 
         Token t = getToken();
-        if (t == null) {
+        if (t == null || t.equals(end)) {
             return null;
         }
         try {
@@ -785,7 +827,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public Node parseOptionalArgument(Token cs, OtherToken token)
             throws ScannerException {
 
-        OptGroupNode content = new OptGroupNode(token);
+        OptGroupNode content =
+                new OptGroupNode(token, getSource(), getLineno());
 
         try {
             for (Token t = getToken(); t != null; t = getToken()) {
@@ -817,7 +860,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         if (t == null) {
             throw new SyntaxError("Unexpected EOF");
         } else if (!(t instanceof LeftBraceToken)) {
-            return new TokenNode(t);
+            return new TokenNode(t, getSource(), getLineno());
         }
 
         return parseGroup((LeftBraceToken) t);
@@ -836,7 +879,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private TokensNode parseTokens(Token token, Token endToken)
             throws ScannerException {
 
-        TokensNode list = new TokensNode(token);
+        TokensNode list = new TokensNode(token, getSource(), getLineno());
         for (Token t = getToken(); t != null; t = getToken()) {
             if (t.equals(endToken)) {
                 scanner.put(t);
@@ -851,6 +894,43 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         }
 
         return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#peek()
+     */
+    public EnvironmentNode peek() {
+
+        if (environmentStack.isEmpty()) {
+            return null;
+        }
+        return environmentStack.peek();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#pop()
+     */
+    public EnvironmentNode pop() {
+
+        if (environmentStack.isEmpty()) {
+            return null;
+        }
+        return environmentStack.pop();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.impl.Parser#push(
+     *      org.extex.latexParser.impl.node.EnvironmentNode)
+     */
+    public void push(EnvironmentNode env) {
+
+        environmentStack.push(env);
     }
 
     /**

@@ -31,10 +31,23 @@ import java.io.PrintStream;
 public interface Node {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the line number.
      * 
-     * @param stream
+     * @return the line number
+     */
+    int getLineNumber();
+
+    /**
+     * Getter for the source.
+     * 
+     * @return the source
+     */
+    String getSource();
+
+    /**
+     * Print the node to a given stream.
+     * 
+     * @param stream the output stream
      */
     void print(PrintStream stream);
-
 }

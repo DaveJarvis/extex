@@ -20,16 +20,12 @@
 package org.extex.latexParser.impl.macro.latex;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
 import org.extex.latexParser.impl.SystemException;
-import org.extex.latexParser.impl.node.EndNode;
 import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.MacroNode;
@@ -38,18 +34,12 @@ import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \begin instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class Begin implements Macro {
-
-    /**
-     * The field <tt>ENVIRONMENT</tt> contains the key for the environment
-     * list.
-     */
-    public final static String ENVIRONMENT = "environment";
 
     /**
      * Creates a new object.
@@ -86,13 +76,6 @@ public class Begin implements Macro {
             throw new SyntaxError("environment " + name + " undefined");
         }
 
-        Map<String, Object> context = parser.getContext();
-        Object envStack = context.get(Begin.ENVIRONMENT);
-        List<EnvironmentNode> stack = (List<EnvironmentNode>) envStack;
-        if (stack == null) {
-            stack = new ArrayList<EnvironmentNode>();
-            context.put(ENVIRONMENT, stack);
-        }
         String source = parser.getSource();
         int lineno = parser.getLineno();
 
@@ -105,13 +88,13 @@ public class Begin implements Macro {
         EnvironmentNode environmentNode =
                 new EnvironmentNode(name, m.getOpt(), m.getArgs(), source,
                     lineno);
-        stack.add(environmentNode);
+        parser.push(environmentNode);
 
         for (;;) {
-            Node n = parser.parseNode();
+            Node n = parser.parseNode(null);
             if (n == null) {
                 throw new SyntaxError("unexpected EOF in environment " + name);
-            } else if (n instanceof EndNode) {
+            } else if (n instanceof End) {
                 break;
             }
             environmentNode.add(n);

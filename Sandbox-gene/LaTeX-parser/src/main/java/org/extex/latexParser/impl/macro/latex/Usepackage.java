@@ -26,6 +26,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -34,12 +35,12 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \ usepackage instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Usepackage implements Macro, Node {
+public class Usepackage extends AbstractNode implements Macro {
 
     /**
      * The field <tt>opt</tt> contains the optional arguments.
@@ -52,7 +53,7 @@ public class Usepackage implements Macro, Node {
     private String name;
 
     /**
-     * The field <tt>token</tt> contains the ...
+     * The field <tt>token</tt> contains the token.
      */
     private Token token;
 
@@ -63,19 +64,22 @@ public class Usepackage implements Macro, Node {
      */
     public Usepackage(String s) {
 
-        super();
+        super(null, 0);
     }
 
     /**
      * Creates a new object.
      * 
-     * @param t
-     * @param opt
-     * @param name
+     * @param t the initiating token
+     * @param opt the optional argument
+     * @param name the name of the package
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public Usepackage(Token t, Node opt, String name) {
+    public Usepackage(Token t, Node opt, String name, String source,
+            int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         this.token = t;
         this.opt = opt;
         this.name = name;
@@ -114,7 +118,8 @@ public class Usepackage implements Macro, Node {
             parser.load("latex/sty/" + s);
         }
 
-        return new Usepackage(token, o, name);
+        return new Usepackage(token, o, name, parser.getSource(), parser
+            .getLineno());
     }
 
     /**

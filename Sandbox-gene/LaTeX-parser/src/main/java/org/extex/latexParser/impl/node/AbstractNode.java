@@ -19,51 +19,57 @@
 
 package org.extex.latexParser.impl.node;
 
-import java.io.PrintStream;
-
 import org.extex.latexParser.api.Node;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This abstract base class for nodes takes care of source references.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndNode implements Node {
+public abstract class AbstractNode implements Node {
 
     /**
-     * The field <tt>name</tt> contains the name of the environment.
+     * The field <tt>lineNumber</tt> contains the line number.
      */
-    private String name;
+    private int lineNumber;
+
+    /**
+     * The field <tt>source</tt> contains the source, i.e. the file.
+     */
+    private String source;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the environment
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public EndNode(String name) {
+    public AbstractNode(String source, int lineNumber) {
 
-        this.name = name;
-    }
-
-    /**
-     * Getter for name of the environment.
-     * 
-     * @return the name
-     */
-    public String getName() {
-
-        return name;
+        super();
+        this.source = source;
+        this.lineNumber = lineNumber;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     * @see org.extex.latexParser.api.Node#getLineNumber()
      */
-    public void print(PrintStream stream) {
+    public int getLineNumber() {
 
-        // not really
+        return lineNumber;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#getSource()
+     */
+    public String getSource() {
+
+        return source;
     }
 
 }

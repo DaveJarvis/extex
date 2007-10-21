@@ -30,7 +30,7 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokenNode implements Node {
+public class TokenNode extends AbstractNode implements Node {
 
     /**
      * The field <tt>token</tt> contains the token contained.
@@ -41,10 +41,12 @@ public class TokenNode implements Node {
      * Creates a new object.
      * 
      * @param t the token to add
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public TokenNode(Token t) {
+    public TokenNode(Token t, String source, int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         token = t;
     }
 

@@ -22,7 +22,6 @@ package org.extex.latexParser.api;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-
 /**
  * This class represents a list of nodes.
  * 
@@ -71,11 +70,11 @@ public class NodeList extends ArrayList<Node> implements Node {
     }
 
     /**
-     * Getter for line.
+     * {@inheritDoc}
      * 
-     * @return the line
+     * @see org.extex.latexParser.api.Node#getLineNumber()
      */
-    public int getLine() {
+    public int getLineNumber() {
 
         return line;
     }

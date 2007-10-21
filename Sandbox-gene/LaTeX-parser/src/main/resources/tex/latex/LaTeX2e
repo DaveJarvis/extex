@@ -1,6 +1,8 @@
 %
 % Definitions for LaTeX2e
 %
+\[=org.extex.latexParser.impl.macro.latex.Math
+\(=org.extex.latexParser.impl.macro.latex.Math
 \Alph[1]
 \Huge
 \IfFileExists[3]

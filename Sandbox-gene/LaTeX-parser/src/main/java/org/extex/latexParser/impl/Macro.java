@@ -26,7 +26,7 @@ import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a parser for a macro or active character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,7 +34,7 @@ import org.extex.scanner.type.token.Token;
 public interface Macro {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse the invocation of a macro or active character.
      * 
      * @param token the name of the initiating control sequence
      * @param parser the parser to use

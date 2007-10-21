@@ -31,7 +31,7 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MacroNode implements Node {
+public class MacroNode extends AbstractNode {
 
     /**
      * The field <tt>token</tt> contains the command token.
@@ -55,10 +55,13 @@ public class MacroNode implements Node {
      * @param token the token to add
      * @param opt the optional arguments
      * @param args the arguments
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public MacroNode(Token token, Node opt, Node[] args) {
+    public MacroNode(Token token, Node opt, Node[] args, String source,
+            int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         this.token = token;
         this.opt = opt;
         this.args = args;
@@ -105,10 +108,13 @@ public class MacroNode implements Node {
         if (opt != null) {
             opt.print(stream);
         }
-        for (Node n : args) {
-            n.print(stream);
+        if (args != null) {
+            for (Node n : args) {
+                n.print(stream);
+            }
         }
-        if (args.length == 0 && token instanceof ControlSequenceToken) {
+        if ((args == null || args.length == 0)
+                && token instanceof ControlSequenceToken) {
             stream.print(' ');
         }
     }
@@ -126,10 +132,13 @@ public class MacroNode implements Node {
         if (opt != null) {
             sb.append(opt.toString());
         }
-        for (Node n : args) {
-            sb.append(n.toString());
+        if (args != null) {
+            for (Node n : args) {
+                sb.append(n.toString());
+            }
         }
-        if (args.length == 0 && token instanceof ControlSequenceToken) {
+        if ((args == null || args.length == 0)
+                && token instanceof ControlSequenceToken) {
             sb.append(' ');
         }
         return sb.toString();

@@ -28,7 +28,7 @@ import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \makeatletter instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -55,6 +55,7 @@ public class Makeatletter implements Macro {
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         parser.setTokenizer(EmptyLaTeXParser.AT_TOKENIZER);
-        return new MacroNode(token, null, new Node[0]);
+        return new MacroNode(token, null, new Node[0], parser.getSource(),
+            parser.getLineno());
     }
 }

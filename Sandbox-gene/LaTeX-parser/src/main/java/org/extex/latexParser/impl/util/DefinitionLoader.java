@@ -32,7 +32,8 @@ import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This utility class provides a means to load a specification of macros or
+ * active characters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,7 +41,7 @@ import org.extex.scanner.api.exception.ScannerException;
 public final class DefinitionLoader {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Load a file of specifications.
      * 
      * @param stream the stream
      * @param parser the parser
@@ -71,7 +72,7 @@ public final class DefinitionLoader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Load an active character.
      * 
      * @param s
      * @param parser the parser
@@ -88,7 +89,7 @@ public final class DefinitionLoader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Load a macro.
      * 
      * @param s the string to parse
      * @param parser the parser
@@ -98,7 +99,7 @@ public final class DefinitionLoader {
     private static void loadMacro(String s, Parser parser)
             throws SystemException {
 
-        int i = s.indexOf('[');
+        int i = s.indexOf('[', 2);
         if (i > 0) {
             int eq = s.indexOf('=', 2);
             if (eq > 0) {
@@ -120,7 +121,7 @@ public final class DefinitionLoader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a macro.
      * 
      * @param className the name of the class
      * @param spec the specification

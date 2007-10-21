@@ -26,6 +26,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -34,12 +35,12 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \documentclass instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Documentclass implements Macro, Node {
+public class Documentclass extends AbstractNode implements Macro {
 
     /**
      * The field <tt>opt</tt> contains the optional arguments.
@@ -63,19 +64,22 @@ public class Documentclass implements Macro, Node {
      */
     public Documentclass(String s) {
 
-        super();
+        super(null, 0);
     }
 
     /**
      * Creates a new object.
      * 
-     * @param t
-     * @param opt
-     * @param name
+     * @param t the starting token
+     * @param opt the optional arguments
+     * @param name the name of the document class
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public Documentclass(Token t, Node opt, String name) {
+    public Documentclass(Token t, Node opt, String name, String source,
+            int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         this.token = t;
         this.opt = opt;
         this.name = name;
@@ -112,7 +116,8 @@ public class Documentclass implements Macro, Node {
 
         parser.load("latex/cls/" + name);
 
-        return new Documentclass(token, o, name);
+        return new Documentclass(token, o, name, parser.getSource(), parser
+            .getLineno());
     }
 
     /**

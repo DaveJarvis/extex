@@ -22,7 +22,7 @@ package org.extex.latexParser.impl;
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a syntax error.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

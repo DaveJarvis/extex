@@ -28,6 +28,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
@@ -35,12 +36,12 @@ import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a \verb instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Verb implements Macro, Node {
+public class Verb extends AbstractNode implements Macro {
 
     /**
      * The field <tt>tokenizer</tt> contains the tokenizer to use for
@@ -118,7 +119,7 @@ public class Verb implements Macro, Node {
      */
     public Verb(String s) {
 
-        super();
+        super(null, 0);
     }
 
     /**
@@ -126,10 +127,12 @@ public class Verb implements Macro, Node {
      * 
      * @param cmd the command
      * @param t the token to add
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public Verb(Token cmd, Token t) {
+    public Verb(Token cmd, Token t, String source, int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         this.cmd = cmd;
         openToken = t;
     }
@@ -161,7 +164,8 @@ public class Verb implements Macro, Node {
         if (start == null) {
             throw new SyntaxError("unexpected EOF");
         }
-        final Verb verb = new Verb(token, start);
+        final Verb verb =
+                new Verb(token, start, parser.getSource(), parser.getLineno());
 
         Tokenizer tokenizer =
                 parser.setTokenizer(new VerbTokenizer(start.getChar()));

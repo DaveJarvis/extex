@@ -59,7 +59,8 @@ public class Def implements Macro {
     public Node parse(Token token, Parser parser) throws ScannerException {
 
         NodeList list = new NodeList(parser.getSource(), parser.getLineno());
-        TokensNode tokens = new TokensNode(token);
+        TokensNode tokens =
+                new TokensNode(token, parser.getSource(), parser.getLineno());
         Token name = parser.getToken();
         if (name == null) {
             throw new SyntaxError("unexpected EOF in definition");

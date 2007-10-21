@@ -5,4 +5,11 @@
 \centerline[1]
 \loop
 \repeat
+\alpha=org.extex.latexParser.impl.macro.MathPrimitive
+\beta=org.extex.latexParser.impl.macro.MathPrimitive
+\gamma=org.extex.latexParser.impl.macro.MathPrimitive
+\delta=org.extex.latexParser.impl.macro.MathPrimitive
+\epsilon=org.extex.latexParser.impl.macro.MathPrimitive
+\varepsilon=org.extex.latexParser.impl.macro.MathPrimitive
+\geq=org.extex.latexParser.impl.macro.MathPrimitive
 %

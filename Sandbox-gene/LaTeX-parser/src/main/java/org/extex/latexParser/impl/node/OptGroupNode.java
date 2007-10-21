@@ -32,7 +32,7 @@ import org.extex.scanner.type.token.OtherToken;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OptGroupNode implements Node {
+public class OptGroupNode extends AbstractNode {
 
     /**
      * The field <tt>list</tt> contains the main nodes contained.
@@ -53,10 +53,12 @@ public class OptGroupNode implements Node {
      * Creates a new object.
      * 
      * @param t the token to add
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public OptGroupNode(OtherToken t) {
+    public OptGroupNode(OtherToken t, String source, int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         openToken = t;
     }
 

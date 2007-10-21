@@ -33,7 +33,8 @@ import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides the entry point for the LaTeX validator. This includes a
+ * main program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

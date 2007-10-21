@@ -20,14 +20,13 @@
 package org.extex.latexParser.impl.macro.latex;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.io.PrintStream;
 
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
 import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.node.EndNode;
+import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
@@ -35,12 +34,12 @@ import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an \end instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class End implements Macro {
+public class End extends AbstractNode implements Macro {
 
     /**
      * Creates a new object.
@@ -49,7 +48,18 @@ public class End implements Macro {
      */
     public End(String s) {
 
-        super();
+        super(null, 0);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param source the source
+     * @param lineNumber the line number
+     */
+    public End(String source, int lineNumber) {
+
+        super(source, lineNumber);
     }
 
     /**
@@ -73,14 +83,7 @@ public class End implements Macro {
         }
         String name = node.toString();
 
-        Map<String, Object> context = parser.getContext();
-        Object envStack = context.get(Begin.ENVIRONMENT);
-        List<EnvironmentNode> info = (List<EnvironmentNode>) envStack;
-        if (info == null) {
-            throw new SyntaxError("environment " + name
-                    + " closed without being opened");
-        }
-        EnvironmentNode env = info.get(info.size() - 1);
+        EnvironmentNode env = parser.pop();
         String iname = env.getName();
         if (!iname.equals(name)) {
             throw new SyntaxError("environment " + iname
@@ -88,11 +91,19 @@ public class End implements Macro {
         }
 
         Macro macro = parser.getDefinition("end." + name);
-        if (macro == null) {
-            info.remove(info.size() - 1);
-        } else {
+        if (macro != null) {
             macro.parse(null, parser);
         }
-        return new EndNode(name);
+        return new End(parser.getSource(), parser.getLineno());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.latexParser.api.Node#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        //
     }
 }
