@@ -6420,7 +6420,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("ae", cs.getName());
         String[] text =
                 {
-                        "186 -12 49 -49 42 188.331665039 34.6683349609 155 34 -30 30 hstemhm",
+                        "186 -12 49 -49 42 188.3316700999466 34.6683451590753 155 34 -30 30 hstemhm",
                         "39 72 -61 73 175 73 201 76 hintmask 0011000110000000",
                         "372 253 rmoveto", "60 callsubr", "-74 -38 rmoveto",
                         "61 callsubr", "hintmask 0110010110000000",
@@ -6539,7 +6539,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("aeacute", cs.getName());
         String[] text =
                 {
-                        "186 -12 49 -49 42 188.331665039 34.6683349609 155 34 -30 30 hstemhm",
+                        "186 -12 49 -49 42 188.3316700999466 34.6683451590753 155 34 -30 30 hstemhm",
                         "39 72 -61 73 175 73 201 76 hintmask 0011000110000000",
                         "372 253 rmoveto", "60 callsubr", "-74 -38 rmoveto",
                         "61 callsubr", "hintmask 0110010110000000",
@@ -10035,9 +10035,8 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("afii57679", cs.getName());
         String[] text =
                 {
-                        "-219 406 109.925598145 hstemhm",
-                        "147 72 -61 45 -8 44 hintmask 1100",
-                        "0000",
+                        "-219 406 109.9256122682536 hstemhm",
+                        "147 72 -61 45 -8 44 hintmask 11000000",
                         "147 -203 rmoveto",
                         "5 2 74 -12 -7 135 rrcurveto",
                         "hintmask 10100000",
@@ -30310,7 +30309,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("uni01E3", cs.getName());
         String[] text =
                 {
-                        "186 -12 49 -49 42 188.331665039 34.6683349609 155 34 -30 30 97 44 hstemhm",
+                        "186 -12 49 -49 42 188.3316700999466 34.6683451590753 155 34 -30 30 97 44 hstemhm",
                         "39 72 -61 73 175 73 201 76 hintmask 0011010011000000",
                         "372 253 rmoveto", "60 callsubr", "-74 -38 rmoveto",
                         "61 callsubr", "hintmask 0110011011000000",
@@ -41277,7 +41276,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("uni04D5", cs.getName());
         String[] text =
                 {
-                        "186 -12 49 -49 42 188.331665039 34.6683349609 155 34 -30 30 hstemhm",
+                        "186 -12 49 -49 42 188.3316700999466 34.6683451590753 155 34 -30 30 hstemhm",
                         "39 72 -61 73 175 73 201 76 hintmask 0011000110000000",
                         "372 253 rmoveto", "60 callsubr", "-74 -38 rmoveto",
                         "61 callsubr", "hintmask 0110010110000000",
@@ -56333,7 +56332,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         String[] text =
                 {
                         "196 -1 34 -34 29 585 33 -28 28 hstemhm",
-                        "106 81 86 63.2523193359 225.747680664 92 hintmask 00001110",
+                        "106 81 86 63.25232318608377 225.74769207293812 92 hintmask 00001110",
                         "187 440 rmoveto",
                         "9 -9 9 -9 6 -5 36 -32 23 -38 3 -52 2 -30 -5 -27 -13 -26 -16 -32 -24 -31 -30 -21 rrcurveto",
                         "-170 -109 rmoveto",
@@ -62537,7 +62536,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("uni2619", cs.getName());
         String[] text =
                 {
-                        "605 -67 68 0.942947387695 34.0570526123 -18 31 44 65 -49 25 63 36 -18 26 21 21 7 28 -17 39 66 65 -46 28 61 35 -20 68 hstemhm",
+                        "605 -67 68 0.9429617761501488 34.05705348287175 -18 31 44 65 -49 25 63 36 -18 26 21 21 7 28 -17 39 66 65 -46 28 61 35 -20 68 hstemhm",
                         "390 56 384 32 99 34 -30 28 hintmask 100000010101011101000000",
                         "639 567 rmoveto",
                         "26 2 rlineto",
@@ -62559,8 +62558,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "11 -12 14 -9 16 0 30 0 27 12 25 16 -3 -25 17 -38 15 -17 20 -23 37 -17 33 1 4 0 3 1 4 0 3 -7 2 -5 1 -3 rrcurveto",
                         "5 -13 -2 -16 -10 -12 1 13 -2 6 -4 7 -6 9 -11 3 -7 0 -8 0 -7 -2 -5 -6 -7 -8 -2 -10 3 -14 rrcurveto",
                         "-26 2 rlineto",
-                        "12 -14 11 -17 30 1 31",
-                        "1 19 16 5 13 7 16 2 22 -4 24 21 7 21 10 12 10 14 13 17 18 10 18 12 -13 31 -14 9 0 rrcurveto",
+                        "12 -14 11 -17 30 1 31 1 19 16 5 13 7 16 2 22 -4 24 21 7 21 10 12 10 14 13 17 18 10 18 12 -13 31 -14 9 0 rrcurveto",
                         "9 0 8 4 7 7 8 7 3 18 0 11 0 9 -4 8 -7 7 -7 7 -8 3 -9 0 -11 0 1 -8 -7 -5 -6 -7 -14 6 -4 -4 rrcurveto",
                         "1 14 -1 16 -2 11 -6 32 -27 36 -18 16 rrcurveto",
                         "22 hlineto",
@@ -64168,15 +64166,14 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
         assertEquals("uni2767", cs.getName());
         String[] text =
                 {
-                        "605 -61 68 -20 35 46 63 -48 28 85 39 -17 29 6 21 21 26 -18 36 2 51 -14 65 -41 25 73 34.1241455078 0.875854492188 68 hstemhm",
+                        "605 -61 68 -20 35 46 63 -48 28 85 39 -17 29 6 21 21 26 -18 36 2 51 -14 65 -41 25 73 34.12414740215152 0.8758678568703746 68 hstemhm",
                         "109 35 -32 28 103 31 385 56 63 43 hintmask 100100100000110111100000",
                         "466 -31 rmoveto",
                         "-27 -2 rlineto",
                         "4 14 -2 10 -7 8 -5 6 -7 2 -8 0 -7 0 -11 -3 -5 -9 -5 -7 -1 -6 1 -13 -11 12 -2 16 4 13 2 3 3 6 3 6 rrcurveto",
                         "50 -6 29 10 15 12 20 16 9 17 4 22 18 -10 25 -3 17 0 19 0 21 9 14 12 rrcurveto",
                         "29 1 rlineto",
-                        "-2 -10 0 -11 2 -4 rrc",
-                        "urveto",
+                        "-2 -10 0 -11 2 -4 rrcurveto",
                         "hintmask 001010100000110111100000",
                         "3 -8 9 -4 9 0 9 0 9 4 6 6 6 5 5 7 0 14 0 12 -6 8 -8 4 -5 4 -23 -1 -23 0 13 24 17 35 8 11 rrcurveto",
                         "7 12 6 9 10 9 12 13 12 11 11 0 6 0 18 -6 12 -7 0 -6 4 -21 -5 -19 -5 -2 -4 1 -4 1 -4 13 -1 7 3 13 rrcurveto",
@@ -64200,8 +64197,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "-22 hlineto",
                         "-42 17 -36 23 -26 28 -20 22 -9 28 0 28 0 35 7 35 22 20 28 27 39 12 44 18 21 9 37 17 22 24 27 29 17 34 6 21 rrcurveto",
                         "35 -22 37 -39 12 -21 14 -22 34 -54 13 -28 0 0 11 -22 3 -21 37 11 -2 16 61 1 79 2 70 -38 56 -44 44 -34 59 -50 57 -63 rrcurveto",
-                        "-62 -68 -51 -48 -42 -41 -80 -76 -67 -19 -53 1 -50 1 -26 5 -37 23 -21 -55 -62 -103 -57 -47 rrc",
-                        "urveto",
+                        "-62 -68 -51 -48 -42 -41 -80 -76 -67 -19 -53 1 -50 1 -26 5 -37 23 -21 -55 -62 -103 -57 -47 rrcurveto",
                         "hintmask 100100100000111011100000",
                         "-25 36 -9 34 -29 23 -32 26 -79 27 -31 13 -40 19 -34 42 1 47 1 34 13 25 29 30 12 12 28 20 37 16 rrcurveto",
                         "8 3 19 0 rlineto",
@@ -64234,8 +64230,7 @@ public class XtfReaderFxlrCharStringTest extends TestCase {
                         "14 vlineto",
                         "1 8 2 12 11 18 12 18 8 8 5 6 4 4 5 3 2 6 19 0 13 -1 5 0 6 0 6 -6 7 -8 rrcurveto",
                         "36 -30 rmoveto",
-                        "18 -8 19 -2 9 0 16 0 29 8 15 9 15 10 17 13 16 9 16 9 10 6 17 8 -20 9 -20 9 -10 6 -",
-                        "11 6 -19 14 -12 8 rrcurveto",
+                        "18 -8 19 -2 9 0 16 0 29 8 15 9 15 10 17 13 16 9 16 9 10 6 17 8 -20 9 -20 9 -10 6 -11 6 -19 14 -12 8 rrcurveto",
                         "hintmask 000110101101110011100000",
                         "-11 9 -28 10 -22 0 -19 0 -15 -4 -13 -4 8 10 7 12 -1 17 -1 32 -10 30 -8 19 -3 8 -8 14 -6 14 rrcurveto",
                         "3 0 2 0 rlineto",

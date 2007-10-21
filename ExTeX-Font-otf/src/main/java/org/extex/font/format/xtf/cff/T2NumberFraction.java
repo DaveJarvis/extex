@@ -94,7 +94,7 @@ public class T2NumberFraction extends T2Number {
     @Override
     public double getDouble() {
 
-        return num; // TODO mgn Fehler;
+        return num + (double) den / 0xffff;
     }
 
     /**
