@@ -25,7 +25,7 @@ import java.io.PrintStream;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
@@ -98,7 +98,8 @@ public class Usepackage extends AbstractNode implements Macro {
 
         Token t = parser.getToken();
         if (t == null) {
-            throw new SyntaxError("unexpected EOF");
+            throw new SyntaxError(parser, "unexpected end of file for {0}",
+                token.toText());
         }
         Node o = null;
         if (t.eq(Catcode.OTHER, '[')) {
@@ -106,11 +107,12 @@ public class Usepackage extends AbstractNode implements Macro {
         }
         GroupNode a = parser.parseGroup();
         if (a.size() != 1) {
-            throw new SyntaxError("package expected");
+            throw new SyntaxError(parser,
+                "package name expected instead of {0}", a.toString());
         }
         Node node = a.get(0);
         if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("document class");
+            throw new SyntaxError(parser, "document class");
         }
         String name = node.toString();
 

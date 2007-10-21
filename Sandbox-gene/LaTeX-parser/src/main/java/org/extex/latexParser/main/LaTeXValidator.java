@@ -21,13 +21,15 @@ package org.extex.latexParser.main;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.LaTeXParserImpl;
-import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.SystemException;
+import org.extex.latexParser.impl.exception.SyntaxError;
+import org.extex.latexParser.impl.exception.SystemException;
 import org.extex.resource.FileFinder;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.exception.ScannerException;
@@ -48,26 +50,7 @@ public class LaTeXValidator {
      */
     public static void main(String[] args) {
 
-        for (String source : args) {
-            try {
-                new LaTeXValidator().run(source);
-
-            } catch (SyntaxError e) {
-                System.err.println(source + ":" + e.getLineNumber() + ": "
-                        + e.getMessage());
-            } catch (SystemException e) {
-                System.err.println(source + ": " + e.getCause().toString());
-            } catch (ScannerException e) {
-                System.err.println(source + ": " + e.getMessage());
-            } catch (FileNotFoundException e) {
-                System.err.println(source + ": file not found "
-                        + e.getMessage());
-            } catch (IOException e) {
-                System.err.println(source + ": IO error: " + e.toString());
-            } catch (RuntimeException e) {
-                System.err.println(source + ": " + e.toString());
-            }
-        }
+        new LaTeXValidator().run(args);
     }
 
     /**
@@ -77,8 +60,10 @@ public class LaTeXValidator {
 
     /**
      * Creates a new object.
+     * 
+     * @throws ConfigurationException in case of a configuration problem
      */
-    public LaTeXValidator() {
+    public LaTeXValidator() throws ConfigurationException {
 
         super();
         Configuration config = ConfigurationFactory.newInstance("path");
@@ -89,14 +74,43 @@ public class LaTeXValidator {
      * Perform one run and take care of all exceptions.
      * 
      * @param source the name of the source
+     * @param logger the logger
      * 
-     * @return the node list of the read entities
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws ScannerException in case of an error
+     * @return the node list of the read entities or <code>null</code> in case
+     *         of an error
      */
-    public NodeList run(String source) throws ScannerException, IOException {
+    public NodeList run(String source, Logger logger) {
 
-        return new LaTeXParserImpl(finder).parse(source);
+        try {
+            return new LaTeXParserImpl(finder, logger).parse(source);
+        } catch (SyntaxError e) {
+            logger.severe(source + ":" + e.getLineNumber() + ": "
+                    + e.getMessage() + "\n");
+        } catch (SystemException e) {
+            logger.severe(source + ": " + e.getCause().toString() + "\n");
+        } catch (ScannerException e) {
+            logger.severe(source + ": " + e.getMessage() + "\n");
+        } catch (FileNotFoundException e) {
+            logger.severe(source + ": file not found " + e.getMessage() + "\n");
+        } catch (IOException e) {
+            logger.severe(source + ": IO error: " + e.toString() + "\n");
+        } catch (RuntimeException e) {
+            logger.severe(source + ": " + e.toString() + "\n");
+        }
+        return null;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param args
+     */
+    private void run(String[] args) {
+
+        Logger logger = Logger.getLogger("LaTeXValidator");
+
+        for (String source : args) {
+            run(source, logger);
+        }
     }
 }

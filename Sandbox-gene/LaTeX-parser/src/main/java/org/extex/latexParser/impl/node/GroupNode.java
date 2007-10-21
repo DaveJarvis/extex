@@ -61,10 +61,12 @@ public class GroupNode extends NodeList {
      * Creates a new object.
      * 
      * @param t the token to add
+     * @param source the source
+     * @param lineNumber the line number
      */
-    public GroupNode(LeftBraceToken t) {
+    public GroupNode(LeftBraceToken t, String source, int lineNumber) {
 
-        super();
+        super(source, lineNumber);
         openToken = t;
     }
 
@@ -86,6 +88,17 @@ public class GroupNode extends NodeList {
     public RightBraceToken getCloseToken() {
 
         return closeToken;
+    }
+
+    /**
+     * Getter for the name of the group. Plain groups do not have a name and
+     * thus will return <code>null</code>.
+     * 
+     * @return the name of the group
+     */
+    public String getName() {
+
+        return null;
     }
 
     /**

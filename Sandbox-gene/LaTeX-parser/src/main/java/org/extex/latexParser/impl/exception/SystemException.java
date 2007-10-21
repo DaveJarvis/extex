@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.latexParser.impl;
+package org.extex.latexParser.impl.exception;
 
 import org.extex.scanner.api.exception.ScannerException;
 

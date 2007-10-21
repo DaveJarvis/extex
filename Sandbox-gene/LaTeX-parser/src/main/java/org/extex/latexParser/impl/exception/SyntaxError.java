@@ -17,8 +17,11 @@
  *
  */
 
-package org.extex.latexParser.impl;
+package org.extex.latexParser.impl.exception;
 
+import java.text.MessageFormat;
+
+import org.extex.latexParser.impl.Parser;
 import org.extex.scanner.api.exception.ScannerException;
 
 /**
@@ -43,20 +46,15 @@ public class SyntaxError extends ScannerException {
     /**
      * Creates a new object.
      * 
+     * @param parser the parser to acquire the current position from
+     * @param message the message format
+     * @param args the arguments to be inserted into the format
      */
-    public SyntaxError() {
+    public SyntaxError(Parser parser, String message, Object... args) {
 
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     */
-    public SyntaxError(String message) {
-
-        super(message);
+        super(parser.getSource() + ":" + Integer.toString(parser.getLineno())
+                + ": " + MessageFormat.format(message, args));
+        lineNumber = parser.getLineno();
     }
 
     /**

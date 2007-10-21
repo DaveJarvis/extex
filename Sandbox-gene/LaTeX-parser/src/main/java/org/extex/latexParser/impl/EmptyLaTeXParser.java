@@ -27,12 +27,14 @@ import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.logging.Logger;
 
 import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.LaTeXParser;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.api.NodeList;
-import org.extex.latexParser.impl.node.EnvironmentNode;
+import org.extex.latexParser.impl.exception.SyntaxError;
+import org.extex.latexParser.impl.exception.SystemException;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.MathEnvironment;
 import org.extex.latexParser.impl.node.OptGroupNode;
@@ -90,7 +92,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
             Macro m = macros.get(token.getChar());
             if (m == null) {
-                throw new SyntaxError("undefined active character");
+                throw new SyntaxError(parser, "undefined active character ",
+                    token.toText());
             }
             return m.parse(token, parser);
         }
@@ -118,8 +121,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
             Macro m = macros.get(token.getName());
             if (m == null) {
-                throw new SyntaxError(token.toText()
-                        + ": undefined control sequence");
+                throw new SyntaxError(parser, "undefined control sequence {0}",
+                    token.toText());
             }
 
             return m.parse(token, parser);
@@ -172,7 +175,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
             Token t = stream.get(FACTORY, tokenizer);
             if (t == null) {
-                throw new SyntaxError("Unexpected EOF in math");
+                throw new SyntaxError(parser, "unexpected EOF in math");
             }
             if (!(t instanceof MathShiftToken)) {
                 stream.put(t);
@@ -180,9 +183,11 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                     parser, start, start);
             }
 
-            EnvironmentNode env = peek();
+            GroupNode env = peek();
             if (env instanceof MathEnvironment) {
-                throw new SyntaxError("trying to use math when already in math");
+                throw new SyntaxError(parser,
+                    "trying to use math when already in math started at ", //
+                    env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
 
             env = new MathEnvironment(start, t, start, t, //
@@ -193,12 +198,17 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             }
             Token t1 = getToken();
             if (!t1.equals(t)) {
-                throw new SyntaxError("closing math is missing");
+                throw new SyntaxError(parser,
+                    "closing math is missing for math started at ", //
+                    env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
 
-            EnvironmentNode pop = pop();
+            GroupNode pop = pop();
             if (pop != env) {
-                throw new SyntaxError("closing math is missing");
+                push(pop);
+                throw new SyntaxError(parser,
+                    "closing math is missing for math started at ", //
+                    env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
             return env;
         }
@@ -224,7 +234,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitRightBrace(RightBraceToken token, TokenStream stream)
                 throws Exception {
 
-            throw new SyntaxError("Extra right brace encountered");
+            throw new SyntaxError(parser, "extra right brace (",
+                token.toText(), ") encountered");
         }
 
         /**
@@ -248,10 +259,10 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitSubMark(SubMarkToken token, TokenStream stream)
                 throws SyntaxError {
 
-            EnvironmentNode env = parser.peek();
+            GroupNode env = parser.peek();
             if (!(env instanceof MathEnvironment)) {
-                throw new SyntaxError(token.toText()
-                        + " is defined in math mode only");
+                throw new SyntaxError(parser, token.toText(),
+                    " is defined in math mode only");
             }
             return new TokenNode(token, getSource(), getLineno());
         }
@@ -265,10 +276,10 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitSupMark(SupMarkToken token, TokenStream stream)
                 throws SyntaxError {
 
-            EnvironmentNode env = parser.peek();
+            GroupNode env = parser.peek();
             if (!(env instanceof MathEnvironment)) {
-                throw new SyntaxError(token.toText()
-                        + " is defined in math mode only");
+                throw new SyntaxError(parser, token.toText(),
+                    " is defined in math mode only");
             }
             return new TokenNode(token, getSource(), getLineno());
         }
@@ -541,10 +552,14 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     };
 
     /**
-     * The field <tt>environmentStack</tt> contains the ...
+     * The field <tt>groupStack</tt> contains the stack of groups.
      */
-    private Stack<EnvironmentNode> environmentStack =
-            new Stack<EnvironmentNode>();
+    private Stack<GroupNode> groupStack = new Stack<GroupNode>();
+
+    /**
+     * The field <tt>logger</tt> contains the logger to use.
+     */
+    private Logger logger;
 
     /**
      * Creates a new object.
@@ -624,7 +639,17 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     public int getLineno() {
 
-        return reader == null ? -1 : reader.getLineNumber();
+        return reader == null ? -1 : reader.getLineNumber() + 1;
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
     }
 
     /**
@@ -711,31 +736,29 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.api.LaTeXParser#parse(java.lang.String)
+     * @see org.extex.latexParser.api.LaTeXParser#parse(java.io.InputStream,
+     *      java.lang.String)
      */
-    public NodeList parse(String source) throws IOException, ScannerException {
+    public NodeList parse(InputStream stream, String source)
+            throws SyntaxError,
+                ScannerException,
+                IOException {
 
         this.source = source;
         NodeList content = new NodeList();
-        InputStream stream = finder.findResource(source, "tex");
-        if (stream == null) {
-            throw new FileNotFoundException(source);
-        }
         LineNumberReader reader =
                 new LineNumberReader(new InputStreamReader(stream));
         try {
             this.reader = reader;
-            scanner =
-                    new TokenStreamImpl(null, null, reader, Boolean.TRUE,
-                        source);
+            scanner = new TokenStreamImpl(null, null, reader, Boolean.TRUE, //
+                source);
 
             for (Token t = scanner.get(FACTORY, tokenizer); t != null; t =
                     scanner.get(FACTORY, tokenizer)) {
                 content.add((Node) t.visit(visitor, scanner));
             }
         } catch (SyntaxError e) {
-            e.setLineNumber(reader.getLineNumber());
-            throw e;
+            logger.severe(e.getMessage());
         } catch (ScannerException e) {
             throw e;
         } catch (RuntimeException e) {
@@ -751,15 +774,30 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.latexParser.api.LaTeXParser#parse(java.lang.String)
+     */
+    public NodeList parse(String source) throws IOException, ScannerException {
+
+        InputStream stream = finder.findResource(source, "tex");
+        if (stream == null) {
+            throw new FileNotFoundException(source);
+        }
+        return parse(stream, source);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.latexParser.impl.Parser#parseGroup()
      */
     public GroupNode parseGroup() throws ScannerException {
 
         Token t = getToken();
         if (t == null) {
-            throw new SyntaxError("Unexpected EOF");
+            throw new SyntaxError(parser, "unexpected end of file");
         } else if (!(t instanceof LeftBraceToken)) {
-            throw new SyntaxError("Brace expected");
+            throw new SyntaxError(parser, "left brace expected instead of ", t
+                .toText());
         }
 
         return parseGroup((LeftBraceToken) t);
@@ -776,14 +814,21 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     private GroupNode parseGroup(LeftBraceToken token) throws ScannerException {
 
-        GroupNode content = new GroupNode(token);
+        GroupNode group = new GroupNode(token, getSource(), getLineno());
+        push(group);
         try {
             for (Token t = getToken(); t != null; t = getToken()) {
                 if (t instanceof RightBraceToken) {
-                    content.close((RightBraceToken) t);
-                    return content;
+                    group.close((RightBraceToken) t);
+                    GroupNode pop = pop();
+                    if (pop != group) {
+                        push(pop);
+                        throw new SyntaxError(parser,
+                            "right brace expected instead of ", t.toText());
+                    }
+                    return group;
                 }
-                content.add((Node) t.visit(visitor, scanner));
+                group.add((Node) t.visit(visitor, scanner));
             }
         } catch (ScannerException e) {
             throw e;
@@ -791,7 +836,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             throw new RuntimeException("unimplemented");
         }
 
-        throw new SyntaxError("missing right brace");
+        throw new SyntaxError(parser, "missing right brace");
     }
 
     /**
@@ -842,8 +887,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             throw new RuntimeException("unimplemented");
         }
 
-        throw new SyntaxError("Unexpected EOF in optional argument of "
-                + cs.toText());
+        throw new SyntaxError(parser,
+            "unexpected end of file in optional argument of {0}", cs.toText());
     }
 
     /**
@@ -855,7 +900,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
         Token t = getToken();
         if (t == null) {
-            throw new SyntaxError("Unexpected EOF");
+            throw new SyntaxError(parser, "unexpected end of file");
         } else if (!(t instanceof LeftBraceToken)) {
             return new TokenNode(t, getSource(), getLineno());
         }
@@ -898,12 +943,12 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @see org.extex.latexParser.impl.Parser#peek()
      */
-    public EnvironmentNode peek() {
+    public GroupNode peek() {
 
-        if (environmentStack.isEmpty()) {
+        if (groupStack.isEmpty()) {
             return null;
         }
-        return environmentStack.peek();
+        return groupStack.peek();
     }
 
     /**
@@ -911,23 +956,23 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @see org.extex.latexParser.impl.Parser#pop()
      */
-    public EnvironmentNode pop() {
+    public GroupNode pop() {
 
-        if (environmentStack.isEmpty()) {
+        if (groupStack.isEmpty()) {
             return null;
         }
-        return environmentStack.pop();
+        return groupStack.pop();
     }
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.latexParser.impl.Parser#push(
-     *      org.extex.latexParser.impl.node.EnvironmentNode)
+     *      org.extex.latexParser.impl.node.GroupNode)
      */
-    public void push(EnvironmentNode env) {
+    public void push(GroupNode content) {
 
-        environmentStack.push(env);
+        groupStack.push(content);
     }
 
     /**
@@ -939,6 +984,16 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     public void put(Token t) {
 
         scanner.put(t);
+    }
+
+    /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
     }
 
     /**

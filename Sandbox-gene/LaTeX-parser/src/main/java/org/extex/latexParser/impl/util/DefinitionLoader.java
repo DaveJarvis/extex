@@ -27,7 +27,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SystemException;
+import org.extex.latexParser.impl.exception.SystemException;
 import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.scanner.api.exception.ScannerException;
 

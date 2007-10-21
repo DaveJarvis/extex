@@ -22,7 +22,6 @@ package org.extex.latexParser.impl.node;
 import java.io.PrintStream;
 
 import org.extex.latexParser.api.Node;
-import org.extex.latexParser.api.NodeList;
 
 /**
  * This class represents an environment.
@@ -30,7 +29,7 @@ import org.extex.latexParser.api.NodeList;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EnvironmentNode extends NodeList {
+public class EnvironmentNode extends GroupNode {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -65,17 +64,18 @@ public class EnvironmentNode extends NodeList {
     public EnvironmentNode(String name, Node opt, Node[] args, String source,
             int line) {
 
-        super(source, line);
+        super(null, source, line);
         this.name = name;
         this.args = args;
         this.opt = opt;
     }
 
     /**
-     * Getter for name.
+     * Getter for the name of the environment.
      * 
      * @return the name
      */
+    @Override
     public String getName() {
 
         return name;

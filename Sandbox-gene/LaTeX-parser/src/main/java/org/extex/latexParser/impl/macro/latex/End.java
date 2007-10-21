@@ -25,9 +25,8 @@ import java.io.PrintStream;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.node.AbstractNode;
-import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -75,18 +74,21 @@ public class End extends AbstractNode implements Macro {
 
         GroupNode group = parser.parseGroup();
         if (group.size() != 1) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError(parser,
+                "environment name expected instead of {0}", group.toString());
         }
         Node node = group.get(0);
         if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError(parser,
+                "environment name expected instead of {0}", node.toString());
         }
         String name = node.toString();
 
-        EnvironmentNode env = parser.pop();
+        GroupNode env = parser.pop();
         String iname = env.getName();
         if (!iname.equals(name)) {
-            throw new SyntaxError("environment " + iname
+            parser.push(env);
+            throw new SyntaxError(parser, "environment " + iname
                     + " not closed when closing " + name);
         }
 

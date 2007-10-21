@@ -24,8 +24,8 @@ import java.io.IOException;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.node.EnvironmentNode;
+import org.extex.latexParser.impl.exception.SyntaxError;
+import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.MacroNode;
 import org.extex.latexParser.impl.node.MathEnvironment;
 import org.extex.scanner.api.exception.ScannerException;
@@ -60,10 +60,10 @@ public class MathPrimitive implements Macro {
             throws ScannerException,
                 IOException {
 
-        EnvironmentNode env = parser.peek();
+        GroupNode env = parser.peek();
         if (!(env instanceof MathEnvironment)) {
-            throw new SyntaxError(token.toText()
-                    + " is defined in math mode only");
+            throw new SyntaxError(parser, "{0} is defined in math mode only",
+                token.toText());
         }
         return new MacroNode(token, null, null, //
             parser.getSource(), parser.getLineno());

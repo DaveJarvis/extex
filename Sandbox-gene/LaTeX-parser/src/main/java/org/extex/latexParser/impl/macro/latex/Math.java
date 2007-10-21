@@ -23,9 +23,9 @@ import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.SystemException;
-import org.extex.latexParser.impl.node.EnvironmentNode;
+import org.extex.latexParser.impl.exception.SyntaxError;
+import org.extex.latexParser.impl.exception.SystemException;
+import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.MathEnvironment;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.api.exception.ScannerException;
@@ -43,6 +43,7 @@ public class Math implements Macro {
     /**
      * Parse a bunch of mathematical material.
      * 
+     * @param parser the parser
      * @param start the initial token
      * @param end the final token
      * 
@@ -53,9 +54,12 @@ public class Math implements Macro {
     public static Node collectMath(Parser parser, Token start, Token end)
             throws ScannerException {
 
-        EnvironmentNode env = parser.peek();
+        GroupNode env = parser.peek();
         if (env instanceof MathEnvironment) {
-            throw new SyntaxError("trying to use math when already in math");
+            throw new SyntaxError(
+                parser,
+                "trying to open math when already in math mode started at {0}:{1}",
+                env.getSource(), Integer.toString(env.getLineNumber()));
         }
 
         env = new MathEnvironment(start, null, end, null, //
@@ -65,9 +69,12 @@ public class Math implements Macro {
                 parser.parseNode(end)) {
             env.add(n);
         }
-        EnvironmentNode pop = parser.pop();
+        GroupNode pop = parser.pop();
         if (pop != env) {
-            throw new SyntaxError("closing math is missing");
+            parser.push(pop);
+            throw new SyntaxError(parser,
+                "closing math is missing for math opened at {0}:{1}", //
+                env.getSource(), Integer.toString(env.getLineNumber()));
         }
         return env;
     }

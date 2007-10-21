@@ -20,6 +20,7 @@
 package org.extex.latexParser.impl;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.exception.ScannerException;
@@ -50,16 +51,18 @@ public class LaTeXParserImpl extends EmptyLaTeXParser {
      * Creates a new object.
      * 
      * @param finder the resource finder
+     * @param logger TODO
      * 
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error
      */
-    public LaTeXParserImpl(ResourceFinder finder)
+    public LaTeXParserImpl(ResourceFinder finder, Logger logger)
             throws IOException,
                 ScannerException {
 
         this();
         setResourceFinder(finder);
+        setLogger(logger);
     }
 
 }

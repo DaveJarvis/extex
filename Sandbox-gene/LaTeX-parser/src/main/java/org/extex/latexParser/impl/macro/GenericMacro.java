@@ -22,7 +22,7 @@ package org.extex.latexParser.impl.macro;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.node.MacroNode;
 import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
@@ -76,7 +76,7 @@ public class GenericMacro implements Macro {
             Node opt = null;
             Token t = parser.getToken();
             if (t == null) {
-                throw new SyntaxError("Unexpected EOF");
+                throw new SyntaxError(parser, "unexpected end of file");
             } else if (t.eq(Catcode.OTHER, '[')) {
                 opt = parser.parseOptionalArgument(token, (OtherToken) t);
             } else {

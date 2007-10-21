@@ -22,7 +22,7 @@ package org.extex.latexParser.impl.macro.tex;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -61,7 +61,8 @@ public class Let implements Macro {
                 new TokensNode(token, parser.getSource(), parser.getLineno());
         Token name = parser.getToken();
         if (name == null) {
-            throw new SyntaxError("unexpected EOF in definition");
+            throw new SyntaxError(parser, "unexpected end of file for {0}",
+                token.toText());
         }
         tokens.add(name);
         if (name instanceof ControlSequenceToken) {

@@ -23,7 +23,7 @@ import org.extex.latexParser.api.Node;
 import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.latexParser.impl.node.TokensNode;
 import org.extex.scanner.api.exception.ScannerException;
@@ -63,7 +63,8 @@ public class Def implements Macro {
                 new TokensNode(token, parser.getSource(), parser.getLineno());
         Token name = parser.getToken();
         if (name == null) {
-            throw new SyntaxError("unexpected EOF in definition");
+            throw new SyntaxError(parser, "unexpected end of file for {0}",
+                token.toText());
         }
         tokens.add(name);
         for (Token t = parser.getToken(); t != null; t = parser.getToken()) {
@@ -83,7 +84,7 @@ public class Def implements Macro {
             }
             tokens.add(t);
         }
-        throw new SyntaxError("unexpected EOF in definition of "
-                + name.toText());
+        throw new SyntaxError(parser, "unexpected end of file for {0}", token
+            .toText());
     }
 }

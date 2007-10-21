@@ -24,8 +24,8 @@ import java.io.IOException;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
-import org.extex.latexParser.impl.SystemException;
+import org.extex.latexParser.impl.exception.SyntaxError;
+import org.extex.latexParser.impl.exception.SystemException;
 import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.latexParser.impl.node.MacroNode;
@@ -64,16 +64,16 @@ public class Begin implements Macro {
 
         GroupNode group = parser.parseGroup();
         if (group.size() != 1) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError(parser, "environment expected");
         }
         Node node = group.get(0);
         if (!(node instanceof TokensNode)) {
-            throw new SyntaxError("environment expected");
+            throw new SyntaxError(parser, "environment expected");
         }
         String name = node.toString();
         Macro macro = parser.getDefinition("begin{" + name + "}");
         if (macro == null) {
-            throw new SyntaxError("environment " + name + " undefined");
+            throw new SyntaxError(parser, "undefined environment {0}", name);
         }
 
         String source = parser.getSource();
@@ -93,7 +93,8 @@ public class Begin implements Macro {
         for (;;) {
             Node n = parser.parseNode(null);
             if (n == null) {
-                throw new SyntaxError("unexpected EOF in environment " + name);
+                throw new SyntaxError(parser,
+                    "unexpected end of file in environment {0}", name);
             } else if (n instanceof End) {
                 break;
             }

@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.extex.latexParser.api.Node;
-import org.extex.latexParser.impl.node.EnvironmentNode;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
@@ -187,25 +186,25 @@ public interface Parser {
     Node parseTokenOrGroup() throws ScannerException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Look at the stack without modifying it.
      * 
-     * @return the top of stack
+     * @return the top of stack or <code>null</code> if the stack is empty
      */
-    EnvironmentNode peek();
+    GroupNode peek();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Take an element from the stack.
      * 
-     * @return the top of stack
+     * @return the top of stack or <code>null</code> if the stack is empty
      */
-    EnvironmentNode pop();
+    GroupNode pop();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Put an element onto the stack.
      * 
      * @param env the node to push
      */
-    void push(EnvironmentNode env);
+    void push(GroupNode env);
 
     /**
      * Push a token back for the next get();

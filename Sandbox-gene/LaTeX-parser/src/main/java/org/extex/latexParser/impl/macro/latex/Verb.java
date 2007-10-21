@@ -27,7 +27,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.latexParser.api.Node;
 import org.extex.latexParser.impl.Macro;
 import org.extex.latexParser.impl.Parser;
-import org.extex.latexParser.impl.SyntaxError;
+import org.extex.latexParser.impl.exception.SyntaxError;
 import org.extex.latexParser.impl.node.AbstractNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
@@ -162,7 +162,8 @@ public class Verb extends AbstractNode implements Macro {
 
         Token start = parser.getToken();
         if (start == null) {
-            throw new SyntaxError("unexpected EOF");
+            throw new SyntaxError(parser, "unexpected end of file for {0}",
+                token.toText());
         }
         final Verb verb =
                 new Verb(token, start, parser.getSource(), parser.getLineno());
@@ -177,7 +178,8 @@ public class Verb extends AbstractNode implements Macro {
             }
             verb.add(t);
         }
-        throw new SyntaxError("unexpected EOF in \\verb");
+        throw new SyntaxError(parser, "unexpected end of file in {0}", token
+            .toText());
     }
 
     /**

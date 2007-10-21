@@ -21,6 +21,8 @@ package org.extex.latexParser.main;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.logging.Logger;
+
 import org.extex.latexParser.api.NodeList;
 import org.junit.Test;
 
@@ -40,9 +42,11 @@ public class LaTeXValidatorTest {
     @Test
     public void test1() throws Exception {
 
-        NodeList n = new LaTeXValidator().run("src/test/resources/sample");
+        Logger logger = Logger.getLogger("LaTeXValidator");
+
+        NodeList n =
+                new LaTeXValidator().run("src/test/resources/sample", logger);
         assertNotNull(n);
         n.print(System.out);
     }
-
 }
