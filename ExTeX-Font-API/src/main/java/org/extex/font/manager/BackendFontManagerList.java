@@ -210,10 +210,8 @@ public class BackendFontManagerList implements BackendFontManager {
 
     /**
      * TODO missing JavaDoc
-     *
+     * 
      * @return TODO
-     *
-     * @see org.extex.font.BackendFontManager#iterateManagerInfo()
      */
     public Iterator<ManagerInfo> iterateManagerInfo() {
 
