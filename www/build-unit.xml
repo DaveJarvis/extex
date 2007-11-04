@@ -36,7 +36,7 @@
     <mkdir dir="${site}" />
     <exec executable="perl"
           failonerror="true">
-      <arg line="bin/unit-summary.pl" />
+      <arg line="src/perl/unit-summary.pl" />
       <arg line="-v" />
     </exec>
   </target>

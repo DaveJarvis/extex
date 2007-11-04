@@ -35,6 +35,10 @@
 
   <import file="build-unit.xml" />
 
+  <taskdef name="testSummary"
+           classname="org.extex.site.TestSummary"
+           classpath="target/classes:${ant.project.name}.jar" />
+
   <!-- ==================================================================== -->
   <target name="all" description="Build everything" depends="site,rss,unit" />
 
@@ -57,7 +61,7 @@
   <target name="rss" description="Create the RSS pages">
     <mkdir dir="${site}/rss/2.0" />
     <exec executable="perl" failonerror="true">
-      <arg line="bin/make-rss.pl" />
+      <arg line="src/perl/make-rss.pl" />
       <arg line="-out=${site}/rss/2.0/ExTeX.rss" />
     </exec>
   </target>
@@ -67,7 +71,7 @@
 
     <mkdir dir="${site}" />
     <exec executable="perl" failonerror="true">
-      <arg line="bin/make.pl" />
+      <arg line="src/perl/make.pl" />
       <arg line="-src=src/site" />
       <arg line="-dest=${site}" />
     </exec>
@@ -79,9 +83,6 @@
           depends="init">
 
     <mkdir dir="${target}" />
-    <taskdef name="testSummary"
-             classname="org.extex.site.TestSummary"
-             classpath="target/classes:${ant.project.name}.jar" />
     <testSummary input="${overview-summary}"
                  output="${target}/test-summary.html" />
   </target>
