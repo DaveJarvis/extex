@@ -44,9 +44,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;pdfoutline&rang;
- *       &rarr; <tt>\pdfoutline</tt> ... {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken))
- *          &lang;general text&rang;} </pre>
+ *       &rarr; <tt>\pdfoutline</tt> &lang;optional count&rang; {@linkplain
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,CodeToken)
+ *          &lang;general text&rang;}
+ *
+ *    &lang;optional count&rang;
+ *       &rarr;
+ *        | <tt>count</tt> {@linkplain
+ *          org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,CodeToken)
+ *          &lang;number&rang;}   </pre>
  * 
  * <h4>Examples</h4>
  * 
