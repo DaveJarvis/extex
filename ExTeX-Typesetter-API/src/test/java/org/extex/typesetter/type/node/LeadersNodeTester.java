@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.core.dimen.Dimen;
@@ -38,26 +38,6 @@ import org.junit.Test;
  * @version $Revision$
  */
 public abstract class LeadersNodeTester {
-
-    /**
-     * Getter for visitor.
-     * 
-     * @return the visitor
-     */
-    public NodeVisitor<Node, Boolean> getVisitor() {
-
-        return visitor;
-    }
-
-    /**
-     * Create a new instance to be tested.
-     * 
-     * @param node the repeated node
-     * @param glue the glue specification
-     * @return the new node
-     */
-    protected abstract AbstractLeadersNode makeNode(OrientedNode node,
-            FixedGlue glue);
 
     /**
      * The field <tt>visitor</tt> contains the visitor.
@@ -187,17 +167,24 @@ public abstract class LeadersNodeTester {
             };
 
     /**
-     * <testcase>Test that null values act like en empty box. </testcase>
+     * Getter for visitor.
+     * 
+     * @return the visitor
      */
-    @Test
-    public final void testNullNull() {
+    public NodeVisitor<Node, Boolean> getVisitor() {
 
-        AbstractLeadersNode node = makeNode(null, null);
-        assertTrue(node.getDepth().eq(Dimen.ZERO));
-        assertTrue(node.getHeight().eq(Dimen.ZERO));
-        assertTrue(node.getWidth().eq(Dimen.ZERO));
-        assertNull(node.getRepeat());
+        return visitor;
     }
+
+    /**
+     * Create a new instance to be tested.
+     * 
+     * @param node the repeated node
+     * @param glue the glue specification
+     * @return the new node
+     */
+    protected abstract AbstractLeadersNode makeNode(OrientedNode node,
+            FixedGlue glue);
 
     /**
      * <testcase> ... </testcase>
@@ -317,6 +304,19 @@ public abstract class LeadersNodeTester {
             .getDepth().getValue());
         assertTrue("height " + Long.toString(n.getHeight().getValue()), 0 == n
             .getHeight().getValue());
+    }
+
+    /**
+     * <testcase>Test that null values act like en empty box. </testcase>
+     */
+    @Test
+    public final void testNullNull() {
+
+        AbstractLeadersNode node = makeNode(null, null);
+        assertTrue(node.getDepth().eq(Dimen.ZERO));
+        assertTrue(node.getHeight().eq(Dimen.ZERO));
+        assertTrue(node.getWidth().eq(Dimen.ZERO));
+        assertNull(node.getRepeat());
     }
 
 }
