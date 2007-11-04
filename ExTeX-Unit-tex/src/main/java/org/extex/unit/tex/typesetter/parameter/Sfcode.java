@@ -56,12 +56,20 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;sfcode&rang;
- *      &rarr; <tt>\sfcode ...</tt>  </pre>
+ *      &rarr; <tt>\sfcode</tt> {@linkplain
+ *        TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) 
+ *        &lang;character code&rang;} @linkplain
+ *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *          &lang;equals&rang;} {@linkplain
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        &lang;space factor&rang;}   </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    \sfcode ...  </pre>
+ *    \sfcode `a 1000  </pre>
+ * <pre class="TeXSample">
+ *    \sfcode `a = 1000  </pre>
  * 
  * </doc>
  * 
