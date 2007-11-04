@@ -44,6 +44,36 @@ public class TestSummary extends Task {
     private static boolean verbose = false;
 
     /**
+     * Produce HTML code for a bar.
+     * 
+     * @param stream the output stream
+     * @param value the width
+     * @param img the image to use
+     */
+    private static void bar(PrintStream stream, int value, String img) {
+
+        if (value > 0) {
+            stream.print("<img src=\"../image/s-" + img + ".png\" width=\"");
+            stream.print(value);
+            stream.print("\" height=\"24\"\n/>");
+        }
+    }
+
+    /**
+     * Get the substring for a certain sub-match.
+     * 
+     * @param sb the data to extract from
+     * @param m the matcher
+     * @param i the index of the sub-match
+     * 
+     * @return the value of the sub-match
+     */
+    private static String get(StringBuffer sb, Matcher m, int i) {
+
+        return sb.substring(m.start(i), m.end(i));
+    }
+
+    /**
      * Command line interface
      * 
      * @param args the command-line arguments
@@ -80,6 +110,32 @@ public class TestSummary extends Task {
     }
 
     /**
+     * The field <tt>input</tt> contains the input file name.
+     */
+    private String input = null;
+
+    /**
+     * The field <tt>output</tt> contains the output file name.
+     */
+    private String output = null;
+
+    /**
+     * @see org.apache.tools.ant.Task#execute()
+     */
+    @Override
+    public void execute() {
+
+        if (input == null) {
+            throw new BuildException("No input set.");
+        }
+        try {
+            process(input, output);
+        } catch (IOException e) {
+            throw new BuildException(e.getLocalizedMessage());
+        }
+    }
+
+    /**
      * Process the input and produce the output.
      * 
      * @param in the input file name
@@ -107,7 +163,7 @@ public class TestSummary extends Task {
                             + ".*href=\"alltests-errors.html\"[^>]*>"
                             + "([0-9]+)"
                             + ".*href=\"alltests-fails.html\"[^>]*>"
-                            + "([0-9]+)" + ".*[^0-9]" + "([0-9.]+)"
+                            + "([0-9]+)" + ".*[^0-9.]" + "([0-9.]+)"
                             + "%</td><td>" + "([0-9.]+)" //
                             + ".*", Pattern.DOTALL).matcher(sb);
 
@@ -154,46 +210,6 @@ public class TestSummary extends Task {
     }
 
     /**
-     * Produce HTML code for a bar.
-     * 
-     * @param stream the output stream
-     * @param value the width
-     * @param img the image to use
-     */
-    private static void bar(PrintStream stream, int value, String img) {
-
-        if (value > 0) {
-            stream.print("<img src=\"../image/s-" + img + ".png\" width=\"");
-            stream.print(value);
-            stream.print("\" height=\"24\"\n/>");
-        }
-    }
-
-    /**
-     * Get the substring for a certain sub-match.
-     * 
-     * @param sb the data to extract from
-     * @param m the matcher
-     * @param i the index of the sub-match
-     * 
-     * @return the value of the sub-match
-     */
-    private static String get(StringBuffer sb, Matcher m, int i) {
-
-        return sb.substring(m.start(i), m.end(i));
-    }
-
-    /**
-     * The field <tt>input</tt> contains the input file name.
-     */
-    private String input = null;
-
-    /**
-     * The field <tt>output</tt> contains the output file name.
-     */
-    private String output = null;
-
-    /**
      * Setter for input.
      * 
      * @param input the input to set
@@ -211,22 +227,6 @@ public class TestSummary extends Task {
     public void setOutput(String output) {
 
         this.output = output;
-    }
-
-    /**
-     * @see org.apache.tools.ant.Task#execute()
-     */
-    @Override
-    public void execute() {
-
-        if (input == null) {
-            throw new BuildException("No input set.");
-        }
-        try {
-            process(input, output);
-        } catch (IOException e) {
-            throw new BuildException(e.getLocalizedMessage());
-        }
     }
 
 }
