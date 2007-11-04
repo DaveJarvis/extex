@@ -27,22 +27,22 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * Collect the news and make an RSS feed.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class RssCollector extends Task {
 
     /**
-     * The field <tt>verbose</tt> contains the ...
+     * The field <tt>verbose</tt> contains the verbosity indicator.
      */
     private static boolean verbose = false;
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param args
+     * The command line interface.
+     * 
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
 
@@ -76,15 +76,16 @@ public class RssCollector extends Task {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param in ...
-     * @param out ...
-     *
+     * Perform the real action.
+     * 
+     * @param in the optional input file. If <code>null</code> then reading
+     *        from stdin
+     * @param out the optional output file. If <code>null</code> then writing
+     *        to stdout
+     * 
      * @throws IOException in case of an error
      */
-    private static void process(String in, String out)
-            throws IOException {
+    private static void process(String in, String out) throws IOException {
 
         // TODO ???
 
@@ -103,34 +104,14 @@ public class RssCollector extends Task {
     }
 
     /**
-     * The field <tt>input</tt> contains the ...
+     * The field <tt>input</tt> contains the optional input file.
      */
     private String input = null;
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the optional output file.
      */
     private String output = null;
-
-    /**
-     * Setter for input.
-     *
-     * @param input the input to set
-     */
-    public void setInput(String input) {
-
-        this.input = input;
-    }
-
-    /**
-     * Setter for output.
-     *
-     * @param output the output to set
-     */
-    public void setOutput(String output) {
-
-        this.output = output;
-    }
 
     /**
      * @see org.apache.tools.ant.Task#execute()
@@ -146,6 +127,26 @@ public class RssCollector extends Task {
         } catch (IOException e) {
             throw new BuildException(e.getLocalizedMessage());
         }
+    }
+
+    /**
+     * Setter for input.
+     * 
+     * @param input the input to set
+     */
+    public void setInput(String input) {
+
+        this.input = input;
+    }
+
+    /**
+     * Setter for output.
+     * 
+     * @param output the output to set
+     */
+    public void setOutput(String output) {
+
+        this.output = output;
     }
 
 }
