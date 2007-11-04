@@ -92,7 +92,7 @@ public class TokensNode extends AbstractNode implements Node {
     @Override
     public String toString() {
 
-        return sb.toString();
+        return buffer.toString();
     }
 
 }
