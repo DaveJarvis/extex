@@ -17,35 +17,21 @@
  *
  */
 
-package org.extex.font.format.xtf;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
+package org.extex.font.format.xtf.cff;
 
 /**
- * AllTest for xtf.
+ * Interface, to calculate the bounding box for the {@link CharString}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class AllTests {
+public interface CharStringCalc {
 
     /**
-     * The test suit.
+     * Calculate the bounding box.
      * 
-     * @return Return the test.
+     * @param ch The {@link CharString} object.
      */
-    public static Test suite() {
-
-        TestSuite suite = new TestSuite("Test for org.extex.font.format.xtf");
-        // $JUnit-BEGIN$
-        suite.addTestSuite(XtfReaderGara3Test.class);
-        suite.addTestSuite(XtfReaderGara1Test.class);
-        suite.addTestSuite(XtfReaderGara2Test.class);
-        suite.addTestSuite(XtfReaderFxlrTest.class);
-        suite.addTestSuite(XtfReaderGara4Test.class);
-        // $JUnit-END$
-        return suite;
-    }
+    void calculate(CharString ch);
 
 }

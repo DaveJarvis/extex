@@ -30,7 +30,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class T2RLineTo extends T2PathConstruction {
+public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
 
     /**
      * The pair array.
@@ -139,6 +139,21 @@ public class T2RLineTo extends T2PathConstruction {
         }
         buf.append(getName());
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.CharStringCalc#calculate(org.extex.font.format.xtf.cff.CharString)
+     */
+    public void calculate(CharString ch) {
+
+        for (int i = 0; i < pairs.length; i++) {
+            int x = pairs[i].getA().getInteger();
+            int y = pairs[i].getB().getInteger();
+            ch.setMX(x);
+            ch.setMY(y);
+        }
     }
 
 }

@@ -36,6 +36,11 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class CharString implements XMLWriterConvertible {
 
     /**
+     * Is the bounding box calculate?
+     */
+    private boolean calculate = false;
+
+    /**
      * The cff font.
      */
     private CffFont cffFont;
@@ -49,6 +54,26 @@ public class CharString implements XMLWriterConvertible {
      * The index.
      */
     protected int idx;
+
+    /**
+     * The maximum x.
+     */
+    private int maxX = 0;
+
+    /**
+     * The maximum y.
+     */
+    private int maxY = 0;
+
+    /**
+     * The minimum x.
+     */
+    private int minX = 0;
+
+    /**
+     * The minimum y.
+     */
+    private int minY = 0;
 
     /**
      * The t2 operators.
@@ -110,6 +135,24 @@ public class CharString implements XMLWriterConvertible {
     }
 
     /**
+     * Calculate the bounding box.
+     */
+    private void calculate() {
+
+        if (!calculate) {
+
+            for (int i = 0, n = t2Ops.size(); i < n; i++) {
+                T2Operator op = t2Ops.get(i);
+                if (op instanceof CharStringCalc) {
+                    CharStringCalc csc = (CharStringCalc) op;
+                    csc.calculate(this);
+                }
+            }
+            calculate = true;
+        }
+    }
+
+    /**
      * Check, if the width is set.
      */
     public void checkWidth() {
@@ -158,6 +201,50 @@ public class CharString implements XMLWriterConvertible {
     public int getIdx() {
 
         return idx;
+    }
+
+    /**
+     * Getter for maxX.
+     * 
+     * @return the maxX
+     */
+    public int getMaxX() {
+
+        calculate();
+        return maxX;
+    }
+
+    /**
+     * Getter for maxY.
+     * 
+     * @return the maxY
+     */
+    public int getMaxY() {
+
+        calculate();
+        return maxY;
+    }
+
+    /**
+     * Getter for minX.
+     * 
+     * @return the minX
+     */
+    public int getMinX() {
+
+        calculate();
+        return minX;
+    }
+
+    /**
+     * Getter for minY.
+     * 
+     * @return the minY
+     */
+    public int getMinY() {
+
+        calculate();
+        return minY;
     }
 
     /**
@@ -224,6 +311,36 @@ public class CharString implements XMLWriterConvertible {
     public void setHints(int cnt) {
 
         hints = cnt;
+    }
+
+    /**
+     * Set the maximum x.
+     * 
+     * @param x The x value.
+     */
+    public void setMX(int x) {
+
+        if (x > maxX) {
+            maxX = x;
+        }
+        if (x < minX) {
+            minX = x;
+        }
+    }
+
+    /**
+     * Set the maximum y.
+     * 
+     * @param y The y value.
+     */
+    public void setMY(int y) {
+
+        if (y > maxY) {
+            maxY = y;
+        }
+        if (y < minY) {
+            minY = y;
+        }
     }
 
     /**
