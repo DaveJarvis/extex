@@ -1,0 +1,70 @@
+/*
+ *
+ */
+body {
+  background:url("../image/cutoff-right.png");
+  background-repeat:repeat-y;
+  background-position:right; 
+  background-color:white;
+  margin-right:150px;
+  font-family:sans-serif;
+}
+pre.syntax {
+  background-color:#eeeeee;
+  border-color:#666666;
+  padding:3pt;
+}
+pre b {
+  color:navy;
+}
+pre i {
+  color:green;
+}
+pre.TeXSample {
+  background-color:#ffffcc;
+  border-color:#cccc66;
+  padding:3pt;
+}
+pre.JavaSample {
+  background-color:#eeeeff;
+  border-color:#6666cc;
+  padding:3pt;
+}
+pre {
+  background-color:#eeffee;
+  border-width:1px;
+  border-style:solid;
+  border-color:#66cc66;
+  padding:3pt;
+}
+table {
+  border-style:solid;
+  border-color:black;
+  border-top-width:1pt;
+  border-bottom-width:1pt;
+  border-left-width:0pt;
+  border-right-width:0pt;
+  margin:12pt;
+}
+td {
+  vertical-align:top;
+  padding-right:2pt;
+}
+.unit {
+  font-size:80%;
+  background-color:#eeeeee;
+  padding:1pt;
+}
+.footer {
+  font-size:80%;
+  background-color:#eeeeee;
+  padding:3pt;
+}
+.copyright {
+  font-size:80%;
+  padding:3pt;
+}
+.noframes {
+  font-size:80%;
+  padding:3pt;
+}

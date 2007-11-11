@@ -1,6 +1,6 @@
 #!/bin/perl.exe -w
 ##*****************************************************************************
-## $Id$
+## $Id:unit-summary.pl 6501 2007-11-04 18:29:15Z gene $
 ##*****************************************************************************
 ## Author: Gerd Neugebauer
 ##=============================================================================
@@ -38,8 +38,7 @@ Gerd Neugebauer
 use strict;
 use File::Basename;
 use File::Copy;
-use File::Find
-;
+use File::Find;
 use FileHandle;
 
 #------------------------------------------------------------------------------
@@ -84,29 +83,29 @@ my $targetdir  = "target/site/unit";
 mkdir $targetdir if not -e $targetdir;
 
 chdir dirname($0);
-chdir '..';
+chdir '../..';
 
-foreach $_ (glob '../ExTeX-*/src/java') {
-    print STDERR "Scanning sources [$_]..." if $verbose;
-    find({no_chdir => 1, wanted => \&analyze}, $_);
-    print STDERR "\n" if $verbose;
+foreach $_ (glob '../ExTeX-*/src/main/java') {
+  print STDERR "Scanning sources [$_]..." if $verbose;
+  find({no_chdir => 1, wanted => \&analyze}, $_);
+  print STDERR "\n" if $verbose;
 }
 
 foreach $_ (keys %syntax) {
   process_syntax(makeReference($_), $syntax{$_});
 }
 
-foreach $_ (glob dirname($0) . '/../src/unit-summary/*') {
+foreach $_ (glob dirname($0) . '../src/unit-summary/*') {
   next if m/CVS/ or m/.svn/ or m/~$/;
   my $f = $targetdir . "/" . basename($_);
   copy($_, $f);
 }
 
-foreach $_ (glob $BASEDIR . '/ExTeX-*/src/resources/config/unit/*.xml') {
+foreach $_ (glob $BASEDIR . '/ExTeX-*/src/main/resources/config/unit/*.xml') {
   process_unit($_);
 }
 
-foreach $_ (glob $BASEDIR . '/ExTeX-*/src/resources/config/*.xml') {
+foreach $_ (glob $BASEDIR . '/ExTeX-*/src/main/resources/config/*.xml') {
   process_cfg($_);
 }
 
