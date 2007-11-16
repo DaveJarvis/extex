@@ -35,9 +35,6 @@
 
   <import file="build-unit.xml" />
 
-  <taskdef name="testSummary"
-           classname="org.extex.site.TestSummary"
-           classpath="target/classes:${ant.project.name}.jar" />
 
   <!-- ==================================================================== -->
   <target name="all" description="Build everything" depends="site,rss,unit" />
@@ -76,11 +73,14 @@
       <arg line="-dest=${site}" />
     </exec>
   </target>
-
   <!-- ==================================================================== -->
   <target name="test-summary"
           description="Create test summary page fragment"
           depends="init">
+
+    <taskdef name="testSummary"
+             classname="org.extex.site.TestSummary"
+             classpath="target/classes:${ant.project.name}.jar" />
 
     <mkdir dir="${target}" />
     <testSummary input="${overview-summary}"
