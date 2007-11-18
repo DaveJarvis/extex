@@ -31,7 +31,7 @@ tmp/configurations.tex cfg: bin/primitives.pl
 	perl bin/primitives.pl				\
 		-sets tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
-		$(SRCDIR)/src/resources/config/*.xml 
+		$(SRCDIR)/main/resources/config/*.xml 
 
 tmp/syntax.tex syntax: bin/syntax.pl
 	mkdir -p tmp

@@ -1,6 +1,6 @@
 %
-% Makindex style file
-% 2005 Gerd Neugebauer
+% Makeindex style file
+% 2005-2007 Gerd Neugebauer
 %
 group_skip ""
 heading_prefix "\n \\indexGroup{"

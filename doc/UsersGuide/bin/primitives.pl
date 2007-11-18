@@ -80,7 +80,7 @@ my %cache     = ();
 my @modules=@ARGV;
 
 foreach my $m (@modules) {
-  foreach (glob "$m/src/resources/config/*.xml") {
+  foreach (glob "$m/src/main/resources/config/*.xml") {
     my $file = $_;
     s|.*/(.*)\.xml|$1|;
     $cfg{$_} = $file;
