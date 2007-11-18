@@ -144,10 +144,27 @@ public class IndexerTest {
     @Test
     public final void test12() throws IOException {
 
-        run(
-            "\\indexentry{def}{12} " + "\\indexentry{abc}{34}",
-            "\\begin{theindex}\n\n\\subitem abc, 34\n\\\\subitem def, 12\\n\n\\end{theindex}\n",
-            "", 0);
+        run("\\indexentry{def}{12} " + "\\indexentry{abc}{34}",
+            "\\begin{theindex}\n\n\\subitem abc, 34\n\\subitem def, 12\n\n"
+                    + "\\end{theindex}\n", "", 0);
     }
 
+    @Test
+    public final void test13() throws IOException {
+
+        run("\\indexentry{ghi}{5} " + "\\indexentry{def}{12} "
+                + "\\indexentry{abc}{34}",
+            "\\begin{theindex}\n\n\\subitem abc, 34\n\\subitem def, 12\n"
+                    + "\\subitem ghi, 5\n\n\\end{theindex}\n", "", 0);
+    }
+
+    @Test
+    public final void test14() throws IOException {
+
+        run(
+            "\\indexentry{abc}{5} " + "\\indexentry{abc}{12} "
+                    + "\\indexentry{abc}{34}",
+            "\\begin{theindex}\n\n\\subitem abc, 5, 12, 34\n\n\\end{theindex}\n",
+            "", 0);
+    }
 }
