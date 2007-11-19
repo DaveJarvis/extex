@@ -30,6 +30,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -38,8 +39,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Index;
+import org.extex.exindex.core.Parameters;
+import org.extex.exindex.core.normalizer.MakeindexCollator;
+import org.extex.exindex.core.normalizer.MakeindexGermanCollator;
 import org.extex.exindex.core.parser.MakeindexParser;
 import org.extex.exindex.core.parser.Parser;
+import org.extex.exindex.core.type.Entry;
+import org.extex.exindex.core.writer.MakeindexWriter;
 import org.extex.exindex.main.exception.MissingArgumentException;
 import org.extex.exindex.main.exception.UnknownArgumentException;
 import org.extex.framework.i18n.Localizer;
@@ -105,11 +111,6 @@ public class Indexer {
     private String page;
 
     /**
-     * The field <tt>log</tt> contains the name of the log file.
-     */
-    private String log;
-
-    /**
      * The field <tt>logger</tt> contains the logger for messages.
      */
     private Logger logger;
@@ -127,14 +128,48 @@ public class Indexer {
     private boolean banner;
 
     /**
-     * The field <tt>collateSpaces</tt> contains the ...
+     * The field <tt>collateSpaces</tt> contains the indicator to collate
+     * spaces.
      */
     private boolean collateSpaces = false;
 
     /**
-     * The field <tt>collateGerman</tt> contains the ...
+     * The field <tt>collateGerman</tt> contains the indicator to recognize
+     * german.sty.
      */
     private boolean collateGerman = false;
+
+    /**
+     * The field <tt>comp</tt> contains the ...
+     */
+    Comparator<Entry> comp = new Comparator<Entry>() {
+
+        public int compare(Entry o1, Entry o2) {
+
+            String[] ka1 = o1.getKey();
+            String[] ka2 = o2.getKey();
+            int len = (ka1.length < ka2.length ? ka1.length : ka2.length);
+
+            for (int i = 0; i < len; i++) {
+                int cmp = ka1[i].compareToIgnoreCase(ka2[i]);
+                if (cmp != 0) {
+                    return cmp;
+                }
+            }
+            if (ka1.length < ka2.length) {
+                return 1;
+            } else if (ka1.length > ka2.length) {
+                return -1;
+            }
+            return o1.getValue().compareTo(o2.getValue());
+        }
+
+    };
+
+    /**
+     * The field <tt>log</tt> contains the ...
+     */
+    private String transcript;
 
     /**
      * Creates a new object.
@@ -220,7 +255,7 @@ public class Indexer {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
-                    log = args[i];
+                    transcript = args[i];
 
                 } else if ("-i".startsWith(a)) {
                     files.add(null);
@@ -247,10 +282,11 @@ public class Indexer {
 
             }
 
-            String transcript = null;
-
-            if (files.size() != 0 && files.get(0) != null) {
+            if (transcript == null && files.size() != 0 && files.get(0) != null) {
                 transcript = files.get(0).replaceAll("\\.idx", "") + ".ilg";
+            }
+
+            if (transcript != null) {
                 Handler handler = new FileHandler(transcript);
                 handler.setFormatter(new LogFormatter());
                 handler.setLevel(Level.INFO);
@@ -268,7 +304,7 @@ public class Indexer {
                     scanInput(s);
                 }
             }
-            writeOutput(logger);
+            writeOutput(logger, index.getParams());
 
             if (transcript != null) {
                 logger.log(Level.INFO, localizer.format("Transcript",
@@ -328,7 +364,10 @@ public class Indexer {
         Reader reader = new InputStreamReader(stream);
         try {
             Parser parser = new MakeindexParser();
-            count = parser.load(reader, file, index);
+            count =
+                    parser.load(reader, file, index, (collateGerman
+                            ? new MakeindexGermanCollator(collateSpaces)
+                            : new MakeindexCollator(collateSpaces)));
         } finally {
             reader.close();
         }
@@ -385,10 +424,12 @@ public class Indexer {
      * Generate the output.
      * 
      * @param logger the logger
+     * @param params
      * 
      * @throws IOException in case of an I/O error
      */
-    protected void writeOutput(Logger logger) throws IOException {
+    protected void writeOutput(Logger logger, Parameters params)
+            throws IOException {
 
         int[] count;
         Writer w;
@@ -406,7 +447,8 @@ public class Indexer {
             logger.log(Level.INFO, localizer.format("SortingDone", //
                 Integer.toString(i)));
             logger.log(Level.INFO, localizer.format(fmt, output));
-            count = index.print(w, logger);
+            Entry[] entries = index.sort(comp, logger);
+            count = new MakeindexWriter(w, params).write(entries, logger, page);
         } finally {
             w.close();
         }

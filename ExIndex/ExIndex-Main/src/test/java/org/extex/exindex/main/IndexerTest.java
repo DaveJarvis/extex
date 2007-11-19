@@ -78,8 +78,9 @@ public class IndexerTest {
      * @param os
      * @param es
      * 
-     * @return
-     * @throws IOException
+     * @return the exit code
+     * 
+     * @throws IOException in case of an error
      */
     private int run(String[] args, String in, ByteArrayOutputStream os,
             ByteArrayOutputStream es) throws IOException {
@@ -124,15 +125,25 @@ public class IndexerTest {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ByteArrayOutputStream es = new ByteArrayOutputStream();
         int ret = run(new String[]{}, "", os, es);
-
+        assertEquals(0, ret);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
     @Test
     public final void test10() throws IOException {
 
         run("", "\\begin{theindex}\n\n\n\\end{theindex}\n", "", 0);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
     @Test
     public final void test11() throws IOException {
 
@@ -141,6 +152,11 @@ public class IndexerTest {
             0);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
     @Test
     public final void test12() throws IOException {
 
@@ -149,6 +165,11 @@ public class IndexerTest {
                     + "\\end{theindex}\n", "", 0);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
     @Test
     public final void test13() throws IOException {
 
@@ -158,6 +179,11 @@ public class IndexerTest {
                     + "\\subitem ghi, 5\n\n\\end{theindex}\n", "", 0);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
     @Test
     public final void test14() throws IOException {
 
@@ -167,4 +193,5 @@ public class IndexerTest {
             "\\begin{theindex}\n\n\\subitem abc, 5, 12, 34\n\n\\end{theindex}\n",
             "", 0);
     }
+
 }
