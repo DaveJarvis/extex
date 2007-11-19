@@ -22,6 +22,8 @@ package org.extex.exindex.core.type;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.type.page.PageReference;
+
 /**
  * TODO gene: missing JavaDoc.
  * 

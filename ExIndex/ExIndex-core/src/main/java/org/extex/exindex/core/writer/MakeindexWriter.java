@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.type.Entry;
-import org.extex.exindex.core.type.PageReference;
+import org.extex.exindex.core.type.page.PageReference;
 
 /**
  * TODO gene: missing JavaDoc.

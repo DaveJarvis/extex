@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.page;
 
 /**
  * TODO gene: missing JavaDoc.

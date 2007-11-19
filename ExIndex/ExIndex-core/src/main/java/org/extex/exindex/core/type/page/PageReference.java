@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.page;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,17 +25,20 @@ package org.extex.exindex.core.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LowerRomanPage extends AbstractPage {
+public interface PageReference {
 
     /**
-     * Creates a new object.
+     * Getter for enc.
      * 
-     * @param enc the encapsulator
-     * @param page the page number
+     * @return the enc
      */
-    public LowerRomanPage(String enc, String page) {
+    public String getEncap();
 
-        super(enc, page);
-    }
+    /**
+     * Getter for page.
+     * 
+     * @return the page
+     */
+    public String getPage();
 
 }

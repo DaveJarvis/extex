@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.page;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -26,6 +26,32 @@ package org.extex.exindex.core.type;
  * @version $Revision$
  */
 public abstract class AbstractPage implements PageReference {
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param p
+     * @param encap
+     * @return
+     */
+    public static PageReference get(String p, String encap) {
+
+        PageReference page;
+        if (p.matches("^[0-9-]+$")) {
+            page = new NumericPage(encap, p);
+        } else if (p.matches("^[IVXLCM-]+$")) {
+            page = new UpperRomanPage(encap, p);
+        } else if (p.matches("^[ivxlcm-]+$")) {
+            page = new LowerRomanPage(encap, p);
+        } else if (p.matches("^[A-Z-]+$")) {
+            page = new UpperPage(encap, p);
+        } else if (p.matches("^[a-z-]+$")) {
+            page = new LowerPage(encap, p);
+        } else {
+            page = new SomePage(encap, p);
+        }
+        return page;
+    }
 
     /**
      * The field <tt>enc</tt> contains the encapsulator.
@@ -53,7 +79,7 @@ public abstract class AbstractPage implements PageReference {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.PageReference#getEncap()
+     * @see org.extex.exindex.core.type.page.PageReference#getEncap()
      */
     public String getEncap() {
 
@@ -63,7 +89,7 @@ public abstract class AbstractPage implements PageReference {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.PageReference#getPage()
+     * @see org.extex.exindex.core.type.page.PageReference#getPage()
      */
     public String getPage() {
 

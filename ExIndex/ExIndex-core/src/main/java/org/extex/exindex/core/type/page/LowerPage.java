@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.page;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,20 +25,17 @@ package org.extex.exindex.core.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageReference {
+public class LowerPage extends AbstractPage {
 
     /**
-     * Getter for enc.
+     * Creates a new object.
      * 
-     * @return the enc
+     * @param enc the encapsulator
+     * @param page the page number
      */
-    public String getEncap();
+    public LowerPage(String enc, String page) {
 
-    /**
-     * Getter for page.
-     * 
-     * @return the page
-     */
-    public String getPage();
+        super(enc, page);
+    }
 
 }

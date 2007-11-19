@@ -31,13 +31,7 @@ import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
 import org.extex.exindex.core.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
-import org.extex.exindex.core.type.LowerPage;
-import org.extex.exindex.core.type.LowerRomanPage;
-import org.extex.exindex.core.type.NumericPage;
-import org.extex.exindex.core.type.PageReference;
-import org.extex.exindex.core.type.SomePage;
-import org.extex.exindex.core.type.UpperPage;
-import org.extex.exindex.core.type.UpperRomanPage;
+import org.extex.exindex.core.type.page.AbstractPage;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -225,22 +219,7 @@ public class MakeindexParser implements Parser {
             k[i] = s;
         }
 
-        PageReference page;
-        if (p.matches("^[0-9]+$")) {
-            page = new NumericPage(encap, p);
-        } else if (p.matches("^[IVXLCM]+$")) {
-            page = new UpperRomanPage(encap, p);
-        } else if (p.matches("^[ivxlcm]+$")) {
-            page = new LowerRomanPage(encap, p);
-        } else if (p.matches("^[A-Z]+$")) {
-            page = new UpperPage(encap, p);
-        } else if (p.matches("^[a-z]+$")) {
-            page = new LowerPage(encap, p);
-        } else {
-            page = new SomePage(encap, p);
-        }
-
-        Entry entry = new Entry(k, display, page);
+        Entry entry = new Entry(k, display, AbstractPage.get(p, encap));
         index.add(entry);
     }
 
