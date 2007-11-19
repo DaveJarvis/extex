@@ -42,9 +42,12 @@ import org.extex.exindex.core.Index;
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.normalizer.MakeindexCollator;
 import org.extex.exindex.core.normalizer.MakeindexGermanCollator;
+import org.extex.exindex.core.pages.MakeindexPageProcessor;
+import org.extex.exindex.core.pages.PageProcessor;
 import org.extex.exindex.core.parser.MakeindexParser;
 import org.extex.exindex.core.parser.Parser;
 import org.extex.exindex.core.type.Entry;
+import org.extex.exindex.core.writer.IndexWriter;
 import org.extex.exindex.core.writer.MakeindexWriter;
 import org.extex.exindex.main.exception.MissingArgumentException;
 import org.extex.exindex.main.exception.UnknownArgumentException;
@@ -108,7 +111,7 @@ public class Indexer {
     /**
      * The field <tt>page</tt> contains the ...
      */
-    private String page;
+    private String startPage;
 
     /**
      * The field <tt>logger</tt> contains the logger for messages.
@@ -170,6 +173,11 @@ public class Indexer {
      * The field <tt>log</tt> contains the ...
      */
     private String transcript;
+
+    /**
+     * The field <tt>pageCompression</tt> contains the ...
+     */
+    private boolean pageCompression = true;
 
     /**
      * Creates a new object.
@@ -249,7 +257,7 @@ public class Indexer {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
-                    page = args[i];
+                    startPage = args[i];
 
                 } else if ("-t".startsWith(a)) {
                     if (++i >= args.length) {
@@ -268,7 +276,7 @@ public class Indexer {
                 } else if ("-q".startsWith(a)) {
                     logger.removeHandler(consoleHandler);
                 } else if ("-r".startsWith(a)) {
-                    // TODO range compression
+                    pageCompression = false;
                 } else if ("-version".startsWith(a)) {
                     showBanner();
                     return 1;
@@ -441,14 +449,18 @@ public class Indexer {
             fmt = "GeneratingOutputFile";
             w = new FileWriter(output);
         }
+        IndexWriter indexWriter = new MakeindexWriter(w, params);
+        PageProcessor pageProcessor =
+                new MakeindexPageProcessor(params, logger);
+
         try {
             logger.log(Level.INFO, localizer.format("Sorting"));
-            int i = 0; // TODO soring info
+            int i = 0; // TODO sorting info
             logger.log(Level.INFO, localizer.format("SortingDone", //
                 Integer.toString(i)));
             logger.log(Level.INFO, localizer.format(fmt, output));
-            Entry[] entries = index.sort(comp, logger);
-            count = new MakeindexWriter(w, params).write(entries, logger, page);
+            List<Entry> entries = index.sort(comp, pageProcessor);
+            count = indexWriter.write(entries, logger, startPage);
         } finally {
             w.close();
         }
@@ -460,5 +472,4 @@ public class Indexer {
             logger.log(Level.INFO, localizer.format("Output", output));
         }
     }
-
 }

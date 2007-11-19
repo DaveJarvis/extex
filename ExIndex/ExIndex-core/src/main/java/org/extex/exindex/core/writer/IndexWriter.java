@@ -20,13 +20,14 @@
 package org.extex.exindex.core.writer;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.type.Entry;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -42,6 +43,7 @@ public interface IndexWriter {
      * 
      * @throws IOException in case of an I/O error
      */
-    public int[] write(Entry[] entries, Logger logger, String page) throws IOException;
+    public int[] write(List<Entry> entries, Logger logger, String page)
+            throws IOException;
 
 }

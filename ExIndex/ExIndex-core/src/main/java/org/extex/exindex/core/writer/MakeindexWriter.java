@@ -64,25 +64,29 @@ public class MakeindexWriter implements IndexWriter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.writer.IndexWriter#write(
-     *      org.extex.exindex.core.type.Entry[], java.util.logging.Logger,
-     *      String)
+     * @see org.extex.exindex.core.writer.IndexWriter#write(java.util.List,
+     *      java.util.logging.Logger, java.lang.String)
      */
-    public int[] write(Entry[] entries, Logger logger, String startPage)
+    public int[] write(List<Entry> entries, Logger logger, String startPage)
             throws IOException {
 
         final String item1 = params.getString("item_1");
+        final String delim0 = params.getString("delim_0");
+        final String delim1 = params.getString("delim_1");
+        final String encapPrefix = params.getString("encap_prefix");
+        final String encapInfix = params.getString("encap_infix");
+        final String encalSuffix = params.getString("encap_suffix");
         final int headingFlag = params.getNumber("heading_flag");
         int[] count = new int[2];
         char currentHeading = '\0';
+
+        writer.write(params.getString("preamble"));
 
         if (startPage != null) {
             writer.write(params.getString("setpage_prefix"));
             writer.write(startPage);
             writer.write(params.getString("setpage_suffix"));
         }
-
-        writer.write(params.getString("preamble"));
 
         for (Entry e : entries) {
             if (headingFlag != 0 && e.getHeading() != currentHeading) {
@@ -97,17 +101,23 @@ public class MakeindexWriter implements IndexWriter {
             }
             writer.write(item1);
             writer.write(e.getValue());
-            writer.write(params.getString("delim_1"));
             List<PageReference> pages = e.getPages();
+            boolean first = true;
+
             for (PageReference page : pages) {
+                if (first) {
+                    first = false;
+                    writer.write(delim0);
+                } else {
+                    writer.write(delim1);
+                }
                 String encap = page.getEncap();
                 if (encap != null) {
-                    String encapPrefix = params.getString("encap_prefix");
                     writer.write(encapPrefix);
                     writer.write(encap);
-                    writer.write(params.getString("encap_infix"));
+                    writer.write(encapInfix);
                     writer.write(page.getPage());
-                    writer.write(params.getString("encap_suffix"));
+                    writer.write(encalSuffix);
                 } else {
                     writer.write(page.getPage());
                 }

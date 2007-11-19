@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.extex.exindex.core.pages.PageProcessor;
 import org.extex.exindex.core.type.Entry;
 
 /**
@@ -70,6 +70,30 @@ public class Index {
     }
 
     /**
+     * Test that key and value of two entries are equal.
+     * 
+     * @param a the first entry
+     * @param b the second entry
+     * 
+     * @return <code>true</code> iff the entries can be considered equal
+     */
+    private boolean eq(Entry a, Entry b) {
+
+        String[] ka = a.getKey();
+        String[] kb = b.getKey();
+        if (ka.length != kb.length || !a.getValue().equals(b.getValue())) {
+            return false;
+        }
+
+        for (int i = 0; i < ka.length; i++) {
+            if (!ka[i].equals(kb[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Getter for params.
      * 
      * @return the params
@@ -97,19 +121,40 @@ public class Index {
     /**
      * Sort the entries and return an array of sorted entries.
      * 
-     * @param logger the logger
      * @param comperator the comparator
+     * @param pp the page processor
      * 
-     * @return the sorted array of the entries
+     * @return the sorted list of the entries
      */
-    public Entry[] sort(Comparator<Entry> comperator, Logger logger) {
+    public List<Entry> sort(Comparator<Entry> comperator, PageProcessor pp) {
 
-        Entry[] ea = new Entry[content.size()];
+        int size = content.size();
+        if (size == 0) {
+            return content;
+        }
+        Entry[] ea = new Entry[size];
         int i = 0;
         for (Entry e : content) {
             ea[i++] = e;
         }
         Arrays.sort(ea, comperator);
-        return ea;
+
+        content = new ArrayList<Entry>();
+
+        Entry e = ea[0];
+        content.add(e);
+        for (i = 1; i < size; i++) {
+            Entry x = ea[i];
+            if (eq(e, x)) {
+                e.addPages(x.getPages());
+            } else {
+                pp.join(e.getPages());
+                e = x;
+                content.add(e);
+            }
+        }
+        pp.join(e.getPages());
+
+        return content;
     }
 }

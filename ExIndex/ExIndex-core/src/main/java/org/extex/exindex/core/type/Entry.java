@@ -63,6 +63,16 @@ public class Entry {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param morePages the pages to add
+     */
+    public void addPages(List<PageReference> morePages) {
+
+        pages.addAll(morePages);
+    }
+
+    /**
      * Getter for the heading character.
      * 
      * @return the heading character

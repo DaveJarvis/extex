@@ -28,11 +28,21 @@ package org.extex.exindex.core.type.page;
 public abstract class AbstractPage implements PageReference {
 
     /**
-     * TODO gene: missing JavaDoc
+     * This is a factory method for a page reference. This factory makes a
+     * distinction of the following types of page numbers:
+     * <ul>
+     * <li>numeric page numbers</li>
+     * <li>uppercase roman numeral page numbers</li>
+     * <li>lowercase roman numeral page numbers</li>
+     * <li>uppercase letter page numbers</li>
+     * <li>lowercase letter page numbers</li>
+     * <li>other page numbers</li>
+     * </ul>
      * 
-     * @param p
-     * @param encap
-     * @return
+     * @param p the page specification
+     * @param encap the encapsulator, which might be <code>null</code>
+     * 
+     * @return an appropriate instance of a page reference
      */
     public static PageReference get(String p, String encap) {
 
