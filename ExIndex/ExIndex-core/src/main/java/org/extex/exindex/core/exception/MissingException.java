@@ -21,8 +21,11 @@ package org.extex.exindex.core.exception;
 
 import java.io.EOFException;
 
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that a character is missing and another character has
+ * been encountered instead.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,14 +33,44 @@ import java.io.EOFException;
 public class MissingException extends EOFException {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>c</tt> contains the character encountered.
+     */
+    private char c;
+
+    /**
+     * The field <tt>ec</tt> contains the expected character.
+     */
+    private char ec;
+
+    /**
      * Creates a new object.
      * 
-     * @param c
-     * @param c2
+     * @param c the character found
+     * @param ec the expected character
      */
-    public MissingException(char c, int c2) {
+    public MissingException(char c, char ec) {
 
-        // TODO gene: MissingException constructor unimplemented
+        super();
+        this.c = c;
+        this.ec = ec;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        return LocalizerFactory.getLocalizer(getClass()).format("Message",
+            Character.toString(c), Character.toString(ec));
     }
 
 }

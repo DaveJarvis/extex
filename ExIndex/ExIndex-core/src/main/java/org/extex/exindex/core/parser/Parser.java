@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.extex.exindex.core.Index;
+import org.extex.exindex.core.normalizer.Collator;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -33,17 +34,18 @@ import org.extex.exindex.core.Index;
 public interface Parser {
 
     /**
-     * TODO gene: missing Java
+     * Load external sources into an index.
      * 
-     * @param reader
-     * @param resource
-     * @param index
+     * @param reader the reader
+     * @param resource the name of the resource
+     * @param index the index to fill
+     * @param collator TODO
      * 
-     * @return
+     * @return ...
      * 
-     * @throws IOException Doc
+     * @throws IOException in case of an I/O error
      */
-    public int[] load(Reader reader, String resource, Index index)
-            throws IOException;
+    public int[] load(Reader reader, String resource, Index index,
+            Collator collator) throws IOException;
 
 }

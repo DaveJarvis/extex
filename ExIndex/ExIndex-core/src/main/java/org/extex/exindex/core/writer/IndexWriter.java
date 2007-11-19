@@ -17,15 +17,31 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.writer;
+
+import java.io.IOException;
+import java.util.logging.Logger;
+
+import org.extex.exindex.core.type.Entry;
 
 /**
  * TODO gene: missing JavaDoc.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Value {
+public interface IndexWriter {
 
-    // this is a marker interface
+    /**
+     * Write the entries to the writer.
+     * 
+     * @param entries the entries
+     * @param logger the logger
+     * @param page TODO
+     * @return the number of lines and the number of warnings produced
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public int[] write(Entry[] entries, Logger logger, String page) throws IOException;
+
 }

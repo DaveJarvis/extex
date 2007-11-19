@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.normalizer;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,7 +25,37 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Value {
+public class MakeindexGermanCollator implements Collator {
 
-    // this is a marker interface
+    /**
+     * The field <tt>collateSpaces</tt> contains the ...
+     */
+    private boolean collateSpaces;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param collateSpaces
+     */
+    public MakeindexGermanCollator(boolean collateSpaces) {
+
+        super();
+        this.collateSpaces = collateSpaces;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.normalizer.Collator#collate(java.lang.String)
+     */
+    public String collate(String in) {
+
+        String s = in;
+        if (collateSpaces) {
+            s.replaceAll("[ \t\n\r\f\b]", "");
+        }
+        return s.replaceAll("[\\]?\"[aA]", "ae")
+            .replaceAll("[\\]?\"[oO]", "oe").replaceAll("[\\]?\"[uU]", "ue")
+            .replaceAll("\"s", "ss");
+    }
 }

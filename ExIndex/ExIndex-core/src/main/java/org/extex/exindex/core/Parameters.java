@@ -190,7 +190,7 @@ public class Parameters extends HashMap<String, Value> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Scan the input for a value.
      * 
      * @param r the reader to get characters from
      * 
@@ -226,7 +226,7 @@ public class Parameters extends HashMap<String, Value> {
                 if (c != '\'') {
                     throw (c < 0
                             ? new EofException('\'')
-                            : new MissingException('\'', c));
+                            : new MissingException((char) c, '\''));
                 }
                 return new CharacterToken((char) cc);
             } else if (c == '"') {
@@ -278,10 +278,11 @@ public class Parameters extends HashMap<String, Value> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for a named character parameter.
      * 
-     * @param name
-     * @return
+     * @param name the name of the parameter
+     * 
+     * @return the character or 0 if none is defined
      */
     public char getChar(String name) {
 
@@ -293,10 +294,11 @@ public class Parameters extends HashMap<String, Value> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for a named number parameter.
      * 
-     * @param name
-     * @return
+     * @param name the name of the parameter
+     * 
+     * @return the number or 0 if not defined
      */
     public int getNumber(String name) {
 
@@ -308,10 +310,11 @@ public class Parameters extends HashMap<String, Value> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for a named String parameter.
      * 
-     * @param name
-     * @return
+     * @param name the name of the parameter
+     * 
+     * @return the string or <code>null</code> if not defined
      */
     public String getString(String name) {
 

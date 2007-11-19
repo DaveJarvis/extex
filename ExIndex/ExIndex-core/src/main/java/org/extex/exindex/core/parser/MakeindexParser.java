@@ -29,8 +29,15 @@ import org.extex.exindex.core.Index;
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
+import org.extex.exindex.core.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
+import org.extex.exindex.core.type.LowerPage;
+import org.extex.exindex.core.type.LowerRomanPage;
+import org.extex.exindex.core.type.NumericPage;
 import org.extex.exindex.core.type.PageReference;
+import org.extex.exindex.core.type.SomePage;
+import org.extex.exindex.core.type.UpperPage;
+import org.extex.exindex.core.type.UpperRomanPage;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -51,8 +58,8 @@ public class MakeindexParser implements Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param r
-     * @param ec
+     * @param r the reader
+     * @param ec the expected character
      * 
      * @throws IOException
      */
@@ -68,22 +75,22 @@ public class MakeindexParser implements Parser {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.Parser#load(java.io.Reader,
-     *      java.lang.String, org.extex.exindex.core.Index)
+     *      java.lang.String, org.extex.exindex.core.Index, Collator)
      */
-    public int[] load(Reader reader, String resource, Index index)
-            throws IOException {
+    public int[] load(Reader reader, String resource, Index index,
+            Collator collator) throws IOException {
 
         int[] count = new int[2];
         Parameters params = index.getParams();
         Reader r = new LineNumberReader(reader);
-        String keyword = params.getString("keyword");
-        char argOpen = params.getChar("arg_open");
-        char argClose = params.getChar("arg_close");
-        char escape = params.getChar("escape");
-        char quote = params.getChar("quote");
-        char encap = params.getChar("encap");
-        char level = params.getChar("level");
-        char actual = params.getChar("actual");
+        final String keyword = params.getString("keyword");
+        final char argOpen = params.getChar("arg_open");
+        final char argClose = params.getChar("arg_close");
+        final char escape = params.getChar("escape");
+        final char quote = params.getChar("quote");
+        final char encap = params.getChar("encap");
+        final char level = params.getChar("level");
+        final char actual = params.getChar("actual");
         char k0 = keyword.charAt(0);
         try {
 
@@ -109,6 +116,9 @@ public class MakeindexParser implements Parser {
                     } else {
                         a = arg;
                     }
+                    if (collator != null) {
+                        a = collator.collate(a);
+                    }
                     store(index, arg, p, enc, a, level);
                     count[0]++;
                 }
@@ -129,7 +139,8 @@ public class MakeindexParser implements Parser {
      * @param escape
      * @param index the index
      * 
-     * @return
+     * @return the argument found
+     * 
      * @throws IOException in case of an error
      */
     private String scanArgument(Reader r, char argOpen, char argClose,
@@ -167,10 +178,10 @@ public class MakeindexParser implements Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param r
-     * @param keyword
+     * @param r the reader
+     * @param keyword the keyword to read
      * 
-     * @return
+     * @return <code>true</code> iff the keyword has been found
      * 
      * @throws IOException in case of an I/O error
      */
@@ -190,14 +201,14 @@ public class MakeindexParser implements Parser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param index
+     * @param index the index
      * @param a1
-     * @param p
-     * @param enc
-     * @param display
+     * @param p the page
+     * @param encap the page encapsulator or <code>null</code> for none
+     * @param display the display representation
      * @param level the level separating character
      */
-    private void store(Index index, String a1, String p, String enc,
+    private void store(Index index, String a1, String p, String encap,
             String display, char level) {
 
         String key = a1;
@@ -213,7 +224,23 @@ public class MakeindexParser implements Parser {
         for (String s : list) {
             k[i] = s;
         }
-        Entry entry = new Entry(k, display, new PageReference(enc, p));
+
+        PageReference page;
+        if (p.matches("^[0-9]+$")) {
+            page = new NumericPage(encap, p);
+        } else if (p.matches("^[IVXLCM]+$")) {
+            page = new UpperRomanPage(encap, p);
+        } else if (p.matches("^[ivxlcm]+$")) {
+            page = new LowerRomanPage(encap, p);
+        } else if (p.matches("^[A-Z]+$")) {
+            page = new UpperPage(encap, p);
+        } else if (p.matches("^[a-z]+$")) {
+            page = new LowerPage(encap, p);
+        } else {
+            page = new SomePage(encap, p);
+        }
+
+        Entry entry = new Entry(k, display, page);
         index.add(entry);
     }
 

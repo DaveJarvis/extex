@@ -30,13 +30,13 @@ import java.io.IOException;
 public class MissingSymbolException extends IOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     * 
      */
     public MissingSymbolException() {
 
@@ -46,7 +46,7 @@ public class MissingSymbolException extends IOException {
     /**
      * Creates a new object.
      * 
-     * @param c
+     * @param c the character found instead
      */
     public MissingSymbolException(char c) {
 

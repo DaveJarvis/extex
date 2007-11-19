@@ -21,13 +21,13 @@ package org.extex.exindex.core;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.type.Entry;
-import org.extex.exindex.core.type.PageReference;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -43,7 +43,8 @@ public class Index {
     private Parameters params;
 
     /**
-     * The field <tt>content</tt> contains the ...
+     * The field <tt>content</tt> contains the mapping from key to lists of
+     * entries with this key.
      */
     private List<Entry> content = new ArrayList<Entry>();
 
@@ -59,9 +60,9 @@ public class Index {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add an entry.
      * 
-     * @param entry
+     * @param entry the entry to add
      */
     public void add(Entry entry) {
 
@@ -79,11 +80,12 @@ public class Index {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Merge some parameters with the ones already there.
      * 
      * @param reader the reader
      * 
-     * @return
+     * @return a pair of numbers denoting the number of attributes set and
+     *         rejected
      * 
      * @throws IOException in case of an I/O error
      */
@@ -93,56 +95,21 @@ public class Index {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Sort the entries and return an array of sorted entries.
      * 
-     * @param w the writer
      * @param logger the logger
+     * @param comperator the comparator
      * 
-     * @return the number of lines and the number of warnings produced
-     * 
-     * @throws IOException in case of an I/O error
+     * @return the sorted array of the entries
      */
-    public int[] print(Writer w, Logger logger) throws IOException {
+    public Entry[] sort(Comparator<Entry> comperator, Logger logger) {
 
-        String item1 = params.getString("item_1");
-        int headingFlag = params.getNumber("heading_flag");
-        int[] count = new int[2];
-        char currentHeading = '\0';
-
-        w.write(params.getString("preamble"));
-
+        Entry[] ea = new Entry[content.size()];
+        int i = 0;
         for (Entry e : content) {
-            if (headingFlag != 0 && e.getHeading() != currentHeading) {
-                currentHeading = e.getHeading();
-                w.write(params.getString("heading_prefix"));
-                if (headingFlag > 0) {
-                    w.write(Character.toUpperCase(currentHeading));
-                } else {
-                    w.write(Character.toLowerCase(currentHeading));
-                }
-                w.write(params.getString("heading_suffix"));
-            }
-            w.write(item1);
-            w.write(e.getValue());
-            w.write(params.getString("delim_1"));
-            List<PageReference> pages = e.getPages();
-            for (PageReference page : pages) {
-                String encap = page.getEncap();
-                if (encap != null) {
-                    String encapPrefix = params.getString("encap_prefix");
-                    w.write(encapPrefix);
-                    w.write(encap);
-                    w.write(params.getString("encap_infix"));
-                    w.write(page.getPage());
-                    w.write(params.getString("encap_suffix"));
-                } else {
-                    w.write(page.getPage());
-                }
-            }
+            ea[i++] = e;
         }
-
-        w.write(params.getString("postamble"));
-        return count;
+        Arrays.sort(ea, comperator);
+        return ea;
     }
-
 }

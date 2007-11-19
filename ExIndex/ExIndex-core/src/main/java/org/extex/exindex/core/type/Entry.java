@@ -21,7 +21,6 @@ package org.extex.exindex.core.type;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -42,18 +41,16 @@ public class Entry {
     private String[] key;
 
     /**
-     * The field <tt>pages</tt> contains the ...
+     * The field <tt>pages</tt> contains the pages contained.
      */
     private List<PageReference> pages = new ArrayList<PageReference>();
-
-    private Map<String, Entry> children = null;
 
     /**
      * Creates a new object.
      * 
-     * @param k
-     * @param display
-     * @param page
+     * @param k the key
+     * @param display the display string
+     * @param page the page specification
      */
     public Entry(String[] k, String display, PageReference page) {
 
@@ -64,9 +61,9 @@ public class Entry {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the heading character.
      * 
-     * @return
+     * @return the heading character
      */
     public char getHeading() {
 
@@ -86,9 +83,9 @@ public class Entry {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the pages.
      * 
-     * @return
+     * @return the pages
      */
     public List<PageReference> getPages() {
 

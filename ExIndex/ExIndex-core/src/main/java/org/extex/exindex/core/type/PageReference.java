@@ -25,47 +25,20 @@ package org.extex.exindex.core.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PageReference {
-
-    /**
-     * The field <tt>enc</tt> contains the ...
-     */
-    private String enc;
-
-    /**
-     * The field <tt>page</tt> contains the ...
-     */
-    private String page;
-
-    /**
-     * Creates a new object.
-     * 
-     */
-    public PageReference(String enc, String page) {
-
-        super();
-        this.enc = enc;
-        this.page = page;
-    }
+public interface PageReference {
 
     /**
      * Getter for enc.
      * 
      * @return the enc
      */
-    public String getEncap() {
-
-        return enc;
-    }
+    public String getEncap();
 
     /**
      * Getter for page.
      * 
      * @return the page
      */
-    public String getPage() {
-
-        return page;
-    }
+    public String getPage();
 
 }

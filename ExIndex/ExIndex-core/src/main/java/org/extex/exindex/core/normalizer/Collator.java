@@ -21,12 +21,18 @@ package org.extex.exindex.core.normalizer;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface Collator {
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s
+     * @return the collated string
+     */
     public String collate(String s);
 
 }

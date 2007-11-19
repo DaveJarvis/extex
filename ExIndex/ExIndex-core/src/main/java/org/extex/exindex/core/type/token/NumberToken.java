@@ -28,13 +28,14 @@ package org.extex.exindex.core.type.token;
 public class NumberToken implements Value {
 
     /**
-     * The field <tt>n</tt> contains the ...
+     * The field <tt>n</tt> contains the number.
      */
     private int n;
 
     /**
      * Creates a new object.
      * 
+     * @param n the number
      */
     public NumberToken(int n) {
 
@@ -43,9 +44,9 @@ public class NumberToken implements Value {
     }
 
     /**
-     * Getter for n.
+     * Getter for the number.
      * 
-     * @return the n
+     * @return the number
      */
     public int get() {
 

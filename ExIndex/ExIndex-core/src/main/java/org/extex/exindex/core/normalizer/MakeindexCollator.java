@@ -21,27 +21,39 @@ package org.extex.exindex.core.normalizer;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class MakeindexCollator implements Collator {
 
     /**
-     * Creates a new object.
+     * The field <tt>collateSpaces</tt> contains the ...
      */
-    public MakeindexCollator() {
+    private boolean collateSpaces;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param collateSpaces
+     */
+    public MakeindexCollator(boolean collateSpaces) {
 
         super();
+        this.collateSpaces = collateSpaces;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exindex.core.normalizer.Collator#collate(java.lang.String)
      */
-    public String collate(String s) {
-        
-        return null;
+    public String collate(String in) {
+
+        String s = in;
+        if (collateSpaces) {
+            s.replaceAll("[ \t\n\r\f\b]", "");
+        }
+        return s;
     }
 }

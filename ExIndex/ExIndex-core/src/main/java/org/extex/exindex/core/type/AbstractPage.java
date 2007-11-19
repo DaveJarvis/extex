@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.type;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,7 +25,49 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Value {
+public abstract class AbstractPage implements PageReference {
 
-    // this is a marker interface
+    /**
+     * The field <tt>enc</tt> contains the encapsulator.
+     */
+    private String enc;
+
+    /**
+     * The field <tt>page</tt> contains the page number.
+     */
+    private String page;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param enc the encapsulator
+     * @param page the page number
+     */
+    public AbstractPage(String enc, String page) {
+
+        super();
+        this.enc = enc;
+        this.page = page;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.PageReference#getEncap()
+     */
+    public String getEncap() {
+
+        return enc;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.PageReference#getPage()
+     */
+    public String getPage() {
+
+        return page;
+    }
+
 }
