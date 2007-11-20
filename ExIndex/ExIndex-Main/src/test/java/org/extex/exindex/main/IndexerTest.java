@@ -234,4 +234,45 @@ public class IndexerTest {
             0);
     }
 
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void test42() throws IOException {
+
+        run(
+            "\\indexentry{abc|(xxx}{1}\\indexentry{abc|)xxx}{3}",
+            "\\begin{theindex}\n\n\\subitem abc, \\xxx{1-3}\n\n\\end{theindex}\n",
+            "", 0);
+    }
+
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void test43() throws IOException {
+
+        run(
+            "\\indexentry{abc|(xxx}{1}\\indexentry{abc|xxx}{2}\\indexentry{abc|)xxx}{3}",
+            "\\begin{theindex}\n\n\\subitem abc, \\xxx{1-3}\n\n\\end{theindex}\n",
+            "", 0);
+    }
+
+    /**
+     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void test44() throws IOException {
+
+        run(
+            "\\indexentry{abc|(xxx}{1}\\indexentry{abc|yyy}{2}\\indexentry{abc|)xxx}{3}",
+            "\\begin{theindex}\n\n\\subitem abc, \\yyy{2}, \\xxx{1-3}\n\n\\end{theindex}\n",
+            "???", 0);
+    }
 }

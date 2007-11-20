@@ -98,43 +98,10 @@ public class Indexer {
     }
 
     /**
-     * The field <tt>index</tt> contains the enclosed index.
-     */
-    private Index index;
-
-    /**
-     * The field <tt>output</tt> contains the name of the output file or
-     * <code>null</code> for stdout.
-     */
-    private String output = null;
-
-    /**
-     * The field <tt>page</tt> contains the ...
-     */
-    private String startPage;
-
-    /**
-     * The field <tt>logger</tt> contains the logger for messages.
-     */
-    private Logger logger;
-
-    /**
-     * The field <tt>consoleHandler</tt> contains the handler writing to the
-     * console.
-     */
-    private Handler consoleHandler;
-
-    /**
      * The field <tt>banner</tt> contains the indicator that the banner needs
      * to be written.
      */
     private boolean banner;
-
-    /**
-     * The field <tt>collateSpaces</tt> contains the indicator to collate
-     * spaces.
-     */
-    private boolean collateSpaces = false;
 
     /**
      * The field <tt>collateGerman</tt> contains the indicator to recognize
@@ -143,7 +110,13 @@ public class Indexer {
     private boolean collateGerman = false;
 
     /**
-     * The field <tt>comp</tt> contains the ...
+     * The field <tt>collateSpaces</tt> contains the indicator to collate
+     * spaces.
+     */
+    private boolean collateSpaces = false;
+
+    /**
+     * The field <tt>comp</tt> contains the comperator.
      */
     Comparator<Entry> comp = new Comparator<Entry>() {
 
@@ -170,14 +143,47 @@ public class Indexer {
     };
 
     /**
-     * The field <tt>log</tt> contains the ...
+     * The field <tt>consoleHandler</tt> contains the handler writing to the
+     * console.
      */
-    private String transcript;
+    private Handler consoleHandler;
 
     /**
-     * The field <tt>pageCompression</tt> contains the ...
+     * The field <tt>fileHandler</tt> contains the ...
+     */
+    private FileHandler fileHandler = null;
+
+    /**
+     * The field <tt>index</tt> contains the enclosed index.
+     */
+    private Index index;
+
+    /**
+     * The field <tt>logger</tt> contains the logger for messages.
+     */
+    private Logger logger;
+
+    /**
+     * The field <tt>output</tt> contains the name of the output file or
+     * <code>null</code> for stdout.
+     */
+    private String output = null;
+
+    /**
+     * The field <tt>pageCompression</tt> contains the indicator for page
+     * range compression.
      */
     private boolean pageCompression = true;
+
+    /**
+     * The field <tt>startPage</tt> contains the start page specification.
+     */
+    private String startPage;
+
+    /**
+     * The field <tt>log</tt> contains the name of the transcript file.
+     */
+    private String transcript;
 
     /**
      * Creates a new object.
@@ -275,9 +281,24 @@ public class Indexer {
                     // TODO letter ordering
                 } else if ("-q".startsWith(a)) {
                     logger.removeHandler(consoleHandler);
+                } else if ("-Codepage".startsWith(a)) {
+                    if (++i >= args.length) {
+                        throw new MissingArgumentException(a);
+                    }
+                    // TODO xindy -C
+                } else if ("-Module".startsWith(a)) {
+                    if (++i >= args.length) {
+                        throw new MissingArgumentException(a);
+                    }
+                    // TODO xindy -M
+                } else if ("-Language".startsWith(a)) {
+                    if (++i >= args.length) {
+                        throw new MissingArgumentException(a);
+                    }
+                    // TODO xindy -L
                 } else if ("-r".startsWith(a)) {
                     pageCompression = false;
-                } else if ("-version".startsWith(a)) {
+                } else if ("-Version".startsWith(a)) {
                     showBanner();
                     return 1;
                 } else if ("-help".startsWith(a)) {
@@ -295,10 +316,10 @@ public class Indexer {
             }
 
             if (transcript != null) {
-                Handler handler = new FileHandler(transcript);
-                handler.setFormatter(new LogFormatter());
-                handler.setLevel(Level.INFO);
-                logger.addHandler(handler);
+                fileHandler = new FileHandler(transcript);
+                fileHandler.setFormatter(new LogFormatter());
+                fileHandler.setLevel(Level.INFO);
+                logger.addHandler(fileHandler);
             }
 
             for (String s : styles) {
@@ -332,6 +353,9 @@ public class Indexer {
             logger.log(Level.FINE, "", e);
             e.printStackTrace();
             return -1;
+        }
+        if (fileHandler != null) {
+            fileHandler.flush();
         }
         return 0;
     }
