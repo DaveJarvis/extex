@@ -36,22 +36,22 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class MakeindexPageProcessor implements PageProcessor {
 
     /**
-     * The field <tt>rangeOpen</tt> contains the ...
+     * The field <tt>rangeOpen</tt> contains the parameter range_open.
      */
     private String rangeOpen;
 
     /**
-     * The field <tt>rangeClose</tt> contains the ...
+     * The field <tt>rangeClose</tt> contains the parameter range_close.
      */
     private String rangeClose;
 
     /**
-     * The field <tt>delimR</tt> contains the ...
+     * The field <tt>delimR</tt> contains the parameter delim_r.
      */
     private String delimR;
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the logger.
      */
     private Logger logger;
 
@@ -83,27 +83,30 @@ public class MakeindexPageProcessor implements PageProcessor {
     public void join(List<PageReference> pages) {
 
         PageReference open = null;
+        String openEncap = null;
 
         for (int i = 0; i < pages.size(); i++) {
             PageReference p = pages.get(i);
             String encap = p.getEncap();
             if (encap == null) {
-                // continue
-            } else if (encap.endsWith(rangeOpen)) {
+                encap = "";
+            }
+            if (encap.startsWith(rangeOpen)) {
                 if (open != null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingClose"));
                 }
                 open = p;
+                openEncap = encap.substring(1);
                 pages.remove(i);
                 i--;
-            } else if (encap.endsWith(rangeClose)) {
+            } else if (encap.startsWith(rangeClose)) {
                 if (open == null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingOpen"));
                 } else {
-                    String enc = (encap.length() == 1 ? null //
-                            : encap.substring(0, encap.length() - 1));
+                    String enc =
+                            (encap.length() == 1 ? null : encap.substring(1));
                     StringBuilder range = new StringBuilder();
                     range.append(open.getPage());
                     range.append(delimR);
@@ -111,6 +114,15 @@ public class MakeindexPageProcessor implements PageProcessor {
                     pages.set(i, AbstractPage.get(range.toString(), enc));
                     open = null;
                 }
+            } else if (open != null) {
+                if (openEncap.equals(encap)) {
+                    pages.remove(i);
+                    i--;
+                } else {
+                    logger.warning(LocalizerFactory.getLocalizer(getClass())
+                        .format("Incompatible"));
+                }
+
             }
         }
 
