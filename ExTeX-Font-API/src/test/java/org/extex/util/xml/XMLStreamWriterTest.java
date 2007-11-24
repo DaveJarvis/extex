@@ -425,11 +425,14 @@ public class XMLStreamWriterTest extends TestCase {
         XMLStreamWriter writer = new XMLStreamWriter(out, ENCODING);
 
         writer.writeStartElement("root");
-        writer.writeCharacters("Umlaute: φόδί ΦάΔ");
+        writer
+            .writeCharacters("Umlaute: \u00f6\u00e4\u00fc\u00df \u00d6\u00c4\u00dc");
         writer.writeEndElement();
         writer.close();
         String xml = (new String(out.toByteArray(), ENCODING)).trim();
-        assertEquals("<root>Umlaute: φόδί ΦάΔ</root>", xml);
+        assertEquals(
+            "<root>Umlaute: \u00f6\u00e4\u00fc\u00df \u00d6\u00c4\u00dc</root>",
+            xml);
 
     }
 
@@ -457,7 +460,7 @@ public class XMLStreamWriterTest extends TestCase {
                     handler);
 
             writer.close();
-            String xml = (new String(out.toByteArray(), ENCODING)).trim();
+            // String xml = (new String(out.toByteArray(), ENCODING)).trim();
             // System.out.println(xml);
 
             assertTrue(true);
