@@ -19,6 +19,7 @@
 
 package org.extex.font;
 
+import java.util.List;
 import java.util.Map;
 
 import org.extex.core.dimen.FixedDimen;
@@ -56,6 +57,24 @@ public class FontKeyFactory extends AbstractFactory {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(theMap);
+
+        return newfk;
+    }
+
+    /**
+     * Returns a new font key instance.
+     * 
+     * @param fk The font key.
+     * @param theMap The map with key value entries.
+     * @param feature The list of features.
+     * @return Returns a new font key instance.
+     */
+    public FontKey newInstance(FontKey fk, Map<String, ?> theMap,
+            List<String> feature) {
+
+        FontKey newfk = new FontKey(fk);
+        newfk.put(theMap);
+        newfk.add(feature);
 
         return newfk;
     }

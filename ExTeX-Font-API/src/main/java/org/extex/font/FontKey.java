@@ -20,8 +20,10 @@
 package org.extex.font;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.extex.core.count.Count;
@@ -50,6 +52,13 @@ import org.extex.core.glue.Glue;
  * <li>ligatures: If <code>true</code>, the ligature information are used.</li>
  * <li>kerning: If <code>true</code>, the kerning information are used.</li>
  * </ul>
+ * 
+ * <p>
+ * features:
+ * </p>
+ * <p>
+ * Each font can get several feature string (e.g. OpenType: latn, kern)
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -108,6 +117,11 @@ public class FontKey implements Serializable {
     private Map<String, FixedDimen> dimenMap;
 
     /**
+     * The feature list.
+     */
+    private List<String> feature;
+
+    /**
      * Map for glue values.
      */
     private Map<String, FixedGlue> glueMap;
@@ -135,6 +149,7 @@ public class FontKey implements Serializable {
         glueMap = new HashMap<String, FixedGlue>(fk.getGlueMap());
         countMap = new HashMap<String, FixedCount>(fk.getCountMap());
         booleanMap = new HashMap<String, Boolean>(fk.getBooleanMap());
+        feature = new ArrayList<String>(fk.getFeature());
     }
 
     /**
@@ -154,7 +169,18 @@ public class FontKey implements Serializable {
         glueMap = new HashMap<String, FixedGlue>();
         countMap = new HashMap<String, FixedCount>();
         booleanMap = new HashMap<String, Boolean>();
+        feature = new ArrayList<String>();
 
+    }
+
+    /**
+     * Add a list of features.
+     * 
+     * @param theFeatures The list of features.
+     */
+    public void add(List<String> theFeatures) {
+
+        feature.addAll(theFeatures);
     }
 
     /**
@@ -208,6 +234,18 @@ public class FontKey implements Serializable {
         while (it.hasNext()) {
             String key = it.next();
             if (!getString(key).equals(k.getString(key))) {
+                return false;
+            }
+        }
+
+        // feature
+        if (k.getFeature().size() != feature.size()) {
+            return false;
+        }
+        it = feature.iterator();
+        while (it.hasNext()) {
+            String feat = it.next();
+            if (!k.getFeature().contains(feat)) {
                 return false;
             }
         }
@@ -284,6 +322,16 @@ public class FontKey implements Serializable {
     protected Map<String, FixedDimen> getDimenMap() {
 
         return dimenMap;
+    }
+
+    /**
+     * Getter for feature.
+     * 
+     * @return the feature
+     */
+    public List<String> getFeature() {
+
+        return new ArrayList<String>(feature);
     }
 
     /**
@@ -383,6 +431,17 @@ public class FontKey implements Serializable {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Returns <code>true</code>, if the feature is set.
+     * 
+     * @param name The name of the feature.
+     * @return Returns <code>true</code>, if the feature is set.
+     */
+    public boolean hasFeature(String name) {
+
+        return feature.contains(name);
     }
 
     /**
@@ -567,6 +626,12 @@ public class FontKey implements Serializable {
             boolean b = getBoolean(key);
 
             buf.append(" ").append(key).append("=").append(b);
+        }
+
+        it = feature.iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            buf.append(" ").append(key);
         }
 
         return buf.toString();

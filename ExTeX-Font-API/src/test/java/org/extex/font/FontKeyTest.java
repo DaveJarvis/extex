@@ -21,13 +21,15 @@ package org.extex.font;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.junit.Test;
 
 /**
  * Test suite for the font key.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -56,6 +58,22 @@ public class FontKeyTest {
         key.put(FontKey.SIZE, (FixedDimen) null);
 
         assertEquals("cmr10 size=null", key.toString());
+    }
+
+    /**
+     * Test method for {@link java.lang.Object#toString()}.
+     */
+    @Test
+    public final void testToString3() {
+
+        FontKey key = new FontKey("cmr10");
+        key.put(FontKey.SIZE, (FixedDimen) null);
+        java.util.List<String> list = new ArrayList<String>();
+        list.add("kern");
+        list.add("latn");
+        key.add(list);
+
+        assertEquals("cmr10 size=null kern latn", key.toString());
     }
 
 }

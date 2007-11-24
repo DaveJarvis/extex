@@ -356,4 +356,20 @@ public class FontFactoryImpl extends AbstractFactory
         }
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
+     *      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
+     */
+    public FontKey getFontKey(String fontName, FixedDimen size,
+            Map<String, ?> map, List<String> feature) {
+
+        FontKey key = keyFactory.newInstance(fontName);
+        key = keyFactory.newInstance(key, map);
+        key = keyFactory.newInstance(key, FontKey.SIZE, size);
+
+        return null;
+    }
 }

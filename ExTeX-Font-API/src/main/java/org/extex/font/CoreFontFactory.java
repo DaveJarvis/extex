@@ -31,6 +31,7 @@ import org.extex.resource.ResourceFinder;
  * This interface describes the features of a font factory needed by the core.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 5563 $
  */
 public interface CoreFontFactory extends ResourceFinder {
@@ -84,6 +85,18 @@ public interface CoreFontFactory extends ResourceFinder {
      * @return the key for the font.
      */
     FontKey getFontKey(String fontName, FixedDimen size, Map<String, ?> map);
+
+    /**
+     * Returns a font key for the font.
+     * 
+     * @param fontName the name of the font.
+     * @param size the size of the font.
+     * @param map the map for the key.
+     * @param feature the list of features.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(String fontName, FixedDimen size, Map<String, ?> map,
+            List<String> feature);
 
     /**
      * Return a new instance.
