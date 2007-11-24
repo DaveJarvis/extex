@@ -21,36 +21,45 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.XtfScriptList.LangSys;
+import org.extex.font.format.xtf.XtfScriptList.Script;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * Glyph substitution.
+ * Glyph substitution (GSUB).
+ * 
+ * <p>
+ * To access GSUB information, clients should use the following procedure:
+ * <p>
+ * <ol>
+ * <li>Locate the current script in the GSUB ScriptList table.</li>
+ * <li>If the language system is known, search the script for the correct
+ * LangSys table; otherwise, use the script's default language system
+ * (DefaultLangSys table).</li>
+ * <li>The LangSys table provides index numbers into the GSUB FeatureList table
+ * to access a required feature and a number of additional features.</li>
+ * <li>Inspect the FeatureTag of each feature, and select the features to apply
+ * to an input glyph string. Each feature provides an array of index numbers
+ * into the GSUB LookupList table.</li>
+ * <li>Assemble all lookups from the set of chosen features, and apply the
+ * lookups in the order given in the LookupList table.</li>
+ * </ol>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class OtfTableGSUB extends AbstractXtfTable
+public class OtfTableGSUB extends AbstractXtfSFLTable
         implements
             XtfTable,
             LookupTableFactory,
             XMLWriterConvertible {
 
     /**
-     * featurelist
+     * Tag for a ligature.
      */
-    private XtfFeatureList featureList;
-
-    /**
-     * lookuplist
-     */
-    private XtfLookupList lookupList;
-
-    /**
-     * scriptlist
-     */
-    private XtfScriptList scriptList;
+    private static final String LIGATURE = "liga";
 
     /**
      * Version
@@ -78,15 +87,49 @@ public class OtfTableGSUB extends AbstractXtfTable
         int lookupListOffset = rar.readUnsignedShort();
 
         // Script List
-        scriptList = new XtfScriptList(rar, de.getOffset() + scriptListOffset);
+        scriptList =
+                new XtfScriptList(rar, de.getOffset() + scriptListOffset, this);
 
         // Feature List
         featureList =
-                new XtfFeatureList(rar, de.getOffset() + featureListOffset);
+                new XtfFeatureList(rar, de.getOffset() + featureListOffset,
+                    this);
 
         // Lookup List
         lookupList =
                 new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.XtfScriptList#findLangSys(java.lang.String,
+     *      java.lang.String)
+     */
+    public LangSys findLangSys(String tag, String language) {
+
+        return scriptList.findLangSys(tag, language);
+    }
+
+    /**
+     * Find the lookup.
+     * 
+     * @param tag The tag.
+     * @param language The language.
+     * @param feature The feature.
+     */
+    public void findLookup(String tag, String language, String feature) {
+
+        LangSys langSys = findLangSys(tag, language);
+        if (langSys != null) {
+
+        }
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.XtfScriptList#findScript(java.lang.String)
+     */
+    public Script findScript(String tag) {
+
+        return scriptList.findScript(tag);
     }
 
     /**

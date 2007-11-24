@@ -123,7 +123,7 @@ public class XtfScriptList implements XMLWriterConvertible {
     /**
      * The class for a langsys.
      */
-    public static class LangSys implements XMLWriterConvertible {
+    public class LangSys implements XMLWriterConvertible {
 
         /**
          * feature count
@@ -269,6 +269,8 @@ public class XtfScriptList implements XMLWriterConvertible {
                 writer.writeStartElement("featureindex");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("feature", fil.intValue());
+                writer.writeAttribute("featuretag", gsub.getFeatureTag(fil
+                    .intValue()));
                 writer.writeEndElement();
             }
             writer.writeEndElement();
@@ -612,6 +614,30 @@ public class XtfScriptList implements XMLWriterConvertible {
         }
 
         /**
+         * Returns the name of the tag.
+         * 
+         * @return Returns the name of the tag.
+         */
+        public String getTag() {
+
+            return getRecordTag(scriptIndex);
+        }
+
+        /**
+         * Returns the LangSys for the language. If the language is not found,
+         * the default LangSys is returned.
+         * 
+         * @param language The language.
+         * @return Returns the LangSys for the language. If the language is not
+         *         found, the default LangSys is returned.
+         */
+        public LangSys getLangSys(String language) {
+
+            // TODO at the moment only DefaultLangsys
+            return defaultLangSys;
+        }
+
+        /**
          * {@inheritDoc}
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
@@ -621,6 +647,7 @@ public class XtfScriptList implements XMLWriterConvertible {
             writer.writeStartElement("script");
             writer.writeAttribute("index", scriptIndex);
             writer.writeAttribute("langsyscount", langSysCount);
+            writer.writeAttribute("tag", getTag());
 
             writer.writeStartElement("langsysrecord");
             for (int i = 0; i < langSysCount; i++) {
@@ -694,20 +721,34 @@ public class XtfScriptList implements XMLWriterConvertible {
     private List<Script> scriptList;
 
     /**
+     * The map of the scripts (to improve the search in the list).
+     */
+    private Map<String, Script> scriptMap;
+
+    /**
+     * The gsub table.
+     */
+    private AbstractXtfSFLTable gsub;
+
+    /**
      * Create a new object
      * 
      * @param rar input
      * @param offset offset
+     * @param gsub The gsub table.
      * @throws IOException if an IO-error occurs
      */
-    XtfScriptList(RandomAccessR rar, int offset) throws IOException {
+    XtfScriptList(RandomAccessR rar, int offset, AbstractXtfSFLTable gsub)
+            throws IOException {
 
+        this.gsub = gsub;
         rar.seek(offset);
 
         scriptCount = rar.readUnsignedShort();
         recordList = new ArrayList<Record>(scriptCount);
         recordMap = new HashMap<Integer, Record>(scriptCount);
         scriptList = new ArrayList<Script>(scriptCount);
+        scriptMap = new HashMap<String, Script>(scriptCount);
 
         for (int i = 0; i < scriptCount; i++) {
             Record record = new Record(rar, i);
@@ -715,8 +756,10 @@ public class XtfScriptList implements XMLWriterConvertible {
             recordMap.put(record.getRecIndex(), record);
         }
         for (int i = 0; i < scriptCount; i++) {
-            scriptList
-                .add(new Script(rar, offset + getRecord(i).getOffset(), i));
+            Script script =
+                    new Script(rar, offset + getRecord(i).getOffset(), i);
+            scriptList.add(script);
+            scriptMap.put(script.getTag(), script);
         }
     }
 
@@ -728,15 +771,24 @@ public class XtfScriptList implements XMLWriterConvertible {
      */
     public Script findScript(String tag) {
 
-        if (tag.length() != 4) {
-            return null;
+        return scriptMap.get(tag);
+    }
+
+    /**
+     * Find the LangSys in a script or <code>null</code>, if not found.
+     * 
+     * @param tag The Tag for the script.
+     * @param language The language.
+     * @return Find the LangSys in a script or <code>null</code>, if not
+     *         found.
+     */
+    public LangSys findLangSys(String tag, String language) {
+
+        Script s = scriptMap.get(tag);
+        if (s != null) {
+            return s.getLangSys(language);
         }
-        int tagVal = tag2Int(tag);
-        Record recpos = recordMap.get(tagVal);
-        if (recpos == null) {
-            return null;
-        }
-        return scriptList.get(recpos.getRecIndex());
+        return null;
     }
 
     /**
@@ -788,13 +840,14 @@ public class XtfScriptList implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("scriptlist");
+        writer.writeAttribute("count", scriptCount);
 
-        writer.writeStartElement("recordlist");
-        for (int i = 0; i < scriptCount; i++) {
-            Record record = recordList.get(i);
-            record.writeXML(writer);
-        }
-        writer.writeEndElement();
+        // writer.writeStartElement("recordlist");
+        // for (int i = 0; i < scriptCount; i++) {
+        // Record record = recordList.get(i);
+        // record.writeXML(writer);
+        // }
+        // writer.writeEndElement();
 
         writer.writeStartElement("scriptlists");
         for (int i = 0; i < scriptCount; i++) {
@@ -806,4 +859,20 @@ public class XtfScriptList implements XMLWriterConvertible {
         writer.writeEndElement();
 
     }
+
+    /**
+     * Returns the record tag name.
+     * 
+     * @param idx The index.
+     * @return Returns the record tag name.
+     */
+    public String getRecordTag(int idx) {
+
+        Record record = recordMap.get(idx);
+        if (record != null) {
+            return tag2String(record.getTag());
+        }
+        return "???";
+    }
+
 }

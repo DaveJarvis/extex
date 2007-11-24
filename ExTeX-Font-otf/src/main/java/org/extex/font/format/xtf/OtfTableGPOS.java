@@ -218,26 +218,11 @@ import org.extex.util.xml.XMLWriterConvertible;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class OtfTableGPOS extends AbstractXtfTable
+public class OtfTableGPOS extends AbstractXtfSFLTable
         implements
             XtfTable,
             LookupTableFactory,
             XMLWriterConvertible {
-
-    /**
-     * featurelist
-     */
-    private XtfFeatureList featureList;
-
-    /**
-     * lookuplist
-     */
-    private XtfLookupList lookupList;
-
-    /**
-     * scriptlist
-     */
-    private XtfScriptList scriptList;
 
     /**
      * Version.
@@ -265,11 +250,13 @@ public class OtfTableGPOS extends AbstractXtfTable
         int lookupListOffset = rar.readUnsignedShort();
 
         // Script List
-        scriptList = new XtfScriptList(rar, de.getOffset() + scriptListOffset);
+        scriptList =
+                new XtfScriptList(rar, de.getOffset() + scriptListOffset, this);
 
         // Feature List
         featureList =
-                new XtfFeatureList(rar, de.getOffset() + featureListOffset);
+                new XtfFeatureList(rar, de.getOffset() + featureListOffset,
+                    this);
 
         // Lookup List
         // lookupList =
@@ -661,7 +648,8 @@ public class OtfTableGPOS extends AbstractXtfTable
         writer.writeAttribute("version", version);
         scriptList.writeXML(writer);
         featureList.writeXML(writer);
-        //lookupList.writeXML(writer);
+        // lookupList.writeXML(writer);
         writer.writeEndElement();
     }
+
 }

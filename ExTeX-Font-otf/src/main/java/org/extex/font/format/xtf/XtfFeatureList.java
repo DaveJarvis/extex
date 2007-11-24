@@ -20,6 +20,8 @@
 package org.extex.font.format.xtf;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
@@ -109,6 +111,11 @@ public class XtfFeatureList implements XMLWriterConvertible {
         private int featureParams;
 
         /**
+         * The index.
+         */
+        private int idx;
+
+        /**
          * lookup count
          */
         private int lookupCount;
@@ -119,9 +126,9 @@ public class XtfFeatureList implements XMLWriterConvertible {
         private int[] lookupListIndex;
 
         /**
-         * The index.
+         * The tag.
          */
-        private int idx;
+        private String tag;
 
         /**
          * Create a new object
@@ -129,11 +136,14 @@ public class XtfFeatureList implements XMLWriterConvertible {
          * @param rar input
          * @param offset offset
          * @param idx
+         * @param tag The tag.
          * @throws IOException if an IO-error occurs
          */
-        Feature(RandomAccessR rar, int offset, int idx) throws IOException {
+        Feature(RandomAccessR rar, int offset, int idx, String tag)
+                throws IOException {
 
             this.idx = idx;
+            this.tag = tag;
             rar.seek(offset);
 
             featureParams = rar.readUnsignedShort();
@@ -142,6 +152,16 @@ public class XtfFeatureList implements XMLWriterConvertible {
             for (int i = 0; i < lookupCount; i++) {
                 lookupListIndex[i] = rar.readUnsignedShort();
             }
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
 
         /**
@@ -163,6 +183,16 @@ public class XtfFeatureList implements XMLWriterConvertible {
         public int getLookupListIndex(int i) {
 
             return lookupListIndex[i];
+        }
+
+        /**
+         * Getter for tag.
+         * 
+         * @return the tag
+         */
+        public String getTag() {
+
+            return tag;
         }
 
         /**
@@ -190,6 +220,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
 
             writer.writeStartElement("feature");
             writer.writeAttribute("id", idx);
+            writer.writeAttribute("tag", tag);
             writer.writeAttribute("featureparams", featureParams);
 
             for (int i = 0; i < lookupCount; i++) {
@@ -201,22 +232,17 @@ public class XtfFeatureList implements XMLWriterConvertible {
             }
             writer.writeEndElement();
         }
-
-        /**
-         * Getter for idx.
-         * 
-         * @return the idx
-         */
-        public int getIdx() {
-
-            return idx;
-        }
     }
 
     /**
      * record
      */
     public class Record implements XMLWriterConvertible {
+
+        /**
+         * The index.
+         */
+        private int idx;
 
         /**
          * offset
@@ -227,11 +253,6 @@ public class XtfFeatureList implements XMLWriterConvertible {
          * tag
          */
         private int tag;
-
-        /**
-         * The index.
-         */
-        private int idx;
 
         /**
          * Create a new object
@@ -245,6 +266,16 @@ public class XtfFeatureList implements XMLWriterConvertible {
             this.idx = idx;
             tag = rar.readInt();
             offset = rar.readUnsignedShort();
+        }
+
+        /**
+         * Getter for idx.
+         * 
+         * @return the idx
+         */
+        public int getIdx() {
+
+            return idx;
         }
 
         /**
@@ -265,6 +296,16 @@ public class XtfFeatureList implements XMLWriterConvertible {
         public int getTag() {
 
             return tag;
+        }
+
+        /**
+         * Returns the tag string.
+         * 
+         * @return Returns the tag string.
+         */
+        public String getTagString() {
+
+            return XtfScriptList.tag2String(tag);
         }
 
         /**
@@ -291,19 +332,9 @@ public class XtfFeatureList implements XMLWriterConvertible {
 
             writer.writeStartElement("record");
             writer.writeAttribute("id", idx);
-            writer.writeAttribute("tag", XtfScriptList.tag2String(tag));
+            writer.writeAttribute("tag", getTagString());
             writer.writeEndElement();
 
-        }
-
-        /**
-         * Getter for idx.
-         * 
-         * @return the idx
-         */
-        public int getIdx() {
-
-            return idx;
         }
 
     }
@@ -312,6 +343,11 @@ public class XtfFeatureList implements XMLWriterConvertible {
      * feature count
      */
     private int featureCount;
+
+    /**
+     * The map for the features (to improve the search in the list).
+     */
+    private Map<String, Feature> featureMap;
 
     /**
      * feature records
@@ -324,16 +360,26 @@ public class XtfFeatureList implements XMLWriterConvertible {
     private Feature[] features;
 
     /**
+     * The gsub table.
+     */
+    private AbstractXtfSFLTable gsub;
+
+    /**
      * Create a new object
      * 
      * @param rar input
      * @param offset offset
+     * @param gsub The gsub table.
      * @throws IOException if an IO-error occurs
      */
-    XtfFeatureList(RandomAccessR rar, int offset) throws IOException {
+    XtfFeatureList(RandomAccessR rar, int offset, AbstractXtfSFLTable gsub)
+            throws IOException {
+
+        this.gsub = gsub;
 
         rar.seek(offset);
         featureCount = rar.readUnsignedShort();
+        featureMap = new HashMap<String, Feature>(featureCount);
         featureRecords = new Record[featureCount];
         features = new Feature[featureCount];
         for (int i = 0; i < featureCount; i++) {
@@ -341,33 +387,21 @@ public class XtfFeatureList implements XMLWriterConvertible {
         }
         for (int i = 0; i < featureCount; i++) {
             features[i] =
-                    new Feature(rar, offset + featureRecords[i].getOffset(), i);
+                    new Feature(rar, offset + featureRecords[i].getOffset(), i,
+                        featureRecords[i].getTagString());
+            featureMap.put(features[i].getTag(), features[i]);
         }
     }
 
     /**
-     * Find a feature
+     * Find a feature.
      * 
-     * @param langSys the langsys
      * @param tag the tag
-     * @return Returns a feature
+     * @return Returns a feature or <code>null</code>, if not found.
      */
-    public Feature findFeature(XtfScriptList.LangSys langSys, String tag) {
+    public Feature findFeature(String tag) {
 
-        if (tag.length() != 4) {
-            return null;
-        }
-        int tagVal =
-                ((tag.charAt(0) << 24) | (tag.charAt(1) << 16)
-                        | (tag.charAt(2) << 8) | tag.charAt(3));
-        for (int i = 0; i < featureCount; i++) {
-            if (featureRecords[i].getTag() == tagVal) {
-                if (langSys.isFeatureIndexed(i)) {
-                    return features[i];
-                }
-            }
-        }
-        return null;
+        return featureMap.get(tag);
     }
 
     /**
@@ -401,6 +435,20 @@ public class XtfFeatureList implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the tag string for feature.
+     * 
+     * @param idx The index.
+     * @return Returns the tag string for feature.
+     */
+    public String getFeatureTag(int idx) {
+
+        if (idx >= 0 && idx < featureRecords.length) {
+            return featureRecords[idx].getTagString();
+        }
+        return null;
+    }
+
+    /**
      * Returns the info for this class
      * 
      * @return Returns the info for this class
@@ -424,12 +472,12 @@ public class XtfFeatureList implements XMLWriterConvertible {
         writer.writeStartElement("featurelist");
         writer.writeAttribute("count", featureCount);
 
-        writer.writeStartElement("records");
-        for (int i = 0; i < featureCount; i++) {
-            Record rec = featureRecords[i];
-            rec.writeXML(writer);
-        }
-        writer.writeEndElement();
+        // writer.writeStartElement("records");
+        // for (int i = 0; i < featureCount; i++) {
+        // Record rec = featureRecords[i];
+        // rec.writeXML(writer);
+        // }
+        // writer.writeEndElement();
 
         writer.writeStartElement("features");
         for (int i = 0; i < featureCount; i++) {
