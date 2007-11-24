@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -213,24 +213,469 @@ public class TtfTableOS2 extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * version
+     * panose.
+     * <p>
+     * This 10 byte series of numbers are used to describe the visual
+     * characteristics of a given typeface. These characteristics are then used
+     * to associate the font with other fonts of similar appearance having
+     * different names.
+     * </p>
      */
-    private int version;
+    public static class Panose implements XMLWriterConvertible {
+
+        /**
+         * Position in array: ARMSTYLE
+         */
+        private static final int ARMSTYLE = 6;
+
+        /**
+         * arm style name
+         */
+        public static final String[] ARMSTYLENAME = {"Any", // 0
+                "No Fit", // 1
+                "Straight Arms/Horizontal", // 2
+                "Straight Arms/Wedge", // 3
+                "Straight Arms/Vertical", // 4
+                "Straight Arms/Single Serif", // 5
+                "Straight Arms/Double Serif", // 6
+                "Non-Straight Arms/Horizontal", // 7
+                "Non-Straight Arms/Wedge", // 8
+                "Non-Straight Arms/Vertical", // 9
+                "Non-Straight Arms/Single Serif", // 10
+                "Non-Straight Arms/Double Serif" // 11
+        };
+
+        /**
+         * Position in array: CONTRAST
+         */
+        private static final int CONTRAST = 4;
+
+        /**
+         * contrastname
+         */
+        public static final String[] CONTRASTNAME = {"Any", // 0
+                "No Fit", // 1
+                "None", // 2
+                "Very Low", // 3
+                "Low", // 4
+                "Medium Low", // 5
+                "Medium", // 6
+                "Medium High", // 7
+                "High", // 8
+                "Very High" // 9
+        };
+
+        /**
+         * Position in array: FAMILYTYPE
+         */
+        private static final int FAMILYTYPE = 0;
+
+        /**
+         * familytypename
+         */
+        public static final String[] FAMILYTYPENAME = {"Any", // 0
+                "No Fit", // 1
+                "Text and Display", // 2
+                "Script", // 3
+                "Decorative", // 4
+                "Pictorial" // 5
+        };
+
+        /**
+         * Position in array: LETTERFORM
+         */
+        private static final int LETTERFORM = 7;
+
+        /**
+         * letterformname
+         */
+        public static final String[] LETTERFORMNAME = {"Any", // 0
+                "No Fit", // 1
+                "Normal/Contact", // 2
+                "Normal/Weighted", // 3
+                "Normal/Boxed", // 4
+                "Normal/Flattened", // 5
+                "Normal/Rounded", // 6
+                "Normal/Off Center", // 7
+                "Normal/Square", // 8
+                "Oblique/Contact", // 9
+                "Oblique/Weighted", // 10
+                "Oblique/Boxed", // 11
+                "Oblique/Flattened", // 12
+                "Oblique/Rounded", // 13
+                "Oblique/Off Center", // 14
+                "Oblique/Square" // 15
+        };
+
+        /**
+         * Position in array: MIDLINE
+         */
+        private static final int MIDLINE = 8;
+
+        /**
+         * midlinename
+         */
+        public static final String[] MIDLINENAME = {"Any", // 0
+                "No Fit", // 1
+                "Standard/Trimmed", // 2
+                "Standard/Pointed", // 3
+                "Standard/Serifed", // 4
+                "High/Trimmed", // 5
+                "High/Pointed", // 6
+                "High/Serifed", // 7
+                "Constant/Trimmed", // 8
+                "Constant/Pointed", // 9
+                "Constant/Serifed", // 10
+                "Low/Trimmed", // 11
+                "Low/Pointed", // 12
+                "Low/Serifed" // 13
+        };
+
+        /**
+         * Position in array: PROPORTION
+         */
+        private static final int PROPORTION = 3;
+
+        /**
+         * proportionname
+         */
+        public static final String[] PROPORTIONAME = {"Any", // 0
+                "No Fit", // 1
+                "Old Style", // 2
+                "Modern", // 3
+                "Even Width", // 4
+                "Expanded", // 5
+                "Condensed", // 6
+                "Very Expanded", // 7
+                "Very Condensed", // 8
+                "Monospaced" // 9
+        };
+
+        /**
+         * Position in array: SERIFSTYLE
+         */
+        private static final int SERIFSTYLE = 1;
+
+        /**
+         * seriftypename
+         */
+        public static final String[] SERIFSTYLENAME = {"Any", // 0
+                "No Fit", // 1
+                "Cove", // 2
+                "Obtuse Cove", // 3
+                "Square Cove", // 4
+                "Obtuse Square Cove", // 5
+                "Square", // 6
+                "Thin", // 7
+                "Bone", // 8
+                "Exaggerated", // 9
+                "Triangle", // 10
+                "Normal Sans", // 11
+                "Obtuse Sans", // 12
+                "Perp Sans", // 13
+                "Flared", // 14
+                "Rounded" // 15
+        };
+
+        /**
+         * Position in array: STROKEVARIATION
+         */
+        private static final int STROKEVARIATION = 5;
+
+        /**
+         * strokevariationame
+         */
+        public static final String[] STROKEVARIATIONNAME = {"Any", // 0
+                "No Fit", // 1
+                "Gradual/Diagonal", // 2
+                "Gradual/Transitional", // 3
+                "Gradual/Vertical", // 4
+                "Gradual/Horizontal", // 5
+                "Rapid/Vertical", // 6
+                "Rapid/Horizontal", // 7
+                "Instant/Vertical" // 8
+        };
+
+        /**
+         * Position in array: WEIGHT
+         */
+        private static final int WEIGHT = 2;
+
+        /**
+         * weight name
+         */
+        public static final String[] WEIGHTNAME = {"Any", // 0
+                "No Fit", // 1
+                "Very Light", // 2
+                "Light", // 3
+                "Thin", // 4
+                "Book", // 5
+                "Medium", // 6
+                "Demi", // 7
+                "Bold", // 8
+                "Heavy", // 9
+                "Black", // 10
+                "Nord" // 11
+        };
+
+        /**
+         * Position in array: XHEIGHT
+         */
+        private static final int XHEIGHT = 9;
+
+        /**
+         * xheightname
+         */
+        public static final String[] XHEIGHTNAME = {"Any", // 0
+                "No Fit", // 1
+                "Constant/Small", // 2
+                "Constant/Standard", // 3
+                "Constant/Large", // 4
+                "Ducking/Small", // 5
+                "Ducking/Standard", // 6
+                "Ducking/Large" // 7
+        };
+
+        /**
+         * armStyle
+         */
+        private byte armStyle = 0;
+
+        /**
+         * contrast
+         */
+        private byte contrast = 0;
+
+        /**
+         * familyType
+         */
+        private byte familyType = 0;
+
+        /**
+         * letterform
+         */
+        private byte letterform = 0;
+
+        /**
+         * midline
+         */
+        private byte midline = 0;
+
+        /**
+         * proportion
+         */
+        private byte proportion = 0;
+
+        /**
+         * serifStyle
+         */
+        private byte serifStyle = 0;
+
+        /**
+         * strokeVariation
+         */
+        private byte strokeVariation = 0;
+
+        /**
+         * weight
+         */
+        private byte weight = 0;
+
+        /**
+         * xHeight
+         */
+        private byte xHeight = 0;
+
+        /**
+         * Create a new object.
+         * 
+         * @param panosearray the panose
+         */
+        public Panose(byte[] panosearray) {
+
+            familyType = panosearray[FAMILYTYPE];
+            serifStyle = panosearray[SERIFSTYLE];
+            weight = panosearray[WEIGHT];
+            proportion = panosearray[PROPORTION];
+            contrast = panosearray[CONTRAST];
+            strokeVariation = panosearray[STROKEVARIATION];
+            armStyle = panosearray[ARMSTYLE];
+            letterform = panosearray[LETTERFORM];
+            midline = panosearray[MIDLINE];
+            xHeight = panosearray[XHEIGHT];
+        }
+
+        /**
+         * Returns the armStyle.
+         * 
+         * @return Returns the armStyle.
+         */
+        public byte getArmStyle() {
+
+            return armStyle;
+        }
+
+        /**
+         * Returns the contrast.
+         * 
+         * @return Returns the contrast.
+         */
+        public byte getContrast() {
+
+            return contrast;
+        }
+
+        /**
+         * Returns the familyType.
+         * 
+         * @return Returns the familyType.
+         */
+        public byte getFamilyType() {
+
+            return familyType;
+        }
+
+        /**
+         * Returns the ferifStyle.
+         * 
+         * @return Returns the ferifStyle.
+         */
+        public byte getFerifStyle() {
+
+            return serifStyle;
+        }
+
+        /**
+         * Returns the letterform.
+         * 
+         * @return Returns the letterform.
+         */
+        public byte getLetterform() {
+
+            return letterform;
+        }
+
+        /**
+         * Returns the midline.
+         * 
+         * @return Returns the midline.
+         */
+        public byte getMidline() {
+
+            return midline;
+        }
+
+        /**
+         * Returns the proportion.
+         * 
+         * @return Returns the proportion.
+         */
+        public byte getProportion() {
+
+            return proportion;
+        }
+
+        /**
+         * Returns the strokeVariation.
+         * 
+         * @return Returns the strokeVariation.
+         */
+        public byte getStrokeVariation() {
+
+            return strokeVariation;
+        }
+
+        /**
+         * Returns the weight.
+         * 
+         * @return Returns the weight.
+         */
+        public byte getWeight() {
+
+            return weight;
+        }
+
+        /**
+         * Returns the xHeight.
+         * 
+         * @return Returns the xHeight.
+         */
+        public byte getXHeight() {
+
+            return xHeight;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("panose");
+            writer.writeAttribute("familytype", String.valueOf(familyType));
+            writer.writeAttribute("familytypename",
+                familyType < FAMILYTYPENAME.length
+                        ? FAMILYTYPENAME[familyType]
+                        : "");
+            writer.writeAttribute("serifstyle", String.valueOf(serifStyle));
+            writer.writeAttribute("serifstylename",
+                serifStyle < SERIFSTYLENAME.length
+                        ? SERIFSTYLENAME[serifStyle]
+                        : "");
+            writer.writeAttribute("weight", String.valueOf(weight));
+            writer.writeAttribute("weigthname", weight < WEIGHTNAME.length
+                    ? WEIGHTNAME[weight]
+                    : "");
+            writer.writeAttribute("proportion", String.valueOf(proportion));
+            writer.writeAttribute("proportionname",
+                proportion < PROPORTIONAME.length
+                        ? PROPORTIONAME[proportion]
+                        : "");
+            writer.writeAttribute("contrast", String.valueOf(contrast));
+            writer.writeAttribute("contrastname",
+                contrast < CONTRASTNAME.length ? CONTRASTNAME[contrast] : "");
+            writer.writeAttribute("strokevariation", String
+                .valueOf(strokeVariation));
+            writer.writeAttribute("strokevariationname",
+                strokeVariation < STROKEVARIATIONNAME.length
+                        ? STROKEVARIATIONNAME[strokeVariation]
+                        : "");
+            writer.writeAttribute("armstyle", String.valueOf(armStyle));
+            writer.writeAttribute("armstylename",
+                armStyle < ARMSTYLENAME.length ? ARMSTYLENAME[armStyle] : "");
+            writer.writeAttribute("letterform", String.valueOf(letterform));
+            writer.writeAttribute("letterformname",
+                letterform < LETTERFORMNAME.length
+                        ? LETTERFORMNAME[letterform]
+                        : "");
+            writer.writeAttribute("midline", String.valueOf(midline));
+            writer.writeAttribute("midlinename", midline < MIDLINENAME.length
+                    ? MIDLINENAME[midline]
+                    : "");
+            writer.writeAttribute("xheight", String.valueOf(xHeight));
+            writer.writeAttribute("xheightname", xHeight < XHEIGHTNAME.length
+                    ? XHEIGHTNAME[xHeight]
+                    : "");
+            writer.writeEndElement();
+        }
+    }
 
     /**
-     * xAvgCharWidth
+     * panose array length
      */
-    private short xAvgCharWidth;
+    private static final int PANOSELENGTH = 10;
 
     /**
-     * usWeightClass
+     * achVendorID
      */
-    private int usWeightClass;
+    private int achVendorID;
 
     /**
-     * usWidthClass
+     * fsSelection
      */
-    private int usWidthClass;
+    private short fsSelection;
 
     /**
      * fsType
@@ -238,54 +683,9 @@ public class TtfTableOS2 extends AbstractXtfTable
     private short fsType;
 
     /**
-     * ySubscriptXSize
+     * panose
      */
-    private short ySubscriptXSize;
-
-    /**
-     * ySubscriptYSize
-     */
-    private short ySubscriptYSize;
-
-    /**
-     * ySubscriptXOffset
-     */
-    private short ySubscriptXOffset;
-
-    /**
-     * ySubscriptYOffset
-     */
-    private short ySubscriptYOffset;
-
-    /**
-     * ySuperscriptXSize
-     */
-    private short ySuperscriptXSize;
-
-    /**
-     * ySuperscriptYSize
-     */
-    private short ySuperscriptYSize;
-
-    /**
-     * ySuperscriptXOffset
-     */
-    private short ySuperscriptXOffset;
-
-    /**
-     * ySuperscriptYOffset
-     */
-    private short ySuperscriptYOffset;
-
-    /**
-     * yStrikeoutSize
-     */
-    private short yStrikeoutSize;
-
-    /**
-     * yStrikeoutPosition
-     */
-    private short yStrikeoutPosition;
+    private Panose panose;
 
     /**
      * sFamilyClass
@@ -293,9 +693,29 @@ public class TtfTableOS2 extends AbstractXtfTable
     private short sFamilyClass;
 
     /**
-     * panose
+     * sTypoAscender
      */
-    private Panose panose;
+    private short sTypoAscender;
+
+    /**
+     * sTypoDescender
+     */
+    private short sTypoDescender;
+
+    /**
+     * sTypoLineGap
+     */
+    private short sTypoLineGap;
+
+    /**
+     * ulCodePageRange1
+     */
+    private int ulCodePageRange1;
+
+    /**
+     * ulCodePageRange2
+     */
+    private int ulCodePageRange2;
 
     /**
      * ulUnicodeRange1
@@ -318,16 +738,6 @@ public class TtfTableOS2 extends AbstractXtfTable
     private int ulUnicodeRange4;
 
     /**
-     * achVendorID
-     */
-    private int achVendorID;
-
-    /**
-     * fsSelection
-     */
-    private short fsSelection;
-
-    /**
      * usFirstCharIndex
      */
     private int usFirstCharIndex;
@@ -338,19 +748,14 @@ public class TtfTableOS2 extends AbstractXtfTable
     private int usLastCharIndex;
 
     /**
-     * sTypoAscender
+     * usWeightClass
      */
-    private short sTypoAscender;
+    private int usWeightClass;
 
     /**
-     * sTypoDescender
+     * usWidthClass
      */
-    private short sTypoDescender;
-
-    /**
-     * sTypoLineGap
-     */
-    private short sTypoLineGap;
+    private int usWidthClass;
 
     /**
      * usWinAscent
@@ -363,19 +768,64 @@ public class TtfTableOS2 extends AbstractXtfTable
     private int usWinDescent;
 
     /**
-     * ulCodePageRange1
+     * version
      */
-    private int ulCodePageRange1;
+    private int version;
 
     /**
-     * ulCodePageRange2
+     * xAvgCharWidth
      */
-    private int ulCodePageRange2;
+    private short xAvgCharWidth;
 
     /**
-     * panose array length
+     * yStrikeoutPosition
      */
-    private static final int PANOSELENGTH = 10;
+    private short yStrikeoutPosition;
+
+    /**
+     * yStrikeoutSize
+     */
+    private short yStrikeoutSize;
+
+    /**
+     * ySubscriptXOffset
+     */
+    private short ySubscriptXOffset;
+
+    /**
+     * ySubscriptXSize
+     */
+    private short ySubscriptXSize;
+
+    /**
+     * ySubscriptYOffset
+     */
+    private short ySubscriptYOffset;
+
+    /**
+     * ySubscriptYSize
+     */
+    private short ySubscriptYSize;
+
+    /**
+     * ySuperscriptXOffset
+     */
+    private short ySuperscriptXOffset;
+
+    /**
+     * ySuperscriptXSize
+     */
+    private short ySuperscriptXSize;
+
+    /**
+     * ySuperscriptYOffset
+     */
+    private short ySuperscriptYOffset;
+
+    /**
+     * ySuperscriptYSize
+     */
+    private short ySuperscriptYSize;
 
     /**
      * Create a new object.
@@ -424,26 +874,6 @@ public class TtfTableOS2 extends AbstractXtfTable
         usWinDescent = rar.readUnsignedShort();
         ulCodePageRange1 = rar.readInt();
         ulCodePageRange2 = rar.readInt();
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.OS_2;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "os2";
     }
 
     /**
@@ -497,6 +927,16 @@ public class TtfTableOS2 extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "os2";
+    }
+
+    /**
      * Returns the sTypoAscender.
      * 
      * @return Returns the sTypoAscender.
@@ -524,6 +964,16 @@ public class TtfTableOS2 extends AbstractXtfTable
     public short getSTypoLineGap() {
 
         return sTypoLineGap;
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.OS_2;
     }
 
     /**
@@ -790,9 +1240,9 @@ public class TtfTableOS2 extends AbstractXtfTable
             .valueOf(ySubscriptXOffset));
         writer.writeAttribute("ysubscriptyoffset", String
             .valueOf(ySubscriptYOffset));
-        writer.writeAttribute("ysubscriptxsize", String
+        writer.writeAttribute("ysuberscriptxsize", String
             .valueOf(ySuperscriptXSize));
-        writer.writeAttribute("ysubscriptysize", String
+        writer.writeAttribute("ysuberscriptysize", String
             .valueOf(ySuperscriptYSize));
         writer.writeAttribute("ysuperscriptxoffset", String
             .valueOf(ySuperscriptXOffset));
@@ -825,462 +1275,12 @@ public class TtfTableOS2 extends AbstractXtfTable
         writer.writeAttribute("uswindescent", String.valueOf(usWinDescent));
         writer.writeAttribute("ulcodepagerange1", XtfReader
             .convertIntToBinaryString(ulCodePageRange1));
-        writer.writeAttribute("ulcodepagerange1", XtfReader
+        writer.writeAttribute("ulcodepagerange2", XtfReader
             .convertIntToBinaryString(ulCodePageRange2));
         if (panose != null) {
             panose.writeXML(writer);
         }
         writer.writeEndElement();
-    }
-
-    /**
-     * panose.
-     * <p>
-     * This 10 byte series of numbers are used to describe the visual
-     * characteristics of a given typeface. These characteristics are then used
-     * to associate the font with other fonts of similar appearance having
-     * different names.
-     * </p>
-     */
-    public static class Panose implements XMLWriterConvertible {
-
-        /**
-         * familyType
-         */
-        private byte familyType = 0;
-
-        /**
-         * familytypename
-         */
-        public static final String[] FAMILYTYPENAME = {"Any", // 0
-                "No Fit", // 1
-                "Text and Display", // 2
-                "Script", // 3
-                "Decorative", // 4
-                "Pictorial" // 5
-        };
-
-        /**
-         * serifStyle
-         */
-        private byte serifStyle = 0;
-
-        /**
-         * seriftypename
-         */
-        public static final String[] SERIFSTYLENAME = {"Any", // 0
-                "No Fit", // 1
-                "Cove", // 2
-                "Obtuse Cove", // 3
-                "Square Cove", // 4
-                "Obtuse Square Cove", // 5
-                "Square", // 6
-                "Thin", // 7
-                "Bone", // 8
-                "Exaggerated", // 9
-                "Triangle", // 10
-                "Normal Sans", // 11
-                "Obtuse Sans", // 12
-                "Perp Sans", // 13
-                "Flared", // 14
-                "Rounded" // 15
-        };
-
-        /**
-         * weight
-         */
-        private byte weight = 0;
-
-        /**
-         * weight name
-         */
-        public static final String[] WEIGHTNAME = {"Any", // 0
-                "No Fit", // 1
-                "Very Light", // 2
-                "Light", // 3
-                "Thin", // 4
-                "Book", // 5
-                "Medium", // 6
-                "Demi", // 7
-                "Bold", // 8
-                "Heavy", // 9
-                "Black", // 10
-                "Nord" // 11
-        };
-
-        /**
-         * proportion
-         */
-        private byte proportion = 0;
-
-        /**
-         * proportionname
-         */
-        public static final String[] PROPORTIONAME = {"Any", // 0
-                "No Fit", // 1
-                "Old Style", // 2
-                "Modern", // 3
-                "Even Width", // 4
-                "Expanded", // 5
-                "Condensed", // 6
-                "Very Expanded", // 7
-                "Very Condensed", // 8
-                "Monospaced" // 9
-        };
-
-        /**
-         * contrast
-         */
-        private byte contrast = 0;
-
-        /**
-         * contrastname
-         */
-        public static final String[] CONTRASTNAME = {"Any", // 0
-                "No Fit", // 1
-                "None", // 2
-                "Very Low", // 3
-                "Low", // 4
-                "Medium Low", // 5
-                "Medium", // 6
-                "Medium High", // 7
-                "High", // 8
-                "Very High" // 9
-        };
-
-        /**
-         * strokeVariation
-         */
-        private byte strokeVariation = 0;
-
-        /**
-         * strokevariationame
-         */
-        public static final String[] STROKEVARIATIONNAME = {"Any", // 0
-                "No Fit", // 1
-                "Gradual/Diagonal", // 2
-                "Gradual/Transitional", // 3
-                "Gradual/Vertical", // 4
-                "Gradual/Horizontal", // 5
-                "Rapid/Vertical", // 6
-                "Rapid/Horizontal", // 7
-                "Instant/Vertical" // 8
-        };
-
-        /**
-         * armStyle
-         */
-        private byte armStyle = 0;
-
-        /**
-         * arm style name
-         */
-        public static final String[] ARMSTYLENAME = {"Any", // 0
-                "No Fit", // 1
-                "Straight Arms/Horizontal", // 2
-                "Straight Arms/Wedge", // 3
-                "Straight Arms/Vertical", // 4
-                "Straight Arms/Single Serif", // 5
-                "Straight Arms/Double Serif", // 6
-                "Non-Straight Arms/Horizontal", // 7
-                "Non-Straight Arms/Wedge", // 8
-                "Non-Straight Arms/Vertical", // 9
-                "Non-Straight Arms/Single Serif", // 10
-                "Non-Straight Arms/Double Serif" // 11
-        };
-
-        /**
-         * letterform
-         */
-        private byte letterform = 0;
-
-        /**
-         * letterformname
-         */
-        public static final String[] LETTERFORMNAME = {"Any", // 0
-                "No Fit", // 1
-                "Normal/Contact", // 2
-                "Normal/Weighted", // 3
-                "Normal/Boxed", // 4
-                "Normal/Flattened", // 5
-                "Normal/Rounded", // 6
-                "Normal/Off Center", // 7
-                "Normal/Square", // 8
-                "Oblique/Contact", // 9
-                "Oblique/Weighted", // 10
-                "Oblique/Boxed", // 11
-                "Oblique/Flattened", // 12
-                "Oblique/Rounded", // 13
-                "Oblique/Off Center", // 14
-                "Oblique/Square" // 15
-        };
-
-        /**
-         * midline
-         */
-        private byte midline = 0;
-
-        /**
-         * midlinename
-         */
-        public static final String[] MIDLINENAME = {"Any", // 0
-                "No Fit", // 1
-                "Standard/Trimmed", // 2
-                "Standard/Pointed", // 3
-                "Standard/Serifed", // 4
-                "High/Trimmed", // 5
-                "High/Pointed", // 6
-                "High/Serifed", // 7
-                "Constant/Trimmed", // 8
-                "Constant/Pointed", // 9
-                "Constant/Serifed", // 10
-                "Low/Trimmed", // 11
-                "Low/Pointed", // 12
-                "Low/Serifed" // 13
-        };
-
-        /**
-         * xHeight
-         */
-        private byte xHeight = 0;
-
-        /**
-         * xheightname
-         */
-        public static final String[] XHEIGHTNAME = {"Any", // 0
-                "No Fit", // 1
-                "Constant/Small", // 2
-                "Constant/Standard", // 3
-                "Constant/Large", // 4
-                "Ducking/Small", // 5
-                "Ducking/Standard", // 6
-                "Ducking/Large" // 7
-        };
-
-        /**
-         * Position in array: FAMILYTYPE
-         */
-        private static final int FAMILYTYPE = 0;
-
-        /**
-         * Position in array: SERIFSTYLE
-         */
-        private static final int SERIFSTYLE = 1;
-
-        /**
-         * Position in array: WEIGHT
-         */
-        private static final int WEIGHT = 2;
-
-        /**
-         * Position in array: PROPORTION
-         */
-        private static final int PROPORTION = 3;
-
-        /**
-         * Position in array: CONTRAST
-         */
-        private static final int CONTRAST = 4;
-
-        /**
-         * Position in array: STROKEVARIATION
-         */
-        private static final int STROKEVARIATION = 5;
-
-        /**
-         * Position in array: ARMSTYLE
-         */
-        private static final int ARMSTYLE = 6;
-
-        /**
-         * Position in array: LETTERFORM
-         */
-        private static final int LETTERFORM = 7;
-
-        /**
-         * Position in array: MIDLINE
-         */
-        private static final int MIDLINE = 8;
-
-        /**
-         * Position in array: XHEIGHT
-         */
-        private static final int XHEIGHT = 9;
-
-        /**
-         * Create a new object.
-         * 
-         * @param panosearray the panose
-         */
-        public Panose(byte[] panosearray) {
-
-            familyType = panosearray[FAMILYTYPE];
-            serifStyle = panosearray[SERIFSTYLE];
-            weight = panosearray[WEIGHT];
-            proportion = panosearray[PROPORTION];
-            contrast = panosearray[CONTRAST];
-            strokeVariation = panosearray[STROKEVARIATION];
-            armStyle = panosearray[ARMSTYLE];
-            letterform = panosearray[LETTERFORM];
-            midline = panosearray[MIDLINE];
-            xHeight = panosearray[XHEIGHT];
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("panose");
-            writer.writeAttribute("familytype", String.valueOf(familyType));
-            writer.writeAttribute("familytypename",
-                familyType < FAMILYTYPENAME.length
-                        ? FAMILYTYPENAME[familyType]
-                        : "");
-            writer.writeAttribute("serifstyle", String.valueOf(serifStyle));
-            writer.writeAttribute("serifstylename",
-                serifStyle < SERIFSTYLENAME.length
-                        ? SERIFSTYLENAME[serifStyle]
-                        : "");
-            writer.writeAttribute("weight", String.valueOf(weight));
-            writer.writeAttribute("weigthname", weight < WEIGHTNAME.length
-                    ? WEIGHTNAME[weight]
-                    : "");
-            writer.writeAttribute("proportion", String.valueOf(proportion));
-            writer.writeAttribute("proportionname",
-                proportion < PROPORTIONAME.length
-                        ? PROPORTIONAME[proportion]
-                        : "");
-            writer.writeAttribute("contrast", String.valueOf(contrast));
-            writer.writeAttribute("contrastname",
-                contrast < CONTRASTNAME.length ? CONTRASTNAME[contrast] : "");
-            writer.writeAttribute("strokevariation", String
-                .valueOf(strokeVariation));
-            writer.writeAttribute("strokevariationname",
-                strokeVariation < STROKEVARIATIONNAME.length
-                        ? STROKEVARIATIONNAME[strokeVariation]
-                        : "");
-            writer.writeAttribute("armstyle", String.valueOf(armStyle));
-            writer.writeAttribute("armstylename",
-                armStyle < ARMSTYLENAME.length ? ARMSTYLENAME[armStyle] : "");
-            writer.writeAttribute("letterform", String.valueOf(letterform));
-            writer.writeAttribute("letterformname",
-                letterform < LETTERFORMNAME.length
-                        ? LETTERFORMNAME[letterform]
-                        : "");
-            writer.writeAttribute("midline", String.valueOf(midline));
-            writer.writeAttribute("midlinename", midline < MIDLINENAME.length
-                    ? MIDLINENAME[midline]
-                    : "");
-            writer.writeAttribute("xheight", String.valueOf(xHeight));
-            writer.writeAttribute("xheightname", xHeight < XHEIGHTNAME.length
-                    ? XHEIGHTNAME[xHeight]
-                    : "");
-            writer.writeEndElement();
-        }
-
-        /**
-         * Returns the armStyle.
-         * 
-         * @return Returns the armStyle.
-         */
-        public byte getArmStyle() {
-
-            return armStyle;
-        }
-
-        /**
-         * Returns the contrast.
-         * 
-         * @return Returns the contrast.
-         */
-        public byte getContrast() {
-
-            return contrast;
-        }
-
-        /**
-         * Returns the familyType.
-         * 
-         * @return Returns the familyType.
-         */
-        public byte getFamilyType() {
-
-            return familyType;
-        }
-
-        /**
-         * Returns the ferifStyle.
-         * 
-         * @return Returns the ferifStyle.
-         */
-        public byte getFerifStyle() {
-
-            return serifStyle;
-        }
-
-        /**
-         * Returns the letterform.
-         * 
-         * @return Returns the letterform.
-         */
-        public byte getLetterform() {
-
-            return letterform;
-        }
-
-        /**
-         * Returns the midline.
-         * 
-         * @return Returns the midline.
-         */
-        public byte getMidline() {
-
-            return midline;
-        }
-
-        /**
-         * Returns the proportion.
-         * 
-         * @return Returns the proportion.
-         */
-        public byte getProportion() {
-
-            return proportion;
-        }
-
-        /**
-         * Returns the strokeVariation.
-         * 
-         * @return Returns the strokeVariation.
-         */
-        public byte getStrokeVariation() {
-
-            return strokeVariation;
-        }
-
-        /**
-         * Returns the weight.
-         * 
-         * @return Returns the weight.
-         */
-        public byte getWeight() {
-
-            return weight;
-        }
-
-        /**
-         * Returns the xHeight.
-         * 
-         * @return Returns the xHeight.
-         */
-        public byte getXHeight() {
-
-            return xHeight;
-        }
     }
 
 }
