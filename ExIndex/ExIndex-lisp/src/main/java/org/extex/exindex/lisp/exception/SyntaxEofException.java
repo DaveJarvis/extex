@@ -17,45 +17,31 @@
  *
  */
 
-package org.extex.exindex.lisp.builtin;
-
-import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LValue;
+package org.extex.exindex.lisp.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception indicates that the end of file has been encountered
+ * unexpectedly.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Quote extends LFunction {
+public class SyntaxEofException extends SyntaxException {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
+     * @param resource the name of the resource
      */
-    public Quote(String name) throws SecurityException, NoSuchMethodException {
+    public SyntaxEofException(String resource) {
 
-        super(name, new Arg[]{Arg.QVALUE});
+        super(resource);
     }
 
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param interpreter the interpreter
-     * @param arg the term to quote
-     * 
-     * @return the quoted term
-     */
-    public LValue evaluate(LInterpreter interpreter, LValue arg) {
-
-        return arg;
-    }
 }

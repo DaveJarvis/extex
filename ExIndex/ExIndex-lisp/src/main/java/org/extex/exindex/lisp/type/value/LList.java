@@ -17,9 +17,10 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
+package org.extex.exindex.lisp.type.value;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,18 +29,18 @@ import java.util.List;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LList implements LValue {
+public class LList implements LValue, Iterable<LValue> {
 
     /**
-     * The field <tt>NIL</tt> contains the ...
+     * The field <tt>NIL</tt> contains the unmodifyable empty list.
      */
     public static final LList NIL = new LList() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exindex.lisp.type.LList#add(
-         *      org.extex.exindex.lisp.type.LValue)
+         * @see org.extex.exindex.lisp.type.value.LList#add(
+         *      org.extex.exindex.lisp.type.value.LValue)
          */
         @Override
         public boolean add(LValue o) {
@@ -47,10 +48,21 @@ public class LList implements LValue {
             throw new UnsupportedOperationException();
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "nil";
+        }
+
     };
 
     /**
-     * The field <tt>content</tt> contains the ...
+     * The field <tt>content</tt> contains the content.
      */
     List<LValue> content = new ArrayList<LValue>();
 
@@ -63,9 +75,11 @@ public class LList implements LValue {
     }
 
     /**
-     * @param o
-     * @return
-     * @see java.util.List#add(java.lang.Object)
+     * Append a node to the end of the list.
+     * 
+     * @param o the node
+     * 
+     * @return <code>true</code>
      */
     public boolean add(LValue o) {
 
@@ -73,8 +87,7 @@ public class LList implements LValue {
     }
 
     /**
-     * 
-     * @see java.util.List#clear()
+     * Remove all nodes from the list.
      */
     public void clear() {
 
@@ -82,9 +95,11 @@ public class LList implements LValue {
     }
 
     /**
-     * @param o
-     * @return
-     * @see java.util.List#contains(java.lang.Object)
+     * Check if the list contains a certain element.
+     * 
+     * @param o the node to find
+     * 
+     * @return <code>true</code> iff the element is found
      */
     public boolean contains(Object o) {
 
@@ -92,9 +107,11 @@ public class LList implements LValue {
     }
 
     /**
-     * @param index
-     * @return
-     * @see java.util.List#get(int)
+     * Get a node at a position.
+     * 
+     * @param index the index
+     * 
+     * @return the node at the position
      */
     public LValue get(int index) {
 
@@ -102,8 +119,9 @@ public class LList implements LValue {
     }
 
     /**
-     * @return
-     * @see java.util.List#isEmpty()
+     * Check whether the list is empty.
+     * 
+     * @return <code>true</code> iff the list does not contain any element
      */
     public boolean isEmpty() {
 
@@ -111,9 +129,21 @@ public class LList implements LValue {
     }
 
     /**
-     * @param index
-     * @return
-     * @see java.util.List#remove(int)
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Iterable#iterator()
+     */
+    public Iterator<LValue> iterator() {
+
+        return content.iterator();
+    }
+
+    /**
+     * Remove a node from the list.
+     * 
+     * @param index the index of the node to remove
+     * 
+     * @return the node removed
      */
     public LValue remove(int index) {
 
@@ -121,12 +151,35 @@ public class LList implements LValue {
     }
 
     /**
-     * @return
-     * @see java.util.List#size()
+     * Getter for the size of the list.
+     * 
+     * @return the number of elements contained
      */
     public int size() {
 
         return content.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        if (content.size() == 0) {
+            return "nil";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append('(');
+
+        for (LValue val : content) {
+            sb.append(val.toString());
+            sb.append(' ');
+        }
+        sb.append(')');
+        return sb.toString();
     }
 
 }

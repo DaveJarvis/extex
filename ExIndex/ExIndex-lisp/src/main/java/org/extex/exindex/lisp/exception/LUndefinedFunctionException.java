@@ -17,14 +17,30 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
+package org.extex.exindex.lisp.exception;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface LValue {
+public class LUndefinedFunctionException extends LException {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param resource
+     */
+    public LUndefinedFunctionException(String resource) {
+
+        super(resource);
+    }
 
 }

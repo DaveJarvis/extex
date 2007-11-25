@@ -17,7 +17,8 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
+package org.extex.exindex.lisp.type.value;
+
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,48 +26,41 @@ package org.extex.exindex.lisp.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LString implements LValue {
+public class LBoolean implements LValue {
+
+    /**
+     * The field <tt>TRUE</tt> contains the ...
+     */
+    public static final LBoolean TRUE = new LBoolean(true);
+
+    /**
+     * The field <tt>FALSE</tt> contains the ...
+     */
+    public static final LBoolean FALSE = new LBoolean(false);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param value
+     * @return
+     */
+    public static LBoolean valueOf(boolean value) {
+
+        return value ? TRUE : FALSE;
+    }
 
     /**
      * The field <tt>value</tt> contains the ...
      */
-    private String value;
+    private boolean value;
 
     /**
      * Creates a new object.
-     * 
-     * @param value
      */
-    public LString(String value) {
+    private LBoolean(boolean value) {
 
         super();
         this.value = value;
-    }
-
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public String getValue() {
-
-        return value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append('"');
-        // TODO handle \n,...
-        sb.append(value.replaceAll("([\\\"])", "\\\\\\1"));
-        sb.append('"');
-        return sb.toString();
     }
 
 }

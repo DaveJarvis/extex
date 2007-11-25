@@ -17,7 +17,8 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
+package org.extex.exindex.lisp.exception;
+
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,43 +26,32 @@ package org.extex.exindex.lisp.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LNumber implements LValue {
+public class LException extends Exception {
 
     /**
-     * The field <tt>value</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private long value;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
-     * @param value
+     * @param resource
      */
-    public LNumber(long value) {
+    public LException(String resource) {
 
-        super();
-        this.value = value;
+        super(resource);
     }
 
     /**
-     * Getter for value.
+     * Creates a new object.
      * 
-     * @return the value
+     * @param cause the cause
      */
-    public long getValue() {
+    public LException(Throwable cause) {
 
-        return value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return Long.toString(value);
+        super(cause);
     }
 
 }

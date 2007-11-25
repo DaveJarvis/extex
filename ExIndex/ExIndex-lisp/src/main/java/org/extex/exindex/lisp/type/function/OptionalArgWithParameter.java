@@ -17,11 +17,12 @@
  *
  */
 
-package org.extex.exindex.lisp.builtin;
+package org.extex.exindex.lisp.type.function;
 
-import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
+import java.util.List;
+
+import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LMissingParameterException;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -30,32 +31,37 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Quote extends LFunction {
+public class OptionalArgWithParameter extends Arg {
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
+     * @param flag the name of the flag
+     * @param resultClass the result class
+     * @param def the default value
+     * @param quoted the indicator for quoted expressions
      */
-    public Quote(String name) throws SecurityException, NoSuchMethodException {
+    public OptionalArgWithParameter(String flag, Class<?> resultClass,
+            Object def, boolean quoted) {
 
-        super(name, new Arg[]{Arg.QVALUE});
+        super(flag, resultClass, def, quoted);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param interpreter the interpreter
-     * @param arg the term to quote
-     * 
-     * @return the quoted term
+     * @see org.extex.exindex.lisp.type.function.Arg#parse( java.util.List, int,
+     *      java.lang.Object[], int)
      */
-    public LValue evaluate(LInterpreter interpreter, LValue arg) {
+    @Override
+    public final int parse(List<LValue> args, int ai, Object[] arguments,
+            int index) throws LException {
 
-        return arg;
+        if (ai >= args.size()) {
+            throw new LMissingParameterException(getFlag());
+        }
+        arguments[index] = validate(args.get(ai));
+        return ai + 1;
     }
+
 }

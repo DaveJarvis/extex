@@ -23,9 +23,10 @@ import java.io.IOException;
 
 import org.extex.exindex.lisp.builtin.Quote;
 import org.extex.exindex.lisp.builtin.Require;
+import org.extex.exindex.lisp.exception.LException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an LInterpreter with some predefined functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,7 +34,7 @@ import org.extex.exindex.lisp.builtin.Require;
 public class LEngine extends LInterpreter {
 
     /**
-     * TODO gene: missing JavaDoc
+     * This is the command line interface.
      * 
      * @param args the command line arguments
      */
@@ -43,17 +44,26 @@ public class LEngine extends LInterpreter {
             new LEngine().topLevelLoop();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (LException e) {
+            e.printStackTrace();
         }
     }
 
     /**
      * Creates a new object.
+     * 
+     * @throws NoSuchMethodException
+     * @throws SecurityException
      */
-    public LEngine() {
+    public LEngine() throws SecurityException, NoSuchMethodException {
 
         super();
-        register("require", new Require());
-        register("quote", new Quote());
+        register("require", new Require("require"));
+        register("quote", new Quote("quote"));
     }
 
 }

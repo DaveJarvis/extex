@@ -17,11 +17,7 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
-
-import java.io.IOException;
-
-import org.extex.exindex.lisp.LInterpreter;
+package org.extex.exindex.lisp.exception;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,17 +25,22 @@ import org.extex.exindex.lisp.LInterpreter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface LFunction {
+public class LMissingArgumentsException extends LException {
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param interpreter TODO
-     * @param args
-     * 
-     * @return
-     * @throws IOException
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    LValue eval(LInterpreter interpreter, LValue... args) throws IOException;
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param resource
+     */
+    public LMissingArgumentsException(String resource) {
+
+        super(resource);
+    }
 
 }

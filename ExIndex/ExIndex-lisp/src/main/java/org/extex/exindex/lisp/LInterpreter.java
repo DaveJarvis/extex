@@ -19,19 +19,23 @@
 
 package org.extex.exindex.lisp;
 
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LUndefinedFunctionException;
 import org.extex.exindex.lisp.parser.LParser;
-import org.extex.exindex.lisp.type.LFunction;
-import org.extex.exindex.lisp.type.LList;
-import org.extex.exindex.lisp.type.LValue;
-import org.extex.exindex.lisp.type.LSymbol;
+import org.extex.exindex.lisp.type.function.LFunction;
+import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LSymbol;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -42,7 +46,7 @@ import org.extex.exindex.lisp.type.LSymbol;
 public class LInterpreter {
 
     /**
-     * TODO gene: missing JavaDoc
+     * This is the command line interface.
      * 
      * @param args the command line arguments
      */
@@ -52,23 +56,25 @@ public class LInterpreter {
             new LInterpreter().topLevelLoop();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (LException e) {
+            e.printStackTrace();
         }
     }
 
     /**
-     * The field <tt>functionTable</tt> contains the ...
+     * The field <tt>functionTable</tt> contains the table of all functions.
      */
     private Map<LSymbol, LFunction> functionTable =
             new HashMap<LSymbol, LFunction>();
 
     /**
-     * The field <tt>valueTable</tt> contains the ...
+     * The field <tt>valueTable</tt> contains the table of all values of
+     * symbols.
      */
     private Map<LSymbol, LValue> valueTable = new HashMap<LSymbol, LValue>();
 
     /**
      * Creates a new object.
-     * 
      */
     public LInterpreter() {
 
@@ -76,14 +82,15 @@ public class LInterpreter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Evaluate a single node and return its result.
      * 
      * @param node the node to evaluate
      * 
      * @return the result
-     * @throws IOException
+     * 
+     * @throws LException in case of an error
      */
-    public LValue eval(LValue node) throws IOException {
+    public LValue eval(LValue node) throws LException {
 
         if (node instanceof LSymbol) {
             LValue n = valueTable.get(node);
@@ -97,23 +104,18 @@ public class LInterpreter {
         }
         LValue fct = list.get(0);
         if (!(fct instanceof LSymbol)) {
-            // TODO gene: topLevelLoop unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new LException(fct.toString());
         }
-        LSymbol function = (LSymbol) fct;
-
-        LFunction f = functionTable.get(function);
+        LFunction f = functionTable.get(fct);
         if (f == null) {
-            // TODO gene: eval unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new LUndefinedFunctionException(fct.toString());
+        }
+        List<LValue> l = new ArrayList<LValue>();
+        for (LValue val : list) {
+            l.add(val);
         }
 
-        int size = list.size() - 1;
-        LValue[] args = new LValue[size];
-        for (int i = 1; i < size; i++) {
-            args[i] = eval(list.get(i));
-        }
-        return f.eval(this, args);
+        return f.eval(this, l);
     }
 
     /**
@@ -124,12 +126,12 @@ public class LInterpreter {
      * @return the last expression read
      * 
      * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
      */
-    public LValue load(String name) throws IOException {
+    public LValue load(String name) throws IOException, LException {
 
-        InputStreamReader reader =
-                new InputStreamReader(new FileInputStream(name));
-        LParser parser = new LParser(reader);
+        Reader reader = new FileReader(name);
+        LParser parser = makeParser(name, reader);
         LValue node = LList.NIL;
 
         try {
@@ -146,44 +148,104 @@ public class LInterpreter {
      * TODO gene: missing JavaDoc
      * 
      * @param name
-     * @param fct
+     * @param reader
+     * 
+     * @return the parser
      */
-    public void register(LSymbol name, LFunction fct) {
+    protected LParser makeParser(String name, Reader reader) {
 
-        functionTable.put(name, fct);
+        return new LParser(reader, name);
+    }
+
+    /**
+     * Register a new function: The old function is returned.
+     * 
+     * @param name the symbol under which the function should be registered
+     * @param fct the function to register
+     * 
+     * @return the old binding
+     */
+    public LFunction register(LSymbol name, LFunction fct) {
+
+        return functionTable.put(name, fct);
+    }
+
+    /**
+     * Register a new function: The old function is returned.
+     * 
+     * @param name the name under which the function should be registered
+     * @param fct the function to register
+     * 
+     * @return the old binding
+     */
+    public LFunction register(String name, LFunction fct) {
+
+        return functionTable.put(LSymbol.get(name), fct);
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param name
-     * @param fct
+     * @param symbol
+     * @param value
      */
-    public void register(String name, LFunction fct) {
+    public void setq(LSymbol symbol, LValue value) {
 
-        functionTable.put(LSymbol.get(name), fct);
-    }
-
-    public void topLevelLoop() throws IOException {
-
-        topLevelLoop(new InputStreamReader(System.in));
-    }
-
-    public void topLevelLoop(InputStream is) throws IOException {
-
-        topLevelLoop(new InputStreamReader(is));
+        valueTable.put(symbol, value);
     }
 
     /**
      * TODO gene: missing JavaDoc
+     * 
+     * @param symbol
+     * @param value
+     */
+    public void setq(String symbol, LValue value) {
+
+        valueTable.put(LSymbol.get(symbol), value);
+    }
+
+    /**
+     * Process the commands read from stdin.
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
+     */
+    public void topLevelLoop() throws IOException, LException {
+
+        topLevelLoop(new InputStreamReader(System.in), "<>");
+    }
+
+    /**
+     * Process the commands read from a stream.
+     * 
+     * @param is the stream to read from
+     * @param resource the resource description for error messages
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
+     */
+    public void topLevelLoop(InputStream is, String resource)
+            throws IOException,
+                LException {
+
+        topLevelLoop(new InputStreamReader(is), resource);
+    }
+
+    /**
+     * Process the commands read from a reader.
      * 
      * @param r the reader
+     * @param resource the resource description for error messages
      * 
-     * @throws IOException in case of an error
+     * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
      */
-    public void topLevelLoop(Reader r) throws IOException {
+    public void topLevelLoop(Reader r, String resource)
+            throws IOException,
+                LException {
 
-        LParser parser = new LParser(r);
+        LParser parser = makeParser(resource, r);
 
         for (LValue node = parser.read(); node != null; node = parser.read()) {
 

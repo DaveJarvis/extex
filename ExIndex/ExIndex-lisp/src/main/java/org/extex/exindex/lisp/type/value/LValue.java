@@ -17,33 +17,15 @@
  *
  */
 
-package org.extex.exindex.lisp.exception;
-
-import java.io.IOException;
+package org.extex.exindex.lisp.type.value;
 
 /**
- * This exception signals that a syntax error has been encountered during
- * parsing.
+ * This is a interface describing values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SyntaxException extends IOException {
+public interface LValue {
 
-    /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param resource
-     */
-    public SyntaxException(String resource) {
-
-        super(resource);
-    }
-
+    // marker interface
 }

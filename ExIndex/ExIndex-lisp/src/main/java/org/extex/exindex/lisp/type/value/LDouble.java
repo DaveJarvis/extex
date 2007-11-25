@@ -17,28 +17,40 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
+package org.extex.exindex.lisp.type.value;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a node containing a floating point number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LQuote implements LValue {
+public class LDouble implements LValue {
 
     /**
-     * The field <tt>QUOTE</tt> contains the ...
+     * The field <tt>value</tt> contains the value.
      */
-    public static final LQuote QUOTE = new LQuote();
+    private double value;
 
     /**
-     * Creates a new object. In fact these instances are managed via the factory
-     * method.
+     * Creates a new object.
+     * 
+     * @param value
      */
-    private LQuote() {
+    public LDouble(double value) {
 
         super();
+        this.value = value;
+    }
+
+    /**
+     * Getter for value.
+     * 
+     * @return the value
+     */
+    public double getValue() {
+
+        return value;
     }
 
     /**
@@ -49,7 +61,7 @@ public class LQuote implements LValue {
     @Override
     public String toString() {
 
-        return "'";
+        return Double.toString(value);
     }
 
 }

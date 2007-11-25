@@ -17,45 +17,51 @@
  *
  */
 
-package org.extex.exindex.lisp.builtin;
-
-import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LValue;
+package org.extex.exindex.lisp.type.value;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a node containing a character.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Quote extends LFunction {
+public class LChar implements LValue {
+
+    /**
+     * The field <tt>value</tt> contains the value.
+     */
+    private char value;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
+     * @param value
      */
-    public Quote(String name) throws SecurityException, NoSuchMethodException {
+    public LChar(char value) {
 
-        super(name, new Arg[]{Arg.QVALUE});
+        super();
+        this.value = value;
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for value.
      * 
-     * @param interpreter the interpreter
-     * @param arg the term to quote
-     * 
-     * @return the quoted term
+     * @return the value
      */
-    public LValue evaluate(LInterpreter interpreter, LValue arg) {
+    public char getValue() {
 
-        return arg;
+        return value;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return Character.toString(value);
+    }
+
 }

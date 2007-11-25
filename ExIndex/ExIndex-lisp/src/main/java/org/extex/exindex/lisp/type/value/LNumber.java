@@ -17,53 +17,27 @@
  *
  */
 
-package org.extex.exindex.lisp.type;
-
-import java.util.WeakHashMap;
+package org.extex.exindex.lisp.type.value;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a node containing a number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LSymbol implements LValue {
-
-    /**
-     * The field <tt>symtab</tt> contains the ...
-     */
-    private static WeakHashMap<String, LSymbol> symtab =
-            new WeakHashMap<String, LSymbol>();
-
-    /**
-     * This is the factory method for symbols.
-     * 
-     * @param value
-     * @return
-     */
-    public synchronized static LSymbol get(String value) {
-
-        LSymbol sym = symtab.get(value);
-        if (sym == null) {
-            sym = new LSymbol(value);
-            symtab.put(value, sym);
-        }
-
-        return sym;
-    }
+public class LNumber implements LValue {
 
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private String value;
+    private long value;
 
     /**
-     * Creates a new object. In fact these instances are managed via the factory
-     * method.
+     * Creates a new object.
      * 
-     * @param value the value
+     * @param value
      */
-    private LSymbol(String value) {
+    public LNumber(long value) {
 
         super();
         this.value = value;
@@ -74,7 +48,7 @@ public class LSymbol implements LValue {
      * 
      * @return the value
      */
-    public String getValue() {
+    public long getValue() {
 
         return value;
     }
@@ -87,7 +61,7 @@ public class LSymbol implements LValue {
     @Override
     public String toString() {
 
-        return value;
+        return Long.toString(value);
     }
 
 }

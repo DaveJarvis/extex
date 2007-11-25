@@ -19,10 +19,19 @@
 
 package org.extex.exindex.lisp.builtin;
 
-import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.extex.exindex.lisp.LEngine;
+import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
+import org.junit.Test;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -30,32 +39,33 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Quote extends LFunction {
+public class QuoteTest {
 
     /**
-     * Creates a new object.
+     * TODO gene: missing JavaDoc
      * 
-     * @param name the name of the function
-     * 
-     * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
-     * @throws SecurityException in case a security problem occurred
+     * @param s the string representation
+     * @return the node
+     * @throws IOException in case of an error
      */
-    public Quote(String name) throws SecurityException, NoSuchMethodException {
+    private LValue makeNode(String s) throws IOException {
 
-        super(name, new Arg[]{Arg.QVALUE});
+        return new LParser(new InputStreamReader(new ByteArrayInputStream(s
+            .getBytes())), "rsc").read();
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param interpreter the interpreter
-     * @param arg the term to quote
-     * 
-     * @return the quoted term
+     * @throws Exception in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LValue arg) {
+    @Test
+    public void test1() throws Exception {
 
-        return arg;
+        LValue node = makeNode("'a ");
+        LValue n = new LEngine().eval(node);
+        assertNotNull(n);
+        assertTrue(n instanceof LSymbol);
+        assertEquals("a", n.toString());
     }
 }

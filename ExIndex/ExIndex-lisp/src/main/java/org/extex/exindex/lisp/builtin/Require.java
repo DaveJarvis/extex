@@ -19,13 +19,11 @@
 
 package org.extex.exindex.lisp.builtin;
 
-import java.io.IOException;
-
 import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.LFunction;
-import org.extex.exindex.lisp.type.LValue;
-import org.extex.exindex.lisp.type.LString;
-import org.extex.exindex.lisp.type.LSymbol;
+import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.type.function.Arg;
+import org.extex.exindex.lisp.type.function.LFunction;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -33,37 +31,34 @@ import org.extex.exindex.lisp.type.LSymbol;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Require implements LFunction {
+public class Require extends LFunction {
 
     /**
      * Creates a new object.
+     * 
+     * @param name the name of the function
+     * 
+     * @throws NoSuchMethodException in case that no method corresponding to the
+     *         argument specification could be found
+     * @throws SecurityException in case a security problem occurred
      */
-    public Require() {
+    public Require(String name) throws SecurityException, NoSuchMethodException {
 
-        super();
+        super(name, new Arg[]{Arg.STRING});
     }
 
     /**
-     * {@inheritDoc}
+     * TODO gene: missing JavaDoc
      * 
-     * @see org.extex.exindex.lisp.type.LFunction#eval(
-     *      org.extex.exindex.lisp.LInterpreter,
-     *      org.extex.exindex.lisp.type.LValue[])
+     * @param interpreter the interpreter
+     * @param arg the resource name
+     * 
+     * @return the last item read or <code>nil</code>
+     * 
+     * @throws LException in case of an error
      */
-    public LValue eval(LInterpreter interpreter, LValue... args)
-            throws IOException {
-
-        if (args.length != 1) {
-            // TODO gene: eval unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        LValue arg = args[0];
-        if (arg instanceof LSymbol) {
-            return interpreter.load(((LSymbol) arg).getValue());
-        } else if (arg instanceof LString) {
-            return interpreter.load(((LString) arg).getValue());
-        }
+    public LValue evaluate(LInterpreter interpreter, String arg)
+            throws LException {
 
         // TODO gene: enclosing_method unimplemented
         throw new RuntimeException("unimplemented");
