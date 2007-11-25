@@ -17,17 +17,16 @@
  *
  */
 
-package org.extex.exindex.core;
+package org.extex.exindex.core.type;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import org.extex.exindex.core.Parameters;
+import org.extex.exindex.core.makeindex.MakeindexParameters;
 import org.extex.exindex.core.pages.PageProcessor;
-import org.extex.exindex.core.type.Entry;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -50,13 +49,11 @@ public class Index {
 
     /**
      * Creates a new object.
-     * 
-     * @throws IOException
      */
-    public Index() throws IOException {
+    public Index() {
 
         super();
-        params = Parameters.load();
+        params = MakeindexParameters.load();
     }
 
     /**
@@ -101,21 +98,6 @@ public class Index {
     public Parameters getParams() {
 
         return params;
-    }
-
-    /**
-     * Merge some parameters with the ones already there.
-     * 
-     * @param reader the reader
-     * 
-     * @return a pair of numbers denoting the number of attributes set and
-     *         rejected
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public int[] loadStyle(Reader reader) throws IOException {
-
-        return Parameters.load(reader, params);
     }
 
     /**

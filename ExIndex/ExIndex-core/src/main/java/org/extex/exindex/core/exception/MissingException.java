@@ -51,10 +51,12 @@ public class MissingException extends EOFException {
     /**
      * Creates a new object.
      * 
+     * @param line
+     * @param resource
      * @param c the character found
      * @param ec the expected character
      */
-    public MissingException(char c, char ec) {
+    public MissingException(String resource, int line, char c, char ec) {
 
         super();
         this.c = c;

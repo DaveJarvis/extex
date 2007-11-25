@@ -76,7 +76,7 @@ public class MakeindexWriter implements IndexWriter {
         final String encapPrefix = params.getString("encap_prefix");
         final String encapInfix = params.getString("encap_infix");
         final String encalSuffix = params.getString("encap_suffix");
-        final int headingFlag = params.getNumber("heading_flag");
+        final long headingFlag = params.getNumber("heading_flag");
         int[] count = new int[2];
         char currentHeading = '\0';
 

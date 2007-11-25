@@ -25,12 +25,12 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.Index;
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
 import org.extex.exindex.core.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
+import org.extex.exindex.core.type.Index;
 import org.extex.exindex.core.type.page.AbstractPage;
 
 /**
@@ -53,15 +53,18 @@ public class MakeindexParser implements Parser {
      * TODO gene: missing JavaDoc
      * 
      * @param r the reader
+     * @param resource the name of the resource
      * @param ec the expected character
      * 
-     * @throws IOException
+     * @throws IOException in case of an error
      */
-    private void expect(Reader r, char ec) throws IOException {
+    private void expect(LineNumberReader r, String resource, char ec)
+            throws IOException {
 
         int c = r.read();
         if (c != ec) {
-            throw new MissingException((char) c, ec);
+            throw new MissingException(resource, r.getLineNumber(), (char) c,
+                ec);
         }
     }
 
@@ -69,14 +72,14 @@ public class MakeindexParser implements Parser {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.Parser#load(java.io.Reader,
-     *      java.lang.String, org.extex.exindex.core.Index, Collator)
+     *      java.lang.String, org.extex.exindex.core.type.Index, Collator)
      */
     public int[] load(Reader reader, String resource, Index index,
             Collator collator) throws IOException {
 
         int[] count = new int[2];
         Parameters params = index.getParams();
-        Reader r = new LineNumberReader(reader);
+        LineNumberReader r = new LineNumberReader(reader);
         final String keyword = params.getString("keyword");
         final char argOpen = params.getChar("arg_open");
         final char argClose = params.getChar("arg_close");
@@ -91,11 +94,11 @@ public class MakeindexParser implements Parser {
             for (int c = r.read(); c >= 0; c = r.read()) {
                 if (c == k0 && scanKeyword(r, keyword)) {
                     String arg =
-                            scanArgument(r, argOpen, argClose, escape, quote,
-                                index);
+                            scanArgument(r, resource, argOpen, argClose,
+                                escape, quote, index);
                     String p =
-                            scanArgument(r, argOpen, argClose, escape, quote,
-                                index);
+                            scanArgument(r, resource, argOpen, argClose,
+                                escape, quote, index);
                     String enc = null;
                     int x = arg.lastIndexOf(encap);
                     if (x >= 0) {
@@ -127,26 +130,27 @@ public class MakeindexParser implements Parser {
      * TODO gene: missing JavaDoc
      * 
      * @param r the reader
+     * @param resource the ame of the resource
      * @param argOpen
      * @param argClose
-     * @param quote
      * @param escape
+     * @param quote
      * @param index the index
-     * 
      * @return the argument found
      * 
      * @throws IOException in case of an error
      */
-    private String scanArgument(Reader r, char argOpen, char argClose,
-            char escape, char quote, Index index) throws IOException {
+    private String scanArgument(LineNumberReader r, String resource,
+            char argOpen, char argClose, char escape, char quote, Index index)
+            throws IOException {
 
-        expect(r, argOpen);
+        expect(r, resource, argOpen);
         StringBuilder sb = new StringBuilder();
 
         for (int level = 1;;) {
             int c = r.read();
             if (c < 0) {
-                throw new EofException();
+                throw new EofException(resource, r.getLineNumber());
             } else if (c == argOpen) {
                 level++;
             } else if (c == argClose) {
@@ -159,7 +163,7 @@ public class MakeindexParser implements Parser {
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
                     c = r.read();
                     if (c < 0) {
-                        throw new EofException();
+                        throw new EofException(resource, r.getLineNumber());
                     }
                 }
             }

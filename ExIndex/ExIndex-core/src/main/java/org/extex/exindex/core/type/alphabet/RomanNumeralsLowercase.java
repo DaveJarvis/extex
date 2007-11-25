@@ -17,25 +17,25 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.type.alphabet;
 
-import java.util.List;
-
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class RomanNumeralsLowercase implements LValue, Alphabet {
 
     /**
-     * Process the pages given.
+     * Creates a new object.
      * 
-     * @param pages the list of pages
      */
-    void join(List<PageReference> pages);
+    public RomanNumeralsLowercase() {
+
+        super();
+    }
 
 }

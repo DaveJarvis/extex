@@ -17,25 +17,42 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.merge;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.merge.type.MergeRule;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class MergeRuleList extends ArrayList<MergeRule> {
 
     /**
-     * Process the pages given.
+     * Creates a new object.
      * 
-     * @param pages the list of pages
      */
-    void join(List<PageReference> pages);
+    public MergeRuleList() {
+
+        super();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param word
+     * @return
+     */
+    public String apply(String word) {
+
+        String w = word;
+        for (MergeRule mr : this) {
+            w = mr.apply(w);
+        }
+        return w;
+    }
 
 }

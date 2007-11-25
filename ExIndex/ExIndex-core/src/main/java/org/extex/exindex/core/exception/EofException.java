@@ -38,7 +38,7 @@ public class EofException extends IOException {
      * Creates a new object.
      * 
      */
-    public EofException() {
+    public EofException(String resource, int line) {
 
         super();
     }
@@ -46,9 +46,11 @@ public class EofException extends IOException {
     /**
      * Creates a new object.
      * 
+     * @param line
+     * @param resource
      * @param c
      */
-    public EofException(char c) {
+    public EofException(String resource, int line, char c) {
 
         // TODO gene: EofException constructor unimplemented
     }

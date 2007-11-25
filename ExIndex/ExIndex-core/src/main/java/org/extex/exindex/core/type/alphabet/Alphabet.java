@@ -17,25 +17,15 @@
  *
  */
 
-package org.extex.exindex.core.pages;
-
-import java.util.List;
-
-import org.extex.exindex.core.type.page.PageReference;
+package org.extex.exindex.core.type.alphabet;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public interface Alphabet {
 
-    /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
-     */
-    void join(List<PageReference> pages);
-
+    //
 }

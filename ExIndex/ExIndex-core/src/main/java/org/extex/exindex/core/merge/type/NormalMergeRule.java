@@ -17,7 +17,10 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.merge.type;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,43 +28,52 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CharacterToken implements Value {
+public class NormalMergeRule extends MergeRule {
 
     /**
-     * The field <tt>c</tt> contains the ...
+     * The field <tt>regex</tt> contains the ...
      */
-    private char c;
+    private String regex;
+
+    /**
+     * The field <tt>replacement</tt> contains the replacement text.
+     */
+    private String replacement;
+
+    /**
+     * The field <tt>pattern</tt> contains the pattern for matching.
+     */
+    private Pattern pattern;
 
     /**
      * Creates a new object.
      * 
-     * @param c
+     * @param regex TODO
+     * @param to the replacement text
      */
-    public CharacterToken(char c) {
+    public NormalMergeRule(String regex, String to) {
 
         super();
-        this.c = c;
-    }
-
-    /**
-     * Getter for c.
-     * 
-     * @return the c
-     */
-    public char get() {
-
-        return c;
+        this.regex = regex;
+        this.replacement = to;
+        pattern = Pattern.compile(regex);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see java.lang.Object#toString()
+     * @see org.extex.exindex.core.merge.type.MergeRule#apply(java.lang.String)
      */
     @Override
-    public String toString() {
+    public String apply(String word) {
 
-        return Character.toString(c);
+        Matcher m = pattern.matcher(word);
+        if (!m.matches()) {
+            return word;
+        }
+        StringBuffer sb = new StringBuffer();
+        m.appendReplacement(sb, replacement);
+        return sb.toString();
     }
 
 }

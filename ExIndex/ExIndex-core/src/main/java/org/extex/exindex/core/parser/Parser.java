@@ -22,8 +22,8 @@ package org.extex.exindex.core.parser;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.extex.exindex.core.Index;
 import org.extex.exindex.core.normalizer.Collator;
+import org.extex.exindex.core.type.Index;
 
 /**
  * TODO gene: missing JavaDoc.

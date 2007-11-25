@@ -17,25 +17,23 @@
  *
  */
 
-package org.extex.exindex.core.pages;
-
-import java.util.List;
-
-import org.extex.exindex.core.type.page.PageReference;
+package org.extex.exindex.core.type;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class CrossrefLayer {
 
     /**
-     * Process the pages given.
+     * Creates a new object.
      * 
-     * @param pages the list of pages
      */
-    void join(List<PageReference> pages);
+    public CrossrefLayer() {
+
+        super();
+    }
 
 }

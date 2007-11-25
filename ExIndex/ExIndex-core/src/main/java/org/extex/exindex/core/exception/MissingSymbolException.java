@@ -36,11 +36,26 @@ public class MissingSymbolException extends IOException {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * Creates a new object.
+     * The field <tt>resource</tt> contains the ...
      */
-    public MissingSymbolException() {
+    private String resource;
+
+    /**
+     * The field <tt>line</tt> contains the ...
+     */
+    private int line;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param line
+     * @param resource
+     */
+    public MissingSymbolException(String resource, int line) {
 
         super();
+        this.resource = resource;
+        this.line = line;
     }
 
     /**
@@ -48,7 +63,7 @@ public class MissingSymbolException extends IOException {
      * 
      * @param c the character found instead
      */
-    public MissingSymbolException(char c) {
+    public MissingSymbolException(String resource, int line, char c) {
 
         // TODO gene: EofException constructor unimplemented
     }

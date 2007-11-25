@@ -17,7 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.type;
+
+import java.util.ArrayList;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,7 +27,14 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Value {
+public class StructuredIndex extends ArrayList<LetterGroup> {
 
-    // this is a marker interface
+    /**
+     * Creates a new object.
+     */
+    public StructuredIndex() {
+
+        super();
+    }
+
 }

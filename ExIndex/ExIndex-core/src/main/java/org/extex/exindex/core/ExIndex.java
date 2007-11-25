@@ -17,25 +17,34 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core;
 
-import java.util.List;
+import java.io.IOException;
 
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.type.Index;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class ExIndex {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * The field <tt>index</tt> contains the index.
      */
-    void join(List<PageReference> pages);
+    private Index index;
+
+    /**
+     * Creates a new object.
+     * 
+     * @throws IOException in case of a problem reading the defaults
+     */
+    public ExIndex() throws IOException {
+
+        super();
+        index = new Index();
+    }
 
 }

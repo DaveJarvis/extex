@@ -17,25 +17,34 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.type;
 
 import java.util.List;
 
-import org.extex.exindex.core.type.page.PageReference;
-
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class LocationReference implements Location {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * The field <tt>layers</tt> contains the ...
      */
-    void join(List<PageReference> pages);
+    private List<String> layers;
+
+    /**
+     * The field <tt>references</tt> contains the ...
+     */
+    private List<LocationReference> references;
+
+    /**
+     * Creates a new object.
+     */
+    public LocationReference() {
+
+        super();
+    }
 
 }

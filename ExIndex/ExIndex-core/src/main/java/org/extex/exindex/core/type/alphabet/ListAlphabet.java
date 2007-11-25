@@ -17,25 +17,32 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.type.alphabet;
 
 import java.util.List;
 
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class ListAlphabet implements LValue, Alphabet {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * The field <tt>list</tt> contains the ...
      */
-    void join(List<PageReference> pages);
+    private List<String> list;
+
+    /**
+     * Creates a new object.
+     */
+    public ListAlphabet(List<String> list) {
+
+        super();
+        this.list = list;
+    }
 
 }

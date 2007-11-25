@@ -17,25 +17,36 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.type;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * The field <tt>serialVersionUID</tt> contains the ...
      */
-    void join(List<PageReference> pages);
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param list
+     * @param after
+     * @param before
+     */
+    public LetterGroup(String before, String after, List<String> list) {
+
+        super();
+    }
 
 }

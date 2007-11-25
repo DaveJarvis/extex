@@ -17,25 +17,48 @@
  *
  */
 
-package org.extex.exindex.core.pages;
-
-import java.util.List;
-
-import org.extex.exindex.core.type.page.PageReference;
+package org.extex.exindex.core.merge.type;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public class StringMergeRule extends MergeRule {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * The field <tt>regex</tt> contains the ...
      */
-    void join(List<PageReference> pages);
+    private String regex;
+
+    /**
+     * The field <tt>replacement</tt> contains the replacement text
+     */
+    private String replacement;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param regex
+     * @param to the replacement text
+     */
+    public StringMergeRule(String regex, String to) {
+
+        super();
+        this.regex = regex;
+        this.replacement = to;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.merge.type.MergeRule#apply(java.lang.String)
+     */
+    @Override
+    public String apply(String word) {
+
+        return word.equals(regex) ? replacement : word;
+    }
 
 }

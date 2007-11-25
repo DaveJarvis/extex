@@ -17,25 +17,56 @@
  *
  */
 
-package org.extex.exindex.core.pages;
-
-import java.util.List;
-
-import org.extex.exindex.core.type.page.PageReference;
+package org.extex.exindex.core.merge.type;
 
 /**
- * This interface describes a processor for a list of pages.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PageProcessor {
+public abstract class MergeRule {
 
     /**
-     * Process the pages given.
-     * 
-     * @param pages the list of pages
+     * TODO gene: missing JavaDoc.
      */
-    void join(List<PageReference> pages);
+    public enum Type {
+        /**
+         * The field <tt>NORMAL</tt> contains the ...
+         */
+        NORMAL,
+        /**
+         * The field <tt>EGREP</tt> contains the ...
+         */
+        EGREP,
+        /**
+         * The field <tt>STRING</tt> contains the ...
+         */
+        STRING
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param type
+     * @return
+     */
+    public static MergeRule get(Type type) {
+
+        switch (type) {
+            case STRING:
+            case NORMAL:
+            case EGREP:
+        }
+        return null;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param word
+     * @return
+     */
+    public abstract String apply(String word);
 
 }

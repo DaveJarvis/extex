@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.type;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,43 +25,7 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NumberToken implements Value {
+public interface Location {
 
-    /**
-     * The field <tt>n</tt> contains the number.
-     */
-    private int n;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param n the number
-     */
-    public NumberToken(int n) {
-
-        super();
-        this.n = n;
-    }
-
-    /**
-     * Getter for the number.
-     * 
-     * @return the number
-     */
-    public int get() {
-
-        return n;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return Integer.toString(n);
-    }
-
+    //
 }

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.type;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,43 +25,24 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SymbolToken implements Value {
+public class Range implements Location {
 
     /**
-     * The field <tt>s</tt> contains the ...
+     * The field <tt>location1</tt> contains the ...
      */
-    private String s;
+    private LocationReference location1;
+
+    /**
+     * The field <tt>location2</tt> contains the ...
+     */
+    private LocationReference location2;
 
     /**
      * Creates a new object.
-     * 
-     * @param s
      */
-    public SymbolToken(String s) {
+    public Range() {
 
         super();
-        this.s = s;
-    }
-
-    /**
-     * Getter for s.
-     * 
-     * @return the s
-     */
-    public String get() {
-
-        return s;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return s;
     }
 
 }

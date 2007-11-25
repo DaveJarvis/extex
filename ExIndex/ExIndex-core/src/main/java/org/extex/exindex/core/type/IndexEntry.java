@@ -17,7 +17,10 @@
  *
  */
 
-package org.extex.exindex.core.type.token;
+package org.extex.exindex.core.type;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,43 +28,31 @@ package org.extex.exindex.core.type.token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StringToken implements Value {
+public class IndexEntry {
 
     /**
-     * The field <tt>s</tt> contains the ...
+     * The field <tt>keywords</tt> contains the ...
      */
-    private String s;
+    private List<String> keywords = new ArrayList<String>();
+
+    /**
+     * The field <tt>locationClassGroups</tt> contains the ...
+     */
+    private List<LocationClassGroup> locationClassGroups =
+            new ArrayList<LocationClassGroup>();
+
+    /**
+     * The field <tt>entries</tt> contains the ...
+     */
+    private List<IndexEntry> entries = new ArrayList<IndexEntry>();
 
     /**
      * Creates a new object.
      * 
-     * @param s
      */
-    public StringToken(String s) {
+    public IndexEntry() {
 
         super();
-        this.s = s;
-    }
-
-    /**
-     * Getter for s.
-     * 
-     * @return the s
-     */
-    public String get() {
-
-        return s;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return "\"" + s + "\"";
     }
 
 }

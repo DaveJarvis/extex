@@ -59,11 +59,6 @@ public class MakeindexPageProcessor implements PageProcessor {
      * Creates a new object.
      * 
      * @param params the parameters
-     */
-    /**
-     * Creates a new object.
-     * 
-     * @param params the parameters
      * @param logger the logger
      */
     public MakeindexPageProcessor(Parameters params, Logger logger) {
