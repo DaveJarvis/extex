@@ -59,11 +59,11 @@ public class LMarkupLocrefLayer extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param clazz
-     * @param layer
-     * @param depth
+     * @param open the open string
+     * @param close the close string
+     * @param clazz the class
+     * @param layer the layer
+     * @param depth the depth
      * 
      * @return <tt>nil</tt>
      */

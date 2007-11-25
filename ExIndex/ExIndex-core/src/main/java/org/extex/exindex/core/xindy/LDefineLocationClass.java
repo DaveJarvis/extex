@@ -56,7 +56,7 @@ public class LDefineLocationClass extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param name
+     * @param name the name of the location class
      * @param list
      * @param minRangteLength
      * @param hierdepth

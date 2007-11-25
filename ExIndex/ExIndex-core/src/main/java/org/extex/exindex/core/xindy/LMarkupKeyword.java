@@ -56,9 +56,9 @@ public class LMarkupKeyword extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param depth
+     * @param open the open string
+     * @param close the close string
+     * @param depth the depth
      * 
      * @return <tt>nil</tt>
      */

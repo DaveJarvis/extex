@@ -65,9 +65,9 @@ public class LMarkupLetterGroup extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param group
-     * @param open
-     * @param close
+     * @param group the name of the group
+     * @param open the open string
+     * @param close the close string
      * @param openHead
      * @param closeHead
      * @param upcase

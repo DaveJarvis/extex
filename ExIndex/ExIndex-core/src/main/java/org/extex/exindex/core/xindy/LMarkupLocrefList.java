@@ -59,11 +59,11 @@ public class LMarkupLocrefList extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param sep
-     * @param clazz
-     * @param depth
+     * @param open the open string
+     * @param close the close string
+     * @param sep the separator
+     * @param clazz the class
+     * @param depth the depth
      * 
      * @return <tt>nil</tt>
      */
