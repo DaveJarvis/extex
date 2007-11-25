@@ -19,12 +19,13 @@
 
 package org.extex.exindex.lisp.type.value;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a node containing a list of arbitrary values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,7 +33,7 @@ import java.util.List;
 public class LList implements LValue, Iterable<LValue> {
 
     /**
-     * The field <tt>NIL</tt> contains the unmodifyable empty list.
+     * The field <tt>NIL</tt> contains the unmodifiable empty list.
      */
     public static final LList NIL = new LList() {
 
@@ -136,6 +137,16 @@ public class LList implements LValue, Iterable<LValue> {
     public Iterator<LValue> iterator() {
 
         return content.iterator();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.println(toString());
     }
 
     /**

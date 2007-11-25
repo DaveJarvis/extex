@@ -433,10 +433,10 @@ public class Arg {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param args
-     * @param ai
-     * @param arguments
-     * @param index
+     * @param args the source array
+     * @param ai the source index
+     * @param arguments the target array
+     * @param index the index in the target array
      * 
      * @return the result
      * 

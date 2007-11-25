@@ -19,6 +19,8 @@
 
 package org.extex.exindex.lisp.type.value;
 
+import java.io.PrintStream;
+
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
@@ -77,15 +79,60 @@ public class LString implements LValue {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(toString());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
+        return toString('\\');
+    }
+
+    /**
+     * Get the print representation.
+     * 
+     * @param esc the escape character
+     * 
+     * @return the print representation
+     */
+    public String toString(char esc) {
+
         StringBuilder sb = new StringBuilder();
         sb.append('"');
-        sb.append(value.replaceAll("([\\\"])", "\\\\\\1"));
-        // TODO handle \n,...
+        int len = value.length();
+        for (int i = 0; i < len; i++) {
+            char c = value.charAt(i);
+            switch (c) {
+                case '"':
+                    sb.append(esc);
+                    break;
+                case '\n':
+                    sb.append(esc);
+                    c = 'n';
+                    break;
+                case '\r':
+                    sb.append(esc);
+                    c = 'r';
+                    break;
+                case '\t':
+                    sb.append(esc);
+                    c = 't';
+                    break;
+            }
+            if (c == esc) {
+                sb.append(c);
+            }
+            sb.append(c);
+        }
         sb.append('"');
         return sb.toString();
     }

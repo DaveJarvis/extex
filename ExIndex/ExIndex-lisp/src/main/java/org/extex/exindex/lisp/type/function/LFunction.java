@@ -19,6 +19,7 @@
 
 package org.extex.exindex.lisp.type.function;
 
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -156,6 +157,16 @@ public abstract class LFunction {
     }
 
     /**
+     * Print the function to a stream.
+     * 
+     * @param stream the output stream
+     */
+    public void print(PrintStream stream) {
+
+        stream.print("...");
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -165,5 +176,4 @@ public abstract class LFunction {
 
         return "#" + name;
     }
-
 }

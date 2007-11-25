@@ -19,6 +19,7 @@
 
 package org.extex.exindex.lisp.type.value;
 
+import java.io.PrintStream;
 import java.util.WeakHashMap;
 
 /**
@@ -80,6 +81,16 @@ public class LSymbol implements LValue {
     public String getValue() {
 
         return value;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(value);
     }
 
     /**

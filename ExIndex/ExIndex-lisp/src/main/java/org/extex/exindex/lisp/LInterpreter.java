@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an LInterpreter without predefined functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -64,14 +65,14 @@ public class LInterpreter {
     /**
      * The field <tt>functionTable</tt> contains the table of all functions.
      */
-    private Map<LSymbol, LFunction> functionTable =
+    private Map<LSymbol, LFunction> functions =
             new HashMap<LSymbol, LFunction>();
 
     /**
      * The field <tt>valueTable</tt> contains the table of all values of
      * symbols.
      */
-    private Map<LSymbol, LValue> valueTable = new HashMap<LSymbol, LValue>();
+    private Map<LSymbol, LValue> bindings = new HashMap<LSymbol, LValue>();
 
     /**
      * Creates a new object.
@@ -79,6 +80,32 @@ public class LInterpreter {
     public LInterpreter() {
 
         super();
+    }
+
+    /**
+     * Register a new function: The old function is returned.
+     * 
+     * @param name the symbol under which the function should be registered
+     * @param fct the function to register
+     * 
+     * @return the old binding
+     */
+    public LFunction defun(LSymbol name, LFunction fct) {
+
+        return functions.put(name, fct);
+    }
+
+    /**
+     * Register a new function: The old function is returned.
+     * 
+     * @param name the name under which the function should be registered
+     * @param fct the function to register
+     * 
+     * @return the old binding
+     */
+    public LFunction defun(String name, LFunction fct) {
+
+        return functions.put(LSymbol.get(name), fct);
     }
 
     /**
@@ -93,7 +120,7 @@ public class LInterpreter {
     public LValue eval(LValue node) throws LException {
 
         if (node instanceof LSymbol) {
-            LValue n = valueTable.get(node);
+            LValue n = bindings.get(node);
             return n != null ? n : LList.NIL;
         } else if (!(node instanceof LList)) {
             return node;
@@ -106,7 +133,7 @@ public class LInterpreter {
         if (!(fct instanceof LSymbol)) {
             throw new LException(fct.toString());
         }
-        LFunction f = functionTable.get(fct);
+        LFunction f = functions.get(fct);
         if (f == null) {
             throw new LUndefinedFunctionException(fct.toString());
         }
@@ -116,6 +143,18 @@ public class LInterpreter {
         }
 
         return f.eval(this, l);
+    }
+
+    /**
+     * Get the binding of a symbol.
+     * 
+     * @param symbol the symbol to look up
+     * 
+     * @return the binding or <code>null</code> if nothing is defined
+     */
+    public LValue get(LSymbol symbol) {
+
+        return bindings.get(symbol);
     }
 
     /**
@@ -145,10 +184,10 @@ public class LInterpreter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a parser.
      * 
-     * @param name
-     * @param reader
+     * @param name the name of the resource
+     * @param reader the reader
      * 
      * @return the parser
      */
@@ -158,51 +197,57 @@ public class LInterpreter {
     }
 
     /**
-     * Register a new function: The old function is returned.
+     * Print all bindings to a stream.
      * 
-     * @param name the symbol under which the function should be registered
-     * @param fct the function to register
-     * 
-     * @return the old binding
+     * @param stream the output stream
      */
-    public LFunction register(LSymbol name, LFunction fct) {
+    public void printBindings(PrintStream stream) {
 
-        return functionTable.put(name, fct);
+        for (LSymbol k : bindings.keySet()) {
+            stream.print("(setq ");
+            stream.print(k.getValue());
+            stream.print(" ");
+            bindings.get(k).print(stream);
+            stream.println(")");
+        }
     }
 
     /**
-     * Register a new function: The old function is returned.
+     * Print all functions to a stream.
      * 
-     * @param name the name under which the function should be registered
-     * @param fct the function to register
-     * 
-     * @return the old binding
+     * @param stream the output stream
      */
-    public LFunction register(String name, LFunction fct) {
+    public void printFunctions(PrintStream stream) {
 
-        return functionTable.put(LSymbol.get(name), fct);
+        for (LSymbol k : functions.keySet()) {
+            stream.print("(defun ");
+            stream.print(k.getValue());
+            stream.print(" ");
+            functions.get(k).print(stream);
+            stream.println(")");
+        }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Change the binding of a symbol.
      * 
-     * @param symbol
-     * @param value
+     * @param symbol the symbol
+     * @param value the value
      */
     public void setq(LSymbol symbol, LValue value) {
 
-        valueTable.put(symbol, value);
+        bindings.put(symbol, value);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Change the binding of a symbol.
      * 
-     * @param symbol
-     * @param value
+     * @param symbol the symbol
+     * @param value the value
      */
     public void setq(String symbol, LValue value) {
 
-        valueTable.put(LSymbol.get(symbol), value);
+        bindings.put(LSymbol.get(symbol), value);
     }
 
     /**
@@ -252,5 +297,4 @@ public class LInterpreter {
             eval(node);
         }
     }
-
 }

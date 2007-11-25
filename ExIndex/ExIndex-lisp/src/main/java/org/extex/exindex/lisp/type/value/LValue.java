@@ -19,6 +19,8 @@
 
 package org.extex.exindex.lisp.type.value;
 
+import java.io.PrintStream;
+
 /**
  * This is a interface describing values.
  * 
@@ -27,5 +29,10 @@ package org.extex.exindex.lisp.type.value;
  */
 public interface LValue {
 
-    // marker interface
+    /**
+     * Print the value to a stream.
+     * 
+     * @param stream the output stream
+     */
+    void print(PrintStream stream);
 }

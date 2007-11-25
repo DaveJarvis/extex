@@ -19,9 +19,10 @@
 
 package org.extex.exindex.lisp.type.value;
 
+import java.io.PrintStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a node containing a boolean.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -29,20 +30,21 @@ package org.extex.exindex.lisp.type.value;
 public class LBoolean implements LValue {
 
     /**
-     * The field <tt>TRUE</tt> contains the ...
+     * The field <tt>TRUE</tt> contains the constant for true.
      */
     public static final LBoolean TRUE = new LBoolean(true);
 
     /**
-     * The field <tt>FALSE</tt> contains the ...
+     * The field <tt>FALSE</tt> contains the constant for false.
      */
     public static final LBoolean FALSE = new LBoolean(false);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get the appropriate instance for a boolean value.
      * 
-     * @param value
-     * @return
+     * @param value the boolean value
+     * 
+     * @return the corresponding LBoolean
      */
     public static LBoolean valueOf(boolean value) {
 
@@ -50,17 +52,39 @@ public class LBoolean implements LValue {
     }
 
     /**
-     * The field <tt>value</tt> contains the ...
+     * The field <tt>value</tt> contains the value.
      */
     private boolean value;
 
     /**
      * Creates a new object.
+     * 
+     * @param value the value
      */
     private LBoolean(boolean value) {
 
         super();
         this.value = value;
+    }
+
+    /**
+     * Getter for value.
+     * 
+     * @return the value
+     */
+    public boolean booleanValue() {
+
+        return value;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print(value ? "t" : "nil");
     }
 
 }

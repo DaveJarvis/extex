@@ -62,8 +62,8 @@ public class LEngine extends LInterpreter {
     public LEngine() throws SecurityException, NoSuchMethodException {
 
         super();
-        register("require", new Require("require"));
-        register("quote", new Quote("quote"));
+        defun("require", new Require("require"));
+        defun("quote", new Quote("quote"));
     }
 
 }
