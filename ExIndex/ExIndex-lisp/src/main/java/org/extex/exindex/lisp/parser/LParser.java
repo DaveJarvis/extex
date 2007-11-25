@@ -145,29 +145,27 @@ public class LParser {
                     // skip to eol
                 }
                 c = reader.read();
-            } else if (Character.isDigit(c) || c == '.') {
-                boolean dot = true;
+            } else if (Character.isDigit(c) || c == '.' || c == '-') {
+                boolean dot = (c == '.');
                 StringBuilder sb = new StringBuilder();
                 do {
-                    sb.append(c);
+                    sb.append((char) c);
                     c = reader.read();
                     if (c == '.' && !dot) {
-                        sb.append(c);
+                        sb.append((char) c);
                         c = reader.read();
                         dot = true;
                     }
                 } while (c >= 0 && Character.isDigit(c));
 
-                return (dot
-                        ? new LDouble(Double.parseDouble(sb.toString()))
-                        : new LNumber(Long.parseLong(sb.toString())));
-
-            } else if (c == '-') {
-                long n = 0;
-                for (c = reader.read(); Character.isDigit(c); c = reader.read()) {
-                    n = n * 10 - '0' + c;
+                String s = sb.toString();
+                if (!s.matches("[0-9]")) {
+                    // TODO gene: read unimplemented
+                    throw new RuntimeException("unimplemented");
                 }
-                return new LNumber(-n);
+                return (dot ? new LDouble(Double.parseDouble(s)) : new LNumber(
+                    Long.parseLong(s)));
+
             } else if (c == '"') {
                 StringBuilder sb = new StringBuilder();
                 for (c = reader.read(); c != '"'; c = reader.read()) {
