@@ -26,7 +26,8 @@ import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define rule set orientations and the
+ * number of phases.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -52,7 +53,7 @@ public class LDefineSortRuleOrientations extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param list the list of prinetations
+     * @param list the list of orientations
      * 
      * @return <tt>nil</tt>
      */

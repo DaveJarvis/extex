@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.xindy;
 
+import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -28,7 +29,7 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for the index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -59,27 +60,32 @@ public class LMarkupIndex extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param flat
-     * @param tree
-     * @param hierdepth
+     * @param open the open string
+     * @param close the close string
+     * @param flat the flat indicator
+     * @param tree the tree indicator
+     * @param hierdepth the depth limit
      * 
      * @return <tt>nil</tt>
+     * 
+     * @throws InconsistentFlagsException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, Boolean flat, Boolean tree, LNumber hierdepth) {
+            LString close, Boolean flat, Boolean tree, LNumber hierdepth)
+            throws InconsistentFlagsException {
 
         if (flat.booleanValue()) {
-            if (tree.booleanValue() || hierdepth.getValue() != 0) {
-                // TODO gene: evaluate unimplemented
-                throw new RuntimeException("unimplemented");
+            if (flat.booleanValue()) {
+                throw new InconsistentFlagsException("", 0, ":flat", ":tree");
+            } else if (hierdepth.getValue() != 0) {
+                throw new InconsistentFlagsException("", 0, ":tree",
+                    ":hierdepth");
             }
             interpreter.setq("markup:index-hierdepth", new LNumber(0));
         } else if (tree.booleanValue()) {
-            if (flat.booleanValue() || hierdepth.getValue() != 0) {
-                // TODO gene: evaluate unimplemented
-                throw new RuntimeException("unimplemented");
+            if (hierdepth.getValue() != 0) {
+                throw new InconsistentFlagsException("", 0, ":tree",
+                    ":hierdepth");
             }
             interpreter.setq("markup:index-hierdepth", new LNumber(
                 Long.MAX_VALUE));

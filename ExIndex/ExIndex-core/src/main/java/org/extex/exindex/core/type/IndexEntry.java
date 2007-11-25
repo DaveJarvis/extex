@@ -55,4 +55,34 @@ public class IndexEntry {
         super();
     }
 
+    /**
+     * Getter for entries.
+     * 
+     * @return the entries
+     */
+    public List<IndexEntry> getEntries() {
+
+        return entries;
+    }
+
+    /**
+     * Getter for keywords.
+     * 
+     * @return the keywords
+     */
+    public List<String> getKeywords() {
+
+        return keywords;
+    }
+
+    /**
+     * Getter for locationClassGroups.
+     * 
+     * @return the locationClassGroups
+     */
+    public List<LocationClassGroup> getLocationClassGroups() {
+
+        return locationClassGroups;
+    }
+
 }

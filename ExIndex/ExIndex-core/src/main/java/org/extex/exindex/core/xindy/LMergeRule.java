@@ -19,10 +19,13 @@
 
 package org.extex.exindex.core.xindy;
 
+import org.extex.exindex.core.rules.Rule;
+import org.extex.exindex.core.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -59,6 +62,9 @@ public class LMergeRule extends LFunction {
      * @param interpreter the interpreter
      * @param pattern the pattern
      * @param replacement the replacement text
+     * @param string
+     * @param bregexp
+     * @param eregexp
      * @param again the optional indicator to restart the replacement cycle from
      *        start
      * 
@@ -68,7 +74,24 @@ public class LMergeRule extends LFunction {
             String replacement, Boolean string, Boolean bregexp,
             Boolean eregexp, Boolean again) {
 
-        // list.add(new Rule(pattern, replacement, again.booleanValue()));
+        LSymbol symbol = LSymbol.get("merge-rules");
+        LValue mr = interpreter.get(symbol);
+        LList mergeRules;
+        if (mr == null) {
+            mergeRules = new LList();
+            interpreter.setq(symbol, mergeRules);
+        } else {
+            mergeRules = (LList) mr;
+        }
+        Rule rule;
+        if (string.booleanValue()) {
+            rule = new StringRule(pattern, replacement, again.booleanValue());
+        } else {
+            // TODO gene: evaluate unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        mergeRules.add(rule);
 
         return LList.NIL;
     }

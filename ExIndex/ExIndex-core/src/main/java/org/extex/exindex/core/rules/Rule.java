@@ -19,13 +19,15 @@
 
 package org.extex.exindex.core.rules;
 
+import org.extex.exindex.lisp.type.value.LValue;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Rule {
+public abstract class Rule implements LValue {
 
     /**
      * The field <tt>again</tt> contains the flag :again.
@@ -56,6 +58,15 @@ public class Rule {
         this.replacement = replacement;
         this.again = again;
     }
+
+    /**
+     * Apply the rule to a word.
+     * 
+     * @param word the word to apply the rule to
+     * 
+     * @return the transformed word
+     */
+    public abstract String apply(String word);
 
     /**
      * Getter for pattern.

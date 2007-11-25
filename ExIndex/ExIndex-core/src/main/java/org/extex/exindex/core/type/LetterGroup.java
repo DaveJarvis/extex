@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,15 +39,63 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     private static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>before</tt> contains the ...
+     */
+    private String before;
+
+    /**
+     * The field <tt>after</tt> contains the ...
+     */
+    private String after;
+
+    /**
+     * The field <tt>list</tt> contains the ...
+     */
+    private List<String> prefixes;
+
+    /**
      * Creates a new object.
      * 
-     * @param list
-     * @param after
      * @param before
+     * @param after
+     * @param prefixes
      */
-    public LetterGroup(String before, String after, List<String> list) {
+    public LetterGroup(String before, String after, List<String> prefixes) {
 
         super();
+        this.before = before;
+        this.after = after;
+        this.prefixes = prefixes;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print("#LetterGroup(");
+        if (before != null && !"".equals(before)) {
+            stream.print(" :before \"");
+            stream.print(before);
+            stream.print("\"");
+        }
+        if (after != null && !"".equals(after)) {
+            stream.print(" :after \"");
+            stream.print(after);
+            stream.print("\"");
+        }
+        if (prefixes != null && !prefixes.isEmpty()) {
+            stream.print(" :prefixes (");
+            for (String s : prefixes) {
+                stream.print("\"");
+                stream.print(s);
+                stream.print("\" ");
+            }
+            stream.print(")");
+        }
+        stream.print(")");
     }
 
 }

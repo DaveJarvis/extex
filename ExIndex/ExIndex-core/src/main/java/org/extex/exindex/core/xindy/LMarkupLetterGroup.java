@@ -19,6 +19,10 @@
 
 package org.extex.exindex.core.xindy;
 
+import org.extex.exindex.core.type.transform.Capitalize;
+import org.extex.exindex.core.type.transform.Downcase;
+import org.extex.exindex.core.type.transform.Transform;
+import org.extex.exindex.core.type.transform.Upcase;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -82,8 +86,26 @@ public class LMarkupLetterGroup extends LFunction {
             openHead);
         interpreter.setq("markup:letter-group-" + group + "-close-head",
             closeHead);
-        interpreter.setq("markup:letter-group-" + group + "-transform", null);
-        // TODO
+        if (1 < (upcase.booleanValue() ? 0 : 1)
+                + (downcase.booleanValue() ? 0 : 1)
+                + (capitalize.booleanValue() ? 0 : 1)) {
+            // TODO gene: evaluate unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+        Transform transform;
+        if (upcase.booleanValue()) {
+            transform = new Upcase();
+            interpreter.setq("markup:letter-group-" + group + "-transform",
+                transform);
+        } else if (downcase.booleanValue()) {
+            transform = new Downcase();
+            interpreter.setq("markup:letter-group-" + group + "-transform",
+                transform);
+        } else if (capitalize.booleanValue()) {
+            transform = new Capitalize();
+            interpreter.setq("markup:letter-group-" + group + "-transform",
+                transform);
+        }
 
         return LList.NIL;
     }

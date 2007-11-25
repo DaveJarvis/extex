@@ -19,10 +19,13 @@
 
 package org.extex.exindex.core.xindy;
 
+import org.extex.exindex.core.rules.RegexRule;
+import org.extex.exindex.core.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -59,14 +62,25 @@ public class LSortRule extends LFunction {
      * @param replacement the replacement text
      * @param again the optional indicator to restart the replacement cycle from
      *        start
+     * @param run
      * 
      * @return <tt>nil</tt>
      */
     public LValue evaluate(LInterpreter interpreter, String pattern,
             String replacement, Boolean again, Long run) {
 
-        // list.add(new Rule(pattern, replacement, again.booleanValue()));
+        LSymbol symbol = LSymbol.get("sort-rules-" + run.toString());
+        LValue sr = interpreter.get(symbol);
+        LList sortRules;
+        if (sr == null) {
+            sortRules = new LList();
+            interpreter.setq(symbol, sortRules);
+        } else {
+            sortRules = (LList) sr;
+        }
+        Rule rule = new RegexRule(pattern, replacement, again.booleanValue());
 
+        sortRules.add(rule);
         return LList.NIL;
     }
 

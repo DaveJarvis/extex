@@ -45,4 +45,24 @@ public class Range implements Location {
         super();
     }
 
+    /**
+     * Getter for location1.
+     * 
+     * @return the location1
+     */
+    public LocationReference getLocation1() {
+
+        return location1;
+    }
+
+    /**
+     * Getter for location2.
+     * 
+     * @return the location2
+     */
+    public LocationReference getLocation2() {
+
+        return location2;
+    }
+
 }

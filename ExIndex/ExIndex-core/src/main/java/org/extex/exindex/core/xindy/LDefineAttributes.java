@@ -28,7 +28,7 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define attributes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -64,12 +64,23 @@ public class LDefineAttributes extends LFunction {
     public LValue evaluate(LInterpreter interpreter, LList list)
             throws LNonMatchingTypeException {
 
+        LList attributeGroups = new LList();
         for (LValue val : list) {
-            if (!(val instanceof LString)) {
+            if (val instanceof LString) {
+                LList ag = new LList();
+                ag.add(val);
+                attributeGroups.add(ag);
+            } else if (val instanceof LList) {
+                for (LValue v : (LList) val) {
+                    LString.getString(v); // check the type
+                }
+                attributeGroups.add(val);
+            } else {
                 throw new LNonMatchingTypeException("");
             }
         }
-        // TODO params.setList("attributes", list);
+
+        interpreter.setq("attributes", attributeGroups);
 
         return LList.NIL;
     }

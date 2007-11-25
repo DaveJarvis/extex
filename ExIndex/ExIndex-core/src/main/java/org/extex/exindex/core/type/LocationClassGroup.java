@@ -45,4 +45,24 @@ public class LocationClassGroup {
         super();
     }
 
+    /**
+     * Getter for crossref.
+     * 
+     * @return the crossref
+     */
+    public CrossrefGroup getCrossref() {
+
+        return crossref;
+    }
+
+    /**
+     * Getter for locref.
+     * 
+     * @return the locref
+     */
+    public LocrefGroup getLocref() {
+
+        return locref;
+    }
+
 }

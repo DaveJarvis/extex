@@ -17,10 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.merge.type;
+package org.extex.exindex.core.rules;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.PrintStream;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -28,52 +27,38 @@ import java.util.regex.Pattern;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NormalMergeRule extends MergeRule {
-
-    /**
-     * The field <tt>regex</tt> contains the ...
-     */
-    private String regex;
-
-    /**
-     * The field <tt>replacement</tt> contains the replacement text.
-     */
-    private String replacement;
-
-    /**
-     * The field <tt>pattern</tt> contains the pattern for matching.
-     */
-    private Pattern pattern;
+public class StringRule extends Rule {
 
     /**
      * Creates a new object.
      * 
-     * @param regex TODO
-     * @param to the replacement text
+     * @param pattern
+     * @param replacement
+     * @param again
      */
-    public NormalMergeRule(String regex, String to) {
+    public StringRule(String pattern, String replacement, boolean again) {
 
-        super();
-        this.regex = regex;
-        this.replacement = to;
-        pattern = Pattern.compile(regex);
+        super(pattern, replacement, again);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.merge.type.MergeRule#apply(java.lang.String)
+     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.String)
      */
     @Override
     public String apply(String word) {
 
-        Matcher m = pattern.matcher(word);
-        if (!m.matches()) {
-            return word;
-        }
-        StringBuffer sb = new StringBuffer();
-        m.appendReplacement(sb, replacement);
-        return sb.toString();
+        return word.equals(getPattern()) ? getReplacement() : word;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        // TODO
+    }
 }

@@ -21,6 +21,8 @@ package org.extex.exindex.core.exception;
 
 import java.io.IOException;
 
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -36,36 +38,59 @@ public class MissingSymbolException extends IOException {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>resource</tt> contains the ...
+     * The field <tt>resource</tt> contains the resource.
      */
     private String resource;
 
     /**
-     * The field <tt>line</tt> contains the ...
+     * The field <tt>line</tt> contains the line number.
      */
-    private int line;
+    private String line;
+
+    /**
+     * The field <tt>c</tt> contains the character.
+     */
+    private String c;
 
     /**
      * Creates a new object.
      * 
-     * @param line
-     * @param resource
+     * @param resource the name of the resource or <code>null</code>
+     * @param line the line number
      */
     public MissingSymbolException(String resource, int line) {
 
         super();
         this.resource = resource;
-        this.line = line;
+        this.line = Integer.toString(line);
+        this.c = null;
     }
 
     /**
      * Creates a new object.
      * 
+     * @param resource the name of the resource or <code>null</code>
+     * @param line the line number
      * @param c the character found instead
      */
     public MissingSymbolException(String resource, int line, char c) {
 
-        // TODO gene: EofException constructor unimplemented
+        super();
+        this.resource = resource;
+        this.line = Integer.toString(line);
+        this.c = Character.toString(c);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        return LocalizerFactory.getLocalizer(getClass()).format("message",
+            resource, line, c);
     }
 
 }

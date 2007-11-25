@@ -17,11 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.merge;
+package org.extex.exindex.core.type.transform;
 
-import java.util.ArrayList;
-
-import org.extex.exindex.core.merge.type.MergeRule;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,30 +27,14 @@ import org.extex.exindex.core.merge.type.MergeRule;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MergeRuleList extends ArrayList<MergeRule> {
+public interface Transform extends LValue {
 
     /**
-     * Creates a new object.
+     * Transform a single string.
      * 
-     */
-    public MergeRuleList() {
-
-        super();
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
+     * @param in the string to transform
      * 
-     * @param word
-     * @return
+     * @return the transformed string
      */
-    public String apply(String word) {
-
-        String w = word;
-        for (MergeRule mr : this) {
-            w = mr.apply(w);
-        }
-        return w;
-    }
-
+    String transform(String in);
 }

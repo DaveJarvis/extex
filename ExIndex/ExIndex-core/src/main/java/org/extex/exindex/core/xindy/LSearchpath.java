@@ -55,7 +55,7 @@ public class LSearchpath extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param value
+     * @param value the value
      * 
      * @return <tt>nil</tt>
      * 
@@ -65,14 +65,40 @@ public class LSearchpath extends LFunction {
             throws LNonMatchingTypeException {
 
         if (value instanceof LString) {
-            // TODO
+            store(interpreter, ((LString) value).getValue());
         } else if (value instanceof LList) {
-            // TODO
+            store(interpreter, ((LList) value));
         } else {
             throw new LNonMatchingTypeException("");
         }
 
         return LList.NIL;
+    }
+
+    /**
+     * Store the new search path.
+     * 
+     * @param interpreter the interpreter
+     * @param list
+     */
+    private void store(LInterpreter interpreter, LList list) {
+
+        // TODO gene: store unimplemented
+
+    }
+
+    /**
+     * Store the new search path.
+     * 
+     * @param interpreter the interpreter
+     * @param value
+     */
+    private void store(LInterpreter interpreter, String value) {
+
+        if (value.endsWith(":")) {
+
+        }
+        // TODO gene: store unimplemented
     }
 
 }

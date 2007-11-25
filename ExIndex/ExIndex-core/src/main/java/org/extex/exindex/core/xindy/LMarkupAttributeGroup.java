@@ -23,10 +23,12 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for an attribute
+ * group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,9 +48,9 @@ public class LMarkupAttributeGroup extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":open"),//
-                Arg.OPT_STRING(":close"),//
-                Arg.OPT_STRING(":sep"), //
+        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
+                Arg.OPT_LSTRING(":close"),//
+                Arg.OPT_LSTRING(":sep"), //
                 Arg.OPT_NUMBER(":group")});
     }
 
@@ -56,17 +58,20 @@ public class LMarkupAttributeGroup extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param sep
-     * @param clazz
+     * @param open the open string
+     * @param close the close string
+     * @param sep the separator
+     * @param group the group
      * 
      * @return <tt>nil</tt>
      */
-    public LValue evaluate(LInterpreter interpreter, String open, String close,
-            String sep, Long group) {
+    public LValue evaluate(LInterpreter interpreter, LString open,
+            LString close, LString sep, Long group) {
 
-        // TODO
+        String g = group.toString();
+        interpreter.setq("markup:attribute-group-" + g + "-open", open);
+        interpreter.setq("markup:attribute-group-" + g + "-close", close);
+        interpreter.setq("markup:attribute-group-" + g + "-sep", sep);
 
         return LList.NIL;
     }

@@ -69,68 +69,70 @@ public class Xindy extends LEngine {
 
         super();
         index = new Index();
-        register("define-alphabet", //
+        defun("define-alphabet", //
             new LDefineAlphabet("define-alphabet"));
-        register("define-attributes", //
+        defun("define-attributes", //
             new LDefineAttributes("define-attributes"));
-        register("define-letter-group", //
-            new LDefineLetterGroup("define-letter-group"));
-        register("define-letter-groups", //
-            new LDefineLetterGroups("define-letter-groups"));
-        register("define-location-class", //
-            new LDefineLocationClass("define-location-class"));
-        register("define-location-class-order", //
-            new LDefineLocationClassOrder("define-location-class-order"));
-        register("define-crossref-class", //
+        defun("define-crossref-class", //
             new LDefineCrossrefClass("define-crossref-class"));
-        register("searchpath", //
+        defun("define-letter-group", //
+            new LDefineLetterGroup("define-letter-group"));
+        defun("define-letter-groups", //
+            new LDefineLetterGroups("define-letter-groups"));
+        defun("define-location-class", //
+            new LDefineLocationClass("define-location-class"));
+        defun("define-location-class-order", //
+            new LDefineLocationClassOrder("define-location-class-order"));
+        defun("define-rule-set", //
+            new LDefineRuleSet("define-rule-set"));
+        defun("searchpath", //
             new LSearchpath("searchpath"));
-        register("sort-rule", //
+        defun("sort-rule", //
             new LSortRule("sort-rule"));
-        register("merge-rule", //
+        defun("merge-rule", //
             new LMergeRule("merge-rule"));
-        register("merge-to", //
+        defun("merge-to", //
             new LMergeTo("merge-to"));
-        register("use-rule-set", //
+        defun("use-rule-set", //
             new LUseRuleSet("use-rule-set"));
 
-        register("markup-attribute-group-list", //
+        defun("markup-attribute-group-list", //
             new LMarkupAttributeGroupList("markup-attribute-group-list"));
-        register("markup-attribute-group", //
+        defun("markup-attribute-group", //
             new LMarkupAttributeGroup("markup-attribute-group"));
-        register("markup-crossref-layer", //
+        defun("markup-crossref-layer", //
             new LMarkupCrossrefLayer("markup-crossref-layer"));
-        register("markup-crossref-layer-list", //
+        defun("markup-crossref-layer-list", //
             new LMarkupCrossrefLayerList("markup-crossref-layer-list"));
-        register("markup-crossref-list", //
+        defun("markup-crossref-list", //
             new LMarkupCrossrefList("markup-crossref-list"));
-        register("markup-index", //
+        defun("markup-index", //
             new LMarkupIndex("markup-index"));
-        register("markup-indexentry", //
+        defun("markup-indexentry", //
             new LMarkupIndexEntry("markup-indexentry"));
-        register("markup-indexentry-list", //
+        defun("markup-indexentry-list", //
             new LMarkupIndexEntryList("markup-indexentry-list"));
-        register("markup-keyword", //
+        defun("markup-keyword", //
             new LMarkupKeyword("markup-keyword"));
-        register("markup-keyword-list", //
+        defun("markup-keyword-list", //
             new LMarkupKeywordList("markup-keyword-list"));
-        register("markup-letter-group", //
+        defun("markup-letter-group", //
             new LMarkupLetterGroup("markup-letter-group"));
-        register("markup-letter-group-list", //
+        defun("markup-letter-group-list", //
             new LMarkupLetterGroupList("markup-letter-group-list"));
-        register("markup-locclass-list", //
+        defun("markup-locclass-list", //
             new LMarkupLocclassList("markup-locclass-list"));
-        register("markup-locref-list", //
+        defun("markup-locref-list", //
             new LMarkupLocrefList("markup-locref-list"));
-        register("markup-locref", //
+        defun("markup-locref", //
             new LMarkupLocref("markup-locref"));
-        register("markup-locref-layer", //
+        defun("markup-locref-layer", //
             new LMarkupLocrefLayer("markup-locref-layer"));
-        register("markup-locref-layer-list", //
+        defun("markup-locref-layer-list", //
             new LMarkupLocrefLayerList("markup-locref-layer-list"));
-        register("markup-range", //
+        defun("markup-range", //
             new LMarkupRange("markup-range"));
-        register("markup-trace", //
+        defun("markup-trace", //
             new LMarkupTrace("markup-trace"));
 
         setq("alphabet:arabic-numbers", new ArabicNumbers());
@@ -158,6 +160,7 @@ public class Xindy extends LEngine {
     /**
      * TODO gene: missing JavaDoc
      * 
+     * @param writer the writer
      */
     protected void markup(Writer writer) {
 

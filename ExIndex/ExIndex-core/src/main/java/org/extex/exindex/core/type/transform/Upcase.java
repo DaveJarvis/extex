@@ -17,9 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.exception;
+package org.extex.exindex.core.type.transform;
 
-import java.io.IOException;
+import java.io.PrintStream;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -27,35 +27,37 @@ import java.io.IOException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EofException extends IOException {
-
-    /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+public class Upcase implements Transform {
 
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
      */
-    public EofException(String resource, int line) {
+    public Upcase() {
 
         super();
     }
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
-     * @param c the character
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
      */
-    public EofException(String resource, int line, char c) {
+    public void print(PrintStream stream) {
 
-        // TODO gene: EofException constructor unimplemented
+        // TODO gene: print unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.transform.Transform#transform(
+     *      java.lang.String)
+     */
+    public String transform(String in) {
+
+        return in.toUpperCase();
     }
 
 }

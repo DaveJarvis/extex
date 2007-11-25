@@ -23,10 +23,11 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define a crossref layer list.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,9 +47,9 @@ public class LMarkupCrossrefLayerList extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":open"),//
-                Arg.OPT_STRING(":close"),//
-                Arg.OPT_STRING(":sep"),//
+        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
+                Arg.OPT_LSTRING(":close"),//
+                Arg.OPT_LSTRING(":sep"),//
                 Arg.OPT_STRING(":class")});
     }
 
@@ -56,16 +57,19 @@ public class LMarkupCrossrefLayerList extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param open
-     * @param close
-     * @param sep
+     * @param open the open string
+     * @param close the close string
+     * @param sep the separator
+     * @param clazz the class
      * 
      * @return <tt>nil</tt>
      */
-    public LValue evaluate(LInterpreter interpreter, String open, String close,
-            String sep, String clazz) {
+    public LValue evaluate(LInterpreter interpreter, LString open,
+            LString close, LString sep, String clazz) {
 
-        // TODO
+        interpreter.setq("markup:crossref-layer-" + clazz + "-open", open);
+        interpreter.setq("markup:crossref-layer-" + clazz + "-close", close);
+        interpreter.setq("markup:crossref-layer-" + clazz + "-sep", sep);
 
         return LList.NIL;
     }

@@ -47,4 +47,24 @@ public class LocationReference implements Location {
         super();
     }
 
+    /**
+     * Getter for layers.
+     * 
+     * @return the layers
+     */
+    public List<String> getLayers() {
+
+        return layers;
+    }
+
+    /**
+     * Getter for references.
+     * 
+     * @return the references
+     */
+    public List<LocationReference> getReferences() {
+
+        return references;
+    }
+
 }

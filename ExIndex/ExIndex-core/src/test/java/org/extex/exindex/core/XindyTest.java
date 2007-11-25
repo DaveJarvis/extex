@@ -41,7 +41,7 @@ public class XindyTest {
         Xindy xindy = new Xindy();
         xindy.load("src/test/resources/xindy/makeidx.xdy");
 
-        // index.loadStyle(new StringReader(""));
+        xindy.printBindings(System.out);
         // assertNotNull(index);
     }
 

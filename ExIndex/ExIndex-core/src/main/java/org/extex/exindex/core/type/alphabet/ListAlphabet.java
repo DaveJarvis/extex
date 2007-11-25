@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.type.alphabet;
 
+import java.io.PrintStream;
 import java.util.List;
 
 import org.extex.exindex.lisp.type.value.LValue;
@@ -32,17 +33,45 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class ListAlphabet implements LValue, Alphabet {
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>list</tt> contains the list of words.
      */
     private List<String> list;
 
     /**
      * Creates a new object.
+     * 
+     * @param list the list of words
      */
     public ListAlphabet(List<String> list) {
 
         super();
         this.list = list;
+    }
+
+    /**
+     * Getter for list.
+     * 
+     * @return the list
+     */
+    public List<String> getList() {
+
+        return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print("#alphabet(");
+        for (String a : list) {
+            stream.print("\"");
+            stream.print(a);
+            stream.print("\" ");
+        }
+        stream.print(")");
     }
 
 }

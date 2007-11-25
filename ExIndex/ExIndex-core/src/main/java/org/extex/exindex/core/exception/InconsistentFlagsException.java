@@ -17,7 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.merge.type;
+package org.extex.exindex.core.exception;
+
+import org.extex.exindex.lisp.exception.LException;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,48 +27,26 @@ package org.extex.exindex.core.merge.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class MergeRule {
+public class InconsistentFlagsException extends LException {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    public enum Type {
-        /**
-         * The field <tt>NORMAL</tt> contains the ...
-         */
-        NORMAL,
-        /**
-         * The field <tt>EGREP</tt> contains the ...
-         */
-        EGREP,
-        /**
-         * The field <tt>STRING</tt> contains the ...
-         */
-        STRING
-    }
+    private static final long serialVersionUID = 2007L;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Creates a new object.
      * 
-     * @param type
-     * @return
+     * @param resource
+     * @param line
+     * @param flag1
+     * @param flag2
      */
-    public static MergeRule get(Type type) {
+    public InconsistentFlagsException(String resource, int line, String flag1,
+            String flag2) {
 
-        switch (type) {
-            case STRING:
-            case NORMAL:
-            case EGREP:
-        }
-        return null;
+        super(resource);
     }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param word
-     * @return
-     */
-    public abstract String apply(String word);
 
 }

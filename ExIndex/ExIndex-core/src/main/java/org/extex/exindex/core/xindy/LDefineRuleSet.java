@@ -19,7 +19,6 @@
 
 package org.extex.exindex.core.xindy;
 
-import org.extex.exindex.core.Parameters;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -27,7 +26,7 @@ import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define a rule set.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,35 +34,30 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineRuleSet extends LFunction {
 
     /**
-     * The field <tt>list</tt> contains the map of rules to fill.
-     */
-    // private Map<String, RuleList> map = new HashMap<String, RuleList>();
-    /**
      * Creates a new object.
      * 
      * @param name the name of the function
-     * @param map
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineRuleSet(String name, Parameters params)
+    public LDefineRuleSet(String name)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.OPT_LIST(":rules"), //
                 Arg.OPT_LIST(":inherit-from")});
-        // this.map = map;
     }
 
     /**
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param name
-     * @param rules
-     * @param inherits
+     * @param name the name of the rule set
+     * @param rules the rules contained
+     * @param inherits a reference to a list of other rule sets to inherit the
+     *        rules from
      * 
      * @return <tt>nil</tt>
      */

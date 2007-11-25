@@ -30,6 +30,12 @@ import java.util.ArrayList;
 public class AttributeGroup extends ArrayList<LocationReference> {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * Creates a new object.
      */
     public AttributeGroup() {

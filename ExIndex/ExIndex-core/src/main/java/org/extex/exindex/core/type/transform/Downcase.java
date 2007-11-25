@@ -17,7 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.merge.type;
+package org.extex.exindex.core.type.transform;
+
+import java.io.PrintStream;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,40 +27,37 @@ package org.extex.exindex.core.merge.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StringMergeRule extends MergeRule {
-
-    /**
-     * The field <tt>regex</tt> contains the ...
-     */
-    private String regex;
-
-    /**
-     * The field <tt>replacement</tt> contains the replacement text
-     */
-    private String replacement;
+public class Downcase implements Transform {
 
     /**
      * Creates a new object.
      * 
-     * @param regex
-     * @param to the replacement text
      */
-    public StringMergeRule(String regex, String to) {
+    public Downcase() {
 
         super();
-        this.regex = regex;
-        this.replacement = to;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.merge.type.MergeRule#apply(java.lang.String)
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
      */
-    @Override
-    public String apply(String word) {
+    public void print(PrintStream stream) {
 
-        return word.equals(regex) ? replacement : word;
+        // TODO gene: print unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.transform.Transform#transform(
+     *      java.lang.String)
+     */
+    public String transform(String in) {
+
+        return in.toLowerCase();
     }
 
 }

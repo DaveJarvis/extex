@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.type.alphabet;
 
+import java.io.PrintStream;
+
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -36,6 +38,16 @@ public class RomanNumeralsLowercase implements LValue, Alphabet {
     public RomanNumeralsLowercase() {
 
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        stream.print("#roman-numeral-lowercase");
     }
 
 }

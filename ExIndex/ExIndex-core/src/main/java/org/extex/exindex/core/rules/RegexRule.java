@@ -17,11 +17,9 @@
  *
  */
 
-package org.extex.exindex.core;
+package org.extex.exindex.core.rules;
 
-import java.io.IOException;
-
-import org.extex.exindex.core.type.Index;
+import java.io.PrintStream;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,22 +27,41 @@ import org.extex.exindex.core.type.Index;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExIndex {
-
-    /**
-     * The field <tt>index</tt> contains the index.
-     */
-    private Index index;
+public class RegexRule extends Rule {
 
     /**
      * Creates a new object.
      * 
-     * @throws IOException in case of a problem reading the defaults
+     * @param pattern
+     * @param replacement
+     * @param again
      */
-    public ExIndex() throws IOException {
+    public RegexRule(String pattern, String replacement, boolean again) {
 
-        super();
-        index = new Index();
+        super(pattern, replacement, again);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.String)
+     */
+    @Override
+    public String apply(String word) {
+
+        // TODO gene: apply unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        // TODO gene: print unimplemented
+
     }
 
 }

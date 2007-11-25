@@ -54,9 +54,8 @@ public class LUseRuleSet extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param from
-     * @param to
-     * @param drop
+     * @param phase the phase
+     * @param ruleSet the rule set
      * 
      * @return <tt>nil</tt>
      */
