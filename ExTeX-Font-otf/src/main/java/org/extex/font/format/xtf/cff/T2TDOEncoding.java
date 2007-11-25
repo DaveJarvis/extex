@@ -210,7 +210,7 @@ public class T2TDOEncoding extends T2TDONumber {
 
             rar.seek(baseoffset + offset);
 
-            int format = rar.readUnsignedByte();
+            /* int format = */rar.readUnsignedByte();
 
             // TODO mgn: incomplete
         }

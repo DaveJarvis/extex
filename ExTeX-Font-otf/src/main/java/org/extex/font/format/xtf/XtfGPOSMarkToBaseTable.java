@@ -179,12 +179,13 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyp The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        MarkToBaseTableFormat1(RandomAccessR rar, int offset)
-                throws IOException {
+        MarkToBaseTableFormat1(RandomAccessR rar, int offset,
+                XtfGlyphName xtfGlyp) throws IOException {
 
-            super(FORMAT1);
+            super(FORMAT1, xtfGlyp);
 
             markCoverageOffset = rar.readUnsignedShort();
             baseCoverageOffset = rar.readUnsignedShort();
@@ -352,18 +353,19 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyp The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
     public static XtfGPOSMarkToBaseTable newInstance(RandomAccessR rar,
-            int offset) throws IOException {
+            int offset, XtfGlyphName xtfGlyp) throws IOException {
 
         XtfGPOSMarkToBaseTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
 
         if (format == FORMAT1) {
-            s = new MarkToBaseTableFormat1(rar, offset);
+            s = new MarkToBaseTableFormat1(rar, offset, xtfGlyp);
         }
         return s;
     }
@@ -372,10 +374,11 @@ public abstract class XtfGPOSMarkToBaseTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyp The glyph name.
      */
-    XtfGPOSMarkToBaseTable(int format) {
+    XtfGPOSMarkToBaseTable(int format, XtfGlyphName xtfGlyp) {
 
-        super(format);
+        super(format, xtfGlyp);
 
     }
 

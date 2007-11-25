@@ -164,8 +164,8 @@ public class TtfTableKERN extends AbstractXtfTable
         public static KernSubtable read(RandomAccessR rar) throws IOException {
 
             KernSubtable table = null;
-            int version = rar.readUnsignedShort();
-            int length = rar.readUnsignedShort();
+            /* int version = */rar.readUnsignedShort();
+            /* int length = */rar.readUnsignedShort();
             int coverage = rar.readUnsignedShort();
             int format = coverage >> 8;
 

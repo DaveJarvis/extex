@@ -84,13 +84,15 @@ public class PairValueRecord implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param xtfGlyph The glyph name.
      * @throws IOException if an io-error occurred.
      */
-    public PairValueRecord(RandomAccessR rar) throws IOException {
+    public PairValueRecord(RandomAccessR rar, XtfGlyphName xtfGlyph)
+            throws IOException {
 
         secondGlyph = rar.readUnsignedShort();
-        value1 = new ValueRecord(rar);
-        value2 = new ValueRecord(rar);
+        value1 = new ValueRecord(rar, xtfGlyph);
+        value2 = new ValueRecord(rar, xtfGlyph);
     }
 
     /**

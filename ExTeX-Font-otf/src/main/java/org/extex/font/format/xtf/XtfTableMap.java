@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,7 +25,7 @@ import java.util.Set;
 
 /**
  * Map for a TTF/OTF table.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -42,21 +42,12 @@ public class XtfTableMap {
     }
 
     /**
-     * map
+     * The map for the table.
      */
     private Map<Integer, XtfTable> data;
 
     /**
-     * @return TODO mgn
-     * @see java.util.Map#size()
-     */
-    public int size() {
-
-        return data.size();
-    }
-
-    /**
-     * @see java.util.Map#clear()
+     * Clear the table.
      */
     public void clear() {
 
@@ -64,17 +55,21 @@ public class XtfTableMap {
     }
 
     /**
-     * @return TODO mgn
-     * @see java.util.Map#isEmpty()
+     * Returns the size of the table.
+     * 
+     * @return Returns the size of the table.
      */
-    public boolean isEmpty() {
+    public int size() {
 
-        return data.isEmpty();
+        return data.size();
     }
 
     /**
-     * @param key   the key as int
-     * @return Returns, if the map has the special key
+     * Check, if the table contains the table.
+     * 
+     * @param key The key of the table.
+     * @return Returns <code>true</code>, if the map has the table, otherwise
+     *         <code>false</code>.
      */
     public boolean containsKey(int key) {
 
@@ -82,8 +77,10 @@ public class XtfTableMap {
     }
 
     /**
-     * @param key   the key as int
-     * @return Returns the value for the key
+     * Returns the table.
+     * 
+     * @param key The key of the table.
+     * @return Returns the table.
      */
     public XtfTable get(int key) {
 
@@ -91,25 +88,19 @@ public class XtfTableMap {
     }
 
     /**
-     * @param key   the key as int
-     * @return Returns the removed element
+     * Store a table.
+     * 
+     * @param key The key of the table.
+     * @param table The table
      */
-    public XtfTable remove(int key) {
+    public void put(int key, XtfTable table) {
 
-        return data.remove(new Integer(key));
-    }
-
-    /**
-     * @param key   the key as int
-     * @param val   the value for the key
-     */
-    public void put(int key, XtfTable val) {
-
-        data.put(new Integer(key), val);
+        data.put(new Integer(key), table);
     }
 
     /**
      * Returns the keys in an array
+     * 
      * @return Returns the keys in an array
      */
     public int[] getKeys() {
@@ -127,6 +118,7 @@ public class XtfTableMap {
 
     /**
      * Returns a TTFTable array from the map.
+     * 
      * @return Returns a TTFTable array from the map.
      */
     public XtfTable[] getTables() {

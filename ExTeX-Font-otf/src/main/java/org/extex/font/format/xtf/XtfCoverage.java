@@ -34,69 +34,6 @@ import org.extex.util.xml.XMLWriterConvertible;
 public abstract class XtfCoverage implements XMLWriterConvertible {
 
     /**
-     * format 1
-     */
-    static final int FORMAT1 = 1;
-
-    /**
-     * format 2
-     */
-    static final int FORMAT2 = 2;
-
-    /**
-     * format
-     */
-    private int format;
-
-    /**
-     * Create a new onject
-     * 
-     * @param fm the format
-     */
-    XtfCoverage(int fm) {
-
-        format = fm;
-    }
-
-    /**
-     * Returns the index of the glyph within the coverage
-     * 
-     * @param glyphId The ID of the glyph to find.
-     * @return Returns the index of the glyph within the coverage, or -1 if the
-     *         glyph can't be found.
-     */
-    public abstract int findGlyph(int glyphId);
-
-    /**
-     * Create a new instance and read the coverage
-     * 
-     * @param rar input
-     * @return Returns the new coverage
-     * @throws IOException if an IO-error occrs
-     */
-    static XtfCoverage newInstance(RandomAccessR rar) throws IOException {
-
-        XtfCoverage c = null;
-        int format = rar.readUnsignedShort();
-        if (format == FORMAT1) {
-            c = new CoverageFormat1(rar);
-        } else if (format == FORMAT2) {
-            c = new CoverageFormat2(rar);
-        }
-        return c;
-    }
-
-    /**
-     * Returns the format
-     * 
-     * @return Returns the format
-     */
-    public int getFormat() {
-
-        return format;
-    }
-
-    /**
      * Coverage for FORMAT1
      */
     public static class CoverageFormat1 extends XtfCoverage
@@ -117,11 +54,13 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
          * Create a new object
          * 
          * @param rar input
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO-error occurs
          */
-        CoverageFormat1(RandomAccessR rar) throws IOException {
+        CoverageFormat1(RandomAccessR rar, XtfGlyphName xtfGlyph)
+                throws IOException {
 
-            super(XtfCoverage.FORMAT1);
+            super(XtfCoverage.FORMAT1, xtfGlyph);
 
             glyphCount = rar.readUnsignedShort();
             glyphIds = new int[glyphCount];
@@ -160,6 +99,8 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
                 writer.writeStartElement("coverage");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("value", glyphIds[i]);
+                writer.writeAttribute("glyphname", getXtfGlyph().getGlyphName(
+                    glyphIds[i]));
                 writer.writeEndElement();
             }
             writer.writeEndElement();
@@ -185,11 +126,13 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
          * Create a new object
          * 
          * @param rar input
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO-error occurs
          */
-        CoverageFormat2(RandomAccessR rar) throws IOException {
+        CoverageFormat2(RandomAccessR rar, XtfGlyphName xtfGlyph)
+                throws IOException {
 
-            super(XtfCoverage.FORMAT2);
+            super(XtfCoverage.FORMAT2, xtfGlyph);
 
             rangeCount = rar.readUnsignedShort();
             rangeRecords = new RangeRecord[rangeCount];
@@ -241,14 +184,14 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
     public class RangeRecord implements XMLWriterConvertible {
 
         /**
-         * start
-         */
-        private int start;
-
-        /**
          * end
          */
         private int end;
+
+        /**
+         * start
+         */
+        private int start;
 
         /**
          * start index
@@ -269,17 +212,6 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
         }
 
         /**
-         * Check, if the glyph id is in the range.
-         * 
-         * @param glyphId the glyph id
-         * @return Check, if the glyph id is in the range.
-         */
-        public boolean isInRange(int glyphId) {
-
-            return (start <= glyphId && glyphId <= end);
-        }
-
-        /**
          * Returns the coverage index
          * 
          * @param glyphId the glyph id
@@ -291,6 +223,17 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
                 return startCoverageIndex + glyphId - start;
             }
             return -1;
+        }
+
+        /**
+         * Check, if the glyph id is in the range.
+         * 
+         * @param glyphId the glyph id
+         * @return Check, if the glyph id is in the range.
+         */
+        public boolean isInRange(int glyphId) {
+
+            return (start <= glyphId && glyphId <= end);
         }
 
         /**
@@ -306,5 +249,86 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
             writer.writeAttribute("startcoverageindex", startCoverageIndex);
             writer.writeEndElement();
         }
+    }
+
+    /**
+     * format 1
+     */
+    static final int FORMAT1 = 1;
+
+    /**
+     * format 2
+     */
+    static final int FORMAT2 = 2;
+
+    /**
+     * Create a new instance and read the coverage
+     * 
+     * @param rar input
+     * @param xtfGlyph The glyph name.
+     * @return Returns the new coverage
+     * @throws IOException if an IO-error occurred.
+     */
+    static XtfCoverage newInstance(RandomAccessR rar, XtfGlyphName xtfGlyph)
+            throws IOException {
+
+        XtfCoverage c = null;
+        int format = rar.readUnsignedShort();
+        if (format == FORMAT1) {
+            c = new CoverageFormat1(rar, xtfGlyph);
+        } else if (format == FORMAT2) {
+            c = new CoverageFormat2(rar, xtfGlyph);
+        }
+        return c;
+    }
+
+    /**
+     * format
+     */
+    private int format;
+
+    /**
+     * The glyph name.
+     */
+    private XtfGlyphName xtfGlyph;
+
+    /**
+     * Create a new object.
+     * 
+     * @param fm the format
+     */
+    XtfCoverage(int fm, XtfGlyphName xtfGlyph) {
+
+        format = fm;
+        this.xtfGlyph = xtfGlyph;
+    }
+
+    /**
+     * Returns the index of the glyph within the coverage
+     * 
+     * @param glyphId The ID of the glyph to find.
+     * @return Returns the index of the glyph within the coverage, or -1 if the
+     *         glyph can't be found.
+     */
+    public abstract int findGlyph(int glyphId);
+
+    /**
+     * Returns the format
+     * 
+     * @return Returns the format
+     */
+    public int getFormat() {
+
+        return format;
+    }
+
+    /**
+     * Getter for xtfGlyph.
+     * 
+     * @return the xtfGlyph
+     */
+    public XtfGlyphName getXtfGlyph() {
+
+        return xtfGlyph;
     }
 }

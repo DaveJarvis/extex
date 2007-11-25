@@ -36,10 +36,11 @@ public class XtfGSUBContextTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyp The glyph name.
      */
-    XtfGSUBContextTable(int format) {
+    XtfGSUBContextTable(int format, XtfGlyphName xtfGlyp) {
 
-        super(format);
+        super(format, xtfGlyp);
 
     }
 
@@ -48,11 +49,12 @@ public class XtfGSUBContextTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyph The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfGSUBContextTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
+    public static XtfGSUBContextTable newInstance(RandomAccessR rar,
+            int offset, XtfGlyphName xtfGlyph) throws IOException {
 
         // XtfGSUBSingleTable s = null;
         // rar.seek(offset);
@@ -62,7 +64,7 @@ public class XtfGSUBContextTable extends XtfLookupTable {
         // } else if (format == 2) {
         // s = new SingleTableFormat2(rar, offset);
         // }
-        return new XtfGSUBContextTable(0);
+        return new XtfGSUBContextTable(0, xtfGlyph);
     }
 
     /**

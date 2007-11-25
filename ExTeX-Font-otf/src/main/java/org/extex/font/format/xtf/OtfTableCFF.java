@@ -515,11 +515,11 @@ public class OtfTableCFF extends AbstractXtfTable
 
         // get data
         for (int i = 0; i < offsetarray.length - 1; i++) {
-            byte[] data =
-                    readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+            /* byte[] data = */
+            readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
 
             // stringIndex.add(convertArrayToString(data));
-            int x = 0;
+            // int x = 0;
         }
         return rar.getPointer();
     }

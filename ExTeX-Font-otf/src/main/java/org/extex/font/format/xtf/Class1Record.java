@@ -43,13 +43,15 @@ public class Class1Record implements XMLWriterConvertible {
      * 
      * @param rar The input.
      * @param class2Count The class2count value.
+     * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      */
-    public Class1Record(RandomAccessR rar, int class2Count) throws IOException {
+    public Class1Record(RandomAccessR rar, int class2Count, XtfGlyphName xtfGlyp)
+            throws IOException {
 
         class2RecordArray = new Class2Record[class2Count];
         for (int i = 0; i < class2Count; i++) {
-            class2RecordArray[i] = new Class2Record(rar);
+            class2RecordArray[i] = new Class2Record(rar, xtfGlyp);
         }
     }
 

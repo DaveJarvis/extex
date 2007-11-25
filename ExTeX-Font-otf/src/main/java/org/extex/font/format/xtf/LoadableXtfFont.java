@@ -233,6 +233,16 @@ public class LoadableXtfFont
     }
 
     /**
+     * Getter for glyphname.
+     * 
+     * @return the glyphname
+     */
+    public GlyphName getGlyphname() {
+
+        return glyphname;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)

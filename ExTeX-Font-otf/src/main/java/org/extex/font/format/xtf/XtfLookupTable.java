@@ -35,13 +35,20 @@ public abstract class XtfLookupTable implements XMLWriterConvertible {
     private int format;
 
     /**
+     * The glyph name.
+     */
+    private XtfGlyphName xtfGlyph;
+
+    /**
      * Create a new object.
      * 
-     * @param f the format
+     * @param f the format.
+     * @param xtfGlyph The glyph name.
      */
-    public XtfLookupTable(int f) {
+    public XtfLookupTable(int f, XtfGlyphName xtfGlyph) {
 
         format = f;
+        this.xtfGlyph = xtfGlyph;
     }
 
     /**
@@ -52,5 +59,15 @@ public abstract class XtfLookupTable implements XMLWriterConvertible {
     public int getFormat() {
 
         return format;
+    }
+
+    /**
+     * Getter for xtfGlyph.
+     * 
+     * @return the xtfGlyph
+     */
+    public XtfGlyphName getXtfGlyph() {
+
+        return xtfGlyph;
     }
 }

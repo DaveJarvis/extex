@@ -126,13 +126,15 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
-         * @throws IOException if an IO_error occurs
+         * @param xtfGlyp The glyph name.
+         * @throws IOException if an IO-error occurred.
          */
-        CursiveTableFormat1(RandomAccessR rar, int offset) throws IOException {
+        CursiveTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyp)
+                throws IOException {
 
-            super(FORMAT1);
+            super(FORMAT1, xtfGlyp);
 
-            int coverageOffset = rar.readUnsignedShort();
+            /* int coverageOffset = */rar.readUnsignedShort();
             entryExitCount = rar.readUnsignedShort();
 
             entryExitRecord = new EntryExitRecord[entryExitCount];
@@ -253,18 +255,19 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyp The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfGPOSCursiveTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
+    public static XtfGPOSCursiveTable newInstance(RandomAccessR rar,
+            int offset, XtfGlyphName xtfGlyp) throws IOException {
 
         XtfGPOSCursiveTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
 
         if (format == FORMAT1) {
-            s = new CursiveTableFormat1(rar, offset);
+            s = new CursiveTableFormat1(rar, offset, xtfGlyp);
         }
         return s;
     }
@@ -273,11 +276,10 @@ public abstract class XtfGPOSCursiveTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyp The glyph name.
      */
-    XtfGPOSCursiveTable(int format) {
+    XtfGPOSCursiveTable(int format, XtfGlyphName xtfGlyp) {
 
-        super(format);
-
+        super(format, xtfGlyp);
     }
-
 }

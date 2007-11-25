@@ -153,13 +153,21 @@ public class ValueRecord implements XMLWriterConvertible {
     private int yPlaDeviceOffset;
 
     /**
+     * The glyph name.
+     */
+    private XtfGlyphName xtfGlyph;
+
+    /**
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      */
-    public ValueRecord(RandomAccessR rar) throws IOException {
+    public ValueRecord(RandomAccessR rar, XtfGlyphName xtfGlyph)
+            throws IOException {
 
+        this.xtfGlyph = xtfGlyph;
         xPlacement = rar.readUnsignedShort();
         yPlacement = rar.readUnsignedShort();
         xAdvance = rar.readUnsignedShort();

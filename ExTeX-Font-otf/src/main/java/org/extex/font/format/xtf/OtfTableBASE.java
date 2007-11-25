@@ -69,107 +69,6 @@ public class OtfTableBASE extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * Create a new object
-     * 
-     * @param tablemap the table map
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    OtfTableBASE(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
-
-        super(tablemap);
-        rar.seek(de.getOffset());
-
-        version = rar.readUnsignedShort();
-        horizAxisOffset = rar.readUnsignedShort();
-        vertAxisOffset = rar.readUnsignedShort();
-
-        // vertical = new Axis(rar, de.getOffset() + vertAxisOffset,
-        // "vertical");
-        // horizontal = new Axis(rar, de.getOffset() + horizAxisOffset,
-        // "horizontal");
-
-        // incomplete
-    }
-
-    /**
-     * vertical Axis
-     */
-    private Axis vertical;
-
-    /**
-     * horizontal Axis
-     */
-    private Axis horizontal;
-
-    /**
-     * version
-     */
-    private int version;
-
-    /**
-     * horiz. Axis offset
-     */
-    private int horizAxisOffset;
-
-    /**
-     * vert. Axis offset
-     */
-    private int vertAxisOffset;
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.BASE;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "base";
-    }
-
-    /**
-     * Returns the horizAxisOffset.
-     * 
-     * @return Returns the horizAxisOffset.
-     */
-    public int getHorizAxisOffset() {
-
-        return horizAxisOffset;
-    }
-
-    /**
-     * Returns the version.
-     * 
-     * @return Returns the version.
-     */
-    public int getVersion() {
-
-        return version;
-    }
-
-    /**
-     * Returns the vertAxisOffset.
-     * 
-     * @return Returns the vertAxisOffset.
-     */
-    public int getVertAxisOffset() {
-
-        return vertAxisOffset;
-    }
-
-    /**
      * Axis (vertical or horizontal)
      * 
      * <table border="1"> <thead>
@@ -192,6 +91,21 @@ public class OtfTableBASE extends AbstractXtfTable
      * </table>
      */
     public class Axis implements XMLWriterConvertible {
+
+        /**
+         * basescript offset
+         */
+        private int baseScriptListOffset;
+
+        /**
+         * the basetaglist
+         */
+        private BaseTagList basetaglist;
+
+        /**
+         * basetaglist offset
+         */
+        private int baseTagListOffset;
 
         /**
          * the name
@@ -219,32 +133,33 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
-         * the basetaglist
-         */
-        private BaseTagList basetaglist;
-
-        /**
-         * basetaglist offset
-         */
-        private int baseTagListOffset;
-
-        /**
-         * basescript offset
-         */
-        private int baseScriptListOffset;
-
-        /**
-         * {@inheritDoc}
+         * Returns the baseScriptListOffset.
          * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+         * @return Returns the baseScriptListOffset.
          */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+        public int getBaseScriptListOffset() {
 
-            writer.writeStartElement("axis");
-            writer.writeAttribute("name", name);
-            writer.writeComment("incomplete");
-            writer.writeEndElement();
+            return baseScriptListOffset;
+        }
+
+        /**
+         * Getter for basetaglist.
+         * 
+         * @return the basetaglist
+         */
+        public BaseTagList getBasetaglist() {
+
+            return basetaglist;
+        }
+
+        /**
+         * Returns the baseTagListOffset.
+         * 
+         * @return Returns the baseTagListOffset.
+         */
+        public int getBaseTagListOffset() {
+
+            return baseTagListOffset;
         }
 
         /**
@@ -258,23 +173,17 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
-         * Returns the baseScriptListOffset.
+         * {@inheritDoc}
          * 
-         * @return Returns the baseScriptListOffset.
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
-        public int getBaseScriptListOffset() {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
-            return baseScriptListOffset;
-        }
-
-        /**
-         * Returns the baseTagListOffset.
-         * 
-         * @return Returns the baseTagListOffset.
-         */
-        public int getBaseTagListOffset() {
-
-            return baseTagListOffset;
+            writer.writeStartElement("axis");
+            writer.writeAttribute("name", name);
+            writer.writeComment("incomplete");
+            writer.writeEndElement();
         }
     }
 
@@ -321,6 +230,127 @@ public class OtfTableBASE extends AbstractXtfTable
             writer.writeEndElement();
         }
 
+    }
+
+    /**
+     * horiz. Axis offset
+     */
+    private int horizAxisOffset;
+
+    /**
+     * horizontal Axis
+     */
+    private Axis horizontal;
+
+    /**
+     * version
+     */
+    private int version;
+
+    /**
+     * vert. Axis offset
+     */
+    private int vertAxisOffset;
+
+    /**
+     * vertical Axis
+     */
+    private Axis vertical;
+
+    /**
+     * Create a new object
+     * 
+     * @param tablemap the table map
+     * @param de entry
+     * @param rar input
+     * @throws IOException if an IO-error occurs
+     */
+    OtfTableBASE(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
+
+        super(tablemap);
+        rar.seek(de.getOffset());
+
+        version = rar.readUnsignedShort();
+        horizAxisOffset = rar.readUnsignedShort();
+        vertAxisOffset = rar.readUnsignedShort();
+
+        // vertical = new Axis(rar, de.getOffset() + vertAxisOffset,
+        // "vertical");
+        // horizontal = new Axis(rar, de.getOffset() + horizAxisOffset,
+        // "horizontal");
+
+        // incomplete
+    }
+
+    /**
+     * Returns the horizAxisOffset.
+     * 
+     * @return Returns the horizAxisOffset.
+     */
+    public int getHorizAxisOffset() {
+
+        return horizAxisOffset;
+    }
+
+    /**
+     * Getter for horizontal.
+     * 
+     * @return the horizontal
+     */
+    public Axis getHorizontal() {
+
+        return horizontal;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "base";
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.BASE;
+    }
+
+    /**
+     * Returns the version.
+     * 
+     * @return Returns the version.
+     */
+    public int getVersion() {
+
+        return version;
+    }
+
+    /**
+     * Returns the vertAxisOffset.
+     * 
+     * @return Returns the vertAxisOffset.
+     */
+    public int getVertAxisOffset() {
+
+        return vertAxisOffset;
+    }
+
+    /**
+     * Getter for vertical.
+     * 
+     * @return the vertical
+     */
+    public Axis getVertical() {
+
+        return vertical;
     }
 
     /**

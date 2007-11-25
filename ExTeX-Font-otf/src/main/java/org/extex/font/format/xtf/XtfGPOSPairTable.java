@@ -434,11 +434,13 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyp The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        PairTableFormat1(RandomAccessR rar, int offset) throws IOException {
+        PairTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyp)
+                throws IOException {
 
-            super(FORMAT1);
+            super(FORMAT1, xtfGlyp);
 
             coverageOffset = rar.readUnsignedShort();
             valueFormat1 = rar.readUnsignedShort();
@@ -561,11 +563,13 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyp The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        PairTableFormat2(RandomAccessR rar, int offset) throws IOException {
+        PairTableFormat2(RandomAccessR rar, int offset, XtfGlyphName xtfGly)
+                throws IOException {
 
-            super(FORMAT2);
+            super(FORMAT2, xtfGly);
 
             coverageOffset = rar.readUnsignedShort();
             valueFormat1 = rar.readUnsignedShort();
@@ -577,7 +581,8 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
 
             class1RecordArray = new Class1Record[class1Count];
             for (int i = 0; i < class1Count; i++) {
-                class1RecordArray[i] = new Class1Record(rar, class2Count);
+                class1RecordArray[i] =
+                        new Class1Record(rar, class2Count, xtfGly);
             }
 
         }
@@ -681,20 +686,21 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyp The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfGPOSPairTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
+    public static XtfGPOSPairTable newInstance(RandomAccessR rar, int offset,
+            XtfGlyphName xtfGlyp) throws IOException {
 
         XtfGPOSPairTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
 
         if (format == FORMAT1) {
-            s = new PairTableFormat1(rar, offset);
+            s = new PairTableFormat1(rar, offset, xtfGlyp);
         } else if (format == FORMAT2) {
-            s = new PairTableFormat2(rar, offset);
+            s = new PairTableFormat2(rar, offset, xtfGlyp);
         }
         return s;
     }
@@ -703,10 +709,11 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyp The glyph name.
      */
-    XtfGPOSPairTable(int format) {
+    XtfGPOSPairTable(int format, XtfGlyphName xtfGlyp) {
 
-        super(format);
+        super(format, xtfGlyp);
 
     }
 

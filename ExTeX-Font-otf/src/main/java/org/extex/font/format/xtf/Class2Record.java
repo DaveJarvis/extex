@@ -47,12 +47,14 @@ public class Class2Record implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      */
-    public Class2Record(RandomAccessR rar) throws IOException {
+    public Class2Record(RandomAccessR rar, XtfGlyphName xtfGlyph)
+            throws IOException {
 
-        value1 = new ValueRecord(rar);
-        value2 = new ValueRecord(rar);
+        value1 = new ValueRecord(rar, xtfGlyph);
+        value2 = new ValueRecord(rar, xtfGlyph);
     }
 
     /**

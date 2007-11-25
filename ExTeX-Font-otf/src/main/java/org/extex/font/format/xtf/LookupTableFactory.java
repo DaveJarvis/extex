@@ -49,11 +49,12 @@ public interface LookupTableFactory {
      * @param rar The input.
      * @param type The table type.
      * @param offset The offset.
+     * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      * @return Returns the table.
      */
-    XtfLookupTable read(RandomAccessR rar, int type, int offset)
-            throws IOException;
+    XtfLookupTable read(RandomAccessR rar, int type, int offset,
+            XtfGlyphName xtfGlyph) throws IOException;
 
     /**
      * Returns the name of the lookup type (The start index is 1!).

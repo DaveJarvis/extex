@@ -97,7 +97,8 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
 
         // Lookup List
         lookupList =
-                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
+                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this,
+                    this);
     }
 
     /**
@@ -201,24 +202,24 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int)
+     *      int, int, org.extex.font.format.xtf.XtfGlyphName)
      */
-    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
-            throws IOException {
+    public XtfLookupTable read(RandomAccessR rar, int type, int offset,
+            XtfGlyphName xtfGlyph) throws IOException {
 
         switch (type) {
             case XtfLookup.GSUB_1_SINGLE:
-                return XtfGSUBSingleTable.newInstance(rar, offset);
+                return XtfGSUBSingleTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_2_MULTIPLE:
-                return XtfGSUBMultipleTable.newInstance(rar, offset);
+                return XtfGSUBMultipleTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_3_ALTERNATE:
-                return XtfGSUBAlternateTable.newInstance(rar, offset);
+                return XtfGSUBAlternateTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_4_LIGATURE:
-                return XtfGSUBLigatureTable.newInstance(rar, offset);
+                return XtfGSUBLigatureTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_5_CONTEXT:
-                return XtfGSUBContextTable.newInstance(rar, offset);
+                return XtfGSUBContextTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_6_CHAINING_CONTEXTUAL:
-                return XtfGSUBChainingTable.newInstance(rar, offset);
+                return XtfGSUBChainingTable.newInstance(rar, offset, this);
         }
         return null;
     }

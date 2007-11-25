@@ -618,20 +618,21 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int)
+     *      int, int, org.extex.font.format.xtf.XtfGlyphName)
      */
-    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
-            throws IOException {
+    public XtfLookupTable read(RandomAccessR rar, int type, int offset,
+            XtfGlyphName xtfGlyph) throws IOException {
 
         switch (type) {
             case XtfLookup.GPOS_1_SINGLE:
-                return XtfGPOSSingleTable.newInstance(rar, offset);
+                return XtfGPOSSingleTable.newInstance(rar, offset, xtfGlyph);
             case XtfLookup.GPOS_2_PAIR:
-                return XtfGPOSPairTable.newInstance(rar, offset);
+                return XtfGPOSPairTable.newInstance(rar, offset, xtfGlyph);
             case XtfLookup.GPOS_3_CURSIVE_ATTACHMENT:
-                return XtfGPOSCursiveTable.newInstance(rar, offset);
+                return XtfGPOSCursiveTable.newInstance(rar, offset, xtfGlyph);
             case XtfLookup.GPOS_4_MARKTOBASE_ATTACHMENT:
-                return XtfGPOSMarkToBaseTable.newInstance(rar, offset);
+                return XtfGPOSMarkToBaseTable
+                    .newInstance(rar, offset, xtfGlyph);
         }
         return null;
     }

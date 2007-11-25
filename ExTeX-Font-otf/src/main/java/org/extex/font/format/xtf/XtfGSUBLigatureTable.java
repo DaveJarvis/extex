@@ -108,10 +108,14 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
             writer.writeAttribute("id", idx);
             writer.writeAttribute("compcount", compCount);
             writer.writeAttribute("ligglyph", ligGlyph);
+            writer.writeAttribute("glyphname", getXtfGlyph().getGlyphName(
+                ligGlyph));
             for (int i = 0; i < components.length; i++) {
                 writer.writeStartElement("component");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("value", components[i]);
+                writer.writeAttribute("glyphname", getXtfGlyph().getGlyphName(
+                    components[i]));
                 writer.writeEndElement();
             }
             writer.writeEndElement();
@@ -270,11 +274,13 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO-error occurs
          */
-        LigatureTableFormat1(RandomAccessR rar, int offset) throws IOException {
+        LigatureTableFormat1(RandomAccessR rar, int offset,
+                XtfGlyphName xtfGlyph) throws IOException {
 
-            super(FORMAT1);
+            super(FORMAT1, xtfGlyph);
             coverageOffset = rar.readUnsignedShort();
             ligSetCount = rar.readUnsignedShort();
             ligatureSetOffsets = new int[ligSetCount];
@@ -283,7 +289,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
                 ligatureSetOffsets[i] = rar.readUnsignedShort();
             }
             rar.seek(offset + coverageOffset);
-            coverage = XtfCoverage.newInstance(rar);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
             for (int i = 0; i < ligSetCount; i++) {
                 ligatureSets[i] =
                         new LigatureSet(rar, offset + ligatureSetOffsets[i], i);
@@ -349,7 +355,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
 
             writer.writeStartElement("ligaturetable");
             writer.writeAttribute("format", getFormat());
-            writer.writeAttribute("ligsetcount", ligSetCount);
+            writer.writeAttribute("count", ligSetCount);
 
             coverage.writeXML(writer);
 
@@ -372,18 +378,19 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyph The glyph name.
      * @return Returns the new ligature table.
      * @throws IOException if an IO-error occurs.
      */
-    static XtfGSUBLigatureTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
+    static XtfGSUBLigatureTable newInstance(RandomAccessR rar, int offset,
+            XtfGlyphName xtfGlyph) throws IOException {
 
         XtfGSUBLigatureTable ls = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
         // TODO mgn: missing other formats
         if (format == FORMAT1) {
-            ls = new LigatureTableFormat1(rar, offset);
+            ls = new LigatureTableFormat1(rar, offset, xtfGlyph);
         }
         return ls;
     }
@@ -392,10 +399,11 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyp The glyph name.
      */
-    XtfGSUBLigatureTable(int format) {
+    XtfGSUBLigatureTable(int format, XtfGlyphName xtfGlyp) {
 
-        super(format);
+        super(format, xtfGlyp);
 
     }
 

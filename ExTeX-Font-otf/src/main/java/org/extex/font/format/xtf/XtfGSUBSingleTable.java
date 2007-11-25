@@ -46,10 +46,11 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
      * Create a new object.
      * 
      * @param format the format
+     * @param xtfGlyph The glyph name.
      */
-    XtfGSUBSingleTable(int format) {
+    XtfGSUBSingleTable(int format, XtfGlyphName xtfGlyph) {
 
-        super(format);
+        super(format, xtfGlyph);
 
     }
 
@@ -66,19 +67,20 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param xtfGlyph The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfGSUBSingleTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
+    public static XtfGSUBSingleTable newInstance(RandomAccessR rar, int offset,
+            XtfGlyphName xtfGlyph) throws IOException {
 
         XtfGSUBSingleTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
         if (format == 1) {
-            s = new SingleTableFormat1(rar, offset);
+            s = new SingleTableFormat1(rar, offset, xtfGlyph);
         } else if (format == 2) {
-            s = new SingleTableFormat2(rar, offset);
+            s = new SingleTableFormat2(rar, offset, xtfGlyph);
         }
         return s;
     }
@@ -108,15 +110,17 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        SingleTableFormat1(RandomAccessR rar, int offset) throws IOException {
+        SingleTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyph)
+                throws IOException {
 
-            super(FORMAT1);
+            super(FORMAT1, xtfGlyph);
             coverageOffset = rar.readUnsignedShort();
             deltaGlyphID = rar.readShort();
             rar.seek(offset + coverageOffset);
-            coverage = XtfCoverage.newInstance(rar);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
         }
 
         /**
@@ -179,11 +183,13 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO-error occurs
          */
-        SingleTableFormat2(RandomAccessR rar, int offset) throws IOException {
+        SingleTableFormat2(RandomAccessR rar, int offset, XtfGlyphName xtfGlyph)
+                throws IOException {
 
-            super(FORMAT2);
+            super(FORMAT2, xtfGlyph);
             coverageOffset = rar.readUnsignedShort();
             glyphCount = rar.readUnsignedShort();
             substitutes = new int[glyphCount];
@@ -191,7 +197,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
                 substitutes[i] = rar.readUnsignedShort();
             }
             rar.seek(offset + coverageOffset);
-            coverage = XtfCoverage.newInstance(rar);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
         }
 
         /**
@@ -225,6 +231,8 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
                 writer.writeStartElement("sub");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("value", substitutes[i]);
+                writer.writeAttribute("glyphname", getXtfGlyph().getGlyphName(
+                    substitutes[i]));
                 writer.writeEndElement();
             }
             writer.writeEndElement();

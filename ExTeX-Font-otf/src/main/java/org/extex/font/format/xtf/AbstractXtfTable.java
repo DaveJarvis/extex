@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,8 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class AbstractXtfTable implements XtfTable {
+public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
     /**
      * table map
@@ -48,13 +47,37 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the glyph name of a index.
      * 
-     * @see org.extex.font.format.xtf.XtfTable#getTableMap()
+     * @param idx The index.
+     * @return Returns the glyph name of a index.
      */
-    public XtfTableMap getTableMap() {
+    public String getGlyphName(int idx) {
 
-        return tablemap;
+        String gylphName = null;
+
+        // first look in the post-table
+        XtfTable post = getTableMap().get(XtfReader.POST);
+        if (post != null && post instanceof TtfTablePOST) {
+            gylphName = ((TtfTablePOST) post).getGlyphName(idx);
+        }
+
+        // second search in cff
+        if (gylphName == null) {
+
+            XtfTable cff = getTableMap().get(XtfReader.CFF);
+            if (cff != null && cff instanceof OtfTableCFF) {
+                OtfTableCFF cfftab = (OtfTableCFF) cff;
+                // TODO mgn fontnumber 0
+                gylphName = cfftab.mapGlyphPosToGlyphName(idx, 0);
+            }
+        }
+
+        // else
+        if (gylphName == null) {
+            gylphName = "???";
+        }
+        return gylphName;
     }
 
     /**
@@ -65,6 +88,16 @@ public abstract class AbstractXtfTable implements XtfTable {
     public int getInitOrder() {
 
         return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getTableMap()
+     */
+    public XtfTableMap getTableMap() {
+
+        return tablemap;
     }
 
     /**

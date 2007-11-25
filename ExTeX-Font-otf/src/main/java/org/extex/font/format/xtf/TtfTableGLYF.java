@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -78,518 +78,354 @@ public class TtfTableGLYF extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * buf
+     * Composite comp
      */
-    private byte[] buf = null;
-
-    /**
-     * descript
-     */
-    private Descript[] descript;
-
-    /**
-     * Create a new object.
-     * 
-     * @param tablemap the tablemap
-     * @param de directory entry
-     * @param rar the RandomAccessInput
-     * @throws IOException if an error occured
-     */
-    TtfTableGLYF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
-
-        super(tablemap);
-        rar.seek(de.getOffset());
-        buf = new byte[de.getLength()];
-        rar.readFully(buf);
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
-     */
-    @Override
-    public int getInitOrder() {
-
-        return 2;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.AbstractXtfTable#init()
-     */
-    @Override
-    public void init() {
-
-        TtfTableLOCA loca = (TtfTableLOCA) getTableMap().get(XtfReader.LOCA);
-        TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
-        if (loca == null || maxp == null) {
-            return;
-        }
-        int numGlyphs = maxp.getNumGlyphs();
-
-        if (buf == null) {
-            return;
-        }
-
-        descript = new Descript[numGlyphs];
-        ByteArrayInputStream bais = new ByteArrayInputStream(buf);
-        for (int i = 0; i < numGlyphs; i++) {
-            int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
-            if (len > 0) {
-                bais.reset();
-                bais.skip(loca.getOffset(i));
-                short numberOfContours =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                if (numberOfContours >= 0) {
-                    descript[i] =
-                            new SimpleDescript(this, numberOfContours, bais);
-                }
-            } else {
-                descript[i] = null;
-            }
-        }
-
-        for (int i = 0; i < numGlyphs; i++) {
-            int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
-            if (len > 0) {
-                bais.reset();
-                bais.skip(loca.getOffset(i));
-                short numberOfContours =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                if (numberOfContours < 0) {
-                    descript[i] = new CompositeDescript(this, bais);
-                }
-            }
-        }
-        buf = null;
-    }
-
-    /**
-     * Returns the description
-     * 
-     * @param i index
-     * @return Returns the description
-     */
-    public Descript getDescription(int i) {
-
-        return descript[i];
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.GLYF;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "glyf";
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writeStartElement(writer);
-        for (int i = 0; i < descript.length; i++) {
-            writer.writeStartElement("description");
-            writer.writeAttribute("id", String.valueOf(i));
-            Descript d = descript[i];
-            if (d != null) {
-                d.writeXML(writer);
-            }
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
-
-    // ------------------------------------------------
-    // ------------------------------------------------
-    // ------------------------------------------------
-    // ------------------------------------------------
-
-    /**
-     * Simple Glyph Description.
-     * 
-     * <table BORDER="1"> <tbody>
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * </tbody>
-     * <tr>
-     * <td>USHORT</td>
-     * <td>endPtsOfContours[<I>n</I>]</td>
-     * </td>
-     * Array of last points of each contour; <I>n</I> is the number of
-     * contours.</td>
-     * </tr>
-     * <tr>
-     * <td>USHORT</td>
-     * <td>instructionLength</td>
-     * <td> Total number of bytes for instructions.</td>
-     * </tr>
-     * <tr>
-     * <td>BYTE</td>
-     * <td>instructions[<I>n</I>]</td>
-     * <td> Array of instructions for each glyph; <I>n </I>is the number of
-     * instructions.</td>
-     * </tr>
-     * <tr>
-     * <td>BYTE</td>
-     * <td>flags[<I>n</I>]</td>
-     * <td> Array of flags for each coordinate in outline; <I>n</I> is the
-     * number of flags.</td>
-     * </tr>
-     * <tr>
-     * <td>BYTE or SHORT</td>
-     * <td>xCoordinates[ ]</td>
-     * <td> First coordinates relative to (0,0); others are relative to previous
-     * point.</td>
-     * </tr>
-     * <tr>
-     * <td>BYTE or SHORT</td>
-     * <td>yCoordinates[ ]</td>
-     * <td> First coordinates relative to (0,0); others are relative to previous
-     * point.</td>
-     * </tr>
-     * </table>
-     * 
-     * <p>
-     * Each flag is a single byte. Their meanings are shown below.
-     * </p>
-     * 
-     * <table BORDER="1"> <tbody>
-     * <tr>
-     * <td><b>Flags</b></td>
-     * <td><b>Bit </b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * </tbody>
-     * <tr>
-     * <td>On Curve</td>
-     * <td>0</td>
-     * <td> If set, the point is on the curve; otherwise, it is off the curve.</td>
-     * </tr>
-     * <tr>
-     * <td>x-Short Vector</td>
-     * <td>1</td>
-     * <td> If set, the corresponding x-coordinate is 1 byte long, not 2.</td>
-     * </tr>
-     * <tr>
-     * <td>y-Short Vector</td>
-     * <td>2</td>
-     * <td> If set, the corresponding y-coordinate is 1 byte long, not 2.</td>
-     * </tr>
-     * <tr>
-     * <td>Repeat</td>
-     * <td>3</td>
-     * <td> If set, the next byte specifies the number of additional times this
-     * set of flags is to be repeated. In this way, the number of flags listed
-     * can be smaller than the number of points in a character.</td>
-     * </tr>
-     * <tr>
-     * <td>This x is same (Positive x-Short Vector)</td>
-     * <td>4</td>
-     * <td> This flag has two meanings, depending on how the x-Short Vector flag
-     * is set. If x-Short Vector is set, this bit describes the sign of the
-     * value, with 1 equalling positive and 0 negative. If the x-Short Vector
-     * bit is not set and this bit is set, then the current x-coordinate is the
-     * same as the previous x-coordinate. If the x-Short Vector bit is not set
-     * and this bit is also not set, the current x-coordinate is a signed 16-bit
-     * delta vector.</td>
-     * /tr>
-     * <tr>
-     * <td>This y is same (Positive y-Short Vector)</td>
-     * <td>5</td>
-     * <td> This flag has two meanings, depending on how the y-Short Vector flag
-     * is set. If y-Short Vector is set, this bit describes the sign of the
-     * value, with 1 equalling positive and 0 negative. If the y-Short Vector
-     * bit is not set and this bit is set, then the current y-coordinate is the
-     * same as the previous y-coordinate. If the y-Short Vector bit is not set
-     * and this bit is also not set, the current y-coordinate is a signed 16-bit
-     * delta vector.</td>
-     * </tr>
-     * <tr>
-     * <td>Reserved</td>
-     * <td>6</td>
-     * <td>This bit is reserved. Set it to zero.</td>
-     * </tr>
-     * <tr>
-     * <td>Reserved</td>
-     * <td>7</td>
-     * <td>This bit is reserved. Set it to zero.</td>
-     * </tr>
-     * </table>
-     */
-    public abstract static class Descript implements XMLWriterConvertible {
+    public static class CompositeComp {
 
         /**
-         * Flag: ONCURVE
+         * ARG_1_AND_2_ARE_WORDS
          */
-        public static final byte ONCURVE = 0x01;
+        public static final short ARG_1_AND_2_ARE_WORDS = 0x0001;
 
         /**
-         * Flag: XSHORTVECTOR
+         * ARGS_ARE_XY_VALUES
          */
-        public static final byte XSHORTVECTOR = 0x02;
+        public static final short ARGS_ARE_XY_VALUES = 0x0002;
 
         /**
-         * Flag: YSHORTVECTOR
+         * MORE_COMPONENTS
          */
-        public static final byte YSHORTVECTOR = 0x04;
+        public static final short MORE_COMPONENTS = 0x0020;
 
         /**
-         * Flag: REPEAT
+         * ROUND_XY_TO_GRID
          */
-        public static final byte REPEAT = 0x08;
+        public static final short ROUND_XY_TO_GRID = 0x0004;
 
         /**
-         * Flag: XDUAL
+         * USE_MY_METRICS
          */
-        public static final byte XDUAL = 0x10;
+        public static final short USE_MY_METRICS = 0x0200;
 
         /**
-         * Flag: YDUAL
+         * WE_HAVE_A_SCALE
          */
-        public static final byte YDUAL = 0x20;
+        public static final short WE_HAVE_A_SCALE = 0x0008;
 
         /**
-         * parent table
+         * WE_HAVE_A_TWO_BY_TWO
          */
-        protected TtfTableGLYF parentTable;
+        public static final short WE_HAVE_A_TWO_BY_TWO = 0x0080;
 
         /**
-         * numberOfContours
+         * WE_HAVE_AN_X_AND_Y_SCALE
          */
-        private int numberOfContours;
+        public static final short WE_HAVE_AN_X_AND_Y_SCALE = 0x0040;
 
         /**
-         * xMin
+         * WE_HAVE_INSTRUCTIONS
          */
-        private short xMin;
+        public static final short WE_HAVE_INSTRUCTIONS = 0x0100;
 
         /**
-         * yMin
+         * argument1
          */
-        private short yMin;
+        private short argument1;
 
         /**
-         * xMax
+         * argument2
          */
-        private short xMax;
+        private short argument2;
 
         /**
-         * yMax
+         * firstContour
          */
-        private short yMax;
+        private int firstContour;
 
         /**
-         * instructions
+         * firstIndex
          */
-        private short[] instructions;
+        private int firstIndex;
 
         /**
-         * Returns the instructions
-         * 
-         * @return Returns the instructions
+         * flags
          */
-        public short[] getInstructions() {
+        private short flags;
 
-            return instructions;
-        }
+        /**
+         * glyphIndex
+         */
+        private short glyphIndex;
+
+        /**
+         * point1
+         */
+        private int point1 = 0;
+
+        /**
+         * point2
+         */
+        private int point2 = 0;
+
+        /**
+         * scale01
+         */
+        private double scale01 = 0.0;
+
+        /**
+         * scale10
+         */
+        private double scale10 = 0.0;
+
+        /**
+         * xscale
+         */
+        private double xscale = 1.0;
+
+        /**
+         * xtranslate
+         */
+        private int xtranslate = 0;
+
+        /**
+         * yscale
+         */
+        private double yscale = 1.0;
+
+        /**
+         * ytranslat
+         */
+        private int ytranslate = 0;
 
         /**
          * Create a new object.
          * 
-         * @param parentTable the parent table
-         * @param numberOfContours number of conttours
-         * @param bais the basis
+         * @param firstIndex the first index
+         * @param firstContour the first contour
+         * @param bais the input
          */
-        protected Descript(TtfTableGLYF parentTable, short numberOfContours,
+        CompositeComp(int firstIndex, int firstContour,
                 ByteArrayInputStream bais) {
 
-            this.parentTable = parentTable;
-            this.numberOfContours = numberOfContours;
-            xMin = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-            yMin = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-            xMax = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-            yMax = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+            this.firstIndex = firstIndex;
+            this.firstContour = firstContour;
+            flags = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+            glyphIndex =
+                    (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+
+            // Get the arguments as just their raw values
+            if ((flags & ARG_1_AND_2_ARE_WORDS) != 0) {
+                argument1 =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                argument2 =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+            } else {
+                argument1 = (short) bais.read();
+                argument2 = (short) bais.read();
+            }
+
+            // Assign the arguments according to the flags
+            if ((flags & ARGS_ARE_XY_VALUES) != 0) {
+                xtranslate = argument1;
+                ytranslate = argument2;
+            } else {
+                point1 = argument1;
+                point2 = argument2;
+            }
+
+            // Get the scale values (if any)
+            if ((flags & WE_HAVE_A_SCALE) != 0) {
+                int i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                xscale = yscale = (double) i / (double) 0x4000;
+            } else if ((flags & WE_HAVE_AN_X_AND_Y_SCALE) != 0) {
+                short i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                xscale = (double) i / (double) 0x4000;
+                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+                yscale = (double) i / (double) 0x4000;
+            } else if ((flags & WE_HAVE_A_TWO_BY_TWO) != 0) {
+                int i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                xscale = (double) i / (double) 0x4000;
+                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+                scale01 = (double) i / (double) 0x4000;
+                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+                scale10 = (double) i / (double) 0x4000;
+                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+                yscale = (double) i / (double) 0x4000;
+            }
         }
 
         /**
-         * Returns the number of contours.
+         * Returns the argument 1.
          * 
-         * @return Returns the number of contours.
+         * @return Returns the argument 1.
          */
-        public int getNumberOfContours() {
+        public short getArgument1() {
 
-            return numberOfContours;
+            return argument1;
         }
 
         /**
-         * Returns the x max.
+         * Returns the argument 2.
          * 
-         * @return Returns the x max.
+         * @return Returns the argument 2.
+         * 
          */
-        public short getXMax() {
+        public short getArgument2() {
 
-            return xMax;
+            return argument2;
         }
 
         /**
-         * Returns the x min.
+         * Returns the first contour.
          * 
-         * @return Returns the x min
+         * @return Returns the first contour.
          */
-        public short getXMin() {
+        public int getFirstContour() {
 
-            return xMin;
+            return firstContour;
         }
 
         /**
-         * Returns the y max.
+         * Returns the first index.
          * 
-         * @return Returns the y max.
+         * @return Returns the first index.
          */
-        public short getYMax() {
+        public int getFirstIndex() {
 
-            return yMax;
+            return firstIndex;
         }
-
-        /**
-         * Returns the y min.
-         * 
-         * @return Returns the y min.
-         */
-        public short getYMin() {
-
-            return yMin;
-        }
-
-        /**
-         * Returns the end pt of contours
-         * 
-         * @param i the index
-         * @return Returns the end pt of contours
-         */
-        abstract int getEndPtOfContours(int i);
 
         /**
          * Returns the flags.
          * 
-         * @param i the index
          * @return Returns the flags.
          */
-        abstract byte getFlags(int i);
+        public short getFlags() {
 
-        /**
-         * Returns the x coordinate.
-         * 
-         * @param i the index
-         * @return Returns the x coordinate
-         */
-        abstract short getXCoordinate(int i);
-
-        /**
-         * Returns the y coordinate.
-         * 
-         * @param i the index
-         * @return Returns the y coordinate
-         */
-        abstract short getYCoordinate(int i);
-
-        /**
-         * Returns the composite.
-         * 
-         * @return Returns the composite.
-         */
-        abstract boolean isComposite();
-
-        /**
-         * Returns the point count.
-         * 
-         * @return Returns the point count.
-         */
-        abstract int getPointCount();
-
-        /**
-         * Returns the contour count.
-         * 
-         * @return Returns the contour count.
-         */
-        abstract int getContourCount();
-
-        /**
-         * Read the instructions
-         * 
-         * @param rar input
-         * @param count count
-         * @throws IOException if an IO-error occurs
-         */
-        protected void readInstructions(RandomAccessR rar, int count)
-                throws IOException {
-
-            instructions = new short[count];
-            for (int i = 0; i < count; i++) {
-                instructions[i] = (short) rar.readUnsignedByte();
-            }
+            return flags;
         }
 
         /**
-         * Read the instructions
+         * Returns the glyph index.
          * 
-         * @param bais input
-         * @param count count
+         * @return Returns the glyph index.
          */
-        protected void readInstructions(ByteArrayInputStream bais, int count) {
+        public short getGlyphIndex() {
 
-            instructions = new short[count];
-            for (int i = 0; i < count; i++) {
-                instructions[i] = (short) bais.read();
-            }
+            return glyphIndex;
         }
 
         /**
-         * {@inheritDoc}
+         * Getter for point1.
          * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+         * @return the point1
          */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
+        public int getPoint1() {
 
-            writer.writeStartElement("descript");
-            writer.writeAttribute("numberofcontours", String
-                .valueOf(numberOfContours));
-            writer.writeAttribute("xmin", String.valueOf(xMin));
-            writer.writeAttribute("ymin", String.valueOf(yMin));
-            writer.writeAttribute("xmax", String.valueOf(xMax));
-            writer.writeAttribute("ymax", String.valueOf(yMax));
-
-            // TODO incomplete
-            writer.writeComment("incomplete");
-            writer.writeEndElement();
+            return point1;
         }
 
+        /**
+         * Getter for point2.
+         * 
+         * @return the point2
+         */
+        public int getPoint2() {
+
+            return point2;
+        }
+
+        /**
+         * Returns the scale 1.
+         * 
+         * @return Returns the scale 1.
+         */
+        public double getScale01() {
+
+            return scale01;
+        }
+
+        /**
+         * Returns the scale 0.
+         * 
+         * @return Returns the scale 0.
+         */
+        public double getScale10() {
+
+            return scale10;
+        }
+
+        /**
+         * Returns the x scale.
+         * 
+         * @return Returns the x scale.
+         */
+        public double getXScale() {
+
+            return xscale;
+        }
+
+        /**
+         * Returns the x translate.
+         * 
+         * @return Returns the x translate.
+         */
+        public int getXTranslate() {
+
+            return xtranslate;
+        }
+
+        /**
+         * Returns the y scale.
+         * 
+         * @return Returns the y scale.
+         */
+        public double getYScale() {
+
+            return yscale;
+        }
+
+        /**
+         * Returns the y translate.
+         * 
+         * @return Returns the y translate.
+         */
+        public int getYTranslate() {
+
+            return ytranslate;
+        }
+
+        /**
+         * Transforms an x-coordinate of a point for this component.
+         * 
+         * @param x The x-coordinate of the point to transform
+         * @param y The y-coordinate of the point to transform
+         * @return The transformed x-coordinate
+         */
+        public int scaleX(int x, int y) {
+
+            return Math.round((float) (x * xscale + y * scale10));
+        }
+
+        /**
+         * Transforms a y-coordinate of a point for this component.
+         * 
+         * @param x The x-coordinate of the point to transform
+         * @param y The y-coordinate of the point to transform
+         * @return The transformed y-coordinate
+         */
+        public int scaleY(int x, int y) {
+
+            return Math.round((float) (x * scale01 + y * yscale));
+        }
     }
 
     /**
@@ -752,6 +588,81 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * Returns the component count.
+         * 
+         * @return Returns the component count
+         */
+        public int getComponentCount() {
+
+            return components.size();
+        }
+
+        /**
+         * Returns the component index.
+         * 
+         * @param i the index
+         * @return Returns the component index.
+         */
+        public int getComponentIndex(int i) {
+
+            return components.elementAt(i).getFirstIndex();
+        }
+
+        /**
+         * Returns the composite comp.
+         * 
+         * @param i the index
+         * @return Returns the composite comp.
+         */
+        protected CompositeComp getCompositeComp(int i) {
+
+            CompositeComp c;
+            for (int n = 0; n < components.size(); n++) {
+                c = components.elementAt(n);
+                Descript gd = parentTable.getDescription(c.getGlyphIndex());
+                if (c.getFirstIndex() <= i
+                        && i < (c.getFirstIndex() + gd.getPointCount())) {
+                    return c;
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Returns the composite end pt.
+         * 
+         * @param i the index
+         * @return Returns the composite end
+         */
+        protected CompositeComp getCompositeCompEndPt(int i) {
+
+            CompositeComp c;
+            for (int j = 0; j < components.size(); j++) {
+                c = components.elementAt(j);
+                Descript gd = parentTable.getDescription(c.getGlyphIndex());
+                if (c.getFirstContour() <= i
+                        && i < (c.getFirstContour() + gd.getContourCount())) {
+                    return c;
+                }
+            }
+            return null;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
+         */
+        @Override
+        public int getContourCount() {
+
+            CompositeComp c = components.elementAt(components.size() - 1);
+            return c.getFirstContour()
+                    + parentTable.getDescription(c.getGlyphIndex())
+                        .getContourCount();
+        }
+
+        /**
          * {@inheritDoc}
          * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
@@ -782,6 +693,20 @@ public class TtfTableGLYF extends AbstractXtfTable
                 return gd.getFlags(i - c.getFirstIndex());
             }
             return 0;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
+         */
+        @Override
+        public int getPointCount() {
+
+            CompositeComp c = components.elementAt(components.size() - 1);
+            return c.getFirstIndex()
+                    + parentTable.getDescription(c.getGlyphIndex())
+                        .getPointCount();
         }
 
         /**
@@ -836,95 +761,372 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             return true;
         }
+    }
+
+    /**
+     * Simple Glyph Description.
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>endPtsOfContours[<I>n</I>]</td>
+     * </td>
+     * Array of last points of each contour; <I>n</I> is the number of
+     * contours.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>instructionLength</td>
+     * <td> Total number of bytes for instructions.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE</td>
+     * <td>instructions[<I>n</I>]</td>
+     * <td> Array of instructions for each glyph; <I>n </I>is the number of
+     * instructions.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE</td>
+     * <td>flags[<I>n</I>]</td>
+     * <td> Array of flags for each coordinate in outline; <I>n</I> is the
+     * number of flags.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE or SHORT</td>
+     * <td>xCoordinates[ ]</td>
+     * <td> First coordinates relative to (0,0); others are relative to previous
+     * point.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE or SHORT</td>
+     * <td>yCoordinates[ ]</td>
+     * <td> First coordinates relative to (0,0); others are relative to previous
+     * point.</td>
+     * </tr>
+     * </table>
+     * 
+     * <p>
+     * Each flag is a single byte. Their meanings are shown below.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Flags</b></td>
+     * <td><b>Bit </b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>On Curve</td>
+     * <td>0</td>
+     * <td> If set, the point is on the curve; otherwise, it is off the curve.</td>
+     * </tr>
+     * <tr>
+     * <td>x-Short Vector</td>
+     * <td>1</td>
+     * <td> If set, the corresponding x-coordinate is 1 byte long, not 2.</td>
+     * </tr>
+     * <tr>
+     * <td>y-Short Vector</td>
+     * <td>2</td>
+     * <td> If set, the corresponding y-coordinate is 1 byte long, not 2.</td>
+     * </tr>
+     * <tr>
+     * <td>Repeat</td>
+     * <td>3</td>
+     * <td> If set, the next byte specifies the number of additional times this
+     * set of flags is to be repeated. In this way, the number of flags listed
+     * can be smaller than the number of points in a character.</td>
+     * </tr>
+     * <tr>
+     * <td>This x is same (Positive x-Short Vector)</td>
+     * <td>4</td>
+     * <td> This flag has two meanings, depending on how the x-Short Vector flag
+     * is set. If x-Short Vector is set, this bit describes the sign of the
+     * value, with 1 equalling positive and 0 negative. If the x-Short Vector
+     * bit is not set and this bit is set, then the current x-coordinate is the
+     * same as the previous x-coordinate. If the x-Short Vector bit is not set
+     * and this bit is also not set, the current x-coordinate is a signed 16-bit
+     * delta vector.</td>
+     * /tr>
+     * <tr>
+     * <td>This y is same (Positive y-Short Vector)</td>
+     * <td>5</td>
+     * <td> This flag has two meanings, depending on how the y-Short Vector flag
+     * is set. If y-Short Vector is set, this bit describes the sign of the
+     * value, with 1 equalling positive and 0 negative. If the y-Short Vector
+     * bit is not set and this bit is set, then the current y-coordinate is the
+     * same as the previous y-coordinate. If the y-Short Vector bit is not set
+     * and this bit is also not set, the current y-coordinate is a signed 16-bit
+     * delta vector.</td>
+     * </tr>
+     * <tr>
+     * <td>Reserved</td>
+     * <td>6</td>
+     * <td>This bit is reserved. Set it to zero.</td>
+     * </tr>
+     * <tr>
+     * <td>Reserved</td>
+     * <td>7</td>
+     * <td>This bit is reserved. Set it to zero.</td>
+     * </tr>
+     * </table>
+     */
+    public abstract static class Descript implements XMLWriterConvertible {
+
+        /**
+         * Flag: ONCURVE
+         */
+        public static final byte ONCURVE = 0x01;
+
+        /**
+         * Flag: REPEAT
+         */
+        public static final byte REPEAT = 0x08;
+
+        /**
+         * Flag: XDUAL
+         */
+        public static final byte XDUAL = 0x10;
+
+        /**
+         * Flag: XSHORTVECTOR
+         */
+        public static final byte XSHORTVECTOR = 0x02;
+
+        /**
+         * Flag: YDUAL
+         */
+        public static final byte YDUAL = 0x20;
+
+        /**
+         * Flag: YSHORTVECTOR
+         */
+        public static final byte YSHORTVECTOR = 0x04;
+
+        /**
+         * instructions
+         */
+        private short[] instructions;
+
+        /**
+         * numberOfContours
+         */
+        private int numberOfContours;
+
+        /**
+         * parent table
+         */
+        protected TtfTableGLYF parentTable;
+
+        /**
+         * xMax
+         */
+        private short xMax;
+
+        /**
+         * xMin
+         */
+        private short xMin;
+
+        /**
+         * yMax
+         */
+        private short yMax;
+
+        /**
+         * yMin
+         */
+        private short yMin;
+
+        /**
+         * Create a new object.
+         * 
+         * @param parentTable the parent table
+         * @param numberOfContours number of conttours
+         * @param bais the basis
+         */
+        protected Descript(TtfTableGLYF parentTable, short numberOfContours,
+                ByteArrayInputStream bais) {
+
+            this.parentTable = parentTable;
+            this.numberOfContours = numberOfContours;
+            xMin = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+            yMin = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+            xMax = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+            yMax = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
+        }
+
+        /**
+         * Returns the contour count.
+         * 
+         * @return Returns the contour count.
+         */
+        abstract int getContourCount();
+
+        /**
+         * Returns the end pt of contours
+         * 
+         * @param i the index
+         * @return Returns the end pt of contours
+         */
+        abstract int getEndPtOfContours(int i);
+
+        /**
+         * Returns the flags.
+         * 
+         * @param i the index
+         * @return Returns the flags.
+         */
+        abstract byte getFlags(int i);
+
+        /**
+         * Returns the instructions
+         * 
+         * @return Returns the instructions
+         */
+        public short[] getInstructions() {
+
+            return instructions;
+        }
+
+        /**
+         * Returns the number of contours.
+         * 
+         * @return Returns the number of contours.
+         */
+        public int getNumberOfContours() {
+
+            return numberOfContours;
+        }
+
+        /**
+         * Returns the point count.
+         * 
+         * @return Returns the point count.
+         */
+        abstract int getPointCount();
+
+        /**
+         * Returns the x coordinate.
+         * 
+         * @param i the index
+         * @return Returns the x coordinate
+         */
+        abstract short getXCoordinate(int i);
+
+        /**
+         * Returns the x max.
+         * 
+         * @return Returns the x max.
+         */
+        public short getXMax() {
+
+            return xMax;
+        }
+
+        /**
+         * Returns the x min.
+         * 
+         * @return Returns the x min
+         */
+        public short getXMin() {
+
+            return xMin;
+        }
+
+        /**
+         * Returns the y coordinate.
+         * 
+         * @param i the index
+         * @return Returns the y coordinate
+         */
+        abstract short getYCoordinate(int i);
+
+        /**
+         * Returns the y max.
+         * 
+         * @return Returns the y max.
+         */
+        public short getYMax() {
+
+            return yMax;
+        }
+
+        /**
+         * Returns the y min.
+         * 
+         * @return Returns the y min.
+         */
+        public short getYMin() {
+
+            return yMin;
+        }
+
+        /**
+         * Returns the composite.
+         * 
+         * @return Returns the composite.
+         */
+        abstract boolean isComposite();
+
+        /**
+         * Read the instructions
+         * 
+         * @param bais input
+         * @param count count
+         */
+        protected void readInstructions(ByteArrayInputStream bais, int count) {
+
+            instructions = new short[count];
+            for (int i = 0; i < count; i++) {
+                instructions[i] = (short) bais.read();
+            }
+        }
+
+        /**
+         * Read the instructions
+         * 
+         * @param rar input
+         * @param count count
+         * @throws IOException if an IO-error occurs
+         */
+        protected void readInstructions(RandomAccessR rar, int count)
+                throws IOException {
+
+            instructions = new short[count];
+            for (int i = 0; i < count; i++) {
+                instructions[i] = (short) rar.readUnsignedByte();
+            }
+        }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
-        @Override
-        public int getPointCount() {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
-            CompositeComp c = components.elementAt(components.size() - 1);
-            return c.getFirstIndex()
-                    + parentTable.getDescription(c.getGlyphIndex())
-                        .getPointCount();
+            writer.writeStartElement("descript");
+            writer.writeAttribute("numberofcontours", String
+                .valueOf(numberOfContours));
+            writer.writeAttribute("xmin", String.valueOf(xMin));
+            writer.writeAttribute("ymin", String.valueOf(yMin));
+            writer.writeAttribute("xmax", String.valueOf(xMax));
+            writer.writeAttribute("ymax", String.valueOf(yMax));
+
+            // TODO incomplete
+            writer.writeComment("incomplete");
+            writer.writeEndElement();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
-         */
-        @Override
-        public int getContourCount() {
-
-            CompositeComp c = components.elementAt(components.size() - 1);
-            return c.getFirstContour()
-                    + parentTable.getDescription(c.getGlyphIndex())
-                        .getContourCount();
-        }
-
-        /**
-         * Returns the component index.
-         * 
-         * @param i the index
-         * @return Returns the component index.
-         */
-        public int getComponentIndex(int i) {
-
-            return components.elementAt(i).getFirstIndex();
-        }
-
-        /**
-         * Returns the component count.
-         * 
-         * @return Returns the component count
-         */
-        public int getComponentCount() {
-
-            return components.size();
-        }
-
-        /**
-         * Returns the composite comp.
-         * 
-         * @param i the index
-         * @return Returns the composite comp.
-         */
-        protected CompositeComp getCompositeComp(int i) {
-
-            CompositeComp c;
-            for (int n = 0; n < components.size(); n++) {
-                c = components.elementAt(n);
-                Descript gd = parentTable.getDescription(c.getGlyphIndex());
-                if (c.getFirstIndex() <= i
-                        && i < (c.getFirstIndex() + gd.getPointCount())) {
-                    return c;
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Returns the composite end pt.
-         * 
-         * @param i the index
-         * @return Returns the composite end
-         */
-        protected CompositeComp getCompositeCompEndPt(int i) {
-
-            CompositeComp c;
-            for (int j = 0; j < components.size(); j++) {
-                c = components.elementAt(j);
-                Descript gd = parentTable.getDescription(c.getGlyphIndex());
-                if (c.getFirstContour() <= i
-                        && i < (c.getFirstContour() + gd.getContourCount())) {
-                    return c;
-                }
-            }
-            return null;
-        }
     }
 
     /**
@@ -1050,6 +1252,11 @@ public class TtfTableGLYF extends AbstractXtfTable
     public class SimpleDescript extends Descript {
 
         /**
+         * count
+         */
+        private int count;
+
+        /**
          * endPtsOfContours
          */
         private int[] endPtsOfContours;
@@ -1068,11 +1275,6 @@ public class TtfTableGLYF extends AbstractXtfTable
          * yCoordinates
          */
         private short[] yCoordinates;
-
-        /**
-         * count
-         */
-        private int count;
 
         /**
          * Create a new object.
@@ -1108,6 +1310,17 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
+         */
+        @Override
+        public int getContourCount() {
+
+            return getNumberOfContours();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
         @Override
@@ -1125,6 +1338,17 @@ public class TtfTableGLYF extends AbstractXtfTable
         public byte getFlags(int i) {
 
             return flags[i];
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
+         */
+        @Override
+        public int getPointCount() {
+
+            return count;
         }
 
         /**
@@ -1158,28 +1382,6 @@ public class TtfTableGLYF extends AbstractXtfTable
         public boolean isComposite() {
 
             return false;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
-         */
-        @Override
-        public int getPointCount() {
-
-            return count;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
-         */
-        @Override
-        public int getContourCount() {
-
-            return getNumberOfContours();
         }
 
         /**
@@ -1255,333 +1457,151 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * Composite comp
+     * buf
      */
-    public static class CompositeComp {
+    private byte[] buf = null;
 
-        /**
-         * ARG_1_AND_2_ARE_WORDS
-         */
-        public static final short ARG_1_AND_2_ARE_WORDS = 0x0001;
+    /**
+     * descript
+     */
+    private Descript[] descript;
 
-        /**
-         * ARGS_ARE_XY_VALUES
-         */
-        public static final short ARGS_ARE_XY_VALUES = 0x0002;
+    /**
+     * Create a new object.
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar the RandomAccessInput
+     * @throws IOException if an error occured
+     */
+    TtfTableGLYF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
-        /**
-         * ROUND_XY_TO_GRID
-         */
-        public static final short ROUND_XY_TO_GRID = 0x0004;
+        super(tablemap);
+        rar.seek(de.getOffset());
+        buf = new byte[de.getLength()];
+        rar.readFully(buf);
 
-        /**
-         * WE_HAVE_A_SCALE
-         */
-        public static final short WE_HAVE_A_SCALE = 0x0008;
+    }
 
-        /**
-         * MORE_COMPONENTS
-         */
-        public static final short MORE_COMPONENTS = 0x0020;
+    /**
+     * Returns the description
+     * 
+     * @param i index
+     * @return Returns the description
+     */
+    public Descript getDescription(int i) {
 
-        /**
-         * WE_HAVE_AN_X_AND_Y_SCALE
-         */
-        public static final short WE_HAVE_AN_X_AND_Y_SCALE = 0x0040;
+        return descript[i];
+    }
 
-        /**
-         * WE_HAVE_A_TWO_BY_TWO
-         */
-        public static final short WE_HAVE_A_TWO_BY_TWO = 0x0080;
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
+     */
+    @Override
+    public int getInitOrder() {
 
-        /**
-         * WE_HAVE_INSTRUCTIONS
-         */
-        public static final short WE_HAVE_INSTRUCTIONS = 0x0100;
+        return 2;
+    }
 
-        /**
-         * USE_MY_METRICS
-         */
-        public static final short USE_MY_METRICS = 0x0200;
+    // ------------------------------------------------
+    // ------------------------------------------------
+    // ------------------------------------------------
+    // ------------------------------------------------
 
-        /**
-         * firstIndex
-         */
-        private int firstIndex;
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
 
-        /**
-         * firstContour
-         */
-        private int firstContour;
+        return "glyf";
+    }
 
-        /**
-         * argument1
-         */
-        private short argument1;
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return Returns the table type
+     */
+    public int getType() {
 
-        /**
-         * argument2
-         */
-        private short argument2;
+        return XtfReader.GLYF;
+    }
 
-        /**
-         * flags
-         */
-        private short flags;
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.AbstractXtfTable#init()
+     */
+    @Override
+    public void init() {
 
-        /**
-         * glyphIndex
-         */
-        private short glyphIndex;
+        TtfTableLOCA loca = (TtfTableLOCA) getTableMap().get(XtfReader.LOCA);
+        TtfTableMAXP maxp = (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
+        if (loca == null || maxp == null) {
+            return;
+        }
+        int numGlyphs = maxp.getNumGlyphs();
 
-        /**
-         * xscale
-         */
-        private double xscale = 1.0;
+        if (buf == null) {
+            return;
+        }
 
-        /**
-         * yscale
-         */
-        private double yscale = 1.0;
-
-        /**
-         * scale01
-         */
-        private double scale01 = 0.0;
-
-        /**
-         * scale10
-         */
-        private double scale10 = 0.0;
-
-        /**
-         * xtranslate
-         */
-        private int xtranslate = 0;
-
-        /**
-         * ytranslat
-         */
-        private int ytranslate = 0;
-
-        /**
-         * point1
-         */
-        private int point1 = 0;
-
-        /**
-         * point2
-         */
-        private int point2 = 0;
-
-        /**
-         * Create a new object.
-         * 
-         * @param firstIndex the first index
-         * @param firstContour the first contour
-         * @param bais the input
-         */
-        CompositeComp(int firstIndex, int firstContour,
-                ByteArrayInputStream bais) {
-
-            this.firstIndex = firstIndex;
-            this.firstContour = firstContour;
-            flags = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-            glyphIndex =
-                    (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-
-            // Get the arguments as just their raw values
-            if ((flags & ARG_1_AND_2_ARE_WORDS) != 0) {
-                argument1 =
+        descript = new Descript[numGlyphs];
+        ByteArrayInputStream bais = new ByteArrayInputStream(buf);
+        for (int i = 0; i < numGlyphs; i++) {
+            int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
+            if (len > 0) {
+                bais.reset();
+                bais.skip(loca.getOffset(i));
+                short numberOfContours =
                         (short) (bais.read() << XtfConstants.SHIFT8 | bais
                             .read());
-                argument2 =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
+                if (numberOfContours >= 0) {
+                    descript[i] =
+                            new SimpleDescript(this, numberOfContours, bais);
+                }
             } else {
-                argument1 = (short) bais.read();
-                argument2 = (short) bais.read();
-            }
-
-            // Assign the arguments according to the flags
-            if ((flags & ARGS_ARE_XY_VALUES) != 0) {
-                xtranslate = argument1;
-                ytranslate = argument2;
-            } else {
-                point1 = argument1;
-                point2 = argument2;
-            }
-
-            // Get the scale values (if any)
-            if ((flags & WE_HAVE_A_SCALE) != 0) {
-                int i =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                xscale = yscale = (double) i / (double) 0x4000;
-            } else if ((flags & WE_HAVE_AN_X_AND_Y_SCALE) != 0) {
-                short i =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                xscale = (double) i / (double) 0x4000;
-                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-                yscale = (double) i / (double) 0x4000;
-            } else if ((flags & WE_HAVE_A_TWO_BY_TWO) != 0) {
-                int i =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                xscale = (double) i / (double) 0x4000;
-                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-                scale01 = (double) i / (double) 0x4000;
-                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-                scale10 = (double) i / (double) 0x4000;
-                i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-                yscale = (double) i / (double) 0x4000;
+                descript[i] = null;
             }
         }
 
-        /**
-         * Returns the first index.
-         * 
-         * @return Returns the first index.
-         */
-        public int getFirstIndex() {
-
-            return firstIndex;
+        for (int i = 0; i < numGlyphs; i++) {
+            int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
+            if (len > 0) {
+                bais.reset();
+                bais.skip(loca.getOffset(i));
+                short numberOfContours =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                if (numberOfContours < 0) {
+                    descript[i] = new CompositeDescript(this, bais);
+                }
+            }
         }
+        buf = null;
+    }
 
-        /**
-         * Returns the first contour.
-         * 
-         * @return Returns the first contour.
-         */
-        public int getFirstContour() {
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
-            return firstContour;
+        writeStartElement(writer);
+        for (int i = 0; i < descript.length; i++) {
+            writer.writeStartElement("description");
+            writer.writeAttribute("id", String.valueOf(i));
+            Descript d = descript[i];
+            if (d != null) {
+                d.writeXML(writer);
+            }
+            writer.writeEndElement();
         }
-
-        /**
-         * Returns the argument 1.
-         * 
-         * @return Returns the argument 1.
-         */
-        public short getArgument1() {
-
-            return argument1;
-        }
-
-        /**
-         * Returns the argument 2.
-         * 
-         * @return Returns the argument 2.
-         * 
-         */
-        public short getArgument2() {
-
-            return argument2;
-        }
-
-        /**
-         * Returns the flags.
-         * 
-         * @return Returns the flags.
-         */
-        public short getFlags() {
-
-            return flags;
-        }
-
-        /**
-         * Returns the glyph index.
-         * 
-         * @return Returns the glyph index.
-         */
-        public short getGlyphIndex() {
-
-            return glyphIndex;
-        }
-
-        /**
-         * Returns the scale 1.
-         * 
-         * @return Returns the scale 1.
-         */
-        public double getScale01() {
-
-            return scale01;
-        }
-
-        /**
-         * Returns the scale 0.
-         * 
-         * @return Returns the scale 0.
-         */
-        public double getScale10() {
-
-            return scale10;
-        }
-
-        /**
-         * Returns the x scale.
-         * 
-         * @return Returns the x scale.
-         */
-        public double getXScale() {
-
-            return xscale;
-        }
-
-        /**
-         * Returns the y scale.
-         * 
-         * @return Returns the y scale.
-         */
-        public double getYScale() {
-
-            return yscale;
-        }
-
-        /**
-         * Returns the x translate.
-         * 
-         * @return Returns the x translate.
-         */
-        public int getXTranslate() {
-
-            return xtranslate;
-        }
-
-        /**
-         * Returns the y translate.
-         * 
-         * @return Returns the y translate.
-         */
-        public int getYTranslate() {
-
-            return ytranslate;
-        }
-
-        /**
-         * Transforms an x-coordinate of a point for this component.
-         * 
-         * @param x The x-coordinate of the point to transform
-         * @param y The y-coordinate of the point to transform
-         * @return The transformed x-coordinate
-         */
-        public int scaleX(int x, int y) {
-
-            return Math.round((float) (x * xscale + y * scale10));
-        }
-
-        /**
-         * Transforms a y-coordinate of a point for this component.
-         * 
-         * @param x The x-coordinate of the point to transform
-         * @param y The y-coordinate of the point to transform
-         * @return The transformed y-coordinate
-         */
-        public int scaleY(int x, int y) {
-
-            return Math.round((float) (x * scale01 + y * yscale));
-        }
+        writer.writeEndElement();
     }
 }
