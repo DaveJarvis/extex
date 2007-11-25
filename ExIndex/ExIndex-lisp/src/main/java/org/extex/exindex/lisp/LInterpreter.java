@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,7 @@ import org.extex.exindex.lisp.exception.LUndefinedFunctionException;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -296,5 +298,25 @@ public class LInterpreter {
 
             eval(node);
         }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer
+     * @param tag
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void writeString(Writer writer, String tag) throws IOException {
+
+        LValue x = get(LSymbol.get(tag));
+        if (x instanceof LString) {
+            writer.write(((LString) x).getValue());
+            return;
+        }
+
+        // TODO gene: writeString unimplemented
+        throw new RuntimeException("unimplemented");
     }
 }
