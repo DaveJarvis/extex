@@ -19,11 +19,7 @@
 
 package org.extex.exindex.core;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
-import java.io.StringReader;
-
+import org.extex.exindex.core.xindy.Xindy;
 import org.junit.Test;
 
 /**
@@ -32,30 +28,21 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class IndexTest {
+public class XindyTest {
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws IOException
-     */
-    @Test(expected = NullPointerException.class)
-    public void testLoadStyle1() throws IOException {
-
-        new Index().loadStyle(null);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws IOException
+     * @throws Exception in case of an error
      */
     @Test()
-    public void testLoadStyle2() throws IOException {
+    public void testLoadStyle2() throws Exception {
 
-        Index index = new Index();
-        index.loadStyle(new StringReader(""));
-        assertNotNull(index);
+        Xindy xindy = new Xindy();
+        xindy.load("src/test/resources/xindy/makeidx.xdy");
+
+        // index.loadStyle(new StringReader(""));
+        // assertNotNull(index);
     }
 
 }
