@@ -29,6 +29,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -57,7 +58,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.logging.LogFormatter;
 
 /**
- * This is the main program for an indexer a la makeindex or xindy.
+ * This is the main program for an indexer a la Makeindex or Xindy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -65,7 +66,7 @@ import org.extex.logging.LogFormatter;
 public class Makeindex {
 
     /**
-     * The field <tt>localizer</tt> contains the localozer.
+     * The field <tt>localizer</tt> contains the localizer.
      */
     private static final Localizer localizer =
             LocalizerFactory.getLocalizer(Makeindex.class);
@@ -117,7 +118,7 @@ public class Makeindex {
     private boolean collateSpaces = false;
 
     /**
-     * The field <tt>comp</tt> contains the comperator.
+     * The field <tt>comp</tt> contains the comparator.
      */
     Comparator<Entry> comp = new Comparator<Entry>() {
 
@@ -150,9 +151,14 @@ public class Makeindex {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>fileHandler</tt> contains the ...
+     * The field <tt>fileHandler</tt> contains the file handler for logging.
      */
     private FileHandler fileHandler = null;
+
+    /**
+     * The field <tt>filter</tt> contains the ...
+     */
+    private String filter = null;
 
     /**
      * The field <tt>index</tt> contains the enclosed index.
@@ -185,6 +191,8 @@ public class Makeindex {
      * The field <tt>log</tt> contains the name of the transcript file.
      */
     private String transcript;
+
+    private Charset charset;
 
     /**
      * Creates a new object.
@@ -227,6 +235,8 @@ public class Makeindex {
      */
     public int run(String[] args) {
 
+        charset = Charset.defaultCharset();
+
         if (args == null) {
             throw new NullPointerException();
         }
@@ -238,13 +248,37 @@ public class Makeindex {
                 String a = args[i];
                 if (a == null || "".equals(a)) {
                     // strange argument is ignored
-                } else if (!a.startsWith("-")) {
+                    continue;
+                }
+
+                if (a.startsWith("--")) {
+                    a = a.substring(1);
+                }
+                if (!a.startsWith("-")) {
                     files.add(a);
                 } else if ("-".equals(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
                     files.add(args[i]);
+                } else if ("-collateSpaces".startsWith(a)) {
+                    collateSpaces = true;
+
+                } else if ("-filter".startsWith(a)) {
+                    if (++i >= args.length) {
+                        throw new MissingArgumentException(a);
+                    }
+                    filter = args[i];
+
+                } else if ("-german".startsWith(a)) {
+                    collateGerman = true;
+
+                } else if ("-input".startsWith(a)) {
+                    files.add(null);
+
+                } else if ("-letterOrdering".startsWith(a)) {
+                    // TODO letter ordering
+
                 } else if ("-output".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
@@ -254,17 +288,23 @@ public class Makeindex {
                         output = null;
                     }
 
-                } else if ("-style".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    styles.add(args[i]);
-
                 } else if ("-page".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
                     startPage = args[i];
+
+                } else if ("-quiet".startsWith(a)) {
+                    logger.removeHandler(consoleHandler);
+
+                } else if ("-r".startsWith(a)) {
+                    pageCompression = false;
+
+                } else if ("-style".startsWith(a)) {
+                    if (++i >= args.length) {
+                        throw new MissingArgumentException(a);
+                    }
+                    styles.add(args[i]);
 
                 } else if ("-transcript".startsWith(a)) {
                     if (++i >= args.length) {
@@ -272,40 +312,33 @@ public class Makeindex {
                     }
                     transcript = args[i];
 
-                } else if ("-i".startsWith(a)) {
-                    files.add(null);
-                } else if ("-collateSpaces".startsWith(a)) {
-                    collateSpaces = true;
-                } else if ("-german".startsWith(a)) {
-                    collateGerman = true;
-                } else if ("-l".startsWith(a)) {
-                    // TODO letter ordering
-                } else if ("-quiet".startsWith(a)) {
-                    logger.removeHandler(consoleHandler);
                 } else if ("-Codepage".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
-                    // TODO xindy -C
+                    charset = Charset.forName(args[i]);
+
                 } else if ("-Module".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
                     // TODO xindy -M
-                } else if ("-Language".startsWith(a)) {
+
+                } else if ("-LogLevel".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
                     // TODO xindy -L
-                } else if ("-r".startsWith(a)) {
-                    pageCompression = false;
+
                 } else if ("-Version".startsWith(a)) {
                     showBanner();
                     return 1;
+
                 } else if ("-help".startsWith(a)) {
                     logger.log(Level.SEVERE, localizer.format("Usage"),
                         "Indexer");
                     return 1;
+
                 } else {
                     throw new UnknownArgumentException(a);
                 }
