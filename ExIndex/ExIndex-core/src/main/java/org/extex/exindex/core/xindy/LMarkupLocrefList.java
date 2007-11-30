@@ -20,9 +20,9 @@
 package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -65,17 +65,20 @@ public class LMarkupLocrefList extends LFunction {
      * @param clazz the class
      * @param depth the depth
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, String clazz, LNumber depth) {
+            LString close, LString sep, String clazz, LNumber depth)
+            throws LSettingConstantException {
 
         interpreter.setq("markup:locref-" + clazz + "-open", open);
         interpreter.setq("markup:locref-" + clazz + "-close", close);
         interpreter.setq("markup:locref-" + clazz + "-sep", sep);
         interpreter.setq("markup:locref-" + clazz + "-depth", depth);
 
-        return LList.NIL;
+        return null;
     }
 
 }

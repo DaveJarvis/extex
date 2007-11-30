@@ -20,9 +20,9 @@
 package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -63,17 +63,20 @@ public class LMarkupAttributeGroup extends LFunction {
      * @param sep the separator
      * @param group the group
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, Long group) {
+            LString close, LString sep, Long group)
+            throws LSettingConstantException {
 
         String g = group.toString();
         interpreter.setq("markup:attribute-group-" + g + "-open", open);
         interpreter.setq("markup:attribute-group-" + g + "-close", close);
         interpreter.setq("markup:attribute-group-" + g + "-sep", sep);
 
-        return LList.NIL;
+        return null;
     }
 
 }

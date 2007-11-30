@@ -24,9 +24,9 @@ import org.extex.exindex.core.type.transform.Downcase;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.core.type.transform.Upcase;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -74,11 +74,14 @@ public class LMarkupLetterGroup extends LFunction {
      * @param downcase
      * @param capitalize
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String group,
             LString open, LString close, LString openHead, LString closeHead,
-            Boolean upcase, Boolean downcase, Boolean capitalize) {
+            Boolean upcase, Boolean downcase, Boolean capitalize)
+            throws LSettingConstantException {
 
         interpreter.setq("markup:letter-group-" + group + "-open", open);
         interpreter.setq("markup:letter-group-" + group + "-close", close);
@@ -107,7 +110,7 @@ public class LMarkupLetterGroup extends LFunction {
                 transform);
         }
 
-        return LList.NIL;
+        return null;
     }
 
 }

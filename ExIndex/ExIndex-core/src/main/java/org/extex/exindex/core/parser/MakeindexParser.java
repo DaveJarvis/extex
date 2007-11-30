@@ -130,12 +130,13 @@ public class MakeindexParser implements Parser {
      * TODO gene: missing JavaDoc
      * 
      * @param r the reader
-     * @param resource the ame of the resource
-     * @param argOpen
-     * @param argClose
-     * @param escape
-     * @param quote
+     * @param resource the name of the resource
+     * @param argOpen the argument open character
+     * @param argClose the argument close character
+     * @param escape the escape character
+     * @param quote the quote character
      * @param index the index
+     * 
      * @return the argument found
      * 
      * @throws IOException in case of an error
@@ -146,8 +147,9 @@ public class MakeindexParser implements Parser {
 
         expect(r, resource, argOpen);
         StringBuilder sb = new StringBuilder();
+        int level = 1;
 
-        for (int level = 1;;) {
+        for (;;) {
             int c = r.read();
             if (c < 0) {
                 throw new EofException(resource, r.getLineNumber());
@@ -156,7 +158,7 @@ public class MakeindexParser implements Parser {
             } else if (c == argClose) {
                 level--;
                 if (level <= 0) {
-                    break;
+                    return sb.toString();
                 }
             } else if (c == quote) {
                 int l = sb.length();
@@ -169,8 +171,6 @@ public class MakeindexParser implements Parser {
             }
             sb.append((char) c);
         }
-
-        return sb.toString();
     }
 
     /**

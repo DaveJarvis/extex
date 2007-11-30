@@ -19,6 +19,11 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
+import java.io.Writer;
+
+import org.extex.exindex.lisp.LInterpreter;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -28,12 +33,12 @@ package org.extex.exindex.core.type;
 public class Range implements Location {
 
     /**
-     * The field <tt>location1</tt> contains the ...
+     * The field <tt>location1</tt> contains the starting location.
      */
     private LocationReference location1;
 
     /**
-     * The field <tt>location2</tt> contains the ...
+     * The field <tt>location2</tt> contains the terminating location.
      */
     private LocationReference location2;
 
@@ -63,6 +68,22 @@ public class Range implements Location {
     public LocationReference getLocation2() {
 
         return location2;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
+     *      org.extex.exindex.lisp.LInterpreter)
+     */
+    public void write(Writer writer, LInterpreter interpreter)
+            throws IOException {
+
+        // TODO
+        location1.write(writer, interpreter);
+        // TODO
+        location2.write(writer, interpreter);
+        // TODO
     }
 
 }

@@ -30,11 +30,16 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.LUndefinedFlagException;
+import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for Lisp-like functions. The goal of this
+ * class is to provide a means to decouple the implementation of a function from
+ * the L system. Thus the implementation of the LFunction should deal with
+ * primitive data types whereever possible. The translation between the two
+ * worlds is performed in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -74,8 +79,9 @@ public abstract class LFunction {
      * @param name the name of the function
      * @param args the argument descriptors
      * 
-     * @throws NoSuchMethodException
-     * @throws SecurityException
+     * @throws NoSuchMethodException in case that no method corresponding to the
+     *         argument specification could be found
+     * @throws SecurityException in case a security problem occurred
      */
     public LFunction(String name, Arg[] args)
             throws SecurityException,
@@ -145,8 +151,9 @@ public abstract class LFunction {
                 arguments, index.get(argName).intValue());
         }
 
+        Object ret;
         try {
-            return (LValue) method.invoke(this, arguments);
+            ret = method.invoke(this, arguments);
         } catch (IllegalArgumentException e) {
             throw new LException(e);
         } catch (IllegalAccessException e) {
@@ -154,6 +161,14 @@ public abstract class LFunction {
         } catch (InvocationTargetException e) {
             throw new LException(e);
         }
+
+        if (ret instanceof LValue) {
+            return (LValue) ret;
+        } else if (ret == null) {
+            return LList.NIL;
+        }
+        // TODO gene: enclosing_method unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**

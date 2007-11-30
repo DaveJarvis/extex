@@ -21,6 +21,7 @@ package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -60,9 +61,11 @@ public class LDefineAttributes extends LFunction {
      * @return <tt>nil</tt>
      * 
      * @throws LNonMatchingTypeException
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LList list)
-            throws LNonMatchingTypeException {
+            throws LNonMatchingTypeException,
+                LSettingConstantException {
 
         LList attributeGroups = new LList();
         for (LValue val : list) {
@@ -82,7 +85,7 @@ public class LDefineAttributes extends LFunction {
 
         interpreter.setq("attributes", attributeGroups);
 
-        return LList.NIL;
+        return null;
     }
 
 }

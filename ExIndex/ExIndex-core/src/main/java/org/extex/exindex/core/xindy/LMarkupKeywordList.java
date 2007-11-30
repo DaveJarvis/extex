@@ -20,9 +20,9 @@
 package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -62,17 +62,20 @@ public class LMarkupKeywordList extends LFunction {
      * @param sep the separator
      * @param depth the depth
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, Long depth) {
+            LString close, LString sep, Long depth)
+            throws LSettingConstantException {
 
         String d = depth.toString();
         interpreter.setq("markup:keyword-list-" + d + "-open", open);
         interpreter.setq("markup:keyword-list-" + d + "-close", close);
         interpreter.setq("markup:keyword-list-" + d + "-sep", sep);
 
-        return LList.NIL;
+        return null;
     }
 
 }

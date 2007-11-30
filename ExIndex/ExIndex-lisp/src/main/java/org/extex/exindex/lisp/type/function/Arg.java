@@ -19,6 +19,7 @@
 
 package org.extex.exindex.lisp.type.function;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.lisp.exception.LException;
@@ -318,6 +319,42 @@ public class Arg {
     }
 
     /**
+     * Get the descriptor for an optional list of strings.
+     * 
+     * @param flag the name of the flag
+     * 
+     * @return the argument descriptor
+     */
+    public static Arg OPT_QSTRING_LIST(String flag) {
+
+        return new OptionalArgWithParameter(flag, LList.class, LList.NIL, true) {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exindex.lisp.type.function.Arg#validate(
+             *      org.extex.exindex.lisp.type.value.LValue)
+             */
+            @Override
+            public Object validate(LValue a) throws LNonMatchingTypeException {
+
+                if (!(a instanceof LList)) {
+                    throw new LNonMatchingTypeException("");
+                }
+                List<String> l = new ArrayList<String>();
+                for (LValue val : (LList) a) {
+                    if (!(val instanceof LString)) {
+                        throw new LNonMatchingTypeException("");
+                    }
+                    l.add(((LString) val).getValue());
+                }
+                return l;
+            }
+
+        };
+    }
+
+    /**
      * Get the descriptor for an optional string.
      * 
      * @param flag the name of the flag
@@ -431,7 +468,7 @@ public class Arg {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse an argument from the inputs and transfer it to the outputs.
      * 
      * @param args the source array
      * @param ai the source index
@@ -449,7 +486,7 @@ public class Arg {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Validate and translate an argument.
      * 
      * @param value the L value
      * 

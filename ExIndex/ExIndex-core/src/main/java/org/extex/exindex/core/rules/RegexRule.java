@@ -64,4 +64,26 @@ public class RegexRule extends Rule {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("#Rule(\"");
+        sb.append(getPattern());
+        sb.append("\" \"");
+        sb.append(getReplacement());
+        sb.append("\"");
+        if (isAgain()) {
+            sb.append(" :again");
+        }
+        sb.append(" :regex)");
+        // TODO gene: toString unimplemented
+        return sb.toString();
+    }
+
 }

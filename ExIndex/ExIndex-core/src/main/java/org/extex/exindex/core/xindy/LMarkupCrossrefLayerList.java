@@ -20,9 +20,9 @@
 package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -62,16 +62,19 @@ public class LMarkupCrossrefLayerList extends LFunction {
      * @param sep the separator
      * @param clazz the class
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, String clazz) {
+            LString close, LString sep, String clazz)
+            throws LSettingConstantException {
 
         interpreter.setq("markup:crossref-layer-" + clazz + "-open", open);
         interpreter.setq("markup:crossref-layer-" + clazz + "-close", close);
         interpreter.setq("markup:crossref-layer-" + clazz + "-sep", sep);
 
-        return LList.NIL;
+        return null;
     }
 
 }

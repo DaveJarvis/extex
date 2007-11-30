@@ -26,7 +26,7 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Load a file if not loaded already.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -19,7 +19,11 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
+
+import org.extex.exindex.lisp.LInterpreter;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -30,7 +34,7 @@ import java.util.List;
 public class LocationReference implements Location {
 
     /**
-     * The field <tt>layers</tt> contains the ...
+     * The field <tt>layers</tt> contains the layers.
      */
     private List<String> layers;
 
@@ -65,6 +69,19 @@ public class LocationReference implements Location {
     public List<LocationReference> getReferences() {
 
         return references;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
+     *      org.extex.exindex.lisp.LInterpreter)
+     */
+    public void write(Writer writer, LInterpreter interpreter)
+            throws IOException {
+
+        // TODO gene: write unimplemented
+
     }
 
 }

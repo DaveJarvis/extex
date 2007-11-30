@@ -19,6 +19,10 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.Writer;
+
+import org.extex.exindex.lisp.LInterpreter;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -63,6 +67,18 @@ public class LocationClassGroup {
     public LocrefGroup getLocref() {
 
         return locref;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer
+     * @param interpreter
+     */
+    public void write(Writer writer, LInterpreter interpreter) {
+
+        // TODO gene: write unimplemented
+
     }
 
 }

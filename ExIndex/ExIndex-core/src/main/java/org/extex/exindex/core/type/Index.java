@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,6 +28,7 @@ import java.util.List;
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
 import org.extex.exindex.core.pages.PageProcessor;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -34,7 +36,7 @@ import org.extex.exindex.core.pages.PageProcessor;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Index {
+public class Index implements LValue {
 
     /**
      * The field <tt>params</tt> contains the parameters.
@@ -98,6 +100,17 @@ public class Index {
     public Parameters getParams() {
 
         return params;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        // TODO gene: print unimplemented
+
     }
 
     /**

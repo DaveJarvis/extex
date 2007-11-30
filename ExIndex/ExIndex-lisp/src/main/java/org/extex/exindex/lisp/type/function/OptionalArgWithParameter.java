@@ -26,7 +26,7 @@ import org.extex.exindex.lisp.exception.LMissingParameterException;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class describes an optional parameter with an argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -50,7 +50,7 @@ public class OptionalArgWithParameter extends Arg {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.lisp.type.function.Arg#parse( java.util.List, int,
+     * @see org.extex.exindex.lisp.type.function.Arg#parse(java.util.List, int,
      *      java.lang.Object[], int)
      */
     @Override

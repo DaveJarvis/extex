@@ -19,7 +19,13 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.Writer;
 import java.util.ArrayList;
+
+import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -27,7 +33,7 @@ import java.util.ArrayList;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StructuredIndex extends ArrayList<LetterGroup> {
+public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -41,6 +47,45 @@ public class StructuredIndex extends ArrayList<LetterGroup> {
     public StructuredIndex() {
 
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     */
+    public void print(PrintStream stream) {
+
+        // TODO gene: print unimplemented
+
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void write(Writer writer, LInterpreter interpreter)
+            throws IOException {
+
+        boolean first = true;
+        interpreter.writeString(writer, "markup:index-open");
+
+        interpreter.writeString(writer, "markup:letter-group-list-open");
+        for (LetterGroup group : this) {
+            if (first) {
+                first = false;
+            } else {
+                interpreter.writeString(writer, "markup:letter-group-list-sep");
+            }
+            group.write(writer, interpreter);
+        }
+        interpreter.writeString(writer, "markup:letter-group-list-close");
+
+        interpreter.writeString(writer, "markup:index-close");
     }
 
 }

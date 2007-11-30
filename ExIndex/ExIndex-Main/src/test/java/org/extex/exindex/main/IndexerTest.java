@@ -44,9 +44,9 @@ public class IndexerTest {
      * 
      * @throws IOException in case of an error
      */
-    protected Indexer makeIndexer() throws IOException {
+    protected Makeindex makeIndexer() throws IOException {
 
-        return new Indexer();
+        return new Makeindex();
     }
 
     /**
@@ -92,7 +92,7 @@ public class IndexerTest {
             System.setIn(new ByteArrayInputStream(in.getBytes()));
             System.setOut(new PrintStream(os));
             System.setErr(new PrintStream(es));
-            Indexer indexer = makeIndexer();
+            Makeindex indexer = makeIndexer();
             return indexer.run(args);
         } finally {
             System.setIn(inStream);
@@ -102,7 +102,7 @@ public class IndexerTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.main.Indexer#Indexer()}.
+     * Test method for {@link org.extex.exindex.main.Makeindex#Indexer()}.
      * 
      * @throws IOException in case of an error
      */
@@ -115,7 +115,7 @@ public class IndexerTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.main.Indexer#Indexer()}.
+     * Test method for {@link org.extex.exindex.main.Makeindex#Indexer()}.
      * 
      * @throws IOException in case of an error
      */

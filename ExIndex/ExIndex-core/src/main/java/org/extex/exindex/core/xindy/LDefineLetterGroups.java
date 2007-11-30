@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import org.extex.exindex.core.type.LetterGroup;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -59,22 +60,24 @@ public class LDefineLetterGroups extends LFunction {
      * @param interpreter the interpreter
      * @param list the list of letter group names
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
      * 
      * @throws LNonMatchingTypeException in case of an error
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LList list)
-            throws LNonMatchingTypeException {
+            throws LNonMatchingTypeException,
+                LSettingConstantException {
 
         String last = "";
 
         for (LValue val : list) {
             String name = LString.getString(val);
             interpreter.setq("letter-group:" + name, //
-                new LetterGroup("", last, new ArrayList<String>()));
+                new LetterGroup(name, "", last, new ArrayList<String>()));
             last = name;
         }
 
-        return LList.NIL;
+        return null;
     }
 }

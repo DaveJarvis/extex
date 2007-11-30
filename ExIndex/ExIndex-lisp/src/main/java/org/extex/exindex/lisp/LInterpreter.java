@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.exception.LUndefinedFunctionException;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -57,9 +58,7 @@ public class LInterpreter {
 
         try {
             new LInterpreter().topLevelLoop();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -82,6 +81,8 @@ public class LInterpreter {
     public LInterpreter() {
 
         super();
+        LSymbol.get("t").setMutable(false);
+        LSymbol.get("nil").setMutable(false);
     }
 
     /**
@@ -235,9 +236,18 @@ public class LInterpreter {
      * 
      * @param symbol the symbol
      * @param value the value
+     * 
+     * @throws LSettingConstantException in case the symbol is defined as
+     *         constant
      */
-    public void setq(LSymbol symbol, LValue value) {
+    public void setq(LSymbol symbol, LValue value)
+            throws LSettingConstantException {
 
+        if (symbol == null) {
+            throw new NullPointerException();
+        } else if (!symbol.isMutable()) {
+            throw new LSettingConstantException(symbol);
+        }
         bindings.put(symbol, value);
     }
 
@@ -246,10 +256,14 @@ public class LInterpreter {
      * 
      * @param symbol the symbol
      * @param value the value
+     * 
+     * @throws LSettingConstantException in case the symbol is defined as
+     *         constant
      */
-    public void setq(String symbol, LValue value) {
+    public void setq(String symbol, LValue value)
+            throws LSettingConstantException {
 
-        bindings.put(LSymbol.get(symbol), value);
+        setq(LSymbol.get(symbol), value);
     }
 
     /**
@@ -301,10 +315,10 @@ public class LInterpreter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write a string-valued variable to a writer if it is defined.
      * 
-     * @param writer
-     * @param tag
+     * @param writer the writer
+     * @param tag the name of the variable
      * 
      * @throws IOException in case of an I/O error
      */
@@ -312,7 +326,12 @@ public class LInterpreter {
 
         LValue x = get(LSymbol.get(tag));
         if (x instanceof LString) {
-            writer.write(((LString) x).getValue());
+            String value = ((LString) x).getValue();
+            if (value != null && !"".equals(value)) {
+                writer.write(value);
+            }
+            return;
+        } else if (x == null) {
             return;
         }
 

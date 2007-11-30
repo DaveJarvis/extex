@@ -50,6 +50,9 @@ public class LSymbol implements LValue {
         LSymbol sym = symtab.get(value);
         if (sym == null) {
             sym = new LSymbol(value);
+            if (value != null && !"".equals(value) && value.charAt(0) == ':') {
+                sym.setMutable(false);
+            }
             symtab.put(value, sym);
         }
 
@@ -60,6 +63,11 @@ public class LSymbol implements LValue {
      * The field <tt>value</tt> contains the value.
      */
     private String value;
+
+    /**
+     * The field <tt>mutable</tt> contains the indicator for non-constants.
+     */
+    private boolean mutable = true;
 
     /**
      * Creates a new object. In fact these instances are managed via the factory
@@ -84,6 +92,16 @@ public class LSymbol implements LValue {
     }
 
     /**
+     * Getter for mutable.
+     * 
+     * @return the mutable
+     */
+    public boolean isMutable() {
+
+        return mutable;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
@@ -91,6 +109,16 @@ public class LSymbol implements LValue {
     public void print(PrintStream stream) {
 
         stream.print(value);
+    }
+
+    /**
+     * Setter for mutable.
+     * 
+     * @param mutable the mutable to set
+     */
+    public void setMutable(boolean mutable) {
+
+        this.mutable = mutable;
     }
 
     /**

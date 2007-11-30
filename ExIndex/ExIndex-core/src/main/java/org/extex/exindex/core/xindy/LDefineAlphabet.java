@@ -25,6 +25,7 @@ import java.util.List;
 import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -63,10 +64,12 @@ public class LDefineAlphabet extends LFunction {
      * 
      * @return <tt>nil</tt>
      * 
-     * @throws LNonMatchingTypeException
+     * @throws LNonMatchingTypeException ...
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String name, LList list)
-            throws LNonMatchingTypeException {
+            throws LNonMatchingTypeException,
+                LSettingConstantException {
 
         List<String> words = new ArrayList<String>();
 

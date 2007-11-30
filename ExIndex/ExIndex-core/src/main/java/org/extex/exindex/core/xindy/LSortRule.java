@@ -22,6 +22,7 @@ package org.extex.exindex.core.xindy;
 import org.extex.exindex.core.rules.RegexRule;
 import org.extex.exindex.core.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -64,10 +65,13 @@ public class LSortRule extends LFunction {
      *        start
      * @param run
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String pattern,
-            String replacement, Boolean again, Long run) {
+            String replacement, Boolean again, Long run)
+            throws LSettingConstantException {
 
         LSymbol symbol = LSymbol.get("sort-rules-" + run.toString());
         LValue sr = interpreter.get(symbol);
@@ -81,7 +85,7 @@ public class LSortRule extends LFunction {
         Rule rule = new RegexRule(pattern, replacement, again.booleanValue());
 
         sortRules.add(rule);
-        return LList.NIL;
+        return null;
     }
 
 }

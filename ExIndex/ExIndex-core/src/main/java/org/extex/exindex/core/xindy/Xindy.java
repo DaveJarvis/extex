@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.extex.exindex.core.normalizer.Collator;
 import org.extex.exindex.core.parser.Parser;
@@ -37,6 +38,7 @@ import org.extex.exindex.core.type.alphabet.RomanNumeralsLowercase;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsUppercase;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
 
 /**
@@ -64,8 +66,12 @@ public class Xindy extends LEngine {
      * @throws NoSuchMethodException in case of an undefined method in a
      *         function definition
      * @throws SecurityException in case of an security problem
+     * @throws LSettingConstantException should not happen
      */
-    public Xindy() throws SecurityException, NoSuchMethodException {
+    public Xindy()
+            throws SecurityException,
+                NoSuchMethodException,
+                LSettingConstantException {
 
         super();
         index = new Index();
@@ -158,25 +164,27 @@ public class Xindy extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform the markup phase and write the result to the given writer.
      * 
      * @param writer the writer
+     * @param logger the logger
      */
-    protected void markup(Writer writer) {
+    protected void markup(Writer writer, Logger logger) {
 
         // TODO gene: markup unimplemented
 
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform the processing phase.
      * 
      * @param data the list of raw data files
+     * @param logger the logger
      * 
      * @throws IOException in case of an I/O error
      * @throws FileNotFoundException if an input file could not be found
      */
-    protected void process(List<String> data)
+    protected void process(List<String> data, Logger logger)
             throws FileNotFoundException,
                 IOException {
 
@@ -193,33 +201,37 @@ public class Xindy extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform all phases; initializing from a list of styles, loading a list of
+     * data resources, and writing the result to a writer.
      * 
      * @param styles the list of styles to use
      * @param data the list of raw data files
      * @param writer the writer for output
+     * @param logger the logger
      * 
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
      */
-    public void run(List<String> styles, List<String> data, Writer writer)
-            throws IOException,
-                LException {
+    public void run(List<String> styles, List<String> data, Writer writer,
+            Logger logger) throws IOException, LException {
 
-        startup(styles);
-        process(data);
-        markup(writer);
+        startup(styles, logger);
+        process(data, logger);
+        markup(writer, logger);
     }
 
     /**
      * Load the style files and prepare the engine to get started.
      * 
      * @param styles the list of styles to use
+     * @param logger the logger
      * 
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
      */
-    protected void startup(List<String> styles) throws IOException, LException {
+    protected void startup(List<String> styles, Logger logger)
+            throws IOException,
+                LException {
 
         for (String style : styles) {
             load(style);

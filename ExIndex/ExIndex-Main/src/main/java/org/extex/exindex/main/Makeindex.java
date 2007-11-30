@@ -62,13 +62,13 @@ import org.extex.logging.LogFormatter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Indexer {
+public class Makeindex {
 
     /**
      * The field <tt>localizer</tt> contains the localozer.
      */
     private static final Localizer localizer =
-            LocalizerFactory.getLocalizer(Indexer.class);
+            LocalizerFactory.getLocalizer(Makeindex.class);
 
     /**
      * Log a {@link java.lang.Throwable Throwable} including its stack trace to
@@ -92,7 +92,7 @@ public class Indexer {
     public static void main(String[] args) {
 
         try {
-            System.exit(new Indexer().run(args));
+            System.exit(new Makeindex().run(args));
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
         }
@@ -192,14 +192,14 @@ public class Indexer {
      * @throws IOException in case of an I/O error when reading the default
      *         settings
      */
-    public Indexer() throws IOException {
+    public Makeindex() throws IOException {
 
         super();
 
         banner = true;
         index = new Index();
 
-        logger = Logger.getLogger(Indexer.class.getName());
+        logger = Logger.getLogger(Makeindex.class.getName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.INFO);
         consoleHandler = new ConsoleHandler();
@@ -266,7 +266,7 @@ public class Indexer {
                     }
                     startPage = args[i];
 
-                } else if ("-t".startsWith(a)) {
+                } else if ("-transcript".startsWith(a)) {
                     if (++i >= args.length) {
                         throw new MissingArgumentException(a);
                     }
@@ -274,13 +274,13 @@ public class Indexer {
 
                 } else if ("-i".startsWith(a)) {
                     files.add(null);
-                } else if ("-c".startsWith(a)) {
+                } else if ("-collateSpaces".startsWith(a)) {
                     collateSpaces = true;
-                } else if ("-g".startsWith(a)) {
+                } else if ("-german".startsWith(a)) {
                     collateGerman = true;
                 } else if ("-l".startsWith(a)) {
                     // TODO letter ordering
-                } else if ("-q".startsWith(a)) {
+                } else if ("-quiet".startsWith(a)) {
                     logger.removeHandler(consoleHandler);
                 } else if ("-Codepage".startsWith(a)) {
                     if (++i >= args.length) {
@@ -313,7 +313,7 @@ public class Indexer {
             }
 
             if (transcript == null && files.size() != 0 && files.get(0) != null) {
-                transcript = files.get(0).replaceAll("\\.idx", "") + ".ilg";
+                transcript = files.get(0).replaceAll("\\.idx$", "") + ".ilg";
             }
 
             if (transcript != null) {

@@ -47,7 +47,7 @@ public class LUseRuleSet extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.OPT_STRING(":phase"),//
-                Arg.OPT_QLIST(":rule-set")});
+                Arg.OPT_QSTRING_LIST(":rule-set")});
     }
 
     /**

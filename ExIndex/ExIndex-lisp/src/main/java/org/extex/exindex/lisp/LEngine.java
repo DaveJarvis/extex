@@ -19,11 +19,9 @@
 
 package org.extex.exindex.lisp;
 
-import java.io.IOException;
-
+import org.extex.exindex.lisp.builtin.Print;
 import org.extex.exindex.lisp.builtin.Quote;
 import org.extex.exindex.lisp.builtin.Require;
-import org.extex.exindex.lisp.exception.LException;
 
 /**
  * This class represents an LInterpreter with some predefined functions.
@@ -42,13 +40,7 @@ public class LEngine extends LInterpreter {
 
         try {
             new LEngine().topLevelLoop();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (LException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -56,14 +48,15 @@ public class LEngine extends LInterpreter {
     /**
      * Creates a new object.
      * 
-     * @throws NoSuchMethodException
-     * @throws SecurityException
+     * @throws NoSuchMethodException if a method is missing
+     * @throws SecurityException if a security problem is encountered
      */
     public LEngine() throws SecurityException, NoSuchMethodException {
 
         super();
-        defun("require", new Require("require"));
         defun("quote", new Quote("quote"));
+        defun("print", new Print("print"));
+        defun("require", new Require("require"));
     }
 
 }

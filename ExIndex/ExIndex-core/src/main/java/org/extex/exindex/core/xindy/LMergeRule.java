@@ -22,6 +22,7 @@ package org.extex.exindex.core.xindy;
 import org.extex.exindex.core.rules.Rule;
 import org.extex.exindex.core.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -68,11 +69,13 @@ public class LMergeRule extends LFunction {
      * @param again the optional indicator to restart the replacement cycle from
      *        start
      * 
-     * @return <tt>nil</tt>
+     * @return <tt>null</tt>
+     * 
+     * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String pattern,
             String replacement, Boolean string, Boolean bregexp,
-            Boolean eregexp, Boolean again) {
+            Boolean eregexp, Boolean again) throws LSettingConstantException {
 
         LSymbol symbol = LSymbol.get("merge-rules");
         LValue mr = interpreter.get(symbol);
@@ -93,7 +96,7 @@ public class LMergeRule extends LFunction {
 
         mergeRules.add(rule);
 
-        return LList.NIL;
+        return null;
     }
 
 }

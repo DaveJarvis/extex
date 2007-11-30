@@ -19,10 +19,15 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.type.transform.Transform;
+import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -34,7 +39,8 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
@@ -54,15 +60,23 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     private List<String> prefixes;
 
     /**
+     * The field <tt>name</tt> contains the ...
+     */
+    private String name;
+
+    /**
      * Creates a new object.
      * 
+     * @param name the name of the letter group
      * @param before
      * @param after
      * @param prefixes
      */
-    public LetterGroup(String before, String after, List<String> prefixes) {
+    public LetterGroup(String name, String before, String after,
+            List<String> prefixes) {
 
         super();
+        this.name = name;
         this.before = before;
         this.after = after;
         this.prefixes = prefixes;
@@ -75,7 +89,9 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
      */
     public void print(PrintStream stream) {
 
-        stream.print("#LetterGroup(");
+        stream.print("#LetterGroup(\"");
+        stream.print(name);
+        stream.print("\"");
         if (before != null && !"".equals(before)) {
             stream.print(" :before \"");
             stream.print(before);
@@ -98,4 +114,47 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
         stream.print(")");
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void write(Writer writer, LInterpreter interpreter)
+            throws IOException {
+
+        boolean first = true;
+        interpreter
+            .writeString(writer, "markup:letter-group-" + name + "-open");
+        String openHead = "markup:letter-group-" + name + "-open-head";
+        String closeHead = "markup:letter-group-" + name + "-close-head";
+        if (interpreter.get(LSymbol.get(openHead)) != null
+                || interpreter.get(LSymbol.get(closeHead)) != null) {
+            interpreter.writeString(writer, openHead);
+            LValue trans =
+                    interpreter.get(LSymbol.get("markup:letter-group-" + name
+                            + "-transform"));
+            if (trans == null || !(trans instanceof Transform)) {
+                writer.write(name);
+            } else {
+                writer.write(((Transform) trans).transform(name));
+            }
+            interpreter.writeString(writer, closeHead);
+        }
+
+        for (IndexEntry entry : this) {
+            if (first) {
+                first = false;
+            } else {
+                interpreter.writeString(writer, "markup:letter-group-" + name
+                        + "-sep");
+            }
+
+            entry.write(writer, interpreter, 0);
+        }
+        interpreter.writeString(writer, "markup:letter-group-" + name
+                + "-close");
+    }
 }

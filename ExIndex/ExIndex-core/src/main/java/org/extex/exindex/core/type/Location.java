@@ -19,6 +19,11 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
+import java.io.Writer;
+
+import org.extex.exindex.lisp.LInterpreter;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -27,5 +32,13 @@ package org.extex.exindex.core.type;
  */
 public interface Location {
 
-    //
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    void write(Writer writer, LInterpreter interpreter) throws IOException;
 }

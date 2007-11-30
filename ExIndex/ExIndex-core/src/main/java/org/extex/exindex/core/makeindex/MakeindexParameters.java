@@ -58,45 +58,47 @@ public final class MakeindexParameters {
     private static Parameters defaultParameters = new Parameters();
 
     static {
-        def("keyword", "markup-", new LString("\\indexentry"));
-        def("arg_open", "markup-", new LChar('{'));
-        def("arg_close", "markup-", new LChar('}'));
-        def("range_open", "markup-", new LChar('('));
-        def("range_close", "markup-", new LChar(')'));
-        def("level", "markup-", new LChar('!'));
-        def("actual", "markup-", new LChar('@'));
-        def("encap", "markup-", new LChar('|'));
-        def("quote", "markup-", new LChar('"'));
-        def("escape", "markup-", new LChar('\\'));
-        def("page_compositor", "markup-", new LString("-"));
-        def("preamble", "markup-index-open", new LString("\\begin{theindex}\n"));
-        def("postamble", "markup-index-close", new LString(
+        def("keyword", "index:keyword", new LString("\\indexentry"));
+        def("arg_open", "index:arg-open", new LChar('{'));
+        def("arg_close", "index:arg-close", new LChar('}'));
+        def("range_open", "index:range-open", new LChar('('));
+        def("range_close", "indexrange-close:", new LChar(')'));
+        def("level", "index:level", new LChar('!'));
+        def("actual", "index:actual", new LChar('@'));
+        def("encap", "index:encap", new LChar('|'));
+        def("quote", "index:quote", new LChar('"'));
+        def("escape", "index:escape", new LChar('\\'));
+        def("page_compositor", "index:page-compositor", new LString("-"));
+        def("preamble", "markup:index-open", new LString("\\begin{theindex}\n"));
+        def("postamble", "markup:index-close", new LString(
             "\n\n\\end{theindex}\n"));
-        def("setpage_prefix", "markup-", new LString("\n\\setcounter{page}{"));
-        def("setpage_suffix", "markup-", new LString("}\n"));
-        def("group_skip", "markup-", new LString("\n\n\\indexspace\n"));
-        def("heading_prefix", "markup-", new LString(""));
-        def("heading_suffix", "markup-", new LString(""));
-        def("headings_flag", "markup-", new LNumber(0));
-        def("item_0", "markup-", new LString("\n\\item "));
-        def("item_1", "markup-", new LString("\n\\subitem "));
-        def("item_2", "markup-", new LString("\n\\subsubitem "));
-        def("item_01", "markup-", new LString("\n\\subitem "));
-        def("item_12", "markup-", new LString("\n\\subsubitem "));
-        def("item_x1", "markup-", new LString("\n\\subitem "));
-        def("item_x2", "markup-", new LString("\n\\subsubitem "));
-        def("delim_0", "markup-", new LString(", "));
-        def("delim_1", "markup-", new LString(", "));
-        def("delim_2", "markup-", new LString(", "));
-        def("delim_n", "markup-", new LString(", "));
-        def("delim_r", "markup-", new LString("-"));
-        def("encap_prefix", "markup-", new LString("\\"));
-        def("encap_infix", "markup-", new LString("{"));
-        def("encap_suffix", "markup-", new LString("}"));
-        def("page_precedence", "markup-", new LString("rnaRA"));
-        def("line_max", "markup-", new LNumber(72));
-        def("indent_space", "markup-", new LString("\t\t"));
-        def("indent_length", "markup-", new LNumber(16));
+        def("setpage_prefix", "markup:setpage-prefix", new LString(
+            "\n\\setcounter{page}{"));
+        def("setpage_suffix", "markup:setpage-suffix", new LString("}\n"));
+        def("group_skip", "markup:letter-group-list-sep", new LString(
+            "\n\n\\indexspace\n"));
+        def("heading_prefix", "index:", new LString(""));
+        def("heading_suffix", "index:", new LString(""));
+        def("headings_flag", "index:", new LNumber(0));
+        def("item_0", "index:", new LString("\n\\item "));
+        def("item_1", "index:", new LString("\n\\subitem "));
+        def("item_2", "index:", new LString("\n\\subsubitem "));
+        def("item_01", "index:", new LString("\n\\subitem "));
+        def("item_12", "index:", new LString("\n\\subsubitem "));
+        def("item_x1", "index:", new LString("\n\\subitem "));
+        def("item_x2", "index:", new LString("\n\\subsubitem "));
+        def("delim_0", "index:", new LString(", "));
+        def("delim_1", "index:", new LString(", "));
+        def("delim_2", "index:", new LString(", "));
+        def("delim_n", "markup:locref-list-sep", new LString(", "));
+        def("delim_r", "markup:range", new LString("--"));
+        def("encap_prefix", "index:", new LString("\\"));
+        def("encap_infix", "index:", new LString("{"));
+        def("encap_suffix", "index:", new LString("}"));
+        def("page_precedence", "index:", new LString("rnaRA"));
+        def("line_max", "markup:line-max", new LNumber(72));
+        def("indent_space", "markup:indent-space", new LString("\t\t"));
+        def("indent_length", "markup:indent-length", new LNumber(16));
 
         defaultParameters.put("markup-index-hierdepth", new LNumber(2));
     }
@@ -188,7 +190,7 @@ public final class MakeindexParameters {
      * Scan the input for a value.
      * 
      * @param r the reader to get characters from
-     * @param resource TODO
+     * @param resource the name of the resource loaded
      * 
      * @return the token found
      * 
