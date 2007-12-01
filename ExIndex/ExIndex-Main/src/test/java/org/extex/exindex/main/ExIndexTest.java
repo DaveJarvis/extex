@@ -27,11 +27,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for ExIndex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -84,21 +86,29 @@ public class ExIndexTest {
         System.setOut(new PrintStream(outStream));
         ByteArrayOutputStream errStream = new ByteArrayOutputStream();
         System.setErr(new PrintStream(errStream));
+        ExIndex index;
         try {
-            ExIndex x = new ExIndex();
-            assertEquals(exit, x.run(args));
+            index = new ExIndex();
+            assertEquals(exit, index.run(args));
             outStream.flush();
             assertEquals("stdout", expectedOut,//
                 outStream.toString());
             errStream.flush();
             assertEquals("stderr", extectedErr, errStream.toString()
                 .replaceAll("^This is ExIndex [0-9.]+ \\([0-9]*\\)\n", ""));
-            return x;
         } finally {
             System.setErr(err);
             System.setOut(out);
             System.setIn(in);
         }
+
+        Logger logger = index.getLogger();
+        if (logger != null) {
+            for (Handler h : logger.getHandlers()) {
+                h.close();
+            }
+        }
+        return index;
     }
 
     /**
@@ -148,9 +158,7 @@ public class ExIndexTest {
 
         File log = new File("xyzzy.ilg");
         log.delete();
-        ExIndex x =
-                runTest(new String[]{"xyzzy"}, -1, "File not found: xyzzy\n");
-        x.setLogger(null);
+        runTest(new String[]{"xyzzy"}, -1, "File not found: xyzzy\n");
         assertTrue(log.exists());
         log.delete();
     }
@@ -193,7 +201,11 @@ public class ExIndexTest {
     @Test
     public final void test21() throws Exception {
 
+        File log = new File("UnDeFiNeD.ilg");
+        log.delete();
         runTest(new String[]{"UnDeFiNeD"}, -1, "File not found: UnDeFiNeD\n");
+        assertTrue(log.exists());
+        log.delete();
     }
 
     /**
@@ -289,6 +301,19 @@ public class ExIndexTest {
             -1,
             "The filter class java.io.StringReader for filter test4 does not have a proper\n"
                     + "constructor.\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testFilter7() throws Exception {
+
+        runTest(new String[]{"-filter", "testBad1"}, -1,
+            "Filter error for filter testBad1: java.lang.IllegalArgumentException\n");
     }
 
     /**
@@ -423,7 +448,11 @@ public class ExIndexTest {
     public final void testStyle3() throws Exception {
 
         runTest(new String[]{"-t", "xxx", "-s",
-                "src/test/resources/makindex.xdy"}, -1, "...");
+                "../ExIndex-Main/src/test/resources/makeidx"}, 0,
+            "Scanning style file ../ExIndex-Main/src/test/resources/makeidx...done (?\n"
+                    + "attributes redefined, ? ignored).\n"
+                    + "Generating output...Output written.\n"
+                    + "Transcript written in xxx.\n");
     }
 
     /**
@@ -435,7 +464,12 @@ public class ExIndexTest {
     @Test
     public final void testStyle4() throws Exception {
 
-        runTest(new String[]{"-s", "src/test/resources/doc.ist"}, -1, "...");
+        runTest(
+            new String[]{"-s", "../ExIndex-Main/src/test/resources/doc"},
+            0,
+            "Scanning style file ../ExIndex-Main/src/test/resources/doc...done (? attributes\n"
+                    + "redefined, ? ignored).\n"
+                    + "Generating output...Output written.\n");
     }
 
     /**
