@@ -161,6 +161,42 @@ public class LInterpreter {
     }
 
     /**
+     * Get the binding of a symbol.
+     * 
+     * @param symbol the symbol to look up
+     * 
+     * @return the binding or <code>null</code> if nothing is defined
+     */
+    public LValue get(String symbol) {
+
+        return bindings.get(LSymbol.get(symbol));
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param reader the reader
+     * @param resource the name of the resource for error messages
+     * 
+     * @return the last expression read
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
+     */
+    public LValue load(Reader reader, String resource)
+            throws IOException,
+                LException {
+
+        LParser parser = makeParser(reader, resource);
+        LValue node = LList.NIL;
+
+        for (LValue n = parser.read(); n != null; n = parser.read()) {
+            node = eval(n);
+        }
+        return node;
+    }
+
+    /**
      * Load a file and eval all expressions found in it.
      * 
      * @param name the name of the file to load
@@ -173,28 +209,22 @@ public class LInterpreter {
     public LValue load(String name) throws IOException, LException {
 
         Reader reader = new FileReader(name);
-        LParser parser = makeParser(name, reader);
-        LValue node = LList.NIL;
-
         try {
-            for (LValue n = parser.read(); n != null; n = parser.read()) {
-                node = eval(n);
-            }
+            return load(reader, name);
         } finally {
             reader.close();
         }
-        return node;
     }
 
     /**
      * Create a parser.
      * 
-     * @param name the name of the resource
      * @param reader the reader
+     * @param name the name of the resource
      * 
      * @return the parser
      */
-    protected LParser makeParser(String name, Reader reader) {
+    protected LParser makeParser(Reader reader, String name) {
 
         return new LParser(reader, name);
     }
@@ -306,7 +336,7 @@ public class LInterpreter {
             throws IOException,
                 LException {
 
-        LParser parser = makeParser(resource, r);
+        LParser parser = makeParser(r, resource);
 
         for (LValue node = parser.read(); node != null; node = parser.read()) {
 

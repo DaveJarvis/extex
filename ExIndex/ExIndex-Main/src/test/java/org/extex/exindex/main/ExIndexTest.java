@@ -146,7 +146,13 @@ public class ExIndexTest {
     @Test
     public final void test12() throws Exception {
 
-        runTest(new String[]{"xyzzy"}, -1, "File not found: xyzzy\n");
+        File log = new File("xyzzy.ilg");
+        log.delete();
+        ExIndex x =
+                runTest(new String[]{"xyzzy"}, -1, "File not found: xyzzy\n");
+        x.setLogger(null);
+        assertTrue(log.exists());
+        log.delete();
     }
 
     /**
@@ -170,8 +176,12 @@ public class ExIndexTest {
     @Test
     public final void test20() throws Exception {
 
+        File log = new File("UnDeFiNeD.ilg");
+        log.delete();
         runTest(new String[]{"-", "UnDeFiNeD"}, -1,
             "File not found: UnDeFiNeD\n");
+        assertTrue(log.exists());
+        log.delete();
     }
 
     /**
@@ -412,8 +422,20 @@ public class ExIndexTest {
     @Test
     public final void testStyle3() throws Exception {
 
-        runTest(new String[]{"-s", "src/test/resources/makindex.xdy"}, -1,
-            "Scanning style file undef...\nFile not found: undef\n");
+        runTest(new String[]{"-t", "xxx", "-s",
+                "src/test/resources/makindex.xdy"}, -1, "...");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testStyle4() throws Exception {
+
+        runTest(new String[]{"-s", "src/test/resources/doc.ist"}, -1, "...");
     }
 
     /**

@@ -30,7 +30,6 @@ import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;
@@ -40,7 +39,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.makeindex.MakeindexLoader;
-import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.xindy.Indexer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -116,33 +114,6 @@ public class ExIndex extends Indexer {
      * spaces.
      */
     private boolean collateSpaces = false;
-
-    /**
-     * The field <tt>comp</tt> contains the comparator.
-     */
-    Comparator<Entry> comp = new Comparator<Entry>() {
-
-        public int compare(Entry o1, Entry o2) {
-
-            String[] ka1 = o1.getKey();
-            String[] ka2 = o2.getKey();
-            int len = (ka1.length < ka2.length ? ka1.length : ka2.length);
-
-            for (int i = 0; i < len; i++) {
-                int cmp = ka1[i].compareToIgnoreCase(ka2[i]);
-                if (cmp != 0) {
-                    return cmp;
-                }
-            }
-            if (ka1.length < ka2.length) {
-                return 1;
-            } else if (ka1.length > ka2.length) {
-                return -1;
-            }
-            return o1.getValue().compareTo(o2.getValue());
-        }
-
-    };
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
@@ -228,15 +199,14 @@ public class ExIndex extends Indexer {
 
         super();
         config = ConfigurationFactory.newInstance("path/indexer");
-        finder =
-                new ResourceFinderFactory().createResourceFinder(config,
-                    logger, System.getProperties(), new InteractionIndicator() {
+        finder = new ResourceFinderFactory().createResourceFinder(config, //
+            logger, System.getProperties(), new InteractionIndicator() {
 
-                        public boolean isInteractive() {
+                public boolean isInteractive() {
 
-                            return false;
-                        }
-                    });
+                    return false;
+                }
+            });
         charset = Charset.defaultCharset();
         banner = true;
 
@@ -568,6 +538,8 @@ public class ExIndex extends Indexer {
             throw new MainException(LocalizerFactory.getLocalizer(getClass())
                 .format("UndefinedLogLevel", level));
         }
+
+        finder.enableTracing(true);
     }
 
     /**
