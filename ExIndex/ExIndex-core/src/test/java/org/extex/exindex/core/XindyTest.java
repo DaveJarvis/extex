@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core;
 
-import org.extex.exindex.core.xindy.Xindy;
+import org.extex.exindex.core.xindy.Indexer;
 import org.junit.Test;
 
 /**
@@ -38,7 +38,7 @@ public class XindyTest {
     @Test()
     public void testLoadStyle2() throws Exception {
 
-        Xindy xindy = new Xindy();
+        Indexer xindy = new Indexer();
         xindy.load("src/test/resources/xindy/makeidx.xdy");
 
         xindy.printBindings(System.out);

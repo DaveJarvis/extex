@@ -25,7 +25,7 @@ import java.io.StringWriter;
 
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.transform.Upcase;
-import org.extex.exindex.core.xindy.Xindy;
+import org.extex.exindex.core.xindy.Indexer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LString;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class StructuredIndexTest {
         index.add(lg);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Xindy();
+        LInterpreter interpreter = new Indexer();
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
         index.write(writer, interpreter);
 
@@ -84,7 +84,7 @@ public class StructuredIndexTest {
         index.add(lg);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Xindy();
+        LInterpreter interpreter = new Indexer();
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
@@ -116,7 +116,7 @@ public class StructuredIndexTest {
         index.add(lg);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Xindy();
+        LInterpreter interpreter = new Indexer();
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
@@ -163,7 +163,7 @@ public class StructuredIndexTest {
         index.add(lg);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Xindy();
+        LInterpreter interpreter = new Indexer();
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
