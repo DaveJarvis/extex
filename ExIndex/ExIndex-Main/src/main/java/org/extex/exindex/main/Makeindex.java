@@ -29,7 +29,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -51,8 +50,7 @@ import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.type.Index;
 import org.extex.exindex.core.writer.IndexWriter;
 import org.extex.exindex.core.writer.MakeindexWriter;
-import org.extex.exindex.main.exception.MissingArgumentException;
-import org.extex.exindex.main.exception.UnknownArgumentException;
+import org.extex.exindex.main.exception.MainException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.logging.LogFormatter;
@@ -156,11 +154,6 @@ public class Makeindex {
     private FileHandler fileHandler = null;
 
     /**
-     * The field <tt>filter</tt> contains the ...
-     */
-    private String filter = null;
-
-    /**
      * The field <tt>index</tt> contains the enclosed index.
      */
     private Index index;
@@ -192,8 +185,6 @@ public class Makeindex {
      */
     private String transcript;
 
-    private Charset charset;
-
     /**
      * Creates a new object.
      * 
@@ -217,6 +208,26 @@ public class Makeindex {
     }
 
     /**
+     * Get a numbered argument from a list or produce an appropriate error
+     * message.
+     * 
+     * @param a the flag currently processed
+     * @param args the arguments
+     * @param i the index
+     * @return the argument: arg[i]
+     * 
+     * @throws MainException if the argument is out of bounds
+     */
+    private String getArg(String a, String[] args, int i) throws MainException {
+
+        if (i >= args.length) {
+            throw new MainException(LocalizerFactory.getLocalizer(getClass())
+                .format("MissingArgument", a));
+        }
+        return args[i];
+    }
+
+    /**
      * Getter for logger.
      * 
      * @return the logger
@@ -234,8 +245,6 @@ public class Makeindex {
      * @return the exit code
      */
     public int run(String[] args) {
-
-        charset = Charset.defaultCharset();
 
         if (args == null) {
             throw new NullPointerException();
@@ -257,18 +266,10 @@ public class Makeindex {
                 if (!a.startsWith("-")) {
                     files.add(a);
                 } else if ("-".equals(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    files.add(args[i]);
+                    files.add(getArg(a, args, ++i));
+
                 } else if ("-collateSpaces".startsWith(a)) {
                     collateSpaces = true;
-
-                } else if ("-filter".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    filter = args[i];
 
                 } else if ("-german".startsWith(a)) {
                     collateGerman = true;
@@ -280,19 +281,13 @@ public class Makeindex {
                     // TODO letter ordering
 
                 } else if ("-output".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    output = args[i];
+                    output = getArg(a, args, ++i);
                     if (output.equals("") || output.equals("-")) {
                         output = null;
                     }
 
                 } else if ("-page".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    startPage = args[i];
+                    startPage = getArg(a, args, ++i);
 
                 } else if ("-quiet".startsWith(a)) {
                     logger.removeHandler(consoleHandler);
@@ -301,34 +296,10 @@ public class Makeindex {
                     pageCompression = false;
 
                 } else if ("-style".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    styles.add(args[i]);
+                    styles.add(getArg(a, args, ++i));
 
                 } else if ("-transcript".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    transcript = args[i];
-
-                } else if ("-Codepage".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    charset = Charset.forName(args[i]);
-
-                } else if ("-Module".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    // TODO xindy -M
-
-                } else if ("-LogLevel".startsWith(a)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(a);
-                    }
-                    // TODO xindy -L
+                    transcript = getArg(a, args, ++i);
 
                 } else if ("-Version".startsWith(a)) {
                     showBanner();
@@ -340,7 +311,8 @@ public class Makeindex {
                     return 1;
 
                 } else {
-                    throw new UnknownArgumentException(a);
+                    throw new MainException(LocalizerFactory.getLocalizer(
+                        getClass()).format("UnknownArgument", a));
                 }
 
             }
