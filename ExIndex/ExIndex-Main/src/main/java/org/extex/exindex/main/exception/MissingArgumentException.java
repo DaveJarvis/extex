@@ -28,7 +28,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingArgumentException extends Exception {
+public class MissingArgumentException extends MainException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
