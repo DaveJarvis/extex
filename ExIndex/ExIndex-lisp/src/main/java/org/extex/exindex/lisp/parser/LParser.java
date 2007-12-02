@@ -81,6 +81,19 @@ public class LParser {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void close() throws IOException {
+
+        if (reader != null) {
+            reader.close();
+            reader = null;
+        }
+    }
+
+    /**
      * Getter for escape.
      * 
      * @return the escape
