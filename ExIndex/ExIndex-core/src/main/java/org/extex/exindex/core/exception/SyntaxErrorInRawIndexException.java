@@ -19,17 +19,13 @@
 
 package org.extex.exindex.core.exception;
 
-import java.io.IOException;
-
-import org.extex.framework.i18n.LocalizerFactory;
-
 /**
  * This exception signals that an unknown argument has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SyntaxErrorInRawIndexException extends IOException {
+public class SyntaxErrorInRawIndexException extends RawIndexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -40,23 +36,12 @@ public class SyntaxErrorInRawIndexException extends IOException {
     /**
      * Creates a new object.
      * 
-     * @param message the argument
+     * @param resource the name of the resource
+     * @param line the line number
      */
-    public SyntaxErrorInRawIndexException(String message) {
+    public SyntaxErrorInRawIndexException(String resource, String line) {
 
-        super(message);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            getMessage());
+        super(resource, line);
     }
 
 }
