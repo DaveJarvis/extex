@@ -20,14 +20,15 @@
 package org.extex.exindex.core.xindy;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.exception.SyntaxErrorInRawIndexException;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
 import org.extex.exindex.core.type.alphabet.AlphaUppercase;
@@ -35,13 +36,13 @@ import org.extex.exindex.core.type.alphabet.ArabicNumbers;
 import org.extex.exindex.core.type.alphabet.Digits;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsLowercase;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsUppercase;
-import org.extex.exindex.core.xparser.LIndexentry;
+import org.extex.exindex.core.xparser.RawIndexParser;
+import org.extex.exindex.core.xparser.XindyParser;
+import org.extex.exindex.core.xparser.raw.Indexentry;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
-import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This class provides an LInterpreter with the functions needed by Xindy
@@ -58,6 +59,11 @@ public class Indexer extends LEngine {
     private StructuredIndex index;
 
     /**
+     * The field <tt>entries</tt> contains the raw index.
+     */
+    private List<Indexentry> entries;
+
+    /**
      * Creates a new object.
      * 
      * @throws NoSuchMethodException in case of an undefined method in a
@@ -72,6 +78,8 @@ public class Indexer extends LEngine {
 
         super();
         index = new StructuredIndex();
+        entries = new ArrayList<Indexentry>();
+
         defun("define-alphabet", //
             new LDefineAlphabet("define-alphabet"));
         defun("define-attributes", //
@@ -147,23 +155,6 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param resource
-     * 
-     * @return
-     * 
-     * @throws FileNotFoundException
-     * @throws IOException in case of an I/O error
-     */
-    protected Reader makeDataReader(String resource)
-            throws FileNotFoundException,
-                IOException {
-
-        return new FileReader(resource);
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.lisp.LInterpreter#makeParser(java.io.Reader,
@@ -175,6 +166,26 @@ public class Indexer extends LEngine {
         LParser parser = super.makeParser(reader, name);
         parser.setEscape('~');
         return parser;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param resource the name of the resource
+     * 
+     * @return the parser
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected RawIndexParser makeRawIndexParser(String resource)
+            throws IOException {
+
+        InputStream stream = getResourceFinder().findResource(resource, "raw");
+        if (stream == null) {
+            return null;
+        }
+
+        return new XindyParser(new InputStreamReader(stream), resource);
     }
 
     /**
@@ -208,21 +219,15 @@ public class Indexer extends LEngine {
                 SecurityException,
                 NoSuchMethodException {
 
-        defun("indexentry", new LIndexentry("indexentry"));
-
         for (String resource : data) {
-            Reader reader = makeDataReader(resource);
-            LParser parser = makeParser(reader, resource);
+            RawIndexParser parser = makeRawIndexParser(resource);
             try {
-                for (LValue n = parser.read(); n != null; n = parser.read()) {
-                    if (!(n instanceof LList)) {
-                        throw new SyntaxErrorInRawIndexException(
-                            resource == null ? "<stdin>" : resource, "");
-                    }
-                    eval(n);
+                for (Indexentry entry = parser.parse(); entry != null; entry =
+                        parser.parse()) {
+                    entries.add(entry);
                 }
             } finally {
-                reader.close();
+                parser.close();
             }
         }
         // TODO
