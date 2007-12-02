@@ -51,12 +51,12 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *(indexentry { :key <i>string-list</i> [:print <i>string-list</i>]
- *            | :tkey <i>list-of-layers</i> }
- *            [:attr <i>string</i>]
- *            { :locref <i>string</i>  [:open-range | :close-range]
- *            | :xref <i>string-list</i> } )
- *</pre>
+ * (indexentry { :key <i>string-list</i> [:print <i>string-list</i>]
+ *             | :tkey <i>list-of-layers</i> }
+ *             [:attr <i>string</i>]
+ *             { :locref <i>string</i>  [:open-range | :close-range]
+ *             | :xref <i>string-list</i> } )
+ * </pre>
  * 
  * <p>
  * The index entry is in principal made up of three parts: the key, the
@@ -457,4 +457,5 @@ public class XindyParser extends LParser implements RawIndexParser {
 
         return array;
     }
+
 }
