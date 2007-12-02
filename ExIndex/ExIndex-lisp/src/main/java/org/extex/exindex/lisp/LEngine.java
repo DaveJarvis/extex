@@ -32,20 +32,6 @@ import org.extex.exindex.lisp.builtin.Require;
 public class LEngine extends LInterpreter {
 
     /**
-     * This is the command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        try {
-            new LEngine().topLevelLoop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Creates a new object.
      * 
      * @throws NoSuchMethodException if a method is missing

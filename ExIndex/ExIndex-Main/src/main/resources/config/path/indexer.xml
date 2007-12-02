@@ -19,6 +19,7 @@
   -->
 <Resource>
   <Finder class="org.extex.resource.FileFinder"
+          trace="true"
           default="default">
     <ist>
       <path property="extex.texinputs"/>
@@ -36,8 +37,8 @@
     <default>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
-      <path property="extex.fonts"/>
       <path>.</path>
+      <extension>.{type}</extension>
       <extension></extension>
     </default>
   </Finder>
@@ -46,6 +47,7 @@
           trace="false"
           default="default">
     <default>
+      <extension>.{type}</extension>
       <extension>.{type}</extension>
     </default>
   </Finder>

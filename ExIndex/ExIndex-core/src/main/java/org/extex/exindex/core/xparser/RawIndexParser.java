@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.xparser;
 
+import java.io.IOException;
+
 import org.extex.exindex.core.xparser.raw.Indexentry;
 
 /**
@@ -34,6 +36,8 @@ public interface RawIndexParser {
      * Read the next index entry.
      * 
      * @return the next index entry or <code>null</code> at end of file
+     * 
+     * @throws IOException in case of an I/O error
      */
-    Indexentry parse();
+    Indexentry parse() throws IOException;
 }

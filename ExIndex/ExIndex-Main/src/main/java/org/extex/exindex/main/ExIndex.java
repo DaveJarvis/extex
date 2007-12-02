@@ -29,6 +29,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -42,10 +43,10 @@ import org.extex.exindex.core.makeindex.MakeindexLoader;
 import org.extex.exindex.core.xindy.Indexer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
+import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.main.exception.MainException;
-import org.extex.exindex.main.exception.MissingArgumentException;
-import org.extex.exindex.main.exception.UnknownArgumentException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.i18n.Localizer;
@@ -64,9 +65,9 @@ import org.extex.resource.ResourceFinderFactory;
 public class ExIndex extends Indexer {
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
+     * The field <tt>LOCALIZER</tt> contains the the localizer.
      */
-    private static final Localizer localizer =
+    private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(ExIndex.class);
 
     /**
@@ -108,12 +109,6 @@ public class ExIndex extends Indexer {
      * german.sty.
      */
     private boolean collateGerman = false;
-
-    /**
-     * The field <tt>collateSpaces</tt> contains the indicator to collate
-     * spaces.
-     */
-    private boolean collateSpaces = false;
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
@@ -166,20 +161,10 @@ public class ExIndex extends Indexer {
     private Configuration config;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
-     */
-    private ResourceFinder finder;
-
-    /**
-     * The field <tt>modules</tt> contains the list of modules to load.
-     */
-    private List<String> modules = new ArrayList<String>();
-
-    /**
      * The field <tt>letterOrdering</tt> contains the indicator for letter
      * ordering.
      */
-    private boolean letterOrdering;
+    private boolean letterOrdering = false;
 
     /**
      * Creates a new object.
@@ -199,14 +184,15 @@ public class ExIndex extends Indexer {
 
         super();
         config = ConfigurationFactory.newInstance("path/indexer");
-        finder = new ResourceFinderFactory().createResourceFinder(config, //
+        setResourceFinder(new ResourceFinderFactory().createResourceFinder(
+            config, //
             logger, System.getProperties(), new InteractionIndicator() {
 
                 public boolean isInteractive() {
 
                     return false;
                 }
-            });
+            }));
         charset = Charset.defaultCharset();
         banner = true;
 
@@ -228,13 +214,12 @@ public class ExIndex extends Indexer {
      * @param i the index
      * @return the argument: arg[i]
      * 
-     * @throws MissingArgumentException if the argument is out of bounds
+     * @throws MainException if the argument is out of bounds
      */
-    private String getArg(String a, String[] args, int i)
-            throws MissingArgumentException {
+    private String getArg(String a, String[] args, int i) throws MainException {
 
         if (i >= args.length) {
-            throw new MissingArgumentException(a);
+            throw new MainException(LOCALIZER.format("MissingArgument", a));
         }
         return args[i];
     }
@@ -261,7 +246,7 @@ public class ExIndex extends Indexer {
         if (resource == null) {
             stream = System.in;
         } else {
-            stream = finder.findResource(resource, "idx");
+            stream = getResourceFinder().findResource(resource, "idx");
             if (stream == null) {
                 throw new FileNotFoundException(resource);
             }
@@ -277,54 +262,55 @@ public class ExIndex extends Indexer {
             p.load(stream);
             String clazz = (String) p.get("class");
             if (clazz == null) {
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterMissingClass", filter));
+                throw new MainException(LOCALIZER.format("FilterMissingClass",
+                    filter));
             }
-            Class<?> theClass;
             try {
-                theClass = Class.forName(clazz);
+                Class<?> theClass = Class.forName(clazz);
                 if (!Reader.class.isAssignableFrom(theClass)) {
-                    throw new MainException(LocalizerFactory.getLocalizer(
-                        getClass()).format("FilterClassCast", filter, clazz));
+                    throw new MainException(LOCALIZER.format("FilterClassCast",
+                        filter, clazz));
                 }
-                Reader r = new InputStreamReader(stream, charset);
                 return (Reader) theClass.getConstructor(
-                    new Class[]{Reader.class}).newInstance(new Object[]{r});
+                    new Class[]{Reader.class}).newInstance(
+                    new Object[]{new InputStreamReader(stream, charset)});
             } catch (ClassNotFoundException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterClassNotFound", filter, clazz), e);
+                throw new MainException(LOCALIZER.format("FilterClassNotFound",
+                    filter, clazz), e);
             } catch (NoSuchMethodException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterNoSuchMethod", filter, clazz), e);
+                throw new MainException(LOCALIZER.format("FilterNoSuchMethod",
+                    filter, clazz), e);
             } catch (SecurityException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterError", filter), e);
+                throw new MainException(LOCALIZER.format("FilterError", filter,
+                    e.toString()), e);
             } catch (IllegalArgumentException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterIllegalArgument", filter), e);
+                throw new MainException(LOCALIZER.format(
+                    "FilterIllegalArgument", filter, e.toString()), e);
             } catch (InstantiationException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterError", filter), e);
+                throw new MainException(LOCALIZER.format("FilterError", filter,
+                    e.toString()), e);
             } catch (IllegalAccessException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterError", filter), e);
+                throw new MainException(LOCALIZER.format("FilterError", filter,
+                    e.toString()), e);
             } catch (InvocationTargetException e) {
                 logException(logger, "", e);
-                throw new MainException(LocalizerFactory.getLocalizer(
-                    getClass()).format("FilterError", filter), e);
+                Throwable ex = (e.getCause() != null ? e.getCause() : e);
+                throw new MainException(LOCALIZER.format("FilterError", filter,
+                    ex.toString()), e);
+            } finally {
+                stream.close();
             }
 
         }
 
         // TODO gene: filter with external program
-        throw new MainException(LocalizerFactory.getLocalizer(getClass())
-            .format("UnknownFilter", filter));
+        throw new MainException(LOCALIZER.format("UnknownFilter", filter));
     }
 
     /**
@@ -352,13 +338,13 @@ public class ExIndex extends Indexer {
     @Override
     protected void markup(Writer writer, Logger logger) {
 
-        logger.log(Level.INFO, localizer.format((output == null
+        logger.log(Level.INFO, LOCALIZER.format((output == null
                 ? "GeneratingOutput"
                 : "GeneratingOutputFile"), output));
 
         super.markup(writer, logger);
 
-        logger.log(Level.INFO, localizer.format((output == null
+        logger.log(Level.INFO, LOCALIZER.format((output == null
                 ? "StandardOutput"
                 : "Output"), output));
     }
@@ -382,8 +368,8 @@ public class ExIndex extends Indexer {
             for (int i = 0; i < args.length; i++) {
                 String a = args[i];
                 if (a == null || "".equals(a)) {
-                    logger.log(Level.FINE, LocalizerFactory.getLocalizer(
-                        this.getClass()).format("EmptyArgumentIgnored"));
+                    logger.log(Level.FINE, LOCALIZER
+                        .format("EmptyArgumentIgnored"));
                     continue;
                 }
 
@@ -395,7 +381,9 @@ public class ExIndex extends Indexer {
                 } else if ("-".equals(a)) {
                     files.add(getArg(a, args, ++i));
                 } else if ("-collateSpaces".startsWith(a)) {
-                    collateSpaces = true;
+                    eval(new LList(LSymbol.get("sort-rule"), //
+                        new LString(" "), //
+                        new LString("")));
 
                 } else if ("-filter".startsWith(a)) {
                     filter = getArg(a, args, ++i);
@@ -433,11 +421,16 @@ public class ExIndex extends Indexer {
                         transcript = null;
                     }
 
-                } else if ("-Codepage".startsWith(a)) {
-                    charset = Charset.forName(getArg(a, args, ++i));
+                } else if ("-Charset".startsWith(a)) {
+                    try {
+                        charset = Charset.forName(getArg(a, args, ++i));
+                    } catch (UnsupportedCharsetException e) {
+                        throw new MainException(LOCALIZER.format(
+                            "UnsupportedCharset", args[i]));
+                    }
 
                 } else if ("-Module".startsWith(a)) {
-                    modules.add(getArg(a, args, ++i));
+                    load(getArg(a, args, ++i));
 
                 } else if ("-LogLevel".startsWith(a)) {
                     setLogLevel(getArg(a, args, ++i));
@@ -447,12 +440,13 @@ public class ExIndex extends Indexer {
                     return 1;
 
                 } else if ("-help".startsWith(a)) {
-                    logger.log(Level.SEVERE, localizer.format("Usage",
+                    logger.log(Level.SEVERE, LOCALIZER.format("Usage",
                         "Indexer"));
                     return 1;
 
                 } else {
-                    throw new UnknownArgumentException(a);
+                    throw new MainException(LOCALIZER.format("UnknownArgument",
+                        a));
                 }
 
             }
@@ -469,43 +463,46 @@ public class ExIndex extends Indexer {
             }
 
             if (files.isEmpty()) {
+                // last resort: stdin
                 files.add(null);
             }
+
             Writer writer = makeWriter(logger);
             try {
-                run(modules, styles, files, writer, logger);
+                run(styles, files, writer, logger);
             } finally {
                 writer.close();
             }
 
             if (transcript != null) {
-                logger.log(Level.INFO, localizer.format("Transcript",
+                logger.log(Level.INFO, LOCALIZER.format("Transcript",
                     transcript));
             }
+            if (fileHandler != null) {
+                fileHandler.flush();
+            }
+            return 0;
 
         } catch (FileNotFoundException e) {
             showBanner();
-            logger.log(Level.SEVERE, localizer.format("FileNotFound", e
+            logger.log(Level.SEVERE, LOCALIZER.format("FileNotFound", e
                 .getMessage()));
             logger.log(Level.FINE, "", e);
-            return -1;
         } catch (MainException e) {
             showBanner();
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             logger.log(Level.FINE, "", e);
-            return -1;
         } catch (Exception e) {
             showBanner();
-            logger.log(Level.SEVERE, localizer.format("SevereError", e
+            logger.log(Level.SEVERE, LOCALIZER.format("SevereError", e
                 .toString()));
             logger.log(Level.FINE, "", e);
             e.printStackTrace();
-            return -1;
         }
         if (fileHandler != null) {
             fileHandler.flush();
         }
-        return 0;
+        return -1;
     }
 
     /**
@@ -535,11 +532,14 @@ public class ExIndex extends Indexer {
         } else if ("3".equals(level) || "finest".equals(level)) {
             logger.setLevel(Level.FINEST);
         } else {
-            throw new MainException(LocalizerFactory.getLocalizer(getClass())
+            throw new MainException(LOCALIZER
                 .format("UndefinedLogLevel", level));
         }
 
-        finder.enableTracing(true);
+        ResourceFinder finder = getResourceFinder();
+        if (finder != null) {
+            finder.enableTracing(true);
+        }
     }
 
     /**
@@ -549,7 +549,7 @@ public class ExIndex extends Indexer {
 
         if (banner) {
             String build = "$Revision$".replaceAll("[^0-9]", "");
-            logger.log(Level.INFO, localizer.format("Banner", build, //
+            logger.log(Level.INFO, LOCALIZER.format("Banner", build, //
                 System.getProperty("java.version")));
             banner = false;
         }
@@ -569,9 +569,9 @@ public class ExIndex extends Indexer {
         showBanner();
 
         for (String style : styles) {
-            logger.log(Level.INFO, localizer.format("ScanningStyle", style));
+            logger.log(Level.INFO, LOCALIZER.format("ScanningStyle", style));
 
-            InputStream stream = finder.findResource(style, "ist");
+            InputStream stream = getResourceFinder().findResource(style, "ist");
             if (stream != null) {
 
                 Reader reader = new InputStreamReader(stream);
@@ -582,7 +582,7 @@ public class ExIndex extends Indexer {
                 }
 
             } else {
-                stream = finder.findResource(style, "xdy");
+                stream = getResourceFinder().findResource(style, "xdy");
                 if (stream == null) {
                     throw new FileNotFoundException(style);
                 }
@@ -593,7 +593,7 @@ public class ExIndex extends Indexer {
                     reader.close();
                 }
             }
-            logger.log(Level.INFO, localizer.format("ScanningStyleDone", //
+            logger.log(Level.INFO, LOCALIZER.format("ScanningStyleDone", //
                 "?", "?"));
         }
     }

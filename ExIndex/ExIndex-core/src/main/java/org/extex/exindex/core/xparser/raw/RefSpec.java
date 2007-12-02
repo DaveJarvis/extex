@@ -20,11 +20,12 @@
 package org.extex.exindex.core.xparser.raw;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes a reference specification.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface RefSpec {
 
+    //
 }

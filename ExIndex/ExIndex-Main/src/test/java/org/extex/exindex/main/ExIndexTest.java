@@ -20,6 +20,7 @@
 package org.extex.exindex.main;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -30,6 +31,7 @@ import java.io.PrintStream;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -103,10 +105,9 @@ public class ExIndexTest {
         }
 
         Logger logger = index.getLogger();
-        if (logger != null) {
-            for (Handler h : logger.getHandlers()) {
-                h.close();
-            }
+        assertNotNull(logger);
+        for (Handler h : logger.getHandlers()) {
+            h.close();
         }
         return index;
     }
@@ -206,6 +207,44 @@ public class ExIndexTest {
         runTest(new String[]{"UnDeFiNeD"}, -1, "File not found: UnDeFiNeD\n");
         assertTrue(log.exists());
         log.delete();
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCharset1() throws Exception {
+
+        runTest(new String[]{"-Charset"}, -1,
+            "Missing argument for parameter -Charset\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCharset2() throws Exception {
+
+        runTest(new String[]{"-Charset", "abc"}, -1,
+            "Unsupported character set abc\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCharset3() throws Exception {
+
+        runTest(new String[]{"-Charset", "latin1"}, 0, DEFAULT_LOG);
     }
 
     /**
@@ -323,6 +362,19 @@ public class ExIndexTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
+    public final void testFilterMakeindex() throws Exception {
+
+        runTest(new String[]{"-filter", "makeindex"}, -1, "...");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
     public final void testHelp1() throws Exception {
 
         runTest(new String[]{"--help"}, 1, //
@@ -338,6 +390,18 @@ public class ExIndexTest {
                     + "\t-i\n" //
                     + "\t-h[elp]\n" //
                     + "\t-v[ersion]\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testInput1() throws Exception {
+
+        runTest(new String[]{"-in", ""}, 0, DEFAULT_LOG);
     }
 
     /**
@@ -399,6 +463,43 @@ public class ExIndexTest {
 
         runTest(new String[]{"-L", "xxx"}, -1,
             "The log level xxx is not defined.\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOutput0() throws Exception {
+
+        runTest(new String[]{"-out"}, -1,
+            "Missing argument for parameter -out\n");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOutput1() throws Exception {
+
+        runTest(new String[]{"-out", ""}, 0, DEFAULT_LOG);
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.main.ExIndex#run(java.lang.String[])}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOutput2() throws Exception {
+
+        runTest(new String[]{"-out", "-"}, 0, DEFAULT_LOG);
     }
 
     /**

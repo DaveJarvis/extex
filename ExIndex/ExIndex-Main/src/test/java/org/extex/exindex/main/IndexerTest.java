@@ -102,7 +102,7 @@ public class IndexerTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.main.Makeindex#Indexer()}.
+     * <testcase> TODO gene: missing JavaDoc </testcase>
      * 
      * @throws IOException in case of an error
      */
@@ -115,7 +115,7 @@ public class IndexerTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.main.Makeindex#Indexer()}.
+     * <testcase> TODO gene: missing JavaDoc </testcase>
      * 
      * @throws IOException in case of an error
      */

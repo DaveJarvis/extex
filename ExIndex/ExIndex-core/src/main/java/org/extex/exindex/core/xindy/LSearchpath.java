@@ -25,7 +25,10 @@ import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
+import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderList;
 
 /**
  * This is the adapter for the L system to parse a merge rule.
@@ -65,7 +68,7 @@ public class LSearchpath extends LFunction {
             throws LNonMatchingTypeException {
 
         if (value instanceof LString) {
-            store(interpreter, ((LString) value).getValue());
+            store(interpreter, ((LString) value).getValue().split(":"));
         } else if (value instanceof LList) {
             store(interpreter, ((LList) value));
         } else {
@@ -79,26 +82,49 @@ public class LSearchpath extends LFunction {
      * Store the new search path.
      * 
      * @param interpreter the interpreter
-     * @param list
+     * @param list the list of items
      */
     private void store(LInterpreter interpreter, LList list) {
 
-        // TODO gene: store unimplemented
+        String[] items = new String[list.size()];
+        int i = 0;
 
+        for (LValue val : list) {
+            if (val instanceof LString) {
+                items[i++] = ((LString) val).getValue();
+
+            } else if (val instanceof LSymbol
+                    && ((LSymbol) val).getValue().equals(":default")) {
+                items[i++] = "";
+            } else {
+                // TODO gene: store unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        }
+        store(interpreter, items);
     }
 
     /**
      * Store the new search path.
      * 
      * @param interpreter the interpreter
-     * @param value
+     * @param items the list of items for the search path
      */
-    private void store(LInterpreter interpreter, String value) {
+    private void store(LInterpreter interpreter, String[] items) {
 
-        if (value.endsWith(":")) {
+        ResourceFinder finder = interpreter.getResourceFinder();
+        ResourceFinderList resourceList = new ResourceFinderList();
 
+        for (String item : items) {
+
+            if ("".equals(item)) {
+                resourceList.add(finder);
+            } else {
+                // TODO gene: store unimplemented
+                throw new RuntimeException("unimplemented");
+            }
         }
-        // TODO gene: store unimplemented
+        interpreter.setResourceFinder(resourceList);
     }
 
 }

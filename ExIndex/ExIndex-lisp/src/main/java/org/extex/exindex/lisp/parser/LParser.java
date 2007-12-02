@@ -91,6 +91,26 @@ public class LParser {
     }
 
     /**
+     * Getter for resource.
+     * 
+     * @return the resource
+     */
+    public String getLineNumber() {
+
+        return Integer.toString(reader.getLineNumber());
+    }
+
+    /**
+     * Getter for resource.
+     * 
+     * @return the resource
+     */
+    public String getResource() {
+
+        return resource;
+    }
+
+    /**
      * Check whether the given character is not one of the special characters
      * ending a symbol.
      * 
@@ -159,9 +179,9 @@ public class LParser {
                 } while (c >= 0 && Character.isDigit(c));
 
                 String s = sb.toString();
-                if (!s.matches("[0-9]")) {
+                if (!s.matches(".*[0-9].*")) {
                     // TODO gene: read unimplemented
-                    throw new RuntimeException("unimplemented");
+                    throw new RuntimeException("unimplemented " + s);
                 }
                 return (dot ? new LDouble(Double.parseDouble(s)) : new LNumber(
                     Long.parseLong(s)));

@@ -30,7 +30,7 @@ public class Indexentry {
     /**
      * The field <tt>key</tt> contains the ...
      */
-    private KeySpec key;
+    private Key key;
 
     /**
      * The field <tt>attr</tt> contains the ...
@@ -49,7 +49,7 @@ public class Indexentry {
      * @param attr
      * @param ref
      */
-    public Indexentry(KeySpec key, String attr, RefSpec ref) {
+    public Indexentry(Key key, String attr, RefSpec ref) {
 
         super();
         this.key = key;
@@ -72,7 +72,7 @@ public class Indexentry {
      * 
      * @return the key
      */
-    public KeySpec getKey() {
+    public Key getKey() {
 
         return key;
     }

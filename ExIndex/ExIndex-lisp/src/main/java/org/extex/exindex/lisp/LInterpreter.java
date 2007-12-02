@@ -40,6 +40,7 @@ import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This class represents an LInterpreter without predefined functions.
@@ -48,20 +49,6 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @version $Revision$
  */
 public class LInterpreter {
-
-    /**
-     * This is the command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        try {
-            new LInterpreter().topLevelLoop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * The field <tt>functionTable</tt> contains the table of all functions.
@@ -76,11 +63,17 @@ public class LInterpreter {
     private Map<LSymbol, LValue> bindings = new HashMap<LSymbol, LValue>();
 
     /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private ResourceFinder finder;
+
+    /**
      * Creates a new object.
      */
     public LInterpreter() {
 
         super();
+        finder = null;
         LSymbol.get("t").setMutable(false);
         LSymbol.get("nil").setMutable(false);
     }
@@ -170,6 +163,16 @@ public class LInterpreter {
     public LValue get(String symbol) {
 
         return bindings.get(LSymbol.get(symbol));
+    }
+
+    /**
+     * Getter for the resource finder.
+     * 
+     * @return the resource finder
+     */
+    public ResourceFinder getResourceFinder() {
+
+        return finder;
     }
 
     /**
@@ -294,6 +297,16 @@ public class LInterpreter {
             throws LSettingConstantException {
 
         setq(LSymbol.get(symbol), value);
+    }
+
+    /**
+     * Setter for the resource finder.
+     * 
+     * @param finder the new resource finder
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
     /**

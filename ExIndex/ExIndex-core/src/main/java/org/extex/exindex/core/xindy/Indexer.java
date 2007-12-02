@@ -217,7 +217,7 @@ public class Indexer extends LEngine {
                 for (LValue n = parser.read(); n != null; n = parser.read()) {
                     if (!(n instanceof LList)) {
                         throw new SyntaxErrorInRawIndexException(
-                            resource == null ? "<stdin>" : resource);
+                            resource == null ? "<stdin>" : resource, "");
                     }
                     eval(n);
                 }
@@ -231,19 +231,18 @@ public class Indexer extends LEngine {
     /**
      * Perform all phases; initializing from a list of styles, loading a list of
      * data resources, and writing the result to a writer.
-     * @param modules TODO
+     * 
      * @param styles the list of styles to use
      * @param data the list of raw data files
      * @param writer the writer for output
      * @param logger the logger
-     * 
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
      * @throws NoSuchMethodException
      * @throws SecurityException
      */
-    public void run(List<String> modules, List<String> styles, List<String> data,
-            Writer writer, Logger logger)
+    public void run(List<String> styles, List<String> data, Writer writer,
+            Logger logger)
             throws IOException,
                 LException,
                 SecurityException,

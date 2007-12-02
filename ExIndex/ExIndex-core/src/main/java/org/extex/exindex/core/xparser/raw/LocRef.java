@@ -20,7 +20,7 @@
 package org.extex.exindex.core.xparser.raw;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,13 +28,29 @@ package org.extex.exindex.core.xparser.raw;
 public class LocRef implements RefSpec {
 
     /**
+     * The field <tt>location</tt> contains the location.
+     */
+    private String location;
+
+    /**
      * Creates a new object.
      * 
-     * @param loc the location
+     * @param location the location
      */
-    public LocRef(String loc) {
+    public LocRef(String location) {
 
-        // TODO gene: LocRef constructor unimplemented
+        super();
+        this.location = location;
+    }
+
+    /**
+     * Getter for the location.
+     * 
+     * @return the location
+     */
+    public String getLocation() {
+
+        return location;
     }
 
 }

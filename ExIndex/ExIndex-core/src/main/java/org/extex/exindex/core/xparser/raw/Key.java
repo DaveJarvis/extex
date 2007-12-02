@@ -25,7 +25,17 @@ package org.extex.exindex.core.xparser.raw;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Key implements KeySpec {
+public class Key {
+
+    /**
+     * The field <tt>key</tt> contains the ...
+     */
+    private String[] key;
+
+    /**
+     * The field <tt>print</tt> contains the ...
+     */
+    private String[] print;
 
     /**
      * Creates a new object.
@@ -35,7 +45,29 @@ public class Key implements KeySpec {
      */
     public Key(String[] key, String[] print) {
 
-        // TODO gene: Key constructor unimplemented
+        super();
+        this.key = key;
+        this.print = print;
+    }
+
+    /**
+     * Getter for key.
+     * 
+     * @return the key
+     */
+    public String[] getKey() {
+
+        return key;
+    }
+
+    /**
+     * Getter for print.
+     * 
+     * @return the print
+     */
+    public String[] getPrint() {
+
+        return print;
     }
 
 }

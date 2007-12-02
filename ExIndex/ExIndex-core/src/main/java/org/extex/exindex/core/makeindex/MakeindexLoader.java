@@ -148,11 +148,11 @@ public final class MakeindexLoader {
             if (exname == null) {
                 throw new UnknownAttributeException(name);
             }
-            LValue val = p.get(name);
+            LValue val = p.get(exname);
             LValue v = scan(r, resource);
             if (v == null) {
                 throw new EofException(resource, r.getLineNumber());
-            } else if (v.getClass() != val.getClass()) {
+            } else if (val != null && v.getClass() != val.getClass()) {
                 // TODO gene: load unimplemented
                 throw new RuntimeException("unimplemented");
             }
