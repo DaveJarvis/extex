@@ -41,6 +41,9 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.core.makeindex.MakeindexLoader;
 import org.extex.exindex.core.xindy.Indexer;
+import org.extex.exindex.core.xparser.MakeindexParser;
+import org.extex.exindex.core.xparser.RawIndexParser;
+import org.extex.exindex.core.xparser.XindyParser;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
@@ -237,80 +240,92 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xindy.Indexer#makeDataReader(java.lang.String)
+     * @see org.extex.exindex.core.xindy.Indexer#makeRawIndexParser(
+     *      java.lang.String)
      */
     @Override
-    protected Reader makeDataReader(String resource) throws IOException {
+    protected RawIndexParser makeRawIndexParser(String resource)
+            throws IOException {
 
+        boolean makeindex = false;
         InputStream stream;
         if (resource == null) {
             stream = System.in;
         } else {
-            stream = getResourceFinder().findResource(resource, "idx");
+            stream = getResourceFinder().findResource(resource, "raw");
             if (stream == null) {
-                throw new FileNotFoundException(resource);
-            }
-        }
-        if (filter == null) {
-            return new InputStreamReader(stream, charset);
-        }
-
-        stream = getClass().getClassLoader().getResourceAsStream(//
-            "org/extex/exindex/filter/" + filter + ".filter");
-        if (stream != null) {
-            Properties p = new Properties();
-            p.load(stream);
-            String clazz = (String) p.get("class");
-            if (clazz == null) {
-                throw new MainException(LOCALIZER.format("FilterMissingClass",
-                    filter));
-            }
-            try {
-                Class<?> theClass = Class.forName(clazz);
-                if (!Reader.class.isAssignableFrom(theClass)) {
-                    throw new MainException(LOCALIZER.format("FilterClassCast",
-                        filter, clazz));
+                stream = getResourceFinder().findResource(resource, "idx");
+                makeindex = true;
+                if (stream == null) {
+                    return null;
                 }
-                return (Reader) theClass.getConstructor(
-                    new Class[]{Reader.class}).newInstance(
-                    new Object[]{new InputStreamReader(stream, charset)});
-            } catch (ClassNotFoundException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format("FilterClassNotFound",
-                    filter, clazz), e);
-            } catch (NoSuchMethodException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format("FilterNoSuchMethod",
-                    filter, clazz), e);
-            } catch (SecurityException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format("FilterError", filter,
-                    e.toString()), e);
-            } catch (IllegalArgumentException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format(
-                    "FilterIllegalArgument", filter, e.toString()), e);
-            } catch (InstantiationException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format("FilterError", filter,
-                    e.toString()), e);
-            } catch (IllegalAccessException e) {
-                logException(logger, "", e);
-                throw new MainException(LOCALIZER.format("FilterError", filter,
-                    e.toString()), e);
-            } catch (InvocationTargetException e) {
-                logException(logger, "", e);
-                Throwable ex = (e.getCause() != null ? e.getCause() : e);
-                throw new MainException(LOCALIZER.format("FilterError", filter,
-                    ex.toString()), e);
-            } finally {
-                stream.close();
             }
+        }
+        Reader reader = new InputStreamReader(stream, charset);
+        if (filter != null) {
+            stream = getClass().getClassLoader().getResourceAsStream(//
+                "org/extex/exindex/filter/" + filter + ".filter");
+            if (stream != null) {
+                Properties p = new Properties();
+                p.load(stream);
+                String clazz = (String) p.get("class");
+                if (clazz == null) {
+                    throw new MainException(LOCALIZER.format(
+                        "FilterMissingClass", filter));
+                }
+                try {
+                    Class<?> theClass = Class.forName(clazz);
+                    if (!Reader.class.isAssignableFrom(theClass)) {
+                        throw new MainException(LOCALIZER.format(
+                            "FilterClassCast", filter, clazz));
+                    }
+                    reader =
+                            (Reader) theClass.getConstructor(
+                                new Class[]{Reader.class}).newInstance(
+                                new Object[]{reader});
+                } catch (ClassNotFoundException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format(
+                        "FilterClassNotFound", filter, clazz), e);
+                } catch (NoSuchMethodException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format(
+                        "FilterNoSuchMethod", filter, clazz), e);
+                } catch (SecurityException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format("FilterError",
+                        filter, e.toString()), e);
+                } catch (IllegalArgumentException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format(
+                        "FilterIllegalArgument", filter, e.toString()), e);
+                } catch (InstantiationException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format("FilterError",
+                        filter, e.toString()), e);
+                } catch (IllegalAccessException e) {
+                    logException(logger, "", e);
+                    throw new MainException(LOCALIZER.format("FilterError",
+                        filter, e.toString()), e);
+                } catch (InvocationTargetException e) {
+                    logException(logger, "", e);
+                    Throwable ex = (e.getCause() != null ? e.getCause() : e);
+                    throw new MainException(LOCALIZER.format("FilterError",
+                        filter, ex.toString()), e);
+                } finally {
+                    stream.close();
+                }
 
+            }
+            // TODO gene: filter with external program
+            throw new MainException(LOCALIZER.format("UnknownFilter", filter));
         }
 
-        // TODO gene: filter with external program
-        throw new MainException(LOCALIZER.format("UnknownFilter", filter));
+        if (makeindex) {
+            return new MakeindexParser(new InputStreamReader(stream), resource,
+                this);
+        }
+        return new XindyParser(new InputStreamReader(stream), resource);
     }
 
     /**
