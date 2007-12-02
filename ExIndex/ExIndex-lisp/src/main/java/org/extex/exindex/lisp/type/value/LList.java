@@ -69,10 +69,15 @@ public class LList implements LValue, Iterable<LValue> {
 
     /**
      * Creates a new object.
+     * 
+     * @param values the initial values
      */
-    public LList() {
+    public LList(LValue... values) {
 
         super();
+        for (LValue v : values) {
+            content.add(v);
+        }
     }
 
     /**
