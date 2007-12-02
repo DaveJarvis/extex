@@ -166,6 +166,18 @@ public class LInterpreter {
     }
 
     /**
+     * Get the binding of a symbol.
+     * 
+     * @param symbol the symbol to look up
+     * 
+     * @return the binding or <code>null</code> if nothing is defined
+     */
+    public LFunction getFunction(LSymbol symbol) {
+
+        return functions.get(symbol);
+    }
+
+    /**
      * Getter for the resource finder.
      * 
      * @return the resource finder
