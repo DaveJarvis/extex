@@ -33,6 +33,13 @@ import org.extex.exindex.core.xparser.raw.Indexentry;
 public interface RawIndexParser {
 
     /**
+     * Close the parser.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    void close() throws IOException;
+
+    /**
      * Read the next index entry.
      * 
      * @return the next index entry or <code>null</code> at end of file
@@ -40,4 +47,5 @@ public interface RawIndexParser {
      * @throws IOException in case of an I/O error
      */
     Indexentry parse() throws IOException;
+
 }
