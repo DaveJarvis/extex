@@ -57,6 +57,51 @@ public class FontFactoryImpl extends AbstractFactory
             LogEnabled {
 
     /**
+     * Loader for the abstract factory.
+     */
+    private class Loader extends AbstractFactory {
+
+        /**
+         * Returns the loadable font.
+         * 
+         * @param subcfg the configuration.
+         * @return the loadable font.
+         * @throws ConfigurationException from the configuration system.
+         */
+        public LoadableFont getInstance(Configuration subcfg)
+                throws ConfigurationException {
+
+            return (LoadableFont) createInstanceForConfiguration(subcfg,
+                LoadableFont.class);
+        }
+
+        /**
+         * Returns the backend font manager.
+         * 
+         * @param subcfg the configuration.
+         * @param finder the resource finder.
+         * @param factory the backend font factory.
+         * @return the backend font manager.
+         * @throws ConfigurationException from the configuration system.
+         */
+        public BackendFontManager getManager(Configuration subcfg,
+                ResourceFinder finder, BackendFontFactory factory)
+                throws ConfigurationException {
+
+            BackendFontManager manager =
+                    (BackendFontManager) createInstanceForConfiguration(subcfg,
+                        BackendFontManager.class);
+
+            manager.setBackendFontFactory(factory);
+
+            if (manager instanceof ResourceAware) {
+                ((ResourceAware) manager).setResourceFinder(finder);
+            }
+            return manager;
+        }
+    }
+
+    /**
      * The null font
      */
     private static final NullExtexFont NULLFONT = new NullExtexFont();
@@ -111,6 +156,89 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.CoreFontFactory#createManager(java.util.List)
+     */
+    public BackendFontManager createManager(List<String> fontTypes)
+            throws ConfigurationException {
+
+        if (fontTypes == null) {
+            throw new IllegalArgumentException("fonttypes");
+        }
+        if (fontTypes.size() == 0) {
+            throw new IllegalArgumentException("fonttypes");
+        }
+        BackendFontManagerList fmlist = new BackendFontManagerList();
+        fmlist.setBackendFontFactory(this);
+
+        for (int i = 0, n = fontTypes.size(); i < n; i++) {
+
+            Configuration cfg =
+                    config.findConfiguration("FontType", fontTypes.get(i));
+            if (cfg != null) {
+
+                fmlist.add(new Loader().getManager(cfg, finder, this));
+            }
+        }
+
+        if (fmlist.size() == 1) {
+            return fmlist.get(0);
+        }
+
+        return fmlist;
+    }
+
+    /**
+     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
+     */
+    public void enableTracing(boolean flag) {
+
+        finder.enableTracing(flag);
+    }
+
+    /**
+     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
+     *      java.lang.String)
+     */
+    public InputStream findResource(String name, String type)
+            throws ConfigurationException {
+
+        return finder.findResource(name, type);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
+     */
+    public BackendFont getBackendFont(FontKey key) throws FontException {
+
+        if (key == null || key.getName() == null || key.getName().length() == 0) {
+            return null;
+        }
+
+        LoadableFont font = fontMap.get(key);
+        if (font != null && font instanceof BackendFont) {
+            return (BackendFont) font;
+        }
+        ExtexFont f = getInstance(key);
+        if (f != null && f instanceof BackendFont) {
+            return (BackendFont) f;
+        }
+        return null;
+    }
+
+    /**
+     * @see org.extex.font.CoreFontFactory#getFontKey(org.extex.font.FontKey,
+     *      org.extex.core.dimen.FixedDimen)
+     */
+    public FontKey getFontKey(FontKey fontKey, FixedDimen size) {
+
+        return keyFactory.newInstance(fontKey, FontKey.SIZE, size);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String)
      */
     public FontKey getFontKey(String fontName) {
@@ -142,6 +270,22 @@ public class FontFactoryImpl extends AbstractFactory
         FontKey key = keyFactory.newInstance(fontName);
         key = keyFactory.newInstance(key, map);
         return keyFactory.newInstance(key, FontKey.SIZE, size);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
+     *      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
+     */
+    public FontKey getFontKey(String fontName, FixedDimen size,
+            Map<String, ?> map, List<String> feature) {
+
+        FontKey key = keyFactory.newInstance(fontName);
+        key = keyFactory.newInstance(key, map);
+        key = keyFactory.newInstance(key, FontKey.SIZE, size);
+
+        return null;
     }
 
     /**
@@ -212,48 +356,13 @@ public class FontFactoryImpl extends AbstractFactory
     }
 
     /**
-     * Loader for the abstract factory.
+     * Getter for prop.
+     * 
+     * @return the prop
      */
-    private class Loader extends AbstractFactory {
+    public Properties getProp() {
 
-        /**
-         * Returns the loadable font.
-         * 
-         * @param subcfg the configuration.
-         * @return the loadable font.
-         * @throws ConfigurationException from the configuration system.
-         */
-        public LoadableFont getInstance(Configuration subcfg)
-                throws ConfigurationException {
-
-            return (LoadableFont) createInstanceForConfiguration(subcfg,
-                LoadableFont.class);
-        }
-
-        /**
-         * Returns the backend font manager.
-         * 
-         * @param subcfg the configuration.
-         * @param finder the resource finder.
-         * @param factory the backend font factory.
-         * @return the backend font manager.
-         * @throws ConfigurationException from the configuration system.
-         */
-        public BackendFontManager getManager(Configuration subcfg,
-                ResourceFinder finder, BackendFontFactory factory)
-                throws ConfigurationException {
-
-            BackendFontManager manager =
-                    (BackendFontManager) createInstanceForConfiguration(subcfg,
-                        BackendFontManager.class);
-
-            manager.setBackendFontFactory(factory);
-
-            if (manager instanceof ResourceAware) {
-                ((ResourceAware) manager).setResourceFinder(finder);
-            }
-            return manager;
-        }
+        return prop;
     }
 
     /**
@@ -272,104 +381,5 @@ public class FontFactoryImpl extends AbstractFactory
 
         this.finder = finder;
 
-    }
-
-    /**
-     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(boolean flag) {
-
-        finder.enableTracing(flag);
-    }
-
-    /**
-     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-     *      java.lang.String)
-     */
-    public InputStream findResource(String name, String type)
-            throws ConfigurationException {
-
-        return finder.findResource(name, type);
-    }
-
-    /**
-     * @see org.extex.font.CoreFontFactory#getFontKey(org.extex.font.FontKey,
-     *      org.extex.core.dimen.FixedDimen)
-     */
-    public FontKey getFontKey(FontKey fontKey, FixedDimen size) {
-
-        return keyFactory.newInstance(fontKey, FontKey.SIZE, size);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#createManager(java.util.List)
-     */
-    public BackendFontManager createManager(List<String> fontTypes)
-            throws ConfigurationException {
-
-        if (fontTypes == null) {
-            throw new IllegalArgumentException("fonttypes");
-        }
-        if (fontTypes.size() == 0) {
-            throw new IllegalArgumentException("fonttypes");
-        }
-        BackendFontManagerList fmlist = new BackendFontManagerList();
-        fmlist.setBackendFontFactory(this);
-
-        for (int i = 0, n = fontTypes.size(); i < n; i++) {
-
-            Configuration cfg =
-                    config.findConfiguration("FontType", fontTypes.get(i));
-            if (cfg != null) {
-
-                fmlist.add(new Loader().getManager(cfg, finder, this));
-            }
-        }
-
-        if (fmlist.size() == 1) {
-            return fmlist.get(0);
-        }
-
-        return fmlist;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
-     */
-    public BackendFont getBackendFont(FontKey key) throws FontException {
-
-        if (key == null || key.getName() == null || key.getName().length() == 0) {
-            return null;
-        }
-
-        LoadableFont font = fontMap.get(key);
-        if (font != null && font instanceof BackendFont) {
-            return (BackendFont) font;
-        }
-        ExtexFont f = getInstance(key);
-        if (f != null && f instanceof BackendFont) {
-            return (BackendFont) f;
-        }
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
-     */
-    public FontKey getFontKey(String fontName, FixedDimen size,
-            Map<String, ?> map, List<String> feature) {
-
-        FontKey key = keyFactory.newInstance(fontName);
-        key = keyFactory.newInstance(key, map);
-        key = keyFactory.newInstance(key, FontKey.SIZE, size);
-
-        return null;
     }
 }
