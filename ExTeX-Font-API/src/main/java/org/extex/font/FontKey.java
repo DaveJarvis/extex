@@ -178,7 +178,7 @@ public class FontKey implements Serializable {
      * 
      * @param theFeatures The list of features.
      */
-    public void add(List<String> theFeatures) {
+    protected void add(List<String> theFeatures) {
 
         feature.addAll(theFeatures);
     }
@@ -479,7 +479,7 @@ public class FontKey implements Serializable {
      * 
      * @param theMap The map.
      */
-    public void put(Map<String, ?> theMap) {
+    protected void put(Map<String, ?> theMap) {
 
         Iterator<String> it = theMap.keySet().iterator();
 
@@ -506,7 +506,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @param value The value.
      */
-    public void put(String key, boolean value) {
+    protected void put(String key, boolean value) {
 
         booleanMap.put(key, Boolean.valueOf(value));
     }
@@ -517,7 +517,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @param value The value.
      */
-    public void put(String key, FixedCount value) {
+    protected void put(String key, FixedCount value) {
 
         countMap.put(key, value);
     }
@@ -528,7 +528,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @param value The value.
      */
-    public void put(String key, FixedDimen value) {
+    protected void put(String key, FixedDimen value) {
 
         dimenMap.put(key, value);
     }
@@ -539,7 +539,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @param value The value.
      */
-    public void put(String key, FixedGlue value) {
+    protected void put(String key, FixedGlue value) {
 
         glueMap.put(key, value);
     }
@@ -550,7 +550,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @param value The value.
      */
-    public void put(String key, String value) {
+    protected void put(String key, String value) {
 
         stringMap.put(key, value);
     }

@@ -49,6 +49,37 @@ public class FontKeyFactory extends AbstractFactory {
     /**
      * Returns a new font key instance.
      * 
+     * @param theFontname The font name.
+     * @param size The size.
+     * @param value The value.
+     * @return Returns a new font key instance.
+     */
+    public FontKey newInstance(String theFontname, FixedDimen size) {
+
+        FontKey newfk = new FontKey(theFontname);
+        newfk.put(FontKey.SIZE, (FixedDimen) size);
+
+        return newfk;
+    }
+
+    /**
+     * Returns a new font key instance.
+     * 
+     * @param fk The font key.
+     * @param feature The list of features.
+     * @return Returns a new font key instance.
+     */
+    public FontKey newInstance(FontKey fk, List<String> feature) {
+
+        FontKey newfk = new FontKey(fk);
+        newfk.add(feature);
+
+        return newfk;
+    }
+
+    /**
+     * Returns a new font key instance.
+     * 
      * @param fk The font key.
      * @param theMap The map with key value entries.
      * @return Returns a new font key instance.
