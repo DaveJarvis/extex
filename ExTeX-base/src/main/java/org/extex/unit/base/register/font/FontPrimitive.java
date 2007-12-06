@@ -20,7 +20,9 @@
 package org.extex.unit.base.register.font;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,6 +45,8 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -237,6 +241,7 @@ public class FontPrimitive extends AbstractAssignment
         Glue letterspaced = new Glue(0);
         boolean ligatures = true;
         boolean kerning = true;
+        List<String> features = null;
 
         for (;;) {
 
@@ -246,6 +251,12 @@ public class FontPrimitive extends AbstractAssignment
                 ligatures = false;
             } else if (source.getKeyword(context, "nokerning")) {
                 kerning = false;
+            } else if (source.getKeyword(context, "tag")) {
+                source.getOptionalEquals(context);
+                if (features == null) {
+                    features = new ArrayList<String>();
+                }
+                features.add(getTag(source, context));
             } else {
                 break;
             }
@@ -263,7 +274,12 @@ public class FontPrimitive extends AbstractAssignment
             fontKeyMap.put(FontKey.KERNING, Boolean.valueOf(kerning));
             fontKeyMap.put(FontKey.LANGUAGE, context.getTypesettingContext()
                 .getLanguage().getName());
-            fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
+            if (features == null) {
+                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
+            } else {
+                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap, //
+                    features);
+            }
             fnt = factory.getInstance(fontKey);
         } catch (FontException e) {
             if (logger != null) {
@@ -321,6 +337,33 @@ public class FontPrimitive extends AbstractAssignment
         if (DEBUG) {
             this.logger = log;
         }
+    }
+
+    /**
+     * Read a list of letters or other characters but at most 4 of them.
+     * 
+     * @param source the source for new tokens
+     * @param context the interpreter context
+     * 
+     * @return the four letters found
+     * 
+     * @throws HelpingException in case of an error
+     */
+    private String getTag(TokenSource source, Context context)
+            throws HelpingException {
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 4; i++) {
+
+            Token t = source.getToken(context);
+            if (t instanceof LetterToken || t instanceof OtherToken) {
+                sb.append(t.toText());
+            } else {
+                source.push(t);
+                break;
+            }
+        }
+        return sb.toString();
     }
 
     /**
