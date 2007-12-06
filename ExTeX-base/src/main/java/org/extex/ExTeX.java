@@ -1122,37 +1122,6 @@ public class ExTeX {
     }
 
     /**
-     * Log a Throwable including its stack trace to the logger.
-     * 
-     * @param e the Throwable to log
-     */
-    protected void logInternalError(Throwable e) {
-
-        if (getBooleanProperty(PROP_INTERNAL_STACKTRACE)) {
-            e.printStackTrace();
-        }
-
-        logException(logger, e.toString(), e);
-
-        Throwable t = e;
-        String msg;
-        do {
-            msg = t.getLocalizedMessage();
-            if (msg != null && !"".equals(msg)) {
-                logException(logger, localizer.format("ExTeX.InternalError",
-                    msg), e);
-                return;
-            }
-            t = t.getCause();
-        } while (t != null);
-
-        msg = e.getClass().getName();
-        msg = msg.substring(msg.lastIndexOf('.') + 1);
-
-        logException(logger, localizer.format("ExTeX.InternalError", msg), e);
-    }
-
-    /**
      * Remap an exception into an InterpreterException.
      * 
      * @param t the throwable to be remapped
@@ -1189,6 +1158,37 @@ public class ExTeX {
             return ie;
         }
         return new InterpreterException(e);
+    }
+
+    /**
+     * Log a Throwable including its stack trace to the logger.
+     * 
+     * @param e the Throwable to log
+     */
+    protected void logInternalError(Throwable e) {
+
+        if (getBooleanProperty(PROP_INTERNAL_STACKTRACE)) {
+            e.printStackTrace();
+        }
+
+        logException(logger, e.toString(), e);
+
+        Throwable t = e;
+        String msg;
+        do {
+            msg = t.getLocalizedMessage();
+            if (msg != null && !"".equals(msg)) {
+                logException(logger, localizer.format("ExTeX.InternalError",
+                    msg), e);
+                return;
+            }
+            t = t.getCause();
+        } while (t != null);
+
+        msg = e.getClass().getName();
+        msg = msg.substring(msg.lastIndexOf('.') + 1);
+
+        logException(logger, localizer.format("ExTeX.InternalError", msg), e);
     }
 
     /**
