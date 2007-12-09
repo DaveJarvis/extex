@@ -43,6 +43,8 @@ import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.value.LSymbol;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides an LInterpreter with the functions needed by Xindy
@@ -191,10 +193,14 @@ public class Indexer extends LEngine {
     /**
      * Perform the markup phase and write the result to the given writer.
      * 
-     * @param writer the writer
+     * @param writer the writer or <code>null</code> to skip this phase
      * @param logger the logger
      */
     protected void markup(Writer writer, Logger logger) {
+
+        if (writer == null) {
+            return;
+        }
 
         // TODO gene: markup unimplemented
 
@@ -203,28 +209,39 @@ public class Indexer extends LEngine {
     /**
      * Perform the processing phase.
      * 
-     * @param data the list of raw data files
+     * @param resources the list of raw data files or <code>null</code> to
+     *        skip this phase
      * @param logger the logger
      * 
      * @throws IOException in case of an I/O error
      * @throws FileNotFoundException if an input file could not be found
      * @throws LException in case of an error
-     * @throws NoSuchMethodException
-     * @throws SecurityException
+     * @throws NoSuchMethodException in case of an undefined method
+     * @throws SecurityException in case of a security problem
      */
-    protected void process(List<String> data, Logger logger)
+    protected void process(List<String> resources, Logger logger)
             throws FileNotFoundException,
                 IOException,
                 LException,
                 SecurityException,
                 NoSuchMethodException {
 
-        for (String resource : data) {
+        if (resources == null) {
+            return;
+        }
+        LDefineAttributes attributes =
+                (LDefineAttributes) getFunction(LSymbol
+                    .get("define-attributes"));
+
+        for (String resource : resources) {
             RawIndexParser parser = makeRawIndexParser(resource);
+            if (parser == null) {
+                throw new FileNotFoundException(resource);
+            }
             try {
                 for (Indexentry entry = parser.parse(); entry != null; entry =
                         parser.parse()) {
-                    entries.add(entry);
+                    storeEntry(entry, attributes);
                 }
             } finally {
                 parser.close();
@@ -237,16 +254,20 @@ public class Indexer extends LEngine {
      * Perform all phases; initializing from a list of styles, loading a list of
      * data resources, and writing the result to a writer.
      * 
-     * @param styles the list of styles to use
-     * @param data the list of raw data files
-     * @param writer the writer for output
+     * @param styles the list of styles to use or <code>null</code> to skip
+     *        this phase
+     * @param resources the list of raw data files or <code>null</code> to
+     *        skip this phase
+     * @param writer the writer for output or <code>null</code> to skip this
+     *        phase
      * @param logger the logger
+     * 
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
-     * @throws NoSuchMethodException
-     * @throws SecurityException
+     * @throws NoSuchMethodException in case of an undefined method
+     * @throws SecurityException in case of a security problem
      */
-    public void run(List<String> styles, List<String> data, Writer writer,
+    public void run(List<String> styles, List<String> resources, Writer writer,
             Logger logger)
             throws IOException,
                 LException,
@@ -254,14 +275,15 @@ public class Indexer extends LEngine {
                 NoSuchMethodException {
 
         startup(styles, logger);
-        process(data, logger);
+        process(resources, logger);
         markup(writer, logger);
     }
 
     /**
      * Load the style files and prepare the engine to get started.
      * 
-     * @param styles the list of styles to use
+     * @param styles the list of styles to use or <code>null</code> to skip
+     *        this phase
      * @param logger the logger
      * 
      * @throws LException in case of an error in the L system
@@ -271,9 +293,32 @@ public class Indexer extends LEngine {
             throws IOException,
                 LException {
 
+        if (styles == null) {
+            return;
+        }
+
         for (String style : styles) {
             load(style);
         }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry the entry to store
+     * @param attributes the attributes
+     * 
+     * @throws LException in case of an error
+     */
+    private void storeEntry(Indexentry entry, LDefineAttributes attributes)
+            throws LException {
+
+        String attr = entry.getAttr();
+        if (attr != null && attributes.lookup(attr) == null) {
+            throw new LException(LocalizerFactory.getLocalizer(Indexer.class)
+                .format("AttributeUnknown", attr));
+        }
+        entries.add(entry);
     }
 
 }

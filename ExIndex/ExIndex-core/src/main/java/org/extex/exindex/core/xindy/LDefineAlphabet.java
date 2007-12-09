@@ -20,9 +20,10 @@
 package org.extex.exindex.core.xindy;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -35,10 +36,17 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define an alphabet.
  * 
+ * It also serves as a container for the alphabets collected.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LDefineAlphabet extends LFunction {
+
+    /**
+     * The field <tt>map</tt> contains the alphabets.
+     */
+    private Map<String, List<String>> map = new HashMap<String, List<String>>();
 
     /**
      * Creates a new object.
@@ -64,7 +72,7 @@ public class LDefineAlphabet extends LFunction {
      * 
      * @return <tt>nil</tt>
      * 
-     * @throws LNonMatchingTypeException ...
+     * @throws LNonMatchingTypeException in case an argument is not a String
      * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String name, LList list)
@@ -77,9 +85,22 @@ public class LDefineAlphabet extends LFunction {
             words.add(LString.getString(val));
         }
 
-        interpreter.setq("alphabet:" + name, new ListAlphabet(words));
+        map.put(name, words);
 
         return LList.NIL;
+    }
+
+    /**
+     * Getter for a named alphabet.
+     * 
+     * @param name the name of the alphabet
+     * 
+     * @return the alphabet or <code>null</code> if the name is not associated
+     *         with an alphabet
+     */
+    public List<String> lookup(String name) {
+
+        return map.get(name);
     }
 
 }

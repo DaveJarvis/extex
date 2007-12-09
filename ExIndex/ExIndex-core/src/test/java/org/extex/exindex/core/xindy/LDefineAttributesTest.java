@@ -24,6 +24,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.extex.exindex.core.xindy.type.Attribute;
 import org.extex.exindex.lisp.exception.LException;
@@ -202,6 +204,52 @@ public class LDefineAttributesTest {
     public final void testError04() throws Exception {
 
         runTest("(define-attributes (123)");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = LException.class)
+    public final void testError05() throws Exception {
+
+        runTest("(define-attributes (\"x\" \"x\"))");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = LException.class)
+    public final void testError06() throws Exception {
+
+        runTest("(define-attributes (\"x\" (\"x\")))");
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testFull01() throws Exception {
+
+        Indexer indexer = new TestableIndexer();
+        assertNotNull(indexer);
+        indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
+            "<reader>");
+        LDefineAttributes function =
+                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        assertNotNull(function);
+
+        List<String> rsc = new ArrayList<String>();
+        rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
+        indexer.run(null, rsc, null, null);
     }
 
 }

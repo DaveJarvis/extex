@@ -19,20 +19,29 @@
 
 package org.extex.exindex.core.xindy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This is the adapter for the L system to define a crossreference class.
  * 
+ * It also serves as a container for the classes collected.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LDefineCrossrefClass extends LFunction {
+
+    /**
+     * The field <tt>map</tt> contains the ...
+     */
+    private Map<String, Boolean> map = new HashMap<String, Boolean>();
 
     /**
      * Creates a new object.
@@ -64,10 +73,19 @@ public class LDefineCrossrefClass extends LFunction {
     public LValue evaluate(LInterpreter interpreter, String name,
             Boolean unverified) throws LSettingConstantException {
 
-        interpreter.setq("crossref-class:" + name, //
-            LBoolean.valueOf(unverified.booleanValue()));
-
+        map.put(name, unverified);
         return null;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name
+     * @return
+     */
+    public Boolean look(String name) {
+
+        return map.get(name);
     }
 
 }
