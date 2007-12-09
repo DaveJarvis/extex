@@ -236,12 +236,34 @@ public class LDefineAttributesTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test
-    public final void testFull01() throws Exception {
+    @Test(expected = LException.class)
+    public final void testFull01Fail() throws Exception {
 
         Indexer indexer = new TestableIndexer();
         assertNotNull(indexer);
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
+            "<reader>");
+        LDefineAttributes function =
+                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        assertNotNull(function);
+
+        List<String> rsc = new ArrayList<String>();
+        rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
+        indexer.run(null, rsc, null, null);
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testFull01Ok() throws Exception {
+
+        Indexer indexer = new TestableIndexer();
+        assertNotNull(indexer);
+        indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
         LDefineAttributes function =
                 (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
