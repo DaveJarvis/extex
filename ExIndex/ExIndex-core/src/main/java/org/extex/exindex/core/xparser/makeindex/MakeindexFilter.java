@@ -47,20 +47,44 @@ public class MakeindexFilter extends Reader {
      */
     private StringBuilder buffer = new StringBuilder();
 
+    /**
+     * The field <tt>keyword</tt> contains the ...
+     */
     private String keyword = "\\indexentry";
 
+    /**
+     * The field <tt>argOpen</tt> contains the ...
+     */
     private char argOpen = '{';
 
+    /**
+     * The field <tt>argClose</tt> contains the ...
+     */
     private char argClose = '}';
 
+    /**
+     * The field <tt>escape</tt> contains the ...
+     */
     private char escape = '"';
 
+    /**
+     * The field <tt>quote</tt> contains the ...
+     */
     private char quote = '\\';
 
+    /**
+     * The field <tt>encap</tt> contains the ...
+     */
     private char encap = '|';
 
+    /**
+     * The field <tt>level</tt> contains the ...
+     */
     private char level = '!';
 
+    /**
+     * The field <tt>actual</tt> contains the ...
+     */
     private char actual = '@';
 
     /**
@@ -105,6 +129,16 @@ public class MakeindexFilter extends Reader {
         }
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param resource
+     * @param collator
+     * 
+     * @return
+     * 
+     * @throws IOException in case of an error
+     */
     private boolean fillBuffer(String resource, Collator collator)
             throws IOException {
 
