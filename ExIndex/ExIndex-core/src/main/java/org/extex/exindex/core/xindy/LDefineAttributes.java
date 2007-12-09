@@ -19,6 +19,10 @@
 
 package org.extex.exindex.core.xindy;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.extex.exindex.core.xindy.type.Attribute;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -31,10 +35,32 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define attributes.
  * 
+ * <pre>
+ *  (define-attributes attribute-list)
+ * </pre>
+ * 
+ * It also serves as a container for the attributes collected.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LDefineAttributes extends LFunction {
+
+    /**
+     * The field <tt>map</tt> contains the attributes.
+     */
+    private Map<String, Attribute> map = new HashMap<String, Attribute>();
+
+    /**
+     * The field <tt>org</tt> contains the reference number for ordering the
+     * attributes.
+     */
+    private int ord = 0;
+
+    /**
+     * The field <tt>group</tt> contains the ...
+     */
+    private int group = 0;
 
     /**
      * Creates a new object.
@@ -56,36 +82,47 @@ public class LDefineAttributes extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param list
+     * @param list the list of attributes
      * 
      * @return <tt>nil</tt>
      * 
-     * @throws LNonMatchingTypeException
+     * @throws LNonMatchingTypeException is types are wrong
      * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LList list)
             throws LNonMatchingTypeException,
                 LSettingConstantException {
 
-        LList attributeGroups = new LList();
+        String key;
+
         for (LValue val : list) {
             if (val instanceof LString) {
-                LList ag = new LList();
-                ag.add(val);
-                attributeGroups.add(ag);
+                key = ((LString) val).getValue();
+                map.put(key, new Attribute(key, ord++, group++));
             } else if (val instanceof LList) {
-                for (LValue v : (LList) val) {
-                    LString.getString(v); // check the type
+                LList lst = (LList) val;
+
+                for (LValue v : lst) {
+                    key = LString.getString(v);
+                    map.put(key, new Attribute(key, ord++, group));
                 }
-                attributeGroups.add(val);
+                group++;
             } else {
                 throw new LNonMatchingTypeException("");
             }
         }
-
-        interpreter.setq("attributes", attributeGroups);
-
         return null;
     }
 
+    /**
+     * Getter for a named attribute
+     * 
+     * @param attibute the name of the attribute
+     * 
+     * @return the named attribute or <code>null</code> if not defined
+     */
+    public Attribute lookup(String attibute) {
+
+        return map.get(attibute);
+    }
 }
