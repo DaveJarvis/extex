@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.extex.exindex.core.xindy.type.Attribute;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -31,6 +32,7 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the adapter for the L system to define attributes.
@@ -58,7 +60,7 @@ public class LDefineAttributes extends LFunction {
     private int ord = 0;
 
     /**
-     * The field <tt>group</tt> contains the ...
+     * The field <tt>group</tt> contains the index of the group.
      */
     private int group = 0;
 
@@ -87,23 +89,33 @@ public class LDefineAttributes extends LFunction {
      * @return <tt>nil</tt>
      * 
      * @throws LNonMatchingTypeException is types are wrong
+     * @throws LException in case of an error
      * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LList list)
             throws LNonMatchingTypeException,
-                LSettingConstantException {
+                LSettingConstantException,
+                LException {
 
         String key;
 
         for (LValue val : list) {
             if (val instanceof LString) {
                 key = ((LString) val).getValue();
+                if (map.containsKey(key)) {
+                    throw new LException(LocalizerFactory.getLocalizer(
+                        getClass()).format("AlreadyDefined", key));
+                }
                 map.put(key, new Attribute(key, ord++, group++));
             } else if (val instanceof LList) {
                 LList lst = (LList) val;
 
                 for (LValue v : lst) {
                     key = LString.getString(v);
+                    if (map.containsKey(key)) {
+                        throw new LException(LocalizerFactory.getLocalizer(
+                            getClass()).format("AlreadyDefined", key));
+                    }
                     map.put(key, new Attribute(key, ord++, group));
                 }
                 group++;
