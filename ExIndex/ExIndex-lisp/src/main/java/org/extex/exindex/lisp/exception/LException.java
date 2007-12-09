@@ -19,9 +19,9 @@
 
 package org.extex.exindex.lisp.exception;
 
-
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that an exception in the L system has been
+ * encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,11 +37,11 @@ public class LException extends Exception {
     /**
      * Creates a new object.
      * 
-     * @param resource
+     * @param message the message
      */
-    public LException(String resource) {
+    public LException(String message) {
 
-        super(resource);
+        super(message);
     }
 
     /**
