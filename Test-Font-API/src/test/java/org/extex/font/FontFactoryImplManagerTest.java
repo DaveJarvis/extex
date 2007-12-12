@@ -19,12 +19,19 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.extex.core.UnicodeChar;
 import org.extex.font.manager.ManagerInfo;
+import org.junit.Test;
 
 /**
  * Test for the font factory (manager).
@@ -40,6 +47,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -55,6 +63,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -73,6 +82,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -91,6 +101,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -108,6 +119,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -133,6 +145,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -160,6 +173,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -181,6 +195,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager0() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -203,6 +218,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager1() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -216,7 +232,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
             manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('A', cid.getId());
+        assertEquals('A', (char) cid.getId());
         assertEquals("65", cid.getName());
         Iterator<ManagerInfo> it = manager.iterate();
         assertTrue(it.hasNext());
@@ -236,6 +252,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager2() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -252,7 +269,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertFalse("second is not new any more", manager
             .isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('B', cid.getId());
+        assertEquals('B', (char) cid.getId());
         assertEquals("66", cid.getName());
         Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
@@ -274,6 +291,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManager3() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -290,7 +308,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
             manager.recognize(key, UnicodeChar.get('B')));
         assertTrue("second is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
-        assertEquals('B', cid.getId());
+        assertEquals('B', (char) cid.getId());
         assertEquals("66", cid.getName());
         Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
@@ -321,6 +339,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testManagerReset1() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
