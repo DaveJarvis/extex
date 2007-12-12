@@ -19,6 +19,12 @@
 
 package org.extex.font.format.afm;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.InputStream;
 
 import org.extex.core.UnicodeChar;
@@ -33,7 +39,7 @@ import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.unicode.GlyphName;
-import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test for the font factory (afm).
@@ -44,9 +50,9 @@ import org.junit.Before;
 public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
-     * The font key. (only one instance for all tests)
+     * The factory. (only one instance for all tests)
      */
-    private static FontKey key;
+    private static CoreFontFactory factory;
 
     /**
      * The font. (only one instance for all tests)
@@ -54,9 +60,9 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     private static ExtexFont font;
 
     /**
-     * The factory. (only one instance for all tests)
+     * The font key. (only one instance for all tests)
      */
-    private static CoreFontFactory factory;
+    private static FontKey key;
 
     /**
      * The font parameter. (only one instance for all tests)
@@ -64,13 +70,11 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     private static FontParameter param;
 
     /**
-     * {@inheritDoc}
+     * Creates a new object.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception if an error occurred.
      */
-    @Before
-    @Override
-    public void setUp() throws Exception {
+    public FontFactoryImplAfmTest() throws Exception {
 
         if (factory == null) {
             factory = makeFontFactory();
@@ -86,6 +90,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(font);
@@ -98,6 +103,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         assertNotNull(font.getFontKey());
@@ -113,6 +119,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         FixedDimen ds = font.getDesignSize();
@@ -125,6 +132,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         assertNotNull(font.getActualSize());
@@ -136,6 +144,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         FixedDimen ex = font.getEx();
@@ -150,6 +159,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         FixedDimen em = font.getEm();
@@ -162,6 +172,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         FixedDimen fd0 = font.getFontDimen("0");
@@ -174,6 +185,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test08() throws Exception {
 
         FixedDimen fd1 = font.getFontDimen("1");
@@ -186,6 +198,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test09() throws Exception {
 
         FixedCount sf = font.getScaleFactor();
@@ -199,6 +212,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test10() throws Exception {
 
         assertNotNull(font);
@@ -231,6 +245,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning01() throws Exception {
 
         assertNotNull(font);
@@ -246,6 +261,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning02() throws Exception {
 
         assertNotNull(font);
@@ -261,6 +277,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning03() throws Exception {
 
         assertNotNull(font);
@@ -276,6 +293,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning04() throws Exception {
 
         assertNotNull(font);
@@ -292,6 +310,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning05() throws Exception {
 
         assertNotNull(font);
@@ -310,6 +329,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning06() throws Exception {
 
         assertNotNull(font);
@@ -327,6 +347,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature01() throws Exception {
 
         assertNotNull(font);
@@ -340,6 +361,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature02() throws Exception {
 
         assertNotNull(font);
@@ -353,6 +375,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature03() throws Exception {
 
         assertNotNull(font);
@@ -366,6 +389,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature04() throws Exception {
 
         assertNotNull(font);
@@ -380,6 +404,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature05() throws Exception {
 
         assertNotNull(font);
@@ -394,6 +419,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature06() throws Exception {
 
         assertNotNull(font);
