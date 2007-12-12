@@ -22,8 +22,6 @@ package org.extex.font;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import junit.framework.TestCase;
-
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
@@ -39,7 +37,7 @@ import org.extex.resource.ResourceFinderFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractFontFactoryTester extends TestCase {
+public abstract class AbstractFontFactoryTester {
 
     /**
      * The resource finder.
