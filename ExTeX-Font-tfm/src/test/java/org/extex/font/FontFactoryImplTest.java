@@ -19,12 +19,18 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.HashMap;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.format.NullExtexFont;
+import org.junit.Test;
 
 /**
  * Test for the font factory.
@@ -39,6 +45,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -53,6 +60,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -69,6 +77,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -85,6 +94,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -101,6 +111,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -116,6 +127,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -136,6 +148,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test08() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -159,6 +172,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey01() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -178,6 +192,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey02() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -197,6 +212,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey03() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -216,6 +232,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey04() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -234,6 +251,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey05() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
@@ -250,6 +268,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKey06() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();

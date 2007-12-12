@@ -19,11 +19,16 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.Test;
 
 /**
  * Test for the font factory.
@@ -66,6 +71,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(font);
@@ -76,6 +82,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         assertEquals("cmr10", font.getFontName());
@@ -86,6 +93,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         assertNotNull(font.getFontKey());
@@ -97,6 +105,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         assertNotNull(font.getActualFontKey());
@@ -108,6 +117,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         FixedDimen ds = font.getDesignSize();
@@ -120,6 +130,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         assertNotNull(font.getActualSize());
@@ -132,6 +143,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test08() throws Exception {
 
         FixedCount scale = font.getScaleFactor();
@@ -144,6 +156,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test09() throws Exception {
 
         FixedDimen ex = font.getEx();
@@ -157,6 +170,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test10() throws Exception {
 
         FixedDimen em = font.getEm();
@@ -170,6 +184,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test11() throws Exception {
 
         FixedDimen fd0 = font.getFontDimen("0");
@@ -182,6 +197,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test12() throws Exception {
 
         FixedDimen fd1 = font.getFontDimen("1");

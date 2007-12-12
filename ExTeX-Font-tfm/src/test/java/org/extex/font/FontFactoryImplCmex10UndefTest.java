@@ -19,6 +19,11 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
@@ -27,6 +32,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.Test;
 
 /**
  * Test for the font factory.
@@ -70,6 +76,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(font);
@@ -81,6 +88,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         assertNotNull(font);
@@ -93,6 +101,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC0() throws Exception {
 
         assertNotNull(font);
@@ -121,6 +130,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC1() throws Exception {
 
         assertNotNull(font);
@@ -149,6 +159,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC10() throws Exception {
 
         assertNotNull(font);
@@ -177,6 +188,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC100() throws Exception {
 
         assertNotNull(font);
@@ -204,6 +216,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC101() throws Exception {
 
         assertNotNull(font);
@@ -231,6 +244,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC102() throws Exception {
 
         assertNotNull(font);
@@ -258,6 +272,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC103() throws Exception {
 
         assertNotNull(font);
@@ -286,6 +301,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC104() throws Exception {
 
         assertNotNull(font);
@@ -315,6 +331,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC105() throws Exception {
 
         assertNotNull(font);
@@ -344,6 +361,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC106() throws Exception {
 
         assertNotNull(font);
@@ -373,6 +391,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC107() throws Exception {
 
         assertNotNull(font);
@@ -402,6 +421,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC108() throws Exception {
 
         assertNotNull(font);
@@ -431,6 +451,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC109() throws Exception {
 
         assertNotNull(font);
@@ -459,6 +480,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC11() throws Exception {
 
         assertNotNull(font);
@@ -488,6 +510,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC110() throws Exception {
 
         assertNotNull(font);
@@ -517,6 +540,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC111() throws Exception {
 
         assertNotNull(font);
@@ -546,6 +570,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC112() throws Exception {
 
         assertNotNull(font);
@@ -575,6 +600,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC113() throws Exception {
 
         assertNotNull(font);
@@ -604,6 +630,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC114() throws Exception {
 
         assertNotNull(font);
@@ -633,6 +660,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC115() throws Exception {
 
         assertNotNull(font);
@@ -661,6 +689,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC116() throws Exception {
 
         assertNotNull(font);
@@ -688,6 +717,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC117() throws Exception {
 
         assertNotNull(font);
@@ -716,6 +746,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC118() throws Exception {
 
         assertNotNull(font);
@@ -744,6 +775,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC119() throws Exception {
 
         assertNotNull(font);
@@ -771,6 +803,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC12() throws Exception {
 
         assertNotNull(font);
@@ -798,6 +831,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC120() throws Exception {
 
         assertNotNull(font);
@@ -825,6 +859,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC121() throws Exception {
 
         assertNotNull(font);
@@ -852,6 +887,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC122() throws Exception {
 
         assertNotNull(font);
@@ -879,6 +915,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC123() throws Exception {
 
         assertNotNull(font);
@@ -906,6 +943,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC124() throws Exception {
 
         assertNotNull(font);
@@ -933,6 +971,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC125() throws Exception {
 
         assertNotNull(font);
@@ -960,6 +999,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC126() throws Exception {
 
         assertNotNull(font);
@@ -987,6 +1027,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC127() throws Exception {
 
         assertNotNull(font);
@@ -1014,6 +1055,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC128() throws Exception {
 
         assertNotNull(font);
@@ -1027,6 +1069,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC129() throws Exception {
 
         assertNotNull(font);
@@ -1040,6 +1083,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC13() throws Exception {
 
         assertNotNull(font);
@@ -1067,6 +1111,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC130() throws Exception {
 
         assertNotNull(font);
@@ -1080,6 +1125,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC131() throws Exception {
 
         assertNotNull(font);
@@ -1093,6 +1139,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC132() throws Exception {
 
         assertNotNull(font);
@@ -1106,6 +1153,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC133() throws Exception {
 
         assertNotNull(font);
@@ -1119,6 +1167,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC134() throws Exception {
 
         assertNotNull(font);
@@ -1132,6 +1181,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC135() throws Exception {
 
         assertNotNull(font);
@@ -1145,6 +1195,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC136() throws Exception {
 
         assertNotNull(font);
@@ -1158,6 +1209,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC137() throws Exception {
 
         assertNotNull(font);
@@ -1171,6 +1223,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC138() throws Exception {
 
         assertNotNull(font);
@@ -1184,6 +1237,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC139() throws Exception {
 
         assertNotNull(font);
@@ -1197,6 +1251,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC14() throws Exception {
 
         assertNotNull(font);
@@ -1225,6 +1280,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC140() throws Exception {
 
         assertNotNull(font);
@@ -1238,6 +1294,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC141() throws Exception {
 
         assertNotNull(font);
@@ -1251,6 +1308,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC142() throws Exception {
 
         assertNotNull(font);
@@ -1264,6 +1322,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC143() throws Exception {
 
         assertNotNull(font);
@@ -1277,6 +1336,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC144() throws Exception {
 
         assertNotNull(font);
@@ -1290,6 +1350,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC145() throws Exception {
 
         assertNotNull(font);
@@ -1303,6 +1364,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC146() throws Exception {
 
         assertNotNull(font);
@@ -1316,6 +1378,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC147() throws Exception {
 
         assertNotNull(font);
@@ -1329,6 +1392,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC148() throws Exception {
 
         assertNotNull(font);
@@ -1342,6 +1406,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC149() throws Exception {
 
         assertNotNull(font);
@@ -1355,6 +1420,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC15() throws Exception {
 
         assertNotNull(font);
@@ -1383,6 +1449,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC150() throws Exception {
 
         assertNotNull(font);
@@ -1396,6 +1463,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC151() throws Exception {
 
         assertNotNull(font);
@@ -1409,6 +1477,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC152() throws Exception {
 
         assertNotNull(font);
@@ -1422,6 +1491,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC153() throws Exception {
 
         assertNotNull(font);
@@ -1435,6 +1505,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC154() throws Exception {
 
         assertNotNull(font);
@@ -1448,6 +1519,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC155() throws Exception {
 
         assertNotNull(font);
@@ -1461,6 +1533,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC156() throws Exception {
 
         assertNotNull(font);
@@ -1474,6 +1547,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC157() throws Exception {
 
         assertNotNull(font);
@@ -1487,6 +1561,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC158() throws Exception {
 
         assertNotNull(font);
@@ -1500,6 +1575,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC159() throws Exception {
 
         assertNotNull(font);
@@ -1514,6 +1590,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC16() throws Exception {
 
         assertNotNull(font);
@@ -1542,6 +1619,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC160() throws Exception {
 
         assertNotNull(font);
@@ -1555,6 +1633,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC161() throws Exception {
 
         assertNotNull(font);
@@ -1568,6 +1647,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC162() throws Exception {
 
         assertNotNull(font);
@@ -1581,6 +1661,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC163() throws Exception {
 
         assertNotNull(font);
@@ -1594,6 +1675,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC164() throws Exception {
 
         assertNotNull(font);
@@ -1607,6 +1689,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC165() throws Exception {
 
         assertNotNull(font);
@@ -1620,6 +1703,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC166() throws Exception {
 
         assertNotNull(font);
@@ -1633,6 +1717,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC167() throws Exception {
 
         assertNotNull(font);
@@ -1646,6 +1731,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC168() throws Exception {
 
         assertNotNull(font);
@@ -1659,6 +1745,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC169() throws Exception {
 
         assertNotNull(font);
@@ -1673,6 +1760,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC17() throws Exception {
 
         assertNotNull(font);
@@ -1701,6 +1789,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC170() throws Exception {
 
         assertNotNull(font);
@@ -1714,6 +1803,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC171() throws Exception {
 
         assertNotNull(font);
@@ -1727,6 +1817,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC172() throws Exception {
 
         assertNotNull(font);
@@ -1740,6 +1831,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC173() throws Exception {
 
         assertNotNull(font);
@@ -1753,6 +1845,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC174() throws Exception {
 
         assertNotNull(font);
@@ -1766,6 +1859,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC175() throws Exception {
 
         assertNotNull(font);
@@ -1779,6 +1873,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC176() throws Exception {
 
         assertNotNull(font);
@@ -1792,6 +1887,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC177() throws Exception {
 
         assertNotNull(font);
@@ -1805,6 +1901,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC178() throws Exception {
 
         assertNotNull(font);
@@ -1818,6 +1915,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC179() throws Exception {
 
         assertNotNull(font);
@@ -1832,6 +1930,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC18() throws Exception {
 
         assertNotNull(font);
@@ -1860,6 +1959,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC180() throws Exception {
 
         assertNotNull(font);
@@ -1873,6 +1973,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC181() throws Exception {
 
         assertNotNull(font);
@@ -1886,6 +1987,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC182() throws Exception {
 
         assertNotNull(font);
@@ -1899,6 +2001,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC183() throws Exception {
 
         assertNotNull(font);
@@ -1912,6 +2015,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC184() throws Exception {
 
         assertNotNull(font);
@@ -1925,6 +2029,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC185() throws Exception {
 
         assertNotNull(font);
@@ -1938,6 +2043,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC186() throws Exception {
 
         assertNotNull(font);
@@ -1951,6 +2057,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC187() throws Exception {
 
         assertNotNull(font);
@@ -1964,6 +2071,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC188() throws Exception {
 
         assertNotNull(font);
@@ -1977,6 +2085,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC189() throws Exception {
 
         assertNotNull(font);
@@ -1991,6 +2100,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC19() throws Exception {
 
         assertNotNull(font);
@@ -2019,6 +2129,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC190() throws Exception {
 
         assertNotNull(font);
@@ -2032,6 +2143,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC191() throws Exception {
 
         assertNotNull(font);
@@ -2045,6 +2157,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC192() throws Exception {
 
         assertNotNull(font);
@@ -2058,6 +2171,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC193() throws Exception {
 
         assertNotNull(font);
@@ -2071,6 +2185,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC194() throws Exception {
 
         assertNotNull(font);
@@ -2084,6 +2199,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC195() throws Exception {
 
         assertNotNull(font);
@@ -2097,6 +2213,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC196() throws Exception {
 
         assertNotNull(font);
@@ -2110,6 +2227,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC197() throws Exception {
 
         assertNotNull(font);
@@ -2123,6 +2241,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC198() throws Exception {
 
         assertNotNull(font);
@@ -2136,6 +2255,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC199() throws Exception {
 
         assertNotNull(font);
@@ -2149,6 +2269,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC2() throws Exception {
 
         assertNotNull(font);
@@ -2178,6 +2299,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC20() throws Exception {
 
         assertNotNull(font);
@@ -2206,6 +2328,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC200() throws Exception {
 
         assertNotNull(font);
@@ -2219,6 +2342,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC201() throws Exception {
 
         assertNotNull(font);
@@ -2232,6 +2356,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC202() throws Exception {
 
         assertNotNull(font);
@@ -2245,6 +2370,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC203() throws Exception {
 
         assertNotNull(font);
@@ -2258,6 +2384,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC204() throws Exception {
 
         assertNotNull(font);
@@ -2271,6 +2398,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC205() throws Exception {
 
         assertNotNull(font);
@@ -2284,6 +2412,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC206() throws Exception {
 
         assertNotNull(font);
@@ -2297,6 +2426,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC207() throws Exception {
 
         assertNotNull(font);
@@ -2310,6 +2440,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC208() throws Exception {
 
         assertNotNull(font);
@@ -2323,6 +2454,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC209() throws Exception {
 
         assertNotNull(font);
@@ -2337,6 +2469,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC21() throws Exception {
 
         assertNotNull(font);
@@ -2365,6 +2498,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC210() throws Exception {
 
         assertNotNull(font);
@@ -2378,6 +2512,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC211() throws Exception {
 
         assertNotNull(font);
@@ -2391,6 +2526,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC212() throws Exception {
 
         assertNotNull(font);
@@ -2404,6 +2540,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC213() throws Exception {
 
         assertNotNull(font);
@@ -2417,6 +2554,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC214() throws Exception {
 
         assertNotNull(font);
@@ -2430,6 +2568,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC215() throws Exception {
 
         assertNotNull(font);
@@ -2443,6 +2582,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC216() throws Exception {
 
         assertNotNull(font);
@@ -2456,6 +2596,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC217() throws Exception {
 
         assertNotNull(font);
@@ -2469,6 +2610,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC218() throws Exception {
 
         assertNotNull(font);
@@ -2482,6 +2624,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC219() throws Exception {
 
         assertNotNull(font);
@@ -2496,6 +2639,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC22() throws Exception {
 
         assertNotNull(font);
@@ -2524,6 +2668,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC220() throws Exception {
 
         assertNotNull(font);
@@ -2537,6 +2682,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC221() throws Exception {
 
         assertNotNull(font);
@@ -2550,6 +2696,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC222() throws Exception {
 
         assertNotNull(font);
@@ -2563,6 +2710,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC223() throws Exception {
 
         assertNotNull(font);
@@ -2576,6 +2724,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC224() throws Exception {
 
         assertNotNull(font);
@@ -2589,6 +2738,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC225() throws Exception {
 
         assertNotNull(font);
@@ -2602,6 +2752,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC226() throws Exception {
 
         assertNotNull(font);
@@ -2615,6 +2766,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC227() throws Exception {
 
         assertNotNull(font);
@@ -2628,6 +2780,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC228() throws Exception {
 
         assertNotNull(font);
@@ -2641,6 +2794,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC229() throws Exception {
 
         assertNotNull(font);
@@ -2655,6 +2809,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC23() throws Exception {
 
         assertNotNull(font);
@@ -2683,6 +2838,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC230() throws Exception {
 
         assertNotNull(font);
@@ -2696,6 +2852,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC231() throws Exception {
 
         assertNotNull(font);
@@ -2709,6 +2866,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC232() throws Exception {
 
         assertNotNull(font);
@@ -2722,6 +2880,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC233() throws Exception {
 
         assertNotNull(font);
@@ -2735,6 +2894,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC234() throws Exception {
 
         assertNotNull(font);
@@ -2748,6 +2908,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC235() throws Exception {
 
         assertNotNull(font);
@@ -2761,6 +2922,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC236() throws Exception {
 
         assertNotNull(font);
@@ -2774,6 +2936,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC237() throws Exception {
 
         assertNotNull(font);
@@ -2787,6 +2950,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC238() throws Exception {
 
         assertNotNull(font);
@@ -2800,6 +2964,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC239() throws Exception {
 
         assertNotNull(font);
@@ -2814,6 +2979,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC24() throws Exception {
 
         assertNotNull(font);
@@ -2842,6 +3008,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC240() throws Exception {
 
         assertNotNull(font);
@@ -2855,6 +3022,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC241() throws Exception {
 
         assertNotNull(font);
@@ -2868,6 +3036,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC242() throws Exception {
 
         assertNotNull(font);
@@ -2881,6 +3050,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC243() throws Exception {
 
         assertNotNull(font);
@@ -2894,6 +3064,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC244() throws Exception {
 
         assertNotNull(font);
@@ -2907,6 +3078,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC245() throws Exception {
 
         assertNotNull(font);
@@ -2920,6 +3092,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC246() throws Exception {
 
         assertNotNull(font);
@@ -2933,6 +3106,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC247() throws Exception {
 
         assertNotNull(font);
@@ -2946,6 +3120,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC248() throws Exception {
 
         assertNotNull(font);
@@ -2959,6 +3134,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC249() throws Exception {
 
         assertNotNull(font);
@@ -2973,6 +3149,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC25() throws Exception {
 
         assertNotNull(font);
@@ -3001,6 +3178,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC250() throws Exception {
 
         assertNotNull(font);
@@ -3014,6 +3192,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC251() throws Exception {
 
         assertNotNull(font);
@@ -3027,6 +3206,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC252() throws Exception {
 
         assertNotNull(font);
@@ -3040,6 +3220,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC253() throws Exception {
 
         assertNotNull(font);
@@ -3053,6 +3234,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC254() throws Exception {
 
         assertNotNull(font);
@@ -3066,6 +3248,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC255() throws Exception {
 
         assertNotNull(font);
@@ -3080,6 +3263,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC26() throws Exception {
 
         assertNotNull(font);
@@ -3109,6 +3293,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC27() throws Exception {
 
         assertNotNull(font);
@@ -3138,6 +3323,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC28() throws Exception {
 
         assertNotNull(font);
@@ -3167,6 +3353,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC29() throws Exception {
 
         assertNotNull(font);
@@ -3195,6 +3382,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC3() throws Exception {
 
         assertNotNull(font);
@@ -3224,6 +3412,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC30() throws Exception {
 
         assertNotNull(font);
@@ -3253,6 +3442,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC31() throws Exception {
 
         assertNotNull(font);
@@ -3282,6 +3472,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC32() throws Exception {
 
         assertNotNull(font);
@@ -3311,6 +3502,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC33() throws Exception {
 
         assertNotNull(font);
@@ -3340,6 +3532,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC34() throws Exception {
 
         assertNotNull(font);
@@ -3369,6 +3562,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC35() throws Exception {
 
         assertNotNull(font);
@@ -3398,6 +3592,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC36() throws Exception {
 
         assertNotNull(font);
@@ -3427,6 +3622,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC37() throws Exception {
 
         assertNotNull(font);
@@ -3456,6 +3652,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC38() throws Exception {
 
         assertNotNull(font);
@@ -3485,6 +3682,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC39() throws Exception {
 
         assertNotNull(font);
@@ -3513,6 +3711,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC4() throws Exception {
 
         assertNotNull(font);
@@ -3542,6 +3741,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC40() throws Exception {
 
         assertNotNull(font);
@@ -3571,6 +3771,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC41() throws Exception {
 
         assertNotNull(font);
@@ -3600,6 +3801,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC42() throws Exception {
 
         assertNotNull(font);
@@ -3629,6 +3831,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC43() throws Exception {
 
         assertNotNull(font);
@@ -3658,6 +3861,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC44() throws Exception {
 
         assertNotNull(font);
@@ -3687,6 +3891,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC45() throws Exception {
 
         assertNotNull(font);
@@ -3716,6 +3921,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC46() throws Exception {
 
         assertNotNull(font);
@@ -3745,6 +3951,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC47() throws Exception {
 
         assertNotNull(font);
@@ -3774,6 +3981,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC48() throws Exception {
 
         assertNotNull(font);
@@ -3803,6 +4011,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC49() throws Exception {
 
         assertNotNull(font);
@@ -3831,6 +4040,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC5() throws Exception {
 
         assertNotNull(font);
@@ -3860,6 +4070,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC50() throws Exception {
 
         assertNotNull(font);
@@ -3889,6 +4100,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC51() throws Exception {
 
         assertNotNull(font);
@@ -3918,6 +4130,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC52() throws Exception {
 
         assertNotNull(font);
@@ -3947,6 +4160,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC53() throws Exception {
 
         assertNotNull(font);
@@ -3975,6 +4189,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC54() throws Exception {
 
         assertNotNull(font);
@@ -4002,6 +4217,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC55() throws Exception {
 
         assertNotNull(font);
@@ -4029,6 +4245,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC56() throws Exception {
 
         assertNotNull(font);
@@ -4056,6 +4273,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC57() throws Exception {
 
         assertNotNull(font);
@@ -4083,6 +4301,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC58() throws Exception {
 
         assertNotNull(font);
@@ -4110,6 +4329,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC59() throws Exception {
 
         assertNotNull(font);
@@ -4137,6 +4357,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC6() throws Exception {
 
         assertNotNull(font);
@@ -4165,6 +4386,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC60() throws Exception {
 
         assertNotNull(font);
@@ -4192,6 +4414,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC61() throws Exception {
 
         assertNotNull(font);
@@ -4219,6 +4442,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC62() throws Exception {
 
         assertNotNull(font);
@@ -4246,6 +4470,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC63() throws Exception {
 
         assertNotNull(font);
@@ -4274,6 +4499,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC64() throws Exception {
 
         assertNotNull(font);
@@ -4303,6 +4529,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC65() throws Exception {
 
         assertNotNull(font);
@@ -4331,6 +4558,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC66() throws Exception {
 
         assertNotNull(font);
@@ -4358,6 +4586,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC67() throws Exception {
 
         assertNotNull(font);
@@ -4386,6 +4615,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC68() throws Exception {
 
         assertNotNull(font);
@@ -4415,6 +4645,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC69() throws Exception {
 
         assertNotNull(font);
@@ -4443,6 +4674,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC7() throws Exception {
 
         assertNotNull(font);
@@ -4471,6 +4703,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC70() throws Exception {
 
         assertNotNull(font);
@@ -4498,6 +4731,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC71() throws Exception {
 
         assertNotNull(font);
@@ -4527,6 +4761,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC72() throws Exception {
 
         assertNotNull(font);
@@ -4555,6 +4790,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC73() throws Exception {
 
         assertNotNull(font);
@@ -4582,6 +4818,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC74() throws Exception {
 
         assertNotNull(font);
@@ -4609,6 +4846,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC75() throws Exception {
 
         assertNotNull(font);
@@ -4637,6 +4875,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC76() throws Exception {
 
         assertNotNull(font);
@@ -4664,6 +4903,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC77() throws Exception {
 
         assertNotNull(font);
@@ -4692,6 +4932,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC78() throws Exception {
 
         assertNotNull(font);
@@ -4719,6 +4960,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC79() throws Exception {
 
         assertNotNull(font);
@@ -4747,6 +4989,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC8() throws Exception {
 
         assertNotNull(font);
@@ -4775,6 +5018,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC80() throws Exception {
 
         assertNotNull(font);
@@ -4802,6 +5046,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC81() throws Exception {
 
         assertNotNull(font);
@@ -4830,6 +5075,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC82() throws Exception {
 
         assertNotNull(font);
@@ -4857,6 +5103,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC83() throws Exception {
 
         assertNotNull(font);
@@ -4884,6 +5131,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC84() throws Exception {
 
         assertNotNull(font);
@@ -4911,6 +5159,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC85() throws Exception {
 
         assertNotNull(font);
@@ -4938,6 +5187,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC86() throws Exception {
 
         assertNotNull(font);
@@ -4965,6 +5215,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC87() throws Exception {
 
         assertNotNull(font);
@@ -4992,6 +5243,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC88() throws Exception {
 
         assertNotNull(font);
@@ -5020,6 +5272,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC89() throws Exception {
 
         assertNotNull(font);
@@ -5048,6 +5301,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC9() throws Exception {
 
         assertNotNull(font);
@@ -5077,6 +5331,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC90() throws Exception {
 
         assertNotNull(font);
@@ -5104,6 +5359,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC91() throws Exception {
 
         assertNotNull(font);
@@ -5132,6 +5388,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC92() throws Exception {
 
         assertNotNull(font);
@@ -5160,6 +5417,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC93() throws Exception {
 
         assertNotNull(font);
@@ -5188,6 +5446,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC94() throws Exception {
 
         assertNotNull(font);
@@ -5216,6 +5475,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC95() throws Exception {
 
         assertNotNull(font);
@@ -5244,6 +5504,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC96() throws Exception {
 
         assertNotNull(font);
@@ -5271,6 +5532,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC97() throws Exception {
 
         assertNotNull(font);
@@ -5299,6 +5561,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC98() throws Exception {
 
         assertNotNull(font);
@@ -5326,6 +5589,7 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testcmex10_undefC99() throws Exception {
 
         assertNotNull(font);

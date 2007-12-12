@@ -19,9 +19,14 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.Test;
 
 /**
  * Test for the font factory (with font logosl9).
@@ -61,6 +66,7 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     /**
      * test 0
      */
+    @Test
     public void test0() {
 
         assertNotNull(key);
@@ -68,20 +74,11 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * test cmman Char T defined
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testcmmanT() throws Exception {
-
-        assertTrue(font.hasGlyph(UnicodeChar.get('T')));
-    }
-
-    /**
      * test cmman Char h defined
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testcmmanh() throws Exception {
 
         assertTrue(font.hasGlyph(UnicodeChar.get('h')));
@@ -92,11 +89,23 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testcmmanLig() throws Exception {
 
         UnicodeChar ligature =
                 font.getLigature(UnicodeChar.get('h'), UnicodeChar.get('h'));
         assertNull(ligature);
+    }
+
+    /**
+     * test cmman Char T defined
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testcmmanT() throws Exception {
+
+        assertTrue(font.hasGlyph(UnicodeChar.get('T')));
     }
 
 }

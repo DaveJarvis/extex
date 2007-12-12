@@ -19,6 +19,12 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
@@ -27,6 +33,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.Test;
 
 /**
  * Test for the font factory (cmr10).
@@ -68,6 +75,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(font);
@@ -78,6 +86,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         assertEquals("cmr10", font.getFontName());
@@ -88,6 +97,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         assertNotNull(font.getFontKey());
@@ -99,6 +109,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         FontKey actualFontKey = font.getActualFontKey();
@@ -114,6 +125,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         FixedDimen ds = font.getDesignSize();
@@ -126,6 +138,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         assertNotNull(font.getActualSize());
@@ -138,6 +151,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test08() throws Exception {
 
         FixedDimen ex = font.getEx();
@@ -150,6 +164,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test09() throws Exception {
 
         FixedDimen em = font.getEm();
@@ -162,6 +177,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test10() throws Exception {
 
         FixedDimen fd0 = font.getFontDimen("0");
@@ -174,6 +190,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test11() throws Exception {
 
         FixedDimen fd1 = font.getFontDimen("1");
@@ -183,87 +200,11 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testScale01() throws Exception {
-
-        FixedCount scale = font.getScaleFactor();
-        assertNotNull(scale);
-        // scale = 1 -> 1 * 1000
-        assertEquals(1000, scale.getValue());
-    }
-
-    // -----------------------------------------------
-
-    /**
-     * Test for the font: cmr10 - width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testWidth01() throws Exception {
-
-        FixedGlue w = font.getWidth(null);
-
-        assertNotNull(w);
-        assertTrue(w.toString(), FixedGlue.ZERO.eq(w));
-
-    }
-
-    /**
-     * Test for the font: cmr10 - width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testWidth02() throws Exception {
-
-        FixedGlue w = font.getWidth(UnicodeChar.get(0xEE00));
-
-        assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(409601)
-            .eq(w));
-
-    }
-
-    /**
-     * Test for the font: cmr10 - width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testWidth03() throws Exception {
-
-        // u2t: 0x03a0 = 05 491521
-        FixedGlue w = font.getWidth(UnicodeChar.get(0x03a0));
-
-        assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-            .eq(w));
-
-    }
-
-    /**
-     * Test for the font: cmr10 - width
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testWidth04() throws Exception {
-
-        FixedGlue w = font.getWidth(UnicodeChar.get(65));
-
-        assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-            .eq(w));
-
-    }
-
-    // -----------------------------------------------
-
-    /**
      * Test for the font: cmr10 - depth
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth01() throws Exception {
 
         FixedGlue w = font.getDepth(null);
@@ -273,11 +214,14 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     }
 
+    // -----------------------------------------------
+
     /**
      * Test for the font: cmr10 - depth
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth02() throws Exception {
 
         FixedGlue w = font.getDepth(UnicodeChar.get(0xEE00));
@@ -292,6 +236,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth03() throws Exception {
 
         FixedGlue w = font.getDepth(UnicodeChar.get(0x03a0));
@@ -306,6 +251,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth04() throws Exception {
 
         FixedGlue w = font.getDepth(UnicodeChar.get(65));
@@ -315,13 +261,36 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     }
 
+    /**
+     * Test for the font: cmr10 - has glyph
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testHasGlyph01() throws Exception {
+
+        assertFalse(font.hasGlyph(null));
+    }
+
     // -----------------------------------------------
+
+    /**
+     * Test for the font: cmr10 - has glyph
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testHasGlyph02() throws Exception {
+
+        assertTrue(font.hasGlyph(UnicodeChar.get(86)));
+    }
 
     /**
      * Test for the font: cmr10 - height
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight01() throws Exception {
 
         FixedGlue w = font.getHeight(null);
@@ -336,6 +305,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight02() throws Exception {
 
         FixedGlue w = font.getHeight(UnicodeChar.get(0xEE00));
@@ -351,6 +321,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight03() throws Exception {
 
         FixedGlue w = font.getHeight(UnicodeChar.get(0x03a0));
@@ -361,11 +332,14 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     }
 
+    // -----------------------------------------------
+
     /**
      * Test for the font: cmr10 - height
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight04() throws Exception {
 
         FixedGlue w = font.getHeight(UnicodeChar.get(65));
@@ -376,13 +350,12 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     }
 
-    // -----------------------------------------------
-
     /**
      * Test for the font: cmr10 - italic correction
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic01() throws Exception {
 
         FixedDimen w = font.getItalicCorrection(null);
@@ -397,6 +370,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic02() throws Exception {
 
         FixedDimen w = font.getItalicCorrection(UnicodeChar.get(0xEE00));
@@ -411,6 +385,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic03() throws Exception {
 
         FixedDimen w = font.getItalicCorrection(UnicodeChar.get(0x03a0));
@@ -420,11 +395,14 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     }
 
+    // -----------------------------------------------
+
     /**
      * Test for the font: cmr10 - italic correction
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic04() throws Exception {
 
         FixedDimen w = font.getItalicCorrection(UnicodeChar.get(86));
@@ -435,45 +413,11 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - has glyph
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testHasGlyph01() throws Exception {
-
-        assertFalse(font.hasGlyph(null));
-    }
-
-    /**
-     * Test for the font: cmr10 - has glyph
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testHasGlyph02() throws Exception {
-
-        assertTrue(font.hasGlyph(UnicodeChar.get(86)));
-    }
-
-    /**
-     * Test for the font: cmr10 - space
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testSpace01() throws Exception {
-
-        FixedGlue g = font.getSpace();
-
-        assertNotNull(g);
-        assertTrue(g.toString(), new Glue(new Dimen(218453), new Dimen(109226),
-            new Dimen(72818)).eq(g));
-
-    }
-
-    /**
      * Test for the font: cmr10 - kerning
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning01() throws Exception {
 
         FixedDimen k = font.getKerning(null, null);
@@ -488,6 +432,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning02() throws Exception {
 
         FixedDimen k = font.getKerning(null, UnicodeChar.get('A'));
@@ -502,6 +447,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning03() throws Exception {
 
         FixedDimen k =
@@ -517,6 +463,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning04() throws Exception {
 
         FixedDimen k = font.getKerning(UnicodeChar.get('A'), null);
@@ -531,6 +478,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning05() throws Exception {
 
         FixedDimen k =
@@ -546,6 +494,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testKerning06() throws Exception {
 
         FixedDimen k =
@@ -562,6 +511,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature01() throws Exception {
 
         UnicodeChar uc = font.getLigature(null, null);
@@ -575,6 +525,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature02() throws Exception {
 
         UnicodeChar uc = font.getLigature(null, UnicodeChar.get('A'));
@@ -588,6 +539,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature03() throws Exception {
 
         UnicodeChar uc =
@@ -602,6 +554,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature04() throws Exception {
 
         UnicodeChar uc = font.getLigature(UnicodeChar.get('A'), null);
@@ -615,6 +568,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature05() throws Exception {
 
         UnicodeChar uc =
@@ -630,6 +584,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testLigature06() throws Exception {
 
         UnicodeChar uc =
@@ -637,6 +592,100 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(uc);
         assertEquals(0xee0f, uc.getCodePoint());
+
+    }
+
+    /**
+     * Test for the font key: cmr10
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testScale01() throws Exception {
+
+        FixedCount scale = font.getScaleFactor();
+        assertNotNull(scale);
+        // scale = 1 -> 1 * 1000
+        assertEquals(1000, scale.getValue());
+    }
+
+    /**
+     * Test for the font: cmr10 - space
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testSpace01() throws Exception {
+
+        FixedGlue g = font.getSpace();
+
+        assertNotNull(g);
+        assertTrue(g.toString(), new Glue(new Dimen(218453), new Dimen(109226),
+            new Dimen(72818)).eq(g));
+
+    }
+
+    /**
+     * Test for the font: cmr10 - width
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testWidth01() throws Exception {
+
+        FixedGlue w = font.getWidth(null);
+
+        assertNotNull(w);
+        assertTrue(w.toString(), FixedGlue.ZERO.eq(w));
+
+    }
+
+    /**
+     * Test for the font: cmr10 - width
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testWidth02() throws Exception {
+
+        FixedGlue w = font.getWidth(UnicodeChar.get(0xEE00));
+
+        assertNotNull(w);
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(409601)
+            .eq(w));
+
+    }
+
+    /**
+     * Test for the font: cmr10 - width
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testWidth03() throws Exception {
+
+        // u2t: 0x03a0 = 05 491521
+        FixedGlue w = font.getWidth(UnicodeChar.get(0x03a0));
+
+        assertNotNull(w);
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
+            .eq(w));
+
+    }
+
+    /**
+     * Test for the font: cmr10 - width
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testWidth04() throws Exception {
+
+        FixedGlue w = font.getWidth(UnicodeChar.get(65));
+
+        assertNotNull(w);
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
+            .eq(w));
 
     }
 

@@ -19,6 +19,11 @@
 
 package org.extex.font;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +47,7 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
+import org.junit.Test;
 
 /**
  * Test for the font factory (vf with creation nodes).
@@ -88,6 +94,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(font);
@@ -99,6 +106,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test2() throws Exception {
 
         assertNotNull(font);
@@ -120,6 +128,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test3() throws Exception {
 
         assertNotNull(font);
@@ -170,6 +179,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test4() throws Exception {
 
         assertNotNull(font);
@@ -230,6 +240,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test5() throws Exception {
 
         assertNotNull(font);
@@ -284,6 +295,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test6() throws Exception {
 
         assertNotNull(font);
@@ -363,6 +375,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test7() throws Exception {
 
         assertNotNull(font);
@@ -418,6 +431,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         assertTrue(box2 instanceof HorizontalListNode);
         HorizontalListNode hbox2 = (HorizontalListNode) box2;
 
+        // TODO mgn: A 65 A 913 ???
         assertEquals(
             "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -5.87494pt\n" + ".A", hbox2
                 .toString());
@@ -429,6 +443,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test8() throws Exception {
 
         assertNotNull(font);
@@ -536,6 +551,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         assertTrue(box2 instanceof HorizontalListNode);
         HorizontalListNode hbox2 = (HorizontalListNode) box2;
 
+        // TODO mgn: A 65 A 913 ???
         assertEquals("hbox: h+d+w",
             "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -2.60782pt\n" + ".A", hbox2
                 .toString());
