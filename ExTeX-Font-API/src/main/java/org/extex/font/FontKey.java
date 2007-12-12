@@ -36,9 +36,11 @@ import org.extex.core.glue.Glue;
 /**
  * Class for a font key.
  * 
+ * <p>
  * Font key is a collection several attributes. The central attribute is the
  * name. If the name is <code>null</code>, then the special null font is
  * meant.
+ * </p>
  * 
  * <p>
  * properties:
@@ -54,10 +56,10 @@ import org.extex.core.glue.Glue;
  * </ul>
  * 
  * <p>
- * features:
+ * Tags:
  * </p>
  * <p>
- * Each font can get several feature string (e.g. OpenType: latn, kern)
+ * Each font can get several tags (e.g. OpenType: latn, kern)
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -112,17 +114,12 @@ public class FontKey implements Serializable {
     private Map<String, FixedCount> countMap;
 
     /**
-     * Map for dimen values.
+     * Map for {@link Dimen} values.
      */
     private Map<String, FixedDimen> dimenMap;
 
     /**
-     * The feature list.
-     */
-    private List<String> feature;
-
-    /**
-     * Map for glue values.
+     * Map for {@link Glue} values.
      */
     private Map<String, FixedGlue> glueMap;
 
@@ -137,6 +134,11 @@ public class FontKey implements Serializable {
     private Map<String, String> stringMap;
 
     /**
+     * The tags (script, feature and language).
+     */
+    private List<String> tags;
+
+    /**
      * Create a new object (only in the same name space!).
      * 
      * @param fk The font key.
@@ -149,7 +151,7 @@ public class FontKey implements Serializable {
         glueMap = new HashMap<String, FixedGlue>(fk.getGlueMap());
         countMap = new HashMap<String, FixedCount>(fk.getCountMap());
         booleanMap = new HashMap<String, Boolean>(fk.getBooleanMap());
-        feature = new ArrayList<String>(fk.getFeature());
+        tags = new ArrayList<String>(fk.getTags());
     }
 
     /**
@@ -169,18 +171,18 @@ public class FontKey implements Serializable {
         glueMap = new HashMap<String, FixedGlue>();
         countMap = new HashMap<String, FixedCount>();
         booleanMap = new HashMap<String, Boolean>();
-        feature = new ArrayList<String>();
+        tags = new ArrayList<String>();
 
     }
 
     /**
-     * Add a list of features.
+     * Add a list of tags.
      * 
-     * @param theFeatures The list of features.
+     * @param theTags The list of tags.
      */
-    protected void add(List<String> theFeatures) {
+    protected void add(List<String> theTags) {
 
-        feature.addAll(theFeatures);
+        tags.addAll(theTags);
     }
 
     /**
@@ -238,14 +240,14 @@ public class FontKey implements Serializable {
             }
         }
 
-        // feature
-        if (k.getFeature().size() != feature.size()) {
+        // tags
+        if (k.getTags().size() != tags.size()) {
             return false;
         }
-        it = feature.iterator();
+        it = tags.iterator();
         while (it.hasNext()) {
             String feat = it.next();
-            if (!k.getFeature().contains(feat)) {
+            if (!k.getTags().contains(feat)) {
                 return false;
             }
         }
@@ -325,16 +327,6 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Getter for feature.
-     * 
-     * @return the feature
-     */
-    public List<String> getFeature() {
-
-        return new ArrayList<String>(feature);
-    }
-
-    /**
      * Returns the value for the key or <code>null</code>, if no key exists
      * in the map.
      * 
@@ -389,6 +381,16 @@ public class FontKey implements Serializable {
     }
 
     /**
+     * Getter for the tags.
+     * 
+     * @return Returns the tags.
+     */
+    public List<String> getTags() {
+
+        return new ArrayList<String>(tags);
+    }
+
+    /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
@@ -434,17 +436,6 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns <code>true</code>, if the feature is set.
-     * 
-     * @param name The name of the feature.
-     * @return Returns <code>true</code>, if the feature is set.
-     */
-    public boolean hasFeature(String name) {
-
-        return feature.contains(name);
-    }
-
-    /**
      * Check, if the key exists in the map.
      * 
      * @param key The key.
@@ -472,6 +463,17 @@ public class FontKey implements Serializable {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Returns <code>true</code>, if the tag is set.
+     * 
+     * @param name The name of the tag.
+     * @return Returns <code>true</code>, if the tag is set.
+     */
+    public boolean hasTag(String name) {
+
+        return tags.contains(name);
     }
 
     /**
@@ -628,7 +630,7 @@ public class FontKey implements Serializable {
             buf.append(" ").append(key).append("=").append(b);
         }
 
-        it = feature.iterator();
+        it = tags.iterator();
         while (it.hasNext()) {
             String key = it.next();
             buf.append(" ").append(key);
