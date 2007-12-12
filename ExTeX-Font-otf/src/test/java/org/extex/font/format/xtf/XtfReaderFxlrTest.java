@@ -19,24 +19,29 @@
 
 package org.extex.font.format.xtf;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import junit.framework.TestCase;
-
-import org.extex.font.format.xtf.TtfTableCMAP.Format;
-import org.extex.font.format.xtf.cff.CffFont;
-import org.extex.font.format.xtf.cff.CharString;
-import org.extex.font.format.xtf.cff.T2CallSubr;
-import org.extex.font.format.xtf.cff.T2EndChar;
-import org.extex.font.format.xtf.cff.T2HintMask;
-import org.extex.font.format.xtf.cff.T2HstemHm;
-import org.extex.font.format.xtf.cff.T2Number;
-import org.extex.font.format.xtf.cff.T2Operator;
-import org.extex.font.format.xtf.cff.T2PairNumber;
-import org.extex.font.format.xtf.cff.T2RLineTo;
-import org.extex.font.format.xtf.cff.T2RMoveTo;
+import org.extex.font.format.xtf.tables.OtfTableCFF;
+import org.extex.font.format.xtf.tables.TtfTableCMAP;
+import org.extex.font.format.xtf.tables.TtfTableCMAP.Format;
+import org.extex.font.format.xtf.tables.cff.CffFont;
+import org.extex.font.format.xtf.tables.cff.CharString;
+import org.extex.font.format.xtf.tables.cff.T2CallSubr;
+import org.extex.font.format.xtf.tables.cff.T2EndChar;
+import org.extex.font.format.xtf.tables.cff.T2HintMask;
+import org.extex.font.format.xtf.tables.cff.T2HstemHm;
+import org.extex.font.format.xtf.tables.cff.T2Number;
+import org.extex.font.format.xtf.tables.cff.T2Operator;
+import org.extex.font.format.xtf.tables.cff.T2PairNumber;
+import org.extex.font.format.xtf.tables.cff.T2RLineTo;
+import org.extex.font.format.xtf.tables.cff.T2RMoveTo;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Test;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -46,7 +51,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrTest extends TestCase {
+public class XtfReaderFxlrTest {
 
     /**
      * The xtf reader.
@@ -70,6 +75,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(reader);
@@ -80,6 +86,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         assertEquals("Linux Libertine", reader.getFontFamilyName());
@@ -91,6 +98,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         TtfTableCMAP cmap = reader.getCmapTable();
@@ -106,6 +114,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test04() throws Exception {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
@@ -133,12 +142,12 @@ public class XtfReaderFxlrTest extends TestCase {
         double[] fm = font.getFontMatrix();
         assertNotNull(fm);
         assertEquals(6, fm.length);
-        assertEquals(0.001, fm[0]);
-        assertEquals(0.0, fm[1]);
-        assertEquals(0.0, fm[2]);
-        assertEquals(0.001, fm[3]);
-        assertEquals(0.0, fm[4]);
-        assertEquals(0.0, fm[5]);
+        assertEquals(0.001, fm[0], 0);
+        assertEquals(0.0, fm[1], 0);
+        assertEquals(0.0, fm[2], 0);
+        assertEquals(0.001, fm[3], 0);
+        assertEquals(0.0, fm[4], 0);
+        assertEquals(0.0, fm[5], 0);
 
         int[] fb = font.getFontBBox();
         assertNotNull(fb);
@@ -147,24 +156,6 @@ public class XtfReaderFxlrTest extends TestCase {
         assertEquals(-312, fb[1]);
         assertEquals(6171, fb[2]);
         assertEquals(894, fb[3]);
-    }
-
-    /**
-     * test 99.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void test99() throws Exception {
-
-        XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
-                    "ISO8859-1");
-        writer.setBeauty(true);
-        writer.writeStartDocument();
-        reader.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
-
     }
 
     /**
@@ -189,6 +180,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test05() throws Exception {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
@@ -339,6 +331,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test06() throws Exception {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
@@ -426,6 +419,7 @@ public class XtfReaderFxlrTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test07() throws Exception {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
@@ -454,6 +448,26 @@ public class XtfReaderFxlrTest extends TestCase {
         assertEquals("-50 -12 48 -48 41 383 30 97 44 hstemhm", text);
 
     }
+
     // --------------------------------------------------------------
+
+    /**
+     * test 99.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void test99() throws Exception {
+
+        XMLStreamWriter writer =
+                new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
+                    "ISO8859-1");
+        writer.setBeauty(true);
+        writer.writeStartDocument();
+        reader.writeXML(writer);
+        writer.writeEndDocument();
+        writer.close();
+
+    }
 
 }

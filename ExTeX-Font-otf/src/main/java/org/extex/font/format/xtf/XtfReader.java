@@ -25,9 +25,71 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Logger;
 
-import org.extex.font.format.xtf.TtfTableCMAP.Format;
-import org.extex.font.format.xtf.TtfTableGLYF.Descript;
+import org.extex.font.format.xtf.tables.OtfTableACNT;
+import org.extex.font.format.xtf.tables.OtfTableAVAR;
+import org.extex.font.format.xtf.tables.OtfTableBASE;
+import org.extex.font.format.xtf.tables.OtfTableBDAT;
+import org.extex.font.format.xtf.tables.OtfTableBLOC;
+import org.extex.font.format.xtf.tables.OtfTableBSLN;
+import org.extex.font.format.xtf.tables.OtfTableCFF;
+import org.extex.font.format.xtf.tables.OtfTableCVAR;
+import org.extex.font.format.xtf.tables.OtfTableDSIG;
+import org.extex.font.format.xtf.tables.OtfTableFDSC;
+import org.extex.font.format.xtf.tables.OtfTableFEAT;
+import org.extex.font.format.xtf.tables.OtfTableFMTX;
+import org.extex.font.format.xtf.tables.OtfTableFVAR;
+import org.extex.font.format.xtf.tables.OtfTableGDEF;
+import org.extex.font.format.xtf.tables.OtfTableGVAR;
+import org.extex.font.format.xtf.tables.OtfTableJSTF;
+import org.extex.font.format.xtf.tables.OtfTableJUST;
+import org.extex.font.format.xtf.tables.OtfTableLCAR;
+import org.extex.font.format.xtf.tables.OtfTableMMFX;
+import org.extex.font.format.xtf.tables.OtfTableMMSD;
+import org.extex.font.format.xtf.tables.OtfTableMORT;
+import org.extex.font.format.xtf.tables.OtfTablePROP;
+import org.extex.font.format.xtf.tables.OtfTableTRAK;
+import org.extex.font.format.xtf.tables.OtfTableTYP1;
+import org.extex.font.format.xtf.tables.TtfTableCMAP;
+import org.extex.font.format.xtf.tables.TtfTableCVT;
+import org.extex.font.format.xtf.tables.TtfTableEBDT;
+import org.extex.font.format.xtf.tables.TtfTableEBLC;
+import org.extex.font.format.xtf.tables.TtfTableEBSC;
+import org.extex.font.format.xtf.tables.TtfTableFPGM;
+import org.extex.font.format.xtf.tables.TtfTableGASP;
+import org.extex.font.format.xtf.tables.TtfTableGLYF;
+import org.extex.font.format.xtf.tables.TtfTableHDMX;
+import org.extex.font.format.xtf.tables.TtfTableHEAD;
+import org.extex.font.format.xtf.tables.TtfTableHHEA;
+import org.extex.font.format.xtf.tables.TtfTableHMTX;
+import org.extex.font.format.xtf.tables.TtfTableKERN;
+import org.extex.font.format.xtf.tables.TtfTableLOCA;
+import org.extex.font.format.xtf.tables.TtfTableLTSH;
+import org.extex.font.format.xtf.tables.TtfTableMAXP;
+import org.extex.font.format.xtf.tables.TtfTableNAME;
+import org.extex.font.format.xtf.tables.TtfTableOS2;
+import org.extex.font.format.xtf.tables.TtfTablePCLT;
+import org.extex.font.format.xtf.tables.TtfTablePOST;
+import org.extex.font.format.xtf.tables.TtfTablePREP;
+import org.extex.font.format.xtf.tables.TtfTableVDMX;
+import org.extex.font.format.xtf.tables.TtfTableVHEA;
+import org.extex.font.format.xtf.tables.TtfTableVMTX;
+import org.extex.font.format.xtf.tables.XtfBoundingBox;
+import org.extex.font.format.xtf.tables.XtfConstants;
+import org.extex.font.format.xtf.tables.XtfGlyph;
+import org.extex.font.format.xtf.tables.XtfTable;
+import org.extex.font.format.xtf.tables.XtfTableDirectory;
+import org.extex.font.format.xtf.tables.XtfTableMap;
+import org.extex.font.format.xtf.tables.TtfTableCMAP.Format;
+import org.extex.font.format.xtf.tables.TtfTableGLYF.Descript;
+import org.extex.font.format.xtf.tables.gps.OtfTableGPOS;
+import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList.LangSys;
+import org.extex.font.format.xtf.tables.tag.LanguageSystemTag;
+import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
@@ -41,8 +103,6 @@ import org.extex.util.xml.XMLWriterConvertible;
  * @version $Revision$
  */
 public class XtfReader implements XMLWriterConvertible {
-
-    /* 51 tag types: from java.awt.font.OpenType */
 
     /**
      * BaseFont-Type.
@@ -58,13 +118,15 @@ public class XtfReader implements XMLWriterConvertible {
         }
     }
 
+    /* 51 tag types: from java.awt.font.OpenType */
+
     /**
      * Accent attachment. Table tag "acnt" in the Open Type Specification.
      */
     public static final int ACNT = 0x61636e74;
 
     /**
-     * Axis variaiton. Table tag "avar" in the Open Type Specification.
+     * Axis variation. Table tag "avar" in the Open Type Specification.
      */
     public static final int AVAR = 0x61766172;
 
@@ -133,6 +195,12 @@ public class XtfReader implements XMLWriterConvertible {
      * Specification.
      */
     public static final int EBSC = 0x45425343;
+
+    /**
+     * The field <tt>EXTEX_TRACE_FONT_FILES</tt>.
+     */
+    public static final String EXTEX_TRACE_FONT_FILES =
+            "extex.trace.font.files";
 
     /**
      * BaseFont descriptors. Table tag "fdsc" in the Open Type Specification.
@@ -359,7 +427,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the long format (mac)
      * @return Returns the calculate Date
      */
-    static Date convertDate(long value) {
+    public static Date convertDate(long value) {
 
         // TODO wrong!!!
         return new Date(value);
@@ -376,7 +444,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the int value
      * @return Returns the binary string
      */
-    static String convertIntToBinaryString(int value) {
+    public static String convertIntToBinaryString(int value) {
 
         StringBuffer buf = new StringBuffer("00000000000000000000000000000000");
         buf.append(Integer.toBinaryString(value));
@@ -389,7 +457,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the int value
      * @return Returns the hex string
      */
-    static String convertIntToHexString(int value) {
+    public static String convertIntToHexString(int value) {
 
         StringBuffer buf = new StringBuffer("00000000");
         buf.append(Integer.toHexString(value));
@@ -404,7 +472,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the fixed value
      * @return Returns the float-value
      */
-    static float convertVersion(int value) {
+    public static float convertVersion(int value) {
 
         int v1 = value >> XtfConstants.SHIFTX10;
         return v1;
@@ -446,6 +514,11 @@ public class XtfReader implements XMLWriterConvertible {
     private TtfTableLOCA loca;
 
     /**
+     * The logger.
+     */
+    private Logger logger;
+
+    /**
      * Table maxp (required).
      */
     private TtfTableMAXP maxp;
@@ -476,6 +549,11 @@ public class XtfReader implements XMLWriterConvertible {
     private XtfTableMap tablemap;
 
     /**
+     * Trace the work (only if logger is enabled).
+     */
+    private boolean trace = false;
+
+    /**
      * the type.
      */
     private Type type = TTF;
@@ -483,34 +561,77 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * Create a new object.
      * 
-     * @param file file for input
+     * @param file The file for input.
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(File file) throws IOException {
 
-        this(new RandomAccessInputFile(file));
+        this(new RandomAccessInputFile(file), null);
     }
 
     /**
      * Create a new object.
      * 
-     * @param iostream stream for input
+     * @param file The file for input.
+     * @param logger The logger.
+     * @throws IOException if an IO-error occurs
+     */
+    public XtfReader(File file, Logger logger) throws IOException {
+
+        this(new RandomAccessInputFile(file), logger);
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param iostream The stream for input.
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(InputStream iostream) throws IOException {
 
-        this(new RandomAccessInputStream(iostream));
+        this(new RandomAccessInputStream(iostream), null);
     }
 
     /**
      * Create a new object.
      * 
-     * @param rar input
+     * @param iostream The stream for input.
+     * @param logger The logger.
+     * @throws IOException if an IO-error occurs
+     */
+    public XtfReader(InputStream iostream, Logger logger) throws IOException {
+
+        this(new RandomAccessInputStream(iostream), logger);
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param rar The input.
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(RandomAccessR rar) throws IOException {
 
+        this(rar, null);
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param rar The input.
+     * @param logger The logger.
+     * @throws IOException if an IO-error occurs
+     */
+    public XtfReader(RandomAccessR rar, Logger logger) throws IOException {
+
         super();
+        this.logger = logger;
+        if (logger != null
+                && System.getProperty(EXTEX_TRACE_FONT_FILES, "false").equals(
+                    "true")) {
+            trace = true;
+
+        }
         type = TTF;
         tablemap = new XtfTableMap();
         read(rar);
@@ -519,12 +640,24 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * Create a new object.
      * 
-     * @param filename file name for input
+     * @param filename The file name for input.
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(String filename) throws IOException {
 
-        this(new RandomAccessInputFile(filename));
+        this(new RandomAccessInputFile(filename), null);
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param filename The file name for input.
+     * @param logger The logger.
+     * @throws IOException if an IO-error occurs
+     */
+    public XtfReader(String filename, Logger logger) throws IOException {
+
+        this(new RandomAccessInputFile(filename), logger);
     }
 
     /**
@@ -539,6 +672,7 @@ public class XtfReader implements XMLWriterConvertible {
             throws IOException {
 
         XtfTable t = null;
+        trace("read " + de.getTag());
         switch (de.getTag()) {
             case GPOS:
                 t = new OtfTableGPOS(tablemap, de, rar);
@@ -854,14 +988,6 @@ public class XtfReader implements XMLWriterConvertible {
         return post.getItalicAngle();
     }
 
-    public int getKerning(String glypname1, String glypname2, short platformId,
-            short encodingId) {
-
-        // TODO
-
-        return 0;
-    }
-
     /**
      * Returns the loca table.
      * 
@@ -988,7 +1114,7 @@ public class XtfReader implements XMLWriterConvertible {
      * 
      * @param glyphname The glyph name.
      * @param fontnumber The font number.
-     *
+     * 
      * @return Returns <code>true</code>, if the font has the glyph.
      */
     public boolean hasGlyph(String glyphname, int fontnumber) {
@@ -1133,6 +1259,48 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the ligature for the two chars.
+     * 
+     * @param charcodeLeft The left char code.
+     * @param charcodeRigth The right char code.
+     * @param feature The feature tag.
+     * @param language The language (<code>null</code> for default).
+     * @param fontnumber The font number.
+     * @param platformId The platform id.
+     * @param encodingId The encoding id.
+     * @return Returns the ligature for the two chars.
+     */
+    public int mapCharCodetoLigature(int charcodeLeft, int charcodeRigth,
+            List<String> feature, String language, int fontnumber,
+            short platformId, short encodingId) {
+
+        OtfTableGSUB gsub = (OtfTableGSUB) getTable(XtfReader.GSUB);
+        if (gsub != null) {
+
+            // get format
+            Format format = getCmapTable().getFormat(platformId, encodingId);
+            if (format != null) {
+                int glyphposLeft = format.mapCharCode(charcodeLeft);
+                int glyphcodeRight = format.mapCharCode(charcodeRigth);
+
+                for (Iterator<String> iterator = feature.iterator(); iterator
+                    .hasNext();) {
+                    String tag = iterator.next();
+                    LangSys langsys =
+                            gsub.findLangSys(ScriptTag.getInstance(tag),
+                                LanguageSystemTag.getInstance(language));
+                    if (langsys != null) {
+
+                    }
+                }
+
+                // return kern.getKerning(glyphposLeft, glyphcodeRight);
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Returns the glyph width for the char by using the platform and encoding.
      * If no char is found, 0 be returned.
      * 
@@ -1198,6 +1366,9 @@ public class XtfReader implements XMLWriterConvertible {
      */
     private void read(RandomAccessR rar) throws IOException {
 
+        trace("read xtf");
+
+        trace("read directory");
         tableDirectory = new XtfTableDirectory(rar);
 
         // Load each of the tables
@@ -1247,6 +1418,18 @@ public class XtfReader implements XMLWriterConvertible {
 
         // close
         rar.close();
+    }
+
+    /**
+     * Trace a message.
+     * 
+     * @param msg The Message.
+     */
+    private void trace(String msg) {
+
+        if (trace) {
+            logger.info(msg);
+        }
     }
 
     /**

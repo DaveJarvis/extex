@@ -26,8 +26,12 @@ import static org.junit.Assert.assertTrue;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.extex.font.format.xtf.XtfScriptList.LangSys;
-import org.extex.font.format.xtf.XtfScriptList.Script;
+import org.extex.font.format.xtf.tables.XtfTable;
+import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList.LangSys;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList.Script;
+import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
 import org.junit.Test;
 
@@ -68,18 +72,6 @@ public class XtfReaderCmr10Gsub1Test {
     }
 
     /**
-     * Test the name of the font.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testName() throws Exception {
-
-        assertEquals("Computer Modern", reader.getFontFamilyName());
-        assertEquals(132, reader.getNumberOfGlyphs());
-    }
-
-    /**
      * Test the gsub table.
      * 
      * @throws Exception if an error occurred.
@@ -87,6 +79,7 @@ public class XtfReaderCmr10Gsub1Test {
     @Test
     public void testGsub01() throws Exception {
 
+        assertNotNull(reader);
         XtfTable table = reader.getTable(XtfReader.GSUB);
         assertNotNull(table);
 
@@ -100,7 +93,7 @@ public class XtfReaderCmr10Gsub1Test {
         // ScriptCount=2
         assertEquals("scriptcount", 2, scriptlist.getCount());
 
-        Script script = gsub.findScript("grek");
+        Script script = gsub.findScript(ScriptTag.getInstance("grek"));
         assertNotNull(script);
         assertEquals("tag name", "grek", script.getTag());
 
@@ -110,7 +103,7 @@ public class XtfReaderCmr10Gsub1Test {
         assertEquals("featurecount", 1, defLangSys.getFeatureCount());
         assertEquals("featureindex", 0, defLangSys.getFeatureIndex(0));
 
-        script = gsub.findScript("latn");
+        script = gsub.findScript(ScriptTag.getInstance("latn"));
         assertNotNull(script);
         assertEquals("tag name", "latn", script.getTag());
 
@@ -124,6 +117,7 @@ public class XtfReaderCmr10Gsub1Test {
     @Test
     public void testGsub02() throws Exception {
 
+        assertNotNull(reader);
         XtfTable table = reader.getTable(XtfReader.GSUB);
         assertNotNull(table);
 
@@ -131,9 +125,22 @@ public class XtfReaderCmr10Gsub1Test {
         OtfTableGSUB gsub = (OtfTableGSUB) table;
         assertNotNull(gsub);
 
-        LangSys langSys = gsub.findLangSys("latn", null);
+        LangSys langSys = gsub.findLangSys(ScriptTag.getInstance("latn"), null);
         assertNotNull(langSys);
 
+    }
+
+    /**
+     * Test the name of the font.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testName() throws Exception {
+
+        assertNotNull(reader);
+        assertEquals("Computer Modern", reader.getFontFamilyName());
+        assertEquals(132, reader.getNumberOfGlyphs());
     }
 
     /**
@@ -142,8 +149,9 @@ public class XtfReaderCmr10Gsub1Test {
      * @throws Exception if an error occurred.
      */
     @Test
-    public void test99() throws Exception {
+    public void testXmlOut() throws Exception {
 
+        assertNotNull(reader);
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/cmr10.xml"),
                     "ISO8859-1");

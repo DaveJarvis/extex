@@ -22,6 +22,7 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -37,8 +38,10 @@ import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.format.XtfMetricFont;
+import org.extex.font.format.xtf.tables.XtfBoundingBox;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 
 /**
  * Class to load xtf fonts.
@@ -54,7 +57,8 @@ public class LoadableXtfFont
         implements
             LoadableFont,
             XtfMetricFont,
-            BackendFont {
+            BackendFont,
+            LogEnabled {
 
     /**
      * The actual font key.
@@ -77,9 +81,25 @@ public class LoadableXtfFont
     private GlyphName glyphname;
 
     /**
+     * The logger (it can be <code>null</code>!).
+     */
+    private Logger logger;
+
+    /**
      * The xtf reader.
      */
     private XtfReader reader;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
+
+    }
 
     /**
      * {@inheritDoc}
@@ -467,7 +487,7 @@ public class LoadableXtfFont
             throws CorruptFontException,
                 ConfigurationException {
 
-        this.fontKey = key;
+        fontKey = key;
 
         if (key == null) {
             throw new IllegalArgumentException("fontkey");
@@ -477,7 +497,7 @@ public class LoadableXtfFont
 
             glyphname = GlyphName.getInstance();
 
-            reader = new XtfReader(in);
+            reader = new XtfReader(in, logger);
 
         } catch (IOException e) {
             throw new CorruptFontException(key, e.getLocalizedMessage());
@@ -505,5 +525,4 @@ public class LoadableXtfFont
         // ignored
 
     }
-
 }

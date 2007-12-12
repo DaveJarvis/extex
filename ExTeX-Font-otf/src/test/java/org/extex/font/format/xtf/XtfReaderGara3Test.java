@@ -19,9 +19,15 @@
 
 package org.extex.font.format.xtf;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 
-import junit.framework.TestCase;
+import org.extex.font.format.xtf.tables.XtfBoundingBox;
+import org.junit.Test;
 
 /**
  * Tests for the <code>XtfReader</code>.
@@ -31,7 +37,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderGara3Test extends TestCase {
+public class XtfReaderGara3Test {
 
     /**
      * The xtf reader.
@@ -55,6 +61,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test01() throws Exception {
 
         assertNotNull(reader);
@@ -65,6 +72,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test02() throws Exception {
 
         assertEquals("Garamond", reader.getFontFamilyName());
@@ -76,6 +84,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void test03() throws Exception {
 
         XtfBoundingBox bb =
@@ -89,2637 +98,11 @@ public class XtfReaderGara3Test extends TestCase {
     // ---------------------------------------------------
 
     /**
-     * test A
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfA() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("A", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1343));
-    }
-
-    /**
-     * test AE
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAE() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("AE", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-127, -10, 1697, 1286));
-    }
-
-    /**
-     * test AEacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAEacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("AEacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-127, -10, 1697, 1720));
-    }
-
-    /**
-     * test Aacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Aacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1714));
-    }
-
-    /**
-     * test Abreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAbreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Abreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1697));
-    }
-
-    /**
-     * test Acircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Acircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1761));
-    }
-
-    /**
-     * test Adieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Adieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1579));
-    }
-
-    /**
-     * test Agrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Agrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1715));
-    }
-
-    /**
-     * test Alpha
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAlpha() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Alpha", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1343));
-    }
-
-    /**
-     * test Alphatonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAlphatonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Alphatonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1343));
-    }
-
-    /**
-     * test Amacron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAmacron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Amacron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1593));
-    }
-
-    /**
-     * test Aogonek
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAogonek() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Aogonek", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-14, -328, 1475, 1343));
-    }
-
-    /**
-     * test Aring
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAring() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Aring", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1654));
-    }
-
-    /**
-     * test Aringacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAringacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Aringacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 2020));
-    }
-
-    /**
-     * test Atilde
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfAtilde() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Atilde", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1608));
-    }
-
-    /**
-     * test B
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfB() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("B", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(27, -2, 1164, 1298));
-    }
-
-    /**
-     * test Beta
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfBeta() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Beta", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(27, -2, 1164, 1298));
-    }
-
-    /**
-     * test C
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfC() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("C", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -27, 1231, 1311));
-    }
-
-    /**
-     * test Cacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfCacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Cacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -27, 1231, 1714));
-    }
-
-    /**
-     * test Ccaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfCcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ccaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -27, 1231, 1761));
-    }
-
-    /**
-     * test Ccedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfCcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ccedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -431, 1231, 1311));
-    }
-
-    /**
-     * test Ccircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfCcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ccircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -27, 1231, 1760));
-    }
-
-    /**
-     * test Cdot
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfCdot() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Cdot", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(89, -27, 1231, 1573));
-    }
-
-    /**
-     * test Chi
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfChi() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Chi", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(10, -21, 1449, 1277));
-    }
-
-    /**
-     * test D
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfD() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("D", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(22, -17, 1479, 1301));
-    }
-
-    /**
-     * test Dcaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfDcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Dcaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(22, -17, 1479, 1768));
-    }
-
-    /**
-     * test Dslash
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfDslash() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Dslash", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(15, -17, 1480, 1300));
-    }
-
-    /**
-     * test E
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfE() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("E", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1274));
-    }
-
-    /**
-     * test Eacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Eacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1714));
-    }
-
-    /**
-     * test Ebreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEbreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ebreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1697));
-    }
-
-    /**
-     * test Ecaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ecaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1768));
-    }
-
-    /**
-     * test Ecircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ecircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1761));
-    }
-
-    /**
-     * test Edieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Edieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1579));
-    }
-
-    /**
-     * test Edot
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEdot() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Edot", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1573));
-    }
-
-    /**
-     * test Egrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Egrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1715));
-    }
-
-    /**
-     * test Emacron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEmacron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Emacron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1593));
-    }
-
-    /**
-     * test Eng
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEng() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Eng", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(100, -17, 1437, 1311));
-    }
-
-    /**
-     * test Eogonek
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEogonek() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Eogonek", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -328, 1296, 1274));
-    }
-
-    /**
-     * test Epsilon
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEpsilon() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Epsilon", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(49, -14, 1296, 1274));
-    }
-
-    /**
-     * test Epsilontonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEpsilontonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Epsilontonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-48, -14, 1429, 1292));
-    }
-
-    /**
-     * test Eta
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEta() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Eta", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(39, -21, 1504, 1289));
-    }
-
-    /**
-     * test Etatonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEtatonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Etatonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-48, -21, 1598, 1292));
-    }
-
-    /**
-     * test Eth
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfEth() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Eth", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(15, -17, 1480, 1301));
-    }
-
-    /**
-     * test F
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfF() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("F", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(59, -20, 1107, 1294));
-    }
-
-    /**
-     * test G
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfG() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("G", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -25, 1553, 1312));
-    }
-
-    /**
-     * test Gamma
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfGamma() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Gamma", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -6, 1177, 1274));
-    }
-
-    /**
-     * test Gbreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfGbreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Gbreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -25, 1553, 1688));
-    }
-
-    /**
-     * test Gcedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfGcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Gcedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -621, 1553, 1312));
-    }
-
-    /**
-     * test Gcircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfGcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Gcircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -25, 1553, 1760));
-    }
-
-    /**
-     * test Gdot
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfGdot() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Gdot", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -25, 1553, 1573));
-    }
-
-    /**
-     * test H
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfH() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("H", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(39, -21, 1504, 1289));
-    }
-
-    /**
-     * test H18533
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfH18533() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("H18533", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(178, 137, 1059, 1018));
-    }
-
-    /**
-     * test H18543
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfH18543() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("H18543", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(92, 405, 635, 948));
-    }
-
-    /**
-     * test H18551
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfH18551() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("H18551", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(92, 405, 635, 948));
-    }
-
-    /**
-     * test H22073
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfH22073() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("H22073", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(146, 0, 1090, 944));
-    }
-
-    /**
-     * test Hbar
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfHbar() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Hbar", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(39, -21, 1504, 1289));
-    }
-
-    /**
-     * test Hcircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfHcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Hcircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(39, -21, 1504, 1764));
-    }
-
-    /**
-     * test I
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfI() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("I", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1279));
-    }
-
-    /**
-     * test IJ
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIJ() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("IJ", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, -518, 1295, 1279));
-    }
-
-    /**
-     * test Iacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Iacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1714));
-    }
-
-    /**
-     * test Ibreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIbreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ibreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1697));
-    }
-
-    /**
-     * test Icircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Icircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1761));
-    }
-
-    /**
-     * test Idieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Idieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1579));
-    }
-
-    /**
-     * test Igrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Igrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1715));
-    }
-
-    /**
-     * test Imacron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfImacron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Imacron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1589));
-    }
-
-    /**
-     * test Iogonek
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIogonek() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Iogonek", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, -364, 664, 1279));
-    }
-
-    /**
-     * test Iota
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIota() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Iota", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1279));
-    }
-
-    /**
-     * test Iotadieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIotadieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Iotadieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1577));
-    }
-
-    /**
-     * test Iotatonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfIotatonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Iotatonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-48, 0, 814, 1292));
-    }
-
-    /**
-     * test Itilde
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfItilde() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Itilde", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(43, 0, 664, 1589));
-    }
-
-    /**
-     * test J
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfJ() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("J", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-173, -518, 569, 1279));
-    }
-
-    /**
-     * test Jcircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfJcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Jcircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-173, -518, 569, 1764));
-    }
-
-    /**
-     * test K
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfK() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("K", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(58, -18, 1556, 1282));
-    }
-
-    /**
-     * test Kappa
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfKappa() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Kappa", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(58, -18, 1556, 1282));
-    }
-
-    /**
-     * test Kcedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfKcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Kcedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(58, -435, 1556, 1282));
-    }
-
-    /**
-     * test L
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfL() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("L", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -6, 1177, 1274));
-    }
-
-    /**
-     * test Lacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Lacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -6, 1177, 1716));
-    }
-
-    /**
-     * test Lambda
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLambda() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Lambda", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-15, 0, 1371, 1343));
-    }
-
-    /**
-     * test Lcaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Lcaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -6, 1177, 1303));
-    }
-
-    /**
-     * test Lcedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Lcedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -435, 1177, 1274));
-    }
-
-    /**
-     * test Ldot
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLdot() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ldot", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(11, -6, 1177, 1274));
-    }
-
-    /**
-     * test Lslash
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfLslash() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Lslash", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(18, -6, 1184, 1274));
-    }
-
-    /**
-     * test M
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfM() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("M", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(14, -9, 1692, 1289));
-    }
-
-    /**
-     * test Mu
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfMu() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Mu", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(14, -9, 1692, 1289));
-    }
-
-    /**
-     * test N
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfN() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("N", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -47, 1500, 1286));
-    }
-
-    /**
-     * test Nacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfNacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Nacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -47, 1500, 1724));
-    }
-
-    /**
-     * test Ncaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfNcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ncaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -47, 1500, 1768));
-    }
-
-    /**
-     * test Ncedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfNcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ncedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -435, 1500, 1286));
-    }
-
-    /**
-     * test Ntilde
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfNtilde() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ntilde", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -47, 1500, 1608));
-    }
-
-    /**
-     * test Nu
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfNu() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Nu", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(26, -47, 1500, 1286));
-    }
-
-    /**
-     * test O
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfO() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("O", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1292));
-    }
-
-    /**
-     * test OE
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOE() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("OE", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(95, -17, 1863, 1289));
-    }
-
-    /**
-     * test Oacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Oacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1714));
-    }
-
-    /**
-     * test Obreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfObreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Obreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1697));
-    }
-
-    /**
-     * test Ocircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ocircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1761));
-    }
-
-    /**
-     * test Odblacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOdblacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Odblacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1720));
-    }
-
-    /**
-     * test Odieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Odieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1579));
-    }
-
-    /**
-     * test Ograve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ograve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1715));
-    }
-
-    /**
-     * test Ohm
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOhm() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ohm", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(57, 0, 1457, 1387));
-    }
-
-    /**
-     * test Omacron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOmacron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Omacron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1593));
-    }
-
-    /**
-     * test Omega
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOmega() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Omega", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(103, -8, 1486, 1292));
-    }
-
-    /**
-     * test Omegatonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOmegatonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Omegatonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-48, -8, 1498, 1292));
-    }
-
-    /**
-     * test Omicron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOmicron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Omicron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1292));
-    }
-
-    /**
-     * test Omicrontonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOmicrontonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Omicrontonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-48, -20, 1502, 1292));
-    }
-
-    /**
-     * test Oslash
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOslash() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Oslash", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -62, 1502, 1335));
-    }
-
-    /**
-     * test Oslashacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOslashacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Oslashacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -62, 1502, 1728));
-    }
-
-    /**
-     * test Otilde
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfOtilde() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Otilde", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1502, 1608));
-    }
-
-    /**
-     * test P
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfP() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("P", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(38, -20, 1098, 1295));
-    }
-
-    /**
-     * test Phi
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfPhi() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Phi", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -8, 1556, 1284));
-    }
-
-    /**
-     * test Pi
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfPi() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Pi", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(39, -21, 1486, 1284));
-    }
-
-    /**
-     * test Psi
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfPsi() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Psi", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(12, 0, 1537, 1292));
-    }
-
-    /**
-     * test Q
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfQ() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Q", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(97, -446, 1532, 1316));
-    }
-
-    /**
-     * test R
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfR() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("R", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(42, -5, 1313, 1289));
-    }
-
-    /**
-     * test Racute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfRacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Racute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(42, -5, 1313, 1720));
-    }
-
-    /**
-     * test Rcaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfRcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Rcaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(42, -5, 1313, 1768));
-    }
-
-    /**
-     * test Rcedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfRcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Rcedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(42, -435, 1313, 1289));
-    }
-
-    /**
-     * test Rho
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfRho() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Rho", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(38, -20, 1098, 1295));
-    }
-
-    /**
-     * test S
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfS() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("S", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(77, -33, 895, 1316));
-    }
-
-    /**
-     * test SF010000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF010000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF010000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, -621, 1474, 709));
-    }
-
-    /**
-     * test SF020000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF020000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF020000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, 534, 1474, 1864));
-    }
-
-    /**
-     * test SF030000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF030000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF030000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 812, 709));
-    }
-
-    /**
-     * test SF040000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF040000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF040000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 534, 812, 1864));
-    }
-
-    /**
-     * test SF050000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF050000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF050000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 1864));
-    }
-
-    /**
-     * test SF060000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF060000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF060000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 709));
-    }
-
-    /**
-     * test SF070000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF070000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF070000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 534, 1473, 1864));
-    }
-
-    /**
-     * test SF080000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF080000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF080000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, -621, 1474, 1864));
-    }
-
-    /**
-     * test SF090000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF090000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF090000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 812, 1864));
-    }
-
-    /**
-     * test SF100000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF100000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF100000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 534, 1473, 709));
-    }
-
-    /**
-     * test SF110000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF110000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF110000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, -621, 813, 1864));
-    }
-
-    /**
-     * test SF190000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF190000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF190000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 812, 1864));
-    }
-
-    /**
-     * test SF200000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF200000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF200000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1003, 1864));
-    }
-
-    /**
-     * test SF210000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF210000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF210000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1003, 709));
-    }
-
-    /**
-     * test SF220000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF220000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF220000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 812, 899));
-    }
-
-    /**
-     * test SF230000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF230000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF230000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1003, 1864));
-    }
-
-    /**
-     * test SF240000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF240000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF240000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, -621, 1004, 1864));
-    }
-
-    /**
-     * test SF250000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF250000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF250000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1003, 899));
-    }
-
-    /**
-     * test SF260000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF260000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF260000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 344, 1003, 1864));
-    }
-
-    /**
-     * test SF270000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF270000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF270000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 534, 1003, 1864));
-    }
-
-    /**
-     * test SF280000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF280000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF280000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 344, 812, 1864));
-    }
-
-    /**
-     * test SF360000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF360000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF360000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, -621, 1474, 1864));
-    }
-
-    /**
-     * test SF370000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF370000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF370000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, -621, 1474, 1864));
-    }
-
-    /**
-     * test SF380000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF380000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF380000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, 344, 1474, 1864));
-    }
-
-    /**
-     * test SF390000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF390000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF390000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, -621, 1474, 899));
-    }
-
-    /**
-     * test SF400000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF400000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF400000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 344, 1473, 1864));
-    }
-
-    /**
-     * test SF410000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF410000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF410000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 899));
-    }
-
-    /**
-     * test SF420000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF420000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF420000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, -621, 1474, 1864));
-    }
-
-    /**
-     * test SF430000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF430000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF430000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 344, 1473, 899));
-    }
-
-    /**
-     * test SF440000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF440000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF440000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 1864));
-    }
-
-    /**
-     * test SF450000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF450000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF450000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 344, 1473, 1864));
-    }
-
-    /**
-     * test SF460000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF460000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF460000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, 534, 1473, 1864));
-    }
-
-    /**
-     * test SF470000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF470000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF470000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 899));
-    }
-
-    /**
-     * test SF480000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF480000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF480000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 709));
-    }
-
-    /**
-     * test SF490000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF490000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF490000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, 534, 1475, 1864));
-    }
-
-    /**
-     * test SF500000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF500000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF500000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, 344, 1474, 1864));
-    }
-
-    /**
-     * test SF510000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF510000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF510000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(638, -621, 1474, 899));
-    }
-
-    /**
-     * test SF520000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF520000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF520000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(448, -621, 1475, 709));
-    }
-
-    /**
-     * test SF530000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF530000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF530000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 1864));
-    }
-
-    /**
-     * test SF540000
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSF540000() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("SF540000", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-23, -621, 1473, 1864));
-    }
-
-    /**
-     * test Sacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Sacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(77, -33, 895, 1720));
-    }
-
-    /**
-     * test Scaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfScaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Scaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(77, -33, 895, 1761));
-    }
-
-    /**
-     * test Scedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfScedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Scedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(77, -431, 895, 1316));
-    }
-
-    /**
-     * test Scircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfScircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Scircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(77, -33, 895, 1764));
-    }
-
-    /**
-     * test Sigma
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfSigma() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Sigma", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(60, -15, 1211, 1272));
-    }
-
-    /**
-     * test T
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfT() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("T", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-4, -25, 1233, 1331));
-    }
-
-    /**
-     * test Tau
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfTau() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Tau", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-4, -25, 1233, 1331));
-    }
-
-    /**
-     * test Tbar
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfTbar() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Tbar", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-4, -25, 1233, 1331));
-    }
-
-    /**
-     * test Tcaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfTcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Tcaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-4, -25, 1233, 1768));
-    }
-
-    /**
-     * test Tcedilla
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfTcedilla() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Tcedilla", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-4, -589, 1233, 1331));
-    }
-
-    /**
-     * test Theta
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfTheta() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Theta", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(94, -20, 1503, 1292));
-    }
-
-    /**
-     * test Thorn
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfThorn() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Thorn", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(38, -20, 1098, 1280));
-    }
-
-    /**
-     * test U
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfU() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("U", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1286));
-    }
-
-    /**
-     * test Uacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Uacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1714));
-    }
-
-    /**
-     * test Ubreve
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUbreve() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ubreve", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1697));
-    }
-
-    /**
-     * test Ucircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ucircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1761));
-    }
-
-    /**
-     * test Udblacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUdblacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Udblacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1724));
-    }
-
-    /**
-     * test Udieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Udieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1579));
-    }
-
-    /**
-     * test Ugrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ugrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1715));
-    }
-
-    /**
-     * test Umacron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUmacron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Umacron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1589));
-    }
-
-    /**
-     * test Uogonek
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUogonek() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Uogonek", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -364, 1384, 1286));
-    }
-
-    /**
-     * test Upsilon
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUpsilon() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Upsilon", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(0, -13, 1168, 1292));
-    }
-
-    /**
-     * test Upsilondieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUpsilondieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Upsilondieresis", 0, (short) 3,
-                    (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(0, -13, 1168, 1577));
-    }
-
-    /**
-     * test Upsilontonos
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUpsilontonos() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Upsilontonos", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-44, -13, 1352, 1292));
-    }
-
-    /**
-     * test Uring
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUring() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Uring", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1746));
-    }
-
-    /**
-     * test Utilde
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfUtilde() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Utilde", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(37, -34, 1384, 1585));
-    }
-
-    /**
-     * test V
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfV() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("V", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-17, -39, 1406, 1287));
-    }
-
-    /**
-     * test W
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfW() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("W", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -56, 1826, 1279));
-    }
-
-    /**
-     * test Wacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfWacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Wacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -56, 1826, 1720));
-    }
-
-    /**
-     * test Wcircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfWcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Wcircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -56, 1826, 1764));
-    }
-
-    /**
-     * test Wdieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfWdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Wdieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -56, 1826, 1577));
-    }
-
-    /**
-     * test Wgrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfWgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Wgrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -56, 1826, 1717));
-    }
-
-    /**
-     * test X
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfX() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("X", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(10, -21, 1449, 1277));
-    }
-
-    /**
-     * test Xi
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfXi() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Xi", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(69, -3, 1320, 1272));
-    }
-
-    /**
-     * test Y
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfY() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Y", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -13, 1361, 1290));
-    }
-
-    /**
-     * test Yacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfYacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Yacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -13, 1361, 1714));
-    }
-
-    /**
-     * test Ycircumflex
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfYcircumflex() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ycircumflex", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -13, 1361, 1760));
-    }
-
-    /**
-     * test Ydieresis
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfYdieresis() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ydieresis", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -13, 1361, 1579));
-    }
-
-    /**
-     * test Ygrave
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfYgrave() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Ygrave", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(-20, -13, 1361, 1717));
-    }
-
-    /**
-     * test Z
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfZ() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Z", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(72, -15, 1247, 1346));
-    }
-
-    /**
-     * test Zacute
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfZacute() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Zacute", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(72, -15, 1247, 1720));
-    }
-
-    /**
-     * test Zcaron
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfZcaron() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Zcaron", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(72, -15, 1247, 1761));
-    }
-
-    /**
-     * test Zdot
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfZdot() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Zdot", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(72, -15, 1247, 1573));
-    }
-
-    /**
-     * test Zeta
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testGlyfZeta() throws Exception {
-
-        XtfBoundingBox bb =
-                reader.mapCharCodeToBB("Zeta", 0, (short) 3, (short) 1);
-        assertNotNull(bb);
-        assertTrue(bb.eq(72, -15, 1247, 1346));
-    }
-
-    /**
      * test a
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfa() throws Exception {
 
         XtfBoundingBox bb =
@@ -2729,10 +112,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test A
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfA() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("A", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1343));
+    }
+
+    /**
      * test aacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfaacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -2742,10 +140,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Aacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Aacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1714));
+    }
+
+    /**
      * test abreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfabreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -2755,10 +168,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Abreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAbreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Abreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1697));
+    }
+
+    /**
      * test acircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfacircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -2768,10 +196,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Acircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Acircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1761));
+    }
+
+    /**
      * test acute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -2785,6 +228,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfadieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -2794,10 +238,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Adieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Adieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1579));
+    }
+
+    /**
      * test ae
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfae() throws Exception {
 
         XtfBoundingBox bb =
@@ -2807,10 +266,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test AE
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAE() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("AE", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-127, -10, 1697, 1286));
+    }
+
+    /**
      * test aeacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfaeacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -2820,10 +294,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test AEacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAEacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("AEacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-127, -10, 1697, 1720));
+    }
+
+    /**
      * test afii00208
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii00208() throws Exception {
 
         XtfBoundingBox bb =
@@ -2837,6 +326,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii08941() throws Exception {
 
         XtfBoundingBox bb =
@@ -2850,6 +340,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10017() throws Exception {
 
         XtfBoundingBox bb =
@@ -2863,6 +354,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10018() throws Exception {
 
         XtfBoundingBox bb =
@@ -2876,6 +368,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10019() throws Exception {
 
         XtfBoundingBox bb =
@@ -2889,6 +382,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10020() throws Exception {
 
         XtfBoundingBox bb =
@@ -2902,6 +396,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10021() throws Exception {
 
         XtfBoundingBox bb =
@@ -2915,6 +410,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10022() throws Exception {
 
         XtfBoundingBox bb =
@@ -2928,6 +424,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10023() throws Exception {
 
         XtfBoundingBox bb =
@@ -2941,6 +438,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10024() throws Exception {
 
         XtfBoundingBox bb =
@@ -2954,6 +452,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10025() throws Exception {
 
         XtfBoundingBox bb =
@@ -2967,6 +466,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10026() throws Exception {
 
         XtfBoundingBox bb =
@@ -2980,6 +480,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10027() throws Exception {
 
         XtfBoundingBox bb =
@@ -2993,6 +494,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10028() throws Exception {
 
         XtfBoundingBox bb =
@@ -3006,6 +508,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10029() throws Exception {
 
         XtfBoundingBox bb =
@@ -3019,6 +522,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10030() throws Exception {
 
         XtfBoundingBox bb =
@@ -3032,6 +536,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10031() throws Exception {
 
         XtfBoundingBox bb =
@@ -3045,6 +550,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10032() throws Exception {
 
         XtfBoundingBox bb =
@@ -3058,6 +564,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10033() throws Exception {
 
         XtfBoundingBox bb =
@@ -3071,6 +578,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10034() throws Exception {
 
         XtfBoundingBox bb =
@@ -3084,6 +592,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10035() throws Exception {
 
         XtfBoundingBox bb =
@@ -3097,6 +606,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10036() throws Exception {
 
         XtfBoundingBox bb =
@@ -3110,6 +620,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10037() throws Exception {
 
         XtfBoundingBox bb =
@@ -3123,6 +634,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10038() throws Exception {
 
         XtfBoundingBox bb =
@@ -3136,6 +648,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10039() throws Exception {
 
         XtfBoundingBox bb =
@@ -3149,6 +662,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10040() throws Exception {
 
         XtfBoundingBox bb =
@@ -3162,6 +676,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10041() throws Exception {
 
         XtfBoundingBox bb =
@@ -3175,6 +690,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10042() throws Exception {
 
         XtfBoundingBox bb =
@@ -3188,6 +704,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10043() throws Exception {
 
         XtfBoundingBox bb =
@@ -3201,6 +718,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10044() throws Exception {
 
         XtfBoundingBox bb =
@@ -3214,6 +732,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10045() throws Exception {
 
         XtfBoundingBox bb =
@@ -3227,6 +746,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10046() throws Exception {
 
         XtfBoundingBox bb =
@@ -3240,6 +760,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10047() throws Exception {
 
         XtfBoundingBox bb =
@@ -3253,6 +774,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10048() throws Exception {
 
         XtfBoundingBox bb =
@@ -3266,6 +788,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10049() throws Exception {
 
         XtfBoundingBox bb =
@@ -3279,6 +802,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10050() throws Exception {
 
         XtfBoundingBox bb =
@@ -3292,6 +816,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10051() throws Exception {
 
         XtfBoundingBox bb =
@@ -3305,6 +830,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10052() throws Exception {
 
         XtfBoundingBox bb =
@@ -3318,6 +844,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10053() throws Exception {
 
         XtfBoundingBox bb =
@@ -3331,6 +858,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10054() throws Exception {
 
         XtfBoundingBox bb =
@@ -3344,6 +872,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10055() throws Exception {
 
         XtfBoundingBox bb =
@@ -3357,6 +886,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10056() throws Exception {
 
         XtfBoundingBox bb =
@@ -3370,6 +900,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10057() throws Exception {
 
         XtfBoundingBox bb =
@@ -3383,6 +914,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10058() throws Exception {
 
         XtfBoundingBox bb =
@@ -3396,6 +928,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10059() throws Exception {
 
         XtfBoundingBox bb =
@@ -3409,6 +942,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10060() throws Exception {
 
         XtfBoundingBox bb =
@@ -3422,6 +956,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10061() throws Exception {
 
         XtfBoundingBox bb =
@@ -3435,6 +970,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10062() throws Exception {
 
         XtfBoundingBox bb =
@@ -3448,6 +984,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10065() throws Exception {
 
         XtfBoundingBox bb =
@@ -3461,6 +998,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10066() throws Exception {
 
         XtfBoundingBox bb =
@@ -3474,6 +1012,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10067() throws Exception {
 
         XtfBoundingBox bb =
@@ -3487,6 +1026,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10068() throws Exception {
 
         XtfBoundingBox bb =
@@ -3500,6 +1040,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10069() throws Exception {
 
         XtfBoundingBox bb =
@@ -3513,6 +1054,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10070() throws Exception {
 
         XtfBoundingBox bb =
@@ -3526,6 +1068,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10071() throws Exception {
 
         XtfBoundingBox bb =
@@ -3539,6 +1082,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10072() throws Exception {
 
         XtfBoundingBox bb =
@@ -3552,6 +1096,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10073() throws Exception {
 
         XtfBoundingBox bb =
@@ -3565,6 +1110,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10074() throws Exception {
 
         XtfBoundingBox bb =
@@ -3578,6 +1124,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10075() throws Exception {
 
         XtfBoundingBox bb =
@@ -3591,6 +1138,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10076() throws Exception {
 
         XtfBoundingBox bb =
@@ -3604,6 +1152,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10077() throws Exception {
 
         XtfBoundingBox bb =
@@ -3617,6 +1166,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10078() throws Exception {
 
         XtfBoundingBox bb =
@@ -3630,6 +1180,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10079() throws Exception {
 
         XtfBoundingBox bb =
@@ -3643,6 +1194,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10080() throws Exception {
 
         XtfBoundingBox bb =
@@ -3656,6 +1208,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10081() throws Exception {
 
         XtfBoundingBox bb =
@@ -3669,6 +1222,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10082() throws Exception {
 
         XtfBoundingBox bb =
@@ -3682,6 +1236,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10083() throws Exception {
 
         XtfBoundingBox bb =
@@ -3695,6 +1250,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10084() throws Exception {
 
         XtfBoundingBox bb =
@@ -3708,6 +1264,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10085() throws Exception {
 
         XtfBoundingBox bb =
@@ -3721,6 +1278,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10086() throws Exception {
 
         XtfBoundingBox bb =
@@ -3734,6 +1292,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10087() throws Exception {
 
         XtfBoundingBox bb =
@@ -3747,6 +1306,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10088() throws Exception {
 
         XtfBoundingBox bb =
@@ -3760,6 +1320,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10089() throws Exception {
 
         XtfBoundingBox bb =
@@ -3773,6 +1334,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10090() throws Exception {
 
         XtfBoundingBox bb =
@@ -3786,6 +1348,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10091() throws Exception {
 
         XtfBoundingBox bb =
@@ -3799,6 +1362,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10092() throws Exception {
 
         XtfBoundingBox bb =
@@ -3812,6 +1376,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10093() throws Exception {
 
         XtfBoundingBox bb =
@@ -3825,6 +1390,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10094() throws Exception {
 
         XtfBoundingBox bb =
@@ -3838,6 +1404,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10095() throws Exception {
 
         XtfBoundingBox bb =
@@ -3851,6 +1418,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10096() throws Exception {
 
         XtfBoundingBox bb =
@@ -3864,6 +1432,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10097() throws Exception {
 
         XtfBoundingBox bb =
@@ -3877,6 +1446,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10098() throws Exception {
 
         XtfBoundingBox bb =
@@ -3890,6 +1460,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10099() throws Exception {
 
         XtfBoundingBox bb =
@@ -3903,6 +1474,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10100() throws Exception {
 
         XtfBoundingBox bb =
@@ -3916,6 +1488,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10101() throws Exception {
 
         XtfBoundingBox bb =
@@ -3929,6 +1502,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10102() throws Exception {
 
         XtfBoundingBox bb =
@@ -3942,6 +1516,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10103() throws Exception {
 
         XtfBoundingBox bb =
@@ -3955,6 +1530,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10104() throws Exception {
 
         XtfBoundingBox bb =
@@ -3968,6 +1544,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10105() throws Exception {
 
         XtfBoundingBox bb =
@@ -3981,6 +1558,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10106() throws Exception {
 
         XtfBoundingBox bb =
@@ -3994,6 +1572,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10107() throws Exception {
 
         XtfBoundingBox bb =
@@ -4007,6 +1586,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10108() throws Exception {
 
         XtfBoundingBox bb =
@@ -4020,6 +1600,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10109() throws Exception {
 
         XtfBoundingBox bb =
@@ -4033,6 +1614,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10110() throws Exception {
 
         XtfBoundingBox bb =
@@ -4046,6 +1628,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10145() throws Exception {
 
         XtfBoundingBox bb =
@@ -4059,6 +1642,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii10193() throws Exception {
 
         XtfBoundingBox bb =
@@ -4072,6 +1656,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii61248() throws Exception {
 
         XtfBoundingBox bb =
@@ -4085,6 +1670,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii61289() throws Exception {
 
         XtfBoundingBox bb =
@@ -4098,6 +1684,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfafii61352() throws Exception {
 
         XtfBoundingBox bb =
@@ -4111,6 +1698,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfagrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -4120,10 +1708,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Agrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Agrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1715));
+    }
+
+    /**
      * test alpha
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfalpha() throws Exception {
 
         XtfBoundingBox bb =
@@ -4133,10 +1736,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Alpha
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAlpha() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Alpha", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1343));
+    }
+
+    /**
      * test alphatonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfalphatonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -4146,10 +1764,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Alphatonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAlphatonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Alphatonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1343));
+    }
+
+    /**
      * test amacron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfamacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -4159,10 +1792,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Amacron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAmacron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Amacron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1593));
+    }
+
+    /**
      * test ampersand
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfampersand() throws Exception {
 
         XtfBoundingBox bb =
@@ -4176,6 +1824,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfanoteleia() throws Exception {
 
         XtfBoundingBox bb =
@@ -4189,6 +1838,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfaogonek() throws Exception {
 
         XtfBoundingBox bb =
@@ -4198,10 +1848,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Aogonek
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAogonek() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Aogonek", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-14, -328, 1475, 1343));
+    }
+
+    /**
      * test approxequal
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfapproxequal() throws Exception {
 
         XtfBoundingBox bb =
@@ -4215,6 +1880,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfaring() throws Exception {
 
         XtfBoundingBox bb =
@@ -4224,10 +1890,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Aring
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAring() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Aring", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1654));
+    }
+
+    /**
      * test aringacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfaringacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -4237,10 +1918,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Aringacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAringacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Aringacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 2020));
+    }
+
+    /**
      * test arrowboth
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowboth() throws Exception {
 
         XtfBoundingBox bb =
@@ -4254,6 +1950,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowdown() throws Exception {
 
         XtfBoundingBox bb =
@@ -4267,6 +1964,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -4280,6 +1978,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowright() throws Exception {
 
         XtfBoundingBox bb =
@@ -4293,6 +1992,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowup() throws Exception {
 
         XtfBoundingBox bb =
@@ -4306,6 +2006,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowupdn() throws Exception {
 
         XtfBoundingBox bb =
@@ -4319,6 +2020,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfarrowupdnbse() throws Exception {
 
         XtfBoundingBox bb =
@@ -4332,6 +2034,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfasciicircum() throws Exception {
 
         XtfBoundingBox bb =
@@ -4345,6 +2048,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfasciitilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -4358,6 +2062,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfasterisk() throws Exception {
 
         XtfBoundingBox bb =
@@ -4371,6 +2076,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfat() throws Exception {
 
         XtfBoundingBox bb =
@@ -4384,6 +2090,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfatilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -4393,10 +2100,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Atilde
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfAtilde() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Atilde", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1608));
+    }
+
+    /**
      * test b
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfb() throws Exception {
 
         XtfBoundingBox bb =
@@ -4406,10 +2128,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test B
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfB() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("B", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(27, -2, 1164, 1298));
+    }
+
+    /**
      * test backslash
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbackslash() throws Exception {
 
         XtfBoundingBox bb =
@@ -4423,6 +2160,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbar() throws Exception {
 
         XtfBoundingBox bb =
@@ -4436,6 +2174,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbeta() throws Exception {
 
         XtfBoundingBox bb =
@@ -4445,10 +2184,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Beta
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfBeta() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Beta", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(27, -2, 1164, 1298));
+    }
+
+    /**
      * test block
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfblock() throws Exception {
 
         XtfBoundingBox bb =
@@ -4462,6 +2216,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbraceleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -4475,6 +2230,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbraceright() throws Exception {
 
         XtfBoundingBox bb =
@@ -4488,6 +2244,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbracketleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -4501,6 +2258,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbracketright() throws Exception {
 
         XtfBoundingBox bb =
@@ -4514,6 +2272,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -4527,6 +2286,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbrokenbar() throws Exception {
 
         XtfBoundingBox bb =
@@ -4540,6 +2300,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfbullet() throws Exception {
 
         XtfBoundingBox bb =
@@ -4553,6 +2314,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfc() throws Exception {
 
         XtfBoundingBox bb =
@@ -4562,10 +2324,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test C
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfC() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("C", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -27, 1231, 1311));
+    }
+
+    /**
      * test cacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -4575,10 +2352,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Cacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfCacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Cacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -27, 1231, 1714));
+    }
+
+    /**
      * test caron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -4592,6 +2384,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfccaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -4601,10 +2394,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ccaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfCcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ccaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -27, 1231, 1761));
+    }
+
+    /**
      * test ccedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfccedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -4614,10 +2422,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ccedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfCcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ccedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -431, 1231, 1311));
+    }
+
+    /**
      * test ccircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfccircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -4627,10 +2450,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ccircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfCcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ccircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -27, 1231, 1760));
+    }
+
+    /**
      * test cdot
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcdot() throws Exception {
 
         XtfBoundingBox bb =
@@ -4640,10 +2478,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Cdot
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfCdot() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Cdot", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(89, -27, 1231, 1573));
+    }
+
+    /**
      * test cedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -4657,6 +2510,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcent() throws Exception {
 
         XtfBoundingBox bb =
@@ -4670,6 +2524,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfchi() throws Exception {
 
         XtfBoundingBox bb =
@@ -4679,10 +2534,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Chi
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfChi() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Chi", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(10, -21, 1449, 1277));
+    }
+
+    /**
      * test circle
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcircle() throws Exception {
 
         XtfBoundingBox bb =
@@ -4696,6 +2566,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -4709,6 +2580,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfclub() throws Exception {
 
         XtfBoundingBox bb =
@@ -4722,6 +2594,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcolon() throws Exception {
 
         XtfBoundingBox bb =
@@ -4735,6 +2608,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcomma() throws Exception {
 
         XtfBoundingBox bb =
@@ -4748,6 +2622,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcommaaccent() throws Exception {
 
         XtfBoundingBox bb =
@@ -4761,6 +2636,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcopyright() throws Exception {
 
         XtfBoundingBox bb =
@@ -4774,6 +2650,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfcurrency() throws Exception {
 
         XtfBoundingBox bb =
@@ -4787,6 +2664,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfd() throws Exception {
 
         XtfBoundingBox bb =
@@ -4796,10 +2674,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test D
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfD() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("D", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(22, -17, 1479, 1301));
+    }
+
+    /**
      * test dagger
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdagger() throws Exception {
 
         XtfBoundingBox bb =
@@ -4813,6 +2706,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdaggerdbl() throws Exception {
 
         XtfBoundingBox bb =
@@ -4826,6 +2720,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -4835,10 +2730,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Dcaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfDcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Dcaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(22, -17, 1479, 1768));
+    }
+
+    /**
      * test degree
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdegree() throws Exception {
 
         XtfBoundingBox bb =
@@ -4852,6 +2762,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdelta() throws Exception {
 
         XtfBoundingBox bb =
@@ -4865,6 +2776,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdiamond() throws Exception {
 
         XtfBoundingBox bb =
@@ -4878,6 +2790,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -4891,6 +2804,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdieresistonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -4905,6 +2819,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdivide() throws Exception {
 
         XtfBoundingBox bb =
@@ -4918,6 +2833,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdkshade() throws Exception {
 
         XtfBoundingBox bb =
@@ -4931,6 +2847,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdmacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -4944,6 +2861,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdnblock() throws Exception {
 
         XtfBoundingBox bb =
@@ -4957,6 +2875,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdollar() throws Exception {
 
         XtfBoundingBox bb =
@@ -4970,6 +2889,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdotaccent() throws Exception {
 
         XtfBoundingBox bb =
@@ -4983,6 +2903,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfdotlessi() throws Exception {
 
         XtfBoundingBox bb =
@@ -4992,10 +2913,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Dslash
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfDslash() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Dslash", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(15, -17, 1480, 1300));
+    }
+
+    /**
      * test e
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfe() throws Exception {
 
         XtfBoundingBox bb =
@@ -5005,10 +2941,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test E
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfE() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("E", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1274));
+    }
+
+    /**
      * test eacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -5018,10 +2969,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Eacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Eacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1714));
+    }
+
+    /**
      * test ebreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfebreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -5031,10 +2997,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ebreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEbreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ebreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1697));
+    }
+
+    /**
      * test ecaron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfecaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -5044,10 +3025,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ecaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ecaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1768));
+    }
+
+    /**
      * test ecircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfecircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -5057,10 +3053,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ecircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ecircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1761));
+    }
+
+    /**
      * test edieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfedieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -5070,10 +3081,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Edieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Edieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1579));
+    }
+
+    /**
      * test edot
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfedot() throws Exception {
 
         XtfBoundingBox bb =
@@ -5083,10 +3109,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Edot
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEdot() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Edot", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1573));
+    }
+
+    /**
      * test egrave
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfegrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -5096,10 +3137,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Egrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Egrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1715));
+    }
+
+    /**
      * test eight
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeight() throws Exception {
 
         XtfBoundingBox bb =
@@ -5113,6 +3169,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeightsuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -5127,6 +3184,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfellipsis() throws Exception {
 
         XtfBoundingBox bb =
@@ -5140,6 +3198,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfemacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -5149,10 +3208,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Emacron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEmacron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Emacron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1593));
+    }
+
+    /**
      * test emdash
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfemdash() throws Exception {
 
         XtfBoundingBox bb =
@@ -5166,6 +3240,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfendash() throws Exception {
 
         XtfBoundingBox bb =
@@ -5179,6 +3254,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeng() throws Exception {
 
         XtfBoundingBox bb =
@@ -5188,10 +3264,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Eng
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEng() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Eng", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(100, -17, 1437, 1311));
+    }
+
+    /**
      * test eogonek
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeogonek() throws Exception {
 
         XtfBoundingBox bb =
@@ -5201,10 +3292,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Eogonek
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEogonek() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Eogonek", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -328, 1296, 1274));
+    }
+
+    /**
      * test epsilon
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfepsilon() throws Exception {
 
         XtfBoundingBox bb =
@@ -5214,10 +3320,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Epsilon
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEpsilon() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Epsilon", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(49, -14, 1296, 1274));
+    }
+
+    /**
      * test epsilontonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfepsilontonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -5227,10 +3348,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Epsilontonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEpsilontonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Epsilontonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-48, -14, 1429, 1292));
+    }
+
+    /**
      * test equal
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfequal() throws Exception {
 
         XtfBoundingBox bb =
@@ -5244,6 +3380,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfequivalence() throws Exception {
 
         XtfBoundingBox bb =
@@ -5257,6 +3394,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfestimated() throws Exception {
 
         XtfBoundingBox bb =
@@ -5270,6 +3408,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeta() throws Exception {
 
         XtfBoundingBox bb =
@@ -5279,10 +3418,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Eta
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEta() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Eta", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(39, -21, 1504, 1289));
+    }
+
+    /**
      * test etatonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfetatonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -5292,10 +3446,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Etatonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEtatonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Etatonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-48, -21, 1598, 1292));
+    }
+
+    /**
      * test eth
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfeth() throws Exception {
 
         XtfBoundingBox bb =
@@ -5305,10 +3474,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Eth
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfEth() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Eth", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(15, -17, 1480, 1301));
+    }
+
+    /**
      * test exclam
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfexclam() throws Exception {
 
         XtfBoundingBox bb =
@@ -5322,6 +3506,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfexclamdbl() throws Exception {
 
         XtfBoundingBox bb =
@@ -5335,6 +3520,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfexclamdown() throws Exception {
 
         XtfBoundingBox bb =
@@ -5348,6 +3534,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyff() throws Exception {
 
         XtfBoundingBox bb =
@@ -5357,10 +3544,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test F
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfF() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("F", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(59, -20, 1107, 1294));
+    }
+
+    /**
      * test female
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffemale() throws Exception {
 
         XtfBoundingBox bb =
@@ -5374,6 +3576,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffi() throws Exception {
 
         XtfBoundingBox bb =
@@ -5387,6 +3590,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffi1() throws Exception {
 
         XtfBoundingBox bb =
@@ -5400,6 +3604,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffilledbox() throws Exception {
 
         XtfBoundingBox bb =
@@ -5413,6 +3618,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffilledrect() throws Exception {
 
         XtfBoundingBox bb =
@@ -5426,6 +3632,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffive() throws Exception {
 
         XtfBoundingBox bb =
@@ -5439,6 +3646,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffiveeighths() throws Exception {
 
         XtfBoundingBox bb =
@@ -5452,6 +3660,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffivesuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -5465,6 +3674,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffl() throws Exception {
 
         XtfBoundingBox bb =
@@ -5478,6 +3688,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffl1() throws Exception {
 
         XtfBoundingBox bb =
@@ -5491,6 +3702,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfflorin() throws Exception {
 
         XtfBoundingBox bb =
@@ -5504,6 +3716,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffour() throws Exception {
 
         XtfBoundingBox bb =
@@ -5517,6 +3730,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffoursuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -5530,6 +3744,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffraction() throws Exception {
 
         XtfBoundingBox bb =
@@ -5543,6 +3758,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffraction1() throws Exception {
 
         XtfBoundingBox bb =
@@ -5556,6 +3772,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyffranc() throws Exception {
 
         XtfBoundingBox bb =
@@ -5569,6 +3786,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfg() throws Exception {
 
         XtfBoundingBox bb =
@@ -5578,10 +3796,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test G
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfG() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("G", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -25, 1553, 1312));
+    }
+
+    /**
      * test gamma
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgamma() throws Exception {
 
         XtfBoundingBox bb =
@@ -5591,10 +3824,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Gamma
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfGamma() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Gamma", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -6, 1177, 1274));
+    }
+
+    /**
      * test gbreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgbreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -5604,10 +3852,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Gbreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfGbreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Gbreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -25, 1553, 1688));
+    }
+
+    /**
      * test gcedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -5617,10 +3880,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Gcedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfGcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Gcedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -621, 1553, 1312));
+    }
+
+    /**
      * test gcircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgcircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -5630,10 +3908,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Gcircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfGcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Gcircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -25, 1553, 1760));
+    }
+
+    /**
      * test gdot
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgdot() throws Exception {
 
         XtfBoundingBox bb =
@@ -5643,10 +3936,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Gdot
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfGdot() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Gdot", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -25, 1553, 1573));
+    }
+
+    /**
      * test germandbls
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgermandbls() throws Exception {
 
         XtfBoundingBox bb =
@@ -5660,6 +3968,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -5673,6 +3982,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgreater() throws Exception {
 
         XtfBoundingBox bb =
@@ -5686,6 +3996,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfgreaterequal() throws Exception {
 
         XtfBoundingBox bb =
@@ -5699,6 +4010,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfguillemotleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -5713,6 +4025,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfguillemotright() throws Exception {
 
         XtfBoundingBox bb =
@@ -5727,6 +4040,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfguilsinglleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -5741,6 +4055,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfguilsinglright() throws Exception {
 
         XtfBoundingBox bb =
@@ -5755,6 +4070,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfh() throws Exception {
 
         XtfBoundingBox bb =
@@ -5764,10 +4080,81 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test H
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfH() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("H", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(39, -21, 1504, 1289));
+    }
+
+    /**
+     * test H18533
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfH18533() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("H18533", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(178, 137, 1059, 1018));
+    }
+
+    /**
+     * test H18543
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfH18543() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("H18543", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(92, 405, 635, 948));
+    }
+
+    /**
+     * test H18551
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfH18551() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("H18551", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(92, 405, 635, 948));
+    }
+
+    /**
+     * test H22073
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfH22073() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("H22073", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(146, 0, 1090, 944));
+    }
+
+    /**
      * test hbar
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfhbar() throws Exception {
 
         XtfBoundingBox bb =
@@ -5777,10 +4164,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Hbar
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfHbar() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Hbar", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(39, -21, 1504, 1289));
+    }
+
+    /**
      * test hcircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfhcircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -5790,10 +4192,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Hcircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfHcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Hcircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(39, -21, 1504, 1764));
+    }
+
+    /**
      * test heart
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfheart() throws Exception {
 
         XtfBoundingBox bb =
@@ -5807,6 +4224,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfhouse() throws Exception {
 
         XtfBoundingBox bb =
@@ -5820,6 +4238,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfhungarumlaut() throws Exception {
 
         XtfBoundingBox bb =
@@ -5833,6 +4252,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfhyphen() throws Exception {
 
         XtfBoundingBox bb =
@@ -5846,6 +4266,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfi() throws Exception {
 
         XtfBoundingBox bb =
@@ -5855,10 +4276,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test I
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfI() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("I", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1279));
+    }
+
+    /**
      * test iacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -5868,10 +4304,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Iacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Iacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1714));
+    }
+
+    /**
      * test ibreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfibreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -5881,10 +4332,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ibreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIbreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ibreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1697));
+    }
+
+    /**
      * test icircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyficircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -5894,10 +4360,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Icircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Icircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1761));
+    }
+
+    /**
      * test idieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfidieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -5907,10 +4388,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Idieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Idieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1579));
+    }
+
+    /**
      * test igrave
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfigrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -5920,10 +4416,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Igrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Igrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1715));
+    }
+
+    /**
      * test ij
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfij() throws Exception {
 
         XtfBoundingBox bb =
@@ -5933,10 +4444,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test IJ
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIJ() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("IJ", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, -518, 1295, 1279));
+    }
+
+    /**
      * test imacron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfimacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -5946,10 +4472,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Imacron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfImacron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Imacron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1589));
+    }
+
+    /**
      * test infinity
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfinfinity() throws Exception {
 
         XtfBoundingBox bb =
@@ -5963,6 +4504,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfintegralbt() throws Exception {
 
         XtfBoundingBox bb =
@@ -5976,6 +4518,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfintegraltp() throws Exception {
 
         XtfBoundingBox bb =
@@ -5989,6 +4532,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfintersection() throws Exception {
 
         XtfBoundingBox bb =
@@ -6002,6 +4546,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfinvbullet() throws Exception {
 
         XtfBoundingBox bb =
@@ -6015,6 +4560,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfinvcircle() throws Exception {
 
         XtfBoundingBox bb =
@@ -6028,6 +4574,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfinvsmileface() throws Exception {
 
         XtfBoundingBox bb =
@@ -6041,6 +4588,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiogonek() throws Exception {
 
         XtfBoundingBox bb =
@@ -6050,10 +4598,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Iogonek
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIogonek() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Iogonek", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, -364, 664, 1279));
+    }
+
+    /**
      * test iota
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiota() throws Exception {
 
         XtfBoundingBox bb =
@@ -6063,10 +4626,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Iota
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIota() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Iota", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1279));
+    }
+
+    /**
      * test iotadieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiotadieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -6076,10 +4654,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Iotadieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIotadieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Iotadieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1577));
+    }
+
+    /**
      * test iotadieresistonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiotadieresistonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -6094,6 +4687,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfiotatonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -6103,10 +4697,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Iotatonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfIotatonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Iotatonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-48, 0, 814, 1292));
+    }
+
+    /**
      * test itilde
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfitilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -6116,10 +4725,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Itilde
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfItilde() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Itilde", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(43, 0, 664, 1589));
+    }
+
+    /**
      * test j
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfj() throws Exception {
 
         XtfBoundingBox bb =
@@ -6129,10 +4753,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test J
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfJ() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("J", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-173, -518, 569, 1279));
+    }
+
+    /**
      * test jcircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfjcircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -6142,10 +4781,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Jcircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfJcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Jcircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-173, -518, 569, 1764));
+    }
+
+    /**
      * test k
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfk() throws Exception {
 
         XtfBoundingBox bb =
@@ -6155,10 +4809,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test K
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfK() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("K", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(58, -18, 1556, 1282));
+    }
+
+    /**
      * test kappa
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfkappa() throws Exception {
 
         XtfBoundingBox bb =
@@ -6168,10 +4837,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Kappa
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfKappa() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Kappa", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(58, -18, 1556, 1282));
+    }
+
+    /**
      * test kcedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfkcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -6181,10 +4865,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Kcedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfKcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Kcedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(58, -435, 1556, 1282));
+    }
+
+    /**
      * test kgreenlandic
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfkgreenlandic() throws Exception {
 
         XtfBoundingBox bb =
@@ -6198,6 +4897,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfl() throws Exception {
 
         XtfBoundingBox bb =
@@ -6207,10 +4907,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test L
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfL() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("L", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -6, 1177, 1274));
+    }
+
+    /**
      * test lacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6220,10 +4935,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Lacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Lacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -6, 1177, 1716));
+    }
+
+    /**
      * test lambda
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflambda() throws Exception {
 
         XtfBoundingBox bb =
@@ -6233,10 +4963,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Lambda
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLambda() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Lambda", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-15, 0, 1371, 1343));
+    }
+
+    /**
      * test lcaron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -6246,10 +4991,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Lcaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Lcaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -6, 1177, 1303));
+    }
+
+    /**
      * test lcedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -6259,10 +5019,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Lcedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Lcedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -435, 1177, 1274));
+    }
+
+    /**
      * test ldot
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfldot() throws Exception {
 
         XtfBoundingBox bb =
@@ -6272,10 +5047,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ldot
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLdot() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ldot", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(11, -6, 1177, 1274));
+    }
+
+    /**
      * test less
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfless() throws Exception {
 
         XtfBoundingBox bb =
@@ -6289,6 +5079,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflessequal() throws Exception {
 
         XtfBoundingBox bb =
@@ -6302,6 +5093,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflfblock() throws Exception {
 
         XtfBoundingBox bb =
@@ -6315,6 +5107,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflogicalnot() throws Exception {
 
         XtfBoundingBox bb =
@@ -6328,6 +5121,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflongs() throws Exception {
 
         XtfBoundingBox bb =
@@ -6341,6 +5135,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflozenge() throws Exception {
 
         XtfBoundingBox bb =
@@ -6354,6 +5149,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyflslash() throws Exception {
 
         XtfBoundingBox bb =
@@ -6363,10 +5159,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Lslash
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfLslash() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Lslash", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(18, -6, 1184, 1274));
+    }
+
+    /**
      * test ltshade
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfltshade() throws Exception {
 
         XtfBoundingBox bb =
@@ -6380,6 +5191,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfm() throws Exception {
 
         XtfBoundingBox bb =
@@ -6389,10 +5201,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test M
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfM() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("M", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(14, -9, 1692, 1289));
+    }
+
+    /**
      * test male
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmale() throws Exception {
 
         XtfBoundingBox bb =
@@ -6406,6 +5233,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfminus() throws Exception {
 
         XtfBoundingBox bb =
@@ -6419,6 +5247,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfminute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6432,6 +5261,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmu() throws Exception {
 
         XtfBoundingBox bb =
@@ -6441,10 +5271,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Mu
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfMu() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Mu", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(14, -9, 1692, 1289));
+    }
+
+    /**
      * test mu1
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmu1() throws Exception {
 
         XtfBoundingBox bb =
@@ -6458,6 +5303,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmultiply() throws Exception {
 
         XtfBoundingBox bb =
@@ -6471,6 +5317,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmusicalnote() throws Exception {
 
         XtfBoundingBox bb =
@@ -6484,6 +5331,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfmusicalnotedbl() throws Exception {
 
         XtfBoundingBox bb =
@@ -6498,6 +5346,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfn() throws Exception {
 
         XtfBoundingBox bb =
@@ -6507,10 +5356,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test N
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfN() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("N", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -47, 1500, 1286));
+    }
+
+    /**
      * test nacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6520,10 +5384,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Nacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfNacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Nacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -47, 1500, 1724));
+    }
+
+    /**
      * test napostrophe
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnapostrophe() throws Exception {
 
         XtfBoundingBox bb =
@@ -6537,6 +5416,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfncaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -6546,10 +5426,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ncaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfNcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ncaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -47, 1500, 1768));
+    }
+
+    /**
      * test ncedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfncedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -6559,10 +5454,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ncedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfNcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ncedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -435, 1500, 1286));
+    }
+
+    /**
      * test nine
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnine() throws Exception {
 
         XtfBoundingBox bb =
@@ -6576,6 +5486,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnonbreakingspace() throws Exception {
 
         XtfBoundingBox bb =
@@ -6588,6 +5499,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnotequal() throws Exception {
 
         XtfBoundingBox bb =
@@ -6601,6 +5513,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnsuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -6614,6 +5527,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfntilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -6623,10 +5537,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ntilde
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfNtilde() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ntilde", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -47, 1500, 1608));
+    }
+
+    /**
      * test nu
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnu() throws Exception {
 
         XtfBoundingBox bb =
@@ -6636,10 +5565,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Nu
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfNu() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Nu", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(26, -47, 1500, 1286));
+    }
+
+    /**
      * test numbersign
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfnumbersign() throws Exception {
 
         XtfBoundingBox bb =
@@ -6653,6 +5597,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfo() throws Exception {
 
         XtfBoundingBox bb =
@@ -6662,10 +5607,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test O
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfO() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("O", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1292));
+    }
+
+    /**
      * test oacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfoacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6675,10 +5635,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Oacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Oacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1714));
+    }
+
+    /**
      * test obreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfobreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -6688,10 +5663,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Obreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfObreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Obreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1697));
+    }
+
+    /**
      * test ocircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfocircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -6701,10 +5691,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ocircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ocircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1761));
+    }
+
+    /**
      * test odblacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfodblacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6714,10 +5719,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Odblacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOdblacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Odblacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1720));
+    }
+
+    /**
      * test odieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfodieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -6727,10 +5747,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Odieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Odieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1579));
+    }
+
+    /**
      * test oe
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfoe() throws Exception {
 
         XtfBoundingBox bb =
@@ -6740,10 +5775,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test OE
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOE() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("OE", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(95, -17, 1863, 1289));
+    }
+
+    /**
      * test ogonek
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfogonek() throws Exception {
 
         XtfBoundingBox bb =
@@ -6757,6 +5807,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfograve() throws Exception {
 
         XtfBoundingBox bb =
@@ -6766,10 +5817,39 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ograve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ograve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1715));
+    }
+
+    /**
+     * test Ohm
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOhm() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ohm", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(57, 0, 1457, 1387));
+    }
+
+    /**
      * test omacron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfomacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -6779,10 +5859,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Omacron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOmacron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Omacron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1593));
+    }
+
+    /**
      * test omega
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfomega() throws Exception {
 
         XtfBoundingBox bb =
@@ -6792,10 +5887,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Omega
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOmega() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Omega", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(103, -8, 1486, 1292));
+    }
+
+    /**
      * test omegatonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfomegatonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -6805,10 +5915,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Omegatonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOmegatonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Omegatonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-48, -8, 1498, 1292));
+    }
+
+    /**
      * test omicron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfomicron() throws Exception {
 
         XtfBoundingBox bb =
@@ -6818,10 +5943,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Omicron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOmicron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Omicron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1292));
+    }
+
+    /**
      * test omicrontonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfomicrontonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -6831,10 +5971,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Omicrontonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOmicrontonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Omicrontonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-48, -20, 1502, 1292));
+    }
+
+    /**
      * test one
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfone() throws Exception {
 
         XtfBoundingBox bb =
@@ -6848,6 +6003,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfoneeighth() throws Exception {
 
         XtfBoundingBox bb =
@@ -6861,6 +6017,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfonehalf() throws Exception {
 
         XtfBoundingBox bb =
@@ -6874,6 +6031,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfonequarter() throws Exception {
 
         XtfBoundingBox bb =
@@ -6887,6 +6045,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfonesuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -6900,6 +6059,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfopenbullet() throws Exception {
 
         XtfBoundingBox bb =
@@ -6913,6 +6073,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfordfeminine() throws Exception {
 
         XtfBoundingBox bb =
@@ -6926,6 +6087,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfordmasculine() throws Exception {
 
         XtfBoundingBox bb =
@@ -6939,6 +6101,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyforthogonal() throws Exception {
 
         XtfBoundingBox bb =
@@ -6952,6 +6115,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfoslash() throws Exception {
 
         XtfBoundingBox bb =
@@ -6961,10 +6125,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Oslash
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOslash() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Oslash", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -62, 1502, 1335));
+    }
+
+    /**
      * test oslashacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfoslashacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -6974,10 +6153,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Oslashacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOslashacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Oslashacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -62, 1502, 1728));
+    }
+
+    /**
      * test otilde
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfotilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -6987,10 +6181,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Otilde
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfOtilde() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Otilde", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1502, 1608));
+    }
+
+    /**
      * test p
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfp() throws Exception {
 
         XtfBoundingBox bb =
@@ -7000,10 +6209,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test P
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfP() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("P", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(38, -20, 1098, 1295));
+    }
+
+    /**
      * test paragraph
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfparagraph() throws Exception {
 
         XtfBoundingBox bb =
@@ -7017,6 +6241,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfparenleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -7030,6 +6255,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfparenright() throws Exception {
 
         XtfBoundingBox bb =
@@ -7043,6 +6269,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpartialdiff() throws Exception {
 
         XtfBoundingBox bb =
@@ -7056,6 +6283,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpercent() throws Exception {
 
         XtfBoundingBox bb =
@@ -7069,6 +6297,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfperiod() throws Exception {
 
         XtfBoundingBox bb =
@@ -7082,6 +6311,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfperthousand() throws Exception {
 
         XtfBoundingBox bb =
@@ -7095,6 +6325,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpeseta() throws Exception {
 
         XtfBoundingBox bb =
@@ -7108,6 +6339,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfphi() throws Exception {
 
         XtfBoundingBox bb =
@@ -7117,10 +6349,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Phi
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfPhi() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Phi", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -8, 1556, 1284));
+    }
+
+    /**
      * test pi
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpi() throws Exception {
 
         XtfBoundingBox bb =
@@ -7130,10 +6377,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Pi
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfPi() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Pi", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(39, -21, 1486, 1284));
+    }
+
+    /**
      * test pi1
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpi1() throws Exception {
 
         XtfBoundingBox bb =
@@ -7147,6 +6409,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfplus() throws Exception {
 
         XtfBoundingBox bb =
@@ -7160,6 +6423,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfplusminus() throws Exception {
 
         XtfBoundingBox bb =
@@ -7173,6 +6437,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfproduct() throws Exception {
 
         XtfBoundingBox bb =
@@ -7186,6 +6451,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfpsi() throws Exception {
 
         XtfBoundingBox bb =
@@ -7195,10 +6461,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Psi
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfPsi() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Psi", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(12, 0, 1537, 1292));
+    }
+
+    /**
      * test q
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfq() throws Exception {
 
         XtfBoundingBox bb =
@@ -7208,10 +6489,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Q
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfQ() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Q", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(97, -446, 1532, 1316));
+    }
+
+    /**
      * test question
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquestion() throws Exception {
 
         XtfBoundingBox bb =
@@ -7225,6 +6521,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquestiondown() throws Exception {
 
         XtfBoundingBox bb =
@@ -7238,6 +6535,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotedbl() throws Exception {
 
         XtfBoundingBox bb =
@@ -7251,6 +6549,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotedblbase() throws Exception {
 
         XtfBoundingBox bb =
@@ -7264,6 +6563,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotedblleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -7277,6 +6577,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotedblright() throws Exception {
 
         XtfBoundingBox bb =
@@ -7291,6 +6592,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquoteleft() throws Exception {
 
         XtfBoundingBox bb =
@@ -7304,6 +6606,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotereversed() throws Exception {
 
         XtfBoundingBox bb =
@@ -7318,6 +6621,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquoteright() throws Exception {
 
         XtfBoundingBox bb =
@@ -7331,6 +6635,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotesinglbase() throws Exception {
 
         XtfBoundingBox bb =
@@ -7345,6 +6650,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfquotesingle() throws Exception {
 
         XtfBoundingBox bb =
@@ -7358,6 +6664,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfr() throws Exception {
 
         XtfBoundingBox bb =
@@ -7367,10 +6674,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test R
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfR() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("R", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(42, -5, 1313, 1289));
+    }
+
+    /**
      * test racute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfracute() throws Exception {
 
         XtfBoundingBox bb =
@@ -7380,10 +6702,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Racute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfRacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Racute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(42, -5, 1313, 1720));
+    }
+
+    /**
      * test radical
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfradical() throws Exception {
 
         XtfBoundingBox bb =
@@ -7397,6 +6734,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfradicalex() throws Exception {
 
         XtfBoundingBox bb =
@@ -7410,6 +6748,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfrcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -7419,10 +6758,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Rcaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfRcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Rcaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(42, -5, 1313, 1768));
+    }
+
+    /**
      * test rcedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfrcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -7432,10 +6786,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Rcedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfRcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Rcedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(42, -435, 1313, 1289));
+    }
+
+    /**
      * test registered
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfregistered() throws Exception {
 
         XtfBoundingBox bb =
@@ -7449,6 +6818,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfrevlogicalnot() throws Exception {
 
         XtfBoundingBox bb =
@@ -7463,6 +6833,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfrho() throws Exception {
 
         XtfBoundingBox bb =
@@ -7472,10 +6843,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Rho
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfRho() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Rho", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(38, -20, 1098, 1295));
+    }
+
+    /**
      * test ring
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfring() throws Exception {
 
         XtfBoundingBox bb =
@@ -7489,6 +6875,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfrtblock() throws Exception {
 
         XtfBoundingBox bb =
@@ -7502,6 +6889,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfs() throws Exception {
 
         XtfBoundingBox bb =
@@ -7511,10 +6899,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test S
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfS() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("S", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(77, -33, 895, 1316));
+    }
+
+    /**
      * test sacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -7524,10 +6927,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Sacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Sacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(77, -33, 895, 1720));
+    }
+
+    /**
      * test scaron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfscaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -7537,10 +6955,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Scaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfScaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Scaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(77, -33, 895, 1761));
+    }
+
+    /**
      * test scedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfscedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -7550,10 +6983,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Scedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfScedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Scedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(77, -431, 895, 1316));
+    }
+
+    /**
      * test scircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfscircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -7563,10 +7011,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Scircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfScircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Scircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(77, -33, 895, 1764));
+    }
+
+    /**
      * test second
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsecond() throws Exception {
 
         XtfBoundingBox bb =
@@ -7580,6 +7043,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsection() throws Exception {
 
         XtfBoundingBox bb =
@@ -7593,6 +7057,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsemicolon() throws Exception {
 
         XtfBoundingBox bb =
@@ -7606,6 +7071,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfseven() throws Exception {
 
         XtfBoundingBox bb =
@@ -7619,6 +7085,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfseveneighths() throws Exception {
 
         XtfBoundingBox bb =
@@ -7632,6 +7099,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsevensuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -7642,10 +7110,571 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test SF010000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF010000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF010000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, -621, 1474, 709));
+    }
+
+    /**
+     * test SF020000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF020000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF020000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, 534, 1474, 1864));
+    }
+
+    /**
+     * test SF030000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF030000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF030000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 812, 709));
+    }
+
+    /**
+     * test SF040000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF040000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF040000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 534, 812, 1864));
+    }
+
+    /**
+     * test SF050000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF050000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF050000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 1864));
+    }
+
+    /**
+     * test SF060000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF060000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF060000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 709));
+    }
+
+    /**
+     * test SF070000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF070000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF070000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 534, 1473, 1864));
+    }
+
+    /**
+     * test SF080000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF080000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF080000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, -621, 1474, 1864));
+    }
+
+    /**
+     * test SF090000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF090000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF090000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 812, 1864));
+    }
+
+    /**
+     * test SF100000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF100000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF100000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 534, 1473, 709));
+    }
+
+    /**
+     * test SF110000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF110000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF110000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, -621, 813, 1864));
+    }
+
+    /**
+     * test SF190000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF190000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF190000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 812, 1864));
+    }
+
+    /**
+     * test SF200000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF200000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF200000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1003, 1864));
+    }
+
+    /**
+     * test SF210000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF210000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF210000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1003, 709));
+    }
+
+    /**
+     * test SF220000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF220000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF220000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 812, 899));
+    }
+
+    /**
+     * test SF230000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF230000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF230000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1003, 1864));
+    }
+
+    /**
+     * test SF240000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF240000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF240000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, -621, 1004, 1864));
+    }
+
+    /**
+     * test SF250000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF250000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF250000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1003, 899));
+    }
+
+    /**
+     * test SF260000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF260000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF260000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 344, 1003, 1864));
+    }
+
+    /**
+     * test SF270000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF270000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF270000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 534, 1003, 1864));
+    }
+
+    /**
+     * test SF280000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF280000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF280000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 344, 812, 1864));
+    }
+
+    /**
+     * test SF360000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF360000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF360000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, -621, 1474, 1864));
+    }
+
+    /**
+     * test SF370000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF370000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF370000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, -621, 1474, 1864));
+    }
+
+    /**
+     * test SF380000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF380000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF380000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, 344, 1474, 1864));
+    }
+
+    /**
+     * test SF390000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF390000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF390000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, -621, 1474, 899));
+    }
+
+    /**
+     * test SF400000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF400000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF400000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 344, 1473, 1864));
+    }
+
+    /**
+     * test SF410000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF410000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF410000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 899));
+    }
+
+    /**
+     * test SF420000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF420000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF420000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, -621, 1474, 1864));
+    }
+
+    /**
+     * test SF430000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF430000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF430000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 344, 1473, 899));
+    }
+
+    /**
+     * test SF440000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF440000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF440000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 1864));
+    }
+
+    /**
+     * test SF450000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF450000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF450000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 344, 1473, 1864));
+    }
+
+    /**
+     * test SF460000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF460000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF460000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, 534, 1473, 1864));
+    }
+
+    /**
+     * test SF470000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF470000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF470000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 899));
+    }
+
+    /**
+     * test SF480000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF480000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF480000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 709));
+    }
+
+    /**
+     * test SF490000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF490000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF490000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, 534, 1475, 1864));
+    }
+
+    /**
+     * test SF500000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF500000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF500000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, 344, 1474, 1864));
+    }
+
+    /**
+     * test SF510000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF510000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF510000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(638, -621, 1474, 899));
+    }
+
+    /**
+     * test SF520000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF520000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF520000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(448, -621, 1475, 709));
+    }
+
+    /**
+     * test SF530000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF530000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF530000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 1864));
+    }
+
+    /**
+     * test SF540000
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSF540000() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("SF540000", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-23, -621, 1473, 1864));
+    }
+
+    /**
      * test sfthyphen
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsfthyphen() throws Exception {
 
         XtfBoundingBox bb =
@@ -7659,6 +7688,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfshade() throws Exception {
 
         XtfBoundingBox bb =
@@ -7672,6 +7702,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsigma() throws Exception {
 
         XtfBoundingBox bb =
@@ -7681,10 +7712,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Sigma
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfSigma() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Sigma", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(60, -15, 1211, 1272));
+    }
+
+    /**
      * test sigma1
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsigma1() throws Exception {
 
         XtfBoundingBox bb =
@@ -7698,6 +7744,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsix() throws Exception {
 
         XtfBoundingBox bb =
@@ -7711,6 +7758,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfslash() throws Exception {
 
         XtfBoundingBox bb =
@@ -7724,6 +7772,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsmileface() throws Exception {
 
         XtfBoundingBox bb =
@@ -7737,6 +7786,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfspace() throws Exception {
 
         XtfBoundingBox bb =
@@ -7749,6 +7799,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfspade() throws Exception {
 
         XtfBoundingBox bb =
@@ -7762,6 +7813,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsterling() throws Exception {
 
         XtfBoundingBox bb =
@@ -7775,6 +7827,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsummation() throws Exception {
 
         XtfBoundingBox bb =
@@ -7788,6 +7841,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfsun() throws Exception {
 
         XtfBoundingBox bb =
@@ -7801,6 +7855,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyft() throws Exception {
 
         XtfBoundingBox bb =
@@ -7810,10 +7865,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test T
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfT() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("T", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-4, -25, 1233, 1331));
+    }
+
+    /**
      * test tau
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftau() throws Exception {
 
         XtfBoundingBox bb =
@@ -7823,10 +7893,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Tau
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfTau() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Tau", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-4, -25, 1233, 1331));
+    }
+
+    /**
      * test tbar
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftbar() throws Exception {
 
         XtfBoundingBox bb =
@@ -7836,10 +7921,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Tbar
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfTbar() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Tbar", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-4, -25, 1233, 1331));
+    }
+
+    /**
      * test tcaron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -7849,10 +7949,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Tcaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfTcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Tcaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-4, -25, 1233, 1768));
+    }
+
+    /**
      * test tcedilla
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftcedilla() throws Exception {
 
         XtfBoundingBox bb =
@@ -7862,10 +7977,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Tcedilla
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfTcedilla() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Tcedilla", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-4, -589, 1233, 1331));
+    }
+
+    /**
      * test theta
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftheta() throws Exception {
 
         XtfBoundingBox bb =
@@ -7875,10 +8005,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Theta
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfTheta() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Theta", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(94, -20, 1503, 1292));
+    }
+
+    /**
      * test thorn
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfthorn() throws Exception {
 
         XtfBoundingBox bb =
@@ -7888,10 +8033,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Thorn
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfThorn() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Thorn", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(38, -20, 1098, 1280));
+    }
+
+    /**
      * test three
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfthree() throws Exception {
 
         XtfBoundingBox bb =
@@ -7905,6 +8065,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfthreeeighths() throws Exception {
 
         XtfBoundingBox bb =
@@ -7918,6 +8079,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfthreequarters() throws Exception {
 
         XtfBoundingBox bb =
@@ -7932,6 +8094,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfthreesuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -7946,6 +8109,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -7959,6 +8123,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -7972,6 +8137,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftrademark() throws Exception {
 
         XtfBoundingBox bb =
@@ -7985,6 +8151,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftriagdn() throws Exception {
 
         XtfBoundingBox bb =
@@ -7998,6 +8165,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftriaglf() throws Exception {
 
         XtfBoundingBox bb =
@@ -8011,6 +8179,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftriagrt() throws Exception {
 
         XtfBoundingBox bb =
@@ -8024,6 +8193,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftriagup() throws Exception {
 
         XtfBoundingBox bb =
@@ -8037,6 +8207,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftwo() throws Exception {
 
         XtfBoundingBox bb =
@@ -8050,6 +8221,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyftwosuperior() throws Exception {
 
         XtfBoundingBox bb =
@@ -8063,6 +8235,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfu() throws Exception {
 
         XtfBoundingBox bb =
@@ -8072,10 +8245,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test U
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfU() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("U", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1286));
+    }
+
+    /**
      * test uacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfuacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -8085,10 +8273,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Uacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Uacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1714));
+    }
+
+    /**
      * test ubreve
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfubreve() throws Exception {
 
         XtfBoundingBox bb =
@@ -8098,10 +8301,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ubreve
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUbreve() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ubreve", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1697));
+    }
+
+    /**
      * test ucircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfucircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -8111,10 +8329,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ucircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ucircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1761));
+    }
+
+    /**
      * test udblacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfudblacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -8124,10 +8357,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Udblacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUdblacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Udblacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1724));
+    }
+
+    /**
      * test udieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfudieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -8137,10 +8385,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Udieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Udieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1579));
+    }
+
+    /**
      * test ugrave
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfugrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -8150,10 +8413,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ugrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ugrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1715));
+    }
+
+    /**
      * test umacron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfumacron() throws Exception {
 
         XtfBoundingBox bb =
@@ -8163,10 +8441,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Umacron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUmacron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Umacron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1589));
+    }
+
+    /**
      * test undercommaaccent
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfundercommaaccent() throws Exception {
 
         XtfBoundingBox bb =
@@ -8181,6 +8474,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfunderscore() throws Exception {
 
         XtfBoundingBox bb =
@@ -8194,6 +8488,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfunderscoredbl() throws Exception {
 
         XtfBoundingBox bb =
@@ -8208,6 +8503,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfuogonek() throws Exception {
 
         XtfBoundingBox bb =
@@ -8217,10 +8513,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Uogonek
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUogonek() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Uogonek", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -364, 1384, 1286));
+    }
+
+    /**
      * test upblock
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfupblock() throws Exception {
 
         XtfBoundingBox bb =
@@ -8234,6 +8545,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfupsilon() throws Exception {
 
         XtfBoundingBox bb =
@@ -8243,10 +8555,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Upsilon
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUpsilon() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Upsilon", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(0, -13, 1168, 1292));
+    }
+
+    /**
      * test upsilondieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfupsilondieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -8257,10 +8584,26 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Upsilondieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUpsilondieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Upsilondieresis", 0, (short) 3,
+                    (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(0, -13, 1168, 1577));
+    }
+
+    /**
      * test upsilondieresistonos
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfupsilondieresistonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -8275,6 +8618,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfupsilontonos() throws Exception {
 
         XtfBoundingBox bb =
@@ -8284,10 +8628,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Upsilontonos
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUpsilontonos() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Upsilontonos", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-44, -13, 1352, 1292));
+    }
+
+    /**
      * test uring
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfuring() throws Exception {
 
         XtfBoundingBox bb =
@@ -8297,10 +8656,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Uring
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUring() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Uring", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1746));
+    }
+
+    /**
      * test utilde
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfutilde() throws Exception {
 
         XtfBoundingBox bb =
@@ -8310,10 +8684,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Utilde
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfUtilde() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Utilde", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(37, -34, 1384, 1585));
+    }
+
+    /**
      * test v
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfv() throws Exception {
 
         XtfBoundingBox bb =
@@ -8323,10 +8712,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test V
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfV() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("V", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-17, -39, 1406, 1287));
+    }
+
+    /**
      * test w
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfw() throws Exception {
 
         XtfBoundingBox bb =
@@ -8336,10 +8740,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test W
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfW() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("W", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -56, 1826, 1279));
+    }
+
+    /**
      * test wacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfwacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -8349,10 +8768,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Wacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfWacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Wacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -56, 1826, 1720));
+    }
+
+    /**
      * test wcircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfwcircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -8362,10 +8796,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Wcircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfWcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Wcircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -56, 1826, 1764));
+    }
+
+    /**
      * test wdieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfwdieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -8375,10 +8824,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Wdieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfWdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Wdieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -56, 1826, 1577));
+    }
+
+    /**
      * test wgrave
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfwgrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -8388,10 +8852,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Wgrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfWgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Wgrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -56, 1826, 1717));
+    }
+
+    /**
      * test x
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfx() throws Exception {
 
         XtfBoundingBox bb =
@@ -8401,10 +8880,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test X
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfX() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("X", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(10, -21, 1449, 1277));
+    }
+
+    /**
      * test xi
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfxi() throws Exception {
 
         XtfBoundingBox bb =
@@ -8414,10 +8908,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Xi
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfXi() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Xi", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(69, -3, 1320, 1272));
+    }
+
+    /**
      * test y
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfy() throws Exception {
 
         XtfBoundingBox bb =
@@ -8427,10 +8936,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Y
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfY() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Y", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -13, 1361, 1290));
+    }
+
+    /**
      * test yacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfyacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -8440,10 +8964,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Yacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfYacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Yacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -13, 1361, 1714));
+    }
+
+    /**
      * test ycircumflex
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfycircumflex() throws Exception {
 
         XtfBoundingBox bb =
@@ -8453,10 +8992,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ycircumflex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfYcircumflex() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ycircumflex", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -13, 1361, 1760));
+    }
+
+    /**
      * test ydieresis
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfydieresis() throws Exception {
 
         XtfBoundingBox bb =
@@ -8466,10 +9020,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ydieresis
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfYdieresis() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ydieresis", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -13, 1361, 1579));
+    }
+
+    /**
      * test yen
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfyen() throws Exception {
 
         XtfBoundingBox bb =
@@ -8483,6 +9052,7 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfygrave() throws Exception {
 
         XtfBoundingBox bb =
@@ -8492,10 +9062,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Ygrave
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfYgrave() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Ygrave", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(-20, -13, 1361, 1717));
+    }
+
+    /**
      * test z
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfz() throws Exception {
 
         XtfBoundingBox bb =
@@ -8505,10 +9090,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Z
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfZ() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Z", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(72, -15, 1247, 1346));
+    }
+
+    /**
      * test zacute
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfzacute() throws Exception {
 
         XtfBoundingBox bb =
@@ -8518,10 +9118,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Zacute
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfZacute() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Zacute", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(72, -15, 1247, 1720));
+    }
+
+    /**
      * test zcaron
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfzcaron() throws Exception {
 
         XtfBoundingBox bb =
@@ -8531,10 +9146,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Zcaron
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfZcaron() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Zcaron", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(72, -15, 1247, 1761));
+    }
+
+    /**
      * test zdot
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfzdot() throws Exception {
 
         XtfBoundingBox bb =
@@ -8544,10 +9174,25 @@ public class XtfReaderGara3Test extends TestCase {
     }
 
     /**
+     * test Zdot
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfZdot() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Zdot", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(72, -15, 1247, 1573));
+    }
+
+    /**
      * test zero
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfzero() throws Exception {
 
         XtfBoundingBox bb =
@@ -8561,12 +9206,27 @@ public class XtfReaderGara3Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGlyfzeta() throws Exception {
 
         XtfBoundingBox bb =
                 reader.mapCharCodeToBB("zeta", 0, (short) 3, (short) 1);
         assertNotNull(bb);
         assertTrue(bb.eq(80, -300, 762, 1315));
+    }
+
+    /**
+     * test Zeta
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGlyfZeta() throws Exception {
+
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("Zeta", 0, (short) 3, (short) 1);
+        assertNotNull(bb);
+        assertTrue(bb.eq(72, -15, 1247, 1346));
     }
 
 }

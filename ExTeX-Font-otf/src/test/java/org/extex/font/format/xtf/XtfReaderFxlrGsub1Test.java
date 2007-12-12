@@ -26,8 +26,14 @@ import static org.junit.Assert.assertTrue;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.extex.font.format.xtf.XtfScriptList.LangSys;
-import org.extex.font.format.xtf.XtfScriptList.Script;
+import org.extex.font.format.xtf.tables.XtfTable;
+import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
+import org.extex.font.format.xtf.tables.gps.XtfLookup;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList.LangSys;
+import org.extex.font.format.xtf.tables.gps.XtfScriptList.Script;
+import org.extex.font.format.xtf.tables.tag.FeatureTag;
+import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
 import org.junit.Test;
 
@@ -68,18 +74,6 @@ public class XtfReaderFxlrGsub1Test {
     }
 
     /**
-     * Test the name of the font.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testName() throws Exception {
-
-        assertEquals("Linux Libertine", reader.getFontFamilyName());
-        assertEquals(2309, reader.getNumberOfGlyphs());
-    }
-
-    /**
      * Test the gsub table.
      * 
      * @throws Exception if an error occurred.
@@ -87,6 +81,7 @@ public class XtfReaderFxlrGsub1Test {
     @Test
     public void testGsub01() throws Exception {
 
+        assertNotNull(reader);
         XtfTable table = reader.getTable(XtfReader.GSUB);
         assertNotNull(table);
 
@@ -100,7 +95,7 @@ public class XtfReaderFxlrGsub1Test {
         // ScriptCount=6
         assertEquals("scriptcount", 6, scriptlist.getCount());
 
-        Script script = gsub.findScript("DFLT");
+        Script script = gsub.findScript(ScriptTag.getInstance("DFLT"));
         assertNotNull(script);
         assertEquals("tag name", "DFLT", script.getTag());
         LangSys defLangSys = script.getDefaultLangSys();
@@ -111,26 +106,65 @@ public class XtfReaderFxlrGsub1Test {
             assertEquals("featureindex", i, defLangSys.getFeatureIndex(i));
         }
 
-        script = gsub.findScript("cyrl");
+        script = gsub.findScript(ScriptTag.getInstance("cyrl"));
         assertNotNull(script);
         assertEquals("tag name", "cyrl", script.getTag());
 
-        script = gsub.findScript("goth");
+        script = gsub.findScript(ScriptTag.getInstance("goth"));
         assertNotNull(script);
         assertEquals("tag name", "goth", script.getTag());
 
-        script = gsub.findScript("grek");
+        script = gsub.findScript(ScriptTag.getInstance("grek"));
         assertNotNull(script);
         assertEquals("tag name", "grek", script.getTag());
 
-        script = gsub.findScript("hebr");
+        script = gsub.findScript(ScriptTag.getInstance("hebr"));
         assertNotNull(script);
         assertEquals("tag name", "hebr", script.getTag());
 
-        script = gsub.findScript("latn");
+        script = gsub.findScript(ScriptTag.getInstance("latn"));
         assertNotNull(script);
         assertEquals("tag name", "latn", script.getTag());
 
+    }
+
+    /**
+     * Test the gsub table 02.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testGsub02() throws Exception {
+
+        assertNotNull(reader);
+        XtfTable table = reader.getTable(XtfReader.GSUB);
+        assertNotNull(table);
+
+        assertTrue(table instanceof OtfTableGSUB);
+        OtfTableGSUB gsub = (OtfTableGSUB) table;
+        assertNotNull(gsub);
+
+        XtfLookup[] lookups =
+                gsub.findLookup(ScriptTag.getInstance("DFLT"), null, FeatureTag
+                    .getInstance("zero"));
+        assertNotNull(lookups);
+        assertEquals(1, lookups.length);
+        assertEquals(1, lookups[0].getSubtableCount());
+        assertEquals("Single", lookups[0].getTypeAsString());
+
+    }
+
+    /**
+     * Test the name of the font.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testName() throws Exception {
+
+        assertNotNull(reader);
+        assertEquals("Linux Libertine", reader.getFontFamilyName());
+        assertEquals(2309, reader.getNumberOfGlyphs());
     }
 
     /**
@@ -139,8 +173,9 @@ public class XtfReaderFxlrGsub1Test {
      * @throws Exception if an error occurred.
      */
     @Test
-    public void test99() throws Exception {
+    public void testXmlOut() throws Exception {
 
+        assertNotNull(reader);
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
                     "ISO8859-1");
@@ -151,5 +186,4 @@ public class XtfReaderFxlrGsub1Test {
         writer.close();
 
     }
-
 }
