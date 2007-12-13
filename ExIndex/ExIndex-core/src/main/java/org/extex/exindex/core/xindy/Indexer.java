@@ -56,14 +56,14 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class Indexer extends LEngine {
 
     /**
-     * The field <tt>index</tt> contains the index.
-     */
-    private StructuredIndex index;
-
-    /**
      * The field <tt>entries</tt> contains the raw index.
      */
     private List<Indexentry> entries;
+
+    /**
+     * The field <tt>index</tt> contains the index.
+     */
+    private StructuredIndex index;
 
     /**
      * Creates a new object.
@@ -171,7 +171,7 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a parser for the raw index from a resource name.
      * 
      * @param resource the name of the resource
      * 
@@ -204,6 +204,31 @@ public class Indexer extends LEngine {
 
         // TODO gene: markup unimplemented
 
+    }
+
+    /**
+     * Perform the initial processing step. This step consists of a check of the
+     * attributes, the check of the crossrefs and the check of the location
+     * references. If all checks are passed then the given entry is put into the
+     * internal list.
+     * 
+     * @param entry the entry to store
+     * @param attributes the attributes
+     * 
+     * @throws LException in case of an error
+     */
+    private void preProcessAndStore(Indexentry entry,
+            LDefineAttributes attributes) throws LException {
+
+        // check attribute
+        String attr = entry.getAttr();
+        if (attr != null && attributes.lookup(attr) == null) {
+            throw new LException(LocalizerFactory.getLocalizer(Indexer.class)
+                .format("AttributeUnknown", attr));
+        }
+        // TODO check cross ref
+        // TODO check location ref
+        entries.add(entry);
     }
 
     /**
@@ -241,7 +266,7 @@ public class Indexer extends LEngine {
             try {
                 for (Indexentry entry = parser.parse(); entry != null; entry =
                         parser.parse()) {
-                    storeEntry(entry, attributes);
+                    preProcessAndStore(entry, attributes);
                 }
             } finally {
                 parser.close();
@@ -300,25 +325,6 @@ public class Indexer extends LEngine {
         for (String style : styles) {
             load(style);
         }
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param entry the entry to store
-     * @param attributes the attributes
-     * 
-     * @throws LException in case of an error
-     */
-    private void storeEntry(Indexentry entry, LDefineAttributes attributes)
-            throws LException {
-
-        String attr = entry.getAttr();
-        if (attr != null && attributes.lookup(attr) == null) {
-            throw new LException(LocalizerFactory.getLocalizer(Indexer.class)
-                .format("AttributeUnknown", attr));
-        }
-        entries.add(entry);
     }
 
 }
