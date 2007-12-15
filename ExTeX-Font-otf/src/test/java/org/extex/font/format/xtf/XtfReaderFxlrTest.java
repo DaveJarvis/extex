@@ -19,12 +19,10 @@
 
 package org.extex.font.format.xtf;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import junit.framework.TestCase;
 
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.font.format.xtf.tables.TtfTableCMAP;
@@ -51,7 +49,7 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrTest {
+public class XtfReaderFxlrTest extends TestCase {
 
     /**
      * The xtf reader.

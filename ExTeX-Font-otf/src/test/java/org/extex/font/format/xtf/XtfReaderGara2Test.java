@@ -19,10 +19,9 @@
 
 package org.extex.font.format.xtf;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.io.IOException;
+
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
@@ -34,7 +33,7 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderGara2Test {
+public class XtfReaderGara2Test extends TestCase {
 
     /**
      * The xtf reader.
