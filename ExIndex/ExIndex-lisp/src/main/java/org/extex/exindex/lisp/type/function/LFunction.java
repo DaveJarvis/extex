@@ -159,6 +159,10 @@ public abstract class LFunction {
         } catch (IllegalAccessException e) {
             throw new LException(e);
         } catch (InvocationTargetException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof LException) {
+                throw (LException) cause;
+            }
             throw new LException(e);
         }
 
