@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xparser;
+package org.extex.exindex.core.parser;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
