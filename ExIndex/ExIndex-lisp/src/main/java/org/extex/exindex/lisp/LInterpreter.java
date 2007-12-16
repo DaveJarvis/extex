@@ -226,11 +226,29 @@ public class LInterpreter {
      */
     public LValue load(String name) throws IOException, LException {
 
+        return load(name, "lisp");
+    }
+
+    /**
+     * Load a file and eval all expressions found in it. The file is located
+     * with the help of a resource finder if one is present otherwise the
+     * resource is sought as file.
+     * 
+     * @param name the name of the file to load
+     * @param type the type for the resource finder
+     * 
+     * @return the last expression read
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws LException in case of an error in the interpreter
+     */
+    public LValue load(String name, String type) throws IOException, LException {
+
         Reader reader;
         if (finder == null) {
             reader = new FileReader(name);
         } else {
-            InputStream stream = finder.findResource(name, "lisp");
+            InputStream stream = finder.findResource(name, type);
             if (stream == null) {
                 throw new FileNotFoundException(name);
             }
