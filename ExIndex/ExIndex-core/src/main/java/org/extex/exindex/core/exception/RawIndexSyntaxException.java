@@ -25,7 +25,7 @@ package org.extex.exindex.core.exception;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RawIndexMissingListException extends RawIndexException {
+public class RawIndexSyntaxException extends RawIndexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -39,7 +39,7 @@ public class RawIndexMissingListException extends RawIndexException {
      * @param resource the name of the resource
      * @param line the line number
      */
-    public RawIndexMissingListException(String resource, String line) {
+    public RawIndexSyntaxException(String resource, String line) {
 
         super(resource, line);
     }

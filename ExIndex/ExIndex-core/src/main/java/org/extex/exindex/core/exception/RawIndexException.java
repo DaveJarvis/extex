@@ -94,12 +94,9 @@ public class RawIndexException extends IOException {
 
         String message = getMessage();
 
-        if (message == null) {
-            return LocalizerFactory.getLocalizer(getClass()).format(
-                "NoMessage", resource, line);
-        }
-        return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            resource, line, message);
+        return LocalizerFactory.getLocalizer(RawIndexException.class).format(
+            (message == null ? "NoMessage" : "Message"), resource, line,
+            message);
     }
 
     /**
