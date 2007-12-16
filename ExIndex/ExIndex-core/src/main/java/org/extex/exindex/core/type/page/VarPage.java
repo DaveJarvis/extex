@@ -73,6 +73,9 @@ public class VarPage implements PageReference {
 
     };
 
+    /**
+     * The field <tt>list</tt> contains the ...
+     */
     private List<PageReference> list = new ArrayList<PageReference>();
 
     /**
