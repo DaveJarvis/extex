@@ -337,7 +337,7 @@ public class Indexer extends LEngine {
                 SecurityException,
                 NoSuchMethodException {
 
-        if (resources == null) {
+        if (resources == null || resources.isEmpty()) {
             logger.warning(LOCALIZER.format("NoResources"));
             return;
         }
@@ -431,7 +431,7 @@ public class Indexer extends LEngine {
                 LException {
 
         logger.info(LOCALIZER.format("Startup"));
-        if (styles == null) {
+        if (styles == null || styles.isEmpty()) {
             logger.warning(LOCALIZER.format("NoStyles"));
             return;
         }
