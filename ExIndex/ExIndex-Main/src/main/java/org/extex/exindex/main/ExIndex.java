@@ -240,8 +240,7 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(
-     *      java.lang.String)
+     * @see org.extex.exindex.core.Indexer#makeRawIndexParser( java.lang.String)
      */
     @Override
     protected RawIndexParser makeRawIndexParser(String resource)
@@ -351,7 +350,7 @@ public class ExIndex extends Indexer {
      *      java.util.logging.Logger)
      */
     @Override
-    protected void markup(Writer writer, Logger logger) {
+    protected void markup(Writer writer, Logger logger) throws IOException {
 
         logger.log(Level.INFO, LOCALIZER.format((output == null
                 ? "GeneratingOutput"
