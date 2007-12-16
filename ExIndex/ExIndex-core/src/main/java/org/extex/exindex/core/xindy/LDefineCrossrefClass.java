@@ -78,12 +78,14 @@ public class LDefineCrossrefClass extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for a crossref class.
      * 
-     * @param name
-     * @return
+     * @param name the name of the crossref class
+     * 
+     * @return the indicator for verified crossref classes or <code>null</code>
+     *         if the crossref class is not defined
      */
-    public Boolean look(String name) {
+    public Boolean lookup(String name) {
 
         return map.get(name);
     }
