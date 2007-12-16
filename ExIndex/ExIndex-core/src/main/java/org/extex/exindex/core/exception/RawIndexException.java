@@ -55,7 +55,21 @@ public class RawIndexException extends IOException {
      */
     public RawIndexException(String resource, String line) {
 
-        super();
+        super(null);
+        this.resource = resource;
+        this.line = line;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param resource the name of the resource
+     * @param line the line number
+     * @param message the message
+     */
+    public RawIndexException(String resource, String line, String message) {
+
+        super(message);
         this.resource = resource;
         this.line = line;
     }
@@ -78,8 +92,14 @@ public class RawIndexException extends IOException {
     @Override
     public String getLocalizedMessage() {
 
+        String message = getMessage();
+
+        if (message == null) {
+            return LocalizerFactory.getLocalizer(getClass()).format(
+                "NoMessage", resource, line);
+        }
         return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            resource, line);
+            resource, line, message);
     }
 
     /**
