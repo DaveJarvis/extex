@@ -19,6 +19,7 @@
 
 package org.extex.exindex.lisp;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -212,7 +213,9 @@ public class LInterpreter {
     }
 
     /**
-     * Load a file and eval all expressions found in it.
+     * Load a file and eval all expressions found in it. The file is located
+     * with the help of a resource finder if one is present otherwise the
+     * resource is sought as file.
      * 
      * @param name the name of the file to load
      * 
@@ -223,7 +226,16 @@ public class LInterpreter {
      */
     public LValue load(String name) throws IOException, LException {
 
-        Reader reader = new FileReader(name);
+        Reader reader;
+        if (finder == null) {
+            reader = new FileReader(name);
+        } else {
+            InputStream stream = finder.findResource(name, "lisp");
+            if (stream == null) {
+                throw new FileNotFoundException(name);
+            }
+            reader = new InputStreamReader(stream);
+        }
         try {
             return load(reader, name);
         } finally {
