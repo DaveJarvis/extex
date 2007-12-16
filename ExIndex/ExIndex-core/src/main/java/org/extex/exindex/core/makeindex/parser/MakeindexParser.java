@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser;
+package org.extex.exindex.core.makeindex.parser;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -71,7 +71,7 @@ public class MakeindexParser implements Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.Parser#load(java.io.Reader,
+     * @see org.extex.exindex.core.makeindex.parser.Parser#load(java.io.Reader,
      *      java.lang.String, org.extex.exindex.core.type.Index, Collator)
      */
     public int[] load(Reader reader, String resource, Index index,

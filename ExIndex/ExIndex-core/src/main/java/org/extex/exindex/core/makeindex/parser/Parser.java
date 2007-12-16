@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser;
+package org.extex.exindex.core.makeindex.parser;
 
 import java.io.IOException;
 import java.io.Reader;
