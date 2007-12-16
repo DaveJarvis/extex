@@ -23,22 +23,22 @@ package org.extex.exindex.core.parser.raw;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class Indexentry {
 
     /**
-     * The field <tt>key</tt> contains the ...
+     * The field <tt>key</tt> contains the key.
      */
     private Key key;
 
     /**
-     * The field <tt>attr</tt> contains the ...
+     * The field <tt>attr</tt> contains the attribute.
      */
     private String attr;
 
     /**
-     * The field <tt>ref</tt> contains the ...
+     * The field <tt>ref</tt> contains the page reference.
      */
     private RefSpec ref;
 
@@ -85,6 +85,80 @@ public class Indexentry {
     public RefSpec getRef() {
 
         return ref;
+    }
+
+    private void tos(StringBuilder sb, String s) {
+
+        sb.append("\"");
+        sb.append(s.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
+        sb.append("\"");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("(indexentry");
+        if (key.getPrint() == null) {
+            toStringAppendList(sb, " :key ", key.getKey());
+        } else if (key.getKey() == key.getPrint()) {
+            toStringAppendList(sb, " :key ", key.getKey());
+        } else {
+            toStringAppendList(sb, " :key ", key.getKey());
+            toStringAppendList(sb, " :print ", key.getPrint());
+        }
+        if (attr != null) {
+            sb.append(" :attr ");
+            tos(sb, attr);
+        }
+        if (ref instanceof XRef) {
+            sb.append(" :xref ");
+            sb.append(ref.toString());
+        } else if (ref instanceof OpenLocRef) {
+            sb.append(" :locref ");
+            sb.append(ref.toString());
+            sb.append(" :open-range");
+        } else if (ref instanceof CloseLocRef) {
+            sb.append(" :locref ");
+            sb.append(ref.toString());
+            sb.append(" :close-range");
+        } else {
+            sb.append(" :locref ");
+            sb.append(ref.toString());
+        }
+        sb.append(")\n");
+        return sb.toString();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param sb the buffer
+     * @param tag the initial tag
+     * @param a the array of values
+     */
+    private void toStringAppendList(StringBuilder sb, String tag, String[] a) {
+
+        if (a == null) {
+            return;
+        }
+        sb.append(tag);
+        sb.append("(");
+        boolean first = true;
+        for (String s : a) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(" ");
+            }
+            tos(sb, s);
+        }
+        sb.append(")");
     }
 
 }

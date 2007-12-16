@@ -19,9 +19,6 @@
 
 package org.extex.exindex.core.exception;
 
-import java.io.IOException;
-
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,28 +26,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingSymbolException extends IOException {
+public class MissingSymbolException extends RawIndexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
-
-    /**
-     * The field <tt>resource</tt> contains the resource.
-     */
-    private String resource;
-
-    /**
-     * The field <tt>line</tt> contains the line number.
-     */
-    private String line;
-
-    /**
-     * The field <tt>c</tt> contains the character.
-     */
-    private String c;
 
     /**
      * Creates a new object.
@@ -60,10 +42,7 @@ public class MissingSymbolException extends IOException {
      */
     public MissingSymbolException(String resource, int line) {
 
-        super();
-        this.resource = resource;
-        this.line = Integer.toString(line);
-        this.c = null;
+        super(resource, Integer.toString(line));
     }
 
     /**
@@ -75,22 +54,7 @@ public class MissingSymbolException extends IOException {
      */
     public MissingSymbolException(String resource, int line, char c) {
 
-        super();
-        this.resource = resource;
-        this.line = Integer.toString(line);
-        this.c = Character.toString(c);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        return LocalizerFactory.getLocalizer(getClass()).format("message",
-            resource, line, c);
+        super(resource, Integer.toString(line), Character.toString(c));
     }
 
 }

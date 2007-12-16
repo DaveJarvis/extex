@@ -26,9 +26,14 @@ import java.util.logging.Logger;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class XRef implements RefSpec {
+
+    /**
+     * The field <tt>refs</tt> contains the reference list.
+     */
+    private String[] refs;
 
     /**
      * Creates a new object.
@@ -37,7 +42,7 @@ public class XRef implements RefSpec {
      */
     public XRef(String[] refs) {
 
-        // TODO gene: LocRef constructor unimplemented
+        this.refs = refs;
     }
 
     /**
@@ -50,6 +55,31 @@ public class XRef implements RefSpec {
 
         // TODO gene: check unimplemented
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        boolean first = true;
+        for (String s : refs) {
+            if (first) {
+                first = false;
+                sb.append("\"");
+            } else {
+                sb.append(" \"");
+            }
+            sb.append(s.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
+            sb.append("\"");
+        }
+        sb.append(")");
+        return sb.toString();
     }
 
 }

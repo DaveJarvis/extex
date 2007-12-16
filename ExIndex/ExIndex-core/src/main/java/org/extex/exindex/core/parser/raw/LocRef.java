@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  * This interface describes a location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class LocRef implements RefSpec {
 
@@ -66,6 +66,21 @@ public class LocRef implements RefSpec {
     public String getLocation() {
 
         return location;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\"");
+        sb.append(location.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
+        sb.append("\"");
+        return sb.toString();
     }
 
 }

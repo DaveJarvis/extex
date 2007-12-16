@@ -283,7 +283,7 @@ public class XindyParser extends LParser implements RawIndexParser {
     }
 
     /**
-     * Create an exception and fill it with a value fron the resource bundle for
+     * Create an exception and fill it with a value from the resource bundle for
      * this class.
      * 
      * @param key the key
