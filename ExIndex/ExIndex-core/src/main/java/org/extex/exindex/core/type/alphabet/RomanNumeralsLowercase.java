@@ -21,6 +21,7 @@ package org.extex.exindex.core.type.alphabet;
 
 import java.io.PrintStream;
 
+import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -29,7 +30,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RomanNumeralsLowercase implements LValue, Alphabet {
+public class RomanNumeralsLowercase implements LValue, Alphabet, PageReference {
 
     /**
      * Creates a new object.
@@ -38,6 +39,28 @@ public class RomanNumeralsLowercase implements LValue, Alphabet {
     public RomanNumeralsLowercase() {
 
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.page.PageReference#getEncap()
+     */
+    public String getEncap() {
+
+        // TODO gene: getEncap unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.page.PageReference#getPage()
+     */
+    public String getPage() {
+
+        // TODO gene: getPage unimplemented
+        return null;
     }
 
     /**
