@@ -34,6 +34,7 @@ import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RefSpec;
+import org.extex.exindex.core.parser.raw.XRef;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
 import org.extex.exindex.core.type.alphabet.AlphaUppercase;
@@ -78,6 +79,7 @@ import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LSymbol;
+import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -88,6 +90,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @version $Revision$
  */
 public class Indexer extends LEngine {
+
+    /**
+     * The field <tt>LOCALIZER</tt> contains the ...
+     */
+    private static final Localizer LOCALIZER =
+            LocalizerFactory.getLocalizer(Indexer.class);
 
     /**
      * The field <tt>entries</tt> contains the raw index.
@@ -116,8 +124,9 @@ public class Indexer extends LEngine {
         index = new StructuredIndex();
         entries = new ArrayList<Indexentry>();
 
+        LDefineAlphabet defineAlphabet = new LDefineAlphabet("define-alphabet");
         defun("define-alphabet", //
-            new LDefineAlphabet("define-alphabet"));
+            defineAlphabet);
         defun("define-attributes", //
             new LDefineAttributes("define-attributes"));
         defun("define-crossref-class", //
@@ -193,12 +202,28 @@ public class Indexer extends LEngine {
         locationClass.add("alpha", new AlphaLowercase());
         locationClass.add("ALPHA", new AlphaUppercase());
 
-        setq("alphabet:arabic-numbers", new ArabicNumbers());
-        setq("alphabet:roman-numerals-uppercase", new RomanNumeralsUppercase());
-        setq("alphabet:roman-numerals-lowercase", new RomanNumeralsLowercase());
-        setq("alphabet:digits", new Digits());
-        setq("alphabet:alpha", new AlphaLowercase());
-        setq("alphabet:ALPHA", new AlphaUppercase());
+        defineAlphabet.add("arabic-numbers", new ArabicNumbers());
+        defineAlphabet.add("roman-numerals-uppercase",
+            new RomanNumeralsUppercase());
+        defineAlphabet.add("roman-numerals-lowercase",
+            new RomanNumeralsLowercase());
+        defineAlphabet.add("digits", new Digits());
+        defineAlphabet.add("alpha", new AlphaLowercase());
+        defineAlphabet.add("ALPHA", new AlphaUppercase());
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry
+     * @param logger
+     * 
+     * @return
+     */
+    private boolean checkCrossref(Indexentry entry, Logger logger) {
+
+        // TODO gene: checkCrossref unimplemented
+        return true;
     }
 
     /**
@@ -231,7 +256,6 @@ public class Indexer extends LEngine {
         if (stream == null) {
             return null;
         }
-
         return new XindyParser(new InputStreamReader(stream), resource);
     }
 
@@ -240,22 +264,23 @@ public class Indexer extends LEngine {
      * 
      * @param writer the writer or <code>null</code> to skip this phase
      * @param logger the logger
+     * 
+     * @throws IOException in case of an I/O error
      */
-    protected void markup(Writer writer, Logger logger) {
+    protected void markup(Writer writer, Logger logger) throws IOException {
 
+        logger.info(LOCALIZER.format("StartMarkup"));
         if (writer == null) {
             return;
         }
-
-        // TODO gene: markup unimplemented
-
+        index.write(writer, this);
     }
 
     /**
      * Perform the initial processing step. This step consists of a check of the
      * attributes, the check of the crossrefs and the check of the location
-     * references. If all checks are passed then the given entry is put into the
-     * internal list.
+     * references. If all checks are passed then <code>true</code> is
+     * returned.
      * 
      * @param entry the entry to store
      * @param attributes the attributes
@@ -266,9 +291,8 @@ public class Indexer extends LEngine {
      * 
      * @throws LException in case of an error
      */
-    private boolean preProcessAndStore(Indexentry entry,
-            LDefineAttributes attributes, List<OpenLocRef> openPages,
-            Logger logger) throws LException {
+    private boolean preProcess(Indexentry entry, LDefineAttributes attributes,
+            List<OpenLocRef> openPages, Logger logger) throws LException {
 
         String attr = entry.getAttr();
         if (attr != null && attributes.lookup(attr) == null) {
@@ -281,8 +305,15 @@ public class Indexer extends LEngine {
         if (ref != null && !ref.check(openPages, logger)) {
             return false;
         }
+        if (ref instanceof XRef) {
+            if (!checkCrossref(entry, logger)) {
+                // TODO gene: process unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        } else {
+            // TODO
+        }
 
-        entries.add(entry);
         return true;
     }
 
@@ -307,28 +338,50 @@ public class Indexer extends LEngine {
                 NoSuchMethodException {
 
         if (resources == null) {
+            logger.warning(LOCALIZER.format("NoResources"));
             return;
         }
+        logger.info(LOCALIZER.format("StartProcess"));
         LDefineAttributes attributes =
                 (LDefineAttributes) getFunction(LSymbol
                     .get("define-attributes"));
         List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
 
         for (String resource : resources) {
+            logger.info(LOCALIZER.format("Reading", resource));
             RawIndexParser parser = makeRawIndexParser(resource);
             if (parser == null) {
+                logger.info(LOCALIZER.format("ResourceNotFound", resource));
                 throw new FileNotFoundException(resource);
             }
             try {
-                for (Indexentry entry = parser.parse(); entry != null; entry =
-                        parser.parse()) {
-                    preProcessAndStore(entry, attributes, openPages, logger);
+                for (;;) {
+                    Indexentry entry;
+                    try {
+                        entry = parser.parse();
+                    } catch (IOException e) {
+                        // TODO
+                        continue;
+                    }
+                    if (entry == null) {
+                        break;
+                    }
+                    entries.add(entry);
                 }
             } finally {
                 parser.close();
             }
             if (!openPages.isEmpty()) {
                 // TODO
+            }
+        }
+        logger.info(LOCALIZER.format("StartPreprocess"));
+
+        for (Indexentry entry : entries) {
+            if (preProcess(entry, attributes, openPages, logger)) {
+                index.store(entry);
+            } else {
+                // TODO delete from list?
             }
         }
         // TODO
@@ -377,7 +430,9 @@ public class Indexer extends LEngine {
             throws IOException,
                 LException {
 
+        logger.info(LOCALIZER.format("Startup"));
         if (styles == null) {
+            logger.warning(LOCALIZER.format("NoStyles"));
             return;
         }
 
