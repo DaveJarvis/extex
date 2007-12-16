@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xparser;
+package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -138,7 +138,7 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xparser.RawIndexParser#close()
+     * @see org.extex.exindex.core.parser.RawIndexParser#close()
      */
     public void close() throws IOException {
 
@@ -190,7 +190,7 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xparser.RawIndexParser#parse()
+     * @see org.extex.exindex.core.parser.RawIndexParser#parse()
      */
     public Indexentry parse() throws IOException {
 

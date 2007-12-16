@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.xparser.raw;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes a reference specification.
  * 
@@ -27,5 +30,14 @@ package org.extex.exindex.core.xparser.raw;
  */
 public interface RefSpec {
 
-    //
+    /**
+     * Check the reference.
+     * 
+     * @param openPages
+     * @param logger the logger
+     * 
+     * @return <code>true</code> iff everything is ok
+     */
+    boolean check(List<OpenLocRef> openPages, Logger logger);
+
 }

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xparser;
+package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -290,7 +290,7 @@ public class XindyParser extends LParser implements RawIndexParser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xparser.RawIndexParser#parse()
+     * @see org.extex.exindex.core.parser.RawIndexParser#parse()
      */
     public Indexentry parse() throws IOException {
 

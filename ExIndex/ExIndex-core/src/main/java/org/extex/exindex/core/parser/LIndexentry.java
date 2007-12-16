@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xparser;
+package org.extex.exindex.core.parser;
 
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.function.Arg;

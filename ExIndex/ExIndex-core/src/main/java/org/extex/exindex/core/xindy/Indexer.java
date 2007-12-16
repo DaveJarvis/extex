@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.parser.RawIndexParser;
+import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
 import org.extex.exindex.core.type.alphabet.AlphaUppercase;
@@ -36,9 +38,9 @@ import org.extex.exindex.core.type.alphabet.ArabicNumbers;
 import org.extex.exindex.core.type.alphabet.Digits;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsLowercase;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsUppercase;
-import org.extex.exindex.core.xparser.RawIndexParser;
-import org.extex.exindex.core.xparser.XindyParser;
 import org.extex.exindex.core.xparser.raw.Indexentry;
+import org.extex.exindex.core.xparser.raw.OpenLocRef;
+import org.extex.exindex.core.xparser.raw.RefSpec;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -92,8 +94,10 @@ public class Indexer extends LEngine {
             new LDefineLetterGroup("define-letter-group"));
         defun("define-letter-groups", //
             new LDefineLetterGroups("define-letter-groups"));
+        LDefineLocationClass locationClass =
+                new LDefineLocationClass("define-location-class");
         defun("define-location-class", //
-            new LDefineLocationClass("define-location-class"));
+            locationClass);
         defun("define-location-class-order", //
             new LDefineLocationClassOrder("define-location-class-order"));
         defun("define-rule-set", //
@@ -147,6 +151,15 @@ public class Indexer extends LEngine {
             new LMarkupRange("markup-range"));
         defun("markup-trace", //
             new LMarkupTrace("markup-trace"));
+
+        locationClass.add("arabic-numbers", new ArabicNumbers());
+        locationClass.add("roman-numerals-uppercase",
+            new RomanNumeralsUppercase());
+        locationClass.add("roman-numerals-lowercase",
+            new RomanNumeralsLowercase());
+        locationClass.add("digits", new Digits());
+        locationClass.add("alpha", new AlphaLowercase());
+        locationClass.add("ALPHA", new AlphaUppercase());
 
         setq("alphabet:arabic-numbers", new ArabicNumbers());
         setq("alphabet:roman-numerals-uppercase", new RomanNumeralsUppercase());
@@ -214,21 +227,31 @@ public class Indexer extends LEngine {
      * 
      * @param entry the entry to store
      * @param attributes the attributes
+     * @param openPages the list of open pages
+     * @param logger the logger
+     * 
+     * @return <code>true</code> iff the entry has been stored
      * 
      * @throws LException in case of an error
      */
-    private void preProcessAndStore(Indexentry entry,
-            LDefineAttributes attributes) throws LException {
+    private boolean preProcessAndStore(Indexentry entry,
+            LDefineAttributes attributes, List<OpenLocRef> openPages,
+            Logger logger) throws LException {
 
-        // check attribute
         String attr = entry.getAttr();
         if (attr != null && attributes.lookup(attr) == null) {
-            throw new LException(LocalizerFactory.getLocalizer(Indexer.class)
-                .format("AttributeUnknown", attr));
+            logger.severe(LocalizerFactory.getLocalizer(Indexer.class).format(
+                "AttributeUnknown", attr));
+            return false;
         }
-        // TODO check cross ref
-        // TODO check location ref
+
+        RefSpec ref = entry.getRef();
+        if (ref != null && !ref.check(openPages, logger)) {
+            return false;
+        }
+
         entries.add(entry);
+        return true;
     }
 
     /**
@@ -257,6 +280,7 @@ public class Indexer extends LEngine {
         LDefineAttributes attributes =
                 (LDefineAttributes) getFunction(LSymbol
                     .get("define-attributes"));
+        List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
 
         for (String resource : resources) {
             RawIndexParser parser = makeRawIndexParser(resource);
@@ -266,10 +290,13 @@ public class Indexer extends LEngine {
             try {
                 for (Indexentry entry = parser.parse(); entry != null; entry =
                         parser.parse()) {
-                    preProcessAndStore(entry, attributes);
+                    preProcessAndStore(entry, attributes, openPages, logger);
                 }
             } finally {
                 parser.close();
+            }
+            if (!openPages.isEmpty()) {
+                // TODO
             }
         }
         // TODO

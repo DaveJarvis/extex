@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.xparser.raw;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -35,6 +38,18 @@ public class XRef implements RefSpec {
     public XRef(String[] refs) {
 
         // TODO gene: LocRef constructor unimplemented
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.xparser.raw.RefSpec#check(java.util.List,
+     *      java.util.logging.Logger)
+     */
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+
+        // TODO gene: check unimplemented
+        return true;
     }
 
 }

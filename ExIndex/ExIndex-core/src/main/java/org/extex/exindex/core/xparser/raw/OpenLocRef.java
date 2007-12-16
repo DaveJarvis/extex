@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.xparser.raw;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes an open location specification.
  * 
@@ -35,6 +38,19 @@ public class OpenLocRef extends LocRef {
     public OpenLocRef(String location) {
 
         super(location);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.xparser.raw.LocRef#check(java.util.List,
+     *      java.util.logging.Logger)
+     */
+    @Override
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+
+        openPages.add(this);
+        return super.check(openPages, logger);
     }
 
 }

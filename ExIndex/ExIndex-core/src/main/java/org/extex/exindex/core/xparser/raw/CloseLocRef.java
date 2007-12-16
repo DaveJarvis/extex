@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.xparser.raw;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes a close location specification.
  * 
@@ -37,4 +40,23 @@ public class CloseLocRef extends LocRef {
         super(location);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.xparser.raw.LocRef#check(java.util.List,
+     *      java.util.logging.Logger)
+     */
+    @Override
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+
+        for (int i = openPages.size() - 1; i > 0; i--) {
+
+            if (getLocation().equals(openPages.get(i).getLocation())) {
+                openPages.remove(i);
+                return super.check(openPages, logger);
+            }
+        }
+        // TODO
+        return false;
+    }
 }

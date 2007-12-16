@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.xparser.raw;
 
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * This interface describes a location specification.
  * 
@@ -41,6 +44,18 @@ public class LocRef implements RefSpec {
 
         super();
         this.location = location;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.xparser.raw.RefSpec#check(java.util.List,
+     *      java.util.logging.Logger)
+     */
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+
+        // TODO gene: check unimplemented
+        return true;
     }
 
     /**
