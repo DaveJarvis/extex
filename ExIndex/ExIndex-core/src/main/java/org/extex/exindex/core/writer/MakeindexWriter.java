@@ -24,7 +24,7 @@ import java.io.Writer;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Parameters;
+import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.type.page.PageReference;
 

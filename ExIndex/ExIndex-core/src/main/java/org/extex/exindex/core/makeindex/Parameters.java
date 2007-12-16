@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core;
+package org.extex.exindex.core.makeindex;
 
 import java.util.HashMap;
 

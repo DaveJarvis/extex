@@ -25,7 +25,6 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
 import org.extex.exindex.core.exception.MissingSymbolException;

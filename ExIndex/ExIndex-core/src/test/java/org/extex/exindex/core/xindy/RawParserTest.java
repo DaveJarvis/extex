@@ -27,6 +27,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.xindy.type.Attribute;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;

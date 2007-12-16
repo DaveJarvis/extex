@@ -22,7 +22,7 @@ package org.extex.exindex.core.makeindex.pages;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Parameters;
+import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.type.page.AbstractPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -31,7 +31,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6622 $
  */
 public class MakeindexPageProcessor implements PageProcessor {
 

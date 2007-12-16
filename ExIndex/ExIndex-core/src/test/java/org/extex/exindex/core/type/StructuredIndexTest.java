@@ -23,9 +23,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.StringWriter;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.transform.Upcase;
-import org.extex.exindex.core.xindy.Indexer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LString;
 import org.junit.Test;

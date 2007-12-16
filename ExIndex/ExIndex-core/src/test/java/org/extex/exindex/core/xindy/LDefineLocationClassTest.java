@@ -24,6 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import java.io.IOException;
 import java.io.StringReader;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xindy;
+package org.extex.exindex.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,6 +41,38 @@ import org.extex.exindex.core.type.alphabet.ArabicNumbers;
 import org.extex.exindex.core.type.alphabet.Digits;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsLowercase;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsUppercase;
+import org.extex.exindex.core.xindy.LDefineAlphabet;
+import org.extex.exindex.core.xindy.LDefineAttributes;
+import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+import org.extex.exindex.core.xindy.LDefineLetterGroup;
+import org.extex.exindex.core.xindy.LDefineLetterGroups;
+import org.extex.exindex.core.xindy.LDefineLocationClass;
+import org.extex.exindex.core.xindy.LDefineLocationClassOrder;
+import org.extex.exindex.core.xindy.LDefineRuleSet;
+import org.extex.exindex.core.xindy.LMarkupAttributeGroup;
+import org.extex.exindex.core.xindy.LMarkupAttributeGroupList;
+import org.extex.exindex.core.xindy.LMarkupCrossrefLayer;
+import org.extex.exindex.core.xindy.LMarkupCrossrefLayerList;
+import org.extex.exindex.core.xindy.LMarkupCrossrefList;
+import org.extex.exindex.core.xindy.LMarkupIndex;
+import org.extex.exindex.core.xindy.LMarkupIndexEntry;
+import org.extex.exindex.core.xindy.LMarkupIndexEntryList;
+import org.extex.exindex.core.xindy.LMarkupKeyword;
+import org.extex.exindex.core.xindy.LMarkupKeywordList;
+import org.extex.exindex.core.xindy.LMarkupLetterGroup;
+import org.extex.exindex.core.xindy.LMarkupLetterGroupList;
+import org.extex.exindex.core.xindy.LMarkupLocclassList;
+import org.extex.exindex.core.xindy.LMarkupLocref;
+import org.extex.exindex.core.xindy.LMarkupLocrefLayer;
+import org.extex.exindex.core.xindy.LMarkupLocrefLayerList;
+import org.extex.exindex.core.xindy.LMarkupLocrefList;
+import org.extex.exindex.core.xindy.LMarkupRange;
+import org.extex.exindex.core.xindy.LMarkupTrace;
+import org.extex.exindex.core.xindy.LMergeRule;
+import org.extex.exindex.core.xindy.LMergeTo;
+import org.extex.exindex.core.xindy.LSearchpath;
+import org.extex.exindex.core.xindy.LSortRule;
+import org.extex.exindex.core.xindy.LUseRuleSet;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;

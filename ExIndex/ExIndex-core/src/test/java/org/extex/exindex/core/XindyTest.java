@@ -19,7 +19,6 @@
 
 package org.extex.exindex.core;
 
-import org.extex.exindex.core.xindy.Indexer;
 import org.junit.Test;
 
 /**

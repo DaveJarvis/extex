@@ -22,6 +22,7 @@ package org.extex.exindex.core.xindy;
 import java.io.IOException;
 import java.io.StringReader;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -52,7 +53,7 @@ public class TestableIndexer extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xindy.Indexer#makeRawIndexParser(
+     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(
      *      java.lang.String)
      */
     @Override
