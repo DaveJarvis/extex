@@ -40,10 +40,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.makeindex.MakeindexLoader;
+import org.extex.exindex.core.parser.MakeindexParser;
+import org.extex.exindex.core.parser.RawIndexParser;
+import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.xindy.Indexer;
-import org.extex.exindex.core.xparser.MakeindexParser;
-import org.extex.exindex.core.xparser.RawIndexParser;
-import org.extex.exindex.core.xparser.XindyParser;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
