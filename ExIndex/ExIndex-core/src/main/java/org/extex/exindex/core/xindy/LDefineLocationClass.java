@@ -74,6 +74,17 @@ public class LDefineLocationClass extends LFunction {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param key the key
+     * @param value the value
+     */
+    public void add(String key, PageReference value) {
+
+        map.put(key, value);
+    }
+
+    /**
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
