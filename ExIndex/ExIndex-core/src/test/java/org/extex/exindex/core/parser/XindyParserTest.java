@@ -26,13 +26,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
 
-import org.extex.exindex.core.exception.RawIndexBoundException;
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.core.exception.RawIndexMissingListException;
-import org.extex.exindex.core.exception.RawIndexMissingStringException;
-import org.extex.exindex.core.exception.RawIndexMissingTagException;
-import org.extex.exindex.core.exception.RawIndexUnboundException;
-import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.core.parser.raw.Key;
 import org.junit.Test;
@@ -41,13 +35,12 @@ import org.junit.Test;
  * This is a test suite for the xindy parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6626 $
  */
 public class XindyParserTest {
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -66,8 +59,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -88,8 +80,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -111,8 +102,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -134,8 +124,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -154,8 +143,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -174,8 +162,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -195,8 +182,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -215,8 +201,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -236,8 +221,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -257,12 +241,11 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexBoundException.class)
+    @Test(expected = RawIndexException.class)
     public final void testBound1() throws Exception {
 
         new XindyParser(new StringReader(
@@ -270,12 +253,11 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexBoundException.class)
+    @Test(expected = RawIndexException.class)
     public final void testBound2() throws Exception {
 
         new XindyParser(new StringReader(
@@ -283,12 +265,11 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexBoundException.class)
+    @Test(expected = RawIndexException.class)
     public final void testBound3() throws Exception {
 
         new XindyParser(new StringReader(
@@ -296,12 +277,11 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexBoundException.class)
+    @Test(expected = RawIndexException.class)
     public final void testBound5() throws Exception {
 
         new XindyParser(new StringReader(
@@ -309,12 +289,11 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexBoundException.class)
+    @Test(expected = RawIndexException.class)
     public final void testBound6() throws Exception {
 
         new XindyParser(new StringReader(
@@ -322,8 +301,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -335,8 +313,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -348,8 +325,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -361,8 +337,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      */
     @Test(expected = NullPointerException.class)
     public final void testErr1() {
@@ -371,8 +346,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      */
     @Test(expected = NullPointerException.class)
     public final void testErr2() {
@@ -381,32 +355,29 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexMissingListException.class)
+    @Test(expected = RawIndexException.class)
     public final void testError01() throws Exception {
 
         new XindyParser(new StringReader("abc"), "rsc").parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexMissingListException.class)
+    @Test(expected = RawIndexException.class)
     public final void testError02() throws Exception {
 
         new XindyParser(new StringReader("123"), "rsc").parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -417,8 +388,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -429,8 +399,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -441,8 +410,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -453,8 +421,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -465,8 +432,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -478,8 +444,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -491,8 +456,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -504,66 +468,158 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexUnboundException.class)
-    public final void testMissing1() throws Exception {
+    @Test(expected = RawIndexException.class)
+    public final void testError11() throws Exception {
+
+        new XindyParser(new StringReader(
+            "(indexentry :key (\"1\") :xref (\"1\") :open-range)"), "rsc")
+            .parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testError12() throws Exception {
+
+        new XindyParser(new StringReader(
+            "(indexentry :key (\"1\") :xref (\"1\") :close-range)"), "rsc")
+            .parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testError13() throws Exception {
+
+        new XindyParser(
+            new StringReader(
+                "(indexentry :key (\"1\") :locref \"1\" :close-range :open-range)"),
+            "rsc").parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing01() throws Exception {
 
         new XindyParser(new StringReader("(indexentry)"), "rsc").parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexUnboundException.class)
-    public final void testMissing2() throws Exception {
+    @Test(expected = RawIndexException.class)
+    public final void testMissing02() throws Exception {
 
         new XindyParser(new StringReader("(indexentry :key (\"abc\"))"), "rsc")
             .parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = RawIndexException.class)
-    public final void testMissing3() throws Exception {
+    public final void testMissing03() throws Exception {
 
         new XindyParser(new StringReader("(indexentry :key )"), "rsc").parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexMissingStringException.class)
-    public final void testMissing4() throws Exception {
+    @Test(expected = RawIndexException.class)
+    public final void testMissing04() throws Exception {
 
         new XindyParser(new StringReader("(indexentry :key (abc))"), "rsc")
             .parse();
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RawIndexMissingTagException.class)
-    public final void testMissing5() throws Exception {
+    @Test(expected = RawIndexException.class)
+    public final void testMissing05() throws Exception {
 
         new XindyParser(new StringReader("(indexentry :xxx (abc))"), "rsc")
             .parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing06() throws Exception {
+
+        new XindyParser(new StringReader("(indexentry :print )"), "rsc")
+            .parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing07() throws Exception {
+
+        new XindyParser(new StringReader("(indexentry :tkey )"), "rsc").parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing08() throws Exception {
+
+        new XindyParser(new StringReader("(indexentry :attr )"), "rsc").parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing09() throws Exception {
+
+        new XindyParser(new StringReader("(indexentry :locref )"), "rsc")
+            .parse();
+    }
+
+    /**
+     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testMissing10() throws Exception {
+
+        new XindyParser(new StringReader("(indexentry :xref )"), "rsc").parse();
     }
 
 }
