@@ -24,6 +24,7 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.util.ArrayList;
 
+import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -57,7 +58,16 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     public void print(PrintStream stream) {
 
         // TODO gene: print unimplemented
+    }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry
+     */
+    public void store(Indexentry entry) {
+
+        // TODO
     }
 
     /**
