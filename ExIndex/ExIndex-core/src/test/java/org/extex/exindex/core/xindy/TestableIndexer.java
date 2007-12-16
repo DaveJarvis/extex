@@ -22,8 +22,8 @@ package org.extex.exindex.core.xindy;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.extex.exindex.core.xparser.RawIndexParser;
-import org.extex.exindex.core.xparser.XindyParser;
+import org.extex.exindex.core.parser.RawIndexParser;
+import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 
 /**

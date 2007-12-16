@@ -17,40 +17,27 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
+package org.extex.exindex.core.parser.raw;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * This interface describes an open location specification.
+ * This interface describes a reference specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OpenLocRef extends LocRef {
+public interface RefSpec {
 
     /**
-     * Creates a new object.
+     * Check the reference.
      * 
-     * @param location the location
-     */
-    public OpenLocRef(String location) {
-
-        super(location);
-    }
-
-    /**
-     * {@inheritDoc}
+     * @param openPages
+     * @param logger the logger
      * 
-     * @see org.extex.exindex.core.xparser.raw.LocRef#check(java.util.List,
-     *      java.util.logging.Logger)
+     * @return <code>true</code> iff everything is ok
      */
-    @Override
-    public boolean check(List<OpenLocRef> openPages, Logger logger) {
-
-        openPages.add(this);
-        return super.check(openPages, logger);
-    }
+    boolean check(List<OpenLocRef> openPages, Logger logger);
 
 }

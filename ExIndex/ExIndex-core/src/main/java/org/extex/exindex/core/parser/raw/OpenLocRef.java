@@ -17,57 +17,40 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
+package org.extex.exindex.core.parser.raw;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes an open location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Key {
-
-    /**
-     * The field <tt>key</tt> contains the ...
-     */
-    private String[] key;
-
-    /**
-     * The field <tt>print</tt> contains the ...
-     */
-    private String[] print;
+public class OpenLocRef extends LocRef {
 
     /**
      * Creates a new object.
      * 
-     * @param key the key
-     * @param print the print representation
+     * @param location the location
      */
-    public Key(String[] key, String[] print) {
+    public OpenLocRef(String location) {
 
-        super();
-        this.key = key;
-        this.print = print;
+        super(location);
     }
 
     /**
-     * Getter for key.
+     * {@inheritDoc}
      * 
-     * @return the key
+     * @see org.extex.exindex.core.parser.raw.LocRef#check(java.util.List,
+     *      java.util.logging.Logger)
      */
-    public String[] getKey() {
+    @Override
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
 
-        return key;
-    }
-
-    /**
-     * Getter for print.
-     * 
-     * @return the print
-     */
-    public String[] getPrint() {
-
-        return print;
+        openPages.add(this);
+        return super.check(openPages, logger);
     }
 
 }

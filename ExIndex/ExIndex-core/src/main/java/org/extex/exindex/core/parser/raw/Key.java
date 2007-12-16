@@ -17,46 +17,57 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
-
-import java.util.List;
-import java.util.logging.Logger;
+package org.extex.exindex.core.parser.raw;
 
 /**
- * This interface describes a close location specification.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CloseLocRef extends LocRef {
+public class Key {
+
+    /**
+     * The field <tt>key</tt> contains the ...
+     */
+    private String[] key;
+
+    /**
+     * The field <tt>print</tt> contains the ...
+     */
+    private String[] print;
 
     /**
      * Creates a new object.
      * 
-     * @param location the location
+     * @param key the key
+     * @param print the print representation
      */
-    public CloseLocRef(String location) {
+    public Key(String[] key, String[] print) {
 
-        super(location);
+        super();
+        this.key = key;
+        this.print = print;
     }
 
     /**
-     * {@inheritDoc}
+     * Getter for key.
      * 
-     * @see org.extex.exindex.core.xparser.raw.LocRef#check(java.util.List,
-     *      java.util.logging.Logger)
+     * @return the key
      */
-    @Override
-    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+    public String[] getKey() {
 
-        for (int i = openPages.size() - 1; i > 0; i--) {
-
-            if (getLocation().equals(openPages.get(i).getLocation())) {
-                openPages.remove(i);
-                return super.check(openPages, logger);
-            }
-        }
-        // TODO
-        return false;
+        return key;
     }
+
+    /**
+     * Getter for print.
+     * 
+     * @return the print
+     */
+    public String[] getPrint() {
+
+        return print;
+    }
+
 }

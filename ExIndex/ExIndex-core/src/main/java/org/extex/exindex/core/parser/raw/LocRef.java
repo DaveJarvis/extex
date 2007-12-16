@@ -17,27 +17,55 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
+package org.extex.exindex.core.parser.raw;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * This interface describes a reference specification.
+ * This interface describes a location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface RefSpec {
+public class LocRef implements RefSpec {
 
     /**
-     * Check the reference.
-     * 
-     * @param openPages
-     * @param logger the logger
-     * 
-     * @return <code>true</code> iff everything is ok
+     * The field <tt>location</tt> contains the location.
      */
-    boolean check(List<OpenLocRef> openPages, Logger logger);
+    private String location;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param location the location
+     */
+    public LocRef(String location) {
+
+        super();
+        this.location = location;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.List,
+     *      java.util.logging.Logger)
+     */
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+
+        // TODO gene: check unimplemented
+        return true;
+    }
+
+    /**
+     * Getter for the location.
+     * 
+     * @return the location
+     */
+    public String getLocation() {
+
+        return location;
+    }
 
 }

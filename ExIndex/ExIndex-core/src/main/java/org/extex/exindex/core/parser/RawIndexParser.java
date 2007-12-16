@@ -21,7 +21,7 @@ package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 
-import org.extex.exindex.core.xparser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.Indexentry;
 
 /**
  * This interface describes the ability to retrieve an index entry from some

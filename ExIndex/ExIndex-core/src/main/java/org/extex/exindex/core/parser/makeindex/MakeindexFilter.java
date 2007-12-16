@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xparser.makeindex;
+package org.extex.exindex.core.parser.makeindex;
 
 import java.io.IOException;
 import java.io.LineNumberReader;

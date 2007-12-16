@@ -27,11 +27,11 @@ import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
-import org.extex.exindex.core.xparser.raw.CloseLocRef;
-import org.extex.exindex.core.xparser.raw.Indexentry;
-import org.extex.exindex.core.xparser.raw.Key;
-import org.extex.exindex.core.xparser.raw.LocRef;
-import org.extex.exindex.core.xparser.raw.OpenLocRef;
+import org.extex.exindex.core.parser.raw.CloseLocRef;
+import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.Key;
+import org.extex.exindex.core.parser.raw.LocRef;
+import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LValue;

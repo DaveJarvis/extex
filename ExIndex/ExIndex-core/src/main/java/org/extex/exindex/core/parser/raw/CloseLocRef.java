@@ -17,55 +17,46 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
+package org.extex.exindex.core.parser.raw;
 
 import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * This interface describes a location specification.
+ * This interface describes a close location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LocRef implements RefSpec {
-
-    /**
-     * The field <tt>location</tt> contains the location.
-     */
-    private String location;
+public class CloseLocRef extends LocRef {
 
     /**
      * Creates a new object.
      * 
      * @param location the location
      */
-    public LocRef(String location) {
+    public CloseLocRef(String location) {
 
-        super();
-        this.location = location;
+        super(location);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xparser.raw.RefSpec#check(java.util.List,
+     * @see org.extex.exindex.core.parser.raw.LocRef#check(java.util.List,
      *      java.util.logging.Logger)
      */
+    @Override
     public boolean check(List<OpenLocRef> openPages, Logger logger) {
 
-        // TODO gene: check unimplemented
-        return true;
+        for (int i = openPages.size() - 1; i > 0; i--) {
+
+            if (getLocation().equals(openPages.get(i).getLocation())) {
+                openPages.remove(i);
+                return super.check(openPages, logger);
+            }
+        }
+        // TODO
+        return false;
     }
-
-    /**
-     * Getter for the location.
-     * 
-     * @return the location
-     */
-    public String getLocation() {
-
-        return location;
-    }
-
 }

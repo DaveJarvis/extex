@@ -17,7 +17,10 @@
  *
  */
 
-package org.extex.exindex.core.xparser.raw;
+package org.extex.exindex.core.parser.raw;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -25,66 +28,28 @@ package org.extex.exindex.core.xparser.raw;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Indexentry {
-
-    /**
-     * The field <tt>key</tt> contains the ...
-     */
-    private Key key;
-
-    /**
-     * The field <tt>attr</tt> contains the ...
-     */
-    private String attr;
-
-    /**
-     * The field <tt>ref</tt> contains the ...
-     */
-    private RefSpec ref;
+public class XRef implements RefSpec {
 
     /**
      * Creates a new object.
      * 
-     * @param key
-     * @param attr
-     * @param ref
+     * @param refs the references
      */
-    public Indexentry(Key key, String attr, RefSpec ref) {
+    public XRef(String[] refs) {
 
-        super();
-        this.key = key;
-        this.attr = attr;
-        this.ref = ref;
+        // TODO gene: LocRef constructor unimplemented
     }
 
     /**
-     * Getter for attr.
+     * {@inheritDoc}
      * 
-     * @return the attr
+     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.List,
+     *      java.util.logging.Logger)
      */
-    public String getAttr() {
+    public boolean check(List<OpenLocRef> openPages, Logger logger) {
 
-        return attr;
-    }
-
-    /**
-     * Getter for key.
-     * 
-     * @return the key
-     */
-    public Key getKey() {
-
-        return key;
-    }
-
-    /**
-     * Getter for ref.
-     * 
-     * @return the ref
-     */
-    public RefSpec getRef() {
-
-        return ref;
+        // TODO gene: check unimplemented
+        return true;
     }
 
 }
