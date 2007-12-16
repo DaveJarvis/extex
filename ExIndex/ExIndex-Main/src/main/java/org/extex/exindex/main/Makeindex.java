@@ -38,8 +38,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
+import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.MakeindexCollator;
 import org.extex.exindex.core.makeindex.normalizer.MakeindexGermanCollator;
 import org.extex.exindex.core.makeindex.pages.MakeindexPageProcessor;

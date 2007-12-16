@@ -39,11 +39,11 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.makeindex.MakeindexLoader;
 import org.extex.exindex.core.parser.MakeindexParser;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
-import org.extex.exindex.core.xindy.Indexer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
@@ -240,7 +240,7 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xindy.Indexer#makeRawIndexParser(
+     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(
      *      java.lang.String)
      */
     @Override
@@ -347,7 +347,7 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xindy.Indexer#markup(java.io.Writer,
+     * @see org.extex.exindex.core.Indexer#markup(java.io.Writer,
      *      java.util.logging.Logger)
      */
     @Override
@@ -573,7 +573,7 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.xindy.Indexer#startup(java.util.List,
+     * @see org.extex.exindex.core.Indexer#startup(java.util.List,
      *      java.util.logging.Logger)
      */
     @Override
