@@ -28,7 +28,7 @@ import java.util.List;
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
-import org.extex.exindex.core.normalizer.Collator;
+import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.type.Index;
 import org.extex.exindex.core.type.page.AbstractPage;
@@ -37,7 +37,7 @@ import org.extex.exindex.core.type.page.AbstractPage;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6613 $
  */
 public class MakeindexParser implements Parser {
 

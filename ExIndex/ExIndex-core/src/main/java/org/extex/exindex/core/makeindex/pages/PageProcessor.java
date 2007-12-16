@@ -17,43 +17,25 @@
  *
  */
 
-package org.extex.exindex.core.normalizer;
+package org.extex.exindex.core.makeindex.pages;
+
+import java.util.List;
+
+import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a processor for a list of pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MakeindexCollator implements Collator {
+public interface PageProcessor {
 
     /**
-     * The field <tt>collateSpaces</tt> contains the ...
-     */
-    private boolean collateSpaces;
-
-    /**
-     * Creates a new object.
+     * Process the pages given.
      * 
-     * @param collateSpaces
+     * @param pages the list of pages
      */
-    public MakeindexCollator(boolean collateSpaces) {
+    void join(List<PageReference> pages);
 
-        super();
-        this.collateSpaces = collateSpaces;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.normalizer.Collator#collate(java.lang.String)
-     */
-    public String collate(String in) {
-
-        String s = in;
-        if (collateSpaces) {
-            s.replaceAll("[ \t\n\r\f\b]", "");
-        }
-        return s;
-    }
 }

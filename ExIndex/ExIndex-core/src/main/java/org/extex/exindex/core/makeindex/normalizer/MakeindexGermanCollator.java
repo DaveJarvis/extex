@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.normalizer;
+package org.extex.exindex.core.makeindex.normalizer;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -46,7 +46,7 @@ public class MakeindexGermanCollator implements Collator {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.normalizer.Collator#collate(java.lang.String)
+     * @see org.extex.exindex.core.makeindex.normalizer.Collator#collate(java.lang.String)
      */
     public String collate(String in) {
 

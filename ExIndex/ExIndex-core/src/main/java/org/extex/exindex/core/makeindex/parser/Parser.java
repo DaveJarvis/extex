@@ -22,14 +22,14 @@ package org.extex.exindex.core.makeindex.parser;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.extex.exindex.core.normalizer.Collator;
+import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.Index;
 
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6613 $
  */
 public interface Parser {
 

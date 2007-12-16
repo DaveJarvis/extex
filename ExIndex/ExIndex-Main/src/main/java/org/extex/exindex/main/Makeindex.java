@@ -40,12 +40,12 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
+import org.extex.exindex.core.makeindex.normalizer.MakeindexCollator;
+import org.extex.exindex.core.makeindex.normalizer.MakeindexGermanCollator;
+import org.extex.exindex.core.makeindex.pages.MakeindexPageProcessor;
+import org.extex.exindex.core.makeindex.pages.PageProcessor;
 import org.extex.exindex.core.makeindex.parser.MakeindexParser;
 import org.extex.exindex.core.makeindex.parser.Parser;
-import org.extex.exindex.core.normalizer.MakeindexCollator;
-import org.extex.exindex.core.normalizer.MakeindexGermanCollator;
-import org.extex.exindex.core.pages.MakeindexPageProcessor;
-import org.extex.exindex.core.pages.PageProcessor;
 import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.type.Index;
 import org.extex.exindex.core.writer.IndexWriter;

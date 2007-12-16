@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.normalizer;
+package org.extex.exindex.core.makeindex.normalizer;
 
 /**
  * TODO gene: missing JavaDoc.

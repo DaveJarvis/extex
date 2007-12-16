@@ -27,7 +27,7 @@ import java.util.List;
 
 import org.extex.exindex.core.Parameters;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
-import org.extex.exindex.core.pages.PageProcessor;
+import org.extex.exindex.core.makeindex.pages.PageProcessor;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**

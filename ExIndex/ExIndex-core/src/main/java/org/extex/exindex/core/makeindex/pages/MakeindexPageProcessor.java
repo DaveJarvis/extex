@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.pages;
+package org.extex.exindex.core.makeindex.pages;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -73,7 +73,7 @@ public class MakeindexPageProcessor implements PageProcessor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.pages.PageProcessor#join(java.util.List)
+     * @see org.extex.exindex.core.makeindex.pages.PageProcessor#join(java.util.List)
      */
     public void join(List<PageReference> pages) {
 

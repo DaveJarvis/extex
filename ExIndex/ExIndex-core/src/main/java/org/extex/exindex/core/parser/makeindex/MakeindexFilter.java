@@ -27,13 +27,13 @@ import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
-import org.extex.exindex.core.normalizer.Collator;
+import org.extex.exindex.core.makeindex.normalizer.Collator;
 
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class MakeindexFilter extends Reader {
 
