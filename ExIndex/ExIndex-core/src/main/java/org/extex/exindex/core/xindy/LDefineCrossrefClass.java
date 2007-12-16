@@ -51,7 +51,7 @@ public class LDefineCrossrefClass extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    protected LDefineCrossrefClass(String name)
+    public LDefineCrossrefClass(String name)
             throws SecurityException,
                 NoSuchMethodException {
 
