@@ -46,7 +46,10 @@ public class ExIndexTest {
      * The field <tt>DEFAULT_LOG</tt> contains the default logging output.
      */
     private static final String DEFAULT_LOG =
-            "Generating output...Output written.\n";
+            "Starting the processing phase.\n" + "Reading <stdin>.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Generating output...Starting the markup phase.\n"
+                    + "Output written.\n";
 
     /**
      * Run a test and compare the results. The expected output is empty.
@@ -91,13 +94,18 @@ public class ExIndexTest {
         ExIndex index;
         try {
             index = new ExIndex();
-            assertEquals(exit, index.run(args));
-            outStream.flush();
-            assertEquals("stdout", expectedOut,//
-                outStream.toString());
-            errStream.flush();
-            assertEquals("stderr", extectedErr, errStream.toString()
-                .replaceAll("^This is ExIndex [0-9.]+ \\([0-9]*\\)\n", ""));
+            int ex = index.run(args);
+            if (expectedOut != null) {
+                outStream.flush();
+                assertEquals("stdout", expectedOut,//
+                    outStream.toString());
+            }
+            if (extectedErr != null) {
+                errStream.flush();
+                assertEquals("stderr", extectedErr, errStream.toString()
+                    .replaceAll("^This is ExIndex [0-9.]+ \\([0-9]*\\)\n", ""));
+            }
+            assertEquals(exit, ex);
         } finally {
             System.setErr(err);
             System.setOut(out);
@@ -159,7 +167,9 @@ public class ExIndexTest {
 
         File log = new File("xyzzy.ilg");
         log.delete();
-        runTest(new String[]{"xyzzy"}, -1, "File not found: xyzzy\n");
+        runTest(new String[]{"xyzzy"}, -1, "Starting the processing phase.\n"
+                + "Reading xyzzy.\n"
+                + "Resources xyzzy not found.\nFile not found: xyzzy\n");
         assertTrue(log.exists());
         log.delete();
     }
@@ -187,8 +197,12 @@ public class ExIndexTest {
 
         File log = new File("UnDeFiNeD.ilg");
         log.delete();
-        runTest(new String[]{"-", "UnDeFiNeD"}, -1,
-            "File not found: UnDeFiNeD\n");
+        runTest(
+            new String[]{"-", "UnDeFiNeD"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading UnDeFiNeD.\n"
+                    + "Resources UnDeFiNeD not found.\nFile not found: UnDeFiNeD\n");
         assertTrue(log.exists());
         log.delete();
     }
@@ -204,7 +218,12 @@ public class ExIndexTest {
 
         File log = new File("UnDeFiNeD.ilg");
         log.delete();
-        runTest(new String[]{"UnDeFiNeD"}, -1, "File not found: UnDeFiNeD\n");
+        runTest(
+            new String[]{"UnDeFiNeD"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading UnDeFiNeD.\n"
+                    + "Resources UnDeFiNeD not found.\nFile not found: UnDeFiNeD\n");
         assertTrue(log.exists());
         log.delete();
     }
@@ -270,7 +289,8 @@ public class ExIndexTest {
     public final void testFilter1() throws Exception {
 
         runTest(new String[]{"-filter", "undef"}, -1,
-            "The filter undef could not be found.\n");
+            "Starting the processing phase.\n" + "Reading <stdin>.\n"
+                    + "The filter undef could not be found.\n");
     }
 
     /**
@@ -282,8 +302,12 @@ public class ExIndexTest {
     @Test
     public final void testFilter2() throws Exception {
 
-        runTest(new String[]{"-filter", "test0"}, -1,
-            "The class java.lang.String for filter test0 does not extend Reader.\n");
+        runTest(
+            new String[]{"-filter", "test0"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "The class java.lang.String for filter test0 does not extend Reader.\n");
     }
 
     /**
@@ -296,7 +320,8 @@ public class ExIndexTest {
     public final void testFilter3() throws Exception {
 
         runTest(new String[]{"-filter", "test1"}, -1,
-            "No filter class found in properties.\n");
+            "Starting the processing phase.\n" + "Reading <stdin>.\n"
+                    + "No filter class found in properties.\n");
     }
 
     /**
@@ -308,8 +333,12 @@ public class ExIndexTest {
     @Test
     public final void testFilter4() throws Exception {
 
-        runTest(new String[]{"-filter", "test2"}, -1,
-            "The class org.extex.UnDeF for filter test2 could not be found.\n");
+        runTest(
+            new String[]{"-filter", "test2"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "The class org.extex.UnDeF for filter test2 could not be found.\n");
     }
 
     /**
@@ -321,8 +350,12 @@ public class ExIndexTest {
     @Test
     public final void testFilter5() throws Exception {
 
-        runTest(new String[]{"-filter", "test3"}, -1,
-            "The filter class java.io.Reader for filter test3 does not have a proper\n"
+        runTest(
+            new String[]{"-filter", "test3"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "The filter class java.io.Reader for filter test3 does not have a proper\n"
                     + "constructor.\n");
     }
 
@@ -338,7 +371,9 @@ public class ExIndexTest {
         runTest(
             new String[]{"-filter", "test4"},
             -1,
-            "The filter class java.io.StringReader for filter test4 does not have a proper\n"
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "The filter class java.io.StringReader for filter test4 does not have a proper\n"
                     + "constructor.\n");
     }
 
@@ -351,8 +386,12 @@ public class ExIndexTest {
     @Test
     public final void testFilter7() throws Exception {
 
-        runTest(new String[]{"-filter", "testBad1"}, -1,
-            "Filter error for filter testBad1: java.lang.IllegalArgumentException\n");
+        runTest(
+            new String[]{"-filter", "testBad1"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "Filter error for filter testBad1: java.lang.IllegalArgumentException\n");
     }
 
     /**
@@ -536,7 +575,7 @@ public class ExIndexTest {
     public final void testStyle2() throws Exception {
 
         runTest(new String[]{"-s", "undef"}, -1,
-            "Scanning style file undef...\nFile not found: undef\n");
+            "Scanning style file undef...\n" + "File not found: undef\n");
     }
 
     /**
@@ -549,11 +588,13 @@ public class ExIndexTest {
     public final void testStyle3() throws Exception {
 
         runTest(new String[]{"-t", "xxx", "-s",
-                "../ExIndex-Main/src/test/resources/makeidx"}, 0,
+                "../ExIndex-Main/src/test/resources/makeidx"}, 0, null,
             "Scanning style file ../ExIndex-Main/src/test/resources/makeidx...done (?\n"
                     + "attributes redefined, ? ignored).\n"
-                    + "Generating output...Output written.\n"
-                    + "Transcript written in xxx.\n");
+                    + "Starting the processing phase.\n" + "Reading <stdin>.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Generating output...Starting the markup phase.\n"
+                    + "Output written.\n" + "Transcript written in xxx.\n");
     }
 
     /**
@@ -570,7 +611,11 @@ public class ExIndexTest {
             0,
             "Scanning style file ../ExIndex-Main/src/test/resources/doc...done (? attributes\n"
                     + "redefined, ? ignored).\n"
-                    + "Generating output...Output written.\n");
+                    + "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Generating output...Starting the markup phase.\n"
+                    + "Output written.\n");
     }
 
     /**
