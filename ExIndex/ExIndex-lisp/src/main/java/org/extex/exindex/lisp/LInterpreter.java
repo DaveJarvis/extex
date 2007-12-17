@@ -226,7 +226,7 @@ public class LInterpreter {
      */
     public LValue load(String name) throws IOException, LException {
 
-        return load(name, "lisp");
+        return load(name, "lisp", "utf-8");
     }
 
     /**
@@ -236,13 +236,16 @@ public class LInterpreter {
      * 
      * @param name the name of the file to load
      * @param type the type for the resource finder
+     * @param charset the name of the character set
      * 
      * @return the last expression read
      * 
      * @throws IOException in case of an I/O error
      * @throws LException in case of an error in the interpreter
      */
-    public LValue load(String name, String type) throws IOException, LException {
+    public LValue load(String name, String type, String charset)
+            throws IOException,
+                LException {
 
         Reader reader;
         if (finder == null) {
@@ -252,7 +255,7 @@ public class LInterpreter {
             if (stream == null) {
                 throw new FileNotFoundException(name);
             }
-            reader = new InputStreamReader(stream);
+            reader = new InputStreamReader(stream, charset);
         }
         try {
             return load(reader, name);
