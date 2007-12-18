@@ -25,6 +25,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LSymbol;
@@ -45,14 +46,14 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>before</tt> contains the ...
-     */
-    private String before;
-
-    /**
      * The field <tt>after</tt> contains the ...
      */
-    private String after;
+    private List<LetterGroup> after = new ArrayList<LetterGroup>();
+
+    /**
+     * The field <tt>before</tt> contains the ...
+     */
+    private List<LetterGroup> before = new ArrayList<LetterGroup>();
 
     /**
      * The field <tt>list</tt> contains the ...
@@ -67,6 +68,17 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     /**
      * Creates a new object.
      * 
+     * @param name
+     */
+    public LetterGroup(String name) {
+
+        super();
+        this.name = name;
+    }
+
+    /**
+     * Creates a new object.
+     * 
      * @param name the name of the letter group
      * @param before
      * @param after
@@ -77,9 +89,101 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
 
         super();
         this.name = name;
-        this.before = before;
-        this.after = after;
+        // this.before = before;
+        // this.after = after;
         this.prefixes = prefixes;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param g
+     */
+    protected void addAfter(LetterGroup g) {
+
+        after.add(g);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param g
+     */
+    protected void addBefore(LetterGroup g) {
+
+        before.add(g);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param g
+     */
+    public void after(LetterGroup g) {
+
+        addAfter(g);
+        g.addBefore(this);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param letterGroup
+     */
+    protected void clearAfter(LetterGroup letterGroup) {
+
+        after.remove(letterGroup);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     */
+    public void clearAfterBefore() {
+
+        for (LetterGroup g : before) {
+            g.clearAfter(this);
+        }
+    }
+
+    /**
+     * Getter for name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
+    }
+
+    /**
+     * Get an arbitrary element from the before list or <code>null</code> if
+     * this list is empty.
+     * 
+     * @return an arbitrary element from the before list or <code>null</code>
+     *         if this list is empty
+     */
+    public LetterGroup getSomeAfter() {
+
+        if (after.isEmpty()) {
+            return null;
+        }
+        return after.get(0);
+    }
+
+    /**
+     * Get an arbitrary element from the before list or <code>null</code> if
+     * this list is empty.
+     * 
+     * @return an arbitrary element from the before list or <code>null</code>
+     *         if this list is empty
+     */
+    public LetterGroup getSomeBefore() {
+
+        if (before.isEmpty()) {
+            return null;
+        }
+        return before.get(0);
     }
 
     /**
@@ -112,6 +216,28 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
             stream.print(")");
         }
         stream.print(")");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry
+     */
+    public void store(Indexentry entry) {
+
+        // TODO gene: store unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.util.AbstractCollection#toString()
+     */
+    @Override
+    public String toString() {
+
+        return name + ": " + super.toString();
     }
 
     /**
@@ -157,4 +283,5 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
         interpreter.writeString(writer, "markup:letter-group-" + name
                 + "-close");
     }
+
 }

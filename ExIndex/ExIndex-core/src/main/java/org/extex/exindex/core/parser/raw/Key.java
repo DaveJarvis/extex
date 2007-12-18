@@ -23,51 +23,107 @@ package org.extex.exindex.core.parser.raw;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class Key {
 
     /**
-     * The field <tt>key</tt> contains the ...
+     * The field <tt>mainKey</tt> contains the main key as given by the user.
      */
-    private String[] key;
+    private String[] mainKey;
 
     /**
-     * The field <tt>print</tt> contains the ...
+     * The field <tt>mergeKey</tt> contains the ...
      */
-    private String[] print;
+    private String[] mergeKey;
+
+    /**
+     * The field <tt>printKey</tt> contains the print key.
+     */
+    private String[] printKey;
+
+    /**
+     * The field <tt>sortKey</tt> contains the ...
+     */
+    private String[] sortKey;
 
     /**
      * Creates a new object.
      * 
-     * @param key the key
-     * @param print the print representation
+     * @param key the main key
+     * @param print the print key
      */
     public Key(String[] key, String[] print) {
 
         super();
-        this.key = key;
-        this.print = print;
+        this.mainKey = key;
+        this.printKey = print;
     }
 
     /**
-     * Getter for key.
+     * Getter for the main key.
      * 
-     * @return the key
+     * @return the main key
      */
-    public String[] getKey() {
+    public String[] getMainKey() {
 
-        return key;
+        return mainKey;
     }
 
     /**
-     * Getter for print.
+     * Getter for mergeKey.
      * 
-     * @return the print
+     * @return the mergeKey
      */
-    public String[] getPrint() {
+    public String[] getMergeKey() {
 
-        return print;
+        return mergeKey;
+    }
+
+    /**
+     * Getter for the print key.
+     * 
+     * @return the print key
+     */
+    public String[] getPrintKey() {
+
+        return printKey;
+    }
+
+    /**
+     * Getter for sortKey.
+     * 
+     * @return the sortKey
+     */
+    public String[] getSortKey() {
+
+        return sortKey;
+    }
+
+    /**
+     * Setter for mergeKey.
+     * 
+     * @param mergeKey the mergeKey to set
+     */
+    public void setMergeKey(String[] mergeKey) {
+
+        if (this.mergeKey != null) {
+            throw new RuntimeException("attempt to redefine the merge key");
+        }
+        this.mergeKey = mergeKey;
+    }
+
+    /**
+     * Setter for sortKey.
+     * 
+     * @param sortKey the sortKey to set
+     */
+    public void setSortKey(String[] sortKey) {
+
+        if (this.sortKey != null) {
+            throw new RuntimeException("attempt to redefine the sort key");
+        }
+        this.sortKey = sortKey;
     }
 
 }

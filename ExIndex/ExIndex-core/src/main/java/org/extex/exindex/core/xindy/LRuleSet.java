@@ -19,14 +19,16 @@
 
 package org.extex.exindex.core.xindy;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.extex.exindex.core.rules.RegexRule;
 import org.extex.exindex.core.rules.Rule;
 import org.extex.exindex.core.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -35,7 +37,27 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMergeRule extends LFunction {
+public class LRuleSet extends LFunction {
+
+    /**
+     * The field <tt>STRING</tt> contains the bit mask for the type :string.
+     */
+    private static final int STRING = 1;
+
+    /**
+     * The field <tt>BREGEX</tt> contains the bit mask for the type :bregex.
+     */
+    private static final int BREGEX = 2;
+
+    /**
+     * The field <tt>EREGEX</tt> contains the bit mask for the type :eregex.
+     */
+    private static final int EREGEX = 4;
+
+    /**
+     * The field <tt>rules</tt> contains the list of rules to apply.
+     */
+    private List<Rule> rules = new ArrayList<Rule>();
 
     /**
      * Creates a new object.
@@ -46,7 +68,7 @@ public class LMergeRule extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMergeRule(String name)
+    public LRuleSet(String name)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -58,14 +80,52 @@ public class LMergeRule extends LFunction {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param sb
+     * @param i
+     * @return
+     */
+    private int apply(StringBuilder sb, int i) {
+
+        for (Rule r : rules) {
+            int next = r.apply(sb, i);
+            if (next < 0) {
+                // try next rule
+            } else {
+                return next;
+            }
+        }
+        return i + 1;
+    }
+
+    /**
+     * Apply all rules in the rule set to a string.
+     * 
+     * @param in the input string
+     * 
+     * @return the transformed string
+     */
+    public String apply(String in) {
+
+        StringBuilder sb = new StringBuilder(in);
+
+        for (int i = 0; i < sb.length();) {
+            i = apply(sb, i);
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
      * @param pattern the pattern
      * @param replacement the replacement text
-     * @param string
-     * @param bregexp
-     * @param eregexp
+     * @param string the indicator for string type rules
+     * @param bregexp the indicator for bregexp type rules
+     * @param eregexp the indicator for eregexp type rules
      * @param again the optional indicator to restart the replacement cycle from
      *        start
      * 
@@ -77,24 +137,35 @@ public class LMergeRule extends LFunction {
             String replacement, Boolean string, Boolean bregexp,
             Boolean eregexp, Boolean again) throws LSettingConstantException {
 
-        LSymbol symbol = LSymbol.get("merge-rules");
-        LValue mr = interpreter.get(symbol);
-        LList mergeRules;
-        if (mr == null) {
-            mergeRules = new LList();
-            interpreter.setq(symbol, mergeRules);
-        } else {
-            mergeRules = (LList) mr;
+        int t = 0;
+        if (string != null && string.booleanValue()) {
+            t |= STRING;
+        } else if (bregexp != null && bregexp.booleanValue()) {
+            t |= BREGEX;
+        } else if (eregexp != null && eregexp.booleanValue()) {
+            t |= EREGEX;
         }
-        Rule rule;
-        if (string.booleanValue()) {
-            rule = new StringRule(pattern, replacement, again.booleanValue());
-        } else {
-            // TODO gene: evaluate unimplemented
-            throw new RuntimeException("unimplemented");
+        if (t == 0) {
+            if (pattern.matches("[\\\\.*+[]]")) {
+                t = EREGEX;
+            } else {
+                t = STRING;
+            }
         }
 
-        mergeRules.add(rule);
+        switch (t) {
+            case STRING:
+                rules.add(new StringRule(pattern, replacement, again
+                    .booleanValue()));
+                break;
+            case EREGEX:
+                rules.add(new RegexRule(pattern, replacement, again
+                    .booleanValue()));
+            case BREGEX:
+            default:
+                // TODO gene: evaluate unimplemented
+                throw new RuntimeException("unimplemented");
+        }
 
         return null;
     }

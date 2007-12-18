@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.Indexentry;
@@ -69,8 +70,8 @@ import org.extex.exindex.core.xindy.LMarkupLocrefLayerList;
 import org.extex.exindex.core.xindy.LMarkupLocrefList;
 import org.extex.exindex.core.xindy.LMarkupRange;
 import org.extex.exindex.core.xindy.LMarkupTrace;
-import org.extex.exindex.core.xindy.LMergeRule;
 import org.extex.exindex.core.xindy.LMergeTo;
+import org.extex.exindex.core.xindy.LRuleSet;
 import org.extex.exindex.core.xindy.LSearchpath;
 import org.extex.exindex.core.xindy.LSortRule;
 import org.extex.exindex.core.xindy.LUseRuleSet;
@@ -78,6 +79,7 @@ import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -92,7 +94,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class Indexer extends LEngine {
 
     /**
-     * The field <tt>LOCALIZER</tt> contains the ...
+     * The field <tt>LOCALIZER</tt> contains the localizer.
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(Indexer.class);
@@ -106,6 +108,22 @@ public class Indexer extends LEngine {
      * The field <tt>index</tt> contains the index.
      */
     private StructuredIndex index;
+
+    /**
+     * The field <tt>defineAlphabet</tt> contains the shortcut to the
+     * alphabets.
+     */
+    private LDefineAlphabet alphabets;
+
+    /**
+     * The field <tt>mergeRule</tt> contains the shortcut to the merge rule.
+     */
+    private LRuleSet mergeRule;
+
+    /**
+     * The field <tt>sortRule</tt> contains the shortcut to the sort rules.
+     */
+    private LSortRule sortRule;
 
     /**
      * Creates a new object.
@@ -124,17 +142,17 @@ public class Indexer extends LEngine {
         index = new StructuredIndex();
         entries = new ArrayList<Indexentry>();
 
-        LDefineAlphabet defineAlphabet = new LDefineAlphabet("define-alphabet");
-        defun("define-alphabet", //
-            defineAlphabet);
+        alphabets = new LDefineAlphabet("define-alphabet");
+        defun("define-alphabet", alphabets);
         defun("define-attributes", //
             new LDefineAttributes("define-attributes"));
         defun("define-crossref-class", //
             new LDefineCrossrefClass("define-crossref-class"));
-        defun("define-letter-group", //
-            new LDefineLetterGroup("define-letter-group"));
+        LDefineLetterGroup letterGroups =
+                new LDefineLetterGroup("define-letter-group");
+        defun("define-letter-group", letterGroups);
         defun("define-letter-groups", //
-            new LDefineLetterGroups("define-letter-groups"));
+            new LDefineLetterGroups("define-letter-groups", letterGroups));
         LDefineLocationClass locationClass =
                 new LDefineLocationClass("define-location-class");
         defun("define-location-class", //
@@ -145,10 +163,10 @@ public class Indexer extends LEngine {
             new LDefineRuleSet("define-rule-set"));
         defun("searchpath", //
             new LSearchpath("searchpath"));
-        defun("sort-rule", //
-            new LSortRule("sort-rule"));
-        defun("merge-rule", //
-            new LMergeRule("merge-rule"));
+        sortRule = new LSortRule("sort-rule");
+        defun("sort-rule", sortRule);
+        mergeRule = new LRuleSet("merge-rule");
+        defun("merge-rule", mergeRule);
         defun("merge-to", //
             new LMergeTo("merge-to"));
         defun("use-rule-set", //
@@ -202,14 +220,14 @@ public class Indexer extends LEngine {
         locationClass.add("alpha", new AlphaLowercase());
         locationClass.add("ALPHA", new AlphaUppercase());
 
-        defineAlphabet.add("arabic-numbers", new ArabicNumbers());
-        defineAlphabet.add("roman-numerals-uppercase",
-            new RomanNumeralsUppercase());
-        defineAlphabet.add("roman-numerals-lowercase",
-            new RomanNumeralsLowercase());
-        defineAlphabet.add("digits", new Digits());
-        defineAlphabet.add("alpha", new AlphaLowercase());
-        defineAlphabet.add("ALPHA", new AlphaUppercase());
+        alphabets.add("arabic-numbers", new ArabicNumbers());
+        alphabets.add("roman-numerals-uppercase", new RomanNumeralsUppercase());
+        alphabets.add("roman-numerals-lowercase", new RomanNumeralsLowercase());
+        alphabets.add("digits", new Digits());
+        alphabets.add("alpha", new AlphaLowercase());
+        alphabets.add("ALPHA", new AlphaUppercase());
+
+        setq("indexer:charset-raw", new LString("utf-8"));
     }
 
     /**
@@ -278,6 +296,32 @@ public class Indexer extends LEngine {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry the entry to augment with the keys
+     * 
+     * @return <code>true</code>
+     */
+    private boolean preComputeKeys(Indexentry entry) {
+
+        String[] mainKey = entry.getKey().getMainKey();
+        String[] mergeKey = new String[mainKey.length];
+
+        for (int i = 0; i < mainKey.length; i++) {
+            mergeKey[i] = mergeRule.apply(mainKey[i]);
+        }
+        entry.getKey().setMergeKey(mergeKey);
+
+        String[] sortKey = new String[mainKey.length];
+
+        for (int i = 0; i < mainKey.length; i++) {
+            sortKey[i] = sortRule.apply(mergeKey[i]);
+        }
+        entry.getKey().setSortKey(sortKey);
+        return true;
+    }
+
+    /**
      * Perform the initial processing step. This step consists of a check of the
      * attributes, the check of the crossrefs and the check of the location
      * references. If all checks are passed then <code>true</code> is
@@ -315,7 +359,7 @@ public class Indexer extends LEngine {
             // TODO
         }
 
-        return true;
+        return preComputeKeys(entry);
     }
 
     /**
@@ -325,6 +369,7 @@ public class Indexer extends LEngine {
      *        skip this phase
      * @param logger the logger
      * 
+     * @throws IndexerException in case of an error
      * @throws IOException in case of an I/O error
      * @throws FileNotFoundException if an input file could not be found
      * @throws LException in case of an error
@@ -336,7 +381,8 @@ public class Indexer extends LEngine {
                 IOException,
                 LException,
                 SecurityException,
-                NoSuchMethodException {
+                NoSuchMethodException,
+                IndexerException {
 
         if (resources == null || resources.isEmpty()) {
             logger.warning(LOCALIZER.format("NoResources"));
@@ -352,7 +398,9 @@ public class Indexer extends LEngine {
             logger.info(LOCALIZER.format((resource != null
                     ? "Reading"
                     : "ReadingStdin"), resource));
-            RawIndexParser parser = makeRawIndexParser(resource, "utf-8");
+
+            RawIndexParser parser = makeRawIndexParser(resource, //
+                LString.getString(get("indexer:charset-raw")));
             if (parser == null) {
                 logger.info(LOCALIZER.format("ResourceNotFound", resource));
                 throw new FileNotFoundException(resource);
@@ -363,7 +411,7 @@ public class Indexer extends LEngine {
                     try {
                         entry = parser.parse();
                     } catch (IOException e) {
-                        // TODO
+                        logger.warning(e.toString());
                         continue;
                     }
                     if (entry == null) {
@@ -402,6 +450,7 @@ public class Indexer extends LEngine {
      *        phase
      * @param logger the logger
      * 
+     * @throws IndexerException in case of an error
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
      * @throws NoSuchMethodException in case of an undefined method
@@ -412,7 +461,8 @@ public class Indexer extends LEngine {
             throws IOException,
                 LException,
                 SecurityException,
-                NoSuchMethodException {
+                NoSuchMethodException,
+                IndexerException {
 
         startup(styles, logger);
         process(resources, logger);

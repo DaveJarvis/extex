@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.exindex.core.type.alphabet.Alphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -61,6 +62,17 @@ public class LDefineAlphabet extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.QLIST});
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name the name
+     * @param alphabet the alphabet
+     */
+    public void add(String name, Alphabet alphabet) {
+
+        // TODO gene: add unimplemented
     }
 
     /**

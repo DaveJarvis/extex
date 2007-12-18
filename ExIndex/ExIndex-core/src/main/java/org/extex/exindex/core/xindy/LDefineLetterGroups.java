@@ -19,8 +19,6 @@
 
 package org.extex.exindex.core.xindy;
 
-import java.util.ArrayList;
-
 import org.extex.exindex.core.type.LetterGroup;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -40,18 +38,26 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineLetterGroups extends LFunction {
 
     /**
+     * The field <tt>container</tt> contains the ...
+     */
+    private LDefineLetterGroup container;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container
+     * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineLetterGroups(String name)
+    public LDefineLetterGroups(String name, LDefineLetterGroup container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.QLIST});
+        this.container = container;
     }
 
     /**
@@ -69,13 +75,15 @@ public class LDefineLetterGroups extends LFunction {
             throws LNonMatchingTypeException,
                 LSettingConstantException {
 
-        String last = "";
+        LetterGroup last = null;
 
         for (LValue val : list) {
             String name = LString.getString(val);
-            interpreter.setq("letter-group:" + name, //
-                new LetterGroup(name, "", last, new ArrayList<String>()));
-            last = name;
+            LetterGroup g = container.defineLetterGroup(name);
+            if (last != null) {
+                g.after(last);
+            }
+            last = g;
         }
 
         return null;

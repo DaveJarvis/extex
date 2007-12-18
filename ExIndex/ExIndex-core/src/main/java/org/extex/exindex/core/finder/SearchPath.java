@@ -108,6 +108,16 @@ public class SearchPath implements ResourceFinder {
     }
 
     /**
+     * Getter for the path.
+     * 
+     * @return a copy of the path in use
+     */
+    public String[] get() {
+
+        return dirs.clone();
+    }
+
+    /**
      * Set the search path. The argument is a string of colon separated
      * directories to be prepended before the file name to be sought. These
      * directories can either be absolute or relative. If the last character is
@@ -135,5 +145,4 @@ public class SearchPath implements ResourceFinder {
 
         dirs = path.clone();
     }
-
 }

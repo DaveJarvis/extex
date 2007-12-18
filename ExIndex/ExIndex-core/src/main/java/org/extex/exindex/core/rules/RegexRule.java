@@ -32,9 +32,9 @@ public class RegexRule extends Rule {
     /**
      * Creates a new object.
      * 
-     * @param pattern
-     * @param replacement
-     * @param again
+     * @param pattern the pattern
+     * @param replacement the replacement text
+     * @param again the indicator for repetition
      */
     public RegexRule(String pattern, String replacement, boolean again) {
 
@@ -44,10 +44,10 @@ public class RegexRule extends Rule {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.String)
+     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.CharSequence, int)
      */
     @Override
-    public String apply(String word) {
+    public int apply(CharSequence word, int index) {
 
         // TODO gene: apply unimplemented
         throw new RuntimeException("unimplemented");

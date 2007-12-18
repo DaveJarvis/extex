@@ -104,13 +104,13 @@ public class Indexentry {
 
         StringBuilder sb = new StringBuilder();
         sb.append("(indexentry");
-        if (key.getPrint() == null) {
-            toStringAppendList(sb, " :key ", key.getKey());
-        } else if (key.getKey() == key.getPrint()) {
-            toStringAppendList(sb, " :key ", key.getKey());
+        if (key.getPrintKey() == null) {
+            toStringAppendList(sb, " :key ", key.getMainKey());
+        } else if (key.getMainKey() == key.getPrintKey()) {
+            toStringAppendList(sb, " :key ", key.getMainKey());
         } else {
-            toStringAppendList(sb, " :key ", key.getKey());
-            toStringAppendList(sb, " :print ", key.getPrint());
+            toStringAppendList(sb, " :key ", key.getMainKey());
+            toStringAppendList(sb, " :print ", key.getPrintKey());
         }
         if (attr != null) {
             sb.append(" :attr ");

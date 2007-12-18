@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -35,8 +34,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -87,6 +84,7 @@ public class IndexerTest {
 
     static {
         FILES.put("T10.raw", "");
+        FILES.put("T11.raw", "(indexentry :key (\"abc\") :locref \"IV\")");
     }
 
     /**
@@ -97,17 +95,10 @@ public class IndexerTest {
      * @param expectedOut the expected output
      * @param expectedLog the expected logging output
      * 
-     * @throws NoSuchMethodException in case of an error
-     * @throws LSettingConstantException in case of an error
-     * @throws IOException in case of an error
-     * @throws LException in case of an error
+     * @throws Exception in case of an error
      */
     private void runTest(ArrayList<String> styles, ArrayList<String> resources,
-            String expectedOut, String expectedLog)
-            throws NoSuchMethodException,
-                LSettingConstantException,
-                IOException,
-                LException {
+            String expectedOut, String expectedLog) throws Exception {
 
         Logger logger = Logger.getLogger("test");
         logger.setUseParentHandlers(false);
@@ -167,7 +158,7 @@ public class IndexerTest {
     }
 
     /**
-     * <testcase> Check that empty input produces empty output. </testcase>
+     * <testcase> Check that simple input produces simple output. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +167,7 @@ public class IndexerTest {
 
         ArrayList<String> files = new ArrayList<String>();
         files.add("T11.raw");
-        runTest(new ArrayList<String>(), files, "", "No styles to load.\n");
+        runTest(new ArrayList<String>(), files, "xxx", "No styles to load.\n");
     }
 
     /**

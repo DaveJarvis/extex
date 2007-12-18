@@ -19,23 +19,25 @@
 
 package org.extex.exindex.core.rules;
 
-import org.extex.exindex.lisp.type.value.LValue;
-
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class Rule implements LValue {
+public abstract class Rule {
+
+    public static final int AGAIN = -1;
+
+    public static final int FAIL = -2;
 
     /**
      * The field <tt>again</tt> contains the flag :again.
      */
-    boolean again = false;
+    private boolean again = false;
 
     /**
-     * The field <tt>pattern</tt> contains the ...
+     * The field <tt>pattern</tt> contains the pattern.
      */
     private String pattern;
 
@@ -47,9 +49,9 @@ public abstract class Rule implements LValue {
     /**
      * Creates a new object.
      * 
-     * @param pattern
-     * @param replacement
-     * @param again
+     * @param pattern the pattern
+     * @param replacement the replacement text
+     * @param again the indicator for repetition
      */
     public Rule(String pattern, String replacement, boolean again) {
 
@@ -66,7 +68,7 @@ public abstract class Rule implements LValue {
      * 
      * @return the transformed word
      */
-    public abstract String apply(String word);
+    public abstract int apply(CharSequence word, int index);
 
     /**
      * Getter for pattern.
