@@ -238,8 +238,8 @@ public class LDefineLetterGroupTest {
         assertNotNull(sorted);
         assertEquals(3, sorted.size());
         assertEquals("a", sorted.get(0).getName());
-        assertEquals("c", sorted.get(1).getName());
-        assertEquals("b", sorted.get(2).getName());
+        assertEquals("b", sorted.get(1).getName());
+        assertEquals("c", sorted.get(2).getName());
     }
 
     /**
