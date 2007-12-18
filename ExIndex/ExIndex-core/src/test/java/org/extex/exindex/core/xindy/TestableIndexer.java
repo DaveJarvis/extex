@@ -53,11 +53,11 @@ public class TestableIndexer extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(
+     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(java.lang.String,
      *      java.lang.String)
      */
     @Override
-    protected RawIndexParser makeRawIndexParser(String resource)
+    protected RawIndexParser makeRawIndexParser(String resource, String charset)
             throws IOException {
 
         return new XindyParser(new StringReader(resource), resource);

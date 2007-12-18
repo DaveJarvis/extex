@@ -194,9 +194,9 @@ public class Indexer extends LEngine {
             new LMarkupTrace("markup-trace"));
 
         locationClass.add("arabic-numbers", new ArabicNumbers());
-        locationClass.add("roman-numerals-uppercase",
+        locationClass.add("roman-numbers-uppercase",
             new RomanNumeralsUppercase());
-        locationClass.add("roman-numerals-lowercase",
+        locationClass.add("roman-numbers-lowercase",
             new RomanNumeralsLowercase());
         locationClass.add("digits", new Digits());
         locationClass.add("alpha", new AlphaLowercase());
@@ -244,19 +244,20 @@ public class Indexer extends LEngine {
      * Create a parser for the raw index from a resource name.
      * 
      * @param resource the name of the resource
+     * @param charset the name of the character set
      * 
      * @return the parser
      * 
      * @throws IOException in case of an I/O error
      */
-    protected RawIndexParser makeRawIndexParser(String resource)
+    protected RawIndexParser makeRawIndexParser(String resource, String charset)
             throws IOException {
 
         InputStream stream = getResourceFinder().findResource(resource, "raw");
         if (stream == null) {
             return null;
         }
-        return new XindyParser(new InputStreamReader(stream), resource);
+        return new XindyParser(new InputStreamReader(stream, charset), resource);
     }
 
     /**
@@ -348,8 +349,10 @@ public class Indexer extends LEngine {
         List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
 
         for (String resource : resources) {
-            logger.info(LOCALIZER.format("Reading", resource));
-            RawIndexParser parser = makeRawIndexParser(resource);
+            logger.info(LOCALIZER.format((resource != null
+                    ? "Reading"
+                    : "ReadingStdin"), resource));
+            RawIndexParser parser = makeRawIndexParser(resource, "utf-8");
             if (parser == null) {
                 logger.info(LOCALIZER.format("ResourceNotFound", resource));
                 throw new FileNotFoundException(resource);

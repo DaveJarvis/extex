@@ -240,10 +240,11 @@ public class ExIndex extends Indexer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.Indexer#makeRawIndexParser( java.lang.String)
+     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    protected RawIndexParser makeRawIndexParser(String resource)
+    protected RawIndexParser makeRawIndexParser(String resource, String charset)
             throws IOException {
 
         boolean makeindex = false;
@@ -462,7 +463,6 @@ public class ExIndex extends Indexer {
                     throw new MainException(LOCALIZER.format("UnknownArgument",
                         a));
                 }
-
             }
 
             if (transcript == null && files.size() != 0 && files.get(0) != null) {
