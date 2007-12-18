@@ -24,9 +24,11 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.util.ArrayList;
 
+import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LValue;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -51,6 +53,24 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry the entry to analyze
+     * @return
+     */
+    private LetterGroup computeLetterGroup(Indexentry entry) {
+
+        String[] mk = entry.getKey().getMergeKey();
+        if (mk == null) {
+            // TODO gene: computeLetterGroup unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        // TODO gene: computeLetterGroup unimplemented
+        return null;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
@@ -58,16 +78,24 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     public void print(PrintStream stream) {
 
         // TODO gene: print unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param entry
+     * @param entry the entry to store
+     * 
+     * @throws IndexerException in case of an error
      */
-    public void store(Indexentry entry) {
+    public void store(Indexentry entry) throws IndexerException {
 
-        // TODO
+        LetterGroup group = computeLetterGroup(entry);
+        if (group == null) {
+            throw new IndexerException("", "", LocalizerFactory.getLocalizer(
+                getClass()).format("NoPropoperLetterGroup", entry.toString()));
+        }
+        group.store(entry);
     }
 
     /**
