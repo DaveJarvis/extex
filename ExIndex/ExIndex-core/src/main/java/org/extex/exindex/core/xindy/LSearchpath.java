@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.xindy;
 
+import org.extex.exindex.core.finder.SearchPath;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -28,7 +29,6 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.resource.ResourceFinder;
-import org.extex.resource.ResourceFinderList;
 
 /**
  * This is the adapter for the L system to parse a merge rule.
@@ -37,6 +37,16 @@ import org.extex.resource.ResourceFinderList;
  * @version $Revision$
  */
 public class LSearchpath extends LFunction {
+
+    /**
+     * The field <tt>FLAG_DEFAULT</tt> contains the flag :default.
+     */
+    private static final LSymbol FLAG_DEFAULT = LSymbol.get(":default");
+
+    /**
+     * The field <tt>FLAG_LAST</tt> contains the flag :last.
+     */
+    private static final LSymbol FLAG_LAST = LSymbol.get(":last");
 
     /**
      * Creates a new object.
@@ -68,7 +78,7 @@ public class LSearchpath extends LFunction {
             throws LNonMatchingTypeException {
 
         if (value instanceof LString) {
-            store(interpreter, ((LString) value).getValue().split(":"));
+            store(interpreter, ((LString) value).getValue());
         } else if (value instanceof LList) {
             store(interpreter, ((LList) value));
         } else {
@@ -79,12 +89,31 @@ public class LSearchpath extends LFunction {
     }
 
     /**
+     * Get the last items on the search path.
+     * 
+     * @param interpreter the interpreter
+     * 
+     * @return the list of registered paths
+     */
+    private String[] getLast(LInterpreter interpreter) {
+
+        ResourceFinder finder = interpreter.getResourceFinder();
+        if (finder instanceof SearchPath) {
+            return ((SearchPath) finder).get();
+        }
+        return new String[0];
+    }
+
+    /**
      * Store the new search path.
      * 
      * @param interpreter the interpreter
      * @param list the list of items
+     * 
+     * @throws LNonMatchingTypeException in case of an error
      */
-    private void store(LInterpreter interpreter, LList list) {
+    private void store(LInterpreter interpreter, LList list)
+            throws LNonMatchingTypeException {
 
         String[] items = new String[list.size()];
         int i = 0;
@@ -93,38 +122,53 @@ public class LSearchpath extends LFunction {
             if (val instanceof LString) {
                 items[i++] = ((LString) val).getValue();
 
-            } else if (val instanceof LSymbol
-                    && ((LSymbol) val).getValue().equals(":default")) {
-                items[i++] = "";
+            } else if (val instanceof LSymbol) {
+                if (val == FLAG_DEFAULT) {
+                    items[i++] = null;
+                } else if (val == FLAG_LAST) {
+                    String[] last = getLast(interpreter);
+                    String[] a = new String[items.length + last.length];
+                    for (int j = 0; j < i; j++) {
+                        a[j] = items[j];
+                    }
+                    for (int j = 0; j < last.length; j++) {
+                        a[i++] = last[j];
+                    }
+                    items = a;
+                } else {
+                    throw new LNonMatchingTypeException("???");
+                }
             } else {
-                // TODO gene: store unimplemented
-                throw new RuntimeException("unimplemented");
+                throw new LNonMatchingTypeException("???");
             }
         }
-        store(interpreter, items);
+
+        ResourceFinder finder = interpreter.getResourceFinder();
+        if (finder instanceof SearchPath) {
+            ((SearchPath) finder).set(items);
+        } else {
+            SearchPath f = new SearchPath(finder);
+            f.set(items);
+            interpreter.setResourceFinder(f);
+        }
     }
 
     /**
      * Store the new search path.
      * 
      * @param interpreter the interpreter
-     * @param items the list of items for the search path
+     * @param path the list of items for the search path
      */
-    private void store(LInterpreter interpreter, String[] items) {
+    private void store(LInterpreter interpreter, String path) {
 
         ResourceFinder finder = interpreter.getResourceFinder();
-        ResourceFinderList resourceList = new ResourceFinderList();
-
-        for (String item : items) {
-
-            if ("".equals(item)) {
-                resourceList.add(finder);
-            } else {
-                // TODO gene: store unimplemented
-                throw new RuntimeException("unimplemented");
-            }
+        if (finder instanceof SearchPath) {
+            ((SearchPath) finder).set(path);
+        } else {
+            SearchPath f = new SearchPath(finder);
+            f.set(path);
+            interpreter.setResourceFinder(f);
         }
-        interpreter.setResourceFinder(resourceList);
     }
 
 }
