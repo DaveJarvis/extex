@@ -26,6 +26,17 @@ import java.util.WeakHashMap;
  * This class is a node containing a symbol. A symbol is contained in a symbol
  * table and the contract guarantees that for any name only one symbol exists in
  * the system.
+ * <p>
+ * This means that symbols can be compared with <code>==</code>. The contract
+ * of the LSymbol ensures that two symbols which compare as the same are the
+ * same and two symbols which fail to compare equal are different. This means
+ * the comparison of the mere text is not necessary.
+ * </p>
+ * <p>
+ * The symbol tables talks care to free the memory as soon as no reference
+ * exists in the system. Thus the symbol table relies on the cooperation of the
+ * calling code to avoid memory leaks.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,9 +44,9 @@ import java.util.WeakHashMap;
 public class LSymbol implements LValue {
 
     /**
-     * The field <tt>symtab</tt> contains the symbol table.
+     * The field <tt>symbolTable</tt> contains the symbol table.
      */
-    private static WeakHashMap<String, LSymbol> symtab =
+    private static WeakHashMap<String, LSymbol> symbolTable =
             new WeakHashMap<String, LSymbol>();
 
     /**
@@ -47,13 +58,13 @@ public class LSymbol implements LValue {
      */
     public synchronized static LSymbol get(String value) {
 
-        LSymbol sym = symtab.get(value);
+        LSymbol sym = symbolTable.get(value);
         if (sym == null) {
             sym = new LSymbol(value);
             if (value != null && !"".equals(value) && value.charAt(0) == ':') {
                 sym.setMutable(false);
             }
-            symtab.put(value, sym);
+            symbolTable.put(value, sym);
         }
 
         return sym;
@@ -92,7 +103,8 @@ public class LSymbol implements LValue {
     }
 
     /**
-     * Getter for mutable.
+     * Getter for the <code>mutable<code> property.
+     * This is a boolean property indicating the modifiable symbols in an interpreter.
      * 
      * @return the mutable
      */
