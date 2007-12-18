@@ -56,6 +56,19 @@ public class LSortRule extends LFunction {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param in
+     * @return
+     */
+    public String apply(String in) {
+
+        // TODO gene: enclosing_method unimplemented
+
+        return in;
+    }
+
+    /**
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
@@ -84,7 +97,7 @@ public class LSortRule extends LFunction {
         }
         Rule rule = new RegexRule(pattern, replacement, again.booleanValue());
 
-        sortRules.add(rule);
+        // sortRules.add(rule);
         return null;
     }
 
