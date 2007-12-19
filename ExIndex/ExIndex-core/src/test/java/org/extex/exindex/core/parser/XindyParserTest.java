@@ -19,7 +19,6 @@
 
 package org.extex.exindex.core.parser;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -28,7 +27,6 @@ import java.io.StringReader;
 
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
-import org.extex.exindex.core.parser.raw.Key;
 import org.junit.Test;
 
 /**
@@ -53,9 +51,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertTrue(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -73,10 +69,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertTrue(key.getMainKey() == key.getPrintKey());
-        assertNotNull(ie.getAttr());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -95,9 +88,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertTrue(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
         assertNotNull(ie.getAttr());
     }
 
@@ -117,9 +108,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertTrue(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
         assertNotNull(ie.getAttr());
     }
 
@@ -137,9 +126,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertFalse(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -156,9 +143,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertFalse(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -176,9 +161,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertFalse(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -195,9 +178,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertTrue(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -215,9 +196,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertFalse(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**
@@ -235,9 +214,7 @@ public class XindyParserTest {
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
-        Key key = ie.getKey();
-        assertNotNull(key);
-        assertFalse(key.getMainKey() == key.getPrintKey());
+        assertTrue(ie.getMainKey() == ie.getPrintKey());
     }
 
     /**

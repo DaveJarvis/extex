@@ -29,7 +29,6 @@ import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
-import org.extex.exindex.core.parser.raw.Key;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
@@ -474,7 +473,7 @@ public class MakeindexParser implements RawIndexParser {
                 ref = new LocRef(locref);
             }
         }
-        return new RawIndexentry(new Key(key, print), //
-            ("".equals(attr) ? null : attr), ref);
+        return new RawIndexentry(key, print, ("".equals(attr) ? null : attr),
+            ref);
     }
 }

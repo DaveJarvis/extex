@@ -66,7 +66,7 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
      */
     public void store(RawIndexentry entry) throws IndexerException {
 
-        String[] mk = entry.getKey().getMergeKey();
+        String[] mk = entry.getMergeKey();
         if (mk == null || mk.length == 0) {
             // TODO gene: computeLetterGroup unimplemented
             throw new RuntimeException("unimplemented");

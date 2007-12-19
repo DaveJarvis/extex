@@ -32,8 +32,8 @@ import java.util.logging.Logger;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.RefSpec;
 import org.extex.exindex.core.parser.raw.XRef;
 import org.extex.exindex.core.type.StructuredIndex;
@@ -231,12 +231,12 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Validate a crossref entry.
      * 
-     * @param entry
-     * @param logger
+     * @param entry the entry to check
+     * @param logger the logger
      * 
-     * @return
+     * @return <code>true</code> if everything is correct
      */
     private boolean checkCrossref(RawIndexentry entry, Logger logger) {
 
@@ -299,28 +299,28 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compute the keys for an entry.
      * 
      * @param entry the entry to augment with the keys
      * 
      * @return <code>true</code>
      */
-    private boolean preComputeKeys(RawIndexentry entry) {
+    protected boolean preComputeKeys(RawIndexentry entry) {
 
-        String[] mainKey = entry.getKey().getMainKey();
+        String[] mainKey = entry.getMainKey();
         String[] mergeKey = new String[mainKey.length];
 
         for (int i = 0; i < mainKey.length; i++) {
             mergeKey[i] = mergeRule.apply(mainKey[i]);
         }
-        entry.getKey().setMergeKey(mergeKey);
+        entry.setMergeKey(mergeKey);
 
         String[] sortKey = new String[mainKey.length];
 
         for (int i = 0; i < mainKey.length; i++) {
             sortKey[i] = sortRule.apply(mergeKey[i]);
         }
-        entry.getKey().setSortKey(sortKey);
+        entry.setSortKey(sortKey);
         return true;
     }
 
@@ -339,8 +339,9 @@ public class Indexer extends LEngine {
      * 
      * @throws LException in case of an error
      */
-    private boolean preProcess(RawIndexentry entry, LDefineAttributes attributes,
-            List<OpenLocRef> openPages, Logger logger) throws LException {
+    private boolean preProcess(RawIndexentry entry,
+            LDefineAttributes attributes, List<OpenLocRef> openPages,
+            Logger logger) throws LException {
 
         String attr = entry.getAttr();
         if (attr != null && attributes.lookup(attr) == null) {

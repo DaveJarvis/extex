@@ -28,9 +28,24 @@ package org.extex.exindex.core.parser.raw;
 public class RawIndexentry {
 
     /**
-     * The field <tt>key</tt> contains the key.
+     * The field <tt>mainKey</tt> contains the main key as given by the user.
      */
-    private Key key;
+    private String[] mainKey;
+
+    /**
+     * The field <tt>mergeKey</tt> contains the merge key.
+     */
+    private String[] mergeKey = null;
+
+    /**
+     * The field <tt>printKey</tt> contains the print key.
+     */
+    private String[] printKey;
+
+    /**
+     * The field <tt>sortKey</tt> contains the sort key.
+     */
+    private String[] sortKey = null;
 
     /**
      * The field <tt>attribute</tt> contains the attribute.
@@ -45,17 +60,20 @@ public class RawIndexentry {
     /**
      * Creates a new object.
      * 
-     * @param key the key; It can not be <code>null</code>
+     * @param key the main key; It can not be <code>null</code>
+     * @param print the print key; It can not be <code>null</code>
      * @param attribute the attribute or <code>null</code>
      * @param ref the reference
      */
-    public RawIndexentry(Key key, String attribute, RefSpec ref) {
+    public RawIndexentry(String[] key, String[] print, String attribute,
+            RefSpec ref) {
 
         super();
-        if (key == null || ref == null) {
+        if (key == null || print == null || ref == null) {
             throw new IllegalArgumentException();
         }
-        this.key = key;
+        this.mainKey = key;
+        this.printKey = print;
         this.attribute = attribute;
         this.ref = ref;
     }
@@ -71,13 +89,33 @@ public class RawIndexentry {
     }
 
     /**
-     * Getter for key.
+     * Getter for main key.
      * 
-     * @return the key
+     * @return the main key
      */
-    public Key getKey() {
+    public String[] getMainKey() {
 
-        return key;
+        return mainKey;
+    }
+
+    /**
+     * Getter for merge key.
+     * 
+     * @return the merge key
+     */
+    public String[] getMergeKey() {
+
+        return mergeKey;
+    }
+
+    /**
+     * Getter for print key.
+     * 
+     * @return the print key
+     */
+    public String[] getPrintKey() {
+
+        return printKey;
     }
 
     /**
@@ -91,6 +129,26 @@ public class RawIndexentry {
     }
 
     /**
+     * Setter for the merge key.
+     * 
+     * @param mergeKey the merge key
+     */
+    public void setMergeKey(String[] mergeKey) {
+
+        this.mergeKey = mergeKey;
+    }
+
+    /**
+     * Setter for the sort key.
+     * 
+     * @param sortKey the sort key
+     */
+    public void setSortKey(String[] sortKey) {
+
+        this.sortKey = sortKey;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -100,13 +158,13 @@ public class RawIndexentry {
 
         StringBuilder sb = new StringBuilder();
         sb.append("(indexentry");
-        if (key.getPrintKey() == null) {
-            toStringAppendList(sb, " :key ", key.getMainKey());
-        } else if (key.getMainKey() == key.getPrintKey()) {
-            toStringAppendList(sb, " :key ", key.getMainKey());
+        if (printKey == null) {
+            toStringAppendList(sb, " :key ", mainKey);
+        } else if (mainKey == printKey) {
+            toStringAppendList(sb, " :key ", mainKey);
         } else {
-            toStringAppendList(sb, " :key ", key.getMainKey());
-            toStringAppendList(sb, " :print ", key.getPrintKey());
+            toStringAppendList(sb, " :key ", mainKey);
+            toStringAppendList(sb, " :print ", printKey);
         }
         if (attribute != null) {
             sb.append(" :attr ");
@@ -156,5 +214,4 @@ public class RawIndexentry {
         }
         sb.append(")");
     }
-
 }
