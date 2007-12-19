@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
-import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
 import org.extex.exindex.core.parser.raw.Key;
 import org.extex.exindex.core.parser.raw.LocRef;
@@ -42,8 +42,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This parser is a reader for input in the form of the makeindex format and
  * some extensions of it.
+ * <p>
+ * The following examples illustrate the index entries understood by this
+ * parser.
+ * </p>
  * 
+ * <pre>
+ * \indexentry{abc}{123}
+ * </pre>
  * 
+ * <pre>
+ * \indexentry{$alpha$@alpha}{123}
+ * </pre>
+ * 
+ * <pre>
+ * \indexentry{$alpha$@alpha|textbf(}{123}
+ * </pre>
+ * 
+ * <pre>
+ * \indexentry{a!b!c}{123}
+ * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -112,13 +130,15 @@ public class MakeindexParser implements RawIndexParser {
     private char rangeClose;
 
     /**
-     * Creates a new object.
+     * Creates a new object and gather the parameters from an interpreter.
      * 
      * @param reader the source to read from
      * @param resource the name of the resource for error messages
      * @param interpreter the l system as storage for parameters
      * 
      * @throws RawIndexException in case of an error
+     * 
+     * @see #configure(LInterpreter)
      */
     public MakeindexParser(Reader reader, String resource,
             LInterpreter interpreter) throws RawIndexException {
@@ -126,17 +146,7 @@ public class MakeindexParser implements RawIndexParser {
         super();
         this.reader = new LineNumberReader(reader);
         this.resource = resource;
-
-        keyword = initString("\\indexentry", interpreter, "makeindex:keyword");
-        argOpen = initChar('{', interpreter, "makeindex:arg-open");
-        argClose = initChar('}', interpreter, "makeindex:arg-close");
-        rangeOpen = initChar('(', interpreter, "makeindex:range-open");
-        rangeClose = initChar(')', interpreter, "makeindex:range-close");
-        escape = initChar('"', interpreter, "makeindex:escape");
-        quote = initChar('\\', interpreter, "makeindex:quote");
-        encap = initChar('|', interpreter, "makeindex:encap");
-        level = initChar('!', interpreter, "makeindex:level");
-        actual = initChar('@', interpreter, "makeindex:actual");
+        configure(interpreter);
     }
 
     /**
@@ -150,6 +160,90 @@ public class MakeindexParser implements RawIndexParser {
             reader.close();
             reader = null;
         }
+    }
+
+    /**
+     * Gather the parameters from an interpreter. If the interpreter does not
+     * have an appropriate value then a fallback is used. The following
+     * parameters are used by this parser: <br/> <table>
+     * <tr>
+     * <th>Name</th>
+     * <th>Fallback</th>
+     * <th>Description</th>
+     * </tr>
+     * <tr>
+     * <td>makeindex:keyword</td>
+     * <td><tt>\indexentry</tt></td>
+     * <td>This string starts an entry. Anything between entries is ignored.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:arg-open</td>
+     * <td><tt>{</tt></td>
+     * <td>This character opens an argument. It is terminated by the arg-close
+     * character.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:arg-close</td>
+     * <td><tt>}</tt></td>
+     * <td>This character closes an argument which has been opened by the
+     * arg-open character.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:range-open</td>
+     * <td><tt>(</tt></td>
+     * <td>This character indicates the start of a range.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:range-close</td>
+     * <td><tt>)</tt></td>
+     * <td>This character indicates the end of a range.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:escape</td>
+     * <td><tt>"</tt></td>
+     * <td>This is the escape character.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:quote</td>
+     * <td><tt>\</tt></td>
+     * <td>This is the quote character</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:encap</td>
+     * <td><tt>|</tt></td>
+     * <td>This character is the separator for the encapsulator.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:level</td>
+     * <td><tt>!</tt></td>
+     * <td>This character is the level separator. A structured key is divided
+     * into parts with this character.</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:actual</td>
+     * <td><tt>@</tt></td>
+     * <td>The actual character, separating the print representation from the
+     * key.</td>
+     * </tr>
+     * </table>
+     * 
+     * @param interpreter the interpreter to query for the parameters
+     * 
+     * @throws RawIndexException in case that the value from the interpreter has
+     *         the wrong type
+     */
+    public void configure(LInterpreter interpreter) throws RawIndexException {
+
+        keyword = initString("makeindex:keyword", interpreter, "\\indexentry");
+        argOpen = initChar("makeindex:arg-open", interpreter, '{');
+        argClose = initChar("makeindex:arg-close", interpreter, '}');
+        rangeOpen = initChar("makeindex:range-open", interpreter, '(');
+        rangeClose = initChar("makeindex:range-close", interpreter, ')');
+        escape = initChar("makeindex:escape", interpreter, '"');
+        quote = initChar("makeindex:quote", interpreter, '\\');
+        encap = initChar("makeindex:encap", interpreter, '|');
+        level = initChar("makeindex:level", interpreter, '!');
+        actual = initChar("makeindex:actual", interpreter, '@');
     }
 
     /**
@@ -179,23 +273,23 @@ public class MakeindexParser implements RawIndexParser {
 
         int c = reader.read();
         if (c != ec) {
-            throw new RawIndexMissingCharException(resource, reader.getLineNumber(),
-                (char) c, ec);
+            throw new RawIndexMissingCharException(resource, reader
+                .getLineNumber(), (char) c, ec);
         }
     }
 
     /**
      * Store an initial character in the interpreter if none is present.
      * 
-     * @param value the default value
-     * @param interpreter the interpreter
      * @param var the variable name
+     * @param interpreter the interpreter
+     * @param value the default value
      * 
      * @return the character to use
      * 
      * @throws RawIndexException in case of an error
      */
-    private char initChar(char value, LInterpreter interpreter, String var)
+    private char initChar(String var, LInterpreter interpreter, char value)
             throws RawIndexException {
 
         LValue v = interpreter.get(var);
@@ -211,15 +305,15 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * Store an initial String in the interpreter if none is present.
      * 
-     * @param value the default value
-     * @param interpreter the interpreter
      * @param var the variable name
+     * @param interpreter the interpreter
+     * @param value the default value
      * 
      * @return the string to use
      * 
      * @throws RawIndexException in case of an error
      */
-    private String initString(String value, LInterpreter interpreter, String var)
+    private String initString(String var, LInterpreter interpreter, String value)
             throws RawIndexException {
 
         LValue v = interpreter.get(var);
@@ -257,14 +351,11 @@ public class MakeindexParser implements RawIndexParser {
                         arg = arg.substring(0, x);
                     }
                     x = arg.indexOf(actual);
-                    String a;
                     if (x >= 0) {
-                        a = arg.substring(x + 1);
-                        arg = arg.substring(0, x);
-                    } else {
-                        a = arg;
+                        return store(arg.substring(0, x), arg.substring(x + 1),
+                            p, enc);
                     }
-                    return store(arg, p, a, enc);
+                    return store(arg, arg, p, enc);
                 }
             }
         } finally {
@@ -336,23 +427,23 @@ public class MakeindexParser implements RawIndexParser {
      * Create an object consisting of the required parts. The parameters are put
      * in place and the index entry is returned.
      * 
-     * @param arg the argument
+     * @param keyArg the argument
+     * @param printArg the print representation
      * @param locref the page
-     * @param display the display representation
      * @param enc the encapsulation
-     * 
      * @return the new index entry
      */
-    private RawIndexentry store(String arg, String locref, String display,
+    private RawIndexentry store(String keyArg, String printArg, String locref,
             String enc) {
 
         List<String> list = new ArrayList<String>();
         int a = 0;
-        for (int i = arg.indexOf(level, a); i >= 0; i = arg.indexOf(level, a)) {
-            list.add(arg.substring(a, i));
+        for (int i = keyArg.indexOf(level, a); i >= 0; i =
+                keyArg.indexOf(level, a)) {
+            list.add(keyArg.substring(a, i));
             a = i + 1;
         }
-        list.add(arg);
+        list.add(keyArg);
         String[] key = new String[list.size()];
         int i = 0;
         for (String s : list) {
@@ -362,8 +453,8 @@ public class MakeindexParser implements RawIndexParser {
         for (i = 0; i < print.length; i++) {
             print[i] = "";
         }
-        if (display != null) {
-            print[print.length - 1] = display;
+        if (printArg != null) {
+            print[print.length - 1] = printArg;
         }
 
         LocRef ref;
