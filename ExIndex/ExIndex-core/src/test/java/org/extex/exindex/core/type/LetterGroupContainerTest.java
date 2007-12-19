@@ -37,8 +37,7 @@ import org.junit.Test;
 public class LetterGroupContainerTest {
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#defineLetterGroup(java.lang.String)}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -50,8 +49,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -65,8 +63,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -81,8 +78,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -96,8 +92,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -113,8 +108,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -132,8 +126,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -151,8 +144,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -171,8 +163,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -191,8 +182,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -211,8 +201,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -232,8 +221,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -254,8 +242,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -277,8 +264,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -300,8 +286,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
+     * <testcase> TODO </testcase>
      * 
      * @throws Exception in case of an error
      */
