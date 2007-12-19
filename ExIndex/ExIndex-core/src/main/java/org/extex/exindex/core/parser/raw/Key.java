@@ -20,7 +20,7 @@
 package org.extex.exindex.core.parser.raw;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a container for the different incarnations of a key.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
@@ -33,7 +33,7 @@ public class Key {
     private String[] mainKey;
 
     /**
-     * The field <tt>mergeKey</tt> contains the ...
+     * The field <tt>mergeKey</tt> contains the merge key.
      */
     private String[] mergeKey;
 
@@ -43,7 +43,7 @@ public class Key {
     private String[] printKey;
 
     /**
-     * The field <tt>sortKey</tt> contains the ...
+     * The field <tt>sortKey</tt> contains the sort key.
      */
     private String[] sortKey;
 
@@ -71,9 +71,9 @@ public class Key {
     }
 
     /**
-     * Getter for mergeKey.
+     * Getter for the merge key.
      * 
-     * @return the mergeKey
+     * @return the merge key
      */
     public String[] getMergeKey() {
 
@@ -91,9 +91,9 @@ public class Key {
     }
 
     /**
-     * Getter for sortKey.
+     * Getter for the sort key.
      * 
-     * @return the sortKey
+     * @return the sort key
      */
     public String[] getSortKey() {
 
@@ -101,9 +101,9 @@ public class Key {
     }
 
     /**
-     * Setter for mergeKey.
+     * Setter for the merge key.
      * 
-     * @param mergeKey the mergeKey to set
+     * @param mergeKey the merge key to set
      */
     public void setMergeKey(String[] mergeKey) {
 
@@ -114,9 +114,9 @@ public class Key {
     }
 
     /**
-     * Setter for sortKey.
+     * Setter for the sort key.
      * 
-     * @param sortKey the sortKey to set
+     * @param sortKey the sort key to set
      */
     public void setSortKey(String[] sortKey) {
 
