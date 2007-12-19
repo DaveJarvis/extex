@@ -19,10 +19,7 @@
 
 package org.extex.font.format.xtf;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.LanguageSystemTag;
@@ -36,7 +33,7 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TagTest {
+public class TagTest extends TestCase {
 
     /**
      * Test add.
@@ -69,14 +66,14 @@ public class TagTest {
         assertTrue(ScriptTag.isInList("arab"));
     }
 
-    /**
-     * Test not exists.
-     */
-    @Test
-    public void testNotExists() {
-
-        assertTrue(!ScriptTag.isInList("XXX"));
-    }
+    // /**
+    // * Test not exists.
+    // */
+    // @Test
+    // public void testNotExists() {
+    //
+    // assertTrue(!ScriptTag.isInList("XXX"));
+    // }
 
     /**
      * Test tag found 01.
