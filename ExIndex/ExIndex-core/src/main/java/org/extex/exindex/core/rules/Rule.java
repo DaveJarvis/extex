@@ -20,16 +20,12 @@
 package org.extex.exindex.core.rules;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is th abstarct base class for rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public abstract class Rule {
-
-    public static final int AGAIN = -1;
-
-    public static final int FAIL = -2;
 
     /**
      * The field <tt>again</tt> contains the flag :again.
@@ -65,10 +61,12 @@ public abstract class Rule {
      * Apply the rule to a word.
      * 
      * @param word the word to apply the rule to
+     * @param index the index to start applying the rule
      * 
-     * @return the transformed word
+     * @return the index to continue the application or a negative value if this
+     *         rule did not make any changes
      */
-    public abstract int apply(CharSequence word, int index);
+    public abstract int apply(StringBuilder word, int index);
 
     /**
      * Getter for pattern.
@@ -98,6 +96,18 @@ public abstract class Rule {
     public boolean isAgain() {
 
         return again;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return ">" + pattern + "< ==> >" + replacement
+                + (again ? "< :again" : "<");
     }
 
 }

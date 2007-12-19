@@ -19,7 +19,6 @@
 
 package org.extex.exindex.core.rules;
 
-import java.io.PrintStream;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -44,24 +43,13 @@ public class RegexRule extends Rule {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.CharSequence, int)
+     * @see org.extex.exindex.core.rules.Rule#apply(StringBuilder, int)
      */
     @Override
-    public int apply(CharSequence word, int index) {
+    public int apply(StringBuilder word, int index) {
 
         // TODO gene: apply unimplemented
         throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        // TODO gene: print unimplemented
-
     }
 
     /**

@@ -19,10 +19,9 @@
 
 package org.extex.exindex.core.rules;
 
-import java.io.PrintStream;
-
 /**
- * TODO gene: missing JavaDoc.
+ * This rule replaces a constant string with a constant replacement text. This
+ * is the most simple case of a rule.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,28 +38,38 @@ public class StringRule extends Rule {
     public StringRule(String pattern, String replacement, boolean again) {
 
         super(pattern, replacement, again);
+        if (again && replacement.indexOf(pattern) >= 0) {
+            throw new RuntimeException("infinite loop detected");
+        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.rules.Rule#apply(java.lang.CharSequence, int)
+     * @see org.extex.exindex.core.rules.Rule#apply(StringBuilder, int)
      */
     @Override
-    public int apply(CharSequence word, int index) {
+    public int apply(StringBuilder sb, int index) {
 
-        // TODO gene: apply unimplemented
-        throw new RuntimeException("unimplemented");
-        // return word.equals(getPattern()) ? getReplacement() : word;
+        int ret = -1;
+        String p = getPattern();
+        int len = p.length();
+
+        do {
+            if (index + len > sb.length()) {
+                return ret;
+            }
+
+            for (int i = 0; i < len; i++) {
+                if (sb.charAt(index + i) != p.charAt(i)) {
+                    return ret;
+                }
+            }
+            sb.replace(index, index + len, getReplacement());
+            ret = index + len;
+        } while (isAgain());
+
+        return ret;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        // TODO
-    }
 }
