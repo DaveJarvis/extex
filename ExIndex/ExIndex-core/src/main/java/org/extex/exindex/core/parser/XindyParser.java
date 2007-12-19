@@ -25,7 +25,7 @@ import java.io.Reader;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.Key;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
@@ -302,7 +302,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * 
      * @see org.extex.exindex.core.parser.RawIndexParser#parse()
      */
-    public Indexentry parse() throws IOException {
+    public RawIndexentry parse() throws IOException {
 
         LValue term = read();
         if (term == null) {
@@ -476,7 +476,7 @@ public class XindyParser extends LParser implements RawIndexParser {
         if (ref == null) {
             throw exception("Unbound", LOCREF.toString());
         }
-        return new Indexentry(new Key(key, print), attr, ref);
+        return new RawIndexentry(new Key(key, print), attr, ref);
     }
 
     /**

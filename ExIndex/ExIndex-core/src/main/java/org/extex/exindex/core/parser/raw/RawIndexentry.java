@@ -25,7 +25,7 @@ package org.extex.exindex.core.parser.raw;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public class Indexentry {
+public class RawIndexentry {
 
     /**
      * The field <tt>key</tt> contains the key.
@@ -49,7 +49,7 @@ public class Indexentry {
      * @param attr
      * @param ref
      */
-    public Indexentry(Key key, String attr, RefSpec ref) {
+    public RawIndexentry(Key key, String attr, RefSpec ref) {
 
         super();
         this.key = key;

@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RefSpec;
 import org.extex.exindex.core.parser.raw.XRef;
@@ -102,7 +102,7 @@ public class Indexer extends LEngine {
     /**
      * The field <tt>entries</tt> contains the raw index.
      */
-    private List<Indexentry> entries;
+    private List<RawIndexentry> entries;
 
     /**
      * The field <tt>index</tt> contains the index.
@@ -140,7 +140,7 @@ public class Indexer extends LEngine {
 
         super();
         index = new StructuredIndex();
-        entries = new ArrayList<Indexentry>();
+        entries = new ArrayList<RawIndexentry>();
 
         alphabets = new LDefineAlphabet("define-alphabet");
         defun("define-alphabet", alphabets);
@@ -238,7 +238,7 @@ public class Indexer extends LEngine {
      * 
      * @return
      */
-    private boolean checkCrossref(Indexentry entry, Logger logger) {
+    private boolean checkCrossref(RawIndexentry entry, Logger logger) {
 
         // TODO gene: checkCrossref unimplemented
         return true;
@@ -305,7 +305,7 @@ public class Indexer extends LEngine {
      * 
      * @return <code>true</code>
      */
-    private boolean preComputeKeys(Indexentry entry) {
+    private boolean preComputeKeys(RawIndexentry entry) {
 
         String[] mainKey = entry.getKey().getMainKey();
         String[] mergeKey = new String[mainKey.length];
@@ -339,7 +339,7 @@ public class Indexer extends LEngine {
      * 
      * @throws LException in case of an error
      */
-    private boolean preProcess(Indexentry entry, LDefineAttributes attributes,
+    private boolean preProcess(RawIndexentry entry, LDefineAttributes attributes,
             List<OpenLocRef> openPages, Logger logger) throws LException {
 
         String attr = entry.getAttr();
@@ -410,7 +410,7 @@ public class Indexer extends LEngine {
             }
             try {
                 for (;;) {
-                    Indexentry entry;
+                    RawIndexentry entry;
                     try {
                         entry = parser.parse();
                     } catch (IOException e) {
@@ -433,7 +433,7 @@ public class Indexer extends LEngine {
 
         index.sorted();
 
-        for (Indexentry entry : entries) {
+        for (RawIndexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {
                 index.store(entry);
             } else {

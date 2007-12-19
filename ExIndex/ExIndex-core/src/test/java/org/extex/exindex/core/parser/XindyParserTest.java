@@ -27,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.StringReader;
 
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.Key;
 import org.junit.Test;
 
@@ -50,7 +50,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :key (\"abc\") :locref \"1\")"), "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -70,7 +70,7 @@ public class XindyParserTest {
                 new XindyParser(new StringReader(
                     "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\")"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -92,7 +92,7 @@ public class XindyParserTest {
                     new StringReader(
                         "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\" :open-range)"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -114,7 +114,7 @@ public class XindyParserTest {
                     new StringReader(
                         "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\" :close-range)"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -134,7 +134,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :tkey (\"abc\") :locref \"1\")"), "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -153,7 +153,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :tkey ((\"abc\")) :locref \"1\")"), "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -173,7 +173,7 @@ public class XindyParserTest {
                 new XindyParser(new StringReader(
                     "(indexentry :tkey ((\"abc\" \"def\")) :locref \"1\")"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -192,7 +192,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :key \"abc\" :locref \"1\")"), "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -212,7 +212,7 @@ public class XindyParserTest {
                 new XindyParser(new StringReader(
                     "(indexentry :key \"abc\" :print \"def\" :locref \"1\")"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();
@@ -232,7 +232,7 @@ public class XindyParserTest {
                 new XindyParser(new StringReader(
                     "(indexentry :key \"abc\" :print \"def\" :xref \"def\")"),
                     "rsc");
-        Indexentry ie = xp.parse();
+        RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
         Key key = ie.getKey();

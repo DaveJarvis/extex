@@ -29,7 +29,7 @@ import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.MissingException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.Key;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
@@ -239,7 +239,7 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @see org.extex.exindex.core.parser.RawIndexParser#parse()
      */
-    public Indexentry parse() throws RawIndexException, IOException {
+    public RawIndexentry parse() throws RawIndexException, IOException {
 
         if (reader == null) {
             return null;
@@ -344,7 +344,7 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @return the new index entry
      */
-    private Indexentry store(String arg, String locref, String display,
+    private RawIndexentry store(String arg, String locref, String display,
             String enc) {
 
         List<String> list = new ArrayList<String>();
@@ -384,7 +384,7 @@ public class MakeindexParser implements RawIndexParser {
                 ref = new LocRef(locref);
             }
         }
-        return new Indexentry(new Key(key, print), //
+        return new RawIndexentry(new Key(key, print), //
             ("".equals(attr) ? null : attr), ref);
     }
 }

@@ -25,7 +25,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LSymbol;
@@ -182,7 +182,7 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
      * 
      * @param entry
      */
-    public void store(Indexentry entry) {
+    public void store(RawIndexentry entry) {
 
         // TODO
         // add(entry);

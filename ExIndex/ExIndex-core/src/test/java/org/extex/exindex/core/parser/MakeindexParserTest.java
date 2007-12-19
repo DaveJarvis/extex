@@ -28,7 +28,7 @@ import java.io.StringReader;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.MissingException;
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LString;
@@ -118,7 +118,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\indexentry{abc}{123}"),
                     "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
@@ -139,7 +139,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc@def}{123}"), "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"def\") :locref \"123\")\n",
@@ -160,7 +160,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def}{123}"), "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\")\n",
@@ -181,7 +181,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def(}{123}"), "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :open-range)\n",
@@ -202,7 +202,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def)}{123}"), "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",
@@ -224,7 +224,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\gloentry{abc|def)}{123}"), "rsc", interpreter);
-        Indexentry entry = xp.parse();
+        RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
             "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",

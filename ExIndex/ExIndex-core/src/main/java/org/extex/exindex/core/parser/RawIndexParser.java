@@ -21,7 +21,7 @@ package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 
 /**
  * This interface describes the ability to retrieve an index entry from some
@@ -46,6 +46,6 @@ public interface RawIndexParser {
      * 
      * @throws IOException in case of an I/O error
      */
-    Indexentry parse() throws IOException;
+    RawIndexentry parse() throws IOException;
 
 }

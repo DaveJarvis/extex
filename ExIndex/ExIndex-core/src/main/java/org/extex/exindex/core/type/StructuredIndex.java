@@ -24,7 +24,7 @@ import java.io.PrintStream;
 import java.io.Writer;
 
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.parser.raw.Indexentry;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -64,7 +64,7 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
      * 
      * @throws IndexerException in case of an error
      */
-    public void store(Indexentry entry) throws IndexerException {
+    public void store(RawIndexentry entry) throws IndexerException {
 
         String[] mk = entry.getKey().getMergeKey();
         if (mk == null || mk.length == 0) {
