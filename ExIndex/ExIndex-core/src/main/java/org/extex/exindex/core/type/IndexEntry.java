@@ -42,7 +42,7 @@ public class IndexEntry extends ArrayList<IndexEntry> {
     /**
      * The field <tt>keywords</tt> contains the keywords.
      */
-    private List<String> keywords = new ArrayList<String>();
+    private String[] keywords;
 
     /**
      * The field <tt>locationClassGroups</tt> contains the location class
@@ -53,10 +53,13 @@ public class IndexEntry extends ArrayList<IndexEntry> {
 
     /**
      * Creates a new object.
+     * 
+     * @param keywords the keywords
      */
-    public IndexEntry() {
+    public IndexEntry(String[] keywords) {
 
         super();
+        this.keywords = keywords;
     }
 
     /**
@@ -64,7 +67,7 @@ public class IndexEntry extends ArrayList<IndexEntry> {
      * 
      * @return the keywords
      */
-    public List<String> getKeywords() {
+    public String[] getKeywords() {
 
         return keywords;
     }
@@ -82,9 +85,9 @@ public class IndexEntry extends ArrayList<IndexEntry> {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param writer
-     * @param interpreter
-     * @param level
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * @param level the current level
      * 
      * @throws IOException in case of an I/O error
      */
