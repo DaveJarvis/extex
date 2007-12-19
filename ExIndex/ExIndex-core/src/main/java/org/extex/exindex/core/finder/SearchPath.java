@@ -131,6 +131,7 @@ public class SearchPath implements ResourceFinder {
         if (path.endsWith(":")) {
             this.dirs[this.dirs.length - 1] = null;
         }
+        setHome();
     }
 
     /**
@@ -144,5 +145,20 @@ public class SearchPath implements ResourceFinder {
     public void set(String[] path) {
 
         dirs = path.clone();
+        setHome();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     */
+    private void setHome() {
+
+        for (int i = 0; i < dirs.length; i++) {
+            if (dirs[i].startsWith("~")) {
+                dirs[i] =
+                        System.getProperty("user.home") + dirs[i].substring(1);
+            }
+        }
     }
 }
