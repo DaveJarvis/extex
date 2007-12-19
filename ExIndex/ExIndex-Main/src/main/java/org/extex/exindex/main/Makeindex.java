@@ -38,6 +38,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
 import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.MakeindexCollator;
@@ -49,7 +50,6 @@ import org.extex.exindex.core.makeindex.parser.Parser;
 import org.extex.exindex.core.makeindex.writer.IndexWriter;
 import org.extex.exindex.core.makeindex.writer.MakeindexWriter;
 import org.extex.exindex.core.type.Entry;
-import org.extex.exindex.core.type.Index;
 import org.extex.exindex.main.exception.MainException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
