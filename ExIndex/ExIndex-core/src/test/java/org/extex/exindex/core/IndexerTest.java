@@ -28,12 +28,14 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import org.extex.exindex.core.exception.IndexerException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -85,6 +87,28 @@ public class IndexerTest {
     static {
         FILES.put("T10.raw", "");
         FILES.put("T11.raw", "(indexentry :key (\"abc\") :locref \"IV\")");
+        FILES.put("style11",
+            "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
+                    + "(define-letter-group \"a\")");
+        FILES.put("style12",
+            "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
+                    + "(define-letter-group \"A\")");
+    }
+
+    /**
+     * Create a List of Strings and fill it with some values.
+     * 
+     * @param args the varargs of the values
+     * 
+     * @return the List constructed. This is never <code>null</code>
+     */
+    public static List<String> makeList(String... args) {
+
+        ArrayList<String> list = new ArrayList<String>();
+        for (String s : args) {
+            list.add(s);
+        }
+        return list;
     }
 
     /**
@@ -97,7 +121,7 @@ public class IndexerTest {
      * 
      * @throws Exception in case of an error
      */
-    private void runTest(ArrayList<String> styles, ArrayList<String> resources,
+    private void runTest(List<String> styles, List<String> resources,
             String expectedOut, String expectedLog) throws Exception {
 
         Logger logger = Logger.getLogger("test");
@@ -140,7 +164,7 @@ public class IndexerTest {
     @Test
     public final void test02() throws Exception {
 
-        runTest(new ArrayList<String>(), new ArrayList<String>(), null,
+        runTest(makeList(), makeList(), null,
             "No styles to load.\nNo resources to load.\n");
     }
 
@@ -152,9 +176,7 @@ public class IndexerTest {
     @Test
     public final void test10() throws Exception {
 
-        ArrayList<String> files = new ArrayList<String>();
-        files.add("T10.raw");
-        runTest(new ArrayList<String>(), files, "", "No styles to load.\n");
+        runTest(makeList(), makeList("T10.raw"), "", "No styles to load.\n");
     }
 
     /**
@@ -165,9 +187,31 @@ public class IndexerTest {
     @Test
     public final void test11() throws Exception {
 
-        ArrayList<String> files = new ArrayList<String>();
-        files.add("T11.raw");
-        runTest(new ArrayList<String>(), files, "xxx", "No styles to load.\n");
+        runTest(makeList("style11"), makeList(), "\\begin{index}\\end{index}",
+            "No resources to load.\n");
+    }
+
+    /**
+     * <testcase> Check that simple input produces simple output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IndexerException.class)
+    public final void test12() throws Exception {
+
+        runTest(makeList("style12"), makeList("T11.raw"), "???", null);
+    }
+
+    /**
+     * <testcase> Check that simple input produces simple output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test20() throws Exception {
+
+        runTest(makeList("style11"), makeList("T11.raw"),
+            "\\begin{index}???\\end{index}", "???");
     }
 
     /**
@@ -178,9 +222,7 @@ public class IndexerTest {
     @Test(expected = FileNotFoundException.class)
     public final void testNoResource() throws Exception {
 
-        ArrayList<String> styles = new ArrayList<String>();
-        styles.add("xyz");
-        runTest(styles, new ArrayList<String>(), null, "");
+        runTest(makeList("xyz"), makeList(), null, "");
     }
 
 }

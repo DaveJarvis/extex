@@ -358,12 +358,13 @@ public class Arg {
      * Get the descriptor for an optional string.
      * 
      * @param flag the name of the flag
+     * @param fallback the default value
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_STRING(String flag) {
+    public static Arg OPT_STRING(String flag, String fallback) {
 
-        return new OptionalArgWithParameter(flag, String.class, "", false) {
+        return new OptionalArgWithParameter(flag, String.class, fallback, false) {
 
             /**
              * {@inheritDoc}

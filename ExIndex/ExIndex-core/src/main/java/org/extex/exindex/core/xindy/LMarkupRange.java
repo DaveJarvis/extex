@@ -52,7 +52,7 @@ public class LMarkupRange extends LFunction {
         super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
                 Arg.OPT_LSTRING(":close"),//
                 Arg.OPT_LSTRING(":sep"),//
-                Arg.OPT_STRING(":class"),//
+                Arg.OPT_STRING(":class", ""),//
                 Arg.OPT_LNUMBER(":length"),//
                 Arg.OPT_LBOOLEAN(":ignore-end")});
     }

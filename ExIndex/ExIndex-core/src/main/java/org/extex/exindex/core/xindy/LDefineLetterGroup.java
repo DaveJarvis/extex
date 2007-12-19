@@ -19,21 +19,15 @@
 
 package org.extex.exindex.core.xindy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.exindex.core.type.LetterGroup;
+import org.extex.exindex.core.type.LetterGroupContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the adapter for the L system to define a letter group.
@@ -44,24 +38,9 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class LDefineLetterGroup extends LFunction {
 
     /**
-     * The field <tt>groups</tt> contains the mapping from names to letter
-     * groups.
+     * The field <tt>container</tt> contains the ...
      */
-    private Map<String, LetterGroup> groups =
-            new HashMap<String, LetterGroup>();
-
-    /**
-     * The field <tt>sorted</tt> contains the collected letter groups. This
-     * list is cleared during sorting.
-     */
-    private List<LetterGroup> letterGroups = new ArrayList<LetterGroup>();
-
-    /**
-     * The field <tt>sorted</tt> contains the sorted letter groups. When this
-     * field is not <code>null</code> then no further letter gropus can be
-     * added.
-     */
-    private List<LetterGroup> sorted;
+    private LetterGroupContainer container;
 
     /**
      * Creates a new object.
@@ -72,34 +51,13 @@ public class LDefineLetterGroup extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineLetterGroup(String name)
+    public LDefineLetterGroup(String name, LetterGroupContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.STRING, Arg.OPT_STRING(":before"),
-                Arg.OPT_STRING(":after"), Arg.OPT_LIST(":prefixes")});
-    }
-
-    /**
-     * Search for a letter group and define it if it is not defined already.
-     * 
-     * @param name the name of the letter group to get
-     * 
-     * @return the letter group for name
-     */
-    public LetterGroup defineLetterGroup(String name) {
-
-        if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory
-                .getLocalizer(getClass()).format("TooLate"));
-        }
-        LetterGroup group = groups.get(name);
-        if (group == null) {
-            group = new LetterGroup(name);
-            groups.put(name, group);
-            letterGroups.add(group);
-        }
-        return group;
+        super(name, new Arg[]{Arg.STRING, Arg.OPT_STRING(":before", null),
+                Arg.OPT_STRING(":after", null), Arg.OPT_LIST(":prefixes")});
+        this.container = container;
     }
 
     /**
@@ -121,148 +79,24 @@ public class LDefineLetterGroup extends LFunction {
             throws LException,
                 LSettingConstantException {
 
-        if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory
-                .getLocalizer(getClass()).format("TooLate"));
-        }
-
         LetterGroup g = null;
 
         if (prefixes == null) {
-            g = defineLetterGroup(name);
+            g = container.defineLetterGroup(name);
         } else {
-            g = linkPrefixes(name, prefixes);
+            g = container.linkPrefixes(name, prefixes);
         }
 
         if (after != null) {
-            LetterGroup ag = defineLetterGroup(after);
+            LetterGroup ag = container.defineLetterGroup(after);
             g.after(ag);
         }
         if (before != null) {
-            LetterGroup bg = defineLetterGroup(before);
+            LetterGroup bg = container.defineLetterGroup(before);
             bg.after(g);
         }
 
         return null;
-    }
-
-    /**
-     * Find a topmost element in the current order. This is accomplished by
-     * following the "after" pointer until the first one is found. If the
-     * underlying graph has a cycle then this would result in an endless loop.
-     * This loop is terminated when a limit of steps is reached. This limit is
-     * the number of nodes left in the graph.
-     * 
-     * @param letterGroup the letter group
-     * @param limit the limit for cycle detection
-     * 
-     * @return the letter group which is currently top
-     * 
-     * @throws LException in case of a loop
-     */
-    private LetterGroup findTop(LetterGroup letterGroup, int limit)
-            throws LException {
-
-        LetterGroup g = letterGroup;
-
-        for (int n = limit; n > 0; n--) {
-            LetterGroup after = g.getSomeAfter();
-            if (after == null) {
-                return g;
-            }
-            g = after;
-        }
-        StringBuilder sb = new StringBuilder(g.getName());
-        g = letterGroup;
-        for (int n = limit; n > 0; n--) {
-            g = g.getSomeAfter();
-            sb.append(" > ").append(g.getName());
-        }
-
-        throw new LException(LocalizerFactory.getLocalizer(getClass()).format(
-            "CycleDetected", sb.toString()));
-    }
-
-    /**
-     * Add links to all prefixes and return the equivalence class used. The
-     * equivalence class is determined from the name and the prefixes. If for
-     * one a letter group is known then this one is used. Otherwise a new one is
-     * created.
-     * <p>
-     * If a prefix has already assigned a different letter group then this is
-     * reported as error.
-     * </p>
-     * 
-     * @param name the name
-     * @param prefixes the prefixes
-     * 
-     * @return the letter group for the whole set
-     * @throws LException in case of an error
-     */
-    private LetterGroup linkPrefixes(String name, LList prefixes)
-            throws LException {
-
-        LetterGroup g = null;
-
-        for (LValue val : prefixes) {
-            g = groups.get(LString.getString(val));
-            if (g != null) {
-                break;
-            }
-        }
-        if (g == null) {
-            g = defineLetterGroup(name);
-        } else {
-            LetterGroup gn = groups.get(name);
-            if (gn == null) {
-                groups.put(name, g);
-            } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("InconsistenzPrefix", name, gn.getName()));
-            }
-        }
-        for (LValue val : prefixes) {
-            String prefix = LString.getString(val);
-            LetterGroup gn = groups.get(prefix);
-            if (gn == null) {
-                groups.put(prefix, g);
-            } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("InconsistenzPrefix", name, gn.getName()));
-            }
-        }
-        return g;
-    }
-
-    /**
-     * Get the letter groups contained in a sorted list. Afterwards no more
-     * letter groups can be added. Nevertheless this method can be invoked
-     * several times returning the same list after each invocation.
-     * 
-     * @return the sorted list of letter groups
-     * 
-     * @throws LException in case of an error
-     */
-    public List<LetterGroup> sorted() throws LException {
-
-        if (sorted != null) {
-            return sorted;
-        }
-        sorted = new ArrayList<LetterGroup>();
-
-        for (int size = letterGroups.size(); size > 0; size--) {
-            LetterGroup g = findTop(letterGroups.get(0), size);
-            sorted.add(g);
-            for (int i = 0; i < size; i++) {
-                if (letterGroups.get(i) == g) {
-                    letterGroups.remove(i);
-                    break;
-                }
-            }
-            g.clearAfterBefore();
-        }
-
-        return sorted;
     }
 
 }

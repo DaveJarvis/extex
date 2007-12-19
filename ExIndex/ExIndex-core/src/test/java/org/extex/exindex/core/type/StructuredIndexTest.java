@@ -48,10 +48,8 @@ public class StructuredIndexTest {
     public final void testWrite1() throws Exception {
 
         StructuredIndex index = new StructuredIndex();
-        LetterGroup lg = new LetterGroup("a", "", "", null);
-        index.add(lg);
-        lg = new LetterGroup("b", "", "", null);
-        index.add(lg);
+        index.defineLetterGroup("a");
+        index.defineLetterGroup("b");
 
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();
@@ -78,10 +76,8 @@ public class StructuredIndexTest {
     public final void testWrite2() throws Exception {
 
         StructuredIndex index = new StructuredIndex();
-        LetterGroup lg = new LetterGroup("a", "", "", null);
-        index.add(lg);
-        lg = new LetterGroup("b", "", "", null);
-        index.add(lg);
+        index.defineLetterGroup("a");
+        index.defineLetterGroup("b");
 
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();
@@ -110,10 +106,8 @@ public class StructuredIndexTest {
     public final void testWrite3() throws Exception {
 
         StructuredIndex index = new StructuredIndex();
-        LetterGroup lg = new LetterGroup("a", "", "", null);
-        index.add(lg);
-        lg = new LetterGroup("b", "", "", null);
-        index.add(lg);
+        index.defineLetterGroup("a");
+        index.defineLetterGroup("b");
 
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();
@@ -143,8 +137,8 @@ public class StructuredIndexTest {
     public final void testWrite4() throws Exception {
 
         StructuredIndex index = new StructuredIndex();
-        LetterGroup lg = new LetterGroup("a", "", "", null);
-        index.add(lg);
+        index.defineLetterGroup("a");
+        index.defineLetterGroup("b");
         Entry entry =
                 new Entry(new String[]{"abc"}, "Abc", new PageReference() {
 
@@ -158,9 +152,6 @@ public class StructuredIndexTest {
                         return "234";
                     }
                 });
-
-        lg = new LetterGroup("b", "", "", null);
-        index.add(lg);
 
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();

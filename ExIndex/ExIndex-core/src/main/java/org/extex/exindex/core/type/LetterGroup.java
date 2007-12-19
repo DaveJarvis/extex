@@ -32,7 +32,7 @@ import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a letter group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,72 +46,31 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>after</tt> contains the ...
+     * The field <tt>after</tt> contains the the letter groups preceding this
+     * one.
      */
     private List<LetterGroup> after = new ArrayList<LetterGroup>();
 
     /**
-     * The field <tt>before</tt> contains the ...
+     * The field <tt>before</tt> contains the letter groups following this
+     * one. This value is cleared after the collecting phase.
      */
     private List<LetterGroup> before = new ArrayList<LetterGroup>();
 
     /**
-     * The field <tt>list</tt> contains the ...
-     */
-    private List<String> prefixes;
-
-    /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the letter group.
      */
     private String name;
 
     /**
      * Creates a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public LetterGroup(String name) {
 
         super();
         this.name = name;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the letter group
-     * @param before
-     * @param after
-     * @param prefixes
-     */
-    public LetterGroup(String name, String before, String after,
-            List<String> prefixes) {
-
-        super();
-        this.name = name;
-        // this.before = before;
-        // this.after = after;
-        this.prefixes = prefixes;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param g
-     */
-    protected void addAfter(LetterGroup g) {
-
-        after.add(g);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param g
-     */
-    protected void addBefore(LetterGroup g) {
-
-        before.add(g);
     }
 
     /**
@@ -121,8 +80,8 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
      */
     public void after(LetterGroup g) {
 
-        addAfter(g);
-        g.addBefore(this);
+        after.add(g);
+        g.before.add(this);
     }
 
     /**
@@ -206,15 +165,15 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
             stream.print(after);
             stream.print("\"");
         }
-        if (prefixes != null && !prefixes.isEmpty()) {
-            stream.print(" :prefixes (");
-            for (String s : prefixes) {
-                stream.print("\"");
-                stream.print(s);
-                stream.print("\" ");
-            }
-            stream.print(")");
-        }
+        // if (prefixes != null && !prefixes.isEmpty()) {
+        // stream.print(" :prefixes (");
+        // for (String s : prefixes) {
+        // stream.print("\"");
+        // stream.print(s);
+        // stream.print("\" ");
+        // }
+        // stream.print(")");
+        // }
         stream.print(")");
     }
 
@@ -225,8 +184,8 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
      */
     public void store(Indexentry entry) {
 
-        // TODO gene: store unimplemented
-        throw new RuntimeException("unimplemented");
+        // TODO
+        // add(entry);
     }
 
     /**

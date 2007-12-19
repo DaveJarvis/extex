@@ -50,7 +50,7 @@ public class LMarkupLocrefLayer extends LFunction {
 
         super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
                 Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_STRING(":class"),//
+                Arg.OPT_STRING(":class", ""),//
                 Arg.OPT_LNUMBER(":layer"),//
                 Arg.OPT_LNUMBER(":depth")});
     }

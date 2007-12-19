@@ -51,7 +51,7 @@ public class LMarkupLetterGroup extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":group"),//
+        super(name, new Arg[]{Arg.OPT_STRING(":group", ""),//
                 Arg.OPT_LSTRING(":open"),//
                 Arg.OPT_LSTRING(":close"),//
                 Arg.OPT_LSTRING(":open-head"),//

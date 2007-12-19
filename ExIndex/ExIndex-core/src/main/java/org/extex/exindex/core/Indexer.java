@@ -149,10 +149,10 @@ public class Indexer extends LEngine {
         defun("define-crossref-class", //
             new LDefineCrossrefClass("define-crossref-class"));
         LDefineLetterGroup letterGroups =
-                new LDefineLetterGroup("define-letter-group");
+                new LDefineLetterGroup("define-letter-group", index);
         defun("define-letter-group", letterGroups);
         defun("define-letter-groups", //
-            new LDefineLetterGroups("define-letter-groups", letterGroups));
+            new LDefineLetterGroups("define-letter-groups", index));
         LDefineLocationClass locationClass =
                 new LDefineLocationClass("define-location-class");
         defun("define-location-class", //
@@ -285,8 +285,11 @@ public class Indexer extends LEngine {
      * @param logger the logger
      * 
      * @throws IOException in case of an I/O error
+     * @throws LException in case of an error
      */
-    protected void markup(Writer writer, Logger logger) throws IOException {
+    protected void markup(Writer writer, Logger logger)
+            throws IOException,
+                LException {
 
         logger.info(LOCALIZER.format("StartMarkup"));
         if (writer == null) {
@@ -427,6 +430,8 @@ public class Indexer extends LEngine {
             }
         }
         logger.info(LOCALIZER.format("StartPreprocess"));
+
+        index.sorted();
 
         for (Indexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {

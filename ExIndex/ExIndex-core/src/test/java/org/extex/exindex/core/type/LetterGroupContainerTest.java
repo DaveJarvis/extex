@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xindy;
+package org.extex.exindex.core.type;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -25,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.extex.exindex.core.type.LetterGroup;
 import org.extex.exindex.lisp.exception.LException;
 import org.junit.Test;
 
@@ -35,32 +34,31 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineLetterGroupTest {
+public class LetterGroupContainerTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#defineLetterGroup(java.lang.String)}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#defineLetterGroup(java.lang.String)}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testDefineLetterGroup() throws Exception {
 
-        new LDefineLetterGroup("define-letter-group");
+        new LetterGroupContainer();
         assertTrue(true);
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted00() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         List<LetterGroup> sorted = container.sorted();
         assertNotNull(sorted);
         assertEquals(0, sorted.size());
@@ -68,15 +66,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted10() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         container.defineLetterGroup("a");
         List<LetterGroup> sorted = container.sorted();
         assertNotNull(sorted);
@@ -85,15 +82,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testSorted1Loop1() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         ga.after(ga);
         container.sorted();
@@ -101,15 +97,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testSorted1Loop2() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         ga.after(gb);
@@ -119,15 +114,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testSorted1Loop3() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup gc = container.defineLetterGroup("c");
@@ -139,15 +133,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted200() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         container.defineLetterGroup("a");
         container.defineLetterGroup("b");
         List<LetterGroup> sorted = container.sorted();
@@ -159,15 +152,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted201() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         ga.after(gb);
@@ -180,15 +172,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted202() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup ga = container.defineLetterGroup("a");
         gb.after(ga);
@@ -201,15 +192,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted203() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         gb.after(ga);
@@ -222,15 +212,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted300() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         container.defineLetterGroup("a");
         container.defineLetterGroup("b");
         container.defineLetterGroup("c");
@@ -244,15 +233,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted301() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         container.defineLetterGroup("c");
@@ -267,15 +255,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted302() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup gc = container.defineLetterGroup("c");
@@ -291,15 +278,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted303() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup gc = container.defineLetterGroup("c");
@@ -315,15 +301,14 @@ public class LDefineLetterGroupTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineLetterGroup#sorted()}.
+     * {@link org.extex.exindex.core.xindy.LetterGroupContainer#sorted()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testSorted303Repeat() throws Exception {
 
-        LDefineLetterGroup container =
-                new LDefineLetterGroup("define-letter-group");
+        LetterGroupContainer container = new LetterGroupContainer();
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup gc = container.defineLetterGroup("c");

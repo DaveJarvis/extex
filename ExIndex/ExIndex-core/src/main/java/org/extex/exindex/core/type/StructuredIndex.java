@@ -22,11 +22,11 @@ package org.extex.exindex.core.type;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Writer;
-import java.util.ArrayList;
 
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.Indexentry;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -36,13 +36,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
-
-    /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
+public class StructuredIndex extends LetterGroupContainer implements LValue {
 
     /**
      * Creates a new object.
@@ -50,24 +44,6 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     public StructuredIndex() {
 
         super();
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param entry the entry to analyze
-     * @return
-     */
-    private LetterGroup computeLetterGroup(Indexentry entry) {
-
-        String[] mk = entry.getKey().getMergeKey();
-        if (mk == null) {
-            // TODO gene: computeLetterGroup unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        // TODO gene: computeLetterGroup unimplemented
-        return null;
     }
 
     /**
@@ -82,7 +58,7 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Store an index entry.
      * 
      * @param entry the entry to store
      * 
@@ -90,7 +66,12 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
      */
     public void store(Indexentry entry) throws IndexerException {
 
-        LetterGroup group = computeLetterGroup(entry);
+        String[] mk = entry.getKey().getMergeKey();
+        if (mk == null || mk.length == 0) {
+            // TODO gene: computeLetterGroup unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+        LetterGroup group = findLetterGroup(mk[0]);
         if (group == null) {
             throw new IndexerException("", "", LocalizerFactory.getLocalizer(
                 getClass()).format("NoPropoperLetterGroup", entry.toString()));
@@ -99,21 +80,23 @@ public class StructuredIndex extends ArrayList<LetterGroup> implements LValue {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the structured index according to the definition of the parameters.
      * 
      * @param writer the writer
      * @param interpreter the interpreter
      * 
      * @throws IOException in case of an I/O error
+     * @throws LException in case of an error
      */
     public void write(Writer writer, LInterpreter interpreter)
-            throws IOException {
+            throws IOException,
+                LException {
 
         boolean first = true;
         interpreter.writeString(writer, "markup:index-open");
 
         interpreter.writeString(writer, "markup:letter-group-list-open");
-        for (LetterGroup group : this) {
+        for (LetterGroup group : sorted()) {
             if (first) {
                 first = false;
             } else {

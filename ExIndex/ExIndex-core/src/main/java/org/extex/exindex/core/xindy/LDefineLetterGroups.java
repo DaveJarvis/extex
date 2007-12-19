@@ -20,6 +20,7 @@
 package org.extex.exindex.core.xindy;
 
 import org.extex.exindex.core.type.LetterGroup;
+import org.extex.exindex.core.type.LetterGroupContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -40,7 +41,7 @@ public class LDefineLetterGroups extends LFunction {
     /**
      * The field <tt>container</tt> contains the ...
      */
-    private LDefineLetterGroup container;
+    private LetterGroupContainer container;
 
     /**
      * Creates a new object.
@@ -52,7 +53,7 @@ public class LDefineLetterGroups extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineLetterGroups(String name, LDefineLetterGroup container)
+    public LDefineLetterGroups(String name, LetterGroupContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 

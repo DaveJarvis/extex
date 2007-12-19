@@ -351,7 +351,9 @@ public class ExIndex extends Indexer {
      *      java.util.logging.Logger)
      */
     @Override
-    protected void markup(Writer writer, Logger logger) throws IOException {
+    protected void markup(Writer writer, Logger logger)
+            throws IOException,
+                LException {
 
         logger.log(Level.INFO, LOCALIZER.format((output == null
                 ? "GeneratingOutput"
