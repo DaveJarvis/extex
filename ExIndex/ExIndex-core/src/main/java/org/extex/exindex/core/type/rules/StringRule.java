@@ -17,16 +17,16 @@
  *
  */
 
-package org.extex.exindex.core.rules;
-
+package org.extex.exindex.core.type.rules;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This rule replaces a constant string with a constant replacement text. This
+ * is the most simple case of a rule.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RegexRule extends Rule {
+public class StringRule extends Rule {
 
     /**
      * Creates a new object.
@@ -35,43 +35,41 @@ public class RegexRule extends Rule {
      * @param replacement the replacement text
      * @param again the indicator for repetition
      */
-    public RegexRule(String pattern, String replacement, boolean again) {
+    public StringRule(String pattern, String replacement, boolean again) {
 
         super(pattern, replacement, again);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.rules.Rule#apply(StringBuilder, int)
-     */
-    @Override
-    public int apply(StringBuilder word, int index) {
-
-        // TODO gene: apply unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("#Rule(\"");
-        sb.append(getPattern());
-        sb.append("\" \"");
-        sb.append(getReplacement());
-        sb.append("\"");
-        if (isAgain()) {
-            sb.append(" :again");
+        if (again && replacement.indexOf(pattern) >= 0) {
+            throw new RuntimeException("infinite loop detected");
         }
-        sb.append(" :regex)");
-        // TODO gene: toString unimplemented
-        return sb.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.rules.Rule#apply(StringBuilder, int)
+     */
+    @Override
+    public int apply(StringBuilder sb, int index) {
+
+        int ret = -1;
+        String p = getPattern();
+        int len = p.length();
+
+        do {
+            if (index + len > sb.length()) {
+                return ret;
+            }
+
+            for (int i = 0; i < len; i++) {
+                if (sb.charAt(index + i) != p.charAt(i)) {
+                    return ret;
+                }
+            }
+            sb.replace(index, index + len, getReplacement());
+            ret = index + len;
+        } while (isAgain());
+
+        return ret;
     }
 
 }

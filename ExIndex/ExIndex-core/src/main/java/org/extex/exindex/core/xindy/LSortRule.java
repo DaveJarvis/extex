@@ -19,8 +19,8 @@
 
 package org.extex.exindex.core.xindy;
 
-import org.extex.exindex.core.rules.RegexRule;
-import org.extex.exindex.core.rules.Rule;
+import org.extex.exindex.core.type.rules.RegexRule;
+import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;

@@ -23,6 +23,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.type.rules.StringRule;
 import org.junit.Test;
 
 /**
@@ -35,7 +37,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test(expected = RuntimeException.class)
     public final void testApply01() {
@@ -45,7 +47,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply02() {
@@ -55,7 +57,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply11() {
@@ -67,7 +69,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply12() {
@@ -79,7 +81,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply13() {
@@ -91,7 +93,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply14() {
@@ -104,7 +106,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply15() {
@@ -117,7 +119,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply16() {
@@ -130,7 +132,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply24() {
@@ -143,7 +145,7 @@ public class StringRuleTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.rules.StringRule#apply(java.lang.StringBuilder, int)}.
+     * {@link org.extex.exindex.core.type.rules.StringRule#apply(java.lang.StringBuilder, int)}.
      */
     @Test
     public final void testApply25() {

@@ -17,16 +17,16 @@
  *
  */
 
-package org.extex.exindex.core.rules;
+package org.extex.exindex.core.type.rules;
+
 
 /**
- * This rule replaces a constant string with a constant replacement text. This
- * is the most simple case of a rule.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StringRule extends Rule {
+public class RegexRule extends Rule {
 
     /**
      * Creates a new object.
@@ -35,41 +35,43 @@ public class StringRule extends Rule {
      * @param replacement the replacement text
      * @param again the indicator for repetition
      */
-    public StringRule(String pattern, String replacement, boolean again) {
+    public RegexRule(String pattern, String replacement, boolean again) {
 
         super(pattern, replacement, again);
-        if (again && replacement.indexOf(pattern) >= 0) {
-            throw new RuntimeException("infinite loop detected");
-        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.rules.Rule#apply(StringBuilder, int)
+     * @see org.extex.exindex.core.type.rules.Rule#apply(StringBuilder, int)
      */
     @Override
-    public int apply(StringBuilder sb, int index) {
+    public int apply(StringBuilder word, int index) {
 
-        int ret = -1;
-        String p = getPattern();
-        int len = p.length();
+        // TODO gene: apply unimplemented
+        throw new RuntimeException("unimplemented");
+    }
 
-        do {
-            if (index + len > sb.length()) {
-                return ret;
-            }
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
 
-            for (int i = 0; i < len; i++) {
-                if (sb.charAt(index + i) != p.charAt(i)) {
-                    return ret;
-                }
-            }
-            sb.replace(index, index + len, getReplacement());
-            ret = index + len;
-        } while (isAgain());
-
-        return ret;
+        StringBuilder sb = new StringBuilder();
+        sb.append("#Rule(\"");
+        sb.append(getPattern());
+        sb.append("\" \"");
+        sb.append(getReplacement());
+        sb.append("\"");
+        if (isAgain()) {
+            sb.append(" :again");
+        }
+        sb.append(" :regex)");
+        // TODO gene: toString unimplemented
+        return sb.toString();
     }
 
 }

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.rules;
+package org.extex.exindex.core.type.rules;
 
 /**
  * This is th abstarct base class for rules.

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.writer;
+package org.extex.exindex.core.makeindex.writer;
 
 import java.io.IOException;
 import java.util.List;

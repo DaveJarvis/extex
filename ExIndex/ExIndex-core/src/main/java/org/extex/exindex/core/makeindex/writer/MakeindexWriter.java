@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.writer;
+package org.extex.exindex.core.makeindex.writer;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -64,7 +64,7 @@ public class MakeindexWriter implements IndexWriter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.writer.IndexWriter#write(java.util.List,
+     * @see org.extex.exindex.core.makeindex.writer.IndexWriter#write(java.util.List,
      *      java.util.logging.Logger, java.lang.String)
      */
     public int[] write(List<Entry> entries, Logger logger, String startPage)
