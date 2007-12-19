@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.exception;
+package org.extex.exindex.core.makeindex.exceptions;
 
 import java.io.IOException;
 

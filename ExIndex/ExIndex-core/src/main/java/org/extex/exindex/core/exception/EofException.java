@@ -19,15 +19,13 @@
 
 package org.extex.exindex.core.exception;
 
-import java.io.IOException;
-
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals the unexpected end of file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EofException extends IOException {
+public class EofException extends RawIndexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -43,7 +41,7 @@ public class EofException extends IOException {
      */
     public EofException(String resource, int line) {
 
-        super();
+        super(resource, Integer.toString(line));
     }
 
     /**
@@ -55,6 +53,7 @@ public class EofException extends IOException {
      */
     public EofException(String resource, int line, char c) {
 
+        super(resource, Integer.toString(line));
         // TODO gene: EofException constructor unimplemented
     }
 

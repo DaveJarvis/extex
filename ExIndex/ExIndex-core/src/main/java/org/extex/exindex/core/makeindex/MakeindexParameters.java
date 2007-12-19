@@ -27,8 +27,8 @@ import java.util.Map;
 
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
-import org.extex.exindex.core.exception.MissingSymbolException;
-import org.extex.exindex.core.exception.UnknownAttributeException;
+import org.extex.exindex.core.makeindex.exceptions.MissingSymbolException;
+import org.extex.exindex.core.makeindex.exceptions.UnknownAttributeException;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;

@@ -17,8 +17,9 @@
  *
  */
 
-package org.extex.exindex.core.exception;
+package org.extex.exindex.core.makeindex.exceptions;
 
+import org.extex.exindex.core.exception.RawIndexException;
 
 /**
  * TODO gene: missing JavaDoc.
