@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.exindex.core.exception.EofException;
-import org.extex.exindex.core.exception.MissingException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.MissingSymbolException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.lisp.LInterpreter;
@@ -217,7 +217,7 @@ public final class MakeindexLoader {
                     throw (c < 0 //
                             ? new EofException(resource, r.getLineNumber(),
                                 '\'')
-                            : new MissingException(resource, r.getLineNumber(),
+                            : new RawIndexMissingCharException(resource, r.getLineNumber(),
                                 (char) c, '\''));
                 }
                 return new LChar((char) cc);

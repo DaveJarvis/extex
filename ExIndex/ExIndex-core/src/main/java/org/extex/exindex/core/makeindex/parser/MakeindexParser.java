@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
-import org.extex.exindex.core.exception.MissingException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
@@ -63,7 +63,7 @@ public class MakeindexParser implements Parser {
 
         int c = r.read();
         if (c != ec) {
-            throw new MissingException(resource, r.getLineNumber(), (char) c,
+            throw new RawIndexMissingCharException(resource, r.getLineNumber(), (char) c,
                 ec);
         }
     }

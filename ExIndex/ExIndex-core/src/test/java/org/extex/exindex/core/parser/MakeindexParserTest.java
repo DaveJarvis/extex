@@ -26,7 +26,7 @@ import static org.junit.Assert.assertNull;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.exception.MissingException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
@@ -238,7 +238,7 @@ public class MakeindexParserTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = MissingException.class)
+    @Test(expected = RawIndexMissingCharException.class)
     public final void testError01() throws Exception {
 
         LInterpreter interpreter = new Indexer();

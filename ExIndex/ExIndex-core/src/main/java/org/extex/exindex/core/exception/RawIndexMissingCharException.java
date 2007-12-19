@@ -19,8 +19,6 @@
 
 package org.extex.exindex.core.exception;
 
-import java.io.EOFException;
-
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -30,7 +28,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingException extends EOFException {
+public class RawIndexMissingCharException extends RawIndexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -39,40 +37,18 @@ public class MissingException extends EOFException {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>c</tt> contains the character encountered.
-     */
-    private char c;
-
-    /**
-     * The field <tt>ec</tt> contains the expected character.
-     */
-    private char ec;
-
-    /**
      * Creates a new object.
      * 
-     * @param line
-     * @param resource
+     * @param resource the current resource
+     * @param line the current line
      * @param c the character found
      * @param ec the expected character
      */
-    public MissingException(String resource, int line, char c, char ec) {
+    public RawIndexMissingCharException(String resource, int line, char c, char ec) {
 
-        super();
-        this.c = c;
-        this.ec = ec;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            Character.toString(c), Character.toString(ec));
+        super(resource, Integer.toString(line), LocalizerFactory.getLocalizer(
+            RawIndexMissingCharException.class).format("Message", Character.toString(c),
+            Character.toString(ec)));
     }
 
 }

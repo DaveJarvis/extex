@@ -26,13 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
-import org.extex.exindex.core.exception.MissingException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.Key;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
+import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LString;
@@ -179,7 +179,7 @@ public class MakeindexParser implements RawIndexParser {
 
         int c = reader.read();
         if (c != ec) {
-            throw new MissingException(resource, reader.getLineNumber(),
+            throw new RawIndexMissingCharException(resource, reader.getLineNumber(),
                 (char) c, ec);
         }
     }
@@ -201,8 +201,7 @@ public class MakeindexParser implements RawIndexParser {
         LValue v = interpreter.get(var);
         if (v == null) {
             return value;
-        }
-        if (!(v instanceof LChar)) {
+        } else if (!(v instanceof LChar)) {
             throw exception("CharExpected", v.toString());
         }
 
@@ -226,8 +225,7 @@ public class MakeindexParser implements RawIndexParser {
         LValue v = interpreter.get(var);
         if (v == null) {
             return value;
-        }
-        if (!(v instanceof LString)) {
+        } else if (!(v instanceof LString)) {
             throw exception("StringExpected", v.toString());
         }
 
@@ -335,7 +333,8 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create an object consisting of the required parts. The parameters are put
+     * in place and the index entry is returned.
      * 
      * @param arg the argument
      * @param locref the page
