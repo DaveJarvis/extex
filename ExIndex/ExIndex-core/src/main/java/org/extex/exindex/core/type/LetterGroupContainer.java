@@ -42,7 +42,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class LetterGroupContainer {
 
     /**
-     * The field <tt>index</tt> contains the ...
+     * The field <tt>index</tt> contains the index for accessing the prefixes.
      */
     private Map<Character, SortedSet<String>> index =
             new HashMap<Character, SortedSet<String>>();
@@ -68,9 +68,9 @@ public class LetterGroupContainer {
     private List<LetterGroup> sorted;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add a prefix to the index.
      * 
-     * @param name
+     * @param name the prefix
      */
     private void addToIndex(String name) {
 
@@ -100,8 +100,8 @@ public class LetterGroupContainer {
     public LetterGroup defineLetterGroup(String name) {
 
         if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory
-                .getLocalizer(getClass()).format("TooLate"));
+            throw new RuntimeException(LocalizerFactory.getLocalizer(
+                LetterGroupContainer.class).format("TooLate"));
         }
         LetterGroup group = groups.get(name);
         if (group == null) {
@@ -114,10 +114,14 @@ public class LetterGroupContainer {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Find a letter group for a given key. The letter group is found by
+     * inspecting the prefixes and choosing the larges one by which the key is
+     * started.
      * 
-     * @param key
-     * @return
+     * @param key the key
+     * 
+     * @return the associated letter group or <code>null</code> if none is
+     *         found
      */
     public LetterGroup findLetterGroup(String key) {
 
@@ -168,8 +172,8 @@ public class LetterGroupContainer {
             sb.append(" > ").append(g.getName());
         }
 
-        throw new LException(LocalizerFactory.getLocalizer(getClass()).format(
-            "CycleDetected", sb.toString()));
+        throw new LException(LocalizerFactory.getLocalizer(
+            LetterGroupContainer.class).format("CycleDetected", sb.toString()));
     }
 
     /**
@@ -192,8 +196,8 @@ public class LetterGroupContainer {
             throws LException {
 
         if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory
-                .getLocalizer(getClass()).format("TooLate"));
+            throw new RuntimeException(LocalizerFactory.getLocalizer(
+                LetterGroupContainer.class).format("TooLate"));
         }
 
         LetterGroup g = null;
@@ -212,8 +216,9 @@ public class LetterGroupContainer {
                 groups.put(name, g);
                 addToIndex(name);
             } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("InconsistenzPrefix", name, gn.getName()));
+                throw new LException(LocalizerFactory.getLocalizer(
+                    LetterGroupContainer.class).format("InconsistenzPrefix",
+                    name, gn.getName()));
             }
         }
         for (LValue val : prefixes) {
@@ -223,8 +228,9 @@ public class LetterGroupContainer {
                 groups.put(prefix, g);
                 addToIndex(prefix);
             } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("InconsistenzPrefix", name, gn.getName()));
+                throw new LException(LocalizerFactory.getLocalizer(
+                    LetterGroupContainer.class).format("InconsistenzPrefix",
+                    name, gn.getName()));
             }
         }
         return g;
