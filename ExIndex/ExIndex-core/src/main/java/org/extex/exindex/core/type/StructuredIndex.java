@@ -66,15 +66,19 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
      */
     public void store(RawIndexentry entry) throws IndexerException {
 
-        String[] mk = entry.getMergeKey();
-        if (mk == null || mk.length == 0) {
-            // TODO gene: computeLetterGroup unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        LetterGroup group = findLetterGroup(mk[0]);
+        String[] sortKey = entry.getSortKey();
+        LetterGroup group =
+                (sortKey != null && sortKey.length != 0
+                        ? findLetterGroup(sortKey[0])
+                        : null);
+
         if (group == null) {
-            throw new IndexerException("", "", LocalizerFactory.getLocalizer(
-                getClass()).format("NoPropoperLetterGroup", entry.toString()));
+            group = getLetterGroup("default");
+            if (group == null) {
+                throw new IndexerException("", "", LocalizerFactory
+                    .getLocalizer(getClass()).format("NoPropoperLetterGroup",
+                        entry.toString()));
+            }
         }
         group.store(entry);
     }

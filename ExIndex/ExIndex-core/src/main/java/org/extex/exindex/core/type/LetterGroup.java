@@ -20,7 +20,6 @@
 package org.extex.exindex.core.type;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
+public class LetterGroup extends ArrayList<IndexEntry> {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -63,6 +62,11 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     private String name;
 
     /**
+     * The field <tt>rawEntries</tt> contains the ...
+     */
+    private List<RawIndexentry> rawEntries = new ArrayList<RawIndexentry>();
+
+    /**
      * Creates a new object.
      * 
      * @param name the name
@@ -85,9 +89,9 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Remove a letter group from the after list.
      * 
-     * @param letterGroup
+     * @param letterGroup the letter group to remove
      */
     protected void clearAfter(LetterGroup letterGroup) {
 
@@ -146,46 +150,13 @@ public class LetterGroup extends ArrayList<IndexEntry> implements LValue {
     }
 
     /**
-     * {@inheritDoc}
+     * Store a raw entry.
      * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        stream.print("#LetterGroup(\"");
-        stream.print(name);
-        stream.print("\"");
-        if (before != null && !"".equals(before)) {
-            stream.print(" :before \"");
-            stream.print(before);
-            stream.print("\"");
-        }
-        if (after != null && !"".equals(after)) {
-            stream.print(" :after \"");
-            stream.print(after);
-            stream.print("\"");
-        }
-        // if (prefixes != null && !prefixes.isEmpty()) {
-        // stream.print(" :prefixes (");
-        // for (String s : prefixes) {
-        // stream.print("\"");
-        // stream.print(s);
-        // stream.print("\" ");
-        // }
-        // stream.print(")");
-        // }
-        stream.print(")");
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param entry
+     * @param entry the raw entry to store
      */
     public void store(RawIndexentry entry) {
 
-        // TODO
-        // add(entry);
+        rawEntries.add(entry);
     }
 
     /**

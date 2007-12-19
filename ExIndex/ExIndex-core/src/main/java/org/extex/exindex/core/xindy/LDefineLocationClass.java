@@ -22,8 +22,8 @@ package org.extex.exindex.core.xindy;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.type.page.PageReference;
-import org.extex.exindex.core.type.page.VarPage;
+import org.extex.exindex.core.type.alphabet.LocationClass;
+import org.extex.exindex.core.type.alphabet.VarLocationClass;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -36,6 +36,35 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the adapter for the L system to define a location class.
+ * 
+ * <doc command="define-location-class">
+ * <h3>The Command <tt>define-location-class</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-location-class</tt> can be used to define a location
+ * class.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group location-class-name  layer-list
+ *     [:min-range-length number]
+ *     [:hierdepth depth]
+ *     [:var]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (define-location-class "pages" ("arabic-numbers"))
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * 
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -51,8 +80,8 @@ public class LDefineLocationClass extends LFunction {
      * The field <tt>map</tt> contains the mapping from names to page
      * references.
      */
-    private Map<String, PageReference> map =
-            new HashMap<String, PageReference>();
+    private Map<String, LocationClass> map =
+            new HashMap<String, LocationClass>();
 
     /**
      * Creates a new object.
@@ -74,12 +103,13 @@ public class LDefineLocationClass extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add a location class to the ones defined. An already defined location
+     * class for the same key is silently overwritten.
      * 
      * @param key the key
      * @param value the value
      */
-    public void add(String key, PageReference value) {
+    public void add(String key, LocationClass value) {
 
         map.put(key, value);
     }
@@ -102,7 +132,7 @@ public class LDefineLocationClass extends LFunction {
             LList layerList, Long minRangeLength, Long hierdepth, Boolean var)
             throws LException {
 
-        PageReference pr;
+        LocationClass pr;
 
         if (!var.booleanValue()) {
             if (layerList.size() != 1) {
@@ -120,7 +150,7 @@ public class LDefineLocationClass extends LFunction {
             throw new LException(LocalizerFactory.getLocalizer(getClass())
                 .format("VarAndMinRange"));
         } else {
-            VarPage varPage = new VarPage();
+            VarLocationClass varPage = new VarLocationClass();
             pr = varPage;
             boolean sep = false;
             for (LValue val : layerList) {
@@ -136,7 +166,7 @@ public class LDefineLocationClass extends LFunction {
                     if (sep) {
                         varPage.add(s);
                     } else {
-                        PageReference p = map.get(s);
+                        LocationClass p = map.get(s);
                         if (s == null) {
                             throw new LException(LocalizerFactory.getLocalizer(
                                 getClass()).format("UnknownClass", s));
@@ -163,7 +193,7 @@ public class LDefineLocationClass extends LFunction {
      * 
      * @return the location class or <code>null</code>
      */
-    public PageReference lookup(String name) {
+    public LocationClass lookup(String name) {
 
         return map.get(name);
     }

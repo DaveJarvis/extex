@@ -33,6 +33,33 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define letter groups.
  * 
+ * <doc command="define-letter-groups">
+ * <h3>The Command <tt>define-letter-groups</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-letter-groups</tt> can be used to define a set of
+ * letter groups with an order in one batch. This command provides an
+ * abbreviation of several invocations of the command
+ * <tt>define-letter-group</tt>. Thus the major concepts can be found there.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group letter-groups-list)
+ * </pre>
+ * 
+ * <p>
+ * The command has one arguments which are described now.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-groups ("A" "B" "C" "D"))
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * 
+ * </doc>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

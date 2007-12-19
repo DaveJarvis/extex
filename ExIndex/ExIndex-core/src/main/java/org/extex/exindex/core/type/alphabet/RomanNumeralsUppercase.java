@@ -21,6 +21,7 @@ package org.extex.exindex.core.type.alphabet;
 
 import java.io.PrintStream;
 
+import org.extex.exindex.core.type.page.LowerRomanPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -30,7 +31,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RomanNumeralsUppercase implements LValue, Alphabet, PageReference {
+public class RomanNumeralsUppercase implements LValue, Alphabet, LocationClass {
 
     /**
      * Creates a new object.
@@ -44,22 +45,14 @@ public class RomanNumeralsUppercase implements LValue, Alphabet, PageReference {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.page.PageReference#getEncap()
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(String,
+     *      java.lang.String)
      */
-    public String getEncap() {
+    public PageReference match(String encap, String s) {
 
-        // TODO gene: getEncap unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.page.PageReference#getPage()
-     */
-    public String getPage() {
-
-        // TODO gene: getPage unimplemented
+        if (s.matches("[IVXCM]+")) {
+            return new LowerRomanPage(encap, s);
+        }
         return null;
     }
 

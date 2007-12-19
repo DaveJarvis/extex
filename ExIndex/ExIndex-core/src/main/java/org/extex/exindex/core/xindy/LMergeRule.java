@@ -34,10 +34,36 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
+ * <doc command="merge-rule">
+ * <h3>The Command <tt>merge-rule</tt></h3>
+ * 
+ * <p>
+ * The command <tt>merge-rule</tt> can be used to add a merge rule.
+ * </p>
+ * 
+ * <pre>
+ *  (merge-rule pattern replacement
+ *     [:again]
+ *     [:string | :bregex | :eregex]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (merge-rule "abc" "ABC")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LRuleSet extends LFunction {
+public class LMergeRule extends LFunction {
 
     /**
      * The field <tt>STRING</tt> contains the bit mask for the type :string.
@@ -68,7 +94,7 @@ public class LRuleSet extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LRuleSet(String name)
+    public LMergeRule(String name)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -77,26 +103,6 @@ public class LRuleSet extends LFunction {
                 Arg.OPT_BOOLEAN(":string"), //
                 Arg.OPT_BOOLEAN(":bregexp"), //
                 Arg.OPT_BOOLEAN(":eregexp")});
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param sb
-     * @param i
-     * @return
-     */
-    private int apply(StringBuilder sb, int i) {
-
-        for (Rule r : rules) {
-            int next = r.apply(sb, i);
-            if (next < 0) {
-                // try next rule
-            } else {
-                return next;
-            }
-        }
-        return i + 1;
     }
 
     /**
@@ -115,6 +121,27 @@ public class LRuleSet extends LFunction {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Apply all rules at a certain position.
+     * 
+     * @param sb the target string builder
+     * @param start the staring index
+     * 
+     * @return the next index
+     */
+    private int apply(StringBuilder sb, int start) {
+
+        for (Rule r : rules) {
+            int next = r.apply(sb, start);
+            if (next < 0) {
+                // try next rule
+            } else {
+                return next;
+            }
+        }
+        return start + 1;
     }
 
     /**

@@ -55,6 +55,13 @@ public class LetterGroupContainer {
             new HashMap<String, LetterGroup>();
 
     /**
+     * The field <tt>prefixMap</tt> contains the mapping from prefixes to
+     * letter groups.
+     */
+    private Map<String, LetterGroup> prefixMap =
+            new HashMap<String, LetterGroup>();
+
+    /**
      * The field <tt>sorted</tt> contains the collected letter groups. This
      * list is cleared during sorting.
      */
@@ -62,7 +69,7 @@ public class LetterGroupContainer {
 
     /**
      * The field <tt>sorted</tt> contains the sorted letter groups. When this
-     * field is not <code>null</code> then no further letter gropus can be
+     * field is not <code>null</code> then no further letter groups can be
      * added.
      */
     private List<LetterGroup> sorted;
@@ -70,12 +77,12 @@ public class LetterGroupContainer {
     /**
      * Add a prefix to the index.
      * 
-     * @param name the prefix
+     * @param prefix the prefix
      */
-    private void addToIndex(String name) {
+    private void addToIndex(String prefix) {
 
         Character c =
-                (name.equals("") ? null : Character.valueOf(name.charAt(0)));
+                (prefix.equals("") ? null : Character.valueOf(prefix.charAt(0)));
         SortedSet<String> set = index.get(c);
         if (set == null) {
             set = new TreeSet<String>(new Comparator<String>() {
@@ -87,7 +94,7 @@ public class LetterGroupContainer {
             });
             index.put(c, set);
         }
-        set.add(name);
+        set.add(prefix);
     }
 
     /**
@@ -98,6 +105,28 @@ public class LetterGroupContainer {
      * @return the letter group for name
      */
     public LetterGroup defineLetterGroup(String name) {
+
+        if (sorted != null) {
+            throw new RuntimeException(LocalizerFactory.getLocalizer(
+                LetterGroupContainer.class).format("TooLate"));
+        }
+        LetterGroup group = groups.get(name);
+        if (group == null) {
+            group = new LetterGroup(name);
+            groups.put(name, group);
+            letterGroups.add(group);
+        }
+        return group;
+    }
+
+    /**
+     * Search for a letter group and define it if it is not defined already.
+     * 
+     * @param name the name of the letter group to get
+     * 
+     * @return the letter group for name
+     */
+    public LetterGroup defineLetterGroupAndIndex(String name) {
 
         if (sorted != null) {
             throw new RuntimeException(LocalizerFactory.getLocalizer(
@@ -132,7 +161,7 @@ public class LetterGroupContainer {
         if (list != null) {
             for (String prefix : list) {
                 if (key.startsWith(prefix)) {
-                    return groups.get(prefix);
+                    return prefixMap.get(prefix);
                 }
             }
         }
@@ -177,6 +206,19 @@ public class LetterGroupContainer {
     }
 
     /**
+     * Search for a letter group and return.
+     * 
+     * @param name the name of the letter group to get
+     * 
+     * @return the letter group for name or <code>null</code> if none was
+     *         found
+     */
+    public LetterGroup getLetterGroup(String name) {
+
+        return groups.get(name);
+    }
+
+    /**
      * Add links to all prefixes and return the equivalence class used. The
      * equivalence class is determined from the name and the prefixes. If for
      * one a letter group is known then this one is used. Otherwise a new one is
@@ -214,7 +256,6 @@ public class LetterGroupContainer {
             LetterGroup gn = groups.get(name);
             if (gn == null) {
                 groups.put(name, g);
-                addToIndex(name);
             } else if (g != gn) {
                 throw new LException(LocalizerFactory.getLocalizer(
                     LetterGroupContainer.class).format("InconsistenzPrefix",

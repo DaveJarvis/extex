@@ -33,6 +33,57 @@ import org.extex.resource.ResourceFinder;
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
+ * <doc command="searchpath">
+ * <h3>The Command <tt>searchpath</tt></h3>
+ * 
+ * <p>
+ * The command <tt>searchpath</tt> can be used to manipulate the search path.
+ * </p>
+ * 
+ * <pre>
+ *  (searchpath 
+ *     [path | path-list]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (searchpath ".:/usr/local/lib/texmf/xindy:")
+ * </pre>
+ * 
+ * <p>
+ * 
+ * </p>
+ * 
+ * <pre>
+ *  (searchpath ("." "/usr/local/lib/texmf/xindy" :default))
+ * </pre>
+ * 
+ * <p>
+ * 
+ * </p>
+ * 
+ * <pre>
+ *  (searchpath ("." :last "/usr/local/lib/texmf/xindy" :default))
+ * </pre>
+ * 
+ * <p>
+ * 
+ * </p>
+ * 
+ * <p>
+ * If a path element starts with a tilde (~) then this character is replaced by
+ * the home directory of the current user. This is consistent with tilde
+ * expansion in some Unix shells.
+ * </p>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

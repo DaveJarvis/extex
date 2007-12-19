@@ -71,7 +71,7 @@ import org.extex.exindex.core.xindy.LMarkupLocrefList;
 import org.extex.exindex.core.xindy.LMarkupRange;
 import org.extex.exindex.core.xindy.LMarkupTrace;
 import org.extex.exindex.core.xindy.LMergeTo;
-import org.extex.exindex.core.xindy.LRuleSet;
+import org.extex.exindex.core.xindy.LMergeRule;
 import org.extex.exindex.core.xindy.LSearchpath;
 import org.extex.exindex.core.xindy.LSortRule;
 import org.extex.exindex.core.xindy.LUseRuleSet;
@@ -118,7 +118,7 @@ public class Indexer extends LEngine {
     /**
      * The field <tt>mergeRule</tt> contains the shortcut to the merge rule.
      */
-    private LRuleSet mergeRule;
+    private LMergeRule mergeRule;
 
     /**
      * The field <tt>sortRule</tt> contains the shortcut to the sort rules.
@@ -140,6 +140,8 @@ public class Indexer extends LEngine {
 
         super();
         index = new StructuredIndex();
+        index.defineLetterGroup("default");
+
         entries = new ArrayList<RawIndexentry>();
 
         alphabets = new LDefineAlphabet("define-alphabet");
@@ -165,7 +167,7 @@ public class Indexer extends LEngine {
             new LSearchpath("searchpath"));
         sortRule = new LSortRule("sort-rule");
         defun("sort-rule", sortRule);
-        mergeRule = new LRuleSet("merge-rule");
+        mergeRule = new LMergeRule("merge-rule");
         defun("merge-rule", mergeRule);
         defun("merge-to", //
             new LMergeTo("merge-to"));
@@ -228,6 +230,7 @@ public class Indexer extends LEngine {
         alphabets.add("ALPHA", new AlphaUppercase());
 
         setq("indexer:charset-raw", new LString("utf-8"));
+
     }
 
     /**

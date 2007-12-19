@@ -19,23 +19,55 @@
 
 package org.extex.exindex.core.xindy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
+ * <doc command="sort-rule">
+ * <h3>The Command <tt>sort-rule</tt></h3>
+ * 
+ * <p>
+ * The command <tt>sort-rule</tt> can be used to add a sort rule.
+ * </p>
+ * 
+ * <pre>
+ *  (sort-rule pattern replacement
+ *     [:again]
+ *     [:run level]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (sort-rule "abc" "ABC")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LSortRule extends LFunction {
+
+    /**
+     * The field <tt>rules</tt> contains the list of rules to apply.
+     */
+    private List<List<Rule>> rules = new ArrayList<List<Rule>>();
 
     /**
      * Creates a new object.
@@ -58,8 +90,9 @@ public class LSortRule extends LFunction {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param in
-     * @return
+     * @param in the input string
+     * 
+     * @return the result
      */
     public String apply(String in) {
 
@@ -76,7 +109,8 @@ public class LSortRule extends LFunction {
      * @param replacement the replacement text
      * @param again the optional indicator to restart the replacement cycle from
      *        start
-     * @param run
+     * @param run the run number to add this rule to; it defaults to 0 if not
+     *        given
      * 
      * @return <tt>null</tt>
      * 
@@ -86,19 +120,17 @@ public class LSortRule extends LFunction {
             String replacement, Boolean again, Long run)
             throws LSettingConstantException {
 
-        LSymbol symbol = LSymbol.get("sort-rules-" + run.toString());
-        LValue sr = interpreter.get(symbol);
-        LList sortRules;
-        if (sr == null) {
-            sortRules = new LList();
-            interpreter.setq(symbol, sortRules);
-        } else {
-            sortRules = (LList) sr;
-        }
+        int level = (run == null ? 0 : run.intValue());
         Rule rule = new RegexRule(pattern, replacement, again.booleanValue());
-
-        // sortRules.add(rule);
+        for (int i = rules.size(); i < level; i++) {
+            rules.add(null);
+        }
+        List<Rule> list = rules.get(level);
+        if (list == null) {
+            list = new ArrayList<Rule>();
+            rules.add(level, list);
+        }
+        list.add(rule);
         return null;
     }
-
 }

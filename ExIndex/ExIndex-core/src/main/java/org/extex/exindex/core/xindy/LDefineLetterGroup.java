@@ -32,13 +32,98 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define a letter group.
  * 
+ * <doc command="define-letter-group">
+ * <h3>The Command <tt>define-letter-group</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-letter-group</tt> can be used to define a letter
+ * group or modify the attributes of an already defined letter group.
+ * </p>
+ * <p>
+ * A letter group is a collection of index entries for which the sort key starts
+ * with one of the prefixes of the letter group.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group letter-group-name
+ *     [:prefixes list-of-prefixes]
+ *     [:before before-letter-group-name]
+ *     [:after after-letter-group-name]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group "A")
+ * </pre>
+ * 
+ * <p>
+ * Name is the first argument of the command. This argument is a string. In the
+ * simplest form the name is used as prefix as well since no prefix is given.
+ * Thus this command is equivalent to the following one:
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group "A" :prefixes ("A"))
+ * </pre>
+ * 
+ * <p>
+ * The list-of-prefixes is a list of strings which denote the prefixes which are
+ * mapped into this letter group. This means that the longest prefix which
+ * matches at the beginning of the sort key determines the letter group to be
+ * used. If no letter group is found then the letter group named
+ * <tt>default</tt> is used.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group "A" :before "B")
+ * </pre>
+ * 
+ * <p>
+ * The parameter <tt>:before</tt> places a constraint on the order. This means
+ * that the letter group A has to precede the letter group B in any case. There
+ * many also be some other letter groups in between.
+ * </p>
+ * 
+ * <pre>
+ *  (define-letter-group "B" :after "A")
+ * </pre>
+ * 
+ * <p>
+ * The parameter <tt>:after</tt> places a constraint on the order. This means
+ * that the letter group B has to follow the letter group A in any case. There
+ * many again be some other letter groups in between.
+ * </p>
+ * 
+ * <p>
+ * When the letter groups are sorted it may turn out that the constraints are
+ * impossible to solve because a cyclic order is requested. This leads to an
+ * error message. Thus watch out for cycles in the constraints.
+ * </p>
+ * 
+ * <p>
+ * When the letter groups are sorted the constraints may nit be sufficient to
+ * determine a unique linear order for the letter groups. In this case the
+ * system makes some additional assumptions to determine a linear order. Beware,
+ * the result is not well-defined &ndash; except that all constrains given are
+ * honored.
+ * </p>
+ * 
+ * </doc>
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LDefineLetterGroup extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the ...
+     * The field <tt>container</tt> contains the the container to store the
+     * information in.
      */
     private LetterGroupContainer container;
 
@@ -46,6 +131,7 @@ public class LDefineLetterGroup extends LFunction {
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container to store the information in
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
@@ -55,8 +141,10 @@ public class LDefineLetterGroup extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.STRING, Arg.OPT_STRING(":before", null),
-                Arg.OPT_STRING(":after", null), Arg.OPT_LIST(":prefixes")});
+        super(name, new Arg[]{Arg.STRING, //
+                Arg.OPT_STRING(":before", null),//
+                Arg.OPT_STRING(":after", null), //
+                Arg.OPT_LIST(":prefixes")});
         this.container = container;
     }
 
