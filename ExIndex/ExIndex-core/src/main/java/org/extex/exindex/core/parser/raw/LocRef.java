@@ -77,9 +77,7 @@ public class LocRef implements RefSpec {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\"");
-        sb.append(location.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
-        sb.append("\"");
+        StringUtils.putPrintable(sb, location);
         return sb.toString();
     }
 

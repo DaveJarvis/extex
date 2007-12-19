@@ -33,9 +33,9 @@ public class RawIndexentry {
     private Key key;
 
     /**
-     * The field <tt>attr</tt> contains the attribute.
+     * The field <tt>attribute</tt> contains the attribute.
      */
-    private String attr;
+    private String attribute;
 
     /**
      * The field <tt>ref</tt> contains the page reference.
@@ -45,15 +45,18 @@ public class RawIndexentry {
     /**
      * Creates a new object.
      * 
-     * @param key
-     * @param attr
-     * @param ref
+     * @param key the key; It can not be <code>null</code>
+     * @param attribute the attribute or <code>null</code>
+     * @param ref the reference
      */
-    public RawIndexentry(Key key, String attr, RefSpec ref) {
+    public RawIndexentry(Key key, String attribute, RefSpec ref) {
 
         super();
+        if (key == null || ref == null) {
+            throw new IllegalArgumentException();
+        }
         this.key = key;
-        this.attr = attr;
+        this.attribute = attribute;
         this.ref = ref;
     }
 
@@ -64,7 +67,7 @@ public class RawIndexentry {
      */
     public String getAttr() {
 
-        return attr;
+        return attribute;
     }
 
     /**
@@ -87,13 +90,6 @@ public class RawIndexentry {
         return ref;
     }
 
-    private void tos(StringBuilder sb, String s) {
-
-        sb.append("\"");
-        sb.append(s.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
-        sb.append("\"");
-    }
-
     /**
      * {@inheritDoc}
      * 
@@ -112,9 +108,9 @@ public class RawIndexentry {
             toStringAppendList(sb, " :key ", key.getMainKey());
             toStringAppendList(sb, " :print ", key.getPrintKey());
         }
-        if (attr != null) {
+        if (attribute != null) {
             sb.append(" :attr ");
-            tos(sb, attr);
+            StringUtils.putPrintable(sb, attribute);
         }
         if (ref instanceof XRef) {
             sb.append(" :xref ");
@@ -156,7 +152,7 @@ public class RawIndexentry {
             } else {
                 sb.append(" ");
             }
-            tos(sb, s);
+            StringUtils.putPrintable(sb, s);
         }
         sb.append(")");
     }

@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a raw cross reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
@@ -71,11 +71,10 @@ public class XRef implements RefSpec {
         for (String s : refs) {
             if (first) {
                 first = false;
-                sb.append("\"");
             } else {
-                sb.append(" \"");
+                sb.append(" ");
             }
-            sb.append(s.replaceAll("\\\\", "\\\\").replaceAll("\"", "\\\""));
+            StringUtils.putPrintable(sb, s);
             sb.append("\"");
         }
         sb.append(")");
