@@ -27,10 +27,10 @@ import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
+import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.Entry;
-import org.extex.exindex.core.type.Index;
 import org.extex.exindex.core.type.page.AbstractPage;
 
 /**
@@ -72,7 +72,7 @@ public class MakeindexParser implements Parser {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.makeindex.parser.Parser#load(java.io.Reader,
-     *      java.lang.String, org.extex.exindex.core.type.Index, Collator)
+     *      java.lang.String, org.extex.exindex.core.makeindex.Index, Collator)
      */
     public int[] load(Reader reader, String resource, Index index,
             Collator collator) throws IOException {

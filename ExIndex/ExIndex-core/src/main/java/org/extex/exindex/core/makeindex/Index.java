@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.makeindex;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -25,9 +25,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import org.extex.exindex.core.makeindex.MakeindexParameters;
-import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.pages.PageProcessor;
+import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
