@@ -20,7 +20,7 @@
 package org.extex.exindex.core.parser.raw;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a container for the raw index entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
@@ -129,6 +129,16 @@ public class RawIndexentry {
     }
 
     /**
+     * Getter for sort key.
+     * 
+     * @return the sort key
+     */
+    public String[] getSortKey() {
+
+        return sortKey;
+    }
+
+    /**
      * Setter for the merge key.
      * 
      * @param mergeKey the merge key
@@ -190,7 +200,7 @@ public class RawIndexentry {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Append a list of strings to a string builder.
      * 
      * @param sb the buffer
      * @param tag the initial tag
