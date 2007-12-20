@@ -1,0 +1,60 @@
+%%*****************************************************************************
+%% $Id: overview-diagram.tex,v 0.00 2007/12/20 23:06:12 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{graphicx,pgf,pgfshade}
+
+\newcommand\doc[1]{%
+\begin{picture}(60,30)
+  \put(0,0){\line(1,0){60}}
+  \put(0,0){\line(0,1){30}}
+  \put(0,30){\line(1,0){50}}
+  \put(60,0){\line(0,1){20}}
+  \put(50,20){\line(0,1){10}}
+  \put(50,20){\line(1,0){10}}
+  \put(60,20){\line(-1,1){10}}
+  \put(30,15){\makebox(0,0){\parbox{60pt}{\centering\scriptsize #1}}}
+\end{picture}}
+
+\newcommand\component[1]{%
+\begin{picture}(80,40)
+  \put(0,40){\line(0,-1){4}\line(1,0){80}\line(0,-1){4}}
+  \put(0,0){\framebox(80,36){\parbox{80pt}{\centering #1}}}
+  {\linethickness{2.2pt}
+    \put(2,-1.1){\line(1,0){80}}
+    \put(81,-2){\line(0,1){40}}
+  }
+\end{picture}}
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sf\bfseries\selectfont
+
+\begin{picture}(400,100)(0,20)
+  \put(0,0){\component{Document\\Preparation\\System}}
+  \put(200,0){\component{Index\\Processor}}
+  \put(110,25){\doc{Raw \\Index}}
+  \put(110,-15){\doc{Structured\\Index}}
+  \put(210,60){\doc{Index\\Style}}
+  \put(10,60){\doc{Document\\Source}}
+  \put(10,-50){\doc{Document}}
+
+  \thicklines
+  \put(40,60){\vector(0,-1){20}}
+  \put(240,60){\vector(0,-1){20}}
+  \put(40,0){\vector(0,-1){20}}
+
+  \put(80.5,24){\vector(2,1){29.5}}
+  \put(110,2){\vector(-2,1){29.5}}
+  \put(170,40){\vector(2,-1){29.5}}
+  \put(200,17){\vector(-2,-1){29.5}}
+\end{picture}
+
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 

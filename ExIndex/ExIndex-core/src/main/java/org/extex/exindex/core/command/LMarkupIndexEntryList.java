@@ -68,13 +68,12 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * <dl>
  * <dt>markup:index-entry-list-<i>depth</i>-open</dt>
- * <dd>...</dd>
+ * <dd>The opening markup for a certain depth.</dd>
  * <dt>markup:index-entry-list-<i>depth</i>-close</dt>
- * <dd>...</dd>
+ * <dd>The closing markup for a certain depth.</dd>
  * <dt>markup:index-entry-list-<i>depth</i>-sep</dt>
- * <dd>...</dd>
+ * <dd>The separating markup for a certain depth.</dd>
  * </dl>
- * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

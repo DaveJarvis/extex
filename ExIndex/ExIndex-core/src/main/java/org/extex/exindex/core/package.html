@@ -22,7 +22,46 @@
   <meta name="version" content="$Revision:0 $"/>
  </head>
  <body>
-  This package contains the ExIndex core.
+  This package contains the ExIndex core. ExIndex is an index processor modeled
+  after the <a href="http://www.xindy.org">Xindy</a> index processor.
+
+  <doc section="Overview">
+
+  <h2>Components and Data Flow</h2>  
+
+  <p>
+   Index processing has the task to prepare an index. We consider index
+   processing in the context of a document preparation system. The author
+   prepares the document source in a way which allows it the document
+   preparation system to extract the markup of the raw index entries. Now the
+   index processor comes into play. It takes the raw index entries and
+   arranges things in a structured index. This procedure is controlled by an
+   index style. The structured index might be used bay the document preparation
+   system to include it into the final document.
+  </p>  
+  <div style="float:right;">
+    <img src="doc-files/overview-diagram.png"/>
+    <center>
+    Figure: Overview
+    </center>
+  </div>
+  <p>
+   This procedure is illustrated in the figure. This figure shows the source
+   and intermediate results. Our view leaves it open where those data structures
+   reside. In the classical scenario of TeX the intermediate data structures are
+   stored in files. Nevertheless this needs not be true in any case. 
+  </p>  
+  <p>
+   Form a user's point of view the index entries are marked in the document
+   source. The construction of an index is a rather demanding task. Thus it
+   needs a human intelligence at the beginning. Any attempt to automatically
+   extract index entries without markup leads in general to a rather poor
+   index.
+  </p>  
+
+
+  </doc>
+
 
  </body>
 </html>

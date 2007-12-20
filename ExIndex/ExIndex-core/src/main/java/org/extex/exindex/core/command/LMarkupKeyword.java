@@ -29,6 +29,9 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a keyword.
  * 
+ * <doc command="markup-keyword">
+ * <h3>The Command <tt>markup-keyword</tt></h3>
+ * 
  * <p>
  * The command <tt>markup-keyword</tt> can be used to specify the markup for
  * keywords.
@@ -64,11 +67,10 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * <dl>
  * <dt>markup:keyword-<i>depth</i>-open</dt>
- * <dd>...</dd>
+ * <dd>The opening markup for a certain depth.</dd>
  * <dt>markup:keyword-<i>depth</i>-close</dt>
- * <dd>...</dd>
+ * <dd>The closing markup for a certain depth.</dd>
  * </dl>
- * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

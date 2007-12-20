@@ -55,6 +55,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} ")
  * </pre>
  * 
+ * <p>
+ * ...
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} ")
+ * </pre>
+ * 
  * TODO documentation incomplete
  * 
  * </doc>
@@ -69,11 +77,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * <dl>
  * <dt>markup:index-open</dt>
- * <dd>...</dd>
+ * <dd>The opening markup for the index.</dd>
  * <dt>markup:index-close</dt>
- * <dd>...</dd>
+ * <dd>The closing markup for the index.</dd>
  * <dt>markup:index-hierdepth</dt>
- * <dd>...</dd>
+ * <dd>The number of requested hierarchy levels for the entries</dd>
  * </dl>
  * 
  * 
