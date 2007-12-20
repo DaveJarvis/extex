@@ -48,17 +48,29 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * The command has one arguments which are described now.
+ * The command has one arguments which is described now. The argument is a list
+ * of strings. Those strings are the names of the letter groups. The order of
+ * the list is translated into corresponding <tt>:after</tt> declarations.
  * </p>
  * 
  * <pre>
  *  (define-letter-groups ("A" "B" "C" "D"))
  * </pre>
  * 
- * TODO documentation incomplete
+ * <p>
+ * This definition is equivalent to the following sequence of commands.
+ * </p>
  * 
+ * <pre>
+ *  (define-letter-group "A")
+ *  (define-letter-group "B" :after "A")
+ *  (define-letter-group "C" :after "B")
+ *  (define-letter-group "D" :after "C")
+ * </pre>
  * 
  * </doc>
+ * 
+ * @see LDefineLetterGroup
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
