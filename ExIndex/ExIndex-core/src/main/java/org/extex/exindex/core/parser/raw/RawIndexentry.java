@@ -79,9 +79,9 @@ public class RawIndexentry {
     }
 
     /**
-     * Getter for attr.
+     * Getter for the attribute.
      * 
-     * @return the attr
+     * @return the attribute
      */
     public String getAttr() {
 

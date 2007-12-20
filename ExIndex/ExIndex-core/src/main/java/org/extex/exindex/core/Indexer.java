@@ -26,7 +26,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.exception.IndexerException;
@@ -35,7 +37,6 @@ import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.RefSpec;
-import org.extex.exindex.core.parser.raw.XRef;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
 import org.extex.exindex.core.type.alphabet.AlphaUppercase;
@@ -70,8 +71,8 @@ import org.extex.exindex.core.xindy.LMarkupLocrefLayerList;
 import org.extex.exindex.core.xindy.LMarkupLocrefList;
 import org.extex.exindex.core.xindy.LMarkupRange;
 import org.extex.exindex.core.xindy.LMarkupTrace;
-import org.extex.exindex.core.xindy.LMergeTo;
 import org.extex.exindex.core.xindy.LMergeRule;
+import org.extex.exindex.core.xindy.LMergeTo;
 import org.extex.exindex.core.xindy.LSearchpath;
 import org.extex.exindex.core.xindy.LSortRule;
 import org.extex.exindex.core.xindy.LUseRuleSet;
@@ -105,6 +106,13 @@ public class Indexer extends LEngine {
     private List<RawIndexentry> entries;
 
     /**
+     * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
+     * to check that a key is in use.
+     */
+    private Map<String[], Boolean> entryIndex =
+            new HashMap<String[], Boolean>();
+
+    /**
      * The field <tt>index</tt> contains the index.
      */
     private StructuredIndex index;
@@ -126,6 +134,11 @@ public class Indexer extends LEngine {
     private LSortRule sortRule;
 
     /**
+     * The field <tt>crossrefClass</tt> contains the cross-reference classes.
+     */
+    private LDefineCrossrefClass crossrefClass;
+
+    /**
      * Creates a new object.
      * 
      * @throws NoSuchMethodException in case of an undefined method in a
@@ -139,6 +152,19 @@ public class Indexer extends LEngine {
                 LSettingConstantException {
 
         super();
+        init();
+    }
+
+    /**
+     * Initialize the L system.
+     * 
+     * @throws NoSuchMethodException in case of an undefined method in a
+     *         function definition
+     * @throws SecurityException in case of an security problem
+     * @throws LSettingConstantException should not happen
+     */
+    private void init() throws NoSuchMethodException, LSettingConstantException {
+
         index = new StructuredIndex();
         index.defineLetterGroup("default");
 
@@ -148,8 +174,8 @@ public class Indexer extends LEngine {
         defun("define-alphabet", alphabets);
         defun("define-attributes", //
             new LDefineAttributes("define-attributes"));
-        defun("define-crossref-class", //
-            new LDefineCrossrefClass("define-crossref-class"));
+        crossrefClass = new LDefineCrossrefClass("define-crossref-class");
+        defun("define-crossref-class", crossrefClass);
         LDefineLetterGroup letterGroups =
                 new LDefineLetterGroup("define-letter-group", index);
         defun("define-letter-group", letterGroups);
@@ -230,21 +256,18 @@ public class Indexer extends LEngine {
         alphabets.add("ALPHA", new AlphaUppercase());
 
         setq("indexer:charset-raw", new LString("utf-8"));
-
     }
 
     /**
-     * Validate a crossref entry.
+     * Find an index entry with the given key.
      * 
-     * @param entry the entry to check
-     * @param logger the logger
+     * @param refs the key
      * 
-     * @return <code>true</code> if everything is correct
+     * @return Boolean.TRUE iff the key is in use
      */
-    private boolean checkCrossref(RawIndexentry entry, Logger logger) {
+    public Object lookup(String[] refs) {
 
-        // TODO gene: checkCrossref unimplemented
-        return true;
+        return entryIndex.get(refs);
     }
 
     /**
@@ -354,16 +377,9 @@ public class Indexer extends LEngine {
         }
 
         RefSpec ref = entry.getRef();
-        if (ref != null && !ref.check(openPages, logger)) {
+        if (ref != null
+                && !ref.check(logger, entry, this, crossrefClass, openPages)) {
             return false;
-        }
-        if (ref instanceof XRef) {
-            if (!checkCrossref(entry, logger)) {
-                // TODO gene: process unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        } else {
-            // TODO
         }
 
         return preComputeKeys(entry);
@@ -425,6 +441,7 @@ public class Indexer extends LEngine {
                         break;
                     }
                     entries.add(entry);
+                    entryIndex.put(entry.getMainKey(), Boolean.TRUE);
                 }
             } finally {
                 parser.close();

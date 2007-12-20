@@ -22,11 +22,14 @@ package org.extex.exindex.core.parser.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+
 /**
  * This interface describes an open location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public class OpenLocRef extends LocRef {
 
@@ -43,14 +46,16 @@ public class OpenLocRef extends LocRef {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.LocRef#check(java.util.List,
-     *      java.util.logging.Logger)
+     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
+     *      org.extex.exindex.core.parser.raw.RawIndexentry,
+     *      Indexer, org.extex.exindex.core.xindy.LDefineCrossrefClass, java.util.List)
      */
     @Override
-    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+    public boolean check(Logger logger, RawIndexentry entry,
+            Indexer index, LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
 
         openPages.add(this);
-        return super.check(openPages, logger);
+        return super.check(logger, entry, index, crossrefClass, openPages);
     }
 
 }

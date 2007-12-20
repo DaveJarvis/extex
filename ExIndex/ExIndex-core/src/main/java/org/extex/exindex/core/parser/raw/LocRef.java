@@ -22,6 +22,9 @@ package org.extex.exindex.core.parser.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+
 /**
  * This interface describes a location specification.
  * 
@@ -49,10 +52,12 @@ public class LocRef implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.List,
-     *      java.util.logging.Logger)
+     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
+     *      org.extex.exindex.core.parser.raw.RawIndexentry, Indexer,
+     *      org.extex.exindex.core.xindy.LDefineCrossrefClass, java.util.List)
      */
-    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
 
         // TODO gene: check unimplemented
         return true;

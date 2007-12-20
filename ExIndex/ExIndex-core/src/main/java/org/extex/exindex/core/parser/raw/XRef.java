@@ -22,6 +22,11 @@ package org.extex.exindex.core.parser.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
  * This class represents a raw cross reference.
  * 
@@ -29,6 +34,13 @@ import java.util.logging.Logger;
  * @version $Revision:6617 $
  */
 public class XRef implements RefSpec {
+
+    /**
+     * The constant <tt>LOCALIZER</tt> contains the localizer for obtaining
+     * messages.
+     */
+    private static final Localizer LOCALIZER =
+            LocalizerFactory.getLocalizer(XRef.class);
 
     /**
      * The field <tt>refs</tt> contains the reference list.
@@ -48,12 +60,25 @@ public class XRef implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.List,
-     *      java.util.logging.Logger)
+     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
+     *      org.extex.exindex.core.parser.raw.RawIndexentry, Indexer,
+     *      org.extex.exindex.core.xindy.LDefineCrossrefClass, java.util.List)
      */
-    public boolean check(List<OpenLocRef> openPages, Logger logger) {
+    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
 
-        // TODO gene: check unimplemented
+        String clazz = entry.getAttr();
+        Boolean unverified = crossrefClass.lookup(clazz);
+        if (unverified == null) {
+            logger.warning(LOCALIZER.format("UndefinedCrossrefClass", clazz));
+            return false;
+        } else if (unverified.booleanValue()) {
+            return true;
+        }
+        if (index.lookup(refs) != null) {
+            logger.warning(LOCALIZER.format("UndefinedCrossref", toString()));
+            return false;
+        }
         return true;
     }
 

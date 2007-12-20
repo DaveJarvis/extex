@@ -22,22 +22,29 @@ package org.extex.exindex.core.parser.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+
 /**
  * This interface describes a reference specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6617 $
  */
 public interface RefSpec {
 
     /**
      * Check the reference.
      * 
-     * @param openPages
      * @param logger the logger
+     * @param entry the current index entry
+     * @param index the index for cross-reference lookup
+     * @param crossrefClass the container for cross-reference classes
+     * @param openPages the list of open pages
      * 
      * @return <code>true</code> iff everything is ok
      */
-    boolean check(List<OpenLocRef> openPages, Logger logger);
+    boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages);
 
 }
