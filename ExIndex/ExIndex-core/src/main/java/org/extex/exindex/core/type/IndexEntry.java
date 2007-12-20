@@ -27,7 +27,7 @@ import java.util.List;
 import org.extex.exindex.lisp.LInterpreter;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an index entry in the structured index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +35,8 @@ import org.extex.exindex.lisp.LInterpreter;
 public class IndexEntry extends ArrayList<IndexEntry> {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
@@ -83,7 +84,7 @@ public class IndexEntry extends ArrayList<IndexEntry> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write an index entry to a writer.
      * 
      * @param writer the writer
      * @param interpreter the interpreter
