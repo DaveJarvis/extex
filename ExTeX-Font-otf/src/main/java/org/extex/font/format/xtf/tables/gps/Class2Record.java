@@ -35,6 +35,11 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class Class2Record implements XMLWriterConvertible {
 
     /**
+     * The index.
+     */
+    private int idx;
+
+    /**
      * Positioning for first glyph-empty if ValueFormat1 = 0.
      */
     private ValueRecord value1;
@@ -48,20 +53,20 @@ public class Class2Record implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param posOffset The offset of the pos table (GSUB, GPOS).
      * @param xtfGlyph The glyph name.
+     * @param idx The index.
+     * @param valueFormat2 The format for the second glyph.
+     * @param valueFormat1 The format for the first glyph.
      * @throws IOException if a io-error occurred.
      */
-    public Class2Record(RandomAccessR rar, XtfGlyphName xtfGlyph)
+    public Class2Record(RandomAccessR rar, int posOffset,
+            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
             throws IOException {
 
-        // try {
-        // TODO mgn incomplete
-        // value1 = new ValueRecord(rar, xtfGlyph);
-        // value2 = new ValueRecord(rar, xtfGlyph);
-        // } catch (EOFException e) {
-        // // TODO mgn only for test
-        // e.printStackTrace();
-        // }
+        this.idx = idx;
+        value1 = new ValueRecord(rar, posOffset, xtfGlyph, valueFormat1);
+        value2 = new ValueRecord(rar, posOffset, xtfGlyph, valueFormat2);
     }
 
     /**
@@ -90,12 +95,9 @@ public class Class2Record implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("class2record");
-        if (value1 != null) {
-            value1.writeXML(writer);
-        }
-        if (value2 != null) {
-            value2.writeXML(writer);
-        }
+        writer.writeAttribute("id", idx);
+        value1.writeXML(writer);
+        value2.writeXML(writer);
         writer.writeEndElement();
     }
 }

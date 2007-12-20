@@ -109,10 +109,10 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.tables.gps.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
+     *      int, int, int, org.extex.font.format.xtf.tables.XtfGlyphName)
      */
-    public XtfLookupTable read(RandomAccessR rar, int type, int offset,
-            XtfGlyphName xtfGlyph) throws IOException {
+    public XtfLookupTable read(RandomAccessR rar, int posOffset, int type,
+            int offset, XtfGlyphName xtfGlyph) throws IOException {
 
         switch (type) {
             case XtfLookup.GSUB_1_SINGLE:

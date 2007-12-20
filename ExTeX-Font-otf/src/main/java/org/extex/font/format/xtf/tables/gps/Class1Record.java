@@ -40,19 +40,32 @@ public class Class1Record implements XMLWriterConvertible {
     private Class2Record[] class2RecordArray;
 
     /**
+     * The index.
+     */
+    private int idx;
+
+    /**
      * Creates a new object.
      * 
      * @param rar The input.
      * @param class2Count The class2count value.
+     * @param posOffset The offset of the pos table (GPOS, GSUB).
+     * @param idx The index.
+     * @param valueFormat2 The format for the second glyph.
+     * @param valueFormat1 The format for the first glyph.
      * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      */
-    public Class1Record(RandomAccessR rar, int class2Count, XtfGlyphName xtfGlyp)
+    public Class1Record(RandomAccessR rar, int posOffset, int class2Count,
+            XtfGlyphName xtfGlyp, int idx, int valueFormat1, int valueFormat2)
             throws IOException {
 
+        this.idx = idx;
         class2RecordArray = new Class2Record[class2Count];
         for (int i = 0; i < class2Count; i++) {
-            class2RecordArray[i] = new Class2Record(rar, xtfGlyp);
+            class2RecordArray[i] =
+                    new Class2Record(rar, posOffset, xtfGlyp, i, valueFormat1,
+                        valueFormat2);
         }
     }
 
@@ -71,7 +84,8 @@ public class Class1Record implements XMLWriterConvertible {
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("class1record");
+        writer.writeStartElement("class");
+        writer.writeAttribute("class", idx);
         for (int i = 0; i < class2RecordArray.length; i++) {
             class2RecordArray[i].writeXML(writer);
         }

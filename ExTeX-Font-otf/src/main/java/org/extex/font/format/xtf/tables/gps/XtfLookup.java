@@ -245,12 +245,13 @@ public class XtfLookup implements XMLWriterConvertible {
      * 
      * @param rar input
      * @param offset offset
+     * @param posOffset The offset of the pos table (GSUB, GPOS).
      * @param lookupFactory The factory for the lookup table.
      * @param index The index.
      * @param xtfGlyph The glyph name.
      * @throws IOException if an IO-error occurs
      */
-    public XtfLookup(RandomAccessR rar, int offset,
+    public XtfLookup(RandomAccessR rar, int posOffset, int offset,
             LookupTableFactory lookupFactory, int index, XtfGlyphName xtfGlyph)
             throws IOException {
 
@@ -268,8 +269,8 @@ public class XtfLookup implements XMLWriterConvertible {
         }
         for (int i = 0; i < subTableCount; i++) {
             subTables[i] =
-                    lookupFactory.read(rar, type, offset + subTableOffsets[i],
-                        xtfGlyph);
+                    lookupFactory.read(rar, posOffset, type, offset
+                            + subTableOffsets[i], xtfGlyph);
         }
     }
 

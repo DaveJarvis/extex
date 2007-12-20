@@ -408,10 +408,9 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
-         * Offset to Coverage table-from beginning of PairPos subtable-only the
-         * first glyph in each pair.
+         * coverage
          */
-        private int coverageOffset;
+        private XtfCoverage coverage;
 
         /**
          * Array of offsets to PairSet tables-from beginning of PairPos
@@ -435,16 +434,17 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
          * Create a new object.
          * 
          * @param rar the input
+         * @param posOffset The offset of the pos table (GPOS).
          * @param offset the offset
-         * @param xtfGlyp The glyph name.
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        PairTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyp)
-                throws IOException {
+        PairTableFormat1(RandomAccessR rar, int posOffset, int offset,
+                XtfGlyphName xtfGlyph) throws IOException {
 
-            super(FORMAT1, xtfGlyp);
+            super(FORMAT1, xtfGlyph);
 
-            coverageOffset = rar.readUnsignedShort();
+            int coverageOffset = rar.readUnsignedShort();
             valueFormat1 = rar.readUnsignedShort();
             valueFormat2 = rar.readUnsignedShort();
             int pairSetCount = rar.readUnsignedShort();
@@ -453,22 +453,16 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
                 pairSetOffsetArray[i] = rar.readUnsignedShort();
             }
 
+            rar.seek(offset + coverageOffset);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
+
             PairSetTable[] pairSetTable = new PairSetTable[pairSetCount];
             for (int i = 0; i < pairSetCount; i++) {
                 // TODO mgn: check offset : vorher getBaseoffset
-                pairSetTable[i] =
-                        new PairSetTable(rar, offset + pairSetOffsetArray[i]);
+
+                // pairSetTable[i] =
+                // new PairSetTable(rar, offset + pairSetOffsetArray[i]);
             }
-        }
-
-        /**
-         * Getter for coverageOffset.
-         * 
-         * @return the coverageOffset
-         */
-        public int getCoverageOffset() {
-
-            return coverageOffset;
         }
 
         /**
@@ -509,9 +503,11 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("pairtable");
-            writer.writeAttribute("coverageOffset", coverageOffset, 4);
             writer.writeAttribute("valueFormat1", valueFormat1);
             writer.writeAttribute("valueFormat2", valueFormat2);
+
+            coverage.writeXML(writer);
+
             writer.writeIntArrayAsEntries(pairSetOffsetArray);
             writer.writeEndElement();
         }
@@ -531,10 +527,20 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         private Class1Record[] class1RecordArray;
 
         /**
+         * ClassDefTable 1.
+         */
+        private ClassDefTable classDef1;
+
+        /**
          * Offset to ClassDef table-from beginning of PairPos subtable-for the
          * first glyph of the pair.
          */
         private int classDef1Offset;
+
+        /**
+         * ClassDefTable 1.
+         */
+        private ClassDefTable classDef2;
 
         /**
          * Offset to ClassDef table-from beginning of PairPos subtable-for the
@@ -543,10 +549,9 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         private int classDef2Offset;
 
         /**
-         * Offset to Coverage table-from beginning of PairPos subtable-for the
-         * first glyph of the pair.
+         * coverage
          */
-        private int coverageOffset;
+        private XtfCoverage coverage;
 
         /**
          * ValueRecord definition-for the first glyph of the pair-may be zero
@@ -565,15 +570,16 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
          * 
          * @param rar the input
          * @param offset the offset
+         * @param posOffset The offset of the pos table (GPOS, GSUB).
          * @param xtfGlyp The glyph name.
          * @throws IOException if an IO_error occurs
          */
-        PairTableFormat2(RandomAccessR rar, int offset, XtfGlyphName xtfGly)
-                throws IOException {
+        PairTableFormat2(RandomAccessR rar, int posOffset, int offset,
+                XtfGlyphName xtfGlyph) throws IOException {
 
-            super(FORMAT2, xtfGly);
+            super(FORMAT2, xtfGlyph);
 
-            coverageOffset = rar.readUnsignedShort();
+            int coverageOffset = rar.readUnsignedShort();
             valueFormat1 = rar.readUnsignedShort();
             valueFormat2 = rar.readUnsignedShort();
             classDef1Offset = rar.readUnsignedShort();
@@ -584,9 +590,21 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             class1RecordArray = new Class1Record[class1Count];
             for (int i = 0; i < class1Count; i++) {
                 class1RecordArray[i] =
-                        new Class1Record(rar, class2Count, xtfGly);
+                        new Class1Record(rar, posOffset, class2Count, xtfGlyph,
+                            i, valueFormat1, valueFormat2);
             }
 
+            rar.seek(offset + classDef1Offset);
+            classDef1 = ClassDefTable.newInstance(rar, xtfGlyph, 1);
+
+            rar.seek(offset + classDef2Offset);
+            classDef2 = ClassDefTable.newInstance(rar, xtfGlyph, 2);
+
+            rar.seek(offset + coverageOffset);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
+
+            classDef1.addClass0(coverage.getGlyphs());
+            classDef2.addClass0(coverage.getGlyphs());
         }
 
         /**
@@ -597,36 +615,6 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         public Class1Record[] getClass1RecordArray() {
 
             return class1RecordArray;
-        }
-
-        /**
-         * Getter for classDef1Offset.
-         * 
-         * @return the classDef1Offset
-         */
-        public int getClassDef1Offset() {
-
-            return classDef1Offset;
-        }
-
-        /**
-         * Getter for classDef2Offset.
-         * 
-         * @return the classDef2Offset
-         */
-        public int getClassDef2Offset() {
-
-            return classDef2Offset;
-        }
-
-        /**
-         * Getter for coverageOffset.
-         * 
-         * @return the coverageOffset
-         */
-        public int getCoverageOffset() {
-
-            return coverageOffset;
         }
 
         /**
@@ -659,15 +647,20 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             writer.writeStartElement("pairtable");
             writer.writeAttribute("format", getFormat());
 
-            writer.writeAttribute("coverageOffset", coverageOffset, 4);
             writer.writeAttribute("valueFormat1", valueFormat1);
             writer.writeAttribute("valueFormat2", valueFormat2);
-            writer.writeAttribute("classDef1Offset", classDef1Offset);
-            writer.writeAttribute("classDef2Offset", classDef2Offset);
+
+            // coverage.writeXML(writer);
+
+            classDef1.writeXML(writer);
+            classDef2.writeXML(writer);
+
+            writer.writeStartElement("classes");
+            writer.writeAttribute("count", class1RecordArray.length);
             for (int i = 0; i < class1RecordArray.length; i++) {
                 class1RecordArray[i].writeXML(writer);
             }
-
+            writer.writeEndElement();
             writer.writeEndElement();
         }
 
@@ -688,21 +681,22 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
      * 
      * @param rar the input
      * @param offset the offset
+     * @param posOffset The offset of the pos table (GPOS, GSUB).
      * @param xtfGlyp The glyph name.
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfGPOSPairTable newInstance(RandomAccessR rar, int offset,
-            XtfGlyphName xtfGlyp) throws IOException {
+    public static XtfGPOSPairTable newInstance(RandomAccessR rar,
+            int posOffset, int offset, XtfGlyphName xtfGlyp) throws IOException {
 
         XtfGPOSPairTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
 
         if (format == FORMAT1) {
-            s = new PairTableFormat1(rar, offset, xtfGlyp);
+            s = new PairTableFormat1(rar, posOffset, offset, xtfGlyp);
         } else if (format == FORMAT2) {
-            s = new PairTableFormat2(rar, offset, xtfGlyp);
+            s = new PairTableFormat2(rar, posOffset, offset, xtfGlyp);
         }
         return s;
     }

@@ -338,12 +338,12 @@ public class ValueRecord implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param rar The input.
-     * @param offset The offset of the pos table.
+     * @param posOffset The offset of the pos table.
      * @param xtfGlyph The glyph name.
      * @param valueFormat The ValueFormat.
      * @throws IOException if a io-error occurred.
      */
-    public ValueRecord(RandomAccessR rar, int offset, XtfGlyphName xtfGlyph,
+    public ValueRecord(RandomAccessR rar, int posOffset, XtfGlyphName xtfGlyph,
             int valueFormat) throws IOException {
 
         // this.xtfGlyph = xtfGlyph;
@@ -519,7 +519,7 @@ public class ValueRecord implements XMLWriterConvertible {
      * </p>
      * 
      * @param rar The input.
-     * @param offset The ofset.
+     * @param offset The offset.
      * @throws IOException if a IO-error occurred.
      */
     public void init(RandomAccessR rar, int offset) throws IOException {

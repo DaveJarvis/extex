@@ -94,11 +94,12 @@ public class XtfLookupList implements XMLWriterConvertible {
      * 
      * @param rar The input.
      * @param offset The offset.
+     * @param posOffset The offset of the pos table (GPOS, GSUB).
      * @param lookupFactory The factory for the lookup table.
      * @param xtfGlyph The glyph name.
      * @throws IOException if an IO-error occurs
      */
-    public XtfLookupList(RandomAccessR rar, int offset,
+    public XtfLookupList(RandomAccessR rar, int posOffset, int offset,
             LookupTableFactory lookupFactory, XtfGlyphName xtfGlyph)
             throws IOException {
 
@@ -112,7 +113,7 @@ public class XtfLookupList implements XMLWriterConvertible {
         }
         for (int i = 0; i < lookupCount; i++) {
             lookups[i] =
-                    new XtfLookup(rar, offset + lookupOffsets[i],
+                    new XtfLookup(rar, posOffset, offset + lookupOffsets[i],
                         lookupFactory, i, xtfGlyph);
         }
     }

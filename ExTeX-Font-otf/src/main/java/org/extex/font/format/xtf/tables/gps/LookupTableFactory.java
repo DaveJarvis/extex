@@ -33,6 +33,14 @@ import org.extex.util.file.random.RandomAccessR;
 public interface LookupTableFactory {
 
     /**
+     * Returns the name of the lookup type (The start index is 1!).
+     * 
+     * @param type The type.
+     * @return Returns the name of the lookup type.
+     */
+    String lookupType(int type);
+
+    /**
      * Read the LookupTable or <code>null</code>, if not found.
      * 
      * <p>
@@ -48,21 +56,14 @@ public interface LookupTableFactory {
      * </nl>
      * 
      * @param rar The input.
+     * @param posOffset The offset of the pos table (GPOS, GSUB).
      * @param type The table type.
      * @param offset The offset.
      * @param xtfGlyph The glyph name.
      * @throws IOException if a io-error occurred.
      * @return Returns the table.
      */
-    XtfLookupTable read(RandomAccessR rar, int type, int offset,
+    XtfLookupTable read(RandomAccessR rar, int posOffset, int type, int offset,
             XtfGlyphName xtfGlyph) throws IOException;
-
-    /**
-     * Returns the name of the lookup type (The start index is 1!).
-     * 
-     * @param type The type.
-     * @return Returns the name of the lookup type.
-     */
-    String lookupType(int type);
 
 }

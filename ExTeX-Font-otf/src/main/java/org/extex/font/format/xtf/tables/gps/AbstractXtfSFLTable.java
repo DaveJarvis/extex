@@ -97,46 +97,8 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
 
         // Lookup List
         lookupList =
-                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this,
-                    this);
-    }
-
-    /**
-     * Getter for featureList.
-     * 
-     * @return the featureList
-     */
-    public XtfFeatureList getFeatureList() {
-
-        return featureList;
-    }
-
-    /**
-     * @see org.extex.font.format.xtf.tables.gps.XtfFeatureList#getFeatureTag(int)
-     */
-    public String getFeatureTag(int idx) {
-
-        return featureList.getFeatureTag(idx);
-    }
-
-    /**
-     * Getter for lookupList.
-     * 
-     * @return the lookupList
-     */
-    public XtfLookupList getLookupList() {
-
-        return lookupList;
-    }
-
-    /**
-     * Getter for scriptList.
-     * 
-     * @return the scriptList
-     */
-    public XtfScriptList getScriptList() {
-
-        return scriptList;
+                new XtfLookupList(rar, de.getOffset(), de.getOffset()
+                        + lookupListOffset, this, this);
     }
 
     /**
@@ -186,6 +148,44 @@ public abstract class AbstractXtfSFLTable extends AbstractXtfTable
     public Script findScript(ScriptTag tag) {
 
         return scriptList.findScript(tag);
+    }
+
+    /**
+     * Getter for featureList.
+     * 
+     * @return the featureList
+     */
+    public XtfFeatureList getFeatureList() {
+
+        return featureList;
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.tables.gps.XtfFeatureList#getFeatureTag(int)
+     */
+    public String getFeatureTag(int idx) {
+
+        return featureList.getFeatureTag(idx);
+    }
+
+    /**
+     * Getter for lookupList.
+     * 
+     * @return the lookupList
+     */
+    public XtfLookupList getLookupList() {
+
+        return lookupList;
+    }
+
+    /**
+     * Getter for scriptList.
+     * 
+     * @return the scriptList
+     */
+    public XtfScriptList getScriptList() {
+
+        return scriptList;
     }
 
     /**
