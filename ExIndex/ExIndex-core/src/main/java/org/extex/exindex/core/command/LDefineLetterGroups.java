@@ -78,7 +78,7 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineLetterGroups extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the ...
+     * The field <tt>container</tt> contains the letter group container.
      */
     private LetterGroupContainer container;
 
@@ -101,7 +101,7 @@ public class LDefineLetterGroups extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take a list of letter groups and store it in the container.
      * 
      * @param interpreter the interpreter
      * @param list the list of letter group names
