@@ -30,6 +30,53 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
+ * <doc command="markup-locref-list">
+ * <h3>The Command <tt>markup-locref-list</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-locref-list</tt> can be used to specify the markup
+ * for location reference lists.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-locref-list
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:sep <i>separator</i>]
+ *     [:depth <i>level</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-locref-list :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:locref-list-<i>depth</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:locref-list-<i>depth</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:locref-list-<i>depth</i>-sep</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

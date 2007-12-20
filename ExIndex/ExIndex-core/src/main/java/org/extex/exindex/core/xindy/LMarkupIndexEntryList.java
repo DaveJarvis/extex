@@ -29,6 +29,53 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
+ * <doc command="markup-index-entry">
+ * <h3>The Command <tt>markup-index-entry</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-index-entry-list</tt> can be used to specify the
+ * markup for index entry lists.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index-entry-list
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:sep <i>separator</i>]
+ *     [:depth <i>level</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index-entry-list :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:index-entry-list-<i>depth</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:index-entry-list-<i>depth</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:index-entry-list-<i>depth</i>-sep</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -54,7 +101,7 @@ public class LMarkupIndexEntryList extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for an index entry list and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string
@@ -71,9 +118,9 @@ public class LMarkupIndexEntryList extends LFunction {
             throws LSettingConstantException {
 
         String d = depth.toString();
-        interpreter.setq("markup:indexentry-list-" + d + "-open", open);
-        interpreter.setq("markup:indexentry-list-" + d + "-close", close);
-        interpreter.setq("markup:indexentry-list-" + d + "-sep", sep);
+        interpreter.setq("markup:index-entry-list-" + d + "-open", open);
+        interpreter.setq("markup:index-entry-list-" + d + "-close", close);
+        interpreter.setq("markup:index-entry-list-" + d + "-sep", sep);
 
         return null;
     }

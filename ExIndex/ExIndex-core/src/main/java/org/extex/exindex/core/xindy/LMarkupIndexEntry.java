@@ -29,6 +29,50 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
+ * <doc command="markup-index-entry">
+ * <h3>The Command <tt>markup-index-entry</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-index-entry</tt> can be used to specify the markup
+ * for index entries.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index-entry
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:depth <i>level</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index-entry :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:index-entry-<i>depth</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:index-entry-<i>depth</i>-close</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -53,7 +97,7 @@ public class LMarkupIndexEntry extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for an index entry and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string
@@ -67,7 +111,7 @@ public class LMarkupIndexEntry extends LFunction {
     public LValue evaluate(LInterpreter interpreter, LString open,
             LString close, Long depth) throws LSettingConstantException {
 
-        String d = depth.toString();
+        String d = (depth == null ? "0" : depth.toString());
         interpreter.setq("markup:indexentry-" + d + "-open", open);
         interpreter.setq("markup:indexentry-" + d + "-close", close);
 

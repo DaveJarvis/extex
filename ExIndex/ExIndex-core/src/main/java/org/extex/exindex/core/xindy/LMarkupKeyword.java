@@ -27,7 +27,48 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to parse a keyword.
+ * 
+ * <p>
+ * The command <tt>markup-keyword</tt> can be used to specify the markup for
+ * keywords.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-keyword
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:depth <i>level</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-keyword :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:keyword-<i>depth</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:keyword-<i>depth</i>-close</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -53,7 +94,7 @@ public class LMarkupKeyword extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for a keyword and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string
@@ -67,7 +108,7 @@ public class LMarkupKeyword extends LFunction {
     public LValue evaluate(LInterpreter interpreter, LString open,
             LString close, Long depth) throws LSettingConstantException {
 
-        String d = depth.toString();
+        String d = (depth == null ? "0" : depth.toString());
         interpreter.setq("markup:keyword-" + d + "-open", open);
         interpreter.setq("markup:keyword-" + d + "-close", close);
 

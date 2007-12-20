@@ -42,7 +42,7 @@ import org.extex.resource.ResourceFinder;
  * 
  * <pre>
  *  (searchpath 
- *     [path | path-list]
+ *     [<i>path</i> | <i>path-list</i>]
  *  )
  * </pre>
  * 

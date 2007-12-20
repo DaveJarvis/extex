@@ -30,6 +30,56 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
+ * <doc command="markup-locref-layer">
+ * <h3>The Command <tt>markup-locref-layer</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-locref-layer</tt> can be used to specify the markup
+ * for location references layer.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-locref-layer
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:layer <i>layer</i>]
+ *     [:depth <i>level</i>]
+ *     [:class <i>class</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-locref-layer :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:locref-layer-<i>class</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:locref-layer-<i>class</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:locref-layer-<i>class</i>-layer</dt>
+ * <dd>...</dd>
+ * <dt>markup:locref-layer-<i>class</i>-depth</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -56,7 +106,7 @@ public class LMarkupLocrefLayer extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take a location reference layer and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string

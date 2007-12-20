@@ -30,6 +30,53 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define an attribute group list.
  * 
+ * <doc command="markup-attribute-group-list">
+ * <h3>The Command <tt>markup-attribute-group-list</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-attribute-group-list</tt> can be used to specify the
+ * markup for attribute group lists.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-attribute-group-list
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:sep <i>separator</i>]
+ *     [:class <i>class</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-attribute-group-list :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:attribute-group-list-<i>class</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:attribute-group-list-<i>class</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:attribute-group-list-<i>class</i>-sep</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -55,7 +102,7 @@ public class LMarkupAttributeGroupList extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for an attribute group list and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string

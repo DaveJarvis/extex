@@ -29,7 +29,60 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to parse a range.
+ * 
+ * <doc command="markup-range">
+ * <h3>The Command <tt>markup-range</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-range</tt> can be used to specify the markup for
+ * ranges.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-range
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:sep <i>separator</i>]
+ *     [:length <i>length</i>]
+ *     [:ignore-end]
+ *     [:class <i>class</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-range :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:range-<i>class</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:range-<i>class</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:range-<i>class</i>-sep</dt>
+ * <dd>...</dd>
+ * <dt>markup:range-<i>class</i>-length</dt>
+ * <dd>...</dd>
+ * <dt>markup:range-<i>class</i>-ignore-end</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -58,15 +111,15 @@ public class LMarkupRange extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for a range and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string
      * @param close the close string
      * @param sep the separator
      * @param clazz the class
-     * @param length
-     * @param ignoreEnd
+     * @param length the length
+     * @param ignoreEnd the indicator to ignore the end
      * 
      * @return <tt>null</tt>
      * 

@@ -30,6 +30,52 @@ import org.extex.exindex.lisp.type.value.LValue;
  * This is the adapter for the L system to define the markup for an attribute
  * group.
  * 
+ * <doc command="markup-attribute-group">
+ * <h3>The Command <tt>markup-attribute-group</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-attribute-group</tt> can be used to specify the
+ * markup for attribute groups.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-attribute-group
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:group <i>level</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-attribute-group :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:attribute-group-<i>group</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:attribute-group-<i>group</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:attribute-group-<i>group</i>-sep</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -55,7 +101,7 @@ public class LMarkupAttributeGroup extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for an attribute group and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string
@@ -71,7 +117,7 @@ public class LMarkupAttributeGroup extends LFunction {
             LString close, LString sep, Long group)
             throws LSettingConstantException {
 
-        String g = group.toString();
+        String g = group == null ? "0" : group.toString();
         interpreter.setq("markup:attribute-group-" + g + "-open", open);
         interpreter.setq("markup:attribute-group-" + g + "-close", close);
         interpreter.setq("markup:attribute-group-" + g + "-sep", sep);

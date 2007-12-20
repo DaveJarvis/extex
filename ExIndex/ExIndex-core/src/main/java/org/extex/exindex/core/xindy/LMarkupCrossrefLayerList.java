@@ -29,6 +29,53 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define a crossref layer list.
  * 
+ * <doc command="markup-crossref-layer-list">
+ * <h3>The Command <tt>markup-crossref-layer-list</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-crossref-layer-list</tt> can be used to specify the
+ * markup for cross-reference layer lists.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-crossref-layer-list
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:sep <i>separator</i>]
+ *     [:class <i>class</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-crossref-layer-list :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:crossref-layer-list-<i>class</i>-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:crossref-layer-list-<i>class</i>-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:crossref-layer-list-<i>class</i>-sep</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -54,7 +101,7 @@ public class LMarkupCrossrefLayerList extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for a cross reference layer list and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string

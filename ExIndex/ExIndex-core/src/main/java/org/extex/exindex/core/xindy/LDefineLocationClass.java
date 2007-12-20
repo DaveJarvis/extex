@@ -46,9 +46,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (define-letter-group location-class-name  layer-list
- *     [:min-range-length number]
- *     [:hierdepth depth]
+ *  (define-letter-group <i>location-class-name</i> <i>layer-list</i>
+ *     [:min-range-length <i>number</i>]
+ *     [:hierdepth <i>depth</i>]
  *     [:var]
  *  )
  * </pre>
@@ -65,6 +65,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * 
  * </doc>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

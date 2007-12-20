@@ -43,7 +43,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <pre>
  *  (sort-rule pattern replacement
  *     [:again]
- *     [:run level]
+ *     [:run <i>level</i>]
  *  )
  * </pre>
  * 

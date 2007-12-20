@@ -42,7 +42,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (merge-rule pattern replacement
+ *  (merge-rule <i>pattern</i> <i>replacement</i>
  *     [:again]
  *     [:string | :bregex | :eregex]
  *  )
@@ -59,6 +59,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * TODO documentation incomplete
  * 
  * </doc>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

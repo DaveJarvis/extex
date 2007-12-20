@@ -44,7 +44,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group letter-groups-list)
+ *  (define-letter-group <i>letter-groups-list</i>)
  * </pre>
  * 
  * <p>

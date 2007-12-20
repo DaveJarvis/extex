@@ -31,6 +31,52 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to define the markup for the index.
  * 
+ * <doc command="markup-index">
+ * <h3>The Command <tt>markup-index</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-index</tt> can be used to specify the markup for the
+ * index as a whole.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:flat | :tree | :hierdepth <i>depth</i>]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system. If a
+ * parameter is not given then a <code>nil</code> value is stored.
+ * </p>
+ * <p>
+ * The following parameters are set:
+ * </p>
+ * <dl>
+ * <dt>markup:index-open</dt>
+ * <dd>...</dd>
+ * <dt>markup:index-close</dt>
+ * <dd>...</dd>
+ * <dt>markup:index-hierdepth</dt>
+ * <dd>...</dd>
+ * </dl>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -57,7 +103,7 @@ public class LMarkupIndex extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for the index and store it.
      * 
      * @param interpreter the interpreter
      * @param open the open string

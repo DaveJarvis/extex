@@ -45,10 +45,10 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group letter-group-name
- *     [:prefixes list-of-prefixes]
- *     [:before before-letter-group-name]
- *     [:after after-letter-group-name]
+ *  (define-letter-group <i>letter-group-name</i>
+ *     [:prefixes <i>list-of-prefixes</i>]
+ *     [:before <i>before-letter-group-name</i>]
+ *     [:after <i>after-letter-group-name</i>]
  *  )
  * </pre>
  * 
