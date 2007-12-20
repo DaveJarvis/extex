@@ -29,9 +29,49 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to define a crossreference class.
+ * This is the adapter for the L system to define a cross-reference class. It
+ * also serves as a container for the classes collected.
  * 
- * It also serves as a container for the classes collected.
+ * <doc command="define-crossref-class">
+ * <h3>The Command <tt>define-crossref-class</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-crossref-class</tt> can be used to specify the
+ * markup for attribute group lists.
+ * </p>
+ * 
+ * <pre>
+ *  (define-crossref-class
+ *     <i>crossref-class-name</i>
+ *     [:unverified]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (define-crossref-class "see")
+ * </pre>
+ * 
+ * <p>
+ * The mandatory argument is a string which is taken as the name of the
+ * cross-reference group.
+ * </p>
+ * 
+ * <pre>
+ *  (define-crossref-class "see" :unverified)
+ * </pre>
+ * 
+ * <p>
+ * Usually the cross-references are checked to avoid dangling references. If an
+ * undefined cross-reference is found a waring is issued. The cross-reference
+ * class can be marked as unverified. In this case dangling references are
+ * silently consumed.
+ * </p>
+ * 
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,7 +79,8 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineCrossrefClass extends LFunction {
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the mapping from name to the boolean
+     * indicator.
      */
     private Map<String, Boolean> map = new HashMap<String, Boolean>();
 
@@ -60,7 +101,7 @@ public class LDefineCrossrefClass extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take a cross-reference group and store it.
      * 
      * @param interpreter the interpreter
      * @param name the name
@@ -78,12 +119,12 @@ public class LDefineCrossrefClass extends LFunction {
     }
 
     /**
-     * Getter for a crossref class.
+     * Getter for a cross-reference class.
      * 
-     * @param name the name of the crossref class
+     * @param name the name of the cross-reference class
      * 
-     * @return the indicator for verified crossref classes or <code>null</code>
-     *         if the crossref class is not defined
+     * @return the indicator for verified cross-reference classes or
+     *         <code>null</code> if the cross-reference class is not defined
      */
     public Boolean lookup(String name) {
 
