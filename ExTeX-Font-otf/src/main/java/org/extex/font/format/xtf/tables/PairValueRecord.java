@@ -92,8 +92,8 @@ public class PairValueRecord implements XMLWriterConvertible {
             throws IOException {
 
         secondGlyph = rar.readUnsignedShort();
-        value1 = new ValueRecord(rar, xtfGlyph);
-        value2 = new ValueRecord(rar, xtfGlyph);
+        // value1 = new ValueRecord(rar, xtfGlyph);
+        // value2 = new ValueRecord(rar, xtfGlyph);
     }
 
     /**
@@ -133,8 +133,12 @@ public class PairValueRecord implements XMLWriterConvertible {
 
         writer.writeStartElement("pairvaluerecord");
         writer.writeAttribute("secondGlyph", secondGlyph);
-        value1.writeXML(writer);
-        value2.writeXML(writer);
+        if (value1 != null) {
+            value1.writeXML(writer);
+        }
+        if (value2 != null) {
+            value2.writeXML(writer);
+        }
         writer.writeEndElement();
     }
 

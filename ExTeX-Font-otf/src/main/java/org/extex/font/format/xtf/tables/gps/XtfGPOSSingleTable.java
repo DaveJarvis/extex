@@ -51,52 +51,6 @@ import org.extex.util.xml.XMLWriterConvertible;
 public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
     /**
-     * Create a new object.
-     * 
-     * @param format the format
-     * @param xtfGlyp The glyph name.
-     */
-    XtfGPOSSingleTable(int format, XtfGlyphName xtfGlyp) {
-
-        super(format, xtfGlyp);
-
-    }
-
-    /**
-     * format 1
-     */
-    private static final int FORMAT1 = 1;
-
-    /**
-     * format 2
-     */
-    private static final int FORMAT2 = 2;
-
-    /**
-     * Create a new Instance.
-     * 
-     * @param rar the input
-     * @param offset the offset
-     * @param xtfGlyp The glyph name.
-     * @return Returns the new instance.
-     * @throws IOException if an IO-error occurs
-     */
-    public static XtfGPOSSingleTable newInstance(RandomAccessR rar, int offset,
-            XtfGlyphName xtfGlyp) throws IOException {
-
-        XtfGPOSSingleTable s = null;
-        rar.seek(offset);
-        int format = rar.readUnsignedShort();
-
-        if (format == FORMAT1) {
-            s = new SingleTableFormat1(rar, offset, xtfGlyp);
-        } else if (format == FORMAT2) {
-            s = new SingleTableFormat2(rar, offset, xtfGlyp);
-        }
-        return s;
-    }
-
-    /**
      * SingleTable for format 1.
      * 
      * <p>
@@ -162,23 +116,9 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
-         * Create a new object.
-         * 
-         * @param rar the input
-         * @param offset the offset
-         * @param xtfGlyp The glyph name.
-         * @throws IOException if an IO_error occurs
+         * coverage
          */
-        SingleTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyp)
-                throws IOException {
-
-            super(FORMAT1, xtfGlyp);
-
-            coverageOffset = rar.readUnsignedShort();
-            valueFormat = rar.readUnsignedShort();
-            valueRecord = new ValueRecord(rar, xtfGlyp);
-
-        }
+        private XtfCoverage coverage;
 
         /**
          * Offset to Coverage table-from beginning of SinglePos subtable.
@@ -197,6 +137,29 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         private ValueRecord valueRecord;
 
         /**
+         * Create a new object.
+         * 
+         * @param rar The input
+         * @param offset The offset
+         * @param xtfGlyph The glyph name.
+         * @throws IOException if a IO-error occurred.
+         */
+        SingleTableFormat1(RandomAccessR rar, int offset, XtfGlyphName xtfGlyph)
+                throws IOException {
+
+            super(FORMAT1, xtfGlyph);
+
+            coverageOffset = rar.readUnsignedShort();
+            valueFormat = rar.readUnsignedShort();
+            valueRecord = new ValueRecord(rar, offset, xtfGlyph, valueFormat);
+            valueRecord.init(rar, offset);
+
+            rar.seek(offset + coverageOffset);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
+
+        }
+
+        /**
          * {@inheritDoc}
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
@@ -205,8 +168,8 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());
-            writer.writeAttribute("coverageOffset", coverageOffset, 4);
             writer.writeAttribute("valueFormat", valueFormat);
+            coverage.writeXML(writer);
             valueRecord.writeXML(writer);
             writer.writeEndElement();
         }
@@ -300,6 +263,26 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
+         * coverage
+         */
+        private XtfCoverage coverage;
+
+        /**
+         * Offset to Coverage table-from beginning of SinglePos subtable.
+         */
+        private int coverageOffset;
+
+        /**
+         * Defines the types of data in the ValueRecord.
+         */
+        private int valueFormat;
+
+        /**
+         * Array of ValueRecords-positioning values applied to glyphs.
+         */
+        private ValueRecord[] valueRecordArray;
+
+        /**
          * Create a new object.
          * 
          * @param rar the input
@@ -318,25 +301,18 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
             valueRecordArray = new ValueRecord[valueCount];
             for (int i = 0; i < valueCount; i++) {
-                valueRecordArray[i] = new ValueRecord(rar, xtfGlyph);
+                valueRecordArray[i] =
+                        new ValueRecord(rar, offset, xtfGlyph, valueFormat);
             }
 
+            for (int i = 0; i < valueCount; i++) {
+                valueRecordArray[i].init(rar, offset);
+            }
+
+            rar.seek(offset + coverageOffset);
+            coverage = XtfCoverage.newInstance(rar, xtfGlyph);
+
         }
-
-        /**
-         * Offset to Coverage table-from beginning of SinglePos subtable.
-         */
-        private int coverageOffset;
-
-        /**
-         * Defines the types of data in the ValueRecord.
-         */
-        private int valueFormat;
-
-        /**
-         * Array of ValueRecords-positioning values applied to glyphs.
-         */
-        private ValueRecord[] valueRecordArray;
 
         /**
          * Getter for coverageOffset.
@@ -383,9 +359,56 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
             for (int i = 0; i < valueRecordArray.length; i++) {
                 valueRecordArray[i].writeXML(writer);
             }
+            coverage.writeXML(writer);
 
             writer.writeEndElement();
         }
+
+    }
+
+    /**
+     * format 1
+     */
+    private static final int FORMAT1 = 1;
+
+    /**
+     * format 2
+     */
+    private static final int FORMAT2 = 2;
+
+    /**
+     * Create a new Instance.
+     * 
+     * @param rar the input
+     * @param offset the offset
+     * @param xtfGlyp The glyph name.
+     * @return Returns the new instance.
+     * @throws IOException if an IO-error occurs
+     */
+    public static XtfGPOSSingleTable newInstance(RandomAccessR rar, int offset,
+            XtfGlyphName xtfGlyp) throws IOException {
+
+        XtfGPOSSingleTable s = null;
+        rar.seek(offset);
+        int format = rar.readUnsignedShort();
+
+        if (format == FORMAT1) {
+            s = new SingleTableFormat1(rar, offset, xtfGlyp);
+        } else if (format == FORMAT2) {
+            s = new SingleTableFormat2(rar, offset, xtfGlyp);
+        }
+        return s;
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param format the format
+     * @param xtfGlyp The glyph name.
+     */
+    XtfGPOSSingleTable(int format, XtfGlyphName xtfGlyp) {
+
+        super(format, xtfGlyp);
 
     }
 

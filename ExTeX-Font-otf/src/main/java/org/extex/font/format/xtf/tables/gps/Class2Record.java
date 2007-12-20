@@ -54,8 +54,14 @@ public class Class2Record implements XMLWriterConvertible {
     public Class2Record(RandomAccessR rar, XtfGlyphName xtfGlyph)
             throws IOException {
 
-        value1 = new ValueRecord(rar, xtfGlyph);
-        value2 = new ValueRecord(rar, xtfGlyph);
+        // try {
+        // TODO mgn incomplete
+        // value1 = new ValueRecord(rar, xtfGlyph);
+        // value2 = new ValueRecord(rar, xtfGlyph);
+        // } catch (EOFException e) {
+        // // TODO mgn only for test
+        // e.printStackTrace();
+        // }
     }
 
     /**
@@ -84,8 +90,12 @@ public class Class2Record implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("class2record");
-        value1.writeXML(writer);
-        value2.writeXML(writer);
+        if (value1 != null) {
+            value1.writeXML(writer);
+        }
+        if (value2 != null) {
+            value2.writeXML(writer);
+        }
         writer.writeEndElement();
     }
 }
