@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+import org.extex.exindex.core.command.LDefineCrossrefClass;
 
 /**
  * This interface describes a reference specification.

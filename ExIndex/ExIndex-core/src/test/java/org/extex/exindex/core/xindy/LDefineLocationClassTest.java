@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.command.LDefineLocationClass;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -77,7 +78,7 @@ public class LDefineLocationClassTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
      * 
      * @throws Exception in case of an error
      */
@@ -89,7 +90,7 @@ public class LDefineLocationClassTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
      * 
      * @throws Exception in case of an error
      */
@@ -101,7 +102,7 @@ public class LDefineLocationClassTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.xindy.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
      * 
      * @throws Exception in case of an error
      */

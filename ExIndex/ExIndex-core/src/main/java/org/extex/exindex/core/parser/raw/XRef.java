@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.xindy.LDefineCrossrefClass;
+import org.extex.exindex.core.command.LDefineCrossrefClass;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -62,7 +62,7 @@ public class XRef implements RefSpec {
      * 
      * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
      *      org.extex.exindex.core.parser.raw.RawIndexentry, Indexer,
-     *      org.extex.exindex.core.xindy.LDefineCrossrefClass, java.util.List)
+     *      org.extex.exindex.core.command.LDefineCrossrefClass, java.util.List)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
             LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
