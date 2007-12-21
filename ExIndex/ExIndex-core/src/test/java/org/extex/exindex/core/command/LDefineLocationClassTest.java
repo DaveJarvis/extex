@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xindy;
+package org.extex.exindex.core.command;
 
 import static org.junit.Assert.assertNotNull;
 

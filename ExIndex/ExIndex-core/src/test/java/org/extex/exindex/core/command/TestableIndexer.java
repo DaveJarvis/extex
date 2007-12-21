@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xindy;
+package org.extex.exindex.core.command;
 
 import java.io.IOException;
 import java.io.StringReader;
