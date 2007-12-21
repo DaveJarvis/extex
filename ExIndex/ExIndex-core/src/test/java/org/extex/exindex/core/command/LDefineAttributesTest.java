@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.LDefineAttributes;
 import org.extex.exindex.core.command.type.Attribute;
+import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -41,7 +41,7 @@ import org.junit.Test;
  * This is a test suite for (define-attributes).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6688 $
  */
 public class LDefineAttributesTest {
 
@@ -65,7 +65,7 @@ public class LDefineAttributesTest {
      * @throws IOException in case of an error
      * @throws LException in case of an error
      */
-    private LDefineAttributes runTest(String in)
+    private AttributesContainer runTest(String in)
             throws NoSuchMethodException,
                 LSettingConstantException,
                 IOException,
@@ -74,8 +74,8 @@ public class LDefineAttributesTest {
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
         indexer.load(new StringReader(in), "<reader>");
-        LDefineAttributes function =
-                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        AttributesContainer function =
+                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
         assertNotNull(function);
         return function;
     }
@@ -101,7 +101,7 @@ public class LDefineAttributesTest {
     @Test
     public final void test02() throws Exception {
 
-        LDefineAttributes def = runTest("(define-attributes (\"abc\"))");
+        AttributesContainer def = runTest("(define-attributes (\"abc\"))");
         Attribute att = def.lookup("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
@@ -116,7 +116,7 @@ public class LDefineAttributesTest {
     @Test
     public final void test03() throws Exception {
 
-        LDefineAttributes def =
+        AttributesContainer def =
                 runTest("(define-attributes (\"abc\" \"def\"))");
         Attribute att = def.lookup("abc");
         assertEquals(0, att.getGroup());
@@ -135,7 +135,7 @@ public class LDefineAttributesTest {
     @Test
     public final void test10() throws Exception {
 
-        LDefineAttributes def = runTest("(define-attributes ((\"abc\")))");
+        AttributesContainer def = runTest("(define-attributes ((\"abc\")))");
         Attribute att = def.lookup("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
@@ -150,7 +150,7 @@ public class LDefineAttributesTest {
     @Test
     public final void test11() throws Exception {
 
-        LDefineAttributes def =
+        AttributesContainer def =
                 runTest("(define-attributes ((\"abc\" \"def\")))");
         Attribute att = def.lookup("abc");
         assertEquals(0, att.getGroup());
@@ -245,8 +245,8 @@ public class LDefineAttributesTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
-        LDefineAttributes function =
-                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        AttributesContainer function =
+                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
         assertNotNull(function);
 
         List<String> rsc = new ArrayList<String>();
@@ -267,8 +267,8 @@ public class LDefineAttributesTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
-        LDefineAttributes function =
-                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        AttributesContainer function =
+                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
         assertNotNull(function);
 
         List<String> rsc = new ArrayList<String>();
@@ -287,8 +287,8 @@ public class LDefineAttributesTest {
     public final void testFull02Ok() throws Exception {
 
         Indexer indexer = new TestableIndexer();
-        LDefineAttributes function =
-                (LDefineAttributes) indexer.getFunction(DEFINE_ATTRIBUTES);
+        AttributesContainer function =
+                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
         assertNotNull(function);
 
         List<String> rsc = new ArrayList<String>();

@@ -63,6 +63,7 @@ import org.extex.exindex.core.command.LMergeTo;
 import org.extex.exindex.core.command.LSearchpath;
 import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
+import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
@@ -366,7 +367,7 @@ public class Indexer extends LEngine {
      * @throws LException in case of an error
      */
     private boolean preProcess(RawIndexentry entry,
-            LDefineAttributes attributes, List<OpenLocRef> openPages,
+            AttributesContainer attributes, List<OpenLocRef> openPages,
             Logger logger) throws LException {
 
         String attr = entry.getAttr();
@@ -412,8 +413,8 @@ public class Indexer extends LEngine {
             return;
         }
         logger.info(LOCALIZER.format("StartProcess"));
-        LDefineAttributes attributes =
-                (LDefineAttributes) getFunction(LSymbol
+        AttributesContainer attributes =
+                (AttributesContainer) getFunction(LSymbol
                     .get("define-attributes"));
         List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
 

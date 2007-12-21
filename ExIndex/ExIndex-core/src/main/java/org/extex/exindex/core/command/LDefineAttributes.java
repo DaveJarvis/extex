@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.exindex.core.command.type.Attribute;
+import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -46,7 +47,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineAttributes extends LFunction {
+public class LDefineAttributes extends LFunction implements AttributesContainer {
 
     /**
      * The field <tt>map</tt> contains the attributes.
@@ -127,11 +128,10 @@ public class LDefineAttributes extends LFunction {
     }
 
     /**
-     * Getter for a named attribute
+     * {@inheritDoc}
      * 
-     * @param attibute the name of the attribute
-     * 
-     * @return the named attribute or <code>null</code> if not defined
+     * @see org.extex.exindex.core.command.type.AttributesContainer#lookup(
+     *      java.lang.String)
      */
     public Attribute lookup(String attibute) {
 
