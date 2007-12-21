@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.LDefineLocationClass;
+import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -60,7 +60,7 @@ public class LDefineLocationClassTest {
      * @throws IOException in case of an error
      * @throws LException in case of an error
      */
-    private LDefineLocationClass runTest(String in)
+    private LocationClassContainer runTest(String in)
             throws NoSuchMethodException,
                 LSettingConstantException,
                 IOException,
@@ -69,8 +69,8 @@ public class LDefineLocationClassTest {
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
         indexer.load(new StringReader(in), "<reader>");
-        LDefineLocationClass function =
-                (LDefineLocationClass) indexer
+        LocationClassContainer function =
+                (LocationClassContainer) indexer
                     .getFunction(DEFINE_LOCATION_CLASS);
         assertNotNull(function);
         return function;

@@ -28,6 +28,22 @@ package org.extex.exindex.core.type.page;
 public class UpperPage extends AbstractPage {
 
     /**
+     * Compute an ordinal number for a page.
+     * 
+     * @param page the page string
+     * 
+     * @return the ordinal number
+     */
+    private static int computeOrd(String page) {
+
+        int ord = 0;
+        for (int i = page.length() - 1; i >= 0; i--) {
+            ord = ord * 26 - 'A' + page.charAt(i);
+        }
+        return ord;
+    }
+
+    /**
      * Creates a new object.
      * 
      * @param enc the encapsulator
@@ -35,7 +51,7 @@ public class UpperPage extends AbstractPage {
      */
     public UpperPage(String enc, String page) {
 
-        super(enc, page);
+        super(enc, page, computeOrd(page));
     }
 
 }

@@ -147,6 +147,11 @@ public class StructuredIndexTest {
                         return "b";
                     }
 
+                    public int getOrd() {
+
+                        return -1;
+                    }
+
                     public String getPage() {
 
                         return "234";

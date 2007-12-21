@@ -20,7 +20,7 @@
 package org.extex.exindex.core.type.alphabet;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes an alphabet.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

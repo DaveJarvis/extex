@@ -35,7 +35,7 @@ public class NumericPage extends AbstractPage {
      */
     public NumericPage(String enc, String page) {
 
-        super(enc, page);
+        super(enc, page, Integer.parseInt(page));
     }
 
 }

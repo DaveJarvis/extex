@@ -28,6 +28,45 @@ package org.extex.exindex.core.type.page;
 public class UpperRomanPage extends AbstractPage {
 
     /**
+     * The field <tt>LETTER</tt> contains the ...
+     */
+    private static final String LETTER = "IVXLCDM";
+
+    /**
+     * The field <tt>VAL</tt> contains the ...
+     */
+    private static final int[] VAL = new int[]{1, 5, 10, 50, 100, 500, 1000};
+
+    /**
+     * Compute an ordinal number for a page.
+     * 
+     * @param page the page string
+     * 
+     * @return the ordinal number
+     */
+    private static int computeOrd(String page) {
+
+        int ord = 0;
+        int len = page.length();
+        for (int i = 0; i < len; i++) {
+            int j = LETTER.indexOf(page.charAt(i));
+            if (j < 0) {
+                throw new IllegalArgumentException(page);
+            }
+            if (i + 1 < len && j % 2 == 0 && j < 5) {
+                int n = LETTER.indexOf(page.charAt(i + 1));
+                if (n == j + 1 || n == j + 2) {
+                    ord += VAL[n] - VAL[j];
+                    i++;
+                    continue;
+                }
+            }
+            ord += VAL[j];
+        }
+        return ord;
+    }
+
+    /**
      * Creates a new object.
      * 
      * @param enc the encapsulator
@@ -35,7 +74,7 @@ public class UpperRomanPage extends AbstractPage {
      */
     public UpperRomanPage(String enc, String page) {
 
-        super(enc, page);
+        super(enc, page, computeOrd(page));
     }
 
 }

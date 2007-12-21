@@ -19,11 +19,15 @@
 
 package org.extex.exindex.core.command;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.alphabet.VarLocationClass;
+import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -70,7 +74,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineLocationClass extends LFunction {
+public class LDefineLocationClass extends LFunction
+        implements
+            LocationClassContainer {
 
     /**
      * The constant <tt>SEP</tt> contains the tag :sep.
@@ -83,6 +89,11 @@ public class LDefineLocationClass extends LFunction {
      */
     private Map<String, LocationClass> map =
             new HashMap<String, LocationClass>();
+
+    /**
+     * The field <tt>classes</tt> contains the ...
+     */
+    private List<LocationClass> classes = new ArrayList<LocationClass>();
 
     /**
      * Creates a new object.
@@ -183,20 +194,36 @@ public class LDefineLocationClass extends LFunction {
         }
 
         map.put(name, pr);
+        classes.add(pr);
 
         return LList.NIL;
     }
 
     /**
-     * Get a named location class.
+     * {@inheritDoc}
      * 
-     * @param name the name
-     * 
-     * @return the location class or <code>null</code>
+     * @see org.extex.exindex.core.command.type.LocationClassContainer#lookup(java.lang.String)
      */
     public LocationClass lookup(String name) {
 
         return map.get(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.LocationClassContainer#makePageReference(java.lang.String,
+     *      java.lang.String)
+     */
+    public PageReference makePageReference(String encap, String s) {
+
+        for (LocationClass lc : classes) {
+            PageReference pr = lc.match(encap, s);
+            if (pr != null) {
+                return pr;
+            }
+        }
+        return null;
     }
 
 }

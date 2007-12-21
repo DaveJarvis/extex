@@ -35,10 +35,16 @@ public interface PageReference {
     public String getEncap();
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    public int getOrd();
+
+    /**
      * Getter for page.
      * 
      * @return the page
      */
     public String getPage();
-
 }

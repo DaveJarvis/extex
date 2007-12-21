@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.type.page.PageReference;
-import org.extex.exindex.core.type.page.VarPage;
+import org.extex.exindex.core.type.page.SomePage;
 
 /**
  * This class contains a composed location class.
@@ -83,12 +83,14 @@ public class VarLocationClass implements LocationClass {
          */
         public boolean match(StringBuilder s) {
 
+            int j = 0;
             for (int i = 0; i < sep.length(); i++) {
-                if (s.length() == 0 || s.charAt(0) != sep.charAt(i)) {
+                if (s.length() == 0 || s.charAt(j) != sep.charAt(i)) {
                     return false;
                 }
-                s.deleteCharAt(0);
+                j++;
             }
+            s.delete(0, j);
             return true;
         }
 
@@ -149,7 +151,7 @@ public class VarLocationClass implements LocationClass {
         StringBuilder sb = new StringBuilder(text);
         if (match(sb) && sb.length() == 0) {
 
-            return new VarPage(encap, text);
+            return new SomePage(encap, text);
         }
         return null;
     }

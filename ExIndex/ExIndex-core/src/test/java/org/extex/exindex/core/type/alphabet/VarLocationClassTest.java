@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.exindex.core.type.page.PageReference;
-import org.extex.exindex.core.type.page.VarPage;
+import org.extex.exindex.core.type.page.SomePage;
 import org.junit.Test;
 
 /**
@@ -42,7 +42,7 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test1() throws Exception {
+    public void test01() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         assertNotNull(var.match("", ""));
@@ -54,12 +54,12 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test2() throws Exception {
+    public void test02() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add("123");
         PageReference pr = var.match("", "123");
-        assertTrue(pr instanceof VarPage);
+        assertTrue(pr instanceof SomePage);
         assertEquals("123", pr.getPage());
     }
 
@@ -69,7 +69,7 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test3() throws Exception {
+    public void test03() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add(new ArabicNumbers());
@@ -83,7 +83,7 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test4() throws Exception {
+    public void test04() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add(new ArabicNumbers());
@@ -96,7 +96,7 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test5() throws Exception {
+    public void test05() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add(new ArabicNumbers());
@@ -112,7 +112,7 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test6() throws Exception {
+    public void test06() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add(new AlphaUppercase());
@@ -127,13 +127,60 @@ public class VarLocationClassTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void test7() throws Exception {
+    public void test07() throws Exception {
 
         VarLocationClass var = new VarLocationClass();
         var.add(new AlphaUppercase());
         var.add(new ArabicNumbers());
-        PageReference match = var.match("", "A-34");
-        assertNull(match);
+        assertNull(var.match("", "A-34"));
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test08() throws Exception {
+
+        VarLocationClass var = new VarLocationClass();
+        var.add(new AlphaUppercase());
+        var.add("-");
+        var.add("-");
+        var.add(new ArabicNumbers());
+        PageReference match = var.match("", "A--34");
+        assertNotNull(match);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test09() throws Exception {
+
+        VarLocationClass var = new VarLocationClass();
+        var.add(new AlphaUppercase());
+        var.add("-");
+        var.add("");
+        var.add("-");
+        var.add(new ArabicNumbers());
+        PageReference match = var.match("", "A--34");
+        assertNotNull(match);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test10() throws Exception {
+
+        VarLocationClass var = new VarLocationClass();
+        var.add("abc");
+        assertNull(var.match("", "aBC"));
     }
 
 }

@@ -74,16 +74,23 @@ public abstract class AbstractPage implements PageReference {
     private String page;
 
     /**
+     * The field <tt>ord</tt> contains the ...
+     */
+    private int ord;
+
+    /**
      * Creates a new object.
      * 
      * @param enc the encapsulator
      * @param page the page number
+     * @param ord
      */
-    public AbstractPage(String enc, String page) {
+    public AbstractPage(String enc, String page, int ord) {
 
         super();
         this.enc = enc;
         this.page = page;
+        this.ord = ord;
     }
 
     /**
@@ -94,6 +101,16 @@ public abstract class AbstractPage implements PageReference {
     public String getEncap() {
 
         return enc;
+    }
+
+    /**
+     * Getter for ord.
+     * 
+     * @return the ord
+     */
+    public int getOrd() {
+
+        return ord;
     }
 
     /**

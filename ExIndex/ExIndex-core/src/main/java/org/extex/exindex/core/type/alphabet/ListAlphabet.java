@@ -22,15 +22,17 @@ package org.extex.exindex.core.type.alphabet;
 import java.io.PrintStream;
 import java.util.List;
 
+import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.type.page.SomePage;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class contains the finite set of elements as a list.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ListAlphabet implements LValue, Alphabet {
+public class ListAlphabet implements LValue, Alphabet, LocationClass {
 
     /**
      * The field <tt>list</tt> contains the list of words.
@@ -56,6 +58,57 @@ public class ListAlphabet implements LValue, Alphabet {
     public List<String> getList() {
 
         return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
+     *      java.lang.String)
+     */
+    public PageReference match(String encap, String s) {
+
+        for (String x : list) {
+            if (!x.equals(s)) {
+                return null;
+            }
+        }
+        return new SomePage(encap, s);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
+     */
+    public boolean match(StringBuilder s) {
+
+        for (String x : list) {
+            if (match(s, x)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s
+     * @param x
+     * @return <code>true</code> if a match has been found
+     */
+    private boolean match(StringBuilder s, String x) {
+
+        int j = 0;
+        for (int i = 0; i < x.length(); i++) {
+            if (s.length() == 0 || s.charAt(j) != x.charAt(i)) {
+                return false;
+            }
+            j++;
+        }
+        s.delete(0, j);
+        return true;
     }
 
     /**

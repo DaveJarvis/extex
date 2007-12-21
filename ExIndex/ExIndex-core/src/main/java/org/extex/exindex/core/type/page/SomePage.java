@@ -35,7 +35,7 @@ public class SomePage extends AbstractPage {
      */
     public SomePage(String enc, String page) {
 
-        super(enc, page);
+        super(enc, page, -1);
     }
 
 }

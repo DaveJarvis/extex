@@ -22,7 +22,7 @@ package org.extex.exindex.core.command;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.xindy.type.Attribute;
+import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
