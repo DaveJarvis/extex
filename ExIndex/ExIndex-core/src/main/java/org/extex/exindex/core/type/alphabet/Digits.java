@@ -59,6 +59,24 @@ public class Digits implements LValue, Alphabet, LocationClass {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
+     */
+    public boolean match(StringBuilder s) {
+
+        if (s.length() == 0) {
+            return false;
+        }
+        char c = s.charAt(0);
+        if (c < '0' || c > '9') {
+            return false;
+        }
+        s.deleteCharAt(0);
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
      */
     public void print(PrintStream stream) {

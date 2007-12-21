@@ -19,9 +19,6 @@
 
 package org.extex.exindex.core.type.page;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * TODO gene: missing JavaDoc.
  * 
@@ -31,79 +28,23 @@ import java.util.List;
 public class VarPage implements PageReference {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * The field <tt>encap</tt> contains the ...
      */
-    private class ConstPageRef implements PageReference {
-
-        /**
-         * The field <tt>sep</tt> contains the ...
-         */
-        private String sep;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param sep
-         */
-        public ConstPageRef(String sep) {
-
-            super();
-            this.sep = sep;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.core.type.page.PageReference#getEncap()
-         */
-        public String getEncap() {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exindex.core.type.page.PageReference#getPage()
-         */
-        public String getPage() {
-
-            return sep;
-        }
-
-    };
+    private String encap;
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>page</tt> contains the ...
      */
-    private List<PageReference> list = new ArrayList<PageReference>();
+    private String page;
 
     /**
      * Creates a new object.
      */
-    public VarPage() {
+    public VarPage(String encap, String page) {
 
         super();
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param pr the reference to add
-     */
-    public void add(PageReference pr) {
-
-        list.add(pr);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param sep the constant separator to add
-     */
-    public void add(String sep) {
-
-        list.add(new ConstPageRef(sep));
+        this.encap = encap;
+        this.page = page;
     }
 
     /**
@@ -113,7 +54,7 @@ public class VarPage implements PageReference {
      */
     public String getEncap() {
 
-        return null;
+        return encap;
     }
 
     /**
@@ -123,7 +64,7 @@ public class VarPage implements PageReference {
      */
     public String getPage() {
 
-        return null;
+        return page;
     }
 
 }

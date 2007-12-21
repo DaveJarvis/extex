@@ -23,9 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.type.page.VarPage;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class contains a composed location class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -54,30 +55,47 @@ public class VarLocationClass implements LocationClass {
         }
 
         /**
-         * Getter for sep.
+         * Setter for sep.
          * 
-         * @return the sep
+         * @param sep the sep to set
          */
-        public String getSep() {
+        public void addSep(String sep) {
 
-            return sep;
+            this.sep = this.sep + sep;
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
-         *      java.lang.String)
+         * @see org.extex.exindex.core.type.alphabet.LocationClass#match(
+         *      java.lang.String, String)
          */
         public PageReference match(String encap, String s) {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exindex.core.type.alphabet.LocationClass#match(
+         *      java.lang.StringBuilder)
+         */
+        public boolean match(StringBuilder s) {
+
+            for (int i = 0; i < sep.length(); i++) {
+                if (s.length() == 0 || s.charAt(0) != sep.charAt(i)) {
+                    return false;
+                }
+                s.deleteCharAt(0);
+            }
+            return true;
+        }
+
     }
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>list</tt> contains the constituents.
      */
     private List<LocationClass> list = new ArrayList<LocationClass>();
 
@@ -106,6 +124,17 @@ public class VarLocationClass implements LocationClass {
      */
     public void add(String sep) {
 
+        if ("".equals(sep)) {
+            return;
+        }
+        int size = list.size();
+        if (size > 0) {
+            LocationClass last = list.get(size - 1);
+            if (last instanceof Seperator) {
+                ((Seperator) last).addSep(sep);
+                return;
+            }
+        }
         list.add(new Seperator(sep));
     }
 
@@ -113,12 +142,35 @@ public class VarLocationClass implements LocationClass {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.String,
-     *      java.lang.String)
+     *      String)
      */
-    public PageReference match(String encap, String s) {
+    public PageReference match(String encap, String text) {
 
-        // TODO gene: match unimplemented
+        StringBuilder sb = new StringBuilder(text);
+        if (match(sb) && sb.length() == 0) {
+
+            return new VarPage(encap, text);
+        }
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
+     */
+    public boolean match(StringBuilder s) {
+
+        int size = list.size();
+        if (size == 0) {
+            return true;
+        }
+
+        for (LocationClass lc : list) {
+            if (!lc.match(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

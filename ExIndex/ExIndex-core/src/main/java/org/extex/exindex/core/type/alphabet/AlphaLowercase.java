@@ -26,7 +26,7 @@ import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This location class represents a parser for lowercase letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -54,6 +54,31 @@ public class AlphaLowercase implements LValue, Alphabet, LocationClass {
             return new LowerPage(encap, s);
         }
         return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
+     */
+    public boolean match(StringBuilder s) {
+
+        if (s.length() == 0) {
+            return false;
+        }
+        char c = s.charAt(0);
+        if (c < 'a' || c > 'z') {
+            return false;
+        }
+        s.deleteCharAt(0);
+        while (s.length() > 0) {
+            c = s.charAt(0);
+            if (c < 'a' || c > 'z') {
+                return true;
+            }
+            s.deleteCharAt(0);
+        }
+        return true;
     }
 
     /**

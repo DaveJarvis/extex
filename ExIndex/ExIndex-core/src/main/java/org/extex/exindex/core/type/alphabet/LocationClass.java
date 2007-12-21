@@ -31,6 +31,7 @@ public interface LocationClass {
 
     /**
      * TODO gene: missing JavaDoc
+     * 
      * @param encap TODO
      * @param s the string to analyze
      * 
@@ -38,5 +39,13 @@ public interface LocationClass {
      *         matching failed
      */
     PageReference match(String encap, String s);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s
+     * @return
+     */
+    boolean match(StringBuilder s);
 
 }
