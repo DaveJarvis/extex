@@ -22,10 +22,15 @@ package org.extex.exindex.core.type;
 import java.io.IOException;
 import java.io.Writer;
 
+import org.extex.exindex.core.command.LMarkupRange;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.type.value.LBoolean;
+import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a range of location references.
+ * 
+ * @see LMarkupRange
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,41 +38,33 @@ import org.extex.exindex.lisp.LInterpreter;
 public class Range implements Location {
 
     /**
-     * The field <tt>location1</tt> contains the starting location.
+     * The field <tt>from</tt> contains the starting location.
      */
-    private LocationReference location1;
+    private LocationReference from;
 
     /**
-     * The field <tt>location2</tt> contains the terminating location.
+     * The field <tt>to</tt> contains the terminating location.
      */
-    private LocationReference location2;
+    private LocationReference to;
+
+    /**
+     * The field <tt>clazz</tt> contains the the current class.
+     */
+    private String clazz;
 
     /**
      * Creates a new object.
+     * 
+     * @param from the starting location
+     * @param to the terminating location
+     * @param clazz the current class
      */
-    public Range() {
+    public Range(LocationReference from, LocationReference to, String clazz) {
 
         super();
-    }
-
-    /**
-     * Getter for location1.
-     * 
-     * @return the location1
-     */
-    public LocationReference getLocation1() {
-
-        return location1;
-    }
-
-    /**
-     * Getter for location2.
-     * 
-     * @return the location2
-     */
-    public LocationReference getLocation2() {
-
-        return location2;
+        this.from = from;
+        this.to = to;
+        this.clazz = clazz;
     }
 
     /**
@@ -79,11 +76,14 @@ public class Range implements Location {
     public void write(Writer writer, LInterpreter interpreter)
             throws IOException {
 
-        // TODO
-        location1.write(writer, interpreter);
-        // TODO
-        location2.write(writer, interpreter);
-        // TODO
+        interpreter.writeString(writer, "markup:range-" + clazz + "-open");
+        from.write(writer, interpreter);
+        interpreter.writeString(writer, "markup:range-" + clazz + "-sep");
+        LValue value = interpreter.get("markup:range-" + clazz + "-ignore-end");
+        if (value != LBoolean.TRUE) {
+            to.write(writer, interpreter);
+        }
+        interpreter.writeString(writer, "markup:range-" + clazz + "-close");
     }
 
 }
