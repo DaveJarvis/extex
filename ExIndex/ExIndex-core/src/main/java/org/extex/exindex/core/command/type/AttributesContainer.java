@@ -20,7 +20,7 @@
 package org.extex.exindex.core.command.type;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface provides reading access to a container of defined attributes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
