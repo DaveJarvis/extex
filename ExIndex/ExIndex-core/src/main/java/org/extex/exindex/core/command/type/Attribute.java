@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.xindy.type;
+package org.extex.exindex.core.command.type;
 
 /**
  * This class represents an attribute description.
