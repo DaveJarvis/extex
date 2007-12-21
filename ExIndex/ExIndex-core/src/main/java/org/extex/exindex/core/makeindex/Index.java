@@ -26,7 +26,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.extex.exindex.core.makeindex.pages.PageProcessor;
-import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**

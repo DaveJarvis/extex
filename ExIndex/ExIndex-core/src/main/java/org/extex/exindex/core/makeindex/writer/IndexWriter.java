@@ -23,13 +23,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.type.Entry;
+import org.extex.exindex.core.makeindex.Entry;
 
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6666 $
  */
 public interface IndexWriter {
 

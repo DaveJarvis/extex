@@ -27,10 +27,10 @@ import java.util.List;
 
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
+import org.extex.exindex.core.makeindex.Entry;
 import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
-import org.extex.exindex.core.type.Entry;
 import org.extex.exindex.core.type.page.AbstractPage;
 
 /**

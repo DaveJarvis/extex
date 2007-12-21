@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.makeindex;
 
 import java.util.ArrayList;
 import java.util.List;
