@@ -19,52 +19,17 @@
 
 package org.extex.exindex.core.type.page;
 
+import org.extex.exindex.core.type.alphabet.util.RomanNumber;
+
 /**
- * TODO gene: missing JavaDoc.
+ * This page reference consists of uppercase roman numerals only. The
+ * recognition of roman numbers is rather rough. all legal roman numbers are
+ * mapped correctly. This includes the old variant which
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class UpperRomanPage extends AbstractPage {
-
-    /**
-     * The field <tt>LETTER</tt> contains the ...
-     */
-    private static final String LETTER = "IVXLCDM";
-
-    /**
-     * The field <tt>VAL</tt> contains the ...
-     */
-    private static final int[] VAL = new int[]{1, 5, 10, 50, 100, 500, 1000};
-
-    /**
-     * Compute an ordinal number for a page.
-     * 
-     * @param page the page string
-     * 
-     * @return the ordinal number
-     */
-    private static int computeOrd(String page) {
-
-        int ord = 0;
-        int len = page.length();
-        for (int i = 0; i < len; i++) {
-            int j = LETTER.indexOf(page.charAt(i));
-            if (j < 0) {
-                throw new IllegalArgumentException(page);
-            }
-            if (i + 1 < len && j % 2 == 0 && j < 5) {
-                int n = LETTER.indexOf(page.charAt(i + 1));
-                if (n == j + 1 || n == j + 2) {
-                    ord += VAL[n] - VAL[j];
-                    i++;
-                    continue;
-                }
-            }
-            ord += VAL[j];
-        }
-        return ord;
-    }
 
     /**
      * Creates a new object.
@@ -74,7 +39,7 @@ public class UpperRomanPage extends AbstractPage {
      */
     public UpperRomanPage(String enc, String page) {
 
-        super(enc, page, computeOrd(page));
+        super(enc, page, RomanNumber.computeOrdUpper(page));
     }
 
 }

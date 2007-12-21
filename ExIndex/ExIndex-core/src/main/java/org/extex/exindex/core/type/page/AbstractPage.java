@@ -20,7 +20,7 @@
 package org.extex.exindex.core.type.page;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the abstract base class for pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -74,7 +74,7 @@ public abstract class AbstractPage implements PageReference {
     private String page;
 
     /**
-     * The field <tt>ord</tt> contains the ...
+     * The field <tt>ord</tt> contains the ordinal number or -1 for none.
      */
     private int ord;
 
@@ -83,7 +83,7 @@ public abstract class AbstractPage implements PageReference {
      * 
      * @param enc the encapsulator
      * @param page the page number
-     * @param ord
+     * @param ord the ordinal number
      */
     public AbstractPage(String enc, String page, int ord) {
 
@@ -104,9 +104,9 @@ public abstract class AbstractPage implements PageReference {
     }
 
     /**
-     * Getter for ord.
+     * {@inheritDoc}
      * 
-     * @return the ord
+     * @see org.extex.exindex.core.type.page.PageReference#getOrd()
      */
     public int getOrd() {
 

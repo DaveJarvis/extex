@@ -21,6 +21,7 @@ package org.extex.exindex.core.type.alphabet;
 
 import java.io.PrintStream;
 
+import org.extex.exindex.core.type.alphabet.util.RomanNumber;
 import org.extex.exindex.core.type.page.LowerRomanPage;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -50,7 +51,7 @@ public class RomanNumeralsLowercase implements LValue, Alphabet, LocationClass {
      */
     public PageReference match(String encap, String s) {
 
-        if (s.matches("[ivxcm]+")) {
+        if (RomanNumber.isLowerRomanNumber(s)) {
             return new LowerRomanPage(encap, s);
         }
         return null;

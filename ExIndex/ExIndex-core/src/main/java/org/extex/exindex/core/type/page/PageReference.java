@@ -20,7 +20,7 @@
 package org.extex.exindex.core.type.page;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a page reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,16 +28,19 @@ package org.extex.exindex.core.type.page;
 public interface PageReference {
 
     /**
-     * Getter for enc.
+     * Getter for the encapsulator.
      * 
-     * @return the enc
+     * @return the encapsulator
      */
     public String getEncap();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the ordinal number. The ordinal number is used to map an
+     * arbitrary page reference to the natural numbers. This is needed for
+     * determining the ordering and length of ranges. If no such mapping is
+     * desirable then a negative number is used as indicator.
      * 
-     * @return
+     * @return the ordinal number or a negative number
      */
     public int getOrd();
 

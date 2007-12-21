@@ -20,7 +20,7 @@
 package org.extex.exindex.core.type.page;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This page reference consists of lowercase letters only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,7 +28,7 @@ package org.extex.exindex.core.type.page;
 public class LowerPage extends AbstractPage {
 
     /**
-     * Compute an ordinal number for a page.
+     * Compute an ordinal number for a page consisting of lowercase letters.
      * 
      * @param page the page string
      * 

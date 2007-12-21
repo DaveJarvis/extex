@@ -20,7 +20,8 @@
 package org.extex.exindex.core.type.page;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This page reference consists of arbitrary characters. No ordering or distance
+ * information is provided in this case.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

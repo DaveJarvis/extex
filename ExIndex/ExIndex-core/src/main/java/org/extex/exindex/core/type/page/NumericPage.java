@@ -20,7 +20,7 @@
 package org.extex.exindex.core.type.page;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This page reference consists of digits only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,6 +32,9 @@ public class NumericPage extends AbstractPage {
      * 
      * @param enc the encapsulator
      * @param page the page number
+     * 
+     * @throws NumberFormatException in case that the sting given does not
+     *         contain a valid number
      */
     public NumericPage(String enc, String page) {
 
