@@ -72,15 +72,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * <dl>
  * <dt>markup:range-<i>class</i>-open</dt>
- * <dd>...</dd>
+ * <dd>The opening markup for a certain class.</dd>
  * <dt>markup:range-<i>class</i>-close</dt>
- * <dd>...</dd>
+ * <dd>The closing markup for a certain class.</dd>
  * <dt>markup:range-<i>class</i>-sep</dt>
- * <dd>...</dd>
+ * <dd>The separating markup for a certain class.</dd>
  * <dt>markup:range-<i>class</i>-length</dt>
- * <dd>...</dd>
+ * <dd>The markup parameter for a minimum length of a class.</dd>
  * <dt>markup:range-<i>class</i>-ignore-end</dt>
- * <dd>...</dd>
+ * <dd>The markup indicator for omitting the second page reference of a class.</dd>
  * </dl>
  * 
  * 
