@@ -50,23 +50,58 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (define-letter-group <i>location-class-name</i> <i>layer-list</i>
+ *  (define-location-class
+ *     <i>location-class-name</i>
+ *     <i>layer-list</i>
  *     [:min-range-length <i>number</i>]
  *     [:hierdepth <i>depth</i>]
  *     [:var]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (define-location-class "pages" ("arabic-numbers"))
- * </pre>
+ *  (define-location-class "pages" ("arabic-numbers"))   </pre>
+ * 
+ * <p>
+ * Two arguments are mandatory. The first mandatory argument is the name of the
+ * location class. It has a string value. In the example above the name is
+ * <tt>pages</tt>
+ * </p>
+ * 
+ * <p>
+ * The second mandatory argument is a layer list. A layer list is a list of
+ * location classes and separator specifications.
+ * </p>
  * 
  * TODO documentation incomplete
  * 
+ * <p>
+ * The following build-in location classes exist.
+ * </p>
+ * <dl>
+ * <dt>arabic-numbers</dt>
+ * <dd>This location class consists of a non-empty sequence of digits.</dd>
+ * <dt>alpha</dt>
+ * <dd>This location class consists of a non-empty sequence of lowercase
+ * letters; i.e. the characters 'a' to 'z'. </dd>
+ * <dt>ALPHA</dt>
+ * <dd>This location class consists of a non-empty sequence of uppercase
+ * letters; i.e. the characters 'A' to 'Z'. </dd>
+ * <dt>digits</dt>
+ * <dd>This location class consists of the single digits; i.e. the characters
+ * '0' to '9'.</dd>
+ * <dt>roman-numbers-uppercase</dt>
+ * <dd>This location class consists of a roman number made up of uppercase
+ * letters. In the range of Unicode letters some special number symbols for
+ * roman letters are defined as well. They are considered as well-</dd>
+ * <dt>roman-numbers-lowercase</dt>
+ * <dd>This location class consists of a roman number made up of lowercase
+ * letters. In the range of Unicode letters some special number symbols for
+ * roman letters are defined as well. They are considered as well-</dd>
+ * </dl>
  * 
  * </doc>
  * 
@@ -91,7 +126,8 @@ public class LDefineLocationClass extends LFunction
             new HashMap<String, LocationClass>();
 
     /**
-     * The field <tt>classes</tt> contains the ...
+     * The field <tt>classes</tt> contains the list of classes already
+     * defined.
      */
     private List<LocationClass> classes = new ArrayList<LocationClass>();
 
@@ -202,7 +238,8 @@ public class LDefineLocationClass extends LFunction
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#lookup(java.lang.String)
+     * @see org.extex.exindex.core.command.type.LocationClassContainer#lookup(
+     *      java.lang.String)
      */
     public LocationClass lookup(String name) {
 
@@ -212,8 +249,8 @@ public class LDefineLocationClass extends LFunction
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#makePageReference(java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exindex.core.command.type.LocationClassContainer#makePageReference(
+     *      java.lang.String, java.lang.String)
      */
     public PageReference makePageReference(String encap, String s) {
 
@@ -224,6 +261,33 @@ public class LDefineLocationClass extends LFunction
             }
         }
         return null;
+    }
+
+    /**
+     * Order the location classes according to the given list. The other
+     * location classes follow in the original order.
+     * 
+     * @param list the list of location class names
+     * 
+     * @throws LException in case that a location class name is not defined
+     */
+    public void order(String[] list) throws LException {
+
+        List<LocationClass> newClasses = new ArrayList<LocationClass>();
+
+        for (String s : list) {
+            LocationClass lc = map.get(s);
+            int i = classes.indexOf(lc);
+            if (i < 0) {
+                throw new LException(LocalizerFactory.getLocalizer(getClass())
+                    .format("UnknownClass", s));
+            }
+            newClasses.add(lc);
+            classes.remove(i);
+        }
+
+        newClasses.addAll(classes);
+        classes = newClasses;
     }
 
 }

@@ -187,7 +187,8 @@ public class Indexer extends LEngine {
         defun("define-location-class", //
             locationClass);
         defun("define-location-class-order", //
-            new LDefineLocationClassOrder("define-location-class-order"));
+            new LDefineLocationClassOrder("define-location-class-order",
+                locationClass));
         defun("define-rule-set", //
             new LDefineRuleSet("define-rule-set"));
         defun("searchpath", //
