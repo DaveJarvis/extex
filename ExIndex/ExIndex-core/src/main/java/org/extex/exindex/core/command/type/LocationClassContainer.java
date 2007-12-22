@@ -41,11 +41,12 @@ public interface LocationClassContainer {
     public LocationClass lookup(String name);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a page reference for this location class.
      * 
-     * @param encap
-     * @param s
-     * @return
+     * @param encap the encapsulation
+     * @param s the page
+     * 
+     * @return the page reference
      */
     public PageReference makePageReference(String encap, String s);
 
