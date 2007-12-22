@@ -22,7 +22,8 @@ package org.extex.exindex.core.type.alphabet;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes the capabilities of a location class to classify
+ * strings.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,21 +31,26 @@ import org.extex.exindex.core.type.page.PageReference;
 public interface LocationClass {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a page reference for a location. It is assumed that the location
+     * belongs to this class. Otherwise an exception might be thrown.
      * 
-     * @param encap TODO
-     * @param s the string to analyze
+     * @param encap the encapsulator
+     * @param location the string to analyze
      * 
      * @return the page reference for the string or <code>null</code> if the
      *         matching failed
      */
-    PageReference match(String encap, String s);
+    PageReference match(String encap, String location);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check that the beginning of a given string matches the specification of
+     * the location class. As a side effect the characters belonging to this
+     * location class are removed from the beginning of the StringBuilder. If
+     * the beginning does not match the the argument is left unchanged.
      * 
-     * @param s
-     * @return
+     * @param s the string to match
+     * 
+     * @return <code>true</code> iff the argument string matches this class
      */
     boolean match(StringBuilder s);
 
