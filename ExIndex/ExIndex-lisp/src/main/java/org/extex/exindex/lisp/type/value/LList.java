@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
+
 /**
  * This class is a node containing a list of arbitrary values.
  * 
@@ -61,6 +63,24 @@ public class LList implements LValue, Iterable<LValue> {
         }
 
     };
+
+    /**
+     * Check that the argument is a LList and cast it.
+     * 
+     * @param value the lvalue
+     * 
+     * @return the string contained
+     * 
+     * @throws LNonMatchingTypeException in case of an error
+     */
+    public static LList getList(LValue value) throws LNonMatchingTypeException {
+
+        if (!(value instanceof LList)) {
+            throw new LNonMatchingTypeException("");
+        }
+
+        return ((LList) value);
+    }
 
     /**
      * The field <tt>content</tt> contains the content.

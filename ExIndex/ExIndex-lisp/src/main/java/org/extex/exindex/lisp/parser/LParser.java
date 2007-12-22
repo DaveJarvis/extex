@@ -38,7 +38,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LParser {
+public class LParser implements ResourceLocator {
 
     /**
      * The field <tt>CLOSE</tt> contains the internal indicator that a closing
@@ -104,9 +104,9 @@ public class LParser {
     }
 
     /**
-     * Getter for resource.
-     * 
-     * @return the resource
+     * {@inheritDoc}
+     *
+     * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
      */
     public String getLineNumber() {
 
@@ -114,9 +114,9 @@ public class LParser {
     }
 
     /**
-     * Getter for resource.
-     * 
-     * @return the resource
+     * {@inheritDoc}
+     *
+     * @see org.extex.exindex.lisp.parser.ResourceLocator#getResource()
      */
     public String getResource() {
 
