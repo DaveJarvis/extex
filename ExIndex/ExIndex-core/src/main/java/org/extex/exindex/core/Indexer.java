@@ -291,7 +291,8 @@ public class Indexer extends LEngine {
      * Create a parser for the raw index from a resource name.
      * 
      * @param resource the name of the resource
-     * @param charset the name of the character set
+     * @param charset the name of the character set; a value of
+     *        <code>null</code> or the empty string used the platform default
      * 
      * @return the parser
      * 
@@ -306,7 +307,12 @@ public class Indexer extends LEngine {
         if (stream == null) {
             return null;
         }
-        return new XindyParser(new InputStreamReader(stream, charset), resource);
+
+        Reader reader =
+                (charset == null || charset.equals("") //
+                        ? new InputStreamReader(stream, charset)
+                        : new InputStreamReader(stream));
+        return new XindyParser(reader, resource);
     }
 
     /**
