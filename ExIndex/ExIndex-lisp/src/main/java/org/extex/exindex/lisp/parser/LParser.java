@@ -231,7 +231,11 @@ public class LParser implements ResourceLocator {
                             case 'b':
                                 c = '\b';
                                 break;
-
+                            case 'u':
+                                c = readUnicode();
+                                break;
+                            default:
+                                // silently ignore the escape character
                         }
                     }
                     sb.append((char) c);
@@ -279,6 +283,42 @@ public class LParser implements ResourceLocator {
         }
 
         return null;
+    }
+
+    /**
+     * Read a hexadecimal digit and return its value 0 to 15.
+     * 
+     * @return the value
+     * 
+     * @throws IOException in case of an error
+     */
+    private int readHex() throws IOException {
+
+        int c = reader.read();
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        } else if (c >= 'a' && c <= 'f') {
+            return c - 'a';
+        } else if (c >= 'A' && c <= 'F') {
+            return c - 'A';
+        }
+        throw new SyntaxException(resource);
+    }
+
+    /**
+     * Read four hex digit and convert it to a char.
+     * 
+     * @return the char
+     * 
+     * @throws IOException in case of an error
+     */
+    private int readUnicode() throws IOException {
+
+        int cc = readHex() << 24;
+        cc |= readHex() << 16;
+        cc |= readHex() << 8;
+        cc |= readHex();
+        return (char) cc;
     }
 
     /**
