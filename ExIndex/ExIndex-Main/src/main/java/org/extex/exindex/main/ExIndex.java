@@ -155,9 +155,15 @@ public class ExIndex extends Indexer {
 
     /**
      * The field <tt>charset</tt> contains the character set to be used for
-     * reading and writing.
+     * writing.
      */
     private Charset charset;
+
+    /**
+     * The field <tt>inCharset</tt> contains the character set to be used for
+     * reading style files.
+     */
+    private Charset inCharset;
 
     /**
      * The field <tt>config</tt> contains the configuration.
@@ -324,10 +330,9 @@ public class ExIndex extends Indexer {
         }
 
         if (makeindex) {
-            return new MakeindexParser(new InputStreamReader(stream), resource,
-                this);
+            return new MakeindexParser(reader, resource, this);
         }
-        return new XindyParser(new InputStreamReader(stream), resource);
+        return new XindyParser(reader, resource);
     }
 
     /**
@@ -443,6 +448,14 @@ public class ExIndex extends Indexer {
                 } else if ("-Charset".startsWith(a)) {
                     try {
                         charset = Charset.forName(getArg(a, args, ++i));
+                    } catch (UnsupportedCharsetException e) {
+                        throw new MainException(LOCALIZER.format(
+                            "UnsupportedCharset", args[i]));
+                    }
+
+                } else if ("-Encoding".startsWith(a)) {
+                    try {
+                        inCharset = Charset.forName(getArg(a, args, ++i));
                     } catch (UnsupportedCharsetException e) {
                         throw new MainException(LOCALIZER.format(
                             "UnsupportedCharset", args[i]));
@@ -592,7 +605,7 @@ public class ExIndex extends Indexer {
             InputStream stream = getResourceFinder().findResource(style, "ist");
             if (stream != null) {
 
-                Reader reader = new InputStreamReader(stream);
+                Reader reader = new InputStreamReader(stream, inCharset);
                 try {
                     MakeindexLoader.load(reader, style, this);
                 } finally {
@@ -604,7 +617,7 @@ public class ExIndex extends Indexer {
                 if (stream == null) {
                     throw new FileNotFoundException(style);
                 }
-                Reader reader = new InputStreamReader(stream);
+                Reader reader = new InputStreamReader(stream, inCharset);
                 try {
                     load(reader, style);
                 } finally {
