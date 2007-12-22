@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.core.type.alphabet.Alphabet;
+import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -35,9 +36,36 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to define an alphabet.
+ * This is the adapter for the L system to define an alphabet. It also serves as
+ * a container for the alphabets collected.
  * 
- * It also serves as a container for the alphabets collected.
+ * <doc command="define-alphabet">
+ * <h3>The Command <tt>define-alphabet</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-alphabet</tt> can be used to define an alphabet.
+ * </p>
+ * 
+ * <pre>
+ *  (define-alphabet
+ *     <i>alphabet-name</i>
+ *     <i>string-list</i>
+ *  )  </pre>
+ * 
+ * <p>
+ * The command has as first argument the name of the alphabet. This argument is
+ * a string. The second argument is a list of strings. The elements of the
+ * <i>string-list</i> are the letters of the alphabet.
+ * </p>
+ * 
+ * <pre>
+ *  (define-alphabet "Pentateuch" ("gen" "ex" "lev" "num" "dtn"))   </pre>
+ * 
+ * <p>
+ * The example above defines a new alphabet with the five letters.
+ * </p>
+ * 
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -47,7 +75,7 @@ public class LDefineAlphabet extends LFunction {
     /**
      * The field <tt>map</tt> contains the alphabets.
      */
-    private Map<String, List<String>> map = new HashMap<String, List<String>>();
+    private Map<String, Alphabet> map = new HashMap<String, Alphabet>();
 
     /**
      * Creates a new object.
@@ -65,14 +93,14 @@ public class LDefineAlphabet extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add an alphabet.
      * 
      * @param name the name
      * @param alphabet the alphabet
      */
     public void add(String name, Alphabet alphabet) {
 
-        // TODO gene: add unimplemented
+        map.put(name, alphabet);
     }
 
     /**
@@ -97,7 +125,7 @@ public class LDefineAlphabet extends LFunction {
             words.add(LString.getString(val));
         }
 
-        map.put(name, words);
+        map.put(name, new ListAlphabet(words));
 
         return LList.NIL;
     }
@@ -110,7 +138,7 @@ public class LDefineAlphabet extends LFunction {
      * @return the alphabet or <code>null</code> if the name is not associated
      *         with an alphabet
      */
-    public List<String> lookup(String name) {
+    public Alphabet lookup(String name) {
 
         return map.get(name);
     }
