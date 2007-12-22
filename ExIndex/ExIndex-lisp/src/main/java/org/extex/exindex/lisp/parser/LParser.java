@@ -229,7 +229,10 @@ public class LParser implements ResourceLocator {
                                 c = '\t';
                                 break;
                             case 'b':
-                                c = '\b';
+                                c = Character.MIN_CODE_POINT;
+                                break;
+                            case 'e':
+                                c = Character.MAX_CODE_POINT;
                                 break;
                             case 'u':
                                 c = readUnicode();
