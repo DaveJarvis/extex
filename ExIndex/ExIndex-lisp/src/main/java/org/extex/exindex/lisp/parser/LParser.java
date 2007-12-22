@@ -33,7 +33,7 @@ import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is a parser foe a Lisp-like language.
+ * This is a parser for a Lisp-like language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -81,7 +81,8 @@ public class LParser implements ResourceLocator {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Close the parser and the reader associated with it. Attempts to read
+     * afterwards will result in an EOF.
      * 
      * @throws IOException in case of an I/O error
      */
@@ -105,7 +106,7 @@ public class LParser implements ResourceLocator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
      */
     public String getLineNumber() {
@@ -115,7 +116,7 @@ public class LParser implements ResourceLocator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exindex.lisp.parser.ResourceLocator#getResource()
      */
     public String getResource() {
@@ -180,22 +181,27 @@ public class LParser implements ResourceLocator {
                 c = reader.read();
             } else if (Character.isDigit(c) || c == '.' || c == '-') {
                 boolean dot = (c == '.');
+                boolean hasChar = Character.isDigit(c);
                 StringBuilder sb = new StringBuilder();
-                do {
-                    sb.append((char) c);
-                    c = reader.read();
-                    if (c == '.' && !dot) {
-                        sb.append((char) c);
-                        c = reader.read();
-                        dot = true;
-                    }
-                } while (c >= 0 && Character.isDigit(c));
 
-                String s = sb.toString();
-                if (!s.matches(".*[0-9].*")) {
-                    // TODO gene: read unimplemented
-                    throw new RuntimeException("unimplemented " + s);
+                sb.append((char) c);
+                for (;;) {
+                    c = reader.read();
+                    if (c < 0) {
+                        break;
+                    } else if (Character.isDigit(c)) {
+                        hasChar = true;
+                    } else if (c == '.' && !dot) {
+                        dot = true;
+                    } else {
+                        break;
+                    }
+                    sb.append((char) c);
                 }
+                if (!hasChar) {
+                    throw new SyntaxException(resource);
+                }
+                String s = sb.toString();
                 return (dot ? new LDouble(Double.parseDouble(s)) : new LNumber(
                     Long.parseLong(s)));
 
