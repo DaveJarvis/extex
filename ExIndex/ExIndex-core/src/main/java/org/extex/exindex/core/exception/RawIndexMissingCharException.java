@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.exception;
 
+import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -39,16 +40,15 @@ public class RawIndexMissingCharException extends RawIndexException {
     /**
      * Creates a new object.
      * 
-     * @param resource the current resource
-     * @param line the current line
+     * @param locator the locator
      * @param c the character found
      * @param ec the expected character
      */
-    public RawIndexMissingCharException(String resource, int line, char c, char ec) {
+    public RawIndexMissingCharException(ResourceLocator locator, char c, char ec) {
 
-        super(resource, Integer.toString(line), LocalizerFactory.getLocalizer(
-            RawIndexMissingCharException.class).format("Message", Character.toString(c),
-            Character.toString(ec)));
+        super(locator, LocalizerFactory.getLocalizer(
+            RawIndexMissingCharException.class).format("Message",
+            Character.toString(c), Character.toString(ec)));
     }
 
 }

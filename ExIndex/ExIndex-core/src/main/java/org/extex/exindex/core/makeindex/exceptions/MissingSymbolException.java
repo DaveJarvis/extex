@@ -20,6 +20,7 @@
 package org.extex.exindex.core.makeindex.exceptions;
 
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -38,24 +39,22 @@ public class MissingSymbolException extends RawIndexException {
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
+     * @param locator the locator
      */
-    public MissingSymbolException(String resource, int line) {
+    public MissingSymbolException(ResourceLocator locator) {
 
-        super(resource, Integer.toString(line));
+        super(locator, "");
     }
 
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
+     * @param locator the locator
      * @param c the character found instead
      */
-    public MissingSymbolException(String resource, int line, char c) {
+    public MissingSymbolException(ResourceLocator locator, char c) {
 
-        super(resource, Integer.toString(line), Character.toString(c));
+        super(locator, Character.toString(c));
     }
 
 }

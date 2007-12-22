@@ -22,6 +22,8 @@ package org.extex.exindex.core.makeindex.parser;
 import java.io.IOException;
 import java.io.Reader;
 
+import org.extex.exindex.core.exception.EofException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
 
@@ -44,8 +46,13 @@ public interface Parser {
      * @return ...
      * 
      * @throws IOException in case of an I/O error
+     * @throws EofException
+     * @throws RawIndexMissingCharException
      */
     public int[] load(Reader reader, String resource, Index index,
-            Collator collator) throws IOException;
+            Collator collator)
+            throws IOException,
+                EofException,
+                RawIndexMissingCharException;
 
 }

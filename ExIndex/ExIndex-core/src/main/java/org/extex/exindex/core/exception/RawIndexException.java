@@ -20,6 +20,7 @@
 package org.extex.exindex.core.exception;
 
 import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -45,6 +46,19 @@ public class RawIndexException extends LException {
      * The field <tt>line</tt> contains the line number.
      */
     private String line;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param locator the locator
+     * @param message the message
+     */
+    public RawIndexException(ResourceLocator locator, String message) {
+
+        super(message);
+        this.resource = locator.getResource();
+        this.line = locator.getLineNumber();
+    }
 
     /**
      * Creates a new object.

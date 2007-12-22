@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.exception;
 
+import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
  * This exception signals the unexpected end of file.
  * 
@@ -36,25 +39,24 @@ public class EofException extends RawIndexException {
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
+     * @param locator the locator
      */
-    public EofException(String resource, int line) {
+    public EofException(ResourceLocator locator) {
 
-        super(resource, Integer.toString(line));
+        super(locator, LocalizerFactory.getLocalizer(EofException.class)
+            .format("Message"));
     }
 
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource or <code>null</code>
-     * @param line the line number
+     * @param locator the locator
      * @param c the character
      */
-    public EofException(String resource, int line, char c) {
+    public EofException(ResourceLocator locator, char c) {
 
-        super(resource, Integer.toString(line));
-        // TODO gene: EofException constructor unimplemented
+        super(locator, LocalizerFactory.getLocalizer(EofException.class)
+            .format("MessageChar", Character.toString(c)));
     }
 
 }

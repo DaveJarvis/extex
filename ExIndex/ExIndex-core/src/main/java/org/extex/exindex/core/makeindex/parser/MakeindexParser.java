@@ -30,8 +30,10 @@ import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.Entry;
 import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.Parameters;
+import org.extex.exindex.core.makeindex.ReaderLocator;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.page.AbstractPage;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -50,21 +52,22 @@ public class MakeindexParser implements Parser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Read a character and compare it against a given value.
      * 
      * @param r the reader
-     * @param resource the name of the resource
+     * @param locator the locator
      * @param ec the expected character
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexMissingCharException in case of an error
      */
-    private void expect(LineNumberReader r, String resource, char ec)
-            throws IOException {
+    private void expect(LineNumberReader r, ResourceLocator locator, char ec)
+            throws IOException,
+                RawIndexMissingCharException {
 
         int c = r.read();
         if (c != ec) {
-            throw new RawIndexMissingCharException(resource, r.getLineNumber(), (char) c,
-                ec);
+            throw new RawIndexMissingCharException(locator, (char) c, ec);
         }
     }
 
@@ -75,11 +78,15 @@ public class MakeindexParser implements Parser {
      *      java.lang.String, org.extex.exindex.core.makeindex.Index, Collator)
      */
     public int[] load(Reader reader, String resource, Index index,
-            Collator collator) throws IOException {
+            Collator collator)
+            throws IOException,
+                EofException,
+                RawIndexMissingCharException {
 
         int[] count = new int[2];
         Parameters params = index.getParams();
         LineNumberReader r = new LineNumberReader(reader);
+        ResourceLocator locator = new ReaderLocator(resource, r);
         final String keyword = params.getString("keyword");
         final char argOpen = params.getChar("arg_open");
         final char argClose = params.getChar("arg_close");
@@ -94,11 +101,11 @@ public class MakeindexParser implements Parser {
             for (int c = r.read(); c >= 0; c = r.read()) {
                 if (c == k0 && scanKeyword(r, keyword)) {
                     String arg =
-                            scanArgument(r, resource, argOpen, argClose,
-                                escape, quote, index);
+                            scanArgument(r, locator, argOpen, argClose, escape,
+                                quote, index);
                     String p =
-                            scanArgument(r, resource, argOpen, argClose,
-                                escape, quote, index);
+                            scanArgument(r, locator, argOpen, argClose, escape,
+                                quote, index);
                     String enc = null;
                     int x = arg.lastIndexOf(encap);
                     if (x >= 0) {
@@ -127,10 +134,10 @@ public class MakeindexParser implements Parser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Scan an argument.
      * 
      * @param r the reader
-     * @param resource the name of the resource
+     * @param locator the locator
      * @param argOpen the argument open character
      * @param argClose the argument close character
      * @param escape the escape character
@@ -140,19 +147,23 @@ public class MakeindexParser implements Parser {
      * @return the argument found
      * 
      * @throws IOException in case of an error
+     * @throws EofException in case of an unexpected EOF
+     * @throws RawIndexMissingCharException
      */
-    private String scanArgument(LineNumberReader r, String resource,
+    private String scanArgument(LineNumberReader r, ResourceLocator locator,
             char argOpen, char argClose, char escape, char quote, Index index)
-            throws IOException {
+            throws IOException,
+                EofException,
+                RawIndexMissingCharException {
 
-        expect(r, resource, argOpen);
+        expect(r, locator, argOpen);
         StringBuilder sb = new StringBuilder();
         int level = 1;
 
         for (;;) {
             int c = r.read();
             if (c < 0) {
-                throw new EofException(resource, r.getLineNumber());
+                throw new EofException(locator);
             } else if (c == argOpen) {
                 level++;
             } else if (c == argClose) {
@@ -165,7 +176,7 @@ public class MakeindexParser implements Parser {
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
                     c = r.read();
                     if (c < 0) {
-                        throw new EofException(resource, r.getLineNumber());
+                        throw new EofException(locator);
                     }
                 }
             }

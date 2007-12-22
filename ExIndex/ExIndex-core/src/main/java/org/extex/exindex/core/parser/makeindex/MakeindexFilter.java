@@ -28,6 +28,7 @@ import java.util.List;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -114,40 +115,45 @@ public class MakeindexFilter extends Reader {
      * TODO gene: missing JavaDoc
      * 
      * @param r the reader
-     * @param resource the name of the resource
+     * @param locator the locator
      * @param ec the expected character
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexMissingCharException in case of an error
      */
-    private void expect(LineNumberReader r, String resource, char ec)
-            throws IOException {
+    private void expect(LineNumberReader r, ResourceLocator locator, char ec)
+            throws IOException,
+                RawIndexMissingCharException {
 
         int c = r.read();
         if (c != ec) {
-            throw new RawIndexMissingCharException(resource, r.getLineNumber(), (char) c,
-                ec);
+            throw new RawIndexMissingCharException(locator, (char) c, ec);
         }
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param resource
+     * @param locator
      * @param collator
      * 
      * @return
      * 
      * @throws IOException in case of an error
+     * @throws EofException
+     * @throws RawIndexMissingCharException
      */
-    private boolean fillBuffer(String resource, Collator collator)
-            throws IOException {
+    private boolean fillBuffer(ResourceLocator locator, Collator collator)
+            throws IOException,
+                RawIndexMissingCharException,
+                EofException {
 
         char k0 = keyword.charAt(0);
 
         for (int c = in.read(); c >= 0; c = in.read()) {
             if (c == k0 && scanKeyword(in, keyword)) {
-                String arg = scanArgument(resource);
-                String p = scanArgument(resource);
+                String arg = scanArgument(locator);
+                String p = scanArgument(locator);
                 String enc = null;
                 int x = arg.lastIndexOf(encap);
                 if (x >= 0) {
@@ -183,8 +189,14 @@ public class MakeindexFilter extends Reader {
     public int read(char[] cbuf, int off, int len) throws IOException {
 
         if (buffer.length() <= 0) {
-            if (in == null || fillBuffer(null, null)) {
-                return -1;
+            try {
+                if (in == null || fillBuffer(null, null)) {
+                    return -1;
+                }
+            } catch (RawIndexMissingCharException e) {
+                throw new IOException(e.getLocalizedMessage());
+            } catch (EofException e) {
+                throw new IOException(e.getLocalizedMessage());
             }
         }
 
@@ -202,21 +214,27 @@ public class MakeindexFilter extends Reader {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param resource the name of the resource
+     * @param locator the locator
+     * 
      * @return the argument found
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexMissingCharException in case of an error
+     * @throws EofException in case of an unexpected EOF
      */
-    private String scanArgument(String resource) throws IOException {
+    private String scanArgument(ResourceLocator locator)
+            throws IOException,
+                RawIndexMissingCharException,
+                EofException {
 
-        expect(in, resource, argOpen);
+        expect(in, locator, argOpen);
         StringBuilder sb = new StringBuilder();
         int level = 1;
 
         for (;;) {
             int c = in.read();
             if (c < 0) {
-                throw new EofException(resource, in.getLineNumber());
+                throw new EofException(locator);
             } else if (c == argOpen) {
                 level++;
             } else if (c == argClose) {
@@ -229,7 +247,7 @@ public class MakeindexFilter extends Reader {
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
                     c = in.read();
                     if (c < 0) {
-                        throw new EofException(resource, in.getLineNumber());
+                        throw new EofException(locator);
                     }
                 }
             }

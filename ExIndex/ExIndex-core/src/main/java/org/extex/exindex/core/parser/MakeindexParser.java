@@ -28,11 +28,13 @@ import java.util.List;
 import org.extex.exindex.core.exception.EofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
+import org.extex.exindex.core.makeindex.ReaderLocator;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -129,6 +131,11 @@ public class MakeindexParser implements RawIndexParser {
     private char rangeClose;
 
     /**
+     * The field <tt>locator</tt> contains the ...
+     */
+    private ResourceLocator locator;
+
+    /**
      * Creates a new object and gather the parameters from an interpreter.
      * 
      * @param reader the source to read from
@@ -145,6 +152,7 @@ public class MakeindexParser implements RawIndexParser {
         super();
         this.reader = new LineNumberReader(reader);
         this.resource = resource;
+        this.locator = new ReaderLocator(resource, this.reader);
         configure(interpreter);
     }
 
@@ -275,8 +283,7 @@ public class MakeindexParser implements RawIndexParser {
 
         int c = reader.read();
         if (c != ec) {
-            throw new RawIndexMissingCharException(resource, reader
-                .getLineNumber(), (char) c, ec);
+            throw new RawIndexMissingCharException(locator, (char) c, ec);
         }
     }
 
@@ -388,7 +395,7 @@ public class MakeindexParser implements RawIndexParser {
         for (;;) {
             int c = reader.read();
             if (c < 0) {
-                throw new EofException(resource, reader.getLineNumber());
+                throw new EofException(locator);
             } else if (c == argOpen) {
                 level++;
             } else if (c == argClose) {
@@ -401,7 +408,7 @@ public class MakeindexParser implements RawIndexParser {
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
                     c = reader.read();
                     if (c < 0) {
-                        throw new EofException(resource, reader.getLineNumber());
+                        throw new EofException(locator);
                     }
                 }
             }

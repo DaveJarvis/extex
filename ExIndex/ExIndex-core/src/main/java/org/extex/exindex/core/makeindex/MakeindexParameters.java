@@ -26,9 +26,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.exindex.core.exception.EofException;
+import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.exceptions.MissingSymbolException;
 import org.extex.exindex.core.makeindex.exceptions.UnknownAttributeException;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;
@@ -134,9 +136,15 @@ public final class MakeindexParameters {
      * @return the parameters read
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexException
+     * @throws EofException
+     * @throws MissingSymbolException
      */
     public static Parameters load(Reader reader, String resource)
-            throws IOException {
+            throws IOException,
+                MissingSymbolException,
+                EofException,
+                RawIndexException {
 
         Parameters p = load();
         load(reader, resource, p);
@@ -154,16 +162,23 @@ public final class MakeindexParameters {
      *         rejected
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexException
+     * @throws EofException
+     * @throws MissingSymbolException
      */
     public static int[] load(Reader reader, String resource, Parameters p)
-            throws IOException {
+            throws IOException,
+                MissingSymbolException,
+                EofException,
+                RawIndexException {
 
         int[] count = new int[2];
         LineNumberReader r = new LineNumberReader(reader);
+        ResourceLocator locator = new ReaderLocator(resource, r);
 
-        for (LValue t = scan(r, resource); t != null; t = scan(r, resource)) {
+        for (LValue t = scan(r, locator); t != null; t = scan(r, locator)) {
             if (!(t instanceof LSymbol)) {
-                throw new MissingSymbolException(resource, r.getLineNumber());
+                throw new MissingSymbolException(locator);
             }
             String name = ((LSymbol) t).getValue();
 
@@ -172,9 +187,9 @@ public final class MakeindexParameters {
                 throw new UnknownAttributeException(name);
             }
             LValue val = p.get(name);
-            LValue v = scan(r, resource);
+            LValue v = scan(r, locator);
             if (v == null) {
-                throw new EofException(resource, r.getLineNumber());
+                throw new EofException(locator);
             } else if (v.getClass() != val.getClass()) {
                 // TODO gene: load unimplemented
                 throw new RuntimeException("unimplemented");
@@ -189,14 +204,16 @@ public final class MakeindexParameters {
      * Scan the input for a value.
      * 
      * @param r the reader to get characters from
-     * @param resource the name of the resource loaded
+     * @param locator the locator
      * 
      * @return the token found
      * 
      * @throws IOException in case of an error
+     * @throws RawIndexException
      */
-    private static LValue scan(LineNumberReader r, String resource)
-            throws IOException {
+    private static LValue scan(LineNumberReader r, ResourceLocator locator)
+            throws IOException,
+                RawIndexException {
 
         for (int c = r.read(); c >= 0; c = r.read()) {
             if (Character.isWhitespace(c)) {
@@ -209,11 +226,11 @@ public final class MakeindexParameters {
             } else if (c == '\'') {
                 int cc = r.read();
                 if (cc < 0) {
-                    new EofException(resource, r.getLineNumber(), '\'');
+                    new EofException(locator, '\'');
                 } else if (cc == '\\') {
                     cc = r.read();
                     if (cc < 0) {
-                        new EofException(resource, r.getLineNumber(), '\'');
+                        new EofException(locator, '\'');
                     } else if (cc == 'n') {
                         cc = '\n';
                     } else if (cc == 't') {
@@ -223,9 +240,8 @@ public final class MakeindexParameters {
                 c = r.read();
                 if (c != '\'') {
                     throw (c < 0 //
-                            ? new EofException(resource, r.getLineNumber(),
-                                '\'')
-                            : new RawIndexMissingCharException(resource, r.getLineNumber(),
+                            ? new EofException(locator, '\'')
+                            : new RawIndexMissingCharException(locator,
                                 (char) c, '\''));
                 }
                 return new LChar((char) cc);
@@ -235,8 +251,7 @@ public final class MakeindexParameters {
                     if (c == '\\') {
                         c = r.read();
                         if (c < 0) {
-                            throw new EofException(resource, r.getLineNumber(),
-                                '"');
+                            throw new EofException(locator, '"');
                         } else if (c == 'n') {
                             c = '\n';
                         } else if (c == 't') {
@@ -263,8 +278,7 @@ public final class MakeindexParameters {
                 }
                 return LSymbol.get(sb.toString());
             } else {
-                throw new MissingSymbolException(resource, r.getLineNumber(),
-                    (char) c);
+                throw new MissingSymbolException(locator, (char) c);
             }
         }
 

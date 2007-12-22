@@ -38,10 +38,14 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.exception.EofException;
+import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.makeindex.Entry;
 import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.MakeindexParameters;
 import org.extex.exindex.core.makeindex.Parameters;
+import org.extex.exindex.core.makeindex.exceptions.MissingSymbolException;
 import org.extex.exindex.core.makeindex.normalizer.MakeindexCollator;
 import org.extex.exindex.core.makeindex.normalizer.MakeindexGermanCollator;
 import org.extex.exindex.core.makeindex.pages.MakeindexPageProcessor;
@@ -372,8 +376,13 @@ public class Makeindex {
      * @param file the name of the input file
      * 
      * @throws IOException in case of an I/O error
+     * @throws RawIndexMissingCharException
+     * @throws EofException
      */
-    protected void scanInput(String file) throws IOException {
+    protected void scanInput(String file)
+            throws IOException,
+                EofException,
+                RawIndexMissingCharException {
 
         showBanner();
 
@@ -419,8 +428,15 @@ public class Makeindex {
      * @param file the name of the resource
      * 
      * @throws IOException in case of an I/O error
+     * @throws RawIndexException
+     * @throws EofException
+     * @throws MissingSymbolException
      */
-    protected void scanStyle(String file) throws IOException {
+    protected void scanStyle(String file)
+            throws IOException,
+                MissingSymbolException,
+                EofException,
+                RawIndexException {
 
         showBanner();
         logger.log(Level.INFO, localizer.format("ScanningStyle", file));
