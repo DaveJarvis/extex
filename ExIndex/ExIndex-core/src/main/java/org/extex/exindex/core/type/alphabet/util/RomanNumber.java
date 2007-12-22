@@ -114,6 +114,9 @@ public class RomanNumber {
      */
     private static int computeOrd(String page, Map<Character, RomanNumber> map) {
 
+        if (page.equals("")) {
+            throw new IllegalArgumentException();
+        }
         int ord = 0;
         int len = page.length();
         for (int i = 0; i < len; i++) {
