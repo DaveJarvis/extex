@@ -392,6 +392,39 @@ public class Arg {
     }
 
     /**
+     * Get the descriptor for a varargs specification sucking up all remaining
+     * arguments.
+     * 
+     * @return the argument descriptor
+     */
+    public static Arg VARARG() {
+
+        return new Arg(null, LList.class, LList.NIL, false) {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exindex.lisp.type.function.Arg#parse(java.util.List,
+             *      int, java.lang.Object[], int)
+             */
+            @Override
+            public int parse(List<LValue> args, int ai, Object[] arguments,
+                    int index) throws LException {
+
+                LList list = new LList();
+                int i = ai;
+                int size = args.size();
+                for (; i < size; i++) {
+                    list.add(args.get(i));
+                }
+
+                arguments[index] = list;
+                return i;
+            }
+        };
+    }
+
+    /**
      * The field <tt>resultClass</tt> contains the class of the result.
      */
     private Class<?> resultClass;
