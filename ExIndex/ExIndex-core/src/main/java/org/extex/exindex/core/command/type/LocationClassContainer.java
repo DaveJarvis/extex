@@ -23,8 +23,9 @@ import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes the capability to read information for a location
+ * class from a container.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

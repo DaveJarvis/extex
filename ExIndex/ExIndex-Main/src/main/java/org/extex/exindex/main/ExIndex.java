@@ -40,6 +40,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.makeindex.MakeindexLoader;
 import org.extex.exindex.core.parser.MakeindexParser;
 import org.extex.exindex.core.parser.RawIndexParser;
@@ -245,7 +246,8 @@ public class ExIndex extends Indexer {
      */
     @Override
     protected RawIndexParser makeRawIndexParser(String resource, String charset)
-            throws IOException {
+            throws IOException,
+                RawIndexException {
 
         boolean makeindex = false;
         InputStream stream;

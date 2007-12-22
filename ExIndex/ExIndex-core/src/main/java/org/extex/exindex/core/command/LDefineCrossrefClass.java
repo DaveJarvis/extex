@@ -36,24 +36,22 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <h3>The Command <tt>define-crossref-class</tt></h3>
  * 
  * <p>
- * The command <tt>define-crossref-class</tt> can be used to specify the
- * markup for attribute group lists.
+ * The command <tt>define-crossref-class</tt> can be used to define a
+ * cross-reference class.
  * </p>
  * 
  * <pre>
  *  (define-crossref-class
  *     <i>crossref-class-name</i>
  *     [:unverified]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (define-crossref-class "see")
- * </pre>
+ *  (define-crossref-class "see")   </pre>
  * 
  * <p>
  * The mandatory argument is a string which is taken as the name of the
@@ -61,8 +59,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-crossref-class "see" :unverified)
- * </pre>
+ *  (define-crossref-class "see" :unverified)   </pre>
  * 
  * <p>
  * Usually the cross-references are checked to avoid dangling references. If an

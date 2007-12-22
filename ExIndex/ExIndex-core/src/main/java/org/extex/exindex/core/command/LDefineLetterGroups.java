@@ -44,8 +44,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group <i>letter-groups-list</i>)
- * </pre>
+ *  (define-letter-group <i>letter-groups-list</i>)   </pre>
  * 
  * <p>
  * The command has one arguments which is described now. The argument is a list
@@ -54,8 +53,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-groups ("A" "B" "C" "D"))
- * </pre>
+ *  (define-letter-groups ("A" "B" "C" "D"))   </pre>
  * 
  * <p>
  * This definition is equivalent to the following sequence of commands.
@@ -65,8 +63,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-letter-group "A")
  *  (define-letter-group "B" :after "A")
  *  (define-letter-group "C" :after "B")
- *  (define-letter-group "D" :after "C")
- * </pre>
+ *  (define-letter-group "D" :after "C")   </pre>
  * 
  * </doc>
  * 

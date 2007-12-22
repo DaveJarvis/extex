@@ -36,13 +36,53 @@ import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This is the adapter for the L system to define attributes.
+ * This is the adapter for the L system to define attributes. It also serves as
+ * a container for the attributes collected.
+ * 
+ * <doc command="define-attributes">
+ * <h3>The Command <tt>define-attributes</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-attributes</tt> can be used to specify the markup
+ * for attribute group lists.
+ * </p>
  * 
  * <pre>
- *  (define-attributes attribute-list)
- * </pre>
+ *  (define-attributes
+ *     <i>attribute-list</i>
+ *  )  </pre>
  * 
- * It also serves as a container for the attributes collected.
+ * <p>
+ * The command has an argument which is a list of string or lists of strings.
+ * The elements of the <i>attribute-list</i> are attribute groups. Those
+ * attributes in a group are tied together in the output.
+ * </p>
+ * 
+ * <pre>
+ *  (define-attributes ("example"))   </pre>
+ * 
+ * <p>
+ * If only a string is given then the attribute group consists of this element
+ * only. Thus the example above is equivalent to the following form:
+ * </p>
+ * 
+ * <pre>
+ *  (define-attributes (("example")))   </pre>
+ * 
+ * <p>
+ * An arbitrary mixture of both form can be given.
+ * </p>
+ * 
+ * <pre>
+ *  (define-attributes ("definition" ("example" "code")))   </pre>
+ * 
+ * <p>
+ * The example above defines two attribute groups. The first one consists of the
+ * attribute <tt>definition</tt> only. The second attribute group contains the
+ * two elements <tt>example</tt> and <tt>code</tt>.
+ * </p>
+ * 
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

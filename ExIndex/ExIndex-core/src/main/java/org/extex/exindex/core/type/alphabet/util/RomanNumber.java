@@ -160,11 +160,27 @@ public class RomanNumber {
         return computeOrd(page, UPPER_MAP);
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param page the page
+     * 
+     * @return <code>true</code> iff the page constitutes a roman number with
+     *         lowercase letters only
+     */
     public static boolean isLowerRomanNumber(String page) {
 
         return isRomanNumber(page, LOWER_MAP);
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param page the page
+     * @param map
+     * 
+     * @return <code>true</code> iff the page constitutes a roman number
+     */
     private static boolean isRomanNumber(String page,
             Map<Character, RomanNumber> map) {
 
@@ -181,6 +197,14 @@ public class RomanNumber {
         return true;
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param page the page
+     * 
+     * @return <code>true</code> iff the page constitutes a roman number with
+     *         uppercase letters only
+     */
     public static boolean isUpperRomanNumber(String page) {
 
         return isRomanNumber(page, UPPER_MAP);

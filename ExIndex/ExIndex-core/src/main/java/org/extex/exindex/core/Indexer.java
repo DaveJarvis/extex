@@ -65,6 +65,7 @@ import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.exception.IndexerException;
+import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
@@ -294,10 +295,12 @@ public class Indexer extends LEngine {
      * 
      * @return the parser
      * 
+     * @throws RawIndexException in case of an error
      * @throws IOException in case of an I/O error
      */
     protected RawIndexParser makeRawIndexParser(String resource, String charset)
-            throws IOException {
+            throws RawIndexException,
+                IOException {
 
         InputStream stream = getResourceFinder().findResource(resource, "raw");
         if (stream == null) {

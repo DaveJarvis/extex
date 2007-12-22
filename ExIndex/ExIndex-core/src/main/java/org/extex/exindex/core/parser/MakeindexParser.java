@@ -266,9 +266,12 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @param ec the expected character
      * 
+     * @throws RawIndexMissingCharException in case of an error
      * @throws IOException in case of an error
      */
-    private void expect(char ec) throws IOException {
+    private void expect(char ec)
+            throws IOException,
+                RawIndexMissingCharException {
 
         int c = reader.read();
         if (c != ec) {
@@ -370,8 +373,13 @@ public class MakeindexParser implements RawIndexParser {
      * @return the argument found
      * 
      * @throws IOException in case of an error
+     * @throws EofException in case of an unexpected EOF
+     * @throws RawIndexMissingCharException in case of an error
      */
-    private String scanArgument() throws IOException {
+    private String scanArgument()
+            throws IOException,
+                EofException,
+                RawIndexMissingCharException {
 
         expect(argOpen);
         StringBuilder sb = new StringBuilder();

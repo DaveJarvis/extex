@@ -19,8 +19,7 @@
 
 package org.extex.exindex.core.exception;
 
-import java.io.IOException;
-
+import org.extex.exindex.lisp.exception.LException;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -29,7 +28,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RawIndexException extends IOException {
+public class RawIndexException extends LException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -55,7 +54,7 @@ public class RawIndexException extends IOException {
      */
     public RawIndexException(String resource, String line) {
 
-        super(null);
+        super("");
         this.resource = resource;
         this.line = line;
     }

@@ -49,16 +49,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:prefixes <i>list-of-prefixes</i>]
  *     [:before <i>before-letter-group-name</i>]
  *     [:after <i>after-letter-group-name</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (define-letter-group "A")
- * </pre>
+ *  (define-letter-group "A")   </pre>
  * 
  * <p>
  * Name is the first argument of the command. This argument is a string. In the
@@ -67,8 +65,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group "A" :prefixes ("A"))
- * </pre>
+ *  (define-letter-group "A" :prefixes ("A"))   </pre>
  * 
  * <p>
  * The list-of-prefixes is a list of strings which denote the prefixes which are
@@ -79,8 +76,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group "A" :before "B")
- * </pre>
+ *  (define-letter-group "A" :before "B")   </pre>
  * 
  * <p>
  * The parameter <tt>:before</tt> places a constraint on the order. This means
@@ -89,8 +85,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group "B" :after "A")
- * </pre>
+ *  (define-letter-group "B" :after "A")   </pre>
  * 
  * <p>
  * The parameter <tt>:after</tt> places a constraint on the order. This means

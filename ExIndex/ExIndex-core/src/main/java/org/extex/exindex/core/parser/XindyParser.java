@@ -301,7 +301,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * 
      * @see org.extex.exindex.core.parser.RawIndexParser#parse()
      */
-    public RawIndexentry parse() throws IOException {
+    public RawIndexentry parse() throws IOException, RawIndexException {
 
         LValue term = read();
         if (term == null) {
