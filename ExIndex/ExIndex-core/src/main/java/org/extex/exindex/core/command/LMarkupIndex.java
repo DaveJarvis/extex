@@ -132,15 +132,15 @@ public class LMarkupIndex extends LFunction {
 
         if (flat.booleanValue()) {
             if (flat.booleanValue()) {
-                throw new InconsistentFlagsException("", 0, ":flat", ":tree");
+                throw new InconsistentFlagsException(null, ":flat", ":tree");
             } else if (hierdepth.getValue() != 0) {
-                throw new InconsistentFlagsException("", 0, ":tree",
+                throw new InconsistentFlagsException(null, ":tree",
                     ":hierdepth");
             }
             interpreter.setq("markup:index-hierdepth", new LNumber(0));
         } else if (tree.booleanValue()) {
             if (hierdepth.getValue() != 0) {
-                throw new InconsistentFlagsException("", 0, ":tree",
+                throw new InconsistentFlagsException(null, ":tree",
                     ":hierdepth");
             }
             interpreter.setq("markup:index-hierdepth", new LNumber(

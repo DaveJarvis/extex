@@ -20,9 +20,10 @@
 package org.extex.exindex.core.exception;
 
 import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
- * This exception singals that two conflicting flags have been encountered.
+ * This exception signals that two conflicting flags have been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,15 +39,14 @@ public class InconsistentFlagsException extends LException {
     /**
      * Creates a new object.
      * 
-     * @param resource the resource
-     * @param line the line
+     * @param locator the locator
      * @param flag1 the first conflicting flag
      * @param flag2 the second conflicting flag
      */
-    public InconsistentFlagsException(String resource, int line, String flag1,
+    public InconsistentFlagsException(ResourceLocator locator, String flag1,
             String flag2) {
 
-        super(resource);
+        super(""); // TODO
     }
 
 }

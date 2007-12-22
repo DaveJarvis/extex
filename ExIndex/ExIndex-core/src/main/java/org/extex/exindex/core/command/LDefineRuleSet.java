@@ -159,7 +159,7 @@ public class LDefineRuleSet extends LFunction {
         }
 
         if (t > 1) {
-            throw new InconsistentFlagsException("", 0, "", "");
+            throw new InconsistentFlagsException(null, "", "");
         }
 
         if (type == null || type == STRING) {
