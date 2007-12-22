@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
@@ -46,9 +47,9 @@ public class SearchPath implements ResourceFinder {
     private String[] dirs = new String[]{""};
 
     /**
-     * The field <tt>tracing</tt> contains the indicator for tracing.
+     * The field <tt>logger</tt> contains the logger for tracing.
      */
-    private boolean tracing;
+    private Logger logger = null;
 
     /**
      * Creates a new object.
@@ -69,7 +70,7 @@ public class SearchPath implements ResourceFinder {
      */
     public void enableTracing(boolean flag) {
 
-        this.tracing = flag;
+        this.logger = (flag ? Logger.getLogger(getClass().getName()) : null);
     }
 
     /**
@@ -84,6 +85,9 @@ public class SearchPath implements ResourceFinder {
         for (String d : dirs) {
             if (d == null) {
                 if (fallback != null) {
+                    if (logger != null) {
+                        logger.fine("Using fallback"); // TODO i18n
+                    }
                     InputStream stream = fallback.findResource(name, type);
                     if (stream != null) {
                         return stream;
@@ -91,11 +95,18 @@ public class SearchPath implements ResourceFinder {
                 }
             } else {
                 File f = new File(d, name);
+                if (logger != null) {
+                    logger.fine("Trying " + f.toString()); // TODO i18n
+                }
                 if (f.canRead()) {
                     InputStream stream;
                     try {
                         stream = new FileInputStream(f);
                         if (stream != null) {
+                            if (logger != null) {
+                                logger.fine("Success with " + f.toString());
+                                // TODO i18n
+                            }
                             return stream;
                         }
                     } catch (FileNotFoundException e) {
@@ -149,8 +160,7 @@ public class SearchPath implements ResourceFinder {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Use the home directory for leading tilde characters.
      */
     private void setHome() {
 
