@@ -20,7 +20,6 @@
 package org.extex.exindex.core.makeindex.parser;
 
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,6 @@ import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.ReaderLocator;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
 import org.extex.exindex.core.type.page.AbstractPage;
-import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -54,18 +52,17 @@ public class MakeindexParser implements Parser {
     /**
      * Read a character and compare it against a given value.
      * 
-     * @param r the reader
      * @param locator the locator
      * @param ec the expected character
      * 
      * @throws IOException in case of an error
      * @throws RawIndexMissingCharException in case of an error
      */
-    private void expect(LineNumberReader r, ResourceLocator locator, char ec)
+    private void expect(ReaderLocator locator, char ec)
             throws IOException,
                 RawIndexMissingCharException {
 
-        int c = r.read();
+        int c = locator.read();
         if (c != ec) {
             throw new RawIndexMissingCharException(locator, (char) c, ec);
         }
@@ -85,8 +82,7 @@ public class MakeindexParser implements Parser {
 
         int[] count = new int[2];
         Parameters params = index.getParams();
-        LineNumberReader r = new LineNumberReader(reader);
-        ResourceLocator locator = new ReaderLocator(resource, r);
+        ReaderLocator locator = new ReaderLocator(resource, reader);
         final String keyword = params.getString("keyword");
         final char argOpen = params.getChar("arg_open");
         final char argClose = params.getChar("arg_close");
@@ -98,13 +94,13 @@ public class MakeindexParser implements Parser {
         char k0 = keyword.charAt(0);
         try {
 
-            for (int c = r.read(); c >= 0; c = r.read()) {
-                if (c == k0 && scanKeyword(r, keyword)) {
+            for (int c = locator.read(); c >= 0; c = locator.read()) {
+                if (c == k0 && scanKeyword(locator, keyword)) {
                     String arg =
-                            scanArgument(r, locator, argOpen, argClose, escape,
+                            scanArgument(locator, argOpen, argClose, escape,
                                 quote, index);
                     String p =
-                            scanArgument(r, locator, argOpen, argClose, escape,
+                            scanArgument(locator, argOpen, argClose, escape,
                                 quote, index);
                     String enc = null;
                     int x = arg.lastIndexOf(encap);
@@ -128,7 +124,7 @@ public class MakeindexParser implements Parser {
                 }
             }
         } finally {
-            r.close();
+            reader.close();
         }
         return count;
     }
@@ -136,7 +132,6 @@ public class MakeindexParser implements Parser {
     /**
      * Scan an argument.
      * 
-     * @param r the reader
      * @param locator the locator
      * @param argOpen the argument open character
      * @param argClose the argument close character
@@ -150,18 +145,18 @@ public class MakeindexParser implements Parser {
      * @throws EofException in case of an unexpected EOF
      * @throws RawIndexMissingCharException
      */
-    private String scanArgument(LineNumberReader r, ResourceLocator locator,
-            char argOpen, char argClose, char escape, char quote, Index index)
+    private String scanArgument(ReaderLocator locator, char argOpen,
+            char argClose, char escape, char quote, Index index)
             throws IOException,
                 EofException,
                 RawIndexMissingCharException {
 
-        expect(r, locator, argOpen);
+        expect(locator, argOpen);
         StringBuilder sb = new StringBuilder();
         int level = 1;
 
         for (;;) {
-            int c = r.read();
+            int c = locator.read();
             if (c < 0) {
                 throw new EofException(locator);
             } else if (c == argOpen) {
@@ -174,7 +169,7 @@ public class MakeindexParser implements Parser {
             } else if (c == quote) {
                 int l = sb.length();
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
-                    c = r.read();
+                    c = locator.read();
                     if (c < 0) {
                         throw new EofException(locator);
                     }
@@ -194,7 +189,8 @@ public class MakeindexParser implements Parser {
      * 
      * @throws IOException in case of an I/O error
      */
-    private boolean scanKeyword(Reader r, String keyword) throws IOException {
+    private boolean scanKeyword(ReaderLocator r, String keyword)
+            throws IOException {
 
         int length = keyword.length();
         for (int i = 1; i < length; i++) {

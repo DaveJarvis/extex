@@ -49,42 +49,42 @@ public class MakeindexFilter extends Reader {
     private StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>keyword</tt> contains the ...
+     * The field <tt>keyword</tt> contains the keyword.
      */
     private String keyword = "\\indexentry";
 
     /**
-     * The field <tt>argOpen</tt> contains the ...
+     * The field <tt>argOpen</tt> contains the argument open character.
      */
     private char argOpen = '{';
 
     /**
-     * The field <tt>argClose</tt> contains the ...
+     * The field <tt>argClose</tt> contains the argument close character.
      */
     private char argClose = '}';
 
     /**
-     * The field <tt>escape</tt> contains the ...
+     * The field <tt>escape</tt> contains the escape character.
      */
     private char escape = '"';
 
     /**
-     * The field <tt>quote</tt> contains the ...
+     * The field <tt>quote</tt> contains the quote character.
      */
     private char quote = '\\';
 
     /**
-     * The field <tt>encap</tt> contains the ...
+     * The field <tt>encap</tt> contains the encapsulation character.
      */
     private char encap = '|';
 
     /**
-     * The field <tt>level</tt> contains the ...
+     * The field <tt>level</tt> contains the level separation characters.
      */
     private char level = '!';
 
     /**
-     * The field <tt>actual</tt> contains the ...
+     * The field <tt>actual</tt> contains the actual character.
      */
     private char actual = '@';
 
@@ -132,12 +132,12 @@ public class MakeindexFilter extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Fill the buffer.
      * 
-     * @param locator
-     * @param collator
+     * @param locator the lcoator
+     * @param collator the collator
      * 
-     * @return
+     * @return <code>true</code> at eof
      * 
      * @throws IOException in case of an error
      * @throws EofException

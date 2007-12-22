@@ -20,7 +20,6 @@
 package org.extex.exindex.core.parser;
 
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -68,17 +66,6 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @version $Revision$
  */
 public class MakeindexParser implements RawIndexParser {
-
-    /**
-     * The field <tt>reader</tt> contains the reader.
-     */
-    private LineNumberReader reader;
-
-    /**
-     * The field <tt>resource</tt> contains the name of the resource for error
-     * messages.
-     */
-    private String resource;
 
     /**
      * The field <tt>keyword</tt> contains the keyword for an index entry.
@@ -131,9 +118,9 @@ public class MakeindexParser implements RawIndexParser {
     private char rangeClose;
 
     /**
-     * The field <tt>locator</tt> contains the ...
+     * The field <tt>locator</tt> contains the locator.
      */
-    private ResourceLocator locator;
+    private ReaderLocator locator;
 
     /**
      * Creates a new object and gather the parameters from an interpreter.
@@ -150,9 +137,7 @@ public class MakeindexParser implements RawIndexParser {
             LInterpreter interpreter) throws RawIndexException {
 
         super();
-        this.reader = new LineNumberReader(reader);
-        this.resource = resource;
-        this.locator = new ReaderLocator(resource, this.reader);
+        this.locator = new ReaderLocator(resource, reader);
         configure(interpreter);
     }
 
@@ -163,9 +148,9 @@ public class MakeindexParser implements RawIndexParser {
      */
     public void close() throws IOException {
 
-        if (reader != null) {
-            reader.close();
-            reader = null;
+        if (locator != null) {
+            locator.getReader().close();
+            locator = null;
         }
     }
 
@@ -264,8 +249,7 @@ public class MakeindexParser implements RawIndexParser {
      */
     protected RawIndexException exception(String key, Object... args) {
 
-        return new RawIndexException(resource, //
-            Integer.toString(reader.getLineNumber()), //
+        return new RawIndexException(locator, //
             LocalizerFactory.getLocalizer(getClass()).format(key, args));
     }
 
@@ -281,7 +265,7 @@ public class MakeindexParser implements RawIndexParser {
             throws IOException,
                 RawIndexMissingCharException {
 
-        int c = reader.read();
+        int c = locator.read();
         if (c != ec) {
             throw new RawIndexMissingCharException(locator, (char) c, ec);
         }
@@ -342,14 +326,14 @@ public class MakeindexParser implements RawIndexParser {
      */
     public RawIndexentry parse() throws RawIndexException, IOException {
 
-        if (reader == null) {
+        if (locator == null) {
             return null;
         }
 
         char k0 = keyword.charAt(0);
         try {
 
-            for (int c = reader.read(); c >= 0; c = reader.read()) {
+            for (int c = locator.read(); c >= 0; c = locator.read()) {
                 if (c == k0 && scanKeyword(keyword)) {
                     String arg = scanArgument();
                     String p = scanArgument();
@@ -368,8 +352,8 @@ public class MakeindexParser implements RawIndexParser {
                 }
             }
         } finally {
-            reader.close();
-            reader = null;
+            locator.getReader().close();
+            locator = null;
         }
         return null;
     }
@@ -393,7 +377,7 @@ public class MakeindexParser implements RawIndexParser {
         int level = 1;
 
         for (;;) {
-            int c = reader.read();
+            int c = locator.read();
             if (c < 0) {
                 throw new EofException(locator);
             } else if (c == argOpen) {
@@ -406,7 +390,7 @@ public class MakeindexParser implements RawIndexParser {
             } else if (c == quote) {
                 int l = sb.length();
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
-                    c = reader.read();
+                    c = locator.read();
                     if (c < 0) {
                         throw new EofException(locator);
                     }
@@ -429,7 +413,7 @@ public class MakeindexParser implements RawIndexParser {
 
         int length = keyword.length();
         for (int i = 1; i < length; i++) {
-            int c = reader.read();
+            int c = locator.read();
             if (c != keyword.charAt(i)) {
                 return false;
             }

@@ -20,7 +20,6 @@
 package org.extex.exindex.core.makeindex;
 
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +31,6 @@ import org.extex.exindex.core.makeindex.exceptions.MissingSymbolException;
 import org.extex.exindex.core.makeindex.exceptions.UnknownAttributeException;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
-import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;
@@ -140,10 +138,9 @@ public final class MakeindexLoader {
                 RawIndexException {
 
         int[] count = new int[2];
-        LineNumberReader r = new LineNumberReader(reader);
-        ResourceLocator locator = new ReaderLocator(resource, r);
+        ReaderLocator locator = new ReaderLocator(resource, reader);
 
-        for (LValue t = scan(r, locator); t != null; t = scan(r, locator)) {
+        for (LValue t = scan(locator); t != null; t = scan(locator)) {
             if (!(t instanceof LSymbol)) {
                 throw new MissingSymbolException(locator);
             }
@@ -154,7 +151,7 @@ public final class MakeindexLoader {
                 throw new UnknownAttributeException(name);
             }
             LValue val = p.get(exname);
-            LValue v = scan(r, locator);
+            LValue v = scan(locator);
             if (v == null) {
                 throw new EofException(locator);
             } else if (val != null && v.getClass() != val.getClass()) {
@@ -185,7 +182,6 @@ public final class MakeindexLoader {
     /**
      * Scan the input for a value.
      * 
-     * @param r the reader to get characters from
      * @param locator the locator
      * 
      * @return the token found
@@ -193,24 +189,24 @@ public final class MakeindexLoader {
      * @throws IOException in case of an error
      * @throws RawIndexException
      */
-    private static LValue scan(LineNumberReader r, ResourceLocator locator)
+    private static LValue scan(ReaderLocator locator)
             throws IOException,
                 RawIndexException {
 
-        for (int c = r.read(); c >= 0; c = r.read()) {
+        for (int c = locator.read(); c >= 0; c = locator.read()) {
             if (Character.isWhitespace(c)) {
                 // skip whitespace
             } else if (c == '%') {
-                for (c = r.read(); c >= 0 && c != '\n' && c != '\r'; c =
-                        r.read()) {
+                for (c = locator.read(); c >= 0 && c != '\n' && c != '\r'; c =
+                        locator.read()) {
                     // ignore comment
                 }
             } else if (c == '\'') {
-                int cc = r.read();
+                int cc = locator.read();
                 if (cc < 0) {
                     new EofException(locator, '\'');
                 } else if (cc == '\\') {
-                    cc = r.read();
+                    cc = locator.read();
                     if (cc < 0) {
                         new EofException(locator, '\'');
                     } else if (cc == 'n') {
@@ -219,7 +215,7 @@ public final class MakeindexLoader {
                         cc = '\t';
                     }
                 }
-                c = r.read();
+                c = locator.read();
                 if (c != '\'') {
                     throw (c < 0 //
                             ? new EofException(locator, '\'')
@@ -229,9 +225,9 @@ public final class MakeindexLoader {
                 return new LChar((char) cc);
             } else if (c == '"') {
                 StringBuilder sb = new StringBuilder();
-                for (c = r.read(); c >= 0 && c != '"'; c = r.read()) {
+                for (c = locator.read(); c >= 0 && c != '"'; c = locator.read()) {
                     if (c == '\\') {
-                        c = r.read();
+                        c = locator.read();
                         if (c < 0) {
                             throw new EofException(locator, '"');
                         } else if (c == 'n') {
@@ -245,7 +241,8 @@ public final class MakeindexLoader {
                 return new LString(sb.toString());
             } else if (Character.isDigit(c)) {
                 int n = c - '0';
-                for (c = r.read(); c >= '0' && c <= '9'; c = r.read()) {
+                for (c = locator.read(); c >= '0' && c <= '9'; c =
+                        locator.read()) {
                     n += c - '0';
                 }
 
@@ -254,8 +251,8 @@ public final class MakeindexLoader {
                 StringBuilder sb = new StringBuilder();
                 sb.append((char) c);
 
-                for (c = r.read(); Character.isJavaIdentifierPart(c); c =
-                        r.read()) {
+                for (c = locator.read(); Character.isJavaIdentifierPart(c); c =
+                        locator.read()) {
                     sb.append((char) c);
                 }
                 return LSymbol.get(sb.toString());
