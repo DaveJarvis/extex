@@ -40,6 +40,9 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This parser is a reader for input in the form of the xindy raw index format
  * and some extensions of it.
+ * 
+ * <doc section="Raw Index Format">
+ * <h3>The xindy Raw Index Format</h3>
  * <p>
  * The basic syntax is the Lisp syntax with the backslash character as escape
  * character in strings. Semicolon initiates an end-line comment.
@@ -169,7 +172,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :key ("alpha" "$\alpha$") :xref "greek")
  * </pre>
  * 
- * 
+ * <doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
