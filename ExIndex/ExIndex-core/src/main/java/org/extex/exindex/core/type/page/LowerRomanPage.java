@@ -22,7 +22,10 @@ package org.extex.exindex.core.type.page;
 import org.extex.exindex.core.type.alphabet.util.RomanNumber;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This page reference consists of lowercase roman numerals only. The
+ * recognition of roman numbers is rather rough. all legal roman numbers are
+ * mapped correctly. This includes the old variant which allow four successive
+ * identical letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

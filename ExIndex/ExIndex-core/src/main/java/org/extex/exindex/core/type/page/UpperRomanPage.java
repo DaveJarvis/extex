@@ -24,7 +24,8 @@ import org.extex.exindex.core.type.alphabet.util.RomanNumber;
 /**
  * This page reference consists of uppercase roman numerals only. The
  * recognition of roman numbers is rather rough. all legal roman numbers are
- * mapped correctly. This includes the old variant which
+ * mapped correctly. This includes the old variant which allow four successive
+ * identical letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
