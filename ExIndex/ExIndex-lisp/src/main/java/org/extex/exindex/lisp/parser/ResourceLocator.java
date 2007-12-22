@@ -20,8 +20,9 @@
 package org.extex.exindex.lisp.parser;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes the ability to receive the location of a resource
+ * with line number.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -32,13 +33,13 @@ public interface ResourceLocator {
      * 
      * @return the resource
      */
-    public String getLineNumber();
+    String getLineNumber();
 
     /**
      * Getter for resource.
      * 
      * @return the resource
      */
-    public String getResource();
+    String getResource();
 
 }
