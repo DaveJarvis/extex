@@ -32,7 +32,7 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 public class LString implements LValue {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check that the argument is an LString and extract the String contained.
      * 
      * @param value the lvalue
      * 
