@@ -52,6 +52,11 @@ public class Arg {
     public static final Arg QLIST = new Arg(null, LList.class, LList.NIL, true);
 
     /**
+     * The field <tt>QSYMBOL</tt> contains the descriptor for a quoted list.
+     */
+    public static final Arg QSYMBOL = new Arg(null, LSymbol.class, null, true);
+
+    /**
      * The field <tt>VALUE</tt> contains the specification for an arbitrary
      * value.
      */
