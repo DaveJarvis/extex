@@ -19,7 +19,12 @@
 
 package org.extex.exindex.core.command;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.extex.exindex.core.command.type.AttributeMergeInfo;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -30,10 +35,40 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a rule set.
  * 
+ * <doc command="merge-to">
+ * <h3>The Command <tt>merge-to</tt></h3>
+ * 
+ * <p>
+ * The command <tt>merge-to</tt> can be used to add a merge rule.
+ * </p>
+ * 
+ * <pre>
+ *  (merge-to <i>from-attribute</i> <i>to-attribute</i>
+ *     [:drop]
+ *  )   </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (merge-to "abc" "ABC")   </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LMergeTo extends LFunction {
+
+    /**
+     * The field <tt>map</tt> contains the ...
+     */
+    private Map<String, AttributeMergeInfo> map =
+            new HashMap<String, AttributeMergeInfo>();
 
     /**
      * Creates a new object.
@@ -56,22 +91,34 @@ public class LMergeTo extends LFunction {
      * Take a sort rule and store it.
      * 
      * @param interpreter the interpreter
-     * @param from
-     * @param to
-     * @param drop
+     * @param from the attribute from which to merge
+     * @param to the attribute to which to merge
+     * @param drop the drop indicator
      * 
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, LString from, LString to,
-            LBoolean drop) throws LSettingConstantException {
+            LBoolean drop)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("merge-to:from", from);
-        interpreter.setq("merge-to:to", to);
-        interpreter.setq("merge-to:drop", drop);
-
+        map.put(LString.stringValue(from), new AttributeMergeInfo(LString
+            .stringValue(to), drop == LBoolean.TRUE));
         return null;
     }
 
+    /**
+     * Look-up for the merge info of an attribute.
+     * 
+     * @param name the name of the attribute from which to merge
+     * 
+     * @return the info for the attribute or <code>null</code> for none
+     */
+    public AttributeMergeInfo lookup(String name) {
+
+        return map.get(name);
+    }
 }
