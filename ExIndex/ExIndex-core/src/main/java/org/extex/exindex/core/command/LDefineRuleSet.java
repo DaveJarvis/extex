@@ -43,43 +43,120 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is the adapter for the L system to define a rule set.
  * 
+ * <doc command="define-rule-set">
+ * <h3>The Command <tt>define-rule-set</tt></h3>
+ * 
+ * <p>
+ * The command <tt>define-rule-set</tt> can be used to define a rule set.
+ * </p>
+ * 
+ * <pre>
+ *  (define-rule-set <i>ruleset-name</i>
+ *     <i>rule-set-specifications</i>
+ *  )   </pre>
+ * 
+ * <p>
+ * The command takes as first argument the name of the rule set. The following
+ * arguments specify how the contents of the rule set is constructed.
+ * </p>
+ * 
+ * <pre>
+ *  (define-rule-set "empty")   </pre>
+ * 
+ * <p>
+ * The example above shows the simplest case of an empty rule set. This might
+ * not be very helpful.
+ * </p>
+ * 
+ * <pre>
+ *  :inherit-from <i>rule-name-list</i>   </pre>
+ * 
+ * <p>
+ * The specification of a rule set can be contain an inherit instruction. This
+ * instruction starts with the keyword <tt>:inherit-from</tt>. This keyword
+ * is followed by a list of strings denoting rule set names. Those names need to
+ * be defined. The definitions of those names are included at this place.
+ * </p>
+ * 
+ * <pre>
+ *  (define-rule-set "my-rule-set"
+ *     :inherit-from ("abc"))   </pre>
+ * 
+ * <p>
+ * The example shows the definition of a rule set <tt>my-rule-set</tt>. It
+ * contains all rules from the rule set <tt>abc</tt>.
+ * </p>
+ * 
+ * <pre>
+ *  :rules <i>list-of-rules</i>   </pre>
+ * 
+ * <p>
+ * The other possibility for a specification is an explicit rule set. It is
+ * stared with the keyword <tt>:rules</tt>. This keyword is followed by a
+ * list containing the rules.
+ * </p>
+ * 
+ * <pre>
+ *  (<i>pattern</i> <i>replacement-text</i>
+ *    [:string | :bregex | :eregex]
+ *    [:again]
+ *  )   </pre>
+ * 
+ * <p>
+ * Any rule is a list consisting of a pattern, a replacement text, and some more
+ * optional arguments.
+ * </p>
+ * 
+ * <pre>
+ *  (define-rule-set "my-rule-set"
+ *     :rule ("abc" "def" ))   </pre>
+ * 
+ * <p>
+ * </p>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LDefineRuleSet extends LFunction {
 
     /**
-     * The field <tt>RULES</tt> contains the ...
+     * The field <tt>RULES</tt> contains the symbol <tt>:rules</tt>.
      */
     private static final LSymbol RULES = LSymbol.get(":rules");
 
     /**
-     * The field <tt>INHERIT_FROM</tt> contains the ...
+     * The field <tt>INHERIT_FROM</tt> contains the symbol
+     * <tt>:inherit-from</tt>.
      */
     private static final LSymbol INHERIT_FROM = LSymbol.get(":inherit-from");
 
     /**
-     * The field <tt>AGAIN</tt> contains the ...
+     * The field <tt>AGAIN</tt> contains the symbol <tt>:again</tt>.
      */
     private static final LSymbol AGAIN = LSymbol.get(":again");
 
     /**
-     * The field <tt>STRING</tt> contains the ...
+     * The field <tt>STRING</tt> contains the symbol <tt>:string</tt>.
      */
     private static final LSymbol STRING = LSymbol.get(":string");
 
     /**
-     * The field <tt>BREGEX</tt> contains the ...
+     * The field <tt>BREGEX</tt> contains the symbol <tt>:bregex</tt>.
      */
     private static final LSymbol BREGEX = LSymbol.get(":bregex");
 
     /**
-     * The field <tt>EREGEX</tt> contains the ...
+     * The field <tt>EREGEX</tt> contains the symbol <tt>:eregex</tt>.
      */
     private static final LSymbol EREGEX = LSymbol.get(":eregex");
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the mapping from names to reul sets.
      */
     private Map<String, List<Rule>> map = new HashMap<String, List<Rule>>();
 
@@ -100,10 +177,10 @@ public class LDefineRuleSet extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add rules from a inheritance list to a rule set.
      * 
-     * @param rules
-     * @param lst
+     * @param rules the target rule set
+     * @param lst the source list
      * 
      * @throws LException in case of an error
      */
@@ -124,10 +201,10 @@ public class LDefineRuleSet extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse rules and add them to a rule set.
      * 
-     * @param rules
-     * @param lst
+     * @param rules the target rule set
+     * @param lst the source
      * 
      * @throws LNonMatchingTypeException in case of an error
      * @throws InconsistentFlagsException in case of an error
@@ -177,7 +254,7 @@ public class LDefineRuleSet extends LFunction {
      * 
      * @param interpreter the interpreter
      * @param name the name of the rule set
-     * @param args ...
+     * @param args the arguments
      * 
      * @return <tt>nil</tt>
      * 
