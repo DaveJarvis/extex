@@ -19,14 +19,46 @@
 
 package org.extex.exindex.core.command;
 
+import java.util.List;
+
+import org.extex.exindex.core.command.type.RuleSetContainer;
+import org.extex.exindex.core.command.type.SortRuleContainer;
+import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to use a rule set.
+ * 
+ * <doc command="use-rule-set">
+ * <h3>The Command <tt>use-rule-set</tt></h3>
+ * 
+ * <p>
+ * The command <tt>use-rule-set</tt> can be used to add a sort rule.
+ * </p>
+ * 
+ * <pre>
+ *  (use-rule-set
+ *     [:run <i>level</i>]
+ *     [:rule-set <i>list-of-rule-set-names</i>]
+ *  )   </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (use-rule-set :run 1 :rules ("abc" "def"))   </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,20 +66,36 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LUseRuleSet extends LFunction {
 
     /**
+     * The field <tt>ruleSetContainer</tt> contains the container of rule
+     * sets.
+     */
+    private RuleSetContainer ruleSetContainer;
+
+    /**
+     * The field <tt>sortRules</tt> contains the container of the sort rules.
+     */
+    private SortRuleContainer sortRules;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param ruleSetContainer the container of rule sets
+     * @param sortRules the container of sort rules
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LUseRuleSet(String name)
+    public LUseRuleSet(String name, RuleSetContainer ruleSetContainer,
+            SortRuleContainer sortRules)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":phase", ""),//
+        super(name, new Arg[]{Arg.OPT_NUMBER(":phase"),//
                 Arg.OPT_QSTRING_LIST(":rule-set")});
+        this.ruleSetContainer = ruleSetContainer;
+        this.sortRules = sortRules;
     }
 
     /**
@@ -58,10 +106,23 @@ public class LUseRuleSet extends LFunction {
      * @param ruleSet the rule set
      * 
      * @return <tt>nil</tt>
+     * 
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, String phase, LList ruleSet) {
+    public LValue evaluate(LInterpreter interpreter, Long phase, LList ruleSet)
+            throws LNonMatchingTypeException {
 
-        // TODO
+        int level = phase.intValue();
+
+        for (LValue value : ruleSet) {
+            String s = LString.getString(value);
+            List<Rule> rs = ruleSetContainer.lookup(s);
+            if (rs == null) {
+                // TODO gene: evaluate unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+            sortRules.add(level, rs);
+        }
 
         return LList.NIL;
     }

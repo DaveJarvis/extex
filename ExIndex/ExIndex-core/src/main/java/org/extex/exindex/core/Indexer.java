@@ -190,8 +190,8 @@ public class Indexer extends LEngine {
         defun("define-location-class-order", //
             new LDefineLocationClassOrder("define-location-class-order",
                 locationClass));
-        defun("define-rule-set", //
-            new LDefineRuleSet("define-rule-set"));
+        LDefineRuleSet ruleSetContainer = new LDefineRuleSet("define-rule-set");
+        defun("define-rule-set", ruleSetContainer);
         defun("searchpath", //
             new LSearchpath("searchpath"));
         sortRule = new LSortRule("sort-rule");
@@ -201,7 +201,7 @@ public class Indexer extends LEngine {
         defun("merge-to", //
             new LMergeTo("merge-to"));
         defun("use-rule-set", //
-            new LUseRuleSet("use-rule-set"));
+            new LUseRuleSet("use-rule-set", ruleSetContainer, sortRule));
 
         defun("markup-attribute-group-list", //
             new LMarkupAttributeGroupList("markup-attribute-group-list"));

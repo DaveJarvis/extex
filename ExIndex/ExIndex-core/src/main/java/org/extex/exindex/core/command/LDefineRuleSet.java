@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
@@ -51,7 +52,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (define-rule-set <i>ruleset-name</i>
+ *  (define-rule-set <i>rule-set-name</i>
  *     <i>rule-set-specifications</i>
  *  )   </pre>
  * 
@@ -122,7 +123,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineRuleSet extends LFunction {
+public class LDefineRuleSet extends LFunction implements RuleSetContainer {
 
     /**
      * The field <tt>RULES</tt> contains the symbol <tt>:rules</tt>.
@@ -156,7 +157,7 @@ public class LDefineRuleSet extends LFunction {
     private static final LSymbol EREGEX = LSymbol.get(":eregex");
 
     /**
-     * The field <tt>map</tt> contains the mapping from names to reul sets.
+     * The field <tt>map</tt> contains the mapping from names to rule sets.
      */
     private Map<String, List<Rule>> map = new HashMap<String, List<Rule>>();
 
@@ -215,8 +216,7 @@ public class LDefineRuleSet extends LFunction {
 
         int size = lst.size();
         if (size < 2) {
-            // TODO gene: addRules unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new LNonMatchingTypeException("");
         }
         boolean again = false;
         int t = 0;
@@ -287,6 +287,17 @@ public class LDefineRuleSet extends LFunction {
         map.put(name, rules);
 
         return LList.NIL;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.RuleSetContainer#lookup(
+     *      java.lang.String)
+     */
+    public List<Rule> lookup(String name) {
+
+        return map.get(name);
     }
 
 }

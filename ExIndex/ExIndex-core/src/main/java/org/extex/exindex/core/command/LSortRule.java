@@ -22,6 +22,7 @@ package org.extex.exindex.core.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
@@ -31,7 +32,7 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a merge rule.
+ * This is the adapter for the L system to parse a sort rule.
  * 
  * <doc command="sort-rule">
  * <h3>The Command <tt>sort-rule</tt></h3>
@@ -41,19 +42,17 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (sort-rule pattern replacement
+ *  (sort-rule <i>pattern</i> <i>replacement-text</i>
  *     [:again]
  *     [:run <i>level</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (sort-rule "abc" "ABC")
- * </pre>
+ *  (sort-rule "abc" "ABC")   </pre>
  * 
  * TODO documentation incomplete
  * 
@@ -62,7 +61,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LSortRule extends LFunction {
+public class LSortRule extends LFunction implements SortRuleContainer {
 
     /**
      * The field <tt>rules</tt> contains the list of rules to apply.
@@ -85,6 +84,25 @@ public class LSortRule extends LFunction {
         super(name, new Arg[]{Arg.STRING, Arg.STRING,
                 Arg.OPT_BOOLEAN(":again"), //
                 Arg.OPT_NUMBER(":run")});
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.SortRuleContainer#add(int,
+     *      java.util.List)
+     */
+    public void add(int level, List<Rule> ruleList) {
+
+        for (int i = rules.size(); i < level; i++) {
+            rules.add(null);
+        }
+        List<Rule> list = rules.get(level);
+        if (list == null) {
+            list = new ArrayList<Rule>();
+            rules.add(level, list);
+        }
+        list.addAll(ruleList);
     }
 
     /**
@@ -133,4 +151,30 @@ public class LSortRule extends LFunction {
         list.add(rule);
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookup(int)
+     */
+    public List<Rule> lookup(int level) {
+
+        if (level < 0) {
+            throw new IllegalArgumentException();
+        } else if (level >= rules.size()) {
+            return null;
+        }
+        return rules.get(level);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.SortRuleContainer#size()
+     */
+    public int size() {
+
+        return rules.size();
+    }
+
 }
