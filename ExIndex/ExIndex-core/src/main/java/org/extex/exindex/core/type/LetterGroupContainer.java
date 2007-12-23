@@ -245,7 +245,7 @@ public class LetterGroupContainer {
         LetterGroup g = null;
 
         for (LValue val : prefixes) {
-            g = groups.get(LString.getString(val));
+            g = groups.get(LString.stringValue(val));
             if (g != null) {
                 break;
             }
@@ -263,7 +263,7 @@ public class LetterGroupContainer {
             }
         }
         for (LValue val : prefixes) {
-            String prefix = LString.getString(val);
+            String prefix = LString.stringValue(val);
             LetterGroup gn = groups.get(prefix);
             if (gn == null) {
                 groups.put(prefix, g);

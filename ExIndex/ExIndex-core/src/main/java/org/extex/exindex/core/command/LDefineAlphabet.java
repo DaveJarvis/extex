@@ -122,7 +122,7 @@ public class LDefineAlphabet extends LFunction {
         List<String> words = new ArrayList<String>();
 
         for (LValue val : list) {
-            words.add(LString.getString(val));
+            words.add(LString.stringValue(val));
         }
 
         map.put(name, new ListAlphabet(words));

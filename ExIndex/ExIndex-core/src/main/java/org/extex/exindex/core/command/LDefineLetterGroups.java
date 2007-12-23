@@ -115,7 +115,7 @@ public class LDefineLetterGroups extends LFunction {
         LetterGroup last = null;
 
         for (LValue val : list) {
-            String name = LString.getString(val);
+            String name = LString.stringValue(val);
             LetterGroup g = container.defineLetterGroup(name);
             if (last != null) {
                 g.after(last);

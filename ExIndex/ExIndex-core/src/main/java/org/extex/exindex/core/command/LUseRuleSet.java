@@ -115,7 +115,7 @@ public class LUseRuleSet extends LFunction {
         int level = phase.intValue();
 
         for (LValue value : ruleSet) {
-            String s = LString.getString(value);
+            String s = LString.stringValue(value);
             List<Rule> rs = ruleSetContainer.lookup(s);
             if (rs == null) {
                 // TODO gene: evaluate unimplemented

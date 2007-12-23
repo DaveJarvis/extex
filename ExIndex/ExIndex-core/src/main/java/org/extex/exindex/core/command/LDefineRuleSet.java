@@ -189,7 +189,7 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
             throws LException {
 
         for (LValue value : lst) {
-            String s = LString.getString(value);
+            String s = LString.stringValue(value);
             List<Rule> rl = map.get(s);
             if (rl == null) {
                 throw new LException(LocalizerFactory.getLocalizer(getClass())
@@ -221,8 +221,8 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
         boolean again = false;
         int t = 0;
         LSymbol type = null;
-        String pattern = LString.getString(lst.get(0));
-        String replacement = LString.getString(lst.get(0));
+        String pattern = LString.stringValue(lst.get(0));
+        String replacement = LString.stringValue(lst.get(0));
         for (int i = 0; i < size; i++) {
             LValue value = lst.get(i);
             if (value == AGAIN) {

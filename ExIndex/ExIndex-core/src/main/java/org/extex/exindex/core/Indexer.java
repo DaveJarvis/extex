@@ -434,7 +434,7 @@ public class Indexer extends LEngine {
                     : "ReadingStdin"), resource));
 
             RawIndexParser parser = makeRawIndexParser(resource, //
-                LString.getString(get("indexer:charset-raw")));
+                LString.stringValue(get("indexer:charset-raw")));
             if (parser == null) {
                 logger.info(LOCALIZER.format("ResourceNotFound", resource));
                 throw new FileNotFoundException(resource);

@@ -152,7 +152,7 @@ public class LDefineAttributes extends LFunction implements AttributesContainer 
                 LList lst = (LList) val;
 
                 for (LValue v : lst) {
-                    key = LString.getString(v);
+                    key = LString.stringValue(v);
                     if (map.containsKey(key)) {
                         throw new LException(LocalizerFactory.getLocalizer(
                             getClass()).format("AlreadyDefined", key));

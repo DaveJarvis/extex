@@ -94,7 +94,7 @@ public class LDefineSortRuleOrientations extends LFunction {
         int i = 0;
 
         for (LValue val : list) {
-            String or = LString.getString(val);
+            String or = LString.stringValue(val);
             if ("forward".equals(or)) {
                 pass[i] = true;
             } else if ("backward".equals(or)) {

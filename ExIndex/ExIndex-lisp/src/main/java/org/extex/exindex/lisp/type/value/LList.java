@@ -73,7 +73,7 @@ public class LList implements LValue, Iterable<LValue> {
      * 
      * @throws LNonMatchingTypeException in case of an error
      */
-    public static LList getList(LValue value) throws LNonMatchingTypeException {
+    public static LList listValue(LValue value) throws LNonMatchingTypeException {
 
         if (!(value instanceof LList)) {
             throw new LNonMatchingTypeException("");

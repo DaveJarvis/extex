@@ -40,7 +40,7 @@ public class LString implements LValue {
      * 
      * @throws LNonMatchingTypeException in case of an error
      */
-    public static String getString(LValue value)
+    public static String stringValue(LValue value)
             throws LNonMatchingTypeException {
 
         if (!(value instanceof LString)) {

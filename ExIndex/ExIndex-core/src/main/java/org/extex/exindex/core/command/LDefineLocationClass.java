@@ -187,7 +187,7 @@ public class LDefineLocationClass extends LFunction
                 throw new LException(LocalizerFactory.getLocalizer(getClass())
                     .format("NonVarLengthMismatch"));
             }
-            String s = LString.getString(layerList.get(0));
+            String s = LString.stringValue(layerList.get(0));
             pr = map.get(s);
             if (pr == null) {
                 throw new LException(LocalizerFactory.getLocalizer(getClass())
@@ -210,7 +210,7 @@ public class LDefineLocationClass extends LFunction
                     }
                     sep = true;
                 } else {
-                    String s = LString.getString(val);
+                    String s = LString.stringValue(val);
                     if (sep) {
                         varPage.add(s);
                     } else {

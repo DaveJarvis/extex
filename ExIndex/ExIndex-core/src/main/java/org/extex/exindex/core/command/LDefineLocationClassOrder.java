@@ -110,7 +110,7 @@ public class LDefineLocationClassOrder extends LFunction {
         String[] classes = new String[list.size()];
         int i = 0;
         for (LValue value : list) {
-            classes[i++] = LString.getString(value);
+            classes[i++] = LString.stringValue(value);
         }
         container.order(classes);
 
