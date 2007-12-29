@@ -45,7 +45,19 @@ public class IndexerTraceTest extends AbstractIndexerTester {
     @Test
     public final void test01() throws Exception {
 
-        runTest(makeList("style1"), makeList("XREF.raw"), "", "");
+        runTest(makeList("style1"), makeList("XREF.raw"), "<INDEX:OPEN>\n"
+                + "<LETTER-GROUP-LIST:OPEN>\n"
+                + "<LETTER-GROUP:OPEN[default]>\n" + "<INDEXENTRY:OPEN[0]>\n"
+                + "<KEYWORD-LIST:OPEN[0]>\n" + "<KEYWORD:OPEN[0]>\n"
+                + "abc<KEYWORD:CLOSE[0]>\n" + "<CROSSREF-LIST:OPEN[see]>\n"
+                + "<CROSSREF-LAYER-LIST:OPEN[see]>\n"
+                + "<CROSSREF-LAYER:OPEN[see]>\n"
+                + "IV<CROSSREF-LAYER:CLOSE[see]>\n"
+                + "<CROSSREF-LAYER-LIST:CLOSE[see]>\n"
+                + "<CROSSREF-LIST:CLOSE[see]>\n" + "<KEYWORD-LIST:CLOSE[0]>\n"
+                + "<INDEXENTRY:CLOSE[0]>\n" + "<LETTER-GROUP:CLOSE[default]>\n"
+                + "<LETTER-GROUP-LIST:CLOSE>\n" + "<INDEX:CLOSE>\n", //
+            "");
     }
 
 }
