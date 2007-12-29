@@ -20,7 +20,7 @@
 package org.extex.exindex.lisp.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that an undefined flag has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,8 +36,8 @@ public class LUndefinedFlagException extends LException {
     /**
      * Creates a new object.
      * 
-     * @param argName
-     * @param function
+     * @param argName the name of the argument
+     * @param function the function
      */
     public LUndefinedFlagException(String argName, String function) {
 

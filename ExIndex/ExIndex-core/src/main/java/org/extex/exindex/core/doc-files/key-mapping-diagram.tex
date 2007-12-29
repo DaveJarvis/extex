@@ -1,0 +1,65 @@
+%%*****************************************************************************
+%% $Id: overview-diagram.tex,v 0.00 2007/12/20 23:06:12 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{graphicx}
+
+\newcommand\arrow[2]{%
+\begin{picture}(40,10)
+  \put(0,0){\vector(1,0){40}}
+  \put(20,2.5){\makebox(0,0){\scriptsize #1}}
+  \put(20,-2.5){\makebox(0,0){\scriptsize #2}}
+\end{picture}}
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sf\bfseries\selectfont
+
+\unitlength=1.8pt
+\begin{picture}(220,100)
+
+  \put(0,40){\framebox(40,10){main-key-0}}
+  \put(0,30){\framebox(40,10){main-key-1}}
+  \put(0,20){\framebox(40,10){main-key-2}}
+  \put(0,10){\framebox(40,10){main-key-3}}
+  \put(0,0){\framebox(40,10){main-key-4}}
+  {\linethickness{2.4pt}
+    \put(2,-1){\line(1,0){39.6}}
+    \put(41,-1.6){\line(0,1){49.6}}
+  }
+
+  \put(80,40){\framebox(40,10){merge-key-0}}
+  \put(80,30){\framebox(40,10){merge-key-1}}
+  \put(80,20){\framebox(40,10){merge-key-2}}
+  {\linethickness{2.4pt}
+    \put(82,19){\line(1,0){39.6}}
+    \put(121,19.6){\line(0,1){29.6}}
+  }
+
+  \put(160,40){\framebox(40,10){sort-key-0}}
+  \put(160,30){\framebox(40,10){sort-key-1}}
+  \put(160,20){\framebox(40,10){sort-key-2}}
+  {\linethickness{2.4pt}
+    \put(162,19){\line(1,0){39.6}}
+    \put(201,19.6){\line(0,1){29.6}}
+  }
+
+  \thicklines
+  \put(40,45){\arrow{merge-rule}{}}
+  \put(40,35){\arrow{merge-rule}{}}
+  \put(40,25){\arrow{merge-rule}{}}
+
+  \put(120,45){\arrow{sort-rule}{:level 0}}
+  \put(120,35){\arrow{sort-rule}{:level 1}}
+  \put(120,25){\arrow{sort-rule}{:level 2}}
+
+\end{picture}
+
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 

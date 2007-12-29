@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.exception;
 
+import org.extex.exindex.lisp.parser.ResourceLocator;
+
 /**
  * This exception signals that an unknown argument has been encountered.
  * 
@@ -36,12 +38,11 @@ public class RawIndexSyntaxException extends RawIndexException {
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource
-     * @param line the line number
+     * @param locator the locator
      */
-    public RawIndexSyntaxException(String resource, String line) {
+    public RawIndexSyntaxException(ResourceLocator locator) {
 
-        super(resource, line);
+        super(locator);
     }
 
 }

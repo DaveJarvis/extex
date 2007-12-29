@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.exception.LUndefinedFunctionException;
 import org.extex.exindex.lisp.parser.LParser;
@@ -189,7 +190,9 @@ public class LInterpreter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Read expressions from a reader and evaluate them. The last result is
+     * returned. If not expression can be read at all then <tt>nil</tt> is
+     * returned.
      * 
      * @param reader the reader
      * @param resource the name of the resource for error messages
@@ -315,10 +318,12 @@ public class LInterpreter {
      * @param symbol the symbol
      * @param value the value
      * 
+     * @return the value set
+     * 
      * @throws LSettingConstantException in case the symbol is defined as
      *         constant
      */
-    public void setq(LSymbol symbol, LValue value)
+    public LValue setq(LSymbol symbol, LValue value)
             throws LSettingConstantException {
 
         if (symbol == null) {
@@ -327,6 +332,7 @@ public class LInterpreter {
             throw new LSettingConstantException(symbol);
         }
         bindings.put(symbol, value);
+        return value;
     }
 
     /**
@@ -335,13 +341,15 @@ public class LInterpreter {
      * @param symbol the symbol
      * @param value the value
      * 
+     * @return the value set
+     * 
      * @throws LSettingConstantException in case the symbol is defined as
      *         constant
      */
-    public void setq(String symbol, LValue value)
+    public LValue setq(String symbol, LValue value)
             throws LSettingConstantException {
 
-        setq(LSymbol.get(symbol), value);
+        return setq(LSymbol.get(symbol), value);
     }
 
     /**
@@ -409,8 +417,14 @@ public class LInterpreter {
      * @param tag the name of the variable
      * 
      * @throws IOException in case of an I/O error
+     * @throws LNonMatchingTypeException in case that the variable is not a
+     *         string
+     * @deprecated
      */
-    public void writeString(Writer writer, String tag) throws IOException {
+    @Deprecated
+    public void writeString(Writer writer, String tag)
+            throws IOException,
+                LNonMatchingTypeException {
 
         LValue x = get(LSymbol.get(tag));
         if (x instanceof LString) {
@@ -423,7 +437,6 @@ public class LInterpreter {
             return;
         }
 
-        // TODO gene: writeString unimplemented
-        throw new RuntimeException("unimplemented");
+        throw new LNonMatchingTypeException("");
     }
 }

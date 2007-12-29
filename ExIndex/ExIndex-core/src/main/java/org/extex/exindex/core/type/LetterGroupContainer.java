@@ -34,7 +34,7 @@ import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This is ...
+ * This is the container for letter groups
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 6649 $

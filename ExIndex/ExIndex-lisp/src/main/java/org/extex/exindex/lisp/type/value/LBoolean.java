@@ -27,7 +27,7 @@ import java.io.PrintStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LBoolean implements LValue {
+public final class LBoolean implements LValue {
 
     /**
      * The field <tt>TRUE</tt> contains the constant for true.

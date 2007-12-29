@@ -23,7 +23,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.LDefineCrossrefClass;
+import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.command.type.CrossrefClassContainer;
+import org.extex.exindex.core.util.StringUtils;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This interface describes a location specification.
@@ -39,28 +42,57 @@ public class LocRef implements RefSpec {
     private String location;
 
     /**
+     * The field <tt>layer</tt> contains the layer.
+     */
+    private String layer;
+
+    /**
      * Creates a new object.
      * 
      * @param location the location
+     * @param layer the layer
      */
-    public LocRef(String location) {
+    public LocRef(String location, String layer) {
 
         super();
         this.location = location;
+        this.layer = layer;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
-     *      org.extex.exindex.core.parser.raw.RawIndexentry, Indexer,
-     *      org.extex.exindex.core.command.LDefineCrossrefClass, java.util.List)
+     * @see org.extex.exindex.core.parser.raw.LocRef#check(
+     *      java.util.logging.Logger,
+     *      org.extex.exindex.core.parser.raw.RawIndexentry,
+     *      org.extex.exindex.core.Indexer,
+     *      org.extex.exindex.core.command.type.CrossrefClassContainer,
+     *      java.util.List,
+     *      org.extex.exindex.core.command.type.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
+            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            AttributesContainer attributes) {
+
+        String attr = entry.getRef().getLayer();
+        if (attr != null && attributes.lookup(attr) == null) {
+            logger.severe(LocalizerFactory.getLocalizer(Indexer.class).format(
+                "AttributeUnknown", attr));
+            return false;
+        }
 
         // TODO gene: check unimplemented
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.parser.raw.RefSpec#getLayer()
+     */
+    public String getLayer() {
+
+        return layer;
     }
 
     /**

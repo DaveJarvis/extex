@@ -26,7 +26,7 @@ import org.extex.exindex.core.type.page.UpperPage;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This location class represents a parser for uppercase letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -71,13 +71,13 @@ public class AlphaUppercase implements LValue, Alphabet, LocationClass {
             return false;
         }
         s.deleteCharAt(0);
-        while (s.length() > 0) {
-            c = s.charAt(0);
-            if (c < 'A' || c > 'Z') {
-                return true;
-            }
-            s.deleteCharAt(0);
-        }
+        // while (s.length() > 0) {
+        // c = s.charAt(0);
+        // if (c < 'A' || c > 'Z') {
+        // return true;
+        // }
+        // s.deleteCharAt(0);
+        // }
         return true;
     }
 

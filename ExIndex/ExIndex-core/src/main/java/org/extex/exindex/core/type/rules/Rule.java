@@ -20,10 +20,10 @@
 package org.extex.exindex.core.type.rules;
 
 /**
- * This is th abstarct base class for rules.
+ * This is th abstract base class for rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6666 $
  */
 public abstract class Rule {
 

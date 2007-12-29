@@ -19,19 +19,59 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.LMarkupTransform;
+import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.type.transform.Capitalize;
 import org.extex.exindex.core.type.transform.Downcase;
-import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.core.type.transform.Upcase;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to parse a letter group.
+ * 
+ * <doc command="markup-letter-group">
+ * <h3>The Command <tt>markup-letter-group</tt></h3>
+ * 
+ * <p>
+ * The command <tt>markup-letter-group</tt> can be used to specify the markup
+ * for letter group lists.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-letter-group
+ *     [:open <i>open-markup</i>]
+ *     [:close <i>close-markup</i>]
+ *     [:group <i>group-name</i>]
+ *     [:open-head <i>open-head-markup</i>]
+ *     [:close-head <i>close-head-markup</i>]
+ *     [:upcase | :downcase | :capitalize]
+ *  )
+ * </pre>
+ * 
+ * <p>
+ * The command has some optional arguments which are described in turn.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-letter-group :open "\\begingroup " :close "\\endgroup ")
+ * </pre>
+ * 
+ * TODO documentation incomplete
+ * 
+ * </doc>
+ * 
+ * <h3>Parameters</h3>
+ * <p>
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-letter-group</tt>).
+ * </p>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -51,13 +91,13 @@ public class LMarkupLetterGroup extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":group", ""),//
-                Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":open-head"),//
-                Arg.OPT_LSTRING(":close-head"),//
-                Arg.OPT_BOOLEAN(":upcase"),//
-                Arg.OPT_BOOLEAN(":downcase"),//
+        super(name, new Arg[]{Arg.OPT_STRING(":group", null), //
+                Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":open-head", ""), //
+                Arg.OPT_STRING(":close-head", ""), //
+                Arg.OPT_BOOLEAN(":upcase"), //
+                Arg.OPT_BOOLEAN(":downcase"), //
                 Arg.OPT_BOOLEAN(":capitalize")});
     }
 
@@ -68,46 +108,57 @@ public class LMarkupLetterGroup extends LFunction {
      * @param group the name of the group
      * @param open the open string
      * @param close the close string
-     * @param openHead
-     * @param closeHead
-     * @param upcase
-     * @param downcase
-     * @param capitalize
+     * @param openHead the open head string
+     * @param closeHead the close head string
+     * @param upcase the indicator for the upcase transform
+     * @param downcase the indicator for the downcase transform
+     * @param capitalize the indicator for the capitalize transform
      * 
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws InconsistentFlagsException in case of an error
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, String group,
-            LString open, LString close, LString openHead, LString closeHead,
-            Boolean upcase, Boolean downcase, Boolean capitalize)
-            throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String group, String open,
+            String close, String openHead, String closeHead, Boolean upcase,
+            Boolean downcase, Boolean capitalize)
+            throws LSettingConstantException,
+                InconsistentFlagsException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("markup:letter-group-" + group + "-open", open);
-        interpreter.setq("markup:letter-group-" + group + "-close", close);
-        interpreter.setq("markup:letter-group-" + group + "-open-head",
-            openHead);
-        interpreter.setq("markup:letter-group-" + group + "-close-head",
-            closeHead);
-        if (1 < (upcase.booleanValue() ? 0 : 1)
-                + (downcase.booleanValue() ? 0 : 1)
-                + (capitalize.booleanValue() ? 0 : 1)) {
-            // TODO gene: evaluate unimplemented
-            throw new RuntimeException("unimplemented");
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
         }
-        Transform transform;
-        if (upcase.booleanValue()) {
-            transform = new Upcase();
-            interpreter.setq("markup:letter-group-" + group + "-transform",
-                transform);
-        } else if (downcase.booleanValue()) {
-            transform = new Downcase();
-            interpreter.setq("markup:letter-group-" + group + "-transform",
-                transform);
-        } else if (capitalize.booleanValue()) {
-            transform = new Capitalize();
-            interpreter.setq("markup:letter-group-" + group + "-transform",
-                transform);
+
+        LMarkupTransform markup = (LMarkupTransform) container;
+        markup.set(group, open, close, openHead, closeHead);
+
+        switch ((upcase.booleanValue() ? 0 : 1)
+                | (downcase.booleanValue() ? 0 : 2)
+                | (capitalize.booleanValue() ? 0 : 4)) {
+            case 1:
+                markup.setTransform(group, new Upcase());
+                break;
+            case 2:
+                markup.setTransform(group, new Downcase());
+                break;
+            case 3:
+                throw new InconsistentFlagsException(null, ":upcase",
+                    ":downcase");
+            case 4:
+                markup.setTransform(group, new Capitalize());
+                break;
+            case 5:
+                throw new InconsistentFlagsException(null, ":upcase",
+                    ":capitalize");
+            case 6:
+            case 7:
+                throw new InconsistentFlagsException(null, ":capitalize",
+                    ":downcase");
+            default:
+                // do nothing
         }
 
         return null;

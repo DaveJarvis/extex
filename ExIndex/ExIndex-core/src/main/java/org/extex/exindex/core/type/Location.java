@@ -23,9 +23,10 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface represents a location.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,12 +34,17 @@ import org.extex.exindex.lisp.LInterpreter;
 public interface Location {
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method writes the location to a writer
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param trace the indicator for tracing
      * 
      * @throws IOException in case of an I/O error
+     * @throws LNonMatchingTypeException in case of an error
      */
-    void write(Writer writer, LInterpreter interpreter) throws IOException;
+    void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException;
+
 }

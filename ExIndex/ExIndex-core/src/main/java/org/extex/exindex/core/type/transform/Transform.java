@@ -22,7 +22,8 @@ package org.extex.exindex.core.type.transform;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a transformer on a string which can be stored in the
+ * L system.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,4 +38,5 @@ public interface Transform extends LValue {
      * @return the transformed string
      */
     String transform(String in);
+
 }

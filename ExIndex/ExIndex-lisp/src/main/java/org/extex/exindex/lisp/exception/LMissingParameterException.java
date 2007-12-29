@@ -20,7 +20,7 @@
 package org.extex.exindex.lisp.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that parameter of a flag is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

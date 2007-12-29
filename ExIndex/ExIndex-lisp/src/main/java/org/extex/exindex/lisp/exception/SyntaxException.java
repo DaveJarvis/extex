@@ -39,7 +39,7 @@ public class SyntaxException extends IOException {
     /**
      * Creates a new object.
      * 
-     * @param resource
+     * @param resource the resource
      */
     public SyntaxException(String resource) {
 

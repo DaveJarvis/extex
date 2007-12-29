@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -48,7 +49,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-sort-rule-orientations ("forward" "forward" "backward"))
+ *  (define-sort-rule-orientations ("ascending" "descending" "ascending"))
  * </pre>
  * 
  * TODO documentation incomplete
@@ -63,18 +64,27 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineSortRuleOrientations extends LFunction {
 
     /**
+     * The field <tt>container</tt> contains the container to store the
+     * information in.
+     */
+    private SortRuleContainer container;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container to store the information
+     * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineSortRuleOrientations(String name)
+    public LDefineSortRuleOrientations(String name, SortRuleContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.QLIST});
+        this.container = container;
     }
 
     /**
@@ -90,21 +100,20 @@ public class LDefineSortRuleOrientations extends LFunction {
     public LValue evaluate(LInterpreter interpreter, LList list)
             throws LNonMatchingTypeException {
 
-        boolean[] pass = new boolean[list.size()];
-        int i = 0;
+        int level = 0;
 
         for (LValue val : list) {
             String or = LString.stringValue(val);
-            if ("forward".equals(or)) {
-                pass[i] = true;
-            } else if ("backward".equals(or)) {
-                pass[i] = false;
+            if ("".equals(or)) {
+                throw new LNonMatchingTypeException(null);
+            } else if ("forward".startsWith(or) || "ascending".startsWith(or)) {
+                container.lookupOrCreate(level).setAscending(true);
+            } else if ("backward".startsWith(or) || "descending".startsWith(or)) {
+                container.lookupOrCreate(level).setAscending(false);
             } else {
                 throw new LNonMatchingTypeException(null);
             }
         }
-
-        // TODO store pass away
 
         return LList.NIL;
     }

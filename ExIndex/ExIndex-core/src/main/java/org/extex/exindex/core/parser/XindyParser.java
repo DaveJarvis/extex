@@ -29,7 +29,7 @@ import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.RefSpec;
-import org.extex.exindex.core.parser.raw.XRef;
+import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
@@ -222,6 +222,11 @@ public class XindyParser extends LParser implements RawIndexParser {
     private static final LSymbol XREF = LSymbol.get(":xref");
 
     /**
+     * The field <tt>locator</tt> contains the locator.
+     */
+    private ReaderLocator locator;
+
+    /**
      * Creates a new object.
      * 
      * @param reader the source to read from
@@ -230,6 +235,7 @@ public class XindyParser extends LParser implements RawIndexParser {
     public XindyParser(Reader reader, String resource) {
 
         super(reader, resource);
+        locator = new ReaderLocator(resource, reader);
     }
 
     /**
@@ -244,8 +250,9 @@ public class XindyParser extends LParser implements RawIndexParser {
     private LList assumeLList(LValue value) throws RawIndexException {
 
         if (!(value instanceof LList)) {
-            throw new RawIndexException(getResource(), getLineNumber(),
-                LocalizerFactory.getLocalizer(getClass()).format("MissingList"));
+            throw new RawIndexException(new ReaderLocator(getResource(),
+                getLineNumber()), LocalizerFactory.getLocalizer(getClass())
+                .format("MissingList"));
         }
         return (LList) value;
     }
@@ -295,8 +302,8 @@ public class XindyParser extends LParser implements RawIndexParser {
      */
     protected RawIndexException exception(String key, Object... args) {
 
-        return new RawIndexException(getResource(), getLineNumber(),
-            LocalizerFactory.getLocalizer(getClass()).format(key, args));
+        return new RawIndexException(locator, LocalizerFactory.getLocalizer(
+            getClass()).format(key, args));
     }
 
     /**
@@ -320,16 +327,17 @@ public class XindyParser extends LParser implements RawIndexParser {
         RefSpec ref = null;
         Boolean openRange = null;
         Boolean closeRange = null;
+        String[] xrefKey = null;
         int size = list.size();
         if (size == 0) {
-            throw new RawIndexSyntaxException(getResource(), getLineNumber());
+            throw new RawIndexSyntaxException(locator);
         }
         if (!(list.get(0) instanceof LSymbol)) {
-            throw new RawIndexSyntaxException(getResource(), getLineNumber());
+            throw new RawIndexSyntaxException(locator);
         }
         LSymbol sym = (LSymbol) list.get(0);
         if (!"indexentry".equals(sym.getValue())) {
-            throw new RawIndexSyntaxException(getResource(), getLineNumber());
+            throw new RawIndexSyntaxException(locator);
         }
 
         for (int i = 1; i < size; i++) {
@@ -337,8 +345,7 @@ public class XindyParser extends LParser implements RawIndexParser {
 
             if (arg == KEY) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(key, KEY);
                 arg = list.get(++i);
@@ -350,8 +357,7 @@ public class XindyParser extends LParser implements RawIndexParser {
 
             } else if (arg == PRINT) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(print, PRINT);
                 arg = list.get(++i);
@@ -363,8 +369,7 @@ public class XindyParser extends LParser implements RawIndexParser {
 
             } else if (arg == TKEY) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(tkey, TKEY);
                 if (key != null || print != null) {
@@ -393,20 +398,17 @@ public class XindyParser extends LParser implements RawIndexParser {
                                 print[j] = assumeLString(ll.get(1));
                                 break;
                             default:
-                                throw new RawIndexSyntaxException(
-                                    getResource(), getLineNumber());
+                                throw new RawIndexSyntaxException(locator);
                         }
 
                     } else {
-                        throw new RawIndexSyntaxException(getResource(),
-                            getLineNumber());
+                        throw new RawIndexSyntaxException(locator);
                     }
                 }
 
             } else if (arg == ATTR) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(attr, ATTR);
                 attr = assumeLString(list.get(++i));
@@ -421,26 +423,22 @@ public class XindyParser extends LParser implements RawIndexParser {
 
             } else if (arg == LOCREF) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(locref, LOCREF);
                 locref = assumeLString(list.get(++i));
 
             } else if (arg == XREF) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(getResource(),
-                        getLineNumber());
+                    throw new RawIndexSyntaxException(locator);
                 }
                 assumeUnbound(ref, XREF);
                 arg = list.get(++i);
-                String[] a;
                 if (arg instanceof LString) {
-                    a = new String[]{((LString) arg).getValue()};
+                    xrefKey = new String[]{((LString) arg).getValue()};
                 } else {
-                    a = toArray(arg);
+                    xrefKey = toArray(arg);
                 }
-                ref = new XRef(a);
 
             } else {
                 throw exception("MissingTag", arg.toString());
@@ -453,13 +451,15 @@ public class XindyParser extends LParser implements RawIndexParser {
         if (print == null) {
             print = key;
         }
-        if (ref != null) {
+
+        if (xrefKey != null) {
             if (openRange != null) {
                 throw exception("XrefAndOpen");
-            }
-            if (closeRange != null) {
+            } else if (closeRange != null) {
                 throw exception("XrefAndClose");
             }
+            // delayed since attr might not be given before
+            ref = new CrossReference(xrefKey, attr);
         }
 
         if (locref != null) {
@@ -467,18 +467,18 @@ public class XindyParser extends LParser implements RawIndexParser {
                 if (closeRange != null) {
                     throw exception("OpenAndClose");
                 }
-                ref = new OpenLocRef(locref);
+                ref = new OpenLocRef(locref, attr);
             } else if (closeRange != null) {
-                ref = new CloseLocRef(locref);
+                ref = new CloseLocRef(locref, attr);
             } else {
-                ref = new LocRef(locref);
+                ref = new LocRef(locref, attr);
             }
         }
 
         if (ref == null) {
             throw exception("Unbound", LOCREF.toString());
         }
-        return new RawIndexentry(key, print, attr, ref);
+        return new RawIndexentry(key, print, ref);
     }
 
     /**

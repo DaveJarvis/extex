@@ -92,10 +92,12 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Match a string at all positions in a string builder and delete all
+     * characters if a match is found.
      * 
-     * @param s
-     * @param x
+     * @param s the string builder
+     * @param x the pattern
+     * 
      * @return <code>true</code> if a match has been found
      */
     private boolean match(StringBuilder s, String x) {

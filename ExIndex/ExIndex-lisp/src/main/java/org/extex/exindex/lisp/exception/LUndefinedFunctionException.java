@@ -20,7 +20,8 @@
 package org.extex.exindex.lisp.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that a function has been encountered which is not
+ * defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,7 +37,7 @@ public class LUndefinedFunctionException extends LException {
     /**
      * Creates a new object.
      * 
-     * @param resource
+     * @param resource the resource
      */
     public LUndefinedFunctionException(String resource) {
 

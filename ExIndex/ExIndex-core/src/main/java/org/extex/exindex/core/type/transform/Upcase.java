@@ -22,7 +22,7 @@ package org.extex.exindex.core.type.transform;
 import java.io.PrintStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This transformer translates all characters to their uppercase counterpart.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -31,7 +31,6 @@ public class Upcase implements Transform {
 
     /**
      * Creates a new object.
-     * 
      */
     public Upcase() {
 
@@ -45,8 +44,7 @@ public class Upcase implements Transform {
      */
     public void print(PrintStream stream) {
 
-        // TODO gene: print unimplemented
-
+        stream.print("upcase");
     }
 
     /**

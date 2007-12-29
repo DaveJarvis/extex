@@ -110,7 +110,16 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <pre>
  *  (define-rule-set "my-rule-set"
- *     :rule ("abc" "def" ))   </pre>
+ *     :rules (("abc" "def" )))   </pre>
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre>
+ *  (define-rule-set "my-rule-set"
+ *     :rules (("abcd" "defd" ))
+ *     :inherit-from ("din5007")
+ *     :rules (("abc" "def" )))   </pre>
  * 
  * <p>
  * </p>
@@ -147,14 +156,14 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
     private static final LSymbol STRING = LSymbol.get(":string");
 
     /**
-     * The field <tt>BREGEX</tt> contains the symbol <tt>:bregex</tt>.
+     * The field <tt>BREGEX</tt> contains the symbol <tt>:bregexp</tt>.
      */
-    private static final LSymbol BREGEX = LSymbol.get(":bregex");
+    private static final LSymbol BREGEX = LSymbol.get(":bregexp");
 
     /**
-     * The field <tt>EREGEX</tt> contains the symbol <tt>:eregex</tt>.
+     * The field <tt>EREGEX</tt> contains the symbol <tt>:eregexp</tt>.
      */
-    private static final LSymbol EREGEX = LSymbol.get(":eregex");
+    private static final LSymbol EREGEX = LSymbol.get(":eregexp");
 
     /**
      * The field <tt>map</tt> contains the mapping from names to rule sets.
@@ -205,47 +214,60 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
      * Parse rules and add them to a rule set.
      * 
      * @param rules the target rule set
-     * @param lst the source
+     * @param args the source
      * 
      * @throws LNonMatchingTypeException in case of an error
      * @throws InconsistentFlagsException in case of an error
      */
-    private void addRules(List<Rule> rules, LList lst)
+    private void addRules(List<Rule> rules, LList args)
             throws LNonMatchingTypeException,
                 InconsistentFlagsException {
 
-        int size = lst.size();
+        int size = args.size();
         if (size < 2) {
             throw new LNonMatchingTypeException("");
         }
         boolean again = false;
-        int t = 0;
-        LSymbol type = null;
-        String pattern = LString.stringValue(lst.get(0));
-        String replacement = LString.stringValue(lst.get(0));
+        int type = 0;
+        String pattern = LString.stringValue(args.get(0));
+        String replacement = LString.stringValue(args.get(0));
         for (int i = 0; i < size; i++) {
-            LValue value = lst.get(i);
+            LValue value = args.get(i);
             if (value == AGAIN) {
                 again = true;
-            } else if (value == STRING || value == BREGEX || value == EREGEX) {
-                type = (LSymbol) value;
-                t++;
+            } else if (value == STRING) {
+                type |= 1;
+            } else if (value == BREGEX) {
+                type |= 2;
+            } else if (value == EREGEX) {
+                type |= 4;
             } else {
-                throw new LNonMatchingTypeException("");
+                throw new LNonMatchingTypeException(""); // TODO
             }
         }
 
-        if (t > 1) {
-            throw new InconsistentFlagsException(null, "", "");
-        }
-
-        if (type == null || type == STRING) {
-            rules.add(new StringRule(pattern, replacement, again));
-        } else if (type == BREGEX) {
-            // TODO gene: addRules unimplemented
-            throw new RuntimeException("BREGEX unimplemented");
-        } else if (type == EREGEX) {
-            rules.add(new RegexRule(pattern, replacement, again));
+        switch (type) {
+            case 0:
+                // default is :string
+            case 1:
+                rules.add(new StringRule(pattern, replacement, again));
+                break;
+            case 2:
+                rules.add(new RegexRule(pattern, replacement, again));
+                break;
+            case 3:
+                throw new InconsistentFlagsException(null, ":string",
+                    ":bregexp");
+            case 4:
+                rules.add(new RegexRule(pattern, replacement, again));
+                break;
+            case 5:
+                throw new InconsistentFlagsException(null, ":string",
+                    ":eregexp");
+            case 6:
+            case 7:
+                throw new InconsistentFlagsException(null, ":bregexp",
+                    ":eregexp");
         }
     }
 

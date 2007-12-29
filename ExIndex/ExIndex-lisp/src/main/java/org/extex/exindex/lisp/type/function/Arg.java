@@ -60,18 +60,20 @@ public class Arg {
      * The field <tt>VALUE</tt> contains the specification for an arbitrary
      * value.
      */
-    public static Arg VALUE = new Arg(null, LValue.class, LList.NIL, false);
+    public static final Arg VALUE =
+            new Arg(null, LValue.class, LList.NIL, false);
 
     /**
      * The field <tt>QVALUE</tt> contains the specification for a quoted
      * value.
      */
-    public static Arg QVALUE = new Arg(null, LValue.class, LList.NIL, true);
+    public static final Arg QVALUE =
+            new Arg(null, LValue.class, LList.NIL, true);
 
     /**
      * The field <tt>STRING</tt> contains the specification for a string.
      */
-    public static Arg STRING = new Arg(null, String.class, "", false) {
+    public static final Arg STRING = new Arg(null, String.class, "", false) {
 
         /**
          * {@inheritDoc}
@@ -93,7 +95,7 @@ public class Arg {
     /**
      * The field <tt>LSTRING</tt> contains the specification for a string.
      */
-    public static Arg LSTRING =
+    public static final Arg LSTRING =
             new Arg(null, LString.class, new LString(""), false) {
 
                 /**
@@ -121,7 +123,7 @@ public class Arg {
      * 
      * @return a new specification for the name
      */
-    public static Arg OPT_BOOLEAN(String flag) {
+    public static final Arg OPT_BOOLEAN(String flag) {
 
         return new Arg(flag, Boolean.class, Boolean.FALSE, false) {
 
@@ -148,7 +150,7 @@ public class Arg {
      * 
      * @return a new specification for the name
      */
-    public static Arg OPT_LBOOLEAN(String flag) {
+    public static final Arg OPT_LBOOLEAN(String flag) {
 
         return new Arg(flag, LBoolean.class, LBoolean.FALSE, false) {
 
@@ -175,7 +177,7 @@ public class Arg {
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_LIST(String flag) {
+    public static final Arg OPT_LIST(String flag) {
 
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, false) {
 
@@ -201,13 +203,14 @@ public class Arg {
      * Get the descriptor for an optional number.
      * 
      * @param flag the name of the flag
+     * @param fallback the default vale used as fallback
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_LNUMBER(String flag) {
+    public static final Arg OPT_LNUMBER(String flag, LNumber fallback) {
 
-        return new OptionalArgWithParameter(flag, LNumber.class,
-            new LNumber(0), false) {
+        return new OptionalArgWithParameter(flag, LNumber.class, fallback,
+            false) {
 
             /**
              * {@inheritDoc}
@@ -235,13 +238,14 @@ public class Arg {
      * Get the descriptor for an optional string.
      * 
      * @param flag the name of the flag
+     * @param fallback the default value as fallback
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_LSTRING(String flag) {
+    public static final Arg OPT_LSTRING(String flag, LString fallback) {
 
-        return new OptionalArgWithParameter(flag, LString.class,
-            new LString(""), false) {
+        return new OptionalArgWithParameter(flag, LString.class, fallback,
+            false) {
 
             /**
              * {@inheritDoc}
@@ -265,13 +269,13 @@ public class Arg {
      * Get the descriptor for an optional number.
      * 
      * @param flag the name of the flag
+     * @param fallback the default value as fallback
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_NUMBER(String flag) {
+    public static final Arg OPT_NUMBER(String flag, Long fallback) {
 
-        return new OptionalArgWithParameter(flag, Long.class, Long.valueOf(0),
-            false) {
+        return new OptionalArgWithParameter(flag, Long.class, fallback, false) {
 
             /**
              * {@inheritDoc}
@@ -301,7 +305,7 @@ public class Arg {
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_QLIST(String flag) {
+    public static final Arg OPT_QLIST(String flag) {
 
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, true) {
 
@@ -330,7 +334,7 @@ public class Arg {
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_QSTRING_LIST(String flag) {
+    public static final Arg OPT_QSTRING_LIST(String flag) {
 
         return new OptionalArgWithParameter(flag, LList.class, LList.NIL, true) {
 
@@ -367,7 +371,7 @@ public class Arg {
      * 
      * @return the argument descriptor
      */
-    public static Arg OPT_STRING(String flag, String fallback) {
+    public static final Arg OPT_STRING(String flag, String fallback) {
 
         return new OptionalArgWithParameter(flag, String.class, fallback, false) {
 

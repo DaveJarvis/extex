@@ -145,8 +145,8 @@ public class LDefineLocationClass extends LFunction
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.QLIST,
-                Arg.OPT_NUMBER(":min-range-length"),
-                Arg.OPT_NUMBER(":hierdepth"), //
+                Arg.OPT_NUMBER(":min-range-length", Long.valueOf(0)),
+                Arg.OPT_NUMBER(":hierdepth", Long.valueOf(0)), //
                 Arg.OPT_BOOLEAN(":var")});
     }
 
@@ -167,10 +167,10 @@ public class LDefineLocationClass extends LFunction
      * 
      * @param interpreter the interpreter
      * @param name the name of the location class
-     * @param layerList
-     * @param minRangeLength
-     * @param hierdepth
-     * @param var
+     * @param layerList the list of layers
+     * @param minRangeLength the minimum length of a range
+     * @param hierdepth the hierarchy depth
+     * @param var the var indicator
      * 
      * @return <tt>nil</tt>
      * 

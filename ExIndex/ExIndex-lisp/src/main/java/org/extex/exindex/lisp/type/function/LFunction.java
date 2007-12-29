@@ -29,6 +29,7 @@ import java.util.Map;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LUndefinedFlagException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LSymbol;
@@ -139,8 +140,7 @@ public abstract class LFunction {
         while (ai < args.size()) {
             LValue arg = args.get(ai);
             if (!(arg instanceof LSymbol)) {
-                // TODO gene: eval unimplemented
-                throw new RuntimeException(name + " unimplemented");
+                throw new LNonMatchingTypeException("symbol");
             }
             String argName = ((LSymbol) arg).getValue();
             Arg fct = flags.get(argName);
@@ -171,8 +171,18 @@ public abstract class LFunction {
         } else if (ret == null) {
             return LList.NIL;
         }
-        // TODO gene: enclosing_method unimplemented
-        throw new RuntimeException("unimplemented");
+
+        throw new LNonMatchingTypeException("");
+    }
+
+    /**
+     * Getter for name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
     }
 
     /**

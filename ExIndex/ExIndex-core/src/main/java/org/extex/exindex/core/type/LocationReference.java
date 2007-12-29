@@ -24,9 +24,10 @@ import java.io.Writer;
 import java.util.List;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a location reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,7 +40,7 @@ public class LocationReference implements Location {
     private List<String> layers;
 
     /**
-     * The field <tt>references</tt> contains the ...
+     * The field <tt>references</tt> contains the references.
      */
     private List<LocationReference> references;
 
@@ -75,10 +76,11 @@ public class LocationReference implements Location {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter)
+     *      org.extex.exindex.lisp.LInterpreter, boolean)
      */
-    public void write(Writer writer, LInterpreter interpreter)
-            throws IOException {
+    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException {
 
         // TODO gene: write unimplemented
 

@@ -29,7 +29,7 @@ import org.extex.exindex.core.type.page.SomePage;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for a var location class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,7 +37,7 @@ import org.junit.Test;
 public class VarLocationClassTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty specification matches the empty string. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -49,7 +49,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A separator matches the constant string with the same content.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -64,7 +65,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Arabic number matches arabic numbers. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -78,7 +79,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Arabic number does not matches a string of letters.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -91,7 +93,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Arabic numbers separated by a period is accepted. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -107,7 +109,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A letter and an arabic number is accepted. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -122,7 +124,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A letter, a separator, and an arabic number is accepted.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +139,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A letter, two separators, and an arabic number is accepted.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -153,7 +157,8 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A letter, three separators (including an empty string), and an
+     * arabic number is accepted. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -171,7 +176,7 @@ public class VarLocationClassTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A separator alone is accepted. </testcase>
      * 
      * @throws Exception in case of an error
      */

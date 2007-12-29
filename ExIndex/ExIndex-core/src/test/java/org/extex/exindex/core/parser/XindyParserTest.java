@@ -89,7 +89,7 @@ public class XindyParserTest {
         assertNotNull(ie);
         assertNull(xp.parse());
         assertTrue(ie.getMainKey() == ie.getPrintKey());
-        assertNotNull(ie.getAttr());
+        assertNotNull(ie.getRef().getLayer());
     }
 
     /**
@@ -109,7 +109,7 @@ public class XindyParserTest {
         assertNotNull(ie);
         assertNull(xp.parse());
         assertTrue(ie.getMainKey() == ie.getPrintKey());
-        assertNotNull(ie.getAttr());
+        assertNotNull(ie.getRef().getLayer());
     }
 
     /**

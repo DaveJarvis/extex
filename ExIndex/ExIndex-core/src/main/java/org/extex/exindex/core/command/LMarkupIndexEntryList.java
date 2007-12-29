@@ -19,15 +19,16 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for an entry list.
  * 
  * <doc command="markup-index-entry">
  * <h3>The Command <tt>markup-index-entry</tt></h3>
@@ -43,16 +44,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:close <i>close-markup</i>]
  *     [:sep <i>separator</i>]
  *     [:depth <i>level</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-index-entry-list :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-index-entry-list :open "\\begingroup " :close "\\endgroup ") </pre>
  * 
  * TODO documentation incomplete
  * 
@@ -60,20 +59,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-indexentry-list</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:index-entry-list-<i>depth</i>-open</dt>
- * <dd>The opening markup for a certain depth.</dd>
- * <dt>markup:index-entry-list-<i>depth</i>-close</dt>
- * <dd>The closing markup for a certain depth.</dd>
- * <dt>markup:index-entry-list-<i>depth</i>-sep</dt>
- * <dd>The separating markup for a certain depth.</dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -93,10 +81,10 @@ public class LMarkupIndexEntryList extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":sep"),//
-                Arg.OPT_NUMBER(":depth")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":sep", ""), //
+                Arg.OPT_NUMBER(":depth", Long.valueOf(0))});
     }
 
     /**
@@ -111,15 +99,20 @@ public class LMarkupIndexEntryList extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, Long depth)
-            throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            String sep, Long depth)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        String d = depth.toString();
-        interpreter.setq("markup:index-entry-list-" + d + "-open", open);
-        interpreter.setq("markup:index-entry-list-" + d + "-close", close);
-        interpreter.setq("markup:index-entry-list-" + d + "-sep", sep);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        String clazz = (depth == null ? null : depth.toString());
+        ((LMarkup) container).set(clazz, open, close, sep);
 
         return null;
     }

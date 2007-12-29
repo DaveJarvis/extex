@@ -19,11 +19,12 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -43,16 +44,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:close <i>close-markup</i>]
  *     [:sep <i>separator</i>]
  *     [:class <i>class</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-crossref-layer-list :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-crossref-layer-list :open "\\begingroup " :close "\\endgroup ") </pre>
  * 
  * TODO documentation incomplete
  * 
@@ -60,20 +59,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-crossref-layer-list</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:crossref-layer-list-<i>class</i>-open</dt>
- * <dd>...</dd>
- * <dt>markup:crossref-layer-list-<i>class</i>-close</dt>
- * <dd>...</dd>
- * <dt>markup:crossref-layer-list-<i>class</i>-sep</dt>
- * <dd>...</dd>
- * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -94,10 +82,10 @@ public class LMarkupCrossrefLayerList extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":sep"),//
-                Arg.OPT_STRING(":class", "")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":sep", ""), //
+                Arg.OPT_STRING(":class", null)});
     }
 
     /**
@@ -112,14 +100,19 @@ public class LMarkupCrossrefLayerList extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, String clazz)
-            throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            String sep, String clazz)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("markup:crossref-layer-" + clazz + "-open", open);
-        interpreter.setq("markup:crossref-layer-" + clazz + "-close", close);
-        interpreter.setq("markup:crossref-layer-" + clazz + "-sep", sep);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        ((LMarkup) container).set(clazz, open, close, sep);
 
         return null;
     }

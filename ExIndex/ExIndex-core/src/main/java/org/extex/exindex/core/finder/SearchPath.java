@@ -26,6 +26,8 @@ import java.io.InputStream;
 import java.util.logging.Logger;
 
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -35,6 +37,12 @@ import org.extex.resource.ResourceFinder;
  * @version $Revision$
  */
 public class SearchPath implements ResourceFinder {
+
+    /**
+     * The field <tt>LOCLIZER</tt> contains the localizer.
+     */
+    private static final Localizer LOCLIZER =
+            LocalizerFactory.getLocalizer(SearchPath.class);
 
     /**
      * The field <tt>fallback</tt> contains the fallback resource finder.
@@ -86,7 +94,7 @@ public class SearchPath implements ResourceFinder {
             if (d == null) {
                 if (fallback != null) {
                     if (logger != null) {
-                        logger.fine("Using fallback"); // TODO i18n
+                        logger.fine(LOCLIZER.format("UsingFallback"));
                     }
                     InputStream stream = fallback.findResource(name, type);
                     if (stream != null) {
@@ -96,7 +104,7 @@ public class SearchPath implements ResourceFinder {
             } else {
                 File f = new File(d, name);
                 if (logger != null) {
-                    logger.fine("Trying " + f.toString()); // TODO i18n
+                    logger.fine(LOCLIZER.format("Trying", f.toString()));
                 }
                 if (f.canRead()) {
                     InputStream stream;
@@ -104,8 +112,8 @@ public class SearchPath implements ResourceFinder {
                         stream = new FileInputStream(f);
                         if (stream != null) {
                             if (logger != null) {
-                                logger.fine("Success with " + f.toString());
-                                // TODO i18n
+                                logger.fine(LOCLIZER.format("Found", f
+                                    .toString()));
                             }
                             return stream;
                         }
@@ -115,6 +123,7 @@ public class SearchPath implements ResourceFinder {
                 }
             }
         }
+        logger.fine(LOCLIZER.format("Failed", name, type));
         return null;
     }
 

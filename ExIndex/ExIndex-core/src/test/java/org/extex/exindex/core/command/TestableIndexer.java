@@ -28,10 +28,10 @@ import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is an indexer for testing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6688 $
  */
 public class TestableIndexer extends Indexer {
 

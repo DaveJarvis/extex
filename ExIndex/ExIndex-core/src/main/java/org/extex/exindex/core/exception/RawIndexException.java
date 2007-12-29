@@ -38,14 +38,21 @@ public class RawIndexException extends LException {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field <tt>locator</tt> contains the name and line number of the
+     * resource.
      */
-    private String resource;
+    private ResourceLocator locator;
 
     /**
-     * The field <tt>line</tt> contains the line number.
+     * Creates a new object.
+     * 
+     * @param locator the locator
      */
-    private String line;
+    public RawIndexException(ResourceLocator locator) {
+
+        super("");
+        this.locator = locator;
+    }
 
     /**
      * Creates a new object.
@@ -56,45 +63,7 @@ public class RawIndexException extends LException {
     public RawIndexException(ResourceLocator locator, String message) {
 
         super(message);
-        this.resource = locator.getResource();
-        this.line = locator.getLineNumber();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource
-     * @param line the line number
-     */
-    public RawIndexException(String resource, String line) {
-
-        super("");
-        this.resource = resource;
-        this.line = line;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the name of the resource
-     * @param line the line number
-     * @param message the message
-     */
-    public RawIndexException(String resource, String line, String message) {
-
-        super(message);
-        this.resource = resource;
-        this.line = line;
-    }
-
-    /**
-     * Getter for line.
-     * 
-     * @return the line
-     */
-    public String getLine() {
-
-        return line;
+        this.locator = locator;
     }
 
     /**
@@ -108,18 +77,8 @@ public class RawIndexException extends LException {
         String message = getMessage();
 
         return LocalizerFactory.getLocalizer(RawIndexException.class).format(
-            (message == null ? "NoMessage" : "Message"), resource, line,
-            message);
-    }
-
-    /**
-     * Getter for resource.
-     * 
-     * @return the resource
-     */
-    public String getResource() {
-
-        return resource;
+            (message == null ? "NoMessage" : "Message"), locator.getResource(),
+            locator.getLineNumber(), message);
     }
 
 }

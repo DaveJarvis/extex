@@ -19,15 +19,17 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for a class of a
+ * locref.
  * 
  * <doc command="markup-locclass-list">
  * <h3>The Command <tt>markup-locclass-list</tt></h3>
@@ -42,16 +44,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:open <i>open-markup</i>]
  *     [:close <i>close-markup</i>]
  *     [:sep <i>separator</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-locclass-list :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-locclass-list :open "\\begingroup " :close "\\endgroup ") </pre>
  * 
  * TODO documentation incomplete
  * 
@@ -59,20 +59,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-locclass-list</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:locclass-list-open</dt>
- * <dd>...</dd>
- * <dt>markup:locclass-list-close</dt>
- * <dd>...</dd>
- * <dt>markup:locclass-list-sep</dt>
- * <dd>...</dd>
- * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -93,9 +82,9 @@ public class LMarkupLocclassList extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":sep")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":sep", "")});
     }
 
     /**
@@ -109,13 +98,19 @@ public class LMarkupLocclassList extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep) throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            String sep)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("markup:locclass-open", open);
-        interpreter.setq("markup:locclass-close", close);
-        interpreter.setq("markup:locclass-sep", sep);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        ((LMarkup) container).setDefault(open, close, sep);
 
         return null;
     }

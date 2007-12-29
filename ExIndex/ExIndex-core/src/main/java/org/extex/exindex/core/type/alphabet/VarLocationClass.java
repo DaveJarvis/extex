@@ -55,13 +55,13 @@ public class VarLocationClass implements LocationClass {
         }
 
         /**
-         * Setter for sep.
+         * Adder for a separator.
          * 
-         * @param sep the sep to set
+         * @param separator the separator to set
          */
-        public void addSep(String sep) {
+        public void addSep(String separator) {
 
-            this.sep = this.sep + sep;
+            this.sep = this.sep + separator;
         }
 
         /**

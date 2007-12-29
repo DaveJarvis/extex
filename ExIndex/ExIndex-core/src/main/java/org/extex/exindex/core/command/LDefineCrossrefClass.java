@@ -22,6 +22,7 @@ package org.extex.exindex.core.command;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.exindex.core.command.type.CrossrefClassContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -73,7 +74,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineCrossrefClass extends LFunction {
+public class LDefineCrossrefClass extends LFunction
+        implements
+            CrossrefClassContainer {
 
     /**
      * The field <tt>map</tt> contains the mapping from name to the boolean
@@ -116,12 +119,10 @@ public class LDefineCrossrefClass extends LFunction {
     }
 
     /**
-     * Getter for a cross-reference class.
+     * {@inheritDoc}
      * 
-     * @param name the name of the cross-reference class
-     * 
-     * @return the indicator for verified cross-reference classes or
-     *         <code>null</code> if the cross-reference class is not defined
+     * @see org.extex.exindex.core.command.type.CrossrefClassContainer#lookup(
+     *      java.lang.String)
      */
     public Boolean lookup(String name) {
 

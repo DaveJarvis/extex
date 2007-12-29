@@ -20,6 +20,7 @@
 package org.extex.exindex.lisp.type.value;
 
 import java.io.PrintStream;
+import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
@@ -41,12 +42,12 @@ import java.util.WeakHashMap;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LSymbol implements LValue {
+public final class LSymbol implements LValue {
 
     /**
      * The field <tt>symbolTable</tt> contains the symbol table.
      */
-    private static WeakHashMap<String, LSymbol> symbolTable =
+    private static final Map<String, LSymbol> symbolTable =
             new WeakHashMap<String, LSymbol>();
 
     /**
@@ -56,7 +57,7 @@ public class LSymbol implements LValue {
      * 
      * @return the symbol corresponding to the name
      */
-    public synchronized static LSymbol get(String value) {
+    public static synchronized LSymbol get(String value) {
 
         LSymbol sym = symbolTable.get(value);
         if (sym == null) {

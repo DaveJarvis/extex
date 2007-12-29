@@ -22,7 +22,8 @@ package org.extex.exindex.core.type.transform;
 import java.io.PrintStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This transformer translates all first characters of a word to their uppercase
+ * counterpart and the other characters to theri lowercase counterpart.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -31,7 +32,6 @@ public class Capitalize implements Transform {
 
     /**
      * Creates a new object.
-     * 
      */
     public Capitalize() {
 
@@ -45,7 +45,7 @@ public class Capitalize implements Transform {
      */
     public void print(PrintStream stream) {
 
-        // TODO
+        stream.print("capitalize");
     }
 
     /**
@@ -56,7 +56,21 @@ public class Capitalize implements Transform {
      */
     public String transform(String in) {
 
-        // TODO gene: transform unimplemented
-        throw new RuntimeException("unimplemented");
+        boolean up = true;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < in.length(); i++) {
+            char c = in.charAt(i);
+            if (up) {
+                sb.append(Character.toUpperCase(c));
+                up = false;
+            } else {
+                sb.append(Character.toLowerCase(c));
+            }
+            if (Character.isWhitespace(c)) {
+                up = true;
+            }
+        }
+        return sb.toString();
     }
+
 }

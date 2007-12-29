@@ -25,6 +25,7 @@ import java.io.Reader;
 
 import org.extex.exindex.lisp.exception.SyntaxEofException;
 import org.extex.exindex.lisp.exception.SyntaxException;
+import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LDouble;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LNumber;
@@ -135,7 +136,7 @@ public class LParser implements ResourceLocator {
     private boolean isNotSpecial(int cc) {
 
         return !Character.isWhitespace(cc) && cc != '(' && cc != ')'
-                && cc != ';' && cc != '"' && cc != '\'';
+                && cc != ';' && cc != '"' && cc != '\'' && cc != '#';
     }
 
     /**
@@ -147,6 +148,9 @@ public class LParser implements ResourceLocator {
      */
     public LValue read() throws IOException {
 
+        if (reader == null) {
+            return null;
+        }
         return read(false);
     }
 
@@ -161,9 +165,6 @@ public class LParser implements ResourceLocator {
      */
     private LValue read(boolean accept) throws IOException {
 
-        if (reader == null) {
-            return null;
-        }
         if (c < 0) {
             c = reader.read();
         }
@@ -180,71 +181,9 @@ public class LParser implements ResourceLocator {
                 }
                 c = reader.read();
             } else if (Character.isDigit(c) || c == '.' || c == '-') {
-                boolean dot = (c == '.');
-                boolean hasChar = Character.isDigit(c);
-                StringBuilder sb = new StringBuilder();
-
-                sb.append((char) c);
-                for (;;) {
-                    c = reader.read();
-                    if (c < 0) {
-                        break;
-                    } else if (Character.isDigit(c)) {
-                        hasChar = true;
-                    } else if (c == '.' && !dot) {
-                        dot = true;
-                    } else {
-                        break;
-                    }
-                    sb.append((char) c);
-                }
-                if (!hasChar) {
-                    throw new SyntaxException(resource);
-                }
-                String s = sb.toString();
-                return (dot ? new LDouble(Double.parseDouble(s)) : new LNumber(
-                    Long.parseLong(s)));
-
+                return readNumber();
             } else if (c == '"') {
-                StringBuilder sb = new StringBuilder();
-                for (c = reader.read(); c != '"'; c = reader.read()) {
-                    if (c <= 0) {
-                        throw new SyntaxEofException(resource);
-                    } else if (c == escape) {
-                        c = reader.read();
-                        if (c <= 0) {
-                            throw new SyntaxEofException(resource);
-                        }
-                        switch (c) {
-                            case 'n':
-                                c = '\n';
-                                break;
-                            case 'r':
-                                c = '\r';
-                                break;
-                            case 'f':
-                                c = '\f';
-                                break;
-                            case 't':
-                                c = '\t';
-                                break;
-                            case 'b':
-                                c = Character.MIN_CODE_POINT;
-                                break;
-                            case 'e':
-                                c = Character.MAX_CODE_POINT;
-                                break;
-                            case 'u':
-                                c = readUnicode();
-                                break;
-                            default:
-                                // silently ignore the escape character
-                        }
-                    }
-                    sb.append((char) c);
-                }
-                c = -1;
-                return new LString(sb.toString());
+                return readString();
             } else if (c == '(') {
                 LList list = new LList();
                 c = -1;
@@ -263,29 +202,49 @@ public class LParser implements ResourceLocator {
                 throw new SyntaxException(resource);
             } else if (c == '\'') {
                 c = -1;
-                LValue n = read(false);
-                if (n == null) {
+                LValue node = read(false);
+                if (node == null) {
                     throw new SyntaxEofException(resource);
                 }
-                LList list = new LList();
-                list.add(LSymbol.get("quote"));
-                list.add(n);
-                return list;
+                return new LList(LSymbol.get("quote"), node);
+            } else if (c == '#') {
+                return readCharacter();
             } else {
-                StringBuilder sb = new StringBuilder();
-                do {
-                    sb.append((char) c);
-                    c = reader.read();
-                } while (c >= 0 && isNotSpecial(c));
-                String s = sb.toString();
-                if ("nil".equals(s)) {
-                    return new LList();
-                }
-                return LSymbol.get(s);
+                return readSymbol();
             }
         }
 
         return null;
+    }
+
+    /**
+     * Read a character constant.
+     * 
+     * @return the character object
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     * @throws SyntaxEofException in case of an unexpected EOF
+     */
+    private LChar readCharacter()
+            throws IOException,
+                SyntaxException,
+                SyntaxEofException {
+
+        c = reader.read();
+        if (c == '\\') {
+            c = reader.read();
+            if (c < 0) {
+                throw new SyntaxEofException(resource);
+            }
+        } else if (c == 'u') {
+            c = readUnicode();
+        } else {
+            throw new SyntaxException(resource);
+        }
+        LChar lc = new LChar((char) c);
+        c = reader.read();
+        return lc;
     }
 
     /**
@@ -306,6 +265,115 @@ public class LParser implements ResourceLocator {
             return c - 'A';
         }
         throw new SyntaxException(resource);
+    }
+
+    /**
+     * Read a number. <br/> Note: The e notation is not supported yet
+     * 
+     * @return the number object
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     */
+    private LValue readNumber() throws IOException, SyntaxException {
+
+        boolean dot = (c == '.');
+        boolean hasChar = Character.isDigit(c);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append((char) c);
+        for (;;) {
+            c = reader.read();
+            if (c < 0) {
+                break;
+            } else if (Character.isDigit(c)) {
+                hasChar = true;
+            } else if (c == '.' && !dot) {
+                dot = true;
+            } else {
+                break;
+            }
+            sb.append((char) c);
+        }
+        if (!hasChar) {
+            throw new SyntaxException(resource);
+        }
+        String s = sb.toString();
+        return (dot //
+                ? new LDouble(Double.parseDouble(s))
+                : new LNumber(Long.parseLong(s)));
+    }
+
+    /**
+     * Read a string constant.
+     * 
+     * @return the string object
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxEofException in case of an unexpected EOF
+     */
+    private LValue readString() throws IOException, SyntaxEofException {
+
+        StringBuilder sb = new StringBuilder();
+        for (c = reader.read(); c != '"'; c = reader.read()) {
+            if (c <= 0) {
+                throw new SyntaxEofException(resource);
+            } else if (c == escape) {
+                c = reader.read();
+                if (c <= 0) {
+                    throw new SyntaxEofException(resource);
+                }
+                switch (c) {
+                    case 'n':
+                        c = '\n';
+                        break;
+                    case 'r':
+                        c = '\r';
+                        break;
+                    case 'f':
+                        c = '\f';
+                        break;
+                    case 't':
+                        c = '\t';
+                        break;
+                    case 'b':
+                        c = Character.MIN_CODE_POINT;
+                        break;
+                    case 'e':
+                        c = Character.MAX_CODE_POINT;
+                        break;
+                    case 'u':
+                        c = readUnicode();
+                        break;
+                    default:
+                        // silently ignore the escape character
+                }
+            }
+            sb.append((char) c);
+        }
+        c = reader.read();
+        return new LString(sb.toString());
+    }
+
+    /**
+     * Read a symbol.
+     * 
+     * @return the symbol object
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private LValue readSymbol() throws IOException {
+
+        StringBuilder sb = new StringBuilder();
+        do {
+            sb.append((char) c);
+            c = reader.read();
+        } while (c >= 0 && isNotSpecial(c));
+        String s = sb.toString();
+        if ("nil".equals(s)) {
+            return new LList();
+        }
+        return LSymbol.get(s);
     }
 
     /**

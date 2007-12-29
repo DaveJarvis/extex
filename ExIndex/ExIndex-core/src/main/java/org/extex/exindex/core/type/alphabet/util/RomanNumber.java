@@ -28,7 +28,7 @@ import java.util.Map;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RomanNumber {
+public final class RomanNumber {
 
     /**
      * The field <tt>LOWER_MAP</tt> contains the map for lower case roman
@@ -164,7 +164,9 @@ public class RomanNumber {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether the argument is a roman number made up of lowercase
+     * letters. Both the normal letters and the special number signs of Unicode
+     * are taken into account
      * 
      * @param page the page
      * 
@@ -177,10 +179,12 @@ public class RomanNumber {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether the argument is a roman number made up of letters from the
+     * given ma. Both the normal letters and the special number signs of Unicode
+     * are taken into account
      * 
      * @param page the page
-     * @param map
+     * @param map the map of acceptable letters
      * 
      * @return <code>true</code> iff the page constitutes a roman number
      */
@@ -201,7 +205,9 @@ public class RomanNumber {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether the argument is a roman number made up of uppercase
+     * letters. Both the normal letters and the special number signs of Unicode
+     * are taken into account
      * 
      * @param page the page
      * 

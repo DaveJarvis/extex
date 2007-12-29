@@ -1,0 +1,191 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.extex</groupId>
+  <artifactId>ExIndex</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1-SNAPSHOT</version>
+  <name>ExIndex</name>
+  <inceptionYear>2007</inceptionYear>
+  <url>http://www.extex.org</url>
+  <description>
+   ExIndex ...
+  </description>
+
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  </organization>
+
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <mailingLists>
+    <mailingList>
+      <name>extex</name>
+      <post>extex@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-devel</name>
+      <post>extex-devel@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
+    </mailingList>
+
+    <mailingList>
+      <name>extex-build@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-svn@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-bugs@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+<!--
+  <ciManagement>
+    <system>continuum</system>
+    <notifier>
+      <type>mail</type>
+      <configuration>
+        <address>dev@maven.apache.org</address>
+      </configuration>
+    <notifier>
+  </ciManagement>
+-->
+
+  <distributionManagement>
+    <repository>
+      <id>org.extex.exindex</id>
+      <name>ExIndex Repository</name>
+      <url>file://${basedir}/target/deploy</url>
+    </repository>
+    <snapshotRepository>
+      <id>org.extex.exindex</id>
+      <name>ExIndex Repository</name>
+      <url>file://${basedir}/target/snapshot</url>
+    </snapshotRepository>
+    <site>
+      <id>org.extex.exindex</id>
+      <name>ExIndex Repository</name>
+      <url>file://${basedir}/target/site</url>
+    </site>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.4</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+   <module>ExIndex-core</module>
+   <module>ExIndex-lisp</module>
+   <module>ExIndex-Main</module>
+   <module>../ExTeX-core</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>../develop/eclipse/checkstyle42.cfg</configLocation>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>@todo</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </reporting>
+
+</project>

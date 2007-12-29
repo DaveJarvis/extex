@@ -19,66 +19,32 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
 import java.io.Writer;
 
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a location class group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LocationClassGroup {
+public interface LocationClassGroup {
 
     /**
-     * The field <tt>crossref</tt> contains the ...
-     */
-    private CrossrefGroup crossref;
-
-    /**
-     * The field <tt>locref</tt> contains the ...
-     */
-    private LocrefGroup locref;
-
-    /**
-     * Creates a new object.
-     */
-    public LocationClassGroup() {
-
-        super();
-    }
-
-    /**
-     * Getter for crossref.
+     * Write an location class group to a writer.
      * 
-     * @return the crossref
-     */
-    public CrossrefGroup getCrossref() {
-
-        return crossref;
-    }
-
-    /**
-     * Getter for locref.
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * @param trace the trace indicator
      * 
-     * @return the locref
+     * @throws IOException in case of an I/O error
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LocrefGroup getLocref() {
-
-        return locref;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param writer
-     * @param interpreter
-     */
-    public void write(Writer writer, LInterpreter interpreter) {
-
-        // TODO gene: write unimplemented
-
-    }
+    void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException;
 
 }

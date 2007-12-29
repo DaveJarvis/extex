@@ -20,7 +20,7 @@
 package org.extex.exindex.core.command.type;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an info about a merge specification for attributes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,8 +40,8 @@ public class AttributeMergeInfo {
     /**
      * Creates a new object.
      * 
-     * @param attribute
-     * @param drop
+     * @param attribute the attribute
+     * @param drop the drop indicator
      */
     public AttributeMergeInfo(String attribute, boolean drop) {
 

@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.LDefineCrossrefClass;
+import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.command.type.CrossrefClassContainer;
 
 /**
  * This interface describes a reference specification.
@@ -41,10 +42,26 @@ public interface RefSpec {
      * @param index the index for cross-reference lookup
      * @param crossrefClass the container for cross-reference classes
      * @param openPages the list of open pages
+     * @param attributes the defined attributes
      * 
      * @return <code>true</code> iff everything is ok
      */
     boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages);
+            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            AttributesContainer attributes);
+
+    /**
+     * Getter for the layer.
+     * 
+     * @return the layer or <code>null</code>
+     */
+    String getLayer();
+
+    /**
+     * Getter for the location.
+     * 
+     * @return the location
+     */
+    String getLocation();
 
 }

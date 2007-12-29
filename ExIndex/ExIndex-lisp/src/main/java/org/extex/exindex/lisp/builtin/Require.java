@@ -19,6 +19,8 @@
 
 package org.extex.exindex.lisp.builtin;
 
+import java.io.IOException;
+
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -27,6 +29,26 @@ import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * Load a file if not loaded already.
+ * 
+ * <doc command="require">
+ * <h3>The Command <tt>require</tt></h3>
+ * 
+ * <p>
+ * The command <tt>require</tt> can be used to load additional resources.
+ * </p>
+ * 
+ * <pre>
+ *  (require
+ *     <i>resource-name</i>
+ *  )  </pre>
+ * 
+ * <p>
+ * The command has as argument the name of a resource. Thus resource is loaded
+ * if it is found. Otherwise an error is raised.
+ * </p>
+ * 
+ * </doc>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -48,7 +70,7 @@ public class Require extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Load the requested files.
      * 
      * @param interpreter the interpreter
      * @param arg the resource name
@@ -60,7 +82,10 @@ public class Require extends LFunction {
     public LValue evaluate(LInterpreter interpreter, String arg)
             throws LException {
 
-        // TODO gene: enclosing_method unimplemented
-        throw new RuntimeException("unimplemented");
+        try {
+            return interpreter.load(arg);
+        } catch (IOException e) {
+            throw new LException(e);
+        }
     }
 }

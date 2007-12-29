@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//3.2//EN">
+<html>
+<head>
+  <title>ExIndex</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <meta http_equiv="Content-Type" content="text/html;CHARSET=iso-8859-1">
+</head>
+
+<body>
+
+<h1>Welcome to ExIndex</h1>
+<p>
+ ExIndex is an index processor based on the experiences of makeindex and Xindy.
+ As a consequences ExIndex can be used instead of makeindex and Xindy.
+</p>
+<p>
+ ExIndex is a re-implementation. As such ExIndex contains some extensions to
+ Xindy and Makeindex. Details can be found in the documentation.
+</p>
+
+<h1>Homepage</h1>
+<p>
+ ExIndex has been developed in the context of the ExTeX project.
+ ExTeX is present on the Web. On the Homepage you can find additional
+ information:
+</p>
+<p>
+ <a href="http://www.extex.org">http://www.extex.org</a>
+</p>
+
+<h1>Acknowlegements</h1>
+ ExIndex is based on and contains the following third-party software:
+<ul>
+ <li>icu4j</li>
+</ul>
+
+<hr>
+
+<address>
+© 2007 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+</address>
+</body>
+</html>

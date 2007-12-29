@@ -27,7 +27,8 @@ import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This location class represents a parser for roman numbers made of lowercase
+ * letters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -29,12 +29,13 @@ import java.io.InputStreamReader;
 
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the function <tt>quote</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -42,7 +43,7 @@ import org.junit.Test;
 public class QuoteTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Make a node.
      * 
      * @param s the string representation
      * @return the node
@@ -55,7 +56,7 @@ public class QuoteTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A quoted symbol is returned as symbol. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -68,4 +69,20 @@ public class QuoteTest {
         assertTrue(n instanceof LSymbol);
         assertEquals("a", n.toString());
     }
+
+    /**
+     * <testcase> A quoted list is returned as list. <testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test2() throws Exception {
+
+        LValue node = makeNode("'(a) ");
+        LValue n = new LEngine().eval(node);
+        assertNotNull(n);
+        assertTrue(n instanceof LList);
+        assertEquals("(a )", n.toString());
+    }
+
 }

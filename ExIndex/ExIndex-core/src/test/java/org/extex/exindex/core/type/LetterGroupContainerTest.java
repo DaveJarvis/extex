@@ -29,7 +29,7 @@ import org.extex.exindex.lisp.exception.LException;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the {@link LetterGroupContainer}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,7 +37,7 @@ import org.junit.Test;
 public class LetterGroupContainerTest {
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> A letter group container can be instantiated. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -49,7 +49,7 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns the empty list for an empty container.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -63,7 +63,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns the list with one elements for an container
+     * with one element.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -78,7 +79,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() throws an exception if a loop of length 1 is
+     * contained in the container.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -92,7 +94,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() throws an exception if a loop of length 2 is
+     * contained in the container.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -108,7 +111,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() throws an exception if a loop of length 3 is
+     * contained in the container.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +130,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a list with all elements if no constraint on
+     * the order is given for a container with two elements.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -144,7 +149,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a properly sorted list with all elements for
+     * two elements with a constraint in the container.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -163,7 +169,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a list with all elements if no constraint on
+     * the order is given. Even if the elements are defined in reverse order.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -182,7 +189,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a list with all elements if no constraint on
+     * the order is given. Another variant.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -201,7 +209,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a list with all elements if no constraint on
+     * the order is given for a container with three elements.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -221,7 +230,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a list with all elements if one constraint on
+     * the order is given for a container with three elements.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +252,8 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a properly sorted list with all elements if
+     * two constraint on the order is given for a container with three elements.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -264,7 +275,9 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a properly sorted list with all elements if
+     * two constraint on the order is given for a container with three elements.
+     * Another variant.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -286,7 +299,9 @@ public class LetterGroupContainerTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> sorted() returns a properly sorted list with all elements if
+     * two constraint on the order is given for a container with three elements.
+     * One more variant.</testcase>
      * 
      * @throws Exception in case of an error
      */

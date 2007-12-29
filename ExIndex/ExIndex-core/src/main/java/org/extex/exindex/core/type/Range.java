@@ -23,7 +23,9 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.extex.exindex.core.command.LMarkupRange;
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -71,19 +73,23 @@ public class Range implements Location {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.Location#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter)
+     *      org.extex.exindex.lisp.LInterpreter, boolean)
      */
-    public void write(Writer writer, LInterpreter interpreter)
-            throws IOException {
+    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException {
 
-        interpreter.writeString(writer, "markup:range-" + clazz + "-open");
-        from.write(writer, interpreter);
-        interpreter.writeString(writer, "markup:range-" + clazz + "-sep");
+        LMarkup markupRange = (LMarkup) interpreter.get("markup-range");
+
+        markupRange.write(writer, interpreter, clazz, LMarkup.OPEN, trace);
+
+        from.write(writer, interpreter, trace);
+        markupRange.write(writer, interpreter, clazz, LMarkup.SEP, trace);
         LValue value = interpreter.get("markup:range-" + clazz + "-ignore-end");
         if (value != LBoolean.TRUE) {
-            to.write(writer, interpreter);
+            to.write(writer, interpreter, trace);
         }
-        interpreter.writeString(writer, "markup:range-" + clazz + "-close");
+        markupRange.write(writer, interpreter, clazz, LMarkup.CLOSE, trace);
     }
 
 }

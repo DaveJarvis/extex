@@ -22,11 +22,18 @@ package org.extex.exindex.core.type;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -36,13 +43,12 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LetterGroup extends ArrayList<IndexEntry> {
+public class LetterGroup {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>map</tt> contains the mapping from name to index entry.
      */
-    private static final long serialVersionUID = 2007L;
+    private Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
 
     /**
      * The field <tt>after</tt> contains the the letter groups preceding this
@@ -62,11 +68,6 @@ public class LetterGroup extends ArrayList<IndexEntry> {
     private String name;
 
     /**
-     * The field <tt>rawEntries</tt> contains the ...
-     */
-    private List<RawIndexentry> rawEntries = new ArrayList<RawIndexentry>();
-
-    /**
      * Creates a new object.
      * 
      * @param name the name
@@ -78,9 +79,9 @@ public class LetterGroup extends ArrayList<IndexEntry> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Place the constraint on this letter group to ge after another one.
      * 
-     * @param g
+     * @param g the letter group to go before
      */
     public void after(LetterGroup g) {
 
@@ -99,8 +100,8 @@ public class LetterGroup extends ArrayList<IndexEntry> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Clear all after groups of the before groups. This method is meant for
+     * internal purposes. Use it on your own risk.
      */
     public void clearAfterBefore() {
 
@@ -150,13 +151,47 @@ public class LetterGroup extends ArrayList<IndexEntry> {
     }
 
     /**
+     * Check whether some elements are contained.
+     * 
+     * @return <code>true</code> iff the letter group does not contain
+     *         elements
+     * @see java.util.List#isEmpty()
+     */
+    public boolean isEmpty() {
+
+        return map.isEmpty();
+    }
+
+    /**
+     * Getter for the sorted list of keys of index entries.
+     * 
+     * @return the sorted list of keys of index entries
+     */
+    private SortedSet<String> sortedKeys() {
+
+        SortedSet<String> set = new TreeSet<String>();
+        set.addAll(map.keySet());
+
+        return set;
+    }
+
+    /**
      * Store a raw entry.
      * 
-     * @param entry the raw entry to store
+     * @param raw the raw entry to store
+     * @param depth the hierarchy depth
+     * 
+     * @throws IndexerException in case of an error
      */
-    public void store(RawIndexentry entry) {
+    public void store(RawIndexentry raw, int depth) throws IndexerException {
 
-        rawEntries.add(entry);
+        String[] sortKey = raw.getSortKey();
+        IndexEntry entry = map.get(sortKey[0]);
+        if (entry == null) {
+            entry = new IndexEntry(sortKey[0]);
+            map.put(sortKey[0], entry);
+        }
+        entry.store(sortKey, 1, depth, raw);
     }
 
     /**
@@ -171,24 +206,35 @@ public class LetterGroup extends ArrayList<IndexEntry> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the letter group to a writer.
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param trace the indicator for tracing
      * 
      * @throws IOException in case of an I/O error
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter)
-            throws IOException {
+    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException {
+
+        SortedSet<String> sortedKeys = sortedKeys();
+        if (sortedKeys.isEmpty()) {
+            return;
+        }
+
+        LMarkup markupLetterGroup =
+                (LMarkup) interpreter.get("markup-letter-group");
 
         boolean first = true;
-        interpreter
-            .writeString(writer, "markup:letter-group-" + name + "-open");
+        markupLetterGroup.write(writer, interpreter, name, LMarkup.OPEN, trace);
         String openHead = "markup:letter-group-" + name + "-open-head";
         String closeHead = "markup:letter-group-" + name + "-close-head";
         if (interpreter.get(LSymbol.get(openHead)) != null
                 || interpreter.get(LSymbol.get(closeHead)) != null) {
-            interpreter.writeString(writer, openHead);
+            markupLetterGroup.write(writer, interpreter, name,
+                LMarkup.OPEN_HEAD, trace);
             LValue trans =
                     interpreter.get(LSymbol.get("markup:letter-group-" + name
                             + "-transform"));
@@ -197,21 +243,23 @@ public class LetterGroup extends ArrayList<IndexEntry> {
             } else {
                 writer.write(((Transform) trans).transform(name));
             }
-            interpreter.writeString(writer, closeHead);
+            markupLetterGroup.write(writer, interpreter, name,
+                LMarkup.CLOSE_HEAD, trace);
         }
 
-        for (IndexEntry entry : this) {
+        for (String key : sortedKeys) {
+            IndexEntry entry = map.get(key);
             if (first) {
                 first = false;
             } else {
-                interpreter.writeString(writer, "markup:letter-group-" + name
-                        + "-sep");
+                markupLetterGroup.write(writer, interpreter, name, LMarkup.SEP,
+                    trace);
             }
 
-            entry.write(writer, interpreter, 0);
+            entry.write(writer, interpreter, trace, 0);
         }
-        interpreter.writeString(writer, "markup:letter-group-" + name
-                + "-close");
+        markupLetterGroup
+            .write(writer, interpreter, name, LMarkup.CLOSE, trace);
     }
 
 }

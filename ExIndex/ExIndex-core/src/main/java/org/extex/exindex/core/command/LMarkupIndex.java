@@ -19,13 +19,15 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
+import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LNumber;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -56,33 +58,101 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </pre>
  * 
  * <p>
- * ...
+ * The arguments <tt>:open</tt> and <tt>:close</tt> contain the markup to be
+ * inserted at the beginning and at the end of the index.
  * </p>
  * 
  * <pre>
- *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} ")
+ *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} :flat ")
  * </pre>
  * 
- * TODO documentation incomplete
+ * <p>
+ * The arguments <tt>:flat</tt>, <tt>:tree</tt>, and <tt>:hierdepth</tt>
+ * are mutually exclusive. They determine how the index is structured. The
+ * argument <tt>:flat</tt> suppresses any structuring. Keys of any depth are
+ * combined into a single level. The result may look as follows:
+ * </p>
+ * <table>
+ * <tr>
+ * <td>structure </td>
+ * <td>42&ndash;45</td>
+ * </tr>
+ * <tr>
+ * <td>structure, tree </td>
+ * <td align="right">42</td>
+ * </tr>
+ * <tr>
+ * <td>structure, tree, depth </td>
+ * <td align="right">43</td>
+ * </tr>
+ * <tr>
+ * <td>structure, flat </td>
+ * <td align="right">43</td>
+ * </tr>
+ * </table>
+ * 
+ * <pre>
+ *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} :tree ")
+ * </pre>
+ * 
+ * <p>
+ * The argument <tt>:tree</tt> allows structuring to any depth. No keys are
+ * combined into a single level. The result may look as follows:
+ * </p>
+ * <table>
+ * <tr>
+ * <td>structure </td>
+ * <td>42&ndash;45</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;tree </td>
+ * <td align="right">42</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depth </td>
+ * <td align="right">43</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;flat </td>
+ * <td align="right">43</td>
+ * </tr>
+ * </table>
+ * 
+ * <pre>
+ *  (markup-index :open "\\begin{theindex} " :close "\\end{theindex} :hierdepth 1 ")
+ * </pre>
+ * 
+ * <p>
+ * The argument <tt>:hierdepth</tt> allows structuring to the depth given as
+ * argument. The keys are combined into a single level if the given depth is
+ * exceeded. The result may look as follows:
+ * </p>
+ * <table>
+ * <tr>
+ * <td>structure </td>
+ * <td>42&ndash;45</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;tree </td>
+ * <td align="right">42</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;tree, depth </td>
+ * <td align="right">43</td>
+ * </tr>
+ * <tr>
+ * <td>&nbsp;&nbsp;&nbsp;flat </td>
+ * <td align="right">43</td>
+ * </tr>
+ * </table>
  * 
  * </doc>
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-index</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:index-open</dt>
- * <dd>The opening markup for the index.</dd>
- * <dt>markup:index-close</dt>
- * <dd>The closing markup for the index.</dd>
- * <dt>markup:index-hierdepth</dt>
- * <dd>The number of requested hierarchy levels for the entries</dd>
- * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -91,23 +161,30 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LMarkupIndex extends LFunction {
 
     /**
+     * The field <tt>index</tt> contains the index.
+     */
+    private StructuredIndex index;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param index the index
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupIndex(String name)
+    public LMarkupIndex(String name, StructuredIndex index)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
                 Arg.OPT_BOOLEAN(":flat"), //
                 Arg.OPT_BOOLEAN(":tree"), //
-                Arg.OPT_LNUMBER(":hierdepth")});
+                Arg.OPT_LNUMBER(":hierdepth", null)});
+        this.index = index;
     }
 
     /**
@@ -124,32 +201,44 @@ public class LMarkupIndex extends LFunction {
      * 
      * @throws InconsistentFlagsException in case of an error
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, Boolean flat, Boolean tree, LNumber hierdepth)
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            Boolean flat, Boolean tree, LNumber hierdepth)
             throws InconsistentFlagsException,
-                LSettingConstantException {
+                LSettingConstantException,
+                LNonMatchingTypeException {
 
-        if (flat.booleanValue()) {
-            if (flat.booleanValue()) {
-                throw new InconsistentFlagsException(null, ":flat", ":tree");
-            } else if (hierdepth.getValue() != 0) {
-                throw new InconsistentFlagsException(null, ":tree",
-                    ":hierdepth");
-            }
-            interpreter.setq("markup:index-hierdepth", new LNumber(0));
-        } else if (tree.booleanValue()) {
-            if (hierdepth.getValue() != 0) {
-                throw new InconsistentFlagsException(null, ":tree",
-                    ":hierdepth");
-            }
-            interpreter.setq("markup:index-hierdepth", new LNumber(
-                Long.MAX_VALUE));
-        } else {
-            interpreter.setq("markup:index-hierdepth", hierdepth);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
         }
-        interpreter.setq("markup:index-open", open);
-        interpreter.setq("markup:index-close", close);
+
+        ((LMarkup) container).setDefault(open, close);
+
+        switch ((flat.booleanValue() ? 1 : 0) //
+                | (tree.booleanValue() ? 1 : 0) //
+                | (hierdepth != null ? 4 : 0)) {
+            case 1:
+                index.setDepth(0);
+                break;
+            case 0:
+            case 2:
+                index.setDepth(Integer.MAX_VALUE);
+                break;
+            case 3:
+                throw new InconsistentFlagsException(null, ":flat", ":tree");
+            case 4:
+                index.setDepth((int) hierdepth.getValue());
+                break;
+            case 5:
+                throw new InconsistentFlagsException(null, ":flat",
+                    ":hierdepth");
+            case 6:
+            case 7:
+                throw new InconsistentFlagsException(null, ":tree",
+                    ":hierdepth");
+        }
 
         return null;
     }

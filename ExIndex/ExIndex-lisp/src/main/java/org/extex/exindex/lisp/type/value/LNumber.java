@@ -22,7 +22,8 @@ package org.extex.exindex.lisp.type.value;
 import java.io.PrintStream;
 
 /**
- * This class is a node containing a number.
+ * This class is a node containing a number. The class is immutable; i.e. it
+ * does not have any setters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,7 +38,7 @@ public class LNumber implements LValue {
     /**
      * Creates a new object.
      * 
-     * @param value
+     * @param value the value
      */
     public LNumber(long value) {
 

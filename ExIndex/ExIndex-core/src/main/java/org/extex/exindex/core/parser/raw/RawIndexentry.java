@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.parser.raw;
 
+import org.extex.exindex.core.util.StringUtils;
+
 /**
  * This class is a container for the raw index entries.
  * 
@@ -33,11 +35,6 @@ public class RawIndexentry {
     private String[] mainKey;
 
     /**
-     * The field <tt>mergeKey</tt> contains the merge key.
-     */
-    private String[] mergeKey = null;
-
-    /**
      * The field <tt>printKey</tt> contains the print key.
      */
     private String[] printKey;
@@ -46,11 +43,6 @@ public class RawIndexentry {
      * The field <tt>sortKey</tt> contains the sort key.
      */
     private String[] sortKey = null;
-
-    /**
-     * The field <tt>attribute</tt> contains the attribute.
-     */
-    private String attribute;
 
     /**
      * The field <tt>ref</tt> contains the page reference.
@@ -62,11 +54,9 @@ public class RawIndexentry {
      * 
      * @param key the main key; It can not be <code>null</code>
      * @param print the print key; It can not be <code>null</code>
-     * @param attribute the attribute or <code>null</code>
      * @param ref the reference
      */
-    public RawIndexentry(String[] key, String[] print, String attribute,
-            RefSpec ref) {
+    public RawIndexentry(String[] key, String[] print, RefSpec ref) {
 
         super();
         if (key == null || print == null || ref == null) {
@@ -74,18 +64,7 @@ public class RawIndexentry {
         }
         this.mainKey = key;
         this.printKey = print;
-        this.attribute = attribute;
         this.ref = ref;
-    }
-
-    /**
-     * Getter for the attribute.
-     * 
-     * @return the attribute
-     */
-    public String getAttr() {
-
-        return attribute;
     }
 
     /**
@@ -96,16 +75,6 @@ public class RawIndexentry {
     public String[] getMainKey() {
 
         return mainKey;
-    }
-
-    /**
-     * Getter for merge key.
-     * 
-     * @return the merge key
-     */
-    public String[] getMergeKey() {
-
-        return mergeKey;
     }
 
     /**
@@ -139,16 +108,6 @@ public class RawIndexentry {
     }
 
     /**
-     * Setter for the merge key.
-     * 
-     * @param mergeKey the merge key
-     */
-    public void setMergeKey(String[] mergeKey) {
-
-        this.mergeKey = mergeKey;
-    }
-
-    /**
      * Setter for the sort key.
      * 
      * @param sortKey the sort key
@@ -176,11 +135,12 @@ public class RawIndexentry {
             toStringAppendList(sb, " :key ", mainKey);
             toStringAppendList(sb, " :print ", printKey);
         }
+        String attribute = ref.getLayer();
         if (attribute != null) {
             sb.append(" :attr ");
             StringUtils.putPrintable(sb, attribute);
         }
-        if (ref instanceof XRef) {
+        if (ref instanceof CrossReference) {
             sb.append(" :xref ");
             sb.append(ref.toString());
         } else if (ref instanceof OpenLocRef) {

@@ -20,23 +20,31 @@
 package org.extex.exindex.core.type;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.Writer;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a structured index as a whole.
+ * 
+ * <div style="float:right;"> <img src="doc-files/classes.png"/> <br />
+ * Figure: The structure </div>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StructuredIndex extends LetterGroupContainer implements LValue {
+public class StructuredIndex extends LetterGroupContainer {
+
+    /**
+     * The field <tt>depth</tt> contains the hierarchy depth; i.e. 0 for flat
+     * and Integer.MAX_VALUE for tree.
+     */
+    private int depth = Integer.MAX_VALUE;
 
     /**
      * Creates a new object.
@@ -47,14 +55,13 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
     }
 
     /**
-     * {@inheritDoc}
+     * Setter for depth.
      * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
+     * @param depth the depth to set
      */
-    public void print(PrintStream stream) {
+    public void setDepth(int depth) {
 
-        // TODO gene: print unimplemented
-        throw new RuntimeException("unimplemented");
+        this.depth = depth;
     }
 
     /**
@@ -75,12 +82,12 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
         if (group == null) {
             group = getLetterGroup("default");
             if (group == null) {
-                throw new IndexerException("", "", LocalizerFactory
-                    .getLocalizer(getClass()).format("NoPropoperLetterGroup",
-                        entry.toString()));
+                throw new IndexerException(null, LocalizerFactory.getLocalizer(
+                    getClass()).format("NoPropoperLetterGroup",
+                    entry.toString()));
             }
         }
-        group.store(entry);
+        group.store(entry, depth);
     }
 
     /**
@@ -88,29 +95,36 @@ public class StructuredIndex extends LetterGroupContainer implements LValue {
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param trace the trace indicator
      * 
      * @throws IOException in case of an I/O error
      * @throws LException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter)
+    public void write(Writer writer, LInterpreter interpreter, boolean trace)
             throws IOException,
                 LException {
 
-        boolean first = true;
-        interpreter.writeString(writer, "markup:index-open");
+        LMarkup markup = (LMarkup) interpreter.get("markup-index");
+        LMarkup markupList =
+                (LMarkup) interpreter.get("markup-letter-group-list");
 
-        interpreter.writeString(writer, "markup:letter-group-list-open");
+        boolean first = true;
+        markup.write(writer, interpreter, null, LMarkup.OPEN, trace);
+        markupList.write(writer, interpreter, null, LMarkup.OPEN, trace);
+
         for (LetterGroup group : sorted()) {
-            if (first) {
+            if (group.isEmpty()) {
+                // skip
+            } else if (first) {
                 first = false;
             } else {
-                interpreter.writeString(writer, "markup:letter-group-list-sep");
+                markupList.write(writer, interpreter, null, LMarkup.SEP, trace);
             }
-            group.write(writer, interpreter);
+            group.write(writer, interpreter, trace);
         }
-        interpreter.writeString(writer, "markup:letter-group-list-close");
 
-        interpreter.writeString(writer, "markup:index-close");
+        markupList.write(writer, interpreter, null, LMarkup.CLOSE, trace);
+        markup.write(writer, interpreter, null, LMarkup.CLOSE, trace);
     }
 
 }

@@ -28,6 +28,7 @@ import java.io.StringReader;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.parser.makeindex.MakeindexParser;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
@@ -44,7 +45,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -59,7 +60,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -75,7 +76,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -91,7 +92,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -107,7 +108,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -128,7 +129,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -149,7 +150,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +171,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -191,7 +192,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -212,7 +213,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +235,7 @@ public class MakeindexParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.parser.MakeindexParser#parse()}.
+     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
      * 
      * @throws Exception in case of an error
      */

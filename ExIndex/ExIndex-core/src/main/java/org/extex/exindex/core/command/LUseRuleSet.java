@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.command.type.SortRuleContainer;
+import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -92,7 +93,7 @@ public class LUseRuleSet extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_NUMBER(":phase"),//
+        super(name, new Arg[]{Arg.OPT_NUMBER(":phase", Long.valueOf(0)), //
                 Arg.OPT_QSTRING_LIST(":rule-set")});
         this.ruleSetContainer = ruleSetContainer;
         this.sortRules = sortRules;
@@ -108,9 +109,11 @@ public class LUseRuleSet extends LFunction {
      * @return <tt>nil</tt>
      * 
      * @throws LNonMatchingTypeException in case of an error
+     * @throws UnknownAttributeException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, Long phase, LList ruleSet)
-            throws LNonMatchingTypeException {
+            throws LNonMatchingTypeException,
+                UnknownAttributeException {
 
         int level = phase.intValue();
 
@@ -118,8 +121,7 @@ public class LUseRuleSet extends LFunction {
             String s = LString.stringValue(value);
             List<Rule> rs = ruleSetContainer.lookup(s);
             if (rs == null) {
-                // TODO gene: evaluate unimplemented
-                throw new RuntimeException("unimplemented");
+                throw new UnknownAttributeException(null, s);
             }
             sortRules.add(level, rs);
         }

@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.exception;
 
+import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -36,50 +38,31 @@ public class IndexerException extends Exception {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field <tt>locator</tt> contains the name and line of the resource.
      */
-    private String resource;
-
-    /**
-     * The field <tt>line</tt> contains the line number.
-     */
-    private String line;
+    private ResourceLocator locator;
 
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource
-     * @param line the line number
+     * @param locator the locator
      */
-    public IndexerException(String resource, String line) {
+    public IndexerException(ResourceLocator locator) {
 
         super((String) null);
-        this.resource = resource;
-        this.line = line;
+        this.locator = locator;
     }
 
     /**
      * Creates a new object.
      * 
-     * @param resource the name of the resource
-     * @param line the line number
+     * @param locator the locator
      * @param message the message
      */
-    public IndexerException(String resource, String line, String message) {
+    public IndexerException(ResourceLocator locator, String message) {
 
         super(message);
-        this.resource = resource;
-        this.line = line;
-    }
-
-    /**
-     * Getter for line.
-     * 
-     * @return the line
-     */
-    public String getLine() {
-
-        return line;
+        this.locator = locator;
     }
 
     /**
@@ -91,20 +74,18 @@ public class IndexerException extends Exception {
     public String getLocalizedMessage() {
 
         String message = getMessage();
+        Localizer localizer =
+                LocalizerFactory.getLocalizer(IndexerException.class);
 
-        return LocalizerFactory.getLocalizer(IndexerException.class).format(
-            (message == null ? "NoMessage" : "Message"), resource, line,
+        if (locator != null) {
+            return localizer.format((message == null
+                    ? "LocatedNoMessage"
+                    : "LocatedMessage"), locator.getResource(), locator
+                .getLineNumber(), message);
+        }
+
+        return localizer.format((message == null ? "NoMessage" : "Message"),
             message);
-    }
-
-    /**
-     * Getter for resource.
-     * 
-     * @return the resource
-     */
-    public String getResource() {
-
-        return resource;
     }
 
 }

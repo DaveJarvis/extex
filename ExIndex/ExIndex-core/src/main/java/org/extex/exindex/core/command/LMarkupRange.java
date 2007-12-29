@@ -19,17 +19,18 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LNumber;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a range.
+ * This is the adapter for the L system to define the markup of a range.
  * 
  * <doc command="markup-range">
  * <h3>The Command <tt>markup-range</tt></h3>
@@ -47,16 +48,67 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:length <i>length</i>]
  *     [:ignore-end]
  *     [:class <i>class</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-range :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-range :open "\\begingroup " :close "\\endgroup ")   </pre>
+ * 
+ * <p>
+ * </p>
+ * 
+ * <p>
+ * For the following examples we consider the index entries shown next:
+ * </p>
+ * 
+ * <pre>
+ *  (indexentry :tkey (("Tree")) :locref "2")
+ *  (indexentry :tkey (("Tree")) :locref "3")
+ *  (indexentry :tkey (("Tree")) :locref "4")
+ *  (indexentry :tkey (("Tree")) :locref "6")
+ *  (indexentry :tkey (("Tree")) :locref "7")
+ *  (indexentry :tkey (("Tree")) :locref "42" :open-range)
+ *  (indexentry :tkey (("Tree")) :locref "43" :close-range) </pre>
+ * 
+ * <pre>
+ *  (markup-range :sep "--")   </pre>
+ * 
+ * <p>
+ * </p>
+ * <table>
+ * <tr>
+ * <td>Tree &nbsp;&nbsp;&nbsp;</td>
+ * <td>2, 3, 4, 6, 7, 42&ndash;43</td>
+ * </tr>
+ * </table>
+ * 
+ * <pre>
+ *  (markup-range :sep "--" :length 2)   </pre>
+ * 
+ * <p>
+ * </p>
+ * <table>
+ * <tr>
+ * <td>Tree &nbsp;&nbsp;&nbsp;</td>
+ * <td>2&ndash;4, 6, 7, 42&ndash;43</td>
+ * </tr>
+ * </table>
+ * 
+ * <pre>
+ *  (markup-range :sep "--" :length 1)   </pre>
+ * 
+ * <p>
+ * </p>
+ * <table>
+ * <tr>
+ * <td>Tree &nbsp;&nbsp;&nbsp;</td>
+ * <td>2&ndash;4, 6&ndash;7, 42&ndash;43</td>
+ * </tr>
+ * </table>
+ * 
  * 
  * TODO documentation incomplete
  * 
@@ -64,24 +116,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-range</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:range-<i>class</i>-open</dt>
- * <dd>The opening markup for a certain class.</dd>
- * <dt>markup:range-<i>class</i>-close</dt>
- * <dd>The closing markup for a certain class.</dd>
- * <dt>markup:range-<i>class</i>-sep</dt>
- * <dd>The separating markup for a certain class.</dd>
- * <dt>markup:range-<i>class</i>-length</dt>
- * <dd>The markup parameter for a minimum length of a class.</dd>
- * <dt>markup:range-<i>class</i>-ignore-end</dt>
- * <dd>The markup indicator for omitting the second page reference of a class.</dd>
- * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -102,11 +139,11 @@ public class LMarkupRange extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":sep"),//
-                Arg.OPT_STRING(":class", ""),//
-                Arg.OPT_LNUMBER(":length"),//
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":sep", ""), //
+                Arg.OPT_STRING(":class", ""), //
+                Arg.OPT_LNUMBER(":length", new LNumber(0)), //
                 Arg.OPT_LBOOLEAN(":ignore-end")});
     }
 
@@ -124,16 +161,24 @@ public class LMarkupRange extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, String clazz, LNumber length,
-            LBoolean ignoreEnd) throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            String sep, String clazz, LNumber length, LBoolean ignoreEnd)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("markup:range-" + clazz + "-open", open);
-        interpreter.setq("markup:range-" + clazz + "-close", close);
-        interpreter.setq("markup:range-" + clazz + "-sep", sep);
-        interpreter.setq("markup:range-" + clazz + "-length", length);
-        interpreter.setq("markup:range-" + clazz + "-ignore-end", ignoreEnd);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        LMarkup markup = (LMarkup) container;
+
+        markup.set(clazz, open, close, sep);
+        markup
+            .setNumber(clazz, 0, length == null ? 0 : (int) length.getValue());
+        markup.setNumber(clazz, 1, ignoreEnd == LBoolean.TRUE ? 1 : 0);
 
         return null;
     }

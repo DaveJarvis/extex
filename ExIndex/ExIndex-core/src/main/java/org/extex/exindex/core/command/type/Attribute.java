@@ -23,7 +23,7 @@ package org.extex.exindex.core.command.type;
  * This class represents an attribute description.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6687 $
  */
 public class Attribute {
 
@@ -38,7 +38,7 @@ public class Attribute {
     private int ord;
 
     /**
-     * The field <tt>group</tt> contains the ...
+     * The field <tt>group</tt> contains the group number.
      */
     private int group;
 

@@ -19,28 +19,90 @@
 
 package org.extex.exindex.core.type;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.parser.raw.CrossReference;
+import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a cross-reference group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CrossrefGroup extends ArrayList<CrossReference> {
+public class CrossrefGroup implements LocationClassGroup {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>map</tt> contains the mapping of layers to a
+     * cross-reference.
      */
-    private static final long serialVersionUID = 2007L;
+    private Map<String[], CrossReference> map = new HashMap<String[], CrossReference>();
+
+    /**
+     * The field <tt>clazz</tt> contains the class.
+     */
+    private String clazz;
 
     /**
      * Creates a new object.
+     * 
+     * @param clazz the class
      */
-    public CrossrefGroup() {
+    public CrossrefGroup(String clazz) {
 
         super();
+        this.clazz = clazz;
+    }
+
+    /**
+     * Store the keys in the group.
+     * 
+     * @param keys the keys to store
+     * @param clazz the class
+     */
+    public void store(String[] keys, String clazz) {
+
+        if (map.get(keys) != null) {
+            return;
+        }
+
+        map.put(keys, new CrossReference(keys, clazz));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.LocationClassGroup#write(java.io.Writer,
+     *      org.extex.exindex.lisp.LInterpreter, boolean)
+     */
+    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+            throws IOException,
+                LNonMatchingTypeException {
+
+        LMarkup markupCrossrefGroup =
+                (LMarkup) interpreter.get("markup-crossref-list");
+
+        markupCrossrefGroup.write(writer, interpreter, clazz, LMarkup.OPEN,
+            trace);
+        boolean first = true;
+
+        for (CrossReference xref : map.values()) {
+            if (first) {
+                first = false;
+            } else {
+                markupCrossrefGroup.write(writer, interpreter, clazz,
+                    LMarkup.SEP, trace);
+            }
+
+            xref.write(writer, interpreter, trace);
+        }
+        markupCrossrefGroup.write(writer, interpreter, clazz, LMarkup.CLOSE,
+            trace);
     }
 
 }

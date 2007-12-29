@@ -38,7 +38,7 @@ public interface LocationClassContainer {
      * 
      * @return the location class or <code>null</code>
      */
-    public LocationClass lookup(String name);
+    LocationClass lookup(String name);
 
     /**
      * Create a page reference for this location class.
@@ -48,6 +48,6 @@ public interface LocationClassContainer {
      * 
      * @return the page reference
      */
-    public PageReference makePageReference(String encap, String s);
+    PageReference makePageReference(String encap, String s);
 
 }

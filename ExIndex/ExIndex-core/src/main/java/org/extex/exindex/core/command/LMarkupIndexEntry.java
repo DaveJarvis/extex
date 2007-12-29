@@ -19,15 +19,16 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for an index entry.
  * 
  * <doc command="markup-index-entry">
  * <h3>The Command <tt>markup-index-entry</tt></h3>
@@ -42,35 +43,37 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:open <i>open-markup</i>]
  *     [:close <i>close-markup</i>]
  *     [:depth <i>level</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-index-entry :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-index-entry :open "\\begingroup " :close "\\endgroup ")   </pre>
  * 
- * TODO documentation incomplete
+ * <p>
+ * The arguments <tt>:open</tt> and <tt>:close</tt> take a parameter each.
+ * They denote the opening and closing string for an index entry.
+ * </p>
+ * 
+ * <pre>
+ *  (markup-index-entry :close "\\par " :depth 2)   </pre>
+ * 
+ * <p>
+ * The argument <tt>:depth</tt> specified for which depth the rule should be
+ * applied. If no depth is given the markup is applied for all levels which do
+ * not have a markup set. This means that such a command sets the default
+ * values.
+ * </p>
  * 
  * </doc>
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-indexentry</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:index-entry-<i>depth</i>-open</dt>
- * <dd>The opening markup for a certain depth.</dd>
- * <dt>markup:index-entry-<i>depth</i>-close</dt>
- * <dd>The closing markup for a certain depth.</dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -90,9 +93,9 @@ public class LMarkupIndexEntry extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_NUMBER(":depth")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_NUMBER(":depth", null)});
     }
 
     /**
@@ -101,18 +104,25 @@ public class LMarkupIndexEntry extends LFunction {
      * @param interpreter the interpreter
      * @param open the open string
      * @param close the close string
-     * @param depth the depth
+     * @param depth the depth or null if none has been given
      * 
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, Long depth) throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            Long depth)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        String d = (depth == null ? "0" : depth.toString());
-        interpreter.setq("markup:indexentry-" + d + "-open", open);
-        interpreter.setq("markup:indexentry-" + d + "-close", close);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        String clazz = (depth == null ? null : depth.toString());
+        ((LMarkup) container).set(clazz, open, close);
 
         return null;
     }

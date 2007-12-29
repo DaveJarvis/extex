@@ -39,6 +39,7 @@ import org.extex.exindex.core.command.LDefineLetterGroups;
 import org.extex.exindex.core.command.LDefineLocationClass;
 import org.extex.exindex.core.command.LDefineLocationClassOrder;
 import org.extex.exindex.core.command.LDefineRuleSet;
+import org.extex.exindex.core.command.LDefineSortRuleOrientations;
 import org.extex.exindex.core.command.LMarkupAttributeGroup;
 import org.extex.exindex.core.command.LMarkupAttributeGroupList;
 import org.extex.exindex.core.command.LMarkupCrossrefLayer;
@@ -64,8 +65,10 @@ import org.extex.exindex.core.command.LSearchpath;
 import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
@@ -82,6 +85,7 @@ import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.framework.i18n.Localizer;
@@ -192,9 +196,11 @@ public class Indexer extends LEngine {
                 locationClass));
         LDefineRuleSet ruleSetContainer = new LDefineRuleSet("define-rule-set");
         defun("define-rule-set", ruleSetContainer);
+        sortRule = new LSortRule("sort-rule");
+        defun("define-sort-rule-orientations", new LDefineSortRuleOrientations(
+            "define-sort-rule-orientations", sortRule));
         defun("searchpath", //
             new LSearchpath("searchpath"));
-        sortRule = new LSortRule("sort-rule");
         defun("sort-rule", sortRule);
         mergeRule = new LMergeRule("merge-rule");
         defun("merge-rule", mergeRule);
@@ -205,42 +211,63 @@ public class Indexer extends LEngine {
 
         defun("markup-attribute-group-list", //
             new LMarkupAttributeGroupList("markup-attribute-group-list"));
+        setq("markup-attribute-group-list", new LMarkup("ATTRIBUTE-GROUP-LIST"));
         defun("markup-attribute-group", //
             new LMarkupAttributeGroup("markup-attribute-group"));
+        setq("markup-attribute-group", new LMarkup("ATTRIBUTE-GROUP"));
         defun("markup-crossref-layer", //
             new LMarkupCrossrefLayer("markup-crossref-layer"));
+        setq("markup-crossref-layer", new LMarkup("CROSSREF-LAYER"));
         defun("markup-crossref-layer-list", //
             new LMarkupCrossrefLayerList("markup-crossref-layer-list"));
+        setq("markup-crossref-layer-list", new LMarkup("CROSSREF-LAYER-LIST"));
         defun("markup-crossref-list", //
             new LMarkupCrossrefList("markup-crossref-list"));
+        setq("markup-crossref-list", new LMarkup("CROSSREF-LIST"));
         defun("markup-index", //
-            new LMarkupIndex("markup-index"));
+            new LMarkupIndex("markup-index", index));
+        setq("markup-index", new LMarkup("INDEX"));
         defun("markup-indexentry", //
             new LMarkupIndexEntry("markup-indexentry"));
+        setq("markup-indexentry", new LMarkup("INDEXENTRY"));
         defun("markup-indexentry-list", //
             new LMarkupIndexEntryList("markup-indexentry-list"));
+        setq("markup-indexentry-list", new LMarkup("INDEXENTRY-LIST"));
         defun("markup-keyword", //
             new LMarkupKeyword("markup-keyword"));
+        setq("markup-keyword", new LMarkup("KEYWORD"));
         defun("markup-keyword-list", //
             new LMarkupKeywordList("markup-keyword-list"));
+        setq("markup-keyword-list", new LMarkup("KEYWORD-LIST"));
         defun("markup-letter-group", //
             new LMarkupLetterGroup("markup-letter-group"));
+        setq("markup-letter-group", new LMarkup("LETTER-GROUP"));
         defun("markup-letter-group-list", //
             new LMarkupLetterGroupList("markup-letter-group-list"));
+        setq("markup-letter-group-list", new LMarkup("LETTER-GROUP-LIST"));
         defun("markup-locclass-list", //
             new LMarkupLocclassList("markup-locclass-list"));
+        setq("markup-locclass-list", new LMarkup("LOCCLASS-LIST"));
         defun("markup-locref-list", //
             new LMarkupLocrefList("markup-locref-list"));
+        setq("markup-locref-list", new LMarkup("LOCREF-LIST"));
         defun("markup-locref", //
             new LMarkupLocref("markup-locref"));
+        setq("markup-locref", new LMarkup("LOCREF"));
         defun("markup-locref-layer", //
             new LMarkupLocrefLayer("markup-locref-layer"));
+        setq("markup-locref-layer", new LMarkup("LOCREF-LAYER"));
         defun("markup-locref-layer-list", //
             new LMarkupLocrefLayerList("markup-locref-layer-list"));
+        setq("markup-locref-layer-list", new LMarkup("LOCREF-LAYER-LIST"));
         defun("markup-range", //
             new LMarkupRange("markup-range"));
+        setq("markup-range", new LMarkup("RANGE"));
         defun("markup-trace", //
             new LMarkupTrace("markup-trace"));
+        LMarkup m = new LMarkup("TRACE");
+        m.setDefault("<", ">\n");
+        setq("markup-trace", m);
 
         locationClass.add("arabic-numbers", new ArabicNumbers());
         locationClass.add("roman-numbers-uppercase",
@@ -332,33 +359,7 @@ public class Indexer extends LEngine {
         if (writer == null) {
             return;
         }
-        index.write(writer, this);
-    }
-
-    /**
-     * Compute the keys for an entry.
-     * 
-     * @param entry the entry to augment with the keys
-     * 
-     * @return <code>true</code>
-     */
-    protected boolean preComputeKeys(RawIndexentry entry) {
-
-        String[] mainKey = entry.getMainKey();
-        String[] mergeKey = new String[mainKey.length];
-
-        for (int i = 0; i < mainKey.length; i++) {
-            mergeKey[i] = mergeRule.apply(mainKey[i]);
-        }
-        entry.setMergeKey(mergeKey);
-
-        String[] sortKey = new String[mainKey.length];
-
-        for (int i = 0; i < mainKey.length; i++) {
-            sortKey[i] = sortRule.apply(mergeKey[i]);
-        }
-        entry.setSortKey(sortKey);
-        return true;
+        index.write(writer, this, get("markup:trace") == LBoolean.TRUE);
     }
 
     /**
@@ -380,20 +381,28 @@ public class Indexer extends LEngine {
             AttributesContainer attributes, List<OpenLocRef> openPages,
             Logger logger) throws LException {
 
-        String attr = entry.getAttr();
-        if (attr != null && attributes.lookup(attr) == null) {
-            logger.severe(LocalizerFactory.getLocalizer(Indexer.class).format(
-                "AttributeUnknown", attr));
-            return false;
-        }
-
         RefSpec ref = entry.getRef();
         if (ref != null
-                && !ref.check(logger, entry, this, crossrefClass, openPages)) {
+                && !ref.check(logger, entry, this, crossrefClass, openPages,
+                    attributes)) {
             return false;
         }
 
-        return preComputeKeys(entry);
+        String[] mainKey = entry.getMainKey();
+        String[] mergeKey = new String[mainKey.length];
+
+        for (int i = 0; i < mainKey.length; i++) {
+            mergeKey[i] = mergeRule.apply(mainKey[i]);
+        }
+
+        String[] sortKey = new String[mainKey.length];
+
+        for (int i = 0; i < mainKey.length; i++) {
+            sortKey[i] = sortRule.apply(mergeKey[i], 0); // TODO ???
+        }
+        entry.setSortKey(sortKey);
+
+        return true;
     }
 
     /**
@@ -458,21 +467,18 @@ public class Indexer extends LEngine {
                 parser.close();
             }
             if (!openPages.isEmpty()) {
-                // TODO
+                // TODO gene: process unimplemented
+                throw new RuntimeException("unimplemented");
             }
         }
         logger.info(LOCALIZER.format("StartPreprocess"));
 
-        index.sorted();
-
         for (RawIndexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {
                 index.store(entry);
-            } else {
-                // TODO delete from list?
             }
         }
-        // TODO
+        // TODO ?
     }
 
     /**
@@ -515,20 +521,24 @@ public class Indexer extends LEngine {
      * 
      * @throws LException in case of an error in the L system
      * @throws IOException in case of an I/O error
+     * @throws UnknownAttributeException in case of an error
      */
     protected void startup(List<String> styles, Logger logger)
             throws IOException,
-                LException {
+                LException,
+                UnknownAttributeException {
 
         logger.info(LOCALIZER.format("Startup"));
         if (styles == null || styles.isEmpty()) {
             logger.warning(LOCALIZER.format("NoStyles"));
-            return;
+        } else {
+            for (String style : styles) {
+                load(style);
+            }
         }
 
-        for (String style : styles) {
-            load(style);
-        }
+        logger.finer(LOCALIZER.format("PreparingIndex"));
+        index.sorted();
     }
 
 }

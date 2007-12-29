@@ -26,7 +26,7 @@ import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This location class represents a parser for digits (0-9).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -59,7 +59,8 @@ public class Digits implements LValue, Alphabet, LocationClass {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(java.lang.StringBuilder)
+     * @see org.extex.exindex.core.type.alphabet.LocationClass#match(
+     *      java.lang.StringBuilder)
      */
     public boolean match(StringBuilder s) {
 

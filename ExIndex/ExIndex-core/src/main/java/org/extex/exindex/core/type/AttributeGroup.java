@@ -22,7 +22,7 @@ package org.extex.exindex.core.type;
 import java.util.ArrayList;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an attribute group.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

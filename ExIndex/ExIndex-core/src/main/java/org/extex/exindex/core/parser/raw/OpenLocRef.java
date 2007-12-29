@@ -23,7 +23,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.LDefineCrossrefClass;
+import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.command.type.CrossrefClassContainer;
 
 /**
  * This interface describes an open location specification.
@@ -37,25 +38,31 @@ public class OpenLocRef extends LocRef {
      * Creates a new object.
      * 
      * @param location the location
+     * @param layer the layer
      */
-    public OpenLocRef(String location) {
+    public OpenLocRef(String location, String layer) {
 
-        super(location);
+        super(location, layer);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#check(java.util.logging.Logger,
+     * @see org.extex.exindex.core.parser.raw.LocRef#check(
+     *      java.util.logging.Logger,
      *      org.extex.exindex.core.parser.raw.RawIndexentry,
-     *      Indexer, org.extex.exindex.core.command.LDefineCrossrefClass, java.util.List)
+     *      org.extex.exindex.core.Indexer,
+     *      org.extex.exindex.core.command.type.CrossrefClassContainer,
+     *      java.util.List,
+     *      org.extex.exindex.core.command.type.AttributesContainer)
      */
     @Override
-    public boolean check(Logger logger, RawIndexentry entry,
-            Indexer index, LDefineCrossrefClass crossrefClass, List<OpenLocRef> openPages) {
+    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            AttributesContainer attributes) {
 
         openPages.add(this);
-        return super.check(logger, entry, index, crossrefClass, openPages);
+        return super.check(logger, entry, index, crossrefClass, openPages,
+            attributes);
     }
-
 }

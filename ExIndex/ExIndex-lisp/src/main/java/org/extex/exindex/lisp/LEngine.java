@@ -22,6 +22,7 @@ package org.extex.exindex.lisp;
 import org.extex.exindex.lisp.builtin.Print;
 import org.extex.exindex.lisp.builtin.Quote;
 import org.extex.exindex.lisp.builtin.Require;
+import org.extex.exindex.lisp.builtin.Setq;
 
 /**
  * This class represents an LInterpreter with some predefined functions.
@@ -40,6 +41,7 @@ public class LEngine extends LInterpreter {
     public LEngine() throws SecurityException, NoSuchMethodException {
 
         super();
+        defun("setq", new Setq("setq"));
         defun("quote", new Quote("quote"));
         defun("print", new Print("print"));
         defun("require", new Require("require"));

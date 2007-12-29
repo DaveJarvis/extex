@@ -24,8 +24,8 @@ import java.util.List;
 import org.extex.exindex.core.type.rules.Rule;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes a read-only container for rule sets.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,6 +38,6 @@ public interface RuleSetContainer {
      * 
      * @return the rule set or <code>null</code> if undefined
      */
-    public List<Rule> lookup(String name);
+    List<Rule> lookup(String name);
 
 }

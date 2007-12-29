@@ -32,7 +32,7 @@ public interface PageReference {
      * 
      * @return the encapsulator
      */
-    public String getEncap();
+    String getEncap();
 
     /**
      * Getter for the ordinal number. The ordinal number is used to map an
@@ -42,12 +42,12 @@ public interface PageReference {
      * 
      * @return the ordinal number or a negative number
      */
-    public int getOrd();
+    int getOrd();
 
     /**
      * Getter for page.
      * 
      * @return the page
      */
-    public String getPage();
+    String getPage();
 }

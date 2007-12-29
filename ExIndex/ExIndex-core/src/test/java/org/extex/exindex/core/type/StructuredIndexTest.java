@@ -24,15 +24,13 @@ import static org.junit.Assert.assertEquals;
 import java.io.StringWriter;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.makeindex.Entry;
-import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.transform.Upcase;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LString;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for {@link StructuredIndex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -41,7 +39,7 @@ public class StructuredIndexTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter)}.
+     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
      * 
      * @throws Exception in case of an error
      */
@@ -55,7 +53,7 @@ public class StructuredIndexTest {
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
-        index.write(writer, interpreter);
+        index.write(writer, interpreter, false);
 
         writer.flush();
         assertEquals("\\begin{theindex}\n" + // 
@@ -69,7 +67,7 @@ public class StructuredIndexTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter)}.
+     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
      * 
      * @throws Exception in case of an error
      */
@@ -85,7 +83,7 @@ public class StructuredIndexTest {
         interpreter.load("src/test/resources/xindy/makeidx.xdy");
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
-        index.write(writer, interpreter);
+        index.write(writer, interpreter, false);
 
         writer.flush();
         assertEquals("\\begin{theindex}\n" + // 
@@ -99,7 +97,7 @@ public class StructuredIndexTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter)}.
+     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
      * 
      * @throws Exception in case of an error
      */
@@ -116,7 +114,7 @@ public class StructuredIndexTest {
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
         interpreter.setq("markup:letter-group-a-transform", new Upcase());
-        index.write(writer, interpreter);
+        index.write(writer, interpreter, false);
 
         writer.flush();
         assertEquals("\\begin{theindex}\n" + // 
@@ -130,7 +128,7 @@ public class StructuredIndexTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter)}.
+     * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
      * 
      * @throws Exception in case of an error
      */
@@ -140,24 +138,24 @@ public class StructuredIndexTest {
         StructuredIndex index = new StructuredIndex();
         index.defineLetterGroup("a");
         index.defineLetterGroup("b");
-        Entry entry =
-                new Entry(new String[]{"abc"}, "Abc", new PageReference() {
-
-                    public String getEncap() {
-
-                        return "b";
-                    }
-
-                    public int getOrd() {
-
-                        return -1;
-                    }
-
-                    public String getPage() {
-
-                        return "234";
-                    }
-                });
+        // Entry entry =
+        // new Entry(new String[]{"abc"}, "Abc", new PageReference() {
+        //
+        // public String getEncap() {
+        //
+        // return "b";
+        // }
+        //
+        // public int getOrd() {
+        //
+        // return -1;
+        // }
+        //
+        // public String getPage() {
+        //
+        // return "234";
+        // }
+        // });
 
         StringWriter writer = new StringWriter();
         LInterpreter interpreter = new Indexer();
@@ -165,7 +163,7 @@ public class StructuredIndexTest {
         interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
         interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
         interpreter.setq("markup:letter-group-a-transform", new Upcase());
-        index.write(writer, interpreter);
+        index.write(writer, interpreter, false);
 
         writer.flush();
         assertEquals("\\begin{theindex}\n" + // 

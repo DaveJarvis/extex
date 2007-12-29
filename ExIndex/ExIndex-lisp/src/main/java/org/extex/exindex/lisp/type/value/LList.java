@@ -73,7 +73,8 @@ public class LList implements LValue, Iterable<LValue> {
      * 
      * @throws LNonMatchingTypeException in case of an error
      */
-    public static LList listValue(LValue value) throws LNonMatchingTypeException {
+    public static LList listValue(LValue value)
+            throws LNonMatchingTypeException {
 
         if (!(value instanceof LList)) {
             throw new LNonMatchingTypeException("");
@@ -133,7 +134,7 @@ public class LList implements LValue, Iterable<LValue> {
     }
 
     /**
-     * Get a node at a position.
+     * Get a node at a position or nil if it is outside.
      * 
      * @param index the index
      * 
@@ -141,6 +142,9 @@ public class LList implements LValue, Iterable<LValue> {
      */
     public LValue get(int index) {
 
+        if (index >= content.size()) {
+            return LList.NIL;
+        }
         return content.get(index);
     }
 

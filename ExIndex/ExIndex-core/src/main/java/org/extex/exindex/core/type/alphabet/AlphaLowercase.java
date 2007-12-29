@@ -35,7 +35,6 @@ public class AlphaLowercase implements LValue, Alphabet, LocationClass {
 
     /**
      * Creates a new object.
-     * 
      */
     public AlphaLowercase() {
 
@@ -50,7 +49,7 @@ public class AlphaLowercase implements LValue, Alphabet, LocationClass {
      */
     public PageReference match(String encap, String s) {
 
-        if (s.matches("[a-z]+")) {
+        if (s.matches("[a-z]")) {
             return new LowerPage(encap, s);
         }
         return null;
@@ -71,13 +70,13 @@ public class AlphaLowercase implements LValue, Alphabet, LocationClass {
             return false;
         }
         s.deleteCharAt(0);
-        while (s.length() > 0) {
-            c = s.charAt(0);
-            if (c < 'a' || c > 'z') {
-                return true;
-            }
-            s.deleteCharAt(0);
-        }
+        // while (s.length() > 0) {
+        // c = s.charAt(0);
+        // if (c < 'a' || c > 'z') {
+        // return true;
+        // }
+        // s.deleteCharAt(0);
+        // }
         return true;
     }
 

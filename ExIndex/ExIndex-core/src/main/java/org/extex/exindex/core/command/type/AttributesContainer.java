@@ -34,6 +34,6 @@ public interface AttributesContainer {
      * 
      * @return the named attribute or <code>null</code> if not defined
      */
-    public Attribute lookup(String attibute);
+    Attribute lookup(String attibute);
 
 }

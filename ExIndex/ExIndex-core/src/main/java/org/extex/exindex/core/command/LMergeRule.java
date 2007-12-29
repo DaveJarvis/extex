@@ -22,6 +22,7 @@ package org.extex.exindex.core.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.StringRule;
@@ -44,7 +45,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <pre>
  *  (merge-rule <i>pattern</i> <i>replacement</i>
  *     [:again]
- *     [:string | :bregex | :eregex]
+ *     [:string | :bregexp | :eregexp]
  *  )
  * </pre>
  * 
@@ -160,10 +161,13 @@ public class LMergeRule extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws InconsistentFlagsException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, String pattern,
             String replacement, Boolean string, Boolean bregexp,
-            Boolean eregexp, Boolean again) throws LSettingConstantException {
+            Boolean eregexp, Boolean again)
+            throws LSettingConstantException,
+                InconsistentFlagsException {
 
         int t = 0;
         if (string != null && string.booleanValue()) {
@@ -190,9 +194,20 @@ public class LMergeRule extends LFunction {
                 rules.add(new RegexRule(pattern, replacement, again
                     .booleanValue()));
             case BREGEX:
+                rules.add(new RegexRule(pattern, replacement, again
+                    .booleanValue()));
+            case STRING | EREGEX:
+                throw new InconsistentFlagsException(null, ":string",
+                    ":eregexp");
+            case STRING | BREGEX:
+                throw new InconsistentFlagsException(null, ":string",
+                    ":bregexp");
+            case EREGEX | BREGEX:
+            case STRING | EREGEX | BREGEX:
+                throw new InconsistentFlagsException(null, ":eregexp",
+                    ":bregexp");
             default:
-                // TODO gene: evaluate unimplemented
-                throw new RuntimeException("unimplemented");
+                // that's all
         }
 
         return null;

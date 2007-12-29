@@ -29,6 +29,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -87,8 +88,16 @@ public class IndexerTest {
     static {
         FILES.put("T10.raw", "");
         FILES.put("T11.raw", "(indexentry :key (\"abc\") :locref \"IV\")");
+        FILES.put("T111.raw",
+            "(indexentry :tkey (\"abc\") :xref (\"IV\") :attr \"see\")");
+        FILES
+            .put(
+                "T112.raw",
+                "(indexentry :tkey (\"abc\") :xref (\"IV\") :attr \"see\")"
+                        + "(indexentry :tkey (\"abc\") :xref (\"VI\") :attr \"see\")");
         FILES.put("style11",
             "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
+                    + "(define-crossref-class \"see\" :unverified)"
                     + "(define-letter-group \"a\")");
         FILES.put("style12",
             "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
@@ -124,10 +133,12 @@ public class IndexerTest {
     private void runTest(List<String> styles, List<String> resources,
             String expectedOut, String expectedLog) throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
+
         Logger logger = Logger.getLogger("test");
         logger.setUseParentHandlers(false);
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        Handler handler = new StreamHandler(out, new LogFormatter());
+        ByteArrayOutputStream log = new ByteArrayOutputStream();
+        Handler handler = new StreamHandler(log, new LogFormatter());
         handler.setLevel(Level.WARNING);
         logger.addHandler(handler);
 
@@ -137,11 +148,13 @@ public class IndexerTest {
         StringWriter writer = (expectedOut == null ? null : new StringWriter());
         indexer.run(styles, resources, writer, logger);
 
-        if (writer != null) {
-            assertEquals(expectedOut, writer.toString());
-        }
         handler.close();
-        assertEquals(expectedLog, out.toString());
+        assertEquals(expectedLog, log.toString());
+
+        if (writer != null) {
+            String s = writer.toString();
+            assertEquals(expectedOut, s);
+        }
     }
 
     /**
@@ -199,7 +212,8 @@ public class IndexerTest {
     @Test(expected = IndexerException.class)
     public final void test12() throws Exception {
 
-        runTest(makeList("style12"), makeList("T11.raw"), "???", null);
+        runTest(makeList("style12"), makeList("T11.raw"),
+            "\\begin{index}???\\end{index}", null);
     }
 
     /**
@@ -223,6 +237,30 @@ public class IndexerTest {
     public final void testNoResource() throws Exception {
 
         runTest(makeList("xyz"), makeList(), null, "");
+    }
+
+    /**
+     * <testcase> Check that simple input produces simple output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testX111() throws Exception {
+
+        runTest(makeList("style11"), makeList("T111.raw"),
+            "\\begin{index}abcIV\\end{index}", "");
+    }
+
+    /**
+     * <testcase> Check that simple input produces simple output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testX112() throws Exception {
+
+        runTest(makeList("style11"), makeList("T112.raw"),
+            "\\begin{index}abcIVVI\\end{index}", "");
     }
 
 }

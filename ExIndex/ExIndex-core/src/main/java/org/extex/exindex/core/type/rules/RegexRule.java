@@ -19,12 +19,12 @@
 
 package org.extex.exindex.core.type.rules;
 
-
 /**
- * TODO gene: missing JavaDoc.
+ * This Rule applies a regular expression. The Java means for regular
+ * expressions are used.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6666 $
  */
 public class RegexRule extends Rule {
 
@@ -70,7 +70,6 @@ public class RegexRule extends Rule {
             sb.append(" :again");
         }
         sb.append(" :regex)");
-        // TODO gene: toString unimplemented
         return sb.toString();
     }
 

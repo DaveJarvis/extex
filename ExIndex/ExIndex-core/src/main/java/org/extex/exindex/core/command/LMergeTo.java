@@ -65,7 +65,7 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LMergeTo extends LFunction {
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the mapping from name to mapping info.
      */
     private Map<String, AttributeMergeInfo> map =
             new HashMap<String, AttributeMergeInfo>();
@@ -83,7 +83,7 @@ public class LMergeTo extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.LSTRING, Arg.LSTRING,//
+        super(name, new Arg[]{Arg.LSTRING, Arg.LSTRING, //
                 Arg.OPT_LBOOLEAN(":drop")});
     }
 

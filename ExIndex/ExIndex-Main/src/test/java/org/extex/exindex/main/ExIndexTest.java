@@ -97,7 +97,7 @@ public class ExIndexTest {
             int ex = index.run(args);
             if (expectedOut != null) {
                 outStream.flush();
-                assertEquals("stdout", expectedOut,//
+                assertEquals("stdout", expectedOut, //
                     outStream.toString());
             }
             if (extectedErr != null) {

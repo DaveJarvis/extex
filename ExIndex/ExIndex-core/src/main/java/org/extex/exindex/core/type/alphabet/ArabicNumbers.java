@@ -26,7 +26,8 @@ import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This location class represents a parser for arabic numbers (0, 1,
+ * 2,&hellip;).
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +36,6 @@ public class ArabicNumbers implements LValue, Alphabet, LocationClass {
 
     /**
      * Creates a new object.
-     * 
      */
     public ArabicNumbers() {
 

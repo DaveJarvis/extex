@@ -22,7 +22,7 @@ package org.extex.exindex.core;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for xindy compatibility.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,17 +30,17 @@ import org.junit.Test;
 public class XindyTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test that makeidx.xdy can be read </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test()
     public void testLoadStyle2() throws Exception {
 
-        Indexer xindy = new Indexer();
-        xindy.load("src/test/resources/xindy/makeidx.xdy");
+        Indexer indexer = new Indexer();
+        indexer.load("src/test/resources/xindy/makeidx.xdy");
 
-        xindy.printBindings(System.out);
+        indexer.printBindings(System.out);
         // assertNotNull(index);
     }
 

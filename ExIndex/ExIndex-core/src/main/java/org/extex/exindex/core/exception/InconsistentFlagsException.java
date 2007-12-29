@@ -21,6 +21,7 @@ package org.extex.exindex.core.exception;
 
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that two conflicting flags have been encountered.
@@ -37,6 +38,21 @@ public class InconsistentFlagsException extends LException {
     private static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>locator</tt> contains the resource locator.
+     */
+    private ResourceLocator locator;
+
+    /**
+     * The field <tt>flag1</tt> contains the first flag.
+     */
+    private String flag1;
+
+    /**
+     * The field <tt>flag2</tt> contains the second flag.
+     */
+    private String flag2;
+
+    /**
      * Creates a new object.
      * 
      * @param locator the locator
@@ -46,7 +62,27 @@ public class InconsistentFlagsException extends LException {
     public InconsistentFlagsException(ResourceLocator locator, String flag1,
             String flag2) {
 
-        super(""); // TODO
+        super("");
+        this.locator = locator;
+        this.flag1 = flag1;
+        this.flag2 = flag2;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        if (locator != null) {
+            return LocalizerFactory.getLocalizer(
+                InconsistentFlagsException.class).format("LocatedMessage",
+                locator.getResource(), locator.getLineNumber(), flag1, flag2);
+        }
+        return LocalizerFactory.getLocalizer(InconsistentFlagsException.class)
+            .format("Message", flag1, flag2);
     }
 
 }

@@ -19,16 +19,17 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LNumber;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to parse a rule set.
+ * This is the adapter for the L system to define the markup for a locref.
  * 
  * <doc command="markup-locref">
  * <h3>The Command <tt>markup-locref</tt></h3>
@@ -63,24 +64,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-locref</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:locref-<i>class</i>-open</dt>
- * <dd>...</dd>
- * <dt>markup:locref-<i>class</i>-close</dt>
- * <dd>...</dd>
- * <dt>markup:locref-<i>class</i>-sep</dt>
- * <dd>...</dd>
- * <dt>markup:locref-<i>class</i>-attr</dt>
- * <dd>...</dd>
- * <dt>markup:locref-<i>class</i>-depth</dt>
- * <dd>...</dd>
- * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -101,12 +87,12 @@ public class LMarkupLocref extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_LSTRING(":sep"),//
-                Arg.OPT_STRING(":class", ""),//
-                Arg.OPT_LSTRING(":attr"),//
-                Arg.OPT_LNUMBER(":depth")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_STRING(":sep", ""), //
+                Arg.OPT_STRING(":class", ""), //
+                Arg.OPT_STRING(":attr", ""), //
+                Arg.OPT_LNUMBER(":depth", new LNumber(0))});
     }
 
     /**
@@ -123,16 +109,22 @@ public class LMarkupLocref extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, LString sep, String clazz, LString attr,
-            LNumber depth) throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            String sep, String clazz, String attr, LNumber depth)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        interpreter.setq("markup:locref-" + clazz + "-open", open);
-        interpreter.setq("markup:locref-" + clazz + "-close", close);
-        interpreter.setq("markup:locref-" + clazz + "-sep", sep);
-        interpreter.setq("markup:locref-" + clazz + "-attr", attr);
-        interpreter.setq("markup:locref-" + clazz + "-depth", depth);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        LMarkup markup = (LMarkup) container;
+
+        markup.set(clazz, open, close, sep, attr);
+        markup.setNumber(clazz, 0, depth == null ? 0 : (int) depth.getValue());
 
         return null;
     }

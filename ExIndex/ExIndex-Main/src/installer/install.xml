@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<installation version="1.0">
+  <info>
+    <appname>ExIndex</appname>
+    <appversion>0.0-snapshot</appversion>
+    <authors>
+      <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
+      <author name="Michael Niedermair" email="m.g.n@gmx.de"/>
+    </authors>
+    <url>http://www.extex.org/</url>
+    <javaversion>1.5</javaversion>
+  </info>
+
+  <variables>
+    <variable name="version" value="0.1-SNAPSHOT"/>
+    <variable name="basedir" value="../../.."/>
+    <variable name="extex.texinputs" value="${ENV[TEXINPUTS]}"/>
+    <variable name="texinputs" value="${ENV[TEXINPUTS]}"/>
+  </variables>
+
+  <guiprefs width="720" height="500" resizable="yes"/>
+
+  <locale>
+    <langpack iso3="eng"/>
+    <langpack iso3="deu"/>
+  </locale>
+
+  <resources>
+    <res id="LicencePanel.licence" src="LICENSE.txt"/>
+    <res id="HTMLInfoPanel.info_eng" src="README.en"/>
+    <res id="HTMLInfoPanel.info_deu" src="README.de"/>
+    <res id="installer.langsel.img" src="ExIndex-splash.png" />
+    <res id="Installer.image" src="ExIndex-side.png" />
+    <res id="packsLang.xml_deu" src="packs.de" />
+    <res id="packsLang.xml_eng" src="packs.en" />
+    <res id="userInputLang.xml_deu" src="packs.de" />
+    <res id="userInputLang.xml_eng" src="packs.en" />
+    <res id="userInputSpec.xml" src="input.xml" />
+  </resources>
+
+  <panels>
+<!--    <panel classname="HelloPanel"/> -->
+    <panel classname="HTMLInfoPanel"/>
+    <panel classname="LicencePanel"/>
+    <panel classname="PacksPanel"/>
+    <panel classname="TargetPanel"/> 
+    <panel classname="UserInputPanel"/>
+    <panel classname="InstallPanel"/>
+    <panel classname="FinishPanel"/>
+  </panels>
+
+  <packs>
+    <pack name="ExIndex" id="exindex" required="yes">
+      <description/>
+      <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
+      <file src="exindex" targetdir="$INSTALL_PATH"/>
+      <executable targetfile="$INSTALL_PATH/exindex"/>
+      <file src="exindex.bat" targetdir="$INSTALL_PATH"/>
+      <parsable targetfile="$INSTALL_PATH/exindex.bat"/>
+      <executable targetfile="$INSTALL_PATH/exindex.bat"/>
+      <file src="../../../ExIndex-core/target/ExIndex-core-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../ExIndex-lisp/target/ExIndex-lisp-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../ExIndex-Main/target/ExIndex-Main-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../../ExTeX-core/target/ExTeX-core-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+
+<!--
+    <pack name="Documentation" id="doc" required="no">
+      <description/>
+      <file src="../../www/src/site/documentation/man/extex-users.pdf"
+            targetdir="$INSTALL_PATH/doc"/>
+    </pack>
+-->
+
+  </packs>
+
+</installation>

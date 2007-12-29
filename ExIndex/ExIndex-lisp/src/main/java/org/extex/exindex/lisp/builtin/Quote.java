@@ -25,7 +25,8 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This function takes one argument and returns it. This means the argument is
+ * not evaluated but left unchanged.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -47,7 +48,7 @@ public class Quote extends LFunction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Evaluate the function.
      * 
      * @param interpreter the interpreter
      * @param arg the term to quote

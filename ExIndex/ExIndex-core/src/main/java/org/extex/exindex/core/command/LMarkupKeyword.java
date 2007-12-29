@@ -19,11 +19,12 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -42,16 +43,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:open <i>open-markup</i>]
  *     [:close <i>close-markup</i>]
  *     [:depth <i>level</i>]
- *  )
- * </pre>
+ *  )   </pre>
  * 
  * <p>
  * The command has some optional arguments which are described in turn.
  * </p>
  * 
  * <pre>
- *  (markup-keyword :open "\\begingroup " :close "\\endgroup ")
- * </pre>
+ *  (markup-keyword :open "\\begingroup " :close "\\endgroup ")   </pre>
  * 
  * TODO documentation incomplete
  * 
@@ -59,18 +58,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The parameters defined with this command are stored in the L system. If a
- * parameter is not given then a <code>nil</code> value is stored.
+ * The parameters defined with this command are stored in the L system under the
+ * key of the function name (i.e. <tt>markup-keyword</tt>).
  * </p>
- * <p>
- * The following parameters are set:
- * </p>
- * <dl>
- * <dt>markup:keyword-<i>depth</i>-open</dt>
- * <dd>The opening markup for a certain depth.</dd>
- * <dt>markup:keyword-<i>depth</i>-close</dt>
- * <dd>The closing markup for a certain depth.</dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -90,9 +80,9 @@ public class LMarkupKeyword extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_LSTRING(":open"),//
-                Arg.OPT_LSTRING(":close"),//
-                Arg.OPT_NUMBER(":depth")});
+        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+                Arg.OPT_STRING(":close", ""), //
+                Arg.OPT_NUMBER(":depth", Long.valueOf(0))});
     }
 
     /**
@@ -106,13 +96,20 @@ public class LMarkupKeyword extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
+     * @throws LNonMatchingTypeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, LString open,
-            LString close, Long depth) throws LSettingConstantException {
+    public LValue evaluate(LInterpreter interpreter, String open, String close,
+            Long depth)
+            throws LSettingConstantException,
+                LNonMatchingTypeException {
 
-        String d = (depth == null ? "0" : depth.toString());
-        interpreter.setq("markup:keyword-" + d + "-open", open);
-        interpreter.setq("markup:keyword-" + d + "-close", close);
+        LValue container = interpreter.get(getName());
+        if (!(container instanceof LMarkup)) {
+            throw new LNonMatchingTypeException(null);
+        }
+
+        String clazz = (depth == null ? null : depth.toString());
+        ((LMarkup) container).set(clazz, open, close);
 
         return null;
     }

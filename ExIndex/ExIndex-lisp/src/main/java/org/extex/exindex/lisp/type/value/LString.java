@@ -32,6 +32,11 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 public class LString implements LValue {
 
     /**
+     * The constant <tt>EMPTY</tt> contains the empty string.
+     */
+    public static final LString EMPTY = new LString("");
+
+    /**
      * Check that the argument is an LString and extract the String contained.
      * 
      * @param value the lvalue

@@ -41,10 +41,11 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.core.makeindex.MakeindexLoader;
-import org.extex.exindex.core.parser.MakeindexParser;
+import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.XindyParser;
+import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
+import org.extex.exindex.core.parser.makeindex.MakeindexParser;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
@@ -61,7 +62,201 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This is the main program for an indexer a la Xindy.
+ * This is the main program for the indexer.
+ * 
+ * <doc section="Command Line Use">
+ * 
+ * <h3>Command Line Use</h3>
+ * <p>
+ * This program is normally used through a wrapper which performs all necessary
+ * initializations and hides the implementation language from the casual user.
+ * Since this is the default case it is described here first. Details about the
+ * direct usage without the wrapper can be found in section <a
+ * href="#invocation">Direct Java Invocation</a>.
+ * </p>
+ * <p>
+ * This program &ndash; called <tt>exindex</tt> here &ndash; has in its
+ * simplest form of invocation two parameters. The first parameter is the name
+ * of the style to use and the second parameter the file to process:
+ * </p>
+ * 
+ * <pre class="CLISample">
+ *   exindex -style abc.ist file.idx </pre>
+ * 
+ * <p>
+ * The input file is sought in the current directory and other locations.
+ * Details about searching can be found in <a href="#fileSearch">Searching Files</a>.
+ * </p>
+ * <p>
+ * In general the syntax of invocation is as follows:
+ * </p>
+ * 
+ * <pre class="CLIsyntax">
+ *   exindex &lang;options&rang; &lang;raw-file&rang; </pre>
+ * 
+ * <p>
+ * The command line options are contained in the table below.
+ * </p>
+ * 
+ * <dl>
+ * <dt><a name="-style"><tt>--style &lang;style-file&rang;</tt><br />
+ * <dd> This parameter contains the name of the style to use. The style contains
+ * instructions which control the behavior of <logo>ExIndex</logo>. Several
+ * styles are supported. The program can read makeindex styles (*.ist) as well
+ * as xindy styles (*.xdy). The file name extension is used to select the
+ * appropriate parser.</dd>
+ * 
+ * <dt><tt>&lang;raw-file&rang;</tt></dt>
+ * <dd> This parameter contains the file to read raw index data from. It may not
+ * start with a hyphen. It has no default. If no file is given the standard
+ * input is used to read from.</dd>
+ * 
+ * <dt><tt>-- &lang;raw-file&rang;</tt></dt>
+ * <dd> This parameter contains the raw index file to read from. A file name may
+ * start with any character since it is protected by the prefix <tt>--</tt>.
+ * </dd>
+ * 
+ * <dt><a name="-input"><tt>--input &lang;raw-file&rang;</tt><br />
+ * <dd> This parameter contains the raw index file to read from. A file name may
+ * start with any character since it is protected by the prefix <tt>--input</tt>.
+ * The file name has no default. several input file can be given in one of the
+ * three forms. If no input file is given the program reads from standard input.
+ * The empty raw file is also interpreted as standard input.</dd>
+ * 
+ * <dt><a name="-output"><tt>--output &lang;index-file&rang;</tt><br />
+ * <dd> This parameter names the output file to write the structured index to.
+ * If not given ... </dd>
+ * 
+ * <dt><a name="-transcript"><tt>--transcript &lang;transcript file&rang;</tt><br />
+ * <dd> This parameter requests that the log is sent to a file as well as to the
+ * console. </dd>
+ * 
+ * <dt><a name="-quiet"><tt>--quiet</tt><br />
+ * <dd> This parameter disables the informative output to the console. It a
+ * transcript is requested it will be used otherwise the program is deadly
+ * silent. </dd>
+ * 
+ * <dt><a name="-Charset"><tt>--Charset &lang;charset-name&rang;</tt><br />
+ * <dd> This parameter can be used to set the character set to be used when
+ * reading raw index files. If the charset-name is empty the platform default
+ * will be used. All raw index files are read with the same charset. The default
+ * value is utf-8. </dd>
+ * 
+ * <dt><a name="-collate-spaces"><tt>--collate-spaces</tt><br />
+ * <dd> This parameter instructs the program to delete spaces from the sort key.
+ * </dd>
+ * 
+ * <dt><a name="-Encoding"><tt>-Encoding &lang;encoding-name&rang;</tt><br />
+ * <dd> This parameter can be used to set the character set to be used when
+ * reading style files. All style files share the same character set. If the
+ * encoding-name is empty the platform default will be used. The default is
+ * utf-8. </dd>
+ * 
+ * <dt><a name="-Module"><tt>--Module &lang;module-name&rang;</tt><br />
+ * <dd> This instruction can be used to load the named module. </dd>
+ * 
+ * <dt><a name="-filter"><tt>--filter &lang;filter-name&rang;</tt><br />
+ * <dd> ... </dd>
+ * 
+ * <dt><a name="-german"><tt>--german</tt><br />
+ * <dd> ... </dd>
+ * 
+ * <dt><a name="-r"><tt>--r</tt><br />
+ * <dd> ... </dd>
+ * 
+ * <dt><a name="-letter-ordering"><tt>--letter-ordering</tt><br />
+ * <dd> ... </dd>
+ * 
+ * <dt><a name="-page"><tt>--page &lang;page&rang;</tt><br />
+ * <dd> ... </dd>
+ * 
+ * <dt><a name="-trace"><tt>--trace</tt><br />
+ * <dd> This parameter instructs the program to emit tracing output. </dd>
+ * 
+ * <dt><a name="-Log-level"><tt>--Log-level &lang;level&rang;</tt><br />
+ * <dd> This parameter can be used to set the log level to a given value.
+ * Possible levels are 0, 1, and 2. </dd>
+ * 
+ * <dt><a name="-help"><tt>--help</tt></a></dt>
+ * <dd> This command line option produces a short usage description on the
+ * standard output stream and terminates the program afterwards. </dd>
+ * 
+ * <!--
+ * 
+ * <dt><a name="-progname"/><tt>--progname &lang;name&rang;</tt><br />
+ * <tt>-progname=&lang;name&rang;</tt> </a></dt>
+ * <dd> This parameter can be used to overrule the name of the program shown in
+ * the banner and the version information. </dd>
+ * 
+ * <dt><a name="-copyright"><tt>--copyright</tt></a></dt>
+ * <dd> This command line option produces a copyright notice on the standard
+ * output stream and terminates the program afterwards. </dd>
+ * 
+ * 
+ * <dt><a name="-texinputs"/><tt>--texinputs &lang;path&rang;</tt><br />
+ * <tt>-texinputs=&lang;path&rang;</tt> </a></dt>
+ * <dd> This parameter contains the additional directories for searching
+ * <logo>exindex</logo> input files. </dd>
+ * </dd>
+ * 
+ * -->
+ * 
+ * <dt><a name="-Version"/><tt>--Version</tt></dt>
+ * <dd> This command line parameter forces that the version information is
+ * written to standard output and the program is terminated. </dd>
+ * </dl>
+ * 
+ * <p>
+ * Command line parameters can be abbreviated up to a unique prefix &ndash; and
+ * sometimes even more. Thus the following invocations are equivalent:
+ * </p>
+ * 
+ * <pre class="CLIsyntax">
+ *   exindex --V
+ *   exindex --Ve
+ *   exindex --Ver
+ *   exindex --Vers
+ *   exindex --Versi
+ *   exindex --Versio
+ *   exindex --Version  </pre>
+ * 
+ * <p>
+ * Command line parameters as described above start with a double hyphen (--).
+ * They can be written with a single hyphen (-) as well. Thus <tt>-help</tt>
+ * and <tt>--help</tt> are equivalent.
+ * </p>
+ * 
+ * <a name="invocation"/>
+ * <h3>Direct Java Invocation</h3>
+ * 
+ * <p>
+ * The direct invocation of the Java needs some settings to be preset. These
+ * settings are needed for <logo>ExIndex</logo> to run properly. The following
+ * premises are needed:
+ * </p>
+ * <ul>
+ * <li>Java needs to be installed (see section <a
+ * href="#installation">Installation</a>. The program <tt>java</tt> is
+ * assumed to be on the path of executables. </li>
+ * <li>Java must be configured to find the jar files from the ExIndex
+ * distribution. This can be accomplished by setting the environment variable
+ * <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the documentation of your
+ * Java system for details. </li>
+ * </ul>
+ * <p>
+ * Now <logo>ExIndex</logo> can be invoked with the same parameters as
+ * described above:
+ * </p>
+ * 
+ * <pre class="CLIsyntax">
+ *   java org.extex.exindex.main.ExIndex &lang;options&rang; &lang;raw-file&rang; </pre>
+ * 
+ * <p>
+ * The result should be the same as the invocation of the wrapper.
+ * </p>
+ * 
+ * </doc>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -404,7 +599,7 @@ public class ExIndex extends Indexer {
                     files.add(a);
                 } else if ("-".equals(a)) {
                     files.add(getArg(a, args, ++i));
-                } else if ("-collateSpaces".startsWith(a)) {
+                } else if ("-collate-spaces".startsWith(a)) {
                     eval(new LList(LSymbol.get("sort-rule"), //
                         new LString(" "), //
                         new LString("")));
@@ -418,7 +613,7 @@ public class ExIndex extends Indexer {
                 } else if ("-input".startsWith(a)) {
                     files.add(null);
 
-                } else if ("-letterOrdering".startsWith(a)) {
+                } else if ("-letter-ordering".startsWith(a)) {
                     letterOrdering = true;
 
                 } else if ("-output".startsWith(a)) {
@@ -439,11 +634,15 @@ public class ExIndex extends Indexer {
                 } else if ("-style".startsWith(a)) {
                     styles.add(getArg(a, args, ++i));
 
-                } else if ("-transcript".startsWith(a)) {
+                } else if ("-transcript".startsWith(a) && a.length() > 4) {
                     transcript = getArg(a, args, ++i);
                     if (transcript.equals("") || transcript.equals("-")) {
                         transcript = null;
                     }
+
+                } else if ("-trace".startsWith(a) && a.length() > 4) {
+                    eval(new LList(LSymbol.get("markup-trace"), //
+                        LSymbol.get(":on")));
 
                 } else if ("-Charset".startsWith(a)) {
                     try {
@@ -464,16 +663,16 @@ public class ExIndex extends Indexer {
                 } else if ("-Module".startsWith(a)) {
                     load(getArg(a, args, ++i));
 
-                } else if ("-LogLevel".startsWith(a)) {
+                } else if ("-Log-level".startsWith(a)) {
                     setLogLevel(getArg(a, args, ++i));
 
                 } else if ("-Version".startsWith(a)) {
                     showBanner();
                     return 1;
 
-                } else if ("-help".startsWith(a)) {
+                } else if ("-help".startsWith(a) || "-?".equals(a)) {
                     logger.log(Level.SEVERE, LOCALIZER.format("Usage",
-                        "Indexer"));
+                        "ExIndex"));
                     return 1;
 
                 } else {
@@ -595,7 +794,8 @@ public class ExIndex extends Indexer {
     @Override
     protected void startup(List<String> styles, Logger logger)
             throws IOException,
-                LException {
+                LException,
+                UnknownAttributeException {
 
         showBanner();
 
