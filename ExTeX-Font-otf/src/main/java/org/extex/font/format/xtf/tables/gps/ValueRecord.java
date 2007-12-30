@@ -206,6 +206,23 @@ public class ValueRecord implements XMLWriterConvertible {
     }
 
     /**
+     * Check, if the bit for the mask is set.
+     * 
+     * @param value The value.
+     * @param mask The mask.
+     * @return Returns <code>true</code>, if the bit for the mask is set,
+     *         otherwise <code>false</code>.
+     */
+    public static boolean isMaskSet(int value, int mask) {
+
+        int v = value & mask;
+        if (v > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * ValueRecord use XAdvance.
      */
     private boolean isXAdvance = false;
@@ -290,16 +307,16 @@ public class ValueRecord implements XMLWriterConvertible {
      */
     private DeviceTable xPlaDevice;
 
+    // /**
+    // * The glyph name.
+    // */
+    // private XtfGlyphName xtfGlyph;
+
     /**
      * Offset to Device table for horizontal placement-measured from beginning
      * of PosTable (may be NULL).
      */
     private int xPlaDeviceOffset;
-
-    // /**
-    // * The glyph name.
-    // */
-    // private XtfGlyphName xtfGlyph;
 
     /**
      * Vertical adjustment for advance-in design units (only used for vertical
@@ -349,47 +366,38 @@ public class ValueRecord implements XMLWriterConvertible {
         // this.xtfGlyph = xtfGlyph;
         this.valueFormat = valueFormat;
 
-        xPlacement = rar.readUnsignedShort();
-        yPlacement = rar.readUnsignedShort();
-        xAdvance = rar.readUnsignedShort();
-        yAdvance = rar.readUnsignedShort();
-        xPlaDeviceOffset = rar.readUnsignedShort();
-        yPlaDeviceOffset = rar.readUnsignedShort();
-        xAdvDeviceOffset = rar.readUnsignedShort();
-        yAdvDeviceOffset = rar.readUnsignedShort();
-
-        for (int i = 0; i < MASK.length; i++) {
-            int v = valueFormat & getMask(i);
-            if (v > 0) {
-                switch (i) {
-                    case XPlacement:
-                        isXPlacement = true;
-                        break;
-                    case YPlacement:
-                        isYPlacement = true;
-                        break;
-                    case XAdvance:
-                        isXAdvance = true;
-                        break;
-                    case YAdvance:
-                        isYAdvance = true;
-                        break;
-                    case XPlaDevice:
-                        isXPlaDevice = true;
-                        break;
-                    case YPlaDevice:
-                        isYPlaDevice = true;
-                        break;
-                    case XAdvDevice:
-                        isXAdvDevice = true;
-                        break;
-                    case YAdvDevice:
-                        isYAdvDevice = true;
-                        break;
-                }
-            }
+        if (isMaskSet(valueFormat, getMask(XPlacement))) {
+            isXPlacement = true;
+            xPlacement = (short) rar.readUnsignedShort();
         }
-
+        if (isMaskSet(valueFormat, getMask(YPlacement))) {
+            isYPlacement = true;
+            yPlacement = (short) rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(XAdvance))) {
+            isXAdvance = true;
+            xAdvance = (short) rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(YAdvance))) {
+            isYAdvance = true;
+            yAdvance = (short) rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(XPlaDevice))) {
+            isXPlaDevice = true;
+            xPlaDeviceOffset = rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(YPlaDevice))) {
+            isYPlaDevice = true;
+            yPlaDeviceOffset = rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(XAdvDevice))) {
+            isXAdvDevice = true;
+            xAdvDeviceOffset = rar.readUnsignedShort();
+        }
+        if (isMaskSet(valueFormat, getMask(YAdvDevice))) {
+            isYAdvDevice = true;
+            yAdvDeviceOffset = rar.readUnsignedShort();
+        }
     }
 
     /**

@@ -116,16 +116,6 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
-         * coverage
-         */
-        private XtfCoverage coverage;
-
-        /**
-         * Offset to Coverage table-from beginning of SinglePos subtable.
-         */
-        private int coverageOffset;
-
-        /**
          * Defines the types of data in the ValueRecord.
          */
         private int valueFormat;
@@ -150,7 +140,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
             super(FORMAT1, xtfGlyph);
 
-            coverageOffset = rar.readUnsignedShort();
+            int coverageOffset = rar.readUnsignedShort();
             valueFormat = rar.readUnsignedShort();
             valueRecord =
                     new ValueRecord(rar, posOffset, xtfGlyph, valueFormat);
@@ -159,6 +149,21 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
             rar.seek(offset + coverageOffset);
             coverage = XtfCoverage.newInstance(rar, xtfGlyph);
 
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSSingleTable#getValueRecord(int)
+         */
+        @Override
+        public ValueRecord getValueRecord(int glyph) {
+
+            int coverageIndex = coverage.findGlyph(glyph);
+            if (coverageIndex >= 0) {
+                return valueRecord;
+            }
+            return null;
         }
 
         /**
@@ -265,16 +270,6 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
-         * coverage
-         */
-        private XtfCoverage coverage;
-
-        /**
-         * Offset to Coverage table-from beginning of SinglePos subtable.
-         */
-        private int coverageOffset;
-
-        /**
          * Defines the types of data in the ValueRecord.
          */
         private int valueFormat;
@@ -298,7 +293,7 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
             super(FORMAT2, xtfGlyph);
 
-            coverageOffset = rar.readUnsignedShort();
+            int coverageOffset = rar.readUnsignedShort();
             valueFormat = rar.readUnsignedShort();
             int valueCount = rar.readUnsignedShort();
 
@@ -318,16 +313,6 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         }
 
         /**
-         * Getter for coverageOffset.
-         * 
-         * @return the coverageOffset
-         */
-        public int getCoverageOffset() {
-
-            return coverageOffset;
-        }
-
-        /**
          * Getter for valueFormat.
          * 
          * @return the valueFormat
@@ -335,6 +320,18 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         public int getValueFormat() {
 
             return valueFormat;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSSingleTable#getValueRecord(int)
+         */
+        @Override
+        public ValueRecord getValueRecord(int glyph) {
+
+            // TODO mgn: getValueRecord unimplemented
+            return null;
         }
 
         /**
@@ -356,8 +353,6 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
 
             writer.writeStartElement("singletable");
             writer.writeAttribute("format", getFormat());
-
-            writer.writeAttribute("coverageOffset", coverageOffset, 4);
             writer.writeAttribute("valueFormat", valueFormat);
             for (int i = 0; i < valueRecordArray.length; i++) {
                 valueRecordArray[i].writeXML(writer);
@@ -405,6 +400,11 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
     }
 
     /**
+     * coverage
+     */
+    protected XtfCoverage coverage;
+
+    /**
      * Create a new object.
      * 
      * @param format the format
@@ -415,5 +415,24 @@ public abstract class XtfGPOSSingleTable extends XtfLookupTable {
         super(format, xtfGlyp);
 
     }
+
+    /**
+     * Getter for coverage.
+     * 
+     * @return the coverage
+     */
+    public XtfCoverage getCoverage() {
+
+        return coverage;
+    }
+
+    /**
+     * Returns the {@link ValueRecord} for the glyph.
+     * 
+     * @param glyph The glyph.
+     * @return Returns the {@link ValueRecord} for the glyph or
+     *         <code>null</code>, if not found.
+     */
+    public abstract ValueRecord getValueRecord(int glyph);
 
 }

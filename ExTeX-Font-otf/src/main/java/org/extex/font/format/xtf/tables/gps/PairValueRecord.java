@@ -17,11 +17,11 @@
  *
  */
 
-package org.extex.font.format.xtf.tables;
+package org.extex.font.format.xtf.tables.gps;
 
 import java.io.IOException;
 
-import org.extex.font.format.xtf.tables.gps.ValueRecord;
+import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -66,34 +66,59 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class PairValueRecord implements XMLWriterConvertible {
 
     /**
+     * The index.
+     */
+    private int idx;
+
+    /**
+     * Positioning data for the first and second glyph.
+     */
+    private PairValue pairValue;
+
+    /**
      * GlyphID of second glyph in the pair-first glyph is listed in the Coverage
      * table.
      */
     private int secondGlyph;
 
     /**
-     * Positioning data for the first glyph in the pair.
+     * The glyph name.
      */
-    private ValueRecord value1;
-
-    /**
-     * Positioning data for the second glyph in the pair.
-     */
-    private ValueRecord value2;
+    private XtfGlyphName xtfGlyph;
 
     /**
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param posOffset The offset of the pos table.
      * @param xtfGlyph The glyph name.
+     * @param idx The index.
+     * @param valueFormat2 The valueformat2.
+     * @param valueFormat1 The valueformat1.
      * @throws IOException if an io-error occurred.
      */
-    public PairValueRecord(RandomAccessR rar, XtfGlyphName xtfGlyph)
+    public PairValueRecord(RandomAccessR rar, int posOffset,
+            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
             throws IOException {
 
+        this.idx = idx;
+        this.xtfGlyph = xtfGlyph;
         secondGlyph = rar.readUnsignedShort();
-        // value1 = new ValueRecord(rar, xtfGlyph);
-        // value2 = new ValueRecord(rar, xtfGlyph);
+        ValueRecord value1 =
+                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat1);
+        ValueRecord value2 =
+                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat2);
+        pairValue = new PairValue(value1, value2);
+    }
+
+    /**
+     * Getter for pairValue.
+     * 
+     * @return the pairValue
+     */
+    public PairValue getPairValue() {
+
+        return pairValue;
     }
 
     /**
@@ -107,37 +132,21 @@ public class PairValueRecord implements XMLWriterConvertible {
     }
 
     /**
-     * Getter for value1.
-     * 
-     * @return the value1
-     */
-    public ValueRecord getValue1() {
-
-        return value1;
-    }
-
-    /**
-     * Getter for value2.
-     * 
-     * @return the value2
-     */
-    public ValueRecord getValue2() {
-
-        return value2;
-    }
-
-    /**
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pairvaluerecord");
+        writer.writeAttribute("ID", idx);
         writer.writeAttribute("secondGlyph", secondGlyph);
-        if (value1 != null) {
-            value1.writeXML(writer);
+        writer.writeAttribute("name", xtfGlyph.getGlyphName(secondGlyph));
+        if (pairValue.getValue1() != null
+                && pairValue.getValue1().getValueFormat() != 0) {
+            pairValue.getValue1().writeXML(writer);
         }
-        if (value2 != null) {
-            value2.writeXML(writer);
+        if (pairValue.getValue2() != null
+                && pairValue.getValue2().getValueFormat() != 0) {
+            pairValue.getValue2().writeXML(writer);
         }
         writer.writeEndElement();
     }

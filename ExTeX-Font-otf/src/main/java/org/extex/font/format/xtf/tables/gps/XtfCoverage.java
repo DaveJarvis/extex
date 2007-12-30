@@ -392,7 +392,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the index of the glyph within the coverage
+     * Returns the index of the glyph in the coverage table.
      * 
      * @param glyphId The ID of the glyph to find.
      * @return Returns the index of the glyph within the coverage, or -1 if the

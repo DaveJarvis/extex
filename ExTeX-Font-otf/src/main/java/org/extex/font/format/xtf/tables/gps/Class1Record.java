@@ -70,6 +70,20 @@ public class Class1Record implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the class or <code>null</code>, if not found.
+     * 
+     * @param classidx The class index.
+     * @return Returns the class or <code>null</code>, if not found.
+     */
+    public Class2Record getClass2Record(int classidx) {
+
+        if (classidx >= 0 && classidx < class2RecordArray.length) {
+            return class2RecordArray[classidx];
+        }
+        return null;
+    }
+
+    /**
      * Getter for class2RecordArray.
      * 
      * @return the class2RecordArray
@@ -84,7 +98,7 @@ public class Class1Record implements XMLWriterConvertible {
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("class");
+        writer.writeStartElement("class1record");
         writer.writeAttribute("class", idx);
         for (int i = 0; i < class2RecordArray.length; i++) {
             class2RecordArray[i].writeXML(writer);

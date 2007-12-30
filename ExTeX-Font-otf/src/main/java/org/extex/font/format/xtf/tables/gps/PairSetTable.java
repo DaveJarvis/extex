@@ -17,10 +17,11 @@
  *
  */
 
-package org.extex.font.format.xtf.tables;
+package org.extex.font.format.xtf.tables.gps;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -61,6 +62,11 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class PairSetTable implements XMLWriterConvertible {
 
     /**
+     * The index.
+     */
+    private int idx;
+
+    /**
      * Array of PairValueRecords-ordered by GlyphID of the second glyph.
      */
     private PairValueRecord[] pairValueRecords;
@@ -69,19 +75,45 @@ public class PairSetTable implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param rar The input.
+     * @param posOffset The offset of the pos table.
      * @param offset The offset of the table.
+     * @param xtfGlyph The glyph name.
+     * @param idx The index.
+     * @param valueFormat2 The valueformat2.
+     * @param valueFormat1 The valueformat1.
      * @throws IOException if a io-error occurred.
      */
-    public PairSetTable(RandomAccessR rar, int offset) throws IOException {
+    public PairSetTable(RandomAccessR rar, int posOffset, int offset,
+            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
+            throws IOException {
 
+        this.idx = idx;
         rar.seek(offset);
         int pairValueCount = rar.readUnsignedShort();
 
         pairValueRecords = new PairValueRecord[pairValueCount];
-        // TODO mgn: Fehler
-//        for (int i = 0; i < pairValueRecords.length; i++) {
-//            pairValueRecords[i] = new PairValueRecord(rar);
-//        }
+        for (int i = 0; i < pairValueRecords.length; i++) {
+            pairValueRecords[i] =
+                    new PairValueRecord(rar, posOffset, xtfGlyph, i,
+                        valueFormat1, valueFormat2);
+        }
+    }
+
+    /**
+     * Returns the {@link PairValueRecord} for the second glyph.
+     * 
+     * @param secondGlyph The second glyph.
+     * @return Returns the {@link PairValueRecord} for the second glyph or
+     *         <code>null</code>, if not found.
+     */
+    public PairValueRecord getPairValueRecord(int secondGlyph) {
+
+        for (int i = 0; i < pairValueRecords.length; i++) {
+            if (pairValueRecords[i].getSecondGlyph() == secondGlyph) {
+                return pairValueRecords[i];
+            }
+        }
+        return null;
     }
 
     /**
@@ -100,6 +132,7 @@ public class PairSetTable implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pairsettable");
+        writer.writeAttribute("ID", idx);
         for (int i = 0; i < pairValueRecords.length; i++) {
             pairValueRecords[i].writeXML(writer);
         }

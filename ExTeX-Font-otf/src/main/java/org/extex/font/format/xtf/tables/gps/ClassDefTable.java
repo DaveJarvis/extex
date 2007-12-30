@@ -284,6 +284,11 @@ public abstract class ClassDefTable implements XMLWriterConvertible {
         writer.writeStartElement("classdef");
         writer.writeAttribute("number", defNr);
         writer.writeAttribute("format", getFormat());
+        if (defNr == 1) {
+            writer.writeComment("first glyph");
+        } else if (defNr == 2) {
+            writer.writeComment("second glyph");
+        }
         int[] sort = new int[classMap.size()];
         Iterator<Integer> it = classMap.keySet().iterator();
         int i = 0;
@@ -302,5 +307,4 @@ public abstract class ClassDefTable implements XMLWriterConvertible {
         }
         writer.writeEndElement();
     }
-
 }

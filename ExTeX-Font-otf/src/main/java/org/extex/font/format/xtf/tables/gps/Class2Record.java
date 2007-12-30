@@ -40,14 +40,9 @@ public class Class2Record implements XMLWriterConvertible {
     private int idx;
 
     /**
-     * Positioning for first glyph-empty if ValueFormat1 = 0.
+     * Positioning data for the first and second glyph.
      */
-    private ValueRecord value1;
-
-    /**
-     * Positioning for second glyph-empty if ValueFormat2 = 0.
-     */
-    private ValueRecord value2;
+    private PairValue pairValue;
 
     /**
      * Creates a new object.
@@ -65,28 +60,21 @@ public class Class2Record implements XMLWriterConvertible {
             throws IOException {
 
         this.idx = idx;
-        value1 = new ValueRecord(rar, posOffset, xtfGlyph, valueFormat1);
-        value2 = new ValueRecord(rar, posOffset, xtfGlyph, valueFormat2);
+        ValueRecord value1 =
+                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat1);
+        ValueRecord value2 =
+                new ValueRecord(rar, posOffset, xtfGlyph, valueFormat2);
+        pairValue = new PairValue(value1, value2);
     }
 
     /**
-     * Getter for value1.
+     * Getter for pairValue.
      * 
-     * @return the value1
+     * @return the pairValue
      */
-    public ValueRecord getValue1() {
+    public PairValue getPairValue() {
 
-        return value1;
-    }
-
-    /**
-     * Getter for value2.
-     * 
-     * @return the value2
-     */
-    public ValueRecord getValue2() {
-
-        return value2;
+        return pairValue;
     }
 
     /**
@@ -95,9 +83,9 @@ public class Class2Record implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("class2record");
-        writer.writeAttribute("id", idx);
-        value1.writeXML(writer);
-        value2.writeXML(writer);
+        writer.writeAttribute("class", idx);
+        pairValue.getValue1().writeXML(writer);
+        pairValue.getValue2().writeXML(writer);
         writer.writeEndElement();
     }
 }

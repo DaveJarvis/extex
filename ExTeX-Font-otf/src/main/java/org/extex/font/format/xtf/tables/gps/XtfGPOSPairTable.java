@@ -21,7 +21,6 @@ package org.extex.font.format.xtf.tables.gps;
 
 import java.io.IOException;
 
-import org.extex.font.format.xtf.tables.PairSetTable;
 import org.extex.font.format.xtf.tables.XtfGlyphName;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
@@ -408,27 +407,9 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
                 XMLWriterConvertible {
 
         /**
-         * coverage
+         * The pairset table.
          */
-        private XtfCoverage coverage;
-
-        /**
-         * Array of offsets to PairSet tables-from beginning of PairPos
-         * subtable-ordered by Coverage Index.
-         */
-        private int[] pairSetOffsetArray;
-
-        /**
-         * Defines the types of data in ValueRecord1-for the first glyph in the
-         * pair -may be zero (0).
-         */
-        private int valueFormat1;
-
-        /**
-         * Defines the types of data in ValueRecord2-for the second glyph in the
-         * pair -may be zero (0).
-         */
-        private int valueFormat2;
+        private PairSetTable[] pairSetTables;
 
         /**
          * Create a new object.
@@ -448,7 +429,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             valueFormat1 = rar.readUnsignedShort();
             valueFormat2 = rar.readUnsignedShort();
             int pairSetCount = rar.readUnsignedShort();
-            pairSetOffsetArray = new int[pairSetCount];
+            int[] pairSetOffsetArray = new int[pairSetCount];
             for (int i = 0; i < pairSetCount; i++) {
                 pairSetOffsetArray[i] = rar.readUnsignedShort();
             }
@@ -456,43 +437,35 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             rar.seek(offset + coverageOffset);
             coverage = XtfCoverage.newInstance(rar, xtfGlyph);
 
-            PairSetTable[] pairSetTable = new PairSetTable[pairSetCount];
+            pairSetTables = new PairSetTable[pairSetCount];
             for (int i = 0; i < pairSetCount; i++) {
-                // TODO mgn: check offset : vorher getBaseoffset
-
-                // pairSetTable[i] =
-                // new PairSetTable(rar, offset + pairSetOffsetArray[i]);
+                pairSetTables[i] =
+                        new PairSetTable(rar, posOffset, offset
+                                + pairSetOffsetArray[i], xtfGlyph, i,
+                            valueFormat1, valueFormat2);
             }
         }
 
         /**
-         * Getter for pairSetOffsetArray.
+         * {@inheritDoc}
          * 
-         * @return the pairSetOffsetArray
+         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSPairTable#getPairValue(int,
+         *      int)
          */
-        public int[] getPairSetOffsetArray() {
+        @Override
+        public PairValue getPairValue(int firstGlyph, int secondGlyph) {
 
-            return pairSetOffsetArray;
-        }
-
-        /**
-         * Getter for valueFormat1.
-         * 
-         * @return the valueFormat1
-         */
-        public int getValueFormat1() {
-
-            return valueFormat1;
-        }
-
-        /**
-         * Getter for valueFormat2.
-         * 
-         * @return the valueFormat2
-         */
-        public int getValueFormat2() {
-
-            return valueFormat2;
+            int coverageIndex = coverage.findGlyph(firstGlyph);
+            if (coverageIndex >= 0) {
+                if (pairSetTables != null
+                        && coverageIndex < pairSetTables.length) {
+                    PairValueRecord pst =
+                            pairSetTables[coverageIndex]
+                                .getPairValueRecord(secondGlyph);
+                    return pst.getPairValue();
+                }
+            }
+            return null;
         }
 
         /**
@@ -503,15 +476,18 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("pairtable");
+            writer.writeAttribute("format", getFormat());
             writer.writeAttribute("valueFormat1", valueFormat1);
             writer.writeAttribute("valueFormat2", valueFormat2);
 
             coverage.writeXML(writer);
 
-            writer.writeIntArrayAsEntries(pairSetOffsetArray);
+            for (int i = 0; pairSetTables != null & i < pairSetTables.length; i++) {
+                pairSetTables[i].writeXML(writer);
+            }
+
             writer.writeEndElement();
         }
-
     }
 
     /**
@@ -532,38 +508,9 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         private ClassDefTable classDef1;
 
         /**
-         * Offset to ClassDef table-from beginning of PairPos subtable-for the
-         * first glyph of the pair.
-         */
-        private int classDef1Offset;
-
-        /**
          * ClassDefTable 1.
          */
         private ClassDefTable classDef2;
-
-        /**
-         * Offset to ClassDef table-from beginning of PairPos subtable-for the
-         * second glyph of the pair.
-         */
-        private int classDef2Offset;
-
-        /**
-         * coverage
-         */
-        private XtfCoverage coverage;
-
-        /**
-         * ValueRecord definition-for the first glyph of the pair-may be zero
-         * (0)
-         */
-        private int valueFormat1;
-
-        /**
-         * ValueRecord definition-for the second glyph of the pair-may be zero
-         * (0).
-         */
-        private int valueFormat2;
 
         /**
          * Create a new object.
@@ -582,8 +529,8 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             int coverageOffset = rar.readUnsignedShort();
             valueFormat1 = rar.readUnsignedShort();
             valueFormat2 = rar.readUnsignedShort();
-            classDef1Offset = rar.readUnsignedShort();
-            classDef2Offset = rar.readUnsignedShort();
+            int classDef1Offset = rar.readUnsignedShort();
+            int classDef2Offset = rar.readUnsignedShort();
             int class1Count = rar.readUnsignedShort();
             int class2Count = rar.readUnsignedShort();
 
@@ -608,6 +555,22 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         }
 
         /**
+         * Returns the {@link Class1Record} or <code>null</code>, if not
+         * found.
+         * 
+         * @param cl The class index.
+         * @return Returns the {@link Class1Record} or <code>null</code>, if
+         *         not found.
+         */
+        private Class1Record getClass1Record(int cl) {
+
+            if (cl >= 0 && cl < class1RecordArray.length) {
+                return class1RecordArray[cl];
+            }
+            return null;
+        }
+
+        /**
          * Getter for class1RecordArray.
          * 
          * @return the class1RecordArray
@@ -618,23 +581,46 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
         }
 
         /**
-         * Getter for valueFormat1.
+         * Getter for classDef1.
          * 
-         * @return the valueFormat1
+         * @return the classDef1
          */
-        public int getValueFormat1() {
+        public ClassDefTable getClassDef1() {
 
-            return valueFormat1;
+            return classDef1;
         }
 
         /**
-         * Getter for valueFormat2.
+         * Getter for classDef2.
          * 
-         * @return the valueFormat2
+         * @return the classDef2
          */
-        public int getValueFormat2() {
+        public ClassDefTable getClassDef2() {
 
-            return valueFormat2;
+            return classDef2;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.xtf.tables.gps.XtfGPOSPairTable#getPairValue(int,
+         *      int)
+         */
+        @Override
+        public PairValue getPairValue(int firstGlyph, int secondGlyph) {
+
+            int cl1 = classDef1.getClass(firstGlyph);
+            int cl2 = classDef2.getClass(secondGlyph);
+
+            Class1Record clr1 = getClass1Record(cl1);
+            if (clr1 == null) {
+                return null;
+            }
+            Class2Record clr2 = clr1.getClass2Record(cl2);
+            if (clr2 != null) {
+                return clr2.getPairValue();
+            }
+            return null;
         }
 
         /**
@@ -650,7 +636,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
             writer.writeAttribute("valueFormat1", valueFormat1);
             writer.writeAttribute("valueFormat2", valueFormat2);
 
-            // coverage.writeXML(writer);
+            coverage.writeXML(writer);
 
             classDef1.writeXML(writer);
             classDef2.writeXML(writer);
@@ -702,6 +688,23 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
     }
 
     /**
+     * coverage
+     */
+    protected XtfCoverage coverage;
+
+    /**
+     * Defines the types of data in ValueRecord1-for the first glyph in the pair
+     * -may be zero (0).
+     */
+    protected int valueFormat1;
+
+    /**
+     * Defines the types of data in ValueRecord2-for the second glyph in the
+     * pair -may be zero (0).
+     */
+    protected int valueFormat2;
+
+    /**
      * Create a new object.
      * 
      * @param format the format
@@ -711,6 +714,46 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
 
         super(format, xtfGlyp);
 
+    }
+
+    /**
+     * Getter for coverage.
+     * 
+     * @return the coverage
+     */
+    public XtfCoverage getCoverage() {
+
+        return coverage;
+    }
+
+    /**
+     * Returns the {@link PairValue} for the combination first and second Glyph.
+     * 
+     * @param firstGlyph The first glyph.
+     * @param secondGlyph The second glyph.
+     * @return Returns the {@link PairValue} for the combination first and
+     *         second Glyph.
+     */
+    public abstract PairValue getPairValue(int firstGlyph, int secondGlyph);
+
+    /**
+     * Getter for valueFormat1.
+     * 
+     * @return the valueFormat1
+     */
+    public int getValueFormat1() {
+
+        return valueFormat1;
+    }
+
+    /**
+     * Getter for valueFormat2.
+     * 
+     * @return the valueFormat2
+     */
+    public int getValueFormat2() {
+
+        return valueFormat2;
     }
 
 }
