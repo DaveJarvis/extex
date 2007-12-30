@@ -525,7 +525,7 @@ public class ExIndex extends Indexer {
         }
 
         if (makeindex) {
-            return new MakeindexParser(reader, resource, this);
+            return new MakeindexParser(reader, "default", resource, this);
         }
         return new XindyParser(reader, resource);
     }
