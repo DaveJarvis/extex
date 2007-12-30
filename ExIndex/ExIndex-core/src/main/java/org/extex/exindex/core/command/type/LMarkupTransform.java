@@ -33,10 +33,116 @@ import org.extex.exindex.core.type.transform.Transform;
 public class LMarkupTransform extends LMarkup {
 
     /**
+     * TODO gene: missing JavaDoc.
+     */
+    private class Param {
+
+        /**
+         * The field <tt>open</tt> contains the open markup.
+         */
+        private String open;
+
+        /**
+         * The field <tt>close</tt> contains the close markup.
+         */
+        private String close;
+
+        /**
+         * The field <tt>openHead</tt> contains the open head markup.
+         */
+        private String openHead;
+
+        /**
+         * The field <tt>closeHead</tt> contains the close head markup.
+         */
+        private String closeHead;
+
+        /**
+         * The field <tt>force</tt> contains the force indicator.
+         */
+        private boolean force;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param open the open string
+         * @param close the close string
+         * @param openHead the open head string
+         * @param closeHead the close head string
+         * @param force the force indicator
+         */
+        public Param(String open, String close, String openHead,
+                String closeHead, boolean force) {
+
+            this.open = open;
+            this.close = close;
+            this.openHead = openHead;
+            this.closeHead = closeHead;
+            this.force = force;
+        }
+
+        /**
+         * Getter for close.
+         * 
+         * @return the close
+         */
+        public String getClose() {
+
+            return close;
+        }
+
+        /**
+         * Getter for closeHead.
+         * 
+         * @return the closeHead
+         */
+        public String getCloseHead() {
+
+            return closeHead;
+        }
+
+        /**
+         * Getter for open.
+         * 
+         * @return the open
+         */
+        public String getOpen() {
+
+            return open;
+        }
+
+        /**
+         * Getter for openHead.
+         * 
+         * @return the openHead
+         */
+        public String getOpenHead() {
+
+            return openHead;
+        }
+
+        /**
+         * Getter for force.
+         * 
+         * @return the force
+         */
+        public boolean isForce() {
+
+            return force;
+        }
+
+    };
+
+    /**
      * The field <tt>transformMap</tt> contains the transforms.
      */
     private Map<String, Transform> transformMap =
             new HashMap<String, Transform>();
+
+    /**
+     * The field <tt>map</tt> contains the ...
+     */
+    private Map<String, Param> map = new HashMap<String, Param>();
 
     /**
      * Creates a new object.
@@ -59,6 +165,22 @@ public class LMarkupTransform extends LMarkup {
 
         Transform t = transformMap.get(clazz);
         return (t == null && clazz != null ? transformMap.get(null) : t);
+    }
+
+    /**
+     * Set some major attributes.
+     * 
+     * @param clazz the class
+     * @param open the open string
+     * @param close the close string
+     * @param openHead the open head string
+     * @param closeHead the close head string
+     * @param force the force indicator
+     */
+    public void set(String clazz, String open, String close, String openHead,
+            String closeHead, boolean force) {
+
+        map.put(clazz, new Param(open, close, openHead, closeHead, force));
     }
 
     /**
