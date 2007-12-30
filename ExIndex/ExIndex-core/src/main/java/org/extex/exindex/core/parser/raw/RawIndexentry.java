@@ -50,13 +50,19 @@ public class RawIndexentry {
     private RefSpec ref;
 
     /**
+     * The field <tt>index</tt> contains the name of the index.
+     */
+    private String index;
+
+    /**
      * Creates a new object.
      * 
+     * @param index the name of the index
      * @param key the main key; It can not be <code>null</code>
      * @param print the print key; It can not be <code>null</code>
      * @param ref the reference
      */
-    public RawIndexentry(String[] key, String[] print, RefSpec ref) {
+    public RawIndexentry(String index, String[] key, String[] print, RefSpec ref) {
 
         super();
         if (key == null || print == null || ref == null) {
@@ -65,6 +71,17 @@ public class RawIndexentry {
         this.mainKey = key;
         this.printKey = print;
         this.ref = ref;
+        this.index = index;
+    }
+
+    /**
+     * Getter for index.
+     * 
+     * @return the index
+     */
+    public String getIndex() {
+
+        return index;
     }
 
     /**
@@ -127,6 +144,10 @@ public class RawIndexentry {
 
         StringBuilder sb = new StringBuilder();
         sb.append("(indexentry");
+        if (index != null) {
+            sb.append(" :index ");
+            StringUtils.putPrintable(sb, index);
+        }
         if (printKey == null) {
             toStringAppendList(sb, " :key ", mainKey);
         } else if (mainKey == printKey) {
@@ -184,4 +205,5 @@ public class RawIndexentry {
         }
         sb.append(")");
     }
+
 }
