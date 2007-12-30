@@ -36,7 +36,7 @@ public class NumericPage extends AbstractPage {
      * @throws NumberFormatException in case that the sting given does not
      *         contain a valid number
      */
-    public NumericPage(String enc, String page) {
+    public NumericPage(String enc, String page) throws NumberFormatException {
 
         super(enc, page, Integer.parseInt(page));
     }

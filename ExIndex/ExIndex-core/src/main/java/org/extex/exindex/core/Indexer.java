@@ -286,6 +286,7 @@ public class Indexer extends LEngine {
         alphabets.add("ALPHA", new AlphaUppercase());
 
         setq("indexer:charset-raw", new LString("utf-8"));
+        setq("index:name", LString.EMPTY);
     }
 
     /**
