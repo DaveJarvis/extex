@@ -78,6 +78,20 @@ public class Class2Record implements XMLWriterConvertible {
     }
 
     /**
+     * Initialize the {@link ValueRecord}.
+     * 
+     * @param rar The input.
+     * @param posOffset The offset of the pos table.
+     * @throws IOException if a IO-error occurred.
+     */
+    public void init(RandomAccessR rar, int posOffset) throws IOException {
+
+        pairValue.getValue1().init(rar, posOffset);
+        pairValue.getValue2().init(rar, posOffset);
+
+    }
+
+    /**
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

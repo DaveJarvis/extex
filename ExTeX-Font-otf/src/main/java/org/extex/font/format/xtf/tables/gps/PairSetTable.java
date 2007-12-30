@@ -97,6 +97,11 @@ public class PairSetTable implements XMLWriterConvertible {
                     new PairValueRecord(rar, posOffset, xtfGlyph, i,
                         valueFormat1, valueFormat2);
         }
+
+        for (int i = 0; i < pairValueRecords.length; i++) {
+            pairValueRecords[i].init(rar, posOffset);
+        }
+
     }
 
     /**

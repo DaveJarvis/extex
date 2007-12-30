@@ -552,6 +552,10 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
 
             classDef1.addClass0(coverage.getGlyphs());
             classDef2.addClass0(coverage.getGlyphs());
+
+            for (int i = 0; i < class1Count; i++) {
+                class1RecordArray[i].init(rar, posOffset);
+            }
         }
 
         /**

@@ -527,22 +527,22 @@ public class ValueRecord implements XMLWriterConvertible {
      * </p>
      * 
      * @param rar The input.
-     * @param offset The offset.
+     * @param posOffset The offset of the pos table.
      * @throws IOException if a IO-error occurred.
      */
-    public void init(RandomAccessR rar, int offset) throws IOException {
+    public void init(RandomAccessR rar, int posOffset) throws IOException {
 
         if (isXPlaDevice && xPlaDeviceOffset != 0) {
-            xPlaDevice = new DeviceTable(rar, offset + xPlaDeviceOffset);
+            xPlaDevice = new DeviceTable(rar, posOffset + xPlaDeviceOffset);
         }
         if (isYPlaDevice && yPlaDeviceOffset != 0) {
-            yPlaDevice = new DeviceTable(rar, offset + yPlaDeviceOffset);
+            yPlaDevice = new DeviceTable(rar, posOffset + yPlaDeviceOffset);
         }
         if (isXAdvDevice && xAdvDeviceOffset != 0) {
-            xAdvDevice = new DeviceTable(rar, offset + xAdvDeviceOffset);
+            xAdvDevice = new DeviceTable(rar, posOffset + xAdvDeviceOffset);
         }
         if (isYAdvDevice && yAdvDeviceOffset != 0) {
-            yAdvDevice = new DeviceTable(rar, offset + yAdvDeviceOffset);
+            yAdvDevice = new DeviceTable(rar, posOffset + yAdvDeviceOffset);
         }
     }
 
