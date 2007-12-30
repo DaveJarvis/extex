@@ -19,9 +19,9 @@
 
 package org.extex.font;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
+
+import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontKeyTest {
+public class FontKeyTest extends TestCase {
 
     /**
      * Test method for {@link java.lang.Object#toString()}.
