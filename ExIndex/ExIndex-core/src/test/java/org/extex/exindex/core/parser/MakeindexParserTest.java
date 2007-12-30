@@ -26,8 +26,8 @@ import static org.junit.Assert.assertNull;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.makeindex.MakeindexParser;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
@@ -54,7 +54,8 @@ public class MakeindexParserTest {
 
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
-                new MakeindexParser(new StringReader(""), "rsc", interpreter);
+                new MakeindexParser(new StringReader(""), "default", "rsc",
+                    interpreter);
         assertNull(xp.parse());
     }
 
@@ -70,7 +71,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         interpreter.setq("makeindex:level", new LString(""));
         MakeindexParser xp =
-                new MakeindexParser(new StringReader(""), "rsc", interpreter);
+                new MakeindexParser(new StringReader(""), "default", "rsc",
+                    interpreter);
         assertNull(xp.parse());
     }
 
@@ -86,7 +88,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         interpreter.setq("makeindex:level", new LChar('!'));
         MakeindexParser xp =
-                new MakeindexParser(new StringReader(""), "rsc", interpreter);
+                new MakeindexParser(new StringReader(""), "default", "rsc",
+                    interpreter);
         assertNull(xp.parse());
     }
 
@@ -101,8 +104,8 @@ public class MakeindexParserTest {
 
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
-                new MakeindexParser(new StringReader("\\relax"), "rsc",
-                    interpreter);
+                new MakeindexParser(new StringReader("\\relax"), "default",
+                    "rsc", interpreter);
         assertNull(xp.parse());
     }
 
@@ -118,7 +121,7 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\indexentry{abc}{123}"),
-                    "rsc", interpreter);
+                    "default", "rsc", interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -139,7 +142,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
-                    "\\indexentry{abc@def}{123}"), "rsc", interpreter);
+                    "\\indexentry{abc@def}{123}"), "default", "rsc",
+                    interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -160,7 +164,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
-                    "\\indexentry{abc|def}{123}"), "rsc", interpreter);
+                    "\\indexentry{abc|def}{123}"), "default", "rsc",
+                    interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -181,7 +186,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
-                    "\\indexentry{abc|def(}{123}"), "rsc", interpreter);
+                    "\\indexentry{abc|def(}{123}"), "default", "rsc",
+                    interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -202,7 +208,8 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
-                    "\\indexentry{abc|def)}{123}"), "rsc", interpreter);
+                    "\\indexentry{abc|def)}{123}"), "default", "rsc",
+                    interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -224,7 +231,7 @@ public class MakeindexParserTest {
         interpreter.setq("makeindex:keyword", new LString("\\gloentry"));
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
-                    "\\gloentry{abc|def)}{123}"), "rsc", interpreter);
+                    "\\gloentry{abc|def)}{123}"), "default", "rsc", interpreter);
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
@@ -245,7 +252,7 @@ public class MakeindexParserTest {
         LInterpreter interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\indexentry abc"),
-                    "rsc", interpreter);
+                    "default", "rsc", interpreter);
         xp.parse();
     }
 

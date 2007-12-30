@@ -140,9 +140,15 @@ public class MakeindexParser implements RawIndexParser {
     private ReaderLocator locator;
 
     /**
+     * The field <tt>index</tt> contains the name of the index.
+     */
+    private String index;
+
+    /**
      * Creates a new object and gather the parameters from an interpreter.
      * 
      * @param reader the source to read from
+     * @param index the name of the index to store the entries in
      * @param resource the name of the resource for error messages
      * @param interpreter the l system as storage for parameters
      * 
@@ -150,10 +156,11 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @see #configure(LInterpreter)
      */
-    public MakeindexParser(Reader reader, String resource,
+    public MakeindexParser(Reader reader, String index, String resource,
             LInterpreter interpreter) throws RawIndexException {
 
         super();
+        this.index = index;
         this.locator = new ReaderLocator(resource, reader);
         configure(interpreter);
     }
@@ -489,6 +496,6 @@ public class MakeindexParser implements RawIndexParser {
                 ref = new LocRef(locref, attr);
             }
         }
-        return new RawIndexentry(key, print, ref);
+        return new RawIndexentry(index, key, print, ref);
     }
 }

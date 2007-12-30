@@ -25,11 +25,11 @@ import java.io.Reader;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
 import org.extex.exindex.core.parser.raw.CloseLocRef;
+import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.RefSpec;
-import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
@@ -49,7 +49,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- * (indexentry { :key <i>string-list</i> [:print <i>string-list</i>]
+ * (indexentry [:index <i>index-name</i>]
+ *             { :key <i>string-list</i> [:print <i>string-list</i>]
  *             | :tkey <i>list-of-layers</i> }
  *             [:attr <i>string</i>]
  *             { :locref <i>string</i>  [:open-range | :close-range]
@@ -57,8 +58,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * 
  * <p>
- * The index entry is in principal made up of three parts: the key, the
- * attribute, and the location. They are described below.
+ * The index entry is in principal made up of four parts: the name of the index,
+ * the key, the attribute, and the location. They are described below.
+ * </p>
+ * 
+ * <h3>The Index</h3>
+ * <p>
+ * The index is the name of an index. The index entry is assigned to this index.
+ * The default is the index <tt>default</tt>.
+ * </p>
+ * <p>
+ * The index is an extension compared to the xindy raw index format.
  * </p>
  * 
  * <h3>The Key</h3>
@@ -205,6 +215,11 @@ public class XindyParser extends LParser implements RawIndexParser {
     private static final LSymbol LOCREF = LSymbol.get(":locref");
 
     /**
+     * The constant <tt>INDEX</tt> contains the symbol for the index flag.
+     */
+    private static final LSymbol INDEX = LSymbol.get(":index");
+
+    /**
      * The constant <tt>OPEN_RANGE</tt> contains the symbol for the open-range
      * flag.
      */
@@ -269,7 +284,9 @@ public class XindyParser extends LParser implements RawIndexParser {
     private String assumeLString(LValue x) throws RawIndexException {
 
         if (!(x instanceof LString)) {
-            throw exception("MissingString");
+            Object[] args = {};
+            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
+                getClass()).format("MissingString", args));
         }
         return ((LString) x).getValue();
     }
@@ -287,23 +304,10 @@ public class XindyParser extends LParser implements RawIndexParser {
             throws RawIndexException {
 
         if (value != null) {
-            throw exception("BoundTwice", type.toString());
+            Object[] args = {type.toString()};
+            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
+                getClass()).format("BoundTwice", args));
         }
-    }
-
-    /**
-     * Create an exception and fill it with a value from the resource bundle for
-     * this class.
-     * 
-     * @param key the key
-     * @param args the additional arguments
-     * 
-     * @return the exception
-     */
-    protected RawIndexException exception(String key, Object... args) {
-
-        return new RawIndexException(locator, LocalizerFactory.getLocalizer(
-            getClass()).format(key, args));
     }
 
     /**
@@ -322,8 +326,9 @@ public class XindyParser extends LParser implements RawIndexParser {
         String[] print = null;
         String[] key = null;
         String[] tkey = null;
-        String attr = null;
         String locref = null;
+        String index = null;
+        String attr = null;
         RefSpec ref = null;
         Boolean openRange = null;
         Boolean closeRange = null;
@@ -373,7 +378,9 @@ public class XindyParser extends LParser implements RawIndexParser {
                 }
                 assumeUnbound(tkey, TKEY);
                 if (key != null || print != null) {
-                    throw exception("BoundTwice", TKEY.toString());
+                    Object[] args = {TKEY.toString()};
+                    throw new RawIndexException(locator, LocalizerFactory
+                        .getLocalizer(getClass()).format("BoundTwice", args));
                 }
                 LList lst = assumeLList(list.get(++i));
                 int len = lst.size();
@@ -440,13 +447,24 @@ public class XindyParser extends LParser implements RawIndexParser {
                     xrefKey = toArray(arg);
                 }
 
+            } else if (arg == INDEX) {
+                if (i >= size - 1) {
+                    throw new RawIndexSyntaxException(locator);
+                }
+                assumeUnbound(index, INDEX);
+                index = assumeLString(list.get(++i));
+
             } else {
-                throw exception("MissingTag", arg.toString());
+                Object[] args = {arg.toString()};
+                throw new RawIndexException(locator, LocalizerFactory
+                    .getLocalizer(getClass()).format("MissingTag", args));
             }
         }
 
         if (key == null) {
-            throw exception("Unbound", KEY.toString());
+            Object[] args = {KEY.toString()};
+            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
+                getClass()).format("Unbound", args));
         }
         if (print == null) {
             print = key;
@@ -454,9 +472,13 @@ public class XindyParser extends LParser implements RawIndexParser {
 
         if (xrefKey != null) {
             if (openRange != null) {
-                throw exception("XrefAndOpen");
+                Object[] args = {};
+                throw new RawIndexException(locator, LocalizerFactory
+                    .getLocalizer(getClass()).format("XrefAndOpen", args));
             } else if (closeRange != null) {
-                throw exception("XrefAndClose");
+                Object[] args = {};
+                throw new RawIndexException(locator, LocalizerFactory
+                    .getLocalizer(getClass()).format("XrefAndClose", args));
             }
             // delayed since attr might not be given before
             ref = new CrossReference(xrefKey, attr);
@@ -465,7 +487,9 @@ public class XindyParser extends LParser implements RawIndexParser {
         if (locref != null) {
             if (openRange != null) {
                 if (closeRange != null) {
-                    throw exception("OpenAndClose");
+                    Object[] args = {};
+                    throw new RawIndexException(locator, LocalizerFactory
+                        .getLocalizer(getClass()).format("OpenAndClose", args));
                 }
                 ref = new OpenLocRef(locref, attr);
             } else if (closeRange != null) {
@@ -476,9 +500,12 @@ public class XindyParser extends LParser implements RawIndexParser {
         }
 
         if (ref == null) {
-            throw exception("Unbound", LOCREF.toString());
+            Object[] args = {LOCREF.toString()};
+            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
+                getClass()).format("Unbound", args));
         }
-        return new RawIndexentry(key, print, ref);
+        return new RawIndexentry(index == null ? "default" : index, key, print,
+            ref);
     }
 
     /**
