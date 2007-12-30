@@ -51,6 +51,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *     [:open-head <i>open-head-markup</i>]
  *     [:close-head <i>close-head-markup</i>]
  *     [:upcase | :downcase | :capitalize]
+ *     [:force-printing]
  *  )
  * </pre>
  * 
@@ -98,7 +99,8 @@ public class LMarkupLetterGroup extends LFunction {
                 Arg.OPT_STRING(":close-head", ""), //
                 Arg.OPT_BOOLEAN(":upcase"), //
                 Arg.OPT_BOOLEAN(":downcase"), //
-                Arg.OPT_BOOLEAN(":capitalize")});
+                Arg.OPT_BOOLEAN(":capitalize"), //
+                Arg.OPT_BOOLEAN(":force-printing")});
     }
 
     /**
@@ -113,6 +115,7 @@ public class LMarkupLetterGroup extends LFunction {
      * @param upcase the indicator for the upcase transform
      * @param downcase the indicator for the downcase transform
      * @param capitalize the indicator for the capitalize transform
+     * @param force force the printing of the group even if the group is empty
      * 
      * @return <tt>null</tt>
      * 
@@ -122,7 +125,7 @@ public class LMarkupLetterGroup extends LFunction {
      */
     public LValue evaluate(LInterpreter interpreter, String group, String open,
             String close, String openHead, String closeHead, Boolean upcase,
-            Boolean downcase, Boolean capitalize)
+            Boolean downcase, Boolean capitalize, Boolean force)
             throws LSettingConstantException,
                 InconsistentFlagsException,
                 LNonMatchingTypeException {
@@ -133,7 +136,8 @@ public class LMarkupLetterGroup extends LFunction {
         }
 
         LMarkupTransform markup = (LMarkupTransform) container;
-        markup.set(group, open, close, openHead, closeHead);
+        markup.set(group, open, close, openHead, closeHead,
+            force == Boolean.TRUE);
 
         switch ((upcase.booleanValue() ? 0 : 1)
                 | (downcase.booleanValue() ? 0 : 2)
