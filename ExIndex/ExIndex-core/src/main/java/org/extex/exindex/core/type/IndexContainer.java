@@ -347,12 +347,20 @@ public class IndexContainer
             MarkupContainer fallbackIndex = indexMap.get(DEFAULT_INDEX);
             if (currentIndex != fallbackIndex) {
                 markup = fallbackIndex.getMarkup(name);
-            } else {
-                // TODO
             }
         }
 
         return markup;
+    }
+
+    /**
+     * Get the number of indices.
+     * 
+     * @return the number of indices present
+     */
+    public int getSize() {
+
+        return indexMap.size();
     }
 
     /**

@@ -35,12 +35,14 @@ import java.util.logging.Logger;
 import org.extex.exindex.core.command.LDefineAlphabet;
 import org.extex.exindex.core.command.LDefineAttributes;
 import org.extex.exindex.core.command.LDefineCrossrefClass;
+import org.extex.exindex.core.command.LDefineIndex;
 import org.extex.exindex.core.command.LDefineLetterGroup;
 import org.extex.exindex.core.command.LDefineLetterGroups;
 import org.extex.exindex.core.command.LDefineLocationClass;
 import org.extex.exindex.core.command.LDefineLocationClassOrder;
 import org.extex.exindex.core.command.LDefineRuleSet;
 import org.extex.exindex.core.command.LDefineSortRuleOrientations;
+import org.extex.exindex.core.command.LForIndex;
 import org.extex.exindex.core.command.LMarkupAttributeGroup;
 import org.extex.exindex.core.command.LMarkupAttributeGroupList;
 import org.extex.exindex.core.command.LMarkupCrossrefLayer;
@@ -109,11 +111,6 @@ public class Indexer extends LEngine {
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(Indexer.class);
-
-    /**
-     * The field <tt>entries</tt> contains the raw index.
-     */
-    private List<RawIndexentry> entries;
 
     /**
      * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
@@ -206,13 +203,13 @@ public class Indexer extends LEngine {
 
         container.defineLetterGroup("default");
 
-        entries = new ArrayList<RawIndexentry>();
         defun("define-alphabet", new LDefineAlphabet("define-alphabet",
             container));
         defun("define-attributes", new LDefineAttributes("define-attributes",
             container));
         defun("define-crossref-class", new LDefineCrossrefClass(
             "define-crossref-class", container));
+        defun("define-index", new LDefineIndex("define-index", container));
         defun("define-letter-group", //
             new LDefineLetterGroup("define-letter-group", container));
         defun("define-letter-groups", //
@@ -226,6 +223,7 @@ public class Indexer extends LEngine {
             container));
         defun("define-sort-rule-orientations", new LDefineSortRuleOrientations(
             "define-sort-rule-orientations", container));
+        defun("for-index", new LForIndex("for-index", container));
         defun("searchpath", new LSearchpath("searchpath"));
         defun("sort-rule", new LSortRule("sort-rule", container));
         defun("merge-rule", new LMergeRule("merge-rule", container));
@@ -289,7 +287,6 @@ public class Indexer extends LEngine {
         container.addAlphabet("ALPHA", new AlphaUppercase());
 
         setq("indexer:charset-raw", new LString("utf-8"));
-        setq("index:name", LString.EMPTY);
     }
 
     /**
@@ -301,6 +298,7 @@ public class Indexer extends LEngine {
      */
     public Object lookup(String[] refs) {
 
+        // TODO lift this to separate indices
         return entryIndex.get(refs);
     }
 
@@ -439,6 +437,7 @@ public class Indexer extends LEngine {
         logger.info(LOCALIZER.format("StartProcess"));
         AttributesContainer attributes = container;
         List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
+        List<RawIndexentry> entries = new ArrayList<RawIndexentry>();
 
         for (String resource : resources) {
             logger.info(LOCALIZER.format((resource != null
@@ -475,6 +474,7 @@ public class Indexer extends LEngine {
             }
         }
         logger.info(LOCALIZER.format("StartPreprocess"));
+        // preprocessing afterwards to resolve forward cross-references
 
         for (RawIndexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {

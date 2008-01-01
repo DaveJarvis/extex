@@ -92,6 +92,11 @@ public class StructuredIndex extends LetterGroupContainer
     private Map<String, Markup> markup = new HashMap<String, Markup>();
 
     /**
+     * The field <tt>alias</tt> contains the ...
+     */
+    private StructuredIndex alias = null;
+
+    /**
      * Creates a new object.
      * 
      * @param fallback the container for fallback values
@@ -193,6 +198,16 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
+     * Getter for alias.
+     * 
+     * @return the alias
+     */
+    public StructuredIndex getAlias() {
+
+        return alias;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(java.lang.String)
@@ -239,6 +254,16 @@ public class StructuredIndex extends LetterGroupContainer
     public SortRules lookupSortRules(Integer level) {
 
         return sortRulesMap.get(level);
+    }
+
+    /**
+     * Define an alias for an index.
+     * 
+     * @param alias the other index to store the entries instead
+     */
+    public void setAlias(StructuredIndex alias) {
+
+        this.alias = alias;
     }
 
     /**
@@ -291,6 +316,13 @@ public class StructuredIndex extends LetterGroupContainer
      */
     public void store(RawIndexentry entry) throws IndexerException {
 
+        if (dropped) {
+            return;
+        } else if (alias != null) {
+            alias.store(entry);
+            return;
+        }
+
         String[] sortKey = entry.getSortKey();
         LetterGroup group =
                 (sortKey != null && sortKey.length != 0
@@ -321,6 +353,10 @@ public class StructuredIndex extends LetterGroupContainer
     public void write(Writer writer, LInterpreter interpreter, boolean trace)
             throws IOException,
                 LException {
+
+        if (dropped || alias != null) {
+            return;
+        }
 
         Markup markup = getMarkup("markup-index");
         Markup markupList = getMarkup("markup-letter-group-list");

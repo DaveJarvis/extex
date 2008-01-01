@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.exception.IndexAliasLoopException;
+import org.extex.exindex.core.exception.UnknownIndexException;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.lisp.LInterpreter;
@@ -43,7 +45,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <pre>
  *  (define-index
  *     <i>index-name</i>
- *     [:drop]
+ *     [:drop | :merge-to <i>index-name</i>]
  *  )  </pre>
  * 
  * <p>
@@ -58,6 +60,24 @@ import org.extex.exindex.lisp.type.value.LValue;
  * The example above drops the default index. This might be useful when the
  * default index is not used for writing but just as a container for the
  * fallback parameters.
+ * </p>
+ * 
+ * <pre>
+ *  (define-index "abc" :merge-to "")  </pre>
+ * 
+ * <p>
+ * The example above merges the index <tt>abc</tt> to the default index
+ * &ndash; named with the empty name. This means that all entries sent to the
+ * index <tt>abc</tt> end up in the default index.
+ * </p>
+ * 
+ * <pre>
+ *  (define-index "" :merge-to "default")  </pre>
+ * 
+ * <p>
+ * This trick can be used to free the default index from all index entries and
+ * send them to the index named <tt>default</tt>. Thus only fallback settings
+ * remain in the index with the empty name.
  * </p>
  * 
  * </doc>
@@ -82,7 +102,9 @@ public class LDefineIndex extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.LSTRING, Arg.OPT_BOOLEAN(":drop")});
+        super(name, container, new Arg[]{Arg.LSTRING, //
+                Arg.OPT_BOOLEAN(":drop"), //
+                Arg.OPT_STRING(":merge-to", null)});
     }
 
     /**
@@ -91,20 +113,68 @@ public class LDefineIndex extends AbstractLAdapter {
      * @param interpreter the interpreter
      * @param name the name of the index
      * @param drop the indicator to drop the index
+     * @param mergeTo the name of the index to send the entries to
      * 
      * @return <tt>nil</tt>
      * 
      * @throws LNonMatchingTypeException in case an argument is not a String
      * @throws LSettingConstantException should not happen
+     * @throws UnknownIndexException in case of an undefined index mapping
+     * @throws IndexAliasLoopException in case of a potential loop in aliases
      */
-    public LValue evaluate(LInterpreter interpreter, LString name, Boolean drop)
+    public LValue evaluate(LInterpreter interpreter, LString name,
+            Boolean drop, String mergeTo)
             throws LNonMatchingTypeException,
-                LSettingConstantException {
+                LSettingConstantException,
+                UnknownIndexException,
+                IndexAliasLoopException {
+
+        int flag = (drop != null ? 1 : 0) | (mergeTo != null ? 2 : 0);
 
         StructuredIndex index = getContainer().defineIndex(name.getValue());
-        index.setDropped(drop == Boolean.TRUE);
+
+        switch (flag) {
+            case 0:
+                break;
+            case 1:
+                index.setDropped(drop == Boolean.TRUE);
+                break;
+            case 2:
+                mergTo(mergeTo, index);
+                break;
+        }
 
         return null;
     }
 
+    /**
+     * Merge to an index.
+     * 
+     * @param mergeTo the name of the index to merge it to
+     * @param index the index to map
+     * 
+     * @throws UnknownIndexException in case of an unknown index
+     * @throws IndexAliasLoopException in case of a potential loop in aliases
+     */
+    private void mergTo(String mergeTo, StructuredIndex index)
+            throws UnknownIndexException,
+                IndexAliasLoopException {
+
+        StructuredIndex alias = getContainer().get(mergeTo);
+        if (alias == null) {
+            throw new UnknownIndexException(null, mergeTo);
+        }
+        int size = getContainer().getSize();
+
+        while (size-- > 0) {
+
+            StructuredIndex a = alias.getAlias();
+            if (a == null) {
+                index.setAlias(alias);
+                return;
+            }
+            alias = a;
+        }
+        throw new IndexAliasLoopException(null, mergeTo);
+    }
 }

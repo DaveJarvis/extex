@@ -96,6 +96,7 @@ public class CrossReference implements RefSpec {
             return true;
         }
         if (index.lookup(layers) != null) {
+            // TODO lift this to multiple indices
             logger.warning(LOCALIZER.format("UndefinedCrossref", toString()));
             return false;
         }
