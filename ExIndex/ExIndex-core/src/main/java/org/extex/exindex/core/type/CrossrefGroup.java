@@ -24,7 +24,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -64,15 +64,15 @@ public class CrossrefGroup implements LocationClassGroup {
      * Store the keys in the group.
      * 
      * @param keys the keys to store
-     * @param clazz the class
+     * @param layer the class
      */
-    public void store(String[] keys, String clazz) {
+    public void store(String[] keys, String layer) {
 
         if (map.get(keys) != null) {
             return;
         }
 
-        map.put(keys, new CrossReference(keys, clazz));
+        map.put(keys, new CrossReference(keys, layer));
     }
 
     /**
@@ -86,10 +86,10 @@ public class CrossrefGroup implements LocationClassGroup {
             throws IOException,
                 LNonMatchingTypeException {
 
-        LMarkup markupCrossrefGroup =
+        Markup markupCrossrefGroup =
                 markupContainer.getMarkup("markup-crossref-list");
 
-        markupCrossrefGroup.write(writer, markupContainer, clazz, LMarkup.OPEN,
+        markupCrossrefGroup.write(writer, markupContainer, clazz, Markup.OPEN,
             trace);
         boolean first = true;
 
@@ -98,13 +98,13 @@ public class CrossrefGroup implements LocationClassGroup {
                 first = false;
             } else {
                 markupCrossrefGroup.write(writer, markupContainer, clazz,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
 
             xref.write(writer, interpreter, markupContainer, trace);
         }
         markupCrossrefGroup.write(writer, markupContainer, clazz,
-            LMarkup.CLOSE, trace);
+            Markup.CLOSE, trace);
     }
 
 }

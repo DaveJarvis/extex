@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.core.parser.raw.LocRef;
@@ -191,18 +191,18 @@ public class IndexEntry {
             throws IOException,
                 LNonMatchingTypeException {
 
-        LMarkup markupIndexentry =
+        Markup markupIndexentry =
                 markupContainer.getMarkup("markup-indexentry");
-        LMarkup markupKeywordList =
+        Markup markupKeywordList =
                 markupContainer.getMarkup("markup-keyword-list");
-        LMarkup markupKeyword = markupContainer.getMarkup("markup-keyword");
+        Markup markupKeyword = markupContainer.getMarkup("markup-keyword");
 
         String hier = Integer.toString(level);
         int level1 = level + 1;
         boolean first = true;
-        markupIndexentry.write(writer, markupContainer, hier, LMarkup.OPEN,
+        markupIndexentry.write(writer, markupContainer, hier, Markup.OPEN,
             trace);
-        markupKeywordList.write(writer, markupContainer, hier, LMarkup.OPEN,
+        markupKeywordList.write(writer, markupContainer, hier, Markup.OPEN,
             trace);
 
         for (String key : keywords) {
@@ -210,12 +210,12 @@ public class IndexEntry {
                 first = false;
             } else {
                 markupKeywordList.write(writer, markupContainer, hier,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
-            markupKeyword.write(writer, markupContainer, hier, LMarkup.OPEN,
+            markupKeyword.write(writer, markupContainer, hier, Markup.OPEN,
                 trace);
             writer.write(key);
-            markupKeyword.write(writer, markupContainer, hier, LMarkup.CLOSE,
+            markupKeyword.write(writer, markupContainer, hier, Markup.CLOSE,
                 trace);
         }
 
@@ -226,14 +226,14 @@ public class IndexEntry {
                 first = false;
             } else {
                 markupIndexentry.write(writer, markupContainer, hier,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
             group.write(writer, interpreter, markupContainer, trace);
         }
 
-        markupKeywordList.write(writer, markupContainer, hier, LMarkup.CLOSE,
+        markupKeywordList.write(writer, markupContainer, hier, Markup.CLOSE,
             trace);
-        markupIndexentry.write(writer, markupContainer, hier, LMarkup.CLOSE,
+        markupIndexentry.write(writer, markupContainer, hier, Markup.CLOSE,
             trace);
 
         SortedSet<String> sortedKeys = sortedKeys();
@@ -245,7 +245,7 @@ public class IndexEntry {
                 first = false;
             } else {
                 markupKeywordList.write(writer, markupContainer, hier,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
             entry.write(writer, interpreter, markupContainer, trace, level1);
         }

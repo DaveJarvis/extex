@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -79,7 +79,7 @@ public class AbstractLAdapter extends LFunction {
      * 
      * @throws LNonMatchingTypeException in case of an error
      */
-    protected LMarkup getMarkup(LInterpreter interpreter)
+    protected Markup getMarkup(LInterpreter interpreter)
             throws LNonMatchingTypeException {
 
         return container.getMarkup(getName());

@@ -20,16 +20,12 @@
 package org.extex.exindex.core.command.type;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.exindex.core.type.MarkupContainer;
-import org.extex.exindex.core.util.StringUtils;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
-import org.extex.exindex.lisp.type.value.LString;
-import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This class provides a map of arrays with a default value.
@@ -37,7 +33,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMarkup implements LValue {
+public class Markup {
 
     /**
      * Type-safe index.
@@ -146,7 +142,7 @@ public class LMarkup implements LValue {
      * @param displayName the name for debugging
      * @param args the arguments for the defaults
      */
-    public LMarkup(String displayName, String... args) {
+    public Markup(String displayName, String... args) {
 
         super();
         this.displayName = displayName;
@@ -191,42 +187,6 @@ public class LMarkup implements LValue {
             value = numMap.get(null);
         }
         return (value == null ? 0 : value[index]);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        boolean first = true;
-        stream.print("#{");
-        for (String key : map.keySet()) {
-            String[] a = map.get(key);
-            if (first) {
-                first = false;
-            } else {
-                stream.print("\n");
-            }
-            if (key == null) {
-                stream.print("<default>");
-            } else {
-                new LString(key).print(stream);
-            }
-            stream.print(" =>");
-            if (a == null) {
-                stream.print(" nil");
-            } else {
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < SIZE; i++) {
-                    sb.append(' ');
-                    StringUtils.putPrintable(sb, a[i]);
-                }
-                stream.print(sb.toString());
-            }
-        }
-        stream.print("}");
     }
 
     /**
@@ -310,8 +270,8 @@ public class LMarkup implements LValue {
 
         writer.write(get(clazz, index));
         if (trace) {
-            LMarkup markupTrace = markupContainer.getMarkup("markup-trace");
-            writer.write(markupTrace.get(null, LMarkup.OPEN));
+            Markup markupTrace = markupContainer.getMarkup("markup-trace");
+            writer.write(markupTrace.get(null, Markup.OPEN));
             writer.write(displayName);
             writer.write(index.getName());
             if (clazz != null) {
@@ -319,7 +279,7 @@ public class LMarkup implements LValue {
                 writer.write(clazz);
                 writer.write("]");
             }
-            writer.write(markupTrace.get(null, LMarkup.CLOSE));
+            writer.write(markupTrace.get(null, Markup.CLOSE));
         }
     }
 

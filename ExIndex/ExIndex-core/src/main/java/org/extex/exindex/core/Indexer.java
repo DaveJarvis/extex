@@ -66,7 +66,7 @@ import org.extex.exindex.core.command.LSearchpath;
 import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.LMarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.exception.RawIndexException;
@@ -166,7 +166,7 @@ public class Indexer extends LEngine {
      * @throws IllegalAccessException in case of an error
      * @throws InvocationTargetException in case of an error
      */
-    protected void defMarkup(String name, Class<?> clazz, LMarkup markup)
+    protected void defMarkup(String name, Class<?> clazz, Markup markup)
             throws SecurityException,
                 NoSuchMethodException,
                 IllegalArgumentException,
@@ -233,43 +233,43 @@ public class Indexer extends LEngine {
 
         defMarkup("markup-attribute-group-list",
             LMarkupAttributeGroupList.class,
-            new LMarkup("ATTRIBUTE-GROUP-LIST"));
+            new Markup("ATTRIBUTE-GROUP-LIST"));
         defMarkup("markup-attribute-group", LMarkupAttributeGroup.class,
-            new LMarkup("ATTRIBUTE-GROUP"));
+            new Markup("ATTRIBUTE-GROUP"));
         defMarkup("markup-crossref-layer", LMarkupCrossrefLayer.class,
-            new LMarkup("CROSSREF-LAYER"));
+            new Markup("CROSSREF-LAYER"));
         defMarkup("markup-crossref-layer-list", LMarkupCrossrefLayerList.class,
-            new LMarkup("CROSSREF-LAYER-LIST"));
+            new Markup("CROSSREF-LAYER-LIST"));
         defMarkup("markup-crossref-list", LMarkupCrossrefList.class,
-            new LMarkup("CROSSREF-LIST"));
+            new Markup("CROSSREF-LIST"));
         defMarkup("markup-index", LMarkupIndex.class, //
-            new LMarkup("INDEX"));
+            new Markup("INDEX"));
         defMarkup("markup-indexentry", LMarkupIndexEntry.class, //
-            new LMarkup("INDEXENTRY"));
+            new Markup("INDEXENTRY"));
         defMarkup("markup-indexentry-list", LMarkupIndexEntryList.class,
-            new LMarkup("INDEXENTRY-LIST"));
+            new Markup("INDEXENTRY-LIST"));
         defMarkup("markup-keyword", LMarkupKeyword.class,
-            new LMarkup("KEYWORD"));
+            new Markup("KEYWORD"));
         defMarkup("markup-keyword-list", LMarkupKeywordList.class, //
-            new LMarkup("KEYWORD-LIST"));
+            new Markup("KEYWORD-LIST"));
         defMarkup("markup-letter-group", LMarkupLetterGroup.class,
             new LMarkupTransform("LETTER-GROUP"));
         defMarkup("markup-letter-group-list", LMarkupLetterGroupList.class,
-            new LMarkup("LETTER-GROUP-LIST"));
+            new Markup("LETTER-GROUP-LIST"));
         defMarkup("markup-locclass-list", LMarkupLocclassList.class,
-            new LMarkup("LOCCLASS-LIST"));
+            new Markup("LOCCLASS-LIST"));
         defMarkup("markup-locref-list", LMarkupLocrefList.class, //
-            new LMarkup("LOCREF-LIST"));
+            new Markup("LOCREF-LIST"));
         defMarkup("markup-locref", LMarkupLocref.class, //
-            new LMarkup("LOCREF"));
+            new Markup("LOCREF"));
         defMarkup("markup-locref-layer", LMarkupLocrefLayer.class, //
-            new LMarkup("LOCREF-LAYER"));
+            new Markup("LOCREF-LAYER"));
         defMarkup("markup-locref-layer-list", LMarkupLocrefLayerList.class,
-            new LMarkup("LOCREF-LAYER-LIST"));
+            new Markup("LOCREF-LAYER-LIST"));
         defMarkup("markup-range", LMarkupRange.class, //
-            new LMarkup("RANGE"));
+            new Markup("RANGE"));
         defMarkup("markup-trace", LMarkupTrace.class, //
-            new LMarkup("TRACE", "<", ">\n"));
+            new Markup("TRACE", "<", ">\n"));
 
         container.addLocationClass("arabic-numbers", new ArabicNumbers());
         container.addLocationClass("roman-numbers-uppercase",

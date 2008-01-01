@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.CrossrefClassContainer;
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.core.util.StringUtils;
 import org.extex.exindex.lisp.LInterpreter;
@@ -87,10 +87,10 @@ public class CrossReference implements RefSpec {
             CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
             AttributesContainer attributes) {
 
-        String clazz = entry.getRef().getLayer();
-        Boolean unverified = crossrefClass.lookupCrossrefClass(clazz);
+        String layer = entry.getRef().getLayer();
+        Boolean unverified = crossrefClass.lookupCrossrefClass(layer);
         if (unverified == null) {
-            logger.warning(LOCALIZER.format("UndefinedCrossrefClass", clazz));
+            logger.warning(LOCALIZER.format("UndefinedCrossrefClass", layer));
             return false;
         } else if (unverified.booleanValue()) {
             return true;
@@ -172,13 +172,13 @@ public class CrossReference implements RefSpec {
             throws IOException,
                 LNonMatchingTypeException {
 
-        LMarkup markupCrossrefLayerList =
+        Markup markupCrossrefLayerList =
                 markupContainer.getMarkup("markup-crossref-layer-list");
-        LMarkup markupCrossrefLayer =
+        Markup markupCrossrefLayer =
                 markupContainer.getMarkup("markup-crossref-layer");
 
         markupCrossrefLayerList.write(writer, markupContainer, clazz,
-            LMarkup.OPEN, trace);
+            Markup.OPEN, trace);
 
         boolean first = true;
 
@@ -187,17 +187,17 @@ public class CrossReference implements RefSpec {
                 first = false;
             } else {
                 markupCrossrefLayerList.write(writer, markupContainer, clazz,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
 
             markupCrossrefLayer.write(writer, markupContainer, clazz,
-                LMarkup.OPEN, trace);
+                Markup.OPEN, trace);
             writer.write(layer);
             markupCrossrefLayer.write(writer, markupContainer, clazz,
-                LMarkup.CLOSE, trace);
+                Markup.CLOSE, trace);
         }
         markupCrossrefLayerList.write(writer, markupContainer, clazz,
-            LMarkup.CLOSE, trace);
+            Markup.CLOSE, trace);
     }
 
 }

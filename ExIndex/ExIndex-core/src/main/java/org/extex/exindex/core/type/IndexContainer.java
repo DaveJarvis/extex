@@ -31,7 +31,7 @@ import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.CrossrefClassContainer;
 import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.command.type.SortRuleContainer;
@@ -290,12 +290,12 @@ public class IndexContainer
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Set the markup info associated to a certain name to a given object.
      * 
      * @param name the name
      * @param markup the markup
      */
-    public void defineMarkup(String name, LMarkup markup) {
+    public void defineMarkup(String name, Markup markup) {
 
         currentIndex.setMarkup(name, markup);
     }
@@ -327,7 +327,7 @@ public class IndexContainer
      * 
      * @see org.extex.exindex.core.command.type.FallbackContainer#getFallbackMarkup(String)
      */
-    public LMarkup getFallbackMarkup(String name) {
+    public Markup getFallbackMarkup(String name) {
 
         return get(DEFAULT_INDEX).getMarkup(name);
     }
@@ -339,9 +339,9 @@ public class IndexContainer
      * 
      * @return the markup or <code>null</code> if it is not defined
      */
-    public LMarkup getMarkup(String name) {
+    public Markup getMarkup(String name) {
 
-        LMarkup markup = currentIndex.getMarkup(name);
+        Markup markup = currentIndex.getMarkup(name);
 
         if (markup == null) {
             MarkupContainer fallbackIndex = indexMap.get(DEFAULT_INDEX);
@@ -547,9 +547,9 @@ public class IndexContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
-     *      java.lang.String, org.extex.exindex.core.command.type.LMarkup)
+     *      java.lang.String, org.extex.exindex.core.command.type.Markup)
      */
-    public void setMarkup(String name, LMarkup m) {
+    public void setMarkup(String name, Markup m) {
 
         currentIndex.setMarkup(name, m);
     }

@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.LMarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
@@ -230,18 +230,18 @@ public class LetterGroup {
                     .getMarkup("markup-letter-group");
 
         boolean first = true;
-        markupLetterGroup.write(writer, markupContainer, name, LMarkup.OPEN,
+        markupLetterGroup.write(writer, markupContainer, name, Markup.OPEN,
             trace);
 
-        String openHead = markupLetterGroup.get(name, LMarkup.OPEN_HEAD);
-        String closeHead = markupLetterGroup.get(name, LMarkup.CLOSE_HEAD);
+        String openHead = markupLetterGroup.get(name, Markup.OPEN_HEAD);
+        String closeHead = markupLetterGroup.get(name, Markup.CLOSE_HEAD);
         if (openHead != null || closeHead != null) {
             markupLetterGroup.write(writer, markupContainer, name,
-                LMarkup.OPEN_HEAD, trace);
+                Markup.OPEN_HEAD, trace);
             Transform trans = markupLetterGroup.getTransform(name);
             writer.write(trans == null ? name : trans.transform(name));
             markupLetterGroup.write(writer, markupContainer, name,
-                LMarkup.CLOSE_HEAD, trace);
+                Markup.CLOSE_HEAD, trace);
         }
 
         for (String key : sortedKeys) {
@@ -250,12 +250,12 @@ public class LetterGroup {
                 first = false;
             } else {
                 markupLetterGroup.write(writer, markupContainer, name,
-                    LMarkup.SEP, trace);
+                    Markup.SEP, trace);
             }
 
             entry.write(writer, interpreter, markupContainer, trace, 0);
         }
-        markupLetterGroup.write(writer, markupContainer, name, LMarkup.CLOSE,
+        markupLetterGroup.write(writer, markupContainer, name, Markup.CLOSE,
             trace);
     }
 

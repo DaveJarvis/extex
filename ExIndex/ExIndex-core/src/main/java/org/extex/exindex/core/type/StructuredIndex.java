@@ -28,7 +28,7 @@ import java.util.Map;
 
 import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.core.command.type.SortRules;
 import org.extex.exindex.core.exception.IndexerException;
@@ -89,7 +89,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * The field <tt>markup</tt> contains the mapping from name to markup.
      */
-    private Map<String, LMarkup> markup = new HashMap<String, LMarkup>();
+    private Map<String, Markup> markup = new HashMap<String, Markup>();
 
     /**
      * Creates a new object.
@@ -197,9 +197,9 @@ public class StructuredIndex extends LetterGroupContainer
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(java.lang.String)
      */
-    public LMarkup getMarkup(String name) {
+    public Markup getMarkup(String name) {
 
-        LMarkup m = markup.get(name);
+        Markup m = markup.get(name);
         if (m == null && fallback != null) {
             m = fallback.getFallbackMarkup(name);
         }
@@ -265,9 +265,9 @@ public class StructuredIndex extends LetterGroupContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(java.lang.String,
-     *      org.extex.exindex.core.command.type.LMarkup)
+     *      org.extex.exindex.core.command.type.Markup)
      */
-    public void setMarkup(String name, LMarkup m) {
+    public void setMarkup(String name, Markup m) {
 
         markup.put(name, m);
     }
@@ -322,12 +322,12 @@ public class StructuredIndex extends LetterGroupContainer
             throws IOException,
                 LException {
 
-        LMarkup markup = getMarkup("markup-index");
-        LMarkup markupList = getMarkup("markup-letter-group-list");
+        Markup markup = getMarkup("markup-index");
+        Markup markupList = getMarkup("markup-letter-group-list");
 
         boolean first = true;
-        markup.write(writer, this, null, LMarkup.OPEN, trace);
-        markupList.write(writer, this, null, LMarkup.OPEN, trace);
+        markup.write(writer, this, null, Markup.OPEN, trace);
+        markupList.write(writer, this, null, Markup.OPEN, trace);
 
         for (LetterGroup group : sorted()) {
             if (group.isEmpty()) {
@@ -335,13 +335,13 @@ public class StructuredIndex extends LetterGroupContainer
             } else if (first) {
                 first = false;
             } else {
-                markupList.write(writer, this, null, LMarkup.SEP, trace);
+                markupList.write(writer, this, null, Markup.SEP, trace);
             }
             group.write(writer, interpreter, this, trace);
         }
 
-        markupList.write(writer, this, null, LMarkup.CLOSE, trace);
-        markup.write(writer, this, null, LMarkup.CLOSE, trace);
+        markupList.write(writer, this, null, Markup.CLOSE, trace);
+        markup.write(writer, this, null, Markup.CLOSE, trace);
     }
 
 }

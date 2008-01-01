@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.lisp.LInterpreter;
@@ -154,9 +154,9 @@ public class LMarkupTrace extends LFunction {
             String close) throws LSettingConstantException {
 
         interpreter.setq("markup:trace", LBoolean.valueOf(on.booleanValue()));
-        LMarkup markup = container.getMarkup("markup-trace");
+        Markup markup = container.getMarkup("markup-trace");
         if (markup == null) {
-            markup = new LMarkup("TRACE");
+            markup = new Markup("TRACE");
             container.setMarkup("markup:trace", markup);
         }
         markup.setDefault(open, close);

@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.type;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.Markup;
 
 /**
  * This interface describes a container for markup information.
@@ -36,7 +36,7 @@ public interface MarkupContainer {
      * 
      * @return the markup for the name or <code>null</code>
      */
-    LMarkup getMarkup(String name);
+    Markup getMarkup(String name);
 
     /**
      * Setter for a named markup.
@@ -44,6 +44,6 @@ public interface MarkupContainer {
      * @param name the make of the markup
      * @param m the markup to add
      */
-    void setMarkup(String name, LMarkup m);
+    void setMarkup(String name, Markup m);
 
 }

@@ -47,12 +47,12 @@ public interface FallbackContainer {
     String applySortRuleFallback(String text, int level);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the fallback markup.
      * 
      * @param name the name
      * 
      * @return the markup
      */
-    LMarkup getFallbackMarkup(String name);
+    Markup getFallbackMarkup(String name);
 
 }
