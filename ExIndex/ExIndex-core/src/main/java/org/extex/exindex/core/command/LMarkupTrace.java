@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -35,7 +35,8 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <p>
  * The command <tt>markup-trace</tt> can be used to control the tracing of the
- * markup.
+ * markup. The tracing acts globally and can not be customized on an per index
+ * base.
  * </p>
  * 
  * <pre>
@@ -99,9 +100,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * <dl>
  * <dt>markup-trace</dt>
- * <dd>The markup strings.</dd>
+ * <dd>The markup strings are stored in the {@link MarkupContainer}.</dd>
  * <dt>markup:trace</dt>
- * <dd>The trace indicator.</dd>
+ * <dd>The trace indicator is stored in the L system.</dd>
  * </dl>
  * 
  * 
@@ -111,20 +112,27 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LMarkupTrace extends LFunction {
 
     /**
+     * The field <tt>container</tt> contains the ...
+     */
+    private MarkupContainer container;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupTrace(String name)
+    public LMarkupTrace(String name, MarkupContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.OPT_BOOLEAN(":on"), //
                 Arg.OPT_STRING(":open", "<"), //
                 Arg.OPT_STRING(":close", ">\n")});
+        this.container = container;
     }
 
     /**
@@ -143,10 +151,7 @@ public class LMarkupTrace extends LFunction {
             String close) throws LSettingConstantException {
 
         interpreter.setq("markup:trace", LBoolean.valueOf(on.booleanValue()));
-        LMarkup m = (LMarkup) interpreter.get("markup-trace");
-
-        m.setDefault(open, close);
-
+        container.getMarkup("markup-trace").setDefault(open, close);
         return null;
     }
 

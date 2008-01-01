@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -179,38 +179,44 @@ public class IndexEntry {
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param markupContainer the container for markup information
      * @param trace the trace indicator
      * @param level the current level
      * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter, boolean trace,
-            int level) throws IOException, LNonMatchingTypeException {
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace, int level)
+            throws IOException,
+                LNonMatchingTypeException {
 
         LMarkup markupIndexentry =
-                (LMarkup) interpreter.get("markup-indexentry");
+                markupContainer.getMarkup("markup-indexentry");
         LMarkup markupKeywordList =
-                (LMarkup) interpreter.get("markup-keyword-list");
-        LMarkup markupKeyword = (LMarkup) interpreter.get("markup-keyword");
+                markupContainer.getMarkup("markup-keyword-list");
+        LMarkup markupKeyword = markupContainer.getMarkup("markup-keyword");
 
         String hier = Integer.toString(level);
         int level1 = level + 1;
         boolean first = true;
-        markupIndexentry.write(writer, interpreter, hier, LMarkup.OPEN, trace);
-        markupKeywordList.write(writer, interpreter, hier, LMarkup.OPEN, trace);
+        markupIndexentry.write(writer, markupContainer, hier, LMarkup.OPEN,
+            trace);
+        markupKeywordList.write(writer, markupContainer, hier, LMarkup.OPEN,
+            trace);
 
         for (String key : keywords) {
             if (first) {
                 first = false;
             } else {
-                markupKeywordList.write(writer, interpreter, hier, LMarkup.SEP,
-                    trace);
+                markupKeywordList.write(writer, markupContainer, hier,
+                    LMarkup.SEP, trace);
             }
-            markupKeyword.write(writer, interpreter, hier, LMarkup.OPEN, trace);
+            markupKeyword.write(writer, markupContainer, hier, LMarkup.OPEN,
+                trace);
             writer.write(key);
-            markupKeyword
-                .write(writer, interpreter, hier, LMarkup.CLOSE, trace);
+            markupKeyword.write(writer, markupContainer, hier, LMarkup.CLOSE,
+                trace);
         }
 
         first = true;
@@ -219,15 +225,16 @@ public class IndexEntry {
             if (first) {
                 first = false;
             } else {
-                markupIndexentry.write(writer, interpreter, hier, LMarkup.SEP,
-                    trace);
+                markupIndexentry.write(writer, markupContainer, hier,
+                    LMarkup.SEP, trace);
             }
-            group.write(writer, interpreter, trace);
+            group.write(writer, interpreter, markupContainer, trace);
         }
 
-        markupKeywordList
-            .write(writer, interpreter, hier, LMarkup.CLOSE, trace);
-        markupIndexentry.write(writer, interpreter, hier, LMarkup.CLOSE, trace);
+        markupKeywordList.write(writer, markupContainer, hier, LMarkup.CLOSE,
+            trace);
+        markupIndexentry.write(writer, markupContainer, hier, LMarkup.CLOSE,
+            trace);
 
         SortedSet<String> sortedKeys = sortedKeys();
         first = true;
@@ -237,10 +244,10 @@ public class IndexEntry {
             if (first) {
                 first = false;
             } else {
-                markupKeywordList.write(writer, interpreter, hier, LMarkup.SEP,
-                    trace);
+                markupKeywordList.write(writer, markupContainer, hier,
+                    LMarkup.SEP, trace);
             }
-            entry.write(writer, interpreter, trace, level1);
+            entry.write(writer, interpreter, markupContainer, trace, level1);
         }
 
     }

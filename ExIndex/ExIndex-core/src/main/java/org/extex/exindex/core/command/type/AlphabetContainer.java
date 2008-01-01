@@ -17,44 +17,33 @@
  *
  */
 
-package org.extex.exindex.core.exception;
+package org.extex.exindex.core.command.type;
 
-import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.exindex.core.type.alphabet.Alphabet;
 
 /**
- * This exception signals that a symbol has been expected and something else has
- * been found.
+ * This interface describes an container for named alphabets.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6708 $
+ * @version $Revision$
  */
-public class MissingSymbolException extends RawIndexException {
+public interface AlphabetContainer {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2007L;
-
-    /**
-     * Creates a new object.
+     * Add an alphabet.
      * 
-     * @param locator the locator
+     * @param name the name
+     * @param alphabet the alphabet
      */
-    public MissingSymbolException(ResourceLocator locator) {
-
-        super(locator, "");
-    }
+    void addAlphabet(String name, Alphabet alphabet);
 
     /**
-     * Creates a new object.
+     * Get a named alphabet.
      * 
-     * @param locator the locator
-     * @param c the character found instead
+     * @param name the name of the alphabet
+     * 
+     * @return the alphabet or <code>null</code> if it does not exist
      */
-    public MissingSymbolException(ResourceLocator locator, char c) {
-
-        super(locator, Character.toString(c));
-    }
+    Alphabet lookupAlphabet(String name);
 
 }

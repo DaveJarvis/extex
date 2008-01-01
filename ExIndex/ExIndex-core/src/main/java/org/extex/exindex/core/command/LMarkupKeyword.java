@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,12 +19,11 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -65,24 +64,25 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMarkupKeyword extends LFunction {
+public class LMarkupKeyword extends AbstractLAdapter {
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the index container
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupKeyword(String name)
+    public LMarkupKeyword(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
                 Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_NUMBER(":depth", Long.valueOf(0))});
+                Arg.OPT_NUMBER(":depth", Integer.valueOf(0))});
     }
 
     /**
@@ -99,18 +99,12 @@ public class LMarkupKeyword extends LFunction {
      * @throws LNonMatchingTypeException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, String open, String close,
-            Long depth)
+            Integer depth)
             throws LSettingConstantException,
                 LNonMatchingTypeException {
 
-        LValue container = interpreter.get(getName());
-        if (!(container instanceof LMarkup)) {
-            throw new LNonMatchingTypeException(null);
-        }
-
-        String clazz = (depth == null ? null : depth.toString());
-        ((LMarkup) container).set(clazz, open, close);
-
+        getMarkup(interpreter).set((depth == null ? null : depth.toString()),
+            open, close);
         return null;
     }
 

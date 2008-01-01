@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,15 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.alphabet.VarLocationClass;
-import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -109,9 +103,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineLocationClass extends LFunction
-        implements
-            LocationClassContainer {
+public class LDefineLocationClass extends LFunction {
 
     /**
      * The constant <tt>SEP</tt> contains the tag :sep.
@@ -119,47 +111,30 @@ public class LDefineLocationClass extends LFunction
     private static final LSymbol SEP = LSymbol.get(":sep");
 
     /**
-     * The field <tt>map</tt> contains the mapping from names to page
-     * references.
+     * The field <tt>container</tt> contains the container for location
+     * classes.
      */
-    private Map<String, LocationClass> map =
-            new HashMap<String, LocationClass>();
-
-    /**
-     * The field <tt>classes</tt> contains the list of classes already
-     * defined.
-     */
-    private List<LocationClass> classes = new ArrayList<LocationClass>();
+    private LocationClassContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container to store the information in
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineLocationClass(String name)
+    public LDefineLocationClass(String name, LocationClassContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.QLIST,
-                Arg.OPT_NUMBER(":min-range-length", Long.valueOf(0)),
-                Arg.OPT_NUMBER(":hierdepth", Long.valueOf(0)), //
+                Arg.OPT_NUMBER(":min-range-length", Integer.valueOf(0)),
+                Arg.OPT_NUMBER(":hierdepth", Integer.valueOf(0)), //
                 Arg.OPT_BOOLEAN(":var")});
-    }
-
-    /**
-     * Add a location class to the ones defined. An already defined location
-     * class for the same key is silently overwritten.
-     * 
-     * @param key the key
-     * @param value the value
-     */
-    public void add(String key, LocationClass value) {
-
-        map.put(key, value);
+        this.container = container;
     }
 
     /**
@@ -177,10 +152,10 @@ public class LDefineLocationClass extends LFunction
      * @throws LException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, String name,
-            LList layerList, Long minRangeLength, Long hierdepth, Boolean var)
-            throws LException {
+            LList layerList, Integer minRangeLength, Integer hierdepth,
+            Boolean var) throws LException {
 
-        LocationClass pr;
+        LocationClass lc;
 
         if (!var.booleanValue()) {
             if (layerList.size() != 1) {
@@ -188,8 +163,8 @@ public class LDefineLocationClass extends LFunction
                     .format("NonVarLengthMismatch"));
             }
             String s = LString.stringValue(layerList.get(0));
-            pr = map.get(s);
-            if (pr == null) {
+            lc = container.lookupLocationClass(s);
+            if (lc == null) {
                 throw new LException(LocalizerFactory.getLocalizer(getClass())
                     .format("UnknownClass", s));
             }
@@ -199,7 +174,7 @@ public class LDefineLocationClass extends LFunction
                 .format("VarAndMinRange"));
         } else {
             VarLocationClass varPage = new VarLocationClass();
-            pr = varPage;
+            lc = varPage;
             boolean sep = false;
             for (LValue val : layerList) {
 
@@ -214,7 +189,7 @@ public class LDefineLocationClass extends LFunction
                     if (sep) {
                         varPage.add(s);
                     } else {
-                        LocationClass p = map.get(s);
+                        LocationClass p = container.lookupLocationClass(s);
                         if (s == null) {
                             throw new LException(LocalizerFactory.getLocalizer(
                                 getClass()).format("UnknownClass", s));
@@ -229,65 +204,8 @@ public class LDefineLocationClass extends LFunction
             }
         }
 
-        map.put(name, pr);
-        classes.add(pr);
-
-        return LList.NIL;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#lookup(
-     *      java.lang.String)
-     */
-    public LocationClass lookup(String name) {
-
-        return map.get(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#makePageReference(
-     *      java.lang.String, java.lang.String)
-     */
-    public PageReference makePageReference(String encap, String s) {
-
-        for (LocationClass lc : classes) {
-            PageReference pr = lc.match(encap, s);
-            if (pr != null) {
-                return pr;
-            }
-        }
+        container.addLocationClass(name, lc);
         return null;
-    }
-
-    /**
-     * Order the location classes according to the given list. The other
-     * location classes follow in the original order.
-     * 
-     * @param list the list of location class names
-     * 
-     * @throws LException in case that a location class name is not defined
-     */
-    public void order(String[] list) throws LException {
-
-        List<LocationClass> newClasses = new ArrayList<LocationClass>();
-
-        for (String s : list) {
-            LocationClass lc = map.get(s);
-            int i = classes.indexOf(lc);
-            if (i < 0) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("UnknownClass", s));
-            }
-            newClasses.add(lc);
-            classes.remove(i);
-        }
-
-        newClasses.addAll(classes);
-        classes = newClasses;
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +75,7 @@ import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.raw.OpenLocRef;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.parser.raw.RefSpec;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
 import org.extex.exindex.core.type.alphabet.AlphaUppercase;
@@ -85,9 +87,9 @@ import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
+import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LBoolean;
 import org.extex.exindex.lisp.type.value.LString;
-import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -119,30 +121,9 @@ public class Indexer extends LEngine {
             new HashMap<String[], Boolean>();
 
     /**
-     * The field <tt>index</tt> contains the index.
+     * The field <tt>container</tt> contains the container for all indices.
      */
-    private StructuredIndex index;
-
-    /**
-     * The field <tt>defineAlphabet</tt> contains the shortcut to the
-     * alphabets.
-     */
-    private LDefineAlphabet alphabets;
-
-    /**
-     * The field <tt>mergeRule</tt> contains the shortcut to the merge rule.
-     */
-    private LMergeRule mergeRule;
-
-    /**
-     * The field <tt>sortRule</tt> contains the shortcut to the sort rules.
-     */
-    private LSortRule sortRule;
-
-    /**
-     * The field <tt>crossrefClass</tt> contains the cross-reference classes.
-     */
-    private LDefineCrossrefClass crossrefClass;
+    private IndexContainer container = new IndexContainer();
 
     /**
      * Creates a new object.
@@ -151,14 +132,52 @@ public class Indexer extends LEngine {
      *         function definition
      * @throws SecurityException in case of an security problem
      * @throws LSettingConstantException should not happen
+     * @throws InvocationTargetException in case of an error
+     * @throws IllegalAccessException in case of an error
+     * @throws InstantiationException in case of an error
+     * @throws IllegalArgumentException in case of an error
      */
     public Indexer()
             throws SecurityException,
                 NoSuchMethodException,
-                LSettingConstantException {
+                LSettingConstantException,
+                IllegalArgumentException,
+                InstantiationException,
+                IllegalAccessException,
+                InvocationTargetException {
 
         super();
         init();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name the name in the L system
+     * @param clazz the class
+     * @param traceName the name for tracing
+     * 
+     * @throws SecurityException in case of an error
+     * @throws NoSuchMethodException in case of an error
+     * @throws IllegalArgumentException in case of an error
+     * @throws InstantiationException in case of an error
+     * @throws IllegalAccessException in case of an error
+     * @throws InvocationTargetException in case of an error
+     */
+    protected void defMarkup(String name, Class<?> clazz, String traceName)
+            throws SecurityException,
+                NoSuchMethodException,
+                IllegalArgumentException,
+                InstantiationException,
+                IllegalAccessException,
+                InvocationTargetException {
+
+        defun(name, //
+            (LFunction) clazz
+                .getConstructor(String.class, IndexContainer.class)
+                .newInstance(name, container));
+        container.defineMarkup(name, new LMarkup(traceName));
+
     }
 
     /**
@@ -168,122 +187,103 @@ public class Indexer extends LEngine {
      *         function definition
      * @throws SecurityException in case of an security problem
      * @throws LSettingConstantException should not happen
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws IllegalArgumentException
+     * @throws SecurityException
      */
-    private void init() throws NoSuchMethodException, LSettingConstantException {
+    private void init()
+            throws NoSuchMethodException,
+                LSettingConstantException,
+                SecurityException,
+                IllegalArgumentException,
+                InstantiationException,
+                IllegalAccessException,
+                InvocationTargetException {
 
-        index = new StructuredIndex();
-        index.defineLetterGroup("default");
+        container.defineLetterGroup("default");
 
         entries = new ArrayList<RawIndexentry>();
-
-        alphabets = new LDefineAlphabet("define-alphabet");
-        defun("define-alphabet", alphabets);
-        defun("define-attributes", //
-            new LDefineAttributes("define-attributes"));
-        crossrefClass = new LDefineCrossrefClass("define-crossref-class");
-        defun("define-crossref-class", crossrefClass);
-        LDefineLetterGroup letterGroups =
-                new LDefineLetterGroup("define-letter-group", index);
-        defun("define-letter-group", letterGroups);
+        defun("define-alphabet", new LDefineAlphabet("define-alphabet",
+            container));
+        defun("define-attributes", new LDefineAttributes("define-attributes",
+            container));
+        defun("define-crossref-class", new LDefineCrossrefClass(
+            "define-crossref-class", container));
+        defun("define-letter-group", //
+            new LDefineLetterGroup("define-letter-group", container));
         defun("define-letter-groups", //
-            new LDefineLetterGroups("define-letter-groups", index));
-        LDefineLocationClass locationClass =
-                new LDefineLocationClass("define-location-class");
+            new LDefineLetterGroups("define-letter-groups", container));
         defun("define-location-class", //
-            locationClass);
+            new LDefineLocationClass("define-location-class", container));
         defun("define-location-class-order", //
             new LDefineLocationClassOrder("define-location-class-order",
-                locationClass));
-        LDefineRuleSet ruleSetContainer = new LDefineRuleSet("define-rule-set");
-        defun("define-rule-set", ruleSetContainer);
-        sortRule = new LSortRule("sort-rule");
+                container));
+        defun("define-rule-set", new LDefineRuleSet("define-rule-set",
+            container));
         defun("define-sort-rule-orientations", new LDefineSortRuleOrientations(
-            "define-sort-rule-orientations", sortRule));
-        defun("searchpath", //
-            new LSearchpath("searchpath"));
-        defun("sort-rule", sortRule);
-        mergeRule = new LMergeRule("merge-rule");
-        defun("merge-rule", mergeRule);
-        defun("merge-to", //
-            new LMergeTo("merge-to"));
-        defun("use-rule-set", //
-            new LUseRuleSet("use-rule-set", ruleSetContainer, sortRule));
+            "define-sort-rule-orientations", container));
+        defun("searchpath", new LSearchpath("searchpath"));
+        defun("sort-rule", new LSortRule("sort-rule", container));
+        defun("merge-rule", new LMergeRule("merge-rule", container));
+        defun("merge-to", new LMergeTo("merge-to", container));
+        defun("use-rule-set", new LUseRuleSet("use-rule-set", container));
 
-        defun("markup-attribute-group-list", //
-            new LMarkupAttributeGroupList("markup-attribute-group-list"));
-        setq("markup-attribute-group-list", new LMarkup("ATTRIBUTE-GROUP-LIST"));
-        defun("markup-attribute-group", //
-            new LMarkupAttributeGroup("markup-attribute-group"));
-        setq("markup-attribute-group", new LMarkup("ATTRIBUTE-GROUP"));
-        defun("markup-crossref-layer", //
-            new LMarkupCrossrefLayer("markup-crossref-layer"));
-        setq("markup-crossref-layer", new LMarkup("CROSSREF-LAYER"));
-        defun("markup-crossref-layer-list", //
-            new LMarkupCrossrefLayerList("markup-crossref-layer-list"));
-        setq("markup-crossref-layer-list", new LMarkup("CROSSREF-LAYER-LIST"));
-        defun("markup-crossref-list", //
-            new LMarkupCrossrefList("markup-crossref-list"));
-        setq("markup-crossref-list", new LMarkup("CROSSREF-LIST"));
-        defun("markup-index", //
-            new LMarkupIndex("markup-index", index));
-        setq("markup-index", new LMarkup("INDEX"));
-        defun("markup-indexentry", //
-            new LMarkupIndexEntry("markup-indexentry"));
-        setq("markup-indexentry", new LMarkup("INDEXENTRY"));
-        defun("markup-indexentry-list", //
-            new LMarkupIndexEntryList("markup-indexentry-list"));
-        setq("markup-indexentry-list", new LMarkup("INDEXENTRY-LIST"));
-        defun("markup-keyword", //
-            new LMarkupKeyword("markup-keyword"));
-        setq("markup-keyword", new LMarkup("KEYWORD"));
-        defun("markup-keyword-list", //
-            new LMarkupKeywordList("markup-keyword-list"));
-        setq("markup-keyword-list", new LMarkup("KEYWORD-LIST"));
-        defun("markup-letter-group", //
-            new LMarkupLetterGroup("markup-letter-group"));
-        setq("markup-letter-group", new LMarkup("LETTER-GROUP"));
-        defun("markup-letter-group-list", //
-            new LMarkupLetterGroupList("markup-letter-group-list"));
-        setq("markup-letter-group-list", new LMarkup("LETTER-GROUP-LIST"));
-        defun("markup-locclass-list", //
-            new LMarkupLocclassList("markup-locclass-list"));
-        setq("markup-locclass-list", new LMarkup("LOCCLASS-LIST"));
-        defun("markup-locref-list", //
-            new LMarkupLocrefList("markup-locref-list"));
-        setq("markup-locref-list", new LMarkup("LOCREF-LIST"));
-        defun("markup-locref", //
-            new LMarkupLocref("markup-locref"));
-        setq("markup-locref", new LMarkup("LOCREF"));
-        defun("markup-locref-layer", //
-            new LMarkupLocrefLayer("markup-locref-layer"));
-        setq("markup-locref-layer", new LMarkup("LOCREF-LAYER"));
-        defun("markup-locref-layer-list", //
-            new LMarkupLocrefLayerList("markup-locref-layer-list"));
-        setq("markup-locref-layer-list", new LMarkup("LOCREF-LAYER-LIST"));
-        defun("markup-range", //
-            new LMarkupRange("markup-range"));
-        setq("markup-range", new LMarkup("RANGE"));
-        defun("markup-trace", //
-            new LMarkupTrace("markup-trace"));
-        LMarkup m = new LMarkup("TRACE");
-        m.setDefault("<", ">\n");
-        setq("markup-trace", m);
+        defMarkup("markup-attribute-group-list",
+            LMarkupAttributeGroupList.class, "ATTRIBUTE-GROUP-LIST");
+        defMarkup("markup-attribute-group", LMarkupAttributeGroup.class,
+            "ATTRIBUTE-GROUP");
+        defMarkup("markup-crossref-layer", LMarkupCrossrefLayer.class,
+            "CROSSREF-LAYER");
+        defMarkup("markup-crossref-layer-list", LMarkupCrossrefLayerList.class,
+            "CROSSREF-LAYER-LIST");
+        defMarkup("markup-crossref-list", LMarkupCrossrefList.class,
+            "CROSSREF-LIST");
+        defMarkup("markup-index", LMarkupIndex.class, "INDEX");
+        defMarkup("markup-indexentry", LMarkupIndexEntry.class, "INDEXENTRY");
+        defMarkup("markup-indexentry-list", LMarkupIndexEntryList.class,
+            "INDEXENTRY-LIST");
+        defMarkup("markup-keyword", LMarkupKeyword.class, "KEYWORD");
+        defMarkup("markup-keyword-list", LMarkupKeywordList.class,
+            "KEYWORD-LIST");
+        defMarkup("markup-letter-group", LMarkupLetterGroup.class,
+            "LETTER-GROUP");
+        defMarkup("markup-letter-group-list", LMarkupLetterGroupList.class,
+            "LETTER-GROUP-LIST");
+        defMarkup("markup-locclass-list", LMarkupLocclassList.class,
+            "LOCCLASS-LIST");
+        defMarkup("markup-locref-list", LMarkupLocrefList.class, "LOCREF-LIST");
+        defMarkup("markup-locref", LMarkupLocref.class, "LOCREF");
+        defMarkup("markup-locref-layer", LMarkupLocrefLayer.class,
+            "LOCREF-LAYER");
+        defMarkup("markup-locref-layer-list", LMarkupLocrefLayerList.class,
+            "LOCREF-LAYER-LIST");
+        defMarkup("markup-range", LMarkupRange.class, "RANGE");
 
-        locationClass.add("arabic-numbers", new ArabicNumbers());
-        locationClass.add("roman-numbers-uppercase",
+        defun("markup-trace", new LMarkupTrace("markup-trace", //
+            container.get("")));
+        LMarkup traceMarkup = new LMarkup("TRACE");
+        traceMarkup.setDefault("<", ">\n");
+        setq("markup-trace", traceMarkup);
+
+        container.addLocationClass("arabic-numbers", new ArabicNumbers());
+        container.addLocationClass("roman-numbers-uppercase",
             new RomanNumeralsUppercase());
-        locationClass.add("roman-numbers-lowercase",
+        container.addLocationClass("roman-numbers-lowercase",
             new RomanNumeralsLowercase());
-        locationClass.add("digits", new Digits());
-        locationClass.add("alpha", new AlphaLowercase());
-        locationClass.add("ALPHA", new AlphaUppercase());
+        container.addLocationClass("digits", new Digits());
+        container.addLocationClass("alpha", new AlphaLowercase());
+        container.addLocationClass("ALPHA", new AlphaUppercase());
 
-        alphabets.add("arabic-numbers", new ArabicNumbers());
-        alphabets.add("roman-numerals-uppercase", new RomanNumeralsUppercase());
-        alphabets.add("roman-numerals-lowercase", new RomanNumeralsLowercase());
-        alphabets.add("digits", new Digits());
-        alphabets.add("alpha", new AlphaLowercase());
-        alphabets.add("ALPHA", new AlphaUppercase());
+        container.addAlphabet("arabic-numbers", new ArabicNumbers());
+        container.addAlphabet("roman-numerals-uppercase",
+            new RomanNumeralsUppercase());
+        container.addAlphabet("roman-numerals-lowercase",
+            new RomanNumeralsLowercase());
+        container.addAlphabet("digits", new Digits());
+        container.addAlphabet("alpha", new AlphaLowercase());
+        container.addAlphabet("ALPHA", new AlphaUppercase());
 
         setq("indexer:charset-raw", new LString("utf-8"));
         setq("index:name", LString.EMPTY);
@@ -360,7 +360,8 @@ public class Indexer extends LEngine {
         if (writer == null) {
             return;
         }
-        index.write(writer, this, get("markup:trace") == LBoolean.TRUE);
+        container.getCurrentIndex().write(writer, this,
+            get("markup:trace") == LBoolean.TRUE);
     }
 
     /**
@@ -382,24 +383,24 @@ public class Indexer extends LEngine {
             AttributesContainer attributes, List<OpenLocRef> openPages,
             Logger logger) throws LException {
 
+        String indexName = entry.getIndex();
+        StructuredIndex index = container.get(indexName);
+
         RefSpec ref = entry.getRef();
-        if (ref != null
-                && !ref.check(logger, entry, this, crossrefClass, openPages,
-                    attributes)) {
+        if (ref == null) {
+            // TODO gene: error handling unimplemented
+            throw new RuntimeException("unimplemented");
+        } else if (!ref.check(logger, entry, this, container, openPages,
+            attributes)) {
             return false;
         }
 
         String[] mainKey = entry.getMainKey();
-        String[] mergeKey = new String[mainKey.length];
-
-        for (int i = 0; i < mainKey.length; i++) {
-            mergeKey[i] = mergeRule.apply(mainKey[i]);
-        }
-
         String[] sortKey = new String[mainKey.length];
 
-        for (int i = 0; i < mainKey.length; i++) {
-            sortKey[i] = sortRule.apply(mergeKey[i], 0); // TODO ???
+        for (int level = 0; level < mainKey.length; level++) {
+            String mergeKey = index.applyMergeRule(mainKey[level]);
+            sortKey[level] = index.applySortRule(mergeKey, level);
         }
         entry.setSortKey(sortKey);
 
@@ -433,9 +434,7 @@ public class Indexer extends LEngine {
             return;
         }
         logger.info(LOCALIZER.format("StartProcess"));
-        AttributesContainer attributes =
-                (AttributesContainer) getFunction(LSymbol
-                    .get("define-attributes"));
+        AttributesContainer attributes = container;
         List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
 
         for (String resource : resources) {
@@ -468,7 +467,7 @@ public class Indexer extends LEngine {
                 parser.close();
             }
             if (!openPages.isEmpty()) {
-                // TODO gene: process unimplemented
+                // TODO gene: error handling unimplemented
                 throw new RuntimeException("unimplemented");
             }
         }
@@ -476,10 +475,9 @@ public class Indexer extends LEngine {
 
         for (RawIndexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {
-                index.store(entry);
+                container.store(entry, logger);
             }
         }
-        // TODO ?
     }
 
     /**
@@ -539,7 +537,7 @@ public class Indexer extends LEngine {
         }
 
         logger.finer(LOCALIZER.format("PreparingIndex"));
-        index.sorted();
+        container.getCurrentIndex().sorted();
     }
 
 }

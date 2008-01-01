@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General License as published by the
@@ -32,12 +32,30 @@ import org.extex.exindex.core.type.rules.Rule;
 public interface SortRuleContainer {
 
     /**
+     * Add some sort rule to the set at a given level.
+     * 
+     * @param level the level
+     * @param rule the rule
+     */
+    void addSortRule(Integer level, Rule rule);
+
+    /**
      * Add some sort rules to the set at a given level.
      * 
      * @param level the level
      * @param ruleList the rule list
      */
-    void add(int level, List<Rule> ruleList);
+    void addSortRules(Integer level, List<Rule> ruleList);
+
+    /**
+     * Getter for the rule set of a given level which creates a sort rule if
+     * none exists already.
+     * 
+     * @param level the level
+     * 
+     * @return the rule set for the given level
+     */
+    SortRules lookupOrCreateSortRule(Integer level);
 
     /**
      * Getter for the rule set of a given level.
@@ -46,23 +64,13 @@ public interface SortRuleContainer {
      * 
      * @return the rule set for the given level or <code>null</code> for none
      */
-    SortRules lookup(int level);
-
-    /**
-     * Getter for the rule set of a given level which creates a sort rule if noe
-     * exists already.
-     * 
-     * @param level the level
-     * 
-     * @return the rule set for the given level
-     */
-    SortRules lookupOrCreate(int level);
+    SortRules lookupSortRules(Integer level);
 
     /**
      * Getter for the maximum levels.
      * 
      * @return the maximum level
      */
-    int size();
+    int sortRuleSize();
 
 }

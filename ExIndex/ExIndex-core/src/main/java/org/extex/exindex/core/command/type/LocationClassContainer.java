@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,6 +21,7 @@ package org.extex.exindex.core.command.type;
 
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.lisp.exception.LException;
 
 /**
  * This interface describes the capability to read information for a location
@@ -32,13 +33,25 @@ import org.extex.exindex.core.type.page.PageReference;
 public interface LocationClassContainer {
 
     /**
+     * Add a location class to the ones defined. An already defined location
+     * class for the same key is silently overwritten.
+     * 
+     * @param name the name
+     * @param locationClass the location class
+     * 
+     * @return <code>true</code> iff the location class is new and has been
+     *         defined
+     */
+    boolean addLocationClass(String name, LocationClass locationClass);
+
+    /**
      * Get a named location class.
      * 
      * @param name the name
      * 
      * @return the location class or <code>null</code>
      */
-    LocationClass lookup(String name);
+    LocationClass lookupLocationClass(String name);
 
     /**
      * Create a page reference for this location class.
@@ -49,5 +62,15 @@ public interface LocationClassContainer {
      * @return the page reference
      */
     PageReference makePageReference(String encap, String s);
+
+    /**
+     * Order the location classes according to the given list. The other
+     * location classes follow in the original order.
+     * 
+     * @param list the list of location class names
+     * 
+     * @throws LException in case that a location class name is not defined
+     */
+    void orderLocationClasses(String[] list) throws LException;
 
 }

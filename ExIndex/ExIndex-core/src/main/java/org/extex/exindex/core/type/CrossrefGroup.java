@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,7 +41,8 @@ public class CrossrefGroup implements LocationClassGroup {
      * The field <tt>map</tt> contains the mapping of layers to a
      * cross-reference.
      */
-    private Map<String[], CrossReference> map = new HashMap<String[], CrossReference>();
+    private Map<String[], CrossReference> map =
+            new HashMap<String[], CrossReference>();
 
     /**
      * The field <tt>clazz</tt> contains the class.
@@ -78,16 +79,17 @@ public class CrossrefGroup implements LocationClassGroup {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.LocationClassGroup#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, boolean)
+     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
-    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace)
             throws IOException,
                 LNonMatchingTypeException {
 
         LMarkup markupCrossrefGroup =
-                (LMarkup) interpreter.get("markup-crossref-list");
+                markupContainer.getMarkup("markup-crossref-list");
 
-        markupCrossrefGroup.write(writer, interpreter, clazz, LMarkup.OPEN,
+        markupCrossrefGroup.write(writer, markupContainer, clazz, LMarkup.OPEN,
             trace);
         boolean first = true;
 
@@ -95,14 +97,14 @@ public class CrossrefGroup implements LocationClassGroup {
             if (first) {
                 first = false;
             } else {
-                markupCrossrefGroup.write(writer, interpreter, clazz,
+                markupCrossrefGroup.write(writer, markupContainer, clazz,
                     LMarkup.SEP, trace);
             }
 
-            xref.write(writer, interpreter, trace);
+            xref.write(writer, interpreter, markupContainer, trace);
         }
-        markupCrossrefGroup.write(writer, interpreter, clazz, LMarkup.CLOSE,
-            trace);
+        markupCrossrefGroup.write(writer, markupContainer, clazz,
+            LMarkup.CLOSE, trace);
     }
 
 }

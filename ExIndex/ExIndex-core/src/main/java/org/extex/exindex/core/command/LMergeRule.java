@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,12 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.exindex.core.exception.InconsistentFlagsException;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.rules.RegexRule;
-import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -83,20 +80,21 @@ public class LMergeRule extends LFunction {
     private static final int EREGEX = 4;
 
     /**
-     * The field <tt>rules</tt> contains the list of rules to apply.
+     * The field <tt>container</tt> contains the container for indices.
      */
-    private List<Rule> rules = new ArrayList<Rule>();
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container to store the information
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMergeRule(String name)
+    public LMergeRule(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -105,46 +103,47 @@ public class LMergeRule extends LFunction {
                 Arg.OPT_BOOLEAN(":string"), //
                 Arg.OPT_BOOLEAN(":bregexp"), //
                 Arg.OPT_BOOLEAN(":eregexp")});
+        this.container = container;
     }
 
-    /**
-     * Apply all rules in the rule set to a string.
-     * 
-     * @param in the input string
-     * 
-     * @return the transformed string
-     */
-    public String apply(String in) {
-
-        StringBuilder sb = new StringBuilder(in);
-
-        for (int i = 0; i < sb.length();) {
-            i = apply(sb, i);
-        }
-
-        return sb.toString();
-    }
-
-    /**
-     * Apply all rules at a certain position.
-     * 
-     * @param sb the target string builder
-     * @param start the staring index
-     * 
-     * @return the next index
-     */
-    private int apply(StringBuilder sb, int start) {
-
-        for (Rule r : rules) {
-            int next = r.apply(sb, start);
-            if (next < 0) {
-                // try next rule
-            } else {
-                return next;
-            }
-        }
-        return start + 1;
-    }
+    // /**
+    // * Apply all rules in the rule set to a string.
+    // *
+    // * @param in the input string
+    // *
+    // * @return the transformed string
+    // */
+    // public String apply(String in) {
+    //
+    // StringBuilder sb = new StringBuilder(in);
+    //
+    // for (int i = 0; i < sb.length();) {
+    // i = apply(sb, i);
+    // }
+    //
+    // return sb.toString();
+    // }
+    //
+    // /**
+    // * Apply all rules at a certain position.
+    // *
+    // * @param sb the target string builder
+    // * @param start the staring index
+    // *
+    // * @return the next index
+    // */
+    // private int apply(StringBuilder sb, int start) {
+    //
+    // for (Rule r : rules) {
+    // int next = r.apply(sb, start);
+    // if (next < 0) {
+    // // try next rule
+    // } else {
+    // return next;
+    // }
+    // }
+    // return start + 1;
+    // }
 
     /**
      * Take a sort rule and store it.
@@ -187,15 +186,15 @@ public class LMergeRule extends LFunction {
 
         switch (t) {
             case STRING:
-                rules.add(new StringRule(pattern, replacement, again
-                    .booleanValue()));
+                container.addMergeRule(new StringRule(pattern, replacement,
+                    again.booleanValue()));
                 break;
             case EREGEX:
-                rules.add(new RegexRule(pattern, replacement, again
-                    .booleanValue()));
+                container.addMergeRule(new RegexRule(pattern, replacement,
+                    again.booleanValue()));
             case BREGEX:
-                rules.add(new RegexRule(pattern, replacement, again
-                    .booleanValue()));
+                container.addMergeRule(new RegexRule(pattern, replacement,
+                    again.booleanValue()));
             case STRING | EREGEX:
                 throw new InconsistentFlagsException(null, ":string",
                     ":eregexp");

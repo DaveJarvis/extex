@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,54 +20,39 @@
 package org.extex.exindex.core.command.type;
 
 /**
- * This class represents an info about a merge specification for attributes.
+ * This interface describes the handling of several fallback scenarios.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AttributeMergeInfo {
+public interface FallbackContainer {
 
     /**
-     * The field <tt>attribute</tt> contains the attribute.
-     */
-    private String attribute;
-
-    /**
-     * The field <tt>drop</tt> contains the drop indicator.
-     */
-    private boolean drop;
-
-    /**
-     * Creates a new object.
+     * Apply the fallback merge rules.
      * 
-     * @param attribute the attribute
-     * @param drop the drop indicator
+     * @param text the text to transform
+     * 
+     * @return the transformed text
      */
-    public AttributeMergeInfo(String attribute, boolean drop) {
-
-        super();
-        this.attribute = attribute;
-        this.drop = drop;
-    }
+    String applyMergeRuleFallback(String text);
 
     /**
-     * Getter for attribute.
+     * Apply the fallback sort rules.
      * 
-     * @return the attribute
+     * @param text the text to transform
+     * @param level the current level
+     * 
+     * @return the transformed text
      */
-    public String getAttribute() {
-
-        return attribute;
-    }
+    String applySortRuleFallback(String text, int level);
 
     /**
-     * Getter for drop.
+     * TODO gene: missing JavaDoc
      * 
-     * @return the drop
+     * @param name the name
+     * 
+     * @return the markup
      */
-    public boolean isDrop() {
-
-        return drop;
-    }
+    LMarkup getFallbackMarkup(String name);
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,6 +21,7 @@ package org.extex.exindex.core.command;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.InvocationTargetException;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.parser.RawIndexParser;
@@ -41,11 +42,19 @@ public class TestableIndexer extends Indexer {
      * @throws NoSuchMethodException in case of an error
      * @throws LSettingConstantException in case of an error
      * @throws SecurityException in case of an error
+     * @throws InvocationTargetException in case of an error
+     * @throws IllegalAccessException in case of an error
+     * @throws InstantiationException in case of an error
+     * @throws IllegalArgumentException in case of an error
      */
     public TestableIndexer()
             throws SecurityException,
                 LSettingConstantException,
-                NoSuchMethodException {
+                NoSuchMethodException,
+                IllegalArgumentException,
+                InstantiationException,
+                IllegalAccessException,
+                InvocationTargetException {
 
         super();
     }

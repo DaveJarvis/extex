@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -273,9 +273,10 @@ public class Arg {
      * 
      * @return the argument descriptor
      */
-    public static final Arg OPT_NUMBER(String flag, Long fallback) {
+    public static final Arg OPT_NUMBER(String flag, Integer fallback) {
 
-        return new OptionalArgWithParameter(flag, Long.class, fallback, false) {
+        return new OptionalArgWithParameter(flag, Integer.class, fallback,
+            false) {
 
             /**
              * {@inheritDoc}
@@ -287,9 +288,10 @@ public class Arg {
             public Object validate(LValue a) throws LNonMatchingTypeException {
 
                 if (a instanceof LNumber) {
-                    return Long.valueOf(((LNumber) a).getValue());
+                    return Integer.valueOf((int) ((LNumber) a).getValue());
                 } else if (a instanceof LDouble) {
-                    return Long.valueOf(Math.round(((LDouble) a).getValue()));
+                    return Integer.valueOf((int) Math.round(((LDouble) a)
+                        .getValue()));
                 } else {
                     throw new LNonMatchingTypeException("");
                 }

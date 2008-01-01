@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -74,7 +75,7 @@ public class LDefineLocationClassOrder extends LFunction {
      * The field <tt>container</tt> contains the container to store the order
      * in.
      */
-    private LDefineLocationClass container;
+    private LocationClassContainer container;
 
     /**
      * Creates a new object.
@@ -86,7 +87,8 @@ public class LDefineLocationClassOrder extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineLocationClassOrder(String name, LDefineLocationClass container)
+    public LDefineLocationClassOrder(String name,
+            LocationClassContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -112,7 +114,7 @@ public class LDefineLocationClassOrder extends LFunction {
         for (LValue value : list) {
             classes[i++] = LString.stringValue(value);
         }
-        container.order(classes);
+        container.orderLocationClasses(classes);
 
         return LList.NIL;
     }

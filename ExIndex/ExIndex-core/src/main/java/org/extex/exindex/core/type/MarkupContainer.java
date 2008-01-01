@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,33 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
 
-import java.util.List;
-
-import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.command.type.LMarkup;
 
 /**
- * This interface describes a read-only container for rule sets.
+ * This interface describes a container for markup information.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface RuleSetContainer {
+public interface MarkupContainer {
 
     /**
-     * Add a named definition of a rule.
+     * Getter for a named markup.
      * 
-     * @param name the name of the rule
-     * @param rule the rule itself
+     * @param name the make of the markup
+     * 
+     * @return the markup for the name or <code>null</code>
      */
-    void addRule(String name, List<Rule> rule);
+    LMarkup getMarkup(String name);
 
     /**
-     * Find the definition of a rule set.
+     * Setter for a named markup.
      * 
-     * @param name the name of the rule set
-     * 
-     * @return the rule set or <code>null</code> if undefined
+     * @param name the make of the markup
+     * @param m the markup to add
      */
-    List<Rule> lookupRule(String name);
+    void setMarkup(String name, LMarkup m);
 
 }

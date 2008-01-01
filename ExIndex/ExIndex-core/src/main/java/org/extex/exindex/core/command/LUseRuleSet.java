@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,9 +21,8 @@ package org.extex.exindex.core.command;
 
 import java.util.List;
 
-import org.extex.exindex.core.command.type.RuleSetContainer;
-import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.core.exception.UnknownAttributeException;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -40,7 +39,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <h3>The Command <tt>use-rule-set</tt></h3>
  * 
  * <p>
- * The command <tt>use-rule-set</tt> can be used to add a sort rule.
+ * The command <tt>use-rule-set</tt> can be used to add a sort rule. This
+ * command honors the current index. This means that the sort rule is attached
+ * to the current index.
  * </p>
  * 
  * <pre>
@@ -67,36 +68,27 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LUseRuleSet extends LFunction {
 
     /**
-     * The field <tt>ruleSetContainer</tt> contains the container of rule
-     * sets.
+     * The field <tt>container</tt> contains the container of rule sets.
      */
-    private RuleSetContainer ruleSetContainer;
-
-    /**
-     * The field <tt>sortRules</tt> contains the container of the sort rules.
-     */
-    private SortRuleContainer sortRules;
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
-     * @param ruleSetContainer the container of rule sets
-     * @param sortRules the container of sort rules
+     * @param container the container of indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LUseRuleSet(String name, RuleSetContainer ruleSetContainer,
-            SortRuleContainer sortRules)
+    public LUseRuleSet(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_NUMBER(":phase", Long.valueOf(0)), //
+        super(name, new Arg[]{Arg.OPT_NUMBER(":phase", Integer.valueOf(0)), //
                 Arg.OPT_QSTRING_LIST(":rule-set")});
-        this.ruleSetContainer = ruleSetContainer;
-        this.sortRules = sortRules;
+        this.container = container;
     }
 
     /**
@@ -104,29 +96,28 @@ public class LUseRuleSet extends LFunction {
      * 
      * @param interpreter the interpreter
      * @param phase the phase
-     * @param ruleSet the rule set
+     * @param ruleList the list of rules
      * 
      * @return <tt>nil</tt>
      * 
      * @throws LNonMatchingTypeException in case of an error
      * @throws UnknownAttributeException in case of an error
      */
-    public LValue evaluate(LInterpreter interpreter, Long phase, LList ruleSet)
+    public LValue evaluate(LInterpreter interpreter, Integer phase,
+            LList ruleList)
             throws LNonMatchingTypeException,
                 UnknownAttributeException {
 
-        int level = phase.intValue();
-
-        for (LValue value : ruleSet) {
+        for (LValue value : ruleList) {
             String s = LString.stringValue(value);
-            List<Rule> rs = ruleSetContainer.lookup(s);
-            if (rs == null) {
+            List<Rule> ruleSet = container.lookupRule(s);
+            if (ruleSet == null) {
                 throw new UnknownAttributeException(null, s);
             }
-            sortRules.add(level, rs);
+            container.addSortRules(phase, ruleSet);
         }
 
-        return LList.NIL;
+        return null;
     }
 
 }

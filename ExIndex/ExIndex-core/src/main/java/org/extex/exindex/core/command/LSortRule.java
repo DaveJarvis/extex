@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,13 +19,8 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.extex.exindex.core.command.type.SortRuleContainer;
-import org.extex.exindex.core.command.type.SortRules;
-import org.extex.exindex.core.type.rules.RegexRule;
-import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.type.IndexContainer;
+import org.extex.exindex.core.type.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -39,7 +34,9 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <h3>The Command <tt>sort-rule</tt></h3>
  * 
  * <p>
- * The command <tt>sort-rule</tt> can be used to add a sort rule.
+ * The command <tt>sort-rule</tt> can be used to add a sort rule. This command
+ * honors the current index. This means that the sort rule is attached to the
+ * current index.
  * </p>
  * 
  * <pre>
@@ -62,63 +59,31 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LSortRule extends LFunction implements SortRuleContainer {
+public class LSortRule extends LFunction {
 
     /**
-     * The field <tt>rules</tt> contains the list of rules to apply.
+     * The field <tt>container</tt> contains the container.
      */
-    private List<SortRules> rules = new ArrayList<SortRules>();
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container of indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LSortRule(String name)
+    public LSortRule(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.STRING,
                 Arg.OPT_BOOLEAN(":again"), //
-                Arg.OPT_NUMBER(":run", Long.valueOf(0))});
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#add(int,
-     *      java.util.List)
-     */
-    public void add(int level, List<Rule> ruleList) {
-
-        for (int i = rules.size(); i < level; i++) {
-            rules.add(null);
-        }
-        SortRules list = rules.get(level);
-        if (list == null) {
-            list = new SortRules();
-            rules.add(level, list);
-        }
-        list.addAll(ruleList);
-    }
-
-    /**
-     * Apply the sort rule.
-     * 
-     * @param in the input string
-     * @param level the level
-     * 
-     * @return the result
-     */
-    public String apply(String in, int level) {
-
-        // TODO gene: apply unimplemented
-
-        return in;
+                Arg.OPT_NUMBER(":run", Integer.valueOf(0))});
+        this.container = container;
     }
 
     /**
@@ -129,71 +94,20 @@ public class LSortRule extends LFunction implements SortRuleContainer {
      * @param replacement the replacement text
      * @param again the optional indicator to restart the replacement cycle from
      *        start
-     * @param run the run number to add this rule to; it defaults to 0 if not
-     *        given
+     * @param phase the phase number to add this rule to; it defaults to 0 if
+     *        not given
      * 
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, String pattern,
-            String replacement, Boolean again, Long run)
+            String replacement, Boolean again, Integer phase)
             throws LSettingConstantException {
 
-        int level = (run == null ? 0 : run.intValue());
-        Rule rule = new RegexRule(pattern, replacement, again.booleanValue());
-        for (int i = rules.size(); i < level; i++) {
-            rules.add(null);
-        }
-        SortRules list = rules.get(level);
-        if (list == null) {
-            list = new SortRules();
-            rules.add(level, list);
-        }
-        list.add(rule);
+        container.addSortRule(phase, //
+            new StringRule(pattern, replacement, again.booleanValue()));
         return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookup(int)
-     */
-    public SortRules lookup(int level) {
-
-        if (level < 0) {
-            throw new IllegalArgumentException();
-        } else if (level >= rules.size()) {
-            return null;
-        }
-        return rules.get(level);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookupOrCreate(int)
-     */
-    public SortRules lookupOrCreate(int level) {
-
-        if (level < 0) {
-            throw new IllegalArgumentException();
-        } else if (level >= rules.size()) {
-            for (int i = rules.size(); i < level; i++) {
-                rules.add(new SortRules());
-            }
-        }
-        return rules.get(level);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#size()
-     */
-    public int size() {
-
-        return rules.size();
     }
 
 }

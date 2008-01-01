@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,14 +21,12 @@ package org.extex.exindex.core.command;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.io.IOException;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.junit.Test;
 
@@ -55,16 +53,9 @@ public class LDefineLocationClassTest {
      * 
      * @return the function binding for define-attributes
      * 
-     * @throws NoSuchMethodException in case of an error
-     * @throws LSettingConstantException in case of an error
-     * @throws IOException in case of an error
-     * @throws LException in case of an error
+     * @throws Exception in case of an error
      */
-    private LocationClassContainer runTest(String in)
-            throws NoSuchMethodException,
-                LSettingConstantException,
-                IOException,
-                LException {
+    private LocationClassContainer runTest(String in) throws Exception {
 
         Indexer indexer = new Indexer();
         assertNotNull(indexer);

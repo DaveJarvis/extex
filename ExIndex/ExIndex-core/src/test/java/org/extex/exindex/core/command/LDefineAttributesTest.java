@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.exindex.core.command;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,6 @@ import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.exception.SyntaxException;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.junit.Test;
@@ -60,16 +58,9 @@ public class LDefineAttributesTest {
      * 
      * @return the function binding for define-attributes
      * 
-     * @throws NoSuchMethodException in case of an error
-     * @throws LSettingConstantException in case of an error
-     * @throws IOException in case of an error
-     * @throws LException in case of an error
+     * @throws Exception in case of an error
      */
-    private AttributesContainer runTest(String in)
-            throws NoSuchMethodException,
-                LSettingConstantException,
-                IOException,
-                LException {
+    private AttributesContainer runTest(String in) throws Exception {
 
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
@@ -102,7 +93,7 @@ public class LDefineAttributesTest {
     public final void test02() throws Exception {
 
         AttributesContainer def = runTest("(define-attributes (\"abc\"))");
-        Attribute att = def.lookup("abc");
+        Attribute att = def.lookupAttribute("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -118,10 +109,10 @@ public class LDefineAttributesTest {
 
         AttributesContainer def =
                 runTest("(define-attributes (\"abc\" \"def\"))");
-        Attribute att = def.lookup("abc");
+        Attribute att = def.lookupAttribute("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
-        att = def.lookup("def");
+        att = def.lookupAttribute("def");
         assertEquals(1, att.getGroup());
         assertEquals(1, att.getOrd());
     }
@@ -136,7 +127,7 @@ public class LDefineAttributesTest {
     public final void test10() throws Exception {
 
         AttributesContainer def = runTest("(define-attributes ((\"abc\")))");
-        Attribute att = def.lookup("abc");
+        Attribute att = def.lookupAttribute("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -152,10 +143,10 @@ public class LDefineAttributesTest {
 
         AttributesContainer def =
                 runTest("(define-attributes ((\"abc\" \"def\")))");
-        Attribute att = def.lookup("abc");
+        Attribute att = def.lookupAttribute("abc");
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
-        att = def.lookup("def");
+        att = def.lookupAttribute("def");
         assertEquals(0, att.getGroup());
         assertEquals(1, att.getOrd());
     }

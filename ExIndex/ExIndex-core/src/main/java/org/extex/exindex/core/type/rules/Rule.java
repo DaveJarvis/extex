@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,13 +19,29 @@
 
 package org.extex.exindex.core.type.rules;
 
+import java.util.List;
+
 /**
- * This is th abstract base class for rules.
+ * This is the abstract base class for rules.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6666 $
  */
 public abstract class Rule {
+
+    /**
+     * Apply a list of rules to a string.
+     * 
+     * @param rules the rules to apply
+     * @param text the initial text to apply it to
+     * 
+     * @return the transformed text
+     */
+    public static String apply(List<Rule> rules, String text) {
+
+        // TODO gene: apply unimplemented
+        throw new RuntimeException("unimplemented");
+    }
 
     /**
      * The field <tt>again</tt> contains the flag :again.

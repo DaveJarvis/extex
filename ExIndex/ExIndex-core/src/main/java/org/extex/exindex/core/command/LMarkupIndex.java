@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,14 +19,12 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
-import org.extex.exindex.core.type.StructuredIndex;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LValue;
 
@@ -158,33 +156,33 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMarkupIndex extends LFunction {
+public class LMarkupIndex extends AbstractLAdapter {
 
     /**
-     * The field <tt>index</tt> contains the index.
+     * The field <tt>container</tt> contains the index.
      */
-    private StructuredIndex index;
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
-     * @param index the index
+     * @param container the index
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupIndex(String name, StructuredIndex index)
+    public LMarkupIndex(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":open", ""), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
                 Arg.OPT_STRING(":close", ""), //
                 Arg.OPT_BOOLEAN(":flat"), //
                 Arg.OPT_BOOLEAN(":tree"), //
                 Arg.OPT_LNUMBER(":hierdepth", null)});
-        this.index = index;
+        this.container = container;
     }
 
     /**
@@ -209,27 +207,22 @@ public class LMarkupIndex extends LFunction {
                 LSettingConstantException,
                 LNonMatchingTypeException {
 
-        LValue container = interpreter.get(getName());
-        if (!(container instanceof LMarkup)) {
-            throw new LNonMatchingTypeException(null);
-        }
-
-        ((LMarkup) container).setDefault(open, close);
+        getMarkup(interpreter).setDefault(open, close);
 
         switch ((flat.booleanValue() ? 1 : 0) //
                 | (tree.booleanValue() ? 1 : 0) //
                 | (hierdepth != null ? 4 : 0)) {
             case 1:
-                index.setDepth(0);
+                container.setDepth(0);
                 break;
             case 0:
             case 2:
-                index.setDepth(Integer.MAX_VALUE);
+                container.setDepth(Integer.MAX_VALUE);
                 break;
             case 3:
                 throw new InconsistentFlagsException(null, ":flat", ":tree");
             case 4:
-                index.setDepth((int) hierdepth.getValue());
+                container.setDepth((int) hierdepth.getValue());
                 break;
             case 5:
                 throw new InconsistentFlagsException(null, ":flat",

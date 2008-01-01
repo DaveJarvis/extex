@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,12 +28,29 @@ package org.extex.exindex.core.command.type;
 public interface AttributesContainer {
 
     /**
+     * Define an attribute
+     * 
+     * @param key the name of the attribute
+     * @param attribute the information
+     */
+    void defineAttribute(String key, Attribute attribute);
+
+    /**
+     * Check whether an attribute is defined.
+     * 
+     * @param key the name of the attribute
+     * 
+     * @return <code>true</code> iff the attribute is defined
+     */
+    boolean isAttributeDefined(String key);
+
+    /**
      * Getter for a named attribute
      * 
-     * @param attibute the name of the attribute
+     * @param attribute the name of the attribute
      * 
      * @return the named attribute or <code>null</code> if not defined
      */
-    Attribute lookup(String attibute);
+    Attribute lookupAttribute(String attribute);
 
 }

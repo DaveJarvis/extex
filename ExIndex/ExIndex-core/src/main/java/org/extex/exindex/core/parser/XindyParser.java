@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -504,8 +504,7 @@ public class XindyParser extends LParser implements RawIndexParser {
             throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
                 getClass()).format("Unbound", args));
         }
-        return new RawIndexentry(index == null ? "default" : index, key, print,
-            ref);
+        return new RawIndexentry(index == null ? "" : index, key, print, ref);
     }
 
     /**

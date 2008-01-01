@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,11 +20,9 @@
 package org.extex.exindex.core.command;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.extex.exindex.core.type.alphabet.Alphabet;
+import org.extex.exindex.core.command.type.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -36,8 +34,7 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to define an alphabet. It also serves as
- * a container for the alphabets collected.
+ * This is the adapter for the L system to define an alphabet.
  * 
  * <doc command="define-alphabet">
  * <h3>The Command <tt>define-alphabet</tt></h3>
@@ -73,38 +70,30 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LDefineAlphabet extends LFunction {
 
     /**
-     * The field <tt>map</tt> contains the alphabets.
+     * The field <tt>container</tt> contains the container for alphabets.
      */
-    private Map<String, Alphabet> map = new HashMap<String, Alphabet>();
+    private AlphabetContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for alphabets
+     * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineAlphabet(String name)
+    public LDefineAlphabet(String name, AlphabetContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.QLIST});
+        this.container = container;
     }
 
     /**
-     * Add an alphabet.
-     * 
-     * @param name the name
-     * @param alphabet the alphabet
-     */
-    public void add(String name, Alphabet alphabet) {
-
-        map.put(name, alphabet);
-    }
-
-    /**
-     * Take a sort rule and store it.
+     * Take an alphabet and store it.
      * 
      * @param interpreter the interpreter
      * @param name the name of the alphabet
@@ -125,22 +114,8 @@ public class LDefineAlphabet extends LFunction {
             words.add(LString.stringValue(val));
         }
 
-        map.put(name, new ListAlphabet(words));
-
-        return LList.NIL;
-    }
-
-    /**
-     * Getter for a named alphabet.
-     * 
-     * @param name the name of the alphabet
-     * 
-     * @return the alphabet or <code>null</code> if the name is not associated
-     *         with an alphabet
-     */
-    public Alphabet lookup(String name) {
-
-        return map.get(name);
+        container.addAlphabet(name, new ListAlphabet(words));
+        return null;
     }
 
 }

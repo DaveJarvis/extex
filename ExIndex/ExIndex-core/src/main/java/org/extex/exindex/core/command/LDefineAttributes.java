@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,9 +18,6 @@
  */
 
 package org.extex.exindex.core.command;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.AttributesContainer;
@@ -87,12 +84,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineAttributes extends LFunction implements AttributesContainer {
-
-    /**
-     * The field <tt>map</tt> contains the attributes.
-     */
-    private Map<String, Attribute> map = new HashMap<String, Attribute>();
+public class LDefineAttributes extends LFunction {
 
     /**
      * The field <tt>org</tt> contains the reference number for ordering the
@@ -106,19 +98,26 @@ public class LDefineAttributes extends LFunction implements AttributesContainer 
     private int group = 0;
 
     /**
+     * The field <tt>container</tt> contains the container for attributes.
+     */
+    private AttributesContainer container;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for attributes
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineAttributes(String name)
+    public LDefineAttributes(String name, AttributesContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.QLIST});
+        this.container = container;
     }
 
     /**
@@ -143,21 +142,23 @@ public class LDefineAttributes extends LFunction implements AttributesContainer 
         for (LValue val : list) {
             if (val instanceof LString) {
                 key = ((LString) val).getValue();
-                if (map.containsKey(key)) {
+                if (container.isAttributeDefined(key)) {
                     throw new LException(LocalizerFactory.getLocalizer(
                         getClass()).format("AlreadyDefined", key));
                 }
-                map.put(key, new Attribute(key, ord++, group++));
+                container.defineAttribute(key, new Attribute(key, ord++,
+                    group++));
             } else if (val instanceof LList) {
                 LList lst = (LList) val;
 
                 for (LValue v : lst) {
                     key = LString.stringValue(v);
-                    if (map.containsKey(key)) {
+                    if (container.isAttributeDefined(key)) {
                         throw new LException(LocalizerFactory.getLocalizer(
                             getClass()).format("AlreadyDefined", key));
                     }
-                    map.put(key, new Attribute(key, ord++, group));
+                    container.defineAttribute(key, new Attribute(key, ord++,
+                        group));
                 }
                 group++;
             } else {
@@ -167,14 +168,4 @@ public class LDefineAttributes extends LFunction implements AttributesContainer 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#lookup(
-     *      java.lang.String)
-     */
-    public Attribute lookup(String attibute) {
-
-        return map.get(attibute);
-    }
 }

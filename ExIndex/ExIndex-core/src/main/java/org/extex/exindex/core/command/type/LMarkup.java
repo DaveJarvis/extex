@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,8 +25,8 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.core.util.StringUtils;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -292,22 +292,21 @@ public class LMarkup implements LValue {
      * Write tracing output to a writer.
      * 
      * @param writer the target writer
-     * @param interpreter the interpreter to acquire open and close strings
+     * @param markupContainer the container for markup
      * @param clazz the class or <code>null</code>
      * @param index the index
      * @param trace the indicator for tracing
-     * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter, String clazz,
-            Position index, boolean trace)
+    public void write(Writer writer, MarkupContainer markupContainer,
+            String clazz, Position index, boolean trace)
             throws IOException,
                 LNonMatchingTypeException {
 
         writer.write(get(clazz, index));
         if (trace) {
-            LMarkup markupTrace = (LMarkup) interpreter.get("markup-trace");
+            LMarkup markupTrace = markupContainer.getMarkup("markup-trace");
             writer.write(markupTrace.get(null, LMarkup.OPEN));
             writer.write(displayName);
             writer.write(index.getName());

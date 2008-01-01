@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,9 +19,6 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.exindex.core.command.type.CrossrefClassContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -30,8 +27,7 @@ import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
- * This is the adapter for the L system to define a cross-reference class. It
- * also serves as a container for the classes collected.
+ * This is the adapter for the L system to define a cross-reference class.
  * 
  * <doc command="define-crossref-class">
  * <h3>The Command <tt>define-crossref-class</tt></h3>
@@ -74,30 +70,30 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineCrossrefClass extends LFunction
-        implements
-            CrossrefClassContainer {
+public class LDefineCrossrefClass extends LFunction {
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to the boolean
-     * indicator.
+     * The field <tt>container</tt> contains the container for classes.
      */
-    private Map<String, Boolean> map = new HashMap<String, Boolean>();
+    private CrossrefClassContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for cross-reference classes
+     * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineCrossrefClass(String name)
+    public LDefineCrossrefClass(String name, CrossrefClassContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, //
                 Arg.OPT_BOOLEAN(":unverified")});
+        this.container = container;
     }
 
     /**
@@ -114,19 +110,8 @@ public class LDefineCrossrefClass extends LFunction
     public LValue evaluate(LInterpreter interpreter, String name,
             Boolean unverified) throws LSettingConstantException {
 
-        map.put(name, unverified);
+        container.defineCrossrefClass(name, unverified);
         return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.CrossrefClassContainer#lookup(
-     *      java.lang.String)
-     */
-    public Boolean lookup(String name) {
-
-        return map.get(name);
     }
 
 }

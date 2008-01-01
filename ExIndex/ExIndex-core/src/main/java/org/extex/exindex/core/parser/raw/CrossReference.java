@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,6 +28,7 @@ import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.CrossrefClassContainer;
 import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.core.util.StringUtils;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
@@ -87,7 +88,7 @@ public class CrossReference implements RefSpec {
             AttributesContainer attributes) {
 
         String clazz = entry.getRef().getLayer();
-        Boolean unverified = crossrefClass.lookup(clazz);
+        Boolean unverified = crossrefClass.lookupCrossrefClass(clazz);
         if (unverified == null) {
             logger.warning(LOCALIZER.format("UndefinedCrossrefClass", clazz));
             return false;
@@ -160,22 +161,24 @@ public class CrossReference implements RefSpec {
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param markupContainer the container for markup
      * @param trace the trace indicator
      * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace)
             throws IOException,
                 LNonMatchingTypeException {
 
         LMarkup markupCrossrefLayerList =
-                (LMarkup) interpreter.get("markup-crossref-layer-list");
+                markupContainer.getMarkup("markup-crossref-layer-list");
         LMarkup markupCrossrefLayer =
-                (LMarkup) interpreter.get("markup-crossref-layer");
+                markupContainer.getMarkup("markup-crossref-layer");
 
-        markupCrossrefLayerList.write(writer, interpreter, clazz, LMarkup.OPEN,
-            trace);
+        markupCrossrefLayerList.write(writer, markupContainer, clazz,
+            LMarkup.OPEN, trace);
 
         boolean first = true;
 
@@ -183,17 +186,17 @@ public class CrossReference implements RefSpec {
             if (first) {
                 first = false;
             } else {
-                markupCrossrefLayerList.write(writer, interpreter, clazz,
+                markupCrossrefLayerList.write(writer, markupContainer, clazz,
                     LMarkup.SEP, trace);
             }
 
-            markupCrossrefLayer.write(writer, interpreter, clazz, LMarkup.OPEN,
-                trace);
+            markupCrossrefLayer.write(writer, markupContainer, clazz,
+                LMarkup.OPEN, trace);
             writer.write(layer);
-            markupCrossrefLayer.write(writer, interpreter, clazz,
+            markupCrossrefLayer.write(writer, markupContainer, clazz,
                 LMarkup.CLOSE, trace);
         }
-        markupCrossrefLayerList.write(writer, interpreter, clazz,
+        markupCrossrefLayerList.write(writer, markupContainer, clazz,
             LMarkup.CLOSE, trace);
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,6 +28,14 @@ package org.extex.exindex.core.command.type;
 public interface CrossrefClassContainer {
 
     /**
+     * Define a cross-reference class.
+     * 
+     * @param name the name of the cross-reference class
+     * @param verified the indicator for verified classes
+     */
+    void defineCrossrefClass(String name, Boolean verified);
+
+    /**
      * Getter for a cross-reference class.
      * 
      * @param name the name of the cross-reference class
@@ -35,6 +43,6 @@ public interface CrossrefClassContainer {
      * @return the indicator for verified cross-reference classes or
      *         <code>null</code> if the cross-reference class is not defined
      */
-    Boolean lookup(String name);
+    Boolean lookupCrossrefClass(String name);
 
 }

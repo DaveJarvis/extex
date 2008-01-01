@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,7 @@ import org.extex.exindex.core.type.transform.Transform;
 public class LMarkupTransform extends LMarkup {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This is a container for parameters.
      */
     private class Param {
 
@@ -140,7 +140,7 @@ public class LMarkupTransform extends LMarkup {
             new HashMap<String, Transform>();
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the mapping from name to parameters.
      */
     private Map<String, Param> map = new HashMap<String, Param>();
 

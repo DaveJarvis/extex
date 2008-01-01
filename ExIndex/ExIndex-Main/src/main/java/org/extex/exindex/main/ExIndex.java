@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -380,12 +380,20 @@ public class ExIndex extends Indexer {
      *         function definition
      * @throws SecurityException in case of an security problem
      * @throws LSettingConstantException should not happen
+     * @throws InvocationTargetException in case of an error
+     * @throws IllegalAccessException in case of an error
+     * @throws InstantiationException in case of an error
+     * @throws IllegalArgumentException in case of an error
      */
     public ExIndex()
             throws IOException,
                 SecurityException,
                 NoSuchMethodException,
-                LSettingConstantException {
+                LSettingConstantException,
+                IllegalArgumentException,
+                InstantiationException,
+                IllegalAccessException,
+                InvocationTargetException {
 
         super();
         config = ConfigurationFactory.newInstance("path/indexer");

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,12 +19,10 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.extex.exindex.core.command.type.AttributeMergeInfo;
+import org.extex.exindex.core.command.type.Attribute;
+import org.extex.exindex.core.exception.UnknownAttributeException;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
@@ -43,12 +41,14 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (merge-to <i>from-attribute</i> <i>to-attribute</i>
+ *  (merge-to
+ *     <i>from-attribute</i>
+ *     <i>to-attribute</i>
  *     [:drop]
  *  )   </pre>
  * 
  * <p>
- * The command has some optional arguments which are described in turn.
+ * The command has some arguments which are described in turn.
  * </p>
  * 
  * <pre>
@@ -65,26 +65,27 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LMergeTo extends LFunction {
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to mapping info.
+     * The field <tt>container</tt> contains the container for indices.
      */
-    private Map<String, AttributeMergeInfo> map =
-            new HashMap<String, AttributeMergeInfo>();
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMergeTo(String name)
+    public LMergeTo(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.LSTRING, Arg.LSTRING, //
                 Arg.OPT_LBOOLEAN(":drop")});
+        this.container = container;
     }
 
     /**
@@ -98,27 +99,22 @@ public class LMergeTo extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LSettingConstantException should not happen
-     * @throws LNonMatchingTypeException in case of an error
+     * @throws UnknownAttributeException in case that the attribute is unknown
      */
     public LValue evaluate(LInterpreter interpreter, LString from, LString to,
             LBoolean drop)
             throws LSettingConstantException,
-                LNonMatchingTypeException {
+                UnknownAttributeException {
 
-        map.put(LString.stringValue(from), new AttributeMergeInfo(LString
-            .stringValue(to), drop == LBoolean.TRUE));
+        String fromString = from.getValue();
+        String toString = to.getValue();
+        Attribute ai = container.lookupAttribute(fromString);
+        if (ai == null) {
+            throw new UnknownAttributeException(null, fromString);
+        }
+        ai.setDrop(drop == LBoolean.TRUE);
+        ai.setAlias(toString);
         return null;
     }
 
-    /**
-     * Look-up for the merge info of an attribute.
-     * 
-     * @param name the name of the attribute from which to merge
-     * 
-     * @return the info for the attribute or <code>null</code> for none
-     */
-    public AttributeMergeInfo lookup(String name) {
-
-        return map.get(name);
-    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,9 +20,7 @@
 package org.extex.exindex.core.command;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
@@ -132,7 +130,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LDefineRuleSet extends LFunction implements RuleSetContainer {
+public class LDefineRuleSet extends LFunction {
 
     /**
      * The field <tt>RULES</tt> contains the symbol <tt>:rules</tt>.
@@ -166,24 +164,27 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
     private static final LSymbol EREGEX = LSymbol.get(":eregexp");
 
     /**
-     * The field <tt>map</tt> contains the mapping from names to rule sets.
+     * The field <tt>container</tt> contains the reference to the rule set
+     * container to store information in.
      */
-    private Map<String, List<Rule>> map = new HashMap<String, List<Rule>>();
+    private RuleSetContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineRuleSet(String name)
+    public LDefineRuleSet(String name, RuleSetContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.VARARG()});
+        this.container = container;
     }
 
     /**
@@ -199,7 +200,7 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
 
         for (LValue value : lst) {
             String s = LString.stringValue(value);
-            List<Rule> rl = map.get(s);
+            List<Rule> rl = container.lookupRule(s);
             if (rl == null) {
                 throw new LException(LocalizerFactory.getLocalizer(getClass())
                     .format("RuleUndefined", s));
@@ -242,7 +243,7 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
             } else if (value == EREGEX) {
                 type |= 4;
             } else {
-                throw new LNonMatchingTypeException(""); // TODO
+                throw new LNonMatchingTypeException(value.toString());
             }
         }
 
@@ -306,20 +307,9 @@ public class LDefineRuleSet extends LFunction implements RuleSetContainer {
                 addInheritedRules(rules, lst);
             }
         }
-        map.put(name, rules);
+        container.addRule(name, rules);
 
         return LList.NIL;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.command.type.RuleSetContainer#lookup(
-     *      java.lang.String)
-     */
-    public List<Rule> lookup(String name) {
-
-        return map.get(name);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,13 +29,12 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.LMarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
-import org.extex.exindex.lisp.type.value.LSymbol;
-import org.extex.exindex.lisp.type.value.LValue;
 
 /**
  * This class represents a letter group.
@@ -210,12 +209,14 @@ public class LetterGroup {
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param markupContainer the container for markup information
      * @param trace the indicator for tracing
      * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter, boolean trace)
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace)
             throws IOException,
                 LNonMatchingTypeException {
 
@@ -224,26 +225,22 @@ public class LetterGroup {
             return;
         }
 
-        LMarkup markupLetterGroup =
-                (LMarkup) interpreter.get("markup-letter-group");
+        LMarkupTransform markupLetterGroup =
+                (LMarkupTransform) markupContainer
+                    .getMarkup("markup-letter-group");
 
         boolean first = true;
-        markupLetterGroup.write(writer, interpreter, name, LMarkup.OPEN, trace);
-        String openHead = "markup:letter-group-" + name + "-open-head";
-        String closeHead = "markup:letter-group-" + name + "-close-head";
-        if (interpreter.get(LSymbol.get(openHead)) != null
-                || interpreter.get(LSymbol.get(closeHead)) != null) {
-            markupLetterGroup.write(writer, interpreter, name,
+        markupLetterGroup.write(writer, markupContainer, name, LMarkup.OPEN,
+            trace);
+
+        String openHead = markupLetterGroup.get(name, LMarkup.OPEN_HEAD);
+        String closeHead = markupLetterGroup.get(name, LMarkup.CLOSE_HEAD);
+        if (openHead != null || closeHead != null) {
+            markupLetterGroup.write(writer, markupContainer, name,
                 LMarkup.OPEN_HEAD, trace);
-            LValue trans =
-                    interpreter.get(LSymbol.get("markup:letter-group-" + name
-                            + "-transform"));
-            if (trans == null || !(trans instanceof Transform)) {
-                writer.write(name);
-            } else {
-                writer.write(((Transform) trans).transform(name));
-            }
-            markupLetterGroup.write(writer, interpreter, name,
+            Transform trans = markupLetterGroup.getTransform(name);
+            writer.write(trans == null ? name : trans.transform(name));
+            markupLetterGroup.write(writer, markupContainer, name,
                 LMarkup.CLOSE_HEAD, trace);
         }
 
@@ -252,14 +249,14 @@ public class LetterGroup {
             if (first) {
                 first = false;
             } else {
-                markupLetterGroup.write(writer, interpreter, name, LMarkup.SEP,
-                    trace);
+                markupLetterGroup.write(writer, markupContainer, name,
+                    LMarkup.SEP, trace);
             }
 
-            entry.write(writer, interpreter, trace, 0);
+            entry.write(writer, interpreter, markupContainer, trace, 0);
         }
-        markupLetterGroup
-            .write(writer, interpreter, name, LMarkup.CLOSE, trace);
+        markupLetterGroup.write(writer, markupContainer, name, LMarkup.CLOSE,
+            trace);
     }
 
 }

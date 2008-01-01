@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -63,9 +63,10 @@ public class LocrefList implements LocationClassGroup {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.LocationClassGroup#write(java.io.Writer,
-     *      org.extex.exindex.lisp.LInterpreter, boolean)
+     *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
-    public void write(Writer writer, LInterpreter interpreter, boolean trace) {
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace) {
 
         // TODO gene: write unimplemented
         throw new RuntimeException("unimplemented");

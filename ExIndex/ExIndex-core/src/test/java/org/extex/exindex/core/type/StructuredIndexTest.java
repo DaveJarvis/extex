@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -46,7 +46,7 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite1() throws Exception {
 
-        StructuredIndex index = new StructuredIndex();
+        StructuredIndex index = new StructuredIndex(null);
         index.defineLetterGroup("a");
         index.defineLetterGroup("b");
 
@@ -74,7 +74,7 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite2() throws Exception {
 
-        StructuredIndex index = new StructuredIndex();
+        StructuredIndex index = new StructuredIndex(null);
         index.defineLetterGroup("a");
         index.defineLetterGroup("b");
 
@@ -104,7 +104,7 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite3() throws Exception {
 
-        StructuredIndex index = new StructuredIndex();
+        StructuredIndex index = new StructuredIndex(null);
         index.defineLetterGroup("a");
         index.defineLetterGroup("b");
 
@@ -135,7 +135,7 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite4() throws Exception {
 
-        StructuredIndex index = new StructuredIndex();
+        StructuredIndex index = new StructuredIndex(null);
         index.defineLetterGroup("a");
         index.defineLetterGroup("b");
         // Entry entry =

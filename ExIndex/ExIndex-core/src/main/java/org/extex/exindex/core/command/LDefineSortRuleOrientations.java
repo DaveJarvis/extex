@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -107,12 +107,15 @@ public class LDefineSortRuleOrientations extends LFunction {
             if ("".equals(or)) {
                 throw new LNonMatchingTypeException(null);
             } else if ("forward".startsWith(or) || "ascending".startsWith(or)) {
-                container.lookupOrCreate(level).setAscending(true);
+                container.lookupOrCreateSortRule(Integer.valueOf(level))
+                    .setAscending(true);
             } else if ("backward".startsWith(or) || "descending".startsWith(or)) {
-                container.lookupOrCreate(level).setAscending(false);
+                container.lookupOrCreateSortRule(Integer.valueOf(level))
+                    .setAscending(false);
             } else {
                 throw new LNonMatchingTypeException(null);
             }
+            level++;
         }
 
         return LList.NIL;

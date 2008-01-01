@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,9 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkup;
 import org.extex.exindex.core.command.type.LMarkupTransform;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.transform.Capitalize;
 import org.extex.exindex.core.type.transform.Downcase;
 import org.extex.exindex.core.type.transform.Upcase;
@@ -29,7 +29,6 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
-import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -77,22 +76,23 @@ import org.extex.exindex.lisp.type.value.LValue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMarkupLetterGroup extends LFunction {
+public class LMarkupLetterGroup extends AbstractLAdapter {
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the index container
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupLetterGroup(String name)
+    public LMarkupLetterGroup(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_STRING(":group", null), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":group", null), //
                 Arg.OPT_STRING(":open", ""), //
                 Arg.OPT_STRING(":close", ""), //
                 Arg.OPT_STRING(":open-head", ""), //
@@ -130,12 +130,7 @@ public class LMarkupLetterGroup extends LFunction {
                 InconsistentFlagsException,
                 LNonMatchingTypeException {
 
-        LValue container = interpreter.get(getName());
-        if (!(container instanceof LMarkup)) {
-            throw new LNonMatchingTypeException(null);
-        }
-
-        LMarkupTransform markup = (LMarkupTransform) container;
+        LMarkupTransform markup = (LMarkupTransform) getMarkup(interpreter);
         markup.set(group, open, close, openHead, closeHead,
             force == Boolean.TRUE);
 

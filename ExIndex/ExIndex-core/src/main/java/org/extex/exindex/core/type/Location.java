@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,12 +38,13 @@ public interface Location {
      * 
      * @param writer the writer
      * @param interpreter the interpreter
+     * @param markupContainer the container for markup
      * @param trace the indicator for tracing
-     * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    void write(Writer writer, LInterpreter interpreter, boolean trace)
+    void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace)
             throws IOException,
                 LNonMatchingTypeException;
 
