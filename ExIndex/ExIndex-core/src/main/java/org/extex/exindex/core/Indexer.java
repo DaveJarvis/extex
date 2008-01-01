@@ -67,6 +67,7 @@ import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.command.type.LMarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
@@ -126,7 +127,7 @@ public class Indexer extends LEngine {
     private IndexContainer container = new IndexContainer();
 
     /**
-     * Creates a new object.
+     * Creates a new object and initialized it.
      * 
      * @throws NoSuchMethodException in case of an undefined method in a
      *         function definition
@@ -151,11 +152,12 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Define a function to set the markup and initialize the markup in the
+     * markup container.
      * 
      * @param name the name in the L system
      * @param clazz the class
-     * @param traceName the name for tracing
+     * @param markup the markup object
      * 
      * @throws SecurityException in case of an error
      * @throws NoSuchMethodException in case of an error
@@ -164,7 +166,7 @@ public class Indexer extends LEngine {
      * @throws IllegalAccessException in case of an error
      * @throws InvocationTargetException in case of an error
      */
-    protected void defMarkup(String name, Class<?> clazz, String traceName)
+    protected void defMarkup(String name, Class<?> clazz, LMarkup markup)
             throws SecurityException,
                 NoSuchMethodException,
                 IllegalArgumentException,
@@ -173,10 +175,9 @@ public class Indexer extends LEngine {
                 InvocationTargetException {
 
         defun(name, //
-            (LFunction) clazz
-                .getConstructor(String.class, IndexContainer.class)
-                .newInstance(name, container));
-        container.defineMarkup(name, new LMarkup(traceName));
+            (LFunction) clazz.getConstructor(String.class, //
+                IndexContainer.class).newInstance(name, container));
+        container.defineMarkup(name, markup);
 
     }
 
@@ -231,41 +232,44 @@ public class Indexer extends LEngine {
         defun("use-rule-set", new LUseRuleSet("use-rule-set", container));
 
         defMarkup("markup-attribute-group-list",
-            LMarkupAttributeGroupList.class, "ATTRIBUTE-GROUP-LIST");
+            LMarkupAttributeGroupList.class,
+            new LMarkup("ATTRIBUTE-GROUP-LIST"));
         defMarkup("markup-attribute-group", LMarkupAttributeGroup.class,
-            "ATTRIBUTE-GROUP");
+            new LMarkup("ATTRIBUTE-GROUP"));
         defMarkup("markup-crossref-layer", LMarkupCrossrefLayer.class,
-            "CROSSREF-LAYER");
+            new LMarkup("CROSSREF-LAYER"));
         defMarkup("markup-crossref-layer-list", LMarkupCrossrefLayerList.class,
-            "CROSSREF-LAYER-LIST");
+            new LMarkup("CROSSREF-LAYER-LIST"));
         defMarkup("markup-crossref-list", LMarkupCrossrefList.class,
-            "CROSSREF-LIST");
-        defMarkup("markup-index", LMarkupIndex.class, "INDEX");
-        defMarkup("markup-indexentry", LMarkupIndexEntry.class, "INDEXENTRY");
+            new LMarkup("CROSSREF-LIST"));
+        defMarkup("markup-index", LMarkupIndex.class, //
+            new LMarkup("INDEX"));
+        defMarkup("markup-indexentry", LMarkupIndexEntry.class, //
+            new LMarkup("INDEXENTRY"));
         defMarkup("markup-indexentry-list", LMarkupIndexEntryList.class,
-            "INDEXENTRY-LIST");
-        defMarkup("markup-keyword", LMarkupKeyword.class, "KEYWORD");
-        defMarkup("markup-keyword-list", LMarkupKeywordList.class,
-            "KEYWORD-LIST");
+            new LMarkup("INDEXENTRY-LIST"));
+        defMarkup("markup-keyword", LMarkupKeyword.class,
+            new LMarkup("KEYWORD"));
+        defMarkup("markup-keyword-list", LMarkupKeywordList.class, //
+            new LMarkup("KEYWORD-LIST"));
         defMarkup("markup-letter-group", LMarkupLetterGroup.class,
-            "LETTER-GROUP");
+            new LMarkupTransform("LETTER-GROUP"));
         defMarkup("markup-letter-group-list", LMarkupLetterGroupList.class,
-            "LETTER-GROUP-LIST");
+            new LMarkup("LETTER-GROUP-LIST"));
         defMarkup("markup-locclass-list", LMarkupLocclassList.class,
-            "LOCCLASS-LIST");
-        defMarkup("markup-locref-list", LMarkupLocrefList.class, "LOCREF-LIST");
-        defMarkup("markup-locref", LMarkupLocref.class, "LOCREF");
-        defMarkup("markup-locref-layer", LMarkupLocrefLayer.class,
-            "LOCREF-LAYER");
+            new LMarkup("LOCCLASS-LIST"));
+        defMarkup("markup-locref-list", LMarkupLocrefList.class, //
+            new LMarkup("LOCREF-LIST"));
+        defMarkup("markup-locref", LMarkupLocref.class, //
+            new LMarkup("LOCREF"));
+        defMarkup("markup-locref-layer", LMarkupLocrefLayer.class, //
+            new LMarkup("LOCREF-LAYER"));
         defMarkup("markup-locref-layer-list", LMarkupLocrefLayerList.class,
-            "LOCREF-LAYER-LIST");
-        defMarkup("markup-range", LMarkupRange.class, "RANGE");
-
-        defun("markup-trace", new LMarkupTrace("markup-trace", //
-            container.get("")));
-        LMarkup traceMarkup = new LMarkup("TRACE");
-        traceMarkup.setDefault("<", ">\n");
-        setq("markup-trace", traceMarkup);
+            new LMarkup("LOCREF-LAYER-LIST"));
+        defMarkup("markup-range", LMarkupRange.class, //
+            new LMarkup("RANGE"));
+        defMarkup("markup-trace", LMarkupTrace.class, //
+            new LMarkup("TRACE", "<", ">\n"));
 
         container.addLocationClass("arabic-numbers", new ArabicNumbers());
         container.addLocationClass("roman-numbers-uppercase",

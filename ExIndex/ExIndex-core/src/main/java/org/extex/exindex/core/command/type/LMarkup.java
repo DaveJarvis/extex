@@ -144,11 +144,15 @@ public class LMarkup implements LValue {
      * Creates a new object.
      * 
      * @param displayName the name for debugging
+     * @param args the arguments for the defaults
      */
-    public LMarkup(String displayName) {
+    public LMarkup(String displayName, String... args) {
 
         super();
         this.displayName = displayName;
+        if (args.length > 0) {
+            setDefault(args);
+        }
     }
 
     /**

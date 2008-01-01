@@ -62,6 +62,7 @@ public class IndexContainer
             AttributesContainer,
             CrossrefClassContainer,
             LocationClassContainer,
+            MarkupContainer,
             RuleSetContainer,
             SortRuleContainer,
             FallbackContainer {
@@ -540,6 +541,17 @@ public class IndexContainer
     public void setDepth(int depth) {
 
         currentIndex.setDepth(depth);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
+     *      java.lang.String, org.extex.exindex.core.command.type.LMarkup)
+     */
+    public void setMarkup(String name, LMarkup m) {
+
+        currentIndex.setMarkup(name, m);
     }
 
     /**

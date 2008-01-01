@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.command.type.LMarkup;
+import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -112,20 +114,21 @@ import org.extex.exindex.lisp.type.value.LValue;
 public class LMarkupTrace extends LFunction {
 
     /**
-     * The field <tt>container</tt> contains the ...
+     * The field <tt>container</tt> contains the container for indices.
      */
-    private MarkupContainer container;
+    private IndexContainer container;
 
     /**
      * Creates a new object.
      * 
      * @param name the name of the function
+     * @param container the container for indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LMarkupTrace(String name, MarkupContainer container)
+    public LMarkupTrace(String name, IndexContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -151,7 +154,12 @@ public class LMarkupTrace extends LFunction {
             String close) throws LSettingConstantException {
 
         interpreter.setq("markup:trace", LBoolean.valueOf(on.booleanValue()));
-        container.getMarkup("markup-trace").setDefault(open, close);
+        LMarkup markup = container.getMarkup("markup-trace");
+        if (markup == null) {
+            markup = new LMarkup("TRACE");
+            container.setMarkup("markup:trace", markup);
+        }
+        markup.setDefault(open, close);
         return null;
     }
 
