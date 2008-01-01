@@ -67,7 +67,7 @@ import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.Markup;
-import org.extex.exindex.core.command.type.LMarkupTransform;
+import org.extex.exindex.core.command.type.MarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
@@ -253,7 +253,7 @@ public class Indexer extends LEngine {
         defMarkup("markup-keyword-list", LMarkupKeywordList.class, //
             new Markup("KEYWORD-LIST"));
         defMarkup("markup-letter-group", LMarkupLetterGroup.class,
-            new LMarkupTransform("LETTER-GROUP"));
+            new MarkupTransform("LETTER-GROUP"));
         defMarkup("markup-letter-group-list", LMarkupLetterGroupList.class,
             new Markup("LETTER-GROUP-LIST"));
         defMarkup("markup-locclass-list", LMarkupLocclassList.class,

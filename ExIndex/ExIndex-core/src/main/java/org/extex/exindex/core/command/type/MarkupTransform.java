@@ -30,7 +30,7 @@ import org.extex.exindex.core.type.transform.Transform;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LMarkupTransform extends Markup {
+public class MarkupTransform extends Markup {
 
     /**
      * This is a container for parameters.
@@ -149,7 +149,7 @@ public class LMarkupTransform extends Markup {
      * 
      * @param displayName the name for debugging
      */
-    public LMarkupTransform(String displayName) {
+    public MarkupTransform(String displayName) {
 
         super(displayName);
     }

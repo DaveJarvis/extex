@@ -29,7 +29,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.extex.exindex.core.command.type.Markup;
-import org.extex.exindex.core.command.type.LMarkupTransform;
+import org.extex.exindex.core.command.type.MarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
@@ -225,8 +225,8 @@ public class LetterGroup {
             return;
         }
 
-        LMarkupTransform markupLetterGroup =
-                (LMarkupTransform) markupContainer
+        MarkupTransform markupLetterGroup =
+                (MarkupTransform) markupContainer
                     .getMarkup("markup-letter-group");
 
         boolean first = true;

@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LMarkupTransform;
+import org.extex.exindex.core.command.type.MarkupTransform;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.transform.Capitalize;
@@ -130,7 +130,7 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
                 InconsistentFlagsException,
                 LNonMatchingTypeException {
 
-        LMarkupTransform markup = (LMarkupTransform) getMarkup(interpreter);
+        MarkupTransform markup = (MarkupTransform) getMarkup(interpreter);
         markup.set(group, open, close, openHead, closeHead,
             force == Boolean.TRUE);
 
