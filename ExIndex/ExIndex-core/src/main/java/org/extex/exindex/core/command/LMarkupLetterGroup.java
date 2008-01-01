@@ -19,9 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.MarkupTransform;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.type.IndexContainer;
+import org.extex.exindex.core.type.markup.MarkupTransform;
 import org.extex.exindex.core.type.transform.Capitalize;
 import org.extex.exindex.core.type.transform.Downcase;
 import org.extex.exindex.core.type.transform.Upcase;

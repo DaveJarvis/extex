@@ -31,7 +31,6 @@ import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.CrossrefClassContainer;
 import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.command.type.SortRuleContainer;
@@ -40,6 +39,7 @@ import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.alphabet.Alphabet;
 import org.extex.exindex.core.type.alphabet.LocationClass;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.exception.LException;
@@ -547,7 +547,7 @@ public class IndexContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
-     *      java.lang.String, org.extex.exindex.core.command.type.Markup)
+     *      java.lang.String, org.extex.exindex.core.type.markup.Markup)
      */
     public void setMarkup(String name, Markup m) {
 

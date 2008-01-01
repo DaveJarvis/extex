@@ -66,8 +66,6 @@ import org.extex.exindex.core.command.LSearchpath;
 import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.Markup;
-import org.extex.exindex.core.command.type.MarkupTransform;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
@@ -84,6 +82,9 @@ import org.extex.exindex.core.type.alphabet.ArabicNumbers;
 import org.extex.exindex.core.type.alphabet.Digits;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsLowercase;
 import org.extex.exindex.core.type.alphabet.RomanNumeralsUppercase;
+import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.markup.MarkupNum;
+import org.extex.exindex.core.type.markup.MarkupTransform;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -232,8 +233,7 @@ public class Indexer extends LEngine {
         defun("use-rule-set", new LUseRuleSet("use-rule-set", container));
 
         defMarkup("markup-attribute-group-list",
-            LMarkupAttributeGroupList.class,
-            new Markup("ATTRIBUTE-GROUP-LIST"));
+            LMarkupAttributeGroupList.class, new Markup("ATTRIBUTE-GROUP-LIST"));
         defMarkup("markup-attribute-group", LMarkupAttributeGroup.class,
             new Markup("ATTRIBUTE-GROUP"));
         defMarkup("markup-crossref-layer", LMarkupCrossrefLayer.class,
@@ -248,8 +248,7 @@ public class Indexer extends LEngine {
             new Markup("INDEXENTRY"));
         defMarkup("markup-indexentry-list", LMarkupIndexEntryList.class,
             new Markup("INDEXENTRY-LIST"));
-        defMarkup("markup-keyword", LMarkupKeyword.class,
-            new Markup("KEYWORD"));
+        defMarkup("markup-keyword", LMarkupKeyword.class, new Markup("KEYWORD"));
         defMarkup("markup-keyword-list", LMarkupKeywordList.class, //
             new Markup("KEYWORD-LIST"));
         defMarkup("markup-letter-group", LMarkupLetterGroup.class,
@@ -259,15 +258,15 @@ public class Indexer extends LEngine {
         defMarkup("markup-locclass-list", LMarkupLocclassList.class,
             new Markup("LOCCLASS-LIST"));
         defMarkup("markup-locref-list", LMarkupLocrefList.class, //
-            new Markup("LOCREF-LIST"));
+            new MarkupNum("LOCREF-LIST"));
         defMarkup("markup-locref", LMarkupLocref.class, //
-            new Markup("LOCREF"));
+            new MarkupNum("LOCREF"));
         defMarkup("markup-locref-layer", LMarkupLocrefLayer.class, //
-            new Markup("LOCREF-LAYER"));
+            new MarkupNum("LOCREF-LAYER"));
         defMarkup("markup-locref-layer-list", LMarkupLocrefLayerList.class,
-            new Markup("LOCREF-LAYER-LIST"));
+            new MarkupNum("LOCREF-LAYER-LIST"));
         defMarkup("markup-range", LMarkupRange.class, //
-            new Markup("RANGE"));
+            new MarkupNum("RANGE"));
         defMarkup("markup-trace", LMarkupTrace.class, //
             new Markup("TRACE", "<", ">\n"));
 

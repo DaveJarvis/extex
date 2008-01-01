@@ -28,11 +28,11 @@ import java.util.Map;
 
 import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.core.command.type.SortRules;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
@@ -265,7 +265,7 @@ public class StructuredIndex extends LetterGroupContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(java.lang.String,
-     *      org.extex.exindex.core.command.type.Markup)
+     *      org.extex.exindex.core.type.markup.Markup)
      */
     public void setMarkup(String name, Markup m) {
 

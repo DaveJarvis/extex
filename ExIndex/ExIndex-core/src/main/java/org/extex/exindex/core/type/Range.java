@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.extex.exindex.core.command.LMarkupRange;
-import org.extex.exindex.core.command.type.Markup;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LBoolean;

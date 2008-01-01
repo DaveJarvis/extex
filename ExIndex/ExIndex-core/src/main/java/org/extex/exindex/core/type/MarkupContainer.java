@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.type;
 
-import org.extex.exindex.core.command.type.Markup;
+import org.extex.exindex.core.type.markup.Markup;
 
 /**
  * This interface describes a container for markup information.

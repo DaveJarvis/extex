@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type.markup;
 
 import java.util.HashMap;
 import java.util.Map;

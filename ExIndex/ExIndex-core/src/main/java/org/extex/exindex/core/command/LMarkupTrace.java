@@ -19,9 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.MarkupContainer;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;

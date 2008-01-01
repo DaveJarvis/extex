@@ -19,8 +19,8 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.Markup;
 import org.extex.exindex.core.type.IndexContainer;
+import org.extex.exindex.core.type.markup.MarkupNum;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -113,7 +113,7 @@ public class LMarkupLocrefLayer extends AbstractLAdapter {
             throws LSettingConstantException,
                 LNonMatchingTypeException {
 
-        Markup markup = getMarkup(interpreter);
+        MarkupNum markup = (MarkupNum) getMarkup(interpreter);
         markup.set(clazz, open, close);
         markup.setNumber(clazz, 0, layer == null ? 0 : (int) layer.getValue());
         markup.setNumber(clazz, 1, depth == null ? 0 : (int) depth.getValue());

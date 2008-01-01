@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type.markup;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -127,11 +127,6 @@ public class Markup {
     private Map<String, String[]> map = new HashMap<String, String[]>();
 
     /**
-     * The field <tt>numMap</tt> contains the content.
-     */
-    private Map<String, int[]> numMap = new HashMap<String, int[]>();
-
-    /**
      * The field <tt>displayName</tt> contains the name of debugging.
      */
     private String displayName;
@@ -168,25 +163,6 @@ public class Markup {
             value = map.get(null);
         }
         return (value == null ? "" : value[index.getNo()]);
-    }
-
-    /**
-     * Get an element at a certain position. If the position is empty then an
-     * attempt is made to use the default value at position <code>null</code>.
-     * If everything fails 0 is returned.
-     * 
-     * @param key the key
-     * @param index the index
-     * 
-     * @return the specified element or <tt>nil</tt>
-     */
-    public int getNumber(String key, int index) {
-
-        int[] value = numMap.get(key);
-        if (value == null && key != null) {
-            value = numMap.get(null);
-        }
-        return (value == null ? 0 : value[index]);
     }
 
     /**
@@ -230,26 +206,6 @@ public class Markup {
         for (int index = 0; index < value.length && index < SIZE; index++) {
             a[index] = value[index];
         }
-    }
-
-    /**
-     * Add a value to the end.
-     * 
-     * @param key the key
-     * @param index the index
-     * @param value the value to add
-     */
-    public void setNumber(String key, int index, int value) {
-
-        int[] a = numMap.get(key);
-        if (a == null) {
-            a = new int[2];
-            numMap.put(key, a);
-            for (int i = 0; i < SIZE; i++) {
-                a[i] = 0;
-            }
-        }
-        a[index] = value;
     }
 
     /**

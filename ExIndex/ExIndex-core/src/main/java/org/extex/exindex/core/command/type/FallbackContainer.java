@@ -19,6 +19,8 @@
 
 package org.extex.exindex.core.command.type;
 
+import org.extex.exindex.core.type.markup.Markup;
+
 /**
  * This interface describes the handling of several fallback scenarios.
  * 
