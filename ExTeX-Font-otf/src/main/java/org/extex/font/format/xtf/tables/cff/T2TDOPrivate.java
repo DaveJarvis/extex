@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,14 +33,9 @@ import org.extex.util.xml.XMLStreamWriter;
 /**
  * Private.
  * 
- * Private DICT Operators Name Value Operand(s) Default, notes BlueValues 6
- * delta - OtherBlues 7 delta - FamilyBlues 8 delta - FamilyOtherBlues 9 delta -
- * BlueScale 12 9 number - 0.039625 BlueShift 12 10 number 7 BlueFuzz 12 11
- * number 1 StdHW 10 number - StdVW 11 number - StemSnapH 12 12 delta -
- * StemSnapV 12 13 delta - ForceBold 12 14 boolean false LanguageGroup 12 17
- * number 0 ExpansionFactor 12 18 number 0.06 initialRandomSeed 12 19 number 0
- * Subrs 19 number -, Offset (self) to local subrs defaultWidthX 20 number 0,
- * see below nominalWidthX 21 number 0, see below
+ * <p>
+ * Private DICT Operators Name Value Operand(s).
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -166,6 +161,17 @@ public class T2TDOPrivate extends T2TDOArray {
                 }
             }
 
+            // initialize
+            for (int i = 0, n = list.size(); i < n; i++) {
+                list.get(i).init(rar, cff, baseoffset, cffFont);
+            }
+
+            // initialize "Subrs"
+            T1DictKey dk = hashValues.get("subrs");
+            if (dk != null) {
+                T1Subrs subrs = (T1Subrs) dk;
+                subrs.readSubrs(rar, cff, baseoffset + offset, cffFont);
+            }
         }
     }
 
@@ -179,9 +185,6 @@ public class T2TDOPrivate extends T2TDOArray {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        writer.writeAttribute("size", size);
-        writer.writeAttribute("offset", offset);
-
         if (dictkeys != null) {
             for (int i = 0; i < dictkeys.length; i++) {
                 T1DictKey dk = dictkeys[i];

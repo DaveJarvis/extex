@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -76,6 +76,11 @@ public class CharString implements XMLWriterConvertible {
     private int minY = 0;
 
     /**
+     * Do not use char names (e.g. for subrs)
+     */
+    private boolean noname;
+
+    /**
      * The t2 operators.
      */
     private List<T2Operator> t2Ops = new ArrayList<T2Operator>();
@@ -102,8 +107,19 @@ public class CharString implements XMLWriterConvertible {
      */
     public CharString(CffFont cffFont, int idx) {
 
+        this(cffFont, idx, false);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param idx The index.
+     */
+    public CharString(CffFont cffFont, int idx, boolean noname) {
+
         this.cffFont = cffFont;
         this.idx = idx;
+        this.noname = noname;
     }
 
     /**
@@ -157,7 +173,7 @@ public class CharString implements XMLWriterConvertible {
      */
     public void checkWidth() {
 
-        if (width == null) {
+        if (width == null && cffFont != null) {
             width = new Integer(cffFont.getDefaultWidthX());
         }
     }
@@ -254,7 +270,10 @@ public class CharString implements XMLWriterConvertible {
      */
     public String getName() {
 
-        return cffFont.getNameForPos(idx);
+        if (cffFont != null) {
+            return cffFont.getNameForPos(idx);
+        }
+        return "???";
     }
 
     /**
@@ -350,7 +369,7 @@ public class CharString implements XMLWriterConvertible {
      */
     public void setWidth(T2Number width) {
 
-        if (width != null) {
+        if (width != null && cffFont != null) {
             this.width =
                     new Integer(cffFont.getNominalWidthX() + width.getInteger());
         }
@@ -392,7 +411,9 @@ public class CharString implements XMLWriterConvertible {
         writer.writeStartElement("chars");
         writer.writeAttribute("id", idx);
 
-        writer.writeAttribute("name", getName());
+        if (!noname) {
+            writer.writeAttribute("name", getName());
+        }
         writer.writeAttribute("width", width);
 
         for (int i = 0; i < t2Ops.size(); i++) {

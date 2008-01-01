@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -205,6 +205,27 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the bias.
+     * 
+     * @param nSubrs The number of subr indexies.
+     * @return Returns the bias.
+     */
+    private int getBias(int nSubrs) {
+
+        int bias = 0;
+        if (getCharstringType() == 1) {
+            bias = 0;
+        } else if (nSubrs < 1240) {
+            bias = 107;
+        } else if (nSubrs < 33900) {
+            bias = 1131;
+        } else {
+            bias = 32768;
+        }
+        return bias;
+    }
+
+    /**
      * Returns the BlueFuzz. (default: 1)
      * 
      * @return Returns the BlueFuzz.
@@ -338,6 +359,23 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the {@link CharString} with the name or <code>null</code>, if
+     * not found.
+     * 
+     * @param name The name of the charstring.
+     * @return Returns the {@link CharString} with the name.
+     */
+    public CharString getCharstring(String name) {
+
+        T2Operator op = topDictIndex.get("charstring");
+        if (op != null && op instanceof T2TDOCharStrings) {
+            T2TDOCharStrings val = (T2TDOCharStrings) op;
+            return val.getCharString(name);
+        }
+        return null;
+    }
+
+    /**
      * Returns the CharstringType. (default: 2)
      * 
      * @return Returns the CharstringType.
@@ -355,23 +393,6 @@ public class CffFont implements XMLWriterConvertible {
 
         return 2;
 
-    }
-
-    /**
-     * Returns the {@link CharString} with the name or <code>null</code>, if
-     * not found.
-     * 
-     * @param name The name of the charstring.
-     * @return Returns the {@link CharString} with the name.
-     */
-    public CharString getCharstring(String name) {
-
-        T2Operator op = topDictIndex.get("charstring");
-        if (op != null && op instanceof T2TDOCharStrings) {
-            T2TDOCharStrings val = (T2TDOCharStrings) op;
-            return val.getCharString(name);
-        }
-        return null;
     }
 
     /**
@@ -834,6 +855,27 @@ public class CffFont implements XMLWriterConvertible {
     public int getStrokewidth() {
 
         return strokewidth;
+    }
+
+    /**
+     * Returns the {@link CharString} (subrs) with the index or
+     * <code>null</code>, if not found.
+     * 
+     * @param idx The index.
+     * @return Returns the {@link CharString} with the index.
+     */
+    public CharString getSubrs(int idx) {
+
+        T2Operator op = topDictIndex.get("private");
+        if (op != null && op instanceof T2TDOPrivate) {
+            T2TDOPrivate priv = (T2TDOPrivate) op;
+            T1DictKey dk = priv.getT1DictKey("subrs");
+            if (dk != null && dk instanceof T1Subrs) {
+                T1Subrs subrs = (T1Subrs) dk;
+                return subrs.getCharString(idx);
+            }
+        }
+        return null;
     }
 
     /**

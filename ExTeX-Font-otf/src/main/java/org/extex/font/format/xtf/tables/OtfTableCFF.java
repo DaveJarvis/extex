@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.extex.font.format.xtf.XtfReader;
 import org.extex.font.format.xtf.tables.cff.CffFont;
+import org.extex.font.format.xtf.tables.cff.CharString;
 import org.extex.font.format.xtf.tables.cff.T2CharString;
 import org.extex.font.format.xtf.tables.cff.T2Operator;
 import org.extex.font.format.xtf.tables.cff.T2StandardStrings;
@@ -166,6 +167,11 @@ public class OtfTableCFF extends AbstractXtfTable
     private CffFont[] fonts;
 
     /**
+     * The array of the char strings.
+     */
+    private CharString[] gSubrChars;
+
+    /**
      * header size
      */
     private int hdrSize;
@@ -274,16 +280,6 @@ public class OtfTableCFF extends AbstractXtfTable
         return null;
     }
 
-    /**
-     * Returns the hdrSize.
-     * 
-     * @return Returns the hdrSize.
-     */
-    public int getHdrSize() {
-
-        return hdrSize;
-    }
-
     // /**
     // * Getter for namedIndex.
     // *
@@ -293,6 +289,16 @@ public class OtfTableCFF extends AbstractXtfTable
     //
     // return namedIndex;
     // }
+
+    /**
+     * Returns the hdrSize.
+     * 
+     * @return Returns the hdrSize.
+     */
+    public int getHdrSize() {
+
+        return hdrSize;
+    }
 
     /**
      * Returns the number of glyphs
@@ -508,28 +514,87 @@ public class OtfTableCFF extends AbstractXtfTable
         return data;
     }
 
+    /**
+     * Read the gsubr index.
+     * 
+     * TODO mgn: incomplete
+     * 
+     * @param nextOffset
+     * @param rar
+     * @return
+     * @throws IOException
+     */
     private long readGSubrIndex(long nextOffset, RandomAccessR rar)
             throws IOException {
 
-        rar.seek(nextOffset);
-        int[] offsetarray = readOffsets(rar);
+        if (nextOffset > 0) {
+            rar.seek(nextOffset);
 
-        // get data
-        for (int i = 0; i < offsetarray.length - 1; i++) {
-            /* byte[] data = */
-            readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+            int[] offsetarray = readOffsets(rar);
 
-            // stringIndex.add(convertArrayToString(data));
-            // int x = 0;
+            gSubrChars = new CharString[offsetarray.length - 1];
+
+            // get data
+            for (int i = 0; i < offsetarray.length - 1; i++) {
+
+                byte[] data =
+                        cff.readDataFromIndex(offsetarray[i],
+                            offsetarray[i + 1], rar);
+
+                gSubrChars[i] = new CharString(null, i, true);
+
+                RandomAccessInputArray arar = new RandomAccessInputArray(data);
+                try {
+                    while (true) {
+                        // read until eof
+                        T2Operator op =
+                                T2Operator.newInstance(arar, gSubrChars[i]);
+                        gSubrChars[i].add(op);
+                        if (arar.isEOF()) {
+                            break;
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // TODO change to EOFException ignore
+                }
+                gSubrChars[i].checkWidth();
+            }
+
         }
         return rar.getPointer();
     }
 
     /**
-     * Read the Header. TODO: create html-table Type Name Description Card8
-     * major Format major version (starting at 1) Card8 minor Format minor
-     * version (starting at 0) Card8 hdrSize Header size (bytes) OffSize offSize
-     * Absolute offset (0) size
+     * Read the Header.
+     * 
+     * <table border="1">
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * <tr>
+     * <td>Card8</td>
+     * <td>major</td>
+     * <td>Format major version (starting at 1) </td>
+     * </tr>
+     * <tr>
+     * <td>Card8</td>
+     * <td>minor</td>
+     * <td>Format minor version (starting at 0) </td>
+     * </tr>
+     * <tr>
+     * <td>Card8</td>
+     * <td>hdrSize</td>
+     * <td>Header size (bytes)</td>
+     * </tr>
+     * <tr>
+     * <td>OffSize</td>
+     * <td>offSize</td>
+     * <td>Absolute offset (0) size</td>
+     * </tr>
+     * </table>
      * 
      * @param rar The Input.
      * @throws IOException if an IO-error occurs
@@ -723,6 +788,15 @@ public class OtfTableCFF extends AbstractXtfTable
             writer.writeAttribute("sid", i);
             writer.writeAttribute("value", getStringIndex(i));
             writer.writeEndElement();
+        }
+        writer.writeEndElement();
+
+        // gsubr
+        writer.writeStartElement("gsubr");
+        if (gSubrChars != null) {
+            for (int i = 0; i < gSubrChars.length; i++) {
+                gSubrChars[i].writeXML(writer);
+            }
         }
         writer.writeEndElement();
 

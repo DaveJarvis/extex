@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -253,6 +253,7 @@ public abstract class T1DictKey extends T2CharString
      *      org.extex.font.format.xtf.tables.OtfTableCFF, int,
      *      org.extex.font.format.xtf.tables.cff.CffFont)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
             CffFont cffFont) throws IOException {
 
