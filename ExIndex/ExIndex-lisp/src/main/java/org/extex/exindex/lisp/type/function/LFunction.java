@@ -163,7 +163,7 @@ public abstract class LFunction {
             if (cause instanceof LException) {
                 throw (LException) cause;
             }
-            throw new LException(e);
+            throw new LException(cause);
         }
 
         if (ret instanceof LValue) {
