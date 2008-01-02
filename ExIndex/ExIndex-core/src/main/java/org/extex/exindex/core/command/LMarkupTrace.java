@@ -132,7 +132,7 @@ public class LMarkupTrace extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_BOOLEAN(":on"), //
+        super(name, new Arg[]{Arg.OPT_BOOLEAN(":on", Boolean.FALSE), //
                 Arg.OPT_STRING(":open", "<"), //
                 Arg.OPT_STRING(":close", ">\n")});
         this.container = container;

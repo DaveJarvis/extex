@@ -360,7 +360,7 @@ public class IndexContainer
      */
     public int getSize() {
 
-        return indexMap.size();
+        return indexMap.size() - 1;
     }
 
     /**

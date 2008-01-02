@@ -97,10 +97,10 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
                 Arg.OPT_STRING(":close", ""), //
                 Arg.OPT_STRING(":open-head", ""), //
                 Arg.OPT_STRING(":close-head", ""), //
-                Arg.OPT_BOOLEAN(":upcase"), //
-                Arg.OPT_BOOLEAN(":downcase"), //
-                Arg.OPT_BOOLEAN(":capitalize"), //
-                Arg.OPT_BOOLEAN(":force-printing")});
+                Arg.OPT_BOOLEAN(":upcase", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":downcase", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":capitalize", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":force-printing", Boolean.FALSE)});
     }
 
     /**

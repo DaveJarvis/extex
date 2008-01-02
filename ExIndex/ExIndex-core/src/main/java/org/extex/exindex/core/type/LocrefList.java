@@ -20,6 +20,8 @@
 package org.extex.exindex.core.type;
 
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.extex.exindex.core.parser.raw.LocRef;
 import org.extex.exindex.lisp.LInterpreter;
@@ -36,6 +38,11 @@ public class LocrefList implements LocationClassGroup {
      * The field <tt>clazz</tt> contains the class.
      */
     private String clazz;
+
+    /**
+     * The field <tt>list</tt> contains the ...
+     */
+    private List<LocRef> list = new ArrayList<LocRef>();
 
     /**
      * Creates a new object.
@@ -55,8 +62,7 @@ public class LocrefList implements LocationClassGroup {
      */
     public void store(LocRef ref) {
 
-        // TODO gene: store unimplemented
-        throw new RuntimeException("unimplemented");
+        list.add(ref);
     }
 
     /**

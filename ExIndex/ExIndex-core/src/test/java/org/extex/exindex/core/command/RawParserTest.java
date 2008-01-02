@@ -25,6 +25,8 @@ import static org.junit.Assert.assertNotNull;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.command.type.Attribute;
@@ -51,6 +53,18 @@ public class RawParserTest {
             LSymbol.get("define-attributes");
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    private Logger makeLogger() {
+
+        Logger logger = Logger.getLogger("");
+        logger.setLevel(Level.SEVERE);
+        return logger;
+    }
+
+    /**
      * Run a test. This means load some configuration instruction into an
      * Indexer.
      * 
@@ -65,10 +79,9 @@ public class RawParserTest {
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
         indexer.load(new StringReader(in), "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-        return function;
+        AttributesContainer container = indexer.getContainer();
+        assertNotNull(container);
+        return container;
     }
 
     /**
@@ -94,6 +107,7 @@ public class RawParserTest {
 
         AttributesContainer def = runTest("(define-attributes (\"abc\"))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -110,9 +124,11 @@ public class RawParserTest {
         AttributesContainer def =
                 runTest("(define-attributes (\"abc\" \"def\"))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
         att = def.lookupAttribute("def");
+        assertNotNull(att);
         assertEquals(1, att.getGroup());
         assertEquals(1, att.getOrd());
     }
@@ -128,6 +144,7 @@ public class RawParserTest {
 
         AttributesContainer def = runTest("(define-attributes ((\"abc\")))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -144,9 +161,11 @@ public class RawParserTest {
         AttributesContainer def =
                 runTest("(define-attributes ((\"abc\" \"def\")))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
         att = def.lookupAttribute("def");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(1, att.getOrd());
     }
@@ -224,9 +243,8 @@ public class RawParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * <testcase> Test that an undefined attribute leads to an error.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -236,13 +254,10 @@ public class RawParserTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
-        rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, null);
+        rsc
+            .add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
+        indexer.run(null, rsc, null, makeLogger());
     }
 
     /**
@@ -258,13 +273,9 @@ public class RawParserTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, null);
+        indexer.run(null, rsc, null, makeLogger());
     }
 
     /**
@@ -278,13 +289,9 @@ public class RawParserTest {
     public final void testFull02Ok() throws Exception {
 
         Indexer indexer = new TestableIndexer();
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, null);
+        indexer.run(null, rsc, null, makeLogger());
     }
 
 }

@@ -180,6 +180,16 @@ public class Indexer extends LEngine {
     }
 
     /**
+     * Getter for container.
+     * 
+     * @return the container
+     */
+    public IndexContainer getContainer() {
+
+        return container;
+    }
+
+    /**
      * Initialize the L system.
      * 
      * @throws NoSuchMethodException in case of an undefined method in a

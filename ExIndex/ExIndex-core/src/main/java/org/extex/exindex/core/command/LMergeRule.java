@@ -99,10 +99,10 @@ public class LMergeRule extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.STRING,
-                Arg.OPT_BOOLEAN(":again"), //
-                Arg.OPT_BOOLEAN(":string"), //
-                Arg.OPT_BOOLEAN(":bregexp"), //
-                Arg.OPT_BOOLEAN(":eregexp")});
+                Arg.OPT_BOOLEAN(":again", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":string", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":bregexp", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":eregexp", Boolean.FALSE)});
         this.container = container;
     }
 

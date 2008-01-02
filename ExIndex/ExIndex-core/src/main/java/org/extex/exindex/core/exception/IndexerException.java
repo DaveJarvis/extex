@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.exception;
 
+import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.parser.ResourceLocator;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -29,7 +30,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 6631 $
  */
-public class IndexerException extends Exception {
+public class IndexerException extends LException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for

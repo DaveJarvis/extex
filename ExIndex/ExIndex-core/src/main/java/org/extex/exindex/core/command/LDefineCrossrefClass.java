@@ -92,7 +92,7 @@ public class LDefineCrossrefClass extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, //
-                Arg.OPT_BOOLEAN(":unverified")});
+                Arg.OPT_BOOLEAN(":unverified", Boolean.FALSE)});
         this.container = container;
     }
 

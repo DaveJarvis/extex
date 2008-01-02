@@ -19,6 +19,7 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.exception.IndexAliasLoopException;
 import org.extex.exindex.core.exception.UnknownIndexException;
 import org.extex.exindex.core.type.IndexContainer;
@@ -103,7 +104,7 @@ public class LDefineIndex extends AbstractLAdapter {
                 NoSuchMethodException {
 
         super(name, container, new Arg[]{Arg.LSTRING, //
-                Arg.OPT_BOOLEAN(":drop"), //
+                Arg.OPT_BOOLEAN(":drop", null), //
                 Arg.OPT_STRING(":merge-to", null)});
     }
 
@@ -121,13 +122,15 @@ public class LDefineIndex extends AbstractLAdapter {
      * @throws LSettingConstantException should not happen
      * @throws UnknownIndexException in case of an undefined index mapping
      * @throws IndexAliasLoopException in case of a potential loop in aliases
+     * @throws InconsistentFlagsException in case of inconsistent flags
      */
     public LValue evaluate(LInterpreter interpreter, LString name,
             Boolean drop, String mergeTo)
             throws LNonMatchingTypeException,
                 LSettingConstantException,
                 UnknownIndexException,
-                IndexAliasLoopException {
+                IndexAliasLoopException,
+                InconsistentFlagsException {
 
         int flag = (drop != null ? 1 : 0) | (mergeTo != null ? 2 : 0);
 
@@ -140,8 +143,11 @@ public class LDefineIndex extends AbstractLAdapter {
                 index.setDropped(drop == Boolean.TRUE);
                 break;
             case 2:
-                mergTo(mergeTo, index);
+                mergeTo(mergeTo, index);
                 break;
+            case 3:
+                throw new InconsistentFlagsException(null, ":dropped",
+                    ":merge-to");
         }
 
         return null;
@@ -156,7 +162,7 @@ public class LDefineIndex extends AbstractLAdapter {
      * @throws UnknownIndexException in case of an unknown index
      * @throws IndexAliasLoopException in case of a potential loop in aliases
      */
-    private void mergTo(String mergeTo, StructuredIndex index)
+    private void mergeTo(String mergeTo, StructuredIndex index)
             throws UnknownIndexException,
                 IndexAliasLoopException {
 
@@ -166,7 +172,7 @@ public class LDefineIndex extends AbstractLAdapter {
         }
         int size = getContainer().getSize();
 
-        while (size-- > 0) {
+        while (index != alias && size-- > 0) {
 
             StructuredIndex a = alias.getAlias();
             if (a == null) {

@@ -65,10 +65,8 @@ public class LDefineAttributesTest {
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
         indexer.load(new StringReader(in), "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-        return function;
+        assertNotNull(indexer.getFunction(DEFINE_ATTRIBUTES));
+        return indexer.getContainer();
     }
 
     /**
@@ -94,6 +92,7 @@ public class LDefineAttributesTest {
 
         AttributesContainer def = runTest("(define-attributes (\"abc\"))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -110,9 +109,11 @@ public class LDefineAttributesTest {
         AttributesContainer def =
                 runTest("(define-attributes (\"abc\" \"def\"))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
         att = def.lookupAttribute("def");
+        assertNotNull(att);
         assertEquals(1, att.getGroup());
         assertEquals(1, att.getOrd());
     }
@@ -128,6 +129,7 @@ public class LDefineAttributesTest {
 
         AttributesContainer def = runTest("(define-attributes ((\"abc\")))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
     }
@@ -144,9 +146,11 @@ public class LDefineAttributesTest {
         AttributesContainer def =
                 runTest("(define-attributes ((\"abc\" \"def\")))");
         Attribute att = def.lookupAttribute("abc");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(0, att.getOrd());
         att = def.lookupAttribute("def");
+        assertNotNull(att);
         assertEquals(0, att.getGroup());
         assertEquals(1, att.getOrd());
     }
@@ -236,10 +240,6 @@ public class LDefineAttributesTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
         indexer.run(null, rsc, null, null);
@@ -258,10 +258,6 @@ public class LDefineAttributesTest {
         Indexer indexer = new TestableIndexer();
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
         indexer.run(null, rsc, null, null);

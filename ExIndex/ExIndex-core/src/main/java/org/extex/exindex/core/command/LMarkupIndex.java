@@ -179,8 +179,8 @@ public class LMarkupIndex extends AbstractLAdapter {
 
         super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
                 Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_BOOLEAN(":flat"), //
-                Arg.OPT_BOOLEAN(":tree"), //
+                Arg.OPT_BOOLEAN(":flat", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":tree", Boolean.FALSE), //
                 Arg.OPT_LNUMBER(":hierdepth", null)});
         this.container = container;
     }
