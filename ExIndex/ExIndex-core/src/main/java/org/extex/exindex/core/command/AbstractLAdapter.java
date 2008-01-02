@@ -25,7 +25,6 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
-import org.extex.exindex.lisp.type.value.LString;
 
 /**
  * This abstract base class provides common functionality for the adapter to the
@@ -90,7 +89,7 @@ public class AbstractLAdapter extends LFunction {
      * 
      * @param name the name of the index
      */
-    protected void setCurrentIndex(LString name) {
+    protected void setCurrentIndex(String name) {
 
         container.setCurrentIndex(name);
     }

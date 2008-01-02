@@ -137,4 +137,20 @@ public class Attribute {
         this.drop = drop;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        if (drop) {
+            return "<attribute " + name + " :drop>";
+        } else if (alias != null) {
+            return "<attribute " + name + " :merge-to " + alias + ">";
+        }
+        return "<attribute " + name + ">";
+    }
+
 }

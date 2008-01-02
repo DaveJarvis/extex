@@ -109,7 +109,7 @@ public class LForIndex extends AbstractLAdapter {
             throws LNonMatchingTypeException,
                 LSettingConstantException {
 
-        setCurrentIndex(name);
+        setCurrentIndex(name == null ? null : name.getValue());
         return null;
     }
 

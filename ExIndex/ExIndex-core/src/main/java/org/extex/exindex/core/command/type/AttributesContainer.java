@@ -30,19 +30,19 @@ public interface AttributesContainer {
     /**
      * Define an attribute
      * 
-     * @param key the name of the attribute
-     * @param attribute the information
+     * @param attribute the name of the attribute
+     * @param attributeData the information
      */
-    void defineAttribute(String key, Attribute attribute);
+    void defineAttribute(String attribute, Attribute attributeData);
 
     /**
      * Check whether an attribute is defined.
      * 
-     * @param key the name of the attribute
+     * @param attribute the name of the attribute
      * 
      * @return <code>true</code> iff the attribute is defined
      */
-    boolean isAttributeDefined(String key);
+    boolean isAttributeDefined(String attribute);
 
     /**
      * Getter for a named attribute
