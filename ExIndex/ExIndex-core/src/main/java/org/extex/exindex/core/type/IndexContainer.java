@@ -44,7 +44,6 @@ import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -88,12 +87,6 @@ public class IndexContainer
      * The field <tt>rules</tt> contains the mapping from names to rule sets.
      */
     private Map<String, List<Rule>> rules = new HashMap<String, List<Rule>>();
-
-    /**
-     * The field <tt>attributeMap</tt> contains the attributes.
-     */
-    private Map<String, Attribute> attributeMap =
-            new HashMap<String, Attribute>();
 
     /**
      * The field <tt>alphabetMap</tt> contains the alphabets.
@@ -243,7 +236,7 @@ public class IndexContainer
      */
     public void defineAttribute(String key, Attribute attribute) {
 
-        get(DEFAULT_INDEX).defineAttribute(key, attribute);
+        currentIndex.defineAttribute(key, attribute);
     }
 
     /**
@@ -366,12 +359,16 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
+     * <p>
+     * The request is delegated to the current index.
+     * </p>
+     * 
      * @see org.extex.exindex.core.command.type.AttributesContainer#isAttributeDefined(
      *      java.lang.String)
      */
     public boolean isAttributeDefined(String name) {
 
-        return attributeMap.containsKey(name);
+        return currentIndex.isAttributeDefined(name);
     }
 
     /**
@@ -411,12 +408,16 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
+     * <p>
+     * The request is delegated to the current index.
+     * </p>
+     * 
      * @see org.extex.exindex.core.command.type.AttributesContainer#lookupAttribute(
      *      java.lang.String)
      */
     public Attribute lookupAttribute(String attribute) {
 
-        return attributeMap.get(attribute);
+        return currentIndex.lookupAttribute(attribute);
     }
 
     /**
@@ -531,7 +532,7 @@ public class IndexContainer
      * 
      * @param name the name
      */
-    public void setCurrentIndex(LString name) {
+    public void setCurrentIndex(String name) {
 
         StructuredIndex index = indexMap.get(name);
         if (index == null) {
@@ -544,6 +545,10 @@ public class IndexContainer
     /**
      * Setter for depth.
      * 
+     * <p>
+     * The request is delegated to the current index.
+     * </p>
+     * 
      * @param depth the depth to set
      */
     public void setDepth(int depth) {
@@ -553,6 +558,10 @@ public class IndexContainer
 
     /**
      * {@inheritDoc}
+     * 
+     * <p>
+     * The request is delegated to the current index.
+     * </p>
      * 
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
      *      java.lang.String, org.extex.exindex.core.type.markup.Markup)

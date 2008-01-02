@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.core.command.type.Attribute;
+import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.core.command.type.FallbackContainer;
 import org.extex.exindex.core.command.type.SortRuleContainer;
 import org.extex.exindex.core.command.type.SortRules;
@@ -49,6 +50,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  */
 public class StructuredIndex extends LetterGroupContainer
         implements
+            AttributesContainer,
             SortRuleContainer,
             MarkupContainer {
 
@@ -92,7 +94,8 @@ public class StructuredIndex extends LetterGroupContainer
     private Map<String, Markup> markup = new HashMap<String, Markup>();
 
     /**
-     * The field <tt>alias</tt> contains the ...
+     * The field <tt>alias</tt> contains the alias for this index. If it is
+     * not <code>null</code> then all entries should be stored there.
      */
     private StructuredIndex alias = null;
 
@@ -190,7 +193,7 @@ public class StructuredIndex extends LetterGroupContainer
      * Define or redefine an attribute.
      * 
      * @param key the name of the attribute
-     * @param attribute the description of the attribue
+     * @param attribute the description of the attribute
      */
     public void defineAttribute(String key, Attribute attribute) {
 
@@ -222,6 +225,16 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.AttributesContainer#isAttributeDefined(java.lang.String)
+     */
+    public boolean isAttributeDefined(String attribute) {
+
+        return attributeMap.containsKey(attribute);
+    }
+
+    /**
      * Getter for the dropped indicator.
      * 
      * @return the dropped indicator
@@ -229,6 +242,16 @@ public class StructuredIndex extends LetterGroupContainer
     public boolean isDropped() {
 
         return dropped;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.command.type.AttributesContainer#lookupAttribute(java.lang.String)
+     */
+    public Attribute lookupAttribute(String attribute) {
+
+        return attributeMap.get(attribute);
     }
 
     /**

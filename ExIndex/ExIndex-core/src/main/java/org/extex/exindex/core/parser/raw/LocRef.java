@@ -75,7 +75,7 @@ public class LocRef implements RefSpec {
             AttributesContainer attributes) {
 
         String attr = entry.getRef().getLayer();
-        if (attr != null && attributes.lookupAttribute(attr) == null) {
+        if (attr != null && !attributes.isAttributeDefined(attr)) {
             logger.severe(LocalizerFactory.getLocalizer(Indexer.class).format(
                 "AttributeUnknown", attr));
             return false;
