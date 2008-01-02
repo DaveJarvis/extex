@@ -120,12 +120,13 @@ public class Arg {
      * Get the descriptor for an optional boolean.
      * 
      * @param flag the name of the boolean flag
+     * @param fallback the default value
      * 
      * @return a new specification for the name
      */
-    public static final Arg OPT_BOOLEAN(String flag) {
+    public static final Arg OPT_BOOLEAN(String flag, Boolean fallback) {
 
-        return new Arg(flag, Boolean.class, Boolean.FALSE, false) {
+        return new Arg(flag, Boolean.class, fallback, false) {
 
             /**
              * {@inheritDoc}
