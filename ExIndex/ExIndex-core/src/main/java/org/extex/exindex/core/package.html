@@ -60,8 +60,52 @@
   </p>  
 
 
+
   </doc>
 
+  <doc section="Key Mapping">
+
+  <h2>Key Mapping</h2>  
+
+  <div style="float:right;">
+    <img src="doc-files/key-mapping-diagram.png"/>
+    <center>
+    Figure: Key Mapping
+    </center>
+  </div>
+  <p>
+   The index processor reads in data of a raw index entry. It needs to
+   determine where to put the index entry in the structured index. For
+   this purpose a special key is constructed in several phases. The
+   initial key read is called the main key. The main key is usually
+   passed in explicitely or derived from a key passed in.
+  </p>
+  <p>
+   In a first phase the main key is mapped to the merge key. The merge
+   key is transformed into the sort key in a second phase. The sort
+   key is then used to determine the letter group for the entry and to
+   sort it amoung all entries.
+  </p>
+
+
+  </doc>
+
+  <doc section="Inheritance of Parameters">
+
+  <h2>Inheritance of Parameters</h2>  
+
+  <div style="float:right;">
+    <img src="doc-files/fallback-diagram.png"/>
+    <center>
+    Figure: Inheritance of Parameters
+    </center>
+  </div>
+  <p>
+   ...
+  </p>
+
+
+  </doc>
 
  </body>
 </html>

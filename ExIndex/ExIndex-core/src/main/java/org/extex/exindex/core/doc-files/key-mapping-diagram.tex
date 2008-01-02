@@ -17,7 +17,7 @@
 \sf\bfseries\selectfont
 
 \unitlength=1.8pt
-\begin{picture}(220,100)
+\begin{picture}(290,100)(40,0)
 
   \put(0,40){\framebox(40,10){main-key-0}}
   \put(0,30){\framebox(40,10){main-key-1}}
@@ -45,6 +45,12 @@
     \put(201,19.6){\line(0,1){29.6}}
   }
 
+  \put(240,40){\framebox(40,10){letter-group}}
+  {\linethickness{2.4pt}
+    \put(242,39){\line(1,0){39.6}}
+    \put(281,39.6){\line(0,1){9.6}}
+  }
+
   \thicklines
   \put(40,45){\arrow{merge-rule}{}}
   \put(40,35){\arrow{merge-rule}{}}
@@ -53,6 +59,8 @@
   \put(120,45){\arrow{sort-rule}{:level 0}}
   \put(120,35){\arrow{sort-rule}{:level 1}}
   \put(120,25){\arrow{sort-rule}{:level 2}}
+
+  \put(200,45){\arrow{alphabet}{}}
 
 \end{picture}
 
