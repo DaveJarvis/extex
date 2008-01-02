@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.raw;
+package org.extex.exindex.core.type.raw;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -75,9 +75,9 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#check(
+     * @see org.extex.exindex.core.type.raw.RefSpec#check(
      *      java.util.logging.Logger,
-     *      org.extex.exindex.core.parser.raw.RawIndexentry,
+     *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
      *      org.extex.exindex.core.type.CrossrefClassContainer,
      *      java.util.List,
@@ -116,7 +116,7 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#getLayer()
+     * @see org.extex.exindex.core.type.raw.RefSpec#getLayer()
      */
     public String getLayer() {
 
@@ -126,7 +126,7 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.RefSpec#getLocation()
+     * @see org.extex.exindex.core.type.raw.RefSpec#getLocation()
      */
     public String getLocation() {
 

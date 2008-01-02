@@ -29,9 +29,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.markup.MarkupTransform;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;

@@ -24,8 +24,8 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exindex.core.parser.raw.CrossReference;
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.raw.CrossReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 

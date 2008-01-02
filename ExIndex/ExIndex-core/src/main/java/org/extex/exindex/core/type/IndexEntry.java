@@ -27,11 +27,11 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.parser.raw.CrossReference;
-import org.extex.exindex.core.parser.raw.LocRef;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
-import org.extex.exindex.core.parser.raw.RefSpec;
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.raw.CrossReference;
+import org.extex.exindex.core.type.raw.LocRef;
+import org.extex.exindex.core.type.raw.RawIndexentry;
+import org.extex.exindex.core.type.raw.RefSpec;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.framework.i18n.LocalizerFactory;

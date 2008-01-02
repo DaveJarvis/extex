@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.alphabet.Alphabet;
 import org.extex.exindex.core.type.alphabet.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
@@ -35,6 +34,7 @@ import org.extex.exindex.core.type.attribute.Attribute;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.RuleSetContainer;
 import org.extex.exindex.core.type.rules.SortRuleContainer;

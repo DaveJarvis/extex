@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.raw;
+package org.extex.exindex.core.type.raw;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,41 +27,41 @@ import org.extex.exindex.core.type.CrossrefClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
- * This interface describes an open location specification.
+ * This interface describes a reference specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public class OpenLocRef extends LocRef {
+public interface RefSpec {
 
     /**
-     * Creates a new object.
+     * Check the reference.
      * 
-     * @param location the location
-     * @param layer the layer
-     */
-    public OpenLocRef(String location, String layer) {
-
-        super(location, layer);
-    }
-
-    /**
-     * {@inheritDoc}
+     * @param logger the logger
+     * @param entry the current index entry
+     * @param index the index for cross-reference lookup
+     * @param crossrefClass the container for cross-reference classes
+     * @param openPages the list of open pages
+     * @param attributes the defined attributes
      * 
-     * @see org.extex.exindex.core.parser.raw.LocRef#check(
-     *      java.util.logging.Logger,
-     *      org.extex.exindex.core.parser.raw.RawIndexentry,
-     *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
-     *      org.extex.exindex.core.type.attribute.AttributesContainer)
+     * @return <code>true</code> iff everything is ok
      */
-    @Override
-    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+    boolean check(Logger logger, RawIndexentry entry, Indexer index,
             CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
-            AttributesContainer attributes) {
+            AttributesContainer attributes);
 
-        openPages.add(this);
-        return super.check(logger, entry, index, crossrefClass, openPages,
-            attributes);
-    }
+    /**
+     * Getter for the layer.
+     * 
+     * @return the layer or <code>null</code>
+     */
+    String getLayer();
+
+    /**
+     * Getter for the location.
+     * 
+     * @return the location
+     */
+    String getLocation();
+
 }

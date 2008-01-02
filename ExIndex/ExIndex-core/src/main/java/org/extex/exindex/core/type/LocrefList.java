@@ -23,7 +23,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.parser.raw.LocRef;
+import org.extex.exindex.core.type.raw.LocRef;
 import org.extex.exindex.lisp.LInterpreter;
 
 /**

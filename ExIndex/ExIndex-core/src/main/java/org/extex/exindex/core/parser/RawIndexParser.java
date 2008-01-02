@@ -21,7 +21,7 @@ package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 
-import org.extex.exindex.core.parser.raw.RawIndexentry;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.lisp.exception.LException;
 
 /**

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.raw;
+package org.extex.exindex.core.type.raw;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -48,9 +48,9 @@ public class CloseLocRef extends LocRef {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.raw.LocRef#check(
+     * @see org.extex.exindex.core.type.raw.LocRef#check(
      *      java.util.logging.Logger,
-     *      org.extex.exindex.core.parser.raw.RawIndexentry,
+     *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
      *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)

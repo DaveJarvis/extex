@@ -29,7 +29,7 @@ import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.makeindex.MakeindexParser;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
 import org.extex.exindex.lisp.type.value.LString;

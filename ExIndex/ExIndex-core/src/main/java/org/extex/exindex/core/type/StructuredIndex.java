@@ -27,10 +27,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.attribute.Attribute;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.SortRuleContainer;
 import org.extex.exindex.core.type.rules.SortRules;

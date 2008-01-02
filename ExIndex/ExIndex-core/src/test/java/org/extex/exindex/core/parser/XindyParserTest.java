@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.StringReader;
 
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.core.parser.raw.RawIndexentry;
+import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.junit.Test;
 
 /**

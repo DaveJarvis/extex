@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.raw;
+package org.extex.exindex.core.type.raw;
 
 import org.extex.exindex.core.util.StringUtils;
 
