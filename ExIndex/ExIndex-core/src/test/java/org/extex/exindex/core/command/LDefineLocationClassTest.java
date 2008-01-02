@@ -60,9 +60,7 @@ public class LDefineLocationClassTest {
         Indexer indexer = new Indexer();
         assertNotNull(indexer);
         indexer.load(new StringReader(in), "<reader>");
-        LocationClassContainer function =
-                (LocationClassContainer) indexer
-                    .getFunction(DEFINE_LOCATION_CLASS);
+        LocationClassContainer function = indexer.getContainer();
         assertNotNull(function);
         return function;
     }
