@@ -36,6 +36,9 @@ import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.type.rules.RuleSetContainer;
+import org.extex.exindex.core.type.rules.SortRuleContainer;
+import org.extex.exindex.core.type.rules.SortRules;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -170,7 +173,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.RuleSetContainer#addRule(
+     * @see org.extex.exindex.core.type.rules.RuleSetContainer#addRule(
      *      java.lang.String, java.util.List)
      */
     public void addRule(String name, List<Rule> rule) {
@@ -181,7 +184,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRule(
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRule(
      *      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
@@ -192,7 +195,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRules(
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(
      *      Integer, java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
@@ -439,7 +442,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#lookupOrCreateSortRule(
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(
      *      Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
@@ -450,7 +453,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.RuleSetContainer#lookupRule(
+     * @see org.extex.exindex.core.type.rules.RuleSetContainer#lookupRule(
      *      java.lang.String)
      */
     public List<Rule> lookupRule(String name) {
@@ -461,7 +464,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -568,7 +571,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#sortRuleSize()
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#sortRuleSize()
      */
     public int sortRuleSize() {
 

@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.exception.InconsistentFlagsException;
-import org.extex.exindex.core.type.RuleSetContainer;
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.type.rules.RuleSetContainer;
 import org.extex.exindex.core.type.rules.StringRule;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;

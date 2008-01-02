@@ -32,6 +32,8 @@ import org.extex.exindex.core.type.attribute.Attribute;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.rules.Rule;
+import org.extex.exindex.core.type.rules.SortRuleContainer;
+import org.extex.exindex.core.type.rules.SortRules;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -120,7 +122,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRule(
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRule(
      *      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
@@ -136,7 +138,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRules(Integer,
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(Integer,
      *      java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
@@ -254,7 +256,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#lookupOrCreateSortRule(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
 
@@ -269,7 +271,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -320,7 +322,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.SortRuleContainer#sortRuleSize()
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#sortRuleSize()
      */
     public int sortRuleSize() {
 

@@ -17,11 +17,10 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.rules;
 
 import java.util.ArrayList;
 
-import org.extex.exindex.core.type.rules.Rule;
 
 /**
  * This class provides a container for sort rules.

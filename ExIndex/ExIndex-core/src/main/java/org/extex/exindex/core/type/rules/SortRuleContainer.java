@@ -17,11 +17,10 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.type.rules;
 
 import java.util.List;
 
-import org.extex.exindex.core.type.rules.Rule;
 
 /**
  * This interface describes a container for sort rules.
