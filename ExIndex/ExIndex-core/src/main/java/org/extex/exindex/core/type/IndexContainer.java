@@ -26,19 +26,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.command.type.AlphabetContainer;
-import org.extex.exindex.core.command.type.Attribute;
-import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.CrossrefClassContainer;
-import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.LocationClassContainer;
-import org.extex.exindex.core.command.type.RuleSetContainer;
-import org.extex.exindex.core.command.type.SortRuleContainer;
-import org.extex.exindex.core.command.type.SortRules;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
 import org.extex.exindex.core.type.alphabet.Alphabet;
+import org.extex.exindex.core.type.alphabet.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
+import org.extex.exindex.core.type.attribute.Attribute;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.rules.Rule;
@@ -133,7 +127,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.AlphabetContainer#addAlphabet(
+     * @see org.extex.exindex.core.type.alphabet.AlphabetContainer#addAlphabet(
      *      java.lang.String, org.extex.exindex.core.type.alphabet.Alphabet)
      */
     public void addAlphabet(String name, Alphabet alphabet) {
@@ -144,7 +138,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#addLocationClass(
+     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(
      *      java.lang.String,
      *      org.extex.exindex.core.type.alphabet.LocationClass)
      */
@@ -176,7 +170,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.RuleSetContainer#addRule(
+     * @see org.extex.exindex.core.type.RuleSetContainer#addRule(
      *      java.lang.String, java.util.List)
      */
     public void addRule(String name, List<Rule> rule) {
@@ -187,7 +181,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#addSortRule(
+     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRule(
      *      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
@@ -198,7 +192,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#addSortRules(
+     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRules(
      *      Integer, java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
@@ -209,7 +203,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.FallbackContainer#applyMergeRuleFallback(
+     * @see org.extex.exindex.core.type.FallbackContainer#applyMergeRuleFallback(
      *      String)
      */
     public String applyMergeRuleFallback(String text) {
@@ -220,7 +214,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.FallbackContainer#applySortRuleFallback(
+     * @see org.extex.exindex.core.type.FallbackContainer#applySortRuleFallback(
      *      java.lang.String, int)
      */
     public String applySortRuleFallback(String text, int level) {
@@ -231,8 +225,8 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#defineAttribute(
-     *      java.lang.String, org.extex.exindex.core.command.type.Attribute)
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#defineAttribute(
+     *      java.lang.String, org.extex.exindex.core.type.attribute.Attribute)
      */
     public void defineAttribute(String key, Attribute attribute) {
 
@@ -242,7 +236,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.CrossrefClassContainer#defineCrossrefClass(
+     * @see org.extex.exindex.core.type.CrossrefClassContainer#defineCrossrefClass(
      *      java.lang.String, java.lang.Boolean)
      */
     public void defineCrossrefClass(String name, Boolean verified) {
@@ -318,7 +312,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.FallbackContainer#getFallbackMarkup(String)
+     * @see org.extex.exindex.core.type.FallbackContainer#getFallbackMarkup(String)
      */
     public Markup getFallbackMarkup(String name) {
 
@@ -363,7 +357,7 @@ public class IndexContainer
      * The request is delegated to the current index.
      * </p>
      * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#isAttributeDefined(
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#isAttributeDefined(
      *      java.lang.String)
      */
     public boolean isAttributeDefined(String name) {
@@ -396,7 +390,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.AlphabetContainer#lookupAlphabet(
+     * @see org.extex.exindex.core.type.alphabet.AlphabetContainer#lookupAlphabet(
      *      java.lang.String)
      */
     public Alphabet lookupAlphabet(String name) {
@@ -412,7 +406,7 @@ public class IndexContainer
      * The request is delegated to the current index.
      * </p>
      * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#lookupAttribute(
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#lookupAttribute(
      *      java.lang.String)
      */
     public Attribute lookupAttribute(String attribute) {
@@ -423,7 +417,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.CrossrefClassContainer#lookupCrossrefClass(
+     * @see org.extex.exindex.core.type.CrossrefClassContainer#lookupCrossrefClass(
      *      java.lang.String)
      */
     public Boolean lookupCrossrefClass(String name) {
@@ -434,7 +428,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#lookupLocationClass(
+     * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
      *      java.lang.String)
      */
     public LocationClass lookupLocationClass(String name) {
@@ -445,7 +439,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookupOrCreateSortRule(
+     * @see org.extex.exindex.core.type.SortRuleContainer#lookupOrCreateSortRule(
      *      Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
@@ -456,7 +450,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.RuleSetContainer#lookupRule(
+     * @see org.extex.exindex.core.type.RuleSetContainer#lookupRule(
      *      java.lang.String)
      */
     public List<Rule> lookupRule(String name) {
@@ -467,7 +461,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.SortRuleContainer#lookupSortRules(Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -477,7 +471,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#makePageReference(
+     * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
      *      java.lang.String, java.lang.String)
      */
     public PageReference makePageReference(String encap, String s) {
@@ -494,7 +488,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.LocationClassContainer#orderLocationClasses(
+     * @see org.extex.exindex.core.type.LocationClassContainer#orderLocationClasses(
      *      java.lang.String[])
      */
     public void orderLocationClasses(String[] list) throws LException {
@@ -574,7 +568,7 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#sortRuleSize()
+     * @see org.extex.exindex.core.type.SortRuleContainer#sortRuleSize()
      */
     public int sortRuleSize() {
 

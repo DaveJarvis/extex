@@ -22,8 +22,8 @@ package org.extex.exindex.core.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.command.type.RuleSetContainer;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
+import org.extex.exindex.core.type.RuleSetContainer;
 import org.extex.exindex.core.type.rules.RegexRule;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.StringRule;

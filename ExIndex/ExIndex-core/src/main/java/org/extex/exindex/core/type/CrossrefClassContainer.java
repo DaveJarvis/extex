@@ -17,40 +17,32 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
 
 /**
- * This interface provides reading access to a container of defined attributes.
+ * This interface describes a read-only container for cross reference classes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface AttributesContainer {
+public interface CrossrefClassContainer {
 
     /**
-     * Define an attribute
+     * Define a cross-reference class.
      * 
-     * @param attribute the name of the attribute
-     * @param attributeData the information
+     * @param name the name of the cross-reference class
+     * @param verified the indicator for verified classes
      */
-    void defineAttribute(String attribute, Attribute attributeData);
+    void defineCrossrefClass(String name, Boolean verified);
 
     /**
-     * Check whether an attribute is defined.
+     * Getter for a cross-reference class.
      * 
-     * @param attribute the name of the attribute
+     * @param name the name of the cross-reference class
      * 
-     * @return <code>true</code> iff the attribute is defined
+     * @return the indicator for verified cross-reference classes or
+     *         <code>null</code> if the cross-reference class is not defined
      */
-    boolean isAttributeDefined(String attribute);
-
-    /**
-     * Getter for a named attribute
-     * 
-     * @param attribute the name of the attribute
-     * 
-     * @return the named attribute or <code>null</code> if not defined
-     */
-    Attribute lookupAttribute(String attribute);
+    Boolean lookupCrossrefClass(String name);
 
 }

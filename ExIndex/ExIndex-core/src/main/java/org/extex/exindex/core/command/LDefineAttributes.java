@@ -19,8 +19,8 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.Attribute;
-import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.type.attribute.Attribute;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;

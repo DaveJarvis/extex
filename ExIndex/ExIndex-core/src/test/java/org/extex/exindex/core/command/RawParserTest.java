@@ -32,8 +32,8 @@ import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.type.Attribute;
-import org.extex.exindex.core.command.type.AttributesContainer;
+import org.extex.exindex.core.type.attribute.Attribute;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.SyntaxException;

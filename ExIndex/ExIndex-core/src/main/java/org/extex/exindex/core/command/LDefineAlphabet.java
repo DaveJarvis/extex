@@ -22,7 +22,7 @@ package org.extex.exindex.core.command;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.command.type.AlphabetContainer;
+import org.extex.exindex.core.type.alphabet.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;

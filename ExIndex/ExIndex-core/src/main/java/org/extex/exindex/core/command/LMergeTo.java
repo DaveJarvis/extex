@@ -19,9 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.Attribute;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.type.IndexContainer;
+import org.extex.exindex.core.type.attribute.Attribute;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;

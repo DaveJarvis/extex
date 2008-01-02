@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,32 +17,44 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
+
+import org.extex.exindex.core.type.markup.Markup;
 
 /**
- * This interface describes a read-only container for cross reference classes.
+ * This interface describes the handling of several fallback scenarios.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface CrossrefClassContainer {
+public interface FallbackContainer {
 
     /**
-     * Define a cross-reference class.
+     * Apply the fallback merge rules.
      * 
-     * @param name the name of the cross-reference class
-     * @param verified the indicator for verified classes
+     * @param text the text to transform
+     * 
+     * @return the transformed text
      */
-    void defineCrossrefClass(String name, Boolean verified);
+    String applyMergeRuleFallback(String text);
 
     /**
-     * Getter for a cross-reference class.
+     * Apply the fallback sort rules.
      * 
-     * @param name the name of the cross-reference class
+     * @param text the text to transform
+     * @param level the current level
      * 
-     * @return the indicator for verified cross-reference classes or
-     *         <code>null</code> if the cross-reference class is not defined
+     * @return the transformed text
      */
-    Boolean lookupCrossrefClass(String name);
+    String applySortRuleFallback(String text, int level);
+
+    /**
+     * Getter for the fallback markup.
+     * 
+     * @param name the name
+     * 
+     * @return the markup
+     */
+    Markup getFallbackMarkup(String name);
 
 }

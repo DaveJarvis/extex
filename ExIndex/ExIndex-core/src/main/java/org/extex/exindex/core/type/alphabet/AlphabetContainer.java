@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,44 +17,32 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type.alphabet;
 
-import org.extex.exindex.core.type.markup.Markup;
 
 /**
- * This interface describes the handling of several fallback scenarios.
+ * This interface describes an container for named alphabets.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface FallbackContainer {
+public interface AlphabetContainer {
 
     /**
-     * Apply the fallback merge rules.
-     * 
-     * @param text the text to transform
-     * 
-     * @return the transformed text
-     */
-    String applyMergeRuleFallback(String text);
-
-    /**
-     * Apply the fallback sort rules.
-     * 
-     * @param text the text to transform
-     * @param level the current level
-     * 
-     * @return the transformed text
-     */
-    String applySortRuleFallback(String text, int level);
-
-    /**
-     * Getter for the fallback markup.
+     * Add an alphabet.
      * 
      * @param name the name
-     * 
-     * @return the markup
+     * @param alphabet the alphabet
      */
-    Markup getFallbackMarkup(String name);
+    void addAlphabet(String name, Alphabet alphabet);
+
+    /**
+     * Get a named alphabet.
+     * 
+     * @param name the name of the alphabet
+     * 
+     * @return the alphabet or <code>null</code> if it does not exist
+     */
+    Alphabet lookupAlphabet(String name);
 
 }

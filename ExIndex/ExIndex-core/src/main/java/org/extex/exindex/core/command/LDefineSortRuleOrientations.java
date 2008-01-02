@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.SortRuleContainer;
+import org.extex.exindex.core.type.SortRuleContainer;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.function.Arg;

@@ -17,35 +17,40 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
-
-import java.util.List;
-
-import org.extex.exindex.core.type.rules.Rule;
+package org.extex.exindex.core.type.attribute;
 
 /**
- * This interface describes a read-only container for rule sets.
+ * This interface provides reading access to a container of defined attributes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface RuleSetContainer {
+public interface AttributesContainer {
 
     /**
-     * Add a named definition of a rule.
+     * Define an attribute
      * 
-     * @param name the name of the rule
-     * @param rule the rule itself
+     * @param attribute the name of the attribute
+     * @param attributeData the information
      */
-    void addRule(String name, List<Rule> rule);
+    void defineAttribute(String attribute, Attribute attributeData);
 
     /**
-     * Find the definition of a rule set.
+     * Check whether an attribute is defined.
      * 
-     * @param name the name of the rule set
+     * @param attribute the name of the attribute
      * 
-     * @return the rule set or <code>null</code> if undefined
+     * @return <code>true</code> iff the attribute is defined
      */
-    List<Rule> lookupRule(String name);
+    boolean isAttributeDefined(String attribute);
+
+    /**
+     * Getter for a named attribute
+     * 
+     * @param attribute the name of the attribute
+     * 
+     * @return the named attribute or <code>null</code> if not defined
+     */
+    Attribute lookupAttribute(String attribute);
 
 }

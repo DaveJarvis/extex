@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
 
 import java.util.List;
 

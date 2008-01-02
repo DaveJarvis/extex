@@ -26,13 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exindex.core.command.type.Attribute;
-import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.FallbackContainer;
-import org.extex.exindex.core.command.type.SortRuleContainer;
-import org.extex.exindex.core.command.type.SortRules;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.parser.raw.RawIndexentry;
+import org.extex.exindex.core.type.attribute.Attribute;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.lisp.LInterpreter;
@@ -123,7 +120,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#addSortRule(
+     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRule(
      *      Integer, org.extex.exindex.core.type.rules.Rule)
      */
     public void addSortRule(Integer level, Rule rule) {
@@ -139,7 +136,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#addSortRules(Integer,
+     * @see org.extex.exindex.core.type.SortRuleContainer#addSortRules(Integer,
      *      java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
@@ -227,7 +224,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#isAttributeDefined(java.lang.String)
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#isAttributeDefined(java.lang.String)
      */
     public boolean isAttributeDefined(String attribute) {
 
@@ -247,7 +244,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.AttributesContainer#lookupAttribute(java.lang.String)
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#lookupAttribute(java.lang.String)
      */
     public Attribute lookupAttribute(String attribute) {
 
@@ -257,7 +254,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookupOrCreateSortRule(Integer)
+     * @see org.extex.exindex.core.type.SortRuleContainer#lookupOrCreateSortRule(Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
 
@@ -272,7 +269,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.SortRuleContainer#lookupSortRules(Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -323,7 +320,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.command.type.SortRuleContainer#sortRuleSize()
+     * @see org.extex.exindex.core.type.SortRuleContainer#sortRuleSize()
      */
     public int sortRuleSize() {
 

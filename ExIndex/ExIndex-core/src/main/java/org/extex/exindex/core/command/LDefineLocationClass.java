@@ -19,7 +19,7 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.command.type.LocationClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.alphabet.VarLocationClass;
 import org.extex.exindex.lisp.LInterpreter;

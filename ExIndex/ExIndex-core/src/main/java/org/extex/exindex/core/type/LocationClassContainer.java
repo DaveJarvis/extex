@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
 
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.page.PageReference;

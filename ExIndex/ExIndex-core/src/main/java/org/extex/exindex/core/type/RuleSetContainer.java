@@ -17,33 +17,35 @@
  *
  */
 
-package org.extex.exindex.core.command.type;
+package org.extex.exindex.core.type;
 
-import org.extex.exindex.core.type.alphabet.Alphabet;
+import java.util.List;
+
+import org.extex.exindex.core.type.rules.Rule;
 
 /**
- * This interface describes an container for named alphabets.
+ * This interface describes a read-only container for rule sets.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface AlphabetContainer {
+public interface RuleSetContainer {
 
     /**
-     * Add an alphabet.
+     * Add a named definition of a rule.
      * 
-     * @param name the name
-     * @param alphabet the alphabet
+     * @param name the name of the rule
+     * @param rule the rule itself
      */
-    void addAlphabet(String name, Alphabet alphabet);
+    void addRule(String name, List<Rule> rule);
 
     /**
-     * Get a named alphabet.
+     * Find the definition of a rule set.
      * 
-     * @param name the name of the alphabet
+     * @param name the name of the rule set
      * 
-     * @return the alphabet or <code>null</code> if it does not exist
+     * @return the rule set or <code>null</code> if undefined
      */
-    Alphabet lookupAlphabet(String name);
+    List<Rule> lookupRule(String name);
 
 }

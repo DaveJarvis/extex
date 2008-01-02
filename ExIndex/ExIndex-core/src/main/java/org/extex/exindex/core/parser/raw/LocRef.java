@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.util.StringUtils;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -66,9 +66,9 @@ public class LocRef implements RefSpec {
      *      java.util.logging.Logger,
      *      org.extex.exindex.core.parser.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.command.type.CrossrefClassContainer,
+     *      org.extex.exindex.core.type.CrossrefClassContainer,
      *      java.util.List,
-     *      org.extex.exindex.core.command.type.AttributesContainer)
+     *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
             CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.type.AttributesContainer;
-import org.extex.exindex.core.command.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
  * This interface describes an open location specification.
@@ -52,9 +52,8 @@ public class OpenLocRef extends LocRef {
      *      java.util.logging.Logger,
      *      org.extex.exindex.core.parser.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.command.type.CrossrefClassContainer,
-     *      java.util.List,
-     *      org.extex.exindex.core.command.type.AttributesContainer)
+     *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
+     *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     @Override
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
