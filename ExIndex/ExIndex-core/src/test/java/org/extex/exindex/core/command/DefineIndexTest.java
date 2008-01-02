@@ -23,16 +23,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.StringReader;
-
-import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.InconsistentFlagsException;
 import org.extex.exindex.core.exception.IndexAliasLoopException;
 import org.extex.exindex.core.exception.UnknownIndexException;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
-import org.extex.exindex.lisp.type.value.LSymbol;
 import org.junit.Test;
 
 /**
@@ -44,30 +40,6 @@ import org.junit.Test;
 public class DefineIndexTest {
 
     /**
-     * The field <tt>DEFINE_INDEX</tt> contains the symbol for define-index.
-     */
-    private static final LSymbol DEFINE_INDEX = LSymbol.get("define-index");
-
-    /**
-     * Run a test. This means load some configuration instruction into an
-     * Indexer.
-     * 
-     * @param in the option string
-     * 
-     * @return the function binding for define-attributes
-     * 
-     * @throws Exception in case of an error
-     */
-    private IndexContainer runTest(String in) throws Exception {
-
-        Indexer indexer = new Indexer();
-        assertNotNull(indexer);
-        indexer.load(new StringReader(in), "<reader>");
-        assertNotNull(indexer.getFunction(DEFINE_INDEX));
-        return indexer.getContainer();
-    }
-
-    /**
      * <testcase>Test that a new index can be defined.</testcase>
      * 
      * @throws Exception in case of an error
@@ -75,7 +47,7 @@ public class DefineIndexTest {
     @Test
     public final void test01() throws Exception {
 
-        IndexContainer container = runTest("(define-index \"abc\")");
+        IndexContainer container = TestUtils.runTest("(define-index \"abc\")");
         assertEquals(2, container.getSize());
     }
 
@@ -87,7 +59,8 @@ public class DefineIndexTest {
     @Test
     public final void test02() throws Exception {
 
-        IndexContainer container = runTest("(define-index \"a\" :drop)");
+        IndexContainer container =
+                TestUtils.runTest("(define-index \"a\" :drop)");
         StructuredIndex a = container.get("a");
         assertNotNull(a);
         assertTrue(a.isDropped());
@@ -102,7 +75,7 @@ public class DefineIndexTest {
     public final void test03() throws Exception {
 
         IndexContainer container =
-                runTest("(define-index \"a\")"
+                TestUtils.runTest("(define-index \"a\")"
                         + "(define-index \"b\" :merge-to \"a\")");
         StructuredIndex a = container.get("a");
         assertNotNull(a);
@@ -119,7 +92,7 @@ public class DefineIndexTest {
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        runTest("(define-index)");
+        TestUtils.runTest("(define-index)");
     }
 
     /**
@@ -130,7 +103,7 @@ public class DefineIndexTest {
     @Test(expected = UnknownIndexException.class)
     public final void testError02() throws Exception {
 
-        runTest("(define-index \"a\" :merge-to \"b\")");
+        TestUtils.runTest("(define-index \"a\" :merge-to \"b\")");
     }
 
     /**
@@ -141,7 +114,7 @@ public class DefineIndexTest {
     @Test(expected = IndexAliasLoopException.class)
     public final void testError03() throws Exception {
 
-        runTest("(define-index \"a\" :merge-to \"a\")");
+        TestUtils.runTest("(define-index \"a\" :merge-to \"a\")");
     }
 
     /**
@@ -152,7 +125,8 @@ public class DefineIndexTest {
     @Test(expected = IndexAliasLoopException.class)
     public final void testError04() throws Exception {
 
-        runTest("(define-index \"a\")" + "(define-index \"b\" :merge-to \"a\")"
+        TestUtils.runTest("(define-index \"a\")"
+                + "(define-index \"b\" :merge-to \"a\")"
                 + "(define-index \"a\" :merge-to \"b\")");
     }
 
@@ -164,7 +138,7 @@ public class DefineIndexTest {
     @Test(expected = InconsistentFlagsException.class)
     public final void testError05() throws Exception {
 
-        runTest("(define-index \"a\" :drop :merge-to \"b\")");
+        TestUtils.runTest("(define-index \"a\" :drop :merge-to \"b\")");
     }
 
 }

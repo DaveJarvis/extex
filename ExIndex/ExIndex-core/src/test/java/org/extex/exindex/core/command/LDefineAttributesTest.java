@@ -234,7 +234,7 @@ public class LDefineAttributesTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = LException.class)
+    @Test
     public final void testFull01Fail() throws Exception {
 
         Indexer indexer = new TestableIndexer();
@@ -242,7 +242,8 @@ public class LDefineAttributesTest {
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, null);
+        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        // TODO add more tests?
     }
 
     /**
@@ -260,7 +261,7 @@ public class LDefineAttributesTest {
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, null);
+        indexer.run(null, rsc, null, TestUtils.makeLogger());
     }
 
     /**
@@ -274,13 +275,9 @@ public class LDefineAttributesTest {
     public final void testFull02Ok() throws Exception {
 
         Indexer indexer = new TestableIndexer();
-        AttributesContainer function =
-                (AttributesContainer) indexer.getFunction(DEFINE_ATTRIBUTES);
-        assertNotNull(function);
-
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, null);
+        indexer.run(null, rsc, null, TestUtils.makeLogger());
     }
 
 }

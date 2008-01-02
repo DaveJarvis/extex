@@ -19,15 +19,8 @@
 
 package org.extex.exindex.core.command;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.StringReader;
-
-import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.command.type.LocationClassContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
-import org.extex.exindex.lisp.type.value.LSymbol;
 import org.junit.Test;
 
 /**
@@ -39,33 +32,6 @@ import org.junit.Test;
 public class LDefineLocationClassTest {
 
     /**
-     * The field <tt>DEFINE_ATTRIBUTES</tt> contains the symbol for
-     * define-attributes.
-     */
-    private static final LSymbol DEFINE_LOCATION_CLASS =
-            LSymbol.get("define-location-class");
-
-    /**
-     * Run a test. This means load some configuration instruction into an
-     * Indexer.
-     * 
-     * @param in the option string
-     * 
-     * @return the function binding for define-attributes
-     * 
-     * @throws Exception in case of an error
-     */
-    private LocationClassContainer runTest(String in) throws Exception {
-
-        Indexer indexer = new Indexer();
-        assertNotNull(indexer);
-        indexer.load(new StringReader(in), "<reader>");
-        LocationClassContainer function = indexer.getContainer();
-        assertNotNull(function);
-        return function;
-    }
-
-    /**
      * Test method for
      * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
      * 
@@ -74,7 +40,8 @@ public class LDefineLocationClassTest {
     @Test
     public final void test01() throws Exception {
 
-        runTest("(define-location-class \"abc\" (\"arabic-numbers\"))");
+        TestUtils
+            .runTest("(define-location-class \"abc\" (\"arabic-numbers\"))");
     }
 
     /**
@@ -86,7 +53,7 @@ public class LDefineLocationClassTest {
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        runTest("(define-location-class )");
+        TestUtils.runTest("(define-location-class )");
     }
 
     /**
@@ -98,7 +65,7 @@ public class LDefineLocationClassTest {
     @Test(expected = LException.class)
     public final void testError02() throws Exception {
 
-        runTest("(define-location-class \"abc\")");
+        TestUtils.runTest("(define-location-class \"abc\")");
     }
 
 }

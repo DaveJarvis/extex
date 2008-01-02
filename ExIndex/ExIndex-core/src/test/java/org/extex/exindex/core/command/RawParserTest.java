@@ -22,11 +22,14 @@ package org.extex.exindex.core.command;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.ByteArrayOutputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.command.type.Attribute;
@@ -34,7 +37,7 @@ import org.extex.exindex.core.command.type.AttributesContainer;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.SyntaxException;
-import org.extex.exindex.lisp.type.value.LSymbol;
+import org.extex.logging.LogFormatter;
 import org.junit.Test;
 
 /**
@@ -46,45 +49,6 @@ import org.junit.Test;
 public class RawParserTest {
 
     /**
-     * The field <tt>DEFINE_ATTRIBUTES</tt> contains the symbol for
-     * define-attributes.
-     */
-    private static final LSymbol DEFINE_ATTRIBUTES =
-            LSymbol.get("define-attributes");
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @return
-     */
-    private Logger makeLogger() {
-
-        Logger logger = Logger.getLogger("");
-        logger.setLevel(Level.SEVERE);
-        return logger;
-    }
-
-    /**
-     * Run a test. This means load some configuration instruction into an
-     * Indexer.
-     * 
-     * @param in the option string
-     * 
-     * @return the function binding for define-attributes
-     * 
-     * @throws Exception in case of an error
-     */
-    private AttributesContainer runTest(String in) throws Exception {
-
-        Indexer indexer = new Indexer();
-        assertNotNull(indexer);
-        indexer.load(new StringReader(in), "<reader>");
-        AttributesContainer container = indexer.getContainer();
-        assertNotNull(container);
-        return container;
-    }
-
-    /**
      * Test method for
      * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
      * 
@@ -93,7 +57,7 @@ public class RawParserTest {
     @Test
     public final void test01() throws Exception {
 
-        runTest("(define-attributes ())");
+        TestUtils.runTest("(define-attributes ())");
     }
 
     /**
@@ -105,7 +69,8 @@ public class RawParserTest {
     @Test
     public final void test02() throws Exception {
 
-        AttributesContainer def = runTest("(define-attributes (\"abc\"))");
+        AttributesContainer def =
+                TestUtils.runTest("(define-attributes (\"abc\"))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -122,7 +87,7 @@ public class RawParserTest {
     public final void test03() throws Exception {
 
         AttributesContainer def =
-                runTest("(define-attributes (\"abc\" \"def\"))");
+                TestUtils.runTest("(define-attributes (\"abc\" \"def\"))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -142,7 +107,8 @@ public class RawParserTest {
     @Test
     public final void test10() throws Exception {
 
-        AttributesContainer def = runTest("(define-attributes ((\"abc\")))");
+        AttributesContainer def =
+                TestUtils.runTest("(define-attributes ((\"abc\")))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -159,7 +125,7 @@ public class RawParserTest {
     public final void test11() throws Exception {
 
         AttributesContainer def =
-                runTest("(define-attributes ((\"abc\" \"def\")))");
+                TestUtils.runTest("(define-attributes ((\"abc\" \"def\")))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -179,7 +145,7 @@ public class RawParserTest {
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        runTest("(define-attributes )");
+        TestUtils.runTest("(define-attributes )");
     }
 
     /**
@@ -191,7 +157,7 @@ public class RawParserTest {
     @Test(expected = LException.class)
     public final void testError02() throws Exception {
 
-        runTest("(define-attributes \"abc\")");
+        TestUtils.runTest("(define-attributes \"abc\")");
     }
 
     /**
@@ -203,7 +169,7 @@ public class RawParserTest {
     @Test(expected = LException.class)
     public final void testError03() throws Exception {
 
-        runTest("(define-attributes ((())))");
+        TestUtils.runTest("(define-attributes ((())))");
     }
 
     /**
@@ -215,7 +181,7 @@ public class RawParserTest {
     @Test(expected = SyntaxException.class)
     public final void testError04() throws Exception {
 
-        runTest("(define-attributes (123)");
+        TestUtils.runTest("(define-attributes (123)");
     }
 
     /**
@@ -227,7 +193,7 @@ public class RawParserTest {
     @Test(expected = LException.class)
     public final void testError05() throws Exception {
 
-        runTest("(define-attributes (\"x\" \"x\"))");
+        TestUtils.runTest("(define-attributes (\"x\" \"x\"))");
     }
 
     /**
@@ -239,7 +205,7 @@ public class RawParserTest {
     @Test(expected = LException.class)
     public final void testError06() throws Exception {
 
-        runTest("(define-attributes (\"x\" (\"x\")))");
+        TestUtils.runTest("(define-attributes (\"x\" (\"x\")))");
     }
 
     /**
@@ -248,7 +214,7 @@ public class RawParserTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = LException.class)
+    @Test
     public final void testFull01Fail() throws Exception {
 
         Indexer indexer = new TestableIndexer();
@@ -257,7 +223,14 @@ public class RawParserTest {
         List<String> rsc = new ArrayList<String>();
         rsc
             .add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, makeLogger());
+        ByteArrayOutputStream log = new ByteArrayOutputStream();
+        Logger logger = TestUtils.makeLogger();
+        Handler handler = new StreamHandler(log, new LogFormatter());
+        handler.setLevel(Level.WARNING);
+        logger.addHandler(handler);
+        indexer.run(null, rsc, null, logger);
+        handler.close();
+        assertEquals("Das Attribut none ist unbekannt.\n", log.toString());
     }
 
     /**
@@ -275,7 +248,7 @@ public class RawParserTest {
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, makeLogger());
+        indexer.run(null, rsc, null, TestUtils.makeLogger());
     }
 
     /**
@@ -291,7 +264,7 @@ public class RawParserTest {
         Indexer indexer = new TestableIndexer();
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, makeLogger());
+        indexer.run(null, rsc, null, TestUtils.makeLogger());
     }
 
 }
