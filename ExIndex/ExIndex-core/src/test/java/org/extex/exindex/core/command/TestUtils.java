@@ -56,6 +56,8 @@ public final class TestUtils {
     /**
      * Create a proper logger.
      * 
+     * @param log the output stream for logging
+     * 
      * @return the logger
      */
     public static Logger makeLogger(ByteArrayOutputStream log) {
