@@ -19,13 +19,19 @@
 
 package org.extex.exindex.core.type.raw;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.util.StringUtils;
+import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -66,8 +72,7 @@ public class LocRef implements RefSpec {
      *      java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.CrossrefClassContainer,
-     *      java.util.List,
+     *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
@@ -116,6 +121,29 @@ public class LocRef implements RefSpec {
         StringBuilder sb = new StringBuilder();
         StringUtils.putPrintable(sb, location);
         return sb.toString();
+    }
+
+    /**
+     * Write the location reference to a writer.
+     * 
+     * @param writer the writer
+     * @param interpreter the interpreter
+     * @param markupContainer the markup container
+     * @param trace the trace indicator
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws LNonMatchingTypeException in case of an internal error
+     */
+    public void write(Writer writer, LInterpreter interpreter,
+            MarkupContainer markupContainer, boolean trace)
+            throws LNonMatchingTypeException,
+                IOException {
+
+        Markup markup = markupContainer.getMarkup("markup-locref");
+
+        markup.write(writer, markupContainer, layer, Markup.OPEN, trace);
+        writer.write(location);
+        markup.write(writer, markupContainer, layer, Markup.CLOSE, trace);
     }
 
 }

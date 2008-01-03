@@ -19,12 +19,15 @@
 
 package org.extex.exindex.core.type;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.LocRef;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
  * This class represents a location reference group.
@@ -72,10 +75,25 @@ public class LocrefList implements LocationClassGroup {
      *      org.extex.exindex.lisp.LInterpreter, MarkupContainer, boolean)
      */
     public void write(Writer writer, LInterpreter interpreter,
-            MarkupContainer markupContainer, boolean trace) {
+            MarkupContainer markupContainer, boolean trace)
+            throws LNonMatchingTypeException,
+                IOException {
 
-        // TODO gene: write unimplemented
-        throw new RuntimeException("unimplemented");
+        Markup markup = markupContainer.getMarkup("markup-locref-list");
+
+        boolean first = true;
+        markup.write(writer, markupContainer, clazz, Markup.OPEN, trace);
+
+        for (LocRef reference : list) {
+            if (first) {
+                first = false;
+            } else {
+                markup.write(writer, markupContainer, clazz, Markup.SEP, trace);
+            }
+
+            reference.write(writer, interpreter, markupContainer, trace);
+        }
+        markup.write(writer, markupContainer, clazz, Markup.CLOSE, trace);
     }
 
 }
