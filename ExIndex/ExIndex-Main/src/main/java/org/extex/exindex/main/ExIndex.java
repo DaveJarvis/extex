@@ -425,6 +425,7 @@ public class ExIndex extends Indexer {
      * @param a the flag currently processed
      * @param args the arguments
      * @param i the index
+     * 
      * @return the argument: arg[i]
      * 
      * @throws MainException if the argument is out of bounds
@@ -533,7 +534,7 @@ public class ExIndex extends Indexer {
         }
 
         stream = getClass().getClassLoader().getResourceAsStream(//
-            "org/extex/exindex/main/config/" + parser + ".parser");
+            "org/extex/exindex/parser/" + parser + ".parser");
         if (stream == null) {
             throw new MainException(LOCALIZER.format("ParserMissing", parser));
         }
@@ -551,19 +552,26 @@ public class ExIndex extends Indexer {
                         String.class, LInterpreter.class);
             return (RawIndexParser) cons.newInstance(reader, resource, this);
         } catch (SecurityException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         } catch (NoSuchMethodException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         } catch (ClassNotFoundException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserMissingClass",
+                parser));
         } catch (IllegalArgumentException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         } catch (InstantiationException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         } catch (IllegalAccessException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         } catch (InvocationTargetException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+            throw new MainException(LOCALIZER.format("ParserError", parser, e
+                .toString()), e);
         }
     }
 
@@ -759,6 +767,10 @@ public class ExIndex extends Indexer {
             showBanner();
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             logger.log(Level.FINE, "", e);
+        } catch (LException e) {
+            showBanner();
+            logger.log(Level.SEVERE, e.getLocalizedMessage());
+            logger.log(Level.FINE, "", e);
         } catch (Exception e) {
             showBanner();
             logger.log(Level.SEVERE, LOCALIZER.format("SevereError", e
@@ -842,7 +854,12 @@ public class ExIndex extends Indexer {
             InputStream stream = getResourceFinder().findResource(style, "ist");
             if (stream != null) {
 
-                Reader reader = new InputStreamReader(stream, inCharset);
+                Reader reader;
+                if (inCharset == null) {
+                    reader = new InputStreamReader(stream);
+                } else {
+                    reader = new InputStreamReader(stream, inCharset);
+                }
                 try {
                     MakeindexLoader.load(reader, style, this);
                 } finally {
@@ -854,7 +871,12 @@ public class ExIndex extends Indexer {
                 if (stream == null) {
                     throw new FileNotFoundException(style);
                 }
-                Reader reader = new InputStreamReader(stream, inCharset);
+                Reader reader;
+                if (inCharset == null) {
+                    reader = new InputStreamReader(stream);
+                } else {
+                    reader = new InputStreamReader(stream, inCharset);
+                }
                 try {
                     load(reader, style);
                 } finally {

@@ -28,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Locale;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
@@ -83,6 +84,7 @@ public class ExIndexTest {
     protected ExIndex runTest(String[] args, int exit, String expectedOut,
             String extectedErr) throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         PrintStream out = System.out;
         PrintStream err = System.err;
         InputStream in = System.in;
@@ -251,7 +253,7 @@ public class ExIndexTest {
     public final void testCharset2() throws Exception {
 
         runTest(new String[]{"-Charset", "abc"}, -1,
-            "Unsupported character set abc\n");
+            "Unsupported character set `abc'.\n");
     }
 
     /**
@@ -417,18 +419,12 @@ public class ExIndexTest {
     public final void testHelp1() throws Exception {
 
         runTest(new String[]{"--help"}, 1, //
-            "Indexer <options> <idx files>\n" //
-                    + "\t-s[tyle] <style>\n" //
-                    + "\t- <idx file>\n" //
-                    + "\t-o[utput] <ind file>\n" //
-                    + "\t-p[age] <page>\n" //
-                    + "\t-g\n" //
-                    + "\t-l\n" //
-                    + "\t-c\n" //
-                    + "\t-q\n" //
-                    + "\t-i\n" //
-                    + "\t-h[elp]\n" //
-                    + "\t-v[ersion]\n");
+            "ExIndex <options> <idx files>\n" + "\t-s[tyle] <style>\n"
+                    + "\t- <idx file>\n" + "\t-o[utput] <ind file>\n"
+                    + "\t-g[erman]\n" + "\t-l\n" + "\t-c\n" + "\t-r\n"
+                    + "\t-q[uiet]\n" + "\t-i\n"
+                    + "\t-tran[script] <log-file>\n" + "\t-trac[e]\n"
+                    + "\t-h[elp]\n" + "\t-V[ersion]\n");
     }
 
     /**
@@ -501,7 +497,7 @@ public class ExIndexTest {
     public final void testLogLevel11() throws Exception {
 
         runTest(new String[]{"-L", "xxx"}, -1,
-            "The log level xxx is not defined.\n");
+            "The log level `xxx' is not defined.\n");
     }
 
     /**
@@ -587,7 +583,7 @@ public class ExIndexTest {
     @Test
     public final void testStyle3() throws Exception {
 
-        runTest(new String[]{"-t", "xxx", "-s",
+        runTest(new String[]{"-trans", "xxx", "-s",
                 "../ExIndex-Main/src/test/resources/makeidx"}, 0, null,
             "Scanning style file ../ExIndex-Main/src/test/resources/makeidx...done (?\n"
                     + "attributes redefined, ? ignored).\n"
@@ -629,7 +625,7 @@ public class ExIndexTest {
 
         File log = new File("target/xxx.ilg");
         log.delete();
-        runTest(new String[]{"-t", "target/xxx.ilg"}, 0, DEFAULT_LOG
+        runTest(new String[]{"-trans", "target/xxx.ilg"}, 0, DEFAULT_LOG
                 + "Transcript written in target/xxx.ilg.\n");
         assertTrue(log.exists());
         log.delete();
@@ -644,7 +640,7 @@ public class ExIndexTest {
     @Test
     public final void testTranscript2() throws Exception {
 
-        runTest(new String[]{"-t", ""}, 0, DEFAULT_LOG);
+        runTest(new String[]{"-trans", ""}, 0, DEFAULT_LOG);
     }
 
     /**
@@ -656,7 +652,7 @@ public class ExIndexTest {
     @Test
     public final void testTranscript3() throws Exception {
 
-        runTest(new String[]{"-t", "-"}, 0, DEFAULT_LOG);
+        runTest(new String[]{"-trans", "-"}, 0, DEFAULT_LOG);
     }
 
     /**
