@@ -47,7 +47,7 @@ public class XindyParserTest {
 
         XindyParser xp =
                 new XindyParser(new StringReader(
-                    "(indexentry :key (\"abc\") :locref \"1\")"), "rsc");
+                    "(indexentry :key (\"abc\") :locref \"1\")"), "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -65,7 +65,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\")"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -84,7 +84,7 @@ public class XindyParserTest {
                 new XindyParser(
                     new StringReader(
                         "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\" :open-range)"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -104,7 +104,7 @@ public class XindyParserTest {
                 new XindyParser(
                     new StringReader(
                         "(indexentry :key (\"abc\") :attr \"see\" :locref \"1\" :close-range)"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -122,7 +122,7 @@ public class XindyParserTest {
 
         XindyParser xp =
                 new XindyParser(new StringReader(
-                    "(indexentry :tkey (\"abc\") :locref \"1\")"), "rsc");
+                    "(indexentry :tkey (\"abc\") :locref \"1\")"), "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -139,7 +139,7 @@ public class XindyParserTest {
 
         XindyParser xp =
                 new XindyParser(new StringReader(
-                    "(indexentry :tkey ((\"abc\")) :locref \"1\")"), "rsc");
+                    "(indexentry :tkey ((\"abc\")) :locref \"1\")"), "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -157,7 +157,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :tkey ((\"abc\" \"def\")) :locref \"1\")"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -174,7 +174,7 @@ public class XindyParserTest {
 
         XindyParser xp =
                 new XindyParser(new StringReader(
-                    "(indexentry :key \"abc\" :locref \"1\")"), "rsc");
+                    "(indexentry :key \"abc\" :locref \"1\")"), "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -192,7 +192,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :key \"abc\" :print \"def\" :locref \"1\")"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -210,7 +210,7 @@ public class XindyParserTest {
         XindyParser xp =
                 new XindyParser(new StringReader(
                     "(indexentry :key \"abc\" :print \"def\" :xref \"def\")"),
-                    "rsc");
+                    "rsc", null);
         RawIndexentry ie = xp.parse();
         assertNotNull(ie);
         assertNull(xp.parse());
@@ -226,7 +226,7 @@ public class XindyParserTest {
     public final void testBound1() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :key (\"1\") :key (\"1\") )"), "rsc").parse();
+            "(indexentry :key (\"1\") :key (\"1\") )"), "rsc", null).parse();
     }
 
     /**
@@ -238,7 +238,7 @@ public class XindyParserTest {
     public final void testBound2() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :print (\"1\") :print (\"1\") )"), "rsc").parse();
+            "(indexentry :print (\"1\") :print (\"1\") )"), "rsc", null).parse();
     }
 
     /**
@@ -250,7 +250,7 @@ public class XindyParserTest {
     public final void testBound3() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :attr \"1\" :attr \"1\" )"), "rsc").parse();
+            "(indexentry :attr \"1\" :attr \"1\" )"), "rsc", null).parse();
     }
 
     /**
@@ -262,7 +262,7 @@ public class XindyParserTest {
     public final void testBound5() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :xref (\"1\") :xref (\"1\") )"), "rsc").parse();
+            "(indexentry :xref (\"1\") :xref (\"1\") )"), "rsc", null).parse();
     }
 
     /**
@@ -274,7 +274,7 @@ public class XindyParserTest {
     public final void testBound6() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :key (\"1\") :tkey (\"1\") )"), "rsc").parse();
+            "(indexentry :key (\"1\") :tkey (\"1\") )"), "rsc", null).parse();
     }
 
     /**
@@ -285,7 +285,7 @@ public class XindyParserTest {
     @Test
     public final void testEmpty1() throws Exception {
 
-        XindyParser xp = new XindyParser(new StringReader(""), "rsc");
+        XindyParser xp = new XindyParser(new StringReader(""), "rsc", null);
         assertNull(xp.parse());
     }
 
@@ -297,7 +297,7 @@ public class XindyParserTest {
     @Test
     public final void testEmpty2() throws Exception {
 
-        XindyParser xp = new XindyParser(new StringReader("   "), "rsc");
+        XindyParser xp = new XindyParser(new StringReader("   "), "rsc", null);
         assertNull(xp.parse());
     }
 
@@ -309,7 +309,7 @@ public class XindyParserTest {
     @Test
     public final void testEmpty3() throws Exception {
 
-        XindyParser xp = new XindyParser(new StringReader("; xxx\n   "), "rsc");
+        XindyParser xp = new XindyParser(new StringReader("; xxx\n   "), "rsc", null);
         assertNull(xp.parse());
     }
 
@@ -319,7 +319,7 @@ public class XindyParserTest {
     @Test(expected = NullPointerException.class)
     public final void testErr1() {
 
-        new XindyParser(null, null);
+        new XindyParser(null, null, null);
     }
 
     /**
@@ -328,7 +328,7 @@ public class XindyParserTest {
     @Test(expected = NullPointerException.class)
     public final void testErr2() {
 
-        new XindyParser(null, "");
+        new XindyParser(null, "", null);
     }
 
     /**
@@ -339,7 +339,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError01() throws Exception {
 
-        new XindyParser(new StringReader("abc"), "rsc").parse();
+        new XindyParser(new StringReader("abc"), "rsc", null).parse();
     }
 
     /**
@@ -350,7 +350,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError02() throws Exception {
 
-        new XindyParser(new StringReader("123"), "rsc").parse();
+        new XindyParser(new StringReader("123"), "rsc", null).parse();
     }
 
     /**
@@ -361,7 +361,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError03() throws Exception {
 
-        new XindyParser(new StringReader("nil"), "rsc").parse();
+        new XindyParser(new StringReader("nil"), "rsc", null).parse();
     }
 
     /**
@@ -372,7 +372,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError04() throws Exception {
 
-        new XindyParser(new StringReader("()"), "rsc").parse();
+        new XindyParser(new StringReader("()"), "rsc", null).parse();
     }
 
     /**
@@ -383,7 +383,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError05() throws Exception {
 
-        new XindyParser(new StringReader("(123)"), "rsc").parse();
+        new XindyParser(new StringReader("(123)"), "rsc", null).parse();
     }
 
     /**
@@ -394,7 +394,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError06() throws Exception {
 
-        new XindyParser(new StringReader("(abc)"), "rsc").parse();
+        new XindyParser(new StringReader("(abc)"), "rsc", null).parse();
     }
 
     /**
@@ -405,7 +405,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError07() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry 123)"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry 123)"), "rsc", null).parse();
     }
 
     /**
@@ -417,7 +417,7 @@ public class XindyParserTest {
     public final void testError08() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :tkey ((\"\" \"\" \"\")))"), "rsc").parse();
+            "(indexentry :tkey ((\"\" \"\" \"\")))"), "rsc", null).parse();
     }
 
     /**
@@ -428,7 +428,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError09() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :tkey (()))"), "rsc")
+        new XindyParser(new StringReader("(indexentry :tkey (()))"), "rsc", null)
             .parse();
     }
 
@@ -440,7 +440,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testError10() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :tkey (abc def))"), "rsc")
+        new XindyParser(new StringReader("(indexentry :tkey (abc def))"), "rsc", null)
             .parse();
     }
 
@@ -453,7 +453,7 @@ public class XindyParserTest {
     public final void testError11() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :key (\"1\") :xref (\"1\") :open-range)"), "rsc")
+            "(indexentry :key (\"1\") :xref (\"1\") :open-range)"), "rsc", null)
             .parse();
     }
 
@@ -466,7 +466,7 @@ public class XindyParserTest {
     public final void testError12() throws Exception {
 
         new XindyParser(new StringReader(
-            "(indexentry :key (\"1\") :xref (\"1\") :close-range)"), "rsc")
+            "(indexentry :key (\"1\") :xref (\"1\") :close-range)"), "rsc", null)
             .parse();
     }
 
@@ -481,7 +481,7 @@ public class XindyParserTest {
         new XindyParser(
             new StringReader(
                 "(indexentry :key (\"1\") :locref \"1\" :close-range :open-range)"),
-            "rsc").parse();
+            "rsc", null).parse();
     }
 
     /**
@@ -492,7 +492,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing01() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry)"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry)"), "rsc", null).parse();
     }
 
     /**
@@ -503,7 +503,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing02() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :key (\"abc\"))"), "rsc")
+        new XindyParser(new StringReader("(indexentry :key (\"abc\"))"), "rsc", null)
             .parse();
     }
 
@@ -515,7 +515,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing03() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :key )"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry :key )"), "rsc", null).parse();
     }
 
     /**
@@ -526,7 +526,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing04() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :key (abc))"), "rsc")
+        new XindyParser(new StringReader("(indexentry :key (abc))"), "rsc", null)
             .parse();
     }
 
@@ -538,7 +538,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing05() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :xxx (abc))"), "rsc")
+        new XindyParser(new StringReader("(indexentry :xxx (abc))"), "rsc", null)
             .parse();
     }
 
@@ -550,7 +550,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing06() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :print )"), "rsc")
+        new XindyParser(new StringReader("(indexentry :print )"), "rsc", null)
             .parse();
     }
 
@@ -562,7 +562,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing07() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :tkey )"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry :tkey )"), "rsc", null).parse();
     }
 
     /**
@@ -573,7 +573,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing08() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :attr )"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry :attr )"), "rsc", null).parse();
     }
 
     /**
@@ -584,7 +584,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing09() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :locref )"), "rsc")
+        new XindyParser(new StringReader("(indexentry :locref )"), "rsc", null)
             .parse();
     }
 
@@ -596,7 +596,7 @@ public class XindyParserTest {
     @Test(expected = RawIndexException.class)
     public final void testMissing10() throws Exception {
 
-        new XindyParser(new StringReader("(indexentry :xref )"), "rsc").parse();
+        new XindyParser(new StringReader("(indexentry :xref )"), "rsc", null).parse();
     }
 
 }

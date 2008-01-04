@@ -24,12 +24,14 @@ import java.io.Reader;
 
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
+import org.extex.exindex.core.parser.util.ReaderLocator;
 import org.extex.exindex.core.type.raw.CloseLocRef;
 import org.extex.exindex.core.type.raw.CrossReference;
 import org.extex.exindex.core.type.raw.LocRef;
 import org.extex.exindex.core.type.raw.OpenLocRef;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.raw.RefSpec;
+import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
@@ -42,7 +44,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * and some extensions of it.
  * 
  * <doc section="Raw Index Format">
- * <h3>The xindy Raw Index Format</h3>
+ * <h2>The xindy Raw Index Format</h2>
  * <p>
  * The basic syntax is the Lisp syntax with the backslash character as escape
  * character in strings. Semicolon initiates an end-line comment.
@@ -54,8 +56,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *             | :tkey <i>list-of-layers</i> }
  *             [:attr <i>string</i>]
  *             { :locref <i>string</i>  [:open-range | :close-range]
- *             | :xref <i>string-list</i> } )
- * </pre>
+ *             | :xref <i>string-list</i> } )   </pre>
  * 
  * <p>
  * The index entry is in principal made up of four parts: the name of the index,
@@ -84,8 +85,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key ("abc") :locref "123")
- * </pre>
+ *  (indexentry :key ("abc") :locref "123")   </pre>
  * 
  * <p>
  * If just a single string is given after the <tt>:key</tt> flag is treated as
@@ -94,8 +94,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key "abc" :locref "123")
- * </pre>
+ *  (indexentry :key "abc" :locref "123")   </pre>
  * 
  * 
  * <p>
@@ -104,8 +103,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key ("alpha") :print ("$\alpha$") :locref "123")
- * </pre>
+ *  (indexentry :key ("alpha") :print ("$\alpha$") :locref "123")   </pre>
  * 
  * <p>
  * Again the value of the <tt>:print</tt> flag can be a single sting which
@@ -114,8 +112,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key "alpha" :print "$\alpha$" :locref "123")
- * </pre>
+ *  (indexentry :key "alpha" :print "$\alpha$" :locref "123")   </pre>
  * 
  * <p>
  * Finally the flag <tt>:tkey</tt> can be used to specify the sort key and the
@@ -127,8 +124,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :tkey (("symbol") ("alpha" "$\alpha$")) :locref "123")
- * </pre>
+ *  (indexentry :tkey (("symbol") ("alpha" "$\alpha$")) :locref "123")   </pre>
  * 
  * <p>
  * The elements of the argument list of <tt>:tkey</tt> can also be string in
@@ -155,8 +151,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key ("alpha" "$\alpha$") :locref "A-123")
- * </pre>
+ *  (indexentry :key ("alpha" "$\alpha$") :locref "A-123")   </pre>
  * 
  * <p>
  * In addition the flags <tt>:open-range</tT> and <tt>:close-range</tt> can
@@ -170,8 +165,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key ("alpha" "$\alpha$") :xref ("greek"))
- * </pre>
+ *  (indexentry :key ("alpha" "$\alpha$") :xref ("greek"))   </pre>
  * 
  * <p>
  * As above an extension of the xindy format can be used by abbreviating a
@@ -179,8 +173,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *  (indexentry :key ("alpha" "$\alpha$") :xref "greek")
- * </pre>
+ *  (indexentry :key ("alpha" "$\alpha$") :xref "greek")   </pre>
  * 
  * <doc>
  * 
@@ -246,8 +239,9 @@ public class XindyParser extends LParser implements RawIndexParser {
      * 
      * @param reader the source to read from
      * @param resource the name of the resource for error messages
+     * @param interpreter the interpreter
      */
-    public XindyParser(Reader reader, String resource) {
+    public XindyParser(Reader reader, String resource, LInterpreter interpreter) {
 
         super(reader, resource);
         locator = new ReaderLocator(resource, reader);

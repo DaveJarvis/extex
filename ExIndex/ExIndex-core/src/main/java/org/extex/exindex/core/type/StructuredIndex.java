@@ -352,7 +352,7 @@ public class StructuredIndex extends LetterGroupContainer
                         : null);
 
         if (group == null) {
-            group = getLetterGroup("default");
+            group = getLetterGroup("");
             if (group == null) {
                 throw new IndexerException(null, LocalizerFactory.getLocalizer(
                     getClass()).format("NoPropoperLetterGroup",

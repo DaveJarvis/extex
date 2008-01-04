@@ -69,7 +69,7 @@ public class TestableIndexer extends Indexer {
     protected RawIndexParser makeRawIndexParser(String resource, String charset)
             throws IOException {
 
-        return new XindyParser(new StringReader(resource), resource);
+        return new XindyParser(new StringReader(resource), resource, null);
     }
 
 }

@@ -211,7 +211,7 @@ public class Indexer extends LEngine {
                 IllegalAccessException,
                 InvocationTargetException {
 
-        container.defineLetterGroup("default");
+        container.defineLetterGroup("");
 
         defun("define-alphabet", new LDefineAlphabet("define-alphabet",
             container));
@@ -351,7 +351,7 @@ public class Indexer extends LEngine {
                 (charset == null || charset.equals("") //
                         ? new InputStreamReader(stream, charset)
                         : new InputStreamReader(stream));
-        return new XindyParser(reader, resource);
+        return new XindyParser(reader, resource, null);
     }
 
     /**

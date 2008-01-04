@@ -134,9 +134,9 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
         markup.set(group, open, close, openHead, closeHead,
             force == Boolean.TRUE);
 
-        switch ((upcase.booleanValue() ? 0 : 1)
-                | (downcase.booleanValue() ? 0 : 2)
-                | (capitalize.booleanValue() ? 0 : 4)) {
+        switch ((upcase.booleanValue() ? 1 : 0)
+                | (downcase.booleanValue() ? 2 : 0)
+                | (capitalize.booleanValue() ? 4 : 0)) {
             case 1:
                 markup.setTransform(group, new Upcase());
                 break;

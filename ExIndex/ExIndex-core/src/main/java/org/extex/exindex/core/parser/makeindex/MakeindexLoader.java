@@ -29,7 +29,7 @@ import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
-import org.extex.exindex.core.parser.ReaderLocator;
+import org.extex.exindex.core.parser.util.ReaderLocator;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LChar;

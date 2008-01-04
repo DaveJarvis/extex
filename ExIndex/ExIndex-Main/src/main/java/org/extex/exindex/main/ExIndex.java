@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
@@ -43,9 +44,8 @@ import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
-import org.extex.exindex.core.parser.makeindex.MakeindexParser;
+import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
@@ -66,7 +66,7 @@ import org.extex.resource.ResourceFinderFactory;
  * 
  * <doc section="Command Line Use">
  * 
- * <h3>Command Line Use</h3>
+ * <h2>Command Line Use</h2>
  * <p>
  * This program is normally used through a wrapper which performs all necessary
  * initializations and hides the implementation language from the casual user.
@@ -458,7 +458,7 @@ public class ExIndex extends Indexer {
             throws IOException,
                 RawIndexException {
 
-        boolean makeindex = false;
+        String parser = "xindy";
         InputStream stream;
         if (resource == null) {
             stream = System.in;
@@ -466,7 +466,7 @@ public class ExIndex extends Indexer {
             stream = getResourceFinder().findResource(resource, "raw");
             if (stream == null) {
                 stream = getResourceFinder().findResource(resource, "idx");
-                makeindex = true;
+                parser = "makeindex";
                 if (stream == null) {
                     return null;
                 }
@@ -532,10 +532,39 @@ public class ExIndex extends Indexer {
             throw new MainException(LOCALIZER.format("UnknownFilter", filter));
         }
 
-        if (makeindex) {
-            return new MakeindexParser(reader, "default", resource, this);
+        stream = getClass().getClassLoader().getResourceAsStream(//
+            "org/extex/exindex/main/config/" + parser + ".parser");
+        if (stream == null) {
+            throw new MainException(LOCALIZER.format("ParserMissing", parser));
         }
-        return new XindyParser(reader, resource);
+        Properties p = new Properties();
+        p.load(stream);
+        String clazz = (String) p.get("class");
+        if (clazz == null) {
+            throw new MainException(LOCALIZER.format("ParserMissingClass",
+                parser));
+        }
+
+        try {
+            Constructor<?> cons =
+                    Class.forName(clazz).getConstructor(Reader.class,
+                        String.class, LInterpreter.class);
+            return (RawIndexParser) cons.newInstance(reader, resource, this);
+        } catch (SecurityException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (NoSuchMethodException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (ClassNotFoundException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (IllegalArgumentException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (InstantiationException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (IllegalAccessException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        } catch (InvocationTargetException e) {
+            throw new MainException(LOCALIZER.format("ParserError", parser), e);
+        }
     }
 
     /**

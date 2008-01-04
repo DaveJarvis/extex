@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exindex.core.exception.IndexerException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -101,6 +100,7 @@ public class IndexerTest {
                     + "(define-letter-group \"a\")");
         FILES.put("style12",
             "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
+                    + "(markup-letter-group  :open-head \"->\")"
                     + "(define-letter-group \"A\")");
     }
 
@@ -149,11 +149,13 @@ public class IndexerTest {
         indexer.run(styles, resources, writer, logger);
 
         handler.close();
-        assertEquals(expectedLog, log.toString());
+        if (expectedLog != null) {
+            assertEquals("log", expectedLog, log.toString());
+        }
 
         if (writer != null) {
             String s = writer.toString();
-            assertEquals(expectedOut, s);
+            assertEquals("out", expectedOut, s);
         }
     }
 
@@ -209,11 +211,11 @@ public class IndexerTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = IndexerException.class)
+    @Test
     public final void test12() throws Exception {
 
         runTest(makeList("style12"), makeList("T11.raw"),
-            "\\begin{index}???\\end{index}", null);
+            "\\begin{index}AabcIV\\end{index}", null);
     }
 
     /**
@@ -225,7 +227,7 @@ public class IndexerTest {
     public final void test20() throws Exception {
 
         runTest(makeList("style11"), makeList("T11.raw"),
-            "\\begin{index}???\\end{index}", "???");
+            "\\begin{index}abcIV\\end{index}", null);
     }
 
     /**
@@ -260,7 +262,7 @@ public class IndexerTest {
     public final void testX112() throws Exception {
 
         runTest(makeList("style11"), makeList("T112.raw"),
-            "\\begin{index}abcIVVI\\end{index}", "");
+            "\\begin{index}abcVIIV\\end{index}", "");
     }
 
 }

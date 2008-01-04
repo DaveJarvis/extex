@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,8 @@ import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.ReaderLocator;
+import org.extex.exindex.core.parser.util.ReaderLocator;
+import org.extex.exindex.core.parser.util.TeXReader;
 import org.extex.exindex.core.type.raw.CloseLocRef;
 import org.extex.exindex.core.type.raw.LocRef;
 import org.extex.exindex.core.type.raw.OpenLocRef;
@@ -40,29 +41,148 @@ import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This parser is a reader for input in the form of the makeindex format and
- * some extensions of it.
+ * This parser is a reader for input in the form of the <logo>makeindex</logo>
+ * format and some extensions of it.
+ * 
+ * <doc section="Makeindex Index Format">
+ * <h2>The <logo>makeindex</logo> Raw Index Format</h2>
+ * 
  * <p>
- * The following examples illustrate the index entries understood by this
- * parser.
+ * The raw index format for <logo>makeindex</logo> is used to parse the input
+ * and acquire index data. <logo>makeindex</logo> is rather general. The parser
+ * is highly configurable. A general scheme is used. The characters involved can
+ * be adjusted in the configuration. The general scheme is the following:
  * </p>
  * 
  * <pre>
- * \indexentry{abc}{123}
- * </pre>
+ *  <b><i>makeindex:keyword</i></b>
+ *    <b><i>makeindex:arg-open</i></b>
+ *     [<i>main-key</i>
+ *      [<b><i>makeindex:level</i></b> <i>main-key-2</i>
+ *       [<b><i>makeindex:level</i></b> <i>main-key-3</i> ] ] 
+ *      <b><i>makeindex:actual</i></b> ]
+ *     <i>print-key</i>
+ *     [<b><i>makeindex:encap</i></b> <i>encap</i>
+ *      [ | <b><i>makeindex:range-open</i></b> | <b><i>makeindex:range-close</i></b> ]
+ *     ]
+ *    <b><i>makeindex:arg-close</i></b>
+ *    <b><i>makeindex:arg-open</i></b>
+ *     <i>page-ref</i>
+ *    <b><i>makeindex:arg-close</i></b>   </pre>
  * 
- * <pre>
- * \indexentry{$alpha$@alpha}{123}
- * </pre>
+ * <p>
+ * In the description above the elements in bold and italic indicate the
+ * parameters for the parsing. The elements in italic only are the variable
+ * parts containing the data of the entry.
+ * </p>
  * 
- * <pre>
- * \indexentry{$alpha$@alpha|textbf(}{123}
- * </pre>
+ * <h3>The Parameters</h3>
  * 
- * <pre>
- * \indexentry{a!b!c}{123}
- * </pre>
+ * <p>
+ * The parsing of raw index entries in the <logo>makeindex</logo> format can be
+ * controlled by a set of parameters. This makes the parser adaptable to a wider
+ * range of applications.
+ * </p>
+ * <p>
+ * The original need to introduce the parameters is the flexibility of <logo>TeX</logo>.
+ * In <logo>TeX</logo> the category codes of characters can be redefined. Thus
+ * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
+ * such a situation.
+ * </p>
+ * <p>
+ * The following table shows the parameters with their <logo>ExIndex</logo>
+ * name, its <logo>makeindex</logo> name and the default value.
+ * </p>
  * 
+ * <table>
+ * <tr>
+ * <th>ExIndex parameter</th>
+ * <th>makeindex parameter</th>
+ * <th>Fallback</th>
+ * <th>Type</th>
+ * <th>Description</th>
+ * </tr>
+ * <tr>
+ * <td>makeindex:keyword</td>
+ * <td>keyword</td>
+ * <td><tt>\indexentry</tt></td>
+ * <td>string</td>
+ * <td>This string starts an entry. Anything between entries is ignored.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:arg-open</td>
+ * <td>arg_open</td>
+ * <td><tt>{</tt></td>
+ * <td>character</td>
+ * <td>This character opens an argument. It is terminated by the arg-close
+ * character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:arg-close</td>
+ * <td>arg_close</td>
+ * <td><tt>}</tt></td>
+ * <td>character</td>
+ * <td>This character closes an argument which has been opened by the arg-open
+ * character. The arg-open and arg-close characters have to be balanced before
+ * the closing takes place. Any arg-open or arg-close character preceded by an
+ * quote character is not counted</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:range-open</td>
+ * <td>range_open</td>
+ * <td><tt>(</tt></td>
+ * <td>character</td>
+ * <td>This character indicates the start of a range.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:range-close</td>
+ * <td>range_close</td>
+ * <td><tt>)</tt></td>
+ * <td>character</td>
+ * <td>This character indicates the end of a range.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:escape</td>
+ * <td>escape</td>
+ * <td><tt>"</tt></td>
+ * <td>character</td>
+ * <td>This is the escape character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:quote</td>
+ * <td>quote</td>
+ * <td><tt>\</tt></td>
+ * <td>character</td>
+ * <td>This is the quote character</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:encap</td>
+ * <td>encap</td>
+ * <td><tt>|</tt></td>
+ * <td>character</td>
+ * <td>This character is the separator for the encapsulator.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:level</td>
+ * <td>level</td>
+ * <td><tt>!</tt></td>
+ * <td>character</td>
+ * <td>This character is the level separator. A structured key is divided into
+ * parts with this character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:actual</td>
+ * <td>actual</td>
+ * <td><tt>@</tt></td>
+ * <td>character</td>
+ * <td>The actual character, separating the print representation from the key.</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * The following example shows how the default setting can be defined in a
+ * <logo>ExIndex</logo> style file.
+ * </p>
  * 
  * <pre>
  *  (setq makeindex:keyword "\\indexentry")
@@ -74,10 +194,45 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (setq makeindex:quote #\\)
  *  (setq makeindex:encap #\|)
  *  (setq makeindex:level #\!)
- *  (setq makeindex:actual #\@)
- * </pre>
+ *  (setq makeindex:actual #\@)   </pre>
  * 
+ * <h3>Examples of Index Entries</h3>
  * 
+ * <p>
+ * The following examples illustrate the index entries understood by the
+ * <logo>makeindex</logo> raw index format.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{abc}{123}   </pre>
+ * 
+ * <p>
+ * This example is the simple case of a main key <tt>abc</tt> and the page
+ * reference <tt>123</tt>.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{alpha@$alpha$}{123}   </pre>
+ * 
+ * <p>
+ * 
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{alpha@$alpha$|textbf(}{123}   </pre>
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{a!b!c}{123}   </pre>
+ * 
+ * <p>
+ * </p>
+ * 
+ * TODO documentation incomplete
+ * 
+ * <doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -142,13 +297,12 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * The field <tt>index</tt> contains the name of the index.
      */
-    private String index;
+    private String index = "";
 
     /**
      * Creates a new object and gather the parameters from an interpreter.
      * 
      * @param reader the source to read from
-     * @param index the name of the index to store the entries in
      * @param resource the name of the resource for error messages
      * @param interpreter the l system as storage for parameters
      * 
@@ -156,12 +310,11 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @see #configure(LInterpreter)
      */
-    public MakeindexParser(Reader reader, String index, String resource,
+    public MakeindexParser(Reader reader, String resource,
             LInterpreter interpreter) throws RawIndexException {
 
         super();
-        this.index = index;
-        this.locator = new ReaderLocator(resource, reader);
+        this.locator = new ReaderLocator(resource, new TeXReader(reader));
         configure(interpreter);
     }
 
@@ -248,7 +401,7 @@ public class MakeindexParser implements RawIndexParser {
      * @throws RawIndexException in case that the value from the interpreter has
      *         the wrong type
      */
-    public void configure(LInterpreter interpreter) throws RawIndexException {
+    protected void configure(LInterpreter interpreter) throws RawIndexException {
 
         keyword = initString("makeindex:keyword", interpreter, "\\indexentry");
         argOpen = initChar("makeindex:arg-open", interpreter, '{');
@@ -263,21 +416,6 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
-     * Create an exception and fill it with a value from the resource bundle for
-     * this class.
-     * 
-     * @param key the key
-     * @param args the additional arguments
-     * 
-     * @return the exception
-     */
-    protected RawIndexException exception(String key, Object... args) {
-
-        return new RawIndexException(locator, //
-            LocalizerFactory.getLocalizer(getClass()).format(key, args));
-    }
-
-    /**
      * Check that the next character from the stream has a certain value.
      * 
      * @param ec the expected character
@@ -285,7 +423,7 @@ public class MakeindexParser implements RawIndexParser {
      * @throws RawIndexMissingCharException in case of an error
      * @throws IOException in case of an error
      */
-    private void expect(char ec)
+    protected void expect(char ec)
             throws IOException,
                 RawIndexMissingCharException {
 
@@ -306,14 +444,17 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @throws RawIndexException in case of an error
      */
-    private char initChar(String var, LInterpreter interpreter, char value)
+    protected char initChar(String var, LInterpreter interpreter, char value)
             throws RawIndexException {
 
         LValue v = interpreter.get(var);
         if (v == null) {
             return value;
         } else if (!(v instanceof LChar)) {
-            throw exception("CharExpected", v.toString());
+            Object[] args = {v.toString()};
+            throw new RawIndexException(locator, //
+                LocalizerFactory.getLocalizer(getClass()).format(
+                    "CharExpected", args));
         }
 
         return ((LChar) v).getValue();
@@ -337,7 +478,10 @@ public class MakeindexParser implements RawIndexParser {
         if (v == null) {
             return value;
         } else if (!(v instanceof LString)) {
-            throw exception("StringExpected", v.toString());
+            Object[] args = {v.toString()};
+            throw new RawIndexException(locator, //
+                LocalizerFactory.getLocalizer(getClass()).format(
+                    "StringExpected", args));
         }
 
         return ((LString) v).getValue();
@@ -359,6 +503,7 @@ public class MakeindexParser implements RawIndexParser {
 
             for (int c = locator.read(); c >= 0; c = locator.read()) {
                 if (c == k0 && scanKeyword(keyword)) {
+                    String idx = scanIndex(locator, index);
                     String arg = scanArgument();
                     String p = scanArgument();
                     String enc = null;
@@ -369,10 +514,10 @@ public class MakeindexParser implements RawIndexParser {
                     }
                     x = arg.indexOf(actual);
                     if (x >= 0) {
-                        return store(arg.substring(0, x), arg.substring(x + 1),
-                            p, enc);
+                        return store(idx, arg.substring(0, x), arg
+                            .substring(x + 1), p, enc);
                     }
-                    return store(arg, arg, p, enc);
+                    return store(idx, arg, arg, p, enc);
                 }
             }
         } finally {
@@ -391,7 +536,7 @@ public class MakeindexParser implements RawIndexParser {
      * @throws RawIndexEofException in case of an unexpected EOF
      * @throws RawIndexMissingCharException in case of an error
      */
-    private String scanArgument()
+    protected String scanArgument()
             throws IOException,
                 RawIndexEofException,
                 RawIndexMissingCharException {
@@ -425,6 +570,26 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param loc the locator
+     * @param fallback the default index
+     * 
+     * @return the index to use
+     * 
+     * @throws RawIndexMissingCharException in case of an error
+     * @throws RawIndexEofException in case of an error
+     * @throws IOException in case of an I/O error
+     */
+    protected String scanIndex(ReaderLocator loc, String fallback)
+            throws IOException,
+                RawIndexEofException,
+                RawIndexMissingCharException {
+
+        return index;
+    }
+
+    /**
      * Scan a keyword.
      * 
      * @param keyword the keyword to read
@@ -433,7 +598,7 @@ public class MakeindexParser implements RawIndexParser {
      * 
      * @throws IOException in case of an I/O error
      */
-    private boolean scanKeyword(String keyword) throws IOException {
+    protected boolean scanKeyword(String keyword) throws IOException {
 
         int length = keyword.length();
         for (int i = 1; i < length; i++) {
@@ -449,14 +614,15 @@ public class MakeindexParser implements RawIndexParser {
      * Create an object consisting of the required parts. The parameters are put
      * in place and the index entry is returned.
      * 
+     * @param idx the name of the index
      * @param keyArg the argument
      * @param printArg the print representation
      * @param locref the page
      * @param enc the encapsulation
      * @return the new index entry
      */
-    private RawIndexentry store(String keyArg, String printArg, String locref,
-            String enc) {
+    protected RawIndexentry store(String idx, String keyArg, String printArg,
+            String locref, String enc) {
 
         List<String> list = new ArrayList<String>();
         int a = 0;
@@ -496,6 +662,6 @@ public class MakeindexParser implements RawIndexParser {
                 ref = new LocRef(locref, attr);
             }
         }
-        return new RawIndexentry(index, key, print, ref);
+        return new RawIndexentry(idx, key, print, ref);
     }
 }

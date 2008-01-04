@@ -141,7 +141,9 @@ public class IndexEntry {
                     IndexEntry.class).format("LocrefNoMatchingClass", clazz));
             }
 
-            ((LocrefList) locationClassGroup).store((LocRef) ref);
+            // ((LocrefList) locationClassGroup).store((LocRef) ref);
+            // TODO gene: store unimplemented
+            throw new RuntimeException("unimplemented");
         } else {
             throw new IndexerException(null, LocalizerFactory.getLocalizer(
                 IndexEntry.class).format("UnsupportedReference"));

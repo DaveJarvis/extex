@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.type.markup.Markup;
-import org.extex.exindex.core.type.raw.LocRef;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
@@ -43,9 +42,9 @@ public class LocrefList implements LocationClassGroup {
     private String clazz;
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>list</tt> contains the list of location references.
      */
-    private List<LocRef> list = new ArrayList<LocRef>();
+    private List<LocationReference> list = new ArrayList<LocationReference>();
 
     /**
      * Creates a new object.
@@ -63,7 +62,7 @@ public class LocrefList implements LocationClassGroup {
      * 
      * @param ref the reference
      */
-    public void store(LocRef ref) {
+    public void store(LocationReference ref) {
 
         list.add(ref);
     }
@@ -84,7 +83,7 @@ public class LocrefList implements LocationClassGroup {
         boolean first = true;
         markup.write(writer, markupContainer, clazz, Markup.OPEN, trace);
 
-        for (LocRef reference : list) {
+        for (LocationReference reference : list) {
             if (first) {
                 first = false;
             } else {
