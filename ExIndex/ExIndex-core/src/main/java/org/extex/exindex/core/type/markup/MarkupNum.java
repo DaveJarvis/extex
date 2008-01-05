@@ -31,11 +31,6 @@ import java.util.Map;
 public class MarkupNum extends Markup {
 
     /**
-     * The field <tt>size</tt> contains the size.
-     */
-    private static final int SIZE = 5;
-
-    /**
      * The field <tt>numMap</tt> contains the content.
      */
     private Map<String, int[]> numMap = new HashMap<String, int[]>();
@@ -82,9 +77,8 @@ public class MarkupNum extends Markup {
         if (a == null) {
             a = new int[2];
             numMap.put(key, a);
-            for (int i = 0; i < SIZE; i++) {
-                a[i] = 0;
-            }
+            a[0] = 0;
+            a[1] = 0;
         }
         a[index] = value;
     }
