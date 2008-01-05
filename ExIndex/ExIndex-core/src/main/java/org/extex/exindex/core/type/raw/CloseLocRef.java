@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
@@ -48,16 +48,15 @@ public class CloseLocRef extends LocRef {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.LocRef#check(
-     *      java.util.logging.Logger,
+     * @see org.extex.exindex.core.type.raw.LocRef#check(java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
+     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     @Override
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
             AttributesContainer attributes) {
 
         for (int i = openPages.size() - 1; i > 0; i--) {

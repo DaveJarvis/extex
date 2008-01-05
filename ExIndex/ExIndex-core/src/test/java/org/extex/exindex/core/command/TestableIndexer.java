@@ -19,13 +19,9 @@
 
 package org.extex.exindex.core.command;
 
-import java.io.IOException;
-import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.XindyParser;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 
 /**
@@ -57,19 +53,6 @@ public class TestableIndexer extends Indexer {
                 InvocationTargetException {
 
         super();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(java.lang.String,
-     *      java.lang.String)
-     */
-    @Override
-    protected RawIndexParser makeRawIndexParser(String resource, String charset)
-            throws IOException {
-
-        return new XindyParser(new StringReader(resource), resource, null);
     }
 
 }

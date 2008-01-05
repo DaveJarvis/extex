@@ -25,8 +25,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.MarkupContainer;
+import org.extex.exindex.core.type.alphabet.CrossreferenceLocationClass;
+import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.util.StringUtils;
@@ -75,24 +77,23 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.RefSpec#check(
-     *      java.util.logging.Logger,
+     * @see org.extex.exindex.core.type.raw.RefSpec#check(java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.CrossrefClassContainer,
-     *      java.util.List,
+     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
             AttributesContainer attributes) {
 
         String layer = entry.getRef().getLayer();
-        Boolean unverified = crossrefClass.lookupCrossrefClass(layer);
-        if (unverified == null) {
+        LocationClass cc = crossrefClass.lookupLocationClass(layer);
+        if (!(cc instanceof CrossreferenceLocationClass)) {
             logger.warning(LOCALIZER.format("UndefinedCrossrefClass", layer));
             return false;
-        } else if (unverified.booleanValue()) {
+        }
+        if (((CrossreferenceLocationClass) cc).isUnverified()) {
             return true;
         }
         if (index.lookup(layers) != null) {

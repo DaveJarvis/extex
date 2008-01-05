@@ -20,7 +20,6 @@
 package org.extex.exindex.core.type;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,6 @@ import org.extex.exindex.core.type.rules.SortRules;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LValue;
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents a container for indices and the parameters needed to
@@ -53,15 +51,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  */
 public class IndexContainer
         implements
-            LValue,
-            AlphabetContainer,
-            AttributesContainer,
-            CrossrefClassContainer,
-            LocationClassContainer,
             MarkupContainer,
             RuleSetContainer,
             SortRuleContainer,
-            FallbackContainer {
+            FallbackContainer,
+            AlphabetContainer,
+            AttributesContainer,
+            LocationClassContainer,
+            LValue {
 
     /**
      * The constant <tt>DEFAULT_INDEX</tt> contains the name of the default
@@ -89,27 +86,6 @@ public class IndexContainer
      * The field <tt>alphabetMap</tt> contains the alphabets.
      */
     private Map<String, Alphabet> alphabetMap = new HashMap<String, Alphabet>();
-
-    /**
-     * The field <tt>map</tt> contains the mapping from name to the boolean
-     * indicator.
-     */
-    private Map<String, Boolean> crossrefClassMap =
-            new HashMap<String, Boolean>();
-
-    /**
-     * The field <tt>locationClassMap</tt> contains the mapping from names to
-     * location classes.
-     */
-    private Map<String, LocationClass> locationClassMap =
-            new HashMap<String, LocationClass>();
-
-    /**
-     * The field <tt>locationClasses</tt> contains the list of classes already
-     * defined.
-     */
-    private List<LocationClass> locationClasses =
-            new ArrayList<LocationClass>();
 
     /**
      * Creates a new object.
@@ -147,17 +123,7 @@ public class IndexContainer
      */
     public boolean addLocationClass(String name, LocationClass locationClass) {
 
-        LocationClass lc = locationClassMap.get(name);
-        if (lc != null) {
-            locationClassMap.put(name, locationClass);
-            locationClasses.remove(lc);
-            locationClasses.add(locationClass);
-            return false;
-        }
-
-        locationClassMap.put(name, locationClass);
-        locationClasses.add(locationClass);
-        return true;
+        return currentIndex.addLocationClass(name, locationClass);
     }
 
     /**
@@ -234,17 +200,6 @@ public class IndexContainer
     public void defineAttribute(String key, Attribute attribute) {
 
         currentIndex.defineAttribute(key, attribute);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.type.CrossrefClassContainer#defineCrossrefClass(
-     *      java.lang.String, java.lang.Boolean)
-     */
-    public void defineCrossrefClass(String name, Boolean verified) {
-
-        crossrefClassMap.put(name, verified);
     }
 
     /**
@@ -420,23 +375,12 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.CrossrefClassContainer#lookupCrossrefClass(
-     *      java.lang.String)
-     */
-    public Boolean lookupCrossrefClass(String name) {
-
-        return crossrefClassMap.get(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
      *      java.lang.String)
      */
     public LocationClass lookupLocationClass(String name) {
 
-        return locationClassMap.get(name);
+        return currentIndex.lookupLocationClass(name);
     }
 
     /**
@@ -479,13 +423,7 @@ public class IndexContainer
      */
     public PageReference makePageReference(String encap, String s) {
 
-        for (LocationClass lc : locationClasses) {
-            PageReference pr = lc.match(encap, s);
-            if (pr != null) {
-                return pr;
-            }
-        }
-        return null;
+        return currentIndex.makePageReference(encap, s);
     }
 
     /**
@@ -496,21 +434,7 @@ public class IndexContainer
      */
     public void orderLocationClasses(String[] list) throws LException {
 
-        List<LocationClass> newClasses = new ArrayList<LocationClass>();
-
-        for (String s : list) {
-            LocationClass lc = locationClassMap.get(s);
-            int i = locationClasses.indexOf(lc);
-            if (i < 0) {
-                throw new LException(LocalizerFactory.getLocalizer(getClass())
-                    .format("UnknownClass", s));
-            }
-            newClasses.add(lc);
-            locationClasses.remove(i);
-        }
-
-        newClasses.addAll(locationClasses);
-        locationClasses = newClasses;
+        currentIndex.orderLocationClasses(list);
     }
 
     /**

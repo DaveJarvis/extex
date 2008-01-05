@@ -19,7 +19,8 @@
 
 package org.extex.exindex.core.command;
 
-import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
+import org.extex.exindex.core.type.alphabet.CrossreferenceLocationClass;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
@@ -75,7 +76,7 @@ public class LDefineCrossrefClass extends LFunction {
     /**
      * The field <tt>container</tt> contains the container for classes.
      */
-    private CrossrefClassContainer container;
+    private LocationClassContainer container;
 
     /**
      * Creates a new object.
@@ -87,7 +88,7 @@ public class LDefineCrossrefClass extends LFunction {
      *         argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
-    public LDefineCrossrefClass(String name, CrossrefClassContainer container)
+    public LDefineCrossrefClass(String name, LocationClassContainer container)
             throws SecurityException,
                 NoSuchMethodException {
 
@@ -110,7 +111,8 @@ public class LDefineCrossrefClass extends LFunction {
     public LValue evaluate(LInterpreter interpreter, String name,
             Boolean unverified) throws LSettingConstantException {
 
-        container.defineCrossrefClass(name, unverified);
+        container.addLocationClass(name, new CrossreferenceLocationClass(
+            unverified == Boolean.TRUE));
         return null;
     }
 

@@ -17,13 +17,14 @@
  *
  */
 
-package org.extex.exindex.core.parser;
+package org.extex.exindex.core.parser.xindy;
 
 import java.io.IOException;
 import java.io.Reader;
 
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
+import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.util.ReaderLocator;
 import org.extex.exindex.core.type.raw.CloseLocRef;
 import org.extex.exindex.core.type.raw.CrossReference;

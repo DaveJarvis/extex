@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.MarkupContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
@@ -68,15 +68,14 @@ public class LocRef implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.LocRef#check(
-     *      java.util.logging.Logger,
+     * @see org.extex.exindex.core.type.raw.RefSpec#check(java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.CrossrefClassContainer, java.util.List,
+     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
             AttributesContainer attributes) {
 
         String attr = entry.getRef().getLayer();

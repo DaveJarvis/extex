@@ -1,0 +1,149 @@
+\begin{theindex}
+
+  \setcounter{page}{123}
+
+  \item \texttt  {--}, \hyperpage{16}
+  \item \textsf  {.extex}, \hyperpage{9}
+  \item \&, \hyperpage{16}
+
+  \indexspace
+
+  \item batchmode, \hyperpage{12}, \hyperpage{17}
+
+  \indexspace
+
+  \item \texttt  {-configuration}, \hyperpage{16}
+  \item \texttt  {-copyright}, \hyperpage{16}
+  \item CTAN, \hyperpage{7}
+  \item CVS, \hyperpage{8}
+
+  \indexspace
+
+  \item \texttt  {-debug}, \hyperpage{16}
+  \item \texttt  {\char `\\ dump}, \hyperpage{19, 20}
+
+  \indexspace
+
+  \item \texttt  {\char `\\ end}, \hyperpage{15}, \hyperpage{20}
+  \item errorstopmode, \hyperpage{12}, \hyperpage{17}
+  \item Explorer, \hyperpage{9}
+  \item extex, \hyperpage{9}, \hyperpage{15}
+  \item \textsf  {ExTeX-setup.jar}, \hyperpage{7--9}
+  \item extex.bat, \hyperpage{9}
+  \item \texttt  {extex.code}, \hyperpage{10}, \hyperpage{15}
+  \item \texttt  {extex.color.converter}, \hyperpage{10}
+  \item \texttt  {extex.config}, \hyperpage{10}, \hyperpage{16}
+  \item \texttt  {extex.encoding}, \hyperpage{10}
+  \item \texttt  {extex.error.handler}, \hyperpage{11}
+  \item \texttt  {extex.file}, \hyperpage{11}, \hyperpage{16}
+  \item \texttt  {extex.fonts}, \hyperpage{11}
+  \item \texttt  {extex.format}, \hyperpage{11}, \hyperpage{16}
+  \item \texttt  {extex.halt.on.error}, \hyperpage{11}, \hyperpage{17}
+  \item \texttt  {extex.ini}, \hyperpage{11}, \hyperpage{17}
+  \item \texttt  {extex.interaction}, \hyperpage{12}, \hyperpage{17}
+  \item \texttt  {extex.jobname}, \hyperpage{12}, \hyperpage{18}
+  \item \texttt  {extex.jobname.master}, \hyperpage{12}
+  \item \texttt  {extex.lang}, \hyperpage{12}, \hyperpage{18}
+  \item \texttt  {extex.nobanner}, \hyperpage{12}
+  \item \texttt  {extex.output}, \hyperpage{12}, \hyperpage{18}
+  \item \texttt  {extex.output.directories}, \hyperpage{13}
+  \item \texttt  {extex.outputdir}, \hyperpage{19}
+  \item \texttt  {extex.outputdir.fallback}, \hyperpage{18}
+  \item \texttt  {extex.progname}, \hyperpage{13}, \hyperpage{18}
+  \item \texttt  {extex.stacktrace.on.internal.error}, \hyperpage{13}
+  \item \texttt  {extex.texinputs}, \hyperpage{11}, \hyperpage{13}, 
+		\hyperpage{18}
+  \item \texttt  {extex.trace.font.files}, \hyperpage{13}, 
+		\hyperpage{17}
+  \item \texttt  {extex.trace.input.files}, \hyperpage{13}, 
+		\hyperpage{17}
+  \item \texttt  {extex.trace.macros}, \hyperpage{14}, \hyperpage{17}
+  \item \texttt  {extex.trace.tokenizer}, \hyperpage{14}, 
+		\hyperpage{17}
+  \item \texttt  {extex.typesetter}, \hyperpage{14}
+
+  \indexspace
+
+  \item \texttt  {-fmt}, \hyperpage{16}
+
+  \indexspace
+
+  \item \texttt  {-halt-on-error}, \hyperpage{17}
+  \item \texttt  {-help}, \hyperpage{17}
+
+  \indexspace
+
+  \item \texttt  {-ini}, \hyperpage{17}, \hyperpage{20}
+  \item ini\TeX, \hyperpage{17}
+  \item installation script, \hyperpage{9}
+  \item installer, \hyperpage{7--9}
+    \subitem language, \hyperpage{9}
+  \item \texttt  {-interaction}, \hyperpage{17}
+
+  \indexspace
+
+  \item Java, \hyperpage{7}, \hyperpage{9}, \hyperpage{19}
+  \item \texttt  {-job-name}, \hyperpage{18}
+
+  \indexspace
+
+  \item language, \hyperpage{9}
+    \subitem installer, \hyperpage{9}
+  \item \texttt  {-language}, \hyperpage{18}
+  \item log file, \hyperpage{21}
+  \item \textsf  {ls-R}, \hyperpage{7}
+
+  \indexspace
+
+  \item Mailing list, \hyperpage{5}
+
+  \indexspace
+
+  \item nonstopmode, \hyperpage{12}, \hyperpage{17}
+
+  \indexspace
+
+  \item \texttt  {-output}, \hyperpage{18}
+
+  \indexspace
+
+  \item path, \hyperpage{9}
+  \item pdf\TeX, \hyperpage{5}
+  \item \texttt  {-progname}, \hyperpage{18}
+
+  \indexspace
+
+  \item \texttt  {\char `\\ relax}, \hyperpage{15}
+  \item \texttt{\char`\\relax}, \hyperpage{10}
+  \item repository, \hyperpage{8}
+
+  \indexspace
+
+  \item scrollmode, \hyperpage{12}, \hyperpage{17}
+  \item search, \hyperpage{21}
+
+  \indexspace
+
+  \item \TeX, \hyperpage{5}, \hyperpage{21}
+  \item \texttt  {-texinputs}, \hyperpage{18}
+  \item \TeX Live, \hyperpage{7}
+  \item texmf, \hyperpage{7}
+  \item \texttt  {-texmfoutputs}, \hyperpage{18}
+  \item \texttt  {-texoutputs}, \hyperpage{19}
+
+  \indexspace
+
+  \item Unix, \hyperpage{13}, \hyperpage{18}
+
+  \indexspace
+
+  \item version, \hyperpage{19}
+  \item \texttt  {-version}, \hyperpage{19}
+
+  \indexspace
+
+  \item Web Site, \hyperpage{5}
+  \item Windows, \hyperpage{9}, \hyperpage{13}, \hyperpage{18}
+  \item WWW, \hyperpage{5}
+
+\end{theindex}

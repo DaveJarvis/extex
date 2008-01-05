@@ -581,6 +581,8 @@ public class ExIndexTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
+    // define see
     public final void testStyle3() throws Exception {
 
         runTest(new String[]{"-trans", "xxx", "-s",

@@ -21,8 +21,6 @@ package org.extex.exindex.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
@@ -68,10 +66,9 @@ import org.extex.exindex.core.command.LSearchpath;
 import org.extex.exindex.core.command.LSortRule;
 import org.extex.exindex.core.command.LUseRuleSet;
 import org.extex.exindex.core.exception.IndexerException;
-import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.XindyParser;
+import org.extex.exindex.core.parser.RawIndexParserFactory;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.AlphaLowercase;
@@ -123,6 +120,11 @@ public class Indexer extends LEngine {
      * The field <tt>container</tt> contains the container for all indices.
      */
     private IndexContainer container = new IndexContainer();
+
+    /**
+     * The field <tt>parserFactory</tt> contains the parser factory.
+     */
+    private RawIndexParserFactory parserFactory;
 
     /**
      * Creates a new object and initialized it.
@@ -327,34 +329,6 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * Create a parser for the raw index from a resource name.
-     * 
-     * @param resource the name of the resource
-     * @param charset the name of the character set; a value of
-     *        <code>null</code> or the empty string used the platform default
-     * 
-     * @return the parser
-     * 
-     * @throws RawIndexException in case of an error
-     * @throws IOException in case of an I/O error
-     */
-    protected RawIndexParser makeRawIndexParser(String resource, String charset)
-            throws RawIndexException,
-                IOException {
-
-        InputStream stream = getResourceFinder().findResource(resource, "raw");
-        if (stream == null) {
-            return null;
-        }
-
-        Reader reader =
-                (charset == null || charset.equals("") //
-                        ? new InputStreamReader(stream, charset)
-                        : new InputStreamReader(stream));
-        return new XindyParser(reader, resource, null);
-    }
-
-    /**
      * Perform the markup phase and write the result to the given writer.
      * 
      * @param writer the writer or <code>null</code> to skip this phase
@@ -454,8 +428,8 @@ public class Indexer extends LEngine {
                     ? "Reading"
                     : "ReadingStdin"), resource));
 
-            RawIndexParser parser = makeRawIndexParser(resource, //
-                LString.stringValue(get("indexer:charset-raw")));
+            RawIndexParser parser = parserFactory.create(resource, //
+                LString.stringValue(get("indexer:charset-raw")), null);
             if (parser == null) {
                 logger.info(LOCALIZER.format("ResourceNotFound", resource));
                 throw new FileNotFoundException(resource);
@@ -522,6 +496,16 @@ public class Indexer extends LEngine {
         startup(styles, logger);
         process(resources, logger);
         markup(writer, logger);
+    }
+
+    /**
+     * Setter for parserFactory.
+     * 
+     * @param parserFactory the parserFactory to set
+     */
+    public void setParserFactory(RawIndexParserFactory parserFactory) {
+
+        this.parserFactory = parserFactory;
     }
 
     /**

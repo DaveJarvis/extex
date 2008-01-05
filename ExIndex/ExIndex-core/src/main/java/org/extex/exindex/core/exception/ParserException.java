@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,32 +17,41 @@
  *
  */
 
-package org.extex.exindex.core.type;
+package org.extex.exindex.core.exception;
 
 /**
- * This interface describes a read-only container for cross reference classes.
+ * This exception signals a problem with the parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface CrossrefClassContainer {
+public class ParserException extends IndexerException {
 
     /**
-     * Define a cross-reference class.
-     * 
-     * @param name the name of the cross-reference class
-     * @param verified the indicator for verified classes
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    void defineCrossrefClass(String name, Boolean verified);
+    private static final long serialVersionUID = 2008L;
 
     /**
-     * Getter for a cross-reference class.
+     * Creates a new object.
      * 
-     * @param name the name of the cross-reference class
-     * 
-     * @return the indicator for verified cross-reference classes or
-     *         <code>null</code> if the cross-reference class is not defined
+     * @param message the message
      */
-    Boolean lookupCrossrefClass(String name);
+    public ParserException(String message) {
+
+        super(null);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message the message
+     * @param cause the cause
+     */
+    public ParserException(String message, Throwable cause) {
+
+        super(null);
+    }
 
 }

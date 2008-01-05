@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.StringReader;
 
 import org.extex.exindex.core.exception.RawIndexException;
+import org.extex.exindex.core.parser.xindy.XindyParser;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.junit.Test;
 
@@ -38,7 +39,7 @@ import org.junit.Test;
 public class XindyParserTest {
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -55,7 +56,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -73,7 +74,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -93,7 +94,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -113,7 +114,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -130,7 +131,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -147,7 +148,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -165,7 +166,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -182,7 +183,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -200,7 +201,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -218,7 +219,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -230,7 +231,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -242,7 +243,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +255,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -266,7 +267,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -278,7 +279,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -290,7 +291,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -302,7 +303,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -314,7 +315,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      */
     @Test(expected = NullPointerException.class)
     public final void testErr1() {
@@ -323,7 +324,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      */
     @Test(expected = NullPointerException.class)
     public final void testErr2() {
@@ -332,7 +333,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -343,7 +344,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -354,7 +355,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -365,7 +366,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -376,7 +377,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -387,7 +388,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -398,7 +399,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -409,7 +410,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -421,7 +422,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -433,7 +434,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -445,7 +446,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -458,7 +459,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -471,7 +472,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -485,7 +486,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -496,7 +497,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -508,7 +509,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -519,7 +520,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -531,7 +532,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -543,7 +544,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -555,7 +556,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -566,7 +567,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -577,7 +578,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */
@@ -589,7 +590,7 @@ public class XindyParserTest {
     }
 
     /**
-     * Test method for {@link org.extex.exindex.core.parser.XindyParser#parse()}.
+     * Test method for {@link org.extex.exindex.core.parser.xindy.XindyParser#parse()}.
      * 
      * @throws Exception in case of an error
      */

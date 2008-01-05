@@ -27,9 +27,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exindex.core.exception.IndexerException;
+import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.attribute.Attribute;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.rules.Rule;
 import org.extex.exindex.core.type.rules.SortRuleContainer;
@@ -51,6 +53,7 @@ public class StructuredIndex extends LetterGroupContainer
         implements
             AttributesContainer,
             SortRuleContainer,
+            LocationClassContainer,
             MarkupContainer {
 
     /**
@@ -99,6 +102,20 @@ public class StructuredIndex extends LetterGroupContainer
     private StructuredIndex alias = null;
 
     /**
+     * The field <tt>locationClassMap</tt> contains the mapping from names to
+     * location classes.
+     */
+    private Map<String, LocationClass> locationClassMap =
+            new HashMap<String, LocationClass>();
+
+    /**
+     * The field <tt>locationClasses</tt> contains the list of classes already
+     * defined.
+     */
+    private List<LocationClass> locationClasses =
+            new ArrayList<LocationClass>();
+
+    /**
      * Creates a new object.
      * 
      * @param fallback the container for fallback values
@@ -107,6 +124,27 @@ public class StructuredIndex extends LetterGroupContainer
 
         super();
         this.fallback = fallback;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(java.lang.String,
+     *      org.extex.exindex.core.type.alphabet.LocationClass)
+     */
+    public boolean addLocationClass(String name, LocationClass locationClass) {
+
+        LocationClass lc = locationClassMap.get(name);
+        if (lc != null) {
+            locationClassMap.put(name, locationClass);
+            locationClasses.remove(lc);
+            locationClasses.add(locationClass);
+            return false;
+        }
+
+        locationClassMap.put(name, locationClass);
+        locationClasses.add(locationClass);
+        return true;
     }
 
     /**
@@ -256,6 +294,17 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
+     *      java.lang.String)
+     */
+    public LocationClass lookupLocationClass(String name) {
+
+        return locationClassMap.get(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
@@ -276,6 +325,48 @@ public class StructuredIndex extends LetterGroupContainer
     public SortRules lookupSortRules(Integer level) {
 
         return sortRulesMap.get(level);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
+     *      java.lang.String, java.lang.String)
+     */
+    public PageReference makePageReference(String encap, String s) {
+
+        for (LocationClass lc : locationClasses) {
+            PageReference pr = lc.match(encap, s);
+            if (pr != null) {
+                return pr;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.core.type.LocationClassContainer#orderLocationClasses(
+     *      java.lang.String[])
+     */
+    public void orderLocationClasses(String[] list) throws LException {
+
+        List<LocationClass> newClasses = new ArrayList<LocationClass>();
+
+        for (String s : list) {
+            LocationClass lc = locationClassMap.get(s);
+            int i = locationClasses.indexOf(lc);
+            if (i < 0) {
+                throw new LException(LocalizerFactory.getLocalizer(getClass())
+                    .format("UnknownClass", s));
+            }
+            newClasses.add(lc);
+            locationClasses.remove(i);
+        }
+
+        newClasses.addAll(locationClasses);
+        locationClasses = newClasses;
     }
 
     /**

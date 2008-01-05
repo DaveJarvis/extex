@@ -27,13 +27,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -41,17 +39,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.UnknownAttributeException;
-import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
-import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.core.parser.xindy.XindyParserFactory;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.main.exception.MainException;
+import org.extex.exindex.main.xindy.XindyFilteringParserFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.i18n.Localizer;
@@ -397,15 +394,16 @@ public class ExIndex extends Indexer {
 
         super();
         config = ConfigurationFactory.newInstance("path/indexer");
-        setResourceFinder(new ResourceFinderFactory().createResourceFinder(
-            config, //
-            logger, System.getProperties(), new InteractionIndicator() {
+        ResourceFinder f =
+                new ResourceFinderFactory().createResourceFinder(config, //
+                    logger, System.getProperties(), new InteractionIndicator() {
 
-                public boolean isInteractive() {
+                        public boolean isInteractive() {
 
-                    return false;
-                }
-            }));
+                            return false;
+                        }
+                    });
+        setResourceFinder(f);
         charset = Charset.defaultCharset();
         banner = true;
 
@@ -416,6 +414,10 @@ public class ExIndex extends Indexer {
         consoleHandler.setFormatter(new LogFormatter());
         consoleHandler.setLevel(Level.INFO);
         logger.addHandler(consoleHandler);
+
+        XindyParserFactory parserFactory = new XindyFilteringParserFactory();
+        parserFactory.setResourceFinder(f);
+        setParserFactory(parserFactory);
     }
 
     /**
@@ -446,133 +448,6 @@ public class ExIndex extends Indexer {
     public Logger getLogger() {
 
         return logger;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.Indexer#makeRawIndexParser(java.lang.String,
-     *      java.lang.String)
-     */
-    @Override
-    protected RawIndexParser makeRawIndexParser(String resource, String charset)
-            throws IOException,
-                RawIndexException {
-
-        String parser = "xindy";
-        InputStream stream;
-        if (resource == null) {
-            stream = System.in;
-        } else {
-            stream = getResourceFinder().findResource(resource, "raw");
-            if (stream == null) {
-                stream = getResourceFinder().findResource(resource, "idx");
-                parser = "makeindex";
-                if (stream == null) {
-                    return null;
-                }
-            }
-        }
-        Reader reader = new InputStreamReader(stream, charset);
-        if (filter != null) {
-            stream = getClass().getClassLoader().getResourceAsStream(//
-                "org/extex/exindex/filter/" + filter + ".filter");
-            if (stream != null) {
-                Properties p = new Properties();
-                p.load(stream);
-                String clazz = (String) p.get("class");
-                if (clazz == null) {
-                    throw new MainException(LOCALIZER.format(
-                        "FilterMissingClass", filter));
-                }
-                try {
-                    Class<?> theClass = Class.forName(clazz);
-                    if (!Reader.class.isAssignableFrom(theClass)) {
-                        throw new MainException(LOCALIZER.format(
-                            "FilterClassCast", filter, clazz));
-                    }
-                    reader =
-                            (Reader) theClass.getConstructor(
-                                new Class[]{Reader.class}).newInstance(
-                                new Object[]{reader});
-                } catch (ClassNotFoundException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format(
-                        "FilterClassNotFound", filter, clazz), e);
-                } catch (NoSuchMethodException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format(
-                        "FilterNoSuchMethod", filter, clazz), e);
-                } catch (SecurityException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format("FilterError",
-                        filter, e.toString()), e);
-                } catch (IllegalArgumentException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format(
-                        "FilterIllegalArgument", filter, e.toString()), e);
-                } catch (InstantiationException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format("FilterError",
-                        filter, e.toString()), e);
-                } catch (IllegalAccessException e) {
-                    logException(logger, "", e);
-                    throw new MainException(LOCALIZER.format("FilterError",
-                        filter, e.toString()), e);
-                } catch (InvocationTargetException e) {
-                    logException(logger, "", e);
-                    Throwable ex = (e.getCause() != null ? e.getCause() : e);
-                    throw new MainException(LOCALIZER.format("FilterError",
-                        filter, ex.toString()), e);
-                } finally {
-                    stream.close();
-                }
-
-            }
-            // TODO gene: filter with external program
-            throw new MainException(LOCALIZER.format("UnknownFilter", filter));
-        }
-
-        stream = getClass().getClassLoader().getResourceAsStream(//
-            "org/extex/exindex/parser/" + parser + ".parser");
-        if (stream == null) {
-            throw new MainException(LOCALIZER.format("ParserMissing", parser));
-        }
-        Properties p = new Properties();
-        p.load(stream);
-        String clazz = (String) p.get("class");
-        if (clazz == null) {
-            throw new MainException(LOCALIZER.format("ParserMissingClass",
-                parser));
-        }
-
-        try {
-            Constructor<?> cons =
-                    Class.forName(clazz).getConstructor(Reader.class,
-                        String.class, LInterpreter.class);
-            return (RawIndexParser) cons.newInstance(reader, resource, this);
-        } catch (SecurityException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (NoSuchMethodException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (ClassNotFoundException e) {
-            throw new MainException(LOCALIZER.format("ParserMissingClass",
-                parser));
-        } catch (IllegalArgumentException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (InstantiationException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (IllegalAccessException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        } catch (InvocationTargetException e) {
-            throw new MainException(LOCALIZER.format("ParserError", parser, e
-                .toString()), e);
-        }
     }
 
     /**

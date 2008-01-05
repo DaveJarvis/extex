@@ -570,7 +570,7 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method is an extension point to acquire the index to use.
      * 
      * @param loc the locator
      * @param fallback the default index

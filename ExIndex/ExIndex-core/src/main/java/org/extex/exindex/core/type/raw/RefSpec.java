@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.type.CrossrefClassContainer;
+import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
@@ -47,7 +47,7 @@ public interface RefSpec {
      * @return <code>true</code> iff everything is ok
      */
     boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            CrossrefClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
             AttributesContainer attributes);
 
     /**
