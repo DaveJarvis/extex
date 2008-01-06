@@ -79,7 +79,7 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
             stream = finder.findResource(resource, "raw");
             if (stream == null) {
                 stream = finder.findResource(resource, "idx");
-                parser = "makeindex";
+                parser = "splitindex";
                 if (stream == null) {
                     return null;
                 }

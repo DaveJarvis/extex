@@ -27,7 +27,9 @@ import org.extex.exindex.lisp.LInterpreter;
 import org.extex.resource.ResourceFinder;
 
 /**
- * This interface describes a factory for raw index parsers.
+ * This interface describes a factory for raw index parsers. The task of the
+ * factory is to resolve a resource name and create an appropriate parser for
+ * the resource found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,14 +37,17 @@ import org.extex.resource.ResourceFinder;
 public interface RawIndexParserFactory {
 
     /**
-     * Create a parser for the raw index from a resource name.
+     * Create a parser for the raw index from a resource name. Usually a
+     * resource finder is used to find the resource.
      * 
      * @param resource the name of the resource
      * @param charset the name of the character set; a value of
-     *        <code>null</code> or the empty string used the platform default
+     *        <code>null</code> or the empty string uses the platform default
+     *        for the character set
      * @param interpreter the interpreter
      * 
-     * @return the parser
+     * @return the parser or <code>null</code> if the resource could not be
+     *         found
      * 
      * @throws RawIndexException in case of an error
      * @throws IOException in case of an I/O error

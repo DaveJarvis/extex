@@ -96,8 +96,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <table>
  * <tr>
- * <th>ExIndex parameter</th>
- * <th>makeindex parameter</th>
+ * <th><logo>ExIndex</logo> parameter</th>
+ * <th><logo>makeindex</logo> parameter</th>
  * <th>Fallback</th>
  * <th>Type</th>
  * <th>Description</th>
@@ -125,7 +125,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <td>This character closes an argument which has been opened by the arg-open
  * character. The arg-open and arg-close characters have to be balanced before
  * the closing takes place. Any arg-open or arg-close character preceded by an
- * quote character is not counted</td>
+ * quote character is not counted.</td>
  * </tr>
  * <tr>
  * <td>makeindex:range-open</td>
@@ -212,25 +212,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- * \indexentry{alpha@$alpha$}{123}   </pre>
+ * \indexentry{alpha@$\alpha$}{123}   </pre>
  * 
  * <p>
- * 
+ * This example sorts as <tt>alpha</tt> and prints as &alpha;.
  * </p>
  * 
  * <pre>
- * \indexentry{alpha@$alpha$|textbf(}{123}   </pre>
+ * \indexentry{alpha@$\alpha$|textbf(}{123}   </pre>
  * 
  * <p>
+ * This example shows an entry with the attribute <tt>textbf</tt> which is
+ * started here.
  * </p>
  * 
  * <pre>
  * \indexentry{a!b!c}{123}   </pre>
  * 
  * <p>
+ * This example shows a structured entry with the structuring a &rarr; b &rarr;
+ * c.
  * </p>
- * 
- * TODO documentation incomplete
  * 
  * <doc>
  * 

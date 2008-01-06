@@ -31,26 +31,174 @@ import org.extex.exindex.lisp.LInterpreter;
 /**
  * This parser is a reader for input in the form of the splitindex format and
  * some extensions of it.
+ * 
+ * 
+ * <doc section="Splitindex Index Format">
+ * <h2>The <logo>splitindex</logo> Raw Index Format</h2>
+ * 
  * <p>
- * The following examples illustrate the index entries understood by this
- * parser.
+ * The raw index format for <logo>splitindex</logo> is used to parse the input
+ * and acquire index data. <logo>splitindex</logo> is an extension of
+ * <logo>makeindex</logo>. It has additionally an optional argument for the
+ * index. This makes it possible to have entries for several indices in one
+ * file.
+ * </p>
+ * <p>
+ * The parser is highly configurable. A general scheme is used. The characters
+ * involved can be adjusted in the configuration. The general scheme is the
+ * following:
  * </p>
  * 
  * <pre>
- * \indexentry{abc}{123}   </pre>
+ *  <b><i>makeindex:keyword</i></b>
+ *    [<b><i>makeindex:index-open</i></b> <i>index-name</i> <b><i>makeindex:index-close</i></b>]
+ *    <b><i>makeindex:arg-open</i></b>
+ *     [<i>main-key</i>
+ *      [<b><i>makeindex:level</i></b> <i>main-key-2</i>
+ *       [<b><i>makeindex:level</i></b> <i>main-key-3</i> ] ] 
+ *      <b><i>makeindex:actual</i></b> ]
+ *     <i>print-key</i>
+ *     [<b><i>makeindex:encap</i></b> <i>encap</i>
+ *      [ | <b><i>makeindex:range-open</i></b> | <b><i>makeindex:range-close</i></b> ]
+ *     ]
+ *    <b><i>makeindex:arg-close</i></b>
+ *    <b><i>makeindex:arg-open</i></b>
+ *     <i>page-ref</i>
+ *    <b><i>makeindex:arg-close</i></b>   </pre>
  * 
- * <pre>
- * \indexentry[idx1]{abc}{123}   </pre>
+ * <p>
+ * In the description above the elements in bold and italic indicate the
+ * parameters for the parsing. The elements in italic only are the variable
+ * parts containing the data of the entry.
+ * </p>
+ * <p>
+ * Note that the index has to be defined before it can receive data. Entries
+ * sent to an undefined index are dropped and will not show up in an output.
+ * </p>
  * 
- * <pre>
- * \indexentry[idx1]{$alpha$@alpha}{123}   </pre>
+ * <h3>The Parameters</h3>
  * 
- * <pre>
- * \indexentry[idx1]{$alpha$@alpha|textbf(}{123}   </pre>
+ * <p>
+ * The parsing of raw index entries in the <logo>makeindex</logo> format can be
+ * controlled by a set of parameters. This makes the parser adaptable to a wider
+ * range of applications.
+ * </p>
+ * <p>
+ * The original need to introduce the parameters is the flexibility of <logo>TeX</logo>.
+ * In <logo>TeX</logo> the category codes of characters can be redefined. Thus
+ * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
+ * such a situation.
+ * </p>
+ * <p>
+ * The following table shows the parameters with their <logo>ExIndex</logo>
+ * name, its <logo>makeindex</logo> name and the default value.
+ * </p>
  * 
- * <pre>
- * \indexentry[idx1]{a!b!c}{123}   </pre>
+ * <table>
+ * <tr>
+ * <th><logo>ExIndex</logo> parameter</th>
+ * <th><logo>makeindex</logo> parameter</th>
+ * <th>Fallback</th>
+ * <th>Type</th>
+ * <th>Description</th>
+ * </tr>
+ * <tr>
+ * <td>makeindex:keyword</td>
+ * <td>keyword</td>
+ * <td><tt>\indexentry</tt></td>
+ * <td>string</td>
+ * <td>This string starts an entry. Anything between entries is ignored.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:index-open</td>
+ * <td></td>
+ * <td><tt>[</tt></td>
+ * <td>character</td>
+ * <td>This character opens the optional argument containing the index name. It
+ * is terminated by the index-close character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:index-close</td>
+ * <td></td>
+ * <td><tt>]</tt></td>
+ * <td>character</td>
+ * <td>This character closes an argument which has been opened by the
+ * index-open character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:arg-open</td>
+ * <td>arg_open</td>
+ * <td><tt>{</tt></td>
+ * <td>character</td>
+ * <td>This character opens an argument. It is terminated by the arg-close
+ * character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:arg-close</td>
+ * <td>arg_close</td>
+ * <td><tt>}</tt></td>
+ * <td>character</td>
+ * <td>This character closes an argument which has been opened by the arg-open
+ * character. The arg-open and arg-close characters have to be balanced before
+ * the closing takes place. Any arg-open or arg-close character preceded by an
+ * quote character is not counted.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:range-open</td>
+ * <td>range_open</td>
+ * <td><tt>(</tt></td>
+ * <td>character</td>
+ * <td>This character indicates the start of a range.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:range-close</td>
+ * <td>range_close</td>
+ * <td><tt>)</tt></td>
+ * <td>character</td>
+ * <td>This character indicates the end of a range.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:escape</td>
+ * <td>escape</td>
+ * <td><tt>"</tt></td>
+ * <td>character</td>
+ * <td>This is the escape character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:quote</td>
+ * <td>quote</td>
+ * <td><tt>\</tt></td>
+ * <td>character</td>
+ * <td>This is the quote character</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:encap</td>
+ * <td>encap</td>
+ * <td><tt>|</tt></td>
+ * <td>character</td>
+ * <td>This character is the separator for the encapsulator.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:level</td>
+ * <td>level</td>
+ * <td><tt>!</tt></td>
+ * <td>character</td>
+ * <td>This character is the level separator. A structured key is divided into
+ * parts with this character.</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:actual</td>
+ * <td>actual</td>
+ * <td><tt>@</tt></td>
+ * <td>character</td>
+ * <td>The actual character, separating the print representation from the key.</td>
+ * </tr>
+ * </table>
  * 
+ * <p>
+ * The following example shows how the default setting can be defined in a
+ * <logo>ExIndex</logo> style file.
+ * </p>
  * 
  * <pre>
  *  (setq makeindex:keyword "\\indexentry")
@@ -67,6 +215,77 @@ import org.extex.exindex.lisp.LInterpreter;
  *  (setq makeindex:index-open #\[)
  *  (setq makeindex:index-close #\[)   </pre>
  * 
+ * <h3>Examples of Index Entries</h3>
+ * 
+ * <p>
+ * The following examples illustrate the index entries understood by the
+ * <logo>splitindex</logo> raw index format.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{abc}{123}   </pre>
+ * 
+ * <p>
+ * This example is the simple case of a main key <tt>abc</tt> and the page
+ * reference <tt>123</tt>. The index used is the default index which is
+ * denoted by the empty string.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{alpha@$\alpha$}{123}   </pre>
+ * 
+ * <p>
+ * This example sorts as <tt>alpha</tt> and prints as &alpha;.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{alpha@$\alpha$|textbf(}{123}   </pre>
+ * 
+ * <p>
+ * This example shows an entry with the attribute <tt>textbf</tt> which is
+ * started here.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry{a!b!c}{123}   </pre>
+ * 
+ * <p>
+ * This example shows a structured entry with the structuring a &rarr; b &rarr;
+ * c.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry[idx1]{abc}{123}   </pre>
+ * 
+ * <p>
+ * This example shows an entry which is sent to the index <tt>idx1</tt>.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry[idx1]{alpha@$\alpha$}{123}   </pre>
+ * 
+ * <p>
+ * This example shows an entry with separate print representation which is sent
+ * to the index <tt>idx1</tt>.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry[idx1]{alpha@$\alpha$|textbf}{123}   </pre>
+ * 
+ * <p>
+ * This example shows an entry with print representation and attribute which is
+ * sent to the index <tt>idx1</tt>.
+ * </p>
+ * 
+ * <pre>
+ * \indexentry[idx1]{a!b!c}{123}   </pre>
+ * 
+ * <p>
+ * This example shows a structured entry which is sent to the index
+ * <tt>idx1</tt>.
+ * </p>
+ * 
+ * <doc>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
