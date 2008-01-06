@@ -37,7 +37,8 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <h3>The Command <tt>merge-to</tt></h3>
  * 
  * <p>
- * The command <tt>merge-to</tt> can be used to add a merge rule.
+ * The command <tt>merge-to</tt> can be used to add a merge rule. The merge
+ * rule applies to the current index.
  * </p>
  * 
  * <pre>
@@ -54,7 +55,18 @@ import org.extex.exindex.lisp.type.value.LValue;
  * <pre>
  *  (merge-to "abc" "ABC")   </pre>
  * 
- * TODO documentation incomplete
+ * <p>
+ * The first argument is a string with the name of the attribute to be mapped.
+ * The second argument can be a string containing the name of the attribute with
+ * which it should be merged.
+ * </p>
+ * 
+ * <pre>
+ *  (merge-to "abc" "" :drop)   </pre>
+ * 
+ * <p>
+ * If the flag <tt>:drop</tt> is given then the attribute will be dropped.
+ * </p>
  * 
  * </doc>
  * 
