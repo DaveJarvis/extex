@@ -116,6 +116,11 @@ public class StructuredIndex extends LetterGroupContainer
             new ArrayList<LocationClass>();
 
     /**
+     * The field <tt>suffix</tt> contains the suffix parameter.
+     */
+    private String suffix = ".";
+
+    /**
      * Creates a new object.
      * 
      * @param fallback the container for fallback values
@@ -129,7 +134,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(java.lang.String,
+     * @see org.extex.exindex.core.type.LocationClassContainer#addLocationClass(
+     *      java.lang.String,
      *      org.extex.exindex.core.type.alphabet.LocationClass)
      */
     public boolean addLocationClass(String name, LocationClass locationClass) {
@@ -176,8 +182,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(Integer,
-     *      java.util.List)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#addSortRules(
+     *      Integer, java.util.List)
      */
     public void addSortRules(Integer level, List<Rule> ruleList) {
 
@@ -250,7 +256,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(java.lang.String)
+     * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(
+     *      java.lang.String)
      */
     public Markup getMarkup(String name) {
 
@@ -262,9 +269,20 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
+     * Getter for suffix.
+     * 
+     * @return the suffix
+     */
+    public String getSuffix() {
+
+        return suffix;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.attribute.AttributesContainer#isAttributeDefined(java.lang.String)
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#isAttributeDefined(
+     *      java.lang.String)
      */
     public boolean isAttributeDefined(String attribute) {
 
@@ -284,7 +302,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.attribute.AttributesContainer#lookupAttribute(java.lang.String)
+     * @see org.extex.exindex.core.type.attribute.AttributesContainer#lookupAttribute(
+     *      java.lang.String)
      */
     public Attribute lookupAttribute(String attribute) {
 
@@ -305,7 +324,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupOrCreateSortRule(
+     *      Integer)
      */
     public SortRules lookupOrCreateSortRule(Integer level) {
 
@@ -320,7 +340,8 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(
+     *      Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -402,12 +423,22 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(java.lang.String,
-     *      org.extex.exindex.core.type.markup.Markup)
+     * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
+     *      java.lang.String, org.extex.exindex.core.type.markup.Markup)
      */
     public void setMarkup(String name, Markup m) {
 
         markup.put(name, m);
+    }
+
+    /**
+     * Setter for suffix.
+     * 
+     * @param suffix the suffix to set
+     */
+    public void setSuffix(String suffix) {
+
+        this.suffix = suffix;
     }
 
     /**

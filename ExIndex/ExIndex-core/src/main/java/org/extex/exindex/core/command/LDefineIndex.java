@@ -47,6 +47,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (define-index
  *     <i>index-name</i>
  *     [:drop | :merge-to <i>index-name</i>]
+ *     [:suffix <i>suffix</i>]
  *  )  </pre>
  * 
  * <p>
@@ -81,6 +82,15 @@ import org.extex.exindex.lisp.type.value.LValue;
  * remain in the index with the empty name.
  * </p>
  * 
+ * <pre>
+ *  (define-index "abc" :suffix ".ind")  </pre>
+ * 
+ * <p>
+ * The example above declares the suffix for the the index <tt>abc</tt> to be
+ * <tt>.ind</tt>. The default behavior is to use the name of the index
+ * preceded by a period as suffix.
+ * </p>
+ * 
  * </doc>
  * 
  * 
@@ -105,7 +115,8 @@ public class LDefineIndex extends AbstractLAdapter {
 
         super(name, container, new Arg[]{Arg.LSTRING, //
                 Arg.OPT_BOOLEAN(":drop", null), //
-                Arg.OPT_STRING(":merge-to", null)});
+                Arg.OPT_STRING(":merge-to", null), //
+                Arg.OPT_STRING(":suffix", null)});
     }
 
     /**
@@ -115,6 +126,7 @@ public class LDefineIndex extends AbstractLAdapter {
      * @param name the name of the index
      * @param drop the indicator to drop the index
      * @param mergeTo the name of the index to send the entries to
+     * @param suffix the optional suffix
      * 
      * @return <tt>nil</tt>
      * 
@@ -125,18 +137,19 @@ public class LDefineIndex extends AbstractLAdapter {
      * @throws InconsistentFlagsException in case of inconsistent flags
      */
     public LValue evaluate(LInterpreter interpreter, LString name,
-            Boolean drop, String mergeTo)
+            Boolean drop, String mergeTo, String suffix)
             throws LNonMatchingTypeException,
                 LSettingConstantException,
                 UnknownIndexException,
                 IndexAliasLoopException,
                 InconsistentFlagsException {
 
-        int flag = (drop != null ? 1 : 0) | (mergeTo != null ? 2 : 0);
+        String indexName = name.getValue();
+        StructuredIndex index =
+                getContainer().defineIndex(indexName,
+                    suffix == null ? "." + indexName : suffix);
 
-        StructuredIndex index = getContainer().defineIndex(name.getValue());
-
-        switch (flag) {
+        switch (((drop != null ? 1 : 0) | (mergeTo != null ? 2 : 0))) {
             case 0:
                 break;
             case 1:
@@ -146,8 +159,7 @@ public class LDefineIndex extends AbstractLAdapter {
                 mergeTo(mergeTo, index);
                 break;
             case 3:
-                throw new InconsistentFlagsException(null, ":dropped",
-                    ":merge-to");
+                throw new InconsistentFlagsException(null, ":drop", ":merge-to");
         }
 
         return null;
