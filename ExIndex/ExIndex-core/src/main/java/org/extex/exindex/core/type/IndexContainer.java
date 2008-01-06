@@ -203,21 +203,23 @@ public class IndexContainer
     }
 
     /**
-     * define or redefine an index. If an index with the given name already
+     * Define or redefine an index. If an index with the given name already
      * exists then this index is returned. Otherwise a new one is created and
      * returned.
      * 
      * @param name the name of the index
+     * @param suffix the suffix
      * 
      * @return the index found or created
      */
-    public StructuredIndex defineIndex(String name) {
+    public StructuredIndex defineIndex(String name, String suffix) {
 
         StructuredIndex index = indexMap.get(name);
         if (index == null) {
             index = new StructuredIndex(this);
             indexMap.put(name, index);
         }
+        index.setSuffix(suffix);
         return index;
     }
 
