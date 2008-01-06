@@ -24,7 +24,58 @@ import java.io.IOException;
 import java.io.Reader;
 
 /**
- * Reader which translates ^^-Notation on the fly.
+ * Reader which translates ^^ notation on the fly into characters.
+ * <p>
+ * <logo>TeX</logo> translates ^^ notation into characters at a very early
+ * stage of parsing. This behavior is imitated in this reader. In contrast to
+ * <logo>TeX<logo> no category codes are involved.
+ * </p>
+ * <p>
+ * <logo>TeX</logo> defines the mapping of characters following ^^ according to
+ * the following rules:
+ * </p>
+ * <ul>
+ * <li>If the next one or two letters make up a hexadecimal number build from
+ * digits or lower-case letters, then this number is the code point to use
+ * instead. </li>
+ * <li>If the next character has a code point less than 64, then 64 is added to
+ * the code point and the new value used instead. </li>
+ * <li>Otherwise 64 is subtracted from the code point and the new value is used
+ * instead. </li>
+ * </ul>
+ * 
+ * <p>
+ * Examples:
+ * </p>
+ * <p>
+ * The following tables shows some examples of the ^^ notation.
+ * </p>
+ * <table>
+ * <tr>
+ * <th>Input</th>
+ * <th>Code point</th>
+ * <th>Explanation</th>
+ * </tr>
+ * <tr>
+ * <td><tt>^^A</tt></td>
+ * <td>1</td>
+ * <td>The letter A has the code point 65 which gets subtracted 64 leading to
+ * 1.</td>
+ * </tr>
+ * <tr>
+ * <td><tt>^^01</tt></td>
+ * <td>1</td>
+ * <td>01 is interpreted as hex number which is 1.</td>
+ * </tr>
+ * <tr>
+ * <td><tt>^^.</tt></td>
+ * <td>110</td>
+ * <td>The character . has the code point 56. This is less than 64 and 64 is
+ * added. This results in 110 which happens to be the letter n.</td>
+ * </tr>
+ * </table>
+ * 
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
