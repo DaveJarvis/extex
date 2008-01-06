@@ -40,7 +40,6 @@
   </resources>
 
   <panels>
-<!--    <panel classname="HelloPanel"/> -->
     <panel classname="HTMLInfoPanel"/>
     <panel classname="LicencePanel"/>
     <panel classname="PacksPanel"/>
@@ -54,11 +53,11 @@
     <pack name="ExIndex" id="exindex" required="yes">
       <description/>
       <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
-      <file src="exindex" targetdir="$INSTALL_PATH"/>
-      <executable targetfile="$INSTALL_PATH/exindex"/>
-      <file src="exindex.bat" targetdir="$INSTALL_PATH"/>
-      <parsable targetfile="$INSTALL_PATH/exindex.bat"/>
-      <executable targetfile="$INSTALL_PATH/exindex.bat"/>
+      <file src="exindex" targetdir="$INSTALL_PATH/bin/unix"/>
+      <executable targetfile="$INSTALL_PATH/bin/unix/exindex"/>
+      <file src="exindex.bat" targetdir="$INSTALL_PATH/bin/win32"/>
+      <parsable targetfile="$INSTALL_PATH/bin/win32/exindex.bat"/>
+      <executable targetfile="$INSTALL_PATH/bin/win32/exindex.bat"/>
       <file src="../../../ExIndex-core/target/ExIndex-core-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
       <file src="../../../ExIndex-lisp/target/ExIndex-lisp-0.1-SNAPSHOT.jar"
@@ -69,13 +68,13 @@
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
 
-<!--
     <pack name="Documentation" id="doc" required="no">
       <description/>
-      <file src="../../www/src/site/documentation/man/extex-users.pdf"
+<!--
+      <file src="../../../ExIndex-core/doc/exindex-users.pdf"
             targetdir="$INSTALL_PATH/doc"/>
-    </pack>
 -->
+    </pack>
 
   </packs>
 
