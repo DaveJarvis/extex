@@ -30,7 +30,7 @@ import org.extex.exindex.core.makeindex.Entry;
 import org.extex.exindex.core.makeindex.Index;
 import org.extex.exindex.core.makeindex.Parameters;
 import org.extex.exindex.core.makeindex.normalizer.Collator;
-import org.extex.exindex.core.parser.ReaderLocator;
+import org.extex.exindex.core.parser.util.ReaderLocator;
 import org.extex.exindex.core.type.page.AbstractPage;
 
 /**
