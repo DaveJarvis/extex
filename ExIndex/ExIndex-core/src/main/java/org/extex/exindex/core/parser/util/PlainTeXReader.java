@@ -98,7 +98,7 @@ public class PlainTeXReader extends TeXReader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check that the buffer is not empty.
      * 
      * @return <code>true</code> iff the buffer is not empty
      */
