@@ -454,15 +454,18 @@ public class IndexContainer
      * Setter for the current index.
      * 
      * @param name the name
+     * 
+     * @return <code>true</code> if the index is found and the set is
+     *         successful
      */
-    public void setCurrentIndex(String name) {
+    public boolean setCurrentIndex(String name) {
 
         StructuredIndex index = indexMap.get(name);
         if (index == null) {
-            // TODO error handling
-            return;
+            return false;
         }
         currentIndex = index;
+        return true;
     }
 
     /**

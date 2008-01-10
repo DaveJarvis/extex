@@ -19,10 +19,9 @@
 
 package org.extex.exindex.core.command;
 
+import org.extex.exindex.core.exception.UnknownIndexException;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -102,15 +101,15 @@ public class LForIndex extends AbstractLAdapter {
      * 
      * @return <tt>nil</tt>
      * 
-     * @throws LNonMatchingTypeException in case an argument is not a String
-     * @throws LSettingConstantException should not happen
+     * @throws UnknownIndexException in case of an error
      */
     public LValue evaluate(LInterpreter interpreter, LString name)
-            throws LNonMatchingTypeException,
-                LSettingConstantException {
+            throws UnknownIndexException {
 
-        setCurrentIndex(name == null ? null : name.getValue());
+        String key = name == null ? null : name.getValue();
+        if (!setCurrentIndex(key)) {
+            throw new UnknownIndexException(null, key);
+        }
         return null;
     }
-
 }

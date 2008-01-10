@@ -88,10 +88,13 @@ public class AbstractLAdapter extends LFunction {
      * Assign a new current index.
      * 
      * @param name the name of the index
+     * 
+     * @return <code>true</code> if the index is found and the set is
+     *         successful
      */
-    protected void setCurrentIndex(String name) {
+    protected boolean setCurrentIndex(String name) {
 
-        container.setCurrentIndex(name);
+        return container.setCurrentIndex(name);
     }
 
 }
