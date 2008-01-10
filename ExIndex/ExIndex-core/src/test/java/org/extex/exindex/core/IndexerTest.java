@@ -36,6 +36,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -145,6 +146,10 @@ public class IndexerTest {
         Indexer indexer = new Indexer();
         ResourceFinder finder = new MyFinder();
         indexer.setResourceFinder(finder);
+        ExIndexParserFactory factory = new ExIndexParserFactory();
+        factory.setResourceFinder(finder);
+        indexer.setParserFactory(factory);
+
         StringWriter writer = (expectedOut == null ? null : new StringWriter());
         indexer.run(styles, resources, writer, logger);
 
