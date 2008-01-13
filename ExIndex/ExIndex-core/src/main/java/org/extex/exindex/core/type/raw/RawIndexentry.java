@@ -47,7 +47,7 @@ public class RawIndexentry {
     /**
      * The field <tt>ref</tt> contains the page reference.
      */
-    private RefSpec ref;
+    private Reference ref;
 
     /**
      * The field <tt>index</tt> contains the name of the index.
@@ -62,7 +62,7 @@ public class RawIndexentry {
      * @param print the print key; It can not be <code>null</code>
      * @param ref the reference
      */
-    public RawIndexentry(String index, String[] key, String[] print, RefSpec ref) {
+    public RawIndexentry(String index, String[] key, String[] print, Reference ref) {
 
         super();
         if (key == null || print == null || ref == null) {
@@ -109,7 +109,7 @@ public class RawIndexentry {
      * 
      * @return the ref
      */
-    public RefSpec getRef() {
+    public Reference getRef() {
 
         return ref;
     }
@@ -164,11 +164,11 @@ public class RawIndexentry {
         if (ref instanceof CrossReference) {
             sb.append(" :xref ");
             sb.append(ref.toString());
-        } else if (ref instanceof OpenLocRef) {
+        } else if (ref instanceof OpenLocationReference) {
             sb.append(" :locref ");
             sb.append(ref.toString());
             sb.append(" :open-range");
-        } else if (ref instanceof CloseLocRef) {
+        } else if (ref instanceof CloseLocationReference) {
             sb.append(" :locref ");
             sb.append(ref.toString());
             sb.append(" :close-range");

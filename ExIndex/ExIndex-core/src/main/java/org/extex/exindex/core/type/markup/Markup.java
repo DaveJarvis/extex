@@ -209,6 +209,20 @@ public class Markup {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        final StringBuilder sb = new StringBuilder(displayName);
+        sb.append(": ");
+        sb.append(map.toString());
+        return sb.toString();
+    }
+
+    /**
      * Write tracing output to a writer.
      * 
      * @param writer the target writer

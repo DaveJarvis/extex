@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
@@ -34,7 +35,7 @@ import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LocrefList implements LocationClassGroup {
+public class LocationReferenceList implements LocationClassGroup {
 
     /**
      * The field <tt>clazz</tt> contains the class.
@@ -51,7 +52,7 @@ public class LocrefList implements LocationClassGroup {
      * 
      * @param clazz the class
      */
-    public LocrefList(String clazz) {
+    public LocationReferenceList(String clazz) {
 
         super();
         this.clazz = clazz;

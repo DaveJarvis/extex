@@ -72,7 +72,7 @@ public class CrossrefGroup implements LocationClassGroup {
             return;
         }
 
-        map.put(keys, new CrossReference(keys, layer));
+        map.put(keys, new CrossReference(layer, keys));
     }
 
     /**

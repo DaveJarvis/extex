@@ -22,8 +22,8 @@ package org.extex.exindex.core.command;
 import org.extex.exindex.core.type.IndexContainer;
 import org.extex.exindex.core.type.LetterGroup;
 import org.extex.exindex.lisp.LInterpreter;
+import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
@@ -106,21 +106,21 @@ public class LDefineLetterGroups extends LFunction {
      * @return <tt>null</tt>
      * 
      * @throws LNonMatchingTypeException in case of an error
-     * @throws LSettingConstantException should not happen
+     * @throws LException should not happen
      */
     public LValue evaluate(LInterpreter interpreter, LList list)
             throws LNonMatchingTypeException,
-                LSettingConstantException {
+                LException {
 
         LetterGroup last = null;
 
         for (LValue val : list) {
             String name = LString.stringValue(val);
-            LetterGroup g = container.defineLetterGroup(name);
+            LetterGroup group = container.defineLetterGroup(name, name);
             if (last != null) {
-                g.after(last);
+                group.after(last);
             }
-            last = g;
+            last = group;
         }
 
         return null;

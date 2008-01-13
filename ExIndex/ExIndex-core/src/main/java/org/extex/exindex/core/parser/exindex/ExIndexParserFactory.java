@@ -55,14 +55,6 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
     private ResourceFinder finder;
 
     /**
-     * Creates a new object.
-     */
-    public ExIndexParserFactory() {
-
-        super();
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
@@ -103,7 +95,8 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
             Constructor<?> cons =
                     Class.forName(clazz).getConstructor(Reader.class,
                         String.class, LInterpreter.class);
-            return (RawIndexParser) cons.newInstance(reader, resource, this);
+            return (RawIndexParser) cons.newInstance(reader, resource,
+                interpreter);
         } catch (SecurityException e) {
             throw new ParserException(LOCALIZER.format("ParserError", parser, e
                 .toString()), e);

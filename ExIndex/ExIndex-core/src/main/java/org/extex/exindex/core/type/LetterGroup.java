@@ -205,6 +205,17 @@ public class LetterGroup {
     }
 
     /**
+     * Check that there is only one after group and return it. If there are none
+     * or more than one then return <code>null</code>
+     * 
+     * @return the unique after group or null
+     */
+    public LetterGroup uniqueAfter() {
+
+        return after.size() != 1 ? null : after.get(0);
+    }
+
+    /**
      * Write the letter group to a writer.
      * 
      * @param writer the writer
@@ -225,23 +236,22 @@ public class LetterGroup {
             return;
         }
 
-        MarkupTransform markupLetterGroup =
+        MarkupTransform markup =
                 (MarkupTransform) markupContainer
                     .getMarkup("markup-letter-group");
 
         boolean first = true;
-        markupLetterGroup.write(writer, markupContainer, name, Markup.OPEN,
-            trace);
+        markup.write(writer, markupContainer, name, Markup.OPEN, trace);
 
-        String openHead = markupLetterGroup.get(name, Markup.OPEN_HEAD);
-        String closeHead = markupLetterGroup.get(name, Markup.CLOSE_HEAD);
+        String openHead = markup.get(name, Markup.OPEN_HEAD);
+        String closeHead = markup.get(name, Markup.CLOSE_HEAD);
         if (openHead != null || closeHead != null) {
-            markupLetterGroup.write(writer, markupContainer, name,
-                Markup.OPEN_HEAD, trace);
-            Transform trans = markupLetterGroup.getTransform(name);
+            markup
+                .write(writer, markupContainer, name, Markup.OPEN_HEAD, trace);
+            Transform trans = markup.getTransform(name);
             writer.write(trans == null ? name : trans.transform(name));
-            markupLetterGroup.write(writer, markupContainer, name,
-                Markup.CLOSE_HEAD, trace);
+            markup.write(writer, markupContainer, name, Markup.CLOSE_HEAD,
+                trace);
         }
 
         for (String key : sortedKeys) {
@@ -249,14 +259,12 @@ public class LetterGroup {
             if (first) {
                 first = false;
             } else {
-                markupLetterGroup.write(writer, markupContainer, name,
-                    Markup.SEP, trace);
+                markup.write(writer, markupContainer, name, Markup.SEP, trace);
             }
 
             entry.write(writer, interpreter, markupContainer, trace, 0);
         }
-        markupLetterGroup.write(writer, markupContainer, name, Markup.CLOSE,
-            trace);
+        markup.write(writer, markupContainer, name, Markup.CLOSE, trace);
     }
 
 }

@@ -153,7 +153,7 @@ public class TeXReader extends FilterReader {
         for (; i < len; i++) {
             int c = read();
             if (c < 0) {
-                break;
+                return i == 0 ? -1 : i;
             }
             cbuf[off + i] = (char) c;
         }

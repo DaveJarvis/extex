@@ -22,7 +22,7 @@ package org.extex.exindex.core.command;
 import java.lang.reflect.InvocationTargetException;
 
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
+import org.extex.exindex.lisp.exception.LException;
 
 /**
  * This class is an indexer for testing.
@@ -36,7 +36,7 @@ public class TestableIndexer extends Indexer {
      * Creates a new object.
      * 
      * @throws NoSuchMethodException in case of an error
-     * @throws LSettingConstantException in case of an error
+     * @throws LException in case of an error
      * @throws SecurityException in case of an error
      * @throws InvocationTargetException in case of an error
      * @throws IllegalAccessException in case of an error
@@ -45,7 +45,7 @@ public class TestableIndexer extends Indexer {
      */
     public TestableIndexer()
             throws SecurityException,
-                LSettingConstantException,
+                LException,
                 NoSuchMethodException,
                 IllegalArgumentException,
                 InstantiationException,

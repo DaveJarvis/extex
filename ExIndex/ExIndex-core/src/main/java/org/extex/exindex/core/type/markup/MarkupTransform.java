@@ -131,6 +131,27 @@ public class MarkupTransform extends Markup {
             return force;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("openHead=");
+            sb.append(openHead);
+            sb.append(" closeHead=");
+            sb.append(closeHead);
+            sb.append(" open=");
+            sb.append(open);
+            sb.append(" close=");
+            sb.append(close);
+            sb.append(force ? " force" : "not force");
+            return sb.toString();
+        }
+
     };
 
     /**
@@ -192,6 +213,19 @@ public class MarkupTransform extends Markup {
     public void setTransform(String clazz, Transform transform) {
 
         this.transformMap.put(clazz, transform);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        final StringBuilder sb = new StringBuilder(super.toString());
+        sb.append(map.toString());
+        return sb.toString();
     }
 
 }

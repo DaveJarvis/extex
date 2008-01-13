@@ -27,47 +27,42 @@ import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
- * This interface describes a close location specification.
+ * This interface describes a reference specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public class CloseLocRef extends LocRef {
+public interface Reference {
 
     /**
-     * Creates a new object.
+     * Check the reference.
      * 
-     * @param location the location
-     * @param layer the layer
+     * @param logger the logger
+     * @param entry the current index entry
+     * @param index the index for cross-reference lookup
+     * @param crossrefClass the container for cross-reference classes
+     * @param openPages the list of open pages
+     * @param attributes the defined attributes
+     * 
+     * @return <code>true</code> iff everything is ok
      */
-    public CloseLocRef(String location, String layer) {
-
-        super(location, layer);
-    }
+    boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            LocationClassContainer crossrefClass,
+            List<OpenLocationReference> openPages,
+            AttributesContainer attributes);
 
     /**
-     * {@inheritDoc}
+     * Getter for the layer.
      * 
-     * @see org.extex.exindex.core.type.raw.LocRef#check(java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      org.extex.exindex.core.Indexer,
-     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
-     *      org.extex.exindex.core.type.attribute.AttributesContainer)
+     * @return the layer or <code>null</code>
      */
-    @Override
-    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
-            AttributesContainer attributes) {
+    String getLayer();
 
-        for (int i = openPages.size() - 1; i > 0; i--) {
+    /**
+     * Getter for the location.
+     * 
+     * @return the location
+     */
+    String[] getLocation();
 
-            if (getLocation().equals(openPages.get(i).getLocation())) {
-                openPages.remove(i);
-                return super.check(logger, entry, index, crossrefClass,
-                    openPages, attributes);
-            }
-        }
-        // TODO
-        return false;
-    }
 }

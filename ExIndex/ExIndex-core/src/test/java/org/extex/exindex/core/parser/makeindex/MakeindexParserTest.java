@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser;
+package org.extex.exindex.core.parser.makeindex;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -28,7 +28,6 @@ import java.io.StringReader;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
-import org.extex.exindex.core.parser.makeindex.MakeindexParser;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
@@ -71,7 +70,7 @@ public class MakeindexParserTest {
         interpreter.setq("makeindex:level", new LString(""));
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(""), "rsc", interpreter);
-        assertNull(xp.parse());
+        xp.parse();
     }
 
     /**
@@ -88,6 +87,7 @@ public class MakeindexParserTest {
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(""), "rsc", interpreter);
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -104,6 +104,7 @@ public class MakeindexParserTest {
                 new MakeindexParser(new StringReader("\\relax"), "rsc",
                     interpreter);
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -122,9 +123,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -143,9 +145,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"def\") :locref \"123\")\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"def\") :locref \"123\")\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -164,9 +167,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\")\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\")\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -185,9 +189,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :open-range)\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :open-range)\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -206,9 +211,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**
@@ -228,9 +234,10 @@ public class MakeindexParserTest {
         RawIndexentry entry = xp.parse();
         assertNotNull(entry);
         assertEquals(
-            "(indexentry :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :attr \"def\" :locref \"123\" :close-range)\n",
             entry.toString());
         assertNull(xp.parse());
+        xp.close();
     }
 
     /**

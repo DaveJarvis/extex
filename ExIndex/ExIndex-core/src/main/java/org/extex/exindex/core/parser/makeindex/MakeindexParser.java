@@ -30,9 +30,9 @@ import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.util.ReaderLocator;
 import org.extex.exindex.core.parser.util.TeXReader;
-import org.extex.exindex.core.type.raw.CloseLocRef;
-import org.extex.exindex.core.type.raw.LocRef;
-import org.extex.exindex.core.type.raw.OpenLocRef;
+import org.extex.exindex.core.type.raw.CloseLocationReference;
+import org.extex.exindex.core.type.raw.LocationReference;
+import org.extex.exindex.core.type.raw.OpenLocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
@@ -647,21 +647,22 @@ public class MakeindexParser implements RawIndexParser {
             print[print.length - 1] = printArg;
         }
 
-        LocRef ref;
+        LocationReference ref;
         String attr = enc;
         if (attr == null || "".equals(attr)) {
-            ref = new LocRef(locref, attr);
+            ref = new LocationReference(attr, locref);
             attr = null;
         } else {
-            char c = attr.charAt(attr.length() - 1);
+            final int last = attr.length() - 1;
+            char c = attr.charAt(last);
             if (c == rangeOpen) {
-                ref = new OpenLocRef(locref, //
-                    attr.substring(0, attr.length() - 1));
+                ref = new OpenLocationReference(attr.substring(0, last), //
+                    locref);
             } else if (c == rangeClose) {
-                ref = new CloseLocRef(locref, //
-                    attr.substring(0, attr.length() - 1));
+                ref = new CloseLocationReference(attr.substring(0, last), //
+                    locref);
             } else {
-                ref = new LocRef(locref, attr);
+                ref = new LocationReference(attr, locref);
             }
         }
         return new RawIndexentry(idx, key, print, ref);

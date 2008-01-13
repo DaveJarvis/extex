@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,7 @@ public class RawIndexEofException extends RawIndexException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2007L;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
@@ -43,20 +43,21 @@ public class RawIndexEofException extends RawIndexException {
      */
     public RawIndexEofException(ResourceLocator locator) {
 
-        super(locator, LocalizerFactory.getLocalizer(RawIndexEofException.class)
-            .format("Message"));
+        super(locator, LocalizerFactory
+            .getLocalizer(RawIndexEofException.class).format("Message"));
     }
 
     /**
      * Creates a new object.
      * 
      * @param locator the locator
-     * @param c the character
+     * @param c the character which was expected when the EOF occured
      */
     public RawIndexEofException(ResourceLocator locator, char c) {
 
-        super(locator, LocalizerFactory.getLocalizer(RawIndexEofException.class)
-            .format("MessageChar", Character.toString(c)));
+        super(locator, LocalizerFactory
+            .getLocalizer(RawIndexEofException.class).format("MessageChar",
+                Character.toString(c)));
     }
 
 }

@@ -26,12 +26,12 @@ import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.util.ReaderLocator;
-import org.extex.exindex.core.type.raw.CloseLocRef;
+import org.extex.exindex.core.type.raw.CloseLocationReference;
 import org.extex.exindex.core.type.raw.CrossReference;
-import org.extex.exindex.core.type.raw.LocRef;
-import org.extex.exindex.core.type.raw.OpenLocRef;
+import org.extex.exindex.core.type.raw.LocationReference;
+import org.extex.exindex.core.type.raw.OpenLocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
-import org.extex.exindex.core.type.raw.RefSpec;
+import org.extex.exindex.core.type.raw.Reference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
@@ -45,19 +45,20 @@ import org.extex.framework.i18n.LocalizerFactory;
  * and some extensions of it.
  * 
  * <doc section="Raw Index Format">
- * <h2>The xindy Raw Index Format</h2>
+ * <h2>The Extended xindy Raw Index Format</h2>
  * <p>
  * The basic syntax is the Lisp syntax with the backslash character as escape
  * character in strings. Semicolon initiates an end-line comment.
  * </p>
  * 
  * <pre>
- * (indexentry [:index <i>index-name</i>]
- *             { :key <i>string-list</i> [:print <i>string-list</i>]
+ * (indexentry [:index <i>index-name</i> | ]
+ *             { :key [<i>string</i> | <i>string-list</i>]
+ *               [:print [<i>string</i> | <i>string-list</i>]]
  *             | :tkey <i>list-of-layers</i> }
  *             [:attr <i>string</i>]
- *             { :locref <i>string</i>  [:open-range | :close-range]
- *             | :xref <i>string-list</i> } )   </pre>
+ *             { :locref [<i>string</i> | <i>string-list</i>]  [:open-range | :close-range]
+ *             | :xref [<i>string</i> | <i>string-list</i>] } )   </pre>
  * 
  * <p>
  * The index entry is in principal made up of four parts: the name of the index,
@@ -184,9 +185,42 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class XindyParser extends LParser implements RawIndexParser {
 
     /**
+     * The constant <tt>ATTR</tt> contains the symbol for the attr flag.
+     */
+    private static final LSymbol ATTR = LSymbol.get(":attr");
+
+    /**
+     * The constant <tt>CLOSE_RANGE</tt> contains the symbol for the
+     * close-range flag.
+     */
+    private static final LSymbol CLOSE_RANGE = LSymbol.get(":close-range");
+
+    /**
+     * The constant <tt>INDEX</tt> contains the symbol for the index flag.
+     */
+    private static final LSymbol INDEX = LSymbol.get(":index");
+
+    /**
+     * The constant <tt>INDEXENTRY</tt> contains the symbol for the index
+     * entry head.
+     */
+    private static final LSymbol INDEXENTRY = LSymbol.get("indexentry");
+
+    /**
      * The constant <tt>KEY</tt> contains the symbol for the key flag.
      */
     private static final LSymbol KEY = LSymbol.get(":key");
+
+    /**
+     * The constant <tt>LOCREF</tt> contains the symbol for the locref flag.
+     */
+    private static final LSymbol LOCREF = LSymbol.get(":locref");
+
+    /**
+     * The constant <tt>OPEN_RANGE</tt> contains the symbol for the open-range
+     * flag.
+     */
+    private static final LSymbol OPEN_RANGE = LSymbol.get(":open-range");
 
     /**
      * The constant <tt>PRINT</tt> contains the symbol for the print flag.
@@ -197,33 +231,6 @@ public class XindyParser extends LParser implements RawIndexParser {
      * The constant <tt>TKEY</tt> contains the symbol for the tkey flag.
      */
     private static final LSymbol TKEY = LSymbol.get(":tkey");
-
-    /**
-     * The constant <tt>ATTR</tt> contains the symbol for the attr flag.
-     */
-    private static final LSymbol ATTR = LSymbol.get(":attr");
-
-    /**
-     * The constant <tt>LOCREF</tt> contains the symbol for the locref flag.
-     */
-    private static final LSymbol LOCREF = LSymbol.get(":locref");
-
-    /**
-     * The constant <tt>INDEX</tt> contains the symbol for the index flag.
-     */
-    private static final LSymbol INDEX = LSymbol.get(":index");
-
-    /**
-     * The constant <tt>OPEN_RANGE</tt> contains the symbol for the open-range
-     * flag.
-     */
-    private static final LSymbol OPEN_RANGE = LSymbol.get(":open-range");
-
-    /**
-     * The constant <tt>CLOSE_RANGE</tt> contains the symbol for the
-     * close-range flag.
-     */
-    private static final LSymbol CLOSE_RANGE = LSymbol.get(":close-range");
 
     /**
      * The constant <tt>XREF</tt> contains the symbol for the xref flag.
@@ -252,17 +259,20 @@ public class XindyParser extends LParser implements RawIndexParser {
      * Check that the argument is a LList and cast it.
      * 
      * @param value the value
+     * @param tag the name of the argument or <code>null</code>
      * 
      * @return the list
      * 
-     * @throws RawIndexException in case of an error
+     * @throws RawIndexSyntaxException in case of an error
      */
-    private LList assumeLList(LValue value) throws RawIndexException {
+    private LList assumeList(LValue value, LSymbol tag)
+            throws RawIndexSyntaxException {
 
         if (!(value instanceof LList)) {
-            throw new RawIndexException(new ReaderLocator(getResource(),
-                getLineNumber()), LocalizerFactory.getLocalizer(getClass())
-                .format("MissingList"));
+            throw new RawIndexSyntaxException(new ReaderLocator(getResource(),
+                getLineNumber()), makeErrorMessage(tag != null
+                    ? "MissingListForTag"
+                    : "MissingList", value, tag));
         }
         return (LList) value;
     }
@@ -270,20 +280,21 @@ public class XindyParser extends LParser implements RawIndexParser {
     /**
      * Check that the given value is an LString.
      * 
-     * @param x the value
+     * @param arg the value
+     * @param tag the name of the argument
      * 
      * @return the string contained
      * 
-     * @throws RawIndexException in case of an error
+     * @throws RawIndexSyntaxException in case of an error
      */
-    private String assumeLString(LValue x) throws RawIndexException {
+    private String assumeString(LValue arg, LSymbol tag)
+            throws RawIndexSyntaxException {
 
-        if (!(x instanceof LString)) {
-            Object[] args = {};
-            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
-                getClass()).format("MissingString", args));
+        if (!(arg instanceof LString)) {
+            throw new RawIndexSyntaxException(locator, makeErrorMessage(
+                "MissingString", tag, arg));
         }
-        return ((LString) x).getValue();
+        return ((LString) arg).getValue();
     }
 
     /**
@@ -299,10 +310,82 @@ public class XindyParser extends LParser implements RawIndexParser {
             throws RawIndexException {
 
         if (value != null) {
-            Object[] args = {type.toString()};
-            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
-                getClass()).format("BoundTwice", args));
+            throw new RawIndexException(locator, makeErrorMessage("BoundTwice",
+                type));
         }
+    }
+
+    /**
+     * Translate an LString to a String array.
+     * 
+     * @param tag the parameter name for error messages
+     * @param var the variable to check for not <code>null</code>
+     * @param value the list
+     * 
+     * @return the String array
+     * 
+     * @throws RawIndexException in case of an error
+     */
+    private String bindableString(LSymbol tag, Object var, LValue value)
+            throws RawIndexException {
+
+        if (value == LList.NIL) {
+            throw new RawIndexSyntaxException(locator, makeErrorMessage(
+                "MissingArgument", tag));
+        }
+
+        assumeUnbound(var, tag);
+        return assumeString(value, tag);
+    }
+
+    /**
+     * Translate a list of strings to a String array. As convenience a single
+     * sting is interpreted as a one element list.
+     * 
+     * @param tag the parameter name for error messages
+     * @param var the variable to check for not <code>null</code>
+     * @param value the list
+     * 
+     * @return the String array
+     * 
+     * @throws RawIndexException in case of an error
+     */
+    private String[] bindableStringList(LSymbol tag, Object var, LValue value)
+            throws RawIndexException {
+
+        if (value == LList.NIL) {
+            throw new RawIndexSyntaxException(locator, makeErrorMessage(
+                "MissingArgument", tag));
+        }
+
+        assumeUnbound(var, tag);
+
+        if (value instanceof LString) {
+            return new String[]{((LString) value).getValue()};
+        }
+
+        LList list = assumeList(value, tag);
+        int size = list.size();
+        String[] array = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            array[i] = assumeString(list.get(i), tag);
+        }
+
+        return array;
+    }
+
+    /**
+     * Use the resource bundle to construct a message for an exception.
+     * 
+     * @param tag the name of the resource string to use
+     * @param args the arguments
+     * 
+     * @return the message
+     */
+    private String makeErrorMessage(String tag, Object... args) {
+
+        return LocalizerFactory.getLocalizer(getClass()).format(tag, args);
     }
 
     /**
@@ -317,103 +400,85 @@ public class XindyParser extends LParser implements RawIndexParser {
             return null;
         }
 
-        LList list = assumeLList(term);
-        String[] print = null;
         String[] key = null;
-        String[] tkey = null;
-        String locref = null;
+        String[] print = null;
+        String[] locref = null;
         String index = null;
         String attr = null;
-        RefSpec ref = null;
+        Reference ref = null;
         Boolean openRange = null;
         Boolean closeRange = null;
-        String[] xrefKey = null;
+        String[] xref = null;
+        LList list = assumeList(term, null);
         int size = list.size();
+
         if (size == 0) {
-            throw new RawIndexSyntaxException(locator);
-        }
-        if (!(list.get(0) instanceof LSymbol)) {
-            throw new RawIndexSyntaxException(locator);
-        }
-        LSymbol sym = (LSymbol) list.get(0);
-        if (!"indexentry".equals(sym.getValue())) {
-            throw new RawIndexSyntaxException(locator);
+            throw new RawIndexSyntaxException(locator, //
+                makeErrorMessage("IndexEntryMissing"));
+        } else if (list.get(0) != INDEXENTRY) {
+            throw new RawIndexSyntaxException(locator, //
+                makeErrorMessage("IndexEntryExpected", list.get(0).toString()));
         }
 
         for (int i = 1; i < size; i++) {
             LValue arg = list.get(i);
 
             if (arg == KEY) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(key, KEY);
-                arg = list.get(++i);
-                if (arg instanceof LString) {
-                    key = new String[]{((LString) arg).getValue()};
-                } else {
-                    key = toArray(arg);
-                }
+                key = bindableStringList(KEY, key, list.get(++i));
 
             } else if (arg == PRINT) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(print, PRINT);
-                arg = list.get(++i);
-                if (arg instanceof LString) {
-                    print = new String[]{((LString) arg).getValue()};
-                } else {
-                    print = toArray(arg);
-                }
+                print = bindableStringList(PRINT, print, list.get(++i));
 
             } else if (arg == TKEY) {
                 if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
+                    throw new RawIndexSyntaxException(locator,
+                        makeErrorMessage("MissingArgument", TKEY));
                 }
-                assumeUnbound(tkey, TKEY);
-                if (key != null || print != null) {
-                    Object[] args = {TKEY.toString()};
-                    throw new RawIndexException(locator, LocalizerFactory
-                        .getLocalizer(getClass()).format("BoundTwice", args));
-                }
-                LList lst = assumeLList(list.get(++i));
+                assumeUnbound(key, TKEY);
+                assumeUnbound(print, TKEY);
+                LList lst = assumeList(list.get(++i), TKEY);
                 int len = lst.size();
                 key = new String[len];
                 print = new String[len];
+
                 for (int j = 0; j < len; j++) {
                     LValue val = lst.get(j);
-                    if (val instanceof LString) {
-                        String s = ((LString) val).getValue();
-                        key[j] = s;
-                        print[j] = s;
-                    } else if (val instanceof LList) {
+                    if (val instanceof LList) {
                         LList ll = (LList) val;
                         switch (ll.size()) {
                             case 1:
-                                String s = assumeLString(ll.get(0));
-                                key[j] = s;
-                                print[j] = s;
+                                key[j] =
+                                        print[j] =
+                                                assumeString(ll.get(0), TKEY);
                                 break;
                             case 2:
-                                key[j] = assumeLString(ll.get(0));
-                                print[j] = assumeLString(ll.get(1));
+                                key[j] = assumeString(ll.get(0), TKEY);
+                                print[j] = assumeString(ll.get(1), TKEY);
                                 break;
                             default:
-                                throw new RawIndexSyntaxException(locator);
+                                throw new RawIndexSyntaxException(locator,
+                                    makeErrorMessage("WrongNumberOfArguments",
+                                        TKEY, ll));
                         }
 
+                    } else if (val instanceof LString) {
+                        key[j] = print[j] = ((LString) val).getValue();
                     } else {
-                        throw new RawIndexSyntaxException(locator);
+                        throw new RawIndexSyntaxException(locator,
+                            makeErrorMessage("MissingStringOrStringList", TKEY));
                     }
                 }
 
+            } else if (arg == LOCREF) {
+                locref = bindableStringList(LOCREF, locref, list.get(++i));
+                assumeUnbound(xref, XREF);
+
+            } else if (arg == XREF) {
+                xref = bindableStringList(XREF, xref, list.get(++i));
+                assumeUnbound(locref, XREF);
+
             } else if (arg == ATTR) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(attr, ATTR);
-                attr = assumeLString(list.get(++i));
+                attr = bindableString(ATTR, attr, list.get(++i));
 
             } else if (arg == OPEN_RANGE) {
                 assumeUnbound(openRange, OPEN_RANGE);
@@ -423,104 +488,54 @@ public class XindyParser extends LParser implements RawIndexParser {
                 assumeUnbound(closeRange, CLOSE_RANGE);
                 closeRange = Boolean.TRUE;
 
-            } else if (arg == LOCREF) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(locref, LOCREF);
-                locref = assumeLString(list.get(++i));
-
-            } else if (arg == XREF) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(ref, XREF);
-                arg = list.get(++i);
-                if (arg instanceof LString) {
-                    xrefKey = new String[]{((LString) arg).getValue()};
-                } else {
-                    xrefKey = toArray(arg);
-                }
-
             } else if (arg == INDEX) {
-                if (i >= size - 1) {
-                    throw new RawIndexSyntaxException(locator);
-                }
-                assumeUnbound(index, INDEX);
-                index = assumeLString(list.get(++i));
+                index = bindableString(INDEX, index, list.get(++i));
 
             } else {
-                Object[] args = {arg.toString()};
-                throw new RawIndexException(locator, LocalizerFactory
-                    .getLocalizer(getClass()).format("MissingTag", args));
+                throw new RawIndexException(locator, makeErrorMessage(
+                    "MissingTag", arg));
             }
         }
 
         if (key == null) {
-            Object[] args = {KEY.toString()};
-            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
-                getClass()).format("Unbound", args));
+            throw new RawIndexException(locator, makeErrorMessage("Unbound",
+                KEY));
         }
         if (print == null) {
             print = key;
         }
 
-        if (xrefKey != null) {
+        if (xref != null) {
             if (openRange != null) {
-                Object[] args = {};
-                throw new RawIndexException(locator, LocalizerFactory
-                    .getLocalizer(getClass()).format("XrefAndOpen", args));
+                throw new RawIndexException(locator, makeErrorMessage(
+                    "IncompatibleArgs", XREF, OPEN_RANGE));
             } else if (closeRange != null) {
-                Object[] args = {};
-                throw new RawIndexException(locator, LocalizerFactory
-                    .getLocalizer(getClass()).format("XrefAndClose", args));
+                throw new RawIndexException(locator, makeErrorMessage(
+                    "IncompatibleArgs", XREF, CLOSE_RANGE));
             }
             // delayed since attr might not be given before
-            ref = new CrossReference(xrefKey, attr);
+            ref = new CrossReference(attr, xref);
         }
 
         if (locref != null) {
             if (openRange != null) {
                 if (closeRange != null) {
-                    Object[] args = {};
-                    throw new RawIndexException(locator, LocalizerFactory
-                        .getLocalizer(getClass()).format("OpenAndClose", args));
+                    throw new RawIndexException(locator, makeErrorMessage(
+                        "IncompatibleArgs", OPEN_RANGE, CLOSE_RANGE));
                 }
-                ref = new OpenLocRef(locref, attr);
+                ref = new OpenLocationReference(attr, locref);
             } else if (closeRange != null) {
-                ref = new CloseLocRef(locref, attr);
+                ref = new CloseLocationReference(attr, locref);
             } else {
-                ref = new LocRef(locref, attr);
+                ref = new LocationReference(attr, locref);
             }
         }
 
         if (ref == null) {
-            Object[] args = {LOCREF.toString()};
-            throw new RawIndexException(locator, LocalizerFactory.getLocalizer(
-                getClass()).format("Unbound", args));
+            throw new RawIndexException(locator, makeErrorMessage("Unbound",
+                LOCREF));
         }
         return new RawIndexentry(index == null ? "" : index, key, print, ref);
     }
 
-    /**
-     * Translate a list of strings to a String array.
-     * 
-     * @param value the list
-     * 
-     * @return the String array
-     * 
-     * @throws RawIndexException in case of an error
-     */
-    private String[] toArray(LValue value) throws RawIndexException {
-
-        LList list = assumeLList(value);
-        int size = list.size();
-        String[] array = new String[size];
-
-        for (int i = 0; i < size; i++) {
-            array[i] = assumeLString(list.get(i));
-        }
-
-        return array;
-    }
 }

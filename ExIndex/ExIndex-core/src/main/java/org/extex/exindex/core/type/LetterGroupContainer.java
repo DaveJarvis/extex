@@ -27,11 +27,10 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.extex.exindex.core.exception.InconsistentLetterGroupException;
+import org.extex.exindex.core.exception.LetterGroupCycleException;
+import org.extex.exindex.core.exception.LetterGroupsClosedException;
 import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.type.value.LList;
-import org.extex.exindex.lisp.type.value.LString;
-import org.extex.exindex.lisp.type.value.LValue;
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the container for letter groups
@@ -42,10 +41,17 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class LetterGroupContainer {
 
     /**
-     * The field <tt>index</tt> contains the index for accessing the prefixes.
+     * The constant <tt>COMPERATOR</tt> contains the comparator to get the
+     * long strings first.
      */
-    private Map<Character, SortedSet<String>> index =
-            new HashMap<Character, SortedSet<String>>();
+    private static final Comparator<String> COMPERATOR =
+            new Comparator<String>() {
+
+                public int compare(String o1, String o2) {
+
+                    return -o1.compareTo(o2);
+                }
+            };
 
     /**
      * The field <tt>groups</tt> contains the mapping from names to letter
@@ -55,11 +61,10 @@ public class LetterGroupContainer {
             new HashMap<String, LetterGroup>();
 
     /**
-     * The field <tt>prefixMap</tt> contains the mapping from prefixes to
-     * letter groups.
+     * The field <tt>index</tt> contains the index for accessing the prefixes.
      */
-    private Map<String, LetterGroup> prefixMap =
-            new HashMap<String, LetterGroup>();
+    private Map<Character, SortedSet<String>> index =
+            new HashMap<Character, SortedSet<String>>();
 
     /**
      * The field <tt>sorted</tt> contains the collected letter groups. This
@@ -68,11 +73,18 @@ public class LetterGroupContainer {
     private List<LetterGroup> letterGroups = new ArrayList<LetterGroup>();
 
     /**
+     * The field <tt>prefixMap</tt> contains the mapping from prefixes to
+     * letter groups.
+     */
+    private Map<String, LetterGroup> prefixMap =
+            new HashMap<String, LetterGroup>();
+
+    /**
      * The field <tt>sorted</tt> contains the sorted letter groups. When this
      * field is not <code>null</code> then no further letter groups can be
      * added.
      */
-    private List<LetterGroup> sorted;
+    private LetterGroup[] sorted;
 
     /**
      * Add a prefix to the index.
@@ -85,66 +97,68 @@ public class LetterGroupContainer {
                 (prefix.equals("") ? null : Character.valueOf(prefix.charAt(0)));
         SortedSet<String> set = index.get(c);
         if (set == null) {
-            set = new TreeSet<String>(new Comparator<String>() {
-
-                public int compare(String o1, String o2) {
-
-                    return -o1.compareTo(o2);
-                }
-            });
+            set = new TreeSet<String>(COMPERATOR);
             index.put(c, set);
         }
         set.add(prefix);
     }
 
     /**
-     * Search for a letter group and define it if it is not defined already.
+     * Search for a letter group and define it if it is not defined already. Add
+     * links to all prefixes and return the equivalence class used. The
+     * equivalence class is determined from the name and the prefixes. If for
+     * one a letter group is known then this one is used. Otherwise a new one is
+     * created.
+     * <p>
+     * If a prefix has already assigned a different letter group then this is
+     * reported as error.
+     * </p>
      * 
-     * @param name the name of the letter group to get
+     * @param name the name
+     * @param prefixes the prefixes
      * 
-     * @return the letter group for name
+     * @return the letter group for the whole set
+     * 
+     * @throws LetterGroupsClosedException in case the method {@link #sorted()}
+     *         has been invoked before
+     * @throws InconsistentLetterGroupException in case of an inconsistency in
+     *         the definition of prefixes
      */
-    public LetterGroup defineLetterGroup(String name) {
+    public LetterGroup defineLetterGroup(String name, String... prefixes)
+            throws LetterGroupsClosedException,
+                InconsistentLetterGroupException {
 
         if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory.getLocalizer(
-                LetterGroupContainer.class).format("TooLate"));
+            throw new LetterGroupsClosedException(name);
         }
-        LetterGroup group = groups.get(name);
-        if (group == null) {
-            group = new LetterGroup(name);
-            groups.put(name, group);
-            letterGroups.add(group);
-        }
-        return group;
-    }
 
-    /**
-     * Search for a letter group and define it if it is not defined already.
-     * 
-     * @param name the name of the letter group to get
-     * 
-     * @return the letter group for name
-     */
-    public LetterGroup defineLetterGroupAndIndex(String name) {
-
-        if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory.getLocalizer(
-                LetterGroupContainer.class).format("TooLate"));
-        }
         LetterGroup group = groups.get(name);
+
         if (group == null) {
-            group = new LetterGroup(name);
+            group = findPrefixGroup(prefixes);
+            if (group == null) {
+                group = new LetterGroup(name);
+                letterGroups.add(group);
+                addToIndex(name);
+            }
             groups.put(name, group);
-            addToIndex(name);
-            letterGroups.add(group);
+        }
+
+        for (String prefix : prefixes) {
+            LetterGroup g = prefixMap.get(prefix);
+            if (g == null) {
+                prefixMap.put(prefix, group);
+                addToIndex(prefix);
+            } else if (group != g) {
+                throw new InconsistentLetterGroupException(name, g.getName());
+            }
         }
         return group;
     }
 
     /**
      * Find a letter group for a given key. The letter group is found by
-     * inspecting the prefixes and choosing the larges one by which the key is
+     * inspecting the prefixes and choosing the larges one with which the key is
      * started.
      * 
      * @param key the key
@@ -169,40 +183,22 @@ public class LetterGroupContainer {
     }
 
     /**
-     * Find a topmost element in the current order. This is accomplished by
-     * following the "after" pointer until the first one is found. If the
-     * underlying graph has a cycle then this would result in an endless loop.
-     * This loop is terminated when a limit of steps is reached. This limit is
-     * the number of nodes left in the graph.
+     * Find a group for one of the prefixes. The prefixes are tried in turn
+     * until one has a group assigned.
      * 
-     * @param letterGroup the letter group
-     * @param limit the limit for cycle detection
+     * @param prefixes the list of prefixes
      * 
-     * @return the letter group which is currently top
-     * 
-     * @throws LException in case of a loop
+     * @return a group or <code>null</code>
      */
-    private LetterGroup findTop(LetterGroup letterGroup, int limit)
-            throws LException {
+    private LetterGroup findPrefixGroup(String[] prefixes) {
 
-        LetterGroup g = letterGroup;
-
-        for (int n = limit; n > 0; n--) {
-            LetterGroup after = g.getSomeAfter();
-            if (after == null) {
-                return g;
+        for (String prefix : prefixes) {
+            LetterGroup group = groups.get(prefix);
+            if (group != null) {
+                return group;
             }
-            g = after;
         }
-        StringBuilder sb = new StringBuilder(g.getName());
-        g = letterGroup;
-        for (int n = limit; n > 0; n--) {
-            g = g.getSomeAfter();
-            sb.append(" > ").append(g.getName());
-        }
-
-        throw new LException(LocalizerFactory.getLocalizer(
-            LetterGroupContainer.class).format("CycleDetected", sb.toString()));
+        return null;
     }
 
     /**
@@ -219,65 +215,6 @@ public class LetterGroupContainer {
     }
 
     /**
-     * Add links to all prefixes and return the equivalence class used. The
-     * equivalence class is determined from the name and the prefixes. If for
-     * one a letter group is known then this one is used. Otherwise a new one is
-     * created.
-     * <p>
-     * If a prefix has already assigned a different letter group then this is
-     * reported as error.
-     * </p>
-     * 
-     * @param name the name
-     * @param prefixes the prefixes
-     * 
-     * @return the letter group for the whole set
-     * @throws LException in case of an error
-     */
-    public LetterGroup linkPrefixes(String name, LList prefixes)
-            throws LException {
-
-        if (sorted != null) {
-            throw new RuntimeException(LocalizerFactory.getLocalizer(
-                LetterGroupContainer.class).format("TooLate"));
-        }
-
-        LetterGroup g = null;
-
-        for (LValue val : prefixes) {
-            g = groups.get(LString.stringValue(val));
-            if (g != null) {
-                break;
-            }
-        }
-        if (g == null) {
-            g = defineLetterGroup(name);
-        } else {
-            LetterGroup gn = groups.get(name);
-            if (gn == null) {
-                groups.put(name, g);
-            } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(
-                    LetterGroupContainer.class).format("InconsistenzPrefix",
-                    name, gn.getName()));
-            }
-        }
-        for (LValue val : prefixes) {
-            String prefix = LString.stringValue(val);
-            LetterGroup gn = groups.get(prefix);
-            if (gn == null) {
-                groups.put(prefix, g);
-                addToIndex(prefix);
-            } else if (g != gn) {
-                throw new LException(LocalizerFactory.getLocalizer(
-                    LetterGroupContainer.class).format("InconsistenzPrefix",
-                    name, gn.getName()));
-            }
-        }
-        return g;
-    }
-
-    /**
      * Get the letter groups contained in a sorted list. Afterwards no more
      * letter groups can be added. Nevertheless this method can be invoked
      * several times returning the same list after each invocation.
@@ -286,26 +223,77 @@ public class LetterGroupContainer {
      * 
      * @throws LException in case of an error
      */
-    public List<LetterGroup> sorted() throws LException {
+    public LetterGroup[] sorted() throws LException {
 
         if (sorted != null) {
             return sorted;
         }
-        sorted = new ArrayList<LetterGroup>();
+        int size = letterGroups.size();
+        LetterGroup last = null;
+        sorted = new LetterGroup[size];
 
-        for (int size = letterGroups.size(); size > 0; size--) {
-            LetterGroup g = findTop(letterGroups.get(0), size);
-            sorted.add(g);
+        for (int ptr = 0; ptr < size; ptr++) {
+            LetterGroup group = (last == null ? null : last.uniqueAfter());
+            if (group == null) {
+                group = sortFindTop(letterGroups.get(0), size);
+            }
+            sorted[ptr] = group;
             for (int i = 0; i < size; i++) {
-                if (letterGroups.get(i) == g) {
+                if (letterGroups.get(i) == group) {
                     letterGroups.remove(i);
                     break;
                 }
             }
-            g.clearAfterBefore();
+            group.clearAfterBefore();
+            last = group;
         }
 
         return sorted;
+    }
+
+    /**
+     * Find a topmost element in the current order. This is accomplished by
+     * following the "after" pointer until the first one is found. If the
+     * underlying graph has a cycle then this would result in an endless loop.
+     * This loop is terminated when a limit of steps is reached. This limit is
+     * the number of nodes left in the graph.
+     * 
+     * @param letterGroup the letter group
+     * @param limit the limit for cycle detection
+     * 
+     * @return the letter group which is currently top
+     * 
+     * @throws LetterGroupCycleException in case of a loop
+     */
+    private LetterGroup sortFindTop(LetterGroup letterGroup, int limit)
+            throws LetterGroupCycleException {
+
+        LetterGroup group = letterGroup;
+
+        for (int n = limit; n > 0; n--) {
+            LetterGroup after = group.getSomeAfter();
+            if (after == null) {
+                return group;
+            }
+            group = after;
+        }
+
+        // Error reporting
+
+        StringBuilder sb = new StringBuilder(group.getName());
+        List<LetterGroup> history = new ArrayList<LetterGroup>();
+        group = letterGroup;
+
+        for (int n = limit; n > 0; n--) {
+            if (history.contains(group)) {
+                break;
+            }
+            history.add(group);
+            group = group.getSomeAfter();
+            sb.append(" > ").append(group.getName());
+        }
+
+        throw new LetterGroupCycleException(sb.toString());
     }
 
 }

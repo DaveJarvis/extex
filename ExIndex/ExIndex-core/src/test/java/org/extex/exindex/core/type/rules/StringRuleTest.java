@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,14 +17,12 @@
  *
  */
 
-package org.extex.exindex.core.rules;
+package org.extex.exindex.core.type.rules;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.extex.exindex.core.type.rules.Rule;
-import org.extex.exindex.core.type.rules.StringRule;
 import org.junit.Test;
 
 /**

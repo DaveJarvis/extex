@@ -2,7 +2,7 @@
  <head>
   <title>ExIndex: Core</title>
   <meta name="copyright" content="
-   Copyright (C) 2007 The ExTeX Group and individual authors listed below
+   Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
 
    This library is free software; you can redistribute it and/or modify it
    under the terms of the GNU Lesser General Public License as published by
@@ -78,7 +78,7 @@
    determine where to put the index entry in the structured index. For
    this purpose a special key is constructed in several phases. The
    initial key read is called the main key. The main key is usually
-   passed in explicitely or derived from a key passed in.
+   passed in explicitly or derived from a key passed in.
   </p>
   <p>
    In a first phase the main key is mapped to the merge key. The merge
@@ -101,7 +101,25 @@
     </center>
   </div>
   <p>
-   ...
+   Parameters are inherited in two dimensions. One dimension is within
+   an index and the other dimension is across indices.
+  </p>
+  <p>
+   If a parameter for the markup is resolved then first the exact match
+   is tried. If this fails to find a proper value the default value in
+   the same index is tried. If this fails the exact match in the
+   default index is tried and finally if everything else fails the
+   default value in the default index.
+  </p>
+  <p>
+   Thus at most four different locations for a markup parameter are
+   taken into account. This is illustrated in the figure beside.
+  </p>
+  <p>
+   Parameters are not considered themselves but only within a parameter
+   group. The inheritance is used only if the preceding parameter
+   groups are not defined. This helps to ensure a consistent setting
+   for parameters.
   </p>
 
 

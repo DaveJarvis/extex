@@ -43,7 +43,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public class CrossReference implements RefSpec {
+public class CrossReference implements Reference {
 
     /**
      * The constant <tt>LOCALIZER</tt> contains the localizer for obtaining
@@ -65,10 +65,10 @@ public class CrossReference implements RefSpec {
     /**
      * Creates a new object.
      * 
-     * @param keys the references
      * @param layer the layer
+     * @param keys the references
      */
-    public CrossReference(String[] keys, String layer) {
+    public CrossReference(String layer, String[] keys) {
 
         this.layers = keys;
         this.clazz = layer;
@@ -77,14 +77,15 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.RefSpec#check(java.util.logging.Logger,
+     * @see org.extex.exindex.core.type.raw.Reference#check(java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass,
+            List<OpenLocationReference> openPages,
             AttributesContainer attributes) {
 
         String layer = entry.getRef().getLayer();
@@ -117,7 +118,7 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.RefSpec#getLayer()
+     * @see org.extex.exindex.core.type.raw.Reference#getLayer()
      */
     public String getLayer() {
 
@@ -127,9 +128,9 @@ public class CrossReference implements RefSpec {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.RefSpec#getLocation()
+     * @see org.extex.exindex.core.type.raw.Reference#getLocation()
      */
-    public String getLocation() {
+    public String[] getLocation() {
 
         throw new UnsupportedOperationException();
     }

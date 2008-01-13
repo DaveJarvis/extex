@@ -42,15 +42,7 @@ public class XindyParserFactory implements RawIndexParserFactory {
     /**
      * The field <tt>finder</tt> contains the resource finder.
      */
-    private ResourceFinder finder;
-
-    /**
-     * Creates a new object.
-     */
-    public XindyParserFactory() {
-
-        super();
-    }
+    private ResourceFinder finder = null;
 
     /**
      * {@inheritDoc}
@@ -66,9 +58,8 @@ public class XindyParserFactory implements RawIndexParserFactory {
             return null;
         }
         Reader reader =
-                (charset == null || charset.equals("") //
-                        ? new InputStreamReader(stream, charset)
-                        : new InputStreamReader(stream));
+                (charset == null || charset.equals("") ? new InputStreamReader(
+                    stream) : new InputStreamReader(stream, charset));
         return new XindyParser(reader, resource, interpreter);
     }
 

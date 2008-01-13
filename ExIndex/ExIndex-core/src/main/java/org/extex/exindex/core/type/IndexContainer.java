@@ -25,7 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.exception.InconsistentLetterGroupException;
 import org.extex.exindex.core.exception.IndexerException;
+import org.extex.exindex.core.exception.LetterGroupsClosedException;
 import org.extex.exindex.core.type.alphabet.Alphabet;
 import org.extex.exindex.core.type.alphabet.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.LocationClass;
@@ -39,7 +41,6 @@ import org.extex.exindex.core.type.rules.RuleSetContainer;
 import org.extex.exindex.core.type.rules.SortRuleContainer;
 import org.extex.exindex.core.type.rules.SortRules;
 import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -224,16 +225,30 @@ public class IndexContainer
     }
 
     /**
-     * Search for a letter group in the current index and define it if it is not
-     * defined already.
+     * Add links to all prefixes and return the equivalence class used in the
+     * current index. The equivalence class is determined from the name and the
+     * prefixes. If for one a letter group is known then this one is used.
+     * Otherwise a new one is created.
+     * <p>
+     * If a prefix has already assigned to a different letter group then this is
+     * reported as error.
+     * </p>
      * 
-     * @param name the name of the letter group to get
+     * @param name the name
+     * @param sa the prefixes
      * 
-     * @return the letter group for name
+     * @return the letter group for the whole set
+     * 
+     * @throws LetterGroupsClosedException in case the method
+     *         {@link LetterGroupContainer#sorted()} has been invoked before
+     * @throws InconsistentLetterGroupException in case of an inconsistency in
+     *         the definition of prefixes
      */
-    public LetterGroup defineLetterGroup(String name) {
+    public LetterGroup defineLetterGroup(String name, String... sa)
+            throws LetterGroupsClosedException,
+                InconsistentLetterGroupException {
 
-        return currentIndex.defineLetterGroup(name);
+        return currentIndex.defineLetterGroup(name, sa);
     }
 
     /**
@@ -323,28 +338,6 @@ public class IndexContainer
     public boolean isAttributeDefined(String name) {
 
         return currentIndex.isAttributeDefined(name);
-    }
-
-    /**
-     * Add links to all prefixes and return the equivalence class used in the
-     * current index. The equivalence class is determined from the name and the
-     * prefixes. If for one a letter group is known then this one is used.
-     * Otherwise a new one is created.
-     * <p>
-     * If a prefix has already assigned a different letter group then this is
-     * reported as error.
-     * </p>
-     * 
-     * @param name the name
-     * @param prefixes the prefixes
-     * 
-     * @return the letter group for the whole set
-     * @throws LException in case of an error
-     */
-    public LetterGroup linkPrefixes(String name, LList prefixes)
-            throws LException {
-
-        return currentIndex.linkPrefixes(name, prefixes);
     }
 
     /**

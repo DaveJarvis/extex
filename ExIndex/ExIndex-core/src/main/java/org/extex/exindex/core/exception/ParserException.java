@@ -40,7 +40,7 @@ public class ParserException extends IndexerException {
      */
     public ParserException(String message) {
 
-        super(null);
+        super(null, message);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ParserException extends IndexerException {
      */
     public ParserException(String message, Throwable cause) {
 
-        super(null);
+        super(null, message);
     }
 
 }

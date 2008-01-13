@@ -27,6 +27,7 @@ import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.function.Arg;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LList;
+import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
 
 /**
@@ -164,18 +165,24 @@ public class LDefineLetterGroup extends LFunction {
 
         LetterGroup g = null;
 
-        if (prefixes == null) {
-            g = container.defineLetterGroup(name);
+        if (prefixes == null || prefixes.isEmpty()) {
+            g = container.defineLetterGroup(name, name);
         } else {
-            g = container.linkPrefixes(name, prefixes);
+            String[] sa = new String[prefixes.size()];
+            int i = 0;
+            for (LValue val : prefixes) {
+                sa[i++] = LString.stringValue(val);
+            }
+
+            g = container.defineLetterGroup(name, sa);
         }
 
         if (after != null) {
-            LetterGroup ag = container.defineLetterGroup(after);
+            LetterGroup ag = container.defineLetterGroup(after, after);
             g.after(ag);
         }
         if (before != null) {
-            LetterGroup bg = container.defineLetterGroup(before);
+            LetterGroup bg = container.defineLetterGroup(before, before);
             bg.after(g);
         }
 

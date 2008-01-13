@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,6 +20,7 @@
 package org.extex.exindex.core.exception;
 
 import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that an unknown argument has been encountered.
@@ -33,16 +34,20 @@ public class RawIndexSyntaxException extends RawIndexException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2007L;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
      * 
      * @param locator the locator
+     * @param message the message text to be added
      */
-    public RawIndexSyntaxException(ResourceLocator locator) {
+    public RawIndexSyntaxException(ResourceLocator locator, String message) {
 
-        super(locator);
+        super(locator, LocalizerFactory.getLocalizer(
+            RawIndexSyntaxException.class).format(
+            (message == null ? "NoMessage" : "Message")));
+
     }
 
 }

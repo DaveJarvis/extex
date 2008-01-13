@@ -29,9 +29,9 @@ import java.util.TreeSet;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.CrossReference;
-import org.extex.exindex.core.type.raw.LocRef;
+import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
-import org.extex.exindex.core.type.raw.RefSpec;
+import org.extex.exindex.core.type.raw.Reference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -114,7 +114,7 @@ public class IndexEntry {
             return;
         }
 
-        RefSpec ref = raw.getRef();
+        Reference ref = raw.getRef();
         if (ref instanceof CrossReference) {
             CrossReference xref = (CrossReference) ref;
             String[] keys = xref.getKeys();
@@ -129,21 +129,20 @@ public class IndexEntry {
             }
 
             ((CrossrefGroup) locationClassGroup).store(keys, clazz);
-        } else if (ref instanceof LocRef) {
+        } else if (ref instanceof LocationReference) {
 
             String clazz = ref.getLayer();
             LocationClassGroup locationClassGroup = groupMap.get(clazz);
             if (locationClassGroup == null) {
-                locationClassGroup = new LocrefList(clazz);
+                locationClassGroup = new LocationReferenceList(clazz);
                 groupMap.put(clazz, locationClassGroup);
-            } else if (!(locationClassGroup instanceof LocrefList)) {
+            } else if (!(locationClassGroup instanceof LocationReferenceList)) {
                 throw new IndexerException(null, LocalizerFactory.getLocalizer(
                     IndexEntry.class).format("LocrefNoMatchingClass", clazz));
             }
 
-            // ((LocrefList) locationClassGroup).store((LocRef) ref);
-            // TODO gene: store unimplemented
-            throw new RuntimeException("unimplemented");
+            LocationReference lr = (LocationReference) ref;
+            ((LocationReferenceList) locationClassGroup).store(lr);
         } else {
             throw new IndexerException(null, LocalizerFactory.getLocalizer(
                 IndexEntry.class).format("UnsupportedReference"));

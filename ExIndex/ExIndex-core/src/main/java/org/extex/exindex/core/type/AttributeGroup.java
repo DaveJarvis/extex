@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,6 +21,8 @@ package org.extex.exindex.core.type;
 
 import java.util.ArrayList;
 
+import org.extex.exindex.core.type.raw.LocationReference;
+
 /**
  * This class represents an attribute group.
  * 
@@ -33,7 +35,7 @@ public class AttributeGroup extends ArrayList<LocationReference> {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2007L;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.

@@ -101,8 +101,13 @@ public class IndexerTest {
                     + "(define-letter-group \"a\")");
         FILES.put("style12",
             "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
-                    + "(markup-letter-group  :open-head \"->\")"
-                    + "(define-letter-group \"A\")");
+                    + "(markup-letter-group :group \"a\" :open-head \"->\")"
+                    + "(define-letter-group \"a\")");
+        FILES.put("style13",
+            "(markup-index :open \"\\begin{index}\" :close \"\\end{index}\")"
+                    + "(markup-letter-group :group \"a\" :open-head \"->\")"
+                    + "(define-crossref-class \"see\" :unverified)"
+                    + "(define-letter-group \"a\")");
     }
 
     /**
@@ -220,7 +225,7 @@ public class IndexerTest {
     public final void test12() throws Exception {
 
         runTest(makeList("style12"), makeList("T11.raw"),
-            "\\begin{index}AabcIV\\end{index}", null);
+            "\\begin{index}aabcIV\\end{index}", null);
     }
 
     /**
@@ -232,7 +237,7 @@ public class IndexerTest {
     public final void test20() throws Exception {
 
         runTest(makeList("style11"), makeList("T11.raw"),
-            "\\begin{index}abcIV\\end{index}", null);
+            "\\begin{index}aabcIV\\end{index}", null);
     }
 
     /**
@@ -255,7 +260,7 @@ public class IndexerTest {
     public final void testX111() throws Exception {
 
         runTest(makeList("style11"), makeList("T111.raw"),
-            "\\begin{index}abcIV\\end{index}", "");
+            "\\begin{index}aabcIV\\end{index}", "");
     }
 
     /**
@@ -267,7 +272,19 @@ public class IndexerTest {
     public final void testX112() throws Exception {
 
         runTest(makeList("style11"), makeList("T112.raw"),
-            "\\begin{index}abcVIIV\\end{index}", "");
+            "\\begin{index}aabcIVVI\\end{index}", "");
+    }
+
+    /**
+     * <testcase> Check that simple input produces simple output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testX113() throws Exception {
+
+        runTest(makeList("style13"), makeList("T112.raw"),
+            "\\begin{index}aabcIVVI\\end{index}", "");
     }
 
 }

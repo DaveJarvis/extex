@@ -19,6 +19,9 @@
 
 package org.extex.exindex.core.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class provides some utilities for Strings and such.
  * 
@@ -26,6 +29,22 @@ package org.extex.exindex.core.util;
  * @version $Revision$
  */
 public final class StringUtils {
+
+    /**
+     * Create a list of strings from the arguments.
+     * 
+     * @param args the arguments
+     * 
+     * @return the list
+     */
+    public static List<String> makeList(String... args) {
+
+        ArrayList<String> list = new ArrayList<String>();
+        for (String a : args) {
+            list.add(a);
+        }
+        return list;
+    }
 
     /**
      * Translate a {@link String} into a printable representation and place it

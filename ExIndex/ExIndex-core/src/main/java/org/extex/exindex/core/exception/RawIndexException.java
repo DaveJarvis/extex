@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,24 +35,13 @@ public class RawIndexException extends LException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2007L;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>locator</tt> contains the name and line number of the
      * resource.
      */
     private ResourceLocator locator;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     */
-    public RawIndexException(ResourceLocator locator) {
-
-        super("");
-        this.locator = locator;
-    }
 
     /**
      * Creates a new object.

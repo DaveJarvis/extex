@@ -81,12 +81,11 @@ import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.markup.MarkupNum;
 import org.extex.exindex.core.type.markup.MarkupTransform;
-import org.extex.exindex.core.type.raw.OpenLocRef;
+import org.extex.exindex.core.type.raw.OpenLocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
-import org.extex.exindex.core.type.raw.RefSpec;
+import org.extex.exindex.core.type.raw.Reference;
 import org.extex.exindex.lisp.LEngine;
 import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.function.LFunction;
 import org.extex.exindex.lisp.type.value.LBoolean;
@@ -132,7 +131,7 @@ public class Indexer extends LEngine {
      * @throws NoSuchMethodException in case of an undefined method in a
      *         function definition
      * @throws SecurityException in case of an security problem
-     * @throws LSettingConstantException should not happen
+     * @throws LException in case of an error
      * @throws InvocationTargetException in case of an error
      * @throws IllegalAccessException in case of an error
      * @throws InstantiationException in case of an error
@@ -141,7 +140,7 @@ public class Indexer extends LEngine {
     public Indexer()
             throws SecurityException,
                 NoSuchMethodException,
-                LSettingConstantException,
+                LException,
                 IllegalArgumentException,
                 InstantiationException,
                 IllegalAccessException,
@@ -197,23 +196,23 @@ public class Indexer extends LEngine {
      * @throws NoSuchMethodException in case of an undefined method in a
      *         function definition
      * @throws SecurityException in case of an security problem
-     * @throws LSettingConstantException should not happen
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     * @throws IllegalArgumentException
-     * @throws SecurityException
+     * @throws LException in case of an error
+     * @throws InvocationTargetException in case of an error
+     * @throws IllegalAccessException in case of an error
+     * @throws InstantiationException in case of an error
+     * @throws IllegalArgumentException in case of an error
+     * @throws SecurityException in case of an error
      */
     private void init()
             throws NoSuchMethodException,
-                LSettingConstantException,
+                LException,
                 SecurityException,
                 IllegalArgumentException,
                 InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException {
 
-        container.defineLetterGroup("");
+        container.defineLetterGroup("", "");
 
         defun("define-alphabet", new LDefineAlphabet("define-alphabet",
             container));
@@ -365,13 +364,14 @@ public class Indexer extends LEngine {
      * @throws LException in case of an error
      */
     private boolean preProcess(RawIndexentry entry,
-            AttributesContainer attributes, List<OpenLocRef> openPages,
-            Logger logger) throws LException {
+            AttributesContainer attributes,
+            List<OpenLocationReference> openPages, Logger logger)
+            throws LException {
 
         String indexName = entry.getIndex();
         StructuredIndex index = container.get(indexName);
 
-        RefSpec ref = entry.getRef();
+        Reference ref = entry.getRef();
         if (ref == null) {
             // TODO gene: error handling unimplemented
             throw new RuntimeException("unimplemented");
@@ -420,7 +420,8 @@ public class Indexer extends LEngine {
         }
         logger.info(LOCALIZER.format("StartProcess"));
         AttributesContainer attributes = container;
-        List<OpenLocRef> openPages = new ArrayList<OpenLocRef>();
+        List<OpenLocationReference> openPages =
+                new ArrayList<OpenLocationReference>();
         List<RawIndexentry> entries = new ArrayList<RawIndexentry>();
 
         for (String resource : resources) {
@@ -534,7 +535,7 @@ public class Indexer extends LEngine {
         }
 
         logger.finer(LOCALIZER.format("PreparingIndex"));
-        container.getCurrentIndex().sorted();
+        container.getCurrentIndex().sorted(); // TODO prepare all indices
     }
 
 }

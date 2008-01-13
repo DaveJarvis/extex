@@ -27,41 +27,42 @@ import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
- * This interface describes a reference specification.
+ * This interface describes an open location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public interface RefSpec {
+public class OpenLocationReference extends LocationReference {
 
     /**
-     * Check the reference.
+     * Creates a new object.
      * 
-     * @param logger the logger
-     * @param entry the current index entry
-     * @param index the index for cross-reference lookup
-     * @param crossrefClass the container for cross-reference classes
-     * @param openPages the list of open pages
-     * @param attributes the defined attributes
-     * 
-     * @return <code>true</code> iff everything is ok
+     * @param locref the location
+     * @param layer the layer
      */
-    boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
-            AttributesContainer attributes);
+    public OpenLocationReference(String layer, String... locref) {
+
+        super(layer, locref);
+    }
 
     /**
-     * Getter for the layer.
+     * {@inheritDoc}
      * 
-     * @return the layer or <code>null</code>
+     * @see org.extex.exindex.core.type.raw.LocationReference#check(
+     *      java.util.logging.Logger,
+     *      org.extex.exindex.core.type.raw.RawIndexentry,
+     *      org.extex.exindex.core.Indexer,
+     *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
+     *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
-    String getLayer();
+    @Override
+    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+            LocationClassContainer crossrefClass,
+            List<OpenLocationReference> openPages,
+            AttributesContainer attributes) {
 
-    /**
-     * Getter for the location.
-     * 
-     * @return the location
-     */
-    String getLocation();
-
+        openPages.add(this);
+        return super.check(logger, entry, index, crossrefClass, openPages,
+            attributes);
+    }
 }

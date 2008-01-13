@@ -27,12 +27,12 @@ import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
- * This interface describes an open location specification.
+ * This interface describes a close location specification.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
-public class OpenLocRef extends LocRef {
+public class CloseLocationReference extends LocationReference {
 
     /**
      * Creates a new object.
@@ -40,15 +40,16 @@ public class OpenLocRef extends LocRef {
      * @param location the location
      * @param layer the layer
      */
-    public OpenLocRef(String location, String layer) {
+    public CloseLocationReference(String layer, String... location) {
 
-        super(location, layer);
+        super(layer, location);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.LocRef#check(java.util.logging.Logger,
+     * @see org.extex.exindex.core.type.raw.LocationReference#check(
+     *      java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
      *      org.extex.exindex.core.Indexer,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
@@ -56,11 +57,19 @@ public class OpenLocRef extends LocRef {
      */
     @Override
     public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass, List<OpenLocRef> openPages,
+            LocationClassContainer crossrefClass,
+            List<OpenLocationReference> openPages,
             AttributesContainer attributes) {
 
-        openPages.add(this);
-        return super.check(logger, entry, index, crossrefClass, openPages,
-            attributes);
+        for (int i = openPages.size() - 1; i > 0; i--) {
+
+            if (getLocation().equals(openPages.get(i).getLocation())) {
+                openPages.remove(i);
+                return super.check(logger, entry, index, crossrefClass,
+                    openPages, attributes);
+            }
+        }
+        // TODO
+        return false;
     }
 }

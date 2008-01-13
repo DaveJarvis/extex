@@ -24,6 +24,7 @@ import java.io.Writer;
 
 import org.extex.exindex.core.command.LMarkupRange;
 import org.extex.exindex.core.type.markup.Markup;
+import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.type.value.LBoolean;

@@ -43,7 +43,6 @@ import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
 import org.extex.exindex.core.parser.xindy.XindyParserFactory;
 import org.extex.exindex.lisp.exception.LException;
-import org.extex.exindex.lisp.exception.LSettingConstantException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
@@ -376,7 +375,7 @@ public class ExIndex extends Indexer {
      * @throws NoSuchMethodException in case of an undefined method in a
      *         function definition
      * @throws SecurityException in case of an security problem
-     * @throws LSettingConstantException should not happen
+     * @throws LException in case of an error
      * @throws InvocationTargetException in case of an error
      * @throws IllegalAccessException in case of an error
      * @throws InstantiationException in case of an error
@@ -386,7 +385,7 @@ public class ExIndex extends Indexer {
             throws IOException,
                 SecurityException,
                 NoSuchMethodException,
-                LSettingConstantException,
+                LException,
                 IllegalArgumentException,
                 InstantiationException,
                 IllegalAccessException,

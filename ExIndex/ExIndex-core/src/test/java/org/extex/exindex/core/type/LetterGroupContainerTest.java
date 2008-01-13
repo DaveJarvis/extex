@@ -23,9 +23,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
-import org.extex.exindex.lisp.exception.LException;
+import org.extex.exindex.core.exception.InconsistentLetterGroupException;
+import org.extex.exindex.core.exception.LetterGroupCycleException;
+import org.extex.exindex.core.exception.LetterGroupsClosedException;
 import org.junit.Test;
 
 /**
@@ -57,9 +57,9 @@ public class LetterGroupContainerTest {
     public final void testSorted00() throws Exception {
 
         LetterGroupContainer container = new LetterGroupContainer();
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(0, sorted.size());
+        assertEquals(0, sorted.length);
     }
 
     /**
@@ -73,9 +73,9 @@ public class LetterGroupContainerTest {
 
         LetterGroupContainer container = new LetterGroupContainer();
         container.defineLetterGroup("a");
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(1, sorted.size());
+        assertEquals(1, sorted.length);
     }
 
     /**
@@ -84,7 +84,7 @@ public class LetterGroupContainerTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = LException.class)
+    @Test(expected = LetterGroupCycleException.class)
     public final void testSorted1Loop1() throws Exception {
 
         LetterGroupContainer container = new LetterGroupContainer();
@@ -99,7 +99,7 @@ public class LetterGroupContainerTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = LException.class)
+    @Test(expected = LetterGroupCycleException.class)
     public final void testSorted1Loop2() throws Exception {
 
         LetterGroupContainer container = new LetterGroupContainer();
@@ -116,7 +116,7 @@ public class LetterGroupContainerTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = LException.class)
+    @Test(expected = LetterGroupCycleException.class)
     public final void testSorted1Loop3() throws Exception {
 
         LetterGroupContainer container = new LetterGroupContainer();
@@ -141,11 +141,11 @@ public class LetterGroupContainerTest {
         LetterGroupContainer container = new LetterGroupContainer();
         container.defineLetterGroup("a");
         container.defineLetterGroup("b");
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(2, sorted.size());
-        assertEquals("a", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
+        assertEquals(2, sorted.length);
+        assertEquals("a", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
     }
 
     /**
@@ -161,11 +161,11 @@ public class LetterGroupContainerTest {
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         ga.after(gb);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(2, sorted.size());
-        assertEquals("b", sorted.get(0).getName());
-        assertEquals("a", sorted.get(1).getName());
+        assertEquals(2, sorted.length);
+        assertEquals("b", sorted[0].getName());
+        assertEquals("a", sorted[1].getName());
     }
 
     /**
@@ -181,11 +181,11 @@ public class LetterGroupContainerTest {
         LetterGroup gb = container.defineLetterGroup("b");
         LetterGroup ga = container.defineLetterGroup("a");
         gb.after(ga);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(2, sorted.size());
-        assertEquals("a", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
+        assertEquals(2, sorted.length);
+        assertEquals("a", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
     }
 
     /**
@@ -201,11 +201,11 @@ public class LetterGroupContainerTest {
         LetterGroup ga = container.defineLetterGroup("a");
         LetterGroup gb = container.defineLetterGroup("b");
         gb.after(ga);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(2, sorted.size());
-        assertEquals("a", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
+        assertEquals(2, sorted.length);
+        assertEquals("a", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
     }
 
     /**
@@ -221,12 +221,12 @@ public class LetterGroupContainerTest {
         container.defineLetterGroup("a");
         container.defineLetterGroup("b");
         container.defineLetterGroup("c");
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(3, sorted.size());
-        assertEquals("a", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
-        assertEquals("c", sorted.get(2).getName());
+        assertEquals(3, sorted.length);
+        assertEquals("a", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
+        assertEquals("c", sorted[2].getName());
     }
 
     /**
@@ -243,12 +243,12 @@ public class LetterGroupContainerTest {
         LetterGroup gb = container.defineLetterGroup("b");
         container.defineLetterGroup("c");
         ga.after(gb);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(3, sorted.size());
-        assertEquals("b", sorted.get(0).getName());
-        assertEquals("a", sorted.get(1).getName());
-        assertEquals("c", sorted.get(2).getName());
+        assertEquals(3, sorted.length);
+        assertEquals("b", sorted[0].getName());
+        assertEquals("a", sorted[1].getName());
+        assertEquals("c", sorted[2].getName());
     }
 
     /**
@@ -266,12 +266,12 @@ public class LetterGroupContainerTest {
         LetterGroup gc = container.defineLetterGroup("c");
         ga.after(gb);
         ga.after(gc);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(3, sorted.size());
-        assertEquals("b", sorted.get(0).getName());
-        assertEquals("c", sorted.get(1).getName());
-        assertEquals("a", sorted.get(2).getName());
+        assertEquals(3, sorted.length);
+        assertEquals("b", sorted[0].getName());
+        assertEquals("c", sorted[1].getName());
+        assertEquals("a", sorted[2].getName());
     }
 
     /**
@@ -290,12 +290,12 @@ public class LetterGroupContainerTest {
         LetterGroup gc = container.defineLetterGroup("c");
         ga.after(gb);
         gb.after(gc);
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(3, sorted.size());
-        assertEquals("c", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
-        assertEquals("a", sorted.get(2).getName());
+        assertEquals(3, sorted.length);
+        assertEquals("c", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
+        assertEquals("a", sorted[2].getName());
     }
 
     /**
@@ -315,12 +315,39 @@ public class LetterGroupContainerTest {
         ga.after(gb);
         gb.after(gc);
         container.sorted();
-        List<LetterGroup> sorted = container.sorted();
+        LetterGroup[] sorted = container.sorted();
         assertNotNull(sorted);
-        assertEquals(3, sorted.size());
-        assertEquals("c", sorted.get(0).getName());
-        assertEquals("b", sorted.get(1).getName());
-        assertEquals("a", sorted.get(2).getName());
+        assertEquals(3, sorted.length);
+        assertEquals("c", sorted[0].getName());
+        assertEquals("b", sorted[1].getName());
+        assertEquals("a", sorted[2].getName());
+    }
+
+    /**
+     * <testcase> defineLetterGroup() can not be applied after sorted().</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = LetterGroupsClosedException.class)
+    public final void testSortedError1() throws Exception {
+
+        LetterGroupContainer container = new LetterGroupContainer();
+        container.defineLetterGroup("a");
+        container.sorted();
+        container.defineLetterGroup("b");
+    }
+
+    /**
+     * <testcase> ...</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = InconsistentLetterGroupException.class)
+    public final void testSortedInconsistent1() throws Exception {
+
+        LetterGroupContainer container = new LetterGroupContainer();
+        container.defineLetterGroup("a", "a", "b");
+        container.defineLetterGroup("b", "b");
     }
 
 }
