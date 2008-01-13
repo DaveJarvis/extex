@@ -67,8 +67,8 @@ import org.extex.exindex.lisp.type.value.LValue;
  * 
  * <h3>Parameters</h3>
  * <p>
- * The name of the index currently in use is stored in the L system under the
- * key <tt>index;name</tt>.
+ * The name of the index currently in use is stored in the index container as
+ * current index.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

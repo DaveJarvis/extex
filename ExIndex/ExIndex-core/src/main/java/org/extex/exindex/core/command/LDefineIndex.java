@@ -120,7 +120,7 @@ public class LDefineIndex extends AbstractLAdapter {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take an index specification and store it.
      * 
      * @param interpreter the interpreter
      * @param name the name of the index

@@ -121,7 +121,7 @@ public class LDefineAttributes extends LFunction {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take an attribute group and store it.
      * 
      * @param interpreter the interpreter
      * @param list the list of attributes
