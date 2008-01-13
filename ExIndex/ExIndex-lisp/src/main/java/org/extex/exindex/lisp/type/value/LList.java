@@ -212,11 +212,12 @@ public class LList implements LValue, Iterable<LValue> {
             return "nil";
         }
         StringBuilder sb = new StringBuilder();
-        sb.append('(');
+        char c = '(';
 
         for (LValue val : content) {
+            sb.append(c);
+            c = ' ';
             sb.append(val.toString());
-            sb.append(' ');
         }
         sb.append(')');
         return sb.toString();
