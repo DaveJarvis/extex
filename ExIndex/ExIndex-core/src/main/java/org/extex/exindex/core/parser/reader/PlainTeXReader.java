@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.util;
+package org.extex.exindex.core.parser.reader;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -80,11 +80,12 @@ public class PlainTeXReader extends TeXReader {
     /**
      * Creates a new object.
      * 
+     * @param resource the name of the resource for error messages
      * @param reader the reader
      */
-    public PlainTeXReader(Reader reader) {
+    public PlainTeXReader(String resource, Reader reader) {
 
-        super(reader);
+        super(resource, reader);
     }
 
     /**
@@ -267,7 +268,7 @@ public class PlainTeXReader extends TeXReader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.util.TeXReader#read()
+     * @see org.extex.exindex.core.parser.reader.TeXReader#read()
      */
     @Override
     public int read() throws IOException {

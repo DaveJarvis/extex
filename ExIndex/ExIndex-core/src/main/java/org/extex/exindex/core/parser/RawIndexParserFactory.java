@@ -21,9 +21,9 @@ package org.extex.exindex.core.parser;
 
 import java.io.IOException;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.ParserException;
 import org.extex.exindex.core.exception.RawIndexException;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -44,7 +44,7 @@ public interface RawIndexParserFactory {
      * @param charset the name of the character set; a value of
      *        <code>null</code> or the empty string uses the platform default
      *        for the character set
-     * @param interpreter the interpreter
+     * @param indexer the interpreter
      * 
      * @return the parser or <code>null</code> if the resource could not be
      *         found
@@ -53,8 +53,7 @@ public interface RawIndexParserFactory {
      * @throws IOException in case of an I/O error
      * @throws ParserException in case of an error
      */
-    RawIndexParser create(String resource, String charset,
-            LInterpreter interpreter)
+    RawIndexParser create(String resource, String charset, Indexer indexer)
             throws RawIndexException,
                 IOException,
                 ParserException;

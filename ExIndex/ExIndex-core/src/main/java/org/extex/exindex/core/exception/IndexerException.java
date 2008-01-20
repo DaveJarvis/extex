@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -81,8 +81,9 @@ public class IndexerException extends LException {
         if (locator != null) {
             return localizer.format((message == null
                     ? "LocatedNoMessage"
-                    : "LocatedMessage"), locator.getResource(), locator
-                .getLineNumber(), message);
+                    : "LocatedMessage"), //
+                locator.getResource(), //
+                Integer.toString(locator.getLineNumber()), message);
         }
 
         return localizer.format((message == null ? "NoMessage" : "Message"),

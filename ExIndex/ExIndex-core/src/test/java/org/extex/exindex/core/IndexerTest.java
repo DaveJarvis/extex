@@ -119,7 +119,7 @@ public class IndexerTest {
      */
     public static List<String> makeList(String... args) {
 
-        ArrayList<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<String>();
         for (String s : args) {
             list.add(s);
         }
@@ -145,7 +145,7 @@ public class IndexerTest {
         logger.setUseParentHandlers(false);
         ByteArrayOutputStream log = new ByteArrayOutputStream();
         Handler handler = new StreamHandler(log, new LogFormatter());
-        handler.setLevel(Level.WARNING);
+        logger.setLevel(Level.INFO);
         logger.addHandler(handler);
 
         Indexer indexer = new Indexer();
@@ -158,8 +158,10 @@ public class IndexerTest {
         StringWriter writer = (expectedOut == null ? null : new StringWriter());
         indexer.run(styles, resources, writer, logger);
 
-        handler.close();
         if (expectedLog != null) {
+            log.close();
+            handler.flush();
+            handler.close();
             assertEquals("log", expectedLog, log.toString());
         }
 
@@ -177,7 +179,11 @@ public class IndexerTest {
     @Test
     public final void test01() throws Exception {
 
-        runTest(null, null, null, "No styles to load.\nNo resources to load.\n");
+        runTest(null, null, null, "Starting the startup phase.\n"
+                + "No styles to load.\n" //
+                + "Preparing index ...\n" //
+                + "No resources to load.\n" //
+                + "Starting the markup phase.\n");
     }
 
     /**
@@ -189,8 +195,12 @@ public class IndexerTest {
     @Test
     public final void test02() throws Exception {
 
-        runTest(makeList(), makeList(), null,
-            "No styles to load.\nNo resources to load.\n");
+        runTest(makeList(), makeList(), null, //
+            "Starting the startup phase.\n" //
+                    + "No styles to load.\n" //
+                    + "Preparing index ...\n" //
+                    + "No resources to load.\n" //
+                    + "Starting the markup phase.\n");
     }
 
     /**
@@ -201,7 +211,14 @@ public class IndexerTest {
     @Test
     public final void test10() throws Exception {
 
-        runTest(makeList(), makeList("T10.raw"), "", "No styles to load.\n");
+        runTest(makeList(), makeList("T10.raw"), "",
+            "Starting the startup phase.\n" //
+                    + "No styles to load.\n" //
+                    + "Preparing index ...\n" //
+                    + "Starting the processing phase.\n" //
+                    + "Reading T10.raw.\n" //
+                    + "Starting the pre-processing phase.\n" //
+                    + "Starting the markup phase.\n");
     }
 
     /**
@@ -213,7 +230,10 @@ public class IndexerTest {
     public final void test11() throws Exception {
 
         runTest(makeList("style11"), makeList(), "\\begin{index}\\end{index}",
-            "No resources to load.\n");
+            "Starting the startup phase.\n" //
+                    + "Preparing index ...\n" //
+                    + "No resources to load.\n" //
+                    + "Starting the markup phase.\n");
     }
 
     /**
@@ -225,7 +245,7 @@ public class IndexerTest {
     public final void test12() throws Exception {
 
         runTest(makeList("style12"), makeList("T11.raw"),
-            "\\begin{index}aabcIV\\end{index}", null);
+            "\\begin{index}->aabcIV\\end{index}", null);
     }
 
     /**
@@ -260,7 +280,12 @@ public class IndexerTest {
     public final void testX111() throws Exception {
 
         runTest(makeList("style11"), makeList("T111.raw"),
-            "\\begin{index}aabcIV\\end{index}", "");
+            "\\begin{index}aabcIV\\end{index}", "Starting the startup phase.\n"
+                    + "Preparing index ...\n" //
+                    + "Starting the processing phase.\n"
+                    + "Reading T111.raw.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Starting the markup phase.\n");
     }
 
     /**
@@ -272,7 +297,13 @@ public class IndexerTest {
     public final void testX112() throws Exception {
 
         runTest(makeList("style11"), makeList("T112.raw"),
-            "\\begin{index}aabcIVVI\\end{index}", "");
+            "\\begin{index}aabcIVVI\\end{index}",
+            "Starting the startup phase.\n"
+                    + "Preparing index ...\n" //
+                    + "Starting the processing phase.\n"
+                    + "Reading T112.raw.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Starting the markup phase.\n");
     }
 
     /**
@@ -284,7 +315,13 @@ public class IndexerTest {
     public final void testX113() throws Exception {
 
         runTest(makeList("style13"), makeList("T112.raw"),
-            "\\begin{index}aabcIVVI\\end{index}", "");
+            "\\begin{index}->aabcIVVI\\end{index}",
+            "Starting the startup phase.\n"
+                    + "Preparing index ...\n" //
+                    + "Starting the processing phase.\n"
+                    + "Reading T112.raw.\n"
+                    + "Starting the pre-processing phase.\n"
+                    + "Starting the markup phase.\n");
     }
 
 }

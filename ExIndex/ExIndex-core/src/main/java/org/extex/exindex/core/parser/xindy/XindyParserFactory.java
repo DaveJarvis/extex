@@ -24,10 +24,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.RawIndexParserFactory;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -48,10 +48,10 @@ public class XindyParserFactory implements RawIndexParserFactory {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, LInterpreter)
+     *      java.lang.String, java.lang.String, Indexer)
      */
     public RawIndexParser create(String resource, String charset,
-            LInterpreter interpreter) throws RawIndexException, IOException {
+            Indexer indexer) throws RawIndexException, IOException {
 
         InputStream stream = finder.findResource(resource, "raw");
         if (stream == null) {
@@ -60,7 +60,7 @@ public class XindyParserFactory implements RawIndexParserFactory {
         Reader reader =
                 (charset == null || charset.equals("") ? new InputStreamReader(
                     stream) : new InputStreamReader(stream, charset));
-        return new XindyParser(reader, resource, interpreter);
+        return new XindyParser(reader, resource, indexer);
     }
 
     /**

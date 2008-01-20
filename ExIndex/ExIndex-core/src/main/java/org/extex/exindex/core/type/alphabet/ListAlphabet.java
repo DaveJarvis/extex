@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.exindex.core.type.alphabet;
 
 import java.io.PrintStream;
-import java.util.List;
 
 import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.core.type.page.SomePage;
@@ -37,14 +36,14 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
     /**
      * The field <tt>list</tt> contains the list of words.
      */
-    private List<String> list;
+    private String[] list;
 
     /**
      * Creates a new object.
      * 
      * @param list the list of words
      */
-    public ListAlphabet(List<String> list) {
+    public ListAlphabet(String[] list) {
 
         super();
         this.list = list;
@@ -55,7 +54,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
      * 
      * @return the list
      */
-    public List<String> getList() {
+    public String[] getList() {
 
         return list;
     }

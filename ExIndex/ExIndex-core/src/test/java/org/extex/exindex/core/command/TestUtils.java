@@ -21,7 +21,9 @@ package org.extex.exindex.core.command;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -30,7 +32,9 @@ import java.util.logging.StreamHandler;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.IndexContainer;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This is a utility class for the tests.
@@ -39,6 +43,36 @@ import org.extex.logging.LogFormatter;
  * @version $Revision$
  */
 public final class TestUtils {
+
+    /**
+     * The field <tt>DIRECT_FINDER</tt> contains the resource finder which
+     * takes the name of the resource for its contents.
+     */
+    public static final ResourceFinder DIRECT_FINDER = new ResourceFinder() {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
+         */
+        public void enableTracing(boolean flag) {
+
+            // nay
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
+         *      java.lang.String)
+         */
+        public InputStream findResource(String name, String type)
+                throws ConfigurationException {
+
+            return new ByteArrayInputStream(name.getBytes());
+        }
+
+    };
 
     /**
      * Create a proper logger.

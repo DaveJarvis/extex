@@ -63,19 +63,21 @@ public class IndexEntry {
     private String[] keywords;
 
     /**
-     * The field <tt>sortKey</tt> contains the sort key.
+     * The field <tt>raw</tt> contains the raw index entry.
      */
-    private String[] sortKey;
+    private RawIndexentry raw;
 
     /**
      * Creates a new object.
      * 
+     * @param raw the raw index entry
      * @param keywords the keywords
      */
-    public IndexEntry(String... keywords) {
+    public IndexEntry(RawIndexentry raw, String... keywords) {
 
         super();
         this.keywords = keywords;
+        this.raw = raw;
     }
 
     /**
@@ -107,7 +109,7 @@ public class IndexEntry {
         if (i < sortKey.length && i <= depth) {
             IndexEntry entry = map.get(sortKey[i]);
             if (entry == null) {
-                entry = new IndexEntry(sortKey[i]);
+                entry = new IndexEntry(raw, sortKey[i]);
                 map.put(sortKey[i], entry);
             }
             entry.store(sortKey, i + 1, depth, raw);
@@ -141,8 +143,8 @@ public class IndexEntry {
                     IndexEntry.class).format("LocrefNoMatchingClass", clazz));
             }
 
-            LocationReference lr = (LocationReference) ref;
-            ((LocationReferenceList) locationClassGroup).store(lr);
+            ((LocationReferenceList) locationClassGroup)
+                .store((LocationReference) ref);
         } else {
             throw new IndexerException(null, LocalizerFactory.getLocalizer(
                 IndexEntry.class).format("UnsupportedReference"));
@@ -206,7 +208,7 @@ public class IndexEntry {
         markupKeywordList.write(writer, markupContainer, hier, Markup.OPEN,
             trace);
 
-        for (String key : keywords) {
+        for (String printKey : raw.getPrintKey()) {
             if (first) {
                 first = false;
             } else {
@@ -215,7 +217,7 @@ public class IndexEntry {
             }
             markupKeyword.write(writer, markupContainer, hier, Markup.OPEN,
                 trace);
-            writer.write(key);
+            writer.write(printKey);
             markupKeyword.write(writer, markupContainer, hier, Markup.CLOSE,
                 trace);
         }
@@ -237,10 +239,9 @@ public class IndexEntry {
         markupIndexentry.write(writer, markupContainer, hier, Markup.CLOSE,
             trace);
 
-        SortedSet<String> sortedKeys = sortedKeys();
         first = true;
 
-        for (String key : sortedKeys) {
+        for (String key : sortedKeys()) {
             IndexEntry entry = map.get(key);
             if (first) {
                 first = false;
@@ -250,7 +251,6 @@ public class IndexEntry {
             }
             entry.write(writer, interpreter, markupContainer, trace, level1);
         }
-
     }
 
 }

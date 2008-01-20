@@ -110,9 +110,9 @@ public class LParser implements ResourceLocator {
      * 
      * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
      */
-    public String getLineNumber() {
+    public int getLineNumber() {
 
-        return Integer.toString(reader.getLineNumber());
+        return reader.getLineNumber();
     }
 
     /**

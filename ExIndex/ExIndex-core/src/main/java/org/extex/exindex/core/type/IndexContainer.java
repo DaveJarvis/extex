@@ -21,8 +21,10 @@ package org.extex.exindex.core.type;
 
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.exception.InconsistentLetterGroupException;
@@ -52,6 +54,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  */
 public class IndexContainer
         implements
+            LValue,
             MarkupContainer,
             RuleSetContainer,
             SortRuleContainer,
@@ -59,7 +62,7 @@ public class IndexContainer
             AlphabetContainer,
             AttributesContainer,
             LocationClassContainer,
-            LValue {
+            Iterable<String> {
 
     /**
      * The constant <tt>DEFAULT_INDEX</tt> contains the name of the default
@@ -99,7 +102,7 @@ public class IndexContainer
 
         super();
         // the default index has no fallback
-        currentIndex = new StructuredIndex(null);
+        currentIndex = new StructuredIndex(DEFAULT_INDEX, null);
         indexMap.put(null, currentIndex);
         indexMap.put(DEFAULT_INDEX, currentIndex);
     }
@@ -217,7 +220,7 @@ public class IndexContainer
 
         StructuredIndex index = indexMap.get(name);
         if (index == null) {
-            index = new StructuredIndex(this);
+            index = new StructuredIndex(name, this);
             indexMap.put(name, index);
         }
         index.setSuffix(suffix);
@@ -343,6 +346,18 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
+     * @see java.lang.Iterable#iterator()
+     */
+    public Iterator<String> iterator() {
+
+        Set<String> keySet = indexMap.keySet();
+        keySet.remove(null);
+        return keySet.iterator();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exindex.core.type.alphabet.AlphabetContainer#lookupAlphabet(
      *      java.lang.String)
      */
@@ -403,7 +418,8 @@ public class IndexContainer
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(Integer)
+     * @see org.extex.exindex.core.type.rules.SortRuleContainer#lookupSortRules(
+     *      Integer)
      */
     public SortRules lookupSortRules(Integer level) {
 
@@ -414,11 +430,11 @@ public class IndexContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
-     *      java.lang.String, java.lang.String)
+     *      java.lang.String, String)
      */
-    public PageReference makePageReference(String encap, String s) {
+    public PageReference makePageReference(String encap, String page) {
 
-        return currentIndex.makePageReference(encap, s);
+        return currentIndex.makePageReference(encap, page);
     }
 
     /**

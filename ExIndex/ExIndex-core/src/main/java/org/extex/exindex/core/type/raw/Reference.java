@@ -22,8 +22,8 @@ package org.extex.exindex.core.type.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.LocationClassContainer;
+import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
@@ -35,7 +35,7 @@ import org.extex.exindex.core.type.attribute.AttributesContainer;
 public interface Reference {
 
     /**
-     * Check the reference.
+     * Check the reference for validity.
      * 
      * @param logger the logger
      * @param entry the current index entry
@@ -46,7 +46,7 @@ public interface Reference {
      * 
      * @return <code>true</code> iff everything is ok
      */
-    boolean check(Logger logger, RawIndexentry entry, Indexer index,
+    boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
             LocationClassContainer crossrefClass,
             List<OpenLocationReference> openPages,
             AttributesContainer attributes);

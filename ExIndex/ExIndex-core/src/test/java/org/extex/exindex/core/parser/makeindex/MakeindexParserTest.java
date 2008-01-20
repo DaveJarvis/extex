@@ -26,11 +26,12 @@ import static org.junit.Assert.assertNull;
 import java.io.StringReader;
 
 import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.type.raw.RawIndexentry;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.type.value.LChar;
+import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.junit.Test;
 
@@ -51,7 +52,7 @@ public class MakeindexParserTest {
     @Test
     public final void test01() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(""), "rsc", interpreter);
         assertNull(xp.parse());
@@ -66,7 +67,7 @@ public class MakeindexParserTest {
     @Test(expected = RawIndexException.class)
     public final void test02() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         interpreter.setq("makeindex:level", new LString(""));
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(""), "rsc", interpreter);
@@ -82,7 +83,7 @@ public class MakeindexParserTest {
     @Test
     public final void test03() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         interpreter.setq("makeindex:level", new LChar('!'));
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(""), "rsc", interpreter);
@@ -99,7 +100,7 @@ public class MakeindexParserTest {
     @Test
     public final void test04() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\relax"), "rsc",
                     interpreter);
@@ -116,7 +117,7 @@ public class MakeindexParserTest {
     @Test
     public final void test05() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\indexentry{abc}{123}"),
                     "rsc", interpreter);
@@ -138,7 +139,7 @@ public class MakeindexParserTest {
     @Test
     public final void test06() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc@def}{123}"), "rsc", interpreter);
@@ -160,7 +161,7 @@ public class MakeindexParserTest {
     @Test
     public final void test07() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def}{123}"), "rsc", interpreter);
@@ -182,7 +183,7 @@ public class MakeindexParserTest {
     @Test
     public final void test08() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def(}{123}"), "rsc", interpreter);
@@ -204,7 +205,7 @@ public class MakeindexParserTest {
     @Test
     public final void test09() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
                     "\\indexentry{abc|def)}{123}"), "rsc", interpreter);
@@ -226,7 +227,7 @@ public class MakeindexParserTest {
     @Test
     public final void test10() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         interpreter.setq("makeindex:keyword", new LString("\\gloentry"));
         MakeindexParser xp =
                 new MakeindexParser(new StringReader(
@@ -241,19 +242,248 @@ public class MakeindexParserTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.exindex.core.parser.makeindex.MakeindexParser#parse()}.
+     * <testcase>Test that multiple entries can be parsed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test11() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader(
+                    "\\indexentry{abc}{123}\\indexentry{def}{123}"), "rsc",
+                    interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
+            entry.toString());
+        entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"def\") :print (\"def\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that multiple entries can be parsed and whitespace in
+     * between is skipped. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test12() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader(
+                    "\\indexentry{abc}{123} \n" + "\\indexentry{def}{123}"),
+                    "rsc", interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
+            entry.toString());
+        entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"def\") :print (\"def\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that multiple entries can be parsed and anything in
+     * between is skipped. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test13() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader(
+                    "\\indexentry{abc}{123} \nxyz-.,"
+                            + "\\indexentry{def}{123}"), "rsc", interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"abc\") :print (\"abc\") :locref \"123\")\n",
+            entry.toString());
+        entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"def\") :print (\"def\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that multiple entries can be parsed and nothing after the
+     * end and after the parser has been closed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test14() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader(
+                    "\\indexentry{abc}{123} \nxyz-.,"
+                            + "\\indexentry{def}{123}"), "rsc", interpreter);
+        assertNotNull(xp.parse());
+        assertNotNull(xp.parse());
+        assertNull(xp.parse());
+        xp.close();
+        assertNull(xp.parse());
+    }
+
+    /**
+     * <testcase>Test that an entry can be parsed and embedded braces are
+     * treated right. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test15() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(
+                    new StringReader("\\indexentry{a{b}c}{123}"), "rsc",
+                    interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"a{b}c\") :print (\"a{b}c\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that an entry with a structured item can be parsed.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test16() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(
+                    new StringReader("\\indexentry{a!b!c}{123}"), "rsc",
+                    interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"a\" \"b\" \"c\") :print (\"a\" \"b\" \"c\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that an entry with an embedded \{ can be parsed.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test17() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(
+                    new StringReader("\\indexentry{a\\{}{123}"), "rsc",
+                    interpreter);
+        RawIndexentry entry = xp.parse();
+        assertNotNull(entry);
+        assertEquals(
+            "(indexentry :index \"\" :key (\"a\\{\") :print (\"a\\{\") :locref \"123\")\n",
+            entry.toString());
+        xp.close();
+    }
+
+    /**
+     * <testcase>Test that the keyword has to be followed by an open brace.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = RawIndexMissingCharException.class)
     public final void testError01() throws Exception {
 
-        LInterpreter interpreter = new Indexer();
+        Indexer interpreter = new Indexer();
         MakeindexParser xp =
                 new MakeindexParser(new StringReader("\\indexentry abc"),
                     "rsc", interpreter);
         xp.parse();
+    }
+
+    /**
+     * <testcase>Test that an unbalance brace in an entry leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexEofException.class)
+    public final void testError02() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader("\\indexentry{abc"),
+                    "rsc", interpreter);
+        xp.parse();
+    }
+
+    /**
+     * <testcase>Test that an unbalance brace in the page reference leads to an
+     * error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexEofException.class)
+    public final void testError03() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader("\\indexentry{abc}{13"),
+                    "rsc", interpreter);
+        xp.parse();
+    }
+
+    /**
+     * <testcase>Test that an entry with an \ at the end leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexEofException.class)
+    public final void testError04() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        MakeindexParser xp =
+                new MakeindexParser(new StringReader("\\indexentry{a\\"),
+                    "rsc", interpreter);
+        xp.parse();
+    }
+
+    /**
+     * <testcase>Test that makeindex:keyword does not accept nil as value.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RawIndexException.class)
+    public final void testKeywordError1() throws Exception {
+
+        Indexer interpreter = new Indexer();
+        interpreter.setq("makeindex:keyword", LList.NIL);
+        new MakeindexParser(new StringReader(""), "rsc", interpreter);
     }
 
 }

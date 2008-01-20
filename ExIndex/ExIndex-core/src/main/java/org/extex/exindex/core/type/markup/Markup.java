@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.exindex.core.type.MarkupContainer;
+import org.extex.exindex.core.util.StringUtils;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 
 /**
@@ -217,8 +218,18 @@ public class Markup {
     public String toString() {
 
         final StringBuilder sb = new StringBuilder(displayName);
-        sb.append(": ");
-        sb.append(map.toString());
+        sb.append(": {");
+        for (String key : map.keySet()) {
+            sb.append(" ");
+            sb.append(key);
+            sb.append("=[");
+            for (String val : map.get(key)) {
+                sb.append(" ");
+                StringUtils.putPrintable(sb, val);
+            }
+            sb.append("]");
+        }
+        sb.append("}");
         return sb.toString();
     }
 

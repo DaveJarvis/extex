@@ -19,9 +19,6 @@
 
 package org.extex.exindex.core.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.exindex.core.type.alphabet.AlphabetContainer;
 import org.extex.exindex.core.type.alphabet.ListAlphabet;
 import org.extex.exindex.lisp.LInterpreter;
@@ -108,10 +105,11 @@ public class LDefineAlphabet extends LFunction {
             throws LNonMatchingTypeException,
                 LSettingConstantException {
 
-        List<String> words = new ArrayList<String>();
+        String[] words = new String[list.size()];
+        int i = 0;
 
         for (LValue val : list) {
-            words.add(LString.stringValue(val));
+            words[i++] = LString.stringValue(val);
         }
 
         container.addAlphabet(name, new ListAlphabet(words));

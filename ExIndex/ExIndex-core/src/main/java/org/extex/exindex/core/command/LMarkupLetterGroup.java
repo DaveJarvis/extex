@@ -104,7 +104,7 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
     }
 
     /**
-     * Take a sort rule and store it.
+     * Take the markup for a letter group and store it.
      * 
      * @param interpreter the interpreter
      * @param group the name of the group

@@ -17,11 +17,11 @@
  *
  */
 
-package org.extex.exindex.core.parser.util;
+package org.extex.exindex.core.parser.reader;
 
-import java.io.FilterReader;
 import java.io.IOException;
 import java.io.Reader;
+
 
 /**
  * Reader which translates ^^ notation on the fly into characters.
@@ -80,7 +80,7 @@ import java.io.Reader;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TeXReader extends FilterReader {
+public class TeXReader extends ReaderLocator {
 
     /**
      * The field <tt>save</tt> contains the saved character or -1 for none.
@@ -90,11 +90,12 @@ public class TeXReader extends FilterReader {
     /**
      * Creates a new object.
      * 
+     * @param resource the name of the resource currently read
      * @param reader the reader to use for input
      */
-    public TeXReader(Reader reader) {
+    public TeXReader(String resource, Reader reader) {
 
-        super(reader);
+        super(resource, reader);
     }
 
     /**

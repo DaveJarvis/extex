@@ -24,10 +24,10 @@ import java.io.Writer;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.Location;
 import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.MarkupContainer;
+import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.util.StringUtils;
@@ -69,13 +69,12 @@ public class LocationReference implements Reference, Location {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.raw.Reference#check(java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      org.extex.exindex.core.Indexer,
+     *      org.extex.exindex.core.type.raw.RawIndexentry, StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
-    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass,
+    public boolean check(Logger logger, RawIndexentry entry,
+            StructuredIndex index, LocationClassContainer crossrefClass,
             List<OpenLocationReference> openPages,
             AttributesContainer attributes) {
 
@@ -144,6 +143,7 @@ public class LocationReference implements Reference, Location {
 
         // TODO depth unused
         Markup markup = markupContainer.getMarkup("markup-locref");
+        Markup markupLayer = markupContainer.getMarkup("markup-locref-layer");
         boolean first = true;
 
         for (String loc : location) {
@@ -152,9 +152,13 @@ public class LocationReference implements Reference, Location {
             } else {
                 markup.write(writer, markupContainer, layer, Markup.SEP, trace);
             }
+            markupLayer.write(writer, markupContainer, layer, Markup.OPEN,
+                trace);
             markup.write(writer, markupContainer, layer, Markup.OPEN, trace);
             writer.write(loc);
             markup.write(writer, markupContainer, layer, Markup.CLOSE, trace);
+            markupLayer.write(writer, markupContainer, layer, Markup.CLOSE,
+                trace);
         }
     }
 

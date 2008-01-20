@@ -22,8 +22,8 @@ package org.extex.exindex.core.type.raw;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.LocationClassContainer;
+import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
 
 /**
@@ -51,12 +51,12 @@ public class CloseLocationReference extends LocationReference {
      * @see org.extex.exindex.core.type.raw.LocationReference#check(
      *      java.util.logging.Logger,
      *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      org.extex.exindex.core.Indexer,
+     *      StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
     @Override
-    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
+    public boolean check(Logger logger, RawIndexentry entry, StructuredIndex index,
             LocationClassContainer crossrefClass,
             List<OpenLocationReference> openPages,
             AttributesContainer attributes) {

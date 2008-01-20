@@ -39,8 +39,15 @@ public abstract class Rule {
      */
     public static String apply(List<Rule> rules, String text) {
 
-        // TODO gene: apply unimplemented
-        throw new RuntimeException("unimplemented");
+        StringBuilder sb = new StringBuilder(text);
+        int mod = 0;
+        for (Rule rule : rules) {
+            int m = rule.apply(sb, mod);
+            if (m >= 0) {
+                mod = m;
+            }
+        }
+        return sb.toString();
     }
 
     /**

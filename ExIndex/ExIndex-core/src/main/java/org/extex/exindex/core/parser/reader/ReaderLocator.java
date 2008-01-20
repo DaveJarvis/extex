@@ -17,11 +17,11 @@
  *
  */
 
-package org.extex.exindex.core.parser.util;
+package org.extex.exindex.core.parser.reader;
 
-import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
+import java.io.StringReader;
 
 import org.extex.exindex.lisp.parser.ResourceLocator;
 
@@ -30,7 +30,7 @@ import org.extex.exindex.lisp.parser.ResourceLocator;
  * read single characters from the reader.
  * 
  */
-public class ReaderLocator implements ResourceLocator {
+public class ReaderLocator extends LineNumberReader implements ResourceLocator {
 
     /**
      * The field <tt>resource</tt> contains the name of the resource.
@@ -38,14 +38,17 @@ public class ReaderLocator implements ResourceLocator {
     private String resource;
 
     /**
-     * The field <tt>reader</tt> contains the reader.
+     * Creates a new object.
+     * 
+     * @param resource the resource
+     * @param lineNumber the line number
      */
-    private LineNumberReader reader;
+    public ReaderLocator(String resource, int lineNumber) {
 
-    /**
-     * The field <tt>lineNumber</tt> contains the optional line number.
-     */
-    private String lineNumber = null;
+        super(new StringReader(""));
+        this.resource = resource;
+        setLineNumber(lineNumber);
+    }
 
     /**
      * Creates a new object.
@@ -55,48 +58,8 @@ public class ReaderLocator implements ResourceLocator {
      */
     public ReaderLocator(String resource, Reader reader) {
 
-        super();
+        super(reader);
         this.resource = resource;
-        this.reader = new LineNumberReader(reader);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param resource the resource
-     * @param lineNumber the line number
-     */
-    public ReaderLocator(String resource, String lineNumber) {
-
-        super();
-        this.resource = resource;
-        this.reader = null;
-        this.lineNumber = lineNumber;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.parser.ResourceLocator#getLineNumber()
-     */
-    public String getLineNumber() {
-
-        if (lineNumber != null) {
-            return lineNumber;
-        } else if (reader != null) {
-            return Integer.toString(reader.getLineNumber());
-        }
-        return "?";
-    }
-
-    /**
-     * Getter for reader.
-     * 
-     * @return the reader
-     */
-    public LineNumberReader getReader() {
-
-        return reader;
     }
 
     /**
@@ -107,18 +70,6 @@ public class ReaderLocator implements ResourceLocator {
     public String getResource() {
 
         return resource;
-    }
-
-    /**
-     * Read a character from the stream.
-     * 
-     * @return the next character or -1 at eof
-     * 
-     * @throws IOException in case of an error
-     */
-    public int read() throws IOException {
-
-        return reader.read();
     }
 
 }

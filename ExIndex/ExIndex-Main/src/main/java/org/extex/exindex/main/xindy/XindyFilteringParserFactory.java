@@ -27,6 +27,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.xindy.XindyParserFactory;
@@ -73,11 +74,11 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, LInterpreter)
+     *      java.lang.String, java.lang.String, Indexer)
      */
     @Override
     public RawIndexParser create(String resource, String charset,
-            LInterpreter interpreter) throws RawIndexException, IOException {
+            Indexer indexer) throws RawIndexException, IOException {
 
         String parser = "xindy";
         InputStream stream;
@@ -164,7 +165,7 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
                     Class.forName(clazz).getConstructor(Reader.class,
                         String.class, LInterpreter.class);
             return (RawIndexParser) cons.newInstance(reader, resource,
-                interpreter);
+                indexer);
         } catch (SecurityException e) {
             throw new MainException(LOCALIZER.format("ParserError", parser, e
                 .toString()), e);

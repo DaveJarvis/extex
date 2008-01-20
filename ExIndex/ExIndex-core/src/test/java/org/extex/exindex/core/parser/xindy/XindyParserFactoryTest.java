@@ -27,6 +27,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
@@ -61,8 +62,7 @@ public class XindyParserFactoryTest {
 
     /**
      * <testcase> If the resource can not be found then <code>null</code> is
-     * returned by
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}.
+     * returned by {@link XindyParserFactory#create(String, String, Indexer)}.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -89,8 +89,7 @@ public class XindyParserFactoryTest {
 
     /**
      * <testcase> If the resource can be found then a {@link XindyParser} is
-     * returned by
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}
+     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
      * when the default encoding is requested with <code>null</code> as
      * encoding. </testcase>
      * 
@@ -108,8 +107,7 @@ public class XindyParserFactoryTest {
 
     /**
      * <testcase> If the resource can be found then a {@link XindyParser} is
-     * returned by
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}
+     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
      * when the default encoding is requested with <code>""</code> as
      * encoding. </testcase>
      * 
@@ -127,8 +125,7 @@ public class XindyParserFactoryTest {
 
     /**
      * <testcase> If the resource can be found then a {@link XindyParser} is
-     * returned by
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}
+     * returned by {@link XindyParserFactory#create(String, String, Indexer)}
      * when the default encoding is requested with an existing encoding (utf-8).
      * </testcase>
      * 
@@ -146,8 +143,8 @@ public class XindyParserFactoryTest {
 
     /**
      * <testcase> If the resource finder is not set then
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}
-     * throws a {@link NullPointerException}. </testcase>
+     * {@link XindyParserFactory#create(String, String, Indexer)} throws a
+     * {@link NullPointerException}. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -160,8 +157,7 @@ public class XindyParserFactoryTest {
     /**
      * <testcase> If the resource can be found and the encoding is unknown (xxx)
      * then an {@link UnsupportedEncodingException} is thrown by
-     * {@link XindyParserFactory#create(String, String, org.extex.exindex.lisp.LInterpreter)}.
-     * </testcase>
+     * {@link XindyParserFactory#create(String, String, Indexer)}. </testcase>
      * 
      * @throws Exception in case of an error
      */

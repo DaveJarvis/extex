@@ -35,6 +35,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -81,6 +82,37 @@ public abstract class AbstractIndexerTester {
      */
     private static final Map<String, String> FILES =
             new HashMap<String, String>();
+
+    /**
+     * The field <tt>FINDER</tt> contains the resource finder.
+     */
+    private static final ResourceFinder FINDER = new ResourceFinder() {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
+         */
+        public void enableTracing(boolean flag) {
+
+            // nay
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
+         *      java.lang.String)
+         */
+        public InputStream findResource(String name, String type)
+                throws ConfigurationException {
+
+            String contents = FILES.get(name);
+            return contents == null ? null : new ByteArrayInputStream(contents
+                .getBytes());
+        }
+
+    };
 
     /**
      * Add a resource
@@ -134,11 +166,18 @@ public abstract class AbstractIndexerTester {
         Indexer indexer = new Indexer();
         ResourceFinder finder = new MyFinder();
         indexer.setResourceFinder(finder);
+        ExIndexParserFactory parserFactory = new ExIndexParserFactory();
+        parserFactory.setResourceFinder(FINDER);
+        indexer.setParserFactory(parserFactory);
         StringWriter writer = (expectedOut == null ? null : new StringWriter());
         indexer.run(styles, resources, writer, logger);
 
-        handler.close();
-        assertEquals(expectedLog, log.toString());
+        if (expectedLog != null) {
+            log.close();
+            handler.flush();
+            handler.close();
+            assertEquals("log", expectedLog, log.toString());
+        }
 
         if (writer != null) {
             String s = writer.toString();

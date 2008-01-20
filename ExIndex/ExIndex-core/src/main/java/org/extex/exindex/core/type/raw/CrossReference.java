@@ -24,9 +24,9 @@ import java.io.Writer;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.type.LocationClassContainer;
 import org.extex.exindex.core.type.MarkupContainer;
+import org.extex.exindex.core.type.StructuredIndex;
 import org.extex.exindex.core.type.alphabet.CrossreferenceLocationClass;
 import org.extex.exindex.core.type.alphabet.LocationClass;
 import org.extex.exindex.core.type.attribute.AttributesContainer;
@@ -65,26 +65,26 @@ public class CrossReference implements Reference {
     /**
      * Creates a new object.
      * 
-     * @param layer the layer
-     * @param keys the references
+     * @param clazz the type
+     * @param layers the references
      */
-    public CrossReference(String layer, String[] keys) {
+    public CrossReference(String clazz, String[] layers) {
 
-        this.layers = keys;
-        this.clazz = layer;
+        this.layers = layers;
+        this.clazz = clazz;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.type.raw.Reference#check(java.util.logging.Logger,
-     *      org.extex.exindex.core.type.raw.RawIndexentry,
-     *      org.extex.exindex.core.Indexer,
+     * @see org.extex.exindex.core.type.raw.Reference#check(
+     *      java.util.logging.Logger,
+     *      org.extex.exindex.core.type.raw.RawIndexentry, StructuredIndex,
      *      org.extex.exindex.core.type.LocationClassContainer, java.util.List,
      *      org.extex.exindex.core.type.attribute.AttributesContainer)
      */
-    public boolean check(Logger logger, RawIndexentry entry, Indexer index,
-            LocationClassContainer crossrefClass,
+    public boolean check(Logger logger, RawIndexentry entry,
+            StructuredIndex index, LocationClassContainer crossrefClass,
             List<OpenLocationReference> openPages,
             AttributesContainer attributes) {
 
@@ -97,7 +97,7 @@ public class CrossReference implements Reference {
         if (((CrossreferenceLocationClass) cc).isUnverified()) {
             return true;
         }
-        if (index.lookup(layers) != null) {
+        if (index.containsKey(layers) != null) {
             // TODO lift this to multiple indices
             logger.warning(LOCALIZER.format("UndefinedCrossref", toString()));
             return false;

@@ -24,9 +24,12 @@ import static org.junit.Assert.assertEquals;
 import java.io.StringWriter;
 
 import org.extex.exindex.core.Indexer;
+import org.extex.exindex.core.exception.IndexerException;
+import org.extex.exindex.core.type.markup.MarkupTransform;
+import org.extex.exindex.core.type.raw.LocationReference;
+import org.extex.exindex.core.type.raw.RawIndexentry;
+import org.extex.exindex.core.type.transform.Capitalize;
 import org.extex.exindex.core.type.transform.Upcase;
-import org.extex.exindex.lisp.LInterpreter;
-import org.extex.exindex.lisp.type.value.LString;
 import org.junit.Test;
 
 /**
@@ -38,6 +41,24 @@ import org.junit.Test;
 public class StructuredIndexTest {
 
     /**
+     * Add an item to an index.
+     * 
+     * @param index the index
+     * @param arg the name of the item to add
+     * 
+     * @throws IndexerException in case of an error
+     */
+    private void fillLetterGroup(StructuredIndex index, String arg)
+            throws IndexerException {
+
+        RawIndexentry ie =
+                new RawIndexentry("", new String[]{arg}, new String[]{arg},
+                    new LocationReference("", "123"));
+        ie.setSortKey(new String[]{arg});
+        index.store(ie);
+    }
+
+    /**
      * Test method for
      * {@link org.extex.exindex.core.type.StructuredIndex#write(java.io.Writer, org.extex.exindex.lisp.LInterpreter, boolean)}.
      * 
@@ -46,23 +67,22 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite1() throws Exception {
 
-        StructuredIndex index = new StructuredIndex(null);
-        index.defineLetterGroup("a");
-        index.defineLetterGroup("b");
+        Indexer indexer = new Indexer();
+        indexer.load("src/test/resources/xindy/makeidx.xdy");
+
+        StructuredIndex index = indexer.getContainer().getCurrentIndex();
+        index.defineLetterGroup("a", "a");
+        fillLetterGroup(index, "a");
+        index.defineLetterGroup("b", "b");
+        fillLetterGroup(index, "b");
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Indexer();
-        interpreter.load("src/test/resources/xindy/makeidx.xdy");
-        index.write(writer, interpreter, false);
-
+        index.write(writer, indexer, false);
         writer.flush();
-        assertEquals("\\begin{theindex}\n" + // 
-                "\n" + //
-                "\n" + //
-                "  \\indexspace\n" + // 
-                "\n" + //
-                "\n" + //
-                "\\end{theindex}\n", writer.toString());
+
+        assertEquals("\\begin{theindex}\n" + "a\n" + "  \\item a123\n" + "\n"
+                + "  \\indexspace\n" + "b\n" + "  \\item b123\n" + "\n"
+                + "\\end{theindex}\n" + "", writer.toString());
     }
 
     /**
@@ -74,25 +94,33 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite2() throws Exception {
 
-        StructuredIndex index = new StructuredIndex(null);
-        index.defineLetterGroup("a");
-        index.defineLetterGroup("b");
+        Indexer indexer = new Indexer();
+        indexer.load("src/test/resources/xindy/makeidx.xdy");
+
+        StructuredIndex index = indexer.getContainer().getCurrentIndex();
+        index.defineLetterGroup("a", "a");
+        fillLetterGroup(index, "a");
+        index.defineLetterGroup("b", "b");
+        fillLetterGroup(index, "b");
+
+        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
+        mt.set("a", "", "", ">", "", false);
+        index.setMarkup("markup-letter-group", mt);
+        mt.set("b", "", "", ">>", "", false);
+        index.setMarkup("markup-letter-group", mt);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Indexer();
-        interpreter.load("src/test/resources/xindy/makeidx.xdy");
-        interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
-        interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
-        index.write(writer, interpreter, false);
-
+        index.write(writer, indexer, false);
         writer.flush();
-        assertEquals("\\begin{theindex}\n" + // 
-                ">a\n" + //
-                "\n" + //
-                "  \\indexspace\n" + // 
-                ">>b\n" + //
-                "\n" + //
-                "\\end{theindex}\n", writer.toString());
+
+        assertEquals("\\begin{theindex}\n" //
+                + ">a\n" //
+                + "  \\item a123\n" //
+                + "\n" + "  \\indexspace\n" //
+                + ">>b\n" //
+                + "  \\item b123\n" //
+                + "\n" //
+                + "\\end{theindex}\n", writer.toString());
     }
 
     /**
@@ -104,26 +132,34 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite3() throws Exception {
 
-        StructuredIndex index = new StructuredIndex(null);
-        index.defineLetterGroup("a");
-        index.defineLetterGroup("b");
+        Indexer indexer = new Indexer();
+        indexer.load("src/test/resources/xindy/makeidx.xdy");
+
+        StructuredIndex index = indexer.getContainer().getCurrentIndex();
+        index.defineLetterGroup("a", "a");
+        fillLetterGroup(index, "a");
+        index.defineLetterGroup("b", "b");
+        fillLetterGroup(index, "b");
+
+        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
+        mt.set("a", "", "", ">", "", false);
+        mt.setTransform("a", new Upcase());
+        index.setMarkup("markup-letter-group", mt);
+        mt.set("b", "", "", ">>", "", false);
+        index.setMarkup("markup-letter-group", mt);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Indexer();
-        interpreter.load("src/test/resources/xindy/makeidx.xdy");
-        interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
-        interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
-        interpreter.setq("markup:letter-group-a-transform", new Upcase());
-        index.write(writer, interpreter, false);
-
+        index.write(writer, indexer, false);
         writer.flush();
-        assertEquals("\\begin{theindex}\n" + // 
-                ">A\n" + //
-                "\n" + //
-                "  \\indexspace\n" + // 
-                ">>b\n" + //
-                "\n" + //
-                "\\end{theindex}\n", writer.toString());
+
+        assertEquals("\\begin{theindex}\n" //
+                + ">A\n" //
+                + "  \\item a123\n" //
+                + "\n" + "  \\indexspace\n" //
+                + ">>b\n" //
+                + "  \\item b123\n" //
+                + "\n" //
+                + "\\end{theindex}\n", writer.toString());
     }
 
     /**
@@ -135,44 +171,34 @@ public class StructuredIndexTest {
     @Test
     public final void testWrite4() throws Exception {
 
-        StructuredIndex index = new StructuredIndex(null);
-        index.defineLetterGroup("a");
-        index.defineLetterGroup("b");
-        // Entry entry =
-        // new Entry(new String[]{"abc"}, "Abc", new PageReference() {
-        //
-        // public String getEncap() {
-        //
-        // return "b";
-        // }
-        //
-        // public int getOrd() {
-        //
-        // return -1;
-        // }
-        //
-        // public String getPage() {
-        //
-        // return "234";
-        // }
-        // });
+        Indexer indexer = new Indexer();
+        indexer.load("src/test/resources/xindy/makeidx.xdy");
+
+        StructuredIndex index = indexer.getContainer().getCurrentIndex();
+        index.defineLetterGroup("a", "a");
+        fillLetterGroup(index, "a");
+        index.defineLetterGroup("b", "b");
+        fillLetterGroup(index, "b");
+
+        MarkupTransform mt = new MarkupTransform("LETTER-GROUP");
+        mt.set("a", "", "", ">", "", false);
+        mt.setTransform("a", new Capitalize());
+        index.setMarkup("markup-letter-group", mt);
+        mt.set("b", "", "", ">>", "", false);
+        index.setMarkup("markup-letter-group", mt);
 
         StringWriter writer = new StringWriter();
-        LInterpreter interpreter = new Indexer();
-        interpreter.load("src/test/resources/xindy/makeidx.xdy");
-        interpreter.setq("markup:letter-group-a-open-head", new LString(">"));
-        interpreter.setq("markup:letter-group-b-open-head", new LString(">>"));
-        interpreter.setq("markup:letter-group-a-transform", new Upcase());
-        index.write(writer, interpreter, false);
+        index.write(writer, indexer, false);
 
         writer.flush();
-        assertEquals("\\begin{theindex}\n" + // 
-                ">A\n" + //
-                "\n" + //
-                "  \\indexspace\n" + // 
-                ">>b\n" + //
-                "\n" + //
-                "\\end{theindex}\n", writer.toString());
+        assertEquals("\\begin{theindex}\n" //
+                + ">A\n" //
+                + "  \\item a123\n" //
+                + "\n" + "  \\indexspace\n" //
+                + ">>b\n" //
+                + "  \\item b123\n" //
+                + "\n" //
+                + "\\end{theindex}\n", writer.toString());
     }
 
 }

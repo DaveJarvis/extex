@@ -237,7 +237,7 @@ public class LDefineAttributesTest {
     @Test
     public final void testFull01Fail() throws Exception {
 
-        Indexer indexer = new TestableIndexer();
+        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
@@ -256,7 +256,7 @@ public class LDefineAttributesTest {
     @Test
     public final void testFull01Ok() throws Exception {
 
-        Indexer indexer = new TestableIndexer();
+        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
@@ -274,7 +274,7 @@ public class LDefineAttributesTest {
     @Test
     public final void testFull02Ok() throws Exception {
 
-        Indexer indexer = new TestableIndexer();
+        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
         indexer.run(null, rsc, null, TestUtils.makeLogger());

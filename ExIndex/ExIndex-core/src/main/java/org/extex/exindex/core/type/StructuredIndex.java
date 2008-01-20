@@ -46,6 +46,16 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <div style="float:right;"> <img src="doc-files/classes.png"/> <br />
  * Figure: The structure </div>
  * 
+ * <p>
+ * This class carries two aspects of the index:
+ * </p>
+ * <ul>
+ * <li>The index content </li>
+ * <li>The index parameters </li>
+ * </ul>
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -57,8 +67,18 @@ public class StructuredIndex extends LetterGroupContainer
             MarkupContainer {
 
     /**
+     * The field <tt>name</tt> contains the name.
+     */
+    private String name;
+
+    /**
+     * The field <tt>fallback</tt> contains the container for fallback values.
+     */
+    private FallbackContainer fallback;
+
+    /**
      * The field <tt>depth</tt> contains the hierarchy depth; i.e. 0 for flat
-     * and Integer.MAX_VALUE for tree.
+     * and Integer.MAX_VALUE for tree, or anything on between.
      */
     private int depth = Integer.MAX_VALUE;
 
@@ -73,11 +93,6 @@ public class StructuredIndex extends LetterGroupContainer
      * The field <tt>mergeRules</tt> contains the list of merge rules.
      */
     private List<Rule> mergeRules = new ArrayList<Rule>();
-
-    /**
-     * The field <tt>fallback</tt> contains the container for fallback values.
-     */
-    private FallbackContainer fallback;
 
     /**
      * The field <tt>attributeMap</tt> contains the attributes.
@@ -121,13 +136,26 @@ public class StructuredIndex extends LetterGroupContainer
     private String suffix = ".";
 
     /**
+     * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
+     * to check that a key is in use.
+     */
+    private Map<String[], Boolean> entryIndex =
+            new HashMap<String[], Boolean>();
+
+    /**
      * Creates a new object.
      * 
+     * @param name the name of the index; "" for the default; this value is not
+     *        <code>null</code>
      * @param fallback the container for fallback values
      */
-    public StructuredIndex(FallbackContainer fallback) {
+    public StructuredIndex(String name, FallbackContainer fallback) {
 
         super();
+        if (name == null) {
+            throw new NullPointerException("name");
+        }
+        this.name = name;
         this.fallback = fallback;
     }
 
@@ -138,17 +166,18 @@ public class StructuredIndex extends LetterGroupContainer
      *      java.lang.String,
      *      org.extex.exindex.core.type.alphabet.LocationClass)
      */
-    public boolean addLocationClass(String name, LocationClass locationClass) {
+    public boolean addLocationClass(String className,
+            LocationClass locationClass) {
 
-        LocationClass lc = locationClassMap.get(name);
+        LocationClass lc = locationClassMap.get(className);
         if (lc != null) {
-            locationClassMap.put(name, locationClass);
+            locationClassMap.put(className, locationClass);
             locationClasses.remove(lc);
             locationClasses.add(locationClass);
             return false;
         }
 
-        locationClassMap.put(name, locationClass);
+        locationClassMap.put(className, locationClass);
         locationClasses.add(locationClass);
         return true;
     }
@@ -233,6 +262,18 @@ public class StructuredIndex extends LetterGroupContainer
     }
 
     /**
+     * Find an index entry with the given key.
+     * 
+     * @param refs the key
+     * 
+     * @return Boolean.TRUE iff the key is in use
+     */
+    public Boolean containsKey(String[] refs) {
+
+        return entryIndex.get(refs);
+    }
+
+    /**
      * Define or redefine an attribute.
      * 
      * @param key the name of the attribute
@@ -259,13 +300,27 @@ public class StructuredIndex extends LetterGroupContainer
      * @see org.extex.exindex.core.type.MarkupContainer#getMarkup(
      *      java.lang.String)
      */
-    public Markup getMarkup(String name) {
+    public Markup getMarkup(String markupName) {
 
-        Markup m = markup.get(name);
-        if (m == null && fallback != null) {
-            m = fallback.getFallbackMarkup(name);
+        Markup m = markup.get(markupName);
+        if (m != null) {
+            return m;
+        } else if (fallback != null) {
+            return fallback.getFallbackMarkup(markupName);
         }
+        m = new Markup("EMPTY_" + markupName, "", "", "", "", "");
+        markup.put(markupName, m);
         return m;
+    }
+
+    /**
+     * Getter for the name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
     }
 
     /**
@@ -316,9 +371,9 @@ public class StructuredIndex extends LetterGroupContainer
      * @see org.extex.exindex.core.type.LocationClassContainer#lookupLocationClass(
      *      java.lang.String)
      */
-    public LocationClass lookupLocationClass(String name) {
+    public LocationClass lookupLocationClass(String locationClassName) {
 
-        return locationClassMap.get(name);
+        return locationClassMap.get(locationClassName);
     }
 
     /**
@@ -352,12 +407,12 @@ public class StructuredIndex extends LetterGroupContainer
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.type.LocationClassContainer#makePageReference(
-     *      java.lang.String, java.lang.String)
+     *      java.lang.String, String)
      */
-    public PageReference makePageReference(String encap, String s) {
+    public PageReference makePageReference(String encap, String page) {
 
         for (LocationClass lc : locationClasses) {
-            PageReference pr = lc.match(encap, s);
+            PageReference pr = lc.match(encap, page);
             if (pr != null) {
                 return pr;
             }
@@ -426,9 +481,9 @@ public class StructuredIndex extends LetterGroupContainer
      * @see org.extex.exindex.core.type.MarkupContainer#setMarkup(
      *      java.lang.String, org.extex.exindex.core.type.markup.Markup)
      */
-    public void setMarkup(String name, Markup m) {
+    public void setMarkup(String markupName, Markup m) {
 
-        markup.put(name, m);
+        markup.put(markupName, m);
     }
 
     /**
@@ -477,11 +532,22 @@ public class StructuredIndex extends LetterGroupContainer
             group = getLetterGroup("");
             if (group == null) {
                 throw new IndexerException(null, LocalizerFactory.getLocalizer(
-                    getClass()).format("NoPropoperLetterGroup",
-                    entry.toString()));
+                    getClass()).format("NoProperLetterGroup", entry.toString()));
             }
         }
         group.store(entry, depth);
+        entryIndex.put(entry.getMainKey(), Boolean.TRUE);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "index[" + name + "]";
     }
 
     /**
@@ -506,7 +572,9 @@ public class StructuredIndex extends LetterGroupContainer
         Markup markupList = getMarkup("markup-letter-group-list");
 
         boolean first = true;
-        markup.write(writer, this, null, Markup.OPEN, trace);
+        if (markup != null) {
+            markup.write(writer, this, null, Markup.OPEN, trace);
+        }
         markupList.write(writer, this, null, Markup.OPEN, trace);
 
         for (LetterGroup group : sorted()) {
@@ -517,11 +585,15 @@ public class StructuredIndex extends LetterGroupContainer
             } else {
                 markupList.write(writer, this, null, Markup.SEP, trace);
             }
-            group.write(writer, interpreter, this, trace);
+            if (group.write(writer, interpreter, this, trace)) {
+                first = false;
+            }
         }
 
         markupList.write(writer, this, null, Markup.CLOSE, trace);
-        markup.write(writer, this, null, Markup.CLOSE, trace);
+        if (markup != null) {
+            markup.write(writer, this, null, Markup.CLOSE, trace);
+        }
     }
 
 }

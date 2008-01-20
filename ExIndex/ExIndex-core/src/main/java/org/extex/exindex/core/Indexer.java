@@ -25,9 +25,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import org.extex.exindex.core.command.LDefineAlphabet;
@@ -107,13 +105,6 @@ public class Indexer extends LEngine {
      */
     private static final Localizer LOCALIZER =
             LocalizerFactory.getLocalizer(Indexer.class);
-
-    /**
-     * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
-     * to check that a key is in use.
-     */
-    private Map<String[], Boolean> entryIndex =
-            new HashMap<String[], Boolean>();
 
     /**
      * The field <tt>container</tt> contains the container for all indices.
@@ -301,19 +292,6 @@ public class Indexer extends LEngine {
     }
 
     /**
-     * Find an index entry with the given key.
-     * 
-     * @param refs the key
-     * 
-     * @return Boolean.TRUE iff the key is in use
-     */
-    public Object lookup(String[] refs) {
-
-        // TODO lift this to separate indices
-        return entryIndex.get(refs);
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.lisp.LInterpreter#makeParser(java.io.Reader,
@@ -350,8 +328,8 @@ public class Indexer extends LEngine {
 
     /**
      * Perform the initial processing step. This step consists of a check of the
-     * attributes, the check of the crossrefs and the check of the location
-     * references. If all checks are passed then <code>true</code> is
+     * attributes, the check of the cross-references and the check of the
+     * location references. If all checks are passed then <code>true</code> is
      * returned.
      * 
      * @param entry the entry to store
@@ -375,7 +353,7 @@ public class Indexer extends LEngine {
         if (ref == null) {
             // TODO gene: error handling unimplemented
             throw new RuntimeException("unimplemented");
-        } else if (!ref.check(logger, entry, this, container, openPages,
+        } else if (!ref.check(logger, entry, index, container, openPages,
             attributes)) {
             return false;
         }
@@ -437,18 +415,15 @@ public class Indexer extends LEngine {
             }
             try {
                 for (;;) {
-                    RawIndexentry entry;
                     try {
-                        entry = parser.parse();
+                        RawIndexentry entry = parser.parse();
+                        if (entry == null) {
+                            break;
+                        }
+                        entries.add(entry);
                     } catch (IOException e) {
                         logger.warning(e.toString());
-                        continue;
                     }
-                    if (entry == null) {
-                        break;
-                    }
-                    entries.add(entry);
-                    entryIndex.put(entry.getMainKey(), Boolean.TRUE);
                 }
             } finally {
                 parser.close();
@@ -459,7 +434,7 @@ public class Indexer extends LEngine {
             }
         }
         logger.info(LOCALIZER.format("StartPreprocess"));
-        // preprocessing afterwards to resolve forward cross-references
+        // pre-processing afterwards to resolve forward cross-references
 
         for (RawIndexentry entry : entries) {
             if (preProcess(entry, attributes, openPages, logger)) {
@@ -534,8 +509,12 @@ public class Indexer extends LEngine {
             }
         }
 
-        logger.finer(LOCALIZER.format("PreparingIndex"));
-        container.getCurrentIndex().sorted(); // TODO prepare all indices
+        for (String key : container) {
+            StructuredIndex index = container.get(key);
+            if (!index.isDropped()) {
+                logger.info(LOCALIZER.format("PreparingIndex", key));
+                index.sorted();
+            }
+        }
     }
-
 }

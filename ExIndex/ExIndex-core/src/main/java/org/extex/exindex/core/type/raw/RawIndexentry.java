@@ -62,7 +62,8 @@ public class RawIndexentry {
      * @param print the print key; It can not be <code>null</code>
      * @param ref the reference
      */
-    public RawIndexentry(String index, String[] key, String[] print, Reference ref) {
+    public RawIndexentry(String index, String[] key, String[] print,
+            Reference ref) {
 
         super();
         if (key == null || print == null || ref == null) {
@@ -201,7 +202,11 @@ public class RawIndexentry {
             } else {
                 sb.append(" ");
             }
-            StringUtils.putPrintable(sb, s);
+            if (s == null) {
+                sb.append("null");
+            } else {
+                StringUtils.putPrintable(sb, s);
+            }
         }
         sb.append(")");
     }

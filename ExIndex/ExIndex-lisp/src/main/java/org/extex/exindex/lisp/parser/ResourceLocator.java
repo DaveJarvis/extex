@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,11 +29,11 @@ package org.extex.exindex.lisp.parser;
 public interface ResourceLocator {
 
     /**
-     * Getter for resource.
+     * Getter for the line number.
      * 
-     * @return the resource
+     * @return the line number
      */
-    String getLineNumber();
+    int getLineNumber();
 
     /**
      * Getter for resource.

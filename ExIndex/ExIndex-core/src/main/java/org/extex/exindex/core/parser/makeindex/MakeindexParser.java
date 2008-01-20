@@ -24,12 +24,15 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.util.ReaderLocator;
-import org.extex.exindex.core.parser.util.TeXReader;
+import org.extex.exindex.core.parser.reader.ReaderLocator;
+import org.extex.exindex.core.parser.reader.TeXReader;
+import org.extex.exindex.core.type.StructuredIndex;
+import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.raw.CloseLocationReference;
 import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.core.type.raw.OpenLocationReference;
@@ -177,6 +180,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <td>character</td>
  * <td>The actual character, separating the print representation from the key.</td>
  * </tr>
+ * <tr>
+ * <td>makeindex:encap-prefix</td>
+ * <td>encap_prefix</td>
+ * <td><tt>\\</tt></td>
+ * <td>string</td>
+ * <td>...</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:encap-infix</td>
+ * <td>encap_infix</td>
+ * <td><tt>{</tt></td>
+ * <td>string</td>
+ * <td>...</td>
+ * </tr>
+ * <tr>
+ * <td>makeindex:encap-suffix</td>
+ * <td>encap_suffix</td>
+ * <td><tt>}</tt></td>
+ * <td>string</td>
+ * <td>...</td>
+ * </tr>
  * </table>
  * 
  * <p>
@@ -194,7 +218,10 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (setq makeindex:quote #\\)
  *  (setq makeindex:encap #\|)
  *  (setq makeindex:level #\!)
- *  (setq makeindex:actual #\@)   </pre>
+ *  (setq makeindex:actual #\@)
+ *  (setq makeindex:encap-prefix "\\")
+ *  (setq makeindex:encap-infix "{")
+ *  (setq makeindex:encap-suffix "}")   </pre>
  * 
  * <h3>Examples of Index Entries</h3>
  * 
@@ -302,22 +329,43 @@ public class MakeindexParser implements RawIndexParser {
     private String index = "";
 
     /**
+     * The field <tt>encapPrefix</tt> contains the ...
+     */
+    private String encapPrefix;
+
+    /**
+     * The field <tt>encapInfix</tt> contains the ...
+     */
+    private String encapInfix;
+
+    /**
+     * The field <tt>encapSuffix</tt> contains the ...
+     */
+    private String encapSuffix;
+
+    /**
+     * The field <tt>indexer</tt> contains the indexer.
+     */
+    private Indexer indexer;
+
+    /**
      * Creates a new object and gather the parameters from an interpreter.
      * 
      * @param reader the source to read from
      * @param resource the name of the resource for error messages
-     * @param interpreter the l system as storage for parameters
+     * @param indexer the l system as storage for parameters
      * 
      * @throws RawIndexException in case of an error
      * 
      * @see #configure(LInterpreter)
      */
-    public MakeindexParser(Reader reader, String resource,
-            LInterpreter interpreter) throws RawIndexException {
+    public MakeindexParser(Reader reader, String resource, Indexer indexer)
+            throws RawIndexException {
 
         super();
-        this.locator = new ReaderLocator(resource, new TeXReader(reader));
-        configure(interpreter);
+        this.locator = new TeXReader(resource, reader);
+        this.indexer = indexer;
+        configure(indexer);
     }
 
     /**
@@ -328,7 +376,7 @@ public class MakeindexParser implements RawIndexParser {
     public void close() throws IOException {
 
         if (locator != null) {
-            locator.getReader().close();
+            locator.close();
             locator = null;
         }
     }
@@ -396,6 +444,21 @@ public class MakeindexParser implements RawIndexParser {
      * <td>The actual character, separating the print representation from the
      * key.</td>
      * </tr>
+     * <tr>
+     * <td>makeindex:encap-prefix</td>
+     * <td><tt>\\</tt></td>
+     * <td>...</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:encap-infix</td>
+     * <td><tt>{</tt></td>
+     * <td>...</td>
+     * </tr>
+     * <tr>
+     * <td>makeindex:encap-suffix</td>
+     * <td><tt>}</tt></td>
+     * <td>...</td>
+     * </tr>
      * </table>
      * 
      * @param interpreter the interpreter to query for the parameters
@@ -415,6 +478,10 @@ public class MakeindexParser implements RawIndexParser {
         encap = initChar("makeindex:encap", interpreter, '|');
         level = initChar("makeindex:level", interpreter, '!');
         actual = initChar("makeindex:actual", interpreter, '@');
+
+        encapPrefix = initString("makeindex:encap_prefix", indexer, "\\");
+        encapInfix = initString("makeindex:encap_infix", indexer, "{");
+        encapSuffix = initString("makeindex:encap_sufffix", indexer, "}");
     }
 
     /**
@@ -452,14 +519,14 @@ public class MakeindexParser implements RawIndexParser {
         LValue v = interpreter.get(var);
         if (v == null) {
             return value;
-        } else if (!(v instanceof LChar)) {
-            Object[] args = {v.toString()};
-            throw new RawIndexException(locator, //
-                LocalizerFactory.getLocalizer(getClass()).format(
-                    "CharExpected", args));
+        } else if (v instanceof LChar) {
+            return ((LChar) v).getValue();
         }
 
-        return ((LChar) v).getValue();
+        throw new RawIndexException(locator, //
+            LocalizerFactory.getLocalizer(getClass()).format("CharExpected",
+                v.toString()));
+
     }
 
     /**
@@ -479,14 +546,69 @@ public class MakeindexParser implements RawIndexParser {
         LValue v = interpreter.get(var);
         if (v == null) {
             return value;
-        } else if (!(v instanceof LString)) {
-            Object[] args = {v.toString()};
-            throw new RawIndexException(locator, //
-                LocalizerFactory.getLocalizer(getClass()).format(
-                    "StringExpected", args));
+        } else if (v instanceof LString) {
+            return ((LString) v).getValue();
         }
 
-        return ((LString) v).getValue();
+        throw new RawIndexException(locator, //
+            LocalizerFactory.getLocalizer(getClass()).format("StringExpected",
+                v.toString()));
+
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param idx the name of the index
+     * @param keyArg the argument
+     * @param printArg the print representation
+     * @param locref the page
+     * @param enc the encapsulation
+     * @return the new index entry
+     */
+    protected RawIndexentry makeEntry(String idx, String keyArg,
+            String printArg, String locref, String enc) {
+
+        List<String> list = new ArrayList<String>();
+        int a = 0;
+        for (int i = keyArg.indexOf(level, a); i >= 0; i =
+                keyArg.indexOf(level, a)) {
+            list.add(keyArg.substring(a, i));
+            a = i + 1;
+        }
+        list.add(keyArg.substring(a));
+        int size = list.size();
+        String[] key = new String[size];
+        String[] print = new String[size];
+        int i = 0;
+        for (String s : list) {
+            print[i] = s;
+            key[i++] = s;
+        }
+        if (printArg != null) {
+            print[print.length - 1] = printArg;
+        }
+
+        LocationReference ref;
+        String attr = enc;
+        if (attr == null || "".equals(attr)) {
+            ref = new LocationReference(attr, locref);
+            attr = null;
+        } else {
+            final int last = attr.length() - 1;
+            char c = attr.charAt(last);
+            if (c == rangeOpen) {
+                ref = new OpenLocationReference(attr.substring(0, last), //
+                    locref);
+            } else if (c == rangeClose) {
+                ref = new CloseLocationReference(attr.substring(0, last), //
+                    locref);
+            } else {
+                ref = new LocationReference(attr, locref);
+            }
+        }
+        RawIndexentry entry = new RawIndexentry(idx, key, print, ref);
+        return entry;
     }
 
     /**
@@ -501,30 +623,24 @@ public class MakeindexParser implements RawIndexParser {
         }
 
         char k0 = keyword.charAt(0);
-        try {
-
-            for (int c = locator.read(); c >= 0; c = locator.read()) {
-                if (c == k0 && scanKeyword(keyword)) {
-                    String idx = scanIndex(locator, index);
-                    String arg = scanArgument();
-                    String p = scanArgument();
-                    String enc = null;
-                    int x = arg.lastIndexOf(encap);
-                    if (x >= 0) {
-                        enc = arg.substring(x + 1);
-                        arg = arg.substring(0, x);
-                    }
-                    x = arg.indexOf(actual);
-                    if (x >= 0) {
-                        return store(idx, arg.substring(0, x), arg
-                            .substring(x + 1), p, enc);
-                    }
-                    return store(idx, arg, arg, p, enc);
+        for (int c = locator.read(); c >= 0; c = locator.read()) {
+            if (c == k0 && scanKeyword(keyword)) {
+                String idx = scanIndex(locator, index);
+                String arg = scanArgument();
+                String pageref = scanArgument();
+                String enc = null;
+                int i = arg.lastIndexOf(encap);
+                if (i >= 0) {
+                    enc = arg.substring(i + 1);
+                    arg = arg.substring(0, i);
                 }
+                i = arg.indexOf(actual);
+                if (i >= 0) {
+                    return store(idx, arg.substring(0, i),
+                        arg.substring(i + 1), pageref, enc);
+                }
+                return store(idx, arg, null, pageref, enc);
             }
-        } finally {
-            locator.getReader().close();
-            locator = null;
         }
         return null;
     }
@@ -549,9 +665,7 @@ public class MakeindexParser implements RawIndexParser {
 
         for (;;) {
             int c = locator.read();
-            if (c < 0) {
-                throw new RawIndexEofException(locator);
-            } else if (c == argOpen) {
+            if (c == argOpen) {
                 level++;
             } else if (c == argClose) {
                 level--;
@@ -561,11 +675,14 @@ public class MakeindexParser implements RawIndexParser {
             } else if (c == quote) {
                 int l = sb.length();
                 if (l <= 0 || sb.charAt(l - 1) != escape) {
+                    sb.append((char) c);
                     c = locator.read();
                     if (c < 0) {
-                        throw new RawIndexEofException(locator);
+                        throw new RawIndexEofException(locator, argClose);
                     }
                 }
+            } else if (c < 0) {
+                throw new RawIndexEofException(locator, argClose);
             }
             sb.append((char) c);
         }
@@ -588,7 +705,7 @@ public class MakeindexParser implements RawIndexParser {
                 RawIndexEofException,
                 RawIndexMissingCharException {
 
-        return index;
+        return fallback;
     }
 
     /**
@@ -604,8 +721,7 @@ public class MakeindexParser implements RawIndexParser {
 
         int length = keyword.length();
         for (int i = 1; i < length; i++) {
-            int c = locator.read();
-            if (c != keyword.charAt(i)) {
+            if (locator.read() != keyword.charAt(i)) {
                 return false;
             }
         }
@@ -621,50 +737,32 @@ public class MakeindexParser implements RawIndexParser {
      * @param printArg the print representation
      * @param locref the page
      * @param enc the encapsulation
+     * 
      * @return the new index entry
      */
     protected RawIndexentry store(String idx, String keyArg, String printArg,
             String locref, String enc) {
 
-        List<String> list = new ArrayList<String>();
-        int a = 0;
-        for (int i = keyArg.indexOf(level, a); i >= 0; i =
-                keyArg.indexOf(level, a)) {
-            list.add(keyArg.substring(a, i));
-            a = i + 1;
+        RawIndexentry entry = makeEntry(idx, keyArg, printArg, locref, enc);
+
+        String layer = entry.getRef().getLayer();
+        if (layer == null) {
+            return entry;
         }
-        list.add(keyArg);
-        String[] key = new String[list.size()];
-        int i = 0;
-        for (String s : list) {
-            key[i] = s;
+        StructuredIndex index = indexer.getContainer().get(entry.getIndex());
+        if (index == null) {
+            return entry;
         }
-        String[] print = new String[key.length];
-        for (i = 0; i < print.length; i++) {
-            print[i] = "";
+        Markup markup = index.getMarkup("markup-locref-layer");
+        if (markup == null) {
+            return entry;
         }
-        if (printArg != null) {
-            print[print.length - 1] = printArg;
+        if ("".equals(markup.get(layer, Markup.OPEN))
+                && "".equals(markup.get(layer, Markup.CLOSE))) {
+            markup.set(layer, encapPrefix + layer + encapInfix, encapSuffix);
         }
 
-        LocationReference ref;
-        String attr = enc;
-        if (attr == null || "".equals(attr)) {
-            ref = new LocationReference(attr, locref);
-            attr = null;
-        } else {
-            final int last = attr.length() - 1;
-            char c = attr.charAt(last);
-            if (c == rangeOpen) {
-                ref = new OpenLocationReference(attr.substring(0, last), //
-                    locref);
-            } else if (c == rangeClose) {
-                ref = new CloseLocationReference(attr.substring(0, last), //
-                    locref);
-            } else {
-                ref = new LocationReference(attr, locref);
-            }
-        }
-        return new RawIndexentry(idx, key, print, ref);
+        return entry;
     }
+
 }

@@ -33,137 +33,15 @@ import org.extex.exindex.core.type.transform.Transform;
 public class MarkupTransform extends Markup {
 
     /**
-     * This is a container for parameters.
-     */
-    private class Param {
-
-        /**
-         * The field <tt>open</tt> contains the open markup.
-         */
-        private String open;
-
-        /**
-         * The field <tt>close</tt> contains the close markup.
-         */
-        private String close;
-
-        /**
-         * The field <tt>openHead</tt> contains the open head markup.
-         */
-        private String openHead;
-
-        /**
-         * The field <tt>closeHead</tt> contains the close head markup.
-         */
-        private String closeHead;
-
-        /**
-         * The field <tt>force</tt> contains the force indicator.
-         */
-        private boolean force;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param open the open string
-         * @param close the close string
-         * @param openHead the open head string
-         * @param closeHead the close head string
-         * @param force the force indicator
-         */
-        public Param(String open, String close, String openHead,
-                String closeHead, boolean force) {
-
-            this.open = open;
-            this.close = close;
-            this.openHead = openHead;
-            this.closeHead = closeHead;
-            this.force = force;
-        }
-
-        /**
-         * Getter for close.
-         * 
-         * @return the close
-         */
-        public String getClose() {
-
-            return close;
-        }
-
-        /**
-         * Getter for closeHead.
-         * 
-         * @return the closeHead
-         */
-        public String getCloseHead() {
-
-            return closeHead;
-        }
-
-        /**
-         * Getter for open.
-         * 
-         * @return the open
-         */
-        public String getOpen() {
-
-            return open;
-        }
-
-        /**
-         * Getter for openHead.
-         * 
-         * @return the openHead
-         */
-        public String getOpenHead() {
-
-            return openHead;
-        }
-
-        /**
-         * Getter for force.
-         * 
-         * @return the force
-         */
-        public boolean isForce() {
-
-            return force;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("openHead=");
-            sb.append(openHead);
-            sb.append(" closeHead=");
-            sb.append(closeHead);
-            sb.append(" open=");
-            sb.append(open);
-            sb.append(" close=");
-            sb.append(close);
-            sb.append(force ? " force" : "not force");
-            return sb.toString();
-        }
-
-    };
-
-    /**
      * The field <tt>transformMap</tt> contains the transforms.
      */
     private Map<String, Transform> transformMap =
             new HashMap<String, Transform>();
 
     /**
-     * The field <tt>map</tt> contains the mapping from name to parameters.
+     * The field <tt>map</tt> contains the mapping from name to Booleans.
      */
-    private Map<String, Param> map = new HashMap<String, Param>();
+    private Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
 
     /**
      * Creates a new object.
@@ -173,6 +51,18 @@ public class MarkupTransform extends Markup {
     public MarkupTransform(String displayName) {
 
         super(displayName);
+    }
+
+    /**
+     * Getter for the force value.
+     * 
+     * @param clazz the class name
+     * 
+     * @return the force indicator
+     */
+    public Boolean getForce(String clazz) {
+
+        return forceMap.get(clazz);
     }
 
     /**
@@ -201,7 +91,8 @@ public class MarkupTransform extends Markup {
     public void set(String clazz, String open, String close, String openHead,
             String closeHead, boolean force) {
 
-        map.put(clazz, new Param(open, close, openHead, closeHead, force));
+        set(clazz, open, close, "", openHead, closeHead);
+        forceMap.put(clazz, Boolean.valueOf(force));
     }
 
     /**
@@ -224,7 +115,7 @@ public class MarkupTransform extends Markup {
     public String toString() {
 
         final StringBuilder sb = new StringBuilder(super.toString());
-        sb.append(map.toString());
+        sb.append(forceMap.toString());
         return sb.toString();
     }
 

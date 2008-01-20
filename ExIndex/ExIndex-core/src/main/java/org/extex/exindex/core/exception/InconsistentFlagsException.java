@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -79,7 +79,8 @@ public class InconsistentFlagsException extends LException {
         if (locator != null) {
             return LocalizerFactory.getLocalizer(
                 InconsistentFlagsException.class).format("LocatedMessage",
-                locator.getResource(), locator.getLineNumber(), flag1, flag2);
+                locator.getResource(),
+                Integer.toString(locator.getLineNumber()), flag1, flag2);
         }
         return LocalizerFactory.getLocalizer(InconsistentFlagsException.class)
             .format("Message", flag1, flag2);

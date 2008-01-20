@@ -67,7 +67,7 @@ public class RawIndexException extends LException {
 
         return LocalizerFactory.getLocalizer(RawIndexException.class).format(
             (message == null ? "NoMessage" : "Message"), locator.getResource(),
-            locator.getLineNumber(), message);
+            Integer.toString(locator.getLineNumber()), message);
     }
 
 }

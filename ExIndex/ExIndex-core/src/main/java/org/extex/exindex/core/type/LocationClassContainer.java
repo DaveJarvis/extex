@@ -57,11 +57,11 @@ public interface LocationClassContainer {
      * Create a page reference for this location class.
      * 
      * @param encap the encapsulation
-     * @param s the page
+     * @param page the page
      * 
      * @return the page reference
      */
-    PageReference makePageReference(String encap, String s);
+    PageReference makePageReference(String encap, String page);
 
     /**
      * Order the location classes according to the given list. The other

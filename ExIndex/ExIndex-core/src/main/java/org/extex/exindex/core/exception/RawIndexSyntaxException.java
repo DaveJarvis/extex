@@ -46,8 +46,7 @@ public class RawIndexSyntaxException extends RawIndexException {
 
         super(locator, LocalizerFactory.getLocalizer(
             RawIndexSyntaxException.class).format(
-            (message == null ? "NoMessage" : "Message")));
-
+            (message == null ? "NoMessage" : "Message"), message));
     }
 
 }

@@ -27,10 +27,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.ParserException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.RawIndexParserFactory;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
@@ -58,17 +58,21 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, LInterpreter)
+     *      java.lang.String, java.lang.String, Indexer)
      */
     public RawIndexParser create(String resource, String charset,
-            LInterpreter interpreter) throws ParserException, IOException {
+            Indexer indexer) throws ParserException, IOException {
 
         String parser = "xindy";
         InputStream stream;
         if (resource == null) {
             stream = System.in;
         } else {
-            stream = finder.findResource(resource, "raw");
+            if (resource.endsWith(".idx")) {
+                stream = null;
+            } else {
+                stream = finder.findResource(resource, "raw");
+            }
             if (stream == null) {
                 stream = finder.findResource(resource, "idx");
                 parser = "splitindex";
@@ -83,9 +87,9 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
         if (stream == null) {
             throw new ParserException(LOCALIZER.format("ParserMissing", parser));
         }
-        Properties p = new Properties();
-        p.load(stream);
-        String clazz = (String) p.get("class");
+        Properties properties = new Properties();
+        properties.load(stream);
+        String clazz = (String) properties.get("class");
         if (clazz == null) {
             throw new ParserException(LOCALIZER.format("ParserMissingClass",
                 parser));
@@ -94,9 +98,9 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
         try {
             Constructor<?> cons =
                     Class.forName(clazz).getConstructor(Reader.class,
-                        String.class, LInterpreter.class);
-            return (RawIndexParser) cons.newInstance(reader, resource,
-                interpreter);
+                        String.class, Indexer.class);
+            return (RawIndexParser) cons.newInstance(reader, resource, indexer);
+
         } catch (SecurityException e) {
             throw new ParserException(LOCALIZER.format("ParserError", parser, e
                 .toString()), e);

@@ -22,17 +22,17 @@ package org.extex.exindex.core.parser.xindy;
 import java.io.IOException;
 import java.io.Reader;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexSyntaxException;
 import org.extex.exindex.core.parser.RawIndexParser;
-import org.extex.exindex.core.parser.util.ReaderLocator;
+import org.extex.exindex.core.parser.reader.ReaderLocator;
 import org.extex.exindex.core.type.raw.CloseLocationReference;
 import org.extex.exindex.core.type.raw.CrossReference;
 import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.core.type.raw.OpenLocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.raw.Reference;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
@@ -249,7 +249,7 @@ public class XindyParser extends LParser implements RawIndexParser {
      * @param resource the name of the resource for error messages
      * @param interpreter the interpreter
      */
-    public XindyParser(Reader reader, String resource, LInterpreter interpreter) {
+    public XindyParser(Reader reader, String resource, Indexer interpreter) {
 
         super(reader, resource);
         locator = new ReaderLocator(resource, reader);

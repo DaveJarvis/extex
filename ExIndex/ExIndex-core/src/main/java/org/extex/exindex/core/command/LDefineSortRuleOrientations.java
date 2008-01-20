@@ -41,19 +41,34 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- *  (define-letter-group <i>orientation-list</i>)
- * </pre>
+ *  (define-letter-group <i>orientation-list</i>)   </pre>
  * 
  * <p>
- * The command has an argument which is described below.
+ * The command has a list as argument. This list determines with its length how
+ * many passes are at most applied to the entry. The elements determine whether
+ * the comparison is done left to right or right to left. For this purpose the
+ * following values are allowed in the orientation list:
+ * </p>
+ * <dl>
+ * <dt>left-to-right</dt>
+ * <dd>The comparison is performed left to right. </dd>
+ * <dt>forward</dt>
+ * <dd>The comparison is performed left to right. This as an alias for backward
+ * compatibility.</dd>
+ * <dt>right-to-left</dt>
+ * <dd>The comparison is performed right to left. </dd>
+ * <dt>backward</dt>
+ * <dd>The comparison is performed right to left. This as an alias for backward
+ * compatibility.</dd>
+ * </dl>
+ * 
+ * <p>
+ * The following example shows a definition of at most three passes with
+ * different orientations.
  * </p>
  * 
  * <pre>
- *  (define-sort-rule-orientations ("ascending" "descending" "ascending"))
- * </pre>
- * 
- * TODO documentation incomplete
- * 
+ *  (define-sort-rule-orientations ("left-to-right" "right-to-left" "left-to-right")) </pre>
  * 
  * </doc>
  * 
@@ -106,10 +121,12 @@ public class LDefineSortRuleOrientations extends LFunction {
             String or = LString.stringValue(val);
             if ("".equals(or)) {
                 throw new LNonMatchingTypeException(null);
-            } else if ("forward".startsWith(or) || "ascending".startsWith(or)) {
+            } else if ("forward".startsWith(or)
+                    || "left-to-right".startsWith(or)) {
                 container.lookupOrCreateSortRule(Integer.valueOf(level))
                     .setAscending(true);
-            } else if ("backward".startsWith(or) || "descending".startsWith(or)) {
+            } else if ("backward".startsWith(or)
+                    || "right-to-left".startsWith(or)) {
                 container.lookupOrCreateSortRule(Integer.valueOf(level))
                     .setAscending(false);
             } else {

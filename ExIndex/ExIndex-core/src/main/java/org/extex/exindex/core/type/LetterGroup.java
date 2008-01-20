@@ -31,6 +31,7 @@ import java.util.TreeSet;
 import org.extex.exindex.core.exception.IndexerException;
 import org.extex.exindex.core.type.markup.Markup;
 import org.extex.exindex.core.type.markup.MarkupTransform;
+import org.extex.exindex.core.type.markup.Markup.Position;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.transform.Transform;
 import org.extex.exindex.lisp.LInterpreter;
@@ -162,6 +163,21 @@ public class LetterGroup {
     }
 
     /**
+     * Check that a certain markup position is present. This means that the
+     * value is not <code>null</code> and not the empty string.
+     * 
+     * @param markup the markup
+     * @param pos the position
+     * 
+     * @return <code>true</code> iff the markup is not empty
+     */
+    private boolean markupIsNotEmpty(MarkupTransform markup, Position pos) {
+
+        String value = markup.get(name, pos);
+        return (value != null && !"".equals(value));
+    }
+
+    /**
      * Getter for the sorted list of keys of index entries.
      * 
      * @return the sorted list of keys of index entries
@@ -175,11 +191,10 @@ public class LetterGroup {
     }
 
     /**
-     * Store a raw entry.
+     * Store a raw index entry.
      * 
      * @param raw the raw entry to store
      * @param depth the hierarchy depth
-     * 
      * @throws IndexerException in case of an error
      */
     public void store(RawIndexentry raw, int depth) throws IndexerException {
@@ -187,7 +202,7 @@ public class LetterGroup {
         String[] sortKey = raw.getSortKey();
         IndexEntry entry = map.get(sortKey[0]);
         if (entry == null) {
-            entry = new IndexEntry(sortKey[0]);
+            entry = new IndexEntry(raw, sortKey[0]);
             map.put(sortKey[0], entry);
         }
         entry.store(sortKey, 1, depth, raw);
@@ -223,29 +238,34 @@ public class LetterGroup {
      * @param markupContainer the container for markup information
      * @param trace the indicator for tracing
      * 
+     * @return <code>true</code> iff something has been written
+     * 
      * @throws IOException in case of an I/O error
      * @throws LNonMatchingTypeException in case of an error
      */
-    public void write(Writer writer, LInterpreter interpreter,
+    public boolean write(Writer writer, LInterpreter interpreter,
             MarkupContainer markupContainer, boolean trace)
             throws IOException,
                 LNonMatchingTypeException {
 
         SortedSet<String> sortedKeys = sortedKeys();
         if (sortedKeys.isEmpty()) {
-            return;
+            return false;
         }
 
-        MarkupTransform markup =
-                (MarkupTransform) markupContainer
-                    .getMarkup("markup-letter-group");
+        Markup m = markupContainer.getMarkup("markup-letter-group");
+        MarkupTransform markup;
+        if (m instanceof MarkupTransform) {
+            markup = (MarkupTransform) m;
+        } else {
+            markup = new MarkupTransform("markup-letter-group");
+        }
 
         boolean first = true;
         markup.write(writer, markupContainer, name, Markup.OPEN, trace);
 
-        String openHead = markup.get(name, Markup.OPEN_HEAD);
-        String closeHead = markup.get(name, Markup.CLOSE_HEAD);
-        if (openHead != null || closeHead != null) {
+        if (markupIsNotEmpty(markup, Markup.OPEN_HEAD)
+                || markupIsNotEmpty(markup, Markup.CLOSE_HEAD)) {
             markup
                 .write(writer, markupContainer, name, Markup.OPEN_HEAD, trace);
             Transform trans = markup.getTransform(name);
@@ -265,6 +285,8 @@ public class LetterGroup {
             entry.write(writer, interpreter, markupContainer, trace, 0);
         }
         markup.write(writer, markupContainer, name, Markup.CLOSE, trace);
+
+        return first;
     }
 
 }

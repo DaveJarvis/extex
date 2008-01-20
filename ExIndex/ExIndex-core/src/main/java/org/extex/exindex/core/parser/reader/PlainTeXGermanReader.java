@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.core.parser.util;
+package org.extex.exindex.core.parser.reader;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -46,17 +46,18 @@ public class PlainTeXGermanReader extends PlainTeXReader {
     /**
      * Creates a new object.
      * 
+     * @param resource the name of the resource for error messages
      * @param reader the reader
      */
-    public PlainTeXGermanReader(Reader reader) {
+    public PlainTeXGermanReader(String resource, Reader reader) {
 
-        super(reader);
+        super(resource, reader);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.util.PlainTeXReader#fillBuffer()
+     * @see org.extex.exindex.core.parser.reader.PlainTeXReader#fillBuffer()
      */
     @Override
     protected boolean fillBuffer() throws IOException {

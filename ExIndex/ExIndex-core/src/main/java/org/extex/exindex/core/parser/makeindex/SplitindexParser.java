@@ -22,10 +22,11 @@ package org.extex.exindex.core.parser.makeindex;
 import java.io.IOException;
 import java.io.Reader;
 
+import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
-import org.extex.exindex.core.parser.util.ReaderLocator;
+import org.extex.exindex.core.parser.reader.ReaderLocator;
 import org.extex.exindex.lisp.LInterpreter;
 
 /**
@@ -308,16 +309,16 @@ public class SplitindexParser extends MakeindexParser {
      * 
      * @param reader the source to read from
      * @param resource the name of the resource for error messages
-     * @param interpreter the l system as storage for parameters
+     * @param indexer the l system as storage for parameters
      * 
      * @throws RawIndexException in case of an error
      * 
      * @see #configure(LInterpreter)
      */
-    public SplitindexParser(Reader reader, String resource,
-            LInterpreter interpreter) throws RawIndexException {
+    public SplitindexParser(Reader reader, String resource, Indexer indexer)
+            throws RawIndexException {
 
-        super(reader, resource, interpreter);
+        super(reader, resource, indexer);
     }
 
     /**
@@ -418,25 +419,33 @@ public class SplitindexParser extends MakeindexParser {
      * @throws IOException in case of an error
      * @throws RawIndexEofException in case of an unexpected EOF
      * @throws RawIndexMissingCharException in case of an error
+     * 
+     * @see org.extex.exindex.core.parser.makeindex.MakeindexParser#scanIndex(
+     *      org.extex.exindex.core.parser.reader.ReaderLocator,
+     *      java.lang.String)
      */
     @Override
-    protected String scanIndex(ReaderLocator loc, String fallback)
+    protected String scanIndex(ReaderLocator reader, String fallback)
             throws IOException,
                 RawIndexEofException,
                 RawIndexMissingCharException {
 
-        expect(indexOpen);
+        reader.mark(1);
+        int c = reader.read();
+        if (c != indexOpen) {
+            reader.reset();
+            return fallback;
+        }
+
         StringBuilder sb = new StringBuilder();
 
-        for (;;) {
-            int c = loc.read();
+        for (c = reader.read(); c != indexClose; c = reader.read()) {
             if (c < 0) {
-                throw new RawIndexEofException(loc);
-            } else if (c == indexClose) {
-                return sb.toString();
+                throw new RawIndexEofException(reader);
             }
             sb.append((char) c);
         }
+        return sb.toString();
     }
 
 }
