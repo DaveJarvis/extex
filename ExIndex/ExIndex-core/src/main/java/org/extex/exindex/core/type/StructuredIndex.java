@@ -579,15 +579,13 @@ public class StructuredIndex extends LetterGroupContainer
 
         for (LetterGroup group : sorted()) {
             if (group.isEmpty()) {
-                // skip
+                continue;
             } else if (first) {
                 first = false;
             } else {
                 markupList.write(writer, this, null, Markup.SEP, trace);
             }
-            if (group.write(writer, interpreter, this, trace)) {
-                first = false;
-            }
+            group.write(writer, interpreter, this, trace);
         }
 
         markupList.write(writer, this, null, Markup.CLOSE, trace);

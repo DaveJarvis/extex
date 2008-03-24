@@ -276,6 +276,9 @@ public class LetterGroup {
 
         for (String key : sortedKeys) {
             IndexEntry entry = map.get(key);
+            if (entry == null) {
+                continue;
+            }
             if (first) {
                 first = false;
             } else {

@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-lisp"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

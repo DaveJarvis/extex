@@ -230,7 +230,8 @@ public class RawParserTest {
         ByteArrayOutputStream log = new ByteArrayOutputStream();
         Logger logger = TestUtils.makeLogger();
         Handler handler = new StreamHandler(log, new LogFormatter());
-        handler.setLevel(Level.WARNING);
+        logger.setLevel(Level.INFO);
+        handler.setLevel(Level.INFO);
         logger.addHandler(handler);
         indexer.run(null, rsc, null, logger);
         handler.flush();

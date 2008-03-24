@@ -532,10 +532,9 @@ public class IndexContainer
             name = DEFAULT_INDEX;
         }
         StructuredIndex index = indexMap.get(name);
-        if (index == null) {
-            return;
+        if (index != null) {
+            index.store(entry);
         }
-        index.store(entry);
     }
 
 }

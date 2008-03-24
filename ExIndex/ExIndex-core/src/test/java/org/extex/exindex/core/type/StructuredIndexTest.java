@@ -80,8 +80,8 @@ public class StructuredIndexTest {
         index.write(writer, indexer, false);
         writer.flush();
 
-        assertEquals("\\begin{theindex}\n" + "a\n" + "  \\item a123\n" + "\n"
-                + "  \\indexspace\n" + "b\n" + "  \\item b123\n" + "\n"
+        assertEquals("\\begin{theindex}\n\n" + "  \\item a123\n" + "\n"
+                + "  \\indexspace\n\n" + "  \\item b123\n" + "\n"
                 + "\\end{theindex}\n" + "", writer.toString());
     }
 

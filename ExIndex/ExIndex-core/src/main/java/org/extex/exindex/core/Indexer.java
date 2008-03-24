@@ -414,17 +414,12 @@ public class Indexer extends LEngine {
                 throw new FileNotFoundException(resource);
             }
             try {
-                for (;;) {
-                    try {
-                        RawIndexentry entry = parser.parse();
-                        if (entry == null) {
-                            break;
-                        }
-                        entries.add(entry);
-                    } catch (IOException e) {
-                        logger.warning(e.toString());
-                    }
+                for (RawIndexentry entry = parser.parse(); entry != null; entry =
+                        parser.parse()) {
+                    entries.add(entry);
                 }
+            } catch (IOException e) {
+                logger.warning(e.toString());
             } finally {
                 parser.close();
             }
