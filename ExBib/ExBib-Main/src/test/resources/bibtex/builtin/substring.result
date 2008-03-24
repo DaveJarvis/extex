@@ -1,0 +1,150 @@
+  public void testSubstringZero1() throws Exception {
+    testSubstring("", 0, 0, "");
+  }
+  public void testSubstringZero2() throws Exception {
+    testSubstring("", 1, 1, "");
+  }
+  public void testSubstringZero3() throws Exception {
+    testSubstring("", -1, 1, "");
+  }
+  public void testSubstringZero4() throws Exception {
+    testSubstring("", 2, 1, "");
+  }
+  public void testSubstringZero5() throws Exception {
+    testSubstring("", -2, 1, "");
+  }
+  public void testSubstringZero6() throws Exception {
+    testSubstring("", 1, 2, "");
+  }
+  public void testSubstringZero7() throws Exception {
+    testSubstring("", -1, 2, "");
+  }
+  public void testSubstringOne1() throws Exception {
+    testSubstring("a", 0, 0, "");
+  }
+  public void testSubstringOne2() throws Exception {
+    testSubstring("a", 1, 1, "a");
+  }
+  public void testSubstringOne3() throws Exception {
+    testSubstring("a", -1, 1, "a");
+  }
+  public void testSubstringOne4() throws Exception {
+    testSubstring("a", 2, 1, "");
+  }
+  public void testSubstringOne5() throws Exception {
+    testSubstring("a", -2, 1, "");
+  }
+  public void testSubstringOne6() throws Exception {
+    testSubstring("a", 1, 2, "a");
+  }
+  public void testSubstringOne7() throws Exception {
+    testSubstring("a", -1, 2, "a");
+  }
+  public void testSubstringOne8() throws Exception {
+    testSubstring("a", -2, -2, "");
+  }
+  public void testSubstringOne9() throws Exception {
+    testSubstring("a", -2, -3, "");
+  }
+  public void testSubstringOne10() throws Exception {
+    testSubstring("a", -2, -4, "");
+  }
+  public void testSubstringOne11() throws Exception {
+    testSubstring("a", -3, -6, "");
+  }
+  public void testSubstringTwo1() throws Exception {
+    testSubstring("ab", 0, 0, "");
+  }
+  public void testSubstringTwo2() throws Exception {
+    testSubstring("ab", 1, 1, "a");
+  }
+  public void testSubstringTwo3() throws Exception {
+    testSubstring("ab", -1, 1, "b");
+  }
+  public void testSubstringTwo4() throws Exception {
+    testSubstring("ab", 2, 1, "b");
+  }
+  public void testSubstringTwo5() throws Exception {
+    testSubstring("ab", -2, 1, "a");
+  }
+  public void testSubstringTwo6() throws Exception {
+    testSubstring("ab", 1, 2, "ab");
+  }
+  public void testSubstringTwo7() throws Exception {
+    testSubstring("ab", -1, 2, "ab");
+  }
+  public void testSubstringThree1() throws Exception {
+    testSubstring("abc", 0, 0, "");
+  }
+  public void testSubstringThree2() throws Exception {
+    testSubstring("abc", 1, 1, "a");
+  }
+  public void testSubstringThree3() throws Exception {
+    testSubstring("abc", -1, 1, "c");
+  }
+  public void testSubstringThree4() throws Exception {
+    testSubstring("abc", 2, 1, "b");
+  }
+  public void testSubstringThree5() throws Exception {
+    testSubstring("abc", -2, 1, "b");
+  }
+  public void testSubstringThree6() throws Exception {
+    testSubstring("abc", 1, 2, "ab");
+  }
+  public void testSubstringThree7() throws Exception {
+    testSubstring("abc", -1, 2, "bc");
+  }
+  public void testSubstringFour1() throws Exception {
+    testSubstring("abcd", 0, 0, "");
+  }
+  public void testSubstringFour2() throws Exception {
+    testSubstring("abcd", 1, 1, "a");
+  }
+  public void testSubstringFour3() throws Exception {
+    testSubstring("abcd", -1, 1, "d");
+  }
+  public void testSubstringFour4() throws Exception {
+    testSubstring("abcd", 2, 1, "b");
+  }
+  public void testSubstringFour5() throws Exception {
+    testSubstring("abcd", -2, 1, "c");
+  }
+  public void testSubstringFour6() throws Exception {
+    testSubstring("abcd", 1, 2, "ab");
+  }
+  public void testSubstringFour7() throws Exception {
+    testSubstring("abcd", -1, 2, "cd");
+  }
+  public void testSubstringTwentysix1() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 0, 2, "");
+  }
+  public void testSubstringTwentysix2() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 1, 2, "ab");
+  }
+  public void testSubstringTwentysix3() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 2, 2, "bc");
+  }
+  public void testSubstringTwentysix4() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 25, 2, "yz");
+  }
+  public void testSubstringTwentysix5() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 26, 2, "z");
+  }
+  public void testSubstringTwentysix6() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", 27, 2, "");
+  }
+  public void testSubstringTwentysix7() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", -1, 2, "yz");
+  }
+  public void testSubstringTwentysix8() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", -2, 2, "xy");
+  }
+  public void testSubstringTwentysix9() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", -25, 2, "ab");
+  }
+  public void testSubstringTwentysix10() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", -26, 2, "a");
+  }
+  public void testSubstringTwentysix11() throws Exception {
+    testSubstring("abcdefghijklmnopqrstuvwxyz", -27, 2, "");
+  }

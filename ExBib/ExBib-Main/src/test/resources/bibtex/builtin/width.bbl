@@ -1,0 +1,48 @@
+  public void testWidth012() throws Exception {
+    testWidth("abc", 1500);
+  }
+  public void testWidth013() throws Exception {
+    testWidth("abcdefghijklmnopqrstuvwxyz", 12706);
+  }
+  public void testWidth014() throws Exception {
+    testWidth(".,-=)(/&%$§!", 5334);
+  }
+  public void testWidth015() throws Exception {
+    testWidth("{}", 1000);
+  }
+  public void testWidth016() throws Exception {
+    testWidth("AA", 1500);
+  }
+  public void testWidth017() throws Exception {
+    testWidth("\AA", 2000);
+  }
+  public void testWidth018() throws Exception {
+    testWidth("ss", 788);
+  }
+  public void testWidth019() throws Exception {
+    testWidth("\ss", 1288);
+  }
+  public void testWidth0110() throws Exception {
+    testWidth("ae", 944);
+  }
+  public void testWidth0111() throws Exception {
+    testWidth("\AE", 1931);
+  }
+  public void testWidth0112() throws Exception {
+    testWidth("oe", 944);
+  }
+  public void testWidth0113() throws Exception {
+    testWidth("\OE", 1959);
+  }
+  public void testWidth0114() throws Exception {
+    testWidth("\singleletter", 5286);
+  }
+  public void testWidth0115() throws Exception {
+    testWidth(".\singleletter.", 5842);
+  }
+  public void testWidth0116() throws Exception {
+    testWidth("OX{\singleletter{stoc}}83b", 5311);
+  }
+  public void testWidth0117() throws Exception {
+    testWidth("OXstoc83b", 4811);
+  }

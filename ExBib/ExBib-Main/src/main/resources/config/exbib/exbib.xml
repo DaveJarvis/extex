@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  This file is part of ExBib a BibTeX compatible database.
+  Copyright (C) 2003-2008 Gerd Neugebauer
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+  02111-1307 USA
+-->
+<exbib>
+  
+  <Writers src="exbib/files.xml"/>
+  
+  <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
+    <minCrossrefs>2</minCrossrefs>
+    <globalMax>32000</globalMax>
+
+    <builtin name="&gt;"
+             class="org.extex.exbib.core.bst.code.impl.Gt"/>
+    <builtin name="&lt;"
+             class="org.extex.exbib.core.bst.code.impl.Lt"/>
+    <builtin name="="
+             class="org.extex.exbib.core.bst.code.impl.Eq"/>
+    <builtin name="+"
+             class="org.extex.exbib.core.bst.code.impl.Plus"/>
+    <builtin name="-"
+             class="org.extex.exbib.core.bst.code.impl.Minus"/>
+    <builtin name="*"
+             class="org.extex.exbib.core.bst.code.impl.Concat"/>
+    <builtin name=":="
+             class="org.extex.exbib.core.bst.code.impl.Set"/>
+    <builtin name="add.period$"
+             class="org.extex.exbib.core.bst.code.impl.AddPeriod">
+      <omitPattern>.*[.!?][}]*$</omitPattern>
+    </builtin>
+    <builtin name="call.type$"
+             class="org.extex.exbib.core.bst.code.impl.CallType">
+      <default>default.type</default>
+    </builtin>
+    <builtin name="change.case$"
+             class="org.extex.exbib.core.bst.code.impl.ChangeCase"/>
+    <builtin name="chr.to.int$"
+             class="org.extex.exbib.core.bst.code.impl.ChrToInt"/>
+    <builtin name="cite$"
+             class="org.extex.exbib.core.bst.code.impl.Cite"/>
+    <builtin name="duplicate$"
+             class="org.extex.exbib.core.bst.code.impl.Duplicate"/>
+    <builtin name="empty$"
+             class="org.extex.exbib.core.bst.code.impl.Empty"/>
+    <builtin name="format.name$"
+             class="org.extex.exbib.core.bst.code.impl.FormatName099"/>
+    <builtin name="if$"
+             class="org.extex.exbib.core.bst.code.impl.If"/>
+    <builtin name="int.to.chr$"
+             class="org.extex.exbib.core.bst.code.impl.IntToChr"/>
+    <builtin name="int.to.str$"
+             class="org.extex.exbib.core.bst.code.impl.IntToStr"/>
+    <builtin name="missing$"
+             class="org.extex.exbib.core.bst.code.impl.Missing"/>
+    <builtin name="newline$"
+             class="org.extex.exbib.core.bst.code.impl.Newline"/>
+    <builtin name="num.names$"
+             class="org.extex.exbib.core.bst.code.impl.NumNames"/>
+    <builtin name="pop$"
+             class="org.extex.exbib.core.bst.code.impl.Pop"/>
+    <builtin name="preamble$"
+             class="org.extex.exbib.core.bst.code.impl.Preamble"/>
+    <builtin name="purify$"
+             class="org.extex.exbib.core.bst.code.impl.Purify">
+      <map name="ae">ae</map>
+      <map name="AE">AE</map>
+      <map name="oe">oe</map>
+      <map name="OE">OE</map>
+      <map name="ss">ss</map>
+      <map name="i">i</map>
+      <map name="j">j</map>
+      <map name="l">l</map>
+      <map name="L">L</map>
+      <map name="aa">aa</map>
+      <map name="AA">AA</map>
+      <map name="o">o</map>
+      <map name="O">O</map>
+    </builtin>
+    <builtin name="quote$"
+             class="org.extex.exbib.core.bst.code.impl.Quote"/>
+    <builtin name="skip$"
+             class="org.extex.exbib.core.bst.code.impl.Skip"/>
+    <builtin name="stack$"
+             class="org.extex.exbib.core.bst.code.impl.Stack"/>
+    <builtin name="substring$"
+             class="org.extex.exbib.core.bst.code.impl.Substring"/>
+    <builtin name="swap$"
+             class="org.extex.exbib.core.bst.code.impl.Swap"/>
+    <builtin name="text.length$"
+             class="org.extex.exbib.core.bst.code.impl.TextLength"/>
+    <builtin name="text.prefix$"
+             class="org.extex.exbib.core.bst.code.impl.TextPrefix"/>
+    <builtin name="top$"
+             class="org.extex.exbib.core.bst.code.impl.Top"/>
+    <builtin name="type$"
+             class="org.extex.exbib.core.bst.code.impl.Type"/>
+    <builtin name="warning$"
+             class="org.extex.exbib.core.bst.code.impl.Warning"/>
+    <builtin name="while$"
+             class="org.extex.exbib.core.bst.code.impl.While"/>
+    <builtin name="width$"
+             class="org.extex.exbib.core.bst.code.impl.Width"/>
+    <builtin name="write$"
+             class="org.extex.exbib.core.bst.code.impl.Write"/>
+  </Processor>
+
+  <BblWriter class="org.extex.exbib.core.io.bblio.BblWriter">
+    <linelength>79</linelength>
+    <indent>  </indent>
+  </BblWriter>
+
+  <DB class="org.extex.exbib.core.db.impl.DBImpl">
+    <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl">
+      <Order locale="en"/>
+    </Sorter>
+  </DB>
+
+  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
+    <aux>
+      <extension></extension>
+      <extension>.aux</extension>
+      <path>.</path>
+      <path></path>
+    </aux>
+  </Engine>
+
+  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl">
+    <bst>
+      <extension></extension>
+      <extension>.bcd</extension>
+      <extension>.bst</extension>
+      <path>.</path>
+      <path></path>
+    </bst>
+  </BstReader>
+
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl">
+    <bib>
+      <extension></extension>
+      <extension>.bib</extension>
+      <path>.</path>
+      <path></path>
+    </bib>
+  </BibReader>
+
+  <BibPrinter name="bib"
+              class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/>
+  <BibPrinter name="xml"
+              class="org.extex.exbib.core.io.bibio.BibPrinterXMLImpl"/>
+  <BibPrinter name="lisp"
+              class="org.extex.exbib.core.io.bibio.BibPrinterLispImpl"/>
+
+</exbib>
+  

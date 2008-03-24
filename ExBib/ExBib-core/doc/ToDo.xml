@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ====================================================================== -->
+<!--  $Id: ToDo.xml,v 1.1 2003/10/17 06:16:37 gene Exp $               -->
+<!-- ====================================================================== -->
+<tasklist>
+  <todo>
+    <task>
+      Test cases for case insensitivity: keys, field names.
+    </task>
+    <task>
+      Make more tests for selection according to the cited references.
+    </task>
+    <task>
+      Consider the parameter min-crossref and make a test case for it
+    </task>
+    <task>
+      Integrate with something like kpathsea.
+    </task>
+    <task>
+      Reconsider input encodings and write an engine to cope with
+      different input encodings.      
+    </task>
+    <task class="extension">
+      Use unicode (UTF8) as base encoding.
+    </task>
+    <task class="extension">
+      Write a new sorting engine like the one in xindy.
+    </task>
+    <task class="extension">
+      Replace Width.java by something which can read tfm/pfm files to
+      get character widths.
+    </task>
+    <task class="extension">
+      Add namespaces to the bst language.
+    </task>
+    <task class="extension">
+      New string functions (split, find, replace/regexp).
+    </task>
+    <task class="extension">
+      New functions: access to all entries.
+    </task>
+    <task class="extension">
+      New functions: access to all fields.
+    </task>
+    <task class="extension">
+      Implement #include for bst files.
+    </task>
+    <task class="extension">
+      Implement importers for other types of database formats (refer, tib, endnote, medline,...).
+	  One kind of importer might be an inverter which takes the output of a bibliopgraphy
+	  processing and reconstructs a database (often requested in the news).
+    </task>
+    <task class="extension">
+      Implement BibTeX 1.0 features: @include, @alias,@modify
+    </task>
+  </todo>
+
+  <done>
+    <task class="bug">
+      The final flush of the output buffer is missing in BibTeX if there is no
+      terminating newline$.
+      This has been fixed in bcd.
+    </task>
+  </done>
+</tasklist>
+

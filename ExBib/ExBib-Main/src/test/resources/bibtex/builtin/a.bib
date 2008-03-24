@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% $Id: a.bib,v 1.7 2003/04/18 07:16:17 gene Exp $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@preamble{"12{34}56"}
+
+@string { ABC = "a b c" }
+@string { DEF = "def "#ABC }
+
+@Book{ Meone:Title,
+  author = 	 {S.O. Meone},
+  title = 	 {The Title},
+  publisher = 	 {Publ, inc.},
+  year = 	 1999,
+  note = 	 {sadf} #ABC# 123 # "abc",
+  OPTannote = 	 {}
+}
+
+@Article{another:some,
+  author = 	 {A. Nother},
+  title = 	 {Some Title},
+  journal = 	 {JACM},
+  year = 	 {2000}
+}
+
+@Article{vsf2,
+  author = 	 {S.O. Meone and A. Nother},
+  title = 	 {Some Title},
+  journal = 	 {JACM},
+  year = 	 {2000}
+}
+
+@Article{meone.another:some,
+  author = 	 {S. O. Meone and A. Nother and others},
+  title = 	 {Some Title},
+  journal = 	 {JACM},
+  year = 	 {2000}
+}
+
+@Article{meone.another.handley:title,
+  author = 	 {Xavier Oscar Handley and S.O. Meone and A. Nother},
+  title = 	 {Some Title},
+  journal = 	 {JACM},
+  year = 	 {2000}
+}
+

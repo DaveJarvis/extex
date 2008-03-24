@@ -1,0 +1,480 @@
+  public void testFormat012() throws Exception {
+    testFormat("Gerd Neugebauer and others",
+               2,
+               "{ll}, "
+               "others");
+  }
+  public void testFormat013() throws Exception {
+    testFormat("Gerd Neugebauer and others",
+               1,
+               "abcd, "
+               "abcd");
+  }
+  public void testFormat014() throws Exception {
+    testFormat("Gerd Neugebauer and others",
+               1,
+               "ab{ll}cd, "
+               "abNeugebauercd");
+  }
+  public void testFormat015() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{ll}, "
+               "Neugebauer");
+  }
+  public void testFormat016() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{ff}, "
+               "Gerd");
+  }
+  public void testFormat017() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{vv}, "
+               "");
+  }
+  public void testFormat018() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{jj}, "
+               "");
+  }
+  public void testFormat019() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{l}, "
+               "N");
+  }
+  public void testFormat0110() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{f}, "
+               "G");
+  }
+  public void testFormat0111() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{v}, "
+               "");
+  }
+  public void testFormat0112() throws Exception {
+    testFormat("Gerd Neugebauer",
+               1,
+               "{j}, "
+               "");
+  }
+  public void testFormat022() throws Exception {
+    testFormat("Cyrano de Bergerac",
+               1,
+               "{ll}, "
+               "Bergerac");
+  }
+  public void testFormat023() throws Exception {
+    testFormat("Cyrano de Bergerac",
+               1,
+               "{vv}, "
+               "de");
+  }
+  public void testFormat024() throws Exception {
+    testFormat("Cyrano de Bergerac",
+               1,
+               "{ff}, "
+               "Cyrano");
+  }
+  public void testFormat032() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{ll-}, "
+               "Vall{\'e}e~Poussin-");
+  }
+  public void testFormat033() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{vv-}, "
+               "de~la-");
+  }
+  public void testFormat034() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{ff-}, "
+               "Charles Louis Xavier~Joseph-");
+  }
+  public void testFormat035() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{ll~}, "
+               "Vall{\'e}e~Poussin ");
+  }
+  public void testFormat036() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{vv~}, "
+               "de~la ");
+  }
+  public void testFormat037() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{ff~}, "
+               "Charles Louis Xavier~Joseph ");
+  }
+  public void testFormat038() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{l.}, "
+               "V.~P.");
+  }
+  public void testFormat039() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{v.}, "
+               "d.~l.");
+  }
+  public void testFormat0310() throws Exception {
+    testFormat("Charles Louis Xavier Joseph de la Vall{\'e}e Poussin",
+               1,
+               "{f.~}, "
+               "C.~L. X.~J. ");
+  }
+  public void testFormat042() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{ll}, "
+               "Neugebauer");
+  }
+  public void testFormat043() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{ff}, "
+               "Gerd");
+  }
+  public void testFormat044() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{vv}, "
+               "");
+  }
+  public void testFormat045() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{jj}, "
+               "");
+  }
+  public void testFormat046() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{l}, "
+               "N");
+  }
+  public void testFormat047() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{f}, "
+               "G");
+  }
+  public void testFormat048() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{v}, "
+               "");
+  }
+  public void testFormat049() throws Exception {
+    testFormat("Neugebauer, Gerd",
+               1,
+               "{j}, "
+               "");
+  }
+  public void testFormat052() throws Exception {
+    testFormat("de Bergerac, Cyrano",
+               1,
+               "{ll}, "
+               "Bergerac");
+  }
+  public void testFormat053() throws Exception {
+    testFormat("de Bergerac, Cyrano",
+               1,
+               "{vv}, "
+               "de");
+  }
+  public void testFormat054() throws Exception {
+    testFormat("de Bergerac, Cyrano",
+               1,
+               "{ff}, "
+               "Cyrano");
+  }
+  public void testFormat062() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{ll }, "
+               "Vall{\'e}e~Poussin ");
+  }
+  public void testFormat063() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{vv }, "
+               "de~la ");
+  }
+  public void testFormat064() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{ff }, "
+               "Charles Louis Xavier~Joseph ");
+  }
+  public void testFormat065() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{ll~}, "
+               "Vall{\'e}e~Poussin ");
+  }
+  public void testFormat066() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{vv~}, "
+               "de~la ");
+  }
+  public void testFormat067() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{ff~}, "
+               "Charles Louis Xavier~Joseph ");
+  }
+  public void testFormat068() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{l.}, "
+               "V.~P.");
+  }
+  public void testFormat069() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{v.}, "
+               "d.~l.");
+  }
+  public void testFormat0610() throws Exception {
+    testFormat("de la Vall{\'e}e Poussin, Charles Louis Xavier Joseph",
+               1,
+               "{f.~}, "
+               "C.~L. X.~J. ");
+  }
+  public void testFormat072() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{ll}, "
+               "Neugebauer");
+  }
+  public void testFormat073() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{ff}, "
+               "Gerd");
+  }
+  public void testFormat074() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{vv}, "
+               "");
+  }
+  public void testFormat075() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{jj}, "
+               "");
+  }
+  public void testFormat076() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{l}, "
+               "N");
+  }
+  public void testFormat077() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{f}, "
+               "G");
+  }
+  public void testFormat078() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{v}, "
+               "");
+  }
+  public void testFormat079() throws Exception {
+    testFormat(" Neugebauer ,  Gerd ",
+               1,
+               "{j}, "
+               "");
+  }
+  public void testFormat082() throws Exception {
+    testFormat("  de  Bergerac ,  Cyrano ",
+               1,
+               "{ll}, "
+               "Bergerac");
+  }
+  public void testFormat083() throws Exception {
+    testFormat("  de  Bergerac ,  Cyrano ",
+               1,
+               "{vv}, "
+               "de");
+  }
+  public void testFormat084() throws Exception {
+    testFormat("  de  Bergerac ,  Cyrano ",
+               1,
+               "{ff}, "
+               "Cyrano");
+  }
+  public void testFormat092() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ll }, "
+               "Vall{\'e}e~Poussin ");
+  }
+  public void testFormat093() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{vv }, "
+               "de~la ");
+  }
+  public void testFormat094() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ff }, "
+               "Charles Louis Xavier~Joseph ");
+  }
+  public void testFormat095() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ll~}, "
+               "Vall{\'e}e~Poussin ");
+  }
+  public void testFormat096() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{vv~}, "
+               "de~la ");
+  }
+  public void testFormat097() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ff~}, "
+               "Charles Louis Xavier~Joseph ");
+  }
+  public void testFormat098() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{l.}, "
+               "V.~P.");
+  }
+  public void testFormat099() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{v.}, "
+               "d.~l.");
+  }
+  public void testFormat0910() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{f.~}, "
+               "C.~L. X.~J. ");
+  }
+  public void testFormat0911() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ll{:} }, "
+               "Vall{\'e}e:Poussin ");
+  }
+  public void testFormat0912() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{vv{:} }, "
+               "de:la ");
+  }
+  public void testFormat0913() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ff{:} }, "
+               "Charles:Louis:Xavier:Joseph ");
+  }
+  public void testFormat0914() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ll{:}~}, "
+               "Vall{\'e}e:Poussin ");
+  }
+  public void testFormat0915() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{vv{:}~}, "
+               "de:la ");
+  }
+  public void testFormat0916() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{ff{:}~}, "
+               "Charles:Louis:Xavier:Joseph ");
+  }
+  public void testFormat0917() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{l{.:}.}, "
+               "V.:P.");
+  }
+  public void testFormat0918() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{v{.:}.}, "
+               "d.:l.");
+  }
+  public void testFormat0919() throws Exception {
+    testFormat("  de  la  Vall{\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph
+  ",
+               1,
+               "{f{.:}.~}, "
+               "C.:L.:X.:J. ");
+  }
+  public void testFormat102() throws Exception {
+    testFormat("S.O. Meone",
+               1,
+               "{ff~}{vv~}{ll}{, jj}, "
+               "S.O. Meone");
+  }
+  public void testFormat103() throws Exception {
+    testFormat("A. Nother",
+               1,
+               "{ff~}{vv~}{ll}{, jj}, "
+               "A.~Nother");
+  }
+  public void testFormat104() throws Exception {
+    testFormat("{A.} Nother",
+               1,
+               "{ff~}{vv~}{ll}{, jj}, "
+               "{A.} Nother");
+  }
+  public void testFormat105() throws Exception {
+    testFormat("S. O. Meone and A. Nother and others",
+               1,
+               "{ff~}{vv~}{ll}{, jj}, "
+               "S.~O. Meone");
+  }
+  public void testFormat106() throws Exception {
+    testFormat("Xavier Oscar Handley and S.O. Meone and A. Nother",
+               1,
+               "{ff~}{vv~}{ll}{, jj}, "
+               "Xavier~Oscar Handley");
+  }

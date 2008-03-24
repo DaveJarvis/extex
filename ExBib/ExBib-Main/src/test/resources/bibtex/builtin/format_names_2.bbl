@@ -1,0 +1,79 @@
+{ll}others // others
+abcdabcd // abcd
+ab{ll}cdabNeugebauercd // abNeugebauercd
+{ll}Neugebauer // Neugebauer
+{ff}Gerd // Gerd
+{vv} //
+{jj} //
+{l}N // N
+{f}G // G
+{v} //
+{j} //
+{ll}Bergerac // Bergerac
+{vv}de // de
+{ff}Cyrano // Cyrano
+{ll-}Vall{\\'e}e~Poussin- // Vall{\\'e}e Poussin
+{vv-}de~la- // de la
+{ff-}Charles Louis Xavier~Joseph- // Charles Louis Xavier Joseph
+{ll~}Vall{\\'e}e~Poussin  // Vall{\\'e}e~Poussin
+{vv~}de~la  // de~la
+{ff~}Charles Louis Xavier~Joseph  // Charles~Louis~Xavier~Joseph
+{l.}V.~P. // V.P.
+{v.}d.~l. // d.l.
+{f.~}C.~L. X.~J.  // C.~L.~X.~J
+{ll}Neugebauer // Neugebauer
+{ff}Gerd // Gerd
+{vv} //
+{jj} //
+{l}N // N
+{f}G // G
+{v} //
+{j} //
+{ll}Bergerac // Bergerac
+{vv}de // de
+{ff}Cyrano // Cyrano
+{ll}Bergerac // Bergerac
+{vv} // de
+{ff}Cyrano~de // Cyrano
+{ll }Vall{\\'e}e~Poussin  // Vall{\\'e}e Poussin
+{vv } // de la
+{ff }Charles Louis Xavier Joseph de~la  // Charles Louis Xavier Joseph
+{ll~}Vall{\\'e}e~Poussin  // Vall{\\'e}e~Poussin
+{vv~} // de~la
+{ff~}Charles Louis Xavier Joseph de~la  // Charles~Louis~Xavier~Joseph
+{l.}V.~P. // V.P.
+{v.} // d.l.
+{f.~}C.~L. X. J. d.~l.  // C.L.X.J
+{ll}Neugebauer // Neugebauer
+{ff}Gerd // Gerd
+{vv} //
+{jj} //
+{l}N // N
+{f}G // G
+{v} //
+{j} //
+{ll}Bergerac // Bergerac
+{vv} // de
+{ff}Cyrano~de // Cyrano
+{ll }Vall{\\'e}e~Poussin  // Vall{\\'e}e Poussin
+{vv } // de la
+{ff }Charles Louis Xavier Joseph de~la  // Charles Louis Xavier Joseph
+{ll~}Vall{\\'e}e~Poussin  // Vall{\\'e}e~Poussin
+{vv~} // de~la
+{ff~}Charles Louis Xavier Joseph de~la  // Charles~Louis~Xavier~Joseph
+{l.}V.~P. // V.P.
+{v.} // d.l.
+{f.~}C.~L. X. J. d.~l.  // C.~L.~X.~J
+{ll{:} }Vall{\\'e}e:Poussin  // Vall{\\'e}e Poussin:
+{vv{:} } // de la:
+{ff{:} }Charles:Louis:Xavier:Joseph  // Charles Louis Xavier Joseph:
+{ll{:}~}Vall{\\'e}e:Poussin  // Vall{\\'e}e:Poussin~
+{vv{:}~}de:la  // de:la~
+{ff{:}~}Charles:Louis:Xavier:Joseph  // Charles~Louis~Xavier~Joseph:
+{l{.:}.}V.:P. // V.P.:
+{v{.:}.}d.:l. // d.l.:
+{f{.:}.~}C.:L.:X.:J.  // C.~L.~X.~J.:
+{ff~}{vv~}{ll}{, jj}S.O. Meone // S.O. Meone
+{ff~}{vv~}{ll}{, jj}A.~Nother // A.~Nother
+{ff~}{vv~}{ll}{, jj}S.~O. Meone // S.~O. Meone
+{ff~}{vv~}{ll}{, jj}Xavier~Oscar Handley // Xavier~Oscar Handley
