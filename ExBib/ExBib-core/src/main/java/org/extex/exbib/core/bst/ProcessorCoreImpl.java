@@ -34,7 +34,6 @@ import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.exception.ExBibTypeMismatchException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.impl.TField;
@@ -51,6 +50,8 @@ import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIoException;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
@@ -621,24 +622,26 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * @return the integer token popped from the stack
      * 
      * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibTypeMismatchException in case that no integer is found
+     * @throws ExBibMissingNumberException in case that no integer is found
+     * 
+     * @see org.extex.exbib.core.bst.Processor#popInteger(
+     *      org.extex.exbib.core.io.Locator)
      */
     public TInteger popInteger(Locator locator)
             throws ExBibStackEmptyException,
-                ExBibTypeMismatchException {
+                ExBibMissingNumberException {
 
         if (literalStack.empty()) {
             throw new ExBibStackEmptyException(locator);
         }
 
-        Token tos = literalStack.pop();
+        Token t = literalStack.pop();
 
-        if (!(tos instanceof TInteger)) {
-            throw new ExBibTypeMismatchException(Messages.format(
-                "ProcessorCoreImpl.Expected_Integer", tos.toString()), locator);
+        if (!(t instanceof TInteger)) {
+            throw new ExBibMissingNumberException(t.toString(), locator);
         }
 
-        return (TInteger) tos;
+        return (TInteger) t;
     }
 
     /**
@@ -655,11 +658,14 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * @return the string token popped from the stack
      * 
      * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibTypeMismatchException in case that no string is found
+     * @throws ExBibMissingStringException in case that no string is found
+     * 
+     * @see org.extex.exbib.core.bst.Processor#popString(
+     *      org.extex.exbib.core.io.Locator)
      */
     public TString popString(Locator locator)
             throws ExBibStackEmptyException,
-                ExBibTypeMismatchException {
+                ExBibMissingStringException {
 
         if (literalStack.empty()) {
             throw new ExBibStackEmptyException(locator);
@@ -670,8 +676,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         if (tos == null) {
             tos = TokenFactory.T_EMPTY;
         } else if (!(tos instanceof TString)) {
-            throw new ExBibTypeMismatchException(Messages.format(
-                "ProcessorCoreImpl.Expected_String", tos.toString()), locator);
+            throw new ExBibMissingStringException(tos.toString(), locator);
         }
 
         return (TString) tos;

@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,10 +27,8 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
-import org.extex.exbib.core.exceptions.ExBibConfigurationException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class represents a <tt>READ</tt> command.
@@ -62,8 +60,6 @@ public class BstReadImpl extends AbstractCommand implements Command {
             processor.loadDB();
         } catch (FileNotFoundException e) {
             throw new ExBibException(e.getMessage(), e);
-        } catch (ConfigurationException e) {
-            throw new ExBibConfigurationException(e);
         }
     }
 

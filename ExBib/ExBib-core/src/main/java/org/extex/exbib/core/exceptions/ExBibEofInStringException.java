@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2008 Gerd Neugebauer
  * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,18 +18,18 @@
  *
  */
 
-package org.extex.exbib.core.bst.exception;
+package org.extex.exbib.core.exceptions;
 
-import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This Exception is thrown when an illegal value has been detected.
+ * This {@link ExBibException ExBibException} is thrown when the end of file has
+ * been reached unexpectedly while reading a block.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class ExBibIllegalValueException extends ExBibException {
+public class ExBibEofInStringException extends ExBibEofException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -40,12 +40,11 @@ public class ExBibIllegalValueException extends ExBibException {
     /**
      * Create a new object.
      * 
-     * @param message the message
      * @param locator the locator
      */
-    public ExBibIllegalValueException(String message, Locator locator) {
+    public ExBibEofInStringException(Locator locator) {
 
-        super(message, locator);
+        super(null, locator);
     }
 
 }

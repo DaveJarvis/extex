@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Bibliography;
 import org.extex.exbib.core.engine.Engine;
+import org.extex.exbib.core.exceptions.InitializationException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -71,10 +72,8 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     public int[] process(Bibliography listener) throws ConfigurationException {
 
         if (reader == null) {
-            // throw new ConfigurationException(Messages
-            // .format("AuxReaderImpl.Reader_undefined"));
-            // TODO gene: process unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new InitializationException(getClass().getName()
+                    + "#process()", "reader");
         }
 
         String line;

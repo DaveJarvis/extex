@@ -28,7 +28,6 @@ import java.util.logging.Logger;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.exception.ExBibTypeMismatchException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -37,6 +36,8 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.util.NotObservableException;
@@ -269,11 +270,11 @@ public interface Processor extends Bibliography, Configurable {
      * @return the top of stack
      * 
      * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibTypeMismatchException in case that no integer is found
+     * @throws ExBibMissingNumberException in case that no integer is found
      */
     TInteger popInteger(Locator locator)
             throws ExBibStackEmptyException,
-                ExBibTypeMismatchException;
+                ExBibMissingNumberException;
 
     /**
      * Pop an integer literal from the stack. If the stack is empty or the
@@ -284,11 +285,11 @@ public interface Processor extends Bibliography, Configurable {
      * @return the top of stack
      * 
      * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibTypeMismatchException in case that no integer is found
+     * @throws ExBibMissingStringException in case that no integer is found
      */
     TString popString(Locator locator)
             throws ExBibStackEmptyException,
-                ExBibTypeMismatchException;
+                ExBibMissingStringException;
 
     /**
      * Pop an element from the stack. If the stack is empty then

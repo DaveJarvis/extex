@@ -25,7 +25,6 @@ import java.io.FileNotFoundException;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.exceptions.ExBibConfigurationException;
 import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -87,10 +86,10 @@ public class BstReaderExtImpl extends BstReaderImpl {
             try {
                 BstReader reader = this.getClass().newInstance();
                 reader.parse(processor, fname);
-            } catch (ConfigurationException e) {
-                throw new ExBibConfigurationException(e);
             } catch (FileNotFoundException e) {
                 throw new ExBibException(e);
+            } catch (ConfigurationException e) {
+                throw e;
             } catch (Exception e) {
                 throw new ExBibException(e);
             }

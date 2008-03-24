@@ -36,9 +36,12 @@ import org.extex.exbib.core.db.VNumber;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.exceptions.ExBibEofException;
+import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
+import org.extex.exbib.core.exceptions.ExBibEofInStringException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
 import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.AbstractFileReader;
@@ -367,7 +370,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
             if (c == '\0') {
                 throw new ExBibEofException(Messages
-                    .format("BibReader099Impl.while_reading_attribute_value"), //$NON-NLS-1$
+                    .format("BibReader099Impl.while_reading_attribute_value"),
                     getLocator());
             }
 
@@ -379,9 +382,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 for (int depth = 1; depth > 0;) {
                     if (i >= buffer.length()) {
                         if (read() == null) {
-                            throw new ExBibEofException(Messages
-                                .format("BibReader099Impl.while_in_block"), //$NON-NLS-1$
-                                getLocator());
+                            throw new ExBibEofInBlockException(getLocator());
                         }
                     }
 
@@ -403,9 +404,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 do {
                     if (i > buffer.length()) {
                         if (read() == null) {
-                            throw new ExBibEofException(Messages
-                                .format("BibReader099Impl.while_in_string"), //$NON-NLS-1$
-                                getLocator());
+                            throw new ExBibEofInStringException(getLocator());
                         }
                     }
 
@@ -431,8 +430,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 ret.add(new VNumber(buffer.substring(0, i)));
                 buffer.delete(0, i);
             } else if (c == '=' || c == '#' || c == '}' || c == '(' || c == ')') {
-                throw new ExBibSyntaxException(Messages
-                    .format("BibReader099Impl.while_parsing_value"), //$NON-NLS-1$
+                throw new ExBibUnexpectedException(Character.toString(c), null,
                     getLocator());
             } else {
                 int i = 1;

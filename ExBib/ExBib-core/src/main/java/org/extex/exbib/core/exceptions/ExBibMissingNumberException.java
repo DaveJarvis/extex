@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2008 Gerd Neugebauer
  * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,18 +18,17 @@
  *
  */
 
-package org.extex.exbib.core.bst.exception;
+package org.extex.exbib.core.exceptions;
 
-import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This Exception is thrown when an illegal value has been detected.
+ * This exception is thrown when a string is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.3 $
  */
-public class ExBibIllegalValueException extends ExBibException {
+public class ExBibMissingNumberException extends ExBibSyntaxException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -40,12 +39,25 @@ public class ExBibIllegalValueException extends ExBibException {
     /**
      * Create a new object.
      * 
-     * @param message the message
+     * @param found the entity found; <code>null</code> means EOF
      * @param locator the locator
      */
-    public ExBibIllegalValueException(String message, Locator locator) {
+    public ExBibMissingNumberException(String found, Locator locator) {
 
-        super(message, locator);
+        super(found, locator);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.exceptions.ExBibException#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        String found = super.getMessage();
+        return getLocalizer().format(found != null ? "Message" : "MessageEOF",
+            found);
     }
 
 }

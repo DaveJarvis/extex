@@ -22,7 +22,6 @@ package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
 import java.io.Reader;
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,13 +42,17 @@ import org.extex.exbib.core.bst.node.impl.TQLiteral;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.exceptions.ExBibEofException;
+import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
+import org.extex.exbib.core.exceptions.ExBibEofInLiteralListException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.AbstractFileReader;
+import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -493,12 +496,11 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      * @param processor the processor context
      * @param file the name of the file to parse
      * 
-     * @throws ExBibException in case of an error
      * @throws FileNotFoundException in case that the requested file could not
      *         be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
-     * @throws ExBibSyntaxException in case of an syntax error
+     * @throws ExBibException in case of an syntax error
      */
     public void parse(Processor processor, String file)
             throws ExBibException,
@@ -510,8 +512,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
         while ((token = nextToken()) != null) {
             if (!processCommand(token, processor)) {
-                throw new ExBibSyntaxException(Messages.format(
-                    "BstReaderImpl.Unexpected_token_found", token.toString()),
+                throw new ExBibUnexpectedException(token.toString(), null,
                     getLocator());
             }
         }
@@ -558,7 +559,8 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      */
     private TBlock parseBlockEnd() throws ExBibException {
 
-        TBlock block = new TBlock(getLocator());
+        Locator start = getLocator();
+        TBlock block = new TBlock(start);
         Token token;
 
         while ((token = nextToken()) != null) {
@@ -573,28 +575,21 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                     token = nextToken();
 
                     if (!(token instanceof TLiteral)) {
-                        throw new ExBibSyntaxException(
-                            MessageFormat
-                                .format(
-                                    Messages
-                                        .format("BstReaderImpl.Expected_literal_instead_of__"),
-                                    new Object[]{token.toString()}),
-                            getLocator());
+                        throw new ExBibMissingLiteralException((token == null
+                                ? null
+                                : token.toString()), getLocator());
                     }
 
                     token = new TQLiteral(null, token.getValue());
                 } else {
-                    throw new ExBibSyntaxException(Messages
-                        .format("BstReaderImpl.unexpected_character")
-                            + val);
+                    throw new ExBibUnexpectedException(val, null, getLocator());
                 }
             }
 
             block.add(token);
         }
 
-        throw new ExBibEofException(Messages
-            .format("BstReaderImpl.while_reading_block"), getLocator());
+        throw new ExBibEofInBlockException(start);
     }
 
     /**
@@ -616,8 +611,9 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
         Token token = nextToken();
 
         if (!(token instanceof TLiteral)) {
-            throw new ExBibSyntaxException(Messages
-                .format("BstReaderImpl.Expected_literal_missing"), getLocator());
+            throw new ExBibMissingLiteralException((token == null
+                    ? null
+                    : token.toString()), getLocator());
         }
 
         expectChar("}");
@@ -639,7 +635,8 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      */
     protected TokenList parseLiteralList() throws ExBibException {
 
-        TokenList literal = new TokenList(getLocator());
+        Locator start = getLocator();
+        TokenList literal = new TokenList(start);
         expectChar("{");
 
         Token token;
@@ -649,9 +646,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
         }
 
         if (token == null) {
-            throw new ExBibEofException(Messages
-                .format("BstReaderImpl.while_reading_literal_list"),
-                getLocator());
+            throw new ExBibEofInLiteralListException(start);
         }
 
         if (!(token instanceof TChar) || !token.getValue().equals("}")) {
@@ -677,19 +672,17 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      */
     protected TString parseStringArg() throws ExBibException {
 
-        TString ret;
         expectChar("{");
+        Token t = nextToken();
 
-        try {
-            ret = (TString) nextToken();
-        } catch (ClassCastException e) {
-            throw new ExBibSyntaxException(Messages
-                .format("BstReaderImpl.Expected_string_missing"), getLocator());
+        if (!(t instanceof TString)) {
+            throw new ExBibMissingStringException(//
+                t == null ? null : t.toString(), getLocator());
         }
 
         expectChar("}");
 
-        return ret;
+        return (TString) t;
     }
 
     /**

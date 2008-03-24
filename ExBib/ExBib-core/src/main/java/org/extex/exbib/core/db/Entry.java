@@ -26,8 +26,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -124,8 +124,7 @@ public class Entry {
                 Entry entry = db.getEntry(crossKey);
 
                 if (entry == null) {
-                    throw new ExBibException(Messages.format(
-                        "Entry.unable_to_find_entry_for", key));
+                    throw new ExBibMissingEntryException(key, getLocator());
                 }
 
                 val = entry.get(key);

@@ -1,6 +1,6 @@
 /*
+ * Copyright (C) 2008 Gerd Neugebauer
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,13 +20,16 @@
 
 package org.extex.exbib.core.exceptions;
 
+import org.extex.exbib.core.io.Locator;
+
 /**
- * This Exception is thrown when some misconfiguration has been detected.
+ * This {@link ExBibException ExBibException} is thrown when the end of file has
+ * been reached unexpectedly while reading a block.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class ExBibConfigurationException extends ExBibException {
+public class ExBibEofInBlockException extends ExBibEofException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -37,22 +40,11 @@ public class ExBibConfigurationException extends ExBibException {
     /**
      * Create a new object.
      * 
-     * @param cause the chained throwable
+     * @param locator the locator
      */
-    public ExBibConfigurationException(Throwable cause) {
+    public ExBibEofInBlockException(Locator locator) {
 
-        super(cause);
-    }
-
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
-
-        return super.getCause().getMessage();
+        super(null, locator);
     }
 
 }

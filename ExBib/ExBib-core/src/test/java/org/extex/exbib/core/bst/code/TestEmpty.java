@@ -28,13 +28,13 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Empty;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.exception.ExBibTypeMismatchException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
@@ -121,7 +121,8 @@ public class TestEmpty extends TestCase {
      * 
      * @param val
      * @param res
-     * @throws Exception
+     * 
+     * @throws Exception in case of an error
      */
     public void testEmpty(String val, int res) throws Exception {
 
@@ -134,7 +135,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -149,7 +150,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testInteger() throws Exception {
 
@@ -157,7 +158,7 @@ public class TestEmpty extends TestCase {
             p.push(new TInteger(123));
             new Empty("empty$").execute(p, e, null);
             assertTrue(false);
-        } catch (ExBibTypeMismatchException e) {
+        } catch (ExBibException e) {
             assertTrue(true);
         }
     }
@@ -165,7 +166,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNo0() throws Exception {
 
@@ -175,7 +176,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNo1() throws Exception {
 
@@ -185,7 +186,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNo2() throws Exception {
 
@@ -195,7 +196,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNo3() throws Exception {
 
@@ -205,7 +206,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes1() throws Exception {
 
@@ -215,7 +216,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes2() throws Exception {
 
@@ -225,7 +226,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes3() throws Exception {
 
@@ -235,7 +236,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes4() throws Exception {
 
@@ -245,7 +246,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes5() throws Exception {
 
@@ -255,7 +256,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes6() throws Exception {
 
@@ -265,7 +266,7 @@ public class TestEmpty extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testYes7() throws Exception {
 

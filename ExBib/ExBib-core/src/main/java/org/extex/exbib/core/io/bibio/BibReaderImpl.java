@@ -28,7 +28,6 @@ import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.KeyValue;
-import org.extex.exbib.core.exceptions.ExBibConfigurationException;
 import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
@@ -106,8 +105,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
             expect(brace);
             try {
                 db.load(source, null, processor);
-            } catch (ConfigurationException e) {
-                throw new ExBibConfigurationException(e);
             } catch (FileNotFoundException e) {
                 Locator locator = null; // TODO
                 throw new ExBibFileNotFoundException(source, locator);

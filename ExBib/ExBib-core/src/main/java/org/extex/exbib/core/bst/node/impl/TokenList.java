@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,13 +26,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.bst.Processor;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.i18n.Messages;
+import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -93,8 +92,9 @@ public class TokenList extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
@@ -106,7 +106,8 @@ public class TokenList extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.node.Token#expand(org.extex.exbib.core.bst.Processor)
+     * @see org.extex.exbib.core.bst.node.Token#expand(
+     *      org.extex.exbib.core.bst.Processor)
      */
     @Override
     public String expand(Processor processor) {
@@ -173,10 +174,10 @@ public class TokenList extends AbstractToken implements Token {
      * 
      * @return the StringList of the literal names
      * 
-     * @throws ExBibIllegalValueException if some other Token than a TLiteral is
-     *         found
+     * @throws ExBibMissingLiteralException if some other Token than a TLiteral
+     *         is found
      */
-    public List<String> toStringList() throws ExBibIllegalValueException {
+    public List<String> toStringList() throws ExBibMissingLiteralException {
 
         List<String> list = new ArrayList<String>();
         Iterator<Token> iterator = theValue.iterator();
@@ -185,9 +186,7 @@ public class TokenList extends AbstractToken implements Token {
             Token t = iterator.next();
 
             if (!(t instanceof TLiteral)) {
-                throw new ExBibIllegalValueException(Messages.format(
-                    "TokenList.Literal_expected_instead_of", t.getClass()
-                        .toString()), null);
+                throw new ExBibMissingLiteralException(t.toString(), null);
             }
 
             list.add(t.getValue());

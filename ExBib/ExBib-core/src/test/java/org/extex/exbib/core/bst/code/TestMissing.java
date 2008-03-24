@@ -28,13 +28,13 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Missing;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.exception.ExBibTypeMismatchException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
@@ -119,7 +119,7 @@ public class TestMissing extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
@@ -132,7 +132,7 @@ public class TestMissing extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
@@ -145,7 +145,7 @@ public class TestMissing extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -160,7 +160,7 @@ public class TestMissing extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testInteger() throws Exception {
 
@@ -168,7 +168,7 @@ public class TestMissing extends TestCase {
             p.push(new TInteger(123));
             new Missing("missing$").execute(p, e, null);
             assertTrue(false);
-        } catch (ExBibTypeMismatchException e) {
+        } catch (ExBibException e) {
             assertTrue(true);
         }
     }
