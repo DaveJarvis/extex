@@ -6,7 +6,7 @@
   <artifactId>ExTeX-core</artifactId>
   <name>ExTeX core components</name>
   <description>
-    These are the ExTeX core components.
+    This are the ExTeX core components.
   </description>
 
   <packaging>jar</packaging>

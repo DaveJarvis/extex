@@ -24,5 +24,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Main-fmt"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Main-tex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

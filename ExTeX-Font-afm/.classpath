@@ -8,5 +8,6 @@
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

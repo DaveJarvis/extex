@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/icu4j_2_8.jar"/>
 	<classpathentry kind="lib" path="src/test/lib/a.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

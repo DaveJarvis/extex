@@ -19,5 +19,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-color"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-omega"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

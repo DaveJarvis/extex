@@ -51,16 +51,8 @@ import org.xml.sax.SAXException;
 public class XmlConfiguration implements Configuration {
 
     /**
-     * The field <tt>loader</tt> contains the optional loader.
-     */
-    private ConfigurationLoader loader = null;
-
-    /**
      * This inner class provides an iterator for all sub-configurations of a
      * given node.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
      */
     private class ConfigIterator implements Iterator<Configuration> {
 
@@ -174,6 +166,11 @@ public class XmlConfiguration implements Configuration {
         sb.append('/');
         sb.append(node.getNodeName());
     }
+
+    /**
+     * The field <tt>loader</tt> contains the optional loader.
+     */
+    private ConfigurationLoader loader = null;
 
     /**
      * The field <tt>base</tt> contains the base of the resource name; i.e.
@@ -813,6 +810,17 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+     *      org.extex.framework.configuration.ConfigurationLoader)
+     */
+    public void setConfigurationLoader(ConfigurationLoader loader) {
+
+        this.loader = loader;
+    }
+
+    /**
      * Recursively follow the src attribute if present.
      * 
      * @param name the name of the current tag
@@ -862,17 +870,6 @@ public class XmlConfiguration implements Configuration {
         }
         toString(sb, root);
         return sb.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-     *      org.extex.framework.configuration.ConfigurationLoader)
-     */
-    public void setConfigurationLoader(ConfigurationLoader loader) {
-
-        this.loader = loader;
     }
 
 }

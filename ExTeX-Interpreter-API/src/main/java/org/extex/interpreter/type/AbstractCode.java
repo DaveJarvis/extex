@@ -31,7 +31,6 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -111,11 +110,11 @@ public abstract class AbstractCode implements Code, Serializable {
 
     /**
      * Getter for token.
-     *
+     * 
      * @return the token
      */
     public CodeToken getToken() {
-    
+
         return token;
     }
 
@@ -173,7 +172,6 @@ public abstract class AbstractCode implements Code, Serializable {
         return token == null ? "" : token.toText();
     }
 
-    
     /**
      * Determine the printable representation of the control sequence or active
      * character initially bound to the primitive. For the control sequence

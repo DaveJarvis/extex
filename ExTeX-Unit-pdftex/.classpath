@@ -17,5 +17,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-pdfbox"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Pdf-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

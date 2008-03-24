@@ -19,5 +19,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-extex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
 	<classpathentry kind="var" path="M2_REPO/jeval/jeval/0.9.3/jeval-0.9.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
