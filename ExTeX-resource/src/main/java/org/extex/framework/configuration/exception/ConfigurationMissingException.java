@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,16 +21,17 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code>> or the empty string. Alternatively it can be used when
+ * <code>null</code> or the empty string. Alternatively it can be used when
  * some other kind of configuration information is missing.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class ConfigurationMissingException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +42,7 @@ public class ConfigurationMissingException extends ConfigurationException {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param message the message string
      */
     public ConfigurationMissingException(String message) {
@@ -51,12 +52,11 @@ public class ConfigurationMissingException extends ConfigurationException {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param message the message string
      * @param location the location of the missing configuration item
      */
-    public ConfigurationMissingException(String message,
-            String location) {
+    public ConfigurationMissingException(String message, String location) {
 
         super(null, location);
         item = message;
@@ -64,21 +64,20 @@ public class ConfigurationMissingException extends ConfigurationException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationMissingException(String message,
-            Throwable cause) {
+    public ConfigurationMissingException(String message, Throwable cause) {
 
         super(message, cause);
     }
 
     /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationMissingException.Text</tt>.
-     *
+     * Getter for the text prefix of this ConfigException. The text is taken
+     * from the resource bundle <tt>ConfigurationEception</tt> under the key
+     * <tt>ConfigurationMissingException.Text</tt>.
+     * 
      * @return the text
      */
     @Override
