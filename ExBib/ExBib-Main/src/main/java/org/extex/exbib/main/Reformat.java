@@ -31,7 +31,6 @@ import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.bibio.BibPrinterFactory;
 import org.extex.exbib.core.io.bibio.BibReader;
 import org.extex.exbib.core.io.bibio.BibReader099Impl;
-import org.extex.exbib.main.util.CLI;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 
@@ -41,7 +40,7 @@ import org.extex.framework.configuration.ConfigurationFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class Reformat extends CLI {
+public class Reformat {
 
     /**
      * The field <tt>PROGNAME</tt> contains the name of the program.
@@ -76,9 +75,9 @@ public class Reformat extends CLI {
                 if ("-help".startsWith(argv[i])) {
                     // usage(System.err, PROGNAME);
                     System.exit(0);
-                } else if ("-copying".startsWith(argv[i])) {
-                    printCopying(System.err, PROGNAME);
-                    System.exit(0);
+                    // } else if ("-copying".startsWith(argv[i])) {
+                    // printCopying(System.err, PROGNAME);
+                    // System.exit(0);
                 } else if ("-quiet".startsWith(argv[i])) {
                     quiet = true;
                 } else if ("-terse".startsWith(argv[i])) {

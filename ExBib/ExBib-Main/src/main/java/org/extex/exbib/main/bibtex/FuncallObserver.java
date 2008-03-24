@@ -29,9 +29,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This observer collects information about function calls and prints a
@@ -120,7 +121,8 @@ public class FuncallObserver implements Observer {
      */
     public void print() throws IOException {
 
-        logger.fine("\n" + Messages.format("FuncallObserver.Profile") + "\n");
+        Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+        logger.fine(localizer.format("profile"));
 
         int funcalls = 0;
         List<String> list = new ArrayList<String>(stat.keySet());
@@ -135,8 +137,7 @@ public class FuncallObserver implements Observer {
             logger.fine(count + "\t-- " + key);
         }
 
-        logger.fine(Messages.format("FuncallObserver.Total__", new Integer(
-            funcalls)));
+        logger.fine(localizer.format("total", new Integer(funcalls)));
     }
 
     /**
@@ -150,7 +151,7 @@ public class FuncallObserver implements Observer {
         String name = o.toString();
 
         if (stat.containsKey(name)) {
-            ((stat.get(name))).inc();
+            stat.get(name).inc();
         } else {
             stat.put(name, new Int(1));
         }

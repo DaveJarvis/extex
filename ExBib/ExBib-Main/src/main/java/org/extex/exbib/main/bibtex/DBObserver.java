@@ -20,9 +20,9 @@
 
 package org.extex.exbib.main.bibtex;
 
+import java.text.MessageFormat;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 
@@ -46,14 +46,21 @@ public class DBObserver implements Observer {
     private int dbCount = 0;
 
     /**
+     * The field <tt>pattern</tt> contains the pattern for the messages.
+     */
+    private String pattern;
+
+    /**
      * Creates a new object.
      * 
      * @param logger the target logger
+     * @param pattern the pattern for the messages
      */
-    public DBObserver(Logger logger) {
+    public DBObserver(Logger logger, String pattern) {
 
         super();
         this.logger = logger;
+        this.pattern = pattern;
     }
 
     /**
@@ -62,10 +69,10 @@ public class DBObserver implements Observer {
      * @see org.extex.exbib.core.util.Observer#update(
      *      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
-    public void update(Observable source, Object o) {
+    public void update(Observable source, Object db) {
 
-        logger.info(Messages.format("DBObserver.Database_file_#", Integer
-            .toString(++dbCount), o));
+        logger.info(MessageFormat.format(pattern, Integer.toString(++dbCount),
+            db));
     }
 
 }

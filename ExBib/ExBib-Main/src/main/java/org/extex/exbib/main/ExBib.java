@@ -789,7 +789,7 @@ public class ExBib {
                 bibliography.registerObserver("run", new TracingObserver(
                     logger, bundle.getString("do_msg")));
                 bibliography.registerObserver("startRead", new DBObserver(
-                    logger));
+                    logger, bundle.getString("observer.db.pattern")));
                 bibliography.registerObserver("step", funcall);
                 bibliography.registerObserver("push", new TracingObserver(
                     logger, bundle.getString("push_msg")));

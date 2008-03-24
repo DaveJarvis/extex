@@ -25,9 +25,9 @@ import java.util.logging.Logger;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * Observer which checks that new entries have associated methods in the bst.
@@ -38,9 +38,9 @@ import org.extex.exbib.core.util.Observer;
 public class EntryObserver implements Observer {
 
     /**
-     * The field <tt>theProcessor</tt> contains the saved processor context.
+     * The field <tt>processor</tt> contains the saved processor context.
      */
-    private Processor theProcessor;
+    private Processor processor;
 
     /**
      * The field <tt>logger</tt> contains the logger for output.
@@ -60,16 +60,16 @@ public class EntryObserver implements Observer {
 
         super();
         this.logger = logger;
-        theProcessor = processor;
+        this.processor = processor;
 
         if (logger == null) {
-            throw new ExBibIllegalValueException(Messages
-                .format("EntryObserver.Empty_writer"), null);
+            throw new ExBibIllegalValueException(LocalizerFactory.getLocalizer(
+                getClass()).format("empty.writer"), null);
         }
 
         if (processor == null) {
-            throw new ExBibIllegalValueException(Messages
-                .format("EntryObserver.Empty_processor"), null);
+            throw new ExBibIllegalValueException(LocalizerFactory.getLocalizer(
+                getClass()).format("empty.processor"), null);
         }
     }
 
@@ -82,9 +82,9 @@ public class EntryObserver implements Observer {
         Entry e = (Entry) o;
         String type = e.getType();
 
-        if (null == theProcessor.getFunction(type)) {
-            theProcessor.warning(Messages.format(
-                "EntryObserver.Not_style_file_defined", e.getKey())
+        if (null == processor.getFunction(type)) {
+            logger.warning(LocalizerFactory.getLocalizer(getClass()).format(
+                "not.defined", e.getKey())
                     + "\t" + e.getLocator().toString());
         }
     }
