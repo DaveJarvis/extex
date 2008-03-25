@@ -283,7 +283,7 @@ public class ExBib {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>errors</tt> contains the ...
+     * The field <tt>errors</tt> contains the number of errors reported.
      */
     private int errors = 0;
 
