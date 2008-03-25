@@ -39,11 +39,11 @@ import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
 import org.extex.exbib.core.exceptions.ExBibEofInStringException;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingAttributeNameException;
 import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -310,9 +310,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         String lhs = parseToken(LHS_PATTERN);
 
         if (lhs.equals("")) {
-            throw new ExBibSyntaxException(Messages
-                .format("BibReader099Impl.Attribute_name_expected"),
-                getLocator());
+            throw new ExBibMissingAttributeNameException(getLocator());
         }
 
         expect("=");

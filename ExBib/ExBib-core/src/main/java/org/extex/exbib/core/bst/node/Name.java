@@ -26,8 +26,9 @@ import java.util.List;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents a single name.
@@ -151,8 +152,9 @@ public class Name {
         int last = sb.lastIndexOf(",");
 
         if (last < 0) {
-            throw new ExBibImpossibleException(Messages
-                .format("Name.Comma_not_found"));
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibImpossibleException(localizer
+                .format("Comma.not.found"));
         }
 
         if (last == 0) {
@@ -193,8 +195,9 @@ public class Name {
         int last = sb.indexOf(",");
 
         if (last < 0) {
-            throw new ExBibImpossibleException(Messages
-                .format("Name.Comma_not_found"));
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibImpossibleException(localizer
+                .format("Comma.not.found"));
         }
 
         if (last == 0) {
@@ -363,8 +366,9 @@ public class Name {
                 classify2(sl, sb, locator);
                 break;
             default:
-                throw new ExBibSyntaxException(Messages
-                    .format("Name.Too_many_commas"));
+                Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+                throw new ExBibImpossibleException(localizer
+                    .format("Too.many.commas"));
         }
 
         for (int i = 0; i < sb.length(); i++) {
@@ -384,8 +388,10 @@ public class Name {
                 case ',':
                     break;
                 default:
-                    throw new ExBibImpossibleException(Messages.format(
-                        "Name.strange_classifier", sb.substring(i, i + 1)));
+                    Localizer localizer =
+                            LocalizerFactory.getLocalizer(getClass());
+                    throw new ExBibImpossibleException(localizer.format(
+                        "Strange.classifier", sb.substring(i, i + 1)));
             }
         }
     }

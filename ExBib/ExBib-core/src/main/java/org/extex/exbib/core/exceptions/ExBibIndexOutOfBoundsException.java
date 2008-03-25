@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,7 +21,6 @@
 package org.extex.exbib.core.exceptions;
 
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -48,17 +47,6 @@ public class ExBibIndexOutOfBoundsException extends ExBibIllegalValueException {
     public ExBibIndexOutOfBoundsException(String message, Locator locator) {
 
         super(message, locator);
-    }
-
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
-
-        return Messages.format("ExBibIndexOutOfBoundsException.Message");
     }
 
 }

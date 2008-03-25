@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,9 +20,9 @@
 
 package org.extex.exbib.core.exceptions;
 
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
-
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This Exception is thrown when a syntax error during the parsing of the input
@@ -95,9 +95,10 @@ public class ExBibSyntaxException extends ExBibException {
      * @return the message for this exception
      */
     @Override
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
-        return Messages
-            .format("ExBibSyntaxException.Message", super.getMessage());
+        Localizer localizer =
+                LocalizerFactory.getLocalizer(ExBibSyntaxException.class);
+        return localizer.format("Message", super.getMessage());
     }
 }

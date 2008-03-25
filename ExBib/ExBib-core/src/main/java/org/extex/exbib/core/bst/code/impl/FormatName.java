@@ -38,8 +38,9 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIndexOutOfBoundsException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * BibT<sub>E</sub>X built-in function <code>format.name$</code>
@@ -209,8 +210,9 @@ public class FormatName extends AbstractCode {
                 }
             }
 
-            throw new ExBibSyntaxException(Messages
-                .format("FormatName.Missing_end_of_group"), locator);
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibSyntaxException(localizer
+                .format("Missing.end.of.group"), locator);
         }
 
         /**
@@ -251,18 +253,22 @@ public class FormatName extends AbstractCode {
 
                         if (level == 1) {
                             if (item != null) {
-                                throw new ExBibSyntaxException(Messages
-                                    .format("FormatName.Letters_at_level_1"),
-                                    locator);
+                                Localizer localizer =
+                                        LocalizerFactory
+                                            .getLocalizer(getClass());
+                                throw new ExBibSyntaxException(localizer
+                                    .format("Letters.at.level.1"), locator);
                             }
 
                             String pre = format.substring(beg, i);
                             letter = format.charAt(i);
 
                             if (++i >= format.length()) {
-                                throw new ExBibSyntaxException(Messages
-                                    .format("FormatName.Missing_end_of_item"), //$NON-NLS-1$
-                                    locator);
+                                Localizer localizer =
+                                        LocalizerFactory
+                                            .getLocalizer(getClass());
+                                throw new ExBibSyntaxException(localizer
+                                    .format("Missing.end.of.item="), locator);
                             }
 
                             char c = format.charAt(i);
@@ -271,9 +277,11 @@ public class FormatName extends AbstractCode {
                                 letter = Character.toUpperCase(letter);
 
                                 if (++i >= format.length()) {
-                                    throw new ExBibSyntaxException(
-                                        Messages
-                                            .format("FormatName.Missing_end_of_item"), //$NON-NLS-1$
+                                    Localizer localizer =
+                                            LocalizerFactory
+                                                .getLocalizer(getClass());
+                                    throw new ExBibSyntaxException(localizer
+                                        .format("Missing.end.of.item="),
                                         locator);
                                 }
 
@@ -328,8 +336,9 @@ public class FormatName extends AbstractCode {
                 }
             }
 
-            throw new ExBibSyntaxException(Messages
-                .format("FormatName.missing_end_of_item"), locator);
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibSyntaxException(localizer
+                .format("Missing.end.of.item="), locator);
         }
 
         /**

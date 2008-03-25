@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,12 +27,13 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents an <tt>ITERATE</tt> command.
@@ -55,8 +56,9 @@ public class BstIterateImpl extends AbstractCommand implements Command {
         super(token, locator);
 
         if (token == null) {
-            throw new ExBibImpossibleException(Messages
-                .format("BstIterateImpl.Empty_token_for_ITERATE")); //$NON-NLS-1$
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer
+                .format("empty.token"), locator);
         }
     }
 
@@ -71,8 +73,9 @@ public class BstIterateImpl extends AbstractCommand implements Command {
         Token token = getValue();
 
         if (token == null) {
-            throw new ExBibImpossibleException(Messages
-                .format("BstIterateImpl.Empty_token_for_ITERATE")); //$NON-NLS-1$
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer
+                .format("empty.token"), locator);
         }
 
         List<Entry> rec = processor.getDB().getEntries();

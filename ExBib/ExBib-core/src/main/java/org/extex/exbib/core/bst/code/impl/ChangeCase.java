@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,8 +26,9 @@ import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * BibT<sub>E</sub>X built-in function <code>change.case</code>
@@ -189,8 +190,9 @@ public class ChangeCase extends AbstractCode {
                 }
             }
         } else {
-            throw new ExBibIllegalValueException(Messages.format(
-                "ChangeCase.illegal_case-conversion_string", fmt), locator);
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer.format(
+                "invalid.spec", fmt), locator);
         }
 
         processor.push(modified ? new TString(sb.toString()) : ts);

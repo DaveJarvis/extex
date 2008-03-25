@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,9 +29,9 @@ import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
-
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * A TChar token is used during parsing to represent a single character. It
@@ -48,8 +48,8 @@ public class TChar extends AbstractToken implements Token {
      * @param value a single character string containing the value
      * @param locator the locator or <code>null</code>
      * 
-     * @throws ExBibException in case that the constructor of AbstractToken throws
-     *         it
+     * @throws ExBibException in case that the constructor of AbstractToken
+     *         throws it
      * @throws ExBibIllegalValueException in case that the value is not a single
      *         character
      */
@@ -58,8 +58,9 @@ public class TChar extends AbstractToken implements Token {
         super(value, locator);
 
         if (value.length() != 1) {
-            throw new ExBibIllegalValueException(Messages.format(
-                "TChar.Invalid_length_of_character", value), locator);
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer.format(
+                "invalid.length", value), locator);
         }
     }
 

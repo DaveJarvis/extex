@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2008 Gerd Neugebauer
  * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,13 +20,15 @@
 
 package org.extex.exbib.core.exceptions;
 
+import org.extex.exbib.core.io.Locator;
+
 /**
- * This Exception is used to wrap an IOException.
+ * This exception is thrown when an attribute name is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.3 $
  */
-public class ExBibIoException extends ExBibException {
+public class ExBibMissingAttributeNameException extends ExBibSyntaxException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,24 +37,13 @@ public class ExBibIoException extends ExBibException {
     private static final long serialVersionUID = 2008L;
 
     /**
-     * Creates a new object.
+     * Create a new object.
      * 
-     * @param cause the chained throwable
+     * @param locator the locator
      */
-    public ExBibIoException(Throwable cause) {
+    public ExBibMissingAttributeNameException(Locator locator) {
 
-        super(cause);
-    }
-
-    /**
-     * Provides the message for this Exception.
-     * 
-     * @return the message for this exception
-     */
-    @Override
-    public String getMessage() {
-
-        return getCause().getMessage();
+        super(null, locator);
     }
 
 }
