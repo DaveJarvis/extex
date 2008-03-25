@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,6 +26,8 @@ import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * BibT<sub>E</sub>X built-in function <code>warning$</code>
@@ -52,6 +54,11 @@ import org.extex.exbib.core.io.Locator;
 public class Warning extends AbstractCode {
 
     /**
+     * The field <tt>localizer</tt> contains the cached localizer.
+     */
+    private transient Localizer localizer = null;
+
+    /**
      * Create a new object.
      */
     public Warning() {
@@ -71,8 +78,9 @@ public class Warning extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
@@ -80,6 +88,10 @@ public class Warning extends AbstractCode {
 
         Token a = processor.popString(locator);
 
-        processor.warning(a.getValue());
+        if (localizer == null) {
+            localizer = LocalizerFactory.getLocalizer(getClass());
+        }
+
+        processor.warning(localizer.format("Message", a.getValue()));
     }
 }

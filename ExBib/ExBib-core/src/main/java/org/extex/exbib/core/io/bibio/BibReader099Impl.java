@@ -68,14 +68,26 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  */
 public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
-    /** the pattern for a left hand side of an assignment */
-    private static Pattern lhsPattern = Pattern.compile("[^= \t\n\r\b\f]*");
+    /**
+     * The constant <tt>LHS_PATTERN</tt> contains the pattern for a left hand
+     * side of an assignment.
+     */
+    private static final Pattern LHS_PATTERN =
+            Pattern.compile("[^= \t\n\r\b\f]*");
 
-    /** the pattern for the name of a record */
-    private static Pattern recordPattern = Pattern.compile("[a-zA-Z_.:0-9-]*");
+    /**
+     * The constant <tt>RECORD_PATTERN</tt> contains the pattern for the name
+     * of a record.
+     */
+    private static final Pattern RECORD_PATTERN =
+            Pattern.compile("[a-zA-Z_.:0-9-]*");
 
-    /** the pattern for the key of an entry */
-    private static Pattern keyPattern = Pattern.compile("[^ \t\n\r\f\b,(){}]*");
+    /**
+     * The constant <tt>KEY_PATTERN</tt> contains the pattern for the key of
+     * an entry.
+     */
+    private static final Pattern KEY_PATTERN =
+            Pattern.compile("[^ \t\n\r\f\b,(){}]*");
 
     /**
      * Creates a new object.
@@ -268,9 +280,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         try {
             close();
         } catch (IOException e) {
-            // TODO gene: error handling unimplemented
-            e.printStackTrace();
-            throw new RuntimeException("unimplemented");
+            // shit happens
         }
     }
 
@@ -297,11 +307,11 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             throws ExBibEofException,
                 ExBibSyntaxException {
 
-        String lhs = parseToken(lhsPattern);
+        String lhs = parseToken(LHS_PATTERN);
 
         if (lhs.equals("")) {
             throw new ExBibSyntaxException(Messages
-                .format("BibReader099Impl.Attribute_name_expected"), //$NON-NLS-1$
+                .format("BibReader099Impl.Attribute_name_expected"),
                 getLocator());
         }
 
@@ -317,7 +327,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      */
     protected String parseKey() {
 
-        return parseToken(keyPattern);
+        return parseToken(KEY_PATTERN);
     }
 
     /**
@@ -369,9 +379,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             char c = parseNextNonSpace(true);
 
             if (c == '\0') {
-                throw new ExBibEofException(Messages
-                    .format("BibReader099Impl.while_reading_attribute_value"),
-                    getLocator());
+                throw new ExBibEofException("", getLocator());
             }
 
             StringBuffer buffer = getBuffer();
@@ -531,6 +539,6 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
         comment.append(buffer.substring(0, i));
         buffer.delete(0, i + 1);
-        return parseToken(recordPattern);
+        return parseToken(RECORD_PATTERN);
     }
 }

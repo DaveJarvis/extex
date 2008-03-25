@@ -52,7 +52,6 @@ import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
-import org.extex.exbib.core.i18n.Messages;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.util.NotObservableException;
@@ -953,8 +952,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     public void warning(String message) {
 
         if (logger != null) {
-            logger.warning(Messages
-                .format("ProcessorCoreImpl.Warning", message));
+            logger.warning(message);
         }
         warnings++;
     }
