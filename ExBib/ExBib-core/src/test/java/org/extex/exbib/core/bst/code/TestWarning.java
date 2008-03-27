@@ -142,7 +142,7 @@ public class TestWarning extends TestCase {
         p.push(new TString("abc"));
         new Warning("warning$").execute(p, null, null);
         assertEquals("", out.toString());
-        assertEquals("Warning: abc ", err.toString());
+        assertEquals("Warning: abc", err.toString());
         assertNull(p.popUnchecked());
     }
 }
