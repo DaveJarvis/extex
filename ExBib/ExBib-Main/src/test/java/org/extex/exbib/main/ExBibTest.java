@@ -21,6 +21,7 @@ package org.extex.exbib.main;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -58,7 +59,7 @@ public class ExBibTest {
      */
     private void runTest(int code, String msg, String... args) throws Exception {
 
-        runTest(null, code, msg, args);
+        runTest("test", null, code, msg, args);
     }
 
     /**
@@ -66,17 +67,20 @@ public class ExBibTest {
      * current directory under the name <tt>test.aux</tt>. The contents can
      * be given as argument.
      * 
+     * @param basename TODO
      * @param auxx the contents of the aux file
      * @param exitCode the exit code
      * @param out the expected error output
      * @param args the invocation arguments
      * 
-     * @throws Exception
+     * @return the instance used
+     * 
+     * @throws Exception in case of an error
      */
-    private void runTest(String auxx, int exitCode, String out, String... args)
-            throws Exception {
+    private ExBib runTest(String basename, String auxx, int exitCode,
+            String out, String... args) throws Exception {
 
-        File aux = new File("test.aux");
+        File aux = new File(basename + ".aux");
         if (auxx != null) {
             Writer w = new FileWriter(aux);
             try {
@@ -101,9 +105,10 @@ public class ExBibTest {
                 exBib.close();
             }
             aux.delete();
-            new File("test.bbl").delete();
-            new File("test.blg").delete();
+            new File(basename + ".bbl").delete();
+            new File(basename + ".blg").delete();
         }
+        return exBib;
     }
 
     /**
@@ -216,7 +221,7 @@ public class ExBibTest {
     @Test
     public void testAux01() throws Exception {
 
-        runTest("", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -234,13 +239,9 @@ public class ExBibTest {
         File aux = new File("undefined.aux");
         assertFalse(aux.exists());
 
-        try {
-            runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                    + "I couldn\'t open file undefined.aux\n", "undefined.aux");
-        } finally {
-            new File("undefined.bbl").delete();
-            new File("undefined.blg").delete();
-        }
+        runTest("undefined", null, 1, "This is exbib, Version " + ExBib.VERSION
+                + "\n" + "I couldn\'t open file undefined.aux\n",
+            "undefined.aux");
     }
 
     /**
@@ -277,7 +278,7 @@ public class ExBibTest {
     @Test
     public void testAux10() throws Exception {
 
-        runTest("\\bibstyle{xyzzy}\n", 1, "This is exbib, Version "
+        runTest("test", "\\bibstyle{xyzzy}\n", 1, "This is exbib, Version "
                 + ExBib.VERSION + "\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
@@ -293,7 +294,7 @@ public class ExBibTest {
     @Test
     public void testAux11() throws Exception {
 
-        runTest("\\bibstyle{xyzzy.bst}\n", 1, "This is exbib, Version "
+        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, "This is exbib, Version "
                 + ExBib.VERSION + "\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
@@ -309,7 +310,7 @@ public class ExBibTest {
     @Test
     public void testAux12() throws Exception {
 
-        runTest("", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
@@ -326,8 +327,8 @@ public class ExBibTest {
     @Test
     public void testAux13() throws Exception {
 
-        runTest("\\bibstyle{src/test/resources/bibtex/base/plain}\n", 1,
-            "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+            1, "This is exbib, Version " + ExBib.VERSION + "\n"
                     + "I found no \\bibdata commands while reading test.aux\n"
                     + "I found no \\citation commands while reading test.aux\n"
                     + "(There were 2 errors)\n", "test.aux");
@@ -385,7 +386,7 @@ public class ExBibTest {
         runTest(
             1,
             // TODO where is this strange message coming from?
-            "[Fatal Error] :-1:-1: Premature end of file.\n"
+            "[Fatal Error] :1:1: Premature end of file.\n"
                     + "This is exbib, Version "
                     + ExBib.VERSION
                     + "\n"
@@ -476,10 +477,63 @@ public class ExBibTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testLogfile1() throws Exception {
+    public void testLogfile01() throws Exception {
 
         runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
                 + "The option \'--logfile\' needs a parameter.\n", "--logfile");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--logfile</tt> can be
+     * used to redirect the log output. It is tested that the log file is
+     * created and the ExBib instance reports the log file with getLogfile().
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLogfile02() throws Exception {
+
+        File log = new File("test.lg");
+        log.delete();
+        assertFalse(log.exists());
+
+        try {
+            ExBib exbib =
+                    runTest(
+                        "test",
+                        "",
+                        1,
+                        "This is exbib, Version "
+                                + ExBib.VERSION
+                                + "\n"
+                                + "I found no style file while reading test.aux\n"
+                                + "I found no \\bibdata commands while reading test.aux\n"
+                                + "I found no \\citation commands while reading test.aux\n",
+                        "test.aux", "-log", log.toString());
+            assertTrue(log.exists());
+            assertNotNull(exbib);
+            assertEquals("test.lg", exbib.getLogfile());
+
+        } finally {
+            log.delete();
+        }
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--logfile</tt> can be
+     * used to redirect the log output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLogfile03() throws Exception {
+
+        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+                + "I found no style file while reading test.aux\n"
+                + "I found no \\bibdata commands while reading test.aux\n"
+                + "I found no \\citation commands while reading test.aux\n",
+            "test.aux", "-log", "");
     }
 
     /**
