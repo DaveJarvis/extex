@@ -754,7 +754,7 @@ public class ExBib {
         if (logfile == null && !file.equals("") && !file.equals("-")) {
             logfile = file + BLG_FILE_EXTENSION;
         }
-        if (logfile != null) {
+        if (logfile != null && !logfile.equals("")) {
             Handler fileHandler = new FileHandler(logfile);
             fileHandler.setFormatter(new LogFormatter());
             fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
