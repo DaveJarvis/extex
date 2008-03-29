@@ -44,6 +44,7 @@ import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.engine.Engine;
 import org.extex.exbib.core.engine.EngineFactory;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.WriterFactory;
@@ -879,8 +880,12 @@ public class ExBib {
 
         } catch (ExBibImpossibleException e) {
             return logException(e, "internal.error", debug);
+        } catch (ExBibFileNotFoundException e) {
+            logger.severe(e.getLocalizedMessage() + "\n");
+            return EXIT_FAIL;
         } catch (ExBibException e) {
-            return logException(e, "Generic_format", debug);
+            logger.severe(e.getLocalizedMessage() + "\n");
+            return EXIT_FAIL;
         } catch (FileNotFoundException e) {
             return logException(e, "Generic_format", debug);
         } catch (ConfigurationException e) {
