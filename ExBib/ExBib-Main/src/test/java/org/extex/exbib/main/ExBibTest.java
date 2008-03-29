@@ -24,13 +24,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintStream;
-import java.io.Writer;
-import java.util.Calendar;
-import java.util.Locale;
 
 import org.junit.Test;
 
@@ -40,101 +34,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExBibTest {
-
-    /**
-     * The field <tt>YEAR</tt> contains the current year as four-digit string.
-     */
-    private static final String YEAR =
-            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
-
-    /**
-     * Run the command line test.
-     * 
-     * @param code the expected exit code
-     * @param msg the expected error output
-     * @param args the invocation arguments
-     * 
-     * @throws Exception in case of an error
-     */
-    private void runTest(int code, String msg, String... args) throws Exception {
-
-        runTest("test", null, code, msg, args);
-    }
-
-    /**
-     * Run the command line test. The aux file is written temporarily in the
-     * current directory under the name <tt>test.aux</tt>. The contents can
-     * be given as argument.
-     * 
-     * @param basename TODO
-     * @param auxx the contents of the aux file
-     * @param exitCode the exit code
-     * @param out the expected error output
-     * @param args the invocation arguments
-     * 
-     * @return the instance used
-     * 
-     * @throws Exception in case of an error
-     */
-    private ExBib runTest(String basename, String auxx, int exitCode,
-            String out, String... args) throws Exception {
-
-        File aux = new File(basename + ".aux");
-        if (auxx != null) {
-            Writer w = new FileWriter(aux);
-            try {
-                w.write(auxx);
-            } finally {
-                w.close();
-            }
-        }
-
-        Locale.setDefault(Locale.ENGLISH);
-        PrintStream err = System.err;
-        ExBib exBib = null;
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            System.setErr(new PrintStream(baos));
-            exBib = new ExBib();
-            assertEquals(exitCode, exBib.processCommandLine(args));
-            assertEquals(out, baos.toString().replaceAll("\r", ""));
-        } finally {
-            System.setErr(err);
-            if (exBib != null) {
-                exBib.close();
-            }
-            aux.delete();
-            new File(basename + ".bbl").delete();
-            new File(basename + ".blg").delete();
-        }
-        return exBib;
-    }
-
-    /**
-     * Run the command line test.
-     * 
-     * @param code the expected exit code
-     * @param msg the expected error output
-     * @param args the invocation arguments
-     * 
-     * @throws Exception in case of an error
-     */
-    private void runTestStarting(int code, String msg, String... args)
-            throws Exception {
-
-        Locale.setDefault(Locale.ENGLISH);
-        PrintStream err = System.err;
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            System.setErr(new PrintStream(baos));
-            assertEquals(code, ExBib.commandLine(args));
-            String s = baos.toString();
-            assertTrue(s, s.startsWith(msg));
-        } finally {
-            System.setErr(err);
-        }
-    }
+public class ExBibTest extends BibTester {
 
     /**
      * <testcase> Test that no command line option at all leads to an error.
@@ -145,8 +45,7 @@ public class ExBibTest {
     @Test
     public void test001() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Missing aux file parameter.\n");
+        runFailure(BANNER + "Missing aux file parameter.\n");
     }
 
     /**
@@ -158,8 +57,8 @@ public class ExBibTest {
     @Test
     public void test002() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--\' needs a parameter.\n", "--");
+        runFailure(BANNER + "The option \'--\' needs a parameter.\n",//
+            "--");
     }
 
     /**
@@ -171,8 +70,8 @@ public class ExBibTest {
     @Test
     public void test003() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'-\' needs a parameter.\n", "-");
+        runFailure(BANNER + "The option \'-\' needs a parameter.\n",//
+            "-");
     }
 
     /**
@@ -183,8 +82,8 @@ public class ExBibTest {
     @Test
     public void test004() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Only one aux file can be processed.\n", "abc.aux", "abc.aux");
+        runFailure(BANNER + "Only one aux file can be processed.\n",//
+            "abc.aux", "abc.aux");
     }
 
     /**
@@ -195,9 +94,8 @@ public class ExBibTest {
     @Test
     public void test005() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Only one aux file can be processed.\n", "abc.aux", "--",
-            "abc.aux");
+        runFailure(BANNER + "Only one aux file can be processed.\n",//
+            "abc.aux", "--", "abc.aux");
     }
 
     /**
@@ -208,9 +106,8 @@ public class ExBibTest {
     @Test
     public void test006() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Only one aux file can be processed.\n", "--", "abc.aux",
-            "abc.aux");
+        runFailure(BANNER + "Only one aux file can be processed.\n",//
+            "--", "abc.aux", "abc.aux");
     }
 
     /**
@@ -221,7 +118,7 @@ public class ExBibTest {
     @Test
     public void testAux01() throws Exception {
 
-        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "", 1, check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -239,8 +136,8 @@ public class ExBibTest {
         File aux = new File("undefined.aux");
         assertFalse(aux.exists());
 
-        runTest("undefined", null, 1, "This is exbib, Version " + ExBib.VERSION
-                + "\n" + "I couldn\'t open file undefined.aux\n",
+        runTest("undefined", null, 1, check.EQ, BANNER
+                + "I couldn\'t open file undefined.aux\n",//
             "undefined.aux");
     }
 
@@ -252,8 +149,8 @@ public class ExBibTest {
     @Test
     public void testAux03() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Only one aux file can be processed.\n", "abc.aux", "abc.aux");
+        runFailure(BANNER + "Only one aux file can be processed.\n",//
+            "abc.aux", "abc.aux");
     }
 
     /**
@@ -264,13 +161,12 @@ public class ExBibTest {
     @Test
     public void testAux04() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Only one aux file can be processed.\n", "abc.aux", "--",
-            "abc.aux");
+        runFailure(BANNER + "Only one aux file can be processed.\n",//
+            "abc.aux", "--", "abc.aux");
     }
 
     /**
-     * <testcase> Test that a missing bst in the aux file is reported.
+     * <testcase> Test that an unknown bst in the aux file is reported.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -278,15 +174,15 @@ public class ExBibTest {
     @Test
     public void testAux10() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy}\n", 1, "This is exbib, Version "
-                + ExBib.VERSION + "\n"
+        runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n", "test.aux");
+                + "I couldn\'t open style file xyzzy\n",//
+            "test.aux");
     }
 
     /**
-     * <testcase> Test that a missing bst in the aux file is reported.
+     * <testcase> Test that an unknown bst in the aux file is reported.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -294,11 +190,11 @@ public class ExBibTest {
     @Test
     public void testAux11() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, "This is exbib, Version "
-                + ExBib.VERSION + "\n"
+        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy.bst\n", "test.aux");
+                + "I couldn\'t open style file xyzzy.bst\n",//
+            "test.aux");
     }
 
     /**
@@ -310,12 +206,12 @@ public class ExBibTest {
     @Test
     public void testAux12() throws Exception {
 
-        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "", 1, check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n", "test.aux", "-bst",
-            "xyzzy");
+                + "I couldn\'t open style file xyzzy\n",//
+            "test.aux", "-bst", "xyzzy");
     }
 
     /**
@@ -328,10 +224,70 @@ public class ExBibTest {
     public void testAux13() throws Exception {
 
         runTest("test", "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-            1, "This is exbib, Version " + ExBib.VERSION + "\n"
+            1, check.EQ, BANNER
                     + "I found no \\bibdata commands while reading test.aux\n"
                     + "I found no \\citation commands while reading test.aux\n"
-                    + "(There were 2 errors)\n", "test.aux");
+                    + "(There were 2 errors)\n",//
+            "test.aux");
+    }
+
+    /**
+     * <testcase> Test that an unknown bst in the aux file is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux14() throws Exception {
+
+        runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
+                + "I found no \\bibdata commands while reading test.aux\n"
+                + "I found no \\citation commands while reading test.aux\n"
+                + "I couldn\'t open style file xyzzy\n",//
+            "test.aux");
+    }
+
+    /**
+     * <testcase> Test that an unknown bst in the aux file is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux15() throws Exception {
+
+        runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", 1, check.EQ,
+            BANNER + "I found no \\bibdata commands while reading test.aux\n"
+                    + "I couldn\'t open style file xyzzy\n",//
+            "test.aux");
+    }
+
+    /**
+     * <testcase> Test that an unknown bst in the aux file is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux16() throws Exception {
+
+        runTest("test", "\\citation{*}\n\\bibdata{qqq}\n\\bibstyle{xyzzy}\n",
+            1, check.EQ, BANNER + "I couldn\'t open style file xyzzy\n",
+            "test.aux");
+    }
+
+    /**
+     * <testcase> Test that a missing bibliography is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux20() throws Exception {
+
+        runTest("test", "\\citation{*}\n\\bibdata{test}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 1,
+            check.EQ, BANNER + "File `test\' not found\n",//
+            "test.aux");
     }
 
     /**
@@ -343,8 +299,8 @@ public class ExBibTest {
     @Test
     public void testBst1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--bst\' needs a parameter.\n", "--bst");
+        runFailure(BANNER + "The option \'--bst\' needs a parameter.\n",
+            "--bst");
     }
 
     /**
@@ -356,8 +312,8 @@ public class ExBibTest {
     @Test
     public void testConfig1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--config\' needs a parameter.\n", "--config");
+        runFailure(BANNER + "The option \'--config\' needs a parameter.\n",
+            "--config");
     }
 
     /**
@@ -369,9 +325,8 @@ public class ExBibTest {
     @Test
     public void testConfig2() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Configuration `exbib/undef\' not found.\n", "--config",
-            "undef");
+        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n",
+            "--config", "undef");
     }
 
     /**
@@ -383,13 +338,9 @@ public class ExBibTest {
     @Test
     public void testConfig3() throws Exception {
 
-        runTest(
-            1,
-            // TODO where is this strange message coming from?
+        runFailure(
             "[Fatal Error] :1:1: Premature end of file.\n"
-                    + "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+                    + BANNER
                     + "Configuration syntax error Premature end of file. in config/exbib/empty.xml\n",
             "--config", "empty");
     }
@@ -403,13 +354,9 @@ public class ExBibTest {
     @Test
     public void testConfig4() throws Exception {
 
-        runTest(
-            1,
-            // TODO where is this strange message coming from?
+        runFailure(
             "[Fatal Error] :4:1: XML document structures must start and end within the same entity.\n"
-                    + "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+                    + BANNER
                     + "Configuration syntax error XML document structures must start and end within\n"
                     + "the same entity. in config/exbib/incomplete.xml\n",
             "--config", "incomplete");
@@ -424,8 +371,8 @@ public class ExBibTest {
     @Test
     public void testCopying1() throws Exception {
 
-        runTestStarting(1,
-            "                 GNU LESSER GENERAL PUBLIC LICENSE\n" + "",
+        runTest("test", null, 1, check.START,
+            "                 GNU LESSER GENERAL PUBLIC LICENSE\n",//
             "--copying");
     }
 
@@ -438,11 +385,8 @@ public class ExBibTest {
     @Test
     public void testHelp1() throws Exception {
 
-        runTest(
-            1,
-            "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+        runFailure(
+            BANNER
                     + "Usage: exbib <options> file\n"
                     + "The following options are supported:\n"
                     + "\t-help\n"
@@ -467,7 +411,8 @@ public class ExBibTest {
                     + "\t-minCrossrefs value\n"
                     + "\t    Set the value for min.crossrefs. The default is 2. \n"
                     + "\t-bst style\n" + "\t-logfile file\n"
-                    + "\t-outfile file\n", "--help");
+                    + "\t-outfile file\n",//
+            "--help");
     }
 
     /**
@@ -479,8 +424,8 @@ public class ExBibTest {
     @Test
     public void testLogfile01() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--logfile\' needs a parameter.\n", "--logfile");
+        runFailure(BANNER + "The option \'--logfile\' needs a parameter.\n",
+            "--logfile");
     }
 
     /**
@@ -504,9 +449,8 @@ public class ExBibTest {
                         "test",
                         "",
                         1,
-                        "This is exbib, Version "
-                                + ExBib.VERSION
-                                + "\n"
+                        check.EQ,
+                        BANNER
                                 + "I found no style file while reading test.aux\n"
                                 + "I found no \\bibdata commands while reading test.aux\n"
                                 + "I found no \\citation commands while reading test.aux\n",
@@ -529,7 +473,7 @@ public class ExBibTest {
     @Test
     public void testLogfile03() throws Exception {
 
-        runTest("test", "", 1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runTest("test", "", 1, check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -545,7 +489,7 @@ public class ExBibTest {
     @Test
     public void testMinCrossrefs1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runFailure(BANNER
                 + "The option \'--min_crossrefs\' needs a parameter.\n",
             "--min_crossrefs");
     }
@@ -559,11 +503,8 @@ public class ExBibTest {
     @Test
     public void testMinCrossrefs2() throws Exception {
 
-        runTest(
-            1,
-            "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+        runFailure(
+            BANNER
                     + "The option \'--min_crossrefs\' needs an integer parameter.\n",
             "--min_crossrefs", "abc");
     }
@@ -577,7 +518,7 @@ public class ExBibTest {
     @Test
     public void testMinCrossrefs3() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
+        runFailure(BANNER
                 + "The option \'--min.crossrefs\' needs a parameter.\n",
             "--min.crossrefs");
     }
@@ -591,13 +532,26 @@ public class ExBibTest {
     @Test
     public void testMinCrossrefs4() throws Exception {
 
-        runTest(
-            1,
-            "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+        runFailure(
+            BANNER
                     + "The option \'--min.crossrefs\' needs an integer parameter.\n",
             "--min.crossrefs", "abc");
+    }
+
+    /**
+     * <testcase> Test that everything might go right. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOk1() throws Exception {
+
+        runTest("test", "\\citation{*}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
+            check.EQ, BANNER + "Warning: empty author in whole-journal\n"
+                    + "Warning: empty title in whole-journal\n",//
+            "test.aux");
     }
 
     /**
@@ -609,8 +563,8 @@ public class ExBibTest {
     @Test
     public void testOutfile1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--outfile\' needs a parameter.\n", "--outfile");
+        runFailure(BANNER + "The option \'--outfile\' needs a parameter.\n",
+            "--outfile");
     }
 
     /**
@@ -622,8 +576,7 @@ public class ExBibTest {
     @Test
     public void testProgName1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "The option \'--progname\' needs a parameter.\n",
+        runFailure(BANNER + "The option \'--progname\' needs a parameter.\n",
             "--progname");
     }
 
@@ -636,8 +589,9 @@ public class ExBibTest {
     @Test
     public void testProgName2() throws Exception {
 
-        runTest(1, "This is abc, Version " + ExBib.VERSION + "\n"
-                + "Missing aux file parameter.\n", "--progname", "abc");
+        runFailure("This is abc, Version " + ExBib.VERSION + "\n"
+                + "Missing aux file parameter.\n",//
+            "--progname", "abc");
     }
 
     /**
@@ -649,7 +603,8 @@ public class ExBibTest {
     @Test
     public void testQuiet1() throws Exception {
 
-        runTest(1, "Missing aux file parameter.\n", "--quiet");
+        runFailure("Missing aux file parameter.\n",//
+            "--quiet");
     }
 
     /**
@@ -661,7 +616,8 @@ public class ExBibTest {
     @Test
     public void testRelease1() throws Exception {
 
-        runTest(1, ExBib.VERSION + "\n", "--release");
+        runFailure(ExBib.VERSION + "\n",//
+            "--release");
     }
 
     /**
@@ -673,7 +629,8 @@ public class ExBibTest {
     @Test
     public void testTerse1() throws Exception {
 
-        runTest(1, "Missing aux file parameter.\n", "--terse");
+        runFailure("Missing aux file parameter.\n",//
+            "--terse");
     }
 
     /**
@@ -685,9 +642,36 @@ public class ExBibTest {
     @Test
     public void testUndefined1() throws Exception {
 
-        runTest(1, "This is exbib, Version " + ExBib.VERSION + "\n"
-                + "Unknown option \'undefined\' ignored.\n"
-                + "Missing aux file parameter.\n", "--undefined");
+        runFailure(BANNER + "Unknown option \'undefined\' ignored.\n"
+                + "Missing aux file parameter.\n",//
+            "--undefined");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--verbose</tt> works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVerbose1() throws Exception {
+
+        runTest(
+            "test",
+            "\\citation{*}\n"
+                    + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+            0,
+            check.REGEX,
+            BANNER
+                    + "The output file: test.bbl\n"
+                    + "The top-level auxiliary file: ..test.aux\n"
+                    + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                    + "Warning: empty author in whole-journal\n"
+                    + "Warning: empty title in whole-journal\n"
+                    + "\\(There were 2 warnings\\)\n" //
+                    + "Runtime [0-9]* ms\n",//
+            "--verbose", "test.aux");
     }
 
     /**
@@ -699,18 +683,16 @@ public class ExBibTest {
     @Test
     public void testVersion1() throws Exception {
 
-        runTest(
-            1,
-            "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+        runFailure(
+            BANNER
                     + "Copyright (C) 2002-"
                     + YEAR
                     + " Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).\n"
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n", "--version");
+                    + "switch -copying.\n",//
+            "--version");
     }
 
     /**
@@ -722,18 +704,16 @@ public class ExBibTest {
     @Test
     public void testVersion2() throws Exception {
 
-        runTest(
-            1,
-            "This is exbib, Version "
-                    + ExBib.VERSION
-                    + "\n"
+        runFailure(
+            BANNER
                     + "Copyright (C) 2002-"
                     + YEAR
                     + " Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).\n"
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n", "--vers");
+                    + "switch -copying.\n",//
+            "--vers");
     }
 
 }
