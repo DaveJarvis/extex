@@ -28,6 +28,7 @@ import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -59,7 +60,7 @@ public class BstReadImpl extends AbstractCommand implements Command {
         try {
             processor.loadDB();
         } catch (FileNotFoundException e) {
-            throw new ExBibException(e.getMessage(), e);
+            throw new ExBibFileNotFoundException(e.getMessage(), null);
         }
     }
 
