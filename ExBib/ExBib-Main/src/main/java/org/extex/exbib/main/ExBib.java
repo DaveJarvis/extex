@@ -48,7 +48,7 @@ import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.WriterFactory;
-import org.extex.exbib.core.io.bblio.BblWriter;
+import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.bstio.BstReader;
 import org.extex.exbib.core.io.bstio.BstReaderFactory;
@@ -61,6 +61,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This class contains the main program for ExBib.
@@ -191,15 +192,15 @@ public class ExBib {
         try {
             exBib = new ExBib();
             return exBib.processCommandLine(argv);
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             Logger logger = Logger.getLogger(ExBib.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
-
             Handler consoleHandler = new ConsoleHandler();
             consoleHandler.setFormatter(new LogFormatter());
             consoleHandler.setLevel(Level.WARNING);
             logger.addHandler(consoleHandler);
+            logger.severe(e.toString());
             return EXIT_FAIL;
         } finally {
             if (exBib != null) {
@@ -221,9 +222,21 @@ public class ExBib {
     }
 
     /**
-     * The field <tt>programName</tt> contains the name of the program.
+     * The field <tt>banner</tt> contains the indicator that the banner has
+     * already been printed.
      */
-    private String programName = "exbib";
+    private boolean banner = false;
+
+    /**
+     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     */
+    private ResourceBundle bundle;
+
+    /**
+     * The field <tt>consoleHandler</tt> contains the console handler for log
+     * messages. It can be used to modify the log level for the console.
+     */
+    private Handler consoleHandler;
 
     /**
      * The field <tt>bst</tt> contains the name of the Bib style.
@@ -237,6 +250,16 @@ public class ExBib {
     private String configSource = CONFIGURATION_DEFAULT;
 
     /**
+     * The field <tt>debug</tt> contains the indicator for debugging output.
+     */
+    private boolean debug = false;
+
+    /**
+     * The field <tt>errors</tt> contains the number of errors reported.
+     */
+    private int errors = 0;
+
+    /**
      * The field <tt>logfile</tt> contains the name of the log file.
      */
     private String logfile = null;
@@ -246,14 +269,20 @@ public class ExBib {
      */
     private String outfile = null;
 
-    /** indicator for debugging output */
-    private boolean debug = false;
+    /**
+     * The field <tt>programName</tt> contains the name of the program.
+     */
+    private String programName = "exbib";
 
-    /** indicator for terminal dump */
+    /**
+     * The field <tt>dump</tt> contains the indicator for terminal dump.
+     */
     private boolean dump = false;
 
-    /** indicator for trace output */
-    private boolean trace = false;
+    /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger;
 
     /**
      * The field <tt>minCrossrefs</tt> contains the <tt>min.crossrefs</tt>
@@ -262,31 +291,9 @@ public class ExBib {
     private int minCrossrefs = 2;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field <tt>trace</tt> contains the indicator for trace output.
      */
-    private Logger logger;
-
-    /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
-     */
-    private ResourceBundle bundle;
-
-    /**
-     * The field <tt>banner</tt> contains the indicator that the banner has
-     * already been printed.
-     */
-    private boolean banner = false;
-
-    /**
-     * The field <tt>consoleHandler</tt> contains the console handler for log
-     * messages. It can be used to modify the log level for the console.
-     */
-    private Handler consoleHandler;
-
-    /**
-     * The field <tt>errors</tt> contains the number of errors reported.
-     */
-    private int errors = 0;
+    private boolean trace = false;
 
     /**
      * Creates a new object.
@@ -316,6 +323,7 @@ public class ExBib {
             logger.removeHandler(h);
         }
         consoleHandler = null;
+        logger = null;
     }
 
     /**
@@ -524,7 +532,7 @@ public class ExBib {
             try {
                 is.close();
             } catch (IOException e) {
-                // ignore it
+                // finally ignore it
             }
         }
         logger.severe(sb.toString());
@@ -543,7 +551,7 @@ public class ExBib {
      */
     private int logException(Throwable e, String tag, boolean debug) {
 
-        logBanner(tag, e.toString());
+        logBanner(tag, e.getLocalizedMessage());
 
         if (debug) {
             logger.throwing("", "", e);
@@ -594,10 +602,8 @@ public class ExBib {
             }
         }
 
-        // TODO: use BblWriterFactory
-        writer = new BblWriter(writer);
-        writer.configure(cfg.getConfiguration("BblWriter"));
-        return writer;
+        return new BblWriterFactory(cfg.getConfiguration("BblWriter"))
+            .newInstance(writer);
     }
 
     /**
@@ -767,7 +773,11 @@ public class ExBib {
 
         try {
             writer = makeBblWriter(file, writerFactory, topConfiguration);
+        } catch (FileNotFoundException e) {
+            return log("output.could.not.be.opened", e.getMessage());
+        }
 
+        try {
             FuncallObserver funcall =
                     (trace ? new FuncallObserver(logger) : null);
 
@@ -789,8 +799,6 @@ public class ExBib {
 
                 bibliography.registerObserver("run", new TracingObserver(
                     logger, bundle.getString("do_msg")));
-                bibliography.registerObserver("startRead", new DBObserver(
-                    logger, bundle.getString("observer.db.pattern")));
                 bibliography.registerObserver("step", funcall);
                 bibliography.registerObserver("push", new TracingObserver(
                     logger, bundle.getString("push_msg")));
@@ -800,6 +808,8 @@ public class ExBib {
                 bibliography.registerObserver("endParse", new TracingObserver(
                     logger, bundle.getString("end_parse_msg")));
             }
+            bibliography.registerObserver("startRead", new DBObserver(logger,
+                bundle.getString("observer.db.pattern")));
 
             Engine engine = new EngineFactory(//
                 topConfiguration.getConfiguration("Engine")).newInstance();
@@ -886,12 +896,12 @@ public class ExBib {
         } catch (ExBibException e) {
             logger.severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
-        } catch (FileNotFoundException e) {
-            return logException(e, "Generic_format", debug);
+        } catch (ConfigurationWrapperException e) {
+            return logException(e, "installation.error", debug);
         } catch (ConfigurationException e) {
             return logException(e, "Generic_format", debug);
         } catch (NoClassDefFoundError e) {
-            return logException(e, "Installation_Error", debug);
+            return logException(e, "installation.error", debug);
         } catch (Throwable e) {
             return logException(e, "internal.error", debug);
         } finally {
