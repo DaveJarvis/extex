@@ -20,7 +20,7 @@
 -->
 <exbib>
 
-  <Writers src="files.xml"/>
+  <Writers src="exbib/files.xml"/>
   
   <Processor class="org.extex.exbib.core.bst.Processor099Impl">
   </Processor>
