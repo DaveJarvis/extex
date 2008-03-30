@@ -62,6 +62,6 @@ public class TracingObserver implements Observer {
      */
     public void update(Observable source, Object obj) {
 
-        logger.info(prefix + (obj != null ? obj.toString() : ""));
+        logger.info(prefix + " " + (obj != null ? obj.toString() : "") + "\n");
     }
 }
