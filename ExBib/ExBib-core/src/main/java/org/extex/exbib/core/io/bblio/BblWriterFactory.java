@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,9 +22,9 @@ package org.extex.exbib.core.io.bblio;
 
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReaderImpl;
+import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -44,7 +44,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BblWriterFactory {
+public class BblWriterFactory extends AbstractFactory {
 
     /**
      * The field <tt>config</tt> contains the configuration.
@@ -65,9 +65,9 @@ public class BblWriterFactory {
     }
 
     /**
-     * Allocates anew instance of a BblWriter.
+     * Allocates a new instance of a BblWriter.
      * 
-     * @param targetWriter ...
+     * @param targetWriter the writer to wrap
      * 
      * @return a new instance of a BblWriter
      * 
@@ -76,18 +76,7 @@ public class BblWriterFactory {
     public synchronized Writer newInstance(Writer targetWriter)
             throws ConfigurationException {
 
-        Writer writer;
-
-        try {
-            writer =
-                    (Writer) Class.forName(config.getAttribute("class"))
-                        .newInstance();
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
-        // writer.setWriter(targetWriter);
-        writer.configure(config);
-
-        return writer;
+        return (BblWriter) createInstanceForConfiguration(config,
+            BblWriter.class, targetWriter);
     }
 }
