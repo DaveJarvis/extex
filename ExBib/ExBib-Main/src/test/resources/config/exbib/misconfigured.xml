@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  This file is part of ExBib a BibTeX compatible database.
+  Copyright (C) 2003-2008 Gerd Neugebauer
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+  02111-1307 USA
+-->
+<exbib>
+  
+  <Writers src="exbib/files.xml"/>
+  
+  <Processor class="undefined.Undefined">
+    <minCrossrefs>2</minCrossrefs>
+    <globalMax>32000</globalMax>
+  </Processor>
+
+  <BblWriter class="org.extex.exbib.core.io.bblio.BblWriter">
+    <linelength>79</linelength>
+    <indent>  </indent>
+  </BblWriter>
+
+  <DB class="org.extex.exbib.core.db.impl.DBImpl">
+    <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl">
+      <Order locale="en"/>
+    </Sorter>
+  </DB>
+
+  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
+    <aux>
+      <extension></extension>
+      <extension>.aux</extension>
+      <path>.</path>
+      <path></path>
+    </aux>
+  </Engine>
+
+  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl">
+    <bst>
+      <extension></extension>
+      <extension>.bcd</extension>
+      <extension>.bst</extension>
+      <path>.</path>
+      <path></path>
+    </bst>
+  </BstReader>
+
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl">
+    <bib>
+      <extension></extension>
+      <extension>.bib</extension>
+      <path>.</path>
+      <path></path>
+    </bib>
+  </BibReader>
+
+  <BibPrinter name="bib"
+              class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/>
+  <BibPrinter name="xml"
+              class="org.extex.exbib.core.io.bibio.BibPrinterXMLImpl"/>
+  <BibPrinter name="lisp"
+              class="org.extex.exbib.core.io.bibio.BibPrinterLispImpl"/>
+
+</exbib>
+  

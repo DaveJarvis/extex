@@ -103,7 +103,7 @@ public class BibTester {
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
      * @param exitCode the exit code
-     * @param checkOut TODO
+     * @param checkOut the tpe of check to use
      * @param out the expected error output
      * @param args the invocation arguments
      * @return the instance used
@@ -130,7 +130,7 @@ public class BibTester {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             System.setErr(new PrintStream(baos));
             exBib = new ExBib();
-            assertEquals(exitCode, exBib.processCommandLine(args));
+            int code = exBib.processCommandLine(args);
             if (out != null) {
                 String s = baos.toString().replaceAll("\r", "");
                 switch (checkOut) {
@@ -148,6 +148,7 @@ public class BibTester {
                         // igonore
                 }
             }
+            assertEquals("exit code", exitCode, code);
         } finally {
             System.setErr(err);
             if (exBib != null) {

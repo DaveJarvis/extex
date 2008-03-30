@@ -22,9 +22,15 @@ package org.extex.exbib.main;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintStream;
+import java.io.Writer;
+import java.util.Locale;
 
 import org.junit.Test;
 
@@ -363,6 +369,23 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that a misconfiguration is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConfig5() throws Exception {
+
+        runFailure(
+            BANNER
+                    + "Installation Error: Some parts of exbib could not be found: \n"
+                    + "\tConfiguration error\n"
+                    + "\tcaused by undefined.Undefined\n"
+                    + "\tConsult the log file for details.\n",//
+            "--config", "misconfigured", "test");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--copying</tt> works.
      * </testcase>
      * 
@@ -546,12 +569,59 @@ public class ExBibTest extends BibTester {
     @Test
     public void testOk1() throws Exception {
 
-        runTest("test", "\\citation{*}\n"
-                + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
-                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-            check.EQ, BANNER + "Warning: empty author in whole-journal\n"
-                    + "Warning: empty title in whole-journal\n",//
-            "test.aux");
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{*}\n"
+                            + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                    0, check.EQ, BANNER
+                            + "Warning: empty author in whole-journal\n"
+                            + "Warning: empty title in whole-journal\n",//
+                    "test.aux");
+        assertEquals("exbib", exbib.getProgramName());
+        assertEquals("test.bbl", exbib.getOutfile());
+        assertEquals("test.blg", exbib.getLogfile());
+        assertFalse("trace", exbib.isTrace());
+        assertFalse("trace", exbib.isDebug());
+        assertNull("logger", exbib.getLogger()); // since closed already
+    }
+
+    /**
+     * <testcase> Test that everything might go right using the static method.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOk2() throws Exception {
+
+        String[] args = {"test.aux"};
+        File aux = new File("test.aux");
+        Writer w = new FileWriter(aux);
+        try {
+            w.write("\\citation{*}\n"
+                    + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n");
+        } finally {
+            w.close();
+        }
+
+        Locale.setDefault(Locale.ENGLISH);
+        PrintStream err = System.err;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(baos));
+            assertEquals(0, ExBib.commandLine(args));
+            assertEquals(BANNER + "Warning: empty author in whole-journal\n"
+                    + "Warning: empty title in whole-journal\n", baos
+                .toString().replaceAll("\r", ""));
+        } finally {
+            System.setErr(err);
+            aux.delete();
+            new File("test.bbl").delete();
+            new File("test.blg").delete();
+        }
     }
 
     /**
@@ -568,6 +638,79 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--outfile</tt> needs a
+     * legal argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOutfile2() throws Exception {
+
+        runFailure(
+            BANNER
+                    + "The output file: some/file/for/writing\n"
+                    + "The output file `some/file/for/writing\' could not be opened.\n",//
+            "-v", "--outfile", "some/file/for/writing", "test.aux");
+    }
+
+    /**
+     * <testcase> Test that the output can e redirected to stdout. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOutfile3() throws Exception {
+
+        PrintStream out = System.out;
+
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(baos));
+            runTest("test", "\\citation{*}\n"
+                    + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
+                check.EQ, null,//
+                "test.aux", "--out", "-");
+            assertTrue(baos
+                .toString()
+                .replaceAll("\r", "")
+                .startsWith(
+                    "\\newcommand{\\noopsort}[1]{} \\newcommand{\\printfirst}[2]{#1}\n"
+                            + "  \\newcommand{\\singleletter}[1]{#1} \\newcommand{\\switchargs}[2]{#2#1}\n"
+                            + "\\begin{thebibliography}{10}\n"
+                            + "\n"
+                            + "\\bibitem{article-minimal}\n"
+                            + "L[eslie]~A. Aamport.\n"
+                            + "\\newblock The gnats and gnus document preparation system.\n"
+                            + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 1986.\n"
+                            + "\n"
+                            + "\\bibitem{article-full}\n"
+                            + "L[eslie]~A. Aamport.\n"
+                            + "\\newblock The gnats and gnus document preparation system.\n"
+                            + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 41(7):73+, July 1986.\n"
+                            + "\\newblock This is a full ARTICLE entry.\n"));
+        } finally {
+            System.setOut(out);
+        }
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--outfile</tt> takes
+     * an empty argument to discard the output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOutfile4() throws Exception {
+
+        runTest("test", "\\citation{*}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
+            check.EQ, null,//
+            "test.aux", "-v", "--out", "");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--progname</tt> needs
      * an argument. </testcase>
      * 
@@ -578,6 +721,26 @@ public class ExBibTest extends BibTester {
 
         runFailure(BANNER + "The option \'--progname\' needs a parameter.\n",
             "--progname");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--progname</tt> can be
+     * queried with getProgramName(). </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testProgName11() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{*}\n"
+                            + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                    0, check.EQ, null,//
+                    "--progname", "xxx", "test.aux");
+        assertEquals("xxx", exbib.getProgramName());
     }
 
     /**
@@ -621,6 +784,33 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that everything might go right in strict mode.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testStrict1() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{*}\n"
+                            + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                    0, check.EQ, BANNER
+                            + "Warning: empty author in whole-journal\n"
+                            + "Warning: empty title in whole-journal\n",//
+                    "test.aux", "--strict");
+        assertEquals("exbib", exbib.getProgramName());
+        assertEquals("test.bbl", exbib.getOutfile());
+        assertEquals("test.blg", exbib.getLogfile());
+        assertFalse("trace", exbib.isTrace());
+        assertFalse("trace", exbib.isDebug());
+        assertNull("logger", exbib.getLogger()); // since closed already
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--terse</tt> is
      * honored. </testcase>
      * 
@@ -631,6 +821,45 @@ public class ExBibTest extends BibTester {
 
         runFailure("Missing aux file parameter.\n",//
             "--terse");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--trace</tt> works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testTrace1() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{*}\n"
+                            + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                    0,
+                    check.START, //
+                    BANNER
+                            + "The output file: test.bbl\n"
+                            + "The top-level auxiliary file: .\\test.aux\n"
+                            + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                            + "--- do READ\n"
+                            + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
+                            + "--- do ITERATE { presort }\n"//
+                            + "--- step presort\n"//
+                            + "--- step type$\n"//
+                            + "--- push \"article\"\n"//
+                            + "--- step \"book\"\n"//
+                            + "--- push \"book\"\n"//
+                            + "--- step =\n"//
+                            + "--- push #0\n"//
+                            + "--- step type$\n"//
+                            + "--- push \"article\"\n"//
+                            + "--- step \"inbook\"\n"//
+                            + "--- push \"inbook\"\n",//
+                    "--trace", "--verbose", "test.aux");
+        assertTrue("trace", exbib.isTrace());
     }
 
     /**
@@ -667,6 +896,7 @@ public class ExBibTest extends BibTester {
                     + "The output file: test.bbl\n"
                     + "The top-level auxiliary file: ..test.aux\n"
                     + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                    + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
                     + "Warning: empty author in whole-journal\n"
                     + "Warning: empty title in whole-journal\n"
                     + "\\(There were 2 warnings\\)\n" //
