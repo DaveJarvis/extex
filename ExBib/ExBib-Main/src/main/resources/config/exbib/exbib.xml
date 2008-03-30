@@ -20,6 +20,8 @@
 -->
 <exbib>
   
+  <Resource src="path/exbibFinder"/>
+  
   <Writers src="exbib/files.xml"/>
   
   <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
