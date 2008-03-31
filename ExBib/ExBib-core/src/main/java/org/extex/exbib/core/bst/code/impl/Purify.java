@@ -21,6 +21,7 @@
 package org.extex.exbib.core.bst.code.impl;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.exbib.core.bst.Processor;
@@ -29,6 +30,8 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * BibT<sub>E</sub>X built-in function <code>purify$</code>
@@ -62,32 +65,7 @@ public class Purify extends AbstractCode {
     /**
      * The field <tt>special</tt> contains the mapping of special characters.
      */
-    private static Map<String, String> special = newSpecial();
-
-    /**
-     * Initialize the map of preserved control sequences.
-     * 
-     * @return the new map
-     */
-    private static Map<String, String> newSpecial() {
-
-        // TODO: read from config
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("l", "l");
-        map.put("L", "L");
-        map.put("i", "i");
-        map.put("j", "j");
-        map.put("o", "o");
-        map.put("O", "O");
-        map.put("aa", "aa");
-        map.put("AA", "AA");
-        map.put("ss", "ss");
-        map.put("oe", "oe");
-        map.put("OE", "OE");
-        map.put("ae", "ae");
-        map.put("AE", "AE");
-        return map;
-    }
+    private Map<String, String> special;
 
     /**
      * Create a new object.
@@ -109,15 +87,55 @@ public class Purify extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
+     *      org.extex.framework.configuration.Configuration)
+     */
+    @Override
+    public void configure(Configuration config) throws ConfigurationException {
+
+        super.configure(config);
+        special = new HashMap<String, String>();
+        special.put("l", "l");
+        special.put("L", "L");
+        special.put("i", "i");
+        special.put("j", "j");
+        special.put("o", "o");
+        special.put("O", "O");
+        special.put("aa", "aa");
+        special.put("AA", "AA");
+        special.put("ss", "ss");
+        special.put("oe", "oe");
+        special.put("OE", "OE");
+        special.put("ae", "ae");
+        special.put("AE", "AE");
+
+        if (config == null) {
+            return;
+        }
+        if (config.getAttribute("clear") != null) {
+            special = new HashMap<String, String>();
+        }
+        Iterator<Configuration> it = config.iterator("special");
+        while (it.hasNext()) {
+            Configuration cfg = it.next();
+            String s = cfg.getValue();
+            special.put(s, s);
+        }
+    }
+
+    /**
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        StringBuffer sb =
-                new StringBuffer(processor.popString(locator).getValue());
+        StringBuilder sb =
+                new StringBuilder(processor.popString(locator).getValue());
         int level = 0;
 
         for (int i = 0; i < sb.length();) {
