@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -61,7 +61,7 @@ public class TestType extends TestCase {
     }
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db = null;
 
@@ -105,9 +105,9 @@ public class TestType extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A lowercase type is taken as is. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
@@ -119,9 +119,9 @@ public class TestType extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A cased type is taken as is. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
@@ -133,14 +133,14 @@ public class TestType extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An uppercase type is taken as is. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         Entry e = new Entry(null);
-        e.setType("Book");
+        e.setType("BOOK");
         new Type("type$").execute(p, e, null);
         assertEquals("book", p.popString(null).getValue());
         assertNull(p.popUnchecked());
