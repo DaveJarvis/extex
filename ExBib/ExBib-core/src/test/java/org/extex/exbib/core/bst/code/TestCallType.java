@@ -124,7 +124,7 @@ public class TestCallType extends TestCase implements Code {
 
         db = new DBImpl();
         p = new Processor099Impl(db, new NullWriter(null), null);
-        p.addFunction("book", this);
+        p.addFunction("book", this, null);
     }
 
     /**
@@ -198,7 +198,7 @@ public class TestCallType extends TestCase implements Code {
         assertNull(p.popUnchecked());
         assertTrue(!executed);
 
-        p.addFunction("article", this);
+        p.addFunction("article", this, null);
         new CallType("call.type$").execute(p, e, null);
         assertNull(p.popUnchecked());
         assertTrue(executed);
@@ -218,7 +218,7 @@ public class TestCallType extends TestCase implements Code {
         assertNull(p.popUnchecked());
         assertTrue(!executed);
 
-        p.addFunction("default.type", this);
+        p.addFunction("default.type", this, null);
         new CallType("call.type$").execute(p, e, null);
         assertNull(p.popUnchecked());
         assertTrue(executed);

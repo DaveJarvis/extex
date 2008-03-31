@@ -101,7 +101,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -116,7 +116,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testInteger() throws Exception {
 
@@ -129,7 +129,7 @@ public class TestAddPeriod extends TestCase {
      * TODO gene: missing JavaDoc
      * 
      * @param in
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     private void testNoAdd(String in) throws Exception {
 
@@ -141,7 +141,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoAddEmpty() throws Exception {
 
@@ -151,7 +151,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoAddExclamationMark() throws Exception {
 
@@ -165,7 +165,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoAddPeriod() throws Exception {
 
@@ -178,7 +178,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoAddQuestionMark() throws Exception {
 
@@ -191,7 +191,7 @@ public class TestAddPeriod extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testString() throws Exception {
 

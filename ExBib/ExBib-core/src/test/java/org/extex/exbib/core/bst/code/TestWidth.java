@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -65,19 +65,19 @@ public class TestWidth extends TestCase {
     private Processor p = null;
 
     /**
-     * The field <tt>err</tt> contains the ...
+     * The field <tt>err</tt> contains the error output.
      */
     private StringBuffer err = new StringBuffer();
 
     /**
-     * The field <tt>out</tt> contains the ...
+     * The field <tt>out</tt> contains the standard output.
      */
     private StringBuffer out = new StringBuffer();
 
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestWidth(String name) {
 
@@ -107,12 +107,12 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test.
      * 
-     * @param s ...
-     * @param w ...
+     * @param s the string to be tested
+     * @param w the expected width
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     private void testWidth(String s, int w) throws Exception {
 
@@ -125,9 +125,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "ae". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0110() throws Exception {
 
@@ -135,9 +135,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "\AE". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0111() throws Exception {
 
@@ -145,9 +145,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "oe". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0112() throws Exception {
 
@@ -155,9 +155,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "\OE". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0113() throws Exception {
 
@@ -165,9 +165,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "\singleletter". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0114() throws Exception {
 
@@ -175,9 +175,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ".\singleletter.". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0115() throws Exception {
 
@@ -185,9 +185,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "OX{\\singleletter{stoc}}83b". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0116() throws Exception {
 
@@ -195,9 +195,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "OXstoc83b". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth0117() throws Exception {
 
@@ -205,9 +205,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "abc". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth012() throws Exception {
 
@@ -215,9 +215,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test lowercase letters. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth013() throws Exception {
 
@@ -225,9 +225,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ".,-=)(/&%$§!". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth014() throws Exception {
 
@@ -235,9 +235,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "{}". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth015() throws Exception {
 
@@ -245,9 +245,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "AA". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth016() throws Exception {
 
@@ -255,9 +255,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "\AA". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth017() throws Exception {
 
@@ -265,9 +265,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "ss". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth018() throws Exception {
 
@@ -275,9 +275,9 @@ public class TestWidth extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test "\ss". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testWidth019() throws Exception {
 

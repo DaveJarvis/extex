@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -46,15 +46,15 @@ import org.extex.exbib.core.io.NullWriter;
 public class TestWhile extends TestCase {
 
     /**
-     * TODO gene: missing JavaDoc.
-     * 
+     * The code to be repeated.
      */
     private class BodyCode extends AbstractCode {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(org.extex.exbib.core.bst.Processor,
+         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
+         *      org.extex.exbib.core.bst.Processor,
          *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         @Override
@@ -66,20 +66,19 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
-     * 
+     * The code to do the check.
      */
     private class CondCode extends AbstractCode {
 
         /**
-         * The field <tt>rep</tt> contains the ...
+         * The field <tt>rep</tt> contains the repetition counter.
          */
         private int rep;
 
         /**
          * Creates a new object.
          * 
-         * @param rep
+         * @param rep the repetition counter
          */
         public CondCode(int rep) {
 
@@ -89,7 +88,8 @@ public class TestWhile extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(org.extex.exbib.core.bst.Processor,
+         * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
+         *      org.extex.exbib.core.bst.Processor,
          *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
          */
         @Override
@@ -99,8 +99,6 @@ public class TestWhile extends TestCase {
             condCount++;
             processor
                 .push(rep-- > 0 ? TokenFactory.T_ONE : TokenFactory.T_ZERO);
-
-            // System.err.println("else");
         }
     }
 
@@ -125,17 +123,17 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * The field <tt>bodyCount</tt> contains the ...
+     * The field <tt>bodyCount</tt> contains the body counter.
      */
     protected int bodyCount = 0;
 
     /**
-     * The field <tt>condCount</tt> contains the ...
+     * The field <tt>condCount</tt> contains the condition counter.
      */
     protected int condCount = 0;
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db = null;
 
@@ -147,7 +145,7 @@ public class TestWhile extends TestCase {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestWhile(String name) {
 
@@ -164,7 +162,7 @@ public class TestWhile extends TestCase {
 
         db = new DBImpl();
         p = new Processor099Impl(db, new NullWriter(null), null);
-        p.addFunction("body", new BodyCode());
+        p.addFunction("body", new BodyCode(), null);
     }
 
     /**
@@ -180,13 +178,14 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * <testcase> The body is not executed when the condition immediately fails.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
-        p.addFunction("cond0", new CondCode(0));
+        p.addFunction("cond0", new CondCode(0), null);
         bodyCount = condCount = 0;
         p.push(new TLiteral("cond0"));
         p.push(new TLiteral("body"));
@@ -197,13 +196,14 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * <testcase> The body is executed once if the condition fails the second
+     * time it is invoked. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        p.addFunction("cond1", new CondCode(1));
+        p.addFunction("cond1", new CondCode(1), null);
         bodyCount = condCount = 0;
         p.push(new TLiteral("cond1"));
         p.push(new TLiteral("body"));
@@ -214,13 +214,14 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * <testcase> The body is executed 12 times if the condition fails the 13th
+     * time it is invoked. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test12() throws Exception {
 
-        p.addFunction("cond12", new CondCode(12));
+        p.addFunction("cond12", new CondCode(12), null);
         bodyCount = condCount = 0;
         p.push(new TLiteral("cond12"));
         p.push(new TLiteral("body"));
@@ -231,7 +232,7 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * <testcase> The empoty stack leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -246,7 +247,8 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * <testcase> TODO gene: missing JavaDoc </testcase>
+     * <testcase> A stack containing only one element leads to an error.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

@@ -29,7 +29,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a sorter which used a csf file to read a configuration from.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,17 +37,17 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class CsfSorter implements Comparator<Entry>, Sorter {
 
     /**
-     * The field <tt>ord</tt> contains the ...
+     * The field <tt>ord</tt> contains the order mapping.
      */
     private int ord[] = new int[256];
 
     /**
-     * The field <tt>upper</tt> contains the ...
+     * The field <tt>upper</tt> contains the uppercase mapping.
      */
     private char upper[] = new char[256];
 
     /**
-     * The field <tt>lower</tt> contains the ...
+     * The field <tt>lower</tt> contains the lowercase mapping.
      */
     private char lower[] = new char[256];
 
@@ -152,7 +152,7 @@ public class CsfSorter implements Comparator<Entry>, Sorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for the order mapping.
      * 
      * @param c the character
      * @param on the ordinal number

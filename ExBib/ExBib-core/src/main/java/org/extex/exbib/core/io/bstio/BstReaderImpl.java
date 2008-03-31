@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -468,9 +468,11 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      * 
      * @param processor the processor context to store the result in
      * 
-     * @throws ExBibException ...
-     * @throws FileNotFoundException ...
-     * @throws ConfigurationException ...
+     * @throws FileNotFoundException in case that the requested file could not
+     *         be opened for reading
+     * @throws ConfigurationException in case that the reading apparatus detects
+     *         a misconfiguration
+     * @throws ExBibException in case of an syntax error
      * @throws ExBibEofException in case that the end of file has been reached
      *         before the legal end
      * @throws ExBibSyntaxException in case of an syntax error
@@ -580,7 +582,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                                 : token.toString()), getLocator());
                     }
 
-                    token = new TQLiteral(null, token.getValue());
+                    token = new TQLiteral(token.getValue(), null);
                 } else {
                     throw new ExBibUnexpectedException(val, null, getLocator());
                 }
@@ -728,9 +730,9 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                     List<String> entries = parseLiteralList().toStringList();
                     List<String> integers = parseLiteralList().toStringList();
                     List<String> strings = parseLiteralList().toStringList();
-                    processor.setEntries(entries);
-                    processor.setEntryIntegers(integers);
-                    processor.setEntryStrings(strings);
+                    processor.setEntries(entries, token.getLocator());
+                    processor.setEntryIntegers(integers, token.getLocator());
+                    processor.setEntryStrings(strings, token.getLocator());
                     return true;
                 } else if ("execute".equals(name)) {
                     Token value = parseLiteralArg();
@@ -746,7 +748,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                     String fname = parseLiteralArg().getValue();
                     TBlock body = parseBlock();
                     processor.addFunction(fname, new MacroCode(name, body
-                        .getTokenList()));
+                        .getTokenList()), token.getLocator());
                     return true;
                 }
 

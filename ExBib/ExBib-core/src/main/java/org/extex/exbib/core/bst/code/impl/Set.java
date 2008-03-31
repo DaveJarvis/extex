@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -75,8 +75,9 @@ public class Set extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
@@ -98,7 +99,7 @@ public class Set extends AbstractCode {
         } else if (code instanceof TField) {
             entry.set(var, processor.popString(locator).getValue());
         } else {
-            processor.changeFunction(var, processor.pop(locator));
+            processor.changeFunction(var, processor.pop(locator), locator);
         }
     }
 }

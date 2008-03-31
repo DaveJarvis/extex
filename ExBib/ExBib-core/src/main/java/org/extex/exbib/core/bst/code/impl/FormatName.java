@@ -496,7 +496,7 @@ public class FormatName extends AbstractCode {
          * @param sep the separator
          * @param locator the locator
          * 
-         * @throws ExBibException in case that ...
+         * @throws ExBibException in case of an error
          */
         protected void appendInitial(StringBuffer buffer, String s, String sep,
                 Locator locator) throws ExBibException {
@@ -569,10 +569,10 @@ public class FormatName extends AbstractCode {
          * @param buffer the target StringBuffer
          * @param list the list of constituents of the name part
          * @param midDefault the default value if the attribute mid is not set
-         * @param n ...
+         * @param lineLength the line length
          */
         protected void fmtFull(StringBuffer buffer, List<String> list,
-                String midDefault, int n) {
+                String midDefault, int lineLength) {
 
             Iterator<String> iterator = list.iterator();
 
@@ -584,7 +584,7 @@ public class FormatName extends AbstractCode {
                 buffer.append(iterator.next());
 
                 while (iterator.hasNext()) {
-                    buffer.append(i++ == n ? t : m);
+                    buffer.append(i++ == lineLength ? t : m);
                     buffer.append(iterator.next());
                 }
 
@@ -599,7 +599,7 @@ public class FormatName extends AbstractCode {
          * @param buffer the target StringBuffer
          * @param list the list of constituents of the name part
          * @param midDefault the default value if the attribute mid is not set
-         * @param n ...
+         * @param n the line length?
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found

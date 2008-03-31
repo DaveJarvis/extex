@@ -79,6 +79,18 @@ public class TBlock extends AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     *      org.extex.exbib.core.bst.Processor)
+     */
+    @Override
+    public String expand(Processor processor) {
+
+        return theValue.expand(processor);
+    }
+
+    /**
      * Getter for the TokenList contained in this block.
      * 
      * @return the contents
@@ -101,11 +113,13 @@ public class TBlock extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.node.Token#visit(org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.node.Token#visit(
+     *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitBlock(this);
     }
+
 }

@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -162,12 +162,15 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     private int globalMax = 0x7fff;
 
     /**
-     * the minCrossrefs parameter. This value is overwritten from a
-     * configuration and passed to the database.
+     * The field <tt>minCrossrefs</tt> contains the minCrossrefs parameter.
+     * This value is overwritten from a configuration and passed to the
+     * database.
      */
     private int minCrossrefs = 2;
 
-    /** ... */
+    /**
+     * The field <tt>warnings</tt> contains the number of warnings.
+     */
     private long warnings = 0;
 
     /**
@@ -223,7 +226,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * stored in the processor context and passed to the database as required.
      * </p>
      * 
-     * @param sa ...
+     * @param sa the array of resources to add
      * 
      * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(
      *      java.lang.String[])
@@ -284,17 +287,17 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * 
      * @param name name of the function
      * @param body code to be executed in case it is called
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
-    public void addFunction(String name, Code body)
+    public void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Locator locator = null; // TODO
         if (name == null || name.equals("")) {
             throw new ExBibIllegalValueException("Illegal function name",
                 locator);
@@ -326,17 +329,17 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * 
      * @param name the name of the function to change
      * @param body the new code for the function
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionUndefinedException in case that the function isn't
      *         defined yet
      */
-    public void changeFunction(String name, Code body)
+    public void changeFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionUndefinedException {
 
-        Locator locator = null; // TODO
         if (name == null || name.equals("")) {
             throw new ExBibIllegalValueException("Illegal function name",
                 locator);
@@ -377,6 +380,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
+        Locator locator = null; // TODO
         int i = config.getValueAsInteger("minCrossrefs", -1);
 
         if (i >= 0) {
@@ -387,7 +391,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
 
         if (i >= 0) {
             try {
-                changeFunction("global.max$", new TInteger(i));
+                changeFunction("global.max$", new TInteger(i), locator);
                 globalMax = i;
             } catch (ExBibException e) {
                 throw new ConfigurationWrapperException(e);
@@ -399,7 +403,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         if (i >= 0) {
             try {
                 entryMax = i;
-                changeFunction("entry.max$", new TInteger(i));
+                changeFunction("entry.max$", new TInteger(i), locator);
             } catch (ExBibException e) {
                 throw new ConfigurationWrapperException(e);
             }
@@ -782,6 +786,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
+        Locator locator = null; // TODO
+
         citations = new HashMap<String, String>();
         bibliographyStyles = new ArrayList<String>();
         bibliographyDatabases = new ArrayList<String>();
@@ -791,10 +797,10 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         theIntegers = new ArrayList<String>();
         theStrings = new ArrayList<String>();
         commands = new ArrayList<Command>();
-        addFunction("global.max$", new TInteger(globalMax));
-        addFunction("entry.max$", new TInteger(entryMax));
-        addFunction("sort.key$", new TFieldString("sort.key$", null)); //$NON-NLS-2$
-        addFunction("crossref", new TField("crossref")); //$NON-NLS-2$
+        addFunction("global.max$", new TInteger(globalMax), locator);
+        addFunction("entry.max$", new TInteger(entryMax), locator);
+        addFunction("sort.key$", new TFieldString("sort.key$", null), locator);
+        addFunction("crossref", new TField("crossref"), locator);
     }
 
     /**
@@ -808,16 +814,12 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
-     * Setter for the entry names.
+     * {@inheritDoc}
      * 
-     * @param entries the list of entries
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
+     * @see org.extex.exbib.core.bst.Processor#setEntries(java.util.List,
+     *      org.extex.exbib.core.io.Locator)
      */
-    public void setEntries(List<String> entries)
+    public void setEntries(List<String> entries, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
@@ -826,22 +828,17 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         while (iterator.hasNext()) {
             String entry = iterator.next();
             theEntries.add(entry);
-            addFunction(entry, new TField(entry));
+            addFunction(entry, new TField(entry), locator);
         }
     }
 
     /**
-     * Setter for local integers. The given arguments are added to the values
-     * already stored.
+     * {@inheritDoc}
      * 
-     * @param integers the list of integers
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
+     * @see org.extex.exbib.core.bst.Processor#setEntryIntegers(java.util.List,
+     *      org.extex.exbib.core.io.Locator)
      */
-    public void setEntryIntegers(List<String> integers)
+    public void setEntryIntegers(List<String> integers, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
@@ -850,16 +847,17 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         while (iterator.hasNext()) {
             String e = iterator.next();
             theEntryIntegers.add(e);
-            addFunction(e, new TFieldInteger(e, null));
+            addFunction(e, new TFieldInteger(e, null), locator);
         }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setEntryStrings(java.util.List)
+     * @see org.extex.exbib.core.bst.Processor#setEntryStrings(java.util.List,
+     *      org.extex.exbib.core.io.Locator)
      */
-    public void setEntryStrings(List<String> strings)
+    public void setEntryStrings(List<String> strings, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
@@ -868,7 +866,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         while (iterator.hasNext()) {
             String e = iterator.next();
             theEntryStrings.add(e);
-            addFunction(e, new TFieldString(e, null));
+            addFunction(e, new TFieldString(e, null), locator);
         }
     }
 
@@ -885,7 +883,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
 
         while (iterator.hasNext()) {
             String name = iterator.next().getValue();
-            addFunction(name, new MacroCode(new TInteger("0", locator)));
+            addFunction(name, new MacroCode(new TInteger("0", locator)),
+                locator);
             theIntegers.add(name);
         }
     }
@@ -923,17 +922,19 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setStrings(org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.bst.Processor#setStrings(
+     *      org.extex.exbib.core.bst.node.impl.TokenList)
      */
     public void setStrings(TokenList list)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
+        Locator locator = null; // TODO
         Iterator<Token> iterator = list.iterator();
 
         while (iterator.hasNext()) {
             String name = iterator.next().getValue();
-            addFunction(name, new MacroCode(new TString("")));
+            addFunction(name, new MacroCode(new TString("")), locator);
             theStrings.add(name);
         }
     }

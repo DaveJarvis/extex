@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -39,17 +39,20 @@ import org.extex.exbib.core.io.Locator;
  */
 public class TQLiteral extends AbstractToken implements Token {
 
-    /** The literal value */
+    /**
+     * The field <tt>theValue</tt> contains the literal value.
+     */
     private TLiteral theValue = null;
 
     /**
      * Create a new object.
      * 
-     * @param locator
-     * @param value
+     * @param value the value
+     * @param locator the locator
+     * 
      * @throws ExBibException in case of an error
      */
-    public TQLiteral(Locator locator, String value) throws ExBibException {
+    public TQLiteral(String value, Locator locator) throws ExBibException {
 
         super(value, locator);
         theValue = new TLiteral(value, locator);
@@ -66,6 +69,18 @@ public class TQLiteral extends AbstractToken implements Token {
 
         processor.step(toString());
         processor.push(theValue);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     *      org.extex.exbib.core.bst.Processor)
+     */
+    @Override
+    public String expand(Processor processor) {
+
+        return getValue();
     }
 
     /**

@@ -21,6 +21,7 @@
 package org.extex.exbib.core.engine;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.extex.exbib.core.bst.Bibliography;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -53,12 +54,11 @@ public interface Engine extends ResourceAware {
      *         <li>the number of citation entries found</li>
      *         </ul>
      * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for reading
+     * @throws IOException in case that the file could not be opened for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
     public abstract int[] process(Bibliography listener)
-            throws FileNotFoundException,
+            throws IOException,
                 ConfigurationException;
 
     /**

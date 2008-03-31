@@ -143,8 +143,8 @@ public class TestIf extends TestCase {
 
         db = new DBImpl();
         p = new Processor099Impl(db, new NullWriter(null), null);
-        p.addFunction("t", new ThenCode());
-        p.addFunction("e", new ElseCode());
+        p.addFunction("t", new ThenCode(), null);
+        p.addFunction("e", new ElseCode(), null);
     }
 
     /**

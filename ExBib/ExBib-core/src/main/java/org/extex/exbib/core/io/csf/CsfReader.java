@@ -265,7 +265,7 @@ public class CsfReader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Read a token started by backslash and consisting of letters.
      * 
      * @param reader the reader to get characters from
      * 
@@ -283,7 +283,7 @@ public class CsfReader {
                     sb.append((char) c);
                     reader.mark(1);
                     c = reader.read();
-                } while (c >= 0 && Character.isLetterOrDigit(c));
+                } while (c >= 0 && Character.isLetter(c));
                 reader.reset();
                 return sb.toString();
 

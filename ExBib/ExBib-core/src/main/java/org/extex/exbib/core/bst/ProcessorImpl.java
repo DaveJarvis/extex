@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,6 +23,7 @@ package org.extex.exbib.core.bst;
 import java.util.Iterator;
 
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
@@ -76,7 +77,7 @@ public class ProcessorImpl extends ProcessorCoreImpl {
                 Code code = (Code) Class.forName(className).newInstance();
                 code.setName(name);
                 code.configure(builtin);
-                addFunction(name, code);
+                addFunction(name, code, new Locator(cfg.toString(), 0));
             }
         } catch (ConfigurationException e) {
             throw e;

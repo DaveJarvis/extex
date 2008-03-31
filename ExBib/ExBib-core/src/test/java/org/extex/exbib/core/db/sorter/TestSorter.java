@@ -57,7 +57,8 @@ public class TestSorter extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -65,20 +66,20 @@ public class TestSorter extends TestCase {
                     ConfigurationSyntaxException,
                     ConfigurationIOException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String, java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
@@ -124,7 +125,7 @@ public class TestSorter extends TestCase {
          */
         public String getValue() throws ConfigurationException {
 
-            // TODO gene: getValue unimplemented
+            // getValue unimplemented
             return null;
         }
 
@@ -159,8 +160,7 @@ public class TestSorter extends TestCase {
          */
         public void getValues(List<String> list, String key) {
 
-            // TODO gene: getValues unimplemented
-
+            // getValues unimplemented
         }
 
         /**
@@ -181,7 +181,7 @@ public class TestSorter extends TestCase {
          */
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
-            // TODO gene: iterator unimplemented
+            // iterator unimplemented
             return null;
         }
 
@@ -200,18 +200,18 @@ public class TestSorter extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+         *      org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
-            // TODO gene: setConfigurationLoader unimplemented
-
+            // setConfigurationLoader unimplemented
         }
 
         /**
-         * TODO gene: missing JavaDoc
+         * Setter for the order.
          * 
-         * @param order
+         * @param order the order
          */
         public void setOrder(String order) {
 
@@ -231,9 +231,9 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * The test suite.
      * 
-     * @return ...
+     * @return the test suite
      */
     public static Test suite() {
 
@@ -241,22 +241,22 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * The field <tt>s</tt> contains the ...
+     * The field <tt>s</tt> contains the instance to be tested.
      */
     private SorterImpl s = new SorterImpl();
 
     /**
-     * The field <tt>a</tt> contains the ...
+     * The field <tt>a</tt> contains an entry.
      */
     private Entry a;
 
     /**
-     * The field <tt>b</tt> contains the ...
+     * The field <tt>b</tt> contains another entry.
      */
     private Entry b;
 
     /**
-     * The field <tt>c</tt> contains the ...
+     * The field <tt>c</tt> contains yet another entry.
      */
     private Entry c;
 

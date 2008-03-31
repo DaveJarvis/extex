@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * ...
+ * This is a reader for BibTeX files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -46,7 +46,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BibReaderImpl extends BibReader099Impl implements BibReader {
 
     /**
-     * The field <tt>filenamePattern</tt> contains the ...
+     * The field <tt>filenamePattern</tt> contains the pattern for file names.
      */
     private static Pattern filenamePattern = Pattern.compile("[^{}]*");
 
@@ -89,7 +89,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
      * @param processor the processor context
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
      * depending in the opening brace
-     *
      * @return <code>true</code> iff the item is special and has been handled
      * successfully.
      *
@@ -98,7 +97,7 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
      */
     @Override
     protected boolean handle(String tag, DB db, Processor processor,
-            String brace) throws ExBibException {
+            String brace, Locator locator) throws ExBibException {
 
         if (tag.equals("include")) {
             String source = parseToken(filenamePattern);
@@ -106,7 +105,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
             try {
                 db.load(source, null, processor);
             } catch (FileNotFoundException e) {
-                Locator locator = null; // TODO
                 throw new ExBibFileNotFoundException(source, locator);
             }
 
@@ -157,6 +155,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
             return true;
         }
 
-        return super.handle(tag, db, processor, brace);
+        return super.handle(tag, db, processor, brace, locator);
     }
 }

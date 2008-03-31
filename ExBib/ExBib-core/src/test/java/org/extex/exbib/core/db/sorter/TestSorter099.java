@@ -46,14 +46,15 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 public class TestSorter099 extends TestCase {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * A dummy configuration.
      */
     private static class DummyConfig implements Configuration {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -61,20 +62,20 @@ public class TestSorter099 extends TestCase {
                     ConfigurationSyntaxException,
                     ConfigurationIOException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String, java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
@@ -120,7 +121,7 @@ public class TestSorter099 extends TestCase {
          */
         public String getValue() throws ConfigurationException {
 
-            // TODO gene: getValue unimplemented
+            // getValue unimplemented
             return null;
         }
 
@@ -150,13 +151,12 @@ public class TestSorter099 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getValues(
+         *      java.util.List, java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
-            // TODO gene: getValues unimplemented
-
+            // getValues unimplemented
         }
 
         /**
@@ -177,7 +177,7 @@ public class TestSorter099 extends TestCase {
          */
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
-            // TODO gene: iterator unimplemented
+            // iterator unimplemented
             return null;
         }
 
@@ -196,20 +196,20 @@ public class TestSorter099 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+         *      org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
-            // TODO gene: setConfigurationLoader unimplemented
-
+            // setConfigurationLoader unimplemented
         }
 
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Command line program to run the tests.
      * 
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
 
@@ -217,7 +217,7 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get the test suite.
      * 
      * @return the suite
      */
@@ -227,29 +227,29 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * The field <tt>s</tt> contains the ...
+     * The field <tt>s</tt> contains the instance to be tested.
      */
     private Sorter099Impl s = new Sorter099Impl();
 
     /**
-     * The field <tt>a</tt> contains the ...
+     * The field <tt>a</tt> contains an entry.
      */
     private Entry a;
 
     /**
-     * The field <tt>b</tt> contains the ...
+     * The field <tt>b</tt> contains another entry.
      */
     private Entry b;
 
     /**
-     * The field <tt>c</tt> contains the ...
+     * The field <tt>c</tt> contains yet another entry.
      */
     private Entry c;
 
     /**
      * Creates a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestSorter099(String name) {
 
@@ -285,11 +285,11 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Sorting an empty list results in an empty list. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_0() throws Exception {
+    public void test0() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         s.sort(list);
@@ -297,11 +297,12 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Sorting a list with one element results in the same list.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_1() throws Exception {
+    public void test1() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(a);
@@ -311,11 +312,12 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Sorting a sorted list with two elements results in the same
+     * list. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_21() throws Exception {
+    public void test21() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(a);
@@ -327,11 +329,12 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Sorting an unsorted list with two elements results in the
+     * inverted list. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_22() throws Exception {
+    public void test22() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(b);
@@ -343,11 +346,12 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Sorting a inversly sorted list with three elements results in
+     * the sorted list. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_31() throws Exception {
+    public void test31() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(c);

@@ -69,7 +69,9 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
      * @see org.extex.exbib.core.engine.Engine#process(
      *      org.extex.exbib.core.bst.Bibliography)
      */
-    public int[] process(Bibliography listener) throws ConfigurationException {
+    public int[] process(Bibliography listener)
+            throws ConfigurationException,
+                IOException {
 
         if (reader == null) {
             throw new InitializationException(getClass().getName()
@@ -81,38 +83,25 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         int noCite = 0;
         int noData = 0;
 
-        try {
-            while ((line = reader.readLine()) != null) {
-                Matcher m = PATTERN.matcher(line);
+        while ((line = reader.readLine()) != null) {
+            Matcher m = PATTERN.matcher(line);
 
-                if (m.matches()) {
-                    String type = m.group(1);
+            if (m.matches()) {
+                String type = m.group(1);
 
-                    if (type.equals("bibdata")) {
-                        listener.addBibliographyDatabase(m.group(2).split(","));
-                        noData++;
-                    } else if (type.equals("bibstyle")) {
-                        listener.addBibliographyStyle(m.group(2).split(","));
-                        noStyle++;
-                    } else if (type.equals("citation")) {
-                        listener.addCitation(m.group(2).split(","));
-                        noCite++;
-                    }
+                if (type.equals("bibdata")) {
+                    listener.addBibliographyDatabase(m.group(2).split(","));
+                    noData++;
+                } else if (type.equals("bibstyle")) {
+                    listener.addBibliographyStyle(m.group(2).split(","));
+                    noStyle++;
+                } else if (type.equals("citation")) {
+                    listener.addCitation(m.group(2).split(","));
+                    noCite++;
                 }
             }
-        } catch (IOException e) {
-            // TODO gene: error handling unimplemented
-            e.printStackTrace();
-            throw new RuntimeException("unimplemented");
         }
-
-        try {
-            close();
-        } catch (IOException e) {
-            // TODO gene: error handling unimplemented
-            e.printStackTrace();
-            throw new RuntimeException("unimplemented");
-        }
+        close();
         return new int[]{noData, noStyle, noCite};
     }
 

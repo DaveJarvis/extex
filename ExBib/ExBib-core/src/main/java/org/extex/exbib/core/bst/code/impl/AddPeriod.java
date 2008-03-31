@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,6 +19,8 @@
  */
 
 package org.extex.exbib.core.bst.code.impl;
+
+import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
@@ -56,9 +58,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class AddPeriod extends AbstractCode {
 
     /**
-     * The field <tt>omitPattern</tt> contains the ...
+     * The field <tt>omitPattern</tt> contains the pattern to determine when
+     * not to add a period.
      */
-    private String omitPattern = ".*[.!?][}]*$";
+    private Pattern omitPattern = Pattern.compile(".*[.!?][}]*$");
 
     /**
      * Create a new object.
@@ -90,7 +93,7 @@ public class AddPeriod extends AbstractCode {
         super.configure(config);
         String op = config.getValue("omitPattern");
         if (op != null) {
-            omitPattern = op;
+            omitPattern = Pattern.compile(op);
         }
     }
 
@@ -106,7 +109,7 @@ public class AddPeriod extends AbstractCode {
         Token a = processor.pop(locator);
         String value = a.getValue();
 
-        if (!value.equals("") && !value.matches(omitPattern)) {
+        if (!value.equals("") && !omitPattern.matcher(value).matches()) {
             a = new TString(value + ".");
         } else if (!(a instanceof TString)) {
             a = new TString(value);

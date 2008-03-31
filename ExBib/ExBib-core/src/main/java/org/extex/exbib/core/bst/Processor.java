@@ -71,13 +71,13 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @param name the name of the function
      * @param body the Code associated with the function
-     * 
+     * @param locator The locator
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
-    void addFunction(String name, Code body)
+    void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException;
 
@@ -96,13 +96,14 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @param name the name of the function to change
      * @param body the new code for the function
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionUndefinedException in case that the function isn't
      *         defined yet
      */
-    void changeFunction(String name, Code body)
+    void changeFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionUndefinedException;
 
@@ -329,13 +330,14 @@ public interface Processor extends Bibliography, Configurable {
      * Setter for the entry names.
      * 
      * @param entries the list of entries
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
-    void setEntries(List<String> entries)
+    void setEntries(List<String> entries, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException;
 
@@ -344,23 +346,26 @@ public interface Processor extends Bibliography, Configurable {
      * values already stored.
      * 
      * @param integers the list of integers
+     * @param locator the locator
      * @throws ExBibException in case that a name is given which is already
      *         defined
      */
-    void setEntryIntegers(List<String> integers) throws ExBibException;
+    void setEntryIntegers(List<String> integers, Locator locator)
+            throws ExBibException;
 
     /**
      * Setter for local strings. The given arguments are added to the values
      * already stored.
      * 
      * @param strings the list of strings
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
-    void setEntryStrings(List<String> strings)
+    void setEntryStrings(List<String> strings, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException;
 

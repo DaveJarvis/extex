@@ -88,7 +88,7 @@ public class TestTQLiteral extends TestCase implements TokenVisitor {
     public void setUp() throws Exception {
 
         p = new Processor099Impl(new DBImpl(), new NullWriter(null), null);
-        p.addFunction("abc", new TInteger(1));
+        p.addFunction("abc", new TInteger(1), null);
     }
 
     /**
@@ -109,7 +109,7 @@ public class TestTQLiteral extends TestCase implements TokenVisitor {
      */
     public void testExecute() throws Exception {
 
-        TQLiteral t = new TQLiteral(null, "aaa");
+        TQLiteral t = new TQLiteral("aaa", null);
         t.execute(p, null, null);
 
         Token x = p.pop(null);
@@ -125,7 +125,7 @@ public class TestTQLiteral extends TestCase implements TokenVisitor {
      */
     public void testVisit() throws Exception {
 
-        TQLiteral t = new TQLiteral(null, "acd");
+        TQLiteral t = new TQLiteral("acd", null);
         t.visit(this);
         assertTrue(visit);
         assertEquals("acd", t.getValue());

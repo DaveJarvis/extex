@@ -38,23 +38,23 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
+ * This is a test suite for the {@link BblWriter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
 public class TestBblWriter extends TestCase {
 
-    // TODO: Complete the test suite
     /**
-     * TODO gene: missing JavaDoc.
-     * 
+     * This is a dummy configuration.
      */
     private static class DummyConfig implements Configuration {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -62,20 +62,20 @@ public class TestBblWriter extends TestCase {
                     ConfigurationSyntaxException,
                     ConfigurationIOException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(
+         *      java.lang.String, java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
-            // TODO gene: findConfiguration unimplemented
+            // findConfiguration unimplemented
             return null;
         }
 
@@ -93,7 +93,8 @@ public class TestBblWriter extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(
+         *      java.lang.String)
          */
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -104,8 +105,8 @@ public class TestBblWriter extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(
+         *      java.lang.String, java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -120,7 +121,7 @@ public class TestBblWriter extends TestCase {
          */
         public String getValue() throws ConfigurationException {
 
-            // TODO gene: getValue unimplemented
+            // getValue unimplemented
             return null;
         }
 
@@ -155,8 +156,7 @@ public class TestBblWriter extends TestCase {
          */
         public void getValues(List<String> list, String key) {
 
-            // TODO gene: getValues unimplemented
-
+            // getValues unimplemented
         }
 
         /**
@@ -177,7 +177,7 @@ public class TestBblWriter extends TestCase {
          */
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
-            // TODO gene: iterator unimplemented
+            // iterator unimplemented
             return null;
         }
 
@@ -201,15 +201,14 @@ public class TestBblWriter extends TestCase {
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
-            // TODO gene: setConfigurationLoader unimplemented
+            // setConfigurationLoader unimplemented
         }
-
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * The main program.
      * 
-     * @param args ...
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
 
@@ -217,9 +216,9 @@ public class TestBblWriter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * The test suite itself.
      * 
-     * @return ...
+     * @return the test suite
      */
     public static Test suite() {
 
@@ -237,13 +236,14 @@ public class TestBblWriter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test and compare the result.
      * 
-     * @param in
-     * @param res
-     * @throws Exception
+     * @param in the input string
+     * @param res the expected result string
+     * 
+     * @throws Exception in case of an error
      */
-    private void testA(String in, String res) throws Exception {
+    private void runTest(String in, String res) throws Exception {
 
         StringBuffer sb = new StringBuffer();
         Writer w = new BblWriter(new StringBufferWriter(sb));
@@ -267,7 +267,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA0() throws Exception {
 
-        testA(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
+        runTest(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -277,7 +277,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA1() throws Exception {
 
-        testA("z abc xxxxxxxxx1xxxxxxx", "z abc\n  xxxxxxxxx1xxxxxxx");
+        runTest("z abc xxxxxxxxx1xxxxxxx", "z abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -287,7 +287,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA15() throws Exception {
 
-        testA("zzzznzzzznzzzzn abc xxxxxxxxx1",
+        runTest("zzzznzzzznzzzzn abc xxxxxxxxx1",
             "zzzznzzzznzzzzn abc\n  xxxxxxxxx1");
     }
 
@@ -298,7 +298,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA16() throws Exception {
 
-        testA("zzzznzzzznzzzznz abc xxxxxxxxx1",
+        runTest("zzzznzzzznzzzznz abc xxxxxxxxx1",
             "zzzznzzzznzzzznz abc\n  xxxxxxxxx1");
     }
 
@@ -309,7 +309,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA17() throws Exception {
 
-        testA("zzzznzzzznzzzznzz abc xxxxxxxxx1",
+        runTest("zzzznzzzznzzzznzz abc xxxxxxxxx1",
             "zzzznzzzznzzzznzz\n  abc xxxxxxxxx1");
     }
 
@@ -320,7 +320,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA2() throws Exception {
 
-        testA("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
+        runTest("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -330,7 +330,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA3() throws Exception {
 
-        testA("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
+        runTest("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -340,7 +340,7 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA4() throws Exception {
 
-        testA("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
+        runTest("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -350,7 +350,8 @@ public class TestBblWriter extends TestCase {
      */
     public void testBblWriterA5() throws Exception {
 
-        testA("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
+        runTest("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
     }
 
+    // TODO: Complete the test suite
 }

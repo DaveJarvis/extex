@@ -87,7 +87,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     public void setUp() throws Exception {
 
         p = new Processor099Impl(new DBImpl(), new NullWriter(null), null);
-        p.addFunction("abc", new TInteger(1));
+        p.addFunction("abc", new TInteger(1), null);
     }
 
     /**

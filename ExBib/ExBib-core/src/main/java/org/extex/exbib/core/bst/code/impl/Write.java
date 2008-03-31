@@ -73,15 +73,17 @@ public class Write extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         try {
-            processor.getOutWriter().print(processor.pop(locator).getValue());
+            processor.getOutWriter().print(
+                processor.pop(locator).expand(processor));
         } catch (IOException e) {
             throw new ExBibIoException(e);
         }

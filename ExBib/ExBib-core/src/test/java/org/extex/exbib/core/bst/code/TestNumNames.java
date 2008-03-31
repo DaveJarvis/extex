@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -100,11 +100,12 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a single test.
      * 
-     * @param in
-     * @param len
-     * @throws Exception
+     * @param in the input string
+     * @param len the length
+     * 
+     * @throws Exception in case of an error
      */
     private void test(String in, int len) throws Exception {
 
@@ -115,9 +116,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A single name is correclty recognized.</testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
@@ -125,9 +126,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A company should be enclosed in braces. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testCompany() throws Exception {
 
@@ -135,9 +136,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty name has 0 names in it. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmpty() throws Exception {
 
@@ -145,9 +146,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> num.names$ nees an argument on the stack. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -160,9 +161,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A trailing "and" is ignored. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEnd() throws Exception {
 
@@ -170,9 +171,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A trailing "and " is ignored. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEnd2() throws Exception {
 
@@ -180,9 +181,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An integer argument leads to an exception. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testInteger() throws Exception {
 
@@ -196,9 +197,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "\tand " is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testOthers1() throws Exception {
 
@@ -206,9 +207,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> " and " is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testOthers2() throws Exception {
 
@@ -216,9 +217,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "\tand\n" is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testOthers3() throws Exception {
 
@@ -226,9 +227,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> " and " is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTwo1() throws Exception {
 
@@ -236,9 +237,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "\tand " is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTwo2() throws Exception {
 
@@ -246,9 +247,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> " and\t" is recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTwo3() throws Exception {
 
@@ -256,9 +257,9 @@ public class TestNumNames extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "and" in a name is not recognized as separator. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testX() throws Exception {
 

@@ -61,6 +61,7 @@ import org.extex.exbib.core.bst.code.impl.Width;
 import org.extex.exbib.core.bst.code.impl.Write;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 
 /**
@@ -110,43 +111,44 @@ public class Processor099Impl extends ProcessorCoreImpl {
      */
     private void init() throws ExBibException {
 
-        addFunction(">", new Gt(">"));
-        addFunction("<", new Lt("<"));
-        addFunction("=", new Eq("="));
-        addFunction("+", new Plus("+"));
-        addFunction("-", new Minus("-"));
-        addFunction("*", new Concat("*"));
-        addFunction(":=", new Set(":="));
-        addFunction("add.period$", new AddPeriod("add.period$"));
-        addFunction("call.type$", new CallType("call.type$"));
-        addFunction("change.case$", new ChangeCase("change.case$"));
-        addFunction("chr.to.int$", new ChrToInt("chr.to.int$"));
-        addFunction("cite$", new Cite("cite$"));
-        addFunction("duplicate$", new Duplicate("duplicate$"));
-        addFunction("empty$", new Empty("empty$"));
-        addFunction("format.name$", new FormatName099("format.name$"));
-        addFunction("if$", new If("if$"));
-        addFunction("int.to.chr$", new IntToChr("int.to.chr$"));
-        addFunction("int.to.str$", new IntToStr("int.to.str$"));
-        addFunction("missing$", new Missing("missing$"));
-        addFunction("newline$", new Newline("newline$"));
-        addFunction("num.names$", new NumNames("num.names$"));
-        addFunction("pop$", new Pop("pop$"));
-        addFunction("preamble$", new Preamble("preamble$"));
-        addFunction("purify$", new Purify("purify$"));
-        addFunction("quote$", new Quote("quote$"));
-        addFunction("skip$", new Skip("skip$"));
-        addFunction("stack$", new Stack("stack$"));
-        addFunction("substring$", new Substring("substring$"));
-        addFunction("swap$", new Swap("swap$"));
-        addFunction("text.length$", new TextLength("text.length$"));
-        addFunction("text.prefix$", new TextPrefix("text.prefix$"));
-        addFunction("top$", new Top("top$"));
-        addFunction("type$", new Type("type$"));
-        addFunction("warning$", new Warning("warning$"));
-        addFunction("while$", new While("while$"));
-        addFunction("width$", new Width("width$"));
-        addFunction("write$", new Write("write$"));
+        Locator locator = new Locator(getClass().getName() + "#init()", 0);
+        addFunction(">", new Gt(">"), locator);
+        addFunction("<", new Lt("<"), locator);
+        addFunction("=", new Eq("="), locator);
+        addFunction("+", new Plus("+"), locator);
+        addFunction("-", new Minus("-"), locator);
+        addFunction("*", new Concat("*"), locator);
+        addFunction(":=", new Set(":="), locator);
+        addFunction("add.period$", new AddPeriod("add.period$"), locator);
+        addFunction("call.type$", new CallType("call.type$"), locator);
+        addFunction("change.case$", new ChangeCase("change.case$"), locator);
+        addFunction("chr.to.int$", new ChrToInt("chr.to.int$"), locator);
+        addFunction("cite$", new Cite("cite$"), locator);
+        addFunction("duplicate$", new Duplicate("duplicate$"), locator);
+        addFunction("empty$", new Empty("empty$"), locator);
+        addFunction("format.name$", new FormatName099("format.name$"), locator);
+        addFunction("if$", new If("if$"), locator);
+        addFunction("int.to.chr$", new IntToChr("int.to.chr$"), locator);
+        addFunction("int.to.str$", new IntToStr("int.to.str$"), locator);
+        addFunction("missing$", new Missing("missing$"), locator);
+        addFunction("newline$", new Newline("newline$"), locator);
+        addFunction("num.names$", new NumNames("num.names$"), locator);
+        addFunction("pop$", new Pop("pop$"), locator);
+        addFunction("preamble$", new Preamble("preamble$"), locator);
+        addFunction("purify$", new Purify("purify$"), locator);
+        addFunction("quote$", new Quote("quote$"), locator);
+        addFunction("skip$", new Skip("skip$"), locator);
+        addFunction("stack$", new Stack("stack$"), locator);
+        addFunction("substring$", new Substring("substring$"), locator);
+        addFunction("swap$", new Swap("swap$"), locator);
+        addFunction("text.length$", new TextLength("text.length$"), locator);
+        addFunction("text.prefix$", new TextPrefix("text.prefix$"), locator);
+        addFunction("top$", new Top("top$"), locator);
+        addFunction("type$", new Type("type$"), locator);
+        addFunction("warning$", new Warning("warning$"), locator);
+        addFunction("while$", new While("while$"), locator);
+        addFunction("width$", new Width("width$"), locator);
+        addFunction("write$", new Write("write$"), locator);
     }
 
 }

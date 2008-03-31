@@ -45,6 +45,7 @@ import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
 import org.extex.exbib.core.io.AbstractFileReader;
+import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -179,22 +180,23 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      *   }
      * </pre
      *
-     * @param tag the name of the item encountered.
-     * This String has been converted to lower case already.
-     * @param db thedatabase to store the information in
+     * @param tag the name of the item encountered. This String has been
+     *        converted to lower case already.
+     * @param db the database to store the information in
      * @param processor the processor context
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
-     * depending in the opening brace
-     *
+     *        depending on the opening brace
+     * @param locator the locator
+     * 
      * @return <code>true</code> iff the item is special and has been handled
-     * successfully.
+     *         successfully.
      *
      * @throws ExBibException in case of an error
      * @throws ExBibEofException in case of an unexpected end of file
      * @throws ExBibSyntaxException in case of an syntax error
      */
     protected boolean handle(String tag, DB db, Processor processor,
-            String brace) throws ExBibException {
+            String brace, Locator locator) throws ExBibException {
 
         if (tag.equals("string")) {
             KeyValue pair = parseAssign();
@@ -242,7 +244,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
                 String brace = (expect("({") == '(' ? ")" : "}");
 
-                if (!handle(s, db, processor, brace)) {
+                if (!handle(s, db, processor, brace, getLocator())) {
                     String key = parseKey();
 
                     if (key.equals("")) {
