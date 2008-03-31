@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,6 +28,10 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Write;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TBlock;
+import org.extex.exbib.core.bst.node.impl.TChar;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TQLiteral;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
@@ -66,9 +70,9 @@ public class TestWrite extends TestCase {
     private Processor p = null;
 
     /**
-     * The field <tt>out</tt> contains the ...
+     * The field <tt>out</tt> contains the output buffer.
      */
-    private StringBuffer out = new StringBuffer();
+    private StringBuffer out = null;
 
     /**
      * Create a new object.
@@ -88,6 +92,7 @@ public class TestWrite extends TestCase {
     @Override
     public void setUp() throws Exception {
 
+        out = new StringBuffer();
         p = new Processor099Impl(new DBImpl(), //
             new StringBufferWriter(out), null);
     }
@@ -104,7 +109,7 @@ public class TestWrite extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> write$ needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -119,16 +124,70 @@ public class TestWrite extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> write$ can write a block. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testWrite() throws Exception {
+    public void testWriteBlock1() throws Exception {
+
+        TBlock block = new TBlock(null);
+        block.add(new TString("abc"));
+        p.push(block);
+        new Write("write$").execute(p, null, null);
+        assertEquals("abc", out.toString());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> write$ can write a character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWriteChar1() throws Exception {
+
+        p.push(new TChar("a", null));
+        new Write("write$").execute(p, null, null);
+        assertEquals("a", out.toString());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> write$ can write a number. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWriteNumber1() throws Exception {
+
+        p.push(new TInteger(123));
+        new Write("write$").execute(p, null, null);
+        assertEquals("123", out.toString());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> write$ can write a QLiteral. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWriteQLiteral1() throws Exception {
+
+        p.push(new TQLiteral("abc", null));
+        new Write("write$").execute(p, null, null);
+        assertEquals("abc", out.toString());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> write$ can write a string. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWriteString1() throws Exception {
 
         p.push(new TString("abc"));
         new Write("write$").execute(p, null, null);
         assertEquals("abc", out.toString());
-        // assertEquals("", err.toString());
         assertNull(p.popUnchecked());
     }
+
 }
