@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -99,9 +99,9 @@ public class TestSwap extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> swap$ complains about an empty stack. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -114,9 +114,10 @@ public class TestSwap extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> swap$ complains about a short stack of one integer.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testStack1() throws Exception {
 
@@ -131,9 +132,9 @@ public class TestSwap extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> swap$ complains about a short stack of one string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testStack2() throws Exception {
 
@@ -148,9 +149,9 @@ public class TestSwap extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> swap$ swaps two integers. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSwapInteger() throws Exception {
 
@@ -163,9 +164,9 @@ public class TestSwap extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> swap$ swaps two strings. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSwapString() throws Exception {
 
