@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,15 +20,11 @@
 
 package org.extex.exbib.core.db;
 
-import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.VMacro;
-import org.extex.exbib.core.db.VString;
-import org.extex.exbib.core.db.Value;
-import org.extex.exbib.core.db.impl.DBImpl;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import org.extex.exbib.core.db.impl.DBImpl;
 
 /**
  * 
@@ -58,14 +54,14 @@ public class TestValue extends TestCase {
     }
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db;
 
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestValue(String name) {
 
@@ -87,9 +83,9 @@ public class TestValue extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty value expands to the empty string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testExpand0() throws Exception {
 
@@ -97,9 +93,9 @@ public class TestValue extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An the value "jan" expands to "January". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testExpand1() throws Exception {
 
@@ -107,9 +103,9 @@ public class TestValue extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An composed value expands its compnents. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testExpand2() throws Exception {
 
