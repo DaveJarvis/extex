@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -66,12 +66,12 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * The field <tt>executed</tt> contains the ...
+     * The field <tt>executed</tt> contains the executed flag.
      */
     private boolean executed = false;
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db = null;
 
@@ -83,7 +83,7 @@ public class TestCallType extends TestCase implements Code {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestCallType(String name) {
 
@@ -140,9 +140,9 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> call.type$ invokes an appropriate function. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
@@ -155,9 +155,10 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> call.type$ invokes an appropriate function ignoring case.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
@@ -170,14 +171,15 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> call.type$ invokes an appropriate function ignoring case.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         Entry e = new Entry(null);
-        e.setType("Book");
+        e.setType("BOOK");
         executed = false;
         new CallType("call.type$").execute(p, e, null);
         assertNull(p.popUnchecked());
@@ -185,9 +187,9 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> call.type$ invokes an appropriate function. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
@@ -205,9 +207,9 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> call.type$ invokes an appropriate function. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
