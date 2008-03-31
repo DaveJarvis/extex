@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -99,9 +99,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ complains about an empty stack. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -114,9 +114,10 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ complains about a stack containing only one
+     * argument. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testShortStack1() throws Exception {
 
@@ -130,9 +131,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "123" #2 text.prefix$ --> "12". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix1() throws Exception {
 
@@ -140,9 +141,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix11() throws Exception {
 
@@ -150,9 +151,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix12() throws Exception {
 
@@ -160,9 +161,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix13() throws Exception {
 
@@ -170,9 +171,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix14() throws Exception {
 
@@ -180,9 +181,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "123" #5 text.prefix$ --> "123". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix2() throws Exception {
 
@@ -190,9 +191,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "+*@" #2 text.prefix$ --> "+*". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix21() throws Exception {
 
@@ -200,9 +201,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "+*@" #5 text.prefix$ --> "+*@". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix22() throws Exception {
 
@@ -210,9 +211,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix31() throws Exception {
 
@@ -220,9 +221,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix32() throws Exception {
 
@@ -230,9 +231,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix33() throws Exception {
 
@@ -240,9 +241,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix34() throws Exception {
 
@@ -250,9 +251,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ treats braces as units. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefix44() throws Exception {
 
@@ -260,9 +261,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ can cope with the empty string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefixEmpty() throws Exception {
 
@@ -270,9 +271,9 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> text.prefix$ can cope with the empty string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTextPrefixEmpty2() throws Exception {
 
@@ -280,12 +281,13 @@ public class TestTextPrefix extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test case.
      * 
-     * @param s
-     * @param len
-     * @param res
-     * @throws Exception
+     * @param s the string
+     * @param len the length
+     * @param res the result
+     * 
+     * @throws Exception in case of an error
      */
     private void testTextPrefixing(String s, int len, String res)
             throws Exception {
