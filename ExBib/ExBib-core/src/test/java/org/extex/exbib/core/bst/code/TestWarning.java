@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,6 +32,7 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Warning;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
@@ -70,12 +71,12 @@ public class TestWarning extends TestCase {
     private Processor p = null;
 
     /**
-     * The field <tt>err</tt> contains the ...
+     * The field <tt>err</tt> contains the error buffer.
      */
     private Handler err = new StoringHandler();
 
     /**
-     * The field <tt>out</tt> contains the ...
+     * The field <tt>out</tt> contains the output buffer.
      */
     private StringBuffer out = new StringBuffer();
 
@@ -118,9 +119,9 @@ public class TestWarning extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -133,16 +134,33 @@ public class TestWarning extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test a string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void testWarning() throws Exception {
+    public void testWarning1() throws Exception {
 
         p.push(new TString("abc"));
         new Warning("warning$").execute(p, null, null);
         assertEquals("", out.toString());
-        assertEquals("Warning: abc", err.toString());
+        assertEquals("Warning: abc\n", err.toString());
         assertNull(p.popUnchecked());
     }
+
+    /**
+     * <testcase> A number leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWarning2() throws Exception {
+
+        p.push(new TInteger(123));
+        try {
+            new Warning("warning$").execute(p, null, null);
+            assertTrue(false);
+        } catch (ExBibStackEmptyException e) {
+            assertTrue(true);
+        }
+    }
+
 }
