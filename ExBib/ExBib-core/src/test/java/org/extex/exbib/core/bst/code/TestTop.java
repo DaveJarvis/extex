@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -71,12 +71,12 @@ public class TestTop extends TestCase {
     private Processor p = null;
 
     /**
-     * The field <tt>out</tt> contains the ...
+     * The field <tt>out</tt> contains the output buffer.
      */
     private StringBuffer out = new StringBuffer();
 
     /**
-     * The field <tt>err</tt> contains the ...
+     * The field <tt>err</tt> contains the error buffer.
      */
     private Handler err;
 
@@ -119,9 +119,9 @@ public class TestTop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> top$ complains about an empty stack. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -134,9 +134,9 @@ public class TestTop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> top$ can pop a number. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTopInteger() throws Exception {
 
@@ -148,9 +148,9 @@ public class TestTop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> top$ can pop a string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTopString() throws Exception {
 
