@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,8 +23,8 @@ package org.extex.exbib.core.engine;
 import java.io.FileNotFoundException;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceAware;
 
 /**
  * This interface describes the interpreter engine for ExBib.
@@ -32,7 +32,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public interface Engine extends Configurable {
+public interface Engine extends ResourceAware {
 
     /**
      * Getter for the file name.

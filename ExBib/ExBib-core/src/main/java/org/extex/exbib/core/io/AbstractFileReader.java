@@ -20,23 +20,17 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.io.Reader;
-import java.util.Iterator;
-import java.util.List;
 
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
-import org.extex.exbib.core.util.ObserverList;
-import org.extex.framework.configuration.Configurable;
-import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This is the base class for all file reading classes in ExBib.
@@ -46,17 +40,12 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public abstract class AbstractFileReader implements Observable, Configurable {
-
-    /**
-     * The field <tt>cfg</tt> contains the configuration for all file readers.
-     */
-    private Configuration cfg = null;
+public abstract class AbstractFileReader implements Observable {
 
     /**
      * The field <tt>filename</tt> contains the name of the file to read.
      */
-    private File filename = null;
+    private String filename = "???";
 
     /**
      * The field <tt>reader</tt> contains the internal reader to be used.
@@ -70,21 +59,14 @@ public abstract class AbstractFileReader implements Observable, Configurable {
     private Locator locator = null;
 
     /**
-     * The field <tt>foundHook</tt> contains the observers registered for the
-     * found event.
-     */
-    private ObserverList foundHook = new ObserverList();
-
-    /**
-     * The field <tt>searchHook</tt> contains the observers registered for the
-     * search event.
-     */
-    private ObserverList searchHook = new ObserverList();
-
-    /**
      * The field <tt>line</tt> contains the temporary memory for the line.
      */
     private StringBuffer line = new StringBuffer();
+
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private ResourceFinder finder;
 
     /**
      * Create a new object.
@@ -122,66 +104,6 @@ public abstract class AbstractFileReader implements Observable, Configurable {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
-
-        cfg = config;
-    }
-
-    /**
-     * Search for a file by altering the path and the extension according to the
-     * configuration for the given file type.
-     * 
-     * @param name the name of the file to find
-     * @param type the type of the file to find. The type might be different
-     *        from the extension
-     * 
-     * @return a FileReader for the requested target
-     * 
-     * @throws FileNotFoundException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     */
-    private FileReader findFile(String name, String type)
-            throws FileNotFoundException,
-                ConfigurationException {
-
-        if (cfg == null) {
-            throw new ConfigurationMissingException(getClass().getName());
-        }
-
-        Configuration typeConfig = cfg.getConfiguration(type);
-        List<String> ext = typeConfig.getValues("extension");
-        List<String> path = typeConfig.getValues("path");
-        Iterator<String> pathIterator = path.iterator();
-
-        while (pathIterator.hasNext()) {
-            String dir = pathIterator.next();
-            Iterator<String> extIterator = ext.iterator();
-
-            while (extIterator.hasNext()) {
-                filename = new File(dir, name + extIterator.next());
-                searchHook.update(this, filename);
-
-                if (filename.exists() && filename.canRead()) {
-                    try {
-                        FileReader reader = new FileReader(filename);
-                        foundHook.update(this, filename);
-                        return reader;
-                    } catch (FileNotFoundException e) {
-                        throw new FileNotFoundException(name);
-                    }
-                }
-            }
-        }
-
-        throw new FileNotFoundException(name);
-    }
-
-    /**
      * Getter for the line buffer
      * 
      * @return the line buffer
@@ -202,7 +124,7 @@ public abstract class AbstractFileReader implements Observable, Configurable {
      */
     public String getFilename() {
 
-        return filename.getPath();
+        return getLocator().getFile();
     }
 
     /**
@@ -212,7 +134,10 @@ public abstract class AbstractFileReader implements Observable, Configurable {
      */
     public Locator getLocator() {
 
-        return new Locator(filename.getPath(), reader.getLineNumber());
+        if (locator == null) {
+            locator = new Locator(filename, reader.getLineNumber());
+        }
+        return locator;
     }
 
     /**
@@ -227,11 +152,20 @@ public abstract class AbstractFileReader implements Observable, Configurable {
      * @throws FileNotFoundException in case that the named file could not be
      *         opened for reading
      */
-    public Reader open(String name, String type)
+    public LineNumberReader open(String name, String type)
             throws FileNotFoundException,
                 ConfigurationException {
 
-        reader = new LineNumberReader(findFile(name, type));
+        if (finder == null) {
+            throw new IllegalArgumentException("finder");
+        }
+
+        InputStream is = finder.findResource(name, type);
+        if (is == null) {
+            throw new FileNotFoundException(name);
+        }
+        filename = name;
+        reader = new LineNumberReader(new InputStreamReader(is));
         return reader;
     }
 
@@ -253,8 +187,7 @@ public abstract class AbstractFileReader implements Observable, Configurable {
                 line = null;
             } else {
                 line.append(nextLine);
-                locator =
-                        new Locator(filename.getPath(), reader.getLineNumber());
+                locator = new Locator(filename, reader.getLineNumber());
             }
         } catch (IOException e) {
             line = null;
@@ -270,13 +203,7 @@ public abstract class AbstractFileReader implements Observable, Configurable {
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
-        if (name.equals("search")) {
-            searchHook.add(observer);
-        } else if (name.equals("found")) {
-            foundHook.add(observer);
-        } else {
-            throw new NotObservableException(name);
-        }
+        throw new NotObservableException(name);
     }
 
     /**
@@ -290,19 +217,13 @@ public abstract class AbstractFileReader implements Observable, Configurable {
     }
 
     /**
-     * Setter for the file name from which reading is performed.
+     * Setter for the resource finder.
      * 
-     * @param file the file name
-     * 
-     * @throws ConfigurationException in case that the configuration is invalid
-     * @throws FileNotFoundException in case that the named file could not be
-     *         opened for reading
+     * @param finder the resource finder
      */
-    public void setFilename(String file)
-            throws FileNotFoundException,
-                ConfigurationException {
+    public void setResourceFinder(ResourceFinder finder) {
 
-        filename = new File(file);
+        this.finder = finder;
     }
 
     /**
@@ -313,7 +234,7 @@ public abstract class AbstractFileReader implements Observable, Configurable {
     @Override
     public String toString() {
 
-        return filename.getPath();
+        return filename;
     }
 
 }

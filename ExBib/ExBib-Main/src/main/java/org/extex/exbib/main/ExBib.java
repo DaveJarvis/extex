@@ -62,6 +62,8 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
  * This class contains the main program for ExBib.
@@ -637,6 +639,12 @@ public class ExBib {
                     }
                     setBst(argv[i]);
 
+                } else if ("csfile".startsWith(a)) {
+                    if (++i >= argv.length) {
+                        return logBanner("missing.option", argv[i - 1]);
+                    }
+                    setCsfile(argv[i]);
+
                 } else if ("config".startsWith(a)) {
                     if (++i >= argv.length) {
                         return logBanner("missing.option", argv[i - 1]);
@@ -752,6 +760,11 @@ public class ExBib {
         WriterFactory writerFactory =
                 new WriterFactory(topConfiguration.getConfiguration("Writers"));
 
+        ResourceFinder finder =
+                new ResourceFinderFactory().createResourceFinder(
+                    topConfiguration.getConfiguration("Resource"), logger,
+                    System.getProperties(), null);
+
         if (filename == null) {
             return logBanner("missing.file");
         }
@@ -783,8 +796,10 @@ public class ExBib {
 
             DB db = new DBFactory(//
                 topConfiguration.getConfiguration("DB")).newInstance();
-            db.setBibReaderFactory(new BibReaderFactory(//
-                topConfiguration.getConfiguration("BibReader")));
+            BibReaderFactory bibReaderFactory = new BibReaderFactory(//
+                topConfiguration.getConfiguration("BibReader"));
+            bibReaderFactory.setResourceFinder(finder);
+            db.setBibReaderFactory(bibReaderFactory);
 
             Processor bibliography = new ProcessorFactory(//
                 topConfiguration.getConfiguration("Processor")).newInstance(db);
@@ -813,6 +828,7 @@ public class ExBib {
 
             Engine engine = new EngineFactory(//
                 topConfiguration.getConfiguration("Engine")).newInstance();
+            engine.setResourceFinder(finder);
             try {
                 engine.setFilename(file);
             } catch (FileNotFoundException e) {
@@ -858,7 +874,7 @@ public class ExBib {
             BstReader bstReader =
                     new BstReaderFactory(topConfiguration
                         .getConfiguration("BstReader")).newInstance();
-
+            bstReader.setResourceFinder(finder);
             try {
                 bstReader.parse(bibliography);
             } catch (FileNotFoundException e) {
@@ -931,6 +947,17 @@ public class ExBib {
     public void setConfigSource(String configSource) {
 
         this.configSource = configSource;
+    }
+
+    /**
+     * Setter for the cs file.
+     * 
+     * @param csf the name of the cs file
+     */
+    private void setCsfile(String csf) {
+
+        // TODO gene: setCsfile unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**

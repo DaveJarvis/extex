@@ -78,8 +78,6 @@ public class EngineFactory {
             throw new ConfigurationWrapperException(e);
         }
 
-        engine.configure(config);
-
         return engine;
     }
 

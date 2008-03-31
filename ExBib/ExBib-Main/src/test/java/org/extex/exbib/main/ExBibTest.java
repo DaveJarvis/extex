@@ -400,6 +400,19 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
+     * argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCsfile1() throws Exception {
+
+        runFailure(BANNER + "The option \'--csfile\' needs a parameter.\n",
+            "--csfile");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--help</tt> works.
      * </testcase>
      * 

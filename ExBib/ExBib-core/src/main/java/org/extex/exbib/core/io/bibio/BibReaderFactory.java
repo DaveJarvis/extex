@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,6 +25,8 @@ import java.io.FileNotFoundException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -43,7 +45,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BibReaderFactory {
+public class BibReaderFactory implements ResourceAware {
 
     /**
      * The field <tt>config</tt> contains the configuration.
@@ -51,13 +53,16 @@ public class BibReaderFactory {
     private Configuration config;
 
     /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private ResourceFinder finder;
+
+    /**
      * Creates a new object.
      * 
      * @param config the configuration
-     * 
-     * @throws ConfigurationException in case of a configuration error
      */
-    public BibReaderFactory(Configuration config) throws ConfigurationException {
+    public BibReaderFactory(Configuration config) {
 
         super();
         this.config = config;
@@ -86,9 +91,21 @@ public class BibReaderFactory {
         } catch (Exception e) {
             throw new ConfigurationWrapperException(e);
         }
-        bibReader.configure(config);
+        bibReader.setResourceFinder(finder);
         bibReader.open(file);
 
         return bibReader;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
+    }
+
 }

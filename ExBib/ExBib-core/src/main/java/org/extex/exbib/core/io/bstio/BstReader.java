@@ -24,8 +24,8 @@ import java.io.FileNotFoundException;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceAware;
 
 /**
  * ...
@@ -33,7 +33,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public interface BstReader extends Configurable {
+public interface BstReader extends ResourceAware {
 
     /**
      * Parse the bibliography style represented by this instance.

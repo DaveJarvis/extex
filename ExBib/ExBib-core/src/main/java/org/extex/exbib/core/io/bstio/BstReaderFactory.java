@@ -84,7 +84,6 @@ public class BstReaderFactory {
         } catch (Exception e) {
             throw new ConfigurationWrapperException(e);
         }
-        bstReader.configure(config);
 
         return bstReader;
     }

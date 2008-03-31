@@ -117,15 +117,15 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     }
 
     /**
-     * @see org.extex.exbib.core.io.AbstractFileReader#setFilename(
-     *      java.lang.String)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.engine.Engine#setFilename(java.lang.String)
      */
-    @Override
     public void setFilename(String file)
             throws FileNotFoundException,
                 ConfigurationException {
 
-        reader = (LineNumberReader) open(file, "aux");
+        reader = open(file, "aux");
     }
 
 }
