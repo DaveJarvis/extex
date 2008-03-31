@@ -35,6 +35,7 @@ import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.StringBufferWriter;
 
 /**
@@ -158,7 +159,7 @@ public class TestWarning extends TestCase {
         try {
             new Warning("warning$").execute(p, null, null);
             assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
+        } catch (ExBibException e) {
             assertTrue(true);
         }
     }
