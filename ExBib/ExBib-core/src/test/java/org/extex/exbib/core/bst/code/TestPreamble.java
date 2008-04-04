@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -64,7 +64,7 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db = null;
 
@@ -109,9 +109,9 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> preamble$ can extract a block preamble. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testBlock() throws Exception {
 
@@ -124,9 +124,9 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> initially the preamble is empty. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmpty() throws Exception {
 
@@ -138,9 +138,9 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> preamble$ can extract a numeric preamble. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNumber() throws Exception {
 
@@ -153,9 +153,9 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> preamble$ can extract a string preamble. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testString() throws Exception {
 
@@ -168,9 +168,9 @@ public class TestPreamble extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> preamble$ can extract a combined preamble. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testValue() throws Exception {
 
