@@ -1,83 +1,66 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
 package org.extex.exbib.core.db;
 
-import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.VMacro;
-import org.extex.exbib.core.db.VString;
-import org.extex.exbib.core.db.Value;
-import org.extex.exbib.core.db.impl.DBImpl;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.IOException;
+
+import org.extex.exbib.core.db.impl.DBImpl;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
+ * This is a test suite for {@link VMacro}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestVMacro extends TestCase {
+public class TestVMacro {
 
     /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestVMacro.class);
-    }
-
-    /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db;
 
     /**
-     * Create a new object.
-     * 
-     * @param name ...
+     * The field <tt>hit</tt> contains the hit indicator.
      */
-    public TestVMacro(String name) {
+    private boolean hit;
 
-        super(name);
+    /**
+     * Create a new object.
+     */
+    public TestVMacro() {
+
+        super();
     }
 
     /**
-     * {@inheritDoc}
+     * Setup function.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -87,10 +70,11 @@ public class TestVMacro extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An undefined macro expands to the empty string. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
+    @Test
     public void testExpand0() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -99,10 +83,11 @@ public class TestVMacro extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A defined macro in lowercase is expanded. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
+    @Test
     public void testExpand1() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -111,14 +96,79 @@ public class TestVMacro extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A defined macro in mixed case is expanded. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
+    @Test
     public void testExpand2() throws Exception {
 
         StringBuffer sb = new StringBuffer();
         new VMacro("jAn").expand(sb, db);
         assertEquals("January", sb.toString());
+    }
+
+    /**
+     * <testcase> toString() returns the argument of the constructor.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString1() throws Exception {
+
+        assertEquals("xyzzy", new VMacro("xyzzy").toString());
+    }
+
+    /**
+     * <testcase> toString() returns the content. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString2() throws Exception {
+
+        VMacro macro = new VMacro("aaa");
+        macro.setContents("xyzzy");
+        assertEquals("xyzzy", macro.toString());
+    }
+
+    /**
+     * <testcase> the visit method invokes the correct case. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVisit1() throws Exception {
+
+        hit = false;
+        new VMacro("xyzzy").visit(new ValueVisitor() {
+
+            public void visitBlock(VBlock value, DB db) throws IOException {
+
+                assertTrue(false);
+            }
+
+            public void visitMacro(VMacro value, DB db) throws IOException {
+
+                hit = true;
+            }
+
+            public void visitNumber(VNumber value, DB db) throws IOException {
+
+                assertTrue(false);
+            }
+
+            public void visitString(VString value, DB db) throws IOException {
+
+                assertTrue(false);
+            }
+
+            public void visitValue(Value value, DB db) throws IOException {
+
+                assertTrue(false);
+            }
+        }, db);
+        assertTrue(hit);
     }
 }
