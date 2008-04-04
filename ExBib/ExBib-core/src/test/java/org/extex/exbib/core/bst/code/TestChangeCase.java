@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -107,9 +107,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A lower case letter is not altered by converting to lower
+     * case.</testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test01l() throws Exception {
 
@@ -117,9 +118,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The format letter "t" leaves alone a single lowercase letter.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test01t() throws Exception {
 
@@ -127,9 +129,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A lower case letter is properly translated to upper case.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test01u() throws Exception {
 
@@ -137,9 +140,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A upper case letter is properly translated to lower case.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test02l() throws Exception {
 
@@ -147,9 +151,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An uppercase letter remains unchanged by format "t".
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test02t() throws Exception {
 
@@ -157,9 +162,10 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An uppercase letter remains unchanged by format "u".
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test02u() throws Exception {
 
@@ -167,9 +173,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty string remains unchanged for format "l". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0l() throws Exception {
 
@@ -177,9 +183,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty string remains unchanged for format "t". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0t() throws Exception {
 
@@ -187,9 +193,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty string remains unchanged for format "u". </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test0u() throws Exception {
 
@@ -197,9 +203,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test11l() throws Exception {
 
@@ -207,9 +213,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test11t() throws Exception {
 
@@ -217,9 +223,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test11u() throws Exception {
 
@@ -227,9 +233,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test12l() throws Exception {
 
@@ -237,9 +243,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test12t() throws Exception {
 
@@ -247,9 +253,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Several words are treated separately. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test12u() throws Exception {
 
@@ -257,9 +263,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces protect a string from translation. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test13l() throws Exception {
 
@@ -267,9 +273,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces protect a string from translation. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test13t() throws Exception {
 
@@ -277,9 +283,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces protect a string from translation. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test13u() throws Exception {
 
@@ -287,9 +293,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces protect a string from translation. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test13ub() throws Exception {
 
@@ -297,9 +303,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces protect a string from translation. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test20t() throws Exception {
 
@@ -307,12 +313,13 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test.
      * 
-     * @param fmt
-     * @param s
-     * @param res
-     * @throws Exception
+     * @param fmt the format
+     * @param s the input string
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
      */
     private void testChangeCase(String fmt, String s, String res)
             throws Exception {
@@ -325,11 +332,12 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test with the formats "l" and "L".
      * 
-     * @param s
-     * @param res
-     * @throws Exception
+     * @param s the input string
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
      */
     private void testChangeCaseL(String s, String res) throws Exception {
 
@@ -338,11 +346,12 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test with the formats "t" and "T".
      * 
-     * @param s
-     * @param res
-     * @throws Exception
+     * @param s the input string
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
      */
     private void testChangeCaseT(String s, String res) throws Exception {
 
@@ -351,11 +360,12 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test with the formats "u" and "U".
      * 
-     * @param s
-     * @param res
-     * @throws Exception
+     * @param s the input string
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
      */
     private void testChangeCaseU(String s, String res) throws Exception {
 
@@ -364,9 +374,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -379,9 +389,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testShortStack() throws Exception {
 
@@ -395,9 +405,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The format "e" is unknown. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testTypeError() throws Exception {
 
@@ -412,9 +422,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A group protects from translating to lower case.</testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testx2l() throws Exception {
 
@@ -422,9 +432,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A group protects from translating to mixed case.</testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testx2t() throws Exception {
 
@@ -432,12 +442,13 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A group protects from translating to upper case.</testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testx2u() throws Exception {
 
         testChangeCaseU("abc: d{e}f", "ABC: D{e}F");
     }
+
 }
