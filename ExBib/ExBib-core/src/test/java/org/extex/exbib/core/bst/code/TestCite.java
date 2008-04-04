@@ -76,6 +76,23 @@ public class TestCite extends TestCase {
     }
 
     /**
+     * Run a test.
+     * 
+     * @param key the key string
+     * @param result the expected result
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(String key, String result) throws Exception {
+
+        Entry e = new Entry(null);
+        e.setKey(key);
+        new Cite("cite$").execute(p, e, null);
+        assertEquals(result, p.popUnchecked().getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -99,115 +116,99 @@ public class TestCite extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        testCite("abc", "aBc");
+        runTest("abc", "aBc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        testCite("ABC", "aBc");
+        runTest("ABC", "aBc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        testCite("abC", "aBc");
+        runTest("abC", "aBc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        testCite("def", "dEF");
+        runTest("def", "dEF");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
-        testCite("DEF", "dEF");
+        runTest("DEF", "dEF");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The casing of the key does not matter. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
-        testCite("dEf", "dEF");
+        runTest("dEf", "dEF");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An unknown key remains unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test7() throws Exception {
 
-        testCite("xyz", "xyz");
+        runTest("xyz", "xyz");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An unknown key remains unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test8() throws Exception {
 
-        testCite("XYZ", "XYZ");
+        runTest("XYZ", "XYZ");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An unknown key remains unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test9() throws Exception {
 
-        testCite("xYz", "xYz");
+        runTest("xYz", "xYz");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A missing entry leads to an error.</testcase>
      * 
-     * @param s
-     * @param result
-     * @throws Exception
-     */
-    private void testCite(String s, String result) throws Exception {
-
-        Entry e = new Entry(null);
-        e.setKey(s);
-        new Cite("cite$").execute(p, e, null);
-        assertEquals(result, p.popUnchecked().getValue());
-        assertNull(p.popUnchecked());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoEntry() throws Exception {
 
@@ -218,4 +219,5 @@ public class TestCite extends TestCase {
             assertTrue(true);
         }
     }
+
 }
