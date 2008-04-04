@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -71,7 +71,7 @@ public class TestEmpty extends TestCase {
     private DB db = null;
 
     /**
-     * The field <tt>e</tt> contains the ...
+     * The field <tt>e</tt> contains an entry.
      */
     private Entry e;
 
@@ -117,10 +117,10 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run one test for the function empty$.
      * 
-     * @param val
-     * @param res
+     * @param val the value of the argument
+     * @param res the expected result
      * 
      * @throws Exception in case of an error
      */
@@ -133,7 +133,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -148,7 +148,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A non-string (Integer) argument leads to an error. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -164,7 +164,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A longer string ist not empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -174,7 +174,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A one-letter string is not empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -184,7 +184,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A one-character string is not empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -194,7 +194,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A one-digit string is not empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +204,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A <code>null</code> is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -214,7 +214,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -224,7 +224,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A space-only string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -234,7 +234,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A tab-only string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -244,7 +244,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A multi-space string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -254,7 +254,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A multi-whitespace string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -264,7 +264,7 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A multi-whitespace string is empty. <testcase>
      * 
      * @throws Exception in case of an error
      */

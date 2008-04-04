@@ -28,57 +28,57 @@
     <minCrossrefs>2</minCrossrefs>
     <globalMax>32000</globalMax>
 
-    <builtin name="&gt;"
+    <function name="&gt;"
              class="org.extex.exbib.core.bst.code.impl.Gt"/>
-    <builtin name="&lt;"
+    <function name="&lt;"
              class="org.extex.exbib.core.bst.code.impl.Lt"/>
-    <builtin name="="
+    <function name="="
              class="org.extex.exbib.core.bst.code.impl.Eq"/>
-    <builtin name="+"
+    <function name="+"
              class="org.extex.exbib.core.bst.code.impl.Plus"/>
-    <builtin name="-"
+    <function name="-"
              class="org.extex.exbib.core.bst.code.impl.Minus"/>
-    <builtin name="*"
+    <function name="*"
              class="org.extex.exbib.core.bst.code.impl.Concat"/>
-    <builtin name=":="
+    <function name=":="
              class="org.extex.exbib.core.bst.code.impl.Set"/>
-    <builtin name="add.period$"
+    <function name="add.period$"
              class="org.extex.exbib.core.bst.code.impl.AddPeriod">
       <omitPattern>.*[.!?][}]*$</omitPattern>
     </builtin>
-    <builtin name="call.type$"
+    <function name="call.type$"
              class="org.extex.exbib.core.bst.code.impl.CallType">
       <default>default.type</default>
     </builtin>
-    <builtin name="change.case$"
+    <function name="change.case$"
              class="org.extex.exbib.core.bst.code.impl.ChangeCase"/>
-    <builtin name="chr.to.int$"
+    <function name="chr.to.int$"
              class="org.extex.exbib.core.bst.code.impl.ChrToInt"/>
-    <builtin name="cite$"
+    <function name="cite$"
              class="org.extex.exbib.core.bst.code.impl.Cite"/>
-    <builtin name="duplicate$"
+    <function name="duplicate$"
              class="org.extex.exbib.core.bst.code.impl.Duplicate"/>
-    <builtin name="empty$"
+    <function name="empty$"
              class="org.extex.exbib.core.bst.code.impl.Empty"/>
-    <builtin name="format.name$"
+    <function name="format.name$"
              class="org.extex.exbib.core.bst.code.impl.FormatName099"/>
-    <builtin name="if$"
+    <function name="if$"
              class="org.extex.exbib.core.bst.code.impl.If"/>
-    <builtin name="int.to.chr$"
+    <function name="int.to.chr$"
              class="org.extex.exbib.core.bst.code.impl.IntToChr"/>
-    <builtin name="int.to.str$"
+    <function name="int.to.str$"
              class="org.extex.exbib.core.bst.code.impl.IntToStr"/>
-    <builtin name="missing$"
+    <function name="missing$"
              class="org.extex.exbib.core.bst.code.impl.Missing"/>
-    <builtin name="newline$"
+    <function name="newline$"
              class="org.extex.exbib.core.bst.code.impl.Newline"/>
-    <builtin name="num.names$"
+    <function name="num.names$"
              class="org.extex.exbib.core.bst.code.impl.NumNames"/>
-    <builtin name="pop$"
+    <function name="pop$"
              class="org.extex.exbib.core.bst.code.impl.Pop"/>
-    <builtin name="preamble$"
+    <function name="preamble$"
              class="org.extex.exbib.core.bst.code.impl.Preamble"/>
-    <builtin name="purify$"
+    <function name="purify$"
              class="org.extex.exbib.core.bst.code.impl.Purify">
       <map name="ae">ae</map>
       <map name="AE">AE</map>
@@ -94,31 +94,31 @@
       <map name="o">o</map>
       <map name="O">O</map>
     </builtin>
-    <builtin name="quote$"
+    <function name="quote$"
              class="org.extex.exbib.core.bst.code.impl.Quote"/>
-    <builtin name="skip$"
+    <function name="skip$"
              class="org.extex.exbib.core.bst.code.impl.Skip"/>
-    <builtin name="stack$"
+    <function name="stack$"
              class="org.extex.exbib.core.bst.code.impl.Stack"/>
-    <builtin name="substring$"
+    <function name="substring$"
              class="org.extex.exbib.core.bst.code.impl.Substring"/>
-    <builtin name="swap$"
+    <function name="swap$"
              class="org.extex.exbib.core.bst.code.impl.Swap"/>
-    <builtin name="text.length$"
+    <function name="text.length$"
              class="org.extex.exbib.core.bst.code.impl.TextLength"/>
-    <builtin name="text.prefix$"
+    <function name="text.prefix$"
              class="org.extex.exbib.core.bst.code.impl.TextPrefix"/>
-    <builtin name="top$"
+    <function name="top$"
              class="org.extex.exbib.core.bst.code.impl.Top"/>
-    <builtin name="type$"
+    <function name="type$"
              class="org.extex.exbib.core.bst.code.impl.Type"/>
-    <builtin name="warning$"
+    <function name="warning$"
              class="org.extex.exbib.core.bst.code.impl.Warning"/>
-    <builtin name="while$"
+    <function name="while$"
              class="org.extex.exbib.core.bst.code.impl.While"/>
-    <builtin name="width$"
+    <function name="width$"
              class="org.extex.exbib.core.bst.code.impl.Width"/>
-    <builtin name="write$"
+    <function name="write$"
              class="org.extex.exbib.core.bst.code.impl.Write"/>
   </Processor>
 

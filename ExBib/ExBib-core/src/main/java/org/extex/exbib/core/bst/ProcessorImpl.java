@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -32,7 +32,13 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 /**
  * This class implements a processor. The major features are configurable.
  * 
- * ...
+ * <h3>The Configuration</h3>
+ * <p>
+ * The configuration can be performed with the method
+ * {@link #configure(Configuration)}. The configuration should contain a list
+ * of function tags which are used to set up the functions of the processor.
+ * Each one needs to have the attributes <tt>name</tt> and <tt>class</tt>.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
@@ -52,17 +58,17 @@ public class ProcessorImpl extends ProcessorCoreImpl {
     /**
      * Configure an object according to a given Configuration.
      * 
-     * @param cfg the configuration object to consider
+     * @param config the configuration object to consider
      * 
      * @throws ConfigurationException in case that something went wrong
      */
     @Override
-    public void configure(Configuration cfg) throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
-        super.configure(cfg);
+        super.configure(config);
 
         try {
-            Iterator<Configuration> iterator = cfg.iterator("builtin");
+            Iterator<Configuration> iterator = config.iterator("function");
 
             while (iterator.hasNext()) {
                 Configuration builtin = iterator.next();
@@ -77,7 +83,7 @@ public class ProcessorImpl extends ProcessorCoreImpl {
                 Code code = (Code) Class.forName(className).newInstance();
                 code.setName(name);
                 code.configure(builtin);
-                addFunction(name, code, new Locator(cfg.toString(), 0));
+                addFunction(name, code, new Locator(config.toString(), 0));
             }
         } catch (ConfigurationException e) {
             throw e;

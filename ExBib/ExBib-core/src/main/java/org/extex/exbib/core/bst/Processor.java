@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -374,24 +374,26 @@ public interface Processor extends Bibliography, Configurable {
      * already stored.
      * 
      * @param list the list of global integers
+     * @param locator TODO
      * 
      * @throws ExBibException in case that a name is given which is already
      *         defined
      */
-    void setIntegers(TokenList list) throws ExBibException;
+    void setIntegers(TokenList list, Locator locator) throws ExBibException;
 
     /**
      * Setter for the names of global string variables. The given names are
      * added to the ones already defined.
      * 
      * @param list the list of additional string names
+     * @param locator TODO
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
      */
-    void setStrings(TokenList list)
+    void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException;
 

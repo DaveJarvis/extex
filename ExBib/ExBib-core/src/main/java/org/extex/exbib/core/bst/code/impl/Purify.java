@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,7 +42,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dd> Pops the top (string) literal, removes non alphanumeric characters
  * except for white-space characters and hyphens and ties (these all get
  * converted to a space), removes certain alphabetic characters contained in the
- * control sequences associated with a ``special character'', and pushes the
+ * control sequences associated with a ``macro character'', and pushes the
  * resulting string. </dd>
  * </dl>
  * 
@@ -52,7 +52,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * (string) literal, removes non alphanumeric characters except for
  * <code>white_space</code> and <code>sep_char</code> characters (these get
  * converted to a <code>space</code>) and removes certain alphabetic
- * characters contained in the control sequences associated with a special
+ * characters contained in the control sequences associated with a macro
  * character, and pushes the resulting string. If the literal isn't a string, it
  * complains and pushes the null string. </dd>
  * </dl>
@@ -63,9 +63,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class Purify extends AbstractCode {
 
     /**
-     * The field <tt>special</tt> contains the mapping of special characters.
+     * The field <tt>macro</tt> contains the mapping of macro characters.
      */
-    private Map<String, String> special;
+    private Map<String, String> macro;
 
     /**
      * Create a new object.
@@ -84,6 +84,20 @@ public class Purify extends AbstractCode {
 
         super();
         setName(name);
+        macro = new HashMap<String, String>();
+        macro.put("l", "l");
+        macro.put("L", "L");
+        macro.put("i", "i");
+        macro.put("j", "j");
+        macro.put("o", "o");
+        macro.put("O", "O");
+        macro.put("aa", "aa");
+        macro.put("AA", "AA");
+        macro.put("ss", "ss");
+        macro.put("oe", "oe");
+        macro.put("OE", "OE");
+        macro.put("ae", "ae");
+        macro.put("AE", "AE");
     }
 
     /**
@@ -96,32 +110,18 @@ public class Purify extends AbstractCode {
     public void configure(Configuration config) throws ConfigurationException {
 
         super.configure(config);
-        special = new HashMap<String, String>();
-        special.put("l", "l");
-        special.put("L", "L");
-        special.put("i", "i");
-        special.put("j", "j");
-        special.put("o", "o");
-        special.put("O", "O");
-        special.put("aa", "aa");
-        special.put("AA", "AA");
-        special.put("ss", "ss");
-        special.put("oe", "oe");
-        special.put("OE", "OE");
-        special.put("ae", "ae");
-        special.put("AE", "AE");
 
         if (config == null) {
             return;
         }
         if (config.getAttribute("clear") != null) {
-            special = new HashMap<String, String>();
+            macro = new HashMap<String, String>();
         }
-        Iterator<Configuration> it = config.iterator("special");
+        Iterator<Configuration> it = config.iterator("macro");
         while (it.hasNext()) {
             Configuration cfg = it.next();
             String s = cfg.getValue();
-            special.put(s, s);
+            macro.put(s, s);
         }
     }
 
@@ -155,7 +155,7 @@ public class Purify extends AbstractCode {
                         i++;
                     }
 
-                    String ctrl = (special.get(sb.substring(j + 1, i)));
+                    String ctrl = (macro.get(sb.substring(j + 1, i)));
 
                     if (ctrl == null) {
                         sb.delete(j, i);

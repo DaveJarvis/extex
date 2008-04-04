@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -28,8 +28,10 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Concat;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
@@ -76,6 +78,24 @@ public class TestConcat extends TestCase {
     }
 
     /**
+     * Apply concat$ on two strings and check the result.
+     * 
+     * @param s1 the first string to concat
+     * @param s2 the second string to concat
+     * @param result the expected result
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(String s1, String s2, String result) throws Exception {
+
+        p.push(new TString(s1));
+        p.push(new TString(s2));
+        new Concat("*").execute(p, null, null);
+        assertEquals(result, p.popUnchecked().getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -98,9 +118,9 @@ public class TestConcat extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1Stack() throws Exception {
 
@@ -115,49 +135,49 @@ public class TestConcat extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "ab" + "cd" = "abcd" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testConcat() throws Exception {
 
-        testToken("ab", "cd", "abcd");
+        runTest("ab", "cd", "abcd");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "" + "" = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testConcatEmpty() throws Exception {
 
-        testToken("", "", "");
+        runTest("", "", "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "" + "abc" = "abc" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testConcatEmptyLeft() throws Exception {
 
-        testToken("", "abc", "abc");
+        runTest("", "abc", "abc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> "abc" + "" = "abc" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testConcatEmptyRight() throws Exception {
 
-        testToken("abc", "", "abc");
+        runTest("abc", "", "abc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -170,20 +190,36 @@ public class TestConcat extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The first argument needs to be a string. </testcase>
      * 
-     * @param s1
-     * @param s2
-     * @param result
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    private void testToken(String s1, String s2, String result)
-            throws Exception {
+    public void testTypeError1() throws Exception {
 
-        p.push(new TString(s1));
-        p.push(new TString(s2));
-        new Concat("*").execute(p, null, null);
-        assertEquals(result, p.popUnchecked().getValue());
-        assertNull(p.popUnchecked());
+        p.push(new TInteger(123));
+        try {
+            new Concat("*").execute(p, null, null);
+            assertTrue(false);
+        } catch (ExBibMissingStringException e) {
+            assertTrue(true);
+        }
     }
+
+    /**
+     * <testcase> The second argument needs to be a string. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testTypeError2() throws Exception {
+
+        p.push(new TInteger(123));
+        p.push(new TString("123"));
+        try {
+            new Concat("*").execute(p, null, null);
+            assertTrue(false);
+        } catch (ExBibMissingStringException e) {
+            assertTrue(true);
+        }
+    }
+
 }

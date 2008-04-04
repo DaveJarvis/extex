@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -63,9 +63,50 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
- * This is the core implementation of a BibT<sub>E</sub>X processor.
+ * This is the core implementation of an interpreter for the BibT<sub>E</sub>X
+ * language.
  * <p>
- * ...
+ * The core implementation contains the full functionality of an interpreter.
+ * But not functions, strings, integers etc are predefined. Thus usually this
+ * class should be used as a base class where derived classes take care of those
+ * definitions.
+ * </p>
+ * 
+ * <h3>The Stack</h3>
+ * <p>
+ * The interpreter implements a stack based language. All communication to
+ * functions is performed via the stack. The arguments of method invocations can
+ * be pushed onto the stack and popped from it in the functions.
+ * </p>
+ * <p>
+ * The Stack can keep different date types. They range from constant strings or
+ * integers to pieces of executable code. The base interface of the stack items
+ * is {@link Code}.
+ * </p>
+ * 
+ * <h3>The Strings</h3>
+ * <p>
+ * The interpreter can keep string valued variables. They are accessed with a
+ * name which is also a {@link String}.
+ * </p>
+ * 
+ * <h3>The Integers</h3>
+ * <p>
+ * The interpreter can keep integer valued variables. They are accessed with a
+ * name which is a {@link String}.
+ * </p>
+ * 
+ * <h3>The Entry Stings</h3>
+ * 
+ * <h3>The Entry Integers</h3>
+ * 
+ * <h3>The Database</h3>
+ * 
+ * <h3>The Observers</h3>
+ * <p>
+ * Several operations in the interpreter can trigger an observer when the
+ * corresponding event occurs. Thus client programs can register a handler to be
+ * informed when such an event is recognized.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -83,70 +124,131 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      */
     private DB db = null;
 
-    /** String[lowerCase] => String[original] */
+    /**
+     * The field <tt>citations</tt> contains the mapping from normalized forms
+     * of citation strings to their original representation. The normalization
+     * simply converts strings to their lowercase counterpart.
+     */
     private Map<String, String> citations;
 
-    /** String => Code */
+    /**
+     * The field <tt>functions</tt> contains the mapping from the name to the
+     * code for functions.
+     */
     private Map<String, Code> functions = new HashMap<String, Code>();
 
-    /** List of observers triggered when functions are added. */
+    /**
+     * The field <tt>addFunctionObservers</tt> contains the list of observers
+     * triggered when functions are added.
+     */
     private ObserverList addFunctionObservers = new ObserverList();
 
-    /** List of observers triggered when functions are changed. */
+    /**
+     * The field <tt>changeFunctionObservers</tt> contains the list of
+     * observers triggered when functions are changed.
+     */
     private ObserverList changeFunctionObservers = new ObserverList();
 
-    /** List of observers triggered when the parsing is started */
+    /**
+     * The field <tt>endParseObservers</tt> contains the list of observers
+     * triggered when the parsing is started.
+     */
     private ObserverList endParseObservers = new ObserverList();
 
-    /** List of observers triggered when the parsing is completed */
+    /**
+     * The field <tt>parseObservers</tt> contains the list of observers
+     * triggered when the parsing is completed.
+     */
     private ObserverList parseObservers = new ObserverList();
 
-    /** List of observers triggered when a Token is popped. */
+    /**
+     * The field <tt>popObservers</tt> contains the list of observers
+     * triggered when a Token is popped.
+     */
     private ObserverList popObservers = new ObserverList();
 
-    /** List of observers triggered when a token is pushed. */
+    /**
+     * The field <tt>pushObservers</tt> contains the list of observers
+     * triggered when a token is pushed.
+     */
     private ObserverList pushObservers = new ObserverList();
 
-    /** List of observers triggered when processing a command */
+    /**
+     * The field <tt>runObservers</tt> contains the list of observers
+     * triggered when processing a command.
+     */
     private ObserverList runObservers = new ObserverList();
 
-    /** List of observers triggered when the parsing starts */
+    /**
+     * The field <tt>startParseObservers</tt> contains the list of observers
+     * triggered when the parsing starts.
+     */
     private ObserverList startParseObservers = new ObserverList();
 
-    /** List of observers triggered when the parsing ends */
+    /**
+     * The field <tt>startReadObservers</tt> contains the list of observers
+     * triggered when the parsing ends.
+     */
     private ObserverList startReadObservers = new ObserverList();
 
-    /** List of observers triggered by the execution of one step */
+    /**
+     * The field <tt>stepObservers</tt> contains the list of observers
+     * triggered by the execution of one step.
+     */
     private ObserverList stepObservers = new ObserverList();
 
-    /** the list of bibliography databases to consider */
+    /**
+     * The field <tt>bibliographyDatabases</tt> contains the list of
+     * bibliography databases to consider.
+     */
     private List<String> bibliographyDatabases;
 
-    /** the list of bibliography styles to load and use */
+    /**
+     * The field <tt>bibliographyStyles</tt> contains the list of bibliography
+     * styles to load and use.
+     */
     private List<String> bibliographyStyles;
 
-    /** the list of entries */
+    /**
+     * The field <tt>theEntries</tt> contains the list of entries.
+     */
     private List<String> theEntries;
 
-    /** the list of local integers */
+    /**
+     * The field <tt>theEntryIntegers</tt> contains the list of local
+     * integers.
+     */
     private List<String> theEntryIntegers;
 
-    /** the list of local strings */
+    /**
+     * The field <tt>theEntryStrings</tt> contains the list of local strings.
+     */
     private List<String> theEntryStrings;
 
-    /** the list of integers */
+    /**
+     * The field <tt>theIntegers</tt> contains the list of integers.
+     */
     private List<String> theIntegers;
 
-    /** the list of strings */
+    /**
+     * The field <tt>theStrings</tt> contains the list of strings.
+     */
     private List<String> theStrings;
 
-    /** the stack: the central data structure for the execution of a program */
+    /**
+     * The field <tt>literalStack</tt> contains the stack which is the central
+     * data structure for the execution of a program.
+     */
     private Stack<Token> literalStack = new Stack<Token>();
 
-    /** the writer for logging purposes */
+    /**
+     * The field <tt>logger</tt> contains the writer for logging purposes.
+     */
     private Logger logger = null;
 
-    /** the output writer */
+    /**
+     * The field <tt>outWriter</tt> contains the output writer.
+     */
     private Writer outWriter = null;
 
     /**
@@ -380,7 +482,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        Locator locator = null; // TODO
+        Locator locator = new Locator(getClass().getName() + "#configure()", 0);
         int i = config.getValueAsInteger("minCrossrefs", -1);
 
         if (i >= 0) {
@@ -786,7 +888,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Locator locator = null; // TODO
+        Locator locator = new Locator(getClass().getName() + "#reset()", 0);
 
         citations = new HashMap<String, String>();
         bibliographyStyles = new ArrayList<String>();
@@ -874,11 +976,11 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.Processor#setIntegers(
-     *      org.extex.exbib.core.bst.node.impl.TokenList)
+     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
-    public void setIntegers(TokenList list) throws ExBibException {
+    public void setIntegers(TokenList list, Locator locator)
+            throws ExBibException {
 
-        Locator locator = null; // TODO
         Iterator<Token> iterator = list.iterator();
 
         while (iterator.hasNext()) {
@@ -923,13 +1025,12 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.Processor#setStrings(
-     *      org.extex.exbib.core.bst.node.impl.TokenList)
+     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
-    public void setStrings(TokenList list)
+    public void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Locator locator = null; // TODO
         Iterator<Token> iterator = list.iterator();
 
         while (iterator.hasNext()) {

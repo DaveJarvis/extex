@@ -1,27 +1,26 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
 package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
-import java.io.Reader;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -328,33 +327,30 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  */
 public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
-    /** the pattern for whitespace */
+    /**
+     * The constant <tt>patternEmpty</tt> contains the pattern for whitespace.
+     */
     private static final Pattern patternEmpty = Pattern.compile("\\s*");
 
-    /** the pattern for whitespace at the beginning */
-    private static final Pattern patternLeadingSpaces =
-            Pattern.compile("^\\s+");
-
-    /** the pattern for a literal at the beginning */
-    private static final Pattern patternLiteral =
+    /**
+     * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a
+     * literal at the beginning.
+     */
+    private static final Pattern LITERAL_PATTERN =
             Pattern.compile("([^{}\\//\\\"\\' \t\n]+)");
 
-    /** the pattern for newlines */
-    private static Pattern patternNewline = Pattern.compile("[\n\r]");
-
-    /** the pattern for numbers */
-    private static final Pattern patternNumber =
+    /**
+     * The constant <tt>NUMBER_PATTERN</tt> contains the pattern for numbers.
+     */
+    private static final Pattern NUMBER_PATTERN =
             Pattern.compile("#([+-]?[0-9]+)");
 
     /**
-     * the pattern for a string, i.e. something enclosed in double quotes not
-     * containing a double quote
+     * The constant <tt>STRING_PATTERN</tt> contains the pattern for a string,
+     * i.e. something enclosed in double quotes not containing a double quote.
      */
-    private static final Pattern patternString =
+    private static final Pattern STRING_PATTERN =
             Pattern.compile("\"([^\\\"]*)\"");
-
-    /** the reader to get the input from */
-    private Reader reader = null;
 
     /**
      * Creates a new object.
@@ -437,17 +433,17 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
             if (buffer.charAt(0) == '%') {
                 buffer.delete(0, buffer.length());
-            } else if ((matcher = patternNumber.matcher(buffer)).lookingAt()) {
+            } else if ((matcher = NUMBER_PATTERN.matcher(buffer)).lookingAt()) {
                 String val = matcher.group(1);
                 buffer.delete(0, matcher.end());
 
                 return new TInteger(val, getLocator());
-            } else if ((matcher = patternLiteral.matcher(buffer)).lookingAt()) {
+            } else if ((matcher = LITERAL_PATTERN.matcher(buffer)).lookingAt()) {
                 String val = matcher.group(1).toLowerCase();
                 buffer.delete(0, matcher.end());
 
                 return new TLiteral(val, getLocator());
-            } else if ((matcher = patternString.matcher(buffer)).lookingAt()) {
+            } else if ((matcher = STRING_PATTERN.matcher(buffer)).lookingAt()) {
                 String val = matcher.group(1);
                 buffer.delete(0, matcher.end());
 
@@ -510,7 +506,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                 ConfigurationException {
 
         Token token;
-        reader = open(file, "bst");
+        open(file, "bst");
 
         while ((token = nextToken()) != null) {
             if (!processCommand(token, processor)) {
@@ -756,7 +752,8 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
             case 'i':
 
                 if ("integers".equals(name)) {
-                    processor.setIntegers(parseLiteralList());
+                    processor.setIntegers(parseLiteralList(), token
+                        .getLocator());
                     return true;
                 } else if ("iterate".equals(name)) {
                     processor.addCommand(new BstIterateImpl(parseLiteralArg(),
@@ -789,7 +786,8 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
             case 's':
 
                 if ("strings".equals(name)) {
-                    processor.setStrings(parseLiteralList());
+                    processor
+                        .setStrings(parseLiteralList(), token.getLocator());
                     return true;
                 } else if ("sort".equals(name)) {
                     processor.addCommand(new BstSortImpl(token.getLocator()));
@@ -801,4 +799,5 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
         return false;
     }
+
 }
