@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -28,7 +28,9 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Duplicate;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TChar;
 import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
@@ -99,11 +101,11 @@ public class TestDuplicate extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A integer can be duplicated. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void test1Duplicate() throws Exception {
+    public void testDuplicate1() throws Exception {
 
         p.push(new TString("abc"));
         new Duplicate("duplicate$").execute(p, null, null);
@@ -113,11 +115,11 @@ public class TestDuplicate extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A string can be duplicated. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void test2Duplicate() throws Exception {
+    public void testDuplicate2() throws Exception {
 
         p.push(new TInteger(123));
         new Duplicate("duplicate$").execute(p, null, null);
@@ -127,9 +129,37 @@ public class TestDuplicate extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A char can be duplicated. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testDuplicate3() throws Exception {
+
+        p.push(new TChar("a", null));
+        new Duplicate("duplicate$").execute(p, null, null);
+        assertEquals("a", p.pop(null).getValue());
+        assertEquals("a", p.pop(null).getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> A literal can be duplicated. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testDuplicate4() throws Exception {
+
+        p.push(new TLiteral("a"));
+        new Duplicate("duplicate$").execute(p, null, null);
+        assertEquals("a", p.pop(null).getValue());
+        assertEquals("a", p.pop(null).getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
+     * <testcase> An empty stack leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
