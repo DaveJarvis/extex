@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -100,10 +100,11 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test.
      * 
-     * @param c
-     * @throws Exception
+     * @param c the character code
+     * 
+     * @throws Exception in case of an error
      */
     private void testChrToInt(int c) throws Exception {
 
@@ -114,9 +115,9 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The character 0 is mapped correctly. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testChrToInt0() throws Exception {
 
@@ -124,9 +125,9 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The character 123 is mapped correctly. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testChrToInt123() throws Exception {
 
@@ -134,9 +135,9 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The character 32 is mapped correctly. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testChrToInt32() throws Exception {
 
@@ -144,9 +145,9 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The first argument can not be a String. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testChrToIntlong() throws Exception {
 
@@ -160,9 +161,9 @@ public class TestChrToInt extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -173,4 +174,5 @@ public class TestChrToInt extends TestCase {
             assertTrue(true);
         }
     }
+
 }
