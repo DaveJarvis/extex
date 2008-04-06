@@ -65,7 +65,7 @@ public class Purify extends AbstractCode {
     /**
      * The field <tt>macro</tt> contains the mapping of macro characters.
      */
-    private Map<String, String> macro;
+    private Map<String, String> macro = new HashMap<String, String>();
 
     /**
      * Create a new object.
@@ -73,18 +73,6 @@ public class Purify extends AbstractCode {
     public Purify() {
 
         super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public Purify(String name) {
-
-        super();
-        setName(name);
-        macro = new HashMap<String, String>();
         macro.put("l", "l");
         macro.put("L", "L");
         macro.put("i", "i");
@@ -98,6 +86,17 @@ public class Purify extends AbstractCode {
         macro.put("OE", "OE");
         macro.put("ae", "ae");
         macro.put("AE", "AE");
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the function name in the processor context
+     */
+    public Purify(String name) {
+
+        this();
+        setName(name);
     }
 
     /**

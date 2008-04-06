@@ -51,33 +51,23 @@ public class VMacro extends AbstractValueItem {
      * The value of a Macro expands to the concatenation of all constituents,
      * where undefined items are expanded to the empty string.
      * 
-     * @see org.extex.exbib.core.db.ValueItem#expand(java.lang.StringBuffer,
+     * @see org.extex.exbib.core.db.ValueItem#expand(StringBuilder,
      *      org.extex.exbib.core.db.DB)
      */
     @Override
-    public void expand(StringBuffer sb, DB db) {
+    public void expand(StringBuilder sb, DB db) {
 
         Value val = db.getMacro(getContent());
 
-        if (val != null) {
-            Iterator<ValueItem> iterator = val.iterator();
-
-            while (iterator.hasNext()) {
-                iterator.next().expand(sb, db);
-            }
+        if (val == null) {
+            return;
         }
-    }
 
-    /**
-     * Return a String representation of the object suitable for a BibT<sub>E</sub>X
-     * file.
-     * 
-     * @return the string representation
-     */
-    @Override
-    public String toString() {
+        Iterator<ValueItem> iterator = val.iterator();
 
-        return getContent();
+        while (iterator.hasNext()) {
+            iterator.next().expand(sb, db);
+        }
     }
 
     /**

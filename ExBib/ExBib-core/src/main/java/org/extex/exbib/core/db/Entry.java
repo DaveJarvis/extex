@@ -132,7 +132,7 @@ public class Entry {
     }
 
     /**
-     * This method searches for a normal value and concats all expanded
+     * This method searches for a normal value and concatenates all expanded
      * constituents. Macro are looked up in the database given and their values
      * are inserted.
      * 
@@ -149,7 +149,7 @@ public class Entry {
         Value val = get(key, db);
 
         if (val != null) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             Iterator<ValueItem> iterator = val.iterator();
 
             while (iterator.hasNext()) {

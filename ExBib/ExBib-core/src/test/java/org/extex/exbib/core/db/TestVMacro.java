@@ -77,7 +77,7 @@ public class TestVMacro {
     @Test
     public void testExpand0() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         new VMacro("j").expand(sb, db);
         assertEquals("", sb.toString());
     }
@@ -90,7 +90,7 @@ public class TestVMacro {
     @Test
     public void testExpand1() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         new VMacro("jan").expand(sb, db);
         assertEquals("January", sb.toString());
     }
@@ -103,7 +103,7 @@ public class TestVMacro {
     @Test
     public void testExpand2() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         new VMacro("jAn").expand(sb, db);
         assertEquals("January", sb.toString());
     }

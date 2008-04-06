@@ -22,6 +22,7 @@ package org.extex.exbib.core.bst.code.impl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
@@ -197,12 +198,15 @@ public class Width extends AbstractCode {
             };
 
     /**
-     * The field <tt>SPECIAL</tt> contains the mapping of the special T<sub>E</sub>X
+     * The constant <tt>SPECIAL</tt> contains the mapping of the special T<sub>E</sub>X
      * sequences with positive width.
      */
     private static Map<String, Integer> SPECIAL = newSpecials();
 
-    /** Indicate that debugging is activated */
+    /**
+     * The field <tt>debug</tt> contains the indicator that debugging is
+     * activated.
+     */
     private static final boolean debug = false;
 
     /**
@@ -261,6 +265,8 @@ public class Width extends AbstractCode {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
+        Logger logger = processor.getLogger();
+
         String s = processor.popString(locator).getValue();
         int w = 0;
         int length = s.length();
@@ -268,37 +274,35 @@ public class Width extends AbstractCode {
         char c;
 
         if (debug) {
-            System.err.println();
-            System.err.println(s);
+            logger.fine("\n" + s);
         }
 
         for (int ptr = 0; ptr < length; ptr++) {
             c = s.charAt(ptr);
             if (debug) {
-                System.err.print(c);
+                logger.fine(" " + Character.toString(c));
             }
 
             if (c == '{') {
                 if (++level == 1 && ptr + 1 < length) {
                     if (debug) {
-                        System.err.print(" [" + level + "]");
+                        logger.fine(" [" + level + "]");
                     }
 
                     if (s.charAt(ptr + 1) == '\\') {
                         if (debug) {
-                            System.err.print(" \\\\");
+                            logger.fine(" \\\\");
                         }
 
-                        StringBuffer control = new StringBuffer();
+                        StringBuilder control = new StringBuilder();
                         ptr += 2;
 
                         if (ptr >= length) {
-                            //
+                            // after end
                         } else if (Character.isLetter(s.charAt(ptr))) {
-                            while (ptr < length
-                                    && Character.isLetter(s.charAt(ptr))) {
+                            for (; ptr < length
+                                    && Character.isLetter(s.charAt(ptr)); ptr++) {
                                 control.append(s.charAt(ptr));
-                                ptr++;
                             }
                         } else {
                             ptr++;
@@ -331,7 +335,7 @@ public class Width extends AbstractCode {
             }
 
             if (debug) {
-                System.err.println("\t" + w);
+                logger.fine("\t" + w + "\n");
             }
         }
 

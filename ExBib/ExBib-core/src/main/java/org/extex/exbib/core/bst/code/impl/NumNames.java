@@ -1,28 +1,29 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
 package org.extex.exbib.core.bst.code.impl;
 
+import java.util.List;
+
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.NameList;
+import org.extex.exbib.core.bst.node.Name;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -110,23 +111,25 @@ public class NumNames extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         TString names = processor.popString(locator);
-        NameList namelist = names.getNames();
+        List<Name> namelist = names.getNames();
 
         if (namelist == null) {
-            namelist = new NameList(names.getValue(), locator);
+            namelist = Name.parse(names.getValue(), locator);
         }
 
-        int n = namelist.length();
+        int n = namelist.size();
         processor.push((n == 0 ? TokenFactory.T_ZERO : n == 1
                 ? TokenFactory.T_ONE
                 : new TInteger(n)));
     }
+
 }

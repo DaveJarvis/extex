@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -29,7 +28,6 @@ import java.util.Map;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.node.Name;
-import org.extex.exbib.core.bst.node.NameList;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -92,10 +90,13 @@ public class FormatName extends AbstractCode {
     /**
      * The class Format is a container for a list of FormatItems.
      */
-    private class Format {
+    private class Format extends ArrayList<FormatItem> {
 
-        /** The list of format items */
-        private List<FormatItem> theValue = new ArrayList<FormatItem>();
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2008L;
 
         /**
          * Creates a new object.
@@ -114,6 +115,56 @@ public class FormatName extends AbstractCode {
         }
 
         /**
+         * Count the number of text characters in a buffer.
+         * 
+         * @param s the buffer to analyze
+         * 
+         * @return <code>true</code> iff the number of text characters is at
+         *         least 2
+         */
+        protected boolean containsText(StringBuilder s) {
+
+            boolean first = false;
+
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (Character.isLetterOrDigit(c)) {
+                    if (first) {
+                        return true;
+                    }
+                    first = true;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Check if a buffer contains an ending.
+         * 
+         * @param sb the buffer
+         * @param s the string to compare to
+         * @param index the last character position in buffer to start
+         *        comparison with; anything behind is treated as not present
+         * 
+         * @return <code>true</code> if the buffer ends in the string
+         */
+        private boolean endsIn(StringBuilder sb, String s, int index) {
+
+            int i = index;
+            for (int ti = s.length() - 1; ti >= 0; ti--) {
+                char c = sb.charAt(i);
+                char tc = s.charAt(ti);
+                if (i < 0 || c != tc) {
+                    return false;
+                }
+                i--;
+            }
+
+            return true;
+        }
+
+        /**
          * Format all names in the list.
          * 
          * @param name the name to format
@@ -125,19 +176,22 @@ public class FormatName extends AbstractCode {
          */
         public String format(Name name, Locator locator) throws ExBibException {
 
-            StringBuffer sb = new StringBuffer();
-            Iterator<FormatItem> iterator = theValue.iterator();
+            StringBuilder sb = new StringBuilder();
             int tielen = tie.length();
-            int len;
 
-            while (iterator.hasNext()) {
-                iterator.next().format(sb, name, locator);
-                len = sb.length();
+            for (FormatItem fi : this) {
+                if (!fi.format(sb, name, locator)) {
+                    continue;
+                }
+                int len = sb.length();
 
-                if (textLength(sb) >= 2
-                        && sb.substring(len - tielen).equals(tie)) {
-                    sb.delete(len - tie.length(), len);
-                    sb.append(' ');
+                if (endsIn(sb, tie, len - 1)) {
+                    if (endsIn(sb, tie, len - 1 - tielen)) {
+                        sb.delete(len - tielen, len);
+                    } else if (endsIn(sb, "}", len - 1 - tielen)
+                            || containsText(sb)) {
+                        sb.replace(len - tielen, len, " ");
+                    }
                 }
             }
 
@@ -157,15 +211,14 @@ public class FormatName extends AbstractCode {
                 throws ExBibSyntaxException,
                     ExBibImpossibleException {
 
-            int i = 0;
+            int length = format.length();
 
-            while (i < format.length()) {
-                i =
-                        (format.charAt(i) == '{'
-                                ? parseItem(i, format, locator)
-                                : parseToBrace(i, format));
+            for (int i = 0; i < length;) {
+                i = (format.charAt(i) == '{' //
+                        ? parseItem(i, format, locator)
+                        : parseToBrace(i, format));
             }
-        }
+        };
 
         /**
          * Parses from a start position in a string which follows an opening
@@ -253,22 +306,18 @@ public class FormatName extends AbstractCode {
 
                         if (level == 1) {
                             if (item != null) {
-                                Localizer localizer =
-                                        LocalizerFactory
-                                            .getLocalizer(getClass());
-                                throw new ExBibSyntaxException(localizer
-                                    .format("Letters.at.level.1"), locator);
+                                throw new ExBibSyntaxException(LocalizerFactory
+                                    .getLocalizer(getClass()).format(
+                                        "Letters.at.level.1"), locator);
                             }
 
                             String pre = format.substring(beg, i);
                             letter = format.charAt(i);
 
                             if (++i >= format.length()) {
-                                Localizer localizer =
-                                        LocalizerFactory
-                                            .getLocalizer(getClass());
-                                throw new ExBibSyntaxException(localizer
-                                    .format("Missing.end.of.item="), locator);
+                                throw new ExBibSyntaxException(LocalizerFactory
+                                    .getLocalizer(getClass()).format(
+                                        "Missing.end.of.item"), locator);
                             }
 
                             char c = format.charAt(i);
@@ -277,12 +326,10 @@ public class FormatName extends AbstractCode {
                                 letter = Character.toUpperCase(letter);
 
                                 if (++i >= format.length()) {
-                                    Localizer localizer =
-                                            LocalizerFactory
-                                                .getLocalizer(getClass());
-                                    throw new ExBibSyntaxException(localizer
-                                        .format("Missing.end.of.item="),
-                                        locator);
+                                    throw new ExBibSyntaxException(
+                                        LocalizerFactory.getLocalizer(
+                                            getClass()).format(
+                                            "Missing.end.of.item"), locator);
                                 }
 
                                 c = format.charAt(i);
@@ -314,18 +361,20 @@ public class FormatName extends AbstractCode {
                                     item = new FormatJJ();
                                     break;
                                 default:
-                                    // TODO: message
-                                    throw new ExBibImpossibleException("",
+                                    throw new ExBibImpossibleException(
+                                        LocalizerFactory.getLocalizer(
+                                            getClass()).format(
+                                            "desaster.format",
+                                            Character.toString(letter)),
                                         locator);
                             }
 
                             item.setPre(pre);
-                            theValue.add(item);
+                            add(item);
 
                             if (c == '{') {
-                                i =
-                                        parseEndOfBlock(i + 1, item, format,
-                                            true, locator);
+                                i = parseEndOfBlock(i + 1, item, format, true,//
+                                    locator);
                             }
 
                             return parseEndOfBlock(i, item, format, false,
@@ -359,8 +408,8 @@ public class FormatName extends AbstractCode {
                 return brace;
             }
 
-            FormatItem item = new FormatItem();
-            theValue.add(item);
+            FormatItem item = new FormatItem(null);
+            add(item);
 
             if (brace < 0) {
                 item.setPre(format.substring(start));
@@ -375,31 +424,23 @@ public class FormatName extends AbstractCode {
         }
 
         /**
-         * Count the number of text characters in a String.
+         * {@inheritDoc}
          * 
-         * @param s the String to analyze
-         * 
-         * @return the number of text characters
+         * @see java.lang.Object#toString()
          */
-        protected int textLength(StringBuffer s) {
+        @Override
+        public String toString() {
 
-            int ret = 0;
-
-            for (int i = 0; i < s.length(); i++) {
-                if (Character.isLetterOrDigit(s.charAt(i))) {
-                    ret++;
-                }
+            StringBuilder sb = new StringBuilder();
+            for (FormatItem fi : this) {
+                sb.append(fi.toString());
             }
-
-            return ret;
+            return sb.toString();
         }
     }
 
     /**
      * This is a format item for an abbreviated first name.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatF extends FormatItem {
 
@@ -408,56 +449,58 @@ public class FormatName extends AbstractCode {
          */
         public FormatF() {
 
-            super();
+            super("f");
         }
 
         /**
          * Format the first names in its short form.
          * 
-         * @param sb the target StringBuffer
+         * @param sb the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
          */
         @Override
-        public void format(StringBuffer sb, Name name, Locator locator)
+        public boolean format(StringBuilder sb, Name name, Locator locator)
                 throws ExBibException {
 
-            fmtInitials(sb, name.getFirst(), ". ", 1, locator); //$NON-NLS-1$
+            return fmtInitials(sb, name.getFirst(), ". ", 1, locator);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a
      * first name in its long form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatFF extends FormatItem {
 
         /**
+         * Creates a new object.
+         */
+        public FormatFF() {
+
+            super("ff");
+        }
+
+        /**
          * Format the first names in its long form.
          * 
-         * @param sb the target StringBuffer
+         * @param sb the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          */
         @Override
-        public void format(StringBuffer sb, Name name, Locator locator) {
+        public boolean format(StringBuilder sb, Name name, Locator locator) {
 
             List<String> part = name.getFirst();
-            fmtFull(sb, part, " ", part.size() - 1); //$NON-NLS-1$
+            return fmtFull(sb, part, " ", part.size() - 1);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a
      * constant string. It is also used as a base class for other format items.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatItem {
 
@@ -471,25 +514,33 @@ public class FormatName extends AbstractCode {
          * The <i>post</i> string is inserted after multi-part fragments of a
          * name if those fragments are not empty.
          */
-        private String post = ""; //$NON-NLS-1$
+        private String post = "";
 
         /**
          * The <i>pre</i> string is inserted before multi-part fragments of a
          * name if those fragments are not empty.
          */
-        private String pre = ""; //$NON-NLS-1$
+        private String pre = "";
+
+        /**
+         * The field <tt>id</tt> contains the id for printing.
+         */
+        private String id;
 
         /**
          * Creates a new object.
+         * 
+         * @param id the id for printing
          */
-        public FormatItem() {
+        public FormatItem(String id) {
 
             super();
+            this.id = id;
         }
 
         /**
          * Extract the initials from a String and append it to the given
-         * StringBuffer.
+         * {@link StringBuilder}.
          * 
          * @param buffer the string buffer to append to
          * @param s the string to analyze
@@ -498,8 +549,8 @@ public class FormatName extends AbstractCode {
          * 
          * @throws ExBibException in case of an error
          */
-        protected void appendInitial(StringBuffer buffer, String s, String sep,
-                Locator locator) throws ExBibException {
+        protected void appendInitial(StringBuilder buffer, String s,
+                String sep, Locator locator) throws ExBibException {
 
             int level = 0;
             int len = s.length();
@@ -523,13 +574,11 @@ public class FormatName extends AbstractCode {
 
                     for (i++; i < s.length() && level > 0; i++) {
                         c = s.charAt(i);
-
                         if (c == '{') {
                             level++;
                         } else if (c == '}') {
                             level--;
                         }
-
                         buffer.append(c);
                     }
                 } else {
@@ -554,7 +603,8 @@ public class FormatName extends AbstractCode {
                         buffer.append(sep);
                         again = false;
                     } else if (c == '~' && level == 0) {
-                        buffer.append(".~");
+                        buffer.append('.');
+                        buffer.append(tie);
                         again = false;
                     } else if (Character.isWhitespace(c) && level == 0) {
                         again = false;
@@ -566,14 +616,17 @@ public class FormatName extends AbstractCode {
         /**
          * Format a part of a name part in its full form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param list the list of constituents of the name part
          * @param midDefault the default value if the attribute mid is not set
          * @param lineLength the line length
+         * 
+         * @return the indicator that the buffer has been modified.
          */
-        protected void fmtFull(StringBuffer buffer, List<String> list,
+        protected boolean fmtFull(StringBuilder buffer, List<String> list,
                 String midDefault, int lineLength) {
 
+            int len = buffer.length();
             Iterator<String> iterator = list.iterator();
 
             if (iterator.hasNext()) {
@@ -590,30 +643,34 @@ public class FormatName extends AbstractCode {
 
                 buffer.append(post);
             }
+            return len != buffer.length();
         }
 
         /**
          * Format a part of a name part in its short form; only the initials are
          * used.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param list the list of constituents of the name part
          * @param midDefault the default value if the attribute mid is not set
          * @param n the line length?
          * @param locator the locator from the users perspective
          * 
+         * @return <code>true</code> iff the buffer has been modified
+         * 
          * @throws ExBibException in case that no initial is found
          */
-        protected void fmtInitials(StringBuffer buffer, List<String> list,
+        protected boolean fmtInitials(StringBuilder buffer, List<String> list,
                 String midDefault, int n, Locator locator)
                 throws ExBibException {
 
+            int len = buffer.length();
             Iterator<String> iterator = list.iterator();
 
             if (iterator.hasNext()) {
                 String m = (mid == null ? midDefault : mid);
-                String t = (mid == null ? "." + tie : mid); //$NON-NLS-1$
-                String sep = (mid == null ? ".-" : mid); //$NON-NLS-1$
+                String t = (mid == null ? "." + tie : mid);
+                String sep = (mid == null ? ".-" : mid);
                 int i = 1;
                 buffer.append(pre);
                 appendInitial(buffer, iterator.next(), sep, locator);
@@ -625,6 +682,7 @@ public class FormatName extends AbstractCode {
 
                 buffer.append(post);
             }
+            return len != buffer.length();
         }
 
         /**
@@ -635,12 +693,15 @@ public class FormatName extends AbstractCode {
          * @param name the (ignored) name to format
          * @param locator the locator
          * 
+         * @return <code>true</code> iff the buffer has been modified
+         * 
          * @throws ExBibException never; just for the subclasses
          */
-        public void format(StringBuffer sb, Name name, Locator locator)
+        public boolean format(StringBuilder sb, Name name, Locator locator)
                 throws ExBibException {
 
             sb.append(pre);
+            return !"".equals(pre);
         }
 
         /**
@@ -707,14 +768,25 @@ public class FormatName extends AbstractCode {
 
             pre = string;
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            if (id == null) {
+                return pre + (mid == null ? "" : mid) + post;
+            }
+            return "{" + pre + id + (mid == null ? "" : mid) + post + "}";
+        }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a jr
      * part in its short form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatJ extends FormatItem {
 
@@ -723,55 +795,57 @@ public class FormatName extends AbstractCode {
          */
         public FormatJ() {
 
-            super();
+            super("j");
         }
 
         /**
          * Format the junior part in its short form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator)
+        public boolean format(StringBuilder buffer, Name name, Locator locator)
                 throws ExBibException {
 
-            fmtInitials(buffer, name.getJr(), ". ", 2, locator); //$NON-NLS-1$
+            return fmtInitials(buffer, name.getJr(), ". ", 2, locator);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a
      * junior part in its long form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatJJ extends FormatItem {
 
         /**
+         * Creates a new object.
+         */
+        public FormatJJ() {
+
+            super("jj");
+        }
+
+        /**
          * Format the junior part in its long form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator) {
+        public boolean format(StringBuilder buffer, Name name, Locator locator) {
 
-            fmtFull(buffer, name.getJr(), " ", 0); //$NON-NLS-1$
+            return fmtFull(buffer, name.getJr(), " ", 0);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a
      * last name in its short form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatL extends FormatItem {
 
@@ -780,57 +854,59 @@ public class FormatName extends AbstractCode {
          */
         public FormatL() {
 
-            super();
+            super("l");
         }
 
         /**
          * Format the last names in its short form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator)
+        public boolean format(StringBuilder buffer, Name name, Locator locator)
                 throws ExBibException {
 
             List<String> part = name.getLast();
-            fmtInitials(buffer, part, ". ", part.size() - 1, locator); //$NON-NLS-1$
+            return fmtInitials(buffer, part, ". ", part.size() - 1, locator);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a
      * last name in its long form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatLL extends FormatItem {
 
         /**
+         * Creates a new object.
+         */
+        public FormatLL() {
+
+            super("ll");
+        }
+
+        /**
          * Format the last names in its long form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator) {
+        public boolean format(StringBuilder buffer, Name name, Locator locator) {
 
             List<String> part = name.getLast();
-            fmtFull(buffer, part, " ", part.size() - 1); //$NON-NLS-1$
+            return fmtFull(buffer, part, " ", part.size() - 1);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a von
      * part in its short form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatV extends FormatItem {
 
@@ -839,64 +915,71 @@ public class FormatName extends AbstractCode {
          */
         public FormatV() {
 
-            super();
+            super("v");
         }
 
         /**
          * Format a von part in its short form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator)
+        public boolean format(StringBuilder buffer, Name name, Locator locator)
                 throws ExBibException {
 
             List<String> part = name.getVon();
             int n = (part.size() > 1 && part.get(0).length() < 3 ? 1 : -99);
-            fmtInitials(buffer, part, ". ", n, locator); //$NON-NLS-1$
+            return fmtInitials(buffer, part, ". ", n, locator);
         }
     }
 
     /**
      * This object represents a FormatItem meant to be used for formatting a von
      * part in its long form.
-     * 
-     * @author $Author: gene $
-     * @version $Revision: 1.4 $
      */
     private class FormatVV extends FormatItem {
 
         /**
+         * Creates a new object.
+         */
+        public FormatVV() {
+
+            super("vv");
+        }
+
+        /**
          * Format a von part in its long form.
          * 
-         * @param buffer the target StringBuffer
+         * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
          */
         @Override
-        public void format(StringBuffer buffer, Name name, Locator locator) {
+        public boolean format(StringBuilder buffer, Name name, Locator locator) {
 
             List<String> part = name.getVon();
             int n = (part.size() > 1 && part.get(0).length() < 3 ? 1 : 0);
-            fmtFull(buffer, part, " ", n); //$NON-NLS-1$
+            return fmtFull(buffer, part, " ", n);
         }
     }
 
     /**
-     * This is the format cache. To avoid the reparsing of a format string the
-     * result of the parsing is stored in the format cache. The key is the
-     * string representation. Thus it is possible to get the Format from the
-     * cache.
+     * The field <tt>formatCache</tt> contains the format cache. To avoid the
+     * re-parsing of a format string the result of the parsing is stored in the
+     * format cache. The key is the string representation. Thus it is possible
+     * to get the Format from the cache.
      */
     private static Map<String, Format> formatCache =
             new HashMap<String, Format>();
 
-    /** the string used as tie */
-    protected String tie = " ";
+    /**
+     * The field <tt>tie</tt> contains the string used as tie.
+     */
+    protected String tie;
 
     /**
      * Create a new object.
@@ -904,6 +987,7 @@ public class FormatName extends AbstractCode {
     public FormatName() {
 
         super();
+        tie = " ";
     }
 
     /**
@@ -913,7 +997,7 @@ public class FormatName extends AbstractCode {
      */
     public FormatName(String name) {
 
-        super();
+        this();
         setName(name);
     }
 
@@ -926,22 +1010,26 @@ public class FormatName extends AbstractCode {
             throws ExBibException {
 
         Token tformat = processor.popString(locator);
-        String fmt = tformat.getValue();
         TInteger tint = processor.popInteger(locator);
-        int idx = tint.getInt();
         TString names = processor.popString(locator);
+        int index = tint.getInt();
 
-        if (idx < 1) {
-            throw new ExBibIndexOutOfBoundsException(Integer.toString(idx),
+        if (index < 1) {
+            throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
                 tint.getLocator());
         }
 
-        NameList namelist = names.getNames();
+        List<Name> namelist = names.getNames();
 
         if (namelist == null) {
-            namelist = new NameList(names.getValue(), locator);
+            namelist = Name.parse(names.getValue(), locator);
+        }
+        if (index > namelist.size()) {
+            throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
+                tint.getLocator());
         }
 
+        String fmt = tformat.getValue();
         Format format = formatCache.get(fmt);
 
         if (format == null) {
@@ -949,7 +1037,8 @@ public class FormatName extends AbstractCode {
             formatCache.put(fmt, format);
         }
 
-        processor.push(process(format.format(namelist.get(idx - 1), locator)));
+        processor.push(process(format.format(namelist.get(index - 1), //
+            locator)));
     }
 
     /**
@@ -979,10 +1068,11 @@ public class FormatName extends AbstractCode {
     /**
      * Setter for the tie.
      * 
-     * @param string the tie string
+     * @param tie the tie string
      */
-    protected void setTie(String string) {
+    protected void setTie(String tie) {
 
-        tie = string;
+        this.tie = tie;
     }
+
 }

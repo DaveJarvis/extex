@@ -53,7 +53,7 @@ public abstract class AbstractValueItem implements ValueItem {
      * @param sb the target StringBuffer
      * @param db the database context
      */
-    public void expand(StringBuffer sb, DB db) {
+    public void expand(StringBuilder sb, DB db) {
 
         sb.append(content);
     }
@@ -85,7 +85,10 @@ public abstract class AbstractValueItem implements ValueItem {
      * @return the string representation
      */
     @Override
-    public abstract String toString();
+    public String toString() {
+
+        return getContent();
+    }
 
     /**
      * The visitor pattern is used to distinguish the different subtypes. Thus

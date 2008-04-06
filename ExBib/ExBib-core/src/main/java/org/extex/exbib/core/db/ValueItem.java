@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -23,7 +22,7 @@ package org.extex.exbib.core.db;
 import java.io.IOException;
 
 /**
- * A ValueItem is an object stored as a part of a Value.
+ * A {@link ValueItem} is an object stored as a part of a {@link Value}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
@@ -38,21 +37,21 @@ public interface ValueItem {
      * @param sb the target StringBuffer
      * @param db the database context
      */
-    public abstract void expand(StringBuffer sb, DB db);
+    void expand(StringBuilder sb, DB db);
 
     /**
-     * The getter for the contents.
+     * The getter for the content.
      * 
      * @return the content
      */
-    public abstract String getContent();
+    String getContent();
 
     /**
-     * Setter for the contents.
+     * Setter for the content.
      * 
      * @param value the content
      */
-    public abstract void setContents(String value);
+    void setContents(String value);
 
     /**
      * This is a method which is invoked when this object is visited.
@@ -62,6 +61,6 @@ public interface ValueItem {
      * 
      * @throws IOException just in case
      */
-    public void visit(ValueVisitor visitor, DB db) throws IOException;
+    void visit(ValueVisitor visitor, DB db) throws IOException;
 
 }

@@ -39,6 +39,61 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class Name {
 
     /**
+     * Parses a string of names separated by the string "and" enclosed in
+     * whitespace at brace level 0.
+     * 
+     * @param names the string of names to parse
+     * @param locator the locator
+     * 
+     * @return the list of names found
+     * 
+     * @throws ExBibSyntaxException in case that there are too many commas
+     * @throws ExBibNoNameException in case that a substring which should be a
+     *         name could not be parsed as such
+     * @throws ExBibImpossibleException in case that a programming error is
+     *         detected
+     */
+    public static List<Name> parse(String names, Locator locator)
+            throws ExBibSyntaxException,
+                ExBibNoNameException,
+                ExBibImpossibleException {
+
+        List<Name> result = new ArrayList<Name>();
+        int start = 0;
+        int level = 0;
+
+        while (start < names.length()
+                && Character.isWhitespace(names.charAt(start))) {
+            start++;
+        }
+
+        for (int i = start; i < names.length(); i++) {
+            char c = names.charAt(i);
+
+            if (Character.isWhitespace(c) && level == 0) {
+                if (i < names.length() - 4
+                        && (names.charAt(i + 1) == 'a' || names.charAt(i + 1) == 'A')
+                        && (names.charAt(i + 2) == 'n' || names.charAt(i + 2) == 'N')
+                        && (names.charAt(i + 3) == 'd' || names.charAt(i + 3) == 'D')
+                        && Character.isWhitespace(names.charAt(i + 4))) {
+                    result.add(new Name(names.substring(start, i), locator));
+                    i += 4;
+                    start = i + 1;
+                }
+            } else if (c == '{') {
+                level++;
+            } else if (c == '}') {
+                level--;
+            }
+        }
+
+        if (start < names.length()) {
+            result.add(new Name(names.substring(start), locator));
+        }
+        return result;
+    }
+
+    /**
      * The field <tt>first</tt> contains the list of first name parts.
      */
     private List<String> first = new ArrayList<String>();
@@ -76,7 +131,7 @@ public class Name {
                 ExBibSyntaxException {
 
         super();
-        parse(name, locator);
+        scan(name, locator);
     }
 
     /**
@@ -295,7 +350,7 @@ public class Name {
      * @throws ExBibImpossibleException in case that a programming error is
      *         detected
      */
-    private void parse(String name, Locator locator)
+    private void scan(String name, Locator locator)
             throws ExBibNoNameException,
                 ExBibImpossibleException,
                 ExBibSyntaxException {
@@ -394,6 +449,17 @@ public class Name {
                         "Strange.classifier", sb.substring(i, i + 1)));
             }
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return first + " " + von + " " + last + " " + jr;
     }
 
 }

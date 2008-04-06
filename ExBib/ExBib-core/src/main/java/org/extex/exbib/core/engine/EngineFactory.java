@@ -1,28 +1,27 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
 package org.extex.exbib.core.engine;
 
+import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -42,12 +41,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class EngineFactory {
-
-    /**
-     * The field <tt>config</tt> contains the configuration of the factory.
-     */
-    private Configuration config;
+public class EngineFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
@@ -57,7 +51,7 @@ public class EngineFactory {
     public EngineFactory(Configuration config) {
 
         super();
-        this.config = config;
+        configure(config);
     }
 
     /**
@@ -67,18 +61,9 @@ public class EngineFactory {
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Engine newInstance() throws ConfigurationException {
+    public Engine newInstance() throws ConfigurationException {
 
-        Engine engine;
-
-        try {
-            engine = (Engine) Class.forName(//
-                config.getAttribute("class")).newInstance();
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
-
-        return engine;
+        return (Engine) createInstance(Engine.class);
     }
 
 }

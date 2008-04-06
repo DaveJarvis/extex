@@ -21,10 +21,11 @@
 package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.NameList;
+import org.extex.exbib.core.bst.node.Name;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
@@ -50,7 +51,7 @@ public class TString extends AbstractToken implements Token {
     /**
      * the list of names which might act as a cache
      */
-    private NameList names = null;
+    private List<Name> names = null;
 
     // TOOD test whether caching of names is useful
 
@@ -106,7 +107,7 @@ public class TString extends AbstractToken implements Token {
      * 
      * @return the names or <code>null</code>
      */
-    public NameList getNames() {
+    public List<Name> getNames() {
 
         return names;
     }
@@ -117,7 +118,7 @@ public class TString extends AbstractToken implements Token {
      * @param list the new value
      * @see #getNames()
      */
-    public void setNames(NameList list) {
+    public void setNames(List<Name> list) {
 
         names = list;
     }
