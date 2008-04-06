@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -22,7 +21,6 @@ package org.extex.exbib.core.bst.code.impl;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
@@ -204,12 +202,6 @@ public class Width extends AbstractCode {
     private static Map<String, Integer> SPECIAL = newSpecials();
 
     /**
-     * The field <tt>debug</tt> contains the indicator that debugging is
-     * activated.
-     */
-    private static final boolean debug = false;
-
-    /**
      * Return the width map for the control sequences.
      * 
      * @return the width map
@@ -218,13 +210,13 @@ public class Width extends AbstractCode {
 
         // TODO: move to config
         Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("ae", new Integer(944));
-        map.put("AE", new Integer(1931));
+        map.put("ae", new Integer(722));
+        map.put("AE", new Integer(903));
         map.put("aa", new Integer(WIDTH['a']));
         map.put("AA", new Integer(WIDTH['A']));
-        map.put("oe", new Integer(944));
-        map.put("OE", new Integer(1959));
-        map.put("ss", new Integer(1288));
+        map.put("oe", new Integer(778));
+        map.put("OE", new Integer(1014));
+        map.put("ss", new Integer(500));
         map.put("l", new Integer(WIDTH['l']));
         map.put("L", new Integer(WIDTH['L']));
         map.put("o", new Integer(WIDTH['o']));
@@ -250,7 +242,7 @@ public class Width extends AbstractCode {
      */
     public Width(String name) {
 
-        super();
+        this();
         setName(name);
     }
 
@@ -268,39 +260,22 @@ public class Width extends AbstractCode {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        Logger logger = processor.getLogger();
-
         String s = processor.popString(locator).getValue();
-        int w = 0;
+        int width = 0;
         int length = s.length();
         int level = 0;
         char c;
 
-        if (debug) {
-            logger.fine("\n" + s);
-        }
-
         for (int ptr = 0; ptr < length; ptr++) {
             c = s.charAt(ptr);
-            if (debug) {
-                logger.fine(" " + Character.toString(c));
-            }
 
             if (c == '{') {
                 if (++level == 1 && ptr + 1 < length) {
-                    if (debug) {
-                        logger.fine(" [" + level + "]");
-                    }
 
                     if (s.charAt(ptr + 1) == '\\') {
-                        if (debug) {
-                            logger.fine(" \\\\");
-                        }
                         ptr++;
                         while (ptr < length && level > 0) {
-                            ptr++;
-                            int beg = ptr;
-
+                            int beg = ++ptr;
                             if (ptr >= length) {
                                 // after end
                             } else if (Character.isLetter(s.charAt(ptr))) {
@@ -313,7 +288,7 @@ public class Width extends AbstractCode {
                             }
                             Integer wd = SPECIAL.get(s.substring(beg, ptr));
                             if (wd != null) {
-                                w += wd.intValue();
+                                width += wd.intValue();
                             }
 
                             ptr = skipWhitespace(s, length, ptr);
@@ -329,32 +304,28 @@ public class Width extends AbstractCode {
                                         level--;
                                         break;
                                     default:
-                                        w += WIDTH[c];
+                                        width += (c > '\176' ? 0 : WIDTH[c]);
                                 }
                                 ptr++;
                             }
                         }
                         ptr--;
                     } else {
-                        w += WIDTH['{'];
+                        width += WIDTH['{'];
                     }
                 } else {
-                    w += WIDTH[c];
+                    width += WIDTH[c];
                 }
             } else if (c == '}') {
                 if (level-- == 1) {
-                    w += WIDTH[c];
+                    width += WIDTH[c];
                 }
             } else {
-                w += (c > '\176' ? 0 : WIDTH[c]);
-            }
-
-            if (debug) {
-                logger.fine("\t" + w + "\n");
+                width += (c > '\176' ? 0 : WIDTH[c]);
             }
         }
 
-        processor.push(new TInteger(w));
+        processor.push(new TInteger(width));
     }
 
     /**
