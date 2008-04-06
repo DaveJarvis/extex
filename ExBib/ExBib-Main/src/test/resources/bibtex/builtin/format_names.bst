@@ -157,8 +157,10 @@ FUNCTION{testsuite10}{
   "S.O. Meone" #1 "{ff~}{vv~}{ll}{, jj}" tc
   "A. Nother" #1 "{ff~}{vv~}{ll}{, jj}" tc
   "{A.} Nother" #1 "{ff~}{vv~}{ll}{, jj}" tc
+  "{A.}~Nother" #1 "{ff~~}{vv~}{ll}{, jj}" tc
   "S. O. Meone and A. Nother and others" #1 "{ff~}{vv~}{ll}{, jj}" tc
   "Xavier Oscar Handley and S.O. Meone and A. Nother" #1 "{ff~}{vv~}{ll}{, jj}" tc
+  "{\'{E}}. Masterly" #1 "{f.~}{vv~}{ll}{, jj}" tc
 }
 
 READ

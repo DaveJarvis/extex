@@ -467,14 +467,26 @@
                "{A.} Nother");
   }
   public void testFormat105() throws Exception {
+    testFormat("{A.}~Nother",
+               1,
+               "{ff~~}{vv~}{ll}{, jj}, "
+               "{A.}~Nother");
+  }
+  public void testFormat106() throws Exception {
     testFormat("S. O. Meone and A. Nother and others",
                1,
                "{ff~}{vv~}{ll}{, jj}, "
                "S.~O. Meone");
   }
-  public void testFormat106() throws Exception {
+  public void testFormat107() throws Exception {
     testFormat("Xavier Oscar Handley and S.O. Meone and A. Nother",
                1,
                "{ff~}{vv~}{ll}{, jj}, "
                "Xavier~Oscar Handley");
+  }
+  public void testFormat108() throws Exception {
+    testFormat("{\'{E}}. Masterly",
+               1,
+               "{f.~}{vv~}{ll}{, jj}, "
+               "{\'{E}}.~Masterly");
   }

@@ -22,7 +22,7 @@
   
   <Resource src="path/exbibFinder"/>
 
-  <Writers src="exbib/files.xml"/>
+  <Writers />
   
   <Processor class="undefined.Undefined">
     <minCrossrefs>2</minCrossrefs>
@@ -40,33 +40,11 @@
     </Sorter>
   </DB>
 
-  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
-    <aux>
-      <extension></extension>
-      <extension>.aux</extension>
-      <path>.</path>
-      <path></path>
-    </aux>
-  </Engine>
+  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 
-  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl">
-    <bst>
-      <extension></extension>
-      <extension>.bcd</extension>
-      <extension>.bst</extension>
-      <path>.</path>
-      <path></path>
-    </bst>
-  </BstReader>
+  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 
-  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl">
-    <bib>
-      <extension></extension>
-      <extension>.bib</extension>
-      <path>.</path>
-      <path></path>
-    </bib>
-  </BibReader>
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
 
   <BibPrinter name="bib"
               class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/>
