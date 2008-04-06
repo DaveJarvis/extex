@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 /**
- * This is a tester for ExBib.
+ * This is a tester for {@link ExBib}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -63,6 +63,8 @@ public class BibTester {
 
     /**
      * The field <tt>YEAR</tt> contains the current year as four-digit string.
+     * This might not be accurate for a long running test started just before
+     * the end of the year.
      */
     public static final String YEAR =
             Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
@@ -75,7 +77,6 @@ public class BibTester {
 
     /**
      * Creates a new object.
-     * 
      */
     public BibTester() {
 

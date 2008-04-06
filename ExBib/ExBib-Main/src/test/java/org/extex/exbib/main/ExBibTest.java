@@ -63,7 +63,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test002() throws Exception {
 
-        runFailure(BANNER + "The option \'--\' needs a parameter.\n",//
+        runFailure(BANNER + "The option `--\' needs a parameter.\n",//
             "--");
     }
 
@@ -76,7 +76,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test003() throws Exception {
 
-        runFailure(BANNER + "The option \'-\' needs a parameter.\n",//
+        runFailure(BANNER + "The option `-\' needs a parameter.\n",//
             "-");
     }
 
@@ -305,8 +305,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testBst1() throws Exception {
 
-        runFailure(BANNER + "The option \'--bst\' needs a parameter.\n",
-            "--bst");
+        runFailure(BANNER + "The option `--bst\' needs a parameter.\n", "--bst");
     }
 
     /**
@@ -318,7 +317,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testConfig1() throws Exception {
 
-        runFailure(BANNER + "The option \'--config\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--config\' needs a parameter.\n",
             "--config");
     }
 
@@ -379,9 +378,10 @@ public class ExBibTest extends BibTester {
         runFailure(
             BANNER
                     + "Installation Error: Some parts of exbib could not be found: \n"
-                    + "\tConfiguration error\n"
-                    + "\tcaused by undefined.Undefined\n"
-                    + "\tConsult the log file for details.\n",//
+                    + "\tClass `undefined.Undefined\' not found in\n"
+                    + "document(\"config/exbib/misconfigured.xml\")/exbib/Processor\n"
+                    + "\tConsult the log\n" //
+                    + "file for details.\n",//
             "--config", "misconfigured", "test");
     }
 
@@ -408,8 +408,21 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCsfile1() throws Exception {
 
-        runFailure(BANNER + "The option \'--csfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--csfile\' needs a parameter.\n",
             "--csfile");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
+     * argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCsfile2() throws Exception {
+
+        runFailure(BANNER + "The csf `exbib\' could not be found.\n",
+            "--csfile", "xyzzy", "test");
     }
 
     /**
@@ -434,7 +447,6 @@ public class ExBibTest extends BibTester {
                     + "\t    Act quietly; some informative messages are suppressed. \n"
                     + "\t-verbose\n"
                     + "\t    Act verbosely; some additional informational messages are displayed. \n"
-                    + "\t-dump\n"
                     + "\t-trace\n"
                     + "\t    Show a detailed trace of many operations. \n"
                     + "\t-version\n"
@@ -442,7 +454,7 @@ public class ExBibTest extends BibTester {
                     + "\t-release\n"
                     + "\t    Print the release number and exit. \n"
                     + "\t-strict\n"
-                    + "\t    use the settings for BibTEX 0.99c. \n"
+                    + "\t    use the settings for BibTeX 0.99c. \n"
                     + "\t-config file\n"
                     + "\t-minCrossrefs value\n"
                     + "\t    Set the value for min.crossrefs. The default is 2. \n"
@@ -460,7 +472,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLogfile01() throws Exception {
 
-        runFailure(BANNER + "The option \'--logfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--logfile\' needs a parameter.\n",
             "--logfile");
     }
 
@@ -526,7 +538,7 @@ public class ExBibTest extends BibTester {
     public void testMinCrossrefs1() throws Exception {
 
         runFailure(BANNER
-                + "The option \'--min_crossrefs\' needs a parameter.\n",
+                + "The option `--min_crossrefs\' needs a parameter.\n",
             "--min_crossrefs");
     }
 
@@ -541,7 +553,7 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The option \'--min_crossrefs\' needs an integer parameter.\n",
+                    + "The option `--min_crossrefs\' needs an integer parameter.\n",
             "--min_crossrefs", "abc");
     }
 
@@ -555,7 +567,7 @@ public class ExBibTest extends BibTester {
     public void testMinCrossrefs3() throws Exception {
 
         runFailure(BANNER
-                + "The option \'--min.crossrefs\' needs a parameter.\n",
+                + "The option `--min.crossrefs\' needs a parameter.\n",
             "--min.crossrefs");
     }
 
@@ -570,7 +582,7 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The option \'--min.crossrefs\' needs an integer parameter.\n",
+                    + "The option `--min.crossrefs\' needs an integer parameter.\n",
             "--min.crossrefs", "abc");
     }
 
@@ -646,13 +658,13 @@ public class ExBibTest extends BibTester {
     @Test
     public void testOutfile1() throws Exception {
 
-        runFailure(BANNER + "The option \'--outfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--outfile\' needs a parameter.\n",
             "--outfile");
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> needs a
-     * legal argument. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt>
+     * complains if the output file can not be opened. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -661,7 +673,6 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The output file: some/file/for/writing\n"
                     + "The output file `some/file/for/writing\' could not be opened.\n",//
             "-v", "--outfile", "some/file/for/writing", "test.aux");
     }
@@ -732,7 +743,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testProgName1() throws Exception {
 
-        runFailure(BANNER + "The option \'--progname\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--progname\' needs a parameter.\n",
             "--progname");
     }
 
@@ -855,7 +866,8 @@ public class ExBibTest extends BibTester {
                     check.START, //
                     BANNER
                             + "The output file: test.bbl\n"
-                            + "The top-level auxiliary file: .\\test.aux\n"
+                            + "The top-level auxiliary file: test\n" // TODO
+                            // .aux
                             + "The style file src/test/resources/bibtex/base/plain.bst\n"
                             + "--- do READ\n"
                             + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
@@ -884,7 +896,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testUndefined1() throws Exception {
 
-        runFailure(BANNER + "Unknown option \'undefined\' ignored.\n"
+        runFailure(BANNER + "Unknown option `undefined\' ignored.\n"
                 + "Missing aux file parameter.\n",//
             "--undefined");
     }
@@ -907,7 +919,7 @@ public class ExBibTest extends BibTester {
             check.REGEX,
             BANNER
                     + "The output file: test.bbl\n"
-                    + "The top-level auxiliary file: ..test.aux\n"
+                    + "The top-level auxiliary file: test\n" // TODO .aux
                     + "The style file src/test/resources/bibtex/base/plain.bst\n"
                     + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
                     + "Warning: empty author in whole-journal\n"

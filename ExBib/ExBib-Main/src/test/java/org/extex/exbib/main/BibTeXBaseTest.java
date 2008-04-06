@@ -41,6 +41,12 @@ import org.junit.Test;
 public class BibTeXBaseTest {
 
     /**
+     * The field <tt>DATA_DIR</tt> contains the directory containing database,
+     * styles and results.
+     */
+    private static final String DATA_DIR = "src/test/resources/bibtex/base";
+
+    /**
      * Read a text file and return its contents.
      * 
      * @param file the file to read
@@ -63,32 +69,20 @@ public class BibTeXBaseTest {
     }
 
     /**
-     * Creates a new object.
-     */
-    public BibTeXBaseTest() {
-
-        super();
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
+     * Run a test case.
      * 
-     * @param wd
-     * @param file
+     * @param aux the aux file
+     * @param result the file containing the expected result
      * 
      * @throws IOException in case of an error
      */
-    protected void runTest(String wd, String file) throws IOException {
+    public static void runTest(File aux, File result) throws IOException {
 
-        File result = new File(wd, file + ".result");
         if (!result.exists()) {
             assertTrue(result.toString() + " reference not found", false);
         }
-        File bbl = new File(wd, file + ".bbl");
-        ExBib exBib = new ExBib();
-        File aux = new File(wd, file + ".aux");
-
-        setupAux(aux, wd, file);
+        File bbl = new File(aux.getParent(), //
+            aux.getName().replaceAll(".aux$", ".bbl"));
 
         PrintStream err = System.err;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -96,7 +90,7 @@ public class BibTeXBaseTest {
             System.setErr(new PrintStream(baos));
 
             int code =
-                    exBib.processCommandLine(new String[]{"-quiet", "-strict",
+                    ExBib.commandLine(new String[]{"-quiet", "-strict",
                             aux.toString()});
             assertEquals("", baos.toString());
             assertEquals(0, code);
@@ -105,35 +99,64 @@ public class BibTeXBaseTest {
 
         } finally {
             System.setErr(err);
-            exBib.close();
-            aux.delete();
             bbl.delete();
-            new File(wd, file + ".blg").delete();
+            new File(aux.getParent(), //
+                aux.getName().replaceAll(".aux$", ".blg")).delete();
         }
-
     }
 
     /**
-     * Create an appropriate aux file for testing.
+     * Create an aux file and run a test case.
      * 
-     * @param aux the file to create
-     * @param wd the working directory
-     * @param name the name of the style
+     * @param style the style file
+     * @param data the data file
+     * @param citation the citations (comma separated keys
+     * @param result the result file
      * 
      * @throws IOException in case of an error
      */
-    protected void setupAux(File aux, String wd, String name)
-            throws IOException {
+    protected static void runTest(String style, String data, String citation,
+            File result) throws IOException {
 
+        File aux = new File("test.aux");
         FileWriter out = new FileWriter(aux);
         try {
-            out.write("\\relax\n");
-            out.write("\\citation{*}\n");
-            out.write("\\bibstyle{" + wd + "/" + name + "}\n");
-            out.write("\\bibdata{" + wd + "/xampl}\n");
+            out.write("\\relax\n" //
+                    + "\\citation{" + citation + "}\n" //
+                    + "\\bibstyle{" + style + "}\n" //
+                    + "\\bibdata{" + data + "}\n");
         } finally {
             out.close();
         }
+
+        try {
+            runTest(aux, result);
+        } finally {
+            aux.delete();
+        }
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public BibTeXBaseTest() {
+
+        super();
+    }
+
+    /**
+     * Run a test.
+     * 
+     * @param style the style
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void runTest(String style) throws IOException {
+
+        runTest(DATA_DIR + "/" + style, //
+            DATA_DIR + "/xampl",//
+            "*", //
+            new File(DATA_DIR, style + ".result"));
     }
 
     /**
@@ -144,7 +167,7 @@ public class BibTeXBaseTest {
     @Test
     public void testAbbrv() throws Exception {
 
-        runTest("src/test/resources/bibtex/base", "abbrv");
+        runTest("abbrv");
     }
 
     /**
@@ -155,7 +178,7 @@ public class BibTeXBaseTest {
     @Test
     public void testAlpha() throws Exception {
 
-        runTest("src/test/resources/bibtex/base", "alpha");
+        runTest("alpha");
     }
 
     /**
@@ -166,7 +189,7 @@ public class BibTeXBaseTest {
     @Test
     public void testPlain() throws Exception {
 
-        runTest("src/test/resources/bibtex/base", "plain");
+        runTest("plain");
     }
 
     /**
@@ -177,7 +200,7 @@ public class BibTeXBaseTest {
     @Test
     public void testUnsrt() throws Exception {
 
-        runTest("src/test/resources/bibtex/base", "unsrt");
+        runTest("unsrt");
     }
 
 }
