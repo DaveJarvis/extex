@@ -22,10 +22,9 @@
   
   <Resource src="path/exbibFinder"/>
 
-  <Writers src="exbib/files.xml"/>
+  <Writers />
   
-  <Processor class="org.extex.exbib.core.bst.Processor099Impl">
-  </Processor>
+  <Processor class="org.extex.exbib.core.bst.Processor099Impl"/>
 
   <DB class="org.extex.exbib.core.db.impl.DBImpl">
     <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl" />
@@ -36,32 +35,10 @@
     <indent>  </indent>
   </BblWriter>
 
-   <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
-     <aux>
-       <extension></extension> 
-       <extension>.aux</extension>
-       <path>.</path>
-       <path></path>
-     </aux>
-   </Engine>
+   <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 
-   <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl">
-     <bst>
-       <extension></extension>
-       <extension>.bcd</extension>
-       <extension>.bst</extension>
-       <path>.</path>
-       <path></path>
-     </bst>
-   </BstReader>
+   <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 
-  <BibReader class="org.extex.exbib.core.io.bibio.BibReader099Impl">
-    <bib>
-      <extension></extension>
-      <extension>.bib</extension>
-      <path>.</path>
-      <path></path>
-    </bib>
-  </BibReader>
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReader099Impl"/>
 
 </exbib>

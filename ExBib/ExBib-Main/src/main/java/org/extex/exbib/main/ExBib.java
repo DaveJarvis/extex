@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -39,6 +38,7 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.ProcessorFactory;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.engine.Engine;
@@ -52,6 +52,10 @@ import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.bstio.BstReader;
 import org.extex.exbib.core.io.bstio.BstReaderFactory;
+import org.extex.exbib.core.io.csf.CsfException;
+import org.extex.exbib.core.io.csf.CsfReader;
+import org.extex.exbib.core.io.csf.CsfSorter;
+import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.main.bibtex.DBObserver;
 import org.extex.exbib.main.bibtex.EntryObserver;
 import org.extex.exbib.main.bibtex.FuncallObserver;
@@ -277,11 +281,6 @@ public class ExBib {
     private String programName = "exbib";
 
     /**
-     * The field <tt>dump</tt> contains the indicator for terminal dump.
-     */
-    private boolean dump = false;
-
-    /**
      * The field <tt>logger</tt> contains the logger.
      */
     private Logger logger;
@@ -296,6 +295,11 @@ public class ExBib {
      * The field <tt>trace</tt> contains the indicator for trace output.
      */
     private boolean trace = false;
+
+    /**
+     * The field <tt>csf</tt> contains the name of the csf file to read.
+     */
+    private String csf = null;
 
     /**
      * Creates a new object.
@@ -408,16 +412,6 @@ public class ExBib {
     }
 
     /**
-     * Getter for dump.
-     * 
-     * @return the dump
-     */
-    public boolean isDump() {
-
-        return dump;
-    }
-
-    /**
      * Getter for trace.
      * 
      * @return the trace
@@ -449,7 +443,7 @@ public class ExBib {
     /**
      * Write the banner to the logger. The used log level is warning.
      * 
-     * @param copyright
+     * @param copyright the indicator to show the copyright
      * 
      * @return the exit code <code>1</code>
      */
@@ -569,17 +563,16 @@ public class ExBib {
      * @param writerFactory the factory for new writers
      * @param cfg the configuration
      * 
-     * @return the new writer
+     * @return the new writer or <code>null</code> when the file could not be
+     *         opened for writing
      * 
-     * @throws FileNotFoundException if the file could not be opened for writing
      * @throws UnsupportedEncodingException if an error with the encoding is
      *         encountered
      * @throws ConfigurationException in case of a configuration error
      */
     private Writer makeBblWriter(String file, WriterFactory writerFactory,
             Configuration cfg)
-            throws FileNotFoundException,
-                UnsupportedEncodingException,
+            throws UnsupportedEncodingException,
                 ConfigurationException {
 
         Writer writer = null;
@@ -589,19 +582,19 @@ public class ExBib {
         }
 
         if (outfile.equals("")) {
-            info("output.discarted");
             writer = writerFactory.newInstance();
+            info("output.discarted");
         } else if (outfile.equals("-")) {
-            info("output.to.stdout");
             writer = writerFactory.newInstance(System.out);
+            info("output.to.stdout");
         } else {
-            info("output.file", outfile);
-
             try {
                 writer = writerFactory.newInstance(outfile);
             } catch (FileNotFoundException e) {
-                throw new FileNotFoundException(outfile);
+                log("output.could.not.be.opened", outfile);
+                return null;
             }
+            info("output.file", outfile);
         }
 
         return new BblWriterFactory(cfg.getConfiguration("BblWriter"))
@@ -656,9 +649,6 @@ public class ExBib {
 
                 } else if ("debug".startsWith(a)) {
                     setDebug(true);
-
-                } else if ("dump".startsWith(a)) {
-                    setDump(true);
 
                 } else if ("help".startsWith(a) || "?".equals(a)) {
                     return logBanner("usage", programName);
@@ -759,40 +749,40 @@ public class ExBib {
                 ConfigurationFactory.newInstance(configSource);
         WriterFactory writerFactory =
                 new WriterFactory(topConfiguration.getConfiguration("Writers"));
-
         ResourceFinder finder =
                 new ResourceFinderFactory().createResourceFinder(
                     topConfiguration.getConfiguration("Resource"), logger,
                     System.getProperties(), null);
-
         if (filename == null) {
             return logBanner("missing.file");
         }
-
         String file = stripExtension(filename, AUX_FILE_EXTENSION);
 
-        if (logfile == null && !file.equals("") && !file.equals("-")) {
-            logfile = file + BLG_FILE_EXTENSION;
-        }
-        if (logfile != null && !logfile.equals("")) {
-            Handler fileHandler = new FileHandler(logfile);
-            fileHandler.setFormatter(new LogFormatter());
-            fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
-            logger.addHandler(fileHandler);
-        }
-
+        runAttachLogFile(file);
         logBanner(false);
-        Writer writer = null;
 
-        try {
-            writer = makeBblWriter(file, writerFactory, topConfiguration);
-        } catch (FileNotFoundException e) {
-            return log("output.could.not.be.opened", e.getMessage());
+        CsfSorter csfSorter = null;
+        if (csf != null) {
+            InputStream is = finder.findResource(csf, "csf");
+            if (is == null) {
+                return logBanner("csf.missing");
+            }
+            try {
+                csfSorter = new CsfReader().read(new InputStreamReader(is));
+            } catch (CsfException e) {
+                return logBanner(e.getLocalizedMessage());
+            } finally {
+                is.close();
+            }
+        }
+
+        Writer writer = makeBblWriter(file, writerFactory, topConfiguration);
+        if (writer == null) {
+            return EXIT_FAIL;
         }
 
         try {
-            FuncallObserver funcall =
-                    (trace ? new FuncallObserver(logger) : null);
+            FuncallObserver funcall = null;
 
             DB db = new DBFactory(//
                 topConfiguration.getConfiguration("DB")).newInstance();
@@ -806,22 +796,7 @@ public class ExBib {
             bibliography.setMinCrossrefs(minCrossrefs);
 
             if (trace) {
-                db.registerObserver("makeEntry", new EntryObserver(logger,
-                    bibliography));
-
-                bibliography.registerObserver("step", new TracingObserver(
-                    logger, bundle.getString("step_msg")));
-
-                bibliography.registerObserver("run", new TracingObserver(
-                    logger, bundle.getString("do_msg")));
-                bibliography.registerObserver("step", funcall);
-                bibliography.registerObserver("push", new TracingObserver(
-                    logger, bundle.getString("push_msg")));
-                bibliography.registerObserver("startParse",
-                    new TracingObserver(logger, bundle
-                        .getString("start_parse_msg")));
-                bibliography.registerObserver("endParse", new TracingObserver(
-                    logger, bundle.getString("end_parse_msg")));
+                funcall = runRegisterTracers(db, bibliography);
             }
             bibliography.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
@@ -883,22 +858,16 @@ public class ExBib {
 
             bibliography.process(writer, logger);
 
-            long warnings = bibliography.getNumberOfWarnings();
-
             if (errors > 0) {
-                log(errors == 1 ? "error" : "errors", //
-                    Long.toString(errors));
+                log(errors == 1 ? "error" : "errors", Long.toString(errors));
             }
+            long warnings = bibliography.getNumberOfWarnings();
             if (warnings > 0) {
                 info(warnings == 1 ? "warning" : "warnings", //
                     Long.toString(warnings));
             }
 
             info("runtime", Long.toString(System.currentTimeMillis() - time));
-
-            if (dump) {
-                // new BstPrinterImpl(logger).print(bibliography);
-            }
 
             if (funcall != null) {
                 funcall.print();
@@ -915,7 +884,7 @@ public class ExBib {
         } catch (ConfigurationWrapperException e) {
             return logException(e, "installation.error", debug);
         } catch (ConfigurationException e) {
-            return logException(e, "Generic_format", debug);
+            return logException(e, "installation.error", debug);
         } catch (NoClassDefFoundError e) {
             return logException(e, "installation.error", debug);
         } catch (Throwable e) {
@@ -927,6 +896,61 @@ public class ExBib {
         }
 
         return errors > 0 ? EXIT_FAIL : EXIT_OK;
+    }
+
+    /**
+     * Attach a handler to the logger to direct messages to a log file.
+     * 
+     * @param file the base name of the file
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void runAttachLogFile(String file) throws IOException {
+
+        if (logfile == null && !file.equals("") && !file.equals("-")) {
+            logfile = file + BLG_FILE_EXTENSION;
+        }
+        if (logfile != null && !logfile.equals("")) {
+            Handler fileHandler = new FileHandler(logfile);
+            fileHandler.setFormatter(new LogFormatter());
+            fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
+            logger.addHandler(fileHandler);
+        }
+    }
+
+    /**
+     * Register observers to get tracing output.
+     * 
+     * @param db the database
+     * @param bibliography the bibliography
+     * 
+     * @return the function call observer
+     * 
+     * @throws NotObservableException in case of an unknown observer name
+     * @throws ExBibIllegalValueException in case of an illegal value
+     */
+    private FuncallObserver runRegisterTracers(DB db, Processor bibliography)
+            throws NotObservableException,
+                ExBibIllegalValueException {
+
+        FuncallObserver funcall = (trace ? new FuncallObserver(logger) : null);
+
+        db.registerObserver("makeEntry",
+            new EntryObserver(logger, bibliography));
+
+        bibliography.registerObserver("step", new TracingObserver(logger,
+            bundle.getString("step_msg")));
+
+        bibliography.registerObserver("run", new TracingObserver(logger, bundle
+            .getString("do_msg")));
+        bibliography.registerObserver("step", funcall);
+        bibliography.registerObserver("push", new TracingObserver(logger,
+            bundle.getString("push_msg")));
+        bibliography.registerObserver("startParse", new TracingObserver(logger,
+            bundle.getString("start_parse_msg")));
+        bibliography.registerObserver("endParse", new TracingObserver(logger,
+            bundle.getString("end_parse_msg")));
+        return funcall;
     }
 
     /**
@@ -956,8 +980,7 @@ public class ExBib {
      */
     private void setCsfile(String csf) {
 
-        // TODO gene: setCsfile unimplemented
-        throw new RuntimeException("unimplemented");
+        this.csf = csf;
     }
 
     /**
@@ -968,16 +991,6 @@ public class ExBib {
     public void setDebug(boolean debug) {
 
         this.debug = debug;
-    }
-
-    /**
-     * Setter for the dump indicator.
-     * 
-     * @param dump the dump indicator
-     */
-    public void setDump(boolean dump) {
-
-        this.dump = dump;
     }
 
     /**

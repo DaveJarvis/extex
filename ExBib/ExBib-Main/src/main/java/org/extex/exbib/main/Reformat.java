@@ -45,7 +45,7 @@ public class Reformat {
     /**
      * The field <tt>PROGNAME</tt> contains the name of the program.
      */
-    private static String PROGNAME = "reformat";
+    private static final String PROGNAME = "reformat";
 
     /**
      * The main program.
@@ -64,8 +64,6 @@ public class Reformat {
      */
     private static void run(String[] argv) {
 
-        boolean verbose = false;
-        boolean quiet = false;
         String outfile = null;
         String logfile = null;
         String file = null;
@@ -78,12 +76,6 @@ public class Reformat {
                     // } else if ("-copying".startsWith(argv[i])) {
                     // printCopying(System.err, PROGNAME);
                     // System.exit(0);
-                } else if ("-quiet".startsWith(argv[i])) {
-                    quiet = true;
-                } else if ("-terse".startsWith(argv[i])) {
-                    quiet = true;
-                } else if ("-verbose".startsWith(argv[i])) {
-                    verbose = true;
                 } else if ("-version".startsWith(argv[i])) {
                     // printVersion(System.err, PROGNAME);
                     System.exit(0);
@@ -102,15 +94,16 @@ public class Reformat {
             } else if (file == null) {
                 file = argv[i];
             } else {
-                System.err.println("bcd: Need exactly one file argument.\n"
-                        + "Try `bcd --help' for more information.");
+                System.err.println(PROGNAME
+                        + ": Need exactly one file argument.\n"
+                        + "Try `reformat --help' for more information.");
                 System.exit(1);
             }
         }
 
         if (file == null) {
-            System.err.println("bcd: Need exactly one file argument.\n"
-                    + "Try `bcd --help' for more information.");
+            System.err.println(PROGNAME + ": Need exactly one file argument.\n"
+                    + "Try `reformat --help' for more information.");
             System.exit(1);
         }
 
@@ -146,7 +139,7 @@ public class Reformat {
             db.load(file, null, null);
 
             Configuration cfg =
-                    ConfigurationFactory.newInstance("config/bcd.xml")
+                    ConfigurationFactory.newInstance("config/exbib.xml")
                         .getConfiguration("BibPrinter", "xml");
 
             new BibPrinterFactory(cfg).newInstance(writer, null).print(db);

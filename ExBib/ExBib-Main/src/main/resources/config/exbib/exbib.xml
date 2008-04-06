@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
+  Copyright (C) 2008 The ExTeX Group and individual authors listed below
   This file is part of ExBib a BibTeX compatible database.
-  Copyright (C) 2003-2008 Gerd Neugebauer
+ 
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published by the
+  Free Software Foundation; either version 2.1 of the License, or (at your
+  option) any later version.
+ 
+  This library is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+  for more details.
+ 
+  You should have received a copy of the GNU Lesser General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-  02111-1307 USA
+  @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
 <exbib>
   
   <Resource src="path/exbibFinder"/>
   
-  <Writers src="exbib/files.xml"/>
+  <Writers />
   
   <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
     <minCrossrefs>2</minCrossrefs>
@@ -45,11 +46,11 @@
     <function name="add.period$"
              class="org.extex.exbib.core.bst.code.impl.AddPeriod">
       <omitPattern>.*[.!?][}]*$</omitPattern>
-    </builtin>
+    </function>
     <function name="call.type$"
              class="org.extex.exbib.core.bst.code.impl.CallType">
       <default>default.type</default>
-    </builtin>
+    </function>
     <function name="change.case$"
              class="org.extex.exbib.core.bst.code.impl.ChangeCase"/>
     <function name="chr.to.int$"
@@ -93,7 +94,7 @@
       <map name="AA">AA</map>
       <map name="o">o</map>
       <map name="O">O</map>
-    </builtin>
+    </function>
     <function name="quote$"
              class="org.extex.exbib.core.bst.code.impl.Quote"/>
     <function name="skip$"
@@ -134,32 +135,11 @@
   </DB>
 
   <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
-    <aux>
-      <extension></extension>
-      <extension>.aux</extension>
-      <path>.</path>
-      <path></path>
-    </aux>
   </Engine>
 
-  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl">
-    <bst>
-      <extension></extension>
-      <extension>.bcd</extension>
-      <extension>.bst</extension>
-      <path>.</path>
-      <path></path>
-    </bst>
-  </BstReader>
+  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 
-  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl">
-    <bib>
-      <extension></extension>
-      <extension>.bib</extension>
-      <path>.</path>
-      <path></path>
-    </bib>
-  </BibReader>
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
 
   <BibPrinter name="bib"
               class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/>
