@@ -27,7 +27,6 @@ import junit.framework.TestSuite;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.FormatName099;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -101,9 +100,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -116,15 +115,16 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test.
      * 
-     * @param names
-     * @param pos
-     * @param fmt
-     * @param res
-     * @throws Exception
+     * @param names the names to extract one name from
+     * @param pos the position
+     * @param fmt the format
+     * @param expected the expected result
+     * 
+     * @throws Exception in case of an error
      */
-    private void testFormat(String names, int pos, String fmt, String res)
+    private void testFormat(String names, int pos, String fmt, String expected)
             throws Exception {
 
         p.push(new TString(names));
@@ -134,18 +134,18 @@ public class TestFormatName extends TestCase {
 
         String s = p.popString(null).getValue();
 
-        if (!s.equals(res)) {
-            System.err.println(fmt + ": " + res + " // " + s);
+        if (!s.equals(expected)) {
+            System.err.println(fmt + ": " + expected + " // " + s);
         }
 
-        assertEquals(res, s);
+        assertEquals(expected, s);
         assertNull(p.popUnchecked());
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test specifier f alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0110() throws Exception {
 
@@ -153,9 +153,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test specifier v alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0111() throws Exception {
 
@@ -163,9 +163,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test specifier j alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0112() throws Exception {
 
@@ -173,9 +173,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test specifier ll alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat012() throws Exception {
 
@@ -183,9 +183,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test a constant format. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat013() throws Exception {
 
@@ -193,9 +193,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test mixed constant and variable pieces. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat014() throws Exception {
 
@@ -204,9 +204,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat015() throws Exception {
 
@@ -214,9 +214,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat016() throws Exception {
 
@@ -224,9 +224,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat017() throws Exception {
 
@@ -234,9 +234,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier jj. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat018() throws Exception {
 
@@ -244,9 +244,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier l. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat019() throws Exception {
 
@@ -254,9 +254,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat022() throws Exception {
 
@@ -264,9 +264,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat023() throws Exception {
 
@@ -274,9 +274,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat024() throws Exception {
 
@@ -284,9 +284,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier f with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0310() throws Exception {
 
@@ -295,9 +295,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat032() throws Exception {
 
@@ -306,9 +306,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat033() throws Exception {
 
@@ -317,9 +317,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat034() throws Exception {
 
@@ -328,9 +328,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat035() throws Exception {
 
@@ -339,9 +339,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat036() throws Exception {
 
@@ -350,9 +350,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat037() throws Exception {
 
@@ -361,9 +361,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier l with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat038() throws Exception {
 
@@ -372,9 +372,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier v with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat039() throws Exception {
 
@@ -383,9 +383,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat042() throws Exception {
 
@@ -393,9 +393,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat043() throws Exception {
 
@@ -403,9 +403,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat044() throws Exception {
 
@@ -413,9 +413,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier jj alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat045() throws Exception {
 
@@ -423,9 +423,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier l alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat046() throws Exception {
 
@@ -433,9 +433,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier f alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat047() throws Exception {
 
@@ -443,9 +443,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier v alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat048() throws Exception {
 
@@ -453,9 +453,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier j alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat049() throws Exception {
 
@@ -463,9 +463,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat052() throws Exception {
 
@@ -473,9 +473,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat053() throws Exception {
 
@@ -483,9 +483,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat054() throws Exception {
 
@@ -493,9 +493,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier f with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0610() throws Exception {
 
@@ -504,9 +504,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ll with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat062() throws Exception {
 
@@ -515,9 +515,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier vv with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat063() throws Exception {
 
@@ -526,9 +526,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the specifier ff with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat064() throws Exception {
 
@@ -537,9 +537,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format with postfix and several last part elements.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat065() throws Exception {
 
@@ -548,9 +549,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format with postfix and several von part elements.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat066() throws Exception {
 
@@ -559,9 +561,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format with postfix and several first part elements.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat067() throws Exception {
 
@@ -570,9 +573,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test v format with postfix and several last part elements.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat068() throws Exception {
 
@@ -581,9 +585,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test v format with postfix and several von part elements.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat069() throws Exception {
 
@@ -592,9 +597,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat072() throws Exception {
 
@@ -602,9 +607,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat073() throws Exception {
 
@@ -612,9 +617,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format alone when there is no von part. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat074() throws Exception {
 
@@ -622,9 +627,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test jj format alone when there is no junior part. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat075() throws Exception {
 
@@ -632,9 +637,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test l format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat076() throws Exception {
 
@@ -642,9 +647,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test f format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat077() throws Exception {
 
@@ -652,9 +657,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test v format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat078() throws Exception {
 
@@ -662,9 +667,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test j format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat079() throws Exception {
 
@@ -672,9 +677,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat082() throws Exception {
 
@@ -682,9 +687,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat083() throws Exception {
 
@@ -692,9 +697,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format alone. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat084() throws Exception {
 
@@ -702,9 +707,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test f format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0910() throws Exception {
 
@@ -714,9 +719,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0911() throws Exception {
 
@@ -726,9 +731,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0912() throws Exception {
 
@@ -738,9 +743,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0913() throws Exception {
 
@@ -750,9 +755,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0914() throws Exception {
 
@@ -762,9 +767,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0915() throws Exception {
 
@@ -774,22 +779,21 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0916() throws Exception {
 
         testFormat(
-
-        "  de  la  Vall{\\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph ", 1,
-            "{ff{:}~}", "Charles:Louis:Xavier:Joseph ");
+            "  de  la  Vall{\\'e}e  Poussin ,  Charles  Louis  Xavier  Joseph ",
+            1, "{ff{:}~}", "Charles:Louis:Xavier:Joseph ");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test l format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0917() throws Exception {
 
@@ -799,9 +803,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test v format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0918() throws Exception {
 
@@ -811,9 +815,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test f format with postfix and infix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat0919() throws Exception {
 
@@ -823,9 +827,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format with postfix space. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat092() throws Exception {
 
@@ -835,9 +839,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat093() throws Exception {
 
@@ -847,9 +851,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat094() throws Exception {
 
@@ -859,9 +863,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ll format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat095() throws Exception {
 
@@ -871,9 +875,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test vv format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat096() throws Exception {
 
@@ -883,9 +887,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test ff format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat097() throws Exception {
 
@@ -895,9 +899,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test l format with postfix. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat098() throws Exception {
 
@@ -907,9 +911,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test v format. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat099() throws Exception {
 
@@ -919,9 +923,19 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test double tilde. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testFormat1010() throws Exception {
+
+        testFormat("{A.}~Nother", 1, "{ff~~}{vv~}{ll}{, jj}", "{A.}~Nother");
+    }
+
+    /**
+     * <testcase> Test joined initials. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testFormat102() throws Exception {
 
@@ -929,9 +943,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test a single initial. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat103() throws Exception {
 
@@ -939,9 +953,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test space separated initials. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat104() throws Exception {
 
@@ -950,9 +964,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test several names. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat105() throws Exception {
 
@@ -961,9 +975,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test accented initials. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat106() throws Exception {
 
@@ -972,9 +986,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test double initials. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat107() throws Exception {
 
@@ -982,9 +996,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> test double first names. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testFormat108() throws Exception {
 
@@ -993,11 +1007,22 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test a first naem in a group. </testcase>
      * 
-     * @param names
-     * @param pos
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testFormat109() throws Exception {
+
+        testFormat("{A.} Nother", 1, "{ff~}{vv~}{ll}{, jj}", "{A.} Nother");
+    }
+
+    /**
+     * Test a no-name.
+     * 
+     * @param names the names
+     * @param pos the position
+     * 
+     * @throws Exception in case of an error
      */
     private void testNoName(String names, int pos) throws Exception {
 
@@ -1007,17 +1032,25 @@ public class TestFormatName extends TestCase {
             p.push(new TString("{l}"));
             new FormatName099("format.name$").execute(p, null, null);
             assertTrue(false);
-        } catch (ExBibIllegalValueException e) {
-            assertTrue(false);
         } catch (ExBibException e) {
             assertTrue(true);
         }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The index -1 in an empty list leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testNoName_1() throws Exception {
+
+        testNoName("", -1);
+    }
+
+    /**
+     * <testcase> The first name in an empty list leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testNoName0() throws Exception {
 
@@ -1025,9 +1058,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The second name in a one-name list leads to an error.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoName1() throws Exception {
 
@@ -1035,9 +1069,10 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The third name in a two-name list leads to an error.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testNoName2() throws Exception {
 
@@ -1045,9 +1080,20 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The third name in a two-name list leads to an error.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testNoName3() throws Exception {
+
+        testNoName("Gerd Neugebauer and A.U. Thor", 3);
+    }
+
+    /**
+     * <testcase> A short stack leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testShortStack1() throws Exception {
 
@@ -1061,9 +1107,9 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testShortStack2() throws Exception {
 
