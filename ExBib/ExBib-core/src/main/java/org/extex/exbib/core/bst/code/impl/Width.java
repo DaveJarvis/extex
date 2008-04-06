@@ -257,6 +257,9 @@ public class Width extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
+     * This implementation follows quite closely the section 451--453 of the
+     * BibTeX sources.
+     * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
      *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
@@ -293,37 +296,49 @@ public class Width extends AbstractCode {
                         if (debug) {
                             logger.fine(" \\\\");
                         }
+                        ptr++;
+                        while (ptr < length && level > 0) {
+                            ptr++;
+                            int beg = ptr;
 
-                        StringBuilder control = new StringBuilder();
-                        ptr += 2;
-
-                        if (ptr >= length) {
-                            // after end
-                        } else if (Character.isLetter(s.charAt(ptr))) {
-                            for (; ptr < length
-                                    && Character.isLetter(s.charAt(ptr)); ptr++) {
-                                control.append(s.charAt(ptr));
+                            if (ptr >= length) {
+                                // after end
+                            } else if (Character.isLetter(s.charAt(ptr))) {
+                                do {
+                                    ptr++;
+                                } while (ptr < length
+                                        && Character.isLetter(s.charAt(ptr)));
+                            } else {
+                                ptr++;
                             }
-                        } else {
-                            ptr++;
-                        }
+                            Integer wd = SPECIAL.get(s.substring(beg, ptr));
+                            if (wd != null) {
+                                w += wd.intValue();
+                            }
 
-                        while (ptr < length
-                                && Character.isWhitespace(s.charAt(ptr))) {
-                            ptr++;
-                        }
+                            ptr = skipWhitespace(s, length, ptr);
 
+                            while (ptr < length && level > 0
+                                    && s.charAt(ptr) != '\\') {
+                                c = s.charAt(ptr);
+                                switch (c) {
+                                    case '{':
+                                        level++;
+                                        break;
+                                    case '}':
+                                        level--;
+                                        break;
+                                    default:
+                                        w += WIDTH[c];
+                                }
+                                ptr++;
+                            }
+                        }
                         ptr--;
-
-                        Integer wd = (SPECIAL.get(control.toString()));
-
-                        if (wd != null) {
-                            w += wd.intValue();
-                        }
                     } else {
                         w += WIDTH['{'];
                     }
-                } else if (level == 1) {
+                } else {
                     w += WIDTH[c];
                 }
             } else if (c == '}') {
@@ -340,6 +355,24 @@ public class Width extends AbstractCode {
         }
 
         processor.push(new TInteger(w));
+    }
+
+    /**
+     * Find the next non-space character.
+     * 
+     * @param s the string
+     * @param length the maximal length
+     * @param p the pointer
+     * 
+     * @return the new pointer
+     */
+    private int skipWhitespace(String s, int length, int p) {
+
+        int ptr = p;
+        while (ptr < length && Character.isWhitespace(s.charAt(ptr))) {
+            ptr++;
+        }
+        return ptr;
     }
 
 }
