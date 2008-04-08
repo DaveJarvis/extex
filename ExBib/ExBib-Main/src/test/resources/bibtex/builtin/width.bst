@@ -44,6 +44,7 @@ FUNCTION{testsuite1}{
   ".\singleletter." tc
   "OX{\singleletter{stoc}}83b" tc
   "OXstoc83b" tc
+  "{\AE}" tc
 }
 READ
 EXECUTE{testsuite1}
