@@ -39,17 +39,17 @@ public class CsfSorter implements Comparator<Entry>, Sorter {
     /**
      * The field <tt>ord</tt> contains the order mapping.
      */
-    private int ord[] = new int[256];
+    private int[] ord = new int[256];
 
     /**
      * The field <tt>upper</tt> contains the uppercase mapping.
      */
-    private char upper[] = new char[256];
+    private char[] upper = new char[256];
 
     /**
      * The field <tt>lower</tt> contains the lowercase mapping.
      */
-    private char lower[] = new char[256];
+    private char[] lower = new char[256];
 
     /**
      * Creates a new object.
