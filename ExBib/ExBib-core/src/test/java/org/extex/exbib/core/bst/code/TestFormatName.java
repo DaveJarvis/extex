@@ -933,6 +933,16 @@ public class TestFormatName extends TestCase {
     }
 
     /**
+     * <testcase> Test an empty group in a prefix. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testFormat1011() throws Exception {
+
+        testFormat("S.O. Meone", 1, "{{}f.~}{vv~}{ll}{, jj}", "{}S. Meone");
+    }
+
+    /**
      * <testcase> Test joined initials. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1007,7 +1017,7 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * <testcase> Test a first naem in a group. </testcase>
+     * <testcase> Test a first name in a group. </testcase>
      * 
      * @throws Exception in case of an error
      */
