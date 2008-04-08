@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -99,7 +98,7 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -114,7 +113,7 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An integer gets a period added. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -126,9 +125,10 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test case where no period is added.
      * 
-     * @param in
+     * @param in the input (and output) string
+     * 
      * @throws Exception in case of an error
      */
     private void testNoAdd(String in) throws Exception {
@@ -139,7 +139,7 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> No period is added to the empty string. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -149,7 +149,8 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> No period is added if the last non-brace character is an
+     * exclamation mark. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -157,13 +158,14 @@ public class TestAddPeriod extends TestCase {
 
         testNoAdd("abc!");
         testNoAdd("abc!}");
-        ;
+
         testNoAdd("abc!}}");
         testNoAdd("abc!}}}");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> No period is added if the last non-brace character is a
+     * period. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -176,7 +178,8 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> No period is added if the last non-brace character is a
+     * question mark. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -189,7 +192,8 @@ public class TestAddPeriod extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A period is added if the input consists of text only.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
