@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -36,19 +35,39 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  */
 public class BblWriter implements Writer {
 
-    /** The string which is inserted at the beginning of a continuation line */
+    /**
+     * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line
+     * length.
+     */
+    private static final int DEFAULT_LINE_LENGTH = 80;
+
+    /**
+     * The field <tt>indent</tt> contains the string which is inserted at the
+     * beginning of a continuation line.
+     */
     private String indent = "  ";
 
-    /** The temporary memory before shipping the line to the writer */
+    /**
+     * The field <tt>sb</tt> contains the temporary memory before shipping the
+     * line to the writer.
+     */
     private StringBuffer sb = new StringBuffer();
 
-    /** The output writer */
+    /**
+     * The field <tt>writer</tt> contains the output writer.
+     */
     private Writer writer = null;
 
     /** The desired line length */
-    private int linelength = 80;
+    /**
+     * The field <tt>lineLength</tt> contains the desired line length.
+     */
+    private int lineLength = DEFAULT_LINE_LENGTH;
 
-    /** The position of the last space character */
+    /**
+     * The field <tt>space</tt> contains the position of the last space
+     * character.
+     */
     private int space = -1;
 
     /**
@@ -63,6 +82,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#close()
      */
     public void close() throws IOException {
@@ -85,10 +106,12 @@ public class BblWriter implements Writer {
             indent = in;
         }
 
-        linelength = cfg.getValueAsInteger("linelength", 80);
+        lineLength = cfg.getValueAsInteger("lineLength", DEFAULT_LINE_LENGTH);
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#flush()
      */
     public void flush() throws IOException {
@@ -100,6 +123,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#getPrintWriter()
      */
     public PrintWriter getPrintWriter() {
@@ -144,7 +169,7 @@ public class BblWriter implements Writer {
                 space = i;
             }
 
-            if (i >= linelength && space >= 0) {
+            if (i >= lineLength && space >= 0) {
                 int sp = space;
 
                 while (sp >= 0 && Character.isWhitespace(sb.charAt(sp))) {
@@ -176,6 +201,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
      */
     public void print(String s) throws IOException {
@@ -184,6 +211,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
      *      java.lang.String)
      */
@@ -194,6 +223,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
      *      java.lang.String, java.lang.String)
      */
@@ -205,6 +236,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println()
      */
     public void println() throws IOException {
@@ -221,6 +254,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
      */
     public void println(String s) throws IOException {
@@ -230,6 +265,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
      *      java.lang.String)
      */
@@ -241,6 +278,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
      *      java.lang.String, java.lang.String)
      */
@@ -253,6 +292,8 @@ public class BblWriter implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#write(int)
      */
     public void write(int c) throws IOException {

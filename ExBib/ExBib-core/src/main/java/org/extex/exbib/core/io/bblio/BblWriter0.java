@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -35,6 +34,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  */
 public class BblWriter0 implements Writer {
 
+    /**
+     * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line
+     * length.
+     */
+    private static final int DEFAULT_LINE_LENGTH = 80;
+
     /** the string inserted at the place where line breaking is performed */
     private String indent = "\n  ";
 
@@ -45,7 +50,7 @@ public class BblWriter0 implements Writer {
     private int col = 0;
 
     /** The desired line length */
-    private int linelength = 80;
+    private int linelength = DEFAULT_LINE_LENGTH;
 
     /**
      * Creates a new object.
@@ -59,6 +64,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#close()
      */
     public void close() throws IOException {
@@ -80,10 +87,12 @@ public class BblWriter0 implements Writer {
             indent = "\n" + in;
         }
 
-        linelength = cfg.getValueAsInteger("linelength", 80);
+        linelength = cfg.getValueAsInteger("linelength", DEFAULT_LINE_LENGTH);
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#flush()
      */
     public void flush() throws IOException {
@@ -92,6 +101,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#getPrintWriter()
      */
     public PrintWriter getPrintWriter() {
@@ -143,6 +154,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
      */
     public void print(String s) throws IOException {
@@ -151,6 +164,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
      *      java.lang.String)
      */
@@ -161,6 +176,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
      *      java.lang.String, java.lang.String)
      */
@@ -172,6 +189,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println()
      */
     public void println() throws IOException {
@@ -181,6 +200,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
      */
     public void println(String s) throws IOException {
@@ -191,6 +212,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
      *      java.lang.String)
      */
@@ -203,6 +226,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
      *      java.lang.String, java.lang.String)
      */
@@ -216,6 +241,8 @@ public class BblWriter0 implements Writer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.io.Writer#write(int)
      */
     public void write(int c) throws IOException {
