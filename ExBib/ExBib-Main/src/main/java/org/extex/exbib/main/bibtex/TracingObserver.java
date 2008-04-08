@@ -57,6 +57,8 @@ public class TracingObserver implements Observer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.util.Observer#update(
      *      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
