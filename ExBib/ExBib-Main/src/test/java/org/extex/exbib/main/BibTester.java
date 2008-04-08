@@ -147,6 +147,7 @@ public class BibTester {
                         break;
                     case NONE:
                         // igonore
+                    default:
                 }
             }
             assertEquals("exit code", exitCode, code);

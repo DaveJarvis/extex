@@ -63,7 +63,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test002() throws Exception {
 
-        runFailure(BANNER + "The option `--\' needs a parameter.\n",//
+        runFailure(BANNER + "The option `--\' needs a parameter.\n", //
             "--");
     }
 
@@ -76,7 +76,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test003() throws Exception {
 
-        runFailure(BANNER + "The option `-\' needs a parameter.\n",//
+        runFailure(BANNER + "The option `-\' needs a parameter.\n", //
             "-");
     }
 
@@ -88,7 +88,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test004() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n",//
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
             "abc.aux", "abc.aux");
     }
 
@@ -100,7 +100,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test005() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n",//
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
             "abc.aux", "--", "abc.aux");
     }
 
@@ -112,7 +112,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void test006() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n",//
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
             "--", "abc.aux", "abc.aux");
     }
 
@@ -143,7 +143,7 @@ public class ExBibTest extends BibTester {
         assertFalse(aux.exists());
 
         runTest("undefined", null, 1, check.EQ, BANNER
-                + "I couldn\'t open file undefined.aux\n",//
+                + "I couldn\'t open file undefined.aux\n", //
             "undefined.aux");
     }
 
@@ -155,7 +155,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux03() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n",//
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
             "abc.aux", "abc.aux");
     }
 
@@ -167,7 +167,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux04() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n",//
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
             "abc.aux", "--", "abc.aux");
     }
 
@@ -183,7 +183,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n",//
+                + "I couldn\'t open style file xyzzy\n", //
             "test.aux");
     }
 
@@ -199,7 +199,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy.bst\n",//
+                + "I couldn\'t open style file xyzzy.bst\n", //
             "test.aux");
     }
 
@@ -216,7 +216,7 @@ public class ExBibTest extends BibTester {
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n",//
+                + "I couldn\'t open style file xyzzy\n", //
             "test.aux", "-bst", "xyzzy");
     }
 
@@ -233,7 +233,7 @@ public class ExBibTest extends BibTester {
             1, check.EQ, BANNER
                     + "I found no \\bibdata commands while reading test.aux\n"
                     + "I found no \\citation commands while reading test.aux\n"
-                    + "(There were 2 errors)\n",//
+                    + "(There were 2 errors)\n", //
             "test.aux");
     }
 
@@ -249,7 +249,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n",//
+                + "I couldn\'t open style file xyzzy\n", //
             "test.aux");
     }
 
@@ -264,7 +264,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", 1, check.EQ,
             BANNER + "I found no \\bibdata commands while reading test.aux\n"
-                    + "I couldn\'t open style file xyzzy\n",//
+                    + "I couldn\'t open style file xyzzy\n", //
             "test.aux");
     }
 
@@ -292,7 +292,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\citation{*}\n\\bibdata{test}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 1,
-            check.EQ, BANNER + "File `test\' not found\n",//
+            check.EQ, BANNER + "File `test\' not found\n", //
             "test.aux");
     }
 
@@ -381,7 +381,7 @@ public class ExBibTest extends BibTester {
                     + "\tClass `undefined.Undefined\' not found in\n"
                     + "document(\"config/exbib/misconfigured.xml\")/exbib/Processor\n"
                     + "\tConsult the log\n" //
-                    + "file for details.\n",//
+                    + "file for details.\n", //
             "--config", "misconfigured", "test");
     }
 
@@ -395,7 +395,7 @@ public class ExBibTest extends BibTester {
     public void testCopying1() throws Exception {
 
         runTest("test", null, 1, check.START,
-            "                 GNU LESSER GENERAL PUBLIC LICENSE\n",//
+            "                 GNU LESSER GENERAL PUBLIC LICENSE\n", //
             "--copying");
     }
 
@@ -459,7 +459,7 @@ public class ExBibTest extends BibTester {
                     + "\t-minCrossrefs value\n"
                     + "\t    Set the value for min.crossrefs. The default is 2. \n"
                     + "\t-bst style\n" + "\t-logfile file\n"
-                    + "\t-outfile file\n",//
+                    + "\t-outfile file\n", //
             "--help");
     }
 
@@ -602,7 +602,7 @@ public class ExBibTest extends BibTester {
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
                     0, check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
-                            + "Warning: empty title in whole-journal\n",//
+                            + "Warning: empty title in whole-journal\n", //
                     "test.aux");
         assertEquals("exbib", exbib.getProgramName());
         assertEquals("test.bbl", exbib.getOutfile());
@@ -673,7 +673,7 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The output file `some/file/for/writing\' could not be opened.\n",//
+                    + "The output file `some/file/for/writing\' could not be opened.\n", //
             "-v", "--outfile", "some/file/for/writing", "test.aux");
     }
 
@@ -693,7 +693,7 @@ public class ExBibTest extends BibTester {
             runTest("test", "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-                check.EQ, null,//
+                check.EQ, null, //
                 "test.aux", "--out", "-");
             assertTrue(baos
                 .toString()
@@ -730,7 +730,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-            check.EQ, null,//
+            check.EQ, null, //
             "test.aux", "-v", "--out", "");
     }
 
@@ -756,13 +756,13 @@ public class ExBibTest extends BibTester {
     @Test
     public void testProgName11() throws Exception {
 
-        ExBib exbib =
+        AbstractMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, check.EQ, null,//
+                    0, check.EQ, null, //
                     "--progname", "xxx", "test.aux");
         assertEquals("xxx", exbib.getProgramName());
     }
@@ -777,7 +777,7 @@ public class ExBibTest extends BibTester {
     public void testProgName2() throws Exception {
 
         runFailure("This is abc, Version " + ExBib.VERSION + "\n"
-                + "Missing aux file parameter.\n",//
+                + "Missing aux file parameter.\n", //
             "--progname", "abc");
     }
 
@@ -790,7 +790,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testQuiet1() throws Exception {
 
-        runFailure("Missing aux file parameter.\n",//
+        runFailure("Missing aux file parameter.\n", //
             "--quiet");
     }
 
@@ -803,7 +803,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testRelease1() throws Exception {
 
-        runFailure(ExBib.VERSION + "\n",//
+        runFailure(ExBib.VERSION + "\n", //
             "--release");
     }
 
@@ -824,7 +824,7 @@ public class ExBibTest extends BibTester {
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
                     0, check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
-                            + "Warning: empty title in whole-journal\n",//
+                            + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--strict");
         assertEquals("exbib", exbib.getProgramName());
         assertEquals("test.bbl", exbib.getOutfile());
@@ -843,7 +843,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testTerse1() throws Exception {
 
-        runFailure("Missing aux file parameter.\n",//
+        runFailure("Missing aux file parameter.\n", //
             "--terse");
     }
 
@@ -882,7 +882,7 @@ public class ExBibTest extends BibTester {
                             + "--- step type$\n"//
                             + "--- push \"article\"\n"//
                             + "--- step \"inbook\"\n"//
-                            + "--- push \"inbook\"\n",//
+                            + "--- push \"inbook\"\n", //
                     "--trace", "--verbose", "test.aux");
         assertTrue("trace", exbib.isTrace());
     }
@@ -897,7 +897,7 @@ public class ExBibTest extends BibTester {
     public void testUndefined1() throws Exception {
 
         runFailure(BANNER + "Unknown option `undefined\' ignored.\n"
-                + "Missing aux file parameter.\n",//
+                + "Missing aux file parameter.\n", //
             "--undefined");
     }
 
@@ -925,7 +925,7 @@ public class ExBibTest extends BibTester {
                     + "Warning: empty author in whole-journal\n"
                     + "Warning: empty title in whole-journal\n"
                     + "\\(There were 2 warnings\\)\n" //
-                    + "Runtime [0-9]* ms\n",//
+                    + "Runtime [0-9]* ms\n", //
             "--verbose", "test.aux");
     }
 
@@ -946,7 +946,7 @@ public class ExBibTest extends BibTester {
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n",//
+                    + "switch -copying.\n", //
             "--version");
     }
 
@@ -967,7 +967,7 @@ public class ExBibTest extends BibTester {
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n",//
+                    + "switch -copying.\n", //
             "--vers");
     }
 

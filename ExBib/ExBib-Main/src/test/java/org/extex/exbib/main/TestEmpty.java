@@ -56,7 +56,7 @@ public class TestEmpty {
     private void runTest(String style) throws IOException {
 
         BibTeXBaseTest.runTest(DATA_DIR + "/" + style, //
-            DATA_DIR + "/a",//
+            DATA_DIR + "/a", //
             "*", //
             new File(DATA_DIR, style + ".result"));
     }

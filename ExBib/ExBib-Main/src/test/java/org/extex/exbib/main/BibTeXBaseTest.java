@@ -154,7 +154,7 @@ public class BibTeXBaseTest {
     private void runTest(String style) throws IOException {
 
         runTest(DATA_DIR + "/" + style, //
-            DATA_DIR + "/xampl",//
+            DATA_DIR + "/xampl", //
             "*", //
             new File(DATA_DIR, style + ".result"));
     }
