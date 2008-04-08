@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
- * This file is part of ExBib a BibTeX compatible database.
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -43,7 +42,7 @@ public interface BibPrinter {
      * 
      * @throws IOException in case of an I/O error
      */
-    public abstract void print(DB db) throws IOException;
+    void print(DB db) throws IOException;
 
     /**
      * Setter for the target.
@@ -56,7 +55,7 @@ public interface BibPrinter {
      * @throws UnsupportedEncodingException in case that the given encoding is
      *         unknown
      */
-    public abstract void setDestination(String destination, String encoding)
+    void setDestination(String destination, String encoding)
             throws FileNotFoundException,
                 UnsupportedEncodingException;
 
@@ -68,7 +67,8 @@ public interface BibPrinter {
      * @throws FileNotFoundException in case the resource could not be found
      * @throws UnsupportedEncodingException in case of an unsupported encoding
      */
-    public abstract void setDestination(Writer writer)
+    void setDestination(Writer writer)
             throws FileNotFoundException,
                 UnsupportedEncodingException;
+
 }
