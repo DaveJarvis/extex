@@ -38,7 +38,7 @@ public interface Observable {
      * @throws NotObservableException in case that the name does not match any
      *         of the observable actions.
      */
-    abstract void registerObserver(String name, Observer observer)
+    void registerObserver(String name, Observer observer)
             throws NotObservableException;
 
 }
