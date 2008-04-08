@@ -73,7 +73,7 @@ public abstract class AbstractValueItem implements ValueItem {
      * 
      * @param content the new value
      */
-    public void setContents(String content) {
+    public void setContent(String content) {
 
         this.content = content;
     }

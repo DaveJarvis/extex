@@ -51,7 +51,7 @@ public interface ValueItem {
      * 
      * @param value the content
      */
-    void setContents(String value);
+    void setContent(String value);
 
     /**
      * This is a method which is invoked when this object is visited.

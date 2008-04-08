@@ -129,7 +129,7 @@ public class TestVMacro {
     public void testToString2() throws Exception {
 
         VMacro macro = new VMacro("aaa");
-        macro.setContents("xyzzy");
+        macro.setContent("xyzzy");
         assertEquals("xyzzy", macro.toString());
     }
 
