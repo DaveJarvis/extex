@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,16 +38,17 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This resource finder searches a file in a <tt>ls-R</tt> file database as
  * present in a texmf tree. For this purpose the <tt>ls-R</tt> file databases
  * found are read and stored internally.
- *
+ * 
  * <h2>Configuration</h2>
  * The lsr finder can be configured to influence its actions. The following
  * example shows a configuration for a lsr finder:
- *
+ * 
  * <pre>
  * &lt;Finder class=&quot;de.dante.util.resource.LsrFinder&quot;
  *          default=&quot;default&quot;
@@ -62,7 +63,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  *   &lt;default&gt;&lt;extension/&gt;&lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- *
+ * 
  * <p>
  * Whenever a resource is sought the first step is to ensure that the file
  * databases are read in. For this purpose the <tt>path</tt> tag is used. The
@@ -114,8 +115,8 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * the number of files expected for best performance. The attribute
  * <tt>capacity</tt> is optional.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -165,9 +166,9 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the encapsulated configuration object
-     *
+     * 
      * @throws ConfigurationMissingException in case of an error
      */
     public LsrFinder(Configuration configuration)
@@ -190,7 +191,7 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
      *      java.lang.String)
      */
     @SuppressWarnings("unchecked")
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type, null);
@@ -233,7 +234,7 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
                     try {
                         InputStream stream = new FileInputStream(file);
                         trace("Found", file.toString(), null, null);
-                        return stream;
+                        return new NamedInputStream(stream, file.toString());
                     } catch (FileNotFoundException e) {
                         // ignore unreadable files
                         trace("FoundUnreadable", file.toString(), null, null);
@@ -249,7 +250,8 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
                             try {
                                 InputStream stream = new FileInputStream(file);
                                 trace("Found", file.toString(), null, null);
-                                return stream;
+                                return new NamedInputStream(stream, file
+                                    .toString());
                             } catch (FileNotFoundException e) {
                                 // ignore unreadable files
                                 // this should not happen since it has been
@@ -269,7 +271,7 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Load the external cache file into memory.
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     private void initialize() throws ConfigurationException {
@@ -309,9 +311,9 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Load the ls-R file.
-     *
+     * 
      * @param path the path for the ls-R file
-     *
+     * 
      * @throws ConfigurationException if an error occurred
      */
     @SuppressWarnings("unchecked")
@@ -416,9 +418,9 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Setter for the properties.
-     *
+     * 
      * @param prop the new properties
-     *
+     * 
      * @see org.extex.resource.PropertyAware#setProperties(
      *      java.util.Properties)
      */

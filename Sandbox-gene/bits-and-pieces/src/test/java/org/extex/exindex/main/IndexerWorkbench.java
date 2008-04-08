@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +38,7 @@ import org.extex.exindex.core.Indexer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
 /**
@@ -70,11 +70,12 @@ public class IndexerWorkbench {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
-        public InputStream findResource(String name, String type)
+        public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
             String s = FILES.get(name);
-            return s == null ? null : new ByteArrayInputStream(s.getBytes());
+            return s == null ? null : new NamedInputStream(
+                new ByteArrayInputStream(s.getBytes()), "");
         }
     }
 

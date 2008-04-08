@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,6 +37,7 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.PropertyAware;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * Factory to load a font.
@@ -146,6 +147,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration configuration)
             throws ConfigurationException {
 
@@ -199,7 +201,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         return finder.findResource(name, type);
@@ -377,6 +379,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.resource.ResourceAware#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;

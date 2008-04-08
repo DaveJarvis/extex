@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,6 +32,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This file finder searches for the file in different directories and with
@@ -155,10 +156,10 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
      * @return the input stream for the file or <code>null</code> if none was
      *         found.
      */
-    private InputStream find(String name, List<String> paths,
+    private NamedInputStream find(String name, List<String> paths,
             Configuration cfg, String type) {
 
-        InputStream stream = null;
+        NamedInputStream stream = null;
         Iterator<String> iterator = paths.iterator();
 
         while (stream == null && iterator.hasNext()) {
@@ -180,7 +181,7 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
      * @return the input stream for the file or <code>null</code> if none was
      *         found.
      */
-    private InputStream find(String name, String path, Configuration cfg,
+    private NamedInputStream find(String name, String path, Configuration cfg,
             String type) {
 
         String p = path.replaceAll("\\{type\\}", type);
@@ -195,7 +196,7 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
                 try {
                     InputStream stream = new FileInputStream(file);
                     trace("Found", file.toString(), null);
-                    return stream;
+                    return new NamedInputStream(stream, file.toString());
                 } catch (FileNotFoundException e) {
                     // Ignore unreadable files.
                     // This should not happen since it has already been
@@ -211,12 +212,12 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type);
 
-        InputStream stream = null;
+        NamedInputStream stream = null;
         Configuration config = getConfiguration();
         Configuration cfg = config.findConfiguration(type);
         if (cfg == null) {

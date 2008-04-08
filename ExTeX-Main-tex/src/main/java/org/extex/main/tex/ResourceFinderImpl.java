@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.main.tex;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Logger;
 
 import org.extex.framework.configuration.Configuration;
@@ -32,11 +31,12 @@ import org.extex.resource.InteractionAware;
 import org.extex.resource.InteractionIndicator;
 import org.extex.resource.RecursiveFinder;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This ResourceFinder queries the user for the name of the file to use and
  * tries to find it via its parent.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -72,7 +72,7 @@ public class ResourceFinderImpl
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theConfiguration the configuration to use
      */
     public ResourceFinderImpl(Configuration theConfiguration) {
@@ -83,9 +83,9 @@ public class ResourceFinderImpl
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param theLogger the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -95,11 +95,10 @@ public class ResourceFinderImpl
     }
 
     /**
-     * Setter for the trace flag.
-     * The trace flag is currently ignored.
-     *
+     * Setter for the trace flag. The trace flag is currently ignored.
+     * 
      * @param flag the trace flag
-     *
+     * 
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(boolean flag) {
@@ -110,19 +109,18 @@ public class ResourceFinderImpl
     /**
      * Find a resource which can be used for reading. If the search fails then
      * <code>null</code> is returned.
-     *
+     * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
-     *
+     * 
      * @return the file or <code>null</code> if none could be found
-     *
+     * 
      * @throws ConfigurationException in case of an exception
-     *
-     * @see org.extex.resource.ResourceFinder#findResource(
-     *      java.lang.String,
+     * 
+     * @see org.extex.resource.ResourceFinder#findResource( java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         Configuration cfg = configuration.findConfiguration(type);
@@ -156,14 +154,13 @@ public class ResourceFinderImpl
         if (line == null) {
             return null;
         }
-        InputStream stream = parent.findResource(line, type);
-        return stream;
+        return parent.findResource(line, type);
     }
 
     /**
-     * Read a line of characters from the standard input stream.
-     * Leading spaces are ignored. At end of file <code>null</code> is returned.
-     *
+     * Read a line of characters from the standard input stream. Leading spaces
+     * are ignored. At end of file <code>null</code> is returned.
+     * 
      * @return the line read or <code>null</code> to signal EOF
      */
     private String readLine() {
@@ -187,9 +184,9 @@ public class ResourceFinderImpl
 
     /**
      * Setter for the interaction provider.
-     *
+     * 
      * @param provider the provider
-     *
+     * 
      * @see org.extex.resource.InteractionAware#setInteractionProvider(
      *      org.extex.resource.InteractionIndicator)
      */
@@ -200,9 +197,9 @@ public class ResourceFinderImpl
 
     /**
      * Setter for the parent resource finder.
-     *
+     * 
      * @param parent the parent resource finder
-     *
+     * 
      * @see org.extex.resource.RecursiveFinder#setParent(
      *      org.extex.resource.ResourceFinder)
      */

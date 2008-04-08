@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,6 +31,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.logger.LogEnabled;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This file finder search recursively in a directory.
@@ -86,10 +87,80 @@ public class FileFinderRPathImpl
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    public void enableLogging(Logger alogger) {
+
+        logger = alogger;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
+     */
+    public void enableTracing(boolean flag) {
+
+        trace = flag;
+    }
+
+    /**
+     * Find a file recursively.
+     * 
+     * @param fpath path for searching
+     * @param name the file name
+     * @param cfg the configuration
+     * 
+     * @return Returns the input stream
+     */
+    private NamedInputStream findFile(File fpath, String name, Configuration cfg) {
+
+        File file;
+        for (String ext : cfg.getValues("extension")) {
+            file =
+                    new File(fpath, name + (ext.equals("") ? "" : ".")
+                            + ext.replaceAll("^\\.", ""));
+            if (trace && logger != null) {
+                logger.fine("FileFinder: Try " + file + "\n");
+            }
+            if (file.canRead()) {
+                try {
+                    InputStream stream = new FileInputStream(file);
+                    if (trace && logger != null) {
+                        logger.fine("FileFinder: Found " + file.toString()
+                                + "\n");
+                    }
+                    return new NamedInputStream(stream, file.toString());
+                } catch (FileNotFoundException e) {
+                    // ignore unreadable files
+                    continue;
+                }
+            }
+        }
+
+        // call findFile recursively
+        File[] files = fpath.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].isDirectory()) {
+                NamedInputStream in = findFile(files[i], name, cfg);
+                // found ??
+                if (in != null) {
+                    return in;
+                }
+            }
+        }
+        // nothing found!
+        return null;
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         // config
@@ -133,59 +204,12 @@ public class FileFinderRPathImpl
                 return null;
             }
 
-            InputStream in = findFile(fpath, name, cfg);
+            NamedInputStream in = findFile(fpath, name, cfg);
             if (in != null) {
                 return in;
             }
         }
         return null;
-    }
-
-    /**
-     * Find a file recursively.
-     * 
-     * @param fpath path for searching
-     * @param name the file name
-     * @param cfg the configuration
-     * @return Returns the input stream
-     */
-    private InputStream findFile(File fpath, String name, Configuration cfg) {
-
-        File file;
-        for (String ext : cfg.getValues("extension")) {
-            file = new File(fpath, name + (ext.equals("") ? "" : ".") + ext.replaceAll("^\\.", ""));
-            if (trace && logger != null) {
-                logger.fine("FileFinder: Try " + file + "\n");
-            }
-            if (file.canRead()) {
-                try {
-                    InputStream stream = new FileInputStream(file);
-                    if (trace && logger != null) {
-                        logger.fine("FileFinder: Found " + file.toString()
-                                + "\n");
-                    }
-                    return stream;
-                } catch (FileNotFoundException e) {
-                    // ignore unreadable files
-                    continue;
-                }
-            }
-        }
-
-        // call findFile recursively
-        File[] files = fpath.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            if (files[i].isDirectory()) {
-                InputStream in = findFile(files[i], name, cfg);
-                // found ??
-                if (in != null) {
-                    return in;
-                }
-            }
-        }
-        // nothing found!
-        return null;
-
     }
 
     /**
@@ -201,30 +225,10 @@ public class FileFinderRPathImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(boolean flag) {
-
-        trace = flag;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties prop) {
 
         properties = prop;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger alogger) {
-
-        logger = alogger;
     }
 }

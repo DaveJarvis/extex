@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,11 +19,10 @@
 
 package org.extex.resource;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This class provides a means to combine several resource finders to be queried
@@ -32,13 +31,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
+public class ResourceFinderList extends ArrayList<ResourceFinder>
+        implements
+            ResourceFinder,
+            RecursiveFinder {
 
     /**
-     * The field <tt>list</tt> the internal list of file finders which are
-     * elements in this container.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private List<ResourceFinder> list = new ArrayList<ResourceFinder>();
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>parent</tt> contains the parent resource finder.
@@ -55,17 +57,19 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
     }
 
     /**
-     * Append an additional file finder to list of file finders contained.
+     * {@inheritDoc}
      * 
-     * @param finder the file finder to add
+     * @see java.util.ArrayList#add(java.lang.Object)
      */
-    public void add(ResourceFinder finder) {
+    @Override
+    public boolean add(ResourceFinder finder) {
 
-        list.add(finder);
+        boolean ret = super.add(finder);
 
         if (finder instanceof RecursiveFinder) {
             ((RecursiveFinder) finder).setParent(parent);
         }
+        return ret;
     }
 
     /**
@@ -80,7 +84,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      */
     public void enableTracing(boolean flag) {
 
-        for (ResourceFinder finder : list) {
+        for (ResourceFinder finder : this) {
             finder.enableTracing(flag);
         }
     }
@@ -99,11 +103,11 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
-        for (ResourceFinder finder : list) {
-            InputStream stream = finder.findResource(name, type);
+        for (ResourceFinder finder : this) {
+            NamedInputStream stream = finder.findResource(name, type);
             if (stream != null) {
                 return stream;
             }
@@ -122,7 +126,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      */
     public void setParent(ResourceFinder theParent) {
 
-        for (ResourceFinder finder : list) {
+        for (ResourceFinder finder : this) {
             if (finder instanceof RecursiveFinder) {
                 ((RecursiveFinder) finder).setParent(theParent);
             }
@@ -136,7 +140,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
     public String toString() {
 
         StringBuilder sb = new StringBuilder("(resource");
-        for (ResourceFinder finder : list) {
+        for (ResourceFinder finder : this) {
             sb.append(' ');
             sb.append(finder.toString());
         }

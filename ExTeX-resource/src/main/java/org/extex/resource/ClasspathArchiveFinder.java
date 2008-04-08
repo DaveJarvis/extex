@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,27 +32,27 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This resource finder utilizes the Java class finder to search in the class
- * path for index files and resolve a resource via those.
- * Thus it is possible to find resources in the file system or inside a jar
- * archive.
- *
+ * path for index files and resolve a resource via those. Thus it is possible to
+ * find resources in the file system or inside a jar archive.
+ * 
  * <p>
- *  If a file is not found in any index then the resource is reported as not
- *  found. The same holds if the file can be resolved with the index but the
- *  resource does not exist.
+ * If a file is not found in any index then the resource is reported as not
+ * found. The same holds if the file can be resolved with the index but the
+ * resource does not exist.
  * </p>
  * <p>
- *  The sequence in which the different indexes on the class path are consulted
- *  is unspecified.
+ * The sequence in which the different indexes on the class path are consulted
+ * is unspecified.
  * </p>
- *
+ * 
  * <h2>Configuration</h2>
- * The resource finder can be configured to influence its actions.
- * The following example shows a configuration for a resource finder:
- *
+ * The resource finder can be configured to influence its actions. The following
+ * example shows a configuration for a resource finder:
+ * 
  * <pre>
  * &lt;Finder class="org.extex.util.resource.ClasspathArchiveFinder"
  *         trace="false"
@@ -71,66 +71,69 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  *   &lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- *
+ * 
  * <p>
- *  Whenever a resource is sought its type is used to find the appropriate
- *  parameters for the search. If the sub-configuration with the name of the
- *  type exists then this sub-configuration is used. For instance if the
- *  resource <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
- *  sub-configuration <tt>fmt</tt> determines how to find this file.
+ * Whenever a resource is sought its type is used to find the appropriate
+ * parameters for the search. If the sub-configuration with the name of the type
+ * exists then this sub-configuration is used. For instance if the resource
+ * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
+ * sub-configuration <tt>fmt</tt> determines how to find this file.
  * </p>
  * <p>
- *  If no sub-configuration of the given type is present then the attribute
- *  <tt>default</tt> is used to find the default sub-configuration. In the
- *  example given above this default configuration is called <tt>default</tt>.
- *  Nevertheless it would also be possible to point the default configuration
- *  to another existing configuration. The attribute <tt>default</tt> is
- *  mandatory.
+ * If no sub-configuration of the given type is present then the attribute
+ * <tt>default</tt> is used to find the default sub-configuration. In the
+ * example given above this default configuration is called <tt>default</tt>.
+ * Nevertheless it would also be possible to point the default configuration to
+ * another existing configuration. The attribute <tt>default</tt> is
+ * mandatory.
  * </p>
  * <p>
- *  Each sub-configuration takes the tag <tt>extension</tt> in arbitrary number.
- *  <tt>extension</tt> contains the extension appended after the resource name.
+ * Each sub-configuration takes the tag <tt>extension</tt> in arbitrary
+ * number. <tt>extension</tt> contains the extension appended after the
+ * resource name.
  * </p>
  * <p>
- *  All combinations of resource name and extension are tried in turn.
- *  If one combination leads to a readable input stream then it is used.
+ * All combinations of resource name and extension are tried in turn. If one
+ * combination leads to a readable input stream then it is used.
  * </p>
  * <p>
- *  The attribute <tt>trace</tt> can be used to force a tracing of the actions
- *  in the log file. The tracing is performed only if a logger is present when
- *  needed. The tracing flag can be overwritten at run-time.
- *  The attribute <tt>trace</tt> is optional.
+ * The attribute <tt>trace</tt> can be used to force a tracing of the actions
+ * in the log file. The tracing is performed only if a logger is present when
+ * needed. The tracing flag can be overwritten at run-time. The attribute
+ * <tt>trace</tt> is optional.
  * </p>
  * <p>
- *  The attribute <tt>toc</tt> determines the file to be used as index. The
- *  default is <tt>toc.index</tt>. The attribute <tt>toc</tt> is optional.
- *  The contents of the index file is described below.
+ * The attribute <tt>toc</tt> determines the file to be used as index. The
+ * default is <tt>toc.index</tt>. The attribute <tt>toc</tt> is optional.
+ * The contents of the index file is described below.
  * </p>
- *
+ * 
  * <h2>Indexing</h2>
- *
+ * 
  * <p>
- *  To speed up the access to resources an index is used by this resource finder.
- *  This index file contains a list of files in the form of a properties file
- *  mapping file names to file names with full paths:
+ * To speed up the access to resources an index is used by this resource finder.
+ * This index file contains a list of files in the form of a properties file
+ * mapping file names to file names with full paths:
  * </p>
+ * 
  * <pre>
  * # This is a comment
  * file1.tex=texmf/data/file1.tex
  * file2.tex=texmf/file2.tex
  * </pre>
+ * 
  * <p>
- *  The example above shows such a file. The file names and the path are
- *  separated by an equals sign. The hash mark acts as comment character if it
- *  occurs as first non white-space.
+ * The example above shows such a file. The file names and the path are
+ * separated by an equals sign. The hash mark acts as comment character if it
+ * occurs as first non white-space.
  * </p>
  * <p>
- *  The path contained in the index is taken relative to the index. This means
- *  that you have to be careful to adjust the path if it is not in the root
- *  directory.
+ * The path contained in the index is taken relative to the index. This means
+ * that you have to be careful to adjust the path if it is not in the root
+ * directory.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -149,9 +152,9 @@ public class ClasspathArchiveFinder extends AbstractFinder {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the encapsulated configuration object
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public ClasspathArchiveFinder(Configuration configuration)
@@ -163,19 +166,18 @@ public class ClasspathArchiveFinder extends AbstractFinder {
     /**
      * Find a resource which can be used for reading. If the search fails then
      * <code>null</code> is returned.
-     *
+     * 
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
-     *
+     * 
      * @return the file or <code>null</code> if none could be found
-     *
+     * 
      * @throws ConfigurationException in case of an exception
-     *
-     * @see org.extex.resource.ResourceFinder#findResource(
-     *      java.lang.String,
+     * 
+     * @see org.extex.resource.ResourceFinder#findResource( java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type);
@@ -221,7 +223,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
                     stream = url.openStream();
                     if (stream != null) {
                         trace("Found", fullName, null);
-                        return stream;
+                        return new NamedInputStream(stream, url.toString());
                     }
                 } catch (FileNotFoundException e) {
                     // ignored on purpose
@@ -236,11 +238,11 @@ public class ClasspathArchiveFinder extends AbstractFinder {
 
     /**
      * Initialize the index for searching.
-     *
+     * 
      * @param tocName the name of the toc file
-     *
+     * 
      * @return the cache
-     *
+     * 
      * @throws ConfigurationWrapperException in case of a configuration problem
      */
     protected Map<String, URL> initialize(String tocName)

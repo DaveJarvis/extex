@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,46 +19,44 @@
 
 package org.extex.resource;
 
-import java.io.InputStream;
-
 import org.extex.framework.configuration.exception.ConfigurationException;
-
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This interface describes a class which is able to find files or other
- * resources of different kinds for reading.
- * It is not determined how the search is performed.
- * Searching for the given file name, augmenting extension and path, or using
- * an external library &ndash; like kpathsea &ndash; are left to possible
- * implementations. Even an interaction with the user can be envisioned.
- *
+ * resources of different kinds for reading. It is not determined how the search
+ * is performed. Searching for the given file name, augmenting extension and
+ * path, or using an external library &ndash; like kpathsea &ndash; are left to
+ * possible implementations. Even an interaction with the user can be
+ * envisioned.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface ResourceFinder {
 
     /**
-     * Find a resource which can be used for reading. If the search fails then
-     * <code>null</code> is returned.
-     *
-     * @param name the base name of the resource
-     * @param type the type, i.e. the extension
-     *
-     * @return the file or <code>null</code> if none could be found
-     *
-     * @throws ConfigurationException in case of an exception
-     */
-    InputStream findResource(String name, String type)
-            throws ConfigurationException;
-
-    /**
      * Enable or disable the tracing. The argument indicates whether tracing
-     * should be enabled or disabled.
-     * The resource finder can decide on its own how to perform tracing. The
-     * preferred way is to write tracing records to a logger.
-     *
+     * should be enabled or disabled. The resource finder can decide on its own
+     * how to perform tracing. The preferred way is to write tracing records to
+     * a logger.
+     * 
      * @param flag indicator whether tracing should be turned on or off.
      */
     void enableTracing(boolean flag);
+
+    /**
+     * Find a resource which can be used for reading. If the search fails then
+     * <code>null</code> is returned.
+     * 
+     * @param name the base name of the resource
+     * @param type the type, i.e. the extension
+     * 
+     * @return the file or <code>null</code> if none could be found
+     * 
+     * @throws ConfigurationException in case of an exception
+     */
+    NamedInputStream findResource(String name, String type)
+            throws ConfigurationException;
 
 }
