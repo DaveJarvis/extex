@@ -328,9 +328,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
     /**
-     * The constant <tt>patternEmpty</tt> contains the pattern for whitespace.
+     * The constant <tt>EMPTY_APTTERN</tt> contains the pattern for whitespace.
      */
-    private static final Pattern patternEmpty = Pattern.compile("\\s*");
+    private static final Pattern EMPTY_APTTERN = Pattern.compile("\\s*");
 
     /**
      * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a
@@ -414,7 +414,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                 buffer.delete(0, 1);
             }
 
-            while (patternEmpty.matcher(buffer).matches()) {
+            while (EMPTY_APTTERN.matcher(buffer).matches()) {
                 if (read() == null) {
                     return null;
                 }
