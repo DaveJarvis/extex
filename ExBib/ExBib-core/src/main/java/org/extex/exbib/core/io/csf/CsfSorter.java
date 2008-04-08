@@ -62,7 +62,7 @@ public class CsfSorter implements Comparator<Entry>, Sorter {
             upper[i] = (char) i;
         }
         for (int i = 128; i < 256; i++) {
-            ord[i] = -1;
+            ord[i] = Integer.MAX_VALUE;
             lower[i] = (char) i;
             upper[i] = (char) i;
         }
