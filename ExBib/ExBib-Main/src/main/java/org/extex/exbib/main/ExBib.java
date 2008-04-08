@@ -23,12 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.LineNumberReader;
 import java.io.UnsupportedEncodingException;
-import java.text.MessageFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -118,7 +114,7 @@ import org.extex.resource.ResourceFinderFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class ExBib {
+public class ExBib extends AbstractMain {
 
     /**
      * The field <tt>VERSION</tt> contains the official version number.
@@ -162,27 +158,10 @@ public class ExBib {
     private static final String BST_FILE_EXTENSION = ".bst";
 
     /**
-     * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource
-     * for the copyright file (in the jar).
-     */
-    private static final String COPYING_RESOURCE =
-            "org/extex/exbib/main/COPYING";
-
-    /**
      * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
      * been started. This is fixed to be 2002 and should not be altered.
      */
-    private static final int INCEPTION_YEAR = 2002;
-
-    /**
-     * The field <tt>EXIT_FAIL</tt> contains the exit code for failure.
-     */
-    private static final int EXIT_FAIL = 1;
-
-    /**
-     * The field <tt>EXIT_OK</tt> contains the exit code for success.
-     */
-    private static final int EXIT_OK = 0;
+    static final int INCEPTION_YEAR = 2002;
 
     /**
      * The main program. The command line parameters are evaluated and the
@@ -228,12 +207,6 @@ public class ExBib {
     }
 
     /**
-     * The field <tt>banner</tt> contains the indicator that the banner has
-     * already been printed.
-     */
-    private boolean banner = false;
-
-    /**
      * The field <tt>bundle</tt> contains the resource bundle for i18n.
      */
     private ResourceBundle bundle;
@@ -266,24 +239,9 @@ public class ExBib {
     private int errors = 0;
 
     /**
-     * The field <tt>logfile</tt> contains the name of the log file.
-     */
-    private String logfile = null;
-
-    /**
      * The field <tt>outfile</tt> contains the name of the output file.
      */
     private String outfile = null;
-
-    /**
-     * The field <tt>programName</tt> contains the name of the program.
-     */
-    private String programName = "exbib";
-
-    /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private Logger logger;
 
     /**
      * The field <tt>minCrossrefs</tt> contains the <tt>min.crossrefs</tt>
@@ -302,34 +260,33 @@ public class ExBib {
     private String csf = null;
 
     /**
+     * The field <tt>logfile</tt> contains the name of the log file.
+     */
+    private String logfile = null;
+
+    /**
      * Creates a new object.
      */
     public ExBib() {
 
-        super();
-        bundle = ResourceBundle.getBundle(getClass().getName());
+        super("exbib", VERSION, INCEPTION_YEAR);
 
-        logger = Logger.getLogger(getClass().getName());
-        logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL);
+        bundle = ResourceBundle.getBundle(getClass().getName());
 
         consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new LogFormatter());
         consoleHandler.setLevel(Level.WARNING);
-        logger.addHandler(consoleHandler);
+        getLogger().addHandler(consoleHandler);
     }
 
     /**
      * Close the instance and release the logger.
      */
+    @Override
     public void close() {
 
-        for (Handler h : logger.getHandlers()) {
-            h.close();
-            logger.removeHandler(h);
-        }
+        super.close();
         consoleHandler = null;
-        logger = null;
     }
 
     /**
@@ -340,16 +297,6 @@ public class ExBib {
     public String getLogfile() {
 
         return logfile;
-    }
-
-    /**
-     * Getter for logger.
-     * 
-     * @return the logger
-     */
-    public Logger getLogger() {
-
-        return logger;
     }
 
     /**
@@ -373,35 +320,6 @@ public class ExBib {
     }
 
     /**
-     * Getter for the program name.
-     * 
-     * @return the program name
-     */
-    public String getProgramName() {
-
-        return programName;
-    }
-
-    /**
-     * Log an info message.
-     * 
-     * @param tag the resource tag
-     * @param args the arguments to be inserted
-     * 
-     * @return the exit code <code>1</code>
-     */
-    protected int info(String tag, Object... args) {
-
-        try {
-            logger.info(MessageFormat.format(bundle.getString(tag), args));
-        } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
-        }
-        return EXIT_FAIL;
-    }
-
-    /**
      * Getter for debug.
      * 
      * @return the debug
@@ -419,141 +337,6 @@ public class ExBib {
     public boolean isTrace() {
 
         return trace;
-    }
-
-    /**
-     * Log a severe message.
-     * 
-     * @param tag the resource tag
-     * @param args the arguments to be inserted
-     * 
-     * @return the exit code <code>1</code>
-     */
-    protected int log(String tag, Object... args) {
-
-        try {
-            logger.severe(MessageFormat.format(bundle.getString(tag), args));
-        } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
-        }
-        return EXIT_FAIL;
-    }
-
-    /**
-     * Write the banner to the logger. The used log level is warning.
-     * 
-     * @param copyright the indicator to show the copyright
-     * 
-     * @return the exit code <code>1</code>
-     */
-    private int logBanner(boolean copyright) {
-
-        if (banner) {
-            return EXIT_FAIL;
-        }
-        banner = true;
-
-        logger.warning(MessageFormat.format(bundle.getString("version"),
-            programName, VERSION));
-        if (copyright) {
-            int year = Calendar.getInstance().get(Calendar.YEAR);
-            String copyrightYear =
-                    (year <= INCEPTION_YEAR
-                            ? Integer.toString(INCEPTION_YEAR)
-                            : Integer.toString(INCEPTION_YEAR) + "-"
-                                    + Integer.toString(year));
-            logger.severe(MessageFormat.format(bundle.getString("copyright"),
-                programName, copyrightYear));
-        }
-        return EXIT_FAIL;
-    }
-
-    /**
-     * Write a message to the logger. It is preceded by the banner if the banner
-     * has not been shown before.
-     * 
-     * @param tag the resource tag of the message pattern
-     * 
-     * @return the exit code <code>1</code>
-     */
-    private int logBanner(String tag) {
-
-        logBanner(false);
-        return log(tag, programName);
-    }
-
-    /**
-     * Write a message to the logger. It is preceded by the banner if the banner
-     * has not been shown before.
-     * 
-     * @param tag the resource tag of the message pattern
-     * @param arg the arguments
-     * 
-     * @return the exit code <code>1</code>
-     */
-    private int logBanner(String tag, String arg) {
-
-        logBanner(false);
-        return log(tag, programName, arg);
-    }
-
-    /**
-     * Show the copying information (license) which is sought on the classpath.
-     * 
-     * @return the exit code <code>1</code>
-     */
-    private int logCopying() {
-
-        InputStream is =
-                getClass().getClassLoader().getResourceAsStream(
-                    COPYING_RESOURCE);
-
-        if (is == null) {
-            logger.severe("--copying " + COPYING_RESOURCE);
-            return EXIT_FAIL;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        try {
-            LineNumberReader r =
-                    new LineNumberReader(new InputStreamReader(is));
-            for (String s = r.readLine(); s != null; s = r.readLine()) {
-                sb.append(s);
-                sb.append('\n');
-            }
-        } catch (IOException e) {
-            // shit happens
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                // finally ignore it
-            }
-        }
-        logger.severe(sb.toString());
-
-        return EXIT_FAIL;
-    }
-
-    /**
-     * Log an exception.
-     * 
-     * @param e the exception which has lead to the error
-     * @param tag the resource tag for the format pattern
-     * @param debug indicator whether or not to produce a printed stack trace
-     * 
-     * @return the exit code <code>1</code>
-     */
-    private int logException(Throwable e, String tag, boolean debug) {
-
-        logBanner(tag, e.getLocalizedMessage());
-
-        if (debug) {
-            logger.throwing("", "", e);
-        }
-
-        return EXIT_FAIL;
     }
 
     /**
@@ -645,13 +428,13 @@ public class ExBib {
                     setConfigSource("exbib/" + argv[i]);
 
                 } else if ("copying".startsWith(a)) {
-                    return logCopying();
+                    return logCopying(getLogger());
 
                 } else if ("debug".startsWith(a)) {
                     setDebug(true);
 
                 } else if ("help".startsWith(a) || "?".equals(a)) {
-                    return logBanner("usage", programName);
+                    return logBanner("usage", getProgramName());
 
                 } else if ("logfile".startsWith(a)) {
                     if (++i >= argv.length) {
@@ -688,7 +471,7 @@ public class ExBib {
                     consoleHandler.setLevel(Level.SEVERE);
 
                 } else if ("release".startsWith(a)) {
-                    logger.severe(VERSION + "\n");
+                    getLogger().severe(VERSION + "\n");
                     return 1;
 
                 } else if ("strict".startsWith(a)) {
@@ -751,7 +534,7 @@ public class ExBib {
                 new WriterFactory(topConfiguration.getConfiguration("Writers"));
         ResourceFinder finder =
                 new ResourceFinderFactory().createResourceFinder(
-                    topConfiguration.getConfiguration("Resource"), logger,
+                    topConfiguration.getConfiguration("Resource"), getLogger(),
                     System.getProperties(), null);
         if (filename == null) {
             return logBanner("missing.file");
@@ -761,14 +544,14 @@ public class ExBib {
         runAttachLogFile(file);
         logBanner(false);
 
-        CsfSorter csfSorter = null;
+        CsfSorter sorter = null;
         if (csf != null) {
             InputStream is = finder.findResource(csf, "csf");
             if (is == null) {
                 return logBanner("csf.missing");
             }
             try {
-                csfSorter = new CsfReader().read(new InputStreamReader(is));
+                sorter = new CsfReader().read(new InputStreamReader(is));
             } catch (CsfException e) {
                 return logBanner(e.getLocalizedMessage());
             } finally {
@@ -790,6 +573,10 @@ public class ExBib {
                 topConfiguration.getConfiguration("BibReader"));
             bibReaderFactory.setResourceFinder(finder);
             db.setBibReaderFactory(bibReaderFactory);
+            if (sorter != null) {
+                db.setSorter(sorter);
+            }
+            // TODO use sorter for case conversion
 
             Processor bibliography = new ProcessorFactory(//
                 topConfiguration.getConfiguration("Processor")).newInstance(db);
@@ -798,8 +585,8 @@ public class ExBib {
             if (trace) {
                 funcall = runRegisterTracers(db, bibliography);
             }
-            bibliography.registerObserver("startRead", new DBObserver(logger,
-                bundle.getString("observer.db.pattern")));
+            bibliography.registerObserver("startRead", new DBObserver(
+                getLogger(), bundle.getString("observer.db.pattern")));
 
             Engine engine = new EngineFactory(//
                 topConfiguration.getConfiguration("Engine")).newInstance();
@@ -856,7 +643,7 @@ public class ExBib {
                 return log("bst.not.found", e.getMessage());
             }
 
-            bibliography.process(writer, logger);
+            bibliography.process(writer, getLogger());
 
             if (errors > 0) {
                 log(errors == 1 ? "error" : "errors", Long.toString(errors));
@@ -876,10 +663,10 @@ public class ExBib {
         } catch (ExBibImpossibleException e) {
             return logException(e, "internal.error", debug);
         } catch (ExBibFileNotFoundException e) {
-            logger.severe(e.getLocalizedMessage() + "\n");
+            getLogger().severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
         } catch (ExBibException e) {
-            logger.severe(e.getLocalizedMessage() + "\n");
+            getLogger().severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
         } catch (ConfigurationWrapperException e) {
             return logException(e, "installation.error", debug);
@@ -914,7 +701,7 @@ public class ExBib {
             Handler fileHandler = new FileHandler(logfile);
             fileHandler.setFormatter(new LogFormatter());
             fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
-            logger.addHandler(fileHandler);
+            getLogger().addHandler(fileHandler);
         }
     }
 
@@ -933,6 +720,7 @@ public class ExBib {
             throws NotObservableException,
                 ExBibIllegalValueException {
 
+        Logger logger = getLogger();
         FuncallObserver funcall = (trace ? new FuncallObserver(logger) : null);
 
         db.registerObserver("makeEntry",
@@ -1004,16 +792,6 @@ public class ExBib {
     }
 
     /**
-     * Setter for logger.
-     * 
-     * @param logger the logger to set
-     */
-    public void setLogger(Logger logger) {
-
-        this.logger = logger;
-    }
-
-    /**
      * Setter for the min.crossrefs.
      * 
      * @param minCrossrefs the new value
@@ -1031,16 +809,6 @@ public class ExBib {
     public void setOutfile(String outfile) {
 
         this.outfile = outfile;
-    }
-
-    /**
-     * Setter for the program name.
-     * 
-     * @param programName the program name to set
-     */
-    public void setProgramName(String programName) {
-
-        this.programName = programName;
     }
 
     /**
