@@ -52,7 +52,9 @@ public class BstReverseImpl extends AbstractCommand implements Command {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.command.Command#execute(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.command.AbstractCommand#execute(
      *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.io.Locator)
      */
     @Override
@@ -78,7 +80,9 @@ public class BstReverseImpl extends AbstractCommand implements Command {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.command.Command#visit(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.command.AbstractCommand#visit(
      *      org.extex.exbib.core.bst.command.CommandVisitor)
      */
     @Override
@@ -86,4 +90,5 @@ public class BstReverseImpl extends AbstractCommand implements Command {
 
         visitor.visitReverse(this);
     }
+
 }
