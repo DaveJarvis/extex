@@ -199,7 +199,7 @@ public class Width extends AbstractCode {
      * The constant <tt>SPECIAL</tt> contains the mapping of the special T<sub>E</sub>X
      * sequences with positive width.
      */
-    private static Map<String, Integer> SPECIAL = newSpecials();
+    private static final Map<String, Integer> SPECIAL = newSpecials();
 
     /**
      * Return the width map for the control sequences.
