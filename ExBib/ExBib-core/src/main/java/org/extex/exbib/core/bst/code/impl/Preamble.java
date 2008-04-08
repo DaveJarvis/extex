@@ -71,7 +71,9 @@ public class Preamble extends AbstractCode {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
      *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */

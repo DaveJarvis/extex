@@ -115,31 +115,6 @@ public class FormatName extends AbstractCode {
         }
 
         /**
-         * Count the number of text characters in a buffer.
-         * 
-         * @param s the buffer to analyze
-         * 
-         * @return <code>true</code> iff the number of text characters is at
-         *         least 2
-         */
-        protected boolean containsText(StringBuilder s) {
-
-            boolean first = false;
-
-            for (int i = 0; i < s.length(); i++) {
-                char c = s.charAt(i);
-                if (Character.isLetterOrDigit(c)) {
-                    if (first) {
-                        return true;
-                    }
-                    first = true;
-                }
-            }
-
-            return false;
-        }
-
-        /**
          * Check if a buffer contains an ending.
          * 
          * @param sb the buffer
@@ -162,6 +137,62 @@ public class FormatName extends AbstractCode {
             }
 
             return true;
+        }
+
+        /**
+         * Count the number of text characters in a buffer.
+         * 
+         * @param s the buffer to analyze
+         * 
+         * @return <code>true</code> iff the number of text characters is at
+         *         least 2
+         */
+        protected boolean enoughText(StringBuilder s) {
+
+            boolean first = false;
+
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                if (Character.isLetterOrDigit(c) || c == '{' || c == '}') {
+                    if (first) {
+                        return true;
+                    }
+                    first = true;
+                }
+            }
+
+            return false;
+        }
+
+        protected boolean enoughTextChars(StringBuilder buffer,
+                int enough_chars, int start, int end) {
+
+            int count = 0;
+            int brace_level = 0;
+            int ptr = start;
+            while (ptr < end && count < enough_chars) {
+                ++ptr;
+                if (buffer.charAt(ptr - 1) == '{') {
+                    ++brace_level;
+                    if (brace_level == 1 && ptr < end) {
+                        if (buffer.charAt(ptr) == '\\') {
+                            ++ptr;
+                            while (ptr < end && brace_level > 0) {
+                                if (buffer.charAt(ptr) == '}') {
+                                    --brace_level;
+                                } else if (buffer.charAt(ptr) == '{') {
+                                    ++brace_level;
+                                }
+                                ++ptr;
+                            }
+                        }
+                    }
+                } else if (buffer.charAt(ptr - 1) == '}') {
+                    --brace_level;
+                }
+                ++count;
+            }
+            return count >= enough_chars;
         }
 
         /**
@@ -188,8 +219,8 @@ public class FormatName extends AbstractCode {
                 if (endsIn(sb, tie, len - 1)) {
                     if (endsIn(sb, tie, len - 1 - tielen)) {
                         sb.delete(len - tielen, len);
-                    } else if (endsIn(sb, "}", len - 1 - tielen)
-                            || containsText(sb)) {
+                    } else if (sb.charAt(len - 1 - tielen) == '}'
+                            || enoughText(sb)) {
                         sb.replace(len - tielen, len, " ");
                     }
                 }
@@ -505,6 +536,11 @@ public class FormatName extends AbstractCode {
     private class FormatItem {
 
         /**
+         * The field <tt>id</tt> contains the id for printing.
+         */
+        private String id;
+
+        /**
          * The <i>mid</i> string is inserted between multi-part fragments of a
          * name.
          */
@@ -521,11 +557,6 @@ public class FormatName extends AbstractCode {
          * name if those fragments are not empty.
          */
         private String pre = "";
-
-        /**
-         * The field <tt>id</tt> contains the id for printing.
-         */
-        private String id;
 
         /**
          * Creates a new object.
