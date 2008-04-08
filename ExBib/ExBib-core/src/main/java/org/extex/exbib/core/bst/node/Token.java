@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -25,7 +24,6 @@ import java.io.IOException;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.io.Locator;
-
 
 /**
  * A <code>Token</code> is the basic entity of which programs are made up.
@@ -46,16 +44,17 @@ public interface Token extends Code {
      * 
      * @return the expanded value of this Token
      */
-    public abstract String expand(Processor processor);
+    String expand(Processor processor);
 
     /**
-     * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The locator is a
-     * means to get information about where the token came from originally. If
-     * no such information is availlable then <code>null</code> is returned.
+     * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
+     * locator is a means to get information about where the token came from
+     * originally. If no such information is availlable then <code>null</code>
+     * is returned.
      * 
      * @return the locator or <code>null</code>
      */
-    public abstract Locator getLocator();
+    Locator getLocator();
 
     /**
      * Getter for the value. The value stores the real information in the Token.
@@ -63,7 +62,7 @@ public interface Token extends Code {
      * 
      * @return the value
      */
-    public abstract String getValue();
+    String getValue();
 
     /**
      * Check whether the value has been set to <code>null</code> initially.
@@ -73,14 +72,14 @@ public interface Token extends Code {
      * @return <code>true</code> iff the value has been set to
      *         <code>null</code>
      */
-    public abstract boolean isNull();
+    boolean isNull();
 
     /**
      * Return a printable representation of this object.
      * 
      * @return the printable representation
      */
-    public abstract String toString();
+    String toString();
 
     /**
      * This is the entry point for a {@link TokenVisitor TokenVisitor} to start
@@ -90,5 +89,6 @@ public interface Token extends Code {
      * 
      * @throws IOException in case of an I/O error
      */
-    public abstract void visit(TokenVisitor visitor) throws IOException;
+    void visit(TokenVisitor visitor) throws IOException;
+
 }
