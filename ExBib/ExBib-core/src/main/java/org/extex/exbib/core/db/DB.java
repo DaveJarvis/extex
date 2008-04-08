@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
+import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.bibio.BibPrinter;
@@ -171,6 +172,14 @@ public interface DB extends Configurable {
      * @param factory the factory to use
      */
     void setBibReaderFactory(BibReaderFactory factory);
+
+    /**
+     * Setter for the sorter.
+     * 
+     * @param sorter the new
+     *        {@link org.extex.exbib.core.db.sorter.Sorter Sorter}
+     */
+    public void setSorter(Sorter sorter);
 
     /**
      * Sort the entries according to the configured sorter.
