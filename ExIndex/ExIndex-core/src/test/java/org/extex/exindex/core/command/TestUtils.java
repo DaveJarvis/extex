@@ -23,7 +23,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -35,6 +34,7 @@ import org.extex.exindex.core.type.IndexContainer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This is a utility class for the tests.
@@ -66,10 +66,11 @@ public final class TestUtils {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
-        public InputStream findResource(String name, String type)
+        public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
-            return new ByteArrayInputStream(name.getBytes());
+            return new NamedInputStream(new ByteArrayInputStream(name
+                .getBytes()), "");
         }
 
     };

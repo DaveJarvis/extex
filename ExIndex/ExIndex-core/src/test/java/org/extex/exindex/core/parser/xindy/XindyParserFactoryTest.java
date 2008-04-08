@@ -24,13 +24,13 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
 /**
@@ -53,10 +53,11 @@ public class XindyParserFactoryTest {
                     //
                 }
 
-                public InputStream findResource(String name, String type)
+                public NamedInputStream findResource(String name, String type)
                         throws ConfigurationException {
 
-                    return new ByteArrayInputStream(new byte[]{});
+                    return new NamedInputStream(new ByteArrayInputStream(
+                        new byte[]{}), "");
                 }
             };
 
@@ -78,7 +79,7 @@ public class XindyParserFactoryTest {
                 //
             }
 
-            public InputStream findResource(String name, String type)
+            public NamedInputStream findResource(String name, String type)
                     throws ConfigurationException {
 
                 return null;

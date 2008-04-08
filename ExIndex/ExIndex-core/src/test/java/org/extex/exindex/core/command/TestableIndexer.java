@@ -19,7 +19,6 @@
 
 package org.extex.exindex.core.command;
 
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
 import org.extex.exindex.core.Indexer;
@@ -28,6 +27,7 @@ import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This class is an indexer for testing.
@@ -58,10 +58,12 @@ public class TestableIndexer extends Indexer {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
-        public InputStream findResource(String name, String type)
+        public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
-            return getClass().getClassLoader().getResourceAsStream(name);
+            ClassLoader classLoader = getClass().getClassLoader();
+            return new NamedInputStream(classLoader.getResourceAsStream(name),
+                name + "." + type);
         }
 
     };

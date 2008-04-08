@@ -39,6 +39,7 @@ import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
 /**
@@ -70,10 +71,12 @@ public class Makeindex1Test {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
-        public InputStream findResource(String name, String type)
+        public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
-            return getClass().getClassLoader().getResourceAsStream(name);
+            ClassLoader classLoader = getClass().getClassLoader();
+            return new NamedInputStream(classLoader.getResourceAsStream(name),
+                name + "." + type);
         }
 
     };

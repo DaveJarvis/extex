@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,6 +29,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This resource finder imitating the search strategy of Xindy.
@@ -87,7 +88,7 @@ public class SearchPath implements ResourceFinder {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(String name, String type)
+    public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
         for (String d : dirs) {
@@ -96,7 +97,7 @@ public class SearchPath implements ResourceFinder {
                     if (logger != null) {
                         logger.fine(LOCLIZER.format("UsingFallback"));
                     }
-                    InputStream stream = fallback.findResource(name, type);
+                    NamedInputStream stream = fallback.findResource(name, type);
                     if (stream != null) {
                         return stream;
                     }
@@ -115,7 +116,7 @@ public class SearchPath implements ResourceFinder {
                                 logger.fine(LOCLIZER.format("Found", f
                                     .toString()));
                             }
-                            return stream;
+                            return new NamedInputStream(stream, f.toString());
                         }
                     } catch (FileNotFoundException e) {
                         // keep on trying
