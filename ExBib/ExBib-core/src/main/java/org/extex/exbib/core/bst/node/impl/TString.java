@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -83,14 +82,19 @@ public class TString extends AbstractToken implements Token {
      * 
      * @return <code>true</code> iff the values are equal
      */
-    public boolean equals(TString that) {
+    @Override
+    public boolean equals(Object that) {
 
-        return getValue().equals(that.getValue());
+        return that instanceof TString
+                && getValue().equals(((TString) that).getValue());
     }
 
     /**
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(Processor processor, Entry entry, Locator locator)
@@ -110,6 +114,17 @@ public class TString extends AbstractToken implements Token {
     public List<Name> getNames() {
 
         return names;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+
+        return getValue().hashCode();
     }
 
     /**
@@ -136,7 +151,9 @@ public class TString extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.node.Token#visit(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
      *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override

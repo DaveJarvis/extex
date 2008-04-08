@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -112,6 +111,8 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * The execute method is specific to any sub-type thus it is declared as
      * abstract which forces that it is defined in any derived class.
      * 
@@ -122,6 +123,8 @@ public abstract class AbstractToken implements Token {
             Locator locator) throws ExBibException;
 
     /**
+     * {@inheritDoc}
+     * 
      * The expansion of an AbstractToken is the value itself.
      * 
      * @see org.extex.exbib.core.bst.node.Token#expand(org.extex.exbib.core.bst.Processor)
@@ -145,6 +148,8 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Code#getName()
      */
     public String getName() {
@@ -176,6 +181,8 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Code#setName(java.lang.String)
      */
     public void setName(String name) {
@@ -210,6 +217,8 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.node.Token#visit(
      *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
