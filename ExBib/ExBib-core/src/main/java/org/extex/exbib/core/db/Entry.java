@@ -88,13 +88,13 @@ public class Entry {
     /**
      * Getter for the Value stored under a given key in the Entry.
      * 
-     * @param key the key of the value
+     * @param k the key of the value
      * 
      * @return the Value or <code>null</code> if none is found
      */
-    public Value get(String key) {
+    public Value get(String k) {
 
-        return hash.get(key);
+        return hash.get(k);
     }
 
     /**

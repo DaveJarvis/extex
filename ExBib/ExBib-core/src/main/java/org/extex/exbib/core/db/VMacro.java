@@ -51,8 +51,10 @@ public class VMacro extends AbstractValueItem {
      * The value of a Macro expands to the concatenation of all constituents,
      * where undefined items are expanded to the empty string.
      * 
-     * @see org.extex.exbib.core.db.ValueItem#expand(StringBuilder,
-     *      org.extex.exbib.core.db.DB)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.AbstractValueItem#expand(
+     *      java.lang.StringBuilder, org.extex.exbib.core.db.DB)
      */
     @Override
     public void expand(StringBuilder sb, DB db) {
