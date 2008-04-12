@@ -20,6 +20,7 @@
 
 package org.extex.exbib.core.bst.code;
 
+import java.util.Locale;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,7 +85,7 @@ public class TestWarning extends TestCase {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestWarning(String name) {
 
@@ -141,6 +142,7 @@ public class TestWarning extends TestCase {
      */
     public void testWarning1() throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         p.push(new TString("abc"));
         new Warning("warning$").execute(p, null, null);
         assertEquals("", out.toString());

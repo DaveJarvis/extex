@@ -27,7 +27,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * ...
+ * This is a writer for bbl files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -38,19 +38,28 @@ public class BblWriter0 implements Writer {
      * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line
      * length.
      */
-    private static final int DEFAULT_LINE_LENGTH = 80;
+    private static final int DEFAULT_LINE_LENGTH = 79;
 
-    /** the string inserted at the place where line breaking is performed */
+    /**
+     * The field <tt>indent</tt> contains the string inserted at the place
+     * where line breaking is performed.
+     */
     private String indent = "\n  ";
 
-    /** The output writer */
+    /**
+     * The field <tt>writer</tt> contains the output writer.
+     */
     private Writer writer = null;
 
-    /** The current column */
+    /**
+     * The field <tt>col</tt> contains the current column.
+     */
     private int col = 0;
 
-    /** The desired line length */
-    private int linelength = DEFAULT_LINE_LENGTH;
+    /**
+     * The field <tt>lineLength</tt> contains the desired line length.
+     */
+    private int lineLength = DEFAULT_LINE_LENGTH;
 
     /**
      * Creates a new object.
@@ -87,7 +96,7 @@ public class BblWriter0 implements Writer {
             indent = "\n" + in;
         }
 
-        linelength = cfg.getValueAsInteger("linelength", DEFAULT_LINE_LENGTH);
+        lineLength = cfg.getValueAsInteger("lineLength", DEFAULT_LINE_LENGTH);
     }
 
     /**
@@ -138,9 +147,10 @@ public class BblWriter0 implements Writer {
                 case '\n':
                     col = -1;
                     col2 = -1;
+                default: // keep going
             }
 
-            if (++col > linelength && br >= 0) {
+            if (++col > lineLength && br >= 0) {
                 stb.deleteCharAt(br);
                 stb.insert(br, indent);
                 col = col2++ + indent.length();
@@ -247,7 +257,7 @@ public class BblWriter0 implements Writer {
      */
     public void write(int c) throws IOException {
 
-        if (++col >= linelength && c == '\n') {
+        if (++col >= lineLength && c == '\n') {
             writer.println();
             col = 0;
         } else {

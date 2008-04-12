@@ -61,8 +61,7 @@ public class Skip extends AbstractCode {
      */
     public Skip(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

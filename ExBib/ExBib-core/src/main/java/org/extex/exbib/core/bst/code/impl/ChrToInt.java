@@ -68,8 +68,7 @@ public class ChrToInt extends AbstractCode {
      */
     public ChrToInt(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -64,8 +64,7 @@ public class Concat extends AbstractCode {
      */
     public Concat(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

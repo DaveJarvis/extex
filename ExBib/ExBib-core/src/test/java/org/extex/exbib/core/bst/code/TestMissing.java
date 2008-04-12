@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -34,7 +33,7 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
-import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
@@ -66,14 +65,14 @@ public class TestMissing extends TestCase {
     }
 
     /**
-     * The field <tt>db</tt> contains the ...
+     * The field <tt>db</tt> contains the database.
      */
     private DB db = null;
 
     /**
-     * The field <tt>e</tt> contains the ...
+     * The field <tt>entry</tt> contains the entry.
      */
-    private Entry e;
+    private Entry entry;
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -99,8 +98,8 @@ public class TestMissing extends TestCase {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        e = db.makeEntry("book", "abc", null);
-        e.set("author", new Value());
+        entry = db.makeEntry("book", "abc", null);
+        entry.set("author", new Value());
         p = new Processor099Impl(db, new NullWriter(null), null);
     }
 
@@ -117,40 +116,40 @@ public class TestMissing extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An existing field is reported as not missing. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
         p.push(new TString("title", null));
-        new Missing("missing$").execute(p, e, null);
+        new Missing("missing$").execute(p, entry, null);
         assertEquals("0", p.popInteger(null).getValue());
         assertNull(p.popUnchecked());
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An non-existing field is reported as missing. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         p.push(new TString(null, null));
-        new Missing("missing$").execute(p, e, null);
+        new Missing("missing$").execute(p, entry, null);
         assertEquals("1", p.popInteger(null).getValue());
         assertNull(p.popUnchecked());
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
         try {
-            new Missing("missing$").execute(p, e, null);
+            new Missing("missing$").execute(p, entry, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
             assertTrue(true);
@@ -158,7 +157,7 @@ public class TestMissing extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The first argument needs to be a string. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -166,9 +165,9 @@ public class TestMissing extends TestCase {
 
         try {
             p.push(new TInteger(123));
-            new Missing("missing$").execute(p, e, null);
+            new Missing("missing$").execute(p, entry, null);
             assertTrue(false);
-        } catch (ExBibException e) {
+        } catch (ExBibMissingStringException e) {
             assertTrue(true);
         }
     }

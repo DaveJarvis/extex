@@ -19,6 +19,7 @@
 
 package org.extex.exbib.core.io.csf;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -34,7 +35,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CsfSorter implements Comparator<Entry>, Sorter {
+public class CsfSorter implements Comparator<Entry>, Sorter, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>ord</tt> contains the order mapping.
@@ -89,8 +96,8 @@ public class CsfSorter implements Comparator<Entry>, Sorter {
 
         int ia = 0;
         int ib = 0;
-        int ca, cb;
-
+        int ca;
+        int cb;
         do {
             for (ca = -1; ia < ka.length() && ca < 0; ia++) {
                 ca = ord[ka.charAt(ia)];

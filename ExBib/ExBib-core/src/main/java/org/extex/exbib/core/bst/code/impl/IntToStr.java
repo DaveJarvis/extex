@@ -65,8 +65,7 @@ public class IntToStr extends AbstractCode {
      */
     public IntToStr(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

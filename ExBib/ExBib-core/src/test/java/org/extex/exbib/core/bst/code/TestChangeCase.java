@@ -75,7 +75,7 @@ public class TestChangeCase extends TestCase {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestChangeCase(String name) {
 

@@ -1,32 +1,30 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
 package org.extex.exbib.core.db.sorter;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.db.Entry;
 import org.extex.framework.configuration.Configuration;
@@ -36,16 +34,19 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
+ * This is a test suite for the {@link SorterImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestSorter extends TestCase {
+public class TestSorter {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This is a dummy configuration for the tests.
      */
     private static class DummyConfig implements Configuration {
 
@@ -221,26 +222,6 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * Run the tests stand-alone.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * The test suite.
-     * 
-     * @return the test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestSorter099.class);
-    }
-
-    /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
     private SorterImpl s = new SorterImpl();
@@ -261,23 +242,18 @@ public class TestSorter extends TestCase {
     private Entry c;
 
     /**
-     * Creates a new object.
+     * Set-up the test case.
      * 
-     * @param name ...
+     * @throws Exception in case of an error
      */
-    public TestSorter(String name) {
+    @Before
+    public void setUp() throws Exception {
 
-        super(name);
-    }
-
-    /**
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
-    protected void setUp() throws Exception {
-
-        super.setUp();
-        s.configure(new DummyConfig());
+        DummyConfig cfg = new DummyConfig();
+        cfg.setOrder("< a,A< b,B< c,C< d,D< e,E< f,F< g,G< h,H< i,I< j,J"
+                + "< k,K< l,L< m,M< n,N< o,O< p,P< q,Q< r,R< s,S< t,T"
+                + "< u,U< v,V< w,W< x,X< y,Y< z,Z");
+        s.configure(cfg);
 
         a = new Entry(null);
         a.setKey("abc");
@@ -288,20 +264,12 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * @see junit.framework.TestCase#tearDown()
-     */
-    @Override
-    protected void tearDown() throws Exception {
-
-        super.tearDown();
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_0() throws Exception {
+    @Test
+    public void test0() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         s.sort(list);
@@ -309,11 +277,12 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A one-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_1() throws Exception {
+    @Test
+    public void test1() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(a);
@@ -323,11 +292,12 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A sorted two-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_21() throws Exception {
+    @Test
+    public void test21() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(a);
@@ -339,11 +309,12 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A unsorted two-element list is reversed. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_22() throws Exception {
+    @Test
+    public void test22() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(b);
@@ -355,11 +326,12 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A sorted three-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test_31() throws Exception {
+    @Test
+    public void test31() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
         list.add(c);
@@ -373,11 +345,13 @@ public class TestSorter extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Identical elements are compared equal when no sort key is set.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_0() throws Exception {
+    @Test
+    public void testSorter0() throws Exception {
 
         assertEquals(0, s.compare(a, a));
     }
@@ -387,17 +361,20 @@ public class TestSorter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_1() throws Exception {
+    @Test
+    public void testSorter1() throws Exception {
 
         assertTrue(0 > s.compare(a, b));
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Identical elements are compared equal when a sort key is set.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_10() throws Exception {
+    @Test
+    public void testSorter10() throws Exception {
 
         a.setSortKey("ghi");
         assertEquals(0, s.compare(a, a));
@@ -408,7 +385,8 @@ public class TestSorter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_11() throws Exception {
+    @Test
+    public void testSorter11() throws Exception {
 
         a.setSortKey("ghi");
         assertTrue(0 < s.compare(a, b));
@@ -419,7 +397,8 @@ public class TestSorter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_12() throws Exception {
+    @Test
+    public void testSorter12() throws Exception {
 
         a.setSortKey("ghi");
         assertTrue(0 > s.compare(b, a));
@@ -430,7 +409,8 @@ public class TestSorter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_2() throws Exception {
+    @Test
+    public void testSorter2() throws Exception {
 
         assertTrue(0 < s.compare(b, a));
     }
@@ -440,25 +420,27 @@ public class TestSorter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_21() throws Exception {
+    @Test
+    public void testSorter21() throws Exception {
 
         a.setSortKey("ac");
         b.setSortKey("aa");
         assertTrue(0 < s.compare(a, b));
     }
 
-    // TODO: more testcases for collating sequences
-
     /**
      * TODO gene: missing JavaDoc
      * 
      * @throws Exception in case of an error
      */
-    public void testSorter_22() throws Exception {
+    @Test
+    public void testSorter22() throws Exception {
 
         a.setSortKey("ac");
         b.setSortKey("aa");
         assertTrue(0 > s.compare(b, a));
     }
+
+    // TODO: more test cases for collating sequences
 
 }

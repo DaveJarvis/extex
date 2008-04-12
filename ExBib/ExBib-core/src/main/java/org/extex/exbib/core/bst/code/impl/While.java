@@ -64,8 +64,7 @@ public class While extends AbstractCode {
      */
     public While(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

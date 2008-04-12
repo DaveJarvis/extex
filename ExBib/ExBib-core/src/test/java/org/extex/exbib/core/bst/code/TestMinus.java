@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -29,7 +29,9 @@ import org.extex.exbib.core.bst.Processor099Impl;
 import org.extex.exbib.core.bst.code.impl.Minus;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
@@ -76,6 +78,23 @@ public class TestMinus extends TestCase {
     }
 
     /**
+     * Run a test case.
+     * 
+     * @param t1 the first integer
+     * @param t2 the second integer
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(int t1, int t2) throws Exception {
+
+        p.push(new TInteger(t2));
+        p.push(new TInteger(t1));
+        new Minus("-").execute(p, null, null);
+        assertEquals(t2 - t1, p.popInteger(null).getInt());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -98,9 +117,9 @@ public class TestMinus extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1Stack() throws Exception {
 
@@ -114,9 +133,9 @@ public class TestMinus extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -129,139 +148,159 @@ public class TestMinus extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A type error in the first argument leads to an error.
+     * </testcase>
      * 
-     * @param t1
-     * @param t2
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    private void textMinus(int t1, int t2) throws Exception {
+    public void testTypeError1() throws Exception {
 
-        p.push(new TInteger(t2));
-        p.push(new TInteger(t1));
-        new Minus("-").execute(p, null, null);
-        assertEquals(t2 - t1, p.popInteger(null).getInt());
-        assertNull(p.popUnchecked());
+        try {
+            p.push(new TString("2"));
+            p.push(new TInteger(2));
+            new Minus("-").execute(p, null, null);
+            assertTrue(false);
+        } catch (ExBibMissingNumberException e) {
+            assertTrue(true);
+        }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A type error in the second argument leads to an error.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void textMinus_1_2() throws Exception {
+    public void testTypeError2() throws Exception {
 
-        textMinus(-1, -2);
+        try {
+            p.push(new TString("2"));
+            p.push(new TInteger(2));
+            new Minus("-").execute(p, null, null);
+            assertTrue(false);
+        } catch (ExBibMissingNumberException e) {
+            assertTrue(true);
+        }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 0 - 0. </testcase>
      * 
-     * @throws Exception
-     */
-    public void textMinus_123123() throws Exception {
-
-        textMinus(-123, 123);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
-     */
-    public void textMinus_2_1() throws Exception {
-
-        textMinus(-2, -1);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus00() throws Exception {
 
-        textMinus(0, 0);
+        runTest(0, 0);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 1 - 0. </testcase>
      * 
-     * @throws Exception
-     */
-    public void textMinus1_1() throws Exception {
-
-        textMinus(1, -1);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus10() throws Exception {
 
-        textMinus(1, 0);
+        runTest(1, 0);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 1 - 1. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus11() throws Exception {
 
-        textMinus(1, 1);
+        runTest(1, 1);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 1 - 2. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus12() throws Exception {
 
-        textMinus(1, 2);
+        runTest(1, 2);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 123 - 123. </testcase>
      * 
-     * @throws Exception
-     */
-    public void textMinus123_123() throws Exception {
-
-        textMinus(123, -123);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus123123() throws Exception {
 
-        textMinus(123, 123);
+        runTest(123, 123);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 123 - -123. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void textMinus123Minus123() throws Exception {
+
+        runTest(123, -123);
+    }
+
+    /**
+     * <testcase> Test 1 - -1. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void textMinus1Minus1() throws Exception {
+
+        runTest(1, -1);
+    }
+
+    /**
+     * <testcase> Test 2 - 1. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void textMinus21() throws Exception {
 
-        textMinus(2, 1);
+        runTest(2, 1);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test 2 - 2. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void textMinus22() throws Exception {
 
-        textMinus(2, 2);
+        runTest(2, 2);
+    }
+
+    /**
+     * <testcase> Test -123 - 123. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void textMinusMinus123123() throws Exception {
+
+        runTest(-123, 123);
+    }
+
+    /**
+     * <testcase> Test -1 - -2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void textMinusMinus1Minus2() throws Exception {
+
+        runTest(-1, -2);
+    }
+
+    /**
+     * <testcase> Test -2 - -1. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void textMinusMinus2Minus1() throws Exception {
+
+        runTest(-2, -1);
     }
 
 }

@@ -55,7 +55,7 @@ public class TestBuiltin {
      */
     private void runTest(String style) throws IOException {
 
-        BibTeXBaseTest.runTest(DATA_DIR + "/" + style, //
+        TRunner.runTest(DATA_DIR + "/" + style, //
             DATA_DIR + "/a", //
             "*", //
             new File(DATA_DIR, style + ".result"));

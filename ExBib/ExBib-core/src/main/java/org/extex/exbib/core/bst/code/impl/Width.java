@@ -210,19 +210,19 @@ public class Width extends AbstractCode {
 
         // TODO: move to config
         Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("ae", new Integer(722));
-        map.put("AE", new Integer(903));
-        map.put("aa", new Integer(WIDTH['a']));
-        map.put("AA", new Integer(WIDTH['A']));
-        map.put("oe", new Integer(778));
-        map.put("OE", new Integer(1014));
-        map.put("ss", new Integer(500));
-        map.put("l", new Integer(WIDTH['l']));
-        map.put("L", new Integer(WIDTH['L']));
-        map.put("o", new Integer(WIDTH['o']));
-        map.put("O", new Integer(WIDTH['O']));
-        map.put("i", new Integer(WIDTH['i']));
-        map.put("j", new Integer(WIDTH['j']));
+        map.put("ae", Integer.valueOf(722));
+        map.put("AE", Integer.valueOf(903));
+        map.put("aa", Integer.valueOf(WIDTH['a']));
+        map.put("AA", Integer.valueOf(WIDTH['A']));
+        map.put("oe", Integer.valueOf(778));
+        map.put("OE", Integer.valueOf(1014));
+        map.put("ss", Integer.valueOf(500));
+        map.put("l", Integer.valueOf(WIDTH['l']));
+        map.put("L", Integer.valueOf(WIDTH['L']));
+        map.put("o", Integer.valueOf(WIDTH['o']));
+        map.put("O", Integer.valueOf(WIDTH['O']));
+        map.put("i", Integer.valueOf(WIDTH['i']));
+        map.put("j", Integer.valueOf(WIDTH['j']));
 
         return map;
     }
@@ -242,8 +242,7 @@ public class Width extends AbstractCode {
      */
     public Width(String name) {
 
-        this();
-        setName(name);
+        super(name);
     }
 
     /**

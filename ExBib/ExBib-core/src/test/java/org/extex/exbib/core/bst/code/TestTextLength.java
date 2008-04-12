@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -77,6 +76,22 @@ public class TestTextLength extends TestCase {
     }
 
     /**
+     * Run a test case.
+     * 
+     * @param in the input string
+     * @param len the length
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(String in, int len) throws Exception {
+
+        p.push(new TString(in));
+        new TextLength("text.length$").execute(p, null, null);
+        assertEquals(len, p.popInteger(null).getInt());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -99,118 +114,243 @@ public class TestTextLength extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The "a" has length 1. </testcase>
      * 
-     * @param in
-     * @param len
-     * @throws Exception
-     */
-    private void test(String in, int len) throws Exception {
-
-        p.push(new TString(in));
-        new TextLength("text.length$").execute(p, null, null);
-        assertEquals(len, p.popInteger(null).getInt());
-        assertNull(p.popUnchecked());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        test("a!", 2);
-        test("a!}", 2);
-        test("a!}}", 2);
-        test("a!}}}", 2);
-        test("a.", 2);
-        test("a.}", 2);
-        test("a.}}", 2);
-        test("a.}}}", 2);
+        runTest("a", 1);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The "a!" has length 2. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void test3() throws Exception {
+    public void test1a() throws Exception {
 
-        test("ac!", 3);
-        test("ac!}", 3);
-        test("ac!}}", 3);
-        test("ac!}}}", 3);
-        test("ac.", 3);
-        test("ac.}", 3);
-        test("ac.}}", 3);
-        test("ac.}}}", 3);
+        runTest("a!", 2);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The "a!}" has length 2. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void test1b() throws Exception {
+
+        runTest("a!}", 2);
+    }
+
+    /**
+     * <testcase> The "a!}}" has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1c() throws Exception {
+
+        runTest("a!}}", 2);
+    }
+
+    /**
+     * <testcase> The "a!}}}" has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1d() throws Exception {
+
+        runTest("a!}}}", 2);
+    }
+
+    /**
+     * <testcase> The "a." has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1e() throws Exception {
+
+        runTest("a.", 2);
+    }
+
+    /**
+     * <testcase> The "a.}" has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1f() throws Exception {
+
+        runTest("a.}", 2);
+    }
+
+    /**
+     * <testcase> The "a.}}" has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1g() throws Exception {
+
+        runTest("a.}}", 2);
+    }
+
+    /**
+     * <testcase> The "a.}}}" has length 2. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1h() throws Exception {
+
+        runTest("a.}}}", 2);
+    }
+
+    /**
+     * <testcase> The "ac!" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3a() throws Exception {
+
+        runTest("ac!", 3);
+    }
+
+    /**
+     * <testcase> The "ac!}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3b() throws Exception {
+
+        runTest("ac!}", 3);
+    }
+
+    /**
+     * <testcase> The "ac!}}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3c() throws Exception {
+
+        runTest("ac!}}", 3);
+    }
+
+    /**
+     * <testcase> The "ac!}}}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3d() throws Exception {
+
+        runTest("ac!}}}", 3);
+    }
+
+    /**
+     * <testcase> The "ac." has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3e() throws Exception {
+
+        runTest("ac.", 3);
+    }
+
+    /**
+     * <testcase> The "ac.}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3f() throws Exception {
+
+        runTest("ac.}", 3);
+    }
+
+    /**
+     * <testcase> The "ac.}}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3g() throws Exception {
+
+        runTest("ac.}}", 3);
+    }
+
+    /**
+     * <testcase> The "ac.}}" has length 3. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3h() throws Exception {
+
+        runTest("ac.}}}", 3);
+    }
+
+    /**
+     * <testcase> The control sequence \" at level 0 has no influence.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testAcc1() throws Exception {
 
-        test("a\\\"bc", 3);
+        runTest("a\\\"bc", 3);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The argument of a control sequence \" at level 0 has no
+     * influence. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testAcc2() throws Exception {
 
-        test("a\\\"{b}c", 3);
+        runTest("a\\\"{b}c", 3);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The argument of a control sequence \" at level 0 has no
+     * influence. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testAcc3() throws Exception {
 
-        test("a\\'{b}c", 3);
+        runTest("a\\'{b}c", 3);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The argument of a control sequence \" at level 0 has no
+     * influence. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testAcc4() throws Exception {
 
-        test("a\\^{b}c", 3);
+        runTest("a\\^{b}c", 3);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty string has length 0. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmpty() throws Exception {
 
-        test("", 0);
+        runTest("", 0);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces and brackets do not count. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmpty2() throws Exception {
 
-        test("{{[[][ ", 0);
+        runTest("{{[[][ ", 0);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -223,9 +363,9 @@ public class TestTextLength extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The length of an integer is the number of digits. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testInteger() throws Exception {
 

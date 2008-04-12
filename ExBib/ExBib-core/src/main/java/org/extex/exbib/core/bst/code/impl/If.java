@@ -64,8 +64,7 @@ public class If extends AbstractCode {
      */
     public If(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

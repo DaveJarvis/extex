@@ -66,8 +66,7 @@ public class Preamble extends AbstractCode {
      */
     public Preamble(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

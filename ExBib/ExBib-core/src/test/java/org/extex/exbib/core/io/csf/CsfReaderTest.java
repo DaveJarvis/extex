@@ -481,7 +481,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section ... </testcase>
+     * <testcase> The \order section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -496,7 +496,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \order section ... </testcase>
+     * <testcase> The \order section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -676,7 +676,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section ... </testcase>
+     * <testcase> The \ uppercase section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -691,7 +691,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section ... </testcase>
+     * <testcase> The \ uppercase section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -706,7 +706,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section ... </testcase>
+     * <testcase> The \ uppercase section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -721,7 +721,7 @@ public class CsfReaderTest {
     }
 
     /**
-     * <testcase> The \ uppercase section ... </testcase>
+     * <testcase> The \ uppercase section needs to be complete. </testcase>
      * 
      * @throws Exception in case of an error
      */

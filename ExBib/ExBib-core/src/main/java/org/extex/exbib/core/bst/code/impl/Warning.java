@@ -72,8 +72,7 @@ public class Warning extends AbstractCode {
      */
     public Warning(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

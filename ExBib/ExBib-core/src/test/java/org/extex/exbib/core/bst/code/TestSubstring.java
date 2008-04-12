@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -77,6 +77,27 @@ public class TestSubstring extends TestCase {
     }
 
     /**
+     * Run a test case.
+     * 
+     * @param s the string
+     * @param from the start index
+     * @param len the length
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(String s, int from, int len, String res)
+            throws Exception {
+
+        p.push(new TString(s));
+        p.push(new TInteger(from));
+        p.push(new TInteger(len));
+        new Substring("substring$").execute(p, null, null);
+        assertEquals(res, p.popString(null).getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -99,9 +120,9 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -114,9 +135,9 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testShortStack1() throws Exception {
 
@@ -130,9 +151,9 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A short stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testShortStack2() throws Exception {
 
@@ -147,523 +168,503 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", 0, 0) = "" </testcase>
      * 
-     * @param s
-     * @param from
-     * @param len
-     * @param res
-     * @throws Exception
-     */
-    private void testSubstring(String s, int from, int len, String res)
-            throws Exception {
-
-        p.push(new TString(s));
-        p.push(new TInteger(from));
-        p.push(new TInteger(len));
-        new Substring("substring$").execute(p, null, null);
-        assertEquals(res, p.popString(null).getValue());
-        assertNull(p.popUnchecked());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour1() throws Exception {
 
-        testSubstring("abcd", 0, 0, "");
+        runTest("abcd", 0, 0, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", 1, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour2() throws Exception {
 
-        testSubstring("abcd", 1, 1, "a");
+        runTest("abcd", 1, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", -1, 1) = "d" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour3() throws Exception {
 
-        testSubstring("abcd", -1, 1, "d");
+        runTest("abcd", -1, 1, "d");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", 2, 1) = "b" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour4() throws Exception {
 
-        testSubstring("abcd", 2, 1, "b");
+        runTest("abcd", 2, 1, "b");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", -2, 1) = "c" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour5() throws Exception {
 
-        testSubstring("abcd", -2, 1, "c");
+        runTest("abcd", -2, 1, "c");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", 1, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour6() throws Exception {
 
-        testSubstring("abcd", 1, 2, "ab");
+        runTest("abcd", 1, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcd", -1, 2) = "cd" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringFour7() throws Exception {
 
-        testSubstring("abcd", -1, 2, "cd");
+        runTest("abcd", -1, 2, "cd");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", 0, 0) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne1() throws Exception {
 
-        testSubstring("a", 0, 0, "");
+        runTest("a", 0, 0, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -2, -4) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne10() throws Exception {
 
-        testSubstring("a", -2, -4, "");
+        runTest("a", -2, -4, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -3, -6) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne11() throws Exception {
 
-        testSubstring("a", -3, -6, "");
+        runTest("a", -3, -6, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", 1, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne2() throws Exception {
 
-        testSubstring("a", 1, 1, "a");
+        runTest("a", 1, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -1, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne3() throws Exception {
 
-        testSubstring("a", -1, 1, "a");
+        runTest("a", -1, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", 2, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne4() throws Exception {
 
-        testSubstring("a", 2, 1, "");
+        runTest("a", 2, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -2, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne5() throws Exception {
 
-        testSubstring("a", -2, 1, "");
+        runTest("a", -2, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", 1, 2) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne6() throws Exception {
 
-        testSubstring("a", 1, 2, "a");
+        runTest("a", 1, 2, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -1, 2) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne7() throws Exception {
 
-        testSubstring("a", -1, 2, "a");
+        runTest("a", -1, 2, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -2, -2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne8() throws Exception {
 
-        testSubstring("a", -2, -2, "");
+        runTest("a", -2, -2, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("a", -2, -3) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringOne9() throws Exception {
 
-        testSubstring("a", -2, -3, "");
+        runTest("a", -2, -3, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", 0, 0) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree1() throws Exception {
 
-        testSubstring("abc", 0, 0, "");
+        runTest("abc", 0, 0, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", 1, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree2() throws Exception {
 
-        testSubstring("abc", 1, 1, "a");
+        runTest("abc", 1, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", -1, 1) = "c" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree3() throws Exception {
 
-        testSubstring("abc", -1, 1, "c");
+        runTest("abc", -1, 1, "c");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", 2, 1) = "b" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree4() throws Exception {
 
-        testSubstring("abc", 2, 1, "b");
+        runTest("abc", 2, 1, "b");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", -2, 1) = "b" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree5() throws Exception {
 
-        testSubstring("abc", -2, 1, "b");
+        runTest("abc", -2, 1, "b");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", 1, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree6() throws Exception {
 
-        testSubstring("abc", 1, 2, "ab");
+        runTest("abc", 1, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abc", -1, 2) = "bc" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringThree7() throws Exception {
 
-        testSubstring("abc", -1, 2, "bc");
+        runTest("abc", -1, 2, "bc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 0, 2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix1() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 0, 2, "");
+        runTest("abcdefghijklmnopqrstuvwxyz", 0, 2, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -26, 2) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix10() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", -26, 2, "a");
+        runTest("abcdefghijklmnopqrstuvwxyz", -26, 2, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -27, 2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix11() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", -27, 2, "");
+        runTest("abcdefghijklmnopqrstuvwxyz", -27, 2, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 1, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix2() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 1, 2, "ab");
+        runTest("abcdefghijklmnopqrstuvwxyz", 1, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 2, 2) = "bc" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix3() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 2, 2, "bc");
+        runTest("abcdefghijklmnopqrstuvwxyz", 2, 2, "bc");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 25, 2) = "yz" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix4() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 25, 2, "yz");
+        runTest("abcdefghijklmnopqrstuvwxyz", 25, 2, "yz");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 26, 2) = "z" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix5() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 26, 2, "z");
+        runTest("abcdefghijklmnopqrstuvwxyz", 26, 2, "z");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 27, 2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix6() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", 27, 2, "");
+        runTest("abcdefghijklmnopqrstuvwxyz", 27, 2, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -1, 2) = "yz" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix7() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", -1, 2, "yz");
+        runTest("abcdefghijklmnopqrstuvwxyz", -1, 2, "yz");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -2, 2) = "xy" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix8() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", -2, 2, "xy");
+        runTest("abcdefghijklmnopqrstuvwxyz", -2, 2, "xy");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -25, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwentysix9() throws Exception {
 
-        testSubstring("abcdefghijklmnopqrstuvwxyz", -25, 2, "ab");
+        runTest("abcdefghijklmnopqrstuvwxyz", -25, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", 0, 0) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo1() throws Exception {
 
-        testSubstring("ab", 0, 0, "");
+        runTest("ab", 0, 0, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", 1, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo2() throws Exception {
 
-        testSubstring("ab", 1, 1, "a");
+        runTest("ab", 1, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", -1, 1) = "b" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo3() throws Exception {
 
-        testSubstring("ab", -1, 1, "b");
+        runTest("ab", -1, 1, "b");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", 2, 1) = "b" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo4() throws Exception {
 
-        testSubstring("ab", 2, 1, "b");
+        runTest("ab", 2, 1, "b");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", -2, 1) = "a" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo5() throws Exception {
 
-        testSubstring("ab", -2, 1, "a");
+        runTest("ab", -2, 1, "a");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", 1, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo6() throws Exception {
 
-        testSubstring("ab", 1, 2, "ab");
+        runTest("ab", 1, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("ab", -1, 2) = "ab" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringTwo7() throws Exception {
 
-        testSubstring("ab", -1, 2, "ab");
+        runTest("ab", -1, 2, "ab");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", 0, 0) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero1() throws Exception {
 
-        testSubstring("", 0, 0, "");
+        runTest("", 0, 0, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", 1, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero2() throws Exception {
 
-        testSubstring("", 1, 1, "");
+        runTest("", 1, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", -1, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero3() throws Exception {
 
-        testSubstring("", -1, 1, "");
+        runTest("", -1, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", 2, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero4() throws Exception {
 
-        testSubstring("", 2, 1, "");
+        runTest("", 2, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", -2, 1) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero5() throws Exception {
 
-        testSubstring("", -2, 1, "");
+        runTest("", -2, 1, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", 1, 2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero6() throws Exception {
 
-        testSubstring("", 1, 2, "");
+        runTest("", 1, 2, "");
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> substring$("", -1, 2) = "" </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testSubstringZero7() throws Exception {
 
-        testSubstring("", -1, 2, "");
+        runTest("", -1, 2, "");
     }
 
 }

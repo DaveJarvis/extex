@@ -69,8 +69,7 @@ public class TextPrefix extends AbstractCode {
      */
     public TextPrefix(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

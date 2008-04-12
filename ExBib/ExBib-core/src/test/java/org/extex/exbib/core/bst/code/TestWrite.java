@@ -77,7 +77,7 @@ public class TestWrite extends TestCase {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestWrite(String name) {
 

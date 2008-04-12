@@ -58,8 +58,7 @@ public class Pop extends AbstractCode {
      */
     public Pop(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

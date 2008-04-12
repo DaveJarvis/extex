@@ -22,7 +22,6 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TField;
 import org.extex.exbib.core.bst.node.impl.TFieldInteger;
@@ -30,6 +29,7 @@ import org.extex.exbib.core.bst.node.impl.TFieldString;
 import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -69,8 +69,7 @@ public class Set extends AbstractCode {
      */
     public Set(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**
@@ -87,9 +86,8 @@ public class Set extends AbstractCode {
         Token a = processor.pop(locator);
 
         if (!(a instanceof TLiteral)) {
-            throw new ExBibIllegalValueException("Literal expected", locator);
+            new ExBibMissingLiteralException(a.toString(), locator);
         }
-
         String var = a.getValue();
         Code code = processor.getFunction(var);
 

@@ -63,8 +63,7 @@ public class Gt extends AbstractCode {
      */
     public Gt(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -63,8 +63,7 @@ public class Minus extends AbstractCode {
      */
     public Minus(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

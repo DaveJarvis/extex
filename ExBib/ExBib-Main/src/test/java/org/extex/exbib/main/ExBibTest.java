@@ -124,7 +124,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux01() throws Exception {
 
-        runTest("test", "", 1, check.EQ, BANNER
+        runTest("test", "", 1, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -142,7 +142,7 @@ public class ExBibTest extends BibTester {
         File aux = new File("undefined.aux");
         assertFalse(aux.exists());
 
-        runTest("undefined", null, 1, check.EQ, BANNER
+        runTest("undefined", null, 1, Check.EQ, BANNER
                 + "I couldn\'t open file undefined.aux\n", //
             "undefined.aux");
     }
@@ -180,7 +180,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux10() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
+        runTest("test", "\\bibstyle{xyzzy}\n", 1, Check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy\n", //
@@ -196,7 +196,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux11() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, check.EQ, BANNER
+        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, Check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy.bst\n", //
@@ -212,7 +212,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux12() throws Exception {
 
-        runTest("test", "", 1, check.EQ, BANNER
+        runTest("test", "", 1, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
@@ -230,7 +230,7 @@ public class ExBibTest extends BibTester {
     public void testAux13() throws Exception {
 
         runTest("test", "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-            1, check.EQ, BANNER
+            1, Check.EQ, BANNER
                     + "I found no \\bibdata commands while reading test.aux\n"
                     + "I found no \\citation commands while reading test.aux\n"
                     + "(There were 2 errors)\n", //
@@ -246,7 +246,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux14() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy}\n", 1, check.EQ, BANNER
+        runTest("test", "\\bibstyle{xyzzy}\n", 1, Check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy\n", //
@@ -262,7 +262,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux15() throws Exception {
 
-        runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", 1, check.EQ,
+        runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", 1, Check.EQ,
             BANNER + "I found no \\bibdata commands while reading test.aux\n"
                     + "I couldn\'t open style file xyzzy\n", //
             "test.aux");
@@ -278,7 +278,7 @@ public class ExBibTest extends BibTester {
     public void testAux16() throws Exception {
 
         runTest("test", "\\citation{*}\n\\bibdata{qqq}\n\\bibstyle{xyzzy}\n",
-            1, check.EQ, BANNER + "I couldn\'t open style file xyzzy\n",
+            1, Check.EQ, BANNER + "I couldn\'t open style file xyzzy\n",
             "test.aux");
     }
 
@@ -292,7 +292,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\citation{*}\n\\bibdata{test}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 1,
-            check.EQ, BANNER + "File `test\' not found\n", //
+            Check.EQ, BANNER + "File `test\' not found\n", //
             "test.aux");
     }
 
@@ -394,7 +394,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCopying1() throws Exception {
 
-        runTest("test", null, 1, check.START,
+        runTest("test", null, 1, Check.START,
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n", //
             "--copying");
     }
@@ -488,7 +488,9 @@ public class ExBibTest extends BibTester {
     public void testLogfile02() throws Exception {
 
         File log = new File("test.lg");
-        log.delete();
+        if (log.exists() && !log.delete()) {
+            assertTrue(log.toString() + ": deletion failed", false);
+        }
         assertFalse(log.exists());
 
         try {
@@ -497,7 +499,7 @@ public class ExBibTest extends BibTester {
                         "test",
                         "",
                         1,
-                        check.EQ,
+                        Check.EQ,
                         BANNER
                                 + "I found no style file while reading test.aux\n"
                                 + "I found no \\bibdata commands while reading test.aux\n"
@@ -508,7 +510,9 @@ public class ExBibTest extends BibTester {
             assertEquals("test.lg", exbib.getLogfile());
 
         } finally {
-            log.delete();
+            if (log.exists() && !log.delete()) {
+                assertTrue(log.toString() + ": deletion failed", false);
+            }
         }
     }
 
@@ -521,7 +525,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLogfile03() throws Exception {
 
-        runTest("test", "", 1, check.EQ, BANNER
+        runTest("test", "", 1, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -600,7 +604,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, check.EQ, BANNER
+                    0, Check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux");
@@ -643,9 +647,15 @@ public class ExBibTest extends BibTester {
                 .toString().replaceAll("\r", ""));
         } finally {
             System.setErr(err);
-            aux.delete();
-            new File("test.bbl").delete();
-            new File("test.blg").delete();
+            if (!aux.delete()) {
+                assertTrue(aux.toString() + ": deletion failed", false);
+            }
+            if (!new File("test.bbl").delete()) {
+                assertTrue("test.bbl: deletion failed", false);
+            }
+            if (!new File("test.blg").delete()) {
+                assertTrue("test.blg: deletion failed", false);
+            }
         }
     }
 
@@ -693,7 +703,7 @@ public class ExBibTest extends BibTester {
             runTest("test", "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-                check.EQ, null, //
+                Check.EQ, null, //
                 "test.aux", "--out", "-");
             assertTrue(baos
                 .toString()
@@ -730,7 +740,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-            check.EQ, null, //
+            Check.EQ, null, //
             "test.aux", "-v", "--out", "");
     }
 
@@ -762,7 +772,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, check.EQ, null, //
+                    0, Check.EQ, null, //
                     "--progname", "xxx", "test.aux");
         assertEquals("xxx", exbib.getProgramName());
     }
@@ -822,7 +832,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, check.EQ, BANNER
+                    0, Check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--strict");
@@ -856,6 +866,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testTrace1() throws Exception {
 
+        String aux = new File(".", "test.aux").toString();
         ExBib exbib =
                 runTest(
                     "test",
@@ -863,11 +874,12 @@ public class ExBibTest extends BibTester {
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
                     0,
-                    check.START, //
+                    Check.START, //
                     BANNER
                             + "The output file: test.bbl\n"
-                            + "The top-level auxiliary file: test\n" // TODO
-                            // .aux
+                            + "The top-level auxiliary file: "
+                            + aux
+                            + "\n"
                             + "The style file src/test/resources/bibtex/base/plain.bst\n"
                             + "--- do READ\n"
                             + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
@@ -910,16 +922,20 @@ public class ExBibTest extends BibTester {
     @Test
     public void testVerbose1() throws Exception {
 
+        String aux =
+                new File(".", "test.aux").toString().replaceAll("\\\\", ".");
         runTest(
             "test",
             "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
             0,
-            check.REGEX,
+            Check.REGEX,
             BANNER
                     + "The output file: test.bbl\n"
-                    + "The top-level auxiliary file: test\n" // TODO .aux
+                    + "The top-level auxiliary file: "
+                    + aux
+                    + "\n"
                     + "The style file src/test/resources/bibtex/base/plain.bst\n"
                     + "Database file #1: src/test/resources/bibtex/base/xampl.bib\n"
                     + "Warning: empty author in whole-journal\n"

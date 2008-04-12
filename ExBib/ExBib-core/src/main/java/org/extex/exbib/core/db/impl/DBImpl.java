@@ -231,10 +231,9 @@ public class DBImpl implements DB, Observable {
         List<String> open = new ArrayList<String>();
         Map<String, String> cite = new HashMap<String, String>();
         List<String> stack = new ArrayList<String>(citation.keySet());
-        Iterator<String> iterator = stack.iterator();
 
-        while (iterator.hasNext()) {
-            String key = (iterator.next()).toLowerCase();
+        for (String key : stack) {
+            key = key.toLowerCase();
 
             if ((entry = getEntry(key)) != null) {
                 cite.put(entry.getKey().toLowerCase(), "1");
@@ -244,20 +243,20 @@ public class DBImpl implements DB, Observable {
         }
 
         do {
-            iterator = stack.iterator();
-
-            while (iterator.hasNext()) {
-                String key = iterator.next();
+            for (String key : stack) {
                 entry = getEntry(key);
 
                 if (entry == null) {
                     missing.add(key);
                 } else {
-                    String crossref = entry.get("crossref").expand(this);
+                    Value xref = entry.get("crossref");
+                    if (xref != null) {
+                        String crossref = xref.expand(this);
+                        if (crossref != null && !cite.containsKey(crossref)) {
 
-                    if (crossref != null && !cite.containsKey(crossref)) {
-                        cite.put(crossref, "2");
-                        open.add(crossref);
+                            cite.put(crossref, "2");
+                            open.add(crossref);
+                        }
                     }
                 }
             }

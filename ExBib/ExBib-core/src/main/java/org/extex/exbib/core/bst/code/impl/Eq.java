@@ -57,8 +57,7 @@ public class Eq extends AbstractCode {
      */
     public Eq(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

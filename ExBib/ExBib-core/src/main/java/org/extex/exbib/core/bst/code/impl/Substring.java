@@ -76,8 +76,7 @@ public class Substring extends AbstractCode {
      */
     public Substring(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -38,7 +38,7 @@ import org.extex.exbib.core.io.NullWriter;
 public class TestTString extends TestCase implements TokenVisitor {
 
     /**
-     * TODO gene: missing JavaDoc
+     * The main program.
      * 
      * @param args the command line arguments
      */
@@ -48,9 +48,9 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the suite.
      * 
-     * @return ...
+     * @return the suite
      */
     public static Test suite() {
 
@@ -63,14 +63,14 @@ public class TestTString extends TestCase implements TokenVisitor {
     private Processor p = null;
 
     /**
-     * The field <tt>visit</tt> contains the ...
+     * The field <tt>visit</tt> contains the indicator for the visited.
      */
     private boolean visit = false;
 
     /**
      * Creates a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestTString(String name) {
 
@@ -101,9 +101,9 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A TString can be executed and returns itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testExecute() throws Exception {
 
@@ -114,20 +114,21 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> getValue() of a null value returns the empty string.
+     * </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
-    public void testGetNull() throws Exception {
+    public void testGetValue1() throws Exception {
 
         TString t = new TString(null);
         assertEquals("", t.getValue());
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> isNull() can detect a null value. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testIsNull1() throws Exception {
 
@@ -135,9 +136,9 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> isNull() can detect a null value. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testIsNull2() throws Exception {
 
@@ -145,9 +146,9 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test the visiting. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testVisit() throws Exception {
 
@@ -160,7 +161,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(org.extex.exbib.core.bst.node.impl.TBlock)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(
+     *      org.extex.exbib.core.bst.node.impl.TBlock)
      */
     public void visitBlock(TBlock block) {
 
@@ -170,7 +172,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(org.extex.exbib.core.bst.node.impl.TChar)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(
+     *      org.extex.exbib.core.bst.node.impl.TChar)
      */
     public void visitChar(TChar c) {
 
@@ -180,7 +183,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(org.extex.exbib.core.bst.node.impl.TField)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(
+     *      org.extex.exbib.core.bst.node.impl.TField)
      */
     public void visitField(TField field) {
 
@@ -190,7 +194,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(org.extex.exbib.core.bst.node.impl.TFieldInteger)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(
+     *      org.extex.exbib.core.bst.node.impl.TFieldInteger)
      */
     public void visitFieldInteger(TFieldInteger integer) {
 
@@ -200,7 +205,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(org.extex.exbib.core.bst.node.impl.TFieldString)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(
+     *      org.extex.exbib.core.bst.node.impl.TFieldString)
      */
     public void visitFieldString(TFieldString string) {
 
@@ -210,7 +216,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(org.extex.exbib.core.bst.node.impl.TInteger)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(
+     *      org.extex.exbib.core.bst.node.impl.TInteger)
      */
     public void visitInteger(TInteger integer) {
 
@@ -220,7 +227,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.node.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(
+     *      org.extex.exbib.core.bst.node.impl.TLiteral)
      */
     public void visitLiteral(TLiteral literal) {
 
@@ -230,7 +238,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.node.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(
+     *      org.extex.exbib.core.bst.node.impl.TQLiteral)
      */
     public void visitQLiteral(TQLiteral qliteral) {
 
@@ -240,7 +249,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(org.extex.exbib.core.bst.node.impl.TString)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(
+     *      org.extex.exbib.core.bst.node.impl.TString)
      */
     public void visitString(TString string) {
 
@@ -250,7 +260,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(
+     *      org.extex.exbib.core.bst.node.impl.TokenList)
      */
     public void visitTokenList(TokenList string) {
 

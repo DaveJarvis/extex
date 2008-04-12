@@ -69,8 +69,7 @@ public class IntToChr extends AbstractCode {
      */
     public IntToChr(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

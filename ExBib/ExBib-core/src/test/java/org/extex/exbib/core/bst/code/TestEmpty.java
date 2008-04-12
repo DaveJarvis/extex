@@ -71,9 +71,9 @@ public class TestEmpty extends TestCase {
     private DB db = null;
 
     /**
-     * The field <tt>e</tt> contains an entry.
+     * The field <tt>entry</tt> contains an entry.
      */
-    private Entry e;
+    private Entry entry;
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -99,8 +99,8 @@ public class TestEmpty extends TestCase {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        e = db.makeEntry("book", "abc", null);
-        e.set("author", new Value());
+        entry = db.makeEntry("book", "abc", null);
+        entry.set("author", new Value());
         p = new Processor099Impl(db, new NullWriter(null), null);
     }
 
@@ -127,7 +127,7 @@ public class TestEmpty extends TestCase {
     public void testEmpty(String val, int res) throws Exception {
 
         p.push(new TString(val, null));
-        new Empty("empty$").execute(p, e, null);
+        new Empty("empty$").execute(p, entry, null);
         assertEquals(res, p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
     }
@@ -140,7 +140,7 @@ public class TestEmpty extends TestCase {
     public void testEmptyStack() throws Exception {
 
         try {
-            new Empty("empty$").execute(p, e, null);
+            new Empty("empty$").execute(p, entry, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
             assertTrue(true);
@@ -156,7 +156,7 @@ public class TestEmpty extends TestCase {
 
         try {
             p.push(new TInteger(123));
-            new Empty("empty$").execute(p, e, null);
+            new Empty("empty$").execute(p, entry, null);
             assertTrue(false);
         } catch (ExBibException e) {
             assertTrue(true);

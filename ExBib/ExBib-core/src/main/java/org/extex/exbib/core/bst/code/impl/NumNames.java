@@ -70,8 +70,7 @@ public class NumNames extends AbstractCode {
      */
     public NumNames(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**
@@ -93,9 +92,9 @@ public class NumNames extends AbstractCode {
 
             if (Character.isWhitespace(c) && level == 0) {
                 if (i < names.length() - 4
-                        && (names.charAt(i + 1) == 'a' || names.charAt(i + 1) == 'A')
-                        && (names.charAt(i + 2) == 'n' || names.charAt(i + 2) == 'N')
-                        && (names.charAt(i + 3) == 'd' || names.charAt(i + 3) == 'D')
+                        && Character.toLowerCase(names.charAt(i + 1)) == 'a'
+                        && Character.toLowerCase(names.charAt(i + 2)) == 'n'
+                        && Character.toLowerCase(names.charAt(i + 3)) == 'd'
                         && Character.isWhitespace(names.charAt(i + 4))) {
                     i += 4;
                     ret++;

@@ -39,7 +39,7 @@ public class BblWriter implements Writer {
      * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line
      * length.
      */
-    private static final int DEFAULT_LINE_LENGTH = 80;
+    private static final int DEFAULT_LINE_LENGTH = 79;
 
     /**
      * The field <tt>indent</tt> contains the string which is inserted at the
@@ -58,7 +58,6 @@ public class BblWriter implements Writer {
      */
     private Writer writer = null;
 
-    /** The desired line length */
     /**
      * The field <tt>lineLength</tt> contains the desired line length.
      */

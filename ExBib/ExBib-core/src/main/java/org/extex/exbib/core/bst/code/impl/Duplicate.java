@@ -62,8 +62,7 @@ public class Duplicate extends AbstractCode {
      */
     public Duplicate(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

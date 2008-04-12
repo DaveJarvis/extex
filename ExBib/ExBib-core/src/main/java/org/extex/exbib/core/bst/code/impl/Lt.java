@@ -63,8 +63,7 @@ public class Lt extends AbstractCode {
      */
     public Lt(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

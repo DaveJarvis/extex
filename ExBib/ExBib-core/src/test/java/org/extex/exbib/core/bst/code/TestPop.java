@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -101,9 +101,9 @@ public class TestPop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -116,9 +116,9 @@ public class TestPop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> An integer can be popped. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPopInteger() throws Exception {
 
@@ -126,9 +126,9 @@ public class TestPop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A literal can be popped. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPopLiteral() throws Exception {
 
@@ -136,9 +136,9 @@ public class TestPop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A string can be popped. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPopString() throws Exception {
 
@@ -146,10 +146,11 @@ public class TestPop extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test case.
      * 
-     * @param t
-     * @throws Exception
+     * @param t the token
+     * 
+     * @throws Exception in case of an error
      */
     private void testToken(Token t) throws Exception {
 

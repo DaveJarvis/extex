@@ -374,7 +374,7 @@ public interface Processor extends Bibliography, Configurable {
      * already stored.
      * 
      * @param list the list of global integers
-     * @param locator TODO
+     * @param locator the locator
      * 
      * @throws ExBibException in case that a name is given which is already
      *         defined
@@ -386,7 +386,7 @@ public interface Processor extends Bibliography, Configurable {
      * added to the ones already defined.
      * 
      * @param list the list of additional string names
-     * @param locator TODO
+     * @param locator the locator
      * 
      * @throws ExBibIllegalValueException in case that the name is
      *         <code>null</code> or empty

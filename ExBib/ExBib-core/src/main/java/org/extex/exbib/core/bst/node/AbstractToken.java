@@ -113,21 +113,23 @@ public abstract class AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * The execute method is specific to any sub-type thus it is declared as
+     * The execute method is specific to any sub-type. Thus it is declared as
      * abstract which forces that it is defined in any derived class.
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(org.extex.exbib.core.bst.Processor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute(
+     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.io.Locator)
      */
-    public abstract void execute(Processor processor, Entry entry,
-            Locator locator) throws ExBibException;
+    public abstract void execute(Processor processor, Entry entry, Locator l)
+            throws ExBibException;
 
     /**
      * {@inheritDoc}
      * 
      * The expansion of an AbstractToken is the value itself.
      * 
-     * @see org.extex.exbib.core.bst.node.Token#expand(org.extex.exbib.core.bst.Processor)
+     * @see org.extex.exbib.core.bst.node.Token#expand(
+     *      org.extex.exbib.core.bst.Processor)
      */
     public String expand(Processor processor) {
 

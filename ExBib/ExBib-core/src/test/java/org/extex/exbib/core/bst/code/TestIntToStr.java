@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -78,6 +78,21 @@ public class TestIntToStr extends TestCase {
     }
 
     /**
+     * Run a test case.
+     * 
+     * @param t1 the argument
+     * 
+     * @throws Exception in case of an error
+     */
+    private void runTest(int t1) throws Exception {
+
+        p.push(new TInteger(t1));
+        new IntToStr("int.to.str$").execute(p, null, null);
+        assertEquals(String.valueOf(t1), p.popString(null).getValue());
+        assertNull(p.popUnchecked());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -100,9 +115,9 @@ public class TestIntToStr extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -115,63 +130,49 @@ public class TestIntToStr extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test int.to.str$(0). </testcase>
      * 
-     * @param t1
-     * @throws Exception
-     */
-    private void testIntToStr(int t1) throws Exception {
-
-        p.push(new TInteger(t1));
-        new IntToStr("int.to.str$").execute(p, null, null);
-        assertEquals(String.valueOf(t1), p.popString(null).getValue());
-        assertNull(p.popUnchecked());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
-     */
-    public void testIntToStr_1() throws Exception {
-
-        testIntToStr(-1);
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testIntToStr0() throws Exception {
 
-        testIntToStr(0);
+        runTest(0);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test int.to.str$(123). </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testIntToStr123() throws Exception {
 
-        testIntToStr(123);
+        runTest(123);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test int.to.str$(32). </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testIntToStr32() throws Exception {
 
-        testIntToStr(32);
+        runTest(32);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Test int.to.str$(-1). </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testIntToStrMinus1() throws Exception {
+
+        runTest(-1);
+    }
+
+    /**
+     * <testcase> Test int.to.str$("abc") leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testString() throws Exception {
 

@@ -62,8 +62,7 @@ public class Quote extends AbstractCode {
      */
     public Quote(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -63,8 +63,7 @@ public class Type extends AbstractCode {
      */
     public Type(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

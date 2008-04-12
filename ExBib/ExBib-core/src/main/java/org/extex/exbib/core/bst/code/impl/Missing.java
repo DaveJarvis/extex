@@ -23,7 +23,6 @@ import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -47,9 +46,9 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * <p>
- * Missing items are represented as {@link TString TString}s with the value
- * <code>null</code>. Those can be distinguished from TStrings with the value ""
- * only by the special method {@link TString#isNull() isNull()}.
+ * Missing items are represented as TStrings with the value <code>null</code>.
+ * Those can be distinguished from TStrings with the value "". They can be
+ * detected only by the special method isNull().
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -72,8 +71,7 @@ public class Missing extends AbstractCode {
      */
     public Missing(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -98,11 +98,12 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test case.
      * 
-     * @param in
-     * @param res
-     * @throws Exception
+     * @param in the input
+     * @param res the expected result
+     * 
+     * @throws Exception in case of an error
      */
     private void test(String in, String res) throws Exception {
 
@@ -112,9 +113,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> The empty stack leads to an error. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testEmptyStack() throws Exception {
 
@@ -127,9 +128,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Lowercase letters are left unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify1() throws Exception {
 
@@ -137,9 +138,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \i is translated to i. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify10() throws Exception {
 
@@ -147,9 +148,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \j is translated to j. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify11() throws Exception {
 
@@ -157,9 +158,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \LaTeX is translated to LaTeX. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify12() throws Exception {
 
@@ -167,9 +168,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \TeX is translated to TeX. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify13() throws Exception {
 
@@ -177,9 +178,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Uppercase letters are left unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify2() throws Exception {
 
@@ -187,9 +188,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Numbers are left unchanged. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify3() throws Exception {
 
@@ -197,9 +198,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Whitespace (including ~) is normalized to spaces. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify4() throws Exception {
 
@@ -207,9 +208,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Parentheses and brackets are discarded. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify5() throws Exception {
 
@@ -217,9 +218,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Braces are discarded. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify6() throws Exception {
 
@@ -227,9 +228,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \ae and \AE are translated to ae and AE resp. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify7() throws Exception {
 
@@ -237,9 +238,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \oe and \OE are translated to oe and OE resp. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify8() throws Exception {
 
@@ -247,9 +248,9 @@ public class TestPurify extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> \ss is translated to ss. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testPurify9() throws Exception {
 

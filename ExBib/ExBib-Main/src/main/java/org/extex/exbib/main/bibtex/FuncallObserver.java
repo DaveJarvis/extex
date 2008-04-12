@@ -48,7 +48,7 @@ public class FuncallObserver implements Observer {
      * @author $Author: gene $
      * @version $Revision: 1.4 $
      */
-    private class Int {
+    private static class Int {
 
         /** The integer value */
         private int value = 0;
@@ -137,7 +137,7 @@ public class FuncallObserver implements Observer {
             logger.fine(count + "\t-- " + key);
         }
 
-        logger.fine(localizer.format("total", new Integer(funcalls)));
+        logger.fine(localizer.format("total", Integer.valueOf(funcalls)));
     }
 
     /**

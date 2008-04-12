@@ -99,8 +99,7 @@ public class ChangeCase extends AbstractCode {
      */
     public ChangeCase(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

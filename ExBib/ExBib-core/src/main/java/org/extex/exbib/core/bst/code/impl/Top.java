@@ -64,8 +64,7 @@ public class Top extends AbstractCode {
      */
     public Top(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -140,50 +140,41 @@ public class FormatName extends AbstractCode {
         }
 
         /**
-         * Count the number of text characters in a buffer.
+         * Count the number of text characters in a buffer and compare it
+         * against a given limit.
          * 
-         * @param s the buffer to analyze
+         * <p>
+         * This function reimplements the function 418 of the BiBTEX web
+         * sources.
+         * </p>
+         * 
+         * @param buffer the buffer to analyze
+         * @param enoughChars the threshold
+         * @param start the starting position
+         * @param end the ending position
          * 
          * @return <code>true</code> iff the number of text characters is at
-         *         least 2
+         *         least the limit
          */
-        protected boolean enoughText(StringBuilder s) {
-
-            boolean first = false;
-
-            for (int i = 0; i < s.length(); i++) {
-                char c = s.charAt(i);
-                if (Character.isLetterOrDigit(c) || c == '{' || c == '}') {
-                    if (first) {
-                        return true;
-                    }
-                    first = true;
-                }
-            }
-
-            return false;
-        }
-
         protected boolean enoughTextChars(StringBuilder buffer,
-                int enough_chars, int start, int end) {
+                int enoughChars, int start, int end) {
 
             int count = 0;
             int brace_level = 0;
             int ptr = start;
-            while (ptr < end && count < enough_chars) {
+            while (ptr < end && count < enoughChars) {
                 ++ptr;
                 if (buffer.charAt(ptr - 1) == '{') {
                     ++brace_level;
                     if (brace_level == 1 && ptr < end) {
                         if (buffer.charAt(ptr) == '\\') {
-                            ++ptr;
-                            while (ptr < end && brace_level > 0) {
-                                if (buffer.charAt(ptr) == '}') {
+                            for (ptr++; ptr < end && brace_level > 0; ptr++) {
+                                char c = buffer.charAt(ptr);
+                                if (c == '}') {
                                     --brace_level;
-                                } else if (buffer.charAt(ptr) == '{') {
+                                } else if (c == '{') {
                                     ++brace_level;
                                 }
-                                ++ptr;
                             }
                         }
                     }
@@ -192,7 +183,7 @@ public class FormatName extends AbstractCode {
                 }
                 ++count;
             }
-            return count >= enough_chars;
+            return count >= enoughChars;
         }
 
         /**
@@ -211,6 +202,7 @@ public class FormatName extends AbstractCode {
             int tielen = tie.length();
 
             for (FormatItem fi : this) {
+                int start = sb.length();
                 if (!fi.format(sb, name, locator)) {
                     continue;
                 }
@@ -219,8 +211,9 @@ public class FormatName extends AbstractCode {
                 if (endsIn(sb, tie, len - 1)) {
                     if (endsIn(sb, tie, len - 1 - tielen)) {
                         sb.delete(len - tielen, len);
-                    } else if (sb.charAt(len - 1 - tielen) == '}'
-                            || enoughText(sb)) {
+                        // } else if (sb.charAt(len - 1 - tielen) == '}'
+                        // || enoughText(sb)) {
+                    } else if (enoughTextChars(sb, 4, start, len)) {
                         sb.replace(len - tielen, len, " ");
                     }
                 }
@@ -318,7 +311,6 @@ public class FormatName extends AbstractCode {
                     ExBibImpossibleException {
 
             int level = 1;
-            FormatItem item = null;
             char letter = ' ';
             int beg = start;
 
@@ -336,12 +328,6 @@ public class FormatName extends AbstractCode {
                     case 'j':
 
                         if (level == 1) {
-                            if (item != null) {
-                                throw new ExBibSyntaxException(LocalizerFactory
-                                    .getLocalizer(getClass()).format(
-                                        "Letters.at.level.1"), locator);
-                            }
-
                             String pre = format.substring(beg, i);
                             letter = format.charAt(i);
 
@@ -365,6 +351,8 @@ public class FormatName extends AbstractCode {
 
                                 c = format.charAt(i);
                             }
+
+                            FormatItem item = null;
 
                             switch (letter) {
                                 case 'f':

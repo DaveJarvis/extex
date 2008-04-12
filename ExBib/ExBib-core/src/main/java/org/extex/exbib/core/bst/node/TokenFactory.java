@@ -29,7 +29,7 @@ import org.extex.exbib.core.bst.node.impl.TString;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TokenFactory {
+public final class TokenFactory {
 
     /* Poor man's symbol table: created once, used often */
 

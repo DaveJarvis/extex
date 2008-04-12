@@ -125,12 +125,12 @@ public class TestWhile extends TestCase {
     /**
      * The field <tt>bodyCount</tt> contains the body counter.
      */
-    protected int bodyCount = 0;
+    private int bodyCount = 0;
 
     /**
      * The field <tt>condCount</tt> contains the condition counter.
      */
-    protected int condCount = 0;
+    private int condCount = 0;
 
     /**
      * The field <tt>db</tt> contains the database.
@@ -186,7 +186,8 @@ public class TestWhile extends TestCase {
     public void test0() throws Exception {
 
         p.addFunction("cond0", new CondCode(0), null);
-        bodyCount = condCount = 0;
+        bodyCount = 0;
+        condCount = 0;
         p.push(new TLiteral("cond0"));
         p.push(new TLiteral("body"));
         new While("while$").execute(p, null, null);
@@ -204,7 +205,8 @@ public class TestWhile extends TestCase {
     public void test1() throws Exception {
 
         p.addFunction("cond1", new CondCode(1), null);
-        bodyCount = condCount = 0;
+        bodyCount = 0;
+        condCount = 0;
         p.push(new TLiteral("cond1"));
         p.push(new TLiteral("body"));
         new While("while$").execute(p, null, null);
@@ -222,7 +224,8 @@ public class TestWhile extends TestCase {
     public void test12() throws Exception {
 
         p.addFunction("cond12", new CondCode(12), null);
-        bodyCount = condCount = 0;
+        bodyCount = 0;
+        condCount = 0;
         p.push(new TLiteral("cond12"));
         p.push(new TLiteral("body"));
         new While("while$").execute(p, null, null);

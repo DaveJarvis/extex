@@ -62,8 +62,7 @@ public class Swap extends AbstractCode {
      */
     public Swap(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

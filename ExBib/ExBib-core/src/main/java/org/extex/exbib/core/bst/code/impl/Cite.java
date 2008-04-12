@@ -63,8 +63,7 @@ public class Cite extends AbstractCode {
      */
     public Cite(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -67,8 +67,7 @@ public class Write extends AbstractCode {
      */
     public Write(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -73,7 +73,7 @@ public class TestType extends TestCase {
     /**
      * Create a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public TestType(String name) {
 

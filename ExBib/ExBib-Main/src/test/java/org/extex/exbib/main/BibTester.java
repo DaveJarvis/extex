@@ -41,7 +41,7 @@ public class BibTester {
     /**
      * Enumeration for the type of comparison.
      */
-    public static enum check {
+    public static enum Check {
         /**
          * The field <tt>NONE</tt> contains the do not compare.
          */
@@ -93,7 +93,7 @@ public class BibTester {
      */
     protected void runFailure(String msg, String... args) throws Exception {
 
-        runTest("test", null, 1, check.EQ, msg, args);
+        runTest("test", null, 1, Check.EQ, msg, args);
     }
 
     /**
@@ -104,7 +104,7 @@ public class BibTester {
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
      * @param exitCode the exit code
-     * @param checkOut the tpe of check to use
+     * @param checkOut the tpe of Check to use
      * @param out the expected error output
      * @param args the invocation arguments
      * @return the instance used
@@ -112,7 +112,7 @@ public class BibTester {
      * @throws Exception in case of an error
      */
     protected ExBib runTest(String basename, String auxContents, int exitCode,
-            check checkOut, String out, String... args) throws Exception {
+            Check checkOut, String out, String... args) throws Exception {
 
         File aux = new File(basename + ".aux");
         if (auxContents != null) {
@@ -146,7 +146,7 @@ public class BibTester {
                         assertTrue("Fails to match " + s, s.matches(out));
                         break;
                     case NONE:
-                        // igonore
+                        // ignore
                     default:
                 }
             }
@@ -156,9 +156,17 @@ public class BibTester {
             if (exBib != null) {
                 exBib.close();
             }
-            aux.delete();
-            new File(basename + ".bbl").delete();
-            new File(basename + ".blg").delete();
+            if (aux.exists() && !aux.delete()) {
+                assertTrue(aux.toString() + ": deletion failed", false);
+            }
+            File bbl = new File(basename + ".bbl");
+            if (bbl.exists() && !bbl.delete()) {
+                assertTrue(basename + ".bbl: deletion failed", false);
+            }
+            File blg = new File(basename + ".blg");
+            if (blg.exists() && !blg.delete()) {
+                assertTrue(basename + ".blg: deletion failed", false);
+            }
         }
         return exBib;
     }

@@ -77,8 +77,7 @@ public class CallType extends AbstractCode {
      */
     public CallType(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

@@ -68,8 +68,7 @@ public class Newline extends AbstractCode {
      */
     public Newline(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

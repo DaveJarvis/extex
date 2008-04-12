@@ -255,10 +255,10 @@ public class AbstractMain {
             return EXIT_FAIL;
         }
 
+        LineNumberReader r = null;
         StringBuilder sb = new StringBuilder();
         try {
-            LineNumberReader r =
-                    new LineNumberReader(new InputStreamReader(is));
+            r = new LineNumberReader(new InputStreamReader(is));
             for (String s = r.readLine(); s != null; s = r.readLine()) {
                 sb.append(s);
                 sb.append('\n');
@@ -267,7 +267,11 @@ public class AbstractMain {
             // shit happens
         } finally {
             try {
-                is.close();
+                if (r != null) {
+                    r.close();
+                } else {
+                    is.close();
+                }
             } catch (IOException e) {
                 // finally ignore it
             }

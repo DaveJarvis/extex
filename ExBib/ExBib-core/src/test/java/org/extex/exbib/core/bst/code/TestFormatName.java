@@ -1,20 +1,20 @@
 /*
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -133,10 +133,6 @@ public class TestFormatName extends TestCase {
         new FormatName099("format.name$").execute(p, null, null);
 
         String s = p.popString(null).getValue();
-
-        if (!s.equals(expected)) {
-            System.err.println(fmt + ": " + expected + " // " + s);
-        }
 
         assertEquals(expected, s);
         assertNull(p.popUnchecked());
@@ -1048,16 +1044,6 @@ public class TestFormatName extends TestCase {
     }
 
     /**
-     * <testcase> The index -1 in an empty list leads to an error. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testNoName_1() throws Exception {
-
-        testNoName("", -1);
-    }
-
-    /**
      * <testcase> The first name in an empty list leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1098,6 +1084,16 @@ public class TestFormatName extends TestCase {
     public void testNoName3() throws Exception {
 
         testNoName("Gerd Neugebauer and A.U. Thor", 3);
+    }
+
+    /**
+     * <testcase> The index -1 in an empty list leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testNoNameMinus1() throws Exception {
+
+        testNoName("", -1);
     }
 
     /**

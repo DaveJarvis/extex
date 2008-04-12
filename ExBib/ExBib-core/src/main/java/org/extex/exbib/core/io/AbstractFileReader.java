@@ -22,7 +22,6 @@ package org.extex.exbib.core.io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 
@@ -31,6 +30,7 @@ import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This is the base class for all file reading classes in ExBib.
@@ -124,7 +124,7 @@ public abstract class AbstractFileReader implements Observable {
      */
     public String getFilename() {
 
-        return getLocator().getFile();
+        return filename;
     }
 
     /**
@@ -160,11 +160,11 @@ public abstract class AbstractFileReader implements Observable {
             throw new IllegalArgumentException("finder");
         }
 
-        InputStream is = finder.findResource(name, type);
+        NamedInputStream is = finder.findResource(name, type);
         if (is == null) {
             throw new FileNotFoundException(name);
         }
-        filename = name;
+        filename = is.getName();
         reader = new LineNumberReader(new InputStreamReader(is));
         return reader;
     }

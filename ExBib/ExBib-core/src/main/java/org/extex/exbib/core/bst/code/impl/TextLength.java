@@ -66,8 +66,7 @@ public class TextLength extends AbstractCode {
      */
     public TextLength(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

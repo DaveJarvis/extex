@@ -22,15 +22,16 @@ package org.extex.exbib.main;
 import java.io.File;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for the BibteX base styles.
+ * This is a test suite for the crossref feature.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
-public class BibTeXBaseTest {
+public class CrossrefTest {
 
     /**
      * The field <tt>DATA_DIR</tt> contains the directory containing database,
@@ -41,7 +42,7 @@ public class BibTeXBaseTest {
     /**
      * Creates a new object.
      */
-    public BibTeXBaseTest() {
+    public CrossrefTest() {
 
         super();
     }
@@ -50,15 +51,20 @@ public class BibTeXBaseTest {
      * Run a test.
      * 
      * @param style the style
+     * @param xref the parameter min-crosrefs
+     * @param args the additional arguments
      * 
      * @throws IOException in case of an I/O error
      */
-    private void runTest(String style) throws IOException {
+    private void runTest(String style, String xref, String... args)
+            throws IOException {
 
-        TRunner.runTest(DATA_DIR + "/" + style, //
+        TRunner.runTest(
+            DATA_DIR + "/" + style, //
             DATA_DIR + "/xampl", //
-            "*", //
-            new File(DATA_DIR, style + ".result"), "-strict");
+            "book-crossref,inbook-crossref", //
+            new File(DATA_DIR, style + ".result." + xref + "xref"),
+            "-min-crossrefs", xref);
     }
 
     /**
@@ -67,9 +73,10 @@ public class BibTeXBaseTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testAbbrv() throws Exception {
 
-        runTest("abbrv");
+        runTest("abbrv", "0", "-strict");
     }
 
     /**
@@ -78,20 +85,43 @@ public class BibTeXBaseTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testAlpha() throws Exception {
+    public void testAlpha0() throws Exception {
 
-        runTest("alpha");
+        runTest("alpha", "0", "-strict");
     }
 
     /**
+     * /** <testcase> Apply the alpha style to xampl. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAlpha1() throws Exception {
+
+        runTest("alpha", "1", "-strict");
+    }
+
+    /**
+     * /** <testcase> Apply the alpha style to xampl. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAlpha3() throws Exception {
+
+        runTest("alpha", "3", "-strict");
+    }
+
+    /*
      * <testcase> Apply the plain style to xampl. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testPlain() throws Exception {
 
-        runTest("plain");
+        runTest("plain", "-strict");
     }
 
     /**
@@ -100,9 +130,10 @@ public class BibTeXBaseTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testUnsrt() throws Exception {
 
-        runTest("unsrt");
+        runTest("unsrt", "-strict");
     }
 
 }

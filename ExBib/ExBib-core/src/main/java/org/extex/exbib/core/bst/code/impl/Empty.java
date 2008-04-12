@@ -63,8 +63,7 @@ public class Empty extends AbstractCode {
      */
     public Empty(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

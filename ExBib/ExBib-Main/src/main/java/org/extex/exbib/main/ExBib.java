@@ -443,6 +443,7 @@ public class ExBib extends AbstractMain {
                     setLogfile(argv[i]);
 
                 } else if ("min_crossrefs".startsWith(a)
+                        || "min-crossrefs".startsWith(a)
                         || "min.crossrefs".startsWith(a)) {
                     if (++i >= argv.length) {
                         return logBanner("missing.option", argv[i - 1]);
@@ -675,6 +676,7 @@ public class ExBib extends AbstractMain {
         } catch (NoClassDefFoundError e) {
             return logException(e, "installation.error", debug);
         } catch (Throwable e) {
+            e.printStackTrace();
             return logException(e, "internal.error", debug);
         } finally {
             if (writer != null) {

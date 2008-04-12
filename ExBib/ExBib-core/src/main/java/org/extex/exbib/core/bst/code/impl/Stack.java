@@ -65,8 +65,7 @@ public class Stack extends AbstractCode {
      */
     public Stack(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**

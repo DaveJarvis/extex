@@ -144,27 +144,27 @@ public class TestVMacro {
         hit = false;
         new VMacro("xyzzy").visit(new ValueVisitor() {
 
-            public void visitBlock(VBlock value, DB db) throws IOException {
+            public void visitBlock(VBlock value, DB d) throws IOException {
 
                 assertTrue(false);
             }
 
-            public void visitMacro(VMacro value, DB db) throws IOException {
+            public void visitMacro(VMacro value, DB d) throws IOException {
 
                 hit = true;
             }
 
-            public void visitNumber(VNumber value, DB db) throws IOException {
+            public void visitNumber(VNumber value, DB d) throws IOException {
 
                 assertTrue(false);
             }
 
-            public void visitString(VString value, DB db) throws IOException {
+            public void visitString(VString value, DB d) throws IOException {
 
                 assertTrue(false);
             }
 
-            public void visitValue(Value value, DB db) throws IOException {
+            public void visitValue(Value value, DB d) throws IOException {
 
                 assertTrue(false);
             }

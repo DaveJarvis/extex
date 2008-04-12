@@ -1,20 +1,19 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -31,7 +30,7 @@ import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 
 /**
- * ...
+ * Test case for {@link TInteger}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
@@ -64,7 +63,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     private Processor p = null;
 
     /**
-     * The field <tt>visit</tt> contains the ...
+     * The field <tt>visit</tt> contains the indicator that the appropriate
+     * method has been visited.
      */
     private boolean visit = false;
 
@@ -102,9 +102,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A positive number evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testExecute() throws Exception {
 
@@ -115,31 +115,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Zero evaluates to itself. </testcase>
      * 
-     * @throws Exception
-     */
-    public void testGetInt_1() throws Exception {
-
-        TInteger t = new TInteger(-1);
-        assertEquals(-1, t.getInt());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
-     */
-    public void testGetInt_1s() throws Exception {
-
-        TInteger t = new TInteger("-1", null);
-        assertEquals(-1, t.getInt());
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt0() throws Exception {
 
@@ -148,9 +126,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> Zero evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt0s() throws Exception {
 
@@ -159,9 +137,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> One evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt1() throws Exception {
 
@@ -170,9 +148,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> 123 evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt123() throws Exception {
 
@@ -181,9 +159,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> 123 evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt123s() throws Exception {
 
@@ -192,9 +170,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> One evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void testGetInt1s() throws Exception {
 
@@ -203,9 +181,32 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> A negative number evaluates to itself. </testcase>
      * 
-     * @throws Exception
+     * @throws Exception in case of an error
+     */
+    public void testGetIntMinus1() throws Exception {
+
+        TInteger t = new TInteger(-1);
+        assertEquals(-1, t.getInt());
+    }
+
+    /**
+     * <testcase> A negative number evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGetIntMinus1s() throws Exception {
+
+        TInteger t = new TInteger("-1", null);
+        assertEquals(-1, t.getInt());
+    }
+
+    /**
+     * <testcase> Visiting a negatibe number calls the correwct method.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     public void testVisit() throws Exception {
 
@@ -218,7 +219,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(org.extex.exbib.core.bst.node.impl.TBlock)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(
+     *      org.extex.exbib.core.bst.node.impl.TBlock)
      */
     public void visitBlock(TBlock block) {
 
@@ -228,7 +230,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(org.extex.exbib.core.bst.node.impl.TChar)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(
+     *      org.extex.exbib.core.bst.node.impl.TChar)
      */
     public void visitChar(TChar c) {
 
@@ -238,7 +241,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(org.extex.exbib.core.bst.node.impl.TField)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(
+     *      org.extex.exbib.core.bst.node.impl.TField)
      */
     public void visitField(TField field) {
 
@@ -248,7 +252,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(org.extex.exbib.core.bst.node.impl.TFieldInteger)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(
+     *      org.extex.exbib.core.bst.node.impl.TFieldInteger)
      */
     public void visitFieldInteger(TFieldInteger integer) {
 
@@ -258,7 +263,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(org.extex.exbib.core.bst.node.impl.TFieldString)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(
+     *      org.extex.exbib.core.bst.node.impl.TFieldString)
      */
     public void visitFieldString(TFieldString string) {
 
@@ -268,7 +274,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(org.extex.exbib.core.bst.node.impl.TInteger)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(
+     *      org.extex.exbib.core.bst.node.impl.TInteger)
      */
     public void visitInteger(TInteger integer) {
 
@@ -278,7 +285,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.node.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(
+     *      org.extex.exbib.core.bst.node.impl.TLiteral)
      */
     public void visitLiteral(TLiteral literal) {
 
@@ -288,7 +296,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.node.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(
+     *      org.extex.exbib.core.bst.node.impl.TQLiteral)
      */
     public void visitQLiteral(TQLiteral qliteral) {
 
@@ -298,7 +307,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(org.extex.exbib.core.bst.node.impl.TString)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(
+     *      org.extex.exbib.core.bst.node.impl.TString)
      */
     public void visitString(TString string) {
 
@@ -308,7 +318,8 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(
+     *      org.extex.exbib.core.bst.node.impl.TokenList)
      */
     public void visitTokenList(TokenList string) {
 

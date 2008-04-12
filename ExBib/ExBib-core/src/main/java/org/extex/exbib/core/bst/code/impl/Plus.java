@@ -63,8 +63,7 @@ public class Plus extends AbstractCode {
      */
     public Plus(String name) {
 
-        super();
-        setName(name);
+        super(name);
     }
 
     /**
