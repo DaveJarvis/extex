@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-resource</artifactId>
-  <name>ExTeX framework components</name>
+  <name>ExTeX resource component</name>
   <description>
-    These are the ExTeX framework components.
+    These is the ExTeX resource component.
   </description>
 
   <packaging>jar</packaging>
