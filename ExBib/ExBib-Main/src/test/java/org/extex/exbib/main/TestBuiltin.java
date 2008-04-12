@@ -22,6 +22,7 @@ package org.extex.exbib.main;
 import java.io.File;
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -166,6 +167,7 @@ public class TestBuiltin {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFormatNames1() throws Exception {
 
         runTest("format_names");
@@ -452,6 +454,7 @@ public class TestBuiltin {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testWidth1() throws Exception {
 
         runTest("width");
