@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,6 +64,20 @@ public class ConfigurationFactoryTest {
     }
 
     /**
+     * <testcase> Test that a valid configuration is loaded. </testcase>
+     * 
+     * @throws ConfigurationException in case of an error
+     */
+    @Test
+    public void testNewInstance10() throws ConfigurationException {
+
+        Configuration cfg =
+                ConfigurationFactory
+                    .newInstance("org/extex/framework/configuration/Configuration.xml");
+        assertNotNull(cfg);
+    }
+
+    /**
      * <testcase> Test that null leads to an appropriate error message.
      * </testcase>
      */
@@ -91,7 +105,7 @@ public class ConfigurationFactoryTest {
             ConfigurationFactory.newInstance("undefined");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
-            assertEquals("Configuration `undefined' not found", //
+            assertEquals("Configuration `undefined' not found.\n", //
                 e.getLocalizedMessage());
         }
     }
@@ -110,20 +124,6 @@ public class ConfigurationFactoryTest {
         } catch (ConfigurationException e) {
             assertTrue(true);
         }
-    }
-
-    /**
-     * <testcase> Test that a valid configuration is loaded. </testcase>
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    @Test
-    public void testNewInstance10() throws ConfigurationException {
-
-        Configuration cfg =
-                ConfigurationFactory
-                    .newInstance("org/extex/framework/configuration/Configuration.xml");
-        assertNotNull(cfg);
     }
 
 }
