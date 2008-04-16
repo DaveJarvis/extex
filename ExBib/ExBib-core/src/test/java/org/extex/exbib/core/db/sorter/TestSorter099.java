@@ -375,7 +375,7 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a < b </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -397,7 +397,7 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a[ghi] < b </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -408,7 +408,7 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> b > a[ghi] </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -419,7 +419,7 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a < b </testcase>
      * 
      * @throws Exception in case of an error
      */

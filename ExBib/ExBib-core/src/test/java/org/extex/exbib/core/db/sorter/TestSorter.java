@@ -51,7 +51,7 @@ public class TestSorter {
     private static class DummyConfig implements Configuration {
 
         /**
-         * The field <tt>order</tt> contains the ...
+         * The field <tt>order</tt> contains the order value.
          */
         private String order = null;
 
@@ -357,7 +357,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a < b </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -381,7 +381,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a[ghi] < b </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -393,7 +393,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> b > a[ghi] </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -405,7 +405,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> b > a </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -416,7 +416,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> a[ac] > b[aa] </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -429,7 +429,7 @@ public class TestSorter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> b[aa] < a[ac] </testcase>
      * 
      * @throws Exception in case of an error
      */

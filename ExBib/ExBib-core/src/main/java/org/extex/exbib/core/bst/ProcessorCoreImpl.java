@@ -264,13 +264,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     private int globalMax = 0x7fff;
 
     /**
-     * The field <tt>minCrossrefs</tt> contains the minCrossrefs parameter.
-     * This value is overwritten from a configuration and passed to the
-     * database.
-     */
-    private int minCrossrefs = 2;
-
-    /**
      * The field <tt>warnings</tt> contains the number of warnings.
      */
     private long warnings = 0;
@@ -483,13 +476,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     public void configure(Configuration config) throws ConfigurationException {
 
         Locator locator = new Locator(getClass().getName() + "#configure()", 0);
-        int i = config.getValueAsInteger("minCrossrefs", -1);
-
-        if (i >= 0) {
-            minCrossrefs = i;
-        }
-
-        i = config.getValueAsInteger("globalMax", -1);
+        int i = config.getValueAsInteger("globalMax", -1);
 
         if (i >= 0) {
             try {
@@ -676,11 +663,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
                 FileNotFoundException,
                 ConfigurationException {
 
-        Iterator<String> iterator = bibliographyDatabases.iterator();
-
-        while (iterator.hasNext()) {
-            String file = iterator.next();
-
+        for (String file : bibliographyDatabases) {
             startReadObservers.update(this, file);
             db.load(file, citations, this);
         }
@@ -818,10 +801,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         this.outWriter = writer;
         this.logger = logger;
 
-        Iterator<Command> iterator = commands.iterator();
-
-        while (iterator.hasNext()) {
-            Command command = iterator.next();
+        for (Command command : commands) {
             runObservers.update(this, command);
             command.execute(this, command.getLocator());
         }
@@ -999,16 +979,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     public void setLogWriter(Logger logger) {
 
         this.logger = logger;
-    }
-
-    /**
-     * Setter for minCrossrefs.
-     * 
-     * @param min the new value.
-     */
-    public void setMinCrossrefs(int min) {
-
-        minCrossrefs = min;
     }
 
     /**

@@ -574,6 +574,7 @@ public class ExBib extends AbstractMain {
                 topConfiguration.getConfiguration("BibReader"));
             bibReaderFactory.setResourceFinder(finder);
             db.setBibReaderFactory(bibReaderFactory);
+            db.setMinCrossrefs(minCrossrefs);
             if (sorter != null) {
                 db.setSorter(sorter);
             }
@@ -581,7 +582,6 @@ public class ExBib extends AbstractMain {
 
             Processor bibliography = new ProcessorFactory(//
                 topConfiguration.getConfiguration("Processor")).newInstance(db);
-            bibliography.setMinCrossrefs(minCrossrefs);
 
             if (trace) {
                 funcall = runRegisterTracers(db, bibliography);

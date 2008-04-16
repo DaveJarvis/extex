@@ -51,7 +51,7 @@ public class CrossrefTest {
      * Run a test.
      * 
      * @param style the style
-     * @param xref the parameter min-crosrefs
+     * @param xref the parameter min-crossrefs
      * @param args the additional arguments
      * 
      * @throws IOException in case of an I/O error
@@ -91,7 +91,7 @@ public class CrossrefTest {
     }
 
     /**
-     * /** <testcase> Apply the alpha style to xampl. </testcase>
+     * <testcase> Apply the alpha style to xampl. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -102,7 +102,7 @@ public class CrossrefTest {
     }
 
     /**
-     * /** <testcase> Apply the alpha style to xampl. </testcase>
+     * <testcase> Apply the alpha style to xampl. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -112,7 +112,7 @@ public class CrossrefTest {
         runTest("alpha", "3", "-strict");
     }
 
-    /*
+    /**
      * <testcase> Apply the plain style to xampl. </testcase>
      * 
      * @throws Exception in case of an error

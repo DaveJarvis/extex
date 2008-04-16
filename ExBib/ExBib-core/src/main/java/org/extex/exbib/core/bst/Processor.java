@@ -219,7 +219,7 @@ public interface Processor extends Bibliography, Configurable {
     /**
      * Getter for the number of warnings issued.
      * 
-     * @return the umber of warnigs
+     * @return the umber of warnings
      */
     public long getNumberOfWarnings();
 

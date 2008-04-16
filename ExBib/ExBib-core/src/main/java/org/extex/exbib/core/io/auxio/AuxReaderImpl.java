@@ -95,8 +95,10 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                     listener.addBibliographyStyle(m.group(2).split(","));
                     noStyle++;
                 } else if (type.equals("citation")) {
-                    listener.addCitation(m.group(2).split(","));
-                    noCite++;
+                    String[] ca =
+                            m.group(2).replaceAll("[ \t\f]", "").split(",");
+                    listener.addCitation(ca);
+                    noCite += ca.length;
                 }
             }
         }

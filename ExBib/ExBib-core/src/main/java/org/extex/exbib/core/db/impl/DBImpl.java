@@ -23,7 +23,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -73,7 +72,9 @@ public class DBImpl implements DB, Observable {
      */
     private Map<String, Entry> entryHash = new HashMap<String, Entry>();
 
-    /** Map String -> Value */
+    /**
+     * The field <tt>strings</tt> contains the defined strings.
+     */
     private Map<String, Value> strings = new HashMap<String, Value>();
 
     /**
@@ -115,6 +116,12 @@ public class DBImpl implements DB, Observable {
      * The field <tt>preamble</tt> contains the collected preambles.
      */
     private Value preamble = new Value();
+
+    /**
+     * The field <tt>minCrossref</tt> contains the minimum number of crossrefs
+     * to leave the crossreferenced entry alone; otherwise it is inlined.
+     */
+    private int minCrossrefs = 2;
 
     /**
      * Create a new empty database.
@@ -196,6 +203,16 @@ public class DBImpl implements DB, Observable {
     }
 
     /**
+     * Getter for minCrossrefs.
+     * 
+     * @return the minCrossref
+     */
+    public int getMinCrossrefs() {
+
+        return minCrossrefs;
+    }
+
+    /**
      * Getter for the preamble.
      * 
      * @return the preamble
@@ -203,6 +220,22 @@ public class DBImpl implements DB, Observable {
     public Value getPreamble() {
 
         return preamble;
+    }
+
+    /**
+     * Inline all information from one entry to another entry.
+     * 
+     * @param entry the entry to be preserved
+     * @param xref the entry to be inlined
+     */
+    private void inline(Entry entry, Entry xref) {
+
+        for (String x : xref.getKeys()) {
+            Value v = xref.get(x);
+            if (v != null && entry.get(x) == null) {
+                entry.set(x, v);
+            }
+        }
     }
 
     /**
@@ -227,54 +260,48 @@ public class DBImpl implements DB, Observable {
             return missing;
         }
 
-        Entry entry;
-        List<String> open = new ArrayList<String>();
-        Map<String, String> cite = new HashMap<String, String>();
+        Map<String, List<Entry>> cite = new HashMap<String, List<Entry>>();
         List<String> stack = new ArrayList<String>(citation.keySet());
 
-        for (String key : stack) {
-            key = key.toLowerCase();
-
-            if ((entry = getEntry(key)) != null) {
-                cite.put(entry.getKey().toLowerCase(), "1");
-            } else {
-                missing.add(key);
-            }
-        }
+        List<Entry> newEntries = new ArrayList<Entry>();
 
         do {
+            List<String> open = new ArrayList<String>();
             for (String key : stack) {
-                entry = getEntry(key);
+                key = key.toLowerCase();
+                Entry entry = getEntry(key);
 
                 if (entry == null) {
                     missing.add(key);
                 } else {
+                    newEntries.add(entry);
                     Value xref = entry.get("crossref");
                     if (xref != null) {
-                        String crossref = xref.expand(this);
-                        if (crossref != null && !cite.containsKey(crossref)) {
-
-                            cite.put(crossref, "2");
+                        String crossref = xref.expand(this).toLowerCase();
+                        List<Entry> xr = cite.get(crossref);
+                        if (xr == null) {
+                            xr = new ArrayList<Entry>();
+                            cite.put(crossref, xr);
                             open.add(crossref);
                         }
+                        xr.add(entry);
                     }
                 }
             }
 
             stack = open;
-            open = new ArrayList<String>();
         } while (!stack.isEmpty());
 
-        Iterator<Entry> iter = entries.iterator();
-        List<Entry> newEntries = new ArrayList<Entry>();
+        for (Map.Entry<String, List<Entry>> x : cite.entrySet()) {
 
-        while (iter.hasNext()) {
-            entry = iter.next();
-
-            String key = entry.getKey();
-
-            if (cite.containsKey(key.toLowerCase())) {
-                stack.add(entry.getKey());
+            List<Entry> v = x.getValue();
+            if (v.size() < minCrossrefs) {
+                Entry xref = getEntry(x.getKey());
+                for (Entry entry : v) {
+                    inline(entry, xref);
+                    entry.set("crossref", (Value) null);
+                }
+                newEntries.remove(xref);
             }
         }
 
@@ -307,7 +334,9 @@ public class DBImpl implements DB, Observable {
     }
 
     /**
-     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.DB#registerObserver(java.lang.String,
      *      org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
@@ -329,13 +358,10 @@ public class DBImpl implements DB, Observable {
     }
 
     /**
-     * Write the database to the given BibWriter. Thus it is possible to
-     * decouple the database from the printing methods and allow the program to
-     * use different external representations
+     * {@inheritDoc}
      * 
-     * @param writer the target writer
-     * 
-     * @throws IOException just in case
+     * @see org.extex.exbib.core.db.DB#save(
+     *      org.extex.exbib.core.io.bibio.BibPrinter)
      */
     public void save(BibPrinter writer) throws IOException {
 
@@ -350,6 +376,16 @@ public class DBImpl implements DB, Observable {
     public void setBibReaderFactory(BibReaderFactory factory) {
 
         bibReaderFactory = factory;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.DB#setMinCrossrefs(int)
+     */
+    public void setMinCrossrefs(int minCrossref) {
+
+        this.minCrossrefs = minCrossref;
     }
 
     /**

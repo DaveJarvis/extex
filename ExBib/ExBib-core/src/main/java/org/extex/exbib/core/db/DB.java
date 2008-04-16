@@ -103,6 +103,20 @@ public interface DB extends Configurable {
     List<String> getMacroNames();
 
     /**
+     * Getter for minCrossrefs.
+     * <p>
+     * The parameter minCrossrefs determines when an entry which is referenced
+     * by several entries should be collated into the referencing entries. For
+     * example this can be the case for articles in a collection. Here the
+     * collection is shown as separate entry only if at least minCrossref
+     * entries in the result reference it.
+     * </p>
+     * 
+     * @return the minCrossref
+     */
+    int getMinCrossrefs();
+
+    /**
      * Getter for the preamble
      * 
      * @return the preamble
@@ -171,6 +185,13 @@ public interface DB extends Configurable {
      * @param factory the factory to use
      */
     void setBibReaderFactory(BibReaderFactory factory);
+
+    /**
+     * Setter for minCrossrefs.
+     * 
+     * @param minCrossref the minCrossref to set
+     */
+    void setMinCrossrefs(int minCrossref);
 
     /**
      * Setter for the sorter.

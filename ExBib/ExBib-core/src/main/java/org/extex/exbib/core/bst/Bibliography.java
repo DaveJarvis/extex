@@ -104,18 +104,4 @@ public interface Bibliography {
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException;
 
-    /**
-     * Setter for minCrossrefs.
-     * <p>
-     * The parameter minCrossrefs determines when an entry which is referenced
-     * by several entries should be collated into the referencing entries. For
-     * example this can be the case for articles in a collection. Here the
-     * collection is shown as separate entry only if at least minCrossref
-     * entries in the result reference it.
-     * </p>
-     * 
-     * @param min the new value.
-     */
-    void setMinCrossrefs(int min);
-
 }
