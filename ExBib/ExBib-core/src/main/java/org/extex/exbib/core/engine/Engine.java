@@ -22,6 +22,7 @@ package org.extex.exbib.core.engine;
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.io.auxio.AuxHandler;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 
@@ -59,5 +60,15 @@ public interface Engine extends ResourceAware {
     int[] process(Bibliography bibliography, String resource)
             throws IOException,
                 ConfigurationException;
+
+    /**
+     * Register a handler for a macro in the aux file.
+     * 
+     * @param name the name
+     * @param handler the handler
+     * 
+     * @return the old handler or <code>null</code> for none
+     */
+    AuxHandler register(String name, AuxHandler handler);
 
 }
