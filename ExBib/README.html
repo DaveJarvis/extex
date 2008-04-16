@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ExBib</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family: sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(ExBib-Installer/src/images/exbib-side.png) no-repeat;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+  </style>
+</head>
+<body>
+
+<h1>ExBib</h1>
+
+<p>
+ ExBib is a bibliography processor in the spirit of BibTeX and
+ BibTeX8. It is meant to be usable as a plug-in replacement for those.
+</p>
+<p>
+ In addition several attempts have been made to make it highly
+ configurable.
+</p>
+<p>
+ It is meant to be in line with <a
+ href="http://www.extex.org">ExTeX</a>. Eventually it can be
+ integrated into ExTeX or other tools. Thus the funtionality of the
+ command line program is separated from the core functionality.
+</p>
+
+<h2>The ExBib Installer</h2>
+
+<p>
+ ExBib is delived in form of an installer. This installer is created
+ with the help of <a href="http://izpack.org">IzPack</a>.
+</p>
+<p>
+ IzPack is included in the folder
+ <tt>ExBib-Installer/src/izPack-install-*</tt> since currently no
+ reliable Maven2 package for IzPack could be found.
+</p>
+<p>
+ The ExBib installer can be created in this directory with the help of
+ Maven2:
+</p>
+<pre>
+  # <b>mvn package</b>
+</pre>
+<p>
+This command requires that <a
+href="http://maven.apache.org">Maven2</a> is properly installed on
+your system and the executable can be found on the serach path.
+</p>
+<p>
+After a succesful completion of the command the installer can be found
+as the file <tt>ExBib-Installer/target/ExBib-setup.jar</tt>. This
+installer includes everything needed to get started. It just requires
+a proper Java installation (Java 5 or higher).
+</p>
+<p>
+If the build fails the verbose log messages of Maven can be used to
+determine the problem. Usually just reading the messages leads you
+into the right direction.
+</p>
+
+<address>
+<font face="helvetica,sans-serif" size="1">
+© 2008 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+</font>
+</address>
+</body>
+</html>
