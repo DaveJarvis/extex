@@ -22,6 +22,8 @@ package org.extex.exbib.core.io.auxio;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,13 +46,19 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
      * macros.
      */
     private static final Pattern PATTERN =
-            Pattern.compile("^\\\\(bibdata|bibstyle|citation)\\{([^{}]*)\\}");
+            Pattern.compile("^\\\\([a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The field <tt>reader</tt> contains the internal reader is buffered and
      * provides line numbers.
      */
     private LineNumberReader reader = null;
+
+    /**
+     * The field <tt>handlerMap</tt> contains the macro handlers for the aux
+     * file.
+     */
+    private Map<String, AuxHandler> handlerMap;
 
     /**
      * Creates a new object.
@@ -60,6 +68,35 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     public AuxReaderImpl() throws ConfigurationException {
 
         super();
+        handlerMap = new HashMap<String, AuxHandler>();
+        register("citation", new AuxHandler() {
+
+            public void invoke(String arg, Bibliography bibliography,
+                    int[] count) {
+
+                String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
+                bibliography.addCitation(citations);
+                count[2] += citations.length;
+            }
+        });
+        register("bibstyle", new AuxHandler() {
+
+            public void invoke(String arg, Bibliography bibliography,
+                    int[] count) {
+
+                bibliography.addBibliographyStyle(arg.split(","));
+                count[1]++;
+            }
+        });
+        register("bibdata", new AuxHandler() {
+
+            public void invoke(String arg, Bibliography bibliography,
+                    int[] count) {
+
+                bibliography.addBibliographyDatabase(arg.split(","));
+                count[0]++;
+            }
+        });
     }
 
     /**
@@ -68,7 +105,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
      * @see org.extex.exbib.core.engine.Engine#process(
      *      org.extex.exbib.core.bst.Bibliography)
      */
-    public int[] process(Bibliography listener)
+    public int[] process(Bibliography bibliography)
             throws ConfigurationException,
                 IOException {
 
@@ -77,33 +114,35 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                     + "#process()", "reader");
         }
 
-        String line;
-        int noStyle = 0;
-        int noCite = 0;
-        int noData = 0;
+        int[] count = new int[]{0, 0, 0};
 
-        while ((line = reader.readLine()) != null) {
+        for (String line = reader.readLine(); line != null; line =
+                reader.readLine()) {
             Matcher m = PATTERN.matcher(line);
 
             if (m.matches()) {
                 String type = m.group(1);
-
-                if (type.equals("bibdata")) {
-                    listener.addBibliographyDatabase(m.group(2).split(","));
-                    noData++;
-                } else if (type.equals("bibstyle")) {
-                    listener.addBibliographyStyle(m.group(2).split(","));
-                    noStyle++;
-                } else if (type.equals("citation")) {
-                    String[] ca =
-                            m.group(2).replaceAll("[ \t\f]", "").split(",");
-                    listener.addCitation(ca);
-                    noCite += ca.length;
+                AuxHandler handler = handlerMap.get(type);
+                if (handler != null) {
+                    handler.invoke(m.group(2), bibliography, count);
                 }
             }
         }
         close();
-        return new int[]{noData, noStyle, noCite};
+        return count;
+    }
+
+    /**
+     * Register a handler for a macro in the aux file.
+     * 
+     * @param name the name
+     * @param handler the handler
+     * 
+     * @return the old handler or <code>null</code> for none
+     */
+    public AuxHandler register(String name, AuxHandler handler) {
+
+        return handlerMap.put(name, handler);
     }
 
     /**
