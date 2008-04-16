@@ -19,7 +19,6 @@
 
 package org.extex.exbib.core.io.auxio;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Bibliography;
 import org.extex.exbib.core.engine.Engine;
-import org.extex.exbib.core.exceptions.InitializationException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -46,13 +44,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
      * macros.
      */
     private static final Pattern PATTERN =
-            Pattern.compile("^\\\\([a-z]+)\\{([^{}]*)\\}");
-
-    /**
-     * The field <tt>reader</tt> contains the internal reader is buffered and
-     * provides line numbers.
-     */
-    private LineNumberReader reader = null;
+            Pattern.compile("^\\\\([@a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The field <tt>handlerMap</tt> contains the macro handlers for the aux
@@ -97,22 +89,26 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                 count[0]++;
             }
         });
+        register("@input", new AuxHandler() {
+
+            public void invoke(String arg, Bibliography bibliography,
+                    int[] count) {
+
+            }
+        });
     }
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.engine.Engine#process(
-     *      org.extex.exbib.core.bst.Bibliography)
+     *      org.extex.exbib.core.bst.Bibliography, java.lang.String)
      */
-    public int[] process(Bibliography bibliography)
+    public int[] process(Bibliography bibliography, String resource)
             throws ConfigurationException,
                 IOException {
 
-        if (reader == null) {
-            throw new InitializationException(getClass().getName()
-                    + "#process()", "reader");
-        }
+        LineNumberReader reader = open(resource, "aux");
 
         int[] count = new int[]{0, 0, 0};
 
@@ -121,8 +117,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
             Matcher m = PATTERN.matcher(line);
 
             if (m.matches()) {
-                String type = m.group(1);
-                AuxHandler handler = handlerMap.get(type);
+                AuxHandler handler = handlerMap.get(m.group(1));
                 if (handler != null) {
                     handler.invoke(m.group(2), bibliography, count);
                 }
@@ -143,18 +138,6 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     public AuxHandler register(String name, AuxHandler handler) {
 
         return handlerMap.put(name, handler);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.engine.Engine#setFilename(java.lang.String)
-     */
-    public void setFilename(String file)
-            throws FileNotFoundException,
-                ConfigurationException {
-
-        reader = open(file, "aux");
     }
 
 }

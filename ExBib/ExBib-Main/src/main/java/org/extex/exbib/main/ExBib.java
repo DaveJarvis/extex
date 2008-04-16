@@ -580,28 +580,23 @@ public class ExBib extends AbstractMain {
             }
             // TODO use sorter for case conversion
 
-            Processor bibliography = new ProcessorFactory(//
+            Processor processor = new ProcessorFactory(//
                 topConfiguration.getConfiguration("Processor")).newInstance(db);
 
             if (trace) {
-                funcall = runRegisterTracers(db, bibliography);
+                funcall = runRegisterTracers(db, processor);
             }
-            bibliography.registerObserver("startRead", new DBObserver(
-                getLogger(), bundle.getString("observer.db.pattern")));
+            processor.registerObserver("startRead", new DBObserver(getLogger(),
+                bundle.getString("observer.db.pattern")));
 
             Engine engine = new EngineFactory(//
                 topConfiguration.getConfiguration("Engine")).newInstance();
             engine.setResourceFinder(finder);
-            try {
-                engine.setFilename(file);
-            } catch (FileNotFoundException e) {
-                return log("aux.not.found", file);
-            }
-
-            info("aux.file", engine.getFilename());
 
             try {
-                int[] no = engine.process(bibliography);
+                int[] no = engine.process(processor, file);
+
+                info("aux.file", engine.getFilename());
 
                 if (no[1] == 0) {
                     errors++;
@@ -620,12 +615,11 @@ public class ExBib extends AbstractMain {
             }
 
             if (bst != null) {
-                bibliography.addBibliographyStyle(stripExtension(bst,
+                processor.addBibliographyStyle(stripExtension(bst,
                     BST_FILE_EXTENSION));
             }
 
-            List<String> bibliographyStyles =
-                    bibliography.getBibliographyStyles();
+            List<String> bibliographyStyles = processor.getBibliographyStyles();
 
             if (bibliographyStyles == null || bibliographyStyles.isEmpty()) {
                 return EXIT_FAIL;
@@ -639,17 +633,17 @@ public class ExBib extends AbstractMain {
                         .getConfiguration("BstReader")).newInstance();
             bstReader.setResourceFinder(finder);
             try {
-                bstReader.parse(bibliography);
+                bstReader.parse(processor);
             } catch (FileNotFoundException e) {
                 return log("bst.not.found", e.getMessage());
             }
 
-            bibliography.process(writer, getLogger());
+            processor.process(writer, getLogger());
 
             if (errors > 0) {
                 log(errors == 1 ? "error" : "errors", Long.toString(errors));
             }
-            long warnings = bibliography.getNumberOfWarnings();
+            long warnings = processor.getNumberOfWarnings();
             if (warnings > 0) {
                 info(warnings == 1 ? "warning" : "warnings", //
                     Long.toString(warnings));

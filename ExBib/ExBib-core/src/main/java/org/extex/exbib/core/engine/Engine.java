@@ -19,7 +19,6 @@
 
 package org.extex.exbib.core.engine;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.Bibliography;
@@ -45,6 +44,7 @@ public interface Engine extends ResourceAware {
      * Parses an aux file and sends the result to a bibliography.
      * 
      * @param listener the bibliography to send the result to
+     * @param resource TODO
      * 
      * @return an array of three numbers:
      *         <ul>
@@ -56,21 +56,8 @@ public interface Engine extends ResourceAware {
      * @throws IOException in case that the file could not be opened for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    int[] process(Bibliography listener)
+    int[] process(Bibliography listener, String resource)
             throws IOException,
-                ConfigurationException;
-
-    /**
-     * Initialize the file to read from.
-     * 
-     * @param filename the name of the file to read from
-     * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for reading
-     * @throws ConfigurationException in case that the configuration is invalid
-     */
-    void setFilename(String filename)
-            throws FileNotFoundException,
                 ConfigurationException;
 
 }
