@@ -1,0 +1,19 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{Knu81}
+
+\bibitem[Knu73]{inbook-crossref}
+Donald~E. Knuth.
+\newblock {\em Fundamental Algorithms}, volume~1 of {\em The Art of Computer
+  Programming}, section 1.2.
+\newblock Addison-Wesley, second edition, {\noopsort{1973b}}1973.
+\newblock This is a cross-referencing INBOOK entry.
+
+\bibitem[Knu81]{book-crossref}
+Donald~E. Knuth.
+\newblock {\em Seminumerical Algorithms}, volume~2 of {\em The Art of Computer
+  Programming}.
+\newblock Addison-Wesley, second edition, {\noopsort{1973c}}1981.
+\newblock This is a cross-referencing BOOK entry.
+
+\end{thebibliography}
