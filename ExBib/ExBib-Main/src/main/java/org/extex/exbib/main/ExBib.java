@@ -568,13 +568,12 @@ public class ExBib extends AbstractMain {
         try {
             FuncallObserver funcall = null;
 
-            DB db = new DBFactory(//
-                topConfiguration.getConfiguration("DB")).newInstance();
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
-                topConfiguration.getConfiguration("BibReader"));
-            bibReaderFactory.setResourceFinder(finder);
-            db.setBibReaderFactory(bibReaderFactory);
-            db.setMinCrossrefs(minCrossrefs);
+                topConfiguration.getConfiguration("BibReader"), finder);
+            DB db =
+                    new DBFactory(//
+                        topConfiguration.getConfiguration("DB")).newInstance(
+                        bibReaderFactory, minCrossrefs);
             if (sorter != null) {
                 db.setSorter(sorter);
             }

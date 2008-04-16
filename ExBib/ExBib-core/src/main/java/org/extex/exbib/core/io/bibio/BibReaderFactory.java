@@ -60,11 +60,13 @@ public class BibReaderFactory implements ResourceAware {
      * Creates a new object.
      * 
      * @param config the configuration
+     * @param finder the resource finder
      */
-    public BibReaderFactory(Configuration config) {
+    public BibReaderFactory(Configuration config, ResourceFinder finder) {
 
         super();
         this.config = config;
+        this.finder = finder;
     }
 
     /**
