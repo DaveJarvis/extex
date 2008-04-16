@@ -19,7 +19,11 @@
 
 package org.extex.exbib.core.io.auxio;
 
+import java.io.IOException;
+
 import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.engine.Engine;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes a handler for macros found in an aux file.
@@ -35,7 +39,12 @@ public interface AuxHandler {
      * @param arg the macro parameter argument
      * @param bibliography the bibliography
      * @param count the count for activities
+     * @param engine the engine
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ConfigurationException in case of an configuration error
      */
-    void invoke(String arg, Bibliography bibliography, int[] count);
+    void invoke(String arg, Bibliography bibliography, int[] count,
+            Engine engine) throws ConfigurationException, IOException;
 
 }

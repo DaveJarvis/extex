@@ -40,7 +40,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class AuxReaderImpl extends AbstractFileReader implements Engine {
 
     /**
-     * The field <tt>PATTERN</tt> contains the pattern for the recognized
+     * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
     private static final Pattern PATTERN =
@@ -64,7 +64,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("citation", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count) {
+                    int[] count, Engine engine) {
 
                 String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
                 bibliography.addCitation(citations);
@@ -74,7 +74,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("bibstyle", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count) {
+                    int[] count, Engine engine) {
 
                 bibliography.addBibliographyStyle(arg.split(","));
                 count[1]++;
@@ -83,7 +83,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("bibdata", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count) {
+                    int[] count, Engine engine) {
 
                 bibliography.addBibliographyDatabase(arg.split(","));
                 count[0]++;
@@ -92,8 +92,11 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("@input", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count) {
+                    int[] count, Engine engine)
+                    throws ConfigurationException,
+                        IOException {
 
+                engine.process(bibliography, arg);
             }
         });
     }
@@ -112,18 +115,21 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
 
         int[] count = new int[]{0, 0, 0};
 
-        for (String line = reader.readLine(); line != null; line =
-                reader.readLine()) {
-            Matcher m = PATTERN.matcher(line);
+        try {
+            for (String line = reader.readLine(); line != null; line =
+                    reader.readLine()) {
+                Matcher m = PATTERN.matcher(line);
 
-            if (m.matches()) {
-                AuxHandler handler = handlerMap.get(m.group(1));
-                if (handler != null) {
-                    handler.invoke(m.group(2), bibliography, count);
+                if (m.matches()) {
+                    AuxHandler handler = handlerMap.get(m.group(1));
+                    if (handler != null) {
+                        handler.invoke(m.group(2), bibliography, count, this);
+                    }
                 }
             }
+        } finally {
+            close();
         }
-        close();
         return count;
     }
 
