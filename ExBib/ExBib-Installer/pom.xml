@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>ExBib-Installer</artifactId>
+  <name>ExBib install system</name>
+  <description>
+    This is the ExBib install system.
+  </description>
+
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <inceptionYear>2008</inceptionYear>
+  <url>http://www.extex.org</url>
+
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>ExBib</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <configuration>
+              <tasks>
+                <echo message="Running IzPack" />
+                <taskdef name="izpack"
+                  classpath="${basedir}/src/izPack-install-3.11.0/lib/compiler.jar"
+                  classname="com.izforge.izpack.ant.IzPackTask" />
+
+                <izpack input="${basedir}/src/install.xml"
+                  output="${basedir}/target/ExBib-setup.jar"
+                  installerType="standard"
+                  basedir="${basedir}"
+                  izPackDir="${basedir}/src/izPack-install-3.11.0/" />
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>maintainer</role>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+<!--
+  <modules>
+    <module>../ExBib-core</module>
+    <module>../ExBib-Main</module>
+    <module>../../ExTeX-resource</module>
+  </modules>
+-->
+
+</project>

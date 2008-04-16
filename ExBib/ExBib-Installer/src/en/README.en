@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//3.2//EN">
+<html>
+<head>
+  <title>ExBib</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <meta http_equiv="Content-Type" content="text/html;CHARSET=iso-8859-1">
+</head>
+
+<body>
+
+<h1>Welcome to ExBib</h1>
+<p>
+ ExBib is a bibliography processor.
+ It provides a compatibility mode which makes it possible to use it as a
+ replacement for BibTeX 0.99c.
+</p>
+<p>
+ ExBib is a re-implementation. As such ExBib contains some extensions to BibTeX.
+ Details can be found in the documentation.
+</p>
+
+<h1>Homepage</h1>
+<p>
+ExBib is developed within the scope of the ExTeX project.
+ExTeX is present on the Web. On the Homepage you can find additional
+information:
+</p>
+<p>
+<a href="http://www.extex.org">http://www.extex.org</a>
+</p>
+
+<hr>
+
+<address>
+© 2003-2008 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+</address>
+</body>
+</html>

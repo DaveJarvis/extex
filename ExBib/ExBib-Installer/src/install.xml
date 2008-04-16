@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<installation version="1.0">
+  <info>
+    <appname>ExBib</appname>
+    <appversion>0.1-snapshot</appversion>
+    <authors>
+      <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
+    </authors>
+    <url>http://www.extex.org/</url>
+    <javaversion>1.5</javaversion>
+  </info>
+
+  <variables>
+    <variable name="basedir" value="../.."/>
+    <variable name="extex.texinputs" value="${ENV[TEXINPUTS]}"/>
+    <variable name="texinputs" value="${ENV[TEXINPUTS]}"/>
+  </variables>
+
+  <guiprefs width="720"
+            height="440"
+            resizable="yes">
+    <modifier key="langDisplayType" value="native"/>
+  </guiprefs>
+
+  <locale>
+    <langpack iso3="eng"/>
+    <langpack iso3="deu"/>
+  </locale>
+
+  <resources>
+    <res id="LicencePanel.licence" src="LICENSE.txt"/>
+    <res id="HTMLInfoPanel.info_eng" src="src/en/README.en"/>
+    <res id="HTMLInfoPanel.info_deu" src="src/de/README.de"/>
+    <res id="installer.langsel.img" src="src/images/ExBib-splash.png" />
+    <res id="Installer.image" src="src/images/ExBib-side.png" />
+    <res id="packsLang.xml_deu" src="src/de/packs.de" />
+    <res id="packsLang.xml_eng" src="src/en/packs.en" />
+    <res id="userInputLang.xml_deu" src="src/de/packs.de" />
+    <res id="userInputLang.xml_eng" src="src/en/packs.en" />
+  </resources>
+
+  <panels>
+    <panel classname="HTMLInfoPanel"/>
+    <panel classname="LicencePanel"/>
+    <panel classname="PacksPanel"/>
+    <panel classname="TargetPanel"/> 
+    <panel classname="InstallPanel"/>
+    <panel classname="FinishPanel"/>
+  </panels>
+
+  <packs>
+    <pack name="ExBib Core" id="exbib-core" required="yes">
+      <description/>
+      <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
+      <file src="src/bin/exbib" targetdir="$INSTALL_PATH/bin"/>
+      <executable targetfile="$INSTALL_PATH/bin/exbib"/>
+      <file src="src/bin/exbib.bat" targetdir="$INSTALL_PATH/bin"/>
+      <parsable targetfile="$INSTALL_PATH/bin/exbib.bat"/>
+      <executable targetfile="$INSTALL_PATH/bin/exbib.bat"/>
+      <file src="../../ExTeX-resource/target/ExTeX-resource-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../ExBib-core/target/ExBib-core-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../ExBib-Main/target/ExBib-Main-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+
+  </packs>
+
+</installation>
