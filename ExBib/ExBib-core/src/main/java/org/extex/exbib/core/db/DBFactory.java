@@ -20,6 +20,7 @@
 
 package org.extex.exbib.core.db;
 
+import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -58,13 +59,22 @@ public class DBFactory extends AbstractFactory {
      * Request a {@link DB DB} implementation. The new database is configured
      * with the same configuration as this factory itself.
      * 
+     * @param bibReaderFactory the factory for readers
+     * @param minCrossrefs the crossref.min parameter
+     * 
      * @return a new instance of a DB
      * 
      * @throws ConfigurationException in case that something goes wrong
      */
-    public DB newInstance() throws ConfigurationException {
+    public DB newInstance(BibReaderFactory bibReaderFactory, int minCrossrefs)
+            throws ConfigurationException {
 
-        return (DB) createInstanceForConfiguration(getConfiguration(), DB.class);
+        DB db =
+                (DB) createInstanceForConfiguration(getConfiguration(),
+                    DB.class);
+        db.setBibReaderFactory(bibReaderFactory);
+        db.setMinCrossrefs(minCrossrefs);
+        return db;
     }
 
 }
