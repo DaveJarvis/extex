@@ -54,8 +54,11 @@ import org.extex.exbib.core.io.Writer;
  */
 public class BstPrinterImpl implements CommandVisitor {
 
-    /** the writer onto which the output should be written */
-    private Writer theWriter;
+    /**
+     * The field <tt>writer</tt> contains the writer onto which the output
+     * should be written.
+     */
+    private Writer writer;
 
     /**
      * Creates a new object.
@@ -65,7 +68,7 @@ public class BstPrinterImpl implements CommandVisitor {
     public BstPrinterImpl(Writer writer) {
 
         super();
-        theWriter = writer;
+        this.writer = writer;
     }
 
     /**
@@ -79,66 +82,66 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void print(Processor processor) throws IOException, ExBibException {
 
-        theWriter.print("ENTRY {\n");
+        writer.print("ENTRY {\n");
 
         Iterator<String> iterator = processor.getEntries().iterator();
 
         while (iterator.hasNext()) {
-            theWriter.print("    ", iterator.next(), "\n");
+            writer.print("    ", iterator.next(), "\n");
         }
 
-        theWriter.print("  } {");
+        writer.print("  } {");
 
         iterator = processor.getEntryIntegers().iterator();
 
         if (iterator.hasNext()) {
-            theWriter.print("\n");
+            writer.print("\n");
 
             while (iterator.hasNext()) {
-                theWriter.print("    ", iterator.next(), "\n");
+                writer.print("    ", iterator.next(), "\n");
             }
 
-            theWriter.print("  ");
+            writer.print("  ");
         }
 
-        theWriter.print("} {");
+        writer.print("} {");
 
         iterator = processor.getEntryStrings().iterator();
 
         if (iterator.hasNext()) {
-            theWriter.print("\n");
+            writer.print("\n");
 
             while (iterator.hasNext()) {
-                theWriter.print("    ", iterator.next(), "\n");
+                writer.print("    ", iterator.next(), "\n");
             }
 
-            theWriter.print("  ");
+            writer.print("  ");
         }
 
-        theWriter.print("}\n\n");
+        writer.print("}\n\n");
 
         iterator = processor.getIntegers().iterator();
 
         if (iterator.hasNext()) {
-            theWriter.print("INTEGERS {");
+            writer.print("INTEGERS {");
 
             while (iterator.hasNext()) {
-                theWriter.print(" ", iterator.next());
+                writer.print(" ", iterator.next());
             }
 
-            theWriter.print(" }\n\n");
+            writer.print(" }\n\n");
         }
 
         iterator = processor.getStrings().iterator();
 
         if (iterator.hasNext()) {
-            theWriter.print("STRINGS {");
+            writer.print("STRINGS {");
 
             while (iterator.hasNext()) {
-                theWriter.print(" ", iterator.next());
+                writer.print(" ", iterator.next());
             }
 
-            theWriter.print(" }\n\n");
+            writer.print(" }\n\n");
         }
 
         List<String> functionVector = processor.getFunctionNames();
@@ -149,12 +152,12 @@ public class BstPrinterImpl implements CommandVisitor {
         while (iterator.hasNext()) {
             String key = iterator.next();
             Code code = processor.getFunction(key);
-            theWriter.print("FUNCTION { ", key, " }{ ");
+            writer.print("FUNCTION { ", key, " }{ ");
             ((MacroCode) code).getToken().visit(this);
-            theWriter.print("}\n");
+            writer.print("}\n");
         }
 
-        theWriter.print("\n");
+        writer.print("\n");
 
         List<String> macroVector = processor.getMacroNames();
         Collections.sort(macroVector);
@@ -165,19 +168,19 @@ public class BstPrinterImpl implements CommandVisitor {
             String value = processor.getMacro(key);
 
             if (value != null) {
-                theWriter.print("MACRO { ", key, " }{ \"");
-                theWriter.print(value);
-                theWriter.print("\" }\n");
+                writer.print("MACRO { ", key, " }{ \"");
+                writer.print(value);
+                writer.print("\" }\n");
             }
         }
 
-        theWriter.print("\n");
+        writer.print("\n");
 
         Iterator<Command> iter = processor.commandsIterator();
 
         while (iter.hasNext()) {
             iter.next().visit(this);
-            theWriter.print("\n");
+            writer.print("\n");
         }
     }
 
@@ -189,9 +192,9 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitBlock(TBlock block) throws IOException {
 
-        theWriter.print("{");
+        writer.print("{");
         block.getTokenList().visit(this);
-        theWriter.print("}");
+        writer.print("}");
     }
 
     /**
@@ -213,9 +216,9 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitExecute(Command command) throws IOException {
 
-        theWriter.print("EXECUTE { ");
+        writer.print("EXECUTE { ");
         command.getValue().visit(this);
-        theWriter.print(" }");
+        writer.print(" }");
     }
 
     /**
@@ -226,7 +229,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitField(TField field) throws IOException {
 
-        theWriter.print(field.getValue());
+        writer.print(field.getValue());
     }
 
     /**
@@ -237,7 +240,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitFieldInteger(TFieldInteger integer) throws IOException {
 
-        theWriter.print(integer.getValue());
+        writer.print(integer.getValue());
     }
 
     /**
@@ -248,7 +251,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitFieldString(TFieldString string) throws IOException {
 
-        theWriter.print(string.getValue());
+        writer.print(string.getValue());
     }
 
     /**
@@ -259,7 +262,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitInteger(TInteger integer) throws IOException {
 
-        theWriter.print("#", integer.getValue());
+        writer.print("#", integer.getValue());
     }
 
     /**
@@ -270,9 +273,9 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitIterate(Command command) throws IOException {
 
-        theWriter.print("ITERATE { ");
+        writer.print("ITERATE { ");
         command.getValue().visit(this);
-        theWriter.print(" }");
+        writer.print(" }");
     }
 
     /**
@@ -283,7 +286,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitLiteral(TLiteral literal) throws IOException {
 
-        theWriter.print(literal.getValue());
+        writer.print(literal.getValue());
     }
 
     /**
@@ -294,7 +297,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitQLiteral(TQLiteral qliteral) throws IOException {
 
-        theWriter.print("'", qliteral.getValue());
+        writer.print("'", qliteral.getValue());
     }
 
     /**
@@ -305,7 +308,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitRead(Command command) throws IOException {
 
-        theWriter.print("READ");
+        writer.print("READ");
     }
 
     /**
@@ -316,9 +319,9 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitReverse(Command command) throws IOException {
 
-        theWriter.print("REVERSE { ");
+        writer.print("REVERSE { ");
         command.getValue().visit(this);
-        theWriter.print(" }");
+        writer.print(" }");
     }
 
     /**
@@ -329,7 +332,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitSort(Command command) throws IOException {
 
-        theWriter.print("SORT");
+        writer.print("SORT");
     }
 
     /**
@@ -340,7 +343,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitString(TString string) throws IOException {
 
-        theWriter.print("\"", string.getValue(), "\"");
+        writer.print("\"", string.getValue(), "\"");
     }
 
     /**
@@ -358,7 +361,7 @@ public class BstPrinterImpl implements CommandVisitor {
             if (first) {
                 first = false;
             } else {
-                theWriter.print(" ");
+                writer.print(" ");
             }
 
             iterator.next().visit(this);
