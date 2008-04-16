@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExIndex</artifactId>
+  <artifactId>ExBib</artifactId>
   <packaging>pom</packaging>
   <version>0.1-SNAPSHOT</version>
   <name>ExBib</name>
@@ -119,6 +119,7 @@
    <module>ExBib-core</module>
    <module>ExBib-Main</module>
    <module>../ExTeX-resource</module>
+   <module>ExBib-Installer</module>
   </modules>
 
   <build>
