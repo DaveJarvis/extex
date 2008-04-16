@@ -589,9 +589,10 @@ public class ExBib extends AbstractMain {
             processor.registerObserver("startRead", new DBObserver(getLogger(),
                 bundle.getString("observer.db.pattern")));
 
-            Engine engine = new EngineFactory(//
-                topConfiguration.getConfiguration("Engine")).newInstance();
-            engine.setResourceFinder(finder);
+            Engine engine =
+                    new EngineFactory(//
+                        topConfiguration.getConfiguration("Engine"))
+                        .newInstance(finder);
 
             try {
                 int[] no = engine.process(processor, file);

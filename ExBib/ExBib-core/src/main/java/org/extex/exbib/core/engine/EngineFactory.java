@@ -22,6 +22,7 @@ package org.extex.exbib.core.engine;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -57,13 +58,18 @@ public class EngineFactory extends AbstractFactory {
     /**
      * Create a new instance of an Engine.
      * 
+     * @param finder the resource finder
+     * 
      * @return the new instance of Engine
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public Engine newInstance() throws ConfigurationException {
+    public Engine newInstance(ResourceFinder finder)
+            throws ConfigurationException {
 
-        return (Engine) createInstance(Engine.class);
+        Engine engine = (Engine) createInstance(Engine.class);
+        engine.setResourceFinder(finder);
+        return engine;
     }
 
 }

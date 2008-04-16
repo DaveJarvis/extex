@@ -43,8 +43,8 @@ public interface Engine extends ResourceAware {
     /**
      * Parses an aux file and sends the result to a bibliography.
      * 
-     * @param listener the bibliography to send the result to
-     * @param resource TODO
+     * @param bibliography the bibliography to send the result to
+     * @param resource the resource to be processed
      * 
      * @return an array of three numbers:
      *         <ul>
@@ -56,7 +56,7 @@ public interface Engine extends ResourceAware {
      * @throws IOException in case that the file could not be opened for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    int[] process(Bibliography listener, String resource)
+    int[] process(Bibliography bibliography, String resource)
             throws IOException,
                 ConfigurationException;
 
