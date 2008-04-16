@@ -38,7 +38,57 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a reader for BibTeX files.
+ * This is a reader for BibTeX files. It extends the reader for the BibTeX 0.99c
+ * format. The constructions supported roughly approximate the features
+ * announced for BibTeX 1.0 (which has net been published at the time of this
+ * writing &ndash; and probably never will).
+ * <p>
+ * The following constructs are supported:
+ * </p>
+ * <ul>
+ * <li>{@literal @alias}</li>
+ * <li>{@literal @include}</li>
+ * <li>{@literal @modify}</li>
+ * </ul>
+ * 
+ * <h3>The {@literal @alias} Instruction</h3>
+ * 
+ * <p>
+ * Define an alias for an existing entry. It has a new key and inherits all
+ * fields form the other one. Aliased entries are includes at most once into the
+ * output.
+ * </p>
+ * 
+ * <pre>
+ * @alias{abc=xyz}
+ * </pre>
+ * 
+ * 
+ * <h3>The {@literal @include} Instruction</h3>
+ * 
+ * <p>
+ * Include the named resource as if its contents where at the place of the
+ * include instruction.
+ * </p>
+ * 
+ * <pre>
+ * @include{some_resource}
+ * </pre>
+ * 
+ * 
+ * 
+ * <h3>The {@literal @modify} Instruction</h3>
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre>
+ * @modify{abc,
+ *   title={The Title}}
+ * </pre>
+ * 
+ * 
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
