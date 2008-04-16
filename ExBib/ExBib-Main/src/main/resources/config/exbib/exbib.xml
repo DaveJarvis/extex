@@ -26,7 +26,6 @@
   <Writers />
   
   <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
-    <minCrossrefs>2</minCrossrefs>
     <globalMax>32000</globalMax>
 
     <function name="&gt;"
@@ -129,13 +128,13 @@
   </BblWriter>
 
   <DB class="org.extex.exbib.core.db.impl.DBImpl">
+    <minCrossrefs>2</minCrossrefs>
     <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl">
       <Order locale="en"/>
     </Sorter>
   </DB>
 
-  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl">
-  </Engine>
+  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 
   <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 
