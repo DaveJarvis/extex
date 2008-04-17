@@ -57,6 +57,7 @@ import org.extex.exbib.main.bibtex.EntryObserver;
 import org.extex.exbib.main.bibtex.FuncallObserver;
 import org.extex.exbib.main.bibtex.TracingObserver;
 import org.extex.exbib.main.util.LogFormatter;
+import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -518,7 +519,7 @@ public class ExBib extends AbstractMain {
      * This is the top level of the BibT<sub>E</sub>X engine. When all
      * parameters are present then this method can be invoked.
      * 
-     * @param filename the name of the input file (part of)
+     * @param resourceName the name of the input file (part of)
      * 
      * @return <code>true</code> iff an error has occurred
      * 
@@ -526,7 +527,7 @@ public class ExBib extends AbstractMain {
      * @throws ConfigurationException in case that the top-level configuration
      *         could not be found
      */
-    public int run(String filename) throws IOException, ConfigurationException {
+    public int run(String resourceName) throws IOException, ConfigurationException {
 
         long time = System.currentTimeMillis();
         Configuration topConfiguration =
@@ -537,10 +538,10 @@ public class ExBib extends AbstractMain {
                 new ResourceFinderFactory().createResourceFinder(
                     topConfiguration.getConfiguration("Resource"), getLogger(),
                     System.getProperties(), null);
-        if (filename == null) {
+        if (resourceName == null) {
             return logBanner("missing.file");
         }
-        String file = stripExtension(filename, AUX_FILE_EXTENSION);
+        String file = stripExtension(resourceName, AUX_FILE_EXTENSION);
 
         runAttachLogFile(file);
         logBanner(false);
@@ -593,10 +594,10 @@ public class ExBib extends AbstractMain {
                         topConfiguration.getConfiguration("Engine"))
                         .newInstance(finder);
 
+            engine.register(new MainResourceObserver(getLogger()));
+
             try {
                 int[] no = engine.process(processor, file);
-
-                info("aux.file", engine.getFilename());
 
                 if (no[1] == 0) {
                     errors++;
@@ -611,7 +612,7 @@ public class ExBib extends AbstractMain {
                     log("citation.missing", file);
                 }
             } catch (FileNotFoundException e) {
-                return log("aux.not.found", file);
+                return log("aux.not.found", e.getMessage());
             }
 
             if (bst != null) {

@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Bibliography;
 import org.extex.exbib.core.engine.Engine;
+import org.extex.exbib.core.engine.ResourceObserver;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -51,6 +52,11 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
      * file.
      */
     private Map<String, AuxHandler> handlerMap;
+
+    /**
+     * The field <tt>observer</tt> contains the observer.
+     */
+    private ResourceObserver observer = null;
 
     /**
      * Creates a new object.
@@ -89,7 +95,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                 count[0]++;
             }
         });
-        register("@input", new AuxHandler() {
+        register("@include", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
                     int[] count, Engine engine)
@@ -112,6 +118,11 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                 IOException {
 
         LineNumberReader reader = open(resource, "aux");
+        String name = getFilename();
+
+        if (observer != null) {
+            observer.observeOpen(resource, "aux", name);
+        }
 
         int[] count = new int[]{0, 0, 0};
 
@@ -127,10 +138,27 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
                     }
                 }
             }
+            if (observer != null) {
+                observer.observeClose(resource, "aux", name);
+            }
         } finally {
+            reader.close();
             close();
         }
         return count;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.engine.Engine#register(
+     *      org.extex.exbib.core.engine.ResourceObserver)
+     */
+    public ResourceObserver register(ResourceObserver observer) {
+
+        ResourceObserver obs = this.observer;
+        this.observer = observer;
+        return obs;
     }
 
     /**

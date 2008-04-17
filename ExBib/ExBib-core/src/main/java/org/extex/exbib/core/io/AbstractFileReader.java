@@ -97,7 +97,9 @@ public abstract class AbstractFileReader implements Observable {
     public void close() throws IOException {
 
         try {
-            reader.close();
+            if (reader != null) {
+                reader.close();
+            }
         } finally {
             reader = null;
         }

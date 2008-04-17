@@ -62,6 +62,15 @@ public interface Engine extends ResourceAware {
                 ConfigurationException;
 
     /**
+     * Register an observer for resource open events.
+     * 
+     * @param observer the observer
+     * 
+     * @return the old observer or <code>null</code>
+     */
+    ResourceObserver register(ResourceObserver observer);
+
+    /**
      * Register a handler for a macro in the aux file.
      * 
      * @param name the name
