@@ -37,13 +37,13 @@ import org.extex.exbib.core.bst.ProcessorFactory;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
-import org.extex.exbib.core.engine.Engine;
-import org.extex.exbib.core.engine.EngineFactory;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.WriterFactory;
+import org.extex.exbib.core.io.auxio.AuxReader;
+import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.bstio.BstReader;
@@ -589,9 +589,9 @@ public class ExBib extends AbstractMain {
             processor.registerObserver("startRead", new DBObserver(getLogger(),
                 bundle.getString("observer.db.pattern")));
 
-            Engine engine =
-                    new EngineFactory(//
-                        topConfiguration.getConfiguration("Engine"))
+            AuxReader engine =
+                    new AuxReaderFactory(//
+                        topConfiguration.getConfiguration("AuxReader"))
                         .newInstance(finder);
 
             engine.register(new MainResourceObserver(getLogger()));

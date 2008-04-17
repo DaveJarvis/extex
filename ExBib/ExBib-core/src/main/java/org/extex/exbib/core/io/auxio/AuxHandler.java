@@ -22,7 +22,6 @@ package org.extex.exbib.core.io.auxio;
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.engine.Engine;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -45,6 +44,6 @@ public interface AuxHandler {
      * @throws ConfigurationException in case of an configuration error
      */
     void invoke(String arg, Bibliography bibliography, int[] count,
-            Engine engine) throws ConfigurationException, IOException;
+            AuxReader engine) throws ConfigurationException, IOException;
 
 }

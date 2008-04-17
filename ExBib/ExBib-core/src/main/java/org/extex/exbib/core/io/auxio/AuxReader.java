@@ -17,12 +17,11 @@
  *
  */
 
-package org.extex.exbib.core.engine;
+package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.io.auxio.AuxHandler;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 
@@ -32,7 +31,7 @@ import org.extex.resource.ResourceAware;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public interface Engine extends ResourceAware {
+public interface AuxReader extends ResourceAware {
 
     /**
      * Getter for the file name.

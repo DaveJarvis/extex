@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.engine;
+package org.extex.exbib.core.io.auxio;
 
 /**
  * This observer is triggered when a resource has been opened.

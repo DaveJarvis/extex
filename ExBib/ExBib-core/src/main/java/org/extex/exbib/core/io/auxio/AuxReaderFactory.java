@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.engine;
+package org.extex.exbib.core.io.auxio;
 
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
@@ -26,15 +26,15 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This factory class can be used to get an implementation for the interface
- * {@link Engine Engine}.
+ * {@link AuxReader AuxReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
  * attribute <code>class</class>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
  * <pre>
- *   &lt;Engine&gt;
+ *   &lt;AuxReader&gt;
  *     &lt;class&gt;org.extex.exbib.core.io.auxio.AuxReaderImpl&lt;/class&gt;
- *   &lt;/Engine&gt;
+ *   &lt;/AuxReader&gt;
  * </pre>
  * </p>
  *
@@ -42,32 +42,32 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class EngineFactory extends AbstractFactory {
+public class AuxReaderFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
      * 
      * @param config the configuration
      */
-    public EngineFactory(Configuration config) {
+    public AuxReaderFactory(Configuration config) {
 
         super();
         configure(config);
     }
 
     /**
-     * Create a new instance of an Engine.
+     * Create a new instance of an AuxReader.
      * 
      * @param finder the resource finder
      * 
-     * @return the new instance of Engine
+     * @return the new instance of AuxReader
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public Engine newInstance(ResourceFinder finder)
+    public AuxReader newInstance(ResourceFinder finder)
             throws ConfigurationException {
 
-        Engine engine = (Engine) createInstance(Engine.class);
+        AuxReader engine = (AuxReader) createInstance(AuxReader.class);
         engine.setResourceFinder(finder);
         return engine;
     }

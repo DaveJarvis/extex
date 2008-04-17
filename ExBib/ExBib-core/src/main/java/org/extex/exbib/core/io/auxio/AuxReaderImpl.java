@@ -27,8 +27,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.engine.Engine;
-import org.extex.exbib.core.engine.ResourceObserver;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -38,7 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class AuxReaderImpl extends AbstractFileReader implements Engine {
+public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
 
     /**
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
@@ -70,7 +68,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("citation", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count, Engine engine) {
+                    int[] count, AuxReader engine) {
 
                 String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
                 bibliography.addCitation(citations);
@@ -80,7 +78,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("bibstyle", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count, Engine engine) {
+                    int[] count, AuxReader engine) {
 
                 bibliography.addBibliographyStyle(arg.split(","));
                 count[1]++;
@@ -89,7 +87,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("bibdata", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count, Engine engine) {
+                    int[] count, AuxReader engine) {
 
                 bibliography.addBibliographyDatabase(arg.split(","));
                 count[0]++;
@@ -98,7 +96,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
         register("@include", new AuxHandler() {
 
             public void invoke(String arg, Bibliography bibliography,
-                    int[] count, Engine engine)
+                    int[] count, AuxReader engine)
                     throws ConfigurationException,
                         IOException {
 
@@ -110,7 +108,7 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.engine.Engine#process(
+     * @see org.extex.exbib.core.io.auxio.AuxReader#process(
      *      org.extex.exbib.core.bst.Bibliography, java.lang.String)
      */
     public int[] process(Bibliography bibliography, String resource)
@@ -151,8 +149,8 @@ public class AuxReaderImpl extends AbstractFileReader implements Engine {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.engine.Engine#register(
-     *      org.extex.exbib.core.engine.ResourceObserver)
+     * @see org.extex.exbib.core.io.auxio.AuxReader#register(
+     *      org.extex.exbib.core.io.auxio.ResourceObserver)
      */
     public ResourceObserver register(ResourceObserver observer) {
 

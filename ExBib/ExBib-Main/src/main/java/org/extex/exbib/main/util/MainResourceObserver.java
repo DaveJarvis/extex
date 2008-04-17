@@ -21,7 +21,7 @@ package org.extex.exbib.main.util;
 
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.engine.ResourceObserver;
+import org.extex.exbib.core.io.auxio.ResourceObserver;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -63,7 +63,7 @@ public class MainResourceObserver implements ResourceObserver {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.engine.ResourceObserver#observeClose(
+     * @see org.extex.exbib.core.io.auxio.ResourceObserver#observeClose(
      *      java.lang.String, java.lang.String, java.lang.String)
      */
     public void observeClose(String resource, String type, String filename) {
@@ -74,7 +74,7 @@ public class MainResourceObserver implements ResourceObserver {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.engine.ResourceObserver#observeOpen(
+     * @see org.extex.exbib.core.io.auxio.ResourceObserver#observeOpen(
      *      java.lang.String, java.lang.String, java.lang.String)
      */
     public void observeOpen(String resource, String type, String filename) {
