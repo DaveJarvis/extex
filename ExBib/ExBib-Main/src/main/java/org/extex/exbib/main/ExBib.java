@@ -575,9 +575,7 @@ public class ExBib extends AbstractMain {
      * Create a new {@link java.io.Writer} for a bbl file.
      * 
      * @param file the name of the file
-     * @param writerFactory the factory for new writers
      * @param cfg the configuration
-     * 
      * @return the new writer or <code>null</code> when the file could not be
      *         opened for writing
      * 
@@ -585,11 +583,12 @@ public class ExBib extends AbstractMain {
      *         encountered
      * @throws ConfigurationException in case of a configuration error
      */
-    private Writer makeBblWriter(String file, WriterFactory writerFactory,
-            Configuration cfg)
+    private Writer makeBblWriter(String file, Configuration cfg)
             throws UnsupportedEncodingException,
                 ConfigurationException {
 
+        Configuration configuration = cfg.getConfiguration("BblWriter");
+        WriterFactory writerFactory = new WriterFactory(configuration);
         Writer writer = null;
 
         if (outfile == null) {
@@ -612,8 +611,7 @@ public class ExBib extends AbstractMain {
             info("output.file", outfile);
         }
 
-        return new BblWriterFactory(cfg.getConfiguration("BblWriter"))
-            .newInstance(writer);
+        return new BblWriterFactory(configuration).newInstance(writer);
     }
 
     /**
@@ -685,8 +683,6 @@ public class ExBib extends AbstractMain {
         long time = System.currentTimeMillis();
         Configuration topConfiguration =
                 ConfigurationFactory.newInstance(configSource);
-        WriterFactory writerFactory =
-                new WriterFactory(topConfiguration.getConfiguration("Writers"));
         ResourceFinder finder =
                 new ResourceFinderFactory().createResourceFinder(
                     topConfiguration.getConfiguration("Resource"), getLogger(),
@@ -714,7 +710,7 @@ public class ExBib extends AbstractMain {
             }
         }
 
-        Writer writer = makeBblWriter(file, writerFactory, topConfiguration);
+        Writer writer = makeBblWriter(file, topConfiguration);
         if (writer == null) {
             return EXIT_FAIL;
         }

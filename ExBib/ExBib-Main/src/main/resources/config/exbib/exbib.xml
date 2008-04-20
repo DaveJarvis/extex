@@ -23,8 +23,6 @@
   
   <Resource src="path/exbibFinder"/>
   
-  <Writers />
-  
   <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
     <globalMax>32000</globalMax>
 

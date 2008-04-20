@@ -22,8 +22,6 @@
   
   <Resource src="path/exbibFinder"/>
 
-  <Writers />
-  
   <Processor class="org.extex.exbib.core.bst.Processor099Impl"/>
 
   <DB class="org.extex.exbib.core.db.impl.DBImpl">
