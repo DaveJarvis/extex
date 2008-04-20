@@ -30,6 +30,8 @@ import java.io.Writer;
 import java.util.Calendar;
 import java.util.Locale;
 
+import org.extex.exbib.main.cli.CLI;
+
 /**
  * This is a tester for {@link ExBib}.
  * 
@@ -93,7 +95,7 @@ public class BibTester {
      */
     protected void runFailure(String msg, String... args) throws Exception {
 
-        runTest("test", null, 1, Check.EQ, msg, args);
+        runTest("test", null, CLI.EXIT_FAIL, Check.EQ, msg, args);
     }
 
     /**
@@ -132,6 +134,9 @@ public class BibTester {
             System.setErr(new PrintStream(baos));
             exBib = new ExBib();
             int code = exBib.processCommandLine(args);
+            if (exBib != null) {
+                exBib.close();
+            }
             if (out != null) {
                 String s = baos.toString().replaceAll("\r", "");
                 switch (checkOut) {
@@ -153,9 +158,6 @@ public class BibTester {
             assertEquals("exit code", exitCode, code);
         } finally {
             System.setErr(err);
-            if (exBib != null) {
-                exBib.close();
-            }
             if (aux.exists() && !aux.delete()) {
                 assertTrue(aux.toString() + ": deletion failed", false);
             }

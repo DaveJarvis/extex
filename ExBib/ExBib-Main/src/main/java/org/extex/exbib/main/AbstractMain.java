@@ -31,23 +31,15 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.main.cli.CLI;
+
 /**
- * This is an abstract base cölass for main programs.
+ * This is an abstract base class for main programs.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AbstractMain {
-
-    /**
-     * The field <tt>EXIT_FAIL</tt> contains the exit code for failure.
-     */
-    protected static final int EXIT_FAIL = 1;
-
-    /**
-     * The field <tt>EXIT_OK</tt> contains the exit code for success.
-     */
-    protected static final int EXIT_OK = 0;
+public class AbstractMain extends CLI {
 
     /**
      * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource
@@ -242,7 +234,7 @@ public class AbstractMain {
      * 
      * @param log the target logger
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code EXIT_FAILURE
      */
     protected int logCopying(Logger log) {
 

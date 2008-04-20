@@ -56,12 +56,20 @@ import org.extex.exbib.main.bibtex.DBObserver;
 import org.extex.exbib.main.bibtex.EntryObserver;
 import org.extex.exbib.main.bibtex.FuncallObserver;
 import org.extex.exbib.main.bibtex.TracingObserver;
+import org.extex.exbib.main.cli.BooleanOption;
+import org.extex.exbib.main.cli.NoArgOption;
+import org.extex.exbib.main.cli.NumberOption;
+import org.extex.exbib.main.cli.Option;
+import org.extex.exbib.main.cli.StringOption;
+import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
+import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
+import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
+import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.main.util.LogFormatter;
 import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
@@ -266,6 +274,11 @@ public class ExBib extends AbstractMain {
     private String logfile = null;
 
     /**
+     * The field <tt>file</tt> contains the file to be processed.
+     */
+    private String file = null;
+
+    /**
      * Creates a new object.
      */
     public ExBib() {
@@ -278,6 +291,8 @@ public class ExBib extends AbstractMain {
         consoleHandler.setFormatter(new LogFormatter());
         consoleHandler.setLevel(Level.WARNING);
         getLogger().addHandler(consoleHandler);
+
+        declareOptions();
     }
 
     /**
@@ -288,6 +303,222 @@ public class ExBib extends AbstractMain {
 
         super.close();
         consoleHandler = null;
+    }
+
+    /**
+     * Declare the list of command line options.
+     * 
+     */
+    protected void declareOptions() {
+
+        declare(null, new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) throws UnknownOptionCliException {
+
+                if (arg.startsWith("-")) {
+                    throw new UnknownOptionCliException(arg);
+                }
+                return setFile(arg);
+            }
+
+            @Override
+            public int run(String a, String arg, List<String> args)
+                    throws UnusedArgumentCliException,
+                        UnknownOptionCliException {
+
+                if (a.startsWith("-")) {
+                    throw new UnknownOptionCliException(a);
+                }
+                throw new UnusedArgumentCliException(a);
+            }
+
+        });
+        declare("", new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) {
+
+                return setFile(arg);
+            }
+
+        });
+        option(new StringOption("opt.file") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                return setFile(arg);
+            }
+
+        }, "-");
+        option(new StringOption("opt.bst") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setBst(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-bst");
+        option(new NoArgOption("opt.copying") {
+
+            @Override
+            protected int run(String name) {
+
+                return logCopying(getLogger());
+            }
+
+        }, "-copying");
+        option(new StringOption("opt.config") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setConfigSource("exbib/" + arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-config");
+        option(new StringOption("opt.csfile") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setCsfile(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-csfile");
+        option(new NoArgOption("opt.debug") {
+
+            @Override
+            protected int run(String name) {
+
+                setDebug(true);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-debug");
+        option(new NoArgOption("opt.help") {
+
+            @Override
+            protected int run(String arg) {
+
+                return logBanner("usage", getProgramName());
+            }
+
+        }, "-help", "-?");
+        option(new StringOption("opt.logfile") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setLogfile(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-logfile");
+        option(new NumberOption("opt.min.crossref") {
+
+            @Override
+            protected int run(String name, int arg) {
+
+                setMinCrossrefs(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-min.crossrefs", "-min-crossrefs", "-min_crossrefs");
+        option(new StringOption("opt.output") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setOutfile(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-outfile", "-output");
+        option(new StringOption("opt.progname") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setProgramName(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-progname", "-program.name", "-program-name");
+        option(new NoArgOption("opt.quiet") {
+
+            @Override
+            protected int run(String arg) {
+
+                consoleHandler.setLevel(Level.SEVERE);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-quiet");
+        option(new NoArgOption("opt.release") {
+
+            @Override
+            protected int run(String arg) {
+
+                getLogger().severe(VERSION + "\n");
+                return EXIT_FAIL;
+            }
+
+        }, "-release");
+        option(new NoArgOption("opt.strict") {
+
+            @Override
+            protected int run(String arg) {
+
+                setConfigSource(CONFIGURATION_0_99);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-strict");
+        option(new BooleanOption("opt.trace") {
+
+            @Override
+            protected int run(String arg, boolean value) {
+
+                setTrace(value);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-trace");
+        option(new NoArgOption("opt.terse") {
+
+            @Override
+            protected int run(String arg) {
+
+                consoleHandler.setLevel(Level.SEVERE);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-terse");
+        option(new NoArgOption("opt.verbose") {
+
+            @Override
+            protected int run(String arg) {
+
+                consoleHandler.setLevel(Level.INFO);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-verbose");
+        option(new NoArgOption("opt.version") {
+
+            @Override
+            protected int run(String arg) {
+
+                return logBanner(true);
+            }
+
+        }, "-version");
     }
 
     /**
@@ -386,6 +617,21 @@ public class ExBib extends AbstractMain {
     }
 
     /**
+     * Declare an option for the argument given and one with a hyphen prefixed
+     * for each name given.
+     * 
+     * @param opt the option
+     * @param nameList the list of names
+     */
+    private void option(Option opt, String... nameList) {
+
+        for (String name : nameList) {
+            declare(name, opt);
+            declare("-" + name, opt);
+        }
+    }
+
+    /**
      * Process the list of string as command line parameters.
      * 
      * @param argv the command line parameters
@@ -394,120 +640,25 @@ public class ExBib extends AbstractMain {
      */
     protected int processCommandLine(String[] argv) {
 
-        String file = null;
-
-        for (int i = 0; i < argv.length; i++) {
-            String a = argv[i];
-
-            if (a.startsWith("-")) {
-                a = a.substring(a.startsWith("--") ? 2 : 1);
-
-                if ("".equals(a)) {
-                    if (file != null) {
-                        return logBanner("one.file", file);
-                    } else if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    file = argv[i];
-
-                } else if ("bst".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setBst(argv[i]);
-
-                } else if ("csfile".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setCsfile(argv[i]);
-
-                } else if ("config".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setConfigSource("exbib/" + argv[i]);
-
-                } else if ("copying".startsWith(a)) {
-                    return logCopying(getLogger());
-
-                } else if ("debug".startsWith(a)) {
-                    setDebug(true);
-
-                } else if ("help".startsWith(a) || "?".equals(a)) {
-                    return logBanner("usage", getProgramName());
-
-                } else if ("logfile".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setLogfile(argv[i]);
-
-                } else if ("min_crossrefs".startsWith(a)
-                        || "min-crossrefs".startsWith(a)
-                        || "min.crossrefs".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    try {
-                        setMinCrossrefs(Integer.parseInt(argv[i]));
-                    } catch (NumberFormatException e) {
-                        return logBanner("non-numeric.option", argv[i - 1]);
-                    }
-
-                } else if ("outfile".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setOutfile(argv[i]);
-
-                } else if ("progname".startsWith(a)
-                        || "program.name".startsWith(a)
-                        || "program_name".startsWith(a)) {
-                    if (++i >= argv.length) {
-                        return logBanner("missing.option", argv[i - 1]);
-                    }
-                    setProgramName(argv[i]);
-
-                } else if ("quiet".startsWith(a)) {
-                    consoleHandler.setLevel(Level.SEVERE);
-
-                } else if ("release".startsWith(a)) {
-                    getLogger().severe(VERSION + "\n");
-                    return 1;
-
-                } else if ("strict".startsWith(a)) {
-                    setConfigSource(CONFIGURATION_0_99);
-
-                } else if ("trace".startsWith(a)) {
-                    setTrace(true);
-
-                } else if ("terse".startsWith(a)) {
-                    consoleHandler.setLevel(Level.SEVERE);
-
-                } else if ("verbose".startsWith(a)) {
-                    consoleHandler.setLevel(Level.INFO);
-
-                } else if ("version".startsWith(a)) {
-                    return logBanner(true);
-
-                } else {
-                    logBanner("unknown.option", a);
-                }
-            } else if (file != null) {
-                return logBanner("one.file", file);
-
-            } else {
-                file = argv[i];
+        try {
+            int ret = run(argv);
+            if (ret != EXIT_CONTINUE) {
+                return ret;
             }
+        } catch (UnknownOptionCliException e) {
+            logBanner("unknown.option", e.getMessage());
+        } catch (MissingArgumentCliException e) {
+            return logBanner("missing.option", e.getMessage());
+        } catch (NonNumericArgumentCliException e) {
+            return logBanner("non-numeric.option", e.getMessage());
+        } catch (UnusedArgumentCliException e) {
+            return logBanner("unused.option.argument", e.getMessage());
         }
 
         try {
 
             return run(file);
 
-        } catch (ConfigurationNotFoundException e) {
-            return logBanner("configuration.error", e.getLocalizedMessage());
         } catch (ConfigurationException e) {
             return logBanner("configuration.error", e.getLocalizedMessage());
         } catch (IOException e) {
@@ -527,7 +678,9 @@ public class ExBib extends AbstractMain {
      * @throws ConfigurationException in case that the top-level configuration
      *         could not be found
      */
-    public int run(String resourceName) throws IOException, ConfigurationException {
+    public int run(String resourceName)
+            throws IOException,
+                ConfigurationException {
 
         long time = System.currentTimeMillis();
         Configuration topConfiguration =
@@ -670,8 +823,8 @@ public class ExBib extends AbstractMain {
             return logException(e, "installation.error", debug);
         } catch (NoClassDefFoundError e) {
             return logException(e, "installation.error", debug);
-        } catch (Throwable e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            // e.printStackTrace();
             return logException(e, "internal.error", debug);
         } finally {
             if (writer != null) {
@@ -741,11 +894,11 @@ public class ExBib extends AbstractMain {
     /**
      * Setter for the Bib style
      * 
-     * @param string the bib style
+     * @param bst the bib style
      */
-    public void setBst(String string) {
+    public void setBst(String bst) {
 
-        bst = string;
+        this.bst = bst;
     }
 
     /**
@@ -776,6 +929,24 @@ public class ExBib extends AbstractMain {
     public void setDebug(boolean debug) {
 
         this.debug = debug;
+    }
+
+    /**
+     * Setter for the file name
+     * 
+     * @param arg the file name
+     * 
+     * @return EXIT_FAILURE at failure and EXIT_CONTINUE at success
+     */
+    private int setFile(String arg) {
+
+        if (file != null) {
+            return logBanner("one.file", file);
+        } else if ("".equals(arg)) {
+            return logBanner("empty.file", file);
+        }
+        file = arg;
+        return EXIT_CONTINUE;
     }
 
     /**

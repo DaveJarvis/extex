@@ -32,6 +32,7 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.util.Locale;
 
+import org.extex.exbib.main.cli.CLI;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -125,7 +126,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux01() throws Exception {
 
-        runTest("test", "", 1, Check.EQ, BANNER
+        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -143,7 +144,7 @@ public class ExBibTest extends BibTester {
         File aux = new File("undefined.aux");
         assertFalse(aux.exists());
 
-        runTest("undefined", null, 1, Check.EQ, BANNER
+        runTest("undefined", null, CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I couldn\'t open file undefined.aux\n", //
             "undefined.aux");
     }
@@ -181,7 +182,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux10() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy}\n", 1, Check.EQ, BANNER
+        runTest("test", "\\bibstyle{xyzzy}\n", CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy\n", //
@@ -197,10 +198,10 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux11() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy.bst}\n", 1, Check.EQ, BANNER
-                + "I found no \\bibdata commands while reading test.aux\n"
-                + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy.bst\n", //
+        runTest("test", "\\bibstyle{xyzzy.bst}\n", CLI.EXIT_FAIL, Check.EQ,
+            BANNER + "I found no \\bibdata commands while reading test.aux\n"
+                    + "I found no \\citation commands while reading test.aux\n"
+                    + "I couldn\'t open style file xyzzy.bst\n", //
             "test.aux");
     }
 
@@ -213,7 +214,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux12() throws Exception {
 
-        runTest("test", "", 1, Check.EQ, BANNER
+        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
@@ -231,7 +232,7 @@ public class ExBibTest extends BibTester {
     public void testAux13() throws Exception {
 
         runTest("test", "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-            1, Check.EQ, BANNER
+            CLI.EXIT_FAIL, Check.EQ, BANNER
                     + "I found no \\bibdata commands while reading test.aux\n"
                     + "I found no \\citation commands while reading test.aux\n"
                     + "(There were 2 errors)\n", //
@@ -247,7 +248,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux14() throws Exception {
 
-        runTest("test", "\\bibstyle{xyzzy}\n", 1, Check.EQ, BANNER
+        runTest("test", "\\bibstyle{xyzzy}\n", CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy\n", //
@@ -263,8 +264,9 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux15() throws Exception {
 
-        runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", 1, Check.EQ,
-            BANNER + "I found no \\bibdata commands while reading test.aux\n"
+        runTest("test", "\\citation{*}\n\\bibstyle{xyzzy}\n", CLI.EXIT_FAIL,
+            Check.EQ, BANNER
+                    + "I found no \\bibdata commands while reading test.aux\n"
                     + "I couldn\'t open style file xyzzy\n", //
             "test.aux");
     }
@@ -279,8 +281,8 @@ public class ExBibTest extends BibTester {
     public void testAux16() throws Exception {
 
         runTest("test", "\\citation{*}\n\\bibdata{qqq}\n\\bibstyle{xyzzy}\n",
-            1, Check.EQ, BANNER + "I couldn\'t open style file xyzzy\n",
-            "test.aux");
+            CLI.EXIT_FAIL, Check.EQ, BANNER
+                    + "I couldn\'t open style file xyzzy\n", "test.aux");
     }
 
     /**
@@ -292,8 +294,8 @@ public class ExBibTest extends BibTester {
     public void testAux20() throws Exception {
 
         runTest("test", "\\citation{*}\n\\bibdata{test}\n"
-                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 1,
-            Check.EQ, BANNER + "File `test\' not found\n", //
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+            CLI.EXIT_FAIL, Check.EQ, BANNER + "File `test\' not found\n", //
             "test.aux");
     }
 
@@ -397,7 +399,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCopying1() throws Exception {
 
-        runTest("test", null, 1, Check.START,
+        runTest("test", null, CLI.EXIT_FAIL, Check.START,
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n", //
             "--copying");
     }
@@ -426,6 +428,42 @@ public class ExBibTest extends BibTester {
 
         runFailure(BANNER + "The csf `exbib\' could not be found.\n",
             "--csfile", "xyzzy", "test");
+    }
+
+    /**
+     * <testcase> Test that an empty file name is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEmpty1() throws Exception {
+
+        runFailure(BANNER + "The file argument can not be empty.\n", //
+            "");
+    }
+
+    /**
+     * <testcase> Test that an empty file name is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEmpty2() throws Exception {
+
+        runFailure(BANNER + "The file argument can not be empty.\n", //
+            "-", "");
+    }
+
+    /**
+     * <testcase> Test that an empty file name is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEmpty3() throws Exception {
+
+        runFailure(BANNER + "The file argument can not be empty.\n", //
+            "--", "");
     }
 
     /**
@@ -467,6 +505,44 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>-?</tt> works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testHelp2() throws Exception {
+
+        runFailure(
+            BANNER
+                    + "Usage: exbib <options> file\n"
+                    + "The following options are supported:\n"
+                    + "\t-help\n"
+                    + "\t    Show a short list of command line arguments. \n"
+                    + "\t-copying\n"
+                    + "\t    Display the copyright conditions. \n"
+                    + "\t-quiet\n"
+                    + "\t-terse\n"
+                    + "\t    Act quietly; some informative messages are suppressed. \n"
+                    + "\t-verbose\n"
+                    + "\t    Act verbosely; some additional informational messages are displayed. \n"
+                    + "\t-trace\n"
+                    + "\t    Show a detailed trace of many operations. \n"
+                    + "\t-version\n"
+                    + "\t    Print the version information and exit. \n"
+                    + "\t-release\n"
+                    + "\t    Print the release number and exit. \n"
+                    + "\t-strict\n"
+                    + "\t    use the settings for BibTeX 0.99c. \n"
+                    + "\t-config file\n"
+                    + "\t-minCrossrefs value\n"
+                    + "\t    Set the value for min.crossrefs. The default is 2. \n"
+                    + "\t-bst style\n" + "\t-logfile file\n"
+                    + "\t-outfile file\n", //
+            "-?");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--logfile</tt> needs
      * an argument. </testcase>
      * 
@@ -501,7 +577,7 @@ public class ExBibTest extends BibTester {
                     runTest(
                         "test",
                         "",
-                        1,
+                        CLI.EXIT_FAIL,
                         Check.EQ,
                         BANNER
                                 + "I found no style file while reading test.aux\n"
@@ -528,7 +604,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLogfile03() throws Exception {
 
-        runTest("test", "", 1, Check.EQ, BANNER
+        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
@@ -594,6 +670,29 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--min.crossrefs</tt>
+     * stores its numeric argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMinCrossrefs5() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{*}\n"
+                            + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                    CLI.EXIT_OK, //
+                    Check.EQ, //
+                    BANNER + "Warning: empty author in whole-journal\n"
+                            + "Warning: empty title in whole-journal\n", //
+                    "test.aux", "--min.crossrefs", "3");
+        assertEquals(3, exbib.getMinCrossrefs());
+    }
+
+    /**
      * <testcase> Test that everything might go right. </testcase>
      * 
      * @throws Exception in case of an error
@@ -607,7 +706,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, Check.EQ, BANNER
+                    CLI.EXIT_OK, Check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux");
@@ -775,7 +874,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, Check.EQ, null, //
+                    CLI.EXIT_OK, Check.EQ, null, //
                     "--progname", "xxx", "test.aux");
         assertEquals("xxx", exbib.getProgramName());
     }
@@ -835,7 +934,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0, Check.EQ, BANNER
+                    CLI.EXIT_OK, Check.EQ, BANNER
                             + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--strict");
@@ -876,7 +975,7 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    0,
+                    CLI.EXIT_OK,
                     Check.START, //
                     BANNER
                             + "The output file: test.bbl\n"
@@ -911,9 +1010,23 @@ public class ExBibTest extends BibTester {
     @Test
     public void testUndefined1() throws Exception {
 
-        runFailure(BANNER + "Unknown option `undefined\' ignored.\n"
+        runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
                 + "Missing aux file parameter.\n", //
             "--undefined");
+    }
+
+    /**
+     * <testcase> Test that an undefined command line option is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testUndefined2() throws Exception {
+
+        runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
+                + "Missing aux file parameter.\n", //
+            "--undefined=123");
     }
 
     /**
@@ -932,7 +1045,7 @@ public class ExBibTest extends BibTester {
             "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-            0,
+            CLI.EXIT_OK,
             Check.REGEX,
             BANNER
                     + "The output file: test.bbl\n"
