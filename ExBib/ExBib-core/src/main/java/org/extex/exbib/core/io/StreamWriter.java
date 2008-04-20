@@ -39,8 +39,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  */
 public class StreamWriter implements Writer, Configurable {
 
-    /** the internal output stream */
-    private OutputStreamWriter theStream = null;
+    /**
+     * The field <tt>writer</tt> contains the output writer.
+     */
+    private OutputStreamWriter writer = null;
 
     /**
      * Creates a new object.
@@ -57,9 +59,9 @@ public class StreamWriter implements Writer, Configurable {
         super();
 
         if (encoding == null) {
-            theStream = new OutputStreamWriter(stream);
+            writer = new OutputStreamWriter(stream);
         } else {
-            theStream = new OutputStreamWriter(stream, encoding);
+            writer = new OutputStreamWriter(stream, encoding);
         }
     }
 
@@ -83,9 +85,9 @@ public class StreamWriter implements Writer, Configurable {
         FileOutputStream stream = new FileOutputStream(file);
 
         if (encoding == null) {
-            theStream = new OutputStreamWriter(stream);
+            writer = new OutputStreamWriter(stream);
         } else {
-            theStream = new OutputStreamWriter(stream, encoding);
+            writer = new OutputStreamWriter(stream, encoding);
         }
     }
 
@@ -96,7 +98,7 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void close() throws IOException {
 
-        theStream.close();
+        writer.close();
     }
 
     /**
@@ -117,7 +119,7 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void flush() throws IOException {
 
-        theStream.flush();
+        writer.flush();
     }
 
     /**
@@ -127,7 +129,7 @@ public class StreamWriter implements Writer, Configurable {
      */
     public PrintWriter getPrintWriter() {
 
-        return new PrintWriter(theStream, true);
+        return new PrintWriter(writer, true);
     }
 
     /**
@@ -137,7 +139,7 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void print(String s) throws IOException {
 
-        theStream.write(s);
+        writer.write(s);
     }
 
     /**
@@ -148,8 +150,8 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void print(String s1, String s2) throws IOException {
 
-        theStream.write(s1);
-        theStream.write(s2);
+        writer.write(s1);
+        writer.write(s2);
     }
 
     /**
@@ -160,9 +162,9 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void print(String s1, String s2, String s3) throws IOException {
 
-        theStream.write(s1);
-        theStream.write(s2);
-        theStream.write(s3);
+        writer.write(s1);
+        writer.write(s2);
+        writer.write(s3);
     }
 
     /**
@@ -172,7 +174,7 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void println() throws IOException {
 
-        theStream.write("\n");
+        writer.write("\n");
     }
 
     /**
@@ -182,8 +184,8 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void println(String s) throws IOException {
 
-        theStream.write(s);
-        theStream.write("\n");
+        writer.write(s);
+        writer.write("\n");
     }
 
     /**
@@ -194,9 +196,9 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void println(String s1, String s2) throws IOException {
 
-        theStream.write(s1);
-        theStream.write(s2);
-        theStream.write("\n");
+        writer.write(s1);
+        writer.write(s2);
+        writer.write("\n");
     }
 
     /**
@@ -207,10 +209,10 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void println(String s1, String s2, String s3) throws IOException {
 
-        theStream.write(s1);
-        theStream.write(s2);
-        theStream.write(s3);
-        theStream.write("\n");
+        writer.write(s1);
+        writer.write(s2);
+        writer.write(s3);
+        writer.write("\n");
     }
 
     /**
@@ -220,6 +222,6 @@ public class StreamWriter implements Writer, Configurable {
      */
     public void write(int c) throws IOException {
 
-        theStream.write(c);
+        writer.write(c);
     }
 }
