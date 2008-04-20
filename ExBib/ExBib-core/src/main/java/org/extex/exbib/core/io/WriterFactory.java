@@ -23,10 +23,12 @@ package org.extex.exbib.core.io;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 
 /**
  * This class provides some methods to get a new instance of some kind of
@@ -63,8 +65,11 @@ public class WriterFactory extends AbstractFactory {
      * Creates a new object.
      * 
      * @param config the configuration
+     * 
+     * @throws UnsupportedEncodingException in case of an undefined encoding
      */
-    public WriterFactory(Configuration config) {
+    public WriterFactory(Configuration config)
+            throws UnsupportedEncodingException {
 
         super();
         configure(config);
@@ -82,6 +87,10 @@ public class WriterFactory extends AbstractFactory {
 
         super.configure(configuration);
         encoding = configuration.getAttribute("encoding");
+        if (encoding != null && !Charset.isSupported(encoding)) {
+            throw new ConfigurationUnsupportedEncodingException(encoding,
+                configuration.toString());
+        }
     }
 
     /**
@@ -193,13 +202,39 @@ public class WriterFactory extends AbstractFactory {
     }
 
     /**
-     * Setter for encoding.
+     * Setter for the encoding. The encoding is one of the supported charset
+     * names of the Java platform. At least the following values are guaranteed
+     * to be supported:
+     * <dl>
+     * <dt>US-ASCII</dt>
+     * <dd>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of
+     * the Unicode character set</dd>
+     * <dt>ISO-8859-1</dt>
+     * <dd>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1</dd>
+     * <dt>UTF-8</dt>
+     * <dd>Eight-bit UCS Transformation Format</dd>
+     * <dt>UTF-16BE</dt>
+     * <dd>Sixteen-bit UCS Transformation Format, big-endian byte order</dd>
+     * <dt>UTF-16LE</dt>
+     * <dd>Sixteen-bit UCS Transformation Format, little-endian byte order</dd>
+     * <dt>UTF-16</dt>
+     * <dd>Sixteen-bit UCS Transformation Format, byte order identified by an
+     * optional byte-order mark</dd>
+     * </dl>
      * 
-     * @param encoding the encoding to set
+     * @param encoding the encoding to set; it can be <code>null</code> to
+     *        indicate the platform default encoding
+     * 
+     * @throws UnsupportedEncodingException in case of an unsupported encoding
+     *         name
      */
-    public void setEncoding(String encoding) {
+    public void setEncoding(String encoding)
+            throws UnsupportedEncodingException {
 
         this.encoding = encoding;
+        if (encoding != null && !Charset.isSupported(encoding)) {
+            throw new UnsupportedEncodingException(encoding);
+        }
     }
 
 }
