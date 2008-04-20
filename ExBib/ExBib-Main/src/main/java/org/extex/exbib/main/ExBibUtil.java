@@ -45,12 +45,12 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 
 /**
- * Reformat a bibliography.
+ * ExBibUtil a bibliography.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public final class Reformat extends AbstractMain {
+public final class ExBibUtil extends AbstractMain {
 
     /**
      * The field <tt>PROGNAME</tt> contains the name of the program.
@@ -78,9 +78,9 @@ public final class Reformat extends AbstractMain {
     public static int commandLine(String[] argv) {
 
         try {
-            return new Reformat().processCommandLine(argv);
+            return new ExBibUtil().processCommandLine(argv);
         } catch (RuntimeException e) {
-            Logger logger = Logger.getLogger(Reformat.class.getName());
+            Logger logger = Logger.getLogger(ExBibUtil.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
             Handler consoleHandler = new ConsoleHandler();
@@ -123,7 +123,7 @@ public final class Reformat extends AbstractMain {
     /**
      * Creates a new object.
      */
-    private Reformat() {
+    private ExBibUtil() {
 
         super(PROGNAME, VERSION, INCEPTION_YEAR);
 
