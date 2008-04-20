@@ -29,13 +29,35 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class provides some static methods to get a new instance of some kind of
+ * This class provides some methods to get a new instance of some kind of
  * writer.
+ * 
+ * <h3>Configuration</h3>
+ * <p>
+ * The configuration of the factory is passed on to the writer created. Thus is
+ * can be used to influence their behavior.
+ * </p>
+ * <p>
+ * The configuration can contain some attributes which are used ba the factory
+ * itself.
+ * </p>
+ * <dl>
+ * <dt>encoding</dt>
+ * <dd>The encoding attribute can name the encoding to be used for the writers.
+ * If the attribute is not present then the default encoding of the current
+ * platform is used.</dd>
+ * </dl>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
 public class WriterFactory extends AbstractFactory {
+
+    /**
+     * The field <tt>encoding</tt> contains the encoding to use for writing.
+     */
+    private String encoding = null;
 
     /**
      * Creates a new object.
@@ -46,6 +68,20 @@ public class WriterFactory extends AbstractFactory {
 
         super();
         configure(config);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.AbstractFactory#configure(
+     *      org.extex.framework.configuration.Configuration)
+     */
+    @Override
+    public void configure(Configuration configuration)
+            throws ConfigurationException {
+
+        super.configure(configuration);
+        encoding = configuration.getAttribute("encoding");
     }
 
     /**
@@ -67,7 +103,8 @@ public class WriterFactory extends AbstractFactory {
      * 
      * @param stream the PrintStream to write to
      * 
-     * @return a new StreamWriter or a new NullWriter if the stream is null
+     * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
+     *         stream is <code>null</code>
      * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -79,7 +116,7 @@ public class WriterFactory extends AbstractFactory {
         Writer writer =
                 (stream == null
                         ? (Writer) new NullWriter()
-                        : (Writer) new StreamWriter(stream, null));
+                        : (Writer) new StreamWriter(stream, encoding));
         writer.configure(getConfiguration());
         return writer;
     }
@@ -89,7 +126,8 @@ public class WriterFactory extends AbstractFactory {
      * 
      * @param file the name of the file to print to
      * 
-     * @return a new StreamWriter or a new NullWriter if the file is null
+     * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
+     *         file is <code>null</code>
      * 
      * @throws FileNotFoundException in case that the file cound not be opened
      * @throws UnsupportedEncodingException in case of an unknown encoding
@@ -104,7 +142,7 @@ public class WriterFactory extends AbstractFactory {
             return new NullWriter();
         }
 
-        Writer writer = new StreamWriter(file, null);
+        Writer writer = new StreamWriter(file, encoding);
         writer.configure(getConfiguration());
         return writer;
     }
@@ -132,9 +170,9 @@ public class WriterFactory extends AbstractFactory {
      * @param a the first writer
      * @param b the second writer
      * 
-     * @return a new multi writer if both writers are not null; one of the
-     *         writers if the other one is null; a new NullWriter if both are
-     *         null
+     * @return a new multi writer if both writers are not <code>null</code>;
+     *         one of the writers if the other one is <code>null</code>; a
+     *         new {@link NullWriter} if both are <code>null</code>
      * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -152,6 +190,16 @@ public class WriterFactory extends AbstractFactory {
         Writer writer = new MultiWriter(a, b);
         writer.configure(getConfiguration());
         return writer;
+    }
+
+    /**
+     * Setter for encoding.
+     * 
+     * @param encoding the encoding to set
+     */
+    public void setEncoding(String encoding) {
+
+        this.encoding = encoding;
     }
 
 }
