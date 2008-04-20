@@ -47,11 +47,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BblWriterFactory extends AbstractFactory {
 
     /**
-     * The field <tt>config</tt> contains the configuration.
-     */
-    private Configuration config;
-
-    /**
      * Creates a new object.
      * 
      * @param config the configuration
@@ -61,7 +56,7 @@ public class BblWriterFactory extends AbstractFactory {
     public BblWriterFactory(Configuration config) throws ConfigurationException {
 
         super();
-        this.config = config;
+        configure(config);
     }
 
     /**
@@ -76,7 +71,7 @@ public class BblWriterFactory extends AbstractFactory {
     public synchronized Writer newInstance(Writer targetWriter)
             throws ConfigurationException {
 
-        return (BblWriter) createInstanceForConfiguration(config,
+        return (BblWriter) createInstanceForConfiguration(getConfiguration(),
             BblWriter.class, targetWriter);
     }
 }
