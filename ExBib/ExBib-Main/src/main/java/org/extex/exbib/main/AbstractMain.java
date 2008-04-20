@@ -32,6 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.main.cli.CLI;
+import org.extex.exbib.main.cli.Option;
 
 /**
  * This is an abstract base class for main programs.
@@ -311,6 +312,21 @@ public class AbstractMain extends CLI {
     public void setProgramName(String programName) {
 
         this.programName = programName;
+    }
+
+    /**
+     * Declare an option for the argument given and one with a hyphen prefixed
+     * for each name given.
+     * 
+     * @param opt the option
+     * @param nameList the list of names
+     */
+    protected void option(Option opt, String... nameList) {
+    
+        for (String name : nameList) {
+            declare(name, opt);
+            declare("-" + name, opt);
+        }
     }
 
 }

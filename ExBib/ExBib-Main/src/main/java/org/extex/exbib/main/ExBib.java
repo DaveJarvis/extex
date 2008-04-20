@@ -59,7 +59,6 @@ import org.extex.exbib.main.bibtex.TracingObserver;
 import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.NumberOption;
-import org.extex.exbib.main.cli.Option;
 import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
 import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
@@ -612,21 +611,6 @@ public class ExBib extends AbstractMain {
         }
 
         return new BblWriterFactory(configuration).newInstance(writer);
-    }
-
-    /**
-     * Declare an option for the argument given and one with a hyphen prefixed
-     * for each name given.
-     * 
-     * @param opt the option
-     * @param nameList the list of names
-     */
-    private void option(Option opt, String... nameList) {
-
-        for (String name : nameList) {
-            declare(name, opt);
-            declare("-" + name, opt);
-        }
     }
 
     /**
