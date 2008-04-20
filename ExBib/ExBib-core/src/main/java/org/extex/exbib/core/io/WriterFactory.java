@@ -38,7 +38,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * can be used to influence their behavior.
  * </p>
  * <p>
- * The configuration can contain some attributes which are used ba the factory
+ * The configuration can contain some attributes which are used by the factory
  * itself.
  * </p>
  * <dl>
