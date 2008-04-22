@@ -53,11 +53,21 @@
     <pack name="ExBib Core" id="exbib-core" required="yes">
       <description/>
       <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
+
       <file src="src/bin/exbib" targetdir="$INSTALL_PATH/bin"/>
       <executable targetfile="$INSTALL_PATH/bin/exbib"/>
+
       <file src="src/bin/exbib.bat" targetdir="$INSTALL_PATH/bin"/>
       <parsable targetfile="$INSTALL_PATH/bin/exbib.bat"/>
       <executable targetfile="$INSTALL_PATH/bin/exbib.bat"/>
+
+      <file src="src/bin/exbibutil" targetdir="$INSTALL_PATH/bin"/>
+      <executable targetfile="$INSTALL_PATH/bin/exbibutil"/>
+
+      <file src="src/bin/exbibutil.bat" targetdir="$INSTALL_PATH/bin"/>
+      <parsable targetfile="$INSTALL_PATH/bin/exbibutil.bat"/>
+      <executable targetfile="$INSTALL_PATH/bin/exbibutil.bat"/>
+
       <file src="../../ExTeX-resource/target/ExTeX-resource-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
       <file src="../ExBib-core/target/ExBib-core-0.1-SNAPSHOT.jar"
