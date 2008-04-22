@@ -33,6 +33,11 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.cli.Option;
+import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
+import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
+import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
+import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an abstract base class for main programs.
@@ -40,7 +45,7 @@ import org.extex.exbib.main.cli.Option;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AbstractMain extends CLI {
+public abstract class AbstractMain extends CLI {
 
     /**
      * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource
@@ -107,6 +112,9 @@ public class AbstractMain extends CLI {
      */
     public void close() {
 
+        if (logger == null) {
+            return;
+        }
         for (Handler h : logger.getHandlers()) {
             h.close();
             logger.removeHandler(h);
@@ -295,6 +303,66 @@ public class AbstractMain extends CLI {
     }
 
     /**
+     * Declare an option for the argument given and one with a hyphen prefixed
+     * for each name given.
+     * 
+     * @param opt the option
+     * @param nameList the list of names
+     */
+    protected void option(Option opt, String... nameList) {
+
+        for (String name : nameList) {
+            declare(name, opt);
+            declare("-" + name, opt);
+        }
+    }
+
+    /**
+     * Process the list of string as command line parameters.
+     * 
+     * @param argv the command line parameters
+     * 
+     * @return the exit code; i.e. 0 iff everything went fine
+     */
+    protected int processCommandLine(String[] argv) {
+
+        try {
+            int ret = run(argv);
+            if (ret != EXIT_CONTINUE) {
+                return ret;
+            }
+        } catch (UnknownOptionCliException e) {
+            logBanner("unknown.option", e.getMessage());
+        } catch (MissingArgumentCliException e) {
+            return logBanner("missing.option", e.getMessage());
+        } catch (NonNumericArgumentCliException e) {
+            return logBanner("non-numeric.option", e.getMessage());
+        } catch (UnusedArgumentCliException e) {
+            return logBanner("unused.option.argument", e.getMessage());
+        }
+
+        try {
+
+            return run();
+
+        } catch (ConfigurationException e) {
+            return logBanner("configuration.error", e.getLocalizedMessage());
+        } catch (IOException e) {
+            return logBanner("io.error", e.toString());
+        }
+    }
+
+    /**
+     * Invoke the processing core.
+     * 
+     * @return the exit code
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ConfigurationException in case of a configuration error
+     */
+    protected abstract int run() throws IOException, ConfigurationException;
+
+    /**
      * Setter for logger.
      * 
      * @param logger the logger to set
@@ -312,21 +380,6 @@ public class AbstractMain extends CLI {
     public void setProgramName(String programName) {
 
         this.programName = programName;
-    }
-
-    /**
-     * Declare an option for the argument given and one with a hyphen prefixed
-     * for each name given.
-     * 
-     * @param opt the option
-     * @param nameList the list of names
-     */
-    protected void option(Option opt, String... nameList) {
-    
-        for (String name : nameList) {
-            declare(name, opt);
-            declare("-" + name, opt);
-        }
     }
 
 }

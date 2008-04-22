@@ -60,8 +60,6 @@ import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.NumberOption;
 import org.extex.exbib.main.cli.StringOption;
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
 import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.main.util.LogFormatter;
@@ -181,7 +179,7 @@ public class ExBib extends AbstractMain {
      */
     protected static int commandLine(String[] argv) {
 
-        ExBib exBib = null;
+        AbstractMain exBib = null;
         try {
             exBib = new ExBib();
             return exBib.processCommandLine(argv);
@@ -458,7 +456,7 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-quiet");
+        }, "-quiet", "-terse");
         option(new NoArgOption("opt.release") {
 
             @Override
@@ -489,16 +487,6 @@ public class ExBib extends AbstractMain {
             }
 
         }, "-trace");
-        option(new NoArgOption("opt.terse") {
-
-            @Override
-            protected int run(String arg) {
-
-                consoleHandler.setLevel(Level.SEVERE);
-                return EXIT_CONTINUE;
-            }
-
-        }, "-terse");
         option(new NoArgOption("opt.verbose") {
 
             @Override
@@ -614,45 +602,8 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * Process the list of string as command line parameters.
-     * 
-     * @param argv the command line parameters
-     * 
-     * @return the exit code; i.e. 0 iff everything went fine
-     */
-    protected int processCommandLine(String[] argv) {
-
-        try {
-            int ret = run(argv);
-            if (ret != EXIT_CONTINUE) {
-                return ret;
-            }
-        } catch (UnknownOptionCliException e) {
-            logBanner("unknown.option", e.getMessage());
-        } catch (MissingArgumentCliException e) {
-            return logBanner("missing.option", e.getMessage());
-        } catch (NonNumericArgumentCliException e) {
-            return logBanner("non-numeric.option", e.getMessage());
-        } catch (UnusedArgumentCliException e) {
-            return logBanner("unused.option.argument", e.getMessage());
-        }
-
-        try {
-
-            return run(file);
-
-        } catch (ConfigurationException e) {
-            return logBanner("configuration.error", e.getLocalizedMessage());
-        } catch (IOException e) {
-            return logBanner("io.error", e.toString());
-        }
-    }
-
-    /**
      * This is the top level of the BibT<sub>E</sub>X engine. When all
      * parameters are present then this method can be invoked.
-     * 
-     * @param resourceName the name of the input file (part of)
      * 
      * @return <code>true</code> iff an error has occurred
      * 
@@ -660,9 +611,8 @@ public class ExBib extends AbstractMain {
      * @throws ConfigurationException in case that the top-level configuration
      *         could not be found
      */
-    public int run(String resourceName)
-            throws IOException,
-                ConfigurationException {
+    @Override
+    public int run() throws IOException, ConfigurationException {
 
         long time = System.currentTimeMillis();
         Configuration topConfiguration =
@@ -671,10 +621,10 @@ public class ExBib extends AbstractMain {
                 new ResourceFinderFactory().createResourceFinder(
                     topConfiguration.getConfiguration("Resource"), getLogger(),
                     System.getProperties(), null);
-        if (resourceName == null) {
+        if (file == null) {
             return logBanner("missing.file");
         }
-        String file = stripExtension(resourceName, AUX_FILE_EXTENSION);
+        file = stripExtension(file, AUX_FILE_EXTENSION);
 
         runAttachLogFile(file);
         logBanner(false);
@@ -798,13 +748,12 @@ public class ExBib extends AbstractMain {
             getLogger().severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
         } catch (ConfigurationWrapperException e) {
-            return logException(e, "installation.error", debug);
+            return logException(e.getCause(), "installation.error", debug);
         } catch (ConfigurationException e) {
             return logException(e, "installation.error", debug);
         } catch (NoClassDefFoundError e) {
             return logException(e, "installation.error", debug);
         } catch (Exception e) {
-            // e.printStackTrace();
             return logException(e, "internal.error", debug);
         } finally {
             if (writer != null) {
