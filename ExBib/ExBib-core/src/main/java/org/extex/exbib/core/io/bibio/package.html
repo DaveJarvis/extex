@@ -81,15 +81,17 @@
    Now we are ready to parse the bib file and load the entries found into the
    data base.
   </p>
-  <pre>
-  r.load(db); </pre>
-  <p>
-   Finally the entries have made it into the database.
-  </p>
-  <pre>
-  r.close(); </pre>
   <p>
    The reader is closed to free any resources which might still be allocated.
+  </p>
+  <pre>
+  try {
+      r.load(db); </pre>
+  } finally {
+      r.close();
+  } </pre>
+  <p>
+   Finally the entries have made it into the database.
   </p>
     
 </body>

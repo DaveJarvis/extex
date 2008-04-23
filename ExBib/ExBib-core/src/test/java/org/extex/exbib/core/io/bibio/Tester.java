@@ -20,6 +20,7 @@
 package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.impl.DBImpl;
@@ -30,7 +31,7 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a utility class for tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -45,10 +46,12 @@ public class Tester {
      * @return the database
      * 
      * @throws FileNotFoundException if the file could not be opened for reading
+     * @throws IOException in case of an I/O error
      * @throws ExBibException in case of an error
      */
     public static DB loadBib(String bibFile)
             throws FileNotFoundException,
+                IOException,
                 ExBibException {
 
         Configuration cfg =
@@ -60,7 +63,11 @@ public class Tester {
         r.setResourceFinder(finder);
         r.open(bibFile);
         DB db = new DBImpl();
-        r.load(db);
+        try {
+            r.load(db);
+        } finally {
+            r.close();
+        }
         return db;
     }
 
