@@ -21,6 +21,7 @@
 package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -34,6 +35,14 @@ import org.extex.resource.ResourceAware;
  * @version $Revision: 1.2 $
  */
 public interface BibReader extends ResourceAware {
+
+    /**
+     * Close the current reader without destroying it. No further reading can be
+     * performed.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    void close() throws IOException;
 
     /**
      * Perform the loading into a database. The source given to the constructor
