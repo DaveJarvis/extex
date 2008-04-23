@@ -143,17 +143,17 @@ public abstract class AbstractFactory
     /**
      * Configure an object according to a given Configuration.
      * 
-     * @param theConfiguration the configuration object to consider
+     * @param configuration the configuration object to consider
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration theConfiguration)
+    public void configure(Configuration configuration)
             throws ConfigurationException {
 
-        configuration = theConfiguration;
+        this.configuration = configuration;
     }
 
     /**
@@ -176,6 +176,23 @@ public abstract class AbstractFactory
      * configuration. The selection is done with the help of a type String. If
      * the type is <code>null</code> or the empty string then the default from
      * the configuration is used.
+     * 
+     * @param target the expected class or interface
+     * @param arg the argument for the constructor
+     * 
+     * @return a new instance
+     * 
+     * @throws ConfigurationException in case of an configuration error
+     */
+    protected Object createInstance(Class<?> target, Object arg)
+            throws ConfigurationException {
+
+        return createInstanceForConfiguration(configuration, target, arg);
+    }
+
+    /**
+     * Create a new instance for a given configuration with an additional
+     * argument for the constructor.
      * 
      * @param type the type to use
      * @param target the expected class or interface
