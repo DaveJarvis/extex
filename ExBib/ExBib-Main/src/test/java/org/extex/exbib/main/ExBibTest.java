@@ -300,6 +300,198 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that an aux file contained in an aux file is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux41() throws Exception {
+
+        File aux = new File(".", "test.aux");
+        File aux2 = new File(".", "test2.aux");
+        Writer w = new FileWriter(aux2);
+        try {
+            w.write("\\relax\n");
+        } finally {
+            w.close();
+        }
+
+        try {
+            runTest(
+                "test",
+                "\\citation{*}\n" //
+                        + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
+                        + "\\@include{test2}\n"
+                        + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                0,
+                Check.START,
+                BANNER //
+                        + "The output file: test.bbl\n"
+                        + "The top-level auxiliary file: "
+                        + aux.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                        + "Database file #1: src/test/resources/bibtex/base/xampl\n"
+                        + "Warning: empty author in whole-journal\n"
+                        + "Warning: empty title in whole-journal\n"
+                        + "(There were 2 warnings)\n", "-v", "test.aux");
+        } finally {
+            if (aux2.exists() && !aux2.delete()) {
+                assertTrue(aux2.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
+     * <testcase> Test that an aux file contained in an aux file twice is
+     * reported twice. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux42() throws Exception {
+
+        File aux = new File(".", "test.aux");
+        File aux2 = new File(".", "test2.aux");
+        Writer w = new FileWriter(aux2);
+        try {
+            w.write("\\relax\n");
+        } finally {
+            w.close();
+        }
+
+        try {
+            runTest(
+                "test",
+                "\\citation{*}\n" //
+                        + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
+                        + "\\@include{test2}\n"
+                        + "\\@include{test2}\n"
+                        + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                0,
+                Check.START,
+                BANNER //
+                        + "The output file: test.bbl\n"
+                        + "The top-level auxiliary file: "
+                        + aux.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                        + "Database file #1: src/test/resources/bibtex/base/xampl\n"
+                        + "Warning: empty author in whole-journal\n"
+                        + "Warning: empty title in whole-journal\n"
+                        + "(There were 2 warnings)\n", "-v", "test.aux");
+        } finally {
+            if (aux2.exists() && !aux2.delete()) {
+                assertTrue(aux2.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
+     * <testcase> Test that an aux file contained in an aux file thrice is
+     * reported thrice. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux43() throws Exception {
+
+        File aux = new File(".", "test.aux");
+        File aux2 = new File(".", "test2.aux");
+        Writer w = new FileWriter(aux2);
+        try {
+            w.write("\\relax\n");
+        } finally {
+            w.close();
+        }
+
+        try {
+            runTest(
+                "test",
+                "\\citation{*}\n" //
+                        + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
+                        + "\\@include{test2}\n"
+                        + "\\@include{test2}\n"
+                        + "\\@include{test2}\n"
+                        + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                0,
+                Check.START,
+                BANNER //
+                        + "The output file: test.bbl\n"
+                        + "The top-level auxiliary file: "
+                        + aux.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n"
+                        + "The style file src/test/resources/bibtex/base/plain.bst\n"
+                        + "Database file #1: src/test/resources/bibtex/base/xampl\n"
+                        + "Warning: empty author in whole-journal\n"
+                        + "Warning: empty title in whole-journal\n"
+                        + "(There were 2 warnings)\n", "-v", "test.aux");
+        } finally {
+            if (aux2.exists() && !aux2.delete()) {
+                assertTrue(aux2.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
+     * <testcase> Test that a non-existing aux file contained in an aux file is
+     * reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux44() throws Exception {
+
+        File aux = new File(".", "test.aux");
+        File aux2 = new File(".", "test2.aux");
+        Writer w = new FileWriter(aux2);
+        try {
+            w.write("\\relax\n");
+            w.write("\\@include{xyzzy}\n");
+        } finally {
+            w.close();
+        }
+
+        try {
+            runTest("test", "\\citation{*}\n" //
+                    + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
+                    + "\\@include{test2}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+                CLI.EXIT_FAIL, Check.EQ, BANNER //
+                        + "The output file: test.bbl\n"
+                        + "The top-level auxiliary file: "
+                        + aux.toString()
+                        + "\n" + "A level-1 auxiliary file: "
+                        + aux2.toString()
+                        + "\n" + "I couldn\'t open file xyzzy.aux\n", "-v",
+                "test.aux");
+        } finally {
+            if (aux2.exists() && !aux2.delete()) {
+                assertTrue(aux2.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--bst</tt> needs an
      * argument. </testcase>
      * 
