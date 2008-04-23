@@ -22,6 +22,7 @@ package org.extex.exbib.main;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
@@ -216,6 +217,20 @@ public final class ExBibUtil extends AbstractMain {
             }
 
         }, "-");
+        option(new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) {
+
+                Logger logger = getLogger();
+                for (String s : Charset.availableCharsets().keySet()) {
+                    logger.severe(s + "\n");
+                }
+
+                return EXIT_FAIL;
+            }
+
+        }, "-availableCharsets");
         option(new StringOption("opt.config") {
 
             @Override

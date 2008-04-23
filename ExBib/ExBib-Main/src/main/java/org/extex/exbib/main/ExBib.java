@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
@@ -354,6 +355,20 @@ public class ExBib extends AbstractMain {
             }
 
         }, "-");
+        option(new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) {
+
+                Logger logger = getLogger();
+                for (String s : Charset.availableCharsets().keySet()) {
+                    logger.severe(s + "\n");
+                }
+
+                return EXIT_FAIL;
+            }
+
+        }, "-availableCharsets");
         option(new StringOption("opt.bst") {
 
             @Override
