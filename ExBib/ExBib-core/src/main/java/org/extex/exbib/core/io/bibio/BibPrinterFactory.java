@@ -20,13 +20,10 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-
 import org.extex.exbib.core.io.Writer;
+import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
@@ -46,54 +43,17 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BibPrinterFactory {
-
-    /** the configuration information for this class */
-    private Configuration config;
+public class BibPrinterFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
      * 
-     * @param cfg the configuration
+     * @param configuration the configuration
      */
-    public BibPrinterFactory(Configuration cfg) {
+    public BibPrinterFactory(Configuration configuration) {
 
         super();
-        config = cfg;
-    }
-
-    /**
-     * Create a new instance of a BibPrinter and return it. This BibPrinter is
-     * set up to print to a given file.
-     * 
-     * @param file the file to print to
-     * @param encoding the encoding for the file
-     * 
-     * @return the new BibPrinter
-     * 
-     * @throws ConfigurationException in case that the configuration is invalid
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for writing
-     */
-    public synchronized BibPrinter newInstance(String file, String encoding)
-            throws ConfigurationException,
-                FileNotFoundException {
-
-        BibPrinter bibPrinter;
-
-        try {
-            bibPrinter =
-                    (BibPrinter) Class.forName(config.getAttribute("class"))
-                        .newInstance();
-            bibPrinter.setDestination(file, encoding);
-        } catch (UnsupportedEncodingException e) {
-            throw new ConfigurationUnsupportedEncodingException(e.getMessage(),
-                "");
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
-
-        return bibPrinter;
+        configure(configuration);
     }
 
     /**
@@ -110,20 +70,15 @@ public class BibPrinterFactory {
     public BibPrinter newInstance(Writer writer, String encoding)
             throws ConfigurationException {
 
-        BibPrinter bibPrinter;
-
         try {
-            bibPrinter =
-                    (BibPrinter) Class.forName(config.getAttribute("class"))
-                        .newInstance();
-            bibPrinter.setDestination(writer);
-        } catch (UnsupportedEncodingException e) {
-            throw new ConfigurationUnsupportedEncodingException(e.getMessage(),
-                "");
+            return (BibPrinter) createInstance(BibPrinter.class, writer);
+            // } catch (UnsupportedEncodingException e) {
+            // throw new
+            // ConfigurationUnsupportedEncodingException(e.getMessage(),
+            // "");
         } catch (Exception e) {
             throw new ConfigurationWrapperException(e);
         }
-
-        return bibPrinter;
     }
+
 }

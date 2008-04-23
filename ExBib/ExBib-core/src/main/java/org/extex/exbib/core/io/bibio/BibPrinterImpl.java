@@ -20,9 +20,7 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,7 +33,6 @@ import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.ValueItem;
 import org.extex.exbib.core.db.ValueVisitor;
-import org.extex.exbib.core.io.StreamWriter;
 import org.extex.exbib.core.io.Writer;
 
 /**
@@ -48,16 +45,19 @@ import org.extex.exbib.core.io.Writer;
 public class BibPrinterImpl implements BibPrinter, ValueVisitor {
 
     /**
-     * The field <tt>theWriter</tt> contains the target writer.
+     * The field <tt>writer</tt> contains the target writer.
      */
-    private Writer theWriter;
+    private Writer writer;
 
     /**
      * Creates a new object.
+     * 
+     * @param writer the target writer
      */
-    public BibPrinterImpl() {
+    public BibPrinterImpl(Writer writer) {
 
         super();
+        this.writer = writer;
     }
 
     /**
@@ -69,16 +69,16 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
      */
     public void print(DB db) throws IOException {
 
-        if (theWriter == null) {
+        if (writer == null) {
             return;
         }
 
         Value preamble = db.getPreamble();
 
         if (preamble != null && !preamble.isEmpty()) {
-            theWriter.print("@Preamble{");
+            writer.print("@Preamble{");
             preamble.visit(this, db);
-            theWriter.print("}\n\n");
+            writer.print("}\n\n");
         }
 
         List<String> macros = db.getMacroNames();
@@ -86,55 +86,27 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
 
         while (iterator.hasNext()) {
             String name = iterator.next();
-            theWriter.print("@String{", name, " = ");
+            writer.print("@String{", name, " = ");
             db.getMacro(name).visit(this, db);
-            theWriter.print("}\n");
+            writer.print("}\n");
         }
 
         Iterator<Entry> entryIterator = db.getEntries().iterator();
 
         while (entryIterator.hasNext()) {
             Entry e = entryIterator.next();
-            theWriter.print("\n@", e.getType(), "{ ");
-            theWriter.print(e.getKey());
+            writer.print("\n@", e.getType(), "{ ");
+            writer.print(e.getKey());
             iterator = e.getKeys().iterator();
 
             while (iterator.hasNext()) {
                 String key = iterator.next();
-                theWriter.print(",\n\t", key, " = ");
+                writer.print(",\n\t", key, " = ");
                 e.get(key).visit(this, db);
             }
 
-            theWriter.print("\n}\n");
+            writer.print("\n}\n");
         }
-    }
-
-    /**
-     * Setter for the target.
-     * 
-     * @param file the file to write to
-     * @param encoding the encoding name
-     * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for writing
-     * @throws UnsupportedEncodingException in case that the given encoding is
-     *         unknown
-     */
-    public void setDestination(String file, String encoding)
-            throws FileNotFoundException,
-                UnsupportedEncodingException {
-
-        theWriter = new StreamWriter(file, encoding);
-    }
-
-    /**
-     * Setter for the writer.
-     * 
-     * @param writer the new writer to be used
-     */
-    public void setDestination(Writer writer) {
-
-        theWriter = writer;
     }
 
     /**
@@ -145,7 +117,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
      */
     public void visitBlock(VBlock value, DB db) throws IOException {
 
-        theWriter.print("{", value.getContent(), "}");
+        writer.print("{", value.getContent(), "}");
     }
 
     /**
@@ -156,7 +128,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
      */
     public void visitMacro(VMacro value, DB db) throws IOException {
 
-        theWriter.print(value.getContent());
+        writer.print(value.getContent());
     }
 
     /**
@@ -167,7 +139,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
      */
     public void visitNumber(VNumber value, DB db) throws IOException {
 
-        theWriter.print(value.getContent());
+        writer.print(value.getContent());
     }
 
     /**
@@ -178,7 +150,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
      */
     public void visitString(VString value, DB db) throws IOException {
 
-        theWriter.print("\"", value.getContent(), "\"");
+        writer.print("\"", value.getContent(), "\"");
     }
 
     /**
@@ -196,7 +168,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
             if (first) {
                 first = false;
             } else {
-                theWriter.print(" # ");
+                writer.print(" # ");
             }
 
             iterator.next().visit(this, db);

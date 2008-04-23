@@ -665,7 +665,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
 
         for (String file : bibliographyDatabases) {
             startReadObservers.update(this, file);
-            db.load(file, citations, this);
+            db.load(file, citations);
         }
     }
 

@@ -22,7 +22,6 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
 
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -41,14 +40,11 @@ public interface BibReader extends ResourceAware {
      * is used to fill a database.
      * 
      * @param db the database into which the loading should be performed
-     * @param processor the processor context
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    void load(DB db, Processor processor)
-            throws ExBibException,
-                ConfigurationException;
+    void load(DB db) throws ExBibException, ConfigurationException;
 
     /**
      * Open a file for reading

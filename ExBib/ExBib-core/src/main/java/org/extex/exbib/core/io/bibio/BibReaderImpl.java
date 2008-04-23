@@ -23,7 +23,6 @@ package org.extex.exbib.core.io.bibio;
 import java.io.FileNotFoundException;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -136,7 +135,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
      * @param tag the name of the item encountered.
      * This String has been converted to lower case already.
      * @param db the database to store the information in
-     * @param processor the processor context
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
      * depending in the opening brace
      * @return <code>true</code> iff the item is special and has been handled
@@ -146,14 +144,14 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
      * @throws ExBibSyntaxException in case of an syntax error
      */
     @Override
-    protected boolean handle(String tag, DB db, Processor processor,
-            String brace, Locator locator) throws ExBibException {
+    protected boolean handle(String tag, DB db, String brace,
+            Locator locator) throws ExBibException {
 
         if (tag.equals("include")) {
             String source = parseToken(filenamePattern);
             expect(brace);
             try {
-                db.load(source, null, processor);
+                db.load(source, null);
             } catch (FileNotFoundException e) {
                 throw new ExBibFileNotFoundException(source, locator);
             }
@@ -205,6 +203,6 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
             return true;
         }
 
-        return super.handle(tag, db, processor, brace, locator);
+        return super.handle(tag, db, brace, locator);
     }
 }

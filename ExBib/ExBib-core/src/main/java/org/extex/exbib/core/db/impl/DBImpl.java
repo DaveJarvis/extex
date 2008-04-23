@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -241,18 +240,16 @@ public class DBImpl implements DB, Observable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map,
-     *      org.extex.exbib.core.bst.Processor)
+     * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map)
      */
-    public List<String> load(String file, Map<String, String> citation,
-            Processor processor)
+    public List<String> load(String file, Map<String, String> citation)
             throws ExBibException,
                 ConfigurationException,
                 FileNotFoundException {
 
         BibReader reader = bibReaderFactory.newInstance(file);
 
-        reader.load(this, processor);
+        reader.load(this);
 
         List<String> missing = new ArrayList<String>();
 

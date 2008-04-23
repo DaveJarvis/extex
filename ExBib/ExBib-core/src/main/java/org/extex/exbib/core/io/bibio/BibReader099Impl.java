@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryTypeException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -183,11 +182,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @param tag the name of the item encountered. This String has been
      *        converted to lower case already.
      * @param db the database to store the information in
-     * @param processor the processor context
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
      *        depending on the opening brace
      * @param locator the locator
-     * 
      * @return <code>true</code> iff the item is special and has been handled
      *         successfully.
      *
@@ -195,8 +192,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @throws ExBibEofException in case of an unexpected end of file
      * @throws ExBibSyntaxException in case of an syntax error
      */
-    protected boolean handle(String tag, DB db, Processor processor,
-            String brace, Locator locator) throws ExBibException {
+    protected boolean handle(String tag, DB db, String brace,
+            Locator locator) throws ExBibException {
 
         if (tag.equals("string")) {
             KeyValue pair = parseAssign();
@@ -219,12 +216,10 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * Parse the given file and store the result into the database.
      * 
      * @param db the database to store the records in
-     * @param processor the processor context
-     * 
      * @throws ExBibException in case of an error
      * @throws ExBibSyntaxException in case that something goes wrong
      */
-    public void load(DB db, Processor processor) throws ExBibException {
+    public void load(DB db) throws ExBibException {
 
         StringBuffer comment = new StringBuffer();
         String tag;
@@ -244,7 +239,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
                 String brace = (expect("({") == '(' ? ")" : "}");
 
-                if (!handle(s, db, processor, brace, getLocator())) {
+                if (!handle(s, db, brace, getLocator())) {
                     String key = parseKey();
 
                     if (key.equals("")) {

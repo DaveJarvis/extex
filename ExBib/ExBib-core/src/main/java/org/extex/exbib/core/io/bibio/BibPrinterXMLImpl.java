@@ -19,9 +19,7 @@
 
 package org.extex.exbib.core.io.bibio;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,7 +32,6 @@ import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.ValueItem;
 import org.extex.exbib.core.db.ValueVisitor;
-import org.extex.exbib.core.io.StreamWriter;
 import org.extex.exbib.core.io.Writer;
 
 /**
@@ -131,35 +128,10 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
         return sb.toString();
     }
 
-    /** the output writer */
-    private Writer theWriter = null;
-
     /**
-     * Creates a new object.
+     * The field <tt>writer</tt> contains the output writer.
      */
-    public BibPrinterXMLImpl() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param filename the name of the file to read from
-     * @param encoding the Encoding to be used for reading
-     * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for reading
-     * @throws UnsupportedEncodingException in case that the given encoding is
-     *         not defined
-     */
-    public BibPrinterXMLImpl(String filename, String encoding)
-            throws FileNotFoundException,
-                UnsupportedEncodingException {
-
-        super();
-        theWriter = new StreamWriter(filename, encoding);
-    }
+    private Writer writer = null;
 
     /**
      * Creates a new object.
@@ -169,7 +141,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     public BibPrinterXMLImpl(Writer writer) {
 
         super();
-        theWriter = writer;
+        this.writer = writer;
     }
 
     /**
@@ -181,15 +153,15 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     public void print(DB db) throws IOException {
 
-        theWriter.print("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-        theWriter.print("<database>\n");
+        writer.print("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+        writer.print("<database>\n");
 
         Value preamble = db.getPreamble();
 
         if (preamble != null && !preamble.isEmpty()) {
-            theWriter.print("  <preamble>");
+            writer.print("  <preamble>");
             preamble.visit(this, db);
-            theWriter.print("</preamble>\n\n");
+            writer.print("</preamble>\n\n");
         }
 
         List<String> macros = db.getMacroNames();
@@ -197,57 +169,30 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
 
         while (iterator.hasNext()) {
             String name = iterator.next();
-            theWriter.print("  <string id=\"", encodeXMLarg(name), "\">");
+            writer.print("  <string id=\"", encodeXMLarg(name), "\">");
             db.getMacro(name).visit(this, db);
-            theWriter.print("</string>\n");
+            writer.print("</string>\n");
         }
 
         Iterator<Entry> entryIterator = db.getEntries().iterator();
 
         while (entryIterator.hasNext()) {
             Entry e = entryIterator.next();
-            theWriter.print("\n  <", encodeXMLtag(e.getType()), " id=\"");
-            theWriter.print(e.getKey(), "\">");
+            writer.print("\n  <", encodeXMLtag(e.getType()), " id=\"");
+            writer.print(e.getKey(), "\">");
             iterator = e.getKeys().iterator();
 
             while (iterator.hasNext()) {
                 String key = iterator.next();
-                theWriter.print("\n    <", encodeXMLtag(key), ">");
+                writer.print("\n    <", encodeXMLtag(key), ">");
                 e.get(key).visit(this, db);
-                theWriter.print("</", encodeXMLtag(key), ">");
+                writer.print("</", encodeXMLtag(key), ">");
             }
 
-            theWriter.print("\n  </", encodeXMLtag(e.getType()), ">\n");
+            writer.print("\n  </", encodeXMLtag(e.getType()), ">\n");
         }
 
-        theWriter.print("\n</database>\n");
-    }
-
-    /**
-     * Setter for the target.
-     * 
-     * @param file the file to write to
-     * @param encoding the name of the encoding
-     * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for writing
-     * @throws UnsupportedEncodingException in case of an unknown encoding name
-     */
-    public void setDestination(String file, String encoding)
-            throws FileNotFoundException,
-                UnsupportedEncodingException {
-
-        theWriter = new StreamWriter(file, encoding);
-    }
-
-    /**
-     * Setter for the writer.
-     * 
-     * @param writer the new writer to be used
-     */
-    public void setDestination(Writer writer) {
-
-        theWriter = writer;
+        writer.print("\n</database>\n");
     }
 
     /**
@@ -258,7 +203,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     public void visitBlock(VBlock value, DB db) throws IOException {
 
-        theWriter.print(encodeXML(value.getContent()));
+        writer.print(encodeXML(value.getContent()));
     }
 
     /**
@@ -269,7 +214,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     public void visitMacro(VMacro value, DB db) throws IOException {
 
-        theWriter.print("<macro name=\"", encodeXMLarg(value.getContent())
+        writer.print("<macro name=\"", encodeXMLarg(value.getContent())
             .toLowerCase(), "\"/>");
     }
 
@@ -281,7 +226,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     public void visitNumber(VNumber value, DB db) throws IOException {
 
-        theWriter.print(encodeXML(value.getContent()));
+        writer.print(encodeXML(value.getContent()));
     }
 
     /**
@@ -292,7 +237,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     public void visitString(VString value, DB db) throws IOException {
 
-        theWriter.print(encodeXML(value.getContent()));
+        writer.print(encodeXML(value.getContent()));
     }
 
     /**
@@ -310,7 +255,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
             if (first) {
                 first = false;
             } else {
-                theWriter.print(" ");
+                writer.print(" ");
             }
 
             iterator.next().visit(this, db);

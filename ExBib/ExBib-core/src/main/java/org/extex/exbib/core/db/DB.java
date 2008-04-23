@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -129,8 +128,6 @@ public interface DB extends Configurable {
      * @param file the name of the file to load
      * @param citation the mapping of citations in normalized form, i.e. lower
      *        case, to their original form
-     * @param processor the processor context
-     * 
      * @return the list of references which could not be resolved
      * 
      * @throws ExBibException in case of an syntax error
@@ -138,8 +135,7 @@ public interface DB extends Configurable {
      * @throws FileNotFoundException in case that the requested file could not
      *         be opened for reading
      */
-    List<String> load(String file, Map<String, String> citation,
-            Processor processor)
+    List<String> load(String file, Map<String, String> citation)
             throws ExBibException,
                 ConfigurationException,
                 FileNotFoundException;
