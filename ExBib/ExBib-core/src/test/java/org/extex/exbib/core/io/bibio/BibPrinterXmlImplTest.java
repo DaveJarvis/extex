@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BibPrinterImplTest {
+public class BibPrinterXmlImplTest {
 
     /**
      * Test method for
@@ -44,7 +44,7 @@ public class BibPrinterImplTest {
         DB db = Tester.loadBib("src/test/resources/bibtex/base/xampl");
 
         StringBuffer buffer = new StringBuffer();
-        new BibPrinterImpl(new StringBufferWriter(buffer)).print(db);
+        new BibPrinterXMLImpl(new StringBufferWriter(buffer)).print(db);
 
         // assertEquals("", buffer.toString());
     }
