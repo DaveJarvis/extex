@@ -32,13 +32,30 @@ import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
 public abstract class BooleanOption extends Option {
 
     /**
-     * Creates a new object.
+     * The field <tt>value</tt> contains the value.
+     */
+    private boolean value;
+
+    /**
+     * Creates a new object. The initial value is <code>true</code>.
      * 
      * @param tag the tag for the description of the option
      */
     public BooleanOption(String tag) {
 
+        this(tag, true);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param tag the tag for the description of the option
+     * @param value the value if invoked without argument
+     */
+    public BooleanOption(String tag, boolean value) {
+
         super(tag);
+        this.value = value;
     }
 
     /**
@@ -61,7 +78,7 @@ public abstract class BooleanOption extends Option {
     public int run(String a, List<String> arg)
             throws MissingArgumentCliException {
 
-        return run(a, true);
+        return run(a, value);
     }
 
     /**

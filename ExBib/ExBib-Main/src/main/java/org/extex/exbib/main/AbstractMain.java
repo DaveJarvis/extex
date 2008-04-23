@@ -123,6 +123,16 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
+     * Getter for bundle.
+     * 
+     * @return the bundle
+     */
+    public ResourceBundle getBundle() {
+
+        return bundle;
+    }
+
+    /**
      * Getter for logger.
      * 
      * @return the logger
@@ -153,10 +163,10 @@ public abstract class AbstractMain extends CLI {
     protected int info(String tag, Object... args) {
 
         try {
-            logger.info(MessageFormat.format(bundle.getString(tag), args));
+            logger.info(MessageFormat.format(getBundle().getString(tag), args));
         } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
+            logger.severe(MessageFormat.format(getBundle().getString(
+                "missing.tag"), tag));
         }
         return EXIT_FAIL;
     }
@@ -172,10 +182,11 @@ public abstract class AbstractMain extends CLI {
     protected int log(String tag, Object... args) {
 
         try {
-            logger.severe(MessageFormat.format(bundle.getString(tag), args));
+            logger.severe(MessageFormat
+                .format(getBundle().getString(tag), args));
         } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
+            logger.severe(MessageFormat.format(getBundle().getString(
+                "missing.tag"), tag));
         }
         return EXIT_FAIL;
     }
@@ -194,7 +205,7 @@ public abstract class AbstractMain extends CLI {
         }
         banner = true;
 
-        logger.warning(MessageFormat.format(bundle.getString("version"),
+        logger.warning(MessageFormat.format(getBundle().getString("version"),
             getProgramName(), version));
         if (copyright) {
             int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -203,8 +214,8 @@ public abstract class AbstractMain extends CLI {
                             ? Integer.toString(inceptionYear)
                             : Integer.toString(inceptionYear) + "-"
                                     + Integer.toString(year));
-            logger.severe(MessageFormat.format(bundle.getString("copyright"),
-                getProgramName(), copyrightYear));
+            logger.severe(MessageFormat.format(getBundle().getString(
+                "copyright"), getProgramName(), copyrightYear));
         }
         return EXIT_FAIL;
     }
@@ -228,7 +239,7 @@ public abstract class AbstractMain extends CLI {
      * has not been shown before.
      * 
      * @param tag the resource tag of the message pattern
-     * @param arg the arguments
+     * @param arg the argument
      * 
      * @return the exit code <code>1</code>
      */
@@ -236,6 +247,22 @@ public abstract class AbstractMain extends CLI {
 
         logBanner(false);
         return log(tag, getProgramName(), arg);
+    }
+
+    /**
+     * Write a message to the logger. It is preceded by the banner if the banner
+     * has not been shown before.
+     * 
+     * @param tag the resource tag of the message pattern
+     * @param arg1 the argument
+     * @param arg2 the second argument
+     * 
+     * @return the exit code <code>1</code>
+     */
+    protected int logBanner(String tag, String arg1, String arg2) {
+
+        logBanner(false);
+        return log(tag, getProgramName(), arg1, arg2);
     }
 
     /**
@@ -306,14 +333,22 @@ public abstract class AbstractMain extends CLI {
      * Declare an option for the argument given and one with a hyphen prefixed
      * for each name given.
      * 
+     * @param shortcut the character to be used as shortcut or <code>null</code>
+     *        for none
+     * @param name the name of the option
      * @param opt the option
-     * @param nameList the list of names
+     * @param aliases the list of alias names
      */
-    protected void option(Option opt, String... nameList) {
+    protected void option(String shortcut, String name, Option opt,
+            String... aliases) {
 
-        for (String name : nameList) {
-            declare(name, opt);
-            declare("-" + name, opt);
+        if (shortcut != null) {
+            declareOption(shortcut, opt);
+        }
+        declareOption(name, opt);
+
+        for (String a : aliases) {
+            declareOption(a, opt);
         }
     }
 

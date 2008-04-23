@@ -105,7 +105,7 @@ public class CLITest {
     public void testA10() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare(null, new NoArgOption(null) {
+        cli.declareOption(null, new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -128,7 +128,7 @@ public class CLITest {
     public void testA11() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare(null, new NoArgOption(null) {
+        cli.declareOption(null, new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -150,7 +150,7 @@ public class CLITest {
     public void testA12() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare(null, new NoArgOption(null) {
+        cli.declareOption(null, new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -173,7 +173,7 @@ public class CLITest {
     public void testA13() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare(null, new NoArgOption(null) {
+        cli.declareOption(null, new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -196,7 +196,7 @@ public class CLITest {
     public void testA20() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NoArgOption(null) {
+        cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -219,7 +219,7 @@ public class CLITest {
     public void testA22() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NoArgOption(null) {
+        cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -242,7 +242,7 @@ public class CLITest {
     public void testA24() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NoArgOption(null) {
+        cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -266,7 +266,7 @@ public class CLITest {
     public void testA26() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NoArgOption(null) {
+        cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -288,7 +288,7 @@ public class CLITest {
     public void testA30() throws Exception {
 
         CLI cli = new CLI();
-        assertTrue(cli.declare("-xxx", new NoArgOption(null) {
+        assertTrue(cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -297,7 +297,7 @@ public class CLITest {
             }
 
         }));
-        assertFalse(cli.declare("-xxx", new NoArgOption(null) {
+        assertFalse(cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -319,7 +319,7 @@ public class CLITest {
     public void testA31() throws Exception {
 
         CLI cli = new CLI();
-        assertTrue(cli.declare("-xx", new NoArgOption(null) {
+        assertTrue(cli.declareOption("-xx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -328,7 +328,7 @@ public class CLITest {
             }
 
         }));
-        assertTrue(cli.declare("-xxx", new NoArgOption(null) {
+        assertTrue(cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {
@@ -351,7 +351,7 @@ public class CLITest {
     public void testA40() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new StringOption(null) {
+        cli.declareOption("-xxx", new StringOption(null) {
 
             @Override
             protected int run(String a, String value) {
@@ -374,7 +374,7 @@ public class CLITest {
     public void testA41() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new StringOption(null) {
+        cli.declareOption("-xxx", new StringOption(null) {
 
             @Override
             protected int run(String a, String value) {
@@ -397,7 +397,7 @@ public class CLITest {
     public void testA42() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new StringOption(null) {
+        cli.declareOption("-xxx", new StringOption(null) {
 
             @Override
             protected int run(String a, String value) {
@@ -420,7 +420,7 @@ public class CLITest {
     public void testA43() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new StringOption(null) {
+        cli.declareOption("-xxx", new StringOption(null) {
 
             @Override
             protected int run(String a, String value) {
@@ -443,7 +443,7 @@ public class CLITest {
     public void testA50() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -466,7 +466,7 @@ public class CLITest {
     public void testA51() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -489,7 +489,7 @@ public class CLITest {
     public void testA52() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -512,7 +512,7 @@ public class CLITest {
     public void testA53() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -534,7 +534,7 @@ public class CLITest {
     public void testA54() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -555,7 +555,7 @@ public class CLITest {
     public void testA55() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NumberOption(null) {
+        cli.declareOption("-xxx", new NumberOption(null) {
 
             @Override
             protected int run(String a, int value) {
@@ -599,7 +599,7 @@ public class CLITest {
     public void testX1() throws Exception {
 
         CLI cli = new CLI();
-        cli.declare("-xxx", new NoArgOption(null) {
+        cli.declareOption("-xxx", new NoArgOption(null) {
 
             @Override
             protected int run(String a) {

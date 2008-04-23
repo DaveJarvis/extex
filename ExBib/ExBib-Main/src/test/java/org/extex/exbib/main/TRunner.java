@@ -87,7 +87,7 @@ public final class TRunner {
         try {
             String[] a = new String[args.length + 2];
             int i = 0;
-            a[i++] = "-quiet";
+            a[i++] = "-q";
             for (String s : args) {
                 a[i++] = s;
             }

@@ -314,7 +314,7 @@ public class ExBib extends AbstractMain {
      */
     protected void declareOptions() {
 
-        declare(null, new NoArgOption(null) {
+        declareOption(null, new NoArgOption(null) {
 
             @Override
             protected int run(String arg) throws UnknownOptionCliException {
@@ -337,7 +337,7 @@ public class ExBib extends AbstractMain {
             }
 
         });
-        declare("", new NoArgOption(null) {
+        declareOption("", new NoArgOption(null) {
 
             @Override
             protected int run(String arg) {
@@ -346,7 +346,7 @@ public class ExBib extends AbstractMain {
             }
 
         });
-        option(new StringOption("opt.file") {
+        option("-", "--", new StringOption("opt.1.file") {
 
             @Override
             protected int run(String name, String arg) {
@@ -354,8 +354,9 @@ public class ExBib extends AbstractMain {
                 return setFile(arg);
             }
 
-        }, "-");
-        option(new NoArgOption(null) {
+        });
+        option("-a", "--availableCharsets", new NoArgOption(
+            "opt.available.charsets") {
 
             @Override
             protected int run(String arg) {
@@ -368,8 +369,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_FAIL;
             }
 
-        }, "-availableCharsets");
-        option(new StringOption("opt.bst") {
+        });
+        option("-b", "--bst", new StringOption("opt.bst") {
 
             @Override
             protected int run(String name, String arg) {
@@ -378,17 +379,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-bst");
-        option(new NoArgOption("opt.copying") {
-
-            @Override
-            protected int run(String name) {
-
-                return logCopying(getLogger());
-            }
-
-        }, "-copying");
-        option(new StringOption("opt.config") {
+        });
+        option("-c", "--config", new StringOption("opt.config") {
 
             @Override
             protected int run(String name, String arg) {
@@ -397,8 +389,17 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-config");
-        option(new StringOption("opt.csfile") {
+        });
+        option(null, "--copying", new NoArgOption("opt.copying") {
+
+            @Override
+            protected int run(String name) {
+
+                return logCopying(getLogger());
+            }
+
+        });
+        option(null, "--csfile", new StringOption("opt.csfile") {
 
             @Override
             protected int run(String name, String arg) {
@@ -407,8 +408,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-csfile");
-        option(new NoArgOption("opt.debug") {
+        });
+        option("-d", "--debug", new NoArgOption("opt.debug") {
 
             @Override
             protected int run(String name) {
@@ -417,8 +418,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-debug");
-        option(new StringOption("opt.encoding") {
+        });
+        option("-e", "--encoding", new StringOption("opt.encoding") {
 
             @Override
             protected int run(String name, String arg) {
@@ -427,17 +428,21 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-encoding");
-        option(new NoArgOption("opt.help") {
+        });
+        option("-h", "--help", new NoArgOption("opt.help") {
 
             @Override
             protected int run(String arg) {
 
-                return logBanner("usage", getProgramName());
+                logBanner(false);
+                getLogger().severe(
+                    describeOptions(bundle, "usage.start", "usage.end",
+                        getProgramName()));
+                return EXIT_FAIL;
             }
 
-        }, "-help", "-?");
-        option(new StringOption("opt.logfile") {
+        }, "-?");
+        option("-l", "--logfile", new StringOption("opt.logfile") {
 
             @Override
             protected int run(String name, String arg) {
@@ -446,8 +451,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-logfile");
-        option(new NumberOption("opt.min.crossref") {
+        });
+        option("-m", "--min.crossrefs", new NumberOption("opt.min.crossref") {
 
             @Override
             protected int run(String name, int arg) {
@@ -456,8 +461,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-min.crossrefs", "-min-crossrefs", "-min_crossrefs");
-        option(new StringOption("opt.output") {
+        }, "--min-crossrefs", "--min_crossrefs");
+        option("-o", "--output", new StringOption("opt.output") {
 
             @Override
             protected int run(String name, String arg) {
@@ -466,8 +471,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-outfile", "-output");
-        option(new StringOption("opt.progname") {
+        }, "--outfile");
+        option("-p", "--progname", new StringOption("opt.progname") {
 
             @Override
             protected int run(String name, String arg) {
@@ -476,8 +481,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-progname", "-program.name", "-program-name");
-        option(new NoArgOption("opt.quiet") {
+        }, "--program.name", "--program-name");
+        option("-q", "--quiet", new NoArgOption("opt.quiet") {
 
             @Override
             protected int run(String arg) {
@@ -486,8 +491,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-quiet", "-terse");
-        option(new NoArgOption("opt.release") {
+        }, "--terse");
+        option("-r", "--release", new NoArgOption("opt.release") {
 
             @Override
             protected int run(String arg) {
@@ -496,8 +501,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_FAIL;
             }
 
-        }, "-release");
-        option(new NoArgOption("opt.strict") {
+        }, "--release");
+        option(null, "--strict", new NoArgOption("opt.strict") {
 
             @Override
             protected int run(String arg) {
@@ -506,8 +511,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-strict");
-        option(new BooleanOption("opt.trace") {
+        }, "--bibtex");
+        option("-t", "--trace", new BooleanOption("opt.trace") {
 
             @Override
             protected int run(String arg, boolean value) {
@@ -516,8 +521,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-trace");
-        option(new NoArgOption("opt.verbose") {
+        });
+        option("-v", "--verbose", new NoArgOption("opt.verbose") {
 
             @Override
             protected int run(String arg) {
@@ -526,8 +531,8 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
 
-        }, "-verbose");
-        option(new NoArgOption("opt.version") {
+        });
+        option(null, "--version", new NoArgOption("opt.version") {
 
             @Override
             protected int run(String arg) {
@@ -535,7 +540,7 @@ public class ExBib extends AbstractMain {
                 return logBanner(true);
             }
 
-        }, "-version");
+        });
     }
 
     /**

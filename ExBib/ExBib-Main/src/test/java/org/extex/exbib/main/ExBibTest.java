@@ -219,7 +219,7 @@ public class ExBibTest extends BibTester {
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n"
                 + "I couldn\'t open style file xyzzy\n", //
-            "test.aux", "-bst", "xyzzy");
+            "test.aux", "--bst", "xyzzy");
     }
 
     /**
@@ -671,28 +671,46 @@ public class ExBibTest extends BibTester {
             BANNER
                     + "Usage: exbib <options> file\n"
                     + "The following options are supported:\n"
-                    + "\t-help\n"
-                    + "\t    Show a short list of command line arguments. \n"
-                    + "\t-copying\n"
-                    + "\t    Display the copyright conditions. \n"
-                    + "\t-quiet\n"
-                    + "\t-terse\n"
-                    + "\t    Act quietly; some informative messages are suppressed. \n"
-                    + "\t-verbose\n"
-                    + "\t    Act verbosely; some additional informational messages are displayed. \n"
-                    + "\t-trace\n"
-                    + "\t    Show a detailed trace of many operations. \n"
-                    + "\t-version\n"
-                    + "\t    Print the version information and exit. \n"
-                    + "\t-release\n"
-                    + "\t    Print the release number and exit. \n"
-                    + "\t-strict\n"
-                    + "\t    use the settings for BibTeX 0.99c. \n"
-                    + "\t-config file\n"
-                    + "\t-minCrossrefs value\n"
-                    + "\t    Set the value for min.crossrefs. The default is 2. \n"
-                    + "\t-bst style\n" + "\t-logfile file\n"
-                    + "\t-outfile file\n", //
+                    + "\t-[-] <file>\n"
+                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--a[vailableCharsets] | -a\n"
+                    + "\t\tList the available encoding names and exit.\n"
+                    + "\t--b[st] | -b <style>\n"
+                    + "\t\tOverwrite the bst file given in the aux file.\n"
+                    + "\t--c[onfig] | -c <configuration>\n"
+                    + "\t\tUse the configuration given. This is not a file!\n"
+                    + "\t--cop[ying]\n"
+                    + "\t\tDisplay the copyright conditions.\n"
+                    + "\t--cs[file] <csfile>\n"
+                    + "\t\tName the csf for defining characters and the sort order\n"
+                    + "\t--d[ebug] | -d\n"
+                    + "\t\tRun in debug mode.\n"
+                    + "\t--e[ncoding] | -e <enc>\n"
+                    + "\t\tUse the given encoding for the output file\n"
+                    + "\t--h[elp] | -? | -h\n"
+                    + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--l[ogfile] | -l <file>\n"
+                    + "\t\tSend the output to the log file named instead of the default one.\n"
+                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
+                    + "\t\tSet the value for min.crossrefs. The default is 2.\n"
+                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
+                    + "\t\tRedirect the output to the file given.\n"
+                    + "\t\tThe file name - can be used to redirect to stdout\n"
+                    + "\t\tThe empty file name can be used to discard the output completely\n"
+                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
+                    + "\t\tSet the program name for messages.\n"
+                    + "\t--q[uiet] | --t[erse] | -q\n"
+                    + "\t\tAct quietly; some informative messages are suppressed.\n"
+                    + "\t--r[elease] | -r\n"
+                    + "\t\tPrint the release number and exit.\n"
+                    + "\t--bi[btex] | --s[trict]\n"
+                    + "\t\tUse the configuration for BibTeX 0.99c.\n"
+                    + "\t--tr[ace] | -t\n"
+                    + "\t\tShow a detailed trace of many operations.\n"
+                    + "\t--v[erbose] | -v\n"
+                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
+                    + "\t--vers[ion]\n"
+                    + "\t\tPrint the version information and exit.\n" + "", //
             "--help");
     }
 
@@ -709,28 +727,46 @@ public class ExBibTest extends BibTester {
             BANNER
                     + "Usage: exbib <options> file\n"
                     + "The following options are supported:\n"
-                    + "\t-help\n"
-                    + "\t    Show a short list of command line arguments. \n"
-                    + "\t-copying\n"
-                    + "\t    Display the copyright conditions. \n"
-                    + "\t-quiet\n"
-                    + "\t-terse\n"
-                    + "\t    Act quietly; some informative messages are suppressed. \n"
-                    + "\t-verbose\n"
-                    + "\t    Act verbosely; some additional informational messages are displayed. \n"
-                    + "\t-trace\n"
-                    + "\t    Show a detailed trace of many operations. \n"
-                    + "\t-version\n"
-                    + "\t    Print the version information and exit. \n"
-                    + "\t-release\n"
-                    + "\t    Print the release number and exit. \n"
-                    + "\t-strict\n"
-                    + "\t    use the settings for BibTeX 0.99c. \n"
-                    + "\t-config file\n"
-                    + "\t-minCrossrefs value\n"
-                    + "\t    Set the value for min.crossrefs. The default is 2. \n"
-                    + "\t-bst style\n" + "\t-logfile file\n"
-                    + "\t-outfile file\n", //
+                    + "\t-[-] <file>\n"
+                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--a[vailableCharsets] | -a\n"
+                    + "\t\tList the available encoding names and exit.\n"
+                    + "\t--b[st] | -b <style>\n"
+                    + "\t\tOverwrite the bst file given in the aux file.\n"
+                    + "\t--c[onfig] | -c <configuration>\n"
+                    + "\t\tUse the configuration given. This is not a file!\n"
+                    + "\t--cop[ying]\n"
+                    + "\t\tDisplay the copyright conditions.\n"
+                    + "\t--cs[file] <csfile>\n"
+                    + "\t\tName the csf for defining characters and the sort order\n"
+                    + "\t--d[ebug] | -d\n"
+                    + "\t\tRun in debug mode.\n"
+                    + "\t--e[ncoding] | -e <enc>\n"
+                    + "\t\tUse the given encoding for the output file\n"
+                    + "\t--h[elp] | -? | -h\n"
+                    + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--l[ogfile] | -l <file>\n"
+                    + "\t\tSend the output to the log file named instead of the default one.\n"
+                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
+                    + "\t\tSet the value for min.crossrefs. The default is 2.\n"
+                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
+                    + "\t\tRedirect the output to the file given.\n"
+                    + "\t\tThe file name - can be used to redirect to stdout\n"
+                    + "\t\tThe empty file name can be used to discard the output completely\n"
+                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
+                    + "\t\tSet the program name for messages.\n"
+                    + "\t--q[uiet] | --t[erse] | -q\n"
+                    + "\t\tAct quietly; some informative messages are suppressed.\n"
+                    + "\t--r[elease] | -r\n"
+                    + "\t\tPrint the release number and exit.\n"
+                    + "\t--bi[btex] | --s[trict]\n"
+                    + "\t\tUse the configuration for BibTeX 0.99c.\n"
+                    + "\t--tr[ace] | -t\n"
+                    + "\t\tShow a detailed trace of many operations.\n"
+                    + "\t--v[erbose] | -v\n"
+                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
+                    + "\t--vers[ion]\n"
+                    + "\t\tPrint the version information and exit.\n" + "", //
             "-?");
     }
 
@@ -775,7 +811,7 @@ public class ExBibTest extends BibTester {
                                 + "I found no style file while reading test.aux\n"
                                 + "I found no \\bibdata commands while reading test.aux\n"
                                 + "I found no \\citation commands while reading test.aux\n",
-                        "test.aux", "-log", log.toString());
+                        "test.aux", "--log", log.toString());
             assertTrue(log.exists());
             assertNotNull(exbib);
             assertEquals("test.lg", exbib.getLogfile());
@@ -800,7 +836,7 @@ public class ExBibTest extends BibTester {
                 + "I found no style file while reading test.aux\n"
                 + "I found no \\bibdata commands while reading test.aux\n"
                 + "I found no \\citation commands while reading test.aux\n",
-            "test.aux", "-log", "");
+            "test.aux", "--log", "");
     }
 
     /**
@@ -938,7 +974,7 @@ public class ExBibTest extends BibTester {
             assertEquals(0, ExBib.commandLine(args));
             assertEquals(BANNER + "Warning: empty author in whole-journal\n"
                     + "Warning: empty title in whole-journal\n", baos
-                .toString().replaceAll("\r", ""));
+                .toString().replaceAll("", ""));
         } finally {
             System.setErr(err);
             if (!aux.delete()) {

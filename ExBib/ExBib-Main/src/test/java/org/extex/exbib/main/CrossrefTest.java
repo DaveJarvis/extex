@@ -64,7 +64,7 @@ public class CrossrefTest {
             DATA_DIR + "/xampl", //
             "book-crossref,inbook-crossref", //
             new File(DATA_DIR, style + ".result." + xref + "xref"),
-            "-min-crossrefs", xref);
+            "--min-crossrefs", xref);
     }
 
     /**
@@ -76,7 +76,7 @@ public class CrossrefTest {
     @Ignore
     public void testAbbrv() throws Exception {
 
-        runTest("abbrv", "0", "-strict");
+        runTest("abbrv", "0", "--strict");
     }
 
     /**
@@ -87,7 +87,7 @@ public class CrossrefTest {
     @Test
     public void testAlpha0() throws Exception {
 
-        runTest("alpha", "0", "-strict");
+        runTest("alpha", "0", "--strict");
     }
 
     /**
@@ -98,7 +98,7 @@ public class CrossrefTest {
     @Test
     public void testAlpha1() throws Exception {
 
-        runTest("alpha", "1", "-strict");
+        runTest("alpha", "1", "--strict");
     }
 
     /**
@@ -109,7 +109,7 @@ public class CrossrefTest {
     @Test
     public void testAlpha3() throws Exception {
 
-        runTest("alpha", "3", "-strict");
+        runTest("alpha", "3", "--strict");
     }
 
     /**
@@ -121,7 +121,7 @@ public class CrossrefTest {
     @Ignore
     public void testPlain() throws Exception {
 
-        runTest("plain", "-strict");
+        runTest("plain", "--strict");
     }
 
     /**
@@ -133,7 +133,7 @@ public class CrossrefTest {
     @Ignore
     public void testUnsrt() throws Exception {
 
-        runTest("unsrt", "-strict");
+        runTest("unsrt", "--strict");
     }
 
 }

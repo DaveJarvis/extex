@@ -58,7 +58,7 @@ public class BibTeXBaseTest {
         TRunner.runTest(DATA_DIR + "/" + style, //
             DATA_DIR + "/xampl", //
             "*", //
-            new File(DATA_DIR, style + ".result"), "-strict");
+            new File(DATA_DIR, style + ".result"), "--strict");
     }
 
     /**
