@@ -86,9 +86,10 @@ public class WriterFactory extends AbstractFactory {
             throws ConfigurationException {
 
         super.configure(configuration);
-        encoding = configuration.getAttribute("encoding");
-        if (encoding != null && !Charset.isSupported(encoding)) {
-            throw new ConfigurationUnsupportedEncodingException(encoding,
+        try {
+            setEncoding(configuration.getAttribute("encoding"));
+        } catch (UnsupportedEncodingException e) {
+            throw new ConfigurationUnsupportedEncodingException(e.getMessage(),
                 configuration.toString());
         }
     }
@@ -138,7 +139,7 @@ public class WriterFactory extends AbstractFactory {
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
      *         file is <code>null</code>
      * 
-     * @throws FileNotFoundException in case that the file cound not be opened
+     * @throws FileNotFoundException in case that the file could not be opened
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
@@ -231,10 +232,10 @@ public class WriterFactory extends AbstractFactory {
     public void setEncoding(String encoding)
             throws UnsupportedEncodingException {
 
-        this.encoding = encoding;
         if (encoding != null && !Charset.isSupported(encoding)) {
             throw new UnsupportedEncodingException(encoding);
         }
+        this.encoding = encoding;
     }
 
 }

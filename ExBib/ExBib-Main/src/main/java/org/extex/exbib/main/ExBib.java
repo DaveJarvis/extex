@@ -276,6 +276,11 @@ public class ExBib extends AbstractMain {
     private String file = null;
 
     /**
+     * The field <tt>encoding</tt> contains the encoding for the bbl writer.
+     */
+    private String encoding = null;
+
+    /**
      * Creates a new object.
      */
     public ExBib() {
@@ -398,6 +403,16 @@ public class ExBib extends AbstractMain {
             }
 
         }, "-debug");
+        option(new StringOption("opt.encoding") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setEncoding(arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-encoding");
         option(new NoArgOption("opt.help") {
 
             @Override
@@ -576,6 +591,9 @@ public class ExBib extends AbstractMain {
 
         Configuration configuration = cfg.getConfiguration("BblWriter");
         WriterFactory writerFactory = new WriterFactory(configuration);
+        if (encoding != null) {
+            writerFactory.setEncoding(encoding);
+        }
         Writer writer = null;
 
         if (outfile == null) {
@@ -858,6 +876,16 @@ public class ExBib extends AbstractMain {
     public void setDebug(boolean debug) {
 
         this.debug = debug;
+    }
+
+    /**
+     * Setter for encoding.
+     * 
+     * @param encoding the encoding to set
+     */
+    public void setEncoding(String encoding) {
+
+        this.encoding = encoding;
     }
 
     /**
