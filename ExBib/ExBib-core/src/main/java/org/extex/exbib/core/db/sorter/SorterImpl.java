@@ -34,7 +34,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
- * This is an implemnetation of a sortter using a collator.
+ * This is an implementation of a sorter using a collator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
