@@ -36,6 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.stream.exception.MissingResourceFinderException;
@@ -59,8 +60,8 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
  * <h3>Configuration</h3>
  * <p>
  * Mainly the configuration needs to specify which class to use for the
- * TokenStream. The name of the class is given as the argument <tt>class</tt>
- * as shown below.
+ * TokenStream. The name of the class is given as the argument
+ * <code>class</code> as shown below.
  * 
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"/&gt;
@@ -397,8 +398,17 @@ public class TokenStreamFactory extends AbstractFactory
             }
         }
 
-        TokenStream stream =
-                getStream(new InputStreamReader(istream), Boolean.TRUE, name);
+        TokenStream stream;
+        try {
+            stream =
+                    getStream(encoding == null
+                            ? new InputStreamReader(istream)
+                            : new InputStreamReader(istream, encoding),
+                        Boolean.TRUE, name);
+        } catch (UnsupportedEncodingException e) {
+            throw new ConfigurationUnsupportedEncodingException(encoding,
+                (String) null);
+        }
 
         if (openFileObservers != null) {
             openFileObservers.update(name, type, istream);
