@@ -20,9 +20,9 @@
 
 package org.extex.exbib.core.db.sorter;
 
+import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This is a factory to deliver sorters.
@@ -30,22 +30,16 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class SorterFactory {
-
-    /**
-     * The field <tt>config</tt> contains the configuration information.
-     */
-    private Configuration config = null;
+public class SorterFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
      * 
-     * @param cfg the configuration for this factory
+     * @param configuration the configuration for this factory
      */
-    public SorterFactory(Configuration cfg) {
+    public SorterFactory(Configuration configuration) {
 
-        super();
-        this.config = cfg;
+        super(configuration);
     }
 
     /**
@@ -57,20 +51,9 @@ public class SorterFactory {
      * 
      * @throws ConfigurationException in case that something goes wrong
      */
-    public synchronized Sorter newInstance() throws ConfigurationException {
+    public Sorter newInstance() throws ConfigurationException {
 
-        Sorter sorter;
-
-        try {
-            sorter = (Sorter) Class.forName(//
-                config.getAttribute("class")).newInstance();
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
-
-        sorter.configure(config);
-
-        return sorter;
+        return (Sorter) createInstance(Sorter.class);
     }
 
 }
