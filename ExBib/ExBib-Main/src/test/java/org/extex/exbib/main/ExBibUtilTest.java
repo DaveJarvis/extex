@@ -310,6 +310,9 @@ public class ExBibUtilTest extends BibUtilTester {
                     + "\t\tUse the given encoding for the output file\n"
                     + "\t--h[elp] | -? | -h\n"
                     + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--o[utfile] | --outp[ut] | -o <file>\n"
@@ -354,6 +357,9 @@ public class ExBibUtilTest extends BibUtilTester {
                     + "\t\tUse the given encoding for the output file\n"
                     + "\t--h[elp] | -? | -h\n"
                     + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--o[utfile] | --outp[ut] | -o <file>\n"
@@ -373,6 +379,43 @@ public class ExBibUtilTest extends BibUtilTester {
                     + "\t--vers[ion]\n"
                     + "\t\tPrint the version information and exit.\n", //
             "-?");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> needs
+     * an argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage1() throws Exception {
+
+        runFailure(BANNER + "The option `--language\' needs a parameter.\n",
+            "--language");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> falls
+     * back to en for an unknown language. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage2() throws Exception {
+
+        runSuccess(BANNER, "--language", "xxx");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> can be
+     * used to set the language. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage3() throws Exception {
+
+        runSuccess(BANNER_DE, "--language", "de");
     }
 
     /**

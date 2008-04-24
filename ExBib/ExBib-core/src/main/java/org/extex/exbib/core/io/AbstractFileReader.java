@@ -61,7 +61,7 @@ public abstract class AbstractFileReader implements Observable {
     /**
      * The field <tt>line</tt> contains the temporary memory for the line.
      */
-    private StringBuffer line = new StringBuffer();
+    private StringBuilder line = new StringBuilder();
 
     /**
      * The field <tt>finder</tt> contains the resource finder.
@@ -110,7 +110,7 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @return the line buffer
      */
-    public StringBuffer getBuffer() {
+    public StringBuilder getBuffer() {
 
         if (line == null && reader != null) {
             read();
@@ -176,7 +176,7 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @return the internal line buffer
      */
-    public StringBuffer read() {
+    public StringBuilder read() {
 
         if (line == null) {
             return null;
@@ -213,7 +213,7 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @param buffer the line buffer
      */
-    public void setBuffer(StringBuffer buffer) {
+    public void setBuffer(StringBuilder buffer) {
 
         line = buffer;
     }

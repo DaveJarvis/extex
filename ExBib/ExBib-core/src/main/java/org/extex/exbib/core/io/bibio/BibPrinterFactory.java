@@ -24,22 +24,22 @@ import org.extex.exbib.core.io.Writer;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This factory class can be used to get an implementation for the interface
  * {@link BibPrinter BibPrinter}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</class>. This attribute holds the name of the class
+ * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
+ * 
  * <pre>
- *   &lt;BibPrinter&gt;
- *     &lt;class&gt;org.extex.exbib.core.io.bibio.BibPrinterImpl&lt;/class&gt;
- *   &lt;/BibPrinter&gt;
+ *   &lt;BibPrinter
+ *       class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/&gt;
  * </pre>
+ * 
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
@@ -70,15 +70,7 @@ public class BibPrinterFactory extends AbstractFactory {
     public BibPrinter newInstance(Writer writer, String encoding)
             throws ConfigurationException {
 
-        try {
-            return (BibPrinter) createInstance(BibPrinter.class, writer);
-            // } catch (UnsupportedEncodingException e) {
-            // throw new
-            // ConfigurationUnsupportedEncodingException(e.getMessage(),
-            // "");
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
+        return (BibPrinter) createInstance(BibPrinter.class, writer);
     }
 
 }

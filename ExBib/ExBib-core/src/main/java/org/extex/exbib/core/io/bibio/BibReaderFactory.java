@@ -21,10 +21,9 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
 
+import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -32,29 +31,20 @@ import org.extex.resource.ResourceFinder;
  * {@link BibReader BibReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</class>. This attribute holds the name of the class
+ * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
+ * 
  * <pre>
- *   &lt;BibReader&gt;
- *     &lt;class&gt;org.extex.exbib.core.io.bibio.BibReader099Impl&lt;/class&gt;
- *   &lt;/BibReader&gt;
+ *   &lt;BibReader
+ *       class="org.extex.exbib.core.io.bibio.BibReader099Impl"/&gt;
  * </pre>
+ * 
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BibReaderFactory implements ResourceAware {
-
-    /**
-     * The field <tt>config</tt> contains the configuration.
-     */
-    private Configuration config;
-
-    /**
-     * The field <tt>finder</tt> contains the resource finder.
-     */
-    private ResourceFinder finder;
+public class BibReaderFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
@@ -65,8 +55,8 @@ public class BibReaderFactory implements ResourceAware {
     public BibReaderFactory(Configuration config, ResourceFinder finder) {
 
         super();
-        this.config = config;
-        this.finder = finder;
+        configure(config);
+        setResourceFinder(finder);
     }
 
     /**
@@ -84,29 +74,11 @@ public class BibReaderFactory implements ResourceAware {
             throws ConfigurationException,
                 FileNotFoundException {
 
-        BibReader bibReader;
-        try {
-            bibReader =
-                    (BibReader) Class.forName(config.getAttribute("class"))
-                        .newInstance();
-        } catch (Exception e) {
-            throw new ConfigurationWrapperException(e);
-        }
-        bibReader.setResourceFinder(finder);
+        BibReader bibReader = (BibReader) super.createInstance(BibReader.class);
+        bibReader.setResourceFinder(getResourceFinder());
         bibReader.open(file);
 
         return bibReader;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder finder) {
-
-        this.finder = finder;
     }
 
 }

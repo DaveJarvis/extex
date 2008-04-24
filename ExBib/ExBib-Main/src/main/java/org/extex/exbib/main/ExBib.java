@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -214,11 +215,6 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
-     */
-    private ResourceBundle bundle;
-
-    /**
      * The field <tt>consoleHandler</tt> contains the console handler for log
      * messages. It can be used to modify the log level for the console.
      */
@@ -287,8 +283,6 @@ public class ExBib extends AbstractMain {
     public ExBib() {
 
         super("exbib", VERSION, INCEPTION_YEAR);
-
-        bundle = ResourceBundle.getBundle(getClass().getName());
 
         consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new LogFormatter());
@@ -436,7 +430,7 @@ public class ExBib extends AbstractMain {
 
                 logBanner(false);
                 getLogger().severe(
-                    describeOptions(bundle, "usage.start", "usage.end",
+                    describeOptions(getBundle(), "usage.start", "usage.end",
                         getProgramName()));
                 return EXIT_FAIL;
             }
@@ -448,6 +442,17 @@ public class ExBib extends AbstractMain {
             protected int run(String name, String arg) {
 
                 setLogfile(arg);
+                return EXIT_CONTINUE;
+            }
+
+        });
+        option("-L", "--language", new StringOption("opt.language") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                Locale.setDefault(new Locale(arg));
+                setBundle(ResourceBundle.getBundle(ExBib.class.getName()));
                 return EXIT_CONTINUE;
             }
 
@@ -708,7 +713,7 @@ public class ExBib extends AbstractMain {
                 funcall = runRegisterTracers(db, processor);
             }
             processor.registerObserver("startRead", new DBObserver(getLogger(),
-                bundle.getString("observer.db.pattern")));
+                getBundle().getString("observer.db.pattern")));
 
             AuxReader engine =
                     new AuxReaderFactory(//
@@ -844,17 +849,17 @@ public class ExBib extends AbstractMain {
             new EntryObserver(logger, bibliography));
 
         bibliography.registerObserver("step", new TracingObserver(logger,
-            bundle.getString("step_msg")));
+            getBundle().getString("step_msg")));
 
-        bibliography.registerObserver("run", new TracingObserver(logger, bundle
-            .getString("do_msg")));
+        bibliography.registerObserver("run", new TracingObserver(logger,
+            getBundle().getString("do_msg")));
         bibliography.registerObserver("step", funcall);
         bibliography.registerObserver("push", new TracingObserver(logger,
-            bundle.getString("push_msg")));
+            getBundle().getString("push_msg")));
         bibliography.registerObserver("startParse", new TracingObserver(logger,
-            bundle.getString("start_parse_msg")));
+            getBundle().getString("start_parse_msg")));
         bibliography.registerObserver("endParse", new TracingObserver(logger,
-            bundle.getString("end_parse_msg")));
+            getBundle().getString("end_parse_msg")));
         return funcall;
     }
 

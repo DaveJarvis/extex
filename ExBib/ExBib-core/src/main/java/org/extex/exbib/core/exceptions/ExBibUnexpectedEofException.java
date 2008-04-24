@@ -29,7 +29,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class ExBibUnexpectedOfException extends ExBibSyntaxException {
+public class ExBibUnexpectedEofException extends ExBibSyntaxException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -50,7 +50,7 @@ public class ExBibUnexpectedOfException extends ExBibSyntaxException {
      * @param expected the expected characters
      * @param locator the locator
      */
-    public ExBibUnexpectedOfException(String found, String expected,
+    public ExBibUnexpectedEofException(String found, String expected,
             Locator locator) {
 
         super(found, locator);

@@ -78,6 +78,13 @@ public class BibTester {
             "This is exbib, Version " + ExBib.VERSION + "\n";
 
     /**
+     * The field <tt>BANNER_DE</tt> contains the default banner for the
+     * language de.
+     */
+    public static final String BANNER_DE =
+            "Dies ist exbib, Version " + ExBib.VERSION + "\n";
+
+    /**
      * Creates a new object.
      */
     public BibTester() {

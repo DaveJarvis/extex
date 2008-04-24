@@ -41,27 +41,27 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingAttributeNameException;
 import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
-import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * The BibReader099Impl is a class to implement a reader for BibT<sub>E</sub>X
- * files. This reader is compatible with BibT<sub>E</sub>X 0.99c.
+ * This is a class to implement a reader for BibT<sub>E</sub>X files. This
+ * reader is compatible with BibT<sub>E</sub>X 0.99c.
  * <p>
  * This incarnation is characterized as follows:
  * </p>
  * <ul>
- * <li>The special tag <code>@string</code> can be used to define a macro.</li>
- *         <li>The special tag <code>@preamble</code> can be used to define the preamble.</li>
- *           <li>The special tag <code>@comment</code> is silently ignored.</li>
- *          <li>Any characters between entries are considered to be comments
- *          and ignored silently.</li>
- * <li>There is no means to escape the @ in comments.</li>
- *          <li>Either {} or () can be used as delimiters</li>
- *          </ul>
+ * <li>The special tag {@code @string} can be used to define a macro.</li>
+ * <li>The special tag {@code @preamble} can be used to define the preamble.</li>
+ * <li>The special tag {@code @comment} is silently ignored.</li>
+ * <li>Any characters between entries are considered to be comments and ignored
+ * silently.</li>
+ * <li>There is no means to escape the {@code @} in comments.</li>
+ * <li>Either {} or () can be used as delimiters</li>
+ * </ul>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -147,14 +147,14 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         char c = parseNextNonSpace(false);
 
         if (c == '\0') {
-            throw new ExBibUnexpectedOfException(chars, null, getLocator());
+            throw new ExBibUnexpectedEofException(chars, null, getLocator());
         }
 
         if (chars.indexOf(c) >= 0) {
             return c;
         }
 
-        throw new ExBibUnexpectedOfException(chars, Character.toString(c),
+        throw new ExBibUnexpectedEofException(chars, Character.toString(c),
             getLocator());
     }
 
@@ -192,8 +192,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @throws ExBibEofException in case of an unexpected end of file
      * @throws ExBibSyntaxException in case of an syntax error
      */
-    protected boolean handle(String tag, DB db, String brace,
-            Locator locator) throws ExBibException {
+    protected boolean handle(String tag, DB db, String brace, Locator locator)
+            throws ExBibException {
 
         if (tag.equals("string")) {
             KeyValue pair = parseAssign();
@@ -263,11 +263,11 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
                     if (c != brace.charAt(0)) {
                         if (c < 0) {
-                            throw new ExBibUnexpectedOfException(brace, null,
+                            throw new ExBibUnexpectedEofException(brace, null,
                                 getLocator());
                         }
 
-                        throw new ExBibUnexpectedOfException(brace, Character
+                        throw new ExBibUnexpectedEofException(brace, Character
                             .toString(c), getLocator());
                     }
                 }
@@ -335,7 +335,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      */
     protected char parseNextNonSpace(boolean lookahead) {
 
-        StringBuffer buffer = getBuffer();
+        StringBuilder buffer = getBuffer();
 
         for (;;) {
             int i = 0;
@@ -377,7 +377,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 throw new ExBibEofException("", getLocator());
             }
 
-            StringBuffer buffer = getBuffer();
+            StringBuilder buffer = getBuffer();
 
             if (c == '{') {
                 int i = 1;
@@ -467,7 +467,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      */
     protected String parseToken(Pattern pattern) {
 
-        StringBuffer buffer = getBuffer();
+        StringBuilder buffer = getBuffer();
 
         if (buffer == null) {
             return null;
@@ -517,7 +517,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      */
     private String skipToAtTag(StringBuffer comment) {
 
-        StringBuffer buffer = getBuffer();
+        StringBuilder buffer = getBuffer();
         int i;
 
         if (buffer == null) {

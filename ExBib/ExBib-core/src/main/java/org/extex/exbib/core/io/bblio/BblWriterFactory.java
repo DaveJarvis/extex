@@ -31,16 +31,17 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link AuxReaderImpl AuxReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</class>. This attribute holds the name of the class
+ * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
+ * 
  * <pre>
- *   &lt;AuxReader&gt;
- *     &lt;class&gt;org.extex.exbib.core.io.auxio.AuxReaderImpl&lt;/class&gt;
- *   &lt;/AuxReader&gt;
+ *   &lt;AuxReader
+ *       class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;
  * </pre>
+ * 
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */

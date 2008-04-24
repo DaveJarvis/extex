@@ -689,6 +689,9 @@ public class ExBibTest extends BibTester {
                     + "\t\tUse the given encoding for the output file\n"
                     + "\t--h[elp] | -? | -h\n"
                     + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
@@ -745,6 +748,9 @@ public class ExBibTest extends BibTester {
                     + "\t\tUse the given encoding for the output file\n"
                     + "\t--h[elp] | -? | -h\n"
                     + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
@@ -768,6 +774,45 @@ public class ExBibTest extends BibTester {
                     + "\t--vers[ion]\n"
                     + "\t\tPrint the version information and exit.\n" + "", //
             "-?");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> needs
+     * an argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage1() throws Exception {
+
+        runFailure(BANNER + "The option `--language\' needs a parameter.\n",
+            "--language");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> falls
+     * back to en for an unknown language. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage2() throws Exception {
+
+        runFailure(BANNER + "Missing aux file parameter.\n", "--language",
+            "xxx");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--language</tt> can be
+     * used to set the language. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage3() throws Exception {
+
+        runFailure(BANNER_DE + "Ein Parameter mit der aux-Datei fehlt.\n",
+            "--language", "de");
     }
 
     /**

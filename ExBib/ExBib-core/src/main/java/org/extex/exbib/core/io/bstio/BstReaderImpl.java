@@ -49,7 +49,7 @@ import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
-import org.extex.exbib.core.exceptions.ExBibUnexpectedOfException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -328,7 +328,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BstReaderImpl extends AbstractFileReader implements BstReader {
 
     /**
-     * The constant <tt>EMPTY_APTTERN</tt> contains the pattern for whitespace.
+     * The constant <tt>EMPTY_APTTERN</tt> contains the pattern for
+     * whitespace.
      */
     private static final Pattern EMPTY_APTTERN = Pattern.compile("\\s*");
 
@@ -380,7 +381,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
         Token token = nextToken();
 
         if (token == null) {
-            throw new ExBibUnexpectedOfException(value, null, getLocator());
+            throw new ExBibUnexpectedEofException(value, null, getLocator());
         }
 
         if (!(token instanceof TChar) || !token.getValue().equals(value)) {
@@ -401,7 +402,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
      */
     protected Token nextToken() throws ExBibException {
 
-        StringBuffer buffer = getBuffer();
+        StringBuilder buffer = getBuffer();
         Matcher matcher;
 
         if (!canRead()) {

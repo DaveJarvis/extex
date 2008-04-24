@@ -78,6 +78,12 @@ public class BibUtilTester {
             "This is exbibutil, Version " + ExBibUtil.VERSION + "\n";
 
     /**
+     * The field <tt>BANNER_DE</tt> contains the default banner.
+     */
+    public static final String BANNER_DE =
+            "Dies ist exbibutil, Version " + ExBibUtil.VERSION + "\n";
+
+    /**
      * Creates a new object.
      */
     public BibUtilTester() {

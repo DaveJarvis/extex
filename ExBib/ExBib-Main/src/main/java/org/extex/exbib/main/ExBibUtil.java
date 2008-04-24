@@ -25,6 +25,8 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -250,16 +252,6 @@ public final class ExBibUtil extends AbstractMain {
             }
 
         });
-        // option(new NoArgOption("opt.debug") {
-        //
-        // @Override
-        // protected int run(String name) {
-        //
-        // setDebug(true);
-        // return EXIT_CONTINUE;
-        // }
-        //
-        // }, "-debug");
         option("-e", "--encoding", new StringOption("opt.encoding") {
 
             @Override
@@ -304,18 +296,18 @@ public final class ExBibUtil extends AbstractMain {
                 }
                 return EXIT_CONTINUE;
             }
+        });
+        option("-L", "--language", new StringOption("opt.language") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                Locale.setDefault(new Locale(arg));
+                setBundle(ResourceBundle.getBundle(ExBibUtil.class.getName()));
+                return EXIT_CONTINUE;
+            }
 
         });
-        // option(new NumberOption("opt.min.crossref") {
-        //
-        // @Override
-        // protected int run(String name, int arg) {
-        //
-        // setMinCrossrefs(arg);
-        // return EXIT_CONTINUE;
-        // }
-        //
-        // }, "-min.crossrefs", "-min-crossrefs", "-min_crossrefs");
         option("-o", "--output", new StringOption("opt.output") {
 
             @Override
@@ -366,16 +358,6 @@ public final class ExBibUtil extends AbstractMain {
             }
 
         });
-        // option(new BooleanOption("opt.trace") {
-        //
-        // @Override
-        // protected int run(String arg, boolean value) {
-        //
-        // setTrace(value);
-        // return EXIT_CONTINUE;
-        // }
-        //
-        // }, "-trace");
         option("-v", "--verbose", new NoArgOption("opt.verbose") {
 
             @Override
@@ -447,14 +429,12 @@ public final class ExBibUtil extends AbstractMain {
                         getLogger(), System.getProperties(), null);
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
                 configuration.getConfiguration("BibReader"), finder);
-            DB db =
-                    new DBFactory(//
-                        configuration.getConfiguration("DB")).newInstance(
-                        bibReaderFactory, Integer.MAX_VALUE);
+            DB db = new DBFactory(configuration.getConfiguration("DB"))//
+                .newInstance(bibReaderFactory, Integer.MAX_VALUE);
             int i = 1;
             for (String file : files) {
                 info("observer.db.pattern", Integer.valueOf(i++), file);
-                db.load(file, null, null);
+                db.load(file, null);
             }
 
             new BibPrinterFactory(cfg).newInstance(writer, encoding).print(db);
@@ -478,9 +458,9 @@ public final class ExBibUtil extends AbstractMain {
     }
 
     /**
-     * Setter for config.
+     * Setter for the configuration.
      * 
-     * @param config the config to set
+     * @param config the configuration to set
      */
     public void setConfig(String config) {
 

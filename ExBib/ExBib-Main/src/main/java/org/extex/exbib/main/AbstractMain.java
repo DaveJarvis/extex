@@ -398,6 +398,16 @@ public abstract class AbstractMain extends CLI {
     protected abstract int run() throws IOException, ConfigurationException;
 
     /**
+     * Setter for bundle.
+     * 
+     * @param bundle the bundle to set
+     */
+    public void setBundle(ResourceBundle bundle) {
+
+        this.bundle = bundle;
+    }
+
+    /**
      * Setter for logger.
      * 
      * @param logger the logger to set

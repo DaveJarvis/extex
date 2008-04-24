@@ -31,15 +31,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link BstReader BstReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</class>. This attribute holds the name of the class
+ * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
+ * 
  * <pre>
- *   &lt;BstReader&gt;
- *     &lt;class&gt;org.extex.exbib.core.io.bstio.BstReaderImpl&lt;/class&gt;
- *   &lt;/BstReader&gt;
+ *   &lt;BstReader
+ *     class="org.extex.exbib.core.io.bstio.BstReaderImpl"/&gt;
  * </pre>
+ * 
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
