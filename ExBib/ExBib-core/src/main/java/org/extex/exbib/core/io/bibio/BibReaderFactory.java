@@ -49,13 +49,12 @@ public class BibReaderFactory extends AbstractFactory {
     /**
      * Creates a new object.
      * 
-     * @param config the configuration
+     * @param configuration the configuration
      * @param finder the resource finder
      */
-    public BibReaderFactory(Configuration config, ResourceFinder finder) {
+    public BibReaderFactory(Configuration configuration, ResourceFinder finder) {
 
-        super();
-        configure(config);
+        super(configuration);
         setResourceFinder(finder);
     }
 

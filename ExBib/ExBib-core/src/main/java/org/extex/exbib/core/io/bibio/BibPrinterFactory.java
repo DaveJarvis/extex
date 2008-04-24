@@ -52,8 +52,7 @@ public class BibPrinterFactory extends AbstractFactory {
      */
     public BibPrinterFactory(Configuration configuration) {
 
-        super();
-        configure(configuration);
+        super(configuration);
     }
 
     /**

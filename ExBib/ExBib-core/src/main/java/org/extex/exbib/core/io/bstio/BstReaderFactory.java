@@ -20,8 +20,6 @@
 
 package org.extex.exbib.core.io.bstio;
 
-import java.io.FileNotFoundException;
-
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -49,14 +47,14 @@ public class BstReaderFactory extends AbstractFactory {
     /**
      * Creates a new object.
      * 
-     * @param config the configuration
+     * @param configuration the configuration
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public BstReaderFactory(Configuration config) throws ConfigurationException {
+    public BstReaderFactory(Configuration configuration)
+            throws ConfigurationException {
 
-        super();
-        configure(config);
+        super(configuration);
     }
 
     /**
@@ -65,15 +63,10 @@ public class BstReaderFactory extends AbstractFactory {
      * @return the new instance of a BstReader
      * 
      * @throws ConfigurationException in case that the configuration is invalid
-     * @throws FileNotFoundException in case that the given file could not be
-     *         opened
      */
-    public synchronized BstReader newInstance()
-            throws ConfigurationException,
-                FileNotFoundException {
+    public synchronized BstReader newInstance() throws ConfigurationException {
 
-        return (BstReader) createInstanceForConfiguration(getConfiguration(),
-            BstReader.class);
+        return (BstReader) createInstance(BstReader.class);
     }
 
 }

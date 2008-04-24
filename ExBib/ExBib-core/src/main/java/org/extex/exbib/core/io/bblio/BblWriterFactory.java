@@ -50,14 +50,14 @@ public class BblWriterFactory extends AbstractFactory {
     /**
      * Creates a new object.
      * 
-     * @param config the configuration
+     * @param configuration the configuration
      * 
      * @throws ConfigurationException in case of a configuration error
      */
-    public BblWriterFactory(Configuration config) throws ConfigurationException {
+    public BblWriterFactory(Configuration configuration)
+            throws ConfigurationException {
 
-        super();
-        configure(config);
+        super(configuration);
     }
 
     /**
@@ -72,7 +72,6 @@ public class BblWriterFactory extends AbstractFactory {
     public synchronized Writer newInstance(Writer targetWriter)
             throws ConfigurationException {
 
-        return (BblWriter) createInstanceForConfiguration(getConfiguration(),
-            BblWriter.class, targetWriter);
+        return (BblWriter) createInstance(BblWriter.class, targetWriter);
     }
 }
