@@ -282,13 +282,16 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     }
 
     /**
-     * @see org.extex.exbib.core.io.bibio.BibReader#open(java.lang.String)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.io.bibio.BibReader#open(java.lang.String,
+     *      java.lang.String)
      */
-    public void open(String file)
+    public void open(String file, String encoding)
             throws ConfigurationException,
                 FileNotFoundException {
 
-        open(file, "bib");
+        open(file, "bib", encoding);
     }
 
     /**

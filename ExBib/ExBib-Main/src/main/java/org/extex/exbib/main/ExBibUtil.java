@@ -55,6 +55,47 @@ import org.extex.resource.ResourceFinderFactory;
 /**
  * ExBibUtil a bibliography.
  * 
+ * 
+ * <p>
+ * The following options are supported:
+ * </p>
+ * <dl>
+ * <dt>-[-] &lang;file&rang;</dt>
+ * <dd>Use this argument as file name -- even when it looks like an option.</dd>
+ * <dt>--b[ib-encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
+ * <dd>Use the given encoding for the bib files.</dd>
+ * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
+ * <dd>Use the configuration given. This is not a file!</dd>
+ * <dt>--cop[ying]</dt>
+ * <dd>Display the copyright conditions.</dd>
+ * <dt>--e[ncoding] | -e &lang;enc&rang;</dt>
+ * <dd>Use the given encoding for the output file.</dd>
+ * <dt>--h[elp] | -? | -h</dt>
+ * <dd>Show a short list of command line arguments.</dd>
+ * <dt>--la[nguage] | -L &lang;language&rang;</dt>
+ * <dd>Use the named language for message.</dd>
+ * <dt>\tThe argument is a two-letter ISO code.</dd>
+ * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
+ * <dd>Send the output to the log file named instead of the default one.</dd>
+ * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
+ * <dd>Redirect the output to the file given. <br />
+ * The file name - can be used to redirect to stdout <br />
+ * The empty file name can be used to discard the output completely</dd>
+ * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
+ * &lang;program&rang;</dt>
+ * <dd>Set the program name for messages.</dd>
+ * <dt>--q[uiet] | --t[erse] | -q</dt>
+ * <dd>Act quietly; some informative messages are suppressed.</dd>
+ * <dt>--r[elease]</dt>
+ * <dd>Print the release number and exit.</dd>
+ * <dt>--ty[pe] | -t &lang;type&rang;</dt>
+ * <dd>Use the given type as output format (e.g. bib, xml).</dd>
+ * <dt>--v[erbose] | -v</dt>
+ * <dd>Act verbosely; some additional informational messages are displayed.</dd>
+ * <dt>--vers[ion]</dt>
+ * <dd>Print the version information and exit.</dd>
+ * </dl>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
@@ -146,6 +187,11 @@ public final class ExBibUtil extends AbstractMain {
     private String encoding = null;
 
     /**
+     * The field <tt>bibEncoding</tt> contains the encoding for bib files.
+     */
+    private String bibEncoding = null;
+
+    /**
      * Creates a new object.
      */
     public ExBibUtil() {
@@ -233,6 +279,16 @@ public final class ExBibUtil extends AbstractMain {
             }
 
         });
+        option("-E", "--bib.encoding", new StringOption("opt.bib.encoding") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                bibEncoding = arg;
+                return EXIT_CONTINUE;
+            }
+
+        }, "--bib-encoding");
         option("-c", "--config", new StringOption("opt.config") {
 
             @Override
@@ -429,6 +485,9 @@ public final class ExBibUtil extends AbstractMain {
                         getLogger(), System.getProperties(), null);
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
                 configuration.getConfiguration("BibReader"), finder);
+            if (bibEncoding != null) {
+                bibReaderFactory.setEncoding(bibEncoding);
+            }
             DB db = new DBFactory(configuration.getConfiguration("DB"))//
                 .newInstance(bibReaderFactory, Integer.MAX_VALUE);
             int i = 1;

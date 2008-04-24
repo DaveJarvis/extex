@@ -24,11 +24,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.io.UnsupportedEncodingException;
 
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
 
@@ -147,6 +149,8 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @param name the name of the file to open
      * @param type the type of the file to open
+     * @param encoding the encoding to use or <code>null</code> for the
+     *        platform default
      * 
      * @return a Reader for the requested file
      * 
@@ -154,7 +158,7 @@ public abstract class AbstractFileReader implements Observable {
      * @throws FileNotFoundException in case that the named file could not be
      *         opened for reading
      */
-    public LineNumberReader open(String name, String type)
+    public LineNumberReader open(String name, String type, String encoding)
             throws FileNotFoundException,
                 ConfigurationException {
 
@@ -167,7 +171,15 @@ public abstract class AbstractFileReader implements Observable {
             throw new FileNotFoundException(name);
         }
         filename = is.getName();
-        reader = new LineNumberReader(new InputStreamReader(is));
+        try {
+            reader =
+                    new LineNumberReader(encoding == null
+                            ? new InputStreamReader(is)
+                            : new InputStreamReader(is, encoding));
+        } catch (UnsupportedEncodingException e) {
+            throw new ConfigurationUnsupportedEncodingException(encoding,
+                (String) null);
+        }
         return reader;
     }
 

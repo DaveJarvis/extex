@@ -59,11 +59,12 @@ public interface BibReader extends ResourceAware {
      * Open a file for reading
      * 
      * @param file the file to open for reading
+     * @param encoding TODO
      * 
      * @throws FileNotFoundException in case the file could not be opened for
      *         reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    void open(String file) throws ConfigurationException, FileNotFoundException;
+    void open(String file, String encoding) throws ConfigurationException, FileNotFoundException;
 
 }

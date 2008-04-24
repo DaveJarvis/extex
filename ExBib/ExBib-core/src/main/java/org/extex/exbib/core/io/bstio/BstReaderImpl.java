@@ -48,10 +48,12 @@ import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
-import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -325,7 +327,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstReaderImpl extends AbstractFileReader implements BstReader {
+public class BstReaderImpl extends AbstractFileReader
+        implements
+            BstReader,
+            Configurable {
 
     /**
      * The constant <tt>EMPTY_APTTERN</tt> contains the pattern for
@@ -354,6 +359,11 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
             Pattern.compile("\"([^\\\"]*)\"");
 
     /**
+     * The field <tt>encoding</tt> contains the encoding for reading.
+     */
+    private String encoding = null;
+
+    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException in case of a configuration error
@@ -361,6 +371,20 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
     public BstReaderImpl() throws ConfigurationException {
 
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
+     */
+    public void configure(Configuration config) throws ConfigurationException {
+
+        String enc = config.getAttribute("encoding");
+        if (enc != null) {
+            encoding = enc;
+        }
     }
 
     /**
@@ -507,7 +531,7 @@ public class BstReaderImpl extends AbstractFileReader implements BstReader {
                 ConfigurationException {
 
         Token token;
-        open(file, "bst");
+        open(file, "bst", encoding);
 
         while ((token = nextToken()) != null) {
             if (!processCommand(token, processor)) {

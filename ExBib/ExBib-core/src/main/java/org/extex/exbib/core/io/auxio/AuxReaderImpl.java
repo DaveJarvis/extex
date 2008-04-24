@@ -57,6 +57,12 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
     private ResourceObserver observer = null;
 
     /**
+     * The field <tt>encoding</tt> contains the encoding for transporting it
+     * to the registered handler.
+     */
+    private String encoding;
+
+    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException in case of a configuration error
@@ -100,7 +106,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         IOException {
 
-                engine.process(bibliography, arg);
+                engine.process(bibliography, arg, encoding);
             }
         });
     }
@@ -109,13 +115,13 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.auxio.AuxReader#process(
-     *      org.extex.exbib.core.bst.Bibliography, java.lang.String)
+     *      org.extex.exbib.core.bst.Bibliography, java.lang.String, String)
      */
-    public int[] process(Bibliography bibliography, String resource)
-            throws ConfigurationException,
-                IOException {
+    public int[] process(Bibliography bibliography, String resource,
+            String encoding) throws ConfigurationException, IOException {
 
-        LineNumberReader reader = open(resource, "aux");
+        this.encoding = encoding;
+        LineNumberReader reader = open(resource, "aux", encoding);
         String name = getFilename();
 
         if (observer != null) {

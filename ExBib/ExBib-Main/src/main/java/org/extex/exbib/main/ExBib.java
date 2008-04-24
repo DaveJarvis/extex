@@ -84,39 +84,53 @@ import org.extex.resource.ResourceFinderFactory;
  * The following options are supported:
  * </p>
  * <dl>
- * <dt>-help</dt>
- * <dd>Show a short list of command line arguments. </dd>
- * <dt>-copying</dt>
- * <dd>Display the copyright conditions. </dd>
- * <dt>-quiet</dt>
- * <dt>-terse</dt>
- * <dd>Act quietly; some informative messages are suppressed. </dd>
- * <dt>-verbose</dt>
- * <dd>Act verbosely; some additional informational messages are displayed.
- * </dd>
- * <dt>-dump</dt>
- * <dd>Write some internal information to the log file at the end (for
- * debugging) </dd>
- * <dt>-trace</dt>
- * <dd>Show a detailed trace of many operations. </dd>
- * <dt>-version</dt>
- * <dd>Print the version information and exit. </dd>
- * <dt>-release</dt>
- * <dd>Print the release number to stdout and exit. </dd>
- * <dt>-strict</dt>
- * <dd>use the settings for BibT<sub>E</sub>X 0.99c. </dd>
- * <dt>-config <i>file</i></dt>
- * <dd> </dd>
- * <dt>-minCrossrefs <i>value</i></dt>
- * <dd>Set the value for <tt>min.crossrefs</tt>. The default is 2. </dd>
- * <dt>-bst <i>style</i></dt>
- * <dd>use the named bibstyle </dd>
- * <dt>-logfile <i>file</i></dt>
- * <dd>use the given logfile instead of the one derived from the name of the
- * aux file </dd>
- * <dt>-outfile <i>file</i></dt>
- * <dd>use the given output file instead of the one derived from the name of
- * the aux file </dd>
+ * <dt>-[-] &lang;file&rang;</dt>
+ * <dd>Use this argument as file name -- even when it looks like an option.</dd>
+ * <dt>--a[vailableCharsets] | -a</dt>
+ * <dd>List the available encoding names and exit.</dd>
+ * <dt>--bib-[encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
+ * <dd>Use the given encoding for the bib files.</dd>
+ * <dt>--b[st] | -b &lang;style&rang;</dt>
+ * <dd>Overwrite the bst file given in the aux file.</dd>
+ * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
+ * <dd>Use the configuration given. This is not a file!</dd>
+ * <dt>--cop[ying]</dt>
+ * <dd>Display the copyright conditions.</dd>
+ * <dt>--cs[file] &lang;csfile&rang;</dt>
+ * <dd>Name the csf for defining characters and the sort order</dd>
+ * <dt>--d[ebug] | -d</dt>
+ * <dd>Run in debug mode.</dd>
+ * <dt>--e[ncoding] | -e &lang;enc&rang;</dt>
+ * <dd>Use the given encoding for the output file.</dd>
+ * <dt>--h[elp] | -? | -h</dt>
+ * <dd>Show a short list of command line arguments.</dd>
+ * <dt>--la[nguage] | -L &lang;language></dt>
+ * <dd>Use the named language for message. The argument is a two-letter ISO
+ * code.</dd>
+ * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
+ * <dd>Send the output to the log file named instead of the default one.</dd>
+ * <dt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
+ * &lang;n&rang;</dt>
+ * <dd>Set the value for min.crossrefs. The default is 2.</dd>
+ * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
+ * <dd>Redirect the output to the file given. <br />
+ * The file name - can be used to redirect to stdout <br />
+ * The empty file name can be used to discard the output completely</dd>
+ * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
+ * &lang;program&rang;</dt>
+ * <dd>Set the program name for messages.</dd>
+ * <dt>--q[uiet] | --t[erse] | -q</dt>
+ * <dd>Act quietly; some informative messages are suppressed.</dd>
+ * <dt>--r[elease] | -r</dt>
+ * <dd>Print the release number and exit.</dd>
+ * <dt>--bi[btex] | --s[trict]</dt>
+ * <dd>Use the configuration for BibTeX 0.99c.</dd>
+ * <dt>--tr[ace] | -t</dt>
+ * <dd>Show a detailed trace of many operations.</dd>
+ * <dt>--v[erbose] | -v</dt>
+ * <dd>Act verbosely; some additional informational messages are displayed.</dd>
+ * <dt>--vers[ion]</dt>
+ * <dd>Print the version information and exit.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -278,6 +292,11 @@ public class ExBib extends AbstractMain {
     private String encoding = null;
 
     /**
+     * The field <tt>bibEncoding</tt> contains the encoding for bib files.
+     */
+    private String bibEncoding = null;
+
+    /**
      * Creates a new object.
      */
     public ExBib() {
@@ -374,6 +393,26 @@ public class ExBib extends AbstractMain {
             }
 
         });
+        option(null, "--strict", new NoArgOption("opt.strict") {
+
+            @Override
+            protected int run(String arg) {
+
+                setConfigSource(CONFIGURATION_0_99);
+                return EXIT_CONTINUE;
+            }
+
+        }, "--bibtex");
+        option("-E", "--bib.encoding", new StringOption("opt.bib.encoding") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                bibEncoding = arg;
+                return EXIT_CONTINUE;
+            }
+
+        }, "--bib-encoding");
         option("-c", "--config", new StringOption("opt.config") {
 
             @Override
@@ -507,16 +546,6 @@ public class ExBib extends AbstractMain {
             }
 
         }, "--release");
-        option(null, "--strict", new NoArgOption("opt.strict") {
-
-            @Override
-            protected int run(String arg) {
-
-                setConfigSource(CONFIGURATION_0_99);
-                return EXIT_CONTINUE;
-            }
-
-        }, "--bibtex");
         option("-t", "--trace", new BooleanOption("opt.trace") {
 
             @Override
@@ -697,6 +726,9 @@ public class ExBib extends AbstractMain {
 
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
                 topConfiguration.getConfiguration("BibReader"), finder);
+            if (bibEncoding != null) {
+                bibReaderFactory.setEncoding(bibEncoding);
+            }
             DB db =
                     new DBFactory(//
                         topConfiguration.getConfiguration("DB")).newInstance(
@@ -723,7 +755,7 @@ public class ExBib extends AbstractMain {
             engine.register(new MainResourceObserver(getLogger()));
 
             try {
-                int[] no = engine.process(processor, file);
+                int[] no = engine.process(processor, file, encoding);
 
                 if (no[1] == 0) {
                     errors++;

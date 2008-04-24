@@ -45,7 +45,7 @@ public interface AuxReader extends ResourceAware {
      * 
      * @param bibliography the bibliography to send the result to
      * @param resource the resource to be processed
-     * 
+     * @param encoding TODO
      * @return an array of three numbers:
      *         <ul>
      *         <li>the number of data entries found</li>
@@ -56,7 +56,7 @@ public interface AuxReader extends ResourceAware {
      * @throws IOException in case that the file could not be opened for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    int[] process(Bibliography bibliography, String resource)
+    int[] process(Bibliography bibliography, String resource, String encoding)
             throws IOException,
                 ConfigurationException;
 

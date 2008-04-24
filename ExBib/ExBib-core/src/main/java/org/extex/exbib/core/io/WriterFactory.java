@@ -64,14 +64,14 @@ public class WriterFactory extends AbstractFactory {
     /**
      * Creates a new object.
      * 
-     * @param configuration the configuration
+     * @param config the configuration
      * 
      * @throws UnsupportedEncodingException in case of an undefined encoding
      */
-    public WriterFactory(Configuration configuration)
+    public WriterFactory(Configuration config)
             throws UnsupportedEncodingException {
 
-        super(configuration);
+        super(config);
     }
 
     /**

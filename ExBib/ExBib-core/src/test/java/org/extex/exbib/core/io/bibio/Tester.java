@@ -61,7 +61,7 @@ public class Tester {
                     null, null);
         BibReader r = new BibReaderImpl();
         r.setResourceFinder(finder);
-        r.open(bibFile);
+        r.open(bibFile, null);
         DB db = new DBImpl();
         try {
             r.load(db);

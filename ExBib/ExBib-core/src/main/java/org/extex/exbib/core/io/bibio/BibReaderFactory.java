@@ -47,19 +47,43 @@ import org.extex.resource.ResourceFinder;
 public class BibReaderFactory extends AbstractFactory {
 
     /**
+     * The field <tt>encoding</tt> contains the encoding the encoding for
+     * reading or <code>null</code> for the platform default
+     */
+    private String encoding = null;
+
+    /**
      * Creates a new object.
      * 
-     * @param config the configuration
+     * @param configuration the configuration
      * @param finder the resource finder
      */
-    public BibReaderFactory(Configuration config, ResourceFinder finder) {
+    public BibReaderFactory(Configuration configuration, ResourceFinder finder) {
 
-        super(config);
+        super(configuration);
         setResourceFinder(finder);
+        String enc = configuration.getAttribute("encoding");
+        if (enc != null) {
+            encoding = enc;
+        }
+    }
+
+    /**
+     * Getter for encoding.
+     * 
+     * @return the encoding
+     */
+    public String getEncoding() {
+
+        return encoding;
     }
 
     /**
      * Get a new instance of a BibReader.
+     * <p>
+     * The encoding used for reading is taken from the configuration or given
+     * explicitly to the factory.
+     * </p>
      * 
      * @param file the file name
      * 
@@ -75,9 +99,19 @@ public class BibReaderFactory extends AbstractFactory {
 
         BibReader bibReader = (BibReader) super.createInstance(BibReader.class);
         bibReader.setResourceFinder(getResourceFinder());
-        bibReader.open(file);
+        bibReader.open(file, encoding);
 
         return bibReader;
+    }
+
+    /**
+     * Setter for encoding.
+     * 
+     * @param encoding the encoding to set
+     */
+    public void setEncoding(String encoding) {
+
+        this.encoding = encoding;
     }
 
 }
