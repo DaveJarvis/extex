@@ -141,6 +141,17 @@ public abstract class AbstractFactory
     }
 
     /**
+     * Creates a new factory object.
+     * 
+     * @param configuration the configuration object to consider
+     */
+    public AbstractFactory(Configuration configuration) {
+
+        super();
+        configure(configuration);
+    }
+
+    /**
      * Configure an object according to a given Configuration.
      * 
      * @param configuration the configuration object to consider
