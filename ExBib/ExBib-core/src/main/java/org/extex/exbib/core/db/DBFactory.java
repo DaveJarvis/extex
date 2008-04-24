@@ -30,15 +30,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link DB DB}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</class>. This attribute holds the name of the class
+ * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
+ * 
  * <pre>
- *   &lt;DB&gt;
- *     &lt;class&gt;org.extex.exbib.core.db.impl.DBImpl&lt;/class&gt;
- *   &lt;/DB&gt;
+ *   &lt;DB
+ *     class="org.extex.exbib.core.db.impl.DBImpl"/&gt;
  * </pre>
+ * 
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
@@ -47,12 +48,11 @@ public class DBFactory extends AbstractFactory {
     /**
      * Creates a new object.
      * 
-     * @param config the configuration
+     * @param configuration the configuration
      */
-    public DBFactory(Configuration config) {
+    public DBFactory(Configuration configuration) {
 
-        super();
-        configure(config);
+        super(configuration);
     }
 
     /**
@@ -69,9 +69,7 @@ public class DBFactory extends AbstractFactory {
     public DB newInstance(BibReaderFactory bibReaderFactory, int minCrossrefs)
             throws ConfigurationException {
 
-        DB db =
-                (DB) createInstanceForConfiguration(getConfiguration(),
-                    DB.class);
+        DB db = (DB) createInstance(DB.class);
         db.setBibReaderFactory(bibReaderFactory);
         db.setMinCrossrefs(minCrossrefs);
         return db;
