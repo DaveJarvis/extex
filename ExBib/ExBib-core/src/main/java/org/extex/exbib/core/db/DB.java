@@ -123,6 +123,13 @@ public interface DB extends Configurable {
     Value getPreamble();
 
     /**
+     * Getter for the sorter.
+     * 
+     * @return the sorter
+     */
+    Sorter getSorter();
+
+    /**
      * Load the contents of a file into this object.
      * 
      * @param file the name of the file to load

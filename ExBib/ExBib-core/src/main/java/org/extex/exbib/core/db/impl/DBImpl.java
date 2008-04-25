@@ -222,6 +222,16 @@ public class DBImpl implements DB, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.DB#getSorter()
+     */
+    public Sorter getSorter() {
+
+        return sorter;
+    }
+
+    /**
      * Inline all information from one entry to another entry.
      * 
      * @param entry the entry to be preserved
