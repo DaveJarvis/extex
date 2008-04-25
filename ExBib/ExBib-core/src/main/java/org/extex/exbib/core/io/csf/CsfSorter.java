@@ -190,4 +190,28 @@ public class CsfSorter implements Comparator<Entry>, Sorter, Serializable {
         Collections.sort(list, this);
     }
 
+    /**
+     * Translate a character to upper case.
+     * 
+     * @param c the input character
+     * 
+     * @return the uppered character or c itself
+     */
+    public char toLowerCase(char c) {
+
+        return lower[c];
+    }
+
+    /**
+     * Translate a character to lower case.
+     * 
+     * @param c the input character
+     * 
+     * @return the lowered character or c itself
+     */
+    public char toUpperCase(char c) {
+
+        return upper[c];
+    }
+
 }
