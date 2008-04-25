@@ -116,84 +116,89 @@ public class ChangeCase extends AbstractCode {
         String fmt = processor.popString(locator).getValue();
         TString ts = processor.popString(locator);
         String s = ts.getValue();
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
         boolean modified = false;
         int level = 0;
 
-        if (fmt.equals("t") || fmt.equals("T")) {
-            boolean sc = true;
+        switch (fmt.length() == 1 ? fmt.charAt(0) : '\0') {
+            case 't':
+            case 'T':
+                boolean sc = true;
 
-            for (int i = 0; i < sb.length(); i++) {
-                char c = sb.charAt(i);
+                for (int i = 0; i < sb.length(); i++) {
+                    char c = sb.charAt(i);
 
-                if (c == '{') {
-                    level++;
-                    sc = false;
-                } else if (c == '}') {
-                    level--;
-                } else if (level > 0) {
-                    //
-                } else if (c == ':') {
-                    if (i == sb.length()) {
-                        break;
-                    }
+                    if (c == '{') {
+                        level++;
+                        sc = false;
+                    } else if (c == '}') {
+                        level--;
+                    } else if (level > 0) {
+                        //
+                    } else if (c == ':') {
+                        if (i == sb.length()) {
+                            break;
+                        }
 
-                    c = sb.charAt(++i);
+                        c = sb.charAt(++i);
 
-                    if (Character.isWhitespace(c)) {
-                        i++;
-                    }
-                } else if (sc && Character.isLetter(c)) {
-                    sc = false;
-                } else {
-                    char lc = Character.toLowerCase(c);
+                        if (Character.isWhitespace(c)) {
+                            i++;
+                        }
+                    } else if (sc && Character.isLetter(c)) {
+                        sc = false;
+                    } else {
+                        char lc = Character.toLowerCase(c);
 
-                    if (lc != c) {
-                        sb.setCharAt(i, lc);
-                        modified = true;
-                    }
-                }
-            }
-        } else if (fmt.equals("l") || fmt.equals("L")) {
-
-            for (int i = 0; i < sb.length(); i++) {
-                char c = sb.charAt(i);
-
-                if (c == '{') {
-                    level++;
-                } else if (c == '}') {
-                    level--;
-                } else if (level < 1) {
-                    char lc = Character.toLowerCase(c);
-
-                    if (lc != c) {
-                        sb.setCharAt(i, lc);
-                        modified = true;
+                        if (lc != c) {
+                            sb.setCharAt(i, lc);
+                            modified = true;
+                        }
                     }
                 }
-            }
-        } else if (fmt.equals("u") || fmt.equals("U")) {
+                break;
+            case 'l':
+            case 'L':
+                for (int i = 0; i < sb.length(); i++) {
+                    char c = sb.charAt(i);
 
-            for (int i = 0; i < sb.length(); i++) {
-                char c = sb.charAt(i);
+                    if (c == '{') {
+                        level++;
+                    } else if (c == '}') {
+                        level--;
+                    } else if (level < 1) {
+                        char lc = Character.toLowerCase(c);
 
-                if (c == '{') {
-                    level++;
-                } else if (c == '}') {
-                    level--;
-                } else if (level == 0) {
-                    char lc = Character.toUpperCase(c);
-
-                    if (lc != c) {
-                        sb.setCharAt(i, lc);
-                        modified = true;
+                        if (lc != c) {
+                            sb.setCharAt(i, lc);
+                            modified = true;
+                        }
                     }
                 }
-            }
-        } else {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer.format(
-                "invalid.spec", fmt), locator);
+                break;
+            case 'u':
+            case 'U':
+                for (int i = 0; i < sb.length(); i++) {
+                    char c = sb.charAt(i);
+
+                    if (c == '{') {
+                        level++;
+                    } else if (c == '}') {
+                        level--;
+                    } else if (level == 0) {
+                        char lc = Character.toUpperCase(c);
+
+                        if (lc != c) {
+                            sb.setCharAt(i, lc);
+                            modified = true;
+                        }
+                    }
+                }
+                break;
+            default:
+                Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+                throw new ExBibIllegalValueException(localizer.format(
+                    "invalid.spec", fmt), locator);
         }
 
         processor.push(modified ? new TString(sb.toString()) : ts);
