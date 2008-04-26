@@ -476,13 +476,10 @@ public class ExBib extends AbstractMain {
             protected int run(String name, String value) {
 
                 for (String s : value.split("[,;: ]")) {
-                    if ("".equals(s)) {
-                        continue;
-                    }
                     try {
                         setDebug(Debug.valueOf(s));
                     } catch (IllegalArgumentException e) {
-                        return log("debug.mode.unknown", s);
+                        return logBanner("debug.mode.unknown", s);
                     }
                 }
                 return EXIT_CONTINUE;

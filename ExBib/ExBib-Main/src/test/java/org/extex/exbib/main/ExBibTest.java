@@ -623,6 +623,32 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--debug</tt> needs an
+     * argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug1() throws Exception {
+
+        runFailure(BANNER + "The option `--debug\' needs a parameter.\n",
+            "--debug");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--debug</tt> needs a
+     * known argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug2() throws Exception {
+
+        runFailure(BANNER + "The debug mode `xxx\' is unknown.\n",
+            "--debug=xxx");
+    }
+
+    /**
      * <testcase> Test that an empty file name is reported. </testcase>
      * 
      * @throws Exception in case of an error
@@ -786,6 +812,48 @@ public class ExBibTest extends BibTester {
                     + "\t--vers[ion]\n"
                     + "\t\tPrint the version information and exit.\n" + "", //
             "-?");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>-B</tt> is an ignored
+     * option. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIgnored1() throws Exception {
+
+        runFailure("Ignoring bibtex8 option `-B\'.\n" + BANNER
+                + "Missing aux file parameter.\n", //
+            "-v", "-B");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>-B</tt> is an ignored
+     * option. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIgnored2() throws Exception {
+
+        runFailure("Ignoring bibtex8 option `--big\'.\n" + BANNER
+                + "Missing aux file parameter.\n", //
+            "-v", "--big");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--mcites</tt> is an
+     * ignored option. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIgnored3() throws Exception {
+
+        runFailure("Ignoring bibtex8 option `--mcites\'.\n" + BANNER
+                + "Missing aux file parameter.\n", //
+            "-v", "--mcites=123");
     }
 
     /**
