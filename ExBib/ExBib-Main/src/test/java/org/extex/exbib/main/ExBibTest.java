@@ -673,6 +673,10 @@ public class ExBibTest extends BibTester {
                     + "The following options are supported:\n"
                     + "\t-[-] <file>\n"
                     + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--trad[itional] | -7\n"
+                    + "\t\toperate in the original 7-bit mode.\n"
+                    + "\t--8[bit] | -8\n"
+                    + "\t\tforce 8-bit mode, no CS file used.\n"
                     + "\t--a[vailableCharsets] | -a\n"
                     + "\t\tList the available encoding names and exit.\n"
                     + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
@@ -696,7 +700,7 @@ public class ExBibTest extends BibTester {
                     + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
+                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
                     + "\t\tSet the value for min.crossrefs. The default is 2.\n"
                     + "\t--o[utfile] | --outp[ut] | -o <file>\n"
                     + "\t\tRedirect the output to the file given.\n"
@@ -734,6 +738,10 @@ public class ExBibTest extends BibTester {
                     + "The following options are supported:\n"
                     + "\t-[-] <file>\n"
                     + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--trad[itional] | -7\n"
+                    + "\t\toperate in the original 7-bit mode.\n"
+                    + "\t--8[bit] | -8\n"
+                    + "\t\tforce 8-bit mode, no CS file used.\n"
                     + "\t--a[vailableCharsets] | -a\n"
                     + "\t\tList the available encoding names and exit.\n"
                     + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
@@ -757,7 +765,7 @@ public class ExBibTest extends BibTester {
                     + "\t\tThe argument is a two-letter ISO code.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m <n>\n"
+                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
                     + "\t\tSet the value for min.crossrefs. The default is 2.\n"
                     + "\t--o[utfile] | --outp[ut] | -o <file>\n"
                     + "\t\tRedirect the output to the file given.\n"
@@ -991,7 +999,7 @@ public class ExBibTest extends BibTester {
         assertEquals("test.bbl", exbib.getOutfile());
         assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
-        assertFalse("trace", exbib.isDebug());
+        // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
     }
 
@@ -1219,7 +1227,7 @@ public class ExBibTest extends BibTester {
         assertEquals("test.bbl", exbib.getOutfile());
         assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
-        assertFalse("trace", exbib.isDebug());
+        // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
     }
 

@@ -49,7 +49,7 @@
       <default>default.type</default>
     </function>
     <function name="change.case$"
-             class="org.extex.exbib.core.bst.code.impl.ChangeCase"/>
+             class="org.extex.exbib.core.bst.code.impl.ChangeCase8"/>
     <function name="chr.to.int$"
              class="org.extex.exbib.core.bst.code.impl.ChrToInt"/>
     <function name="cite$"

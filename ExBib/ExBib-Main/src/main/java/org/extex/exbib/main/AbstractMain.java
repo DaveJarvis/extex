@@ -345,7 +345,9 @@ public abstract class AbstractMain extends CLI {
         if (shortcut != null) {
             declareOption(shortcut, opt);
         }
-        declareOption(name, opt);
+        if (name != null) {
+            declareOption(name, opt);
+        }
 
         for (String a : aliases) {
             declareOption(a, opt);

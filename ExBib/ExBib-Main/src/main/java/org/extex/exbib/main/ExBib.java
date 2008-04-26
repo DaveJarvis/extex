@@ -25,9 +25,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -139,6 +141,32 @@ import org.extex.resource.ResourceFinderFactory;
 public class ExBib extends AbstractMain {
 
     /**
+     * This enumeration names the point for debugging.
+     */
+    public enum Debug {
+        /**
+         * The field <tt>CSF</tt> contains the csf processing.
+         */
+        CSF,
+        /**
+         * The field <tt>IO</tt> contains the I/O.
+         */
+        IO,
+        /**
+         * The field <tt>MEM</tt> contains the memory allocation.
+         */
+        MEM,
+        /**
+         * The field <tt>MISC</tt> contains miscellaneous.
+         */
+        MISC,
+        /**
+         * The field <tt>SEARCH</tt> contains the search.
+         */
+        SEARCH
+    }
+
+    /**
      * The field <tt>VERSION</tt> contains the official version number.
      */
     public static final String VERSION = "0.1";
@@ -248,7 +276,7 @@ public class ExBib extends AbstractMain {
     /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
      */
-    private boolean debug = false;
+    private Set<Debug> debug = new HashSet<Debug>();
 
     /**
      * The field <tt>errors</tt> contains the number of errors reported.
@@ -442,12 +470,19 @@ public class ExBib extends AbstractMain {
             }
 
         });
-        option("-d", "--debug", new NoArgOption("opt.debug") {
+        option("-d", "--debug", new StringOption("opt.debug") {
 
             @Override
-            protected int run(String name) {
+            protected int run(String name, String value) {
 
-                setDebug(true);
+                for (String s : value.split("[,;: ]")) {
+                    try {
+                        setDebug(Debug.valueOf(s));
+                    } catch (IllegalArgumentException e) {
+                        // TODO
+                        return EXIT_CONTINUE;
+                    }
+                }
                 return EXIT_CONTINUE;
             }
 
@@ -496,7 +531,7 @@ public class ExBib extends AbstractMain {
             }
 
         });
-        option("-m", "--min.crossrefs", new NumberOption("opt.min.crossref") {
+        option("-M", "--min.crossrefs", new NumberOption("opt.min.crossref") {
 
             @Override
             protected int run(String name, int arg) {
@@ -575,6 +610,57 @@ public class ExBib extends AbstractMain {
             }
 
         });
+        option("-7", "--traditional", new NoArgOption("opt.7.bit") {
+
+            @Override
+            protected int run(String arg) {
+
+                csf = "";
+                return EXIT_CONTINUE;
+            }
+
+        });
+        option("-8", "--8bit", new NoArgOption("opt.8.bit") {
+
+            @Override
+            protected int run(String arg) {
+
+                csf = "88591lat.csf";
+                return EXIT_CONTINUE;
+            }
+
+        });
+        option("-B", "--big", new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) {
+
+                info("ignore.option", arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "-H", "--huge", "-W", "--wolfgang");
+        option(null, "--mcites", new NumberOption(null) {
+
+            @Override
+            protected int run(String arg, int value) {
+
+                info("ignore.option", arg);
+                return EXIT_CONTINUE;
+            }
+
+        }, "--mentints", "-mentstrs", "--mfields", "--mpool", "--mstrings",
+            "--mwizfuns");
+    }
+
+    /**
+     * Getter for debug.
+     * 
+     * @return the debug
+     */
+    public Set<Debug> getDebug() {
+
+        return debug;
     }
 
     /**
@@ -605,16 +691,6 @@ public class ExBib extends AbstractMain {
     public String getOutfile() {
 
         return outfile;
-    }
-
-    /**
-     * Getter for debug.
-     * 
-     * @return the debug
-     */
-    public boolean isDebug() {
-
-        return debug;
     }
 
     /**
@@ -702,7 +778,9 @@ public class ExBib extends AbstractMain {
         logBanner(false);
 
         CsfSorter sorter = null;
-        if (csf != null) {
+        if ("".equals(csf)) {
+            sorter = new CsfSorter();
+        } else if (csf != null) {
             InputStream is = finder.findResource(csf, "csf");
             if (is == null) {
                 return logBanner("csf.missing");
@@ -736,7 +814,6 @@ public class ExBib extends AbstractMain {
             if (sorter != null) {
                 db.setSorter(sorter);
             }
-            // TODO use sorter for case conversion
 
             Processor processor = new ProcessorFactory(//
                 topConfiguration.getConfiguration("Processor")).newInstance(db);
@@ -815,7 +892,7 @@ public class ExBib extends AbstractMain {
             }
 
         } catch (ExBibImpossibleException e) {
-            return logException(e, "internal.error", debug);
+            return logException(e, "internal.error", false);
         } catch (ExBibFileNotFoundException e) {
             getLogger().severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
@@ -823,13 +900,13 @@ public class ExBib extends AbstractMain {
             getLogger().severe(e.getLocalizedMessage() + "\n");
             return EXIT_FAIL;
         } catch (ConfigurationWrapperException e) {
-            return logException(e.getCause(), "installation.error", debug);
+            return logException(e.getCause(), "installation.error", false);
         } catch (ConfigurationException e) {
-            return logException(e, "installation.error", debug);
+            return logException(e, "installation.error", false);
         } catch (NoClassDefFoundError e) {
-            return logException(e, "installation.error", debug);
+            return logException(e, "installation.error", false);
         } catch (Exception e) {
-            return logException(e, "internal.error", debug);
+            return logException(e, "internal.error", false);
         } finally {
             if (writer != null) {
                 writer.close();
@@ -854,7 +931,9 @@ public class ExBib extends AbstractMain {
         if (logfile != null && !logfile.equals("")) {
             Handler fileHandler = new FileHandler(logfile);
             fileHandler.setFormatter(new LogFormatter());
-            fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
+            fileHandler.setLevel(debug.contains(Debug.MISC)
+                    ? Level.ALL
+                    : Level.FINE);
             getLogger().addHandler(fileHandler);
         }
     }
@@ -923,16 +1002,16 @@ public class ExBib extends AbstractMain {
     private void setCsfile(String csf) {
 
         this.csf = csf;
-    }
+    };
 
     /**
      * Setter for the debugging indicator.
      * 
-     * @param debug indicator for debugging
+     * @param d indicator for debugging
      */
-    public void setDebug(boolean debug) {
+    public void setDebug(Debug d) {
 
-        this.debug = debug;
+        this.debug.add(d);
     }
 
     /**
