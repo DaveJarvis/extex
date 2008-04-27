@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>ExBib-styles</artifactId>
+  <name>ExBib texmf</name>
+  <description>
+    This is ExBib styles and assets.
+  </description>
+
+  <packaging>jar</packaging>
+  <inceptionYear>2008</inceptionYear>
+  <url>http://www.extex.org</url>
+
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>extex</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>maintainer</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <configuration>
+              <tasks>
+                <echo message="Running IzPack" />
+                <copy todir="target/classes" flatten="true">
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/abbrv.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/alpha.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/apalike.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/ieeetr.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/plain.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/siam.sty"/>
+                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/unsrt.sty"/>
+                </copy>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
