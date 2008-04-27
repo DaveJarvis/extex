@@ -24,11 +24,9 @@ import java.io.FileNotFoundException;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.exceptions.ExBibSyntaxException;
+import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -42,6 +40,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BstReaderExtImpl extends BstReaderImpl {
 
     /**
+     * The field <tt>clazz</tt> contains the class name. This works for
+     * derived classes as well.
+     */
+    private Class<? extends BstReaderImpl> clazz;
+
+    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException if the file can not be opened for reading
@@ -49,9 +53,11 @@ public class BstReaderExtImpl extends BstReaderImpl {
     public BstReaderExtImpl() throws ConfigurationException {
 
         super();
+        clazz = getClass();
     }
 
     /**
+     * 
      * Process a {@link Token Token} as a command. The following commands are
      * supported by this method in addition to those supported by
      * {@link BstReaderImpl BstReaderImpl}:
@@ -59,44 +65,42 @@ public class BstReaderExtImpl extends BstReaderImpl {
      * <dd>include</dd>
      * </dl>
      * 
-     * @param token the token to process
-     * @param processor the processor context
+     * {@inheritDoc}
      * 
-     * @return <code>true</code> iff the given toke has been handled
-     *         successfully
-     * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case of an unexpected end of file
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case something impossible happens
+     * @see org.extex.exbib.core.io.bstio.BstReaderImpl#init()
      */
     @Override
-    protected boolean processCommand(Token token, Processor processor)
-            throws ExBibException {
+    protected void init() {
 
-        if (!(token instanceof TLiteral)) {
-            return false;
-        }
+        super.init();
+        addInstruction("include", new Instruction() {
 
-        String name = token.getValue().toLowerCase();
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
 
-        if (name.equals("include")) {
-            String fname = parseLiteralArg().getValue();
+                String fname = parseLiteralArg().getValue();
 
-            try {
-                BstReader reader = this.getClass().newInstance();
-                reader.parse(processor, fname);
-            } catch (FileNotFoundException e) {
-                throw new ExBibException(e);
-            } catch (ConfigurationException e) {
-                throw e;
-            } catch (Exception e) {
-                throw new ExBibException(e);
+                try {
+                    BstReaderImpl reader = clazz.newInstance();
+                    Configuration cfg = getConfiguration();
+                    if (cfg != null) {
+                        reader.configure(cfg);
+                    }
+                    reader.parse(processor, fname);
+                } catch (FileNotFoundException e) {
+                    throw new ExBibException(e);
+                } catch (ConfigurationException e) {
+                    throw e;
+                } catch (Exception e) {
+                    throw new ExBibException(e);
+                }
             }
-
-            return true;
-        }
-
-        return super.processCommand(token, processor);
+        });
     }
 }

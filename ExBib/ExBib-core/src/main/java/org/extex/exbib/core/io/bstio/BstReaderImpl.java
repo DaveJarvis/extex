@@ -21,7 +21,9 @@
 package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -364,6 +366,18 @@ public class BstReaderImpl extends AbstractFileReader
     private String encoding = null;
 
     /**
+     * The field <tt>instructionMap</tt> contains the mapping from normalized
+     * names to instructions.
+     */
+    private Map<String, Instruction> instructionMap =
+            new HashMap<String, Instruction>();
+
+    /**
+     * The field <tt>configuration</tt> contains the configuration.
+     */
+    private Configuration configuration;
+
+    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException in case of a configuration error
@@ -371,6 +385,18 @@ public class BstReaderImpl extends AbstractFileReader
     public BstReaderImpl() throws ConfigurationException {
 
         super();
+        init();
+    }
+
+    /**
+     * Add some instruction.
+     * 
+     * @param name the name
+     * @param instruction the instruction
+     */
+    public void addInstruction(String name, Instruction instruction) {
+
+        instructionMap.put(name.toLowerCase(), instruction);
     }
 
     /**
@@ -381,6 +407,7 @@ public class BstReaderImpl extends AbstractFileReader
      */
     public void configure(Configuration config) throws ConfigurationException {
 
+        this.configuration = config;
         String enc = config.getAttribute("encoding");
         if (enc != null) {
             encoding = enc;
@@ -412,6 +439,179 @@ public class BstReaderImpl extends AbstractFileReader
             throw new ExBibUnexpectedException(value, token.toString(),
                 getLocator());
         }
+    }
+
+    /**
+     * Getter for configuration.
+     * 
+     * @return the configuration
+     */
+    public Configuration getConfiguration() {
+
+        return configuration;
+    }
+
+    /**
+     * Initialize the instructions.
+     */
+    protected void init() {
+
+        addInstruction("entry", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                List<String> entries = parseLiteralList().toStringList();
+                List<String> integers = parseLiteralList().toStringList();
+                List<String> strings = parseLiteralList().toStringList();
+                processor.setEntries(entries, locator);
+                processor.setEntryIntegers(integers, locator);
+                processor.setEntryStrings(strings, locator);
+            }
+        });
+        addInstruction("execute", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                Token value = parseLiteralArg();
+                processor.addCommand(new BstExecute(value, locator));
+            }
+        });
+        addInstruction("function", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                String fname = parseLiteralArg().getValue();
+                TBlock body = parseBlock();
+                processor.addFunction(fname, new MacroCode(fname, body
+                    .getTokenList()), locator);
+
+            }
+        });
+        addInstruction("integers", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor.setIntegers(parseLiteralList(), locator);
+
+            }
+        });
+        addInstruction("iterate", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor
+                    .addCommand(new BstIterate(parseLiteralArg(), locator));
+
+            }
+        });
+        addInstruction("macro", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                String mname = parseLiteralArg().getValue();
+                processor.addMacro(mname, parseStringArg());
+            }
+        });
+        addInstruction("read", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor.addCommand(new BstRead(locator));
+            }
+        });
+        addInstruction("reverse", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor
+                    .addCommand(new BstReverse(parseLiteralArg(), locator));
+
+            }
+        });
+        addInstruction("strings", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor.setStrings(parseLiteralList(), locator);
+            }
+        });
+        addInstruction("sort", new Instruction() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             *      Locator)
+             */
+            public void parse(Processor processor, Locator locator)
+                    throws ExBibException {
+
+                processor.addCommand(new BstSort(locator));
+            }
+        });
     }
 
     /**
@@ -479,7 +679,7 @@ public class BstReaderImpl extends AbstractFileReader
 
                 return new TChar(c, getLocator());
             } else {
-                throw new ExBibImpossibleException(">>" + buffer + "<<"); //$NON-NLS-2$
+                throw new ExBibImpossibleException(">>" + buffer + "<<");
             }
         }
     }
@@ -743,85 +943,12 @@ public class BstReaderImpl extends AbstractFileReader
         }
 
         String name = token.getValue().toLowerCase();
+        Instruction instruction = instructionMap.get(name);
 
-        switch (name.charAt(0)) {
-            case 'e':
-
-                if ("entry".equals(name)) {
-                    List<String> entries = parseLiteralList().toStringList();
-                    List<String> integers = parseLiteralList().toStringList();
-                    List<String> strings = parseLiteralList().toStringList();
-                    processor.setEntries(entries, token.getLocator());
-                    processor.setEntryIntegers(integers, token.getLocator());
-                    processor.setEntryStrings(strings, token.getLocator());
-                    return true;
-                } else if ("execute".equals(name)) {
-                    Token value = parseLiteralArg();
-                    processor.addCommand(new BstExecute(value, token
-                        .getLocator()));
-                    return true;
-                }
-
-                break;
-            case 'f':
-
-                if ("function".equals(name)) {
-                    String fname = parseLiteralArg().getValue();
-                    TBlock body = parseBlock();
-                    processor.addFunction(fname, new MacroCode(name, body
-                        .getTokenList()), token.getLocator());
-                    return true;
-                }
-
-                break;
-            case 'i':
-
-                if ("integers".equals(name)) {
-                    processor.setIntegers(parseLiteralList(), token
-                        .getLocator());
-                    return true;
-                } else if ("iterate".equals(name)) {
-                    processor.addCommand(new BstIterate(parseLiteralArg(),
-                        token.getLocator()));
-                    return true;
-                }
-
-                break;
-            case 'm':
-
-                if ("macro".equals(name)) {
-                    String mname = parseLiteralArg().getValue();
-                    processor.addMacro(mname, parseStringArg());
-                    return true;
-                }
-
-                break;
-            case 'r':
-
-                if ("read".equals(name)) {
-                    processor.addCommand(new BstRead(token.getLocator()));
-                    return true;
-                } else if ("reverse".equals(name)) {
-                    processor.addCommand(new BstReverse(parseLiteralArg(),
-                        token.getLocator()));
-                    return true;
-                }
-
-                break;
-            case 's':
-
-                if ("strings".equals(name)) {
-                    processor
-                        .setStrings(parseLiteralList(), token.getLocator());
-                    return true;
-                } else if ("sort".equals(name)) {
-                    processor.addCommand(new BstSort(token.getLocator()));
-                    return true;
-                }
-
-                break;
+        if (instruction != null) {
+            instruction.parse(processor, token.getLocator());
+            return true;
         }
-
         return false;
     }
 
