@@ -25,15 +25,17 @@ import java.io.PrintWriter;
 import org.extex.framework.configuration.Configuration;
 
 /**
- * This {@link Writer Writer} stores its contents in a StringBuffer. This can be
- * used to write messages into memory.
+ * This {@link Writer Writer} stores its contents in a {@link StringBuffer}.
+ * This can be used to write messages into memory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
 public class StringBufferWriter implements Writer {
 
-    /** the target StringBuffer */
+    /**
+     * The field <tt>buffer</tt> contains the target.
+     */
     private StringBuffer buffer = null;
 
     /**
