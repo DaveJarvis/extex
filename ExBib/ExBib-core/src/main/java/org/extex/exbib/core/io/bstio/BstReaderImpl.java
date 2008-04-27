@@ -61,7 +61,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * This class implements a reader for bst files.
  * <p>
- * The syntax follows the definition of BibT<sub>E</sub>X 0.99c.
+ * The syntax follows the definition of B<small>IB</small>T<sub>E</sub>X
+ * 0.99c.
  * </p>
  * 
  * <small> <table>
@@ -227,7 +228,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td><i>macro</i></td>
  * <td><tt>:==</tt></td>
- * <td>'MACRO' '{' <i>name</i> '}' '{' <i>body</i> '}'
+ * <td>'MACRO' '{' <i>name</i> '}' '{' <i>body</i> '}' </td>
+ * </tr>
  * 
  * <tr>
  * <td><i>function</i></td>
@@ -268,8 +270,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * '{'
- * <td><i>bodyitem</i> '}'</td>
+ * <td>'{' <i>bodyitem</i> '}'</td>
  * </tr>
  * 
  * <tr>
