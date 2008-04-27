@@ -183,7 +183,7 @@ public class CLITest {
             }
 
         });
-        assertEquals(0, cli.run(new String[]{"xxx"}));
+        assertEquals(1, cli.run(new String[]{"xxx"}));
     }
 
     /**
@@ -225,7 +225,7 @@ public class CLITest {
             protected int run(String a) {
 
                 assertEquals("-xxx", a);
-                return 1;
+                return CLI.EXIT_CONTINUE;
             }
 
         });
@@ -272,7 +272,7 @@ public class CLITest {
             protected int run(String a) {
 
                 assertEquals("-xx", a);
-                return 1;
+                return CLI.EXIT_CONTINUE;
             }
 
         });
@@ -284,7 +284,7 @@ public class CLITest {
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = UnknownOptionCliException.class)
+    @Test
     public void testA30() throws Exception {
 
         CLI cli = new CLI();
@@ -306,7 +306,7 @@ public class CLITest {
             }
 
         }));
-        cli.run(new String[]{"-xxx", "123"});
+        assertEquals(1, cli.run(new String[]{"-xxx"}));
     }
 
     /**

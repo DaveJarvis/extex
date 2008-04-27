@@ -17,22 +17,30 @@
  *
  */
 
-package org.extex.exbib.main;
+package org.extex.exbib.main.util;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.nio.charset.Charset;
 import java.text.MessageFormat;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.main.ExBib;
 import org.extex.exbib.main.cli.CLI;
+import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.Option;
+import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
 import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
 import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
@@ -87,6 +95,17 @@ public abstract class AbstractMain extends CLI {
     private int inceptionYear;
 
     /**
+     * The field <tt>consoleHandler</tt> contains the console handler for log
+     * messages. It can be used to modify the log level for the console.
+     */
+    private Handler consoleHandler;
+
+    /**
+     * The field <tt>logfile</tt> contains the name of the log file.
+     */
+    private String logfile = null;
+
+    /**
      * Creates a new object.
      * 
      * @param programName the name of the program
@@ -105,6 +124,34 @@ public abstract class AbstractMain extends CLI {
         logger = Logger.getLogger(getClass().getName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
+
+        consoleHandler = new ConsoleHandler();
+        consoleHandler.setFormatter(new LogFormatter());
+        consoleHandler.setLevel(Level.WARNING);
+        getLogger().addHandler(consoleHandler);
+    }
+
+    /**
+     * Attach a handler to the logger to direct messages to a log file.
+     * 
+     * @param log the base name of the file
+     * @param extension the extension
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void attachFileLogger(String log, String extension)
+            throws IOException {
+
+        if (logfile == null && log != null && !log.equals("")
+                && !log.equals("-")) {
+            logfile = log + extension;
+        }
+        if (logfile != null && !logfile.equals("")) {
+            Handler fileHandler = new FileHandler(logfile);
+            fileHandler.setFormatter(new LogFormatter());
+            fileHandler.setLevel(Level.FINE);
+            logger.addHandler(fileHandler);
+        }
     }
 
     /**
@@ -120,6 +167,156 @@ public abstract class AbstractMain extends CLI {
             logger.removeHandler(h);
         }
         logger = null;
+        consoleHandler = null;
+    }
+
+    /**
+     * Declare the list of command line options.
+     */
+    protected void declareCommonOptions() {
+
+        declareOption(null, new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) throws UnknownOptionCliException {
+
+                if (arg.startsWith("-")) {
+                    throw new UnknownOptionCliException(arg);
+                }
+                return setFile(arg);
+            }
+
+            @Override
+            public int run(String a, String arg, List<String> args)
+                    throws UnusedArgumentCliException,
+                        UnknownOptionCliException {
+
+                if (a.startsWith("-")) {
+                    throw new UnknownOptionCliException(a);
+                }
+                throw new UnusedArgumentCliException(a);
+            }
+        });
+        declareOption("", new NoArgOption(null) {
+
+            @Override
+            protected int run(String arg) {
+
+                return setFile("");
+            }
+        });
+        option("-", "--", new StringOption("opt.1.file") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                return setFile(arg);
+            }
+        });
+        option(null, "--availableCharsets", new NoArgOption(
+            "opt.available.charsets") {
+
+            @Override
+            protected int run(String arg) {
+
+                for (String s : Charset.availableCharsets().keySet()) {
+                    logger.severe(s + "\n");
+                }
+
+                return EXIT_FAIL;
+            }
+        });
+        option(null, "--copying", new NoArgOption("opt.copying") {
+
+            @Override
+            protected int run(String name) {
+
+                return logCopying();
+            }
+        });
+        option("-h", "--help", new NoArgOption("opt.help") {
+
+            @Override
+            protected int run(String arg) {
+
+                logBanner();
+                getLogger().severe(describeOptions(getBundle(), //
+                    "usage.start", "usage.end", getProgramName()));
+                return EXIT_FAIL;
+            }
+        }, "-?");
+        option("-l", "--logfile", new StringOption("opt.logfile") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setLogfile(arg);
+                return EXIT_CONTINUE;
+            }
+        });
+        option("-L", "--language", new StringOption("opt.language") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                Locale.setDefault(new Locale(arg));
+                setBundle(ResourceBundle.getBundle(ExBib.class.getName()));
+                return EXIT_CONTINUE;
+            }
+        });
+        option("-o", "--output", new StringOption("opt.output") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setOutfile(arg);
+                return EXIT_CONTINUE;
+            }
+        }, "--outfile");
+        option("-p", "--progname", new StringOption("opt.progname") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                setProgramName(arg);
+                return EXIT_CONTINUE;
+            }
+        }, "--program.name", "--program-name");
+        option("-q", "--quiet", new NoArgOption("opt.quiet") {
+
+            @Override
+            protected int run(String arg) {
+
+                consoleHandler.setLevel(Level.SEVERE);
+                return EXIT_CONTINUE;
+            }
+        }, "--terse");
+        option(null, "--release", new NoArgOption("opt.release") {
+
+            @Override
+            protected int run(String arg) {
+
+                getLogger().severe(version + "\n");
+                return EXIT_FAIL;
+            }
+        }, "--release");
+        option("-v", "--verbose", new NoArgOption("opt.verbose") {
+
+            @Override
+            protected int run(String arg) {
+
+                consoleHandler.setLevel(Level.INFO);
+                return EXIT_CONTINUE;
+            }
+        });
+        option(null, "--version", new NoArgOption("opt.version") {
+
+            @Override
+            protected int run(String arg) {
+
+                return logBannerCopyright();
+            }
+        });
     }
 
     /**
@@ -130,6 +327,16 @@ public abstract class AbstractMain extends CLI {
     public ResourceBundle getBundle() {
 
         return bundle;
+    }
+
+    /**
+     * Getter for the log file.
+     * 
+     * @return the log file
+     */
+    public String getLogfile() {
+
+        return logfile;
     }
 
     /**
@@ -194,11 +401,9 @@ public abstract class AbstractMain extends CLI {
     /**
      * Write the banner to the logger. The used log level is warning.
      * 
-     * @param copyright the indicator to show the copyright
-     * 
-     * @return the exit code <code>1</code>
+     * @return the exit code <code>EXIT_FAILURE</code>
      */
-    protected int logBanner(boolean copyright) {
+    protected int logBanner() {
 
         if (banner) {
             return EXIT_FAIL;
@@ -207,16 +412,6 @@ public abstract class AbstractMain extends CLI {
 
         logger.warning(MessageFormat.format(getBundle().getString("version"),
             getProgramName(), version));
-        if (copyright) {
-            int year = Calendar.getInstance().get(Calendar.YEAR);
-            String copyrightYear =
-                    (year <= inceptionYear
-                            ? Integer.toString(inceptionYear)
-                            : Integer.toString(inceptionYear) + "-"
-                                    + Integer.toString(year));
-            logger.severe(MessageFormat.format(getBundle().getString(
-                "copyright"), getProgramName(), copyrightYear));
-        }
         return EXIT_FAIL;
     }
 
@@ -230,7 +425,7 @@ public abstract class AbstractMain extends CLI {
      */
     protected int logBanner(String tag) {
 
-        logBanner(false);
+        logBanner();
         return log(tag, getProgramName());
     }
 
@@ -245,7 +440,7 @@ public abstract class AbstractMain extends CLI {
      */
     protected int logBanner(String tag, String arg) {
 
-        logBanner(false);
+        logBanner();
         return log(tag, getProgramName(), arg);
     }
 
@@ -261,25 +456,49 @@ public abstract class AbstractMain extends CLI {
      */
     protected int logBanner(String tag, String arg1, String arg2) {
 
-        logBanner(false);
+        logBanner();
         return log(tag, getProgramName(), arg1, arg2);
+    }
+
+    /**
+     * Write the banner and the copyright to the logger. The used log level is
+     * warning.
+     * 
+     * @return the exit code <code>EXIT_FAIL</code>
+     */
+    protected int logBannerCopyright() {
+
+        if (banner) {
+            return EXIT_FAIL;
+        }
+        banner = true;
+
+        logger.warning(MessageFormat.format(getBundle().getString("version"),
+            getProgramName(), version));
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        String copyrightYear =
+                (year <= inceptionYear
+                        ? Integer.toString(inceptionYear)
+                        : Integer.toString(inceptionYear) + "-"
+                                + Integer.toString(year));
+        logger.severe(MessageFormat.format(getBundle().getString("copyright"),
+            getProgramName(), copyrightYear));
+        return EXIT_FAIL;
     }
 
     /**
      * Show the copying information (license) which is sought on the classpath.
      * 
-     * @param log the target logger
-     * 
      * @return the exit code EXIT_FAILURE
      */
-    protected int logCopying(Logger log) {
+    protected int logCopying() {
 
         InputStream is =
                 getClass().getClassLoader().getResourceAsStream(
                     COPYING_RESOURCE);
 
         if (is == null) {
-            log.severe("--copying " + COPYING_RESOURCE);
+            logger.severe("--copying " + COPYING_RESOURCE);
             return EXIT_FAIL;
         }
 
@@ -304,7 +523,7 @@ public abstract class AbstractMain extends CLI {
                 // finally ignore it
             }
         }
-        log.severe(sb.toString());
+        logger.severe(sb.toString());
 
         return EXIT_FAIL;
     }
@@ -361,7 +580,7 @@ public abstract class AbstractMain extends CLI {
      * 
      * @return the exit code; i.e. 0 iff everything went fine
      */
-    protected int processCommandLine(String[] argv) {
+    public int processCommandLine(String[] argv) {
 
         try {
             int ret = run(argv);
@@ -410,6 +629,25 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
+     * Setter for the file name.
+     * 
+     * @param arg the file name
+     * 
+     * @return EXIT_CONTINUE
+     */
+    protected abstract int setFile(String arg);
+
+    /**
+     * Setter for the log file.
+     * 
+     * @param logfile the log file
+     */
+    public void setLogfile(String logfile) {
+
+        this.logfile = logfile;
+    }
+
+    /**
      * Setter for logger.
      * 
      * @param logger the logger to set
@@ -418,6 +656,13 @@ public abstract class AbstractMain extends CLI {
 
         this.logger = logger;
     }
+
+    /**
+     * Sett for the output file.
+     * 
+     * @param arg the output file
+     */
+    protected abstract void setOutfile(String arg);
 
     /**
      * Setter for the program name.

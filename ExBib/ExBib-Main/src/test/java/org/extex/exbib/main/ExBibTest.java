@@ -33,6 +33,7 @@ import java.io.Writer;
 import java.util.Locale;
 
 import org.extex.exbib.main.cli.CLI;
+import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -43,6 +44,62 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ExBibTest extends BibTester {
+
+    /**
+     * The field <tt>USAGE</tt> contains the ...
+     */
+    private static final String USAGE =
+            "Usage: exbib <options> file\n"
+                    + "The following options are supported:\n"
+                    + "\t-[-] <file>\n"
+                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--trad[itional] | -7\n"
+                    + "\t\toperate in the original 7-bit mode.\n"
+                    + "\t--8[bit] | -8\n"
+                    + "\t\tforce 8-bit mode, no CS file used.\n"
+                    + "\t--a[vailableCharsets]\n"
+                    + "\t\tList the available encoding names and exit.\n"
+                    + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
+                    + "\t\tUse the given encoding for the bib files.\n"
+                    + "\t--b[st] | -b <style>\n"
+                    + "\t\tOverwrite the bst file given in the aux file.\n"
+                    + "\t--con[figuration] | -c <configuration>\n"
+                    + "\t\tUse the configuration given. This is not a file!\n"
+                    + "\t--c[opying]\n"
+                    + "\t\tDisplay the copyright conditions.\n"
+                    + "\t--cs[file] <csfile>\n"
+                    + "\t\tName the csf for defining characters and the sort order\n"
+                    + "\t--d[ebug] | -d\n"
+                    + "\t\tRun in debug mode.\n"
+                    + "\t--e[ncoding] | -e <enc>\n"
+                    + "\t\tUse the given encoding for the output file.\n"
+                    + "\t--h[elp] | -? | -h\n"
+                    + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
+                    + "\t--l[ogfile] | -l <file>\n"
+                    + "\t\tSend the output to the log file named instead of the default one.\n"
+                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
+                    + "\t\tSet the value for min.crossrefs. The default is 2.\n"
+                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
+                    + "\t\tRedirect the output to the file given.\n"
+                    + "\t\tThe file name - can be used to redirect to stdout\n"
+                    + "\t\tThe empty file name can be used to discard the output completely\n"
+                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
+                    + "\t\tSet the program name for messages.\n"
+                    + "\t--q[uiet] | --t[erse] | -q\n"
+                    + "\t\tAct quietly; some informative messages are suppressed.\n"
+                    + "\t--r[elease]\n"
+                    + "\t\tPrint the release number and exit.\n"
+                    + "\t--bi[btex] | --s[trict]\n"
+                    + "\t\tUse the configuration for BibTeX 0.99c.\n"
+                    + "\t--tr[ace] | -t\n"
+                    + "\t\tShow a detailed trace of many operations.\n"
+                    + "\t--v[erbose] | -v\n"
+                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
+                    + "\t--vers[ion]\n"
+                    + "\t\tPrint the version information and exit.\n";
 
     /**
      * <testcase> Test that no command line option at all leads to an error.
@@ -693,59 +750,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testHelp1() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Usage: exbib <options> file\n"
-                    + "The following options are supported:\n"
-                    + "\t-[-] <file>\n"
-                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
-                    + "\t--trad[itional] | -7\n"
-                    + "\t\toperate in the original 7-bit mode.\n"
-                    + "\t--8[bit] | -8\n"
-                    + "\t\tforce 8-bit mode, no CS file used.\n"
-                    + "\t--a[vailableCharsets] | -a\n"
-                    + "\t\tList the available encoding names and exit.\n"
-                    + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
-                    + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--b[st] | -b <style>\n"
-                    + "\t\tOverwrite the bst file given in the aux file.\n"
-                    + "\t--c[onfig] | -c <configuration>\n"
-                    + "\t\tUse the configuration given. This is not a file!\n"
-                    + "\t--cop[ying]\n"
-                    + "\t\tDisplay the copyright conditions.\n"
-                    + "\t--cs[file] <csfile>\n"
-                    + "\t\tName the csf for defining characters and the sort order\n"
-                    + "\t--d[ebug] | -d\n"
-                    + "\t\tRun in debug mode.\n"
-                    + "\t--e[ncoding] | -e <enc>\n"
-                    + "\t\tUse the given encoding for the output file.\n"
-                    + "\t--h[elp] | -? | -h\n"
-                    + "\t\tShow a short list of command line arguments.\n"
-                    + "\t--la[nguage] | -L <language>\n"
-                    + "\t\tUse the named language for message.\n"
-                    + "\t\tThe argument is a two-letter ISO code.\n"
-                    + "\t--l[ogfile] | -l <file>\n"
-                    + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
-                    + "\t\tSet the value for min.crossrefs. The default is 2.\n"
-                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
-                    + "\t\tRedirect the output to the file given.\n"
-                    + "\t\tThe file name - can be used to redirect to stdout\n"
-                    + "\t\tThe empty file name can be used to discard the output completely\n"
-                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
-                    + "\t\tSet the program name for messages.\n"
-                    + "\t--q[uiet] | --t[erse] | -q\n"
-                    + "\t\tAct quietly; some informative messages are suppressed.\n"
-                    + "\t--r[elease] | -r\n"
-                    + "\t\tPrint the release number and exit.\n"
-                    + "\t--bi[btex] | --s[trict]\n"
-                    + "\t\tUse the configuration for BibTeX 0.99c.\n"
-                    + "\t--tr[ace] | -t\n"
-                    + "\t\tShow a detailed trace of many operations.\n"
-                    + "\t--v[erbose] | -v\n"
-                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
-                    + "\t--vers[ion]\n"
-                    + "\t\tPrint the version information and exit.\n" + "", //
+        runFailure(BANNER + USAGE, //
             "--help");
     }
 
@@ -758,59 +763,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testHelp2() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Usage: exbib <options> file\n"
-                    + "The following options are supported:\n"
-                    + "\t-[-] <file>\n"
-                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
-                    + "\t--trad[itional] | -7\n"
-                    + "\t\toperate in the original 7-bit mode.\n"
-                    + "\t--8[bit] | -8\n"
-                    + "\t\tforce 8-bit mode, no CS file used.\n"
-                    + "\t--a[vailableCharsets] | -a\n"
-                    + "\t\tList the available encoding names and exit.\n"
-                    + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
-                    + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--b[st] | -b <style>\n"
-                    + "\t\tOverwrite the bst file given in the aux file.\n"
-                    + "\t--c[onfig] | -c <configuration>\n"
-                    + "\t\tUse the configuration given. This is not a file!\n"
-                    + "\t--cop[ying]\n"
-                    + "\t\tDisplay the copyright conditions.\n"
-                    + "\t--cs[file] <csfile>\n"
-                    + "\t\tName the csf for defining characters and the sort order\n"
-                    + "\t--d[ebug] | -d\n"
-                    + "\t\tRun in debug mode.\n"
-                    + "\t--e[ncoding] | -e <enc>\n"
-                    + "\t\tUse the given encoding for the output file.\n"
-                    + "\t--h[elp] | -? | -h\n"
-                    + "\t\tShow a short list of command line arguments.\n"
-                    + "\t--la[nguage] | -L <language>\n"
-                    + "\t\tUse the named language for message.\n"
-                    + "\t\tThe argument is a two-letter ISO code.\n"
-                    + "\t--l[ogfile] | -l <file>\n"
-                    + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
-                    + "\t\tSet the value for min.crossrefs. The default is 2.\n"
-                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
-                    + "\t\tRedirect the output to the file given.\n"
-                    + "\t\tThe file name - can be used to redirect to stdout\n"
-                    + "\t\tThe empty file name can be used to discard the output completely\n"
-                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
-                    + "\t\tSet the program name for messages.\n"
-                    + "\t--q[uiet] | --t[erse] | -q\n"
-                    + "\t\tAct quietly; some informative messages are suppressed.\n"
-                    + "\t--r[elease] | -r\n"
-                    + "\t\tPrint the release number and exit.\n"
-                    + "\t--bi[btex] | --s[trict]\n"
-                    + "\t\tUse the configuration for BibTeX 0.99c.\n"
-                    + "\t--tr[ace] | -t\n"
-                    + "\t\tShow a detailed trace of many operations.\n"
-                    + "\t--v[erbose] | -v\n"
-                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
-                    + "\t--vers[ion]\n"
-                    + "\t\tPrint the version information and exit.\n" + "", //
+        runFailure(BANNER + USAGE, //
             "-?");
     }
 
@@ -926,7 +879,7 @@ public class ExBibTest extends BibTester {
         assertFalse(log.exists());
 
         try {
-            ExBib exbib =
+            AbstractMain exbib =
                     runTest(
                         "test",
                         "",

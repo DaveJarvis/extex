@@ -20,18 +20,13 @@
 
 package org.extex.exbib.core.bst;
 
-import java.util.logging.Logger;
+import java.util.List;
 
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
-import org.extex.exbib.core.io.Writer;
-import org.extex.exbib.core.io.auxio.AuxReaderImpl;
+import org.extex.exbib.core.io.auxio.AuxReader;
 
 /**
- * This interface allows a communication from the
- * {@link AuxReaderImpl AuxReader} to an object storing the data read, i.e. a
- * {@link org.extex.exbib.core.db.DB DB}.
+ * This interface allows a communication from the {@link AuxReader AuxReader} to
+ * an object storing the data read, i.e. a {@link org.extex.exbib.core.db.DB DB}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -47,7 +42,7 @@ public interface Bibliography {
      * 
      * @param s the array of Strings to add
      */
-    void addBibliographyDatabase(String[] s);
+    void addBibliographyDatabase(String... s);
 
     /**
      * Adder for the bibliography styles.
@@ -74,18 +69,14 @@ public interface Bibliography {
      * 
      * @param s the String array of reference keys
      */
-    void addCitation(String[] s);
+    void addCitation(String... s);
 
     /**
-     * Run the procedures stored in the processor context. For each procedure
-     * the observers `run' are called before it is executed.
+     * Getter for the bib style.
      * 
-     * @param outWriter the writer output is sent to
-     * @param logger the logger
-     * 
-     * @throws ExBibException in case of an error
+     * @return the list of bib styles
      */
-    void process(Writer outWriter, Logger logger) throws ExBibException;
+    List<String> getBibliographyStyles();
 
     /**
      * Reset the bibliography to its initial state.
@@ -93,15 +84,7 @@ public interface Bibliography {
      * <li>All entries from the database are eliminated.</li>
      * <li>The loaded program is cleared.</li>
      * </ul>
-     * 
-     * @throws ExBibIllegalValueException in case that the name of a function
-     *         which is initialized is <code>null</code> or empty. This should
-     *         not happen
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists. This should not happen
      */
-    void reset()
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+    void reset();
 
 }

@@ -36,7 +36,7 @@ import org.extex.resource.ResourceFinderFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Tester {
+public class BiblioTester {
 
     /**
      * Read a database from file.
@@ -74,7 +74,7 @@ public class Tester {
     /**
      * Creates a new object.
      */
-    private Tester() {
+    private BiblioTester() {
 
         super();
     }

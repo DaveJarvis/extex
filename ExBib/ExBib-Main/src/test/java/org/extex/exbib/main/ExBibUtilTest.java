@@ -33,6 +33,7 @@ import java.io.Writer;
 import java.util.Locale;
 
 import org.extex.exbib.main.cli.CLI;
+import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -43,6 +44,52 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ExBibUtilTest extends BibUtilTester {
+
+    /**
+     * The field <tt>USAGE</tt> contains the usage message (without the
+     * banner).
+     */
+    private static final String USAGE =
+            "Usage: exbibutil <options> file\n"
+                    + "The following options are supported:\n"
+                    + "\t-[-] <file>\n"
+                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
+                    + "\t--au[xfile] | --ex[tract] | -x <file>\n"
+                    + "\t\tUse this argument as file name of an aux file to get databases and citations\n"
+                    + "\t\tfrom.\n"
+                    + "\t--a[vailableCharsets]\n"
+                    + "\t\tList the available encoding names and exit.\n"
+                    + "\t--b[ib-encoding] | --bib.[encoding] | -E <enc>\n"
+                    + "\t\tUse the given encoding for the bib files.\n"
+                    + "\t--con[fig] | -c <configuration>\n"
+                    + "\t\tUse the configuration given. This is not a file!\n"
+                    + "\t--c[opying]\n"
+                    + "\t\tDisplay the copyright conditions.\n"
+                    + "\t--e[ncoding] | -e <enc>\n"
+                    + "\t\tUse the given encoding for the output file.\n"
+                    + "\t--h[elp] | -? | -h\n"
+                    + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--la[nguage] | -L <language>\n"
+                    + "\t\tUse the named language for message.\n"
+                    + "\t\tThe argument is a two-letter ISO code.\n"
+                    + "\t--l[ogfile] | -l <file>\n"
+                    + "\t\tSend the output to the log file named instead of the default one.\n"
+                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
+                    + "\t\tRedirect the output to the file given.\n"
+                    + "\t\tThe file name - can be used to redirect to stdout\n"
+                    + "\t\tThe empty file name can be used to discard the output completely\n"
+                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
+                    + "\t\tSet the program name for messages.\n"
+                    + "\t--q[uiet] | --t[erse] | -q\n"
+                    + "\t\tAct quietly; some informative messages are suppressed.\n"
+                    + "\t--r[elease]\n"
+                    + "\t\tPrint the release number and exit.\n"
+                    + "\t--ty[pe] | -t <type>\n"
+                    + "\t\tUse the given type as output format (e.g. bib, xml).\n"
+                    + "\t--v[erbose] | -v\n"
+                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
+                    + "\t--vers[ion]\n"
+                    + "\t\tPrint the version information and exit.\n";
 
     /**
      * <testcase> Test that no command line option at all leads to no output.
@@ -96,6 +143,75 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
+     * <testcase> Test that the data file in an aux file needs to exist.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test010() throws Exception {
+
+        String basename = "test";
+        String auxContents = "\\relax\n" //
+                + "\\citation{abc}\n" //
+                + "\\bibdata{some/non/existent/file}\n" //
+                + "\\bibstyle{undef}\n";
+        File aux = new File(basename + ".bib");
+        if (auxContents != null) {
+            Writer w = new FileWriter(aux);
+            try {
+                w.write(auxContents);
+            } finally {
+                w.close();
+            }
+        }
+
+        try {
+            runTest(basename, null, CLI.EXIT_FAIL, Check.EQ, BANNER
+                    + "I couldn\'t open file some/non/existent/file.bib\n",
+                "-x", aux.toString());
+        } finally {
+            if (aux.exists() && !aux.delete()) {
+                assertTrue(aux.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
+     * <testcase> Test that the of the aux file selects only the needed entries.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test011() throws Exception {
+
+        String basename = "test";
+        String auxContents = "\\relax\n" //
+                + "\\citation{article-full}\n" //
+                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n" //
+                + "\\bibstyle{undef}\n";
+        File aux = new File(basename + ".aux");
+        if (auxContents != null) {
+            Writer w = new FileWriter(aux);
+            try {
+                w.write(auxContents);
+            } finally {
+                w.close();
+            }
+        }
+
+        try {
+            runTest(basename, null, CLI.EXIT_OK, Check.EQ, BANNER, //
+                "-x", aux.toString());
+        } finally {
+            if (aux.exists() && !aux.delete()) {
+                assertTrue(aux.toString() + ": deletion failed", false);
+            }
+        }
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--config</tt> needs an
      * argument. </testcase>
      * 
@@ -117,12 +233,8 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testConfig2() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Installation Error: Some parts of exbibutil could not be found: \n"
-                    + "\tConfiguration `exbib/undef\' not found.\n"
-                    + "\tConsult the log file for details.\n", "--config",
-            "undef");
+        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n",
+            "--config", "undef");
     }
 
     /**
@@ -296,44 +408,21 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testHelp1() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Usage: exbibutil <options> file\n"
-                    + "The following options are supported:\n"
-                    + "\t-[-] <file>\n"
-                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
-                    + "\t--b[ib-encoding] | --bib.[encoding] | -E <enc>\n"
-                    + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--c[onfig] | -c <configuration>\n"
-                    + "\t\tUse the configuration given. This is not a file!\n"
-                    + "\t--cop[ying]\n"
-                    + "\t\tDisplay the copyright conditions.\n"
-                    + "\t--e[ncoding] | -e <enc>\n"
-                    + "\t\tUse the given encoding for the output file.\n"
-                    + "\t--h[elp] | -? | -h\n"
-                    + "\t\tShow a short list of command line arguments.\n"
-                    + "\t--la[nguage] | -L <language>\n"
-                    + "\t\tUse the named language for message.\n"
-                    + "\t\tThe argument is a two-letter ISO code.\n"
-                    + "\t--l[ogfile] | -l <file>\n"
-                    + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
-                    + "\t\tRedirect the output to the file given.\n"
-                    + "\t\tThe file name - can be used to redirect to stdout\n"
-                    + "\t\tThe empty file name can be used to discard the output completely\n"
-                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
-                    + "\t\tSet the program name for messages.\n"
-                    + "\t--q[uiet] | --t[erse] | -q\n"
-                    + "\t\tAct quietly; some informative messages are suppressed.\n"
-                    + "\t--r[elease]\n"
-                    + "\t\tPrint the release number and exit.\n"
-                    + "\t--ty[pe] | -t <type>\n"
-                    + "\t\tUse the given type as output format (e.g. bib, xml).\n"
-                    + "\t--v[erbose] | -v\n"
-                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
-                    + "\t--vers[ion]\n"
-                    + "\t\tPrint the version information and exit.\n", //
+        runFailure(BANNER + USAGE, //
             "--help");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>-h</tt> works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testHelp2() throws Exception {
+
+        runFailure(BANNER + USAGE, //
+            "-h");
     }
 
     /**
@@ -343,45 +432,9 @@ public class ExBibUtilTest extends BibUtilTester {
      * @throws Exception in case of an error
      */
     @Test
-    public void testHelp2() throws Exception {
+    public void testHelp3() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Usage: exbibutil <options> file\n"
-                    + "The following options are supported:\n"
-                    + "\t-[-] <file>\n"
-                    + "\t\tUse this argument as file name -- even when it looks like an option.\n"
-                    + "\t--b[ib-encoding] | --bib.[encoding] | -E <enc>\n"
-                    + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--c[onfig] | -c <configuration>\n"
-                    + "\t\tUse the configuration given. This is not a file!\n"
-                    + "\t--cop[ying]\n"
-                    + "\t\tDisplay the copyright conditions.\n"
-                    + "\t--e[ncoding] | -e <enc>\n"
-                    + "\t\tUse the given encoding for the output file.\n"
-                    + "\t--h[elp] | -? | -h\n"
-                    + "\t\tShow a short list of command line arguments.\n"
-                    + "\t--la[nguage] | -L <language>\n"
-                    + "\t\tUse the named language for message.\n"
-                    + "\t\tThe argument is a two-letter ISO code.\n"
-                    + "\t--l[ogfile] | -l <file>\n"
-                    + "\t\tSend the output to the log file named instead of the default one.\n"
-                    + "\t--o[utfile] | --outp[ut] | -o <file>\n"
-                    + "\t\tRedirect the output to the file given.\n"
-                    + "\t\tThe file name - can be used to redirect to stdout\n"
-                    + "\t\tThe empty file name can be used to discard the output completely\n"
-                    + "\t--p[rogname] | --progr[am-name] | --program.[name] | -p <program>\n"
-                    + "\t\tSet the program name for messages.\n"
-                    + "\t--q[uiet] | --t[erse] | -q\n"
-                    + "\t\tAct quietly; some informative messages are suppressed.\n"
-                    + "\t--r[elease]\n"
-                    + "\t\tPrint the release number and exit.\n"
-                    + "\t--ty[pe] | -t <type>\n"
-                    + "\t\tUse the given type as output format (e.g. bib, xml).\n"
-                    + "\t--v[erbose] | -v\n"
-                    + "\t\tAct verbosely; some additional informational messages are displayed.\n"
-                    + "\t--vers[ion]\n"
-                    + "\t\tPrint the version information and exit.\n", //
+        runFailure(BANNER + USAGE, //
             "-?");
     }
 

@@ -24,14 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,8 +60,7 @@ import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.NumberOption;
 import org.extex.exbib.main.cli.StringOption;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
-import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
+import org.extex.exbib.main.util.AbstractMain;
 import org.extex.exbib.main.util.LogFormatter;
 import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
@@ -257,12 +252,6 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * The field <tt>consoleHandler</tt> contains the console handler for log
-     * messages. It can be used to modify the log level for the console.
-     */
-    private Handler consoleHandler;
-
-    /**
      * The field <tt>bst</tt> contains the name of the Bib style.
      */
     private String bst = null;
@@ -305,11 +294,6 @@ public class ExBib extends AbstractMain {
     private String csf = null;
 
     /**
-     * The field <tt>logfile</tt> contains the name of the log file.
-     */
-    private String logfile = null;
-
-    /**
      * The field <tt>file</tt> contains the file to be processed.
      */
     private String file = null;
@@ -331,86 +315,15 @@ public class ExBib extends AbstractMain {
 
         super("exbib", VERSION, INCEPTION_YEAR);
 
-        consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new LogFormatter());
-        consoleHandler.setLevel(Level.WARNING);
-        getLogger().addHandler(consoleHandler);
-
         declareOptions();
     }
 
     /**
-     * Close the instance and release the logger.
-     */
-    @Override
-    public void close() {
-
-        super.close();
-        consoleHandler = null;
-    }
-
-    /**
      * Declare the list of command line options.
-     * 
      */
     protected void declareOptions() {
 
-        declareOption(null, new NoArgOption(null) {
-
-            @Override
-            protected int run(String arg) throws UnknownOptionCliException {
-
-                if (arg.startsWith("-")) {
-                    throw new UnknownOptionCliException(arg);
-                }
-                return setFile(arg);
-            }
-
-            @Override
-            public int run(String a, String arg, List<String> args)
-                    throws UnusedArgumentCliException,
-                        UnknownOptionCliException {
-
-                if (a.startsWith("-")) {
-                    throw new UnknownOptionCliException(a);
-                }
-                throw new UnusedArgumentCliException(a);
-            }
-
-        });
-        declareOption("", new NoArgOption(null) {
-
-            @Override
-            protected int run(String arg) {
-
-                return setFile(arg);
-            }
-
-        });
-        option("-", "--", new StringOption("opt.1.file") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                return setFile(arg);
-            }
-
-        });
-        option("-a", "--availableCharsets", new NoArgOption(
-            "opt.available.charsets") {
-
-            @Override
-            protected int run(String arg) {
-
-                Logger logger = getLogger();
-                for (String s : Charset.availableCharsets().keySet()) {
-                    logger.severe(s + "\n");
-                }
-
-                return EXIT_FAIL;
-            }
-
-        });
+        declareCommonOptions();
         option("-b", "--bst", new StringOption("opt.bst") {
 
             @Override
@@ -419,7 +332,6 @@ public class ExBib extends AbstractMain {
                 setBst(arg);
                 return EXIT_CONTINUE;
             }
-
         });
         option(null, "--strict", new NoArgOption("opt.strict") {
 
@@ -429,7 +341,6 @@ public class ExBib extends AbstractMain {
                 setConfigSource(CONFIGURATION_0_99);
                 return EXIT_CONTINUE;
             }
-
         }, "--bibtex");
         option("-E", "--bib.encoding", new StringOption("opt.bib.encoding") {
 
@@ -439,9 +350,8 @@ public class ExBib extends AbstractMain {
                 bibEncoding = arg;
                 return EXIT_CONTINUE;
             }
-
         }, "--bib-encoding");
-        option("-c", "--config", new StringOption("opt.config") {
+        option("-c", "--configuration", new StringOption("opt.config") {
 
             @Override
             protected int run(String name, String arg) {
@@ -449,16 +359,6 @@ public class ExBib extends AbstractMain {
                 setConfigSource("exbib/" + arg);
                 return EXIT_CONTINUE;
             }
-
-        });
-        option(null, "--copying", new NoArgOption("opt.copying") {
-
-            @Override
-            protected int run(String name) {
-
-                return logCopying(getLogger());
-            }
-
         });
         option(null, "--csfile", new StringOption("opt.csfile") {
 
@@ -468,67 +368,22 @@ public class ExBib extends AbstractMain {
                 setCsfile(arg);
                 return EXIT_CONTINUE;
             }
-
         });
         option("-d", "--debug", new StringOption("opt.debug") {
 
             @Override
             protected int run(String name, String value) {
 
-                for (String s : value.split("[,;: ]")) {
-                    try {
-                        setDebug(Debug.valueOf(s));
-                    } catch (IllegalArgumentException e) {
-                        return logBanner("debug.mode.unknown", s);
-                    }
-                }
-                return EXIT_CONTINUE;
+                return setDebug(value.split("[,;: ]"));
             }
-
         });
         option("-e", "--encoding", new StringOption("opt.encoding") {
 
             @Override
             protected int run(String name, String arg) {
 
-                setEncoding(arg);
-                return EXIT_CONTINUE;
+                return setEncoding(arg);
             }
-
-        });
-        option("-h", "--help", new NoArgOption("opt.help") {
-
-            @Override
-            protected int run(String arg) {
-
-                logBanner(false);
-                getLogger().severe(
-                    describeOptions(getBundle(), "usage.start", "usage.end",
-                        getProgramName()));
-                return EXIT_FAIL;
-            }
-
-        }, "-?");
-        option("-l", "--logfile", new StringOption("opt.logfile") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setLogfile(arg);
-                return EXIT_CONTINUE;
-            }
-
-        });
-        option("-L", "--language", new StringOption("opt.language") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                Locale.setDefault(new Locale(arg));
-                setBundle(ResourceBundle.getBundle(ExBib.class.getName()));
-                return EXIT_CONTINUE;
-            }
-
         });
         option("-M", "--min.crossrefs", new NumberOption("opt.min.crossref") {
 
@@ -538,7 +393,6 @@ public class ExBib extends AbstractMain {
                 setMinCrossrefs(arg);
                 return EXIT_CONTINUE;
             }
-
         }, "--min-crossrefs", "--min_crossrefs");
         option("-o", "--output", new StringOption("opt.output") {
 
@@ -548,7 +402,6 @@ public class ExBib extends AbstractMain {
                 setOutfile(arg);
                 return EXIT_CONTINUE;
             }
-
         }, "--outfile");
         option("-p", "--progname", new StringOption("opt.progname") {
 
@@ -558,28 +411,7 @@ public class ExBib extends AbstractMain {
                 setProgramName(arg);
                 return EXIT_CONTINUE;
             }
-
         }, "--program.name", "--program-name");
-        option("-q", "--quiet", new NoArgOption("opt.quiet") {
-
-            @Override
-            protected int run(String arg) {
-
-                consoleHandler.setLevel(Level.SEVERE);
-                return EXIT_CONTINUE;
-            }
-
-        }, "--terse");
-        option("-r", "--release", new NoArgOption("opt.release") {
-
-            @Override
-            protected int run(String arg) {
-
-                getLogger().severe(VERSION + "\n");
-                return EXIT_FAIL;
-            }
-
-        }, "--release");
         option("-t", "--trace", new BooleanOption("opt.trace") {
 
             @Override
@@ -588,26 +420,6 @@ public class ExBib extends AbstractMain {
                 setTrace(value);
                 return EXIT_CONTINUE;
             }
-
-        });
-        option("-v", "--verbose", new NoArgOption("opt.verbose") {
-
-            @Override
-            protected int run(String arg) {
-
-                consoleHandler.setLevel(Level.INFO);
-                return EXIT_CONTINUE;
-            }
-
-        });
-        option(null, "--version", new NoArgOption("opt.version") {
-
-            @Override
-            protected int run(String arg) {
-
-                return logBanner(true);
-            }
-
         });
         option("-7", "--traditional", new NoArgOption("opt.7.bit") {
 
@@ -617,7 +429,6 @@ public class ExBib extends AbstractMain {
                 csf = "";
                 return EXIT_CONTINUE;
             }
-
         });
         option("-8", "--8bit", new NoArgOption("opt.8.bit") {
 
@@ -627,7 +438,6 @@ public class ExBib extends AbstractMain {
                 csf = "88591lat.csf";
                 return EXIT_CONTINUE;
             }
-
         });
         option("-B", "--big", new NoArgOption(null) {
 
@@ -637,7 +447,6 @@ public class ExBib extends AbstractMain {
                 info("ignore.option", arg);
                 return EXIT_CONTINUE;
             }
-
         }, "-H", "--huge", "-W", "--wolfgang");
         option(null, "--mcites", new NumberOption(null) {
 
@@ -647,7 +456,6 @@ public class ExBib extends AbstractMain {
                 info("ignore.option", arg);
                 return EXIT_CONTINUE;
             }
-
         }, "--mentints", "-mentstrs", "--mfields", "--mpool", "--mstrings",
             "--mwizfuns");
     }
@@ -660,16 +468,6 @@ public class ExBib extends AbstractMain {
     public Set<Debug> getDebug() {
 
         return debug;
-    }
-
-    /**
-     * Getter for the log file.
-     * 
-     * @return the log file
-     */
-    public String getLogfile() {
-
-        return logfile;
     }
 
     /**
@@ -762,19 +560,18 @@ public class ExBib extends AbstractMain {
     public int run() throws IOException, ConfigurationException {
 
         long time = System.currentTimeMillis();
-        Configuration topConfiguration =
-                ConfigurationFactory.newInstance(configSource);
+        Configuration config = ConfigurationFactory.newInstance(configSource);
         ResourceFinder finder =
-                new ResourceFinderFactory().createResourceFinder(
-                    topConfiguration.getConfiguration("Resource"), getLogger(),
-                    System.getProperties(), null);
+                new ResourceFinderFactory().createResourceFinder(config
+                    .getConfiguration("Resource"), getLogger(), System
+                    .getProperties(), null);
         if (file == null) {
             return logBanner("missing.file");
         }
         file = stripExtension(file, AUX_FILE_EXTENSION);
 
-        runAttachLogFile(file);
-        logBanner(false);
+        attachFileLogger(file, BLG_FILE_EXTENSION);
+        logBanner();
 
         CsfSorter sorter = null;
         if ("".equals(csf)) {
@@ -793,7 +590,7 @@ public class ExBib extends AbstractMain {
             }
         }
 
-        Writer writer = makeBblWriter(file, topConfiguration);
+        Writer writer = makeBblWriter(file, config);
         if (writer == null) {
             return EXIT_FAIL;
         }
@@ -802,20 +599,20 @@ public class ExBib extends AbstractMain {
             FuncallObserver funcall = null;
 
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
-                topConfiguration.getConfiguration("BibReader"), finder);
+                config.getConfiguration("BibReader"), finder);
             if (bibEncoding != null) {
                 bibReaderFactory.setEncoding(bibEncoding);
             }
             DB db =
                     new DBFactory(//
-                        topConfiguration.getConfiguration("DB")).newInstance(
+                        config.getConfiguration("DB")).newInstance(
                         bibReaderFactory, minCrossrefs);
             if (sorter != null) {
                 db.setSorter(sorter);
             }
 
             Processor processor = new ProcessorFactory(//
-                topConfiguration.getConfiguration("Processor")).newInstance(db);
+                config.getConfiguration("Processor")).newInstance(db);
 
             if (trace) {
                 funcall = runRegisterTracers(db, processor);
@@ -823,15 +620,12 @@ public class ExBib extends AbstractMain {
             processor.registerObserver("startRead", new DBObserver(getLogger(),
                 getBundle().getString("observer.db.pattern")));
 
-            AuxReader engine =
-                    new AuxReaderFactory(//
-                        topConfiguration.getConfiguration("AuxReader"))
-                        .newInstance(finder);
-
-            engine.register(new MainResourceObserver(getLogger()));
+            AuxReader auxReader = new AuxReaderFactory(//
+                config.getConfiguration("AuxReader")).newInstance(finder);
+            auxReader.register(new MainResourceObserver(getLogger()));
 
             try {
-                int[] no = engine.process(processor, file, encoding);
+                int[] no = auxReader.process(processor, file, encoding);
 
                 if (no[1] == 0) {
                     errors++;
@@ -860,12 +654,11 @@ public class ExBib extends AbstractMain {
                 return EXIT_FAIL;
             }
             bst = bibliographyStyles.get(0);
-
             bst = stripExtension(bst, BST_FILE_EXTENSION);
             info("bst.file", bst);
             BstReader bstReader =
-                    new BstReaderFactory(topConfiguration
-                        .getConfiguration("BstReader")).newInstance();
+                    new BstReaderFactory(config.getConfiguration("BstReader"))
+                        .newInstance();
             bstReader.setResourceFinder(finder);
             try {
                 bstReader.parse(processor);
@@ -913,28 +706,6 @@ public class ExBib extends AbstractMain {
         }
 
         return errors > 0 ? EXIT_FAIL : EXIT_OK;
-    }
-
-    /**
-     * Attach a handler to the logger to direct messages to a log file.
-     * 
-     * @param file the base name of the file
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private void runAttachLogFile(String file) throws IOException {
-
-        if (logfile == null && !file.equals("") && !file.equals("-")) {
-            logfile = file + BLG_FILE_EXTENSION;
-        }
-        if (logfile != null && !logfile.equals("")) {
-            Handler fileHandler = new FileHandler(logfile);
-            fileHandler.setFormatter(new LogFormatter());
-            fileHandler.setLevel(debug.contains(Debug.MISC)
-                    ? Level.ALL
-                    : Level.FINE);
-            getLogger().addHandler(fileHandler);
-        }
     }
 
     /**
@@ -1014,13 +785,35 @@ public class ExBib extends AbstractMain {
     }
 
     /**
+     * Setter for the debugging indicator.
+     * 
+     * @param value indicator for debugging
+     * 
+     * @return EXIT_CONTINUE if everything went through
+     */
+    public int setDebug(String... value) {
+
+        for (String s : value) {
+            try {
+                setDebug(Debug.valueOf(s));
+            } catch (IllegalArgumentException e) {
+                return logBanner("debug.mode.unknown", s);
+            }
+        }
+        return EXIT_CONTINUE;
+    }
+
+    /**
      * Setter for encoding.
      * 
      * @param encoding the encoding to set
+     * 
+     * @return EXIT_CONTINUE
      */
-    public void setEncoding(String encoding) {
+    public int setEncoding(String encoding) {
 
         this.encoding = encoding;
+        return EXIT_CONTINUE;
     }
 
     /**
@@ -1030,7 +823,8 @@ public class ExBib extends AbstractMain {
      * 
      * @return EXIT_FAILURE at failure and EXIT_CONTINUE at success
      */
-    private int setFile(String arg) {
+    @Override
+    protected int setFile(String arg) {
 
         if (file != null) {
             return logBanner("one.file", file);
@@ -1039,16 +833,6 @@ public class ExBib extends AbstractMain {
         }
         file = arg;
         return EXIT_CONTINUE;
-    }
-
-    /**
-     * Setter for the log file.
-     * 
-     * @param logfile the log file
-     */
-    public void setLogfile(String logfile) {
-
-        this.logfile = logfile;
     }
 
     /**
@@ -1066,6 +850,7 @@ public class ExBib extends AbstractMain {
      * 
      * @param outfile the output file to set
      */
+    @Override
     public void setOutfile(String outfile) {
 
         this.outfile = outfile;

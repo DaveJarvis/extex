@@ -34,10 +34,10 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class MainResourceObserver implements ResourceObserver {
 
     /**
-     * The constant <tt>LOCALIZER</tt> contains the localizer.
+     * The constant <tt>localizer</tt> contains the localizer. It is not
+     * static to allow the modification of the default locale at run time.
      */
-    private static final Localizer LOCALIZER =
-            LocalizerFactory.getLocalizer(MainResourceObserver.class);
+    private Localizer localizer;
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -58,6 +58,8 @@ public class MainResourceObserver implements ResourceObserver {
 
         super();
         this.logger = logger;
+        this.localizer =
+                LocalizerFactory.getLocalizer(MainResourceObserver.class);
     }
 
     /**
@@ -79,7 +81,7 @@ public class MainResourceObserver implements ResourceObserver {
      */
     public void observeOpen(String resource, String type, String filename) {
 
-        logger.info(LOCALIZER.format(level == 0 ? "message0" : "message",
+        logger.info(localizer.format(level == 0 ? "message0" : "message",
             filename, Integer.toString(level)));
         level++;
     }

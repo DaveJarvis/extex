@@ -118,9 +118,9 @@ public class BibUtilTester {
     }
 
     /**
-     * Run the command line test. The aux file is written temporarily in the
-     * current directory under the name <tt>test.aux</tt>. The contents can
-     * be given as argument.
+     * Run the command line test. The bib file is written temporarily in the
+     * current directory under the name <i>basename</i><tt>.bib</tt>. The
+     * contents can be given as argument.
      * 
      * @param basename the base name of the files to prepare and use
      * @param bibContents the contents of the aux file

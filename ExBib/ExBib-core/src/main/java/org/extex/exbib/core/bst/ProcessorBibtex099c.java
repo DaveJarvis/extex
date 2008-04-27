@@ -71,7 +71,7 @@ import org.extex.exbib.core.io.Writer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class Processor099Impl extends ProcessorCoreImpl {
+public class ProcessorBibtex099c extends ProcessorCoreImpl {
 
     /**
      * Creates a new object.
@@ -79,10 +79,9 @@ public class Processor099Impl extends ProcessorCoreImpl {
      * @throws ExBibException in case that the constructor of the superclass
      *         throws one.
      */
-    public Processor099Impl() throws ExBibException {
+    public ProcessorBibtex099c() throws ExBibException {
 
-        super();
-        init();
+        this(null, null, null);
     }
 
     /**
@@ -96,7 +95,7 @@ public class Processor099Impl extends ProcessorCoreImpl {
      *         complain or one of the functions is already defined by the
      *         superclass
      */
-    public Processor099Impl(DB db, Writer outWriter, Logger logger)
+    public ProcessorBibtex099c(DB db, Writer outWriter, Logger logger)
             throws ExBibException {
 
         super(db, outWriter, logger);

@@ -22,7 +22,7 @@
   
   <Resource src="path/exbibFinder"/>
 
-  <Processor class="org.extex.exbib.core.bst.Processor099Impl"/>
+  <Processor class="org.extex.exbib.core.bst.ProcessorBibtex099c"/>
 
   <DB class="org.extex.exbib.core.db.impl.DBImpl">
     <minCrossrefs>2</minCrossrefs>

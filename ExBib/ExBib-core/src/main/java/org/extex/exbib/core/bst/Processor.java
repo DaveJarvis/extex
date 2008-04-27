@@ -115,13 +115,6 @@ public interface Processor extends Bibliography, Configurable {
     public Iterator<Command> commandsIterator();
 
     /**
-     * Getter for the bib style.
-     * 
-     * @return the list of bib styles
-     */
-    List<String> getBibliographyStyles();
-
-    /**
      * Get the original cite key for a given key. I.e. the casing might be
      * different.
      * 
@@ -245,7 +238,7 @@ public interface Processor extends Bibliography, Configurable {
      * @throws FileNotFoundException in case that the requested file or one of
      *         the subsequent files (@input) could not be found
      */
-    void loadDB()
+    void loadDatabases()
             throws ExBibException,
                 FileNotFoundException,
                 ConfigurationException;
@@ -299,6 +292,17 @@ public interface Processor extends Bibliography, Configurable {
      * @return the top of stack or <codeC>null</code>
      */
     Token popUnchecked();
+
+    /**
+     * Run the procedures stored in the processor context. For each procedure
+     * the observers `run' are called before it is executed.
+     * 
+     * @param outWriter the writer output is sent to
+     * @param logger the logger
+     * 
+     * @throws ExBibException in case of an error
+     */
+    void process(Writer outWriter, Logger logger) throws ExBibException;
 
     /**
      * Push the given item onto the stack.

@@ -20,7 +20,6 @@
 
 package org.extex.exbib.core.bst;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,8 +42,6 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.VString;
-import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
@@ -55,7 +52,6 @@ import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.util.NotObservableException;
-import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
 import org.extex.framework.configuration.Configuration;
@@ -112,7 +108,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
+public class ProcessorCoreImpl extends BibliographyCore implements Processor {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -120,22 +116,10 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     private List<Command> commands;
 
     /**
-     * The field <tt>db</tt> contains the database.
-     */
-    private DB db = null;
-
-    /**
-     * The field <tt>citations</tt> contains the mapping from normalized forms
-     * of citation strings to their original representation. The normalization
-     * simply converts strings to their lowercase counterpart.
-     */
-    private Map<String, String> citations;
-
-    /**
      * The field <tt>functions</tt> contains the mapping from the name to the
      * code for functions.
      */
-    private Map<String, Code> functions = new HashMap<String, Code>();
+    private Map<String, Code> functions;
 
     /**
      * The field <tt>addFunctionObservers</tt> contains the list of observers
@@ -148,18 +132,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * observers triggered when functions are changed.
      */
     private ObserverList changeFunctionObservers = new ObserverList();
-
-    /**
-     * The field <tt>endParseObservers</tt> contains the list of observers
-     * triggered when the parsing is started.
-     */
-    private ObserverList endParseObservers = new ObserverList();
-
-    /**
-     * The field <tt>parseObservers</tt> contains the list of observers
-     * triggered when the parsing is completed.
-     */
-    private ObserverList parseObservers = new ObserverList();
 
     /**
      * The field <tt>popObservers</tt> contains the list of observers
@@ -180,34 +152,10 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     private ObserverList runObservers = new ObserverList();
 
     /**
-     * The field <tt>startParseObservers</tt> contains the list of observers
-     * triggered when the parsing starts.
-     */
-    private ObserverList startParseObservers = new ObserverList();
-
-    /**
-     * The field <tt>startReadObservers</tt> contains the list of observers
-     * triggered when the parsing ends.
-     */
-    private ObserverList startReadObservers = new ObserverList();
-
-    /**
      * The field <tt>stepObservers</tt> contains the list of observers
      * triggered by the execution of one step.
      */
     private ObserverList stepObservers = new ObserverList();
-
-    /**
-     * The field <tt>bibliographyDatabases</tt> contains the list of
-     * bibliography databases to consider.
-     */
-    private List<String> bibliographyDatabases;
-
-    /**
-     * The field <tt>bibliographyStyles</tt> contains the list of bibliography
-     * styles to load and use.
-     */
-    private List<String> bibliographyStyles;
 
     /**
      * The field <tt>theEntries</tt> contains the list of entries.
@@ -242,11 +190,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     private Stack<Token> literalStack = new Stack<Token>();
 
     /**
-     * The field <tt>logger</tt> contains the writer for logging purposes.
-     */
-    private Logger logger = null;
-
-    /**
      * The field <tt>outWriter</tt> contains the output writer.
      */
     private Writer outWriter = null;
@@ -278,13 +221,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      */
     public ProcessorCoreImpl() throws ExBibImpossibleException {
 
-        super();
-
-        try {
-            reset();
-        } catch (ExBibException e) {
-            throw new ExBibImpossibleException(e);
-        }
+        this(null, null, null);
     }
 
     /**
@@ -302,66 +239,11 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     public ProcessorCoreImpl(DB db, Writer out, Logger log)
             throws ExBibImpossibleException {
 
-        super();
-        this.db = db;
+        super(db, log);
+        functions = new HashMap<String, Code>();
         this.outWriter = out;
-        this.logger = log;
 
-        try {
-            reset();
-        } catch (ExBibException e) {
-            throw new ExBibImpossibleException(e);
-        }
-    }
-
-    /**
-     * Setter for bib data.
-     * <p>
-     * This setter takes an array of names of bibliography databases. Those are
-     * stored in the processor context and passed to the database as required.
-     * </p>
-     * 
-     * @param sa the array of resources to add
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(
-     *      java.lang.String[])
-     */
-    public void addBibliographyDatabase(String[] sa) {
-
-        for (int i = 0; i < sa.length; i++) {
-            bibliographyDatabases.add(sa[i]);
-        }
-    }
-
-    /**
-     * Setter for bib style. The bib style is the name of he BST file to use for
-     * processing the database.
-     * 
-     * @param style the new bib style
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyStyle(
-     *      java.lang.String[])
-     */
-    public void addBibliographyStyle(String... style) {
-
-        for (int i = 0; i < style.length; i++) {
-            bibliographyStyles.add(style[i]);
-        }
-    }
-
-    /**
-     * Setter for citations. The citations already existing in the processor
-     * context are augmented by the ones given.
-     * 
-     * @param sa the String list of citations
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addCitation(java.lang.String[])
-     */
-    public void addCitation(String[] sa) {
-
-        for (int i = 0; i < sa.length; i++) {
-            citations.put(sa[i].toLowerCase(), sa[i]);
-        }
+        reset();
     }
 
     /**
@@ -403,19 +285,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
         }
 
         functions.put(name, body);
-    }
-
-    /**
-     * Store an additional <tt>STRING</tt> in the database. To delete a
-     * <tt>STRING</tt> the value <code>null</code> can be used.
-     * 
-     * @param name the name of the macro to add
-     * @param value the value as Token
-     */
-    public void addMacro(String name, Token value) {
-
-        db.storeString(name, (value == null ? null : new Value(new VString(
-            value.getValue()))));
     }
 
     /**
@@ -473,8 +342,10 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
      * 
      * @throws ConfigurationException in case of an error
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
+        super.configure(config);
         Locator locator = new Locator(getClass().getName() + "#configure()", 0);
         int i = config.getValueAsInteger("globalMax", -1);
 
@@ -500,48 +371,19 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
-     * Getter for bib style. The bib style is the name of he BST file to use for
-     * processing the database.
+     * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getBibliographyStyles()
-     */
-    public List<String> getBibliographyStyles() {
-
-        return bibliographyStyles;
-    }
-
-    /**
-     * Get the original cite key for a given key. I.e. the casing might be
-     * different.
-     * 
-     * @param key the citation key
-     * 
-     * @return the original citation key
-     */
-    public String getCite(String key) {
-
-        return (citations.get(key.toLowerCase()));
-    }
-
-    /**
-     * Getter for the database.
-     * 
-     * @return the database
-     */
-    public DB getDB() {
-
-        return db;
-    }
-
-    /**
      * @see org.extex.exbib.core.bst.Processor#getEntries()
      */
+    @Override
     public List<String> getEntries() {
 
         return theEntries;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getEntryIntegers()
      */
     public List<String> getEntryIntegers() {
@@ -550,6 +392,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getEntryStrings()
      */
     public List<String> getEntryStrings() {
@@ -570,6 +414,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getFunctionNames()
      */
     public List<String> getFunctionNames() {
@@ -591,6 +437,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getIntegers()
      */
     public List<String> getIntegers() {
@@ -599,37 +447,18 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
-     * Getter for the log writer.
+     * {@inheritDoc}
      * 
-     * @return the log writer
-     */
-    public Logger getLogger() {
-
-        return logger;
-    }
-
-    /**
-     * Getter for a certain macro.
-     * 
-     * @param name the name of the macro to search for
-     * 
-     * @return the expanded value of the macro or <code>null</code> if none
-     *         has been found.
-     */
-    public String getMacro(String name) {
-
-        return db.getExpandedMacro(name);
-    }
-
-    /**
      * @see org.extex.exbib.core.bst.Processor#getMacroNames()
      */
     public List<String> getMacroNames() {
 
-        return db.getMacroNames();
+        return getDB().getMacroNames();
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getNumberOfWarnings()
      */
     public long getNumberOfWarnings() {
@@ -648,25 +477,13 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#getStrings()
      */
     public List<String> getStrings() {
 
         return theStrings;
-    }
-
-    /**
-     * @see org.extex.exbib.core.bst.Processor#loadDB()
-     */
-    public void loadDB()
-            throws ExBibException,
-                FileNotFoundException,
-                ConfigurationException {
-
-        for (String file : bibliographyDatabases) {
-            startReadObservers.update(this, file);
-            db.load(file, citations);
-        }
     }
 
     /**
@@ -799,7 +616,7 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     public void process(Writer writer, Logger logger) throws ExBibException {
 
         this.outWriter = writer;
-        this.logger = logger;
+        setLogger(logger);
 
         for (Command command : commands) {
             runObservers.update(this, command);
@@ -830,9 +647,12 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
      *      org.extex.exbib.core.util.Observer)
      */
+    @Override
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
@@ -844,55 +664,44 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
             pushObservers.add(observer);
         } else if (name.equals("pop")) {
             popObservers.add(observer);
-        } else if (name.equals("startParse")) {
-            startParseObservers.add(observer);
-        } else if (name.equals("parse")) {
-            parseObservers.add(observer);
-        } else if (name.equals("endParse")) {
-            endParseObservers.add(observer);
-        } else if (name.equals("startRead")) {
-            startReadObservers.add(observer);
         } else if (name.equals("addFunction")) {
             addFunctionObservers.add(observer);
         } else if (name.equals("changeFunction")) {
             changeFunctionObservers.add(observer);
         } else {
-            throw new NotObservableException(name);
+            super.registerObserver(name, observer);
         }
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Bibliography#reset()
      */
-    public void reset()
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+    @Override
+    public void reset() {
 
         Locator locator = new Locator(getClass().getName() + "#reset()", 0);
 
-        citations = new HashMap<String, String>();
-        bibliographyStyles = new ArrayList<String>();
-        bibliographyDatabases = new ArrayList<String>();
+        super.reset();
         theEntries = new ArrayList<String>();
         theEntryIntegers = new ArrayList<String>();
         theEntryStrings = new ArrayList<String>();
         theIntegers = new ArrayList<String>();
         theStrings = new ArrayList<String>();
         commands = new ArrayList<Command>();
-        addFunction("global.max$", new TInteger(globalMax), locator);
-        addFunction("entry.max$", new TInteger(entryMax), locator);
-        addFunction("sort.key$", new TFieldString("sort.key$", null), locator);
-        addFunction("crossref", new TField("crossref"), locator);
-    }
-
-    /**
-     * Setter for the database.
-     * 
-     * @param db the database to be used
-     */
-    public void setDB(DB db) {
-
-        this.db = db;
+        if (functions == null) {
+            functions = new HashMap<String, Code>();
+        }
+        try {
+            addFunction("global.max$", new TInteger(globalMax), locator);
+            addFunction("entry.max$", new TInteger(entryMax), locator);
+            addFunction("sort.key$", new TFieldString("sort.key$", null),
+                locator);
+            addFunction("crossref", new TField("crossref"), locator);
+        } catch (ExBibException e) {
+            throw new ConfigurationWrapperException(e);
+        }
     }
 
     /**
@@ -972,16 +781,6 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
-     * Setter for the logger.
-     * 
-     * @param logger the new logger
-     */
-    public void setLogWriter(Logger logger) {
-
-        this.logger = logger;
-    }
-
-    /**
      * Setter for the output writer.
      * 
      * @param writer
@@ -1011,6 +810,8 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#step(java.lang.Object)
      */
     public void step(Object obj) {
@@ -1019,10 +820,13 @@ public class ProcessorCoreImpl implements Processor, Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Processor#warning(java.lang.String)
      */
     public void warning(String message) {
 
+        Logger logger = getLogger();
         if (logger != null) {
             logger.warning(message);
         }

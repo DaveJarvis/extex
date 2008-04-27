@@ -85,7 +85,7 @@ public class TestSortKey extends TestCase {
     @Override
     public void setUp() throws Exception {
 
-        p = new Processor099Impl(new DBImpl(), new NullWriter(null), null);
+        p = new ProcessorBibtex099c(new DBImpl(), new NullWriter(null), null);
         p.addFunction("abc", new TInteger(1), null);
         e = p.getDB().makeEntry("book", "k1", null);
     }

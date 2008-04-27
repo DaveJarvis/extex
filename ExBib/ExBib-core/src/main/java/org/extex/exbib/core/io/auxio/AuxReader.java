@@ -45,7 +45,8 @@ public interface AuxReader extends ResourceAware {
      * 
      * @param bibliography the bibliography to send the result to
      * @param resource the resource to be processed
-     * @param encoding TODO
+     * @param encoding the encoding for reading
+     * 
      * @return an array of three numbers:
      *         <ul>
      *         <li>the number of data entries found</li>

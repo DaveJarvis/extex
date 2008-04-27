@@ -59,7 +59,7 @@ public class BstReadImpl extends AbstractCommand implements Command {
             throws ExBibException {
 
         try {
-            processor.loadDB();
+            processor.loadDatabases();
         } catch (FileNotFoundException e) {
             throw new ExBibFileNotFoundException(e.getMessage(), null);
         }

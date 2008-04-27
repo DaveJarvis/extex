@@ -41,7 +41,7 @@ public class BibPrinterImplTest {
     @Test
     public final void testPrint1() throws Exception {
 
-        DB db = Tester.loadBib("src/test/resources/bibtex/base/xampl");
+        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
 
         StringBuffer buffer = new StringBuffer();
         new BibPrinterImpl(new StringBufferWriter(buffer)).print(db);

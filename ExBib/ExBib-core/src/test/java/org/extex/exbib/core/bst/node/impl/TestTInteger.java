@@ -24,7 +24,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.bst.Processor;
-import org.extex.exbib.core.bst.Processor099Impl;
+import org.extex.exbib.core.bst.ProcessorBibtex099c;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
@@ -86,7 +86,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     @Override
     public void setUp() throws Exception {
 
-        p = new Processor099Impl(new DBImpl(), new NullWriter(null), null);
+        p = new ProcessorBibtex099c(new DBImpl(), new NullWriter(null), null);
         p.addFunction("abc", new TInteger(1), null);
     }
 
