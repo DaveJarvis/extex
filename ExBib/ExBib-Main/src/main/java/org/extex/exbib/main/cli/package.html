@@ -19,11 +19,37 @@
    Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   " />
   <meta name="author" content="Gerd Neugebauer" />
-  <meta name="version">$Revision: 1.2 $</meta>
+  <meta name="version" content="$Revision: 1.2 $"/>
 </head>
-  <body>
-    This is the command Line Interface description and parser.
+<body>
+  This is the command Line Interface description and parser.
+  The main design goals are the following ones:
+    
+  <ul>
+  <li>The parser should have as less knowledge as possible about how the
+    command line should look like.
+  </li>
+  <li>The parser should be able to parse POSIX compliant command lines.
+    Nevertheless the collation of single letter options is not considered
+    to be essential.
+  </li>
+  <li>
+    The description should be usable to produce a usage description for the
+    online help.
+  </li>
+  <li>
+    The parser should not contain any fixed texts. It should be possible to
+    extract all needed strings from a resource bundle.
+  </li>
+  <li>
+    The parser should support abbreviated forms of long options.
+  </li>
+  <li>
+    The parser should use a callback-like interface to allow arbitrary code
+    to be executed during the parsing.
+  </li>
+  </ul>
 
-  </body>
+</body>
 </html>
   
