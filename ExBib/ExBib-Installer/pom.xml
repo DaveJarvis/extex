@@ -21,6 +21,26 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <dependencies>
+    <!--
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-Main</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-resource</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    -->
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -66,13 +86,5 @@
       <properties/>
     </developer>
   </developers>
-
-<!--
-  <modules>
-    <module>../ExBib-core</module>
-    <module>../ExBib-Main</module>
-    <module>../../ExTeX-resource</module>
-  </modules>
--->
 
 </project>
