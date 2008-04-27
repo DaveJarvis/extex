@@ -19,33 +19,33 @@
 
 package org.extex.exbib.core.bst.command.impl;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
-import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This class represents an <tt>EXECUTE</tt> command.
+ * This class represents a <tt>READ</tt> command.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstExecuteImpl extends AbstractCommand implements Command {
+public class BstRead extends AbstractCommand implements Command {
 
     /**
      * Creates a new object.
      * 
-     * @param value the value of this Command
-     * @param locator the locator from the users perspective
+     * @param locator the locator
      */
-    public BstExecuteImpl(Token value, Locator locator) {
+    public BstRead(Locator locator) {
 
-        super(value, locator);
+        super(null, locator);
     }
 
     /**
@@ -58,7 +58,11 @@ public class BstExecuteImpl extends AbstractCommand implements Command {
     public void execute(Processor processor, Locator locator)
             throws ExBibException {
 
-        getValue().execute(processor, null, locator);
+        try {
+            processor.loadDatabases();
+        } catch (FileNotFoundException e) {
+            throw new ExBibFileNotFoundException(e.getMessage(), null);
+        }
     }
 
     /**
@@ -69,7 +73,7 @@ public class BstExecuteImpl extends AbstractCommand implements Command {
     @Override
     public String toString() {
 
-        return "EXECUTE { " + getValue().getValue() + " }";
+        return "READ";
     }
 
     /**
@@ -81,6 +85,7 @@ public class BstExecuteImpl extends AbstractCommand implements Command {
     @Override
     public void visit(CommandVisitor visitor) throws IOException {
 
-        visitor.visitExecute(this);
+        visitor.visitRead(this);
     }
+
 }

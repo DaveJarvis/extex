@@ -19,33 +19,46 @@
 
 package org.extex.exbib.core.bst.command.impl;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class represents a <tt>READ</tt> command.
+ * This class represents an <tt>ITERATE</tt> command.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstReadImpl extends AbstractCommand implements Command {
+public class BstIterate extends AbstractCommand implements Command {
 
     /**
      * Creates a new object.
      * 
+     * @param token the token
      * @param locator the locator
+     * 
+     * @throws ExBibException in case of an error
      */
-    public BstReadImpl(Locator locator) {
+    public BstIterate(Token token, Locator locator) throws ExBibException {
 
-        super(null, locator);
+        super(token, locator);
+
+        if (token == null) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer
+                .format("empty.token"), locator);
+        }
     }
 
     /**
@@ -58,10 +71,18 @@ public class BstReadImpl extends AbstractCommand implements Command {
     public void execute(Processor processor, Locator locator)
             throws ExBibException {
 
-        try {
-            processor.loadDatabases();
-        } catch (FileNotFoundException e) {
-            throw new ExBibFileNotFoundException(e.getMessage(), null);
+        Token token = getValue();
+
+        if (token == null) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer
+                .format("empty.token"), locator);
+        }
+
+        List<Entry> rec = processor.getDB().getEntries();
+
+        for (int i = 0; i < rec.size(); i++) {
+            token.execute(processor, rec.get(i), getLocator());
         }
     }
 
@@ -73,7 +94,9 @@ public class BstReadImpl extends AbstractCommand implements Command {
     @Override
     public String toString() {
 
-        return "READ";
+        return "ITERATE { " + getValue() //$NON-NLS-1$
+
+            .toString() + " }"; //$NON-NLS-1$
     }
 
     /**
@@ -85,7 +108,7 @@ public class BstReadImpl extends AbstractCommand implements Command {
     @Override
     public void visit(CommandVisitor visitor) throws IOException {
 
-        visitor.visitRead(this);
+        visitor.visitIterate(this);
     }
 
 }

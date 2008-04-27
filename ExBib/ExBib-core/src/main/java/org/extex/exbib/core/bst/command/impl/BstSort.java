@@ -34,14 +34,14 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstSortImpl extends AbstractCommand implements Command {
+public class BstSort extends AbstractCommand implements Command {
 
     /**
      * Creates a new object.
      * 
      * @param locator the locator
      */
-    public BstSortImpl(Locator locator) {
+    public BstSort(Locator locator) {
 
         super(null, locator);
     }

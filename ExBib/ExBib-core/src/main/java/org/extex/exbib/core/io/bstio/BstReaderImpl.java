@@ -27,11 +27,11 @@ import java.util.regex.Pattern;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.code.MacroCode;
-import org.extex.exbib.core.bst.command.impl.BstExecuteImpl;
-import org.extex.exbib.core.bst.command.impl.BstIterateImpl;
-import org.extex.exbib.core.bst.command.impl.BstReadImpl;
-import org.extex.exbib.core.bst.command.impl.BstReverseImpl;
-import org.extex.exbib.core.bst.command.impl.BstSortImpl;
+import org.extex.exbib.core.bst.command.impl.BstExecute;
+import org.extex.exbib.core.bst.command.impl.BstIterate;
+import org.extex.exbib.core.bst.command.impl.BstRead;
+import org.extex.exbib.core.bst.command.impl.BstReverse;
+import org.extex.exbib.core.bst.command.impl.BstSort;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TBlock;
 import org.extex.exbib.core.bst.node.impl.TChar;
@@ -757,7 +757,7 @@ public class BstReaderImpl extends AbstractFileReader
                     return true;
                 } else if ("execute".equals(name)) {
                     Token value = parseLiteralArg();
-                    processor.addCommand(new BstExecuteImpl(value, token
+                    processor.addCommand(new BstExecute(value, token
                         .getLocator()));
                     return true;
                 }
@@ -781,7 +781,7 @@ public class BstReaderImpl extends AbstractFileReader
                         .getLocator());
                     return true;
                 } else if ("iterate".equals(name)) {
-                    processor.addCommand(new BstIterateImpl(parseLiteralArg(),
+                    processor.addCommand(new BstIterate(parseLiteralArg(),
                         token.getLocator()));
                     return true;
                 }
@@ -799,10 +799,10 @@ public class BstReaderImpl extends AbstractFileReader
             case 'r':
 
                 if ("read".equals(name)) {
-                    processor.addCommand(new BstReadImpl(token.getLocator()));
+                    processor.addCommand(new BstRead(token.getLocator()));
                     return true;
                 } else if ("reverse".equals(name)) {
-                    processor.addCommand(new BstReverseImpl(parseLiteralArg(),
+                    processor.addCommand(new BstReverse(parseLiteralArg(),
                         token.getLocator()));
                     return true;
                 }
@@ -815,7 +815,7 @@ public class BstReaderImpl extends AbstractFileReader
                         .setStrings(parseLiteralList(), token.getLocator());
                     return true;
                 } else if ("sort".equals(name)) {
-                    processor.addCommand(new BstSortImpl(token.getLocator()));
+                    processor.addCommand(new BstSort(token.getLocator()));
                     return true;
                 }
 

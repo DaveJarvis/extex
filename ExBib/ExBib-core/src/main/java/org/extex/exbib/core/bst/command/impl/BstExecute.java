@@ -20,45 +20,32 @@
 package org.extex.exbib.core.bst.command.impl;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.framework.i18n.Localizer;
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class represents an <tt>ITERATE</tt> command.
+ * This class represents an <tt>EXECUTE</tt> command.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstIterateImpl extends AbstractCommand implements Command {
+public class BstExecute extends AbstractCommand implements Command {
 
     /**
      * Creates a new object.
      * 
-     * @param token the token
-     * @param locator the locator
-     * 
-     * @throws ExBibException in case of an error
+     * @param value the value of this Command
+     * @param locator the locator from the users perspective
      */
-    public BstIterateImpl(Token token, Locator locator) throws ExBibException {
+    public BstExecute(Token value, Locator locator) {
 
-        super(token, locator);
-
-        if (token == null) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer
-                .format("empty.token"), locator);
-        }
+        super(value, locator);
     }
 
     /**
@@ -71,19 +58,7 @@ public class BstIterateImpl extends AbstractCommand implements Command {
     public void execute(Processor processor, Locator locator)
             throws ExBibException {
 
-        Token token = getValue();
-
-        if (token == null) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer
-                .format("empty.token"), locator);
-        }
-
-        List<Entry> rec = processor.getDB().getEntries();
-
-        for (int i = 0; i < rec.size(); i++) {
-            token.execute(processor, rec.get(i), getLocator());
-        }
+        getValue().execute(processor, null, locator);
     }
 
     /**
@@ -94,9 +69,7 @@ public class BstIterateImpl extends AbstractCommand implements Command {
     @Override
     public String toString() {
 
-        return "ITERATE { " + getValue() //$NON-NLS-1$
-
-            .toString() + " }"; //$NON-NLS-1$
+        return "EXECUTE { " + getValue().getValue() + " }";
     }
 
     /**
@@ -108,7 +81,6 @@ public class BstIterateImpl extends AbstractCommand implements Command {
     @Override
     public void visit(CommandVisitor visitor) throws IOException {
 
-        visitor.visitIterate(this);
+        visitor.visitExecute(this);
     }
-
 }

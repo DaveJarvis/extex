@@ -38,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstReverseImpl extends AbstractCommand implements Command {
+public class BstReverse extends AbstractCommand implements Command {
 
     /**
      * Creates a new object.
@@ -46,7 +46,7 @@ public class BstReverseImpl extends AbstractCommand implements Command {
      * @param token the token
      * @param locator the locator
      */
-    public BstReverseImpl(Token token, Locator locator) {
+    public BstReverse(Token token, Locator locator) {
 
         super(token, locator);
     }
