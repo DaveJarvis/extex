@@ -1,101 +1,125 @@
 <html>
-	<head>
-		<title>BCD</title>
-		<meta name="author">Gerd Neugebauer</meta>
-		<meta name="version">$Revision: 1.1 $</meta>
-		<meta name="copyright">
-          This file is part of bcd a BibTeX compatible database.
-          Copyright (C) 2003-2008 Gerd Neugebauer
+<head>
+  <title>ExBib</title>
+  <meta name="copyright" content="
+   Copyright (C) 2008 The ExTeX Group and individual authors listed below
 
-          This library is free software; you can redistribute it and/or
-          modify it under the terms of the GNU Lesser General Public
-          License as published by the Free Software Foundation; either
-          version 2.1 of the License, or (at your option) any later version.
+   This library is free software; you can redistribute it and/or modify it
+   under the terms of the GNU Lesser General Public License as published by
+   the Free Software Foundation; either version 2.1 of the License, or (at
+   your option) any later version.
 
-          This library is distributed in the hope that it will be useful,
-          but WITHOUT ANY WARRANTY; without even the implied warranty of
-          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-          Lesser General Public License for more details.
+   This library is distributed in the hope that it will be useful, but WITHOUT
+   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+   for more details.
 
-          You should have received a copy of the GNU Lesser General Public
-          License along with this library; if not, write to the Free Software
-          Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
-	   </meta>
-	</head>
-	<body>
-		BCD is the BibTeX Compatible Database.
-		It is an attempt to provide an implementation of a bibliographic database to be used
-		with LaTeX and friends.
-		
-		<a href="{@docRoot}/../doc/img/components.gif">xxxxxxxx</a>
-		
-		<h2>Objectives</h2>
-		
-		The development of bcd has been lead by several objectives.
-		
-		<ol>
-			<li>The result of bcd in compatibility mode should imitate as much as possible the 
-				behaviour of BibTeX -- for runs without errors or warnings. This should be valid for
-				the output file only. bcd should not be concerned about the exact reproduction of
-				tracing messages or the contents of the log file.
-			</li>
-			<li>The compatibility mode should <emph>not</emph> be the default.
-				The default mode should be the bcd mode, where certain extensions are provided
-				and some curious design decisions of BibTeX are not imitated.
-			</li>
-			<li>One objective of bcd was to provide a clean design which would make it easy
-				to understand and enhance the program. As a result the whole program has been
-				structured into several components which are tied togeter with interfaces and 
-				factories.
-			</li>
-			<li>bcd should be configurable. This means that it should be possible to use different
-				implementations of some of the core components. This could be used for example to
-				mimic the behaviour of BibTeX 0.99c or BibTeX 1.0 (as described in a TUGboat article).
-			</li>
-			<li>As implementation language Perl has been used for a first prototype. 
-				Then the implementation language has been switched to Java to make use of the
-				Unicode features of this languages as well as to be closer to a potential successor of
-				TeX.
-			</li>
-			<li>As much as possible the inherent knowledge about TeX shoud be eliminated.
-			</li>
-			<li>An easy update path sould be provided for BibTeX users: Old documents should be
-				processable with the same results. Migration scripts should provided whenever neccesary.
-			</li>
-		</ol>
-		
-		<h2>Extensions</h2>
-		
-		The following extensions can be envisaged:
-		<ol>
-			<li>Implement the new features of BibTeX 1.0.</li>
-			<li>Add new primitives to the BST language.</li>
-			<li>Extend the syntax for BibTeX files
-				<ul>
-					<li>Allow structured description of names.</li>
-					<li>Make provisions for multi-language entries</li>
-					<li>Allow structured documents: i.e. articles in jounals -- without <tt>crossref</tt></li>
-				</ul>
-			</li>
-		</ol>
-		
-		<h2>Bugfixes</h2>
-		
-		The following defects of BibTeX should be cured:
-		<ol>
-			<li>No restriction on the sequence of entries in the database. 
-				I.e. referenced entries may preceed or follow the referencing entries.
-			</li>
-			<li>Better sorting has to be provided taking into accout the various national conventions
-				for sorting.
-			</li>
-			<li>No limit to some magical internal constants -- like the line length.</li>
-			<li>Bugfix: flush the output buffer at the end of the program and not only when 
-				<code>newline$</code> is encountered.
-			</li>
-		</ol>
-		
-		@author <a href="gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-	</body>
+   You should have received a copy of the GNU Lesser General Public License
+   along with this library; if not, write to the Free Software Foundation,
+   Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  " />
+  <meta name="author" content="Gerd Neugebauer" />
+  <meta name="version" content="$Revision: 1.2 $"/>
+</head>
+<body>
+  &epsilon;&chi;Bib (or <tt>ExBib</tt> in pure ASCII) is a
+  B<small>IB</small>T<sub>E</sub>X-compatible database. It is an
+  attempt to provide an implementation of a bibliographic database to
+  be used with L<small
+  style="vertical-align:top;">A</small>T<sub>E</sub>X and friends.
+    
+  <p>
+    <a href="{@docRoot}/../doc/img/components.gif">xxxxxxxx</a>
+  </p>
+    
+  <h2>Objectives</h2>
+    
+  The development of &epsilon;&chi;Bib has been lead by several objectives:
+    
+  <ol>
+    <li>The result of &epsilon;&chi;Bib in compatibility mode should
+      imitate as much as possible the behavior of
+      B<small>IB</small>T<sub>E</sub>X &ndash; for runs without errors
+      or warnings. This should be valid for the output file only.
+      &epsilon;&chi;Bib should not be concerned about the exact
+      reproduction of tracing messages or the contents of the log
+      file.
+    </li>
+    <li>The compatibility mode should <emph>not</emph> be the default.
+      The default mode should be the &epsilon;&chi;Bib mode, where
+      certain extensions are provided and some curious design
+      decisions of B<small>IB</small>T<sub>E</sub>X are not imitated.
+    </li>
+    <li>One objective of &epsilon;&chi;Bib was to provide a clean
+      design which would make it easy to understand and enhance the
+      program. As a result the whole program has been structured into
+      several components which are tied together with interfaces and
+      factories.
+    </li>
+    <li>&epsilon;&chi;Bib should be configurable. This means that it should be
+      possible to use different implementations of some of the core
+      components. This could be used for example to mimic the
+      behaviour of B<small>IB</small>T<sub>E</sub>X 0.99c or
+      B<small>IB</small>T<sub>E</sub>X 1.0 (as described in a TUGboat
+      article).
+    </li>
+    <li>As implementation language Perl has been used for a first
+      prototype. Then the implementation language has been switched to
+      Java to make use of the Unicode features of this languages as
+      well as to be closer to &epsilon;&chi;T<sub>E</sub>X.
+    </li>
+    <li>As much as possible the inherent knowledge about
+      T<sub>E</sub>X shoud be eliminated. If not possible it should be
+      encapsulated in separate components to be exchangable.
+    </li>
+    <li>&epsilon;&chi;Bib should be multilingual in the sense that all
+      messages produced by the system should be adaptable to a local
+      language. As a proof of concept the languages English and German
+      are supported right from the start.
+    </li>
+    <li>An easy update path sould be provided for
+      B<small>IB</small>T<sub>E</sub>X users: Old documents should be
+      processable with the same results. Migration scripts should be
+      provided whenever neccesary.
+    </li>
+  </ol>
+    
+  <h2>Extensions</h2>
+    
+  The following extensions can be envisaged:
+  <ol>
+    <li>Implement the new features of B<small>IB</small>T<sub>E</sub>X
+    1.0.</li>
+    <li>Add new primitives to the BST language.</li>
+    <li>Extend the syntax for B<small>IB</small>T<sub>E</sub>X files
+      <ul>
+        <li>Allow structured description of names.</li>
+        <li>Make provisions for multi-language entries</li>
+        <li>Allow structured documents: i.e. articles in journals &ndash;
+          without <tt>crossref</tt></li>
+      </ul>
+    </li>
+    <li>Implement the features of B<small>IB</small>T<sub>E</sub>X8.</li>
+  </ol>
+  
+  <h2>Bug Fixes</h2>
+    
+  The following defects of B<small>IB</small>T<sub>E</sub>X should be
+  cured:
+  <ol>
+    <li>No restriction on the sequence of entries in the database. 
+      I.e. referenced entries may preceded or follow the referencing entries.
+    </li>
+    <li>Better sorting has to be provided taking into account the various
+      national conventions for sorting.
+    </li>
+    <li>No limit to some magical internal constants &ndash; like the
+      line length.
+    </li>
+    <li>Bugfix: flush the output buffer at the end of the program and not only
+      when <code>newline$</code> is encountered.
+    </li>
+  </ol>
+    
+</body>
 </html>
-	

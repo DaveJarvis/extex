@@ -10,19 +10,6 @@
     <task>
       Make more tests for selection according to the cited references.
     </task>
-    <task>
-      Consider the parameter min-crossref and make a test case for it
-    </task>
-    <task>
-      Integrate with something like kpathsea.
-    </task>
-    <task>
-      Reconsider input encodings and write an engine to cope with
-      different input encodings.      
-    </task>
-    <task class="extension">
-      Use unicode (UTF8) as base encoding.
-    </task>
     <task class="extension">
       Write a new sorting engine like the one in xindy.
     </task>
@@ -60,6 +47,19 @@
       The final flush of the output buffer is missing in BibTeX if there is no
       terminating newline$.
       This has been fixed in bcd.
+    </task>
+    <task>
+      Consider the parameter min-crossref and make a test case for it
+    </task>
+    <task>
+      Integrate with something like kpathsea.
+    </task>
+    <task>
+      Reconsider input encodings and write an engine to cope with
+      different input encodings.      
+    </task>
+    <task class="extension">
+      Use unicode (UTF8) as base encoding.
     </task>
   </done>
 </tasklist>
