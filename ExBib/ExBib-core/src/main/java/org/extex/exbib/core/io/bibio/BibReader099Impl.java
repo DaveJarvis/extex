@@ -221,7 +221,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      */
     public void load(DB db) throws ExBibException {
 
-        StringBuffer comment = new StringBuffer();
+        StringBuilder comment = new StringBuilder();
         String tag;
 
         while ((tag = skipToAtTag(comment)) != null) {
@@ -518,7 +518,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * 
      * @return the tag found or <code>null</code>
      */
-    private String skipToAtTag(StringBuffer comment) {
+    private String skipToAtTag(StringBuilder comment) {
 
         StringBuilder buffer = getBuffer();
         int i;
@@ -535,7 +535,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             }
         }
 
-        comment.append(buffer.substring(0, i));
+        comment.append(buffer.subSequence(0, i));
         buffer.delete(0, i + 1);
         return parseToken(RECORD_PATTERN);
     }

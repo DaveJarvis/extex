@@ -42,6 +42,7 @@ import org.extex.exbib.core.io.StreamWriter;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
+import org.extex.exbib.core.io.bibio.BibPrinter;
 import org.extex.exbib.core.io.bibio.BibPrinterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.main.cli.NoArgOption;
@@ -54,6 +55,7 @@ import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
@@ -431,12 +433,6 @@ public final class ExBibUtil extends AbstractMain {
         try {
             Configuration configuration =
                     ConfigurationFactory.newInstance("exbib/" + config);
-            Configuration cfg =
-                    configuration.getConfiguration("BibPrinter")
-                        .findConfiguration(type);
-            if (cfg == null) {
-                return log("unknown.type", type);
-            }
             ResourceFinder finder =
                     new ResourceFinderFactory().createResourceFinder(
                         configuration.getConfiguration("Resource"),
@@ -462,8 +458,14 @@ public final class ExBibUtil extends AbstractMain {
             }
             bibliography.loadDatabases();
 
-            new BibPrinterFactory(cfg).newInstance(writer, encoding).print(
-                bibliography.getDB());
+            Configuration cfg = configuration.getConfiguration("BibPrinter");
+            BibPrinter printer;
+            try {
+                printer = new BibPrinterFactory(cfg).newInstance(type, writer);
+            } catch (ConfigurationNotFoundException e) {
+                return log("unknown.type", type);
+            }
+            printer.print(bibliography.getDB());
 
         } catch (ConfigurationWrapperException e) {
             return logException(e.getCause(), "installation.error", false);

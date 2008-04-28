@@ -59,17 +59,19 @@ public class BibPrinterFactory extends AbstractFactory {
      * Create a new instance of a BibPrinter and return it. This BibPrinter is
      * set up to print to a given writer.
      * 
+     * @param type the type
      * @param writer the writer to print to
-     * @param encoding the encoding for the file
      * 
      * @return the new BibPrinter
      * 
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    public BibPrinter newInstance(Writer writer, String encoding)
+    public BibPrinter newInstance(String type, Writer writer)
             throws ConfigurationException {
 
-        return (BibPrinter) createInstance(BibPrinter.class, writer);
+        Configuration cfg = selectConfiguration(type);
+        return (BibPrinter) createInstanceForConfiguration(cfg,
+            BibPrinter.class, writer);
     }
 
 }
