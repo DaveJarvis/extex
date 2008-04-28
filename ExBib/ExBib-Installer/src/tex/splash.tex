@@ -1,0 +1,57 @@
+%%*****************************************************************************
+%% $Id: splash.tex,v 0.00 2008/04/16 14:01:41 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass{extex-doc}
+
+\usepackage[latin1]{inputenc}
+
+\newcommand\ExBibBOX{%
+  \begin{pgfpicture}{0mm}{0mm}{128mm}{64mm}
+    \pgfdeclarehorizontalshading{thisShading}{120mm}%
+    {rgb(0mm)=(.65,.65,.65); color(160mm)=(white)}%
+
+    \pgfrect[fill]{\pgfpoint{0.5mm}{-0.5mm}}{\pgfpoint{128.5mm}{63.5mm}}
+
+    \begin{pgfscope}
+      \pgfmoveto{\pgforigin}
+      \pgflineto{\pgfpoint{0mm}{64mm}}
+      \pgflineto{\pgfpoint{128mm}{64mm}}
+      \pgflineto{\pgfpoint{128mm}{0mm}}
+      \pgfclosepath
+      \pgfclip
+      \pgfputat{\pgfpoint{64mm}{32mm}}{%
+        \begin{pgfrotateby}{\pgfdegree{340}}
+          \pgfbox[center,center]{\pgfuseshading{thisShading}}
+        \end{pgfrotateby}}
+    \end{pgfscope}
+    
+    \begin{pgfmagnify}{4}{4}
+      \pgfputat{\pgfpoint{17.85mm}{8.15mm}}{%
+        \pgfbox[center,center]{\color{white}\Huge\ExBib}}
+      \pgfputat{\pgfpoint{18.15mm}{7.85mm}}{%
+        \pgfbox[center,center]{\color{white!25!black}\Huge\ExBib}}
+      \pgfputat{\pgfpoint{18mm}{8mm}}{%
+        \pgfbox[center,center]{\color{white!80!black}\Huge\ExBib}}
+    \end{pgfmagnify}
+    
+    %  \pgfrect[stroke]{\pgfpoint{0mm}{0mm}}{\pgfpoint{128mm}{64mm}}
+  \end{pgfpicture}%
+}
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ExBibbox
+
+\ExBibBOX
+
+
+
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
