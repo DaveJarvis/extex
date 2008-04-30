@@ -38,9 +38,11 @@ case "`uname`" in
     [ -n "$JAVA_HOME" ] &&
         JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
     sep=';'
+    EXTEX_HOME=`cygpath -w "$EXTEX_HOME"`
     LOCALCLASSPATH=.$sep$EXTEX_HOME/config$sep$EXTEX_HOME/target/classes
+    LOCALCLASSPATH=`cygpath -w "$LOCALCLASSPATH"`
     for i in $LIBDIR/*.jar ; do
-      LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
+      LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath -w "$i"`
     done
     ;;
   *)
