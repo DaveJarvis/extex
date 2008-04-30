@@ -76,6 +76,21 @@
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
 
+    <pack name="ExBib docs" id="exbib-docs" required="no">
+      <description/>
+      <file src="../ExBib-Doc/target/exbib-users.pdf"
+            targetdir="$INSTALL_PATH/doc"/>
+    </pack>
+
+    <pack name="ExBib styles" id="exbib-styles" required="no">
+      <description/>
+      <file src="../ExBib-texmf/target/ExBib-styles-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+
+    <pack name="ExBib Ant" id="exbib-ant" required="no">
+      <description/>
+    </pack>
   </packs>
 
 </installation>

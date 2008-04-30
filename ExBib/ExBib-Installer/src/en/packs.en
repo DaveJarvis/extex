@@ -5,17 +5,14 @@
   <str id="exbib-core" txt="ExBib Core"/>
   <str id="exbib-core.description" txt="The core engine includes a BibTeX compatible implementation of a bibliography processor."/>
 
-  <str id="formats" txt="Formats"/>
-  <str id="formats.description" txt="This package contains some formats."/>
+  <str id="exbib-styles" txt="ExBib Styles"/>
+  <str id="exbib-styles.description" txt="This package contains styles to be used with ExBiB."/>
 
-  <str id="libs" txt="Libraries"/>
-  <str id="libs.description" txt="The third party libraries required for the core to work."/>
+  <str id="exbib-docs" txt="ExBib Documentation"/>
+  <str id="exbib-docs.description" txt="The documentation package contains a description of ExBib."/>
 
-  <str id="texmf" txt="TeX-MF tree"/>
-  <str id="texmf.description" txt="A minimal TeX-MF tree."/>
-
-  <str id="doc" txt="Documentation"/>
-  <str id="doc.description" txt="The documentation package contains a description of ExTeX."/>
+  <str id="exbib-ant" txt="ExBib Ant Task"/>
+  <str id="exbib-ant.description" txt="This package contains the definition of an Ant task for ExBib."/>
 
   <str id="settings" txt="User Settings"/>
   <str id="settings.description" txt="Some init files to start with.

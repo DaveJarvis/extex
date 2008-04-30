@@ -5,11 +5,14 @@
   <str id="exbib-core" txt="ExBib-Basis"/>
   <str id="exbib-core.description" txt="Das Basispaket enthält eine BibTeX-kompatible Implementierung eines Bibliogrphie-Prozessors."/>
 
-  <str id="texmf" txt="TeXMF-Baum"/>
-  <str id="texmf.description" txt="Ein minimaler TeX-MF-Baum."/>
+  <str id="exbib-styles" txt="ExBib-Stile"/>
+  <str id="exbib-styles.description" txt="Dieses Paket enthält Stile zur Verwendung mit ExBib."/>
 
-  <str id="doc" txt="Dokumentation"/>
-  <str id="doc.description" txt="Das Dokumentationpaket enthält eine Beschreibung von ExTeX."/>
+  <str id="exbib-docs" txt="ExBib-Dokumentation"/>
+  <str id="exbib-docs.description" txt="Das Dokumentationpaket enthält eine Beschreibung von ExBib."/>
+
+  <str id="exbib-ant" txt="ExBib-Ant-Task"/>
+  <str id="exbib-ant.description" txt="Dieses Paket enthält die Definition eines Ant-Tasks für ExBib."/>
 
   <str id="settings" txt="Nutzer-Einstellungen"/>
   <str id="settings.description" txt="Einige Einstellungsdateien für den Anfang.
