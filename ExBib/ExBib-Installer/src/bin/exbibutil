@@ -53,6 +53,6 @@ case "`uname`" in
 esac
 
 exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
-    org.extex.exbib.main.ExBibUtil -progname=`basename $0` $*
+    org.extex.exbib.main.ExBibUtil --prog=`basename $0` $*
 
 #

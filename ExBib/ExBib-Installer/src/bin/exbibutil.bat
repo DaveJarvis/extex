@@ -22,7 +22,7 @@ rem ---------------------------------------------------------------------------
 
 if "%E_X_T_E_X%"=="yes" goto start
 
-cmd /V /C "SET E_X_T_E_X=yes&&extex %*"
+cmd /V /C "SET E_X_T_E_X=yes&&exbibutil.bat %*"
 
 goto end
 
