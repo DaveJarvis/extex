@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>ExBib-ant</artifactId>
+  <name>ExBib core</name>
+  <description>
+    This is the ExBib Ant task.
+  </description>
+
+  <packaging>jar</packaging>
+  <inceptionYear>2008</inceptionYear>
+  <url>http://www.extex.org</url>
+
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>ExBib</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-resource</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-Main</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.6.5</version>
+    </dependency>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant-launcher</artifactId>
+      <version>1.6.5</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>maintainer</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+</project>
