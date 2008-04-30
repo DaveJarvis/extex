@@ -20,9 +20,9 @@ rem  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 rem 
 rem ---------------------------------------------------------------------------
 
-if "%E_X_T_E_X%"=="yes" goto start
+if "%E_X_B_I_B%"=="yes" goto start
 
-cmd /V /C "SET E_X_T_E_X=yes&&exbibutil.bat %*"
+cmd /V /C "SET E_X_B_I_B=yes&&%0 %*"
 
 goto end
 

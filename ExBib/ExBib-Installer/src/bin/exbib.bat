@@ -1,8 +1,8 @@
 @echo off
 rem ---------------------------------------------------------------------------
-rem  This is the start script for ExTeX
+rem  This is the start script for EXBIB
 rem ---------------------------------------------------------------------------
-rem  Copyright (C) 2008 The ExTeX Group
+rem  Copyright (C) 2008 The EXBIB Group
 rem 
 rem  This library is free software; you can redistribute it and/or modify it
 rem  under the terms of the GNU Lesser General Public License as published by
@@ -20,9 +20,9 @@ rem  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 rem 
 rem ---------------------------------------------------------------------------
 
-if "%E_X_T_E_X%"=="yes" goto start
+if "%E_X_B_I_B%"=="yes" goto start
 
-cmd /V /C "SET E_X_T_E_X=yes&&exbib.bat %*"
+cmd /V /C "SET E_X_B_I_B=yes&&%0 %*"
 
 goto end
 
@@ -36,9 +36,9 @@ if "%JAVA_HOME%"=="" (
   goto end
   )
 
-set EXTEX_HOME=$INSTALL_PATH
-set LIBDIR=%EXTEX_HOME%\lib
-set LOCALCLASSPATH=%EXTEX_HOME%\classes
+set EXBIB_HOME=$INSTALL_PATH
+set LIBDIR=%EXBIB_HOME%\lib
+set LOCALCLASSPATH=%EXBIB_HOME%\classes
 
 for %%i in (%LIBDIR%\*.jar) do (
   set LOCALCLASSPATH=!LOCALCLASSPATH!;%%i
