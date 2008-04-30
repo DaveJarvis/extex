@@ -9,7 +9,7 @@
     This is the ExBib install system.
   </description>
 
-  <version>1.0</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
@@ -22,7 +22,6 @@
   </parent>
 
   <dependencies>
-    <!--
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
@@ -37,6 +36,13 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
       <version>0.1-SNAPSHOT</version>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-doc</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
     -->
   </dependencies>
