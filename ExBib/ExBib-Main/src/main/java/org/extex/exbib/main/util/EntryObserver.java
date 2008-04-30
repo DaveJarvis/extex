@@ -18,7 +18,7 @@
  *
  */
 
-package org.extex.exbib.main.bibtex;
+package org.extex.exbib.main.util;
 
 import java.util.logging.Logger;
 
