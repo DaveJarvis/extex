@@ -35,28 +35,35 @@
                       executable="pdflatex"
                       output="${basedir}/target/log.txt"
                       append="false">
-                  <arg value="exbib-users"/>
+                  <arg value="exbib-manual"/>
                 </exec>
                 <exec dir="${basedir}/src/main/tex"
                       executable="bibtex"
                       failonerror="true"
                       output="${basedir}/target/log.txt"
                       append="true">
-                  <arg value="exbib-users"/>
+                  <arg value="exbib-manual"/>
+                </exec>
+                <exec dir="${basedir}/src/main/tex"
+                      executable="makeindex"
+                      failonerror="true"
+                      output="${basedir}/target/log.txt"
+                      append="true">
+                  <arg value="exbib-manual"/>
                 </exec>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       failonerror="true"
                       output="${basedir}/target/log.txt"
                       append="true">
-                  <arg value="exbib-users"/>
+                  <arg value="exbib-manual"/>
                 </exec>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       failonerror="true"
                       output="${basedir}/target/log.txt"
                       append="true">
-                  <arg value="exbib-users"/>
+                  <arg value="exbib-manual"/>
                 </exec>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"

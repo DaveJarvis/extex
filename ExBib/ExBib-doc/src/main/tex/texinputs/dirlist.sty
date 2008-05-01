@@ -1,0 +1,51 @@
+%%*****************************************************************************
+%% $Id: dir.tex,v 0.00 2008/04/30 22:58:48 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\usepackage{tikz}
+
+\newenvironment{DirList}[2]{%
+\def\FILE(##1)##2##3{
+  \begin{scope}[scale=.3,shift={(##1)}]
+    \draw[style=dotted] (0.5,0.75) -- (-2,0.75) -- (-2,##2);
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (0.5,0) -- (0.5,1.6) -- (1.2,1.67) -- (1.5,1.4) -- (1.5,0.1) -- cycle;
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (1.2,1.67) -- (1.2,1.37) -- (1.5,1.4) -- cycle;
+    \draw (3,-0.5) node[anchor=south west]{##3};
+  \end{scope}
+}%
+\def\DIR(##1)##2##3{
+  \begin{scope}[scale=.3,shift={(##1)}]
+    \draw[style=dotted] (0.5,0.75) -- (-2,0.75) -- (-2,##2);
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (0,0) -- (0,1.0) -- (.2,1.22) -- (.8,1.28) -- (1.0,1.1) -- (2.0,1.2)
+    -- (2.0,0.2) -- cycle;
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (0,0) -- (0.2,.85) -- (2.2,1.05) -- (2.0,0.2) -- cycle;
+    \draw (3,-.25) node[anchor=south west]{##3};
+  \end{scope}
+}%
+\def\TOPDIR(##1)##2{
+  \begin{scope}[scale=.3,shift={(##1)}]
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (0,0) -- (0,1.0) -- (.2,1.22) -- (.8,1.28) -- (1.0,1.1) -- (2.0,1.2)
+    -- (2.0,0.2) -- cycle;
+    \shade[top color=white!95!brown, bottom color=white!80!brown,draw=brown]
+    (0,0) -- (0.2,.85) -- (2.2,1.05) -- (2.0,0.2) -- cycle;
+    \draw (3,-.25) node[anchor=south west]{##2};
+  \end{scope}
+}%
+\begin{tikzpicture}[scale=.8]\small\sf
+  \pgfdeclareverticalshading{bg}{#1}{color(0pt)=(white!70!yellow); color(#2)=(white!96!yellow)}
+  \draw(-1,-1) node[anchor=south west]{\pgfuseshading{bg}};
+}{\end{tikzpicture}}
+
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
+

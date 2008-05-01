@@ -4,11 +4,12 @@
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
-\documentclass{extex-doc}
+\documentclass{texinputs/extex-doc}
 
 \title{\ExBib\ User's Guide}
 \author{Gerd Neugebauer}
 
+\usepackage{dirlist}
 \usepackage{makeidx}
 
 \newcommand\Arg[1]{\(\langle\){\tt\itshape #1}\(\rangle\)}
@@ -546,6 +547,27 @@ equivalent:
   extex -versio
   extex -version  
 \end{verbatim}
+
+
+\begin{DirList}{200pt}{250pt}
+  \TOPDIR(0,30){ExBib}
+  \DIR(3,28)2{Uninstaller}
+  \FILE(6,26)2{uninstaller.jar}
+  \DIR(3,24){4.75}{bin}
+  \FILE(6,22)2{exbib}
+  \FILE(6,20){2.5}{exbib.bat}
+  \FILE(6,18){2.5}{exbibutil}
+  \FILE(6,16){2.5}{exbibutil.bat}
+  \DIR(3,14){10.75}{doc}
+  \FILE(6,12)2{exbib-users.pdf}
+  \DIR(3,10){4.75}{lib}
+  \FILE(6,8){2}{ExBib-core.jar}
+  \FILE(6,6){2.5}{ExBib-Main.jar}
+  \FILE(6,4){2.5}{ExBib-styles.jar}
+  \FILE(6,2){2.5}{ExTeX-resource.jar}
+  \FILE(3,0){10.75}{LICENSE.txt}
+\end{DirList}
+
 
 \input{chapter/database}
 \input{chapter/styles}
