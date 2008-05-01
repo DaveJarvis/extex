@@ -31,12 +31,14 @@
             <phase>compile</phase>
             <configuration>
               <tasks>
+                <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       output="${basedir}/target/log.txt"
                       append="false">
                   <arg value="exbib-manual"/>
                 </exec>
+                <echo message="bibtex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="bibtex"
                       failonerror="true"
@@ -44,13 +46,17 @@
                       append="true">
                   <arg value="exbib-manual"/>
                 </exec>
+                <!--
+                <echo message="makeindex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="makeindex"
-                      failonerror="true"
+                      failonerror="false"
                       output="${basedir}/target/log.txt"
                       append="true">
                   <arg value="exbib-manual"/>
                 </exec>
+                -->
+                <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       failonerror="true"
@@ -58,6 +64,7 @@
                       append="true">
                   <arg value="exbib-manual"/>
                 </exec>
+                <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       failonerror="true"
@@ -65,13 +72,15 @@
                       append="true">
                   <arg value="exbib-manual"/>
                 </exec>
+                <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
                       failonerror="true"
                       output="${basedir}/target/log.txt"
                       append="true">
-                  <arg value="exbib-users"/>
+                  <arg value="exbib-manual"/>
                 </exec>
+                <echo message="moving files to target"/>
                 <move todir="${basedir}/target">
                   <fileset dir="${basedir}/src/main/tex">
                     <include name="*.log"/>

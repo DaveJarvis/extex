@@ -9,7 +9,7 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage{listings}
-\usepackage{graphicx,pgf,pgfshade}
+\usepackage{graphicx,pgf}
 
 \definecolor{hellmagenta}{rgb}{1,0.75,0.9}
 \definecolor{hellcyan}{rgb}{0.75,1,0.9}
@@ -118,11 +118,11 @@
 \providecommand*{\ExBib}{\ifx\texorpdfstring\undefined
   \textrm{% the logo comes always with serifs
     \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
-    \kern-.15em\Bib}%
+    \kern-.1em Bib}%
   \else\texorpdfstring{%
   \textrm{% the logo comes always with serifs
     \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
-    \kern-.15em Bib
+    \kern-.1em Bib
   }}{ExBib}%
   \fi
 }

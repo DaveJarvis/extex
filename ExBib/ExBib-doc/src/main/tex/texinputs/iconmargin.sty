@@ -1,0 +1,51 @@
+%%*****************************************************************************
+%% $Id: iconmargin.tex,v 0.00 2008/04/30 22:58:48 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\usepackage{graphicx,tikz}
+
+\def\IM@scroll#1#2{\begingroup\unitlength=1pt
+  \makebox(13,44){
+    \scalebox{.7}{
+      \rotatebox{50}{
+        \begin{tikzpicture}[scale=.14]\scriptsize\boldmath\bf
+          \shade[top color=white!90!#1,bottom color=white!50!#1,draw=#1,thick]
+          (16,0) .. controls (18,1) and (14,4) .. (16,5) -- 
+          (0,5) .. controls (-2,4) and (2,1) .. (0,0) -- cycle;
+          \draw (8,2.5) node{#2};
+        \end{tikzpicture}}}}%
+  \endgroup
+}
+
+\def\IM#1{\marginpar{\IM@#1.}}
+\def\IM@#1{%
+  \ifx#1.%
+    \let\next@IN\relax
+  \else\ifx#11%
+    \IM@scroll{red}{\BibTeX{} 1.0}
+    \let\next@IN\IM@
+  \else\ifx#18%
+    \IM@scroll{brown}{\BibTeX{} 8}
+    \let\next@IN\IM@
+  \else\ifx#10%
+    \IM@scroll{gray}{\BibTeX{} 0.99c}
+    \let\next@IN\IM@
+  \else\ifx#1x%
+    \IM@scroll{green}{\ExBib}
+    \let\next@IN\IM@
+  \else
+    \typeout{*** Unknown in #1}%
+    \let\next@IN\IM@
+  \fi\fi\fi\fi\fi
+  \next@IN
+}
+
+
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
+
