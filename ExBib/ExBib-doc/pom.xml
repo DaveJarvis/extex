@@ -46,16 +46,14 @@
                       append="true">
                   <arg value="exbib-manual"/>
                 </exec>
-                <!--
                 <echo message="makeindex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="makeindex"
                       failonerror="false"
                       output="${basedir}/target/log.txt"
                       append="true">
-                  <arg value="exbib-manual"/>
+                  <arg line="-s texinputs/doc.ist exbib-manual.idx"/>
                 </exec>
-                -->
                 <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex"
                       executable="pdflatex"
