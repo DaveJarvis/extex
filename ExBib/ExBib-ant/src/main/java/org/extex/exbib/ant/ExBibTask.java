@@ -53,7 +53,7 @@ import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.io.csf.CsfReader;
 import org.extex.exbib.core.io.csf.CsfSorter;
-import org.extex.exbib.main.bibtex.DBObserver;
+import org.extex.exbib.main.util.DBObserver;
 import org.extex.exbib.main.util.LogFormatter;
 import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
