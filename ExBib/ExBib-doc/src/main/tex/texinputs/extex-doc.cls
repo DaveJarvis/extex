@@ -193,10 +193,26 @@
 
 \providecommand\eTeX{\ensuremath{\varepsilon}-\TeX}
 
-\newcommand\INCOMPLETE{\bigskip\par\noindent{\unitlength=1mm
-    \framebox(60,20){\color{gray}To be completed.}}\bigskip\par}
-\newcommand\Incomplete{\bigskip\par\noindent{\unitlength=1mm
-    \framebox(60,8){\color{gray}To be completed.}}\bigskip\par}
+\newcommand\INCOMPLETE{\bigskip\par
+  {\unitlength=1pt
+  \begin{tikzpicture}[scale=.08]\normalsize\sf\bfseries
+    \shade[top color=white!99!red,bottom color=white!20!red,draw=red!40!black,thick]
+    (10,0) -- (30,0) -- (40,6) -- (40,16) -- 
+    (30,22) -- (10,22) -- (0,16) -- (0,6) -- cycle;
+    \draw (20,11) node[white]{INCOMPLETE};
+  \end{tikzpicture}}
+  \bigskip\par
+}
+\newcommand\Incomplete{\bigskip\par
+  {\unitlength=1pt
+  \begin{tikzpicture}[scale=.06]\small\sf\bfseries
+    \shade[top color=white!99!red,bottom color=white!20!red,draw=red!40!black,thick]
+    (10,0) -- (30,0) -- (40,6) -- (40,16) -- 
+    (30,22) -- (10,22) -- (0,16) -- (0,6) -- cycle;
+    \draw (20,11) node[white]{INCOMPLETE};
+  \end{tikzpicture}}
+  \bigskip\par
+}
 
 \newenvironment{abstract}{\begin{quotation}}{\end{quotation}}
 
