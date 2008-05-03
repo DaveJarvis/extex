@@ -137,7 +137,9 @@ public class ExBibException extends Exception {
         String message = getLocalizedMessage();
 
         if (locator != null) {
-            Localizer l = LocalizerFactory.getLocalizer(getClass().getName());
+            Localizer l =
+                    LocalizerFactory.getLocalizer(ExBibException.class
+                        .getName());
             return l.format("LocatedMessage", locator.toString(), message);
         }
 
