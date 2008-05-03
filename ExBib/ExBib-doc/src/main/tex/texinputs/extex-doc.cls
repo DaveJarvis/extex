@@ -2,7 +2,7 @@
 % 2005 Gerd Neugebauer
 %
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass[12pt,div12,a4paper]{scrbook}
+\LoadClass[12pt,div12,a4paper,bibtotoc]{scrbook}
 
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -221,6 +221,7 @@
   \setchapterpreamble{\index@preamble}%
   \if@openright\cleardoublepage\else\clearpage\fi%
   \chapter*{\indexname}\@mkboth{\indexname}{\indexname}%
+  \addcontentsline{toc}{chapter}{\indexname}%
   \begin{multicols}3
   \thispagestyle{\indexpagestyle}\parindent\z@
   \setlength{\parskip}{\z@ \@plus .3\p@}

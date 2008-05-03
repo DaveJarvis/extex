@@ -6,29 +6,37 @@
 
 \chapter{Behind the Scenes}
 
-\section{The aux File}
+\section{The \texttt{aux} File}
 
 
-\IM{08x1}
-The selection of databases and entries in \ExBib\ is mainly controlled
-by the aux file. The aux file is usually prouced by \LaTeX\ and read by
-\ExBib. Since the aux file is also used to communicate between successive
-runs of \LaTeX\ it can contain information not relevant for \ExBib.
-This irrelevant information is ignored.
+\IM{08x1} The selection of databases and entries in \ExBib\ is mainly
+controlled by the \texttt{aux} file. The aux file is usually prouced
+by \LaTeX\index{LaTeX@\LaTeX} and read by \ExBib. Since the aux file
+is also used to communicate between successive runs of \LaTeX\ it can
+contain information not relevant for \ExBib. This irrelevant
+information is ignored.
 
+Whenever the \texttt{aux} file is read the relevant information is
+found by a strict pattern matching. The macros described below will be
+recognized only if they are on a line by their own. Any characters
+preceeding or following them on the same line will lead to the
+skipping when the \texttt{aux} file is read.
 
+\subsection{The Declaration of Databases}
 \INCOMPLETE
 
 \begin{lstlisting}{}
   \bibdata{the/bibliography}
 \end{lstlisting}
 
+\subsection{The Declaration of Citations}
 \INCOMPLETE
 
 \begin{lstlisting}{}
   \citation{a.label,another.label}
 \end{lstlisting}
 
+\subsection{The Declaration of the Style}
 \INCOMPLETE
 
 \begin{lstlisting}{}
@@ -37,8 +45,9 @@ This irrelevant information is ignored.
 
 \INCOMPLETE
 
+\subsection{The Declaration of Includes}
 \begin{lstlisting}{}
-  \@include{the/included}
+  \@include{the/included/file}
 \end{lstlisting}
 
 \INCOMPLETE

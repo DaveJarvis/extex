@@ -41,15 +41,15 @@ has access to this database.
 
 \INCOMPLETE
 
-\subsection{Datatype Integer}
+\subsection{Global Integers}
 
 \INCOMPLETE
 
-\subsection{Datatype String}
+\subsection{Global Strings}
 
 \INCOMPLETE
 
-\subsection{Datatype Code}
+\subsection{Code}
 
 \INCOMPLETE
 
@@ -69,34 +69,86 @@ has access to this database.
 
 \INCOMPLETE
 
+\begin{lstlisting}{}
+  INTEGERS { output.state before.all }
+\end{lstlisting}
+
 \subsection{\texttt{strings}}
 
 \INCOMPLETE
+
+\begin{lstlisting}{}
+  STRINGS { s t }
+\end{lstlisting}
+
+\subsection{\texttt{macro}}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  MACRO {jan} {"January"}
+\end{lstlisting}
 
 \subsection{\texttt{execute}}
 
 \INCOMPLETE
 
+\begin{lstlisting}{}
+  EXECUTE {begin.bib}
+\end{lstlisting}
+
 \subsection{\texttt{iterate}}
 
 \INCOMPLETE
+
+\begin{lstlisting}{}
+  ITERATE{call.type$}
+\end{lstlisting}
 
 \subsection{\texttt{reverse}}
 
 \INCOMPLETE
 
+\begin{lstlisting}{}
+  REVERSE{reverse.pass}
+\end{lstlisting}
+
 \subsection{\texttt{sort}}
 
 \INCOMPLETE
+
+\begin{lstlisting}{}
+  SORT
+\end{lstlisting}
+
+\subsection{\texttt{read}}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  READ
+\end{lstlisting}
 
 \subsection{\texttt{function}}
 
 \INCOMPLETE
 
+\begin{lstlisting}{}
+  FUNCTION {sortify}
+  { purify$
+    "l" change.case$
+  }
+\end{lstlisting}
+
+
 \subsection{\texttt{input}}
 \IM{x}
 
 \INCOMPLETE
+
+\begin{lstlisting}{}
+  INPUT{some/other/bst}
+\end{lstlisting}
 
 \section{Instructions}
 

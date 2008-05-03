@@ -7,15 +7,16 @@
 \chapter{Introduction}
 %@author Gerd Neugebauer
 
-\ExTeX{} aims at providing a high-quality typesetting system. The
-development of \ExTeX\ has been inspired by the experiences with \TeX\
-\cite{knuth:texbook}.
-The focus lies on an open design and a high degree of configurability.
+\ExTeX\index{ExTeX@\ExTeX} aims at providing a high-quality
+typesetting system. The development of \ExTeX\ has been inspired by
+the experiences with \TeX\ \cite{knuth:texbook}. The focus lies on an
+open design and a high degree of configurability.
 
 A tight integration of several components is one of the possibilities
 opened by \ExTeX. To work into this direction \ExBib\ has been
-implemented. It is a plug-in replacement for \BibTeX~0.99c\
-\cite{btxdoc,btxhak} or \BibTeX~8.
+implemented. It is a plug-in replacement for
+\BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c}\ \cite{btxdoc,btxhak}
+or \BibTeX~8\index{BibTeX 8@\BibTeX~8}.
 
 \begin{figure}[hb]
   \centering
@@ -24,15 +25,16 @@ implemented. It is a plug-in replacement for \BibTeX~0.99c\
   \label{fig:files}
 \end{figure}
 The principal interaction of a bibliography processor and a text
-processor has been defined by \BibTeX. This is depicted in
-figure~\ref{fig:files}. The unerlying communication structure is file
-based. This scheme is supported by \ExBib\ as well.
+processor has been defined by \BibTeX\index{BibTeX@\BibTeX}. This is
+depicted in figure~\ref{fig:files}. The unerlying communication
+structure is file based. This scheme is supported by \ExBib\ as well.
 
 The main input from the text processor is transfered in the aux file.
-In \LaTeX\ (cf. \cite{lamport:latex}) the directive \verb|\include|
-can be used to conditionally include parts of a complete document. To
-make this work several aux files are written -- one for each fragment.
-This \ExBib\ has to cope with several aux files.
+In \LaTeX\index{LaTeX@\LaTeX} (cf. \cite{lamport:latex}) the directive
+\verb|\include| can be used to conditionally include parts of a
+complete document. To make this work several aux files are written --
+one for each fragment. This \ExBib\ has to cope with several aux
+files.
 
 The aux files contains the information on the databases to be used
 and the bib style. Accordingly the databases and the style are read.
@@ -45,11 +47,11 @@ The bbl file can be read in by the text processor to include the
 entries into the document. This completes the cycle.
 
 One cycle may not be enough to resolve all citations. If the database
-entries contain references (in form of \verb|\cite| macros). Then they
-can be resolved in a second round. Unfortunately this may
-theoretically continue ad infinitum. Practically spoken this has not
-been ovsered in real life. Most of time one cycle or at most two of
-them are sufficient.
+entries contain references (in form of \verb|\cite|
+macros\index{cite@\verb/\cite/}). Then they can be resolved in a
+second round. Unfortunately this may theoretically continue ad
+infinitum. Practically spoken this has not been ovsered in real life.
+Most of time one cycle or at most two of them are sufficient.
 
 
 \section{This Document}
@@ -59,7 +61,7 @@ all information necessary to know. It is not meant to be a tutorial.
 Thus do not expect tutorial type material in this document.
 
 
-\section{Web Site}
+\section{Web Site}%
 %@author Gerd Neugebauer
 
 \begin{figure}[!h]
@@ -69,7 +71,8 @@ Thus do not expect tutorial type material in this document.
   \label{fig:www.exetex.org}
 \end{figure}
 There is a web site devoted to \ExTeX. \index{WWW}\index{Web Site}This
-web site (see figure~\ref{fig:www.exetex.org}) can be reached via the URL
+web site (see figure~\ref{fig:www.exetex.org}) can be reached via the
+URL\index{www.extex.org}
 \begin{quotation}
   \url{http://www.extex.org}
 \end{quotation}
@@ -90,7 +93,7 @@ mailing list to get in contact with the community.\index{Mailing list}
 %@author Gerd Neugebauer
 
 
-If you find any bugs in \ExTeX\ you can submit them 
+If you find any bugs in \ExBib\ you can submit them 
 %either 
 via a HTML form.
 % or via email. 

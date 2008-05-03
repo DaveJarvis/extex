@@ -14,7 +14,8 @@ be not too hard to get started.
 \section{Prerequisites}
 %@author Gerd Neugebauer
 
-\subsection{Java}
+\subsection{Java}%
+\index{Java|(}
 %@author Gerd Neugebauer
 
 You need to have Java 5\index{Java} or later installed on your
@@ -34,10 +35,12 @@ Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_04-b05)
 Java HotSpot(TM) Client VM (build 1.5.0_04-b05, mixed mode)
 #
 \end{lstlisting}
+\index{Java|)}
 
 
-\subsection{TEXMF}
+\subsection{TEXMF}%
 %@author Gerd Neugebauer
+\index{TEXMF|(}
 
 If you want to use more than the pure \ExBib\ engine, styles can be
 inherited from a texmf tree\index{texmf}. \ExBib\ itself does not
@@ -56,7 +59,7 @@ One requirement for the texmf trees is that they have a file database
 (\File{ls-R}). \ExBib\ can be configured to work without it, but then
 \ExBib\ is deadly slow. Thus you do not really want to try this
 alternative.
-
+\index{TEXMF|)}
 
 \section{Getting \ExBib}
 %@author Gerd Neugebauer
@@ -88,12 +91,12 @@ installer is named \File{ExBib-setup.jar}. You can start the installer
 with the following command line:\index{installer}
 
 \begin{lstlisting}{}
-# java -jar ExTeX-setup.jar
+# java -jar ExBib-setup.jar
 \end{lstlisting}
 
 On Windows\index{Windows} with a properly installed Java\index{Java}
 you can also start the installer by double-clicking
-\texttt{ExBib-setup.jar} in the Explorer\index{Explorer}. This might
+\File{ExBib-setup.jar} in the Explorer\index{Explorer}. This might
 work on other windowing systems as well.
 
 \begin{figure}[!ht]
@@ -135,14 +138,15 @@ document there is nothing new for you.
   \label{fig:inst3}
 \end{figure}
 
-Now the license of \ExBib\ is presented (see figure~\ref{fig:inst3}).
-It is there to remind you that there is something like a license. You
-can not do everything with the software. But the limitations are very
-minimalistic. Usually it should not really affect you -- especially
-when you are migrating from \BibTeX.
+Now the license\index{license} of \ExBib\ is presented (see
+figure~\ref{fig:inst3}). It is there to remind you that there is
+something like a license. You can not do everything with the software.
+But the limitations are very minimalistic. Usually it should not
+really affect you -- especially when you are migrating from \BibTeX.
 
-Note that the license is the LGPL. In contrast to the GPL it does not
-infect other software build from \ExBib\ or containing it.
+Note that the license is the LGPL\index{LGPL}\index{license!LGPL}. In
+contrast to the GPL\index{GPL}\index{license!GPL} it does not infect
+other software build from \ExBib\ or containing it.
 
 \begin{figure}[!ht]
   \centering
@@ -166,14 +170,16 @@ package is displayed.
   \label{fig:inst5}
 \end{figure}
 
-Finally the installation directory has to be selected (see
+Finally the installation directory\index{installation
+  directory}\index{directory installation} has to be selected (see
 figure~\ref{fig:inst5}). The installation directory (see also
 section~\ref{sec:inst.dir}) is the only directory the \ExBib\ 
 installer creates files in. Usually is should be separate from other
 directories. For instance the value \verb|C:\Program Files\ExBib| on
-Windows or \verb|/opt/ExBib| on Unix are sensible values. Nevertheless
-the installation can also be performed in your home directory if you
-do not have writing permissions in the global directories.
+Windows\index{Windows} or \verb|/opt/ExBib| on Unix\index{Unix} are
+sensible values. Nevertheless the installation can also be performed
+in your home directory if you do not have writing permissions in the
+global directories.
 
 This is the last decision you have to make.
 
@@ -210,6 +216,7 @@ Windows.
 
 \subsection{The Installation Directory}\label{sec:inst.dir}
 %@author Gerd Neugebauer
+\index{installation directory|(}\index{directory installation|(}
 
 During the installation you choose a directory where \ExBib\ lives.
 This is called the installation directory. An example of the contents of the
@@ -255,6 +262,7 @@ package has been selected during the installation.
 
 The directory \File{lib} contains the libraries used by \ExBib.
 
+\index{installation directory|)}\index{directory installation|)}
 
 \subsection{Replaying an Installation}\label{sec:replay}
 %@author Gerd Neugebauer
@@ -277,7 +285,7 @@ replay the installation with the following command invocation:
 # java -jar ExBib-setup.jar replay.xml
 \end{lstlisting}
 
-This supposes that the two files \File{ExTeX-setup.jar} and
+This supposes that the two files \File{ExBib-setup.jar} and
 \texttt{replay.xml} are in the current directory.
 
 \subsection{Uninstalling \ExBib}\label{sec:uninst}
@@ -293,7 +301,7 @@ invoked by double clicking or invoking it on the command line as follows:
 # java -jar uninstaller.jar
 \end{lstlisting}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.45\textwidth]{img/uninst1}
   \caption{Confirming the Uninstallation}
@@ -304,7 +312,7 @@ When the uninstaller starts it asks for configmation (see
 figure~\ref{fig:uninst1}). Nothing is changed before the confirmation
 is given.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=.45\textwidth]{img/uninst2}
   \caption{The Uninstaller Finished}
@@ -317,8 +325,9 @@ installed with the installer have been removed. Modified and other
 files are left untouched.
 
 You can uninstall \ExBib\ by simply removing the installation
-directory. But this is unsave since all local modification are lost as
-well.
+directory.%
+\index{installation directory|(}\index{directory installation|(} But
+this is unsave since all local modification are lost as well.
 
 \input{chapter/cli-exbib}
 

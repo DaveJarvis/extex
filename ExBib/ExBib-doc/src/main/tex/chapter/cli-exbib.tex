@@ -15,231 +15,18 @@ replacement. In addition the features of \BibTeX~8 are present as
 well. The marks in the margin indicate where the different features
 are coming from.
 
-%-----------------------------------------
-%
-%The following sample show a simple invocation of \ExBib\ without any
-%command line arguments.
-%
-%{\lstset{morecomment=[l]{*}}%
-%\begin{lstlisting}{}
-%# exbib
-%This is exbib, Version 0.0 (TeX compatibility mode)
-%**\relax
-%
-%*\end
-%
-%No pages of output.
-%Transcript written on ./texput.log.
-%\end{lstlisting}}
-%
-%In this case \ExTeX\ enters interaction with the user and asks for an
-%input file. This is indicated by the two asterisks. We have entered
-%\macro{relax} here to indicate that we are not willing to pass in a
-%file name. The \ExTeX\ system asks us to enter some command --
-%indicted by the single asterisk. Here we have entered \macro{end} to
-%indicate that we want to finish the processing. Thus \ExTeX\ 
-%terminates normally.
-%
-%\INCOMPLETE
-%
-%{\lstset{morecomment=[l]{*}}%
-%\begin{lstlisting}{}
-%# extex plain
-%This is ExTeX, Version 0.0 (TeX compatibility mode)
-%(plain Preloading the plain format: codes, registers, parameters, fonts,
-%more fonts, macros, math definitions, output routines, hyphenation(hyphen))
-%*\dump
-%Beginning to dump on file plain.fmt
-%
-%*\end
-%
-%No pages of output.
-%Transcript written on ./plain.log.
-%\end{lstlisting}}
-%
-%
-%--------------------------------
-%The invocation of the executable \Prog{extex} can be controlled by
-%large number of command line arguments. Those command line arguments
-%are described in the following list:
-%
-%\begin{description}
-%\item[\Arg{code}]\ \\
-%  This parameter contains \ExTeX\ code to be executed directly. The
-%  execution is performed after any code specified in an input file. On
-%  the command line the code has to start with a backslash. This
-%  restriction does not hold for the property settings.
-%
-%  This command line argument sets the property \Property{extex.code}
-%  
-%\item[\Arg{file}]\ \\
-%  This parameter contains the file to read from. A file name may not
-%  start with a backslash or an ambercent. It has no default.
-%
-%  This command line argument sets the property \Property{extex.file}.
-%  
-%\item[\CLI{-} \Arg{file}]\ \\
-%  This parameter terminates the normal processing of arguments. The
-%  next argument -- if present -- is interpreted as input file. With
-%  this construction it is possible to process an input file which
-%  starts with one of the special characters \verb|\| or \verb|&|.
-%
-%  This command line argument sets the property \Property{extex.file}
-%  if a file argument is present.
-%
-%\item[\CLI{configuration} \Arg{resource}]\ \\
-%  This parameter contains the name of the configuration resource to
-%  use. This configuration resource is sought on the class path.
-%  
-%  This command line argument sets the property \Property{extex.config}.
-%  
-%\item[\CLI{copyright}]\ \\
-%  This command line option produces a copyright notice on the standard
-%  output stream and terminates the program afterwards.
-%
-%\item[\tt\&\Arg{format}]\index{\&}
-%\item[\CLI{fmt} \Arg{format}]\ \\
-%  This parameter contains the name of the format to read. An empty
-%  string denotes that no format should be read. This is the default.
-%
-%  This command line argument sets the property \Property{extex.format}.
-%  
-%\item[\CLI{debug} \Arg{spec}]\ \\
-%  This command line parameter can be used to instruct the program to
-%  produce debugging output of several kinds. The debug output is
-%  written to the log file. The specification \Arg{spec} is interpreted
-%  left to right. Each character is interpreted according to the
-%  following table:
-%
-%  \begin{tabular}{lp{.4\textwidth}l}\toprule
-%    \textit{Spec}& \textit{Description}& \textit{See} \\\midrule
-%    F& 	This specifier contains the indicator whether or not to trace
-%    the searching for input files. & 	\Property{extex.trace.input.files}\\
-%    f& 	This specifier contains the indicator whether or not to trace
-%    the searching for font files.&      \Property{extex.trace.font.files}\\
-%    M& 	This specifier contains the indicator whether or not to trace
-%    the execution of macros.&	 	\Property{extex.trace.macros}\\
-%    T& 	This specifier contains the indicator whether or not to trace
-%    the work of the tokenizer.& 	\Property{extex.trace.tokenizer}\\
-%    \bottomrule
-%  \end{tabular}
-%
-%  The following example shows a possible invocation with this
-%  parameter: 
-%\begin{lstlisting}{}
-%# extex -debug FfMT abc.tex
-%This is ExTeX, Version 0.0 (TeX compatibility mode)
-%...
-%\end{lstlisting}
-%  
-%\item[\CLI{halt-on-error}]\ \\
-%  This parameter contains the indicator whether the processing should
-%  halt after the first error which has been encountered.
-%
-%  This command line argument sets the property \Property{extex.halt.on.error}.
-%  
-%\item[\CLI{help}]\ \\
-%  This command line option produces a short usage description on the
-%  standard output stream and terminates the program afterwards.
-%  
-%\item[\CLI{ini}]\ \\
-%  If set to true then act as ini\TeX.\index{initex@ini\TeX} In this
-%  case no format has to be preloaded. All parameters are set to the
-%  "`factory settings"'.
-%
-%  This command line argument sets the property \Property{extex.ini}.
-%
-%  The following example shows a possible invocation with this
-%  parameter: 
-%\begin{lstlisting}{}
-%# extex -ini abc.tex
-%This is ExTeX, Version 0.0 (TeX compatibility mode)
-%...
-%\end{lstlisting}
-%  
-%\item[\CLI{interaction} \Arg{mode}]\ \\
-%  This parameter contains the interaction mode. possible values are
-%  the numbers 0\dots3 and the symbolic names \Mode{batchmode} (0),
-%  \Mode{nonstopmode} (1), \Mode{scrollmode} (2), and
-%  \Mode{errorstopmode} (3).
-%
-%  This command line argument sets the property \Property{extex.interaction}.
-%  
-%  The following example shows a possible invocation with this
-%  parameter:
-%\begin{lstlisting}{}
-%# extex -interaction batchmode abc.tex
-%This is ExTeX, Version 0.0 (TeX compatibility mode)
-%...
-%\end{lstlisting}
-%
-%\item[\CLI{job-name} \Arg{name}]\ \\
-%  This parameter contains the name of the job. It is overwritten if a
-%  file is given to read from. In this case the base name of the input
-%  file is used instead.
-%
-%  This command line argument sets the property \Property{extex.jobname}.
-%  
-%\item[\CLI{language} \Arg{language}]\ \\
-%  This parameter contains the name of the locale to be used for the
-%  messages.
-%
-%  This command line argument sets the property \Property{extex.lang}.
-%  
-%\item[\CLI{output} \Arg{format}]\ \\
-%  This parameter contains the output format. This logical name is
-%  resolved via the configuration.
-%
-%  This command line argument sets the property \Property{extex.output}.
-%
-%  The following example shows a possible invocation with this
-%  parameter: 
-%\begin{lstlisting}{}
-%# extex -output pdf abc.tex
-%This is ExTeX, Version 0.0 (TeX compatibility mode)
-%\end{lstlisting}
-%  
-%\item[\CLI{progname} \Arg{name}]\ \\
-%  This parameter can be used to overrule the name of the program shown
-%  in the banner and the version information.  The following example
-%  shows a possible invocation and the resulting output:
-%
-%\begin{lstlisting}{}
-%# extex -progname XeTxE -version
-%This is XeTxE, Version 0.0 (1.4.2_06)
-%#
-%\end{lstlisting}
-%
-%  This command line argument sets the property \Property{extex.progname}.
-%  
-%\item[\CLI{texinputs} \Arg{path}]\ \\
-%  This parameter contains the additional directories for searching
-%  \ExTeX\ input files.  The directories are separated by the
-%  system-dependant separator.  This separator is a colon (\verb|:|) on
-%  Unix\index{Unix} and the semicolon (\verb|;|) on
-%  Windows\index{Windows}.
-%  
-%  This command line argument sets the property
-%  \Property{extex.texinputs}.
-%  
-%\item[\CLI{texmfoutputs} \Arg{dir}]\ \\
-%  This parameter contains the name of the property for the fallback if
-%  the output directory fails to be writable.
-%  
-%  This command line argument sets the property
-%  \Property{extex.outputdir.fallback}.
-%  
-%\item[\CLI{texoutputs} \Arg{dir}]\ \\
-%  This parameter contain the directory where output files should be
-%  created.
-%
-%  This command line argument sets the property \Property{extex.outputdir}.
-%  
-%\end{description}
-%
+The exxecutable for \ExBib\ is called \Prog{exbib}. It is a wrapper
+for the real program. It comes as shell script \Prog{exbib} and the
+Windows batch script \Prog{exbib.bat}. After a successful installation
+those scripts should be resent on your execution path.
+
 
 \subsection{Command Line Parameters}
 %@author Gerd Neugebauer
+
+The invocation of the executable \Prog{exbib} can be controlled by
+large number of command line arguments. Those command line arguments
+are described in the following sections.
 
 \subsubsection{The Aux File}
 
@@ -248,7 +35,7 @@ are coming from.
   This parameter contains the aux file to read from. A file name may not
   start with minus sign. It has no default.
   \begin{lstlisting}{}
-    # extex doc.aux
+    # exbib doc.aux
     This is exbib, Version 0.1
   \end{lstlisting}
   
@@ -259,7 +46,7 @@ are coming from.
   this construction it is possible to process an input file which
   starts with the special character \verb|-|.
   \begin{lstlisting}{}
-    # extex -- doc.aux
+    # exbib -- doc.aux
     This is exbib, Version 0.1
   \end{lstlisting}
 
@@ -379,6 +166,7 @@ switch -copying.
 
 
 \subsubsection{Configurations}
+\index{configuration|(}
 
 \ExBib\ is highly configurable. The whole system is assembled from
 components at run time. The assembly is controlled from a set of
@@ -418,7 +206,10 @@ The following configurations are present in the distribution.
   features of \ExBib\ are not present in this configuration.
 \end{description}
 
+\index{configuration|)}
+
 \subsubsection{Encodings}
+\index{encoding|(}
 
 The internal representation of characters uses Unicode. In general it
 is necessary to translate from and to the internal representation when
@@ -433,18 +224,18 @@ It is guaranteed that at least the following encodings are present on
 your system:
 
 \begin{description}
-\item[US-ASCII] 
+\item[US-ASCII\index{encoding!US-ASCII}] 
   Seven-bit ASCII.
-\item[ISO-8859-1] 
+\item[ISO-8859-1\index{encoding!ISO-8859-1}] 
   ISO Latin Alphabet 1
-\item[UTF-8] 
+\item[UTF-8\index{encoding!UTF8}] 
   Eight-bit UCS Transformation Format.
-\item[UTF-16BE] 
+\item[UTF-16BE\index{encoding!UTF16BE}] 
   Sixteen-bit UCS Transformation Format in big-endian byte order.
-\item[UTF-16LE] 
+\item[UTF-16LE\index{encoding!UTF16LE}] 
   Sixteen-bit UCS Transformation Format in little-endian byte order.
-\item[UTF] Sixteen-bit UCS Transformation Format; the byte order
-  identified by an optional byte-order mark.
+\item[UTF\index{encoding!UTF}] Sixteen-bit UCS Transformation Format;
+  the byte order identified by an optional byte-order mark.
 \end{description}
 
 The following list has been obtained at the time of writing this
@@ -452,166 +243,166 @@ document (on a Windows system):
 
 \noindent
 \begin{multicols}5\obeylines\scriptsize\parindent=0pt
-  Big5
-  Big5-HKSCS
-  EUC-JP
-  EUC-KR
-  GB18030
-  GB2312
-  GBK
-  IBM-Thai
-  IBM00858
-  IBM01140
-  IBM01141
-  IBM01142
-  IBM01143
-  IBM01144
-  IBM01145
-  IBM01146
-  IBM01147
-  IBM01148
-  IBM01149
-  IBM037
-  IBM1026
-  IBM1047
-  IBM273
-  IBM277
-  IBM278
-  IBM280
-  IBM284
-  IBM285
-  IBM297
-  IBM420
-  IBM424
-  IBM437
-  IBM500
-  IBM775
-  IBM850
-  IBM852
-  IBM855
-  IBM857
-  IBM860
-  IBM861
-  IBM862
-  IBM863
-  IBM864
-  IBM865
-  IBM866
-  IBM868
-  IBM869
-  IBM870
-  IBM871
-  IBM918
-  ISO-2022-CN
-  ISO-2022-JP
-  ISO-2022-JP-2
-  ISO-2022-KR
-  ISO-8859-1
-  ISO-8859-13
-  ISO-8859-15
-  ISO-8859-2
-  ISO-8859-3
-  ISO-8859-4
-  ISO-8859-5
-  ISO-8859-6
-  ISO-8859-7
-  ISO-8859-8
-  ISO-8859-9
-  JIS\_X0201
-  JIS\_X0212-1990
-  KOI8-R
-  KOI8-U
-  Shift\_JIS
-  TIS-620
-  US-ASCII
-  UTF-16
-  UTF-16BE
-  UTF-16LE
-  UTF-32
-  UTF-32BE
-  UTF-32LE
-  UTF-8
-  windows-1250
-  windows-1251
-  windows-1252
-  windows-1253
-  windows-1254
-  windows-1255
-  windows-1256
-  windows-1257
-  windows-1258
-  windows-31j
-  x-Big5-Solaris
-  x-euc-jp-linux
-  x-EUC-TW
-  x-eucJP-Open
-  x-IBM1006
-  x-IBM1025
-  x-IBM1046
-  x-IBM1097
-  x-IBM1098
-  x-IBM1112
-  x-IBM1122
-  x-IBM1123
-  x-IBM1124
-  x-IBM1381
-  x-IBM1383
-  x-IBM33722
-  x-IBM737
-  x-IBM834
-  x-IBM856
-  x-IBM874
-  x-IBM875
-  x-IBM921
-  x-IBM922
-  x-IBM930
-  x-IBM933
-  x-IBM935
-  x-IBM937
-  x-IBM939
-  x-IBM942
-  x-IBM942C
-  x-IBM943
-  x-IBM943C
-  x-IBM948
-  x-IBM949
-  x-IBM949C
-  x-IBM950
-  x-IBM964
-  x-IBM970
-  x-ISCII91
-  x-ISO-2022-CN-CNS
-  x-ISO-2022-CN-GB
-  x-iso-8859-11
-  x-JIS0208
-  x-JISAutoDetect
-  x-Johab
-  x-MacArabic
-  x-MacCentralEurope
-  x-MacCroatian
-  x-MacCyrillic
-  x-MacDingbat
-  x-MacGreek
-  x-MacHebrew
-  x-MacIceland
-  x-MacRoman
-  x-MacRomania
-  x-MacSymbol
-  x-MacThai
-  x-MacTurkish
-  x-MacUkraine
-  x-MS950-HKSCS
-  x-mswin-936
-  x-PCK
-  x-UTF-16LE-BOM
-  X-UTF-32BE-BOM
-  X-UTF-32LE-BOM
-  x-windows-50220
-  x-windows-50221
-  x-windows-874
-  x-windows-949
-  x-windows-950
-  x-windows-iso2022jp
+  Big5\index{encoding!Big5}
+  Big5-HKSCS\index{encoding!Big5-HKSCS}
+  EUC-JP\index{encoding!EUC-JP}
+  EUC-KR\index{encoding!EUC-KR}
+  GB18030\index{encoding!GB18030}
+  GB2312\index{encoding!GB2312}
+  GBK\index{encoding!GBK}
+  IBM-Thai\index{encoding!IBM-Thai}
+  IBM00858\index{encoding!IBM00858}
+  IBM01140\index{encoding!IBM01140}
+  IBM01141\index{encoding!IBM01141}
+  IBM01142\index{encoding!IBM01142}
+  IBM01143\index{encoding!IBM01143}
+  IBM01144\index{encoding!IBM01144}
+  IBM01145\index{encoding!IBM01145}
+  IBM01146\index{encoding!IBM01146}
+  IBM01147\index{encoding!IBM01147}
+  IBM01148\index{encoding!IBM01148}
+  IBM01149\index{encoding!IBM01149}
+  IBM037\index{encoding!IBM037}
+  IBM1026\index{encoding!IBM1026}
+  IBM1047\index{encoding!IBM1047}
+  IBM273\index{encoding!IBM273}
+  IBM277\index{encoding!IBM277}
+  IBM278\index{encoding!IBM278}
+  IBM280\index{encoding!IBM280}
+  IBM284\index{encoding!IBM284}
+  IBM285\index{encoding!IBM285}
+  IBM297\index{encoding!IBM297}
+  IBM420\index{encoding!IBM420}
+  IBM424\index{encoding!IBM424}
+  IBM437\index{encoding!IBM437}
+  IBM500\index{encoding!IBM500}
+  IBM775\index{encoding!IBM775}
+  IBM850\index{encoding!IBM850}
+  IBM852\index{encoding!IBM852}
+  IBM855\index{encoding!IBM855}
+  IBM857\index{encoding!IBM857}
+  IBM860\index{encoding!IBM860}
+  IBM861\index{encoding!IBM861}
+  IBM862\index{encoding!IBM862}
+  IBM863\index{encoding!IBM863}
+  IBM864\index{encoding!IBM864}
+  IBM865\index{encoding!IBM865}
+  IBM866\index{encoding!IBM866}
+  IBM868\index{encoding!IBM868}
+  IBM869\index{encoding!IBM869}
+  IBM870\index{encoding!IBM870}
+  IBM871\index{encoding!IBM871}
+  IBM918\index{encoding!IBM918}
+  ISO-2022-CN\index{encoding!ISO-2022-CN}
+  ISO-2022-JP\index{encoding!ISO-2022-JP}
+  ISO-2022-JP-2\index{encoding!ISO-2022-JP-2}
+  ISO-2022-KR\index{encoding!ISO-2022-KR}
+  ISO-8859-1\index{encoding!ISO-8859-1}
+  ISO-8859-13\index{encoding!ISO-8859-13}
+  ISO-8859-15\index{encoding!ISO-8859-15}
+  ISO-8859-2\index{encoding!ISO-8859-2}
+  ISO-8859-3\index{encoding!ISO-8859-3}
+  ISO-8859-4\index{encoding!ISO-8859-4}
+  ISO-8859-5\index{encoding!ISO-8859-5}
+  ISO-8859-6\index{encoding!ISO-8859-6}
+  ISO-8859-7\index{encoding!ISO-8859-7}
+  ISO-8859-8\index{encoding!ISO-8859-8}
+  ISO-8859-9\index{encoding!ISO-8859-9}
+  JIS\_X0201\index{encoding!JIS\_X0201}
+  JIS\_X0212-1990\index{encoding!JIS\_X0212-1990}
+  KOI8-R\index{encoding!KOI8-R}
+  KOI8-U\index{encoding!KOI8-U}
+  Shift\_JIS\index{encoding!Shift\_JIS}
+  TIS-620\index{encoding!TIS-620}
+  US-ASCII\index{encoding!US-ASCII}
+  UTF-16\index{encoding!UTF-16}
+  UTF-16BE\index{encoding!UTF-16BE}
+  UTF-16LE\index{encoding!UTF-16LE}
+  UTF-32\index{encoding!UTF-32}
+  UTF-32BE\index{encoding!UTF-32BE}
+  UTF-32LE\index{encoding!UTF-32LE}
+  UTF-8\index{encoding!UTF-8}
+  windows-1250\index{encoding!windows-1250}
+  windows-1251\index{encoding!windows-1251}
+  windows-1252\index{encoding!windows-1252}
+  windows-1253\index{encoding!windows-1253}
+  windows-1254\index{encoding!windows-1254}
+  windows-1255\index{encoding!windows-1255}
+  windows-1256\index{encoding!windows-1256}
+  windows-1257\index{encoding!windows-1257}
+  windows-1258\index{encoding!windows-1258}
+  windows-31j\index{encoding!windows-31j}
+  x-Big5-Solaris\index{encoding!x-Big5-Solaris}
+  x-euc-jp-linux\index{encoding!x-euc-jp-linux}
+  x-EUC-TW\index{encoding!x-EUC-TW}
+  x-eucJP-Open\index{encoding!x-eucJP-Open}
+  x-IBM1006\index{encoding!x-IBM1006}
+  x-IBM1025\index{encoding!x-IBM1025}
+  x-IBM1046\index{encoding!x-IBM1046}
+  x-IBM1097\index{encoding!x-IBM1097}
+  x-IBM1098\index{encoding!x-IBM1098}
+  x-IBM1112\index{encoding!x-IBM1112}
+  x-IBM1122\index{encoding!x-IBM1122}
+  x-IBM1123\index{encoding!x-IBM1123}
+  x-IBM1124\index{encoding!x-IBM1124}
+  x-IBM1381\index{encoding!x-IBM1381}
+  x-IBM1383\index{encoding!x-IBM1383}
+  x-IBM33722\index{encoding!x-IBM33722}
+  x-IBM737\index{encoding!x-IBM737}
+  x-IBM834\index{encoding!x-IBM834}
+  x-IBM856\index{encoding!x-IBM856}
+  x-IBM874\index{encoding!x-IBM874}
+  x-IBM875\index{encoding!x-IBM875}
+  x-IBM921\index{encoding!x-IBM921}
+  x-IBM922\index{encoding!x-IBM922}
+  x-IBM930\index{encoding!x-IBM930}
+  x-IBM933\index{encoding!x-IBM933}
+  x-IBM935\index{encoding!x-IBM935}
+  x-IBM937\index{encoding!x-IBM937}
+  x-IBM939\index{encoding!x-IBM939}
+  x-IBM942\index{encoding!x-IBM942}
+  x-IBM942C\index{encoding!x-IBM942C}
+  x-IBM943\index{encoding!x-IBM943}
+  x-IBM943C\index{encoding!x-IBM943C}
+  x-IBM948\index{encoding!x-IBM948}
+  x-IBM949\index{encoding!x-IBM949}
+  x-IBM949C\index{encoding!x-IBM949C}
+  x-IBM950\index{encoding!x-IBM950}
+  x-IBM964\index{encoding!x-IBM964}
+  x-IBM970\index{encoding!x-IBM970}
+  x-ISCII91\index{encoding!x-ISCII91}
+  x-ISO-2022-CN-CNS\index{encoding!x-ISO-2022-CN-CNS}
+  x-ISO-2022-CN-GB\index{encoding!x-ISO-2022-CN-GB}
+  x-iso-8859-11\index{encoding!x-iso-8859-11}
+  x-JIS0208\index{encoding!x-JIS0208}
+  x-JISAutoDetect\index{encoding!x-JISAutoDetect}
+  x-Johab\index{encoding!x-Johab}
+  x-MacArabic\index{encoding!x-MacArabic}
+  x-MacCentralEurope\index{encoding!x-MacCentralEurope}
+  x-MacCroatian\index{encoding!x-MacCroatian}
+  x-MacCyrillic\index{encoding!x-MacCyrillic}
+  x-MacDingbat\index{encoding!x-MacDingbat}
+  x-MacGreek\index{encoding!x-MacGreek}
+  x-MacHebrew\index{encoding!x-MacHebrew}
+  x-MacIceland\index{encoding!x-MacIceland}
+  x-MacRoman\index{encoding!x-MacRoman}
+  x-MacRomania\index{encoding!x-MacRomania}
+  x-MacSymbol\index{encoding!x-MacSymbol}
+  x-MacThai\index{encoding!x-MacThai}
+  x-MacTurkish\index{encoding!x-MacTurkish}
+  x-MacUkraine\index{encoding!x-MacUkraine}
+  x-MS950-HKSCS\index{encoding!x-MS950-HKSCS}
+  x-mswin-936\index{encoding!x-mswin-936}
+  x-PCK\index{encoding!x-PCK}
+  x-UTF-16LE-BOM\index{encoding!x-UTF-16LE-BOM}
+  X-UTF-32BE-BOM\index{encoding!X-UTF-32BE-BOM}
+  X-UTF-32LE-BOM\index{encoding!X-UTF-32LE-BOM}
+  x-windows-50220\index{encoding!x-windows-50220}
+  x-windows-50221\index{encoding!x-windows-50221}
+  x-windows-874\index{encoding!x-windows-874}
+  x-windows-949\index{encoding!x-windows-949}
+  x-windows-950\index{encoding!x-windows-950}
+  x-windows-iso2022jp\index{encoding!x-windows-iso2022jp}
 \end{multicols}
 
 The following command line options are related to encodings:
@@ -657,8 +448,10 @@ IBM01140
 \end{description}
 %        --e[ncoding] | -e <enc>
 %        	Nutze das gegebene Encoding für die Ausgabedatei.
+\index{encoding|)}
 
-\subsubsection{CS Files}
+\subsubsection{CS Files}%
+\index{csf|(}
 
 \begin{description}
 \item[\CLI{-csfile} \Arg{csfile}]\ \\
@@ -691,6 +484,7 @@ IBM01140
 %        --8[bit] | -8
 %        	Erzwinge  8-Bit-Modus, es wird keine CS-Datei eingesetzt.
 \end{description}
+\index{csf|)}
 
 \subsubsection{Redirecting Output}
 
@@ -758,17 +552,16 @@ IBM01140
 \begin{lstlisting}{}
 # exbib --bst=alpha doc.aux
 ...
-\end{lstlisting}
+\end{lstlisting}\index{bst!alpha}
 
 \end{description}
 
-\subsubsection{min crossrefs}
+\subsubsection{Minimum Crossreferences}
 
 \begin{description}
 \item[\CLI{M} \Arg{n}]
 \item[\CLI{-min-crossrefs} \Arg{n}]
 \item[\CLI{-min.crossrefs} \Arg{n}]
-\item[\CLI{-min\_crossrefs} \Arg{n}]\ \\
   This option sets the minimum number of crossreferences before an
   entry is not collaped.
 \begin{lstlisting}{}
@@ -802,6 +595,8 @@ This is BibTeX, Version 0.1
 \begin{description}
 \item[\CLI{d} \Arg{mode}]
 \item[\CLI{-debug} \Arg{mode}]\ \\
+\INCOMPLETE
+
 \end{description}
 %        --d[ebug] | -d
 %        	Arbeite im Debug-Modus.
@@ -875,7 +670,7 @@ For compatibility those options are silently ignored:
 
 Command line parameters can be abbreviated up to a unique prefix --
 and sometimes even more. Thus the following invocations are
-equivalent:
+equivalent:\index{prefix}
 
 \begin{verbatim}
   exbib --vers
