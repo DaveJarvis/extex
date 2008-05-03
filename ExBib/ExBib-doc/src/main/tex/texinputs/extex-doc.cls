@@ -122,7 +122,7 @@
   \else\texorpdfstring{%
   \textrm{% the logo comes always with serifs
     \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
-    \kern-.1em Bib
+    \kern-.1em Bib%
   }}{ExBib}%
   \fi
 }

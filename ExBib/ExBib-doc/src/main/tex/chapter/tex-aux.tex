@@ -1,0 +1,51 @@
+%%*****************************************************************************
+%% $Id: tex-aux.tex,v 0.00 2008/05/02 01:07:48 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\chapter{Behind the Scenes}
+
+\section{The aux File}
+
+
+\IM{08x1}
+The selection of databases and entries in \ExBib\ is mainly controlled
+by the aux file. The aux file is usually prouced by \LaTeX\ and read by
+\ExBib. Since the aux file is also used to communicate between successive
+runs of \LaTeX\ it can contain information not relevant for \ExBib.
+This irrelevant information is ignored.
+
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  \bibdata{the/bibliography}
+\end{lstlisting}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  \citation{a.label,another.label}
+\end{lstlisting}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  \bibstyle{the/style}
+\end{lstlisting}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  \@include{the/included}
+\end{lstlisting}
+
+\INCOMPLETE
+
+\endinput
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: "../exbib-manual"
+% End: 

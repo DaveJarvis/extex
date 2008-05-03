@@ -6,12 +6,267 @@
 
 \chapter{The BST Language}
 
+\IM{08x1}%
+The processing of the data base entries can be programmed with a small
+special purpose programming language. Since it seems to habe no name
+it is called the BST language
+
+Usually the instructions are read from a file. The default extension
+of these files is \texttt{.bst}. The content is interpreted to produce
+the formatted output.
+
+The primary goal of \BibTeX\ is the processing of bibliographic
+databases. Thus the language is tailored towards the formatting of
+bibliographies.
+
+\section{The Programming Model}
+
+The BST language is based on a simple stack based metaphor. The stack
+is the central data structure in the program. The stack is able to
+carry arbitrary data. Especially it is possible to push code segments
+to the stack.
+
+\begin{figure}[tb]
+  \centering
+  \input{fig/bst-model}
+  \caption{The BST Programming Model}
+  \label{fig:bst-model}
+\end{figure}
+
+
+\subsection{The Database Context}
+
+Whenever a bst program is executed a database is at hand. The porogram
+has access to this database.
+
+\INCOMPLETE
+
+\subsection{Datatype Integer}
+
+\INCOMPLETE
+
+\subsection{Datatype String}
+
+\INCOMPLETE
+
+\subsection{Datatype Code}
+
+\INCOMPLETE
+
+
 \section{Syntax}
+
+\INCOMPLETE
 
 \section{Commands}
 
+
+\subsection{\texttt{entry}}
+
+\INCOMPLETE
+
+\subsection{\texttt{integers}}
+
+\INCOMPLETE
+
+\subsection{\texttt{strings}}
+
+\INCOMPLETE
+
+\subsection{\texttt{execute}}
+
+\INCOMPLETE
+
+\subsection{\texttt{iterate}}
+
+\INCOMPLETE
+
+\subsection{\texttt{reverse}}
+
+\INCOMPLETE
+
+\subsection{\texttt{sort}}
+
+\INCOMPLETE
+
+\subsection{\texttt{function}}
+
+\INCOMPLETE
+
+\subsection{\texttt{input}}
+\IM{x}
+
+\INCOMPLETE
+
 \section{Instructions}
 
+\subsection{\texttt{>}}
+
+\INCOMPLETE
+
+\subsection{\texttt{<}}
+
+\INCOMPLETE
+
+\subsection{\texttt{=}}
+
+\INCOMPLETE
+
+\subsection{\texttt{+}}
+
+\INCOMPLETE
+
+\subsection{\texttt{-}}
+
+\INCOMPLETE
+
+\subsection{\texttt{*}}
+
+\INCOMPLETE
+
+\subsection{\texttt{:=}}
+
+\INCOMPLETE
+
+\subsection{\texttt{add.period\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{call.type\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{change.case\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{chr.to.int\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{cite\$}}
+
+\begin{lstlisting}{}
+  cite$
+\end{lstlisting}
+
+\INCOMPLETE
+
+\subsection{\texttt{duplicate\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{empty\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{format.name\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{if\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{int.to.chr\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{int.to.str\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{missing\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{newline\$}}
+
+This instruction writes a newline character to the output stream.
+
+\begin{lstlisting}{}
+  newline$
+\end{lstlisting}
+
+\subsection{\texttt{num.names\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{pop\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{preamble\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{purify\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{quote\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{skip\$}}
+
+This instruction does simply nothing. In other languages this might be
+called a noop. This is useful for places where instructions are
+mandatory but nothing should be done.
+
+\subsection{\texttt{stack\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{substring\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{swap\$}}
+
+This instruction takes the two topmost elements from the stack and
+exchanges their order on the stack. This means that the topmost
+element becomes the second one and the second element becomes the
+topmost one. The elements can be of any type.
+
+If there are less than two elements on the stack then an error is
+raised.
+
+\subsection{\texttt{text.length\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{text.prefix\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{top\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{type\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{warning\$}}
+
+This instruction pops a string from the stack and prints it as a
+warning to the log stream.
+
+\subsection{\texttt{while\$}}
+
+\INCOMPLETE
+
+\subsection{\texttt{width\$}}
+
+This instruction pops a string from the stack and tries to compute the
+width of the string when tyoeset. For this purpose the width of the
+characters in the font cmr10 are used.
+
+\subsection{\texttt{write\$}}
+
+This instruction pops a string from the stack and prints it as a
+message to the output stream.
 
 
 \endinput

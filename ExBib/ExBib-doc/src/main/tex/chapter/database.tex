@@ -6,33 +6,128 @@
 
 \chapter{The Data Base}
 
+
 \section{Syntax}
 
+The data base in \BibTeX\ style consists of a simple text file.
+\IM{08x1}
+
+The following characters have a special meaning for the \BibTeX\
+syntax:
+\begin{verbatim}
+    @ { } ( ) , # " =
+\end{verbatim}
+Any other character is treated equally as ordinary character.
+
+\INCOMPLETE
+
+
+\section{\texttt{@input}}
+\IM{x1}
+
+\begin{verbatim}
+  @input(some/other/resource)
+\end{verbatim}
+
+\INCOMPLETE
 
 \section{Entries}
+\IM{08x1}
 
+\INCOMPLETE
 
 \section{Names}
+\IM{08x1}
+
+Names are especially complicated and deserve a description of their
+own.
+
+\INCOMPLETE
 
 
-\section{Alias}
+\subsection{Comments}
+
+Anything outside of entries and other declarations are considered as a
+comment -- and mainly ignored. Thus you can put anything in between
+the entries.
+
+\IM{081} There is one special tag to mark comments. It is the tag
+\texttt{@comment}. Since anything outside of declarations is already a
+comment. Is has been considered sufficient to ignore the tag in the
+input stream.
+\begin{lstlisting}{}
+  @comment
+\end{lstlisting}
+
+Unfortunately in the age of internet it is desirable to include email
+addresses into comment -- and those may contain an @. Thus the
+definition of the \texttt{@comment} declaration is slightly different
+from \BibTeX:
+\IM{x}
+\begin{itemize}
+\item If the next non-space character is an opening brace (\verb|{|)
+  then a block is read and treated as comment. This means that the
+  block can contain arbitrary characters -- especially the @ sign.
+  On the other side the block needs to have balanced braces.
+\begin{lstlisting}{}
+  @comment{ This is a comment with embedded @ }
+\end{lstlisting}
+    
+\item If the next non-space character is not an open brace character
+  then just the tag is ignored.
+\begin{lstlisting}{}
+  @comment This is a comment
+\end{lstlisting}
+  
+\end{itemize}
 
 
-\section{Modify}
+\section{\texttt{@alias}}
+\IM{x1}
 
+\begin{verbatim}
+  @alias( abc = def )
+\end{verbatim}
 
-\section{Strings}
+\INCOMPLETE
 
+\section{\texttt{@modify}}
+\IM{x1}
+The \texttt{@modify} directive can be used to alter the content of
+certain fields in an entry. The question is why would such a directive
+be necessary when you could simply alter the entry itself. The answer
+is that the entry might not be under your contrrol. it might be
+contained in another file which is included via the \texttt{@include}
+directive or
 
-\section{Preamble}
+\begin{verbatim}
+  @modify( abc, author = {A.U. Thor} )
+\end{verbatim}
 
+\INCOMPLETE
 
-\section{Input}
+\section{\texttt{@string}}
+\IM{08x1}
+
+\begin{verbatim}
+  @string( abc = {The value} )
+\end{verbatim}
+
+\INCOMPLETE
+
+\section{\texttt{@preamble}}
+\IM{08x1}
+
+\begin{verbatim}
+  @preamble( "\providecommand\BibTeX{Bib\TeX}" )
+\end{verbatim}
+
+\INCOMPLETE
 
 
 \endinput
 %
 % Local Variables: 
 % mode: latex
-% TeX-master: nil
+% TeX-master: "../exbib-manual"
 % End: 
