@@ -61,7 +61,7 @@ public class BiblioTester {
                     null, null);
         BibReader r = new BibReaderImpl();
         r.setResourceFinder(finder);
-        r.open(bibFile, null);
+        r.open(bibFile, (String) null);
         DB db = new DBImpl();
         try {
             r.load(db);
