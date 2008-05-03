@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 
 import org.extex.exbib.core.util.NotObservableException;
@@ -142,6 +143,30 @@ public abstract class AbstractFileReader implements Observable {
             locator = new Locator(filename, reader.getLineNumber());
         }
         return locator;
+    }
+
+    /**
+     * Open the reader for subsequent reading operations.
+     * 
+     * @param name the name of the resource
+     * @param r the reader to use
+     * 
+     * @return a Reader for the requested file
+     * 
+     * @throws ConfigurationException in case that the configuration is invalid
+     * @throws FileNotFoundException in case that the reader is
+     *         <code>null</code>
+     */
+    public LineNumberReader open(String name, Reader r)
+            throws FileNotFoundException,
+                ConfigurationException {
+
+        if (r == null) {
+            throw new FileNotFoundException(name);
+        }
+        filename = name;
+        reader = new LineNumberReader(r);
+        return reader;
     }
 
     /**
