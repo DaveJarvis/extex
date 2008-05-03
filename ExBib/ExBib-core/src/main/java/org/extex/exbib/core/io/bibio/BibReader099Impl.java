@@ -1,6 +1,6 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
+ * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,6 +38,7 @@ import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
 import org.extex.exbib.core.exceptions.ExBibEofInStringException;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.exceptions.ExBibMissingAttributeNameException;
 import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
@@ -59,8 +60,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <li>The special tag {@code @comment} is silently ignored.</li>
  * <li>Any characters between entries are considered to be comments and ignored
  * silently.</li>
- * <li>There is no means to escape the {@code @} in comments.</li>
- * <li>Either {} or () can be used as delimiters</li>
+ * <li>There is no means to escape the {@code @} in comments. Nevertheless the
+ * handling of comments is performed in a function which can be overwritten in
+ * derived classes.</li>
+ * <li>Either {} or () can be used as topmost delimiters</li>
  * </ul>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -154,7 +157,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             return c;
         }
 
-        throw new ExBibUnexpectedEofException(chars, Character.toString(c),
+        throw new ExBibUnexpectedEofException(Character.toString(c), chars,
             getLocator());
     }
 
@@ -213,6 +216,21 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     }
 
     /**
+     * Handle a {@literal @comment} section.
+     * 
+     * @param comment the buffer to store the comment in
+     * @param tag the tag encountered
+     * 
+     * @throws ExBibException in case of an error
+     */
+    protected void handleComment(StringBuilder comment, String tag)
+            throws ExBibException {
+
+        comment.append('@');
+        comment.append(tag);
+    }
+
+    /**
      * Parse the given file and store the result into the database.
      * 
      * @param db the database to store the records in
@@ -222,9 +240,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     public void load(DB db) throws ExBibException {
 
         StringBuilder comment = new StringBuilder();
-        String tag;
+        String tag = skipToAtTag(comment);
 
-        while ((tag = skipToAtTag(comment)) != null) {
+        while (tag != null) {
             if (tag.equals("")) {
                 throw new ExBibMissingEntryTypeException(null, getLocator());
             }
@@ -232,7 +250,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             String s = tag.toLowerCase();
 
             if (s.equals("comment")) {
-                comment.append(tag);
+                handleComment(comment, tag);
             } else {
                 db.storeComment(comment.toString());
                 comment.delete(0, comment.length());
@@ -243,7 +261,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                     String key = parseKey();
 
                     if (key.equals("")) {
-                        throw new ExBibMissingKeyException(null, getLocator());
+                        throw new ExBibMissingKeyException("", getLocator());
                     }
 
                     Entry entry = db.makeEntry(s, key, getLocator());
@@ -272,12 +290,16 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                     }
                 }
             }
+
+            tag = skipToAtTag(comment);
         }
+
+        db.storeComment(comment.toString());
 
         try {
             close();
         } catch (IOException e) {
-            // shit happens
+            throw new ExBibIoException(e);
         }
     }
 
@@ -316,6 +338,39 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         expect("=");
 
         return new KeyValue(lhs, parseRHS());
+    }
+
+    /**
+     * Parse a block.
+     * 
+     * @return the sting found
+     * 
+     * @throws ExBibEofInBlockException in case of an unexpected end of file
+     */
+    protected String parseBlock() throws ExBibEofInBlockException {
+
+        StringBuilder buffer = getBuffer();
+        int ptr = 1;
+
+        for (int depth = 1; depth > 0;) {
+            if (ptr >= buffer.length()) {
+                if (read() == null) {
+                    throw new ExBibEofInBlockException(getLocator());
+                }
+            }
+
+            char c = buffer.charAt(ptr++);
+
+            if (c == '{') {
+                depth++;
+            } else if (c == '}') {
+                depth--;
+            }
+        }
+
+        String s = buffer.substring(0, ptr - 1);
+        buffer.delete(0, ptr);
+        return s;
     }
 
     /**
@@ -383,26 +438,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             StringBuilder buffer = getBuffer();
 
             if (c == '{') {
-                int i = 1;
-
-                for (int depth = 1; depth > 0;) {
-                    if (i >= buffer.length()) {
-                        if (read() == null) {
-                            throw new ExBibEofInBlockException(getLocator());
-                        }
-                    }
-
-                    c = buffer.charAt(i++);
-
-                    if (c == '{') {
-                        depth++;
-                    } else if (c == '}') {
-                        depth--;
-                    }
-                }
-
-                ret.add(new VBlock(buffer.substring(1, i - 1)));
-                buffer.delete(0, i);
+                ret.add(new VBlock(parseBlock()));
             } else if (c == '"') {
                 int i = 1;
                 int depth = 0;

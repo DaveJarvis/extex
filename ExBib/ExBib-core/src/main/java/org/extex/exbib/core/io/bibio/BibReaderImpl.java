@@ -87,6 +87,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </pre>
  * 
  * 
+ * <h3>The {@literal @comment} Instruction</h3>
+ * 
+ * <p>
+ * The {@literal @comment} is modified to take an argument in braces. Whatever
+ * contained in this argument is ignored.
+ * </p>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -144,8 +150,8 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
      * @throws ExBibSyntaxException in case of an syntax error
      */
     @Override
-    protected boolean handle(String tag, DB db, String brace,
-            Locator locator) throws ExBibException {
+    protected boolean handle(String tag, DB db, String brace, Locator locator)
+            throws ExBibException {
 
         if (tag.equals("include")) {
             String source = parseToken(filenamePattern);
@@ -205,4 +211,30 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
 
         return super.handle(tag, db, brace, locator);
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.io.bibio.BibReader099Impl#handleComment(
+     *      java.lang.StringBuilder, java.lang.String)
+     */
+    @Override
+    protected void handleComment(StringBuilder comment, String tag)
+            throws ExBibException {
+
+        comment.append('@');
+        comment.append(tag);
+        char c = parseNextNonSpace(true);
+        if (c != '{') {
+            if (c != '@') {
+                comment.append(' ');
+            }
+            return;
+        }
+        parseNextNonSpace(false);
+        comment.append('{');
+        comment.append(parseBlock());
+        comment.append('}');
+    }
+
 }

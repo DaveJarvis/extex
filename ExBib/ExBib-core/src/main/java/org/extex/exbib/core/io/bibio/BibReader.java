@@ -22,6 +22,8 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.Reader;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -56,15 +58,33 @@ public interface BibReader extends ResourceAware {
     void load(DB db) throws ExBibException, ConfigurationException;
 
     /**
+     * Open the reader for subsequent reading operations.
+     * 
+     * @param name the name of the resource
+     * @param r the reader to use
+     * 
+     * @return a Reader for the requested file
+     * 
+     * @throws ConfigurationException in case that the configuration is invalid
+     * @throws FileNotFoundException in case that the reader is
+     *         <code>null</code>
+     */
+    public LineNumberReader open(String name, Reader r)
+            throws FileNotFoundException,
+                ConfigurationException;
+
+    /**
      * Open a file for reading
      * 
      * @param file the file to open for reading
-     * @param encoding TODO
+     * @param encoding the encoding
      * 
      * @throws FileNotFoundException in case the file could not be opened for
      *         reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    void open(String file, String encoding) throws ConfigurationException, FileNotFoundException;
+    void open(String file, String encoding)
+            throws ConfigurationException,
+                FileNotFoundException;
 
 }
