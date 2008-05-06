@@ -16,7 +16,8 @@
 \usepackage{makeidx}
 
 \newcommand\Arg[1]{\(\langle\){\tt\itshape #1}\(\rangle\)}
-\newcommand\CLI[1]{\texttt{-{}#1}\index{#1@\texttt{-{}#1}}}
+\newcommand\CLi[1]{\texttt{-{}#1}\index{#1@\texttt{-{}#1}}}
+\newcommand\CLI[1]{\texttt{-{}-#1}\index{#1@\texttt{-{}-#1}}}
 \newcommand\Property[1]{\texttt{#1}\index{#1@\texttt{#1}}}
 \newcommand\File[1]{\texttt{#1}\index{#1@\textsf{#1}}}
 \newcommand\Prog[1]{\texttt{#1}\index{#1}}
@@ -72,12 +73,12 @@
   \ifdraft
   \unitlength=1mm
   \begin{picture}(0,0)
-    \put(51,98.5){\makebox(0,0){%
-        \scalebox{6}{%
+    \put(-39,196){\makebox(0,0){%
+        \scalebox{5}{%
           \rotatebox{45}{%
             \color{black}\textsf{\Huge\bfseries Draft}}}}}
-    \put(50,98){\makebox(0,0){%
-        \scalebox{6}{%
+    \put(-40,195.5){\makebox(0,0){%
+        \scalebox{5}{%
           \rotatebox{45}{%
             \color{red}\textsf{\Huge\bfseries Draft}}}}}
   \end{picture}

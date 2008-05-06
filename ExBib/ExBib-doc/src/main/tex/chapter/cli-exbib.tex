@@ -10,12 +10,12 @@
 %@author Gerd Neugebauer
 
 Currently \ExBib\ can be run from the command line. In this respect it
-is more or less identical to \BibTeX\ and can be used as a plug-in
-replacement. In addition the features of \BibTeX~8 are present as
-well. The marks in the margin indicate where the different features
-are coming from.
+is more or less identical to \BibTeX\index{BibTeX@\BibTeX} and can be
+used as a plug-in replacement. In addition the features of
+\BibTeX~8\index{BibTeX 8@\BibTeX~8} are present as well. The marks in
+the margin indicate where the different features are coming from.
 
-The exxecutable for \ExBib\ is called \Prog{exbib}. It is a wrapper
+The executable for \ExBib\ is called \Prog{exbib}. It is a wrapper
 for the real program. It comes as shell script \Prog{exbib} and the
 Windows batch script \Prog{exbib.bat}. After a successful installation
 those scripts should be resent on your execution path.
@@ -39,8 +39,8 @@ are described in the following sections.
     This is exbib, Version 0.1
   \end{lstlisting}
   
-\item[\CLI{} \Arg{file}]
-\item[\CLI{-} \Arg{file}]\ \\
+\item[\CLi{} \Arg{file}]
+\item[\CLI{} \Arg{file}]\ \\
   This parameter terminates the intercepts processing of arguments. The
   next argument -- if present -- is interpreted as input file. With
   this construction it is possible to process an input file which
@@ -57,7 +57,7 @@ means that it is either the name of an aux file or the base name which
 is augmented by the extension \texttt{.aux} to find the aux file.
 
 The main control information is taken from this aux file. This means
-it contains the foloowing items:
+it contains the following items:
 
 \begin{itemize}
 \item The database files to consult.
@@ -69,7 +69,7 @@ it contains the foloowing items:
 \subsubsection{Version Information and Help}
 
 \begin{description}
-\item[\CLI{-copying}]\ \\
+\item[\CLI{copying}]\ \\
   This command line option produces a copyright notice on the standard
   output stream and terminates the program afterwards.
   \begin{lstlisting}{}
@@ -91,9 +91,9 @@ free software--to make sure the software is free for all its users.
     ...
   \end{lstlisting}
 
-\item[\CLI{h}]
-\item[\CLI{?}]
-\item[\CLI{-help}]\ \\
+\item[\CLi{h}]
+\item[\CLi{?}]
+\item[\CLI{help}]\ \\
   This command line option produces a short usage description on the
   standard output stream and terminates the program afterwards.
   \begin{lstlisting}{}
@@ -110,7 +110,7 @@ The following options are supported:
     ...
 \end{lstlisting}
   
-\item[\CLI{-release}]\ \\
+\item[\CLI{release}]\ \\
   This command prints the release number to stdout and exits the
   program. This can be used to enable external programs to easily
   determine the version number of \ExBib.
@@ -120,7 +120,7 @@ The following options are supported:
 #
 \end{lstlisting}
 
-\item[\CLI{-version}]\ \\
+\item[\CLI{version}]\ \\
   This command line parameter forces that the version information is
   written to standard output and the program is
   terminated.\index{version} The version of \ExBib\ is shown. The
@@ -142,8 +142,8 @@ switch -copying.
 \subsubsection{Internationalization}
 
 \begin{description}
-\item[\CLI{L} \Arg{lang}]
-\item[\CLI{-language} \Arg{lang}]\ \\
+\item[\CLi{L} \Arg{lang}]
+\item[\CLI{language} \Arg{lang}]\ \\
   This command line option switches the language to the given
   language. The argument is a two-letter ISO code for a language. For
   instance the value \texttt{en} represents English and \texttt{de}
@@ -174,9 +174,9 @@ configuration files. There is one central configuration file which
 acts as entry point.
 
 \begin{description}
-\item[\CLI{c} \Arg{config}]
-\item[\CLI{-configuration} \Arg{config}]\ \\
-  Set the configuration file to be used for assenbling \ExBib. The
+\item[\CLi{c} \Arg{config}]
+\item[\CLI{configuration} \Arg{config}]\ \\
+  Set the configuration file to be used for assembling \ExBib. The
   default is the configuration \texttt{exbib}.
 \begin{lstlisting}{}
 # exbib --configuration bibtex099 doc.aux
@@ -184,8 +184,8 @@ This is exbib, Version 0.1
 ...
 \end{lstlisting}
 
-\item[\CLI{-bibtex}]
-\item[\CLI{-strict}]\ \\
+\item[\CLI{bibtex}]
+\item[\CLI{strict}]\ \\
   Use the configuration \texttt{bibtex099} for assembling \ExBib.
 \begin{lstlisting}{}
 # exbib --bibtex doc.aux
@@ -243,172 +243,172 @@ document (on a Windows system):
 
 \noindent
 \begin{multicols}5\obeylines\scriptsize\parindent=0pt
-  Big5\index{encoding!Big5}
-  Big5-HKSCS\index{encoding!Big5-HKSCS}
-  EUC-JP\index{encoding!EUC-JP}
-  EUC-KR\index{encoding!EUC-KR}
-  GB18030\index{encoding!GB18030}
-  GB2312\index{encoding!GB2312}
-  GBK\index{encoding!GBK}
-  IBM-Thai\index{encoding!IBM-Thai}
-  IBM00858\index{encoding!IBM00858}
-  IBM01140\index{encoding!IBM01140}
-  IBM01141\index{encoding!IBM01141}
-  IBM01142\index{encoding!IBM01142}
-  IBM01143\index{encoding!IBM01143}
-  IBM01144\index{encoding!IBM01144}
-  IBM01145\index{encoding!IBM01145}
-  IBM01146\index{encoding!IBM01146}
-  IBM01147\index{encoding!IBM01147}
-  IBM01148\index{encoding!IBM01148}
-  IBM01149\index{encoding!IBM01149}
-  IBM037\index{encoding!IBM037}
-  IBM1026\index{encoding!IBM1026}
-  IBM1047\index{encoding!IBM1047}
-  IBM273\index{encoding!IBM273}
-  IBM277\index{encoding!IBM277}
-  IBM278\index{encoding!IBM278}
-  IBM280\index{encoding!IBM280}
-  IBM284\index{encoding!IBM284}
-  IBM285\index{encoding!IBM285}
-  IBM297\index{encoding!IBM297}
-  IBM420\index{encoding!IBM420}
-  IBM424\index{encoding!IBM424}
-  IBM437\index{encoding!IBM437}
-  IBM500\index{encoding!IBM500}
-  IBM775\index{encoding!IBM775}
-  IBM850\index{encoding!IBM850}
-  IBM852\index{encoding!IBM852}
-  IBM855\index{encoding!IBM855}
-  IBM857\index{encoding!IBM857}
-  IBM860\index{encoding!IBM860}
-  IBM861\index{encoding!IBM861}
-  IBM862\index{encoding!IBM862}
-  IBM863\index{encoding!IBM863}
-  IBM864\index{encoding!IBM864}
-  IBM865\index{encoding!IBM865}
-  IBM866\index{encoding!IBM866}
-  IBM868\index{encoding!IBM868}
-  IBM869\index{encoding!IBM869}
-  IBM870\index{encoding!IBM870}
-  IBM871\index{encoding!IBM871}
-  IBM918\index{encoding!IBM918}
-  ISO-2022-CN\index{encoding!ISO-2022-CN}
-  ISO-2022-JP\index{encoding!ISO-2022-JP}
-  ISO-2022-JP-2\index{encoding!ISO-2022-JP-2}
-  ISO-2022-KR\index{encoding!ISO-2022-KR}
-  ISO-8859-1\index{encoding!ISO-8859-1}
-  ISO-8859-13\index{encoding!ISO-8859-13}
-  ISO-8859-15\index{encoding!ISO-8859-15}
-  ISO-8859-2\index{encoding!ISO-8859-2}
-  ISO-8859-3\index{encoding!ISO-8859-3}
-  ISO-8859-4\index{encoding!ISO-8859-4}
-  ISO-8859-5\index{encoding!ISO-8859-5}
-  ISO-8859-6\index{encoding!ISO-8859-6}
-  ISO-8859-7\index{encoding!ISO-8859-7}
-  ISO-8859-8\index{encoding!ISO-8859-8}
-  ISO-8859-9\index{encoding!ISO-8859-9}
-  JIS\_X0201\index{encoding!JIS\_X0201}
-  JIS\_X0212-1990\index{encoding!JIS\_X0212-1990}
-  KOI8-R\index{encoding!KOI8-R}
-  KOI8-U\index{encoding!KOI8-U}
-  Shift\_JIS\index{encoding!Shift\_JIS}
-  TIS-620\index{encoding!TIS-620}
-  US-ASCII\index{encoding!US-ASCII}
-  UTF-16\index{encoding!UTF-16}
-  UTF-16BE\index{encoding!UTF-16BE}
-  UTF-16LE\index{encoding!UTF-16LE}
-  UTF-32\index{encoding!UTF-32}
-  UTF-32BE\index{encoding!UTF-32BE}
-  UTF-32LE\index{encoding!UTF-32LE}
-  UTF-8\index{encoding!UTF-8}
-  windows-1250\index{encoding!windows-1250}
-  windows-1251\index{encoding!windows-1251}
-  windows-1252\index{encoding!windows-1252}
-  windows-1253\index{encoding!windows-1253}
-  windows-1254\index{encoding!windows-1254}
-  windows-1255\index{encoding!windows-1255}
-  windows-1256\index{encoding!windows-1256}
-  windows-1257\index{encoding!windows-1257}
-  windows-1258\index{encoding!windows-1258}
-  windows-31j\index{encoding!windows-31j}
-  x-Big5-Solaris\index{encoding!x-Big5-Solaris}
-  x-euc-jp-linux\index{encoding!x-euc-jp-linux}
-  x-EUC-TW\index{encoding!x-EUC-TW}
-  x-eucJP-Open\index{encoding!x-eucJP-Open}
-  x-IBM1006\index{encoding!x-IBM1006}
-  x-IBM1025\index{encoding!x-IBM1025}
-  x-IBM1046\index{encoding!x-IBM1046}
-  x-IBM1097\index{encoding!x-IBM1097}
-  x-IBM1098\index{encoding!x-IBM1098}
-  x-IBM1112\index{encoding!x-IBM1112}
-  x-IBM1122\index{encoding!x-IBM1122}
-  x-IBM1123\index{encoding!x-IBM1123}
-  x-IBM1124\index{encoding!x-IBM1124}
-  x-IBM1381\index{encoding!x-IBM1381}
-  x-IBM1383\index{encoding!x-IBM1383}
-  x-IBM33722\index{encoding!x-IBM33722}
-  x-IBM737\index{encoding!x-IBM737}
-  x-IBM834\index{encoding!x-IBM834}
-  x-IBM856\index{encoding!x-IBM856}
-  x-IBM874\index{encoding!x-IBM874}
-  x-IBM875\index{encoding!x-IBM875}
-  x-IBM921\index{encoding!x-IBM921}
-  x-IBM922\index{encoding!x-IBM922}
-  x-IBM930\index{encoding!x-IBM930}
-  x-IBM933\index{encoding!x-IBM933}
-  x-IBM935\index{encoding!x-IBM935}
-  x-IBM937\index{encoding!x-IBM937}
-  x-IBM939\index{encoding!x-IBM939}
-  x-IBM942\index{encoding!x-IBM942}
-  x-IBM942C\index{encoding!x-IBM942C}
-  x-IBM943\index{encoding!x-IBM943}
-  x-IBM943C\index{encoding!x-IBM943C}
-  x-IBM948\index{encoding!x-IBM948}
-  x-IBM949\index{encoding!x-IBM949}
-  x-IBM949C\index{encoding!x-IBM949C}
-  x-IBM950\index{encoding!x-IBM950}
-  x-IBM964\index{encoding!x-IBM964}
-  x-IBM970\index{encoding!x-IBM970}
-  x-ISCII91\index{encoding!x-ISCII91}
-  x-ISO-2022-CN-CNS\index{encoding!x-ISO-2022-CN-CNS}
-  x-ISO-2022-CN-GB\index{encoding!x-ISO-2022-CN-GB}
-  x-iso-8859-11\index{encoding!x-iso-8859-11}
-  x-JIS0208\index{encoding!x-JIS0208}
-  x-JISAutoDetect\index{encoding!x-JISAutoDetect}
-  x-Johab\index{encoding!x-Johab}
-  x-MacArabic\index{encoding!x-MacArabic}
-  x-MacCentralEurope\index{encoding!x-MacCentralEurope}
-  x-MacCroatian\index{encoding!x-MacCroatian}
-  x-MacCyrillic\index{encoding!x-MacCyrillic}
-  x-MacDingbat\index{encoding!x-MacDingbat}
-  x-MacGreek\index{encoding!x-MacGreek}
-  x-MacHebrew\index{encoding!x-MacHebrew}
-  x-MacIceland\index{encoding!x-MacIceland}
-  x-MacRoman\index{encoding!x-MacRoman}
-  x-MacRomania\index{encoding!x-MacRomania}
-  x-MacSymbol\index{encoding!x-MacSymbol}
-  x-MacThai\index{encoding!x-MacThai}
-  x-MacTurkish\index{encoding!x-MacTurkish}
-  x-MacUkraine\index{encoding!x-MacUkraine}
-  x-MS950-HKSCS\index{encoding!x-MS950-HKSCS}
-  x-mswin-936\index{encoding!x-mswin-936}
-  x-PCK\index{encoding!x-PCK}
-  x-UTF-16LE-BOM\index{encoding!x-UTF-16LE-BOM}
-  X-UTF-32BE-BOM\index{encoding!X-UTF-32BE-BOM}
-  X-UTF-32LE-BOM\index{encoding!X-UTF-32LE-BOM}
-  x-windows-50220\index{encoding!x-windows-50220}
-  x-windows-50221\index{encoding!x-windows-50221}
-  x-windows-874\index{encoding!x-windows-874}
-  x-windows-949\index{encoding!x-windows-949}
-  x-windows-950\index{encoding!x-windows-950}
-  x-windows-iso2022jp\index{encoding!x-windows-iso2022jp}
+  Big5
+  Big5-HKSCS
+  EUC-JP
+  EUC-KR
+  GB18030
+  GB2312
+  GBK
+  IBM-Thai
+  IBM00858
+  IBM01140
+  IBM01141
+  IBM01142
+  IBM01143
+  IBM01144
+  IBM01145
+  IBM01146
+  IBM01147
+  IBM01148
+  IBM01149
+  IBM037
+  IBM1026
+  IBM1047
+  IBM273
+  IBM277
+  IBM278
+  IBM280
+  IBM284
+  IBM285
+  IBM297
+  IBM420
+  IBM424
+  IBM437
+  IBM500
+  IBM775
+  IBM850
+  IBM852
+  IBM855
+  IBM857
+  IBM860
+  IBM861
+  IBM862
+  IBM863
+  IBM864
+  IBM865
+  IBM866
+  IBM868
+  IBM869
+  IBM870
+  IBM871
+  IBM918
+  ISO-2022-CN
+  ISO-2022-JP
+  ISO-2022-JP-2
+  ISO-2022-KR
+  ISO-8859-1
+  ISO-8859-13
+  ISO-8859-15
+  ISO-8859-2
+  ISO-8859-3
+  ISO-8859-4
+  ISO-8859-5
+  ISO-8859-6
+  ISO-8859-7
+  ISO-8859-8
+  ISO-8859-9
+  JIS\_X0201
+  JIS\_X0212-1990
+  KOI8-R
+  KOI8-U
+  Shift\_JIS
+  TIS-620
+  US-ASCII
+  UTF-16
+  UTF-16BE
+  UTF-16LE
+  UTF-32
+  UTF-32BE
+  UTF-32LE
+  UTF-8
+  windows-1250
+  windows-1251
+  windows-1252
+  windows-1253
+  windows-1254
+  windows-1255
+  windows-1256
+  windows-1257
+  windows-1258
+  windows-31j
+  x-Big5-Solaris
+  x-euc-jp-linux
+  x-EUC-TW
+  x-eucJP-Open
+  x-IBM1006
+  x-IBM1025
+  x-IBM1046
+  x-IBM1097
+  x-IBM1098
+  x-IBM1112
+  x-IBM1122
+  x-IBM1123
+  x-IBM1124
+  x-IBM1381
+  x-IBM1383
+  x-IBM33722
+  x-IBM737
+  x-IBM834
+  x-IBM856
+  x-IBM874
+  x-IBM875
+  x-IBM921
+  x-IBM922
+  x-IBM930
+  x-IBM933
+  x-IBM935
+  x-IBM937
+  x-IBM939
+  x-IBM942
+  x-IBM942C
+  x-IBM943
+  x-IBM943C
+  x-IBM948
+  x-IBM949
+  x-IBM949C
+  x-IBM950
+  x-IBM964
+  x-IBM970
+  x-ISCII91
+  x-ISO-2022-CN-CNS
+  x-ISO-2022-CN-GB
+  x-iso-8859-11
+  x-JIS0208
+  x-JISAutoDetect
+  x-Johab
+  x-MacArabic
+  x-MacCentralEurope
+  x-MacCroatian
+  x-MacCyrillic
+  x-MacDingbat
+  x-MacGreek
+  x-MacHebrew
+  x-MacIceland
+  x-MacRoman
+  x-MacRomania
+  x-MacSymbol
+  x-MacThai
+  x-MacTurkish
+  x-MacUkraine
+  x-MS950-HKSCS
+  x-mswin-936
+  x-PCK
+  x-UTF-16LE-BOM
+  X-UTF-32BE-BOM
+  X-UTF-32LE-BOM
+  x-windows-50220
+  x-windows-50221
+  x-windows-874
+  x-windows-949
+  x-windows-950
+  x-windows-iso2022jp
 \end{multicols}
 
 The following command line options are related to encodings:
 
 \begin{description}
-\item[\CLI{-availableCharsets}]\ \\
+\item[\CLI{availableCharsets}]\ \\
   This instruction lists the available character sets on standard
   output and exits the program.
 \begin{lstlisting}{}
@@ -426,18 +426,19 @@ IBM01140
 ...
 \end{lstlisting}
 
-\item[\CLI{E} \Arg{enc}]
-\item[\CLI{-bib-encoding} \Arg{enc}]
-\item[\CLI{-bib.encoding} \Arg{enc}]\ \\
+\item[\CLi{E} \Arg{enc}]
+\item[\CLI{bib-encoding} \Arg{enc}]
+\item[\CLI{bib.encoding} \Arg{enc}]\ \\
   Set the configuration for reading bib database files. The encoding
-  needs to be a valid character set.
+  needs to be a valid character set. The fallback is the platform
+  default encoding.
 \begin{lstlisting}{}
 # exbib --bib-encoding=UTF8 doc.aux
 ...
 \end{lstlisting}
 
-\item[\CLI{e} \Arg{enc}]
-\item[\CLI{-encoding} \Arg{enc}]\ \\
+\item[\CLi{e} \Arg{enc}]
+\item[\CLI{encoding} \Arg{enc}]\ \\
 
   \INCOMPLETE
 \begin{lstlisting}{}
@@ -454,7 +455,7 @@ IBM01140
 \index{csf|(}
 
 \begin{description}
-\item[\CLI{-csfile} \Arg{csfile}]\ \\
+\item[\CLI{csfile} \Arg{csfile}]\ \\
 
   \INCOMPLETE
 \begin{lstlisting}{}
@@ -464,8 +465,8 @@ IBM01140
 %        --cs[file] <csfile>
 %        	Nutze das csf zur Definition von Zeichen und Sortierung.
 
-\item[\CLI{7}]
-\item[\CLI{-traditional}]\ \\
+\item[\CLi{7}]
+\item[\CLI{traditional}]\ \\
   \INCOMPLETE
 \begin{lstlisting}{}
 # exbib --traditional doc.aux
@@ -474,8 +475,8 @@ IBM01140
 %        --trad[itional] | -7
 %        	arbeite im originalen 7-Bit-Modus.
 
-\item[\CLI{8}]
-\item[\CLI{-8bit}]\ \\
+\item[\CLi{8}]
+\item[\CLI{8bit}]\ \\
   \INCOMPLETE
 \begin{lstlisting}{}
 # exbib --8bit doc.aux
@@ -489,8 +490,8 @@ IBM01140
 \subsubsection{Redirecting Output}
 
 \begin{description}
-\item[\CLI{l} \Arg{file}]
-\item[\CLI{-logfile} \Arg{file}]\ \\
+\item[\CLi{l} \Arg{file}]
+\item[\CLI{logfile} \Arg{file}]\ \\
   This option redirects the log output to the given file. The default
   name of the log file is derived from the base name of the aux file
   by appending \texttt{.blg}. This option overwrites this default.
@@ -507,15 +508,15 @@ IBM01140
 ...
 \end{lstlisting}
 
-  If the given file name is empty then the log output is discarted.
+  If the given file name is empty then the log output is discarded.
 \begin{lstlisting}{}
 # exbib --logfile= doc.aux
 ...
 \end{lstlisting}
 
-\item[\CLI{o} \Arg{file}]
-\item[\CLI{-output} \Arg{file}]
-\item[\CLI{-outfile} \Arg{file}]\ \\
+\item[\CLi{o} \Arg{file}]
+\item[\CLI{output} \Arg{file}]
+\item[\CLI{outfile} \Arg{file}]\ \\
   This option redirects the output to the given file. The default
   name of the output file is derived from the base name of the aux file
   by appending \texttt{.bbl}. This option overwrites this default.
@@ -532,7 +533,7 @@ IBM01140
 ...
 \end{lstlisting}
 
-  If the given file name is empty then the output is discarted.
+  If the given file name is empty then the output is discarded.
 \begin{lstlisting}{}
 # exbib --outfile= doc.aux
 ...
@@ -544,8 +545,8 @@ IBM01140
 \subsubsection{Changing the Style}
 
 \begin{description}
-\item[\CLI{b} \Arg{style}]
-\item[\CLI{-bst} \Arg{style}]\ \\
+\item[\CLi{b} \Arg{style}]
+\item[\CLI{bst} \Arg{style}]\ \\
   This option sets the name of the bib style to be used. The bib style
   is normally read from the aux file. This instruction overrules
   whatever the aux file contains.
@@ -556,13 +557,13 @@ IBM01140
 
 \end{description}
 
-\subsubsection{Minimum Crossreferences}
+\subsubsection{Minimum Cross-References}
 
 \begin{description}
-\item[\CLI{M} \Arg{n}]
-\item[\CLI{-min-crossrefs} \Arg{n}]
-\item[\CLI{-min.crossrefs} \Arg{n}]
-  This option sets the minimum number of crossreferences before an
+\item[\CLi{M} \Arg{n}]
+\item[\CLI{min-crossrefs} \Arg{n}]
+\item[\CLI{min.crossrefs} \Arg{n}]
+  This option sets the minimum number of cross-references before an
   entry is not collaped.
 \begin{lstlisting}{}
 # exbib --min-crossrefs=4 doc.aux
@@ -574,11 +575,11 @@ IBM01140
 \subsubsection{Naming the Program}
 
 \begin{description}
-\item[\CLI{p} \Arg{name}]
-\item[\CLI{-progname} \Arg{name}]
-\item[\CLI{-program-name} \Arg{name}]
-\item[\CLI{-program.name} \Arg{name}]\ \\
-  This option sets the name of the porogram. Thus it is possible to
+\item[\CLi{p} \Arg{name}]
+\item[\CLI{progname} \Arg{name}]
+\item[\CLI{program-name} \Arg{name}]
+\item[\CLI{program.name} \Arg{name}]\ \\
+  This option sets the name of the program. Thus it is possible to
   influence how the program calls itself in logging and error messages
   from outside .
 \begin{lstlisting}{}
@@ -593,8 +594,8 @@ This is BibTeX, Version 0.1
 \subsubsection{Tracing and Debugging}
 
 \begin{description}
-\item[\CLI{d} \Arg{mode}]
-\item[\CLI{-debug} \Arg{mode}]\ \\
+\item[\CLi{d} \Arg{mode}]
+\item[\CLI{debug} \Arg{mode}]\ \\
 \INCOMPLETE
 
 \end{description}
@@ -602,19 +603,19 @@ This is BibTeX, Version 0.1
 %        	Arbeite im Debug-Modus.
 
 \begin{description}
-\item[\CLI{q}]
-\item[\CLI{-terse}]
-\item[\CLI{-quiet}]\ \\
+\item[\CLi{q}]
+\item[\CLI{terse}]
+\item[\CLI{quiet}]\ \\
   This option switches the operation to quiet mode. Nearly all
-  informative messages are suppressed oin stdanard output.
+  informative messages are suppressed on standard output.
   Nevertheless they can be found in the log file -- if one is written.
 \begin{lstlisting}{}
 # exbib --quiet doc.aux
 #
 \end{lstlisting}
 
-\item[\CLI{t}]
-\item[\CLI{-trace}]\ \\
+\item[\CLi{t}]
+\item[\CLI{trace}]\ \\
   Write a detailed log of internal operations to the log file.  The
   tracing can be very useful when you try to understand the operations
   of the bst interpreter.
@@ -627,8 +628,8 @@ This is BibTeX, Version 0.1
 ...
 \end{lstlisting}
 
-\item[\CLI{v}]
-\item[\CLI{-verbose}]\ \\
+\item[\CLi{v}]
+\item[\CLI{verbose}]\ \\
   This option switches the operation to verbose mode. Some more
   informative messaged might be presented during the operation.
 \begin{lstlisting}{}
@@ -647,21 +648,21 @@ fully dynamic and no predefined sizes are necessary.
 
 For compatibility those options are silently ignored:
 \begin{description}
-\item[\CLI{s}]
-\item[\CLI{-statistics}]
-\item[\CLI{B}]
-\item[\CLI{-big}]
-\item[\CLI{H}]
-\item[\CLI{-huge}]
-\item[\CLI{W}]
-\item[\CLI{-wolfgang}]
-\item[\CLI{-mcites}]
-\item[\CLI{-mentints}]
-\item[\CLI{-mentstrs}]
-\item[\CLI{-mfields}]
-\item[\CLI{-mpool}]
-\item[\CLI{-mstrings}]
-\item[\CLI{-mwizfuns}]
+\item[\CLi{s}]
+\item[\CLI{statistics}]
+\item[\CLi{B}]
+\item[\CLI{big}]
+\item[\CLi{H}]
+\item[\CLI{huge}]
+\item[\CLi{W}]
+\item[\CLI{wolfgang}]
+\item[\CLI{mcites}]
+\item[\CLI{mentints}]
+\item[\CLI{mentstrs}]
+\item[\CLI{mfields}]
+\item[\CLI{mpool}]
+\item[\CLI{mstrings}]
+\item[\CLI{mwizfuns}]
 \end{description}
 
 

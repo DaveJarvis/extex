@@ -4,20 +4,28 @@
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
 
-\chapter{The BST Language}
+\chapter{The BST Language}%
+\index{BST language|(}
 
 \IM{08x1}%
 The processing of the data base entries can be programmed with a small
-special purpose programming language. Since it seems to habe no name
+special purpose programming language. Since it seems to have no name
 it is called the BST language
 
 Usually the instructions are read from a file. The default extension
 of these files is \texttt{.bst}. The content is interpreted to produce
 the formatted output.
 
-The primary goal of \BibTeX\ is the processing of bibliographic
-databases. Thus the language is tailored towards the formatting of
-bibliographies.
+The primary goal of \BibTeX\index{BibTeX@\BibTeX} is the processing of
+bibliographic databases. Thus the language is tailored towards the
+formatting of bibliographies.
+
+
+\def\cmdIndex#1{\index{#1@\texttt{#1}}}%
+\def\fctIndex#1{\index{#1@\texttt{#1}}%
+  \index{function!#1@\texttt{#1}}}%
+\def\varIndex#1{\index{#1@\texttt{#1}}%
+  \index{variable!#1@\texttt{#1}}}%
 
 \section{The Programming Model}
 
@@ -36,12 +44,31 @@ to the stack.
 
 \subsection{The Database Context}
 
-Whenever a bst program is executed a database is at hand. The porogram
+Whenever a bst program is executed a database is at hand. The program
 has access to this database.
 
 \INCOMPLETE
 
+\subsection{Entries}
+
+\INCOMPLETE
+
+\subsubsection{\texttt{sort.key\$}}%
+\varIndex{sort.key\$}
+
+\INCOMPLETE
+
+
 \subsection{Global Integers}
+
+\INCOMPLETE
+
+\subsubsection{\texttt{entry.max\$}}%
+\varIndex{entry.max\$}
+
+\INCOMPLETE
+\subsubsection{\texttt{global.max\$}}%
+\varIndex{global.max\$}
 
 \INCOMPLETE
 
@@ -49,87 +76,263 @@ has access to this database.
 
 \INCOMPLETE
 
-\subsection{Code}
-
-\INCOMPLETE
-
 
 \section{Syntax}
 
+The bst source code follows some very simple syntax rules. There are
+only a few characters beside white-space which have a special meaning:
+
+\begin{itemize}
+\item The percent sign \verb|%| starts an endline comment (see
+  section~\ref{sec:bst.comments}).
+\item The double quote sign \verb|"| starts a string literal (see
+  section~\ref{sec:bst.strings}).
+\item The hash amrk \verb|#| starts an integer literal (see
+  section~\ref{sec:bst.integers}).
+\item The single quote sign \verb|'| quotes a following literal (see
+  section~\ref{sec:bst.quote}).
+\item The braces \verb|{| and \verb|}| enclose arguments and code (see
+  section~\ref{sec:bst.code}).
+\end{itemize}
+
+
+\subsection{Comments}\label{sec:bst.comments}
+
+Comments in a bst file are started with a percent sign (\verb|%|) and
+continues to the end of the line. This is the same definition an in
+\TeX\index{TeX@\TeX}.
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  % BibTeX standard bibliography style `alpha'
+\end{lstlisting}
+
+
+\subsection{String Literals}\label{sec:bst.strings}
+
+String literals in the code are enclose in double quotes '"'. The
+strings contain braces only in matching pairs. As a consequence a
+double quote can be included in a string by enclosing it in braces.
+This is shown in the following example:
+
+\begin{lstlisting}{}
+  "abc {"} def"
+\end{lstlisting}
+
+
+\subsection{Integer Literals}\label{sec:bst.integers}
+
+Integer literals in the code are preceded by a hash mark '\#'.
+
+\begin{lstlisting}{}
+  #123
+\end{lstlisting}
+
+Integers can be negative. In this case the sign is written after the
+initial hash mark:
+
+\begin{lstlisting}{}
+  #-123
+\end{lstlisting}
+
+
+\subsection{Quoting}\label{sec:bst.quote}
+
 \INCOMPLETE
+
+\begin{lstlisting}{}
+  'abc
+\end{lstlisting}
+
+\subsection{Code}\label{sec:bst.code}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  { skip$ }
+\end{lstlisting}
+
+\section{Expansion of Variables and Fields}
+
+\INCOMPLETE
+
+
 
 \section{Commands}
 
+\subsection{\texttt{entry}}%
+\cmdIndex{entry}
 
-\subsection{\texttt{entry}}
+The declaration defines the view to an entry. For this purpose it
+defines which fields are defined. In addition it defines the list of
+integer entry variables and string entry variables. Thus the entry
+declaration has three arguments in braces. The first one is the list
+of fields the second one the list of integer entry variables and the
+third the list of string entry variables. The elements of the lists
+are separated by whitespace.
 
-\INCOMPLETE
+The fields, the entry variables and the global variables share a
+common name space. Thus any name has to be unique among those.
 
-\subsection{\texttt{integers}}
+The following example is taken from \File{alpha.bst}:
 
-\INCOMPLETE
+\begin{lstlisting}{}
+  ENTRY
+  { address
+    author
+    booktitle
+    chapter
+    edition
+    editor
+    howpublished
+    institution
+    journal
+    key
+    month
+    note
+    number
+    organization
+    pages
+    publisher
+    school
+    series
+    title
+    type
+    volume
+    year
+  }
+  {}
+  { label extra.label sort.label }
+\end{lstlisting}
+
+
+\subsection{\texttt{integers}}%
+\cmdIndex{integers}
+
+This declaration defines a set of global integers. It has one
+argument. The argument contains a list of variable names separated by
+white-space. The names must not collide with entry local strings,
+entry local integers, global strings, and fields.
+
+There may be any number of declarations of integer variables.
+Nevertheless the declaration of a variable should precede its use.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   INTEGERS { output.state before.all }
 \end{lstlisting}
 
-\subsection{\texttt{strings}}
 
-\INCOMPLETE
+\subsection{\texttt{strings}}
+\cmdIndex{strings}
+
+This declaration defines a set of global strings. It has one argument.
+The argument contains a list of variable names separated by
+white-space. The names miust not collide with entry local strings,
+entry local integers, global integers, and fields.
+
+There may be any number of declarations of string variables.
+Nevertheless the declaration of a variable should precede its use.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   STRINGS { s t }
 \end{lstlisting}
 
-\subsection{\texttt{macro}}
 
-\INCOMPLETE
+\subsection{\texttt{macro}}
+\cmdIndex{macro}
+
+This declaration defines a macro. It takes two arguments -- the name
+of the macro and its value. The value is an expression which evaluates
+to a string.
+
+This declaration has the same effect as the definition of a macro with
+the \texttt{@string} declaration in a bib file.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   MACRO {jan} {"January"}
 \end{lstlisting}
 
-\subsection{\texttt{execute}}
 
-\INCOMPLETE
+\subsection{\texttt{execute}}
+\cmdIndex{execute}
+
+This command executes the function in the argument. There is no
+current entry then this code is executed.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   EXECUTE {begin.bib}
 \end{lstlisting}
 
-\subsection{\texttt{iterate}}
 
-\INCOMPLETE
+\subsection{\texttt{iterate}}
+\cmdIndex{iterate}
+
+This command iterates over the entries in the order they are currently
+in the entry list from the beginning to the end. Each entry is
+considered as current entry and the function in the argument is
+executed.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   ITERATE{call.type$}
 \end{lstlisting}
 
-\subsection{\texttt{reverse}}
 
-\INCOMPLETE
+\subsection{\texttt{reverse}}
+\cmdIndex{reverse}
+
+This command iterates over the entries in the reverse order they are
+currently in the entry list from the beginning to the end. Each entry
+is considered as current entry and the function in the argument is
+executed.
+
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
   REVERSE{reverse.pass}
 \end{lstlisting}
 
-\subsection{\texttt{sort}}
 
-\INCOMPLETE
+\subsection{\texttt{sort}}
+\cmdIndex{sort}
+
+This command sorts the entries of the database according to its sort
+key lexicographically increasing. The sort key is taken from the entry
+variable \texttt{sort.key\$}.
 
 \begin{lstlisting}{}
   SORT
 \end{lstlisting}
 
-\subsection{\texttt{read}}
 
-\INCOMPLETE
+\subsection{\texttt{read}}
+\cmdIndex{read}
+
+This command read entries into the database. The database is empty
+before the read command is encountered. The list of entries is ordered
+according to the order they are encountered.
 
 \begin{lstlisting}{}
   READ
 \end{lstlisting}
 
+
 \subsection{\texttt{function}}
+\cmdIndex{function}
+
+This declaration defines a user defined function. It takes two
+arguments which are the name of the function and the code associated
+with it.
 
 \INCOMPLETE
 
@@ -138,145 +341,746 @@ has access to this database.
   { purify$
     "l" change.case$
   }
-\end{lstlisting}
+\end{lstlisting}\fctIndex{purify\$}\fctIndex{change.case\$}
 
 
 \subsection{\texttt{input}}
-\IM{x}
+\cmdIndex{input}
 
-\INCOMPLETE
+The command takes one argument containg the name of another bst file.
+This bst file is read in in place of this instruction as if the
+contents of those file would have been included here. \IM{x}
+
+If the named file or other resource could not be found then an error
+is raised.
 
 \begin{lstlisting}{}
   INPUT{some/other/bst}
 \end{lstlisting}
 
-\section{Instructions}
 
-\subsection{\texttt{>}}
+%------------------------------------------------------------------------------
+\def\BstArg#1#2#3{
+  \begin{scope}[shift={(#1,#2)}]
+    \shade[top color=white!10!pink,bottom color=white!90!pink,draw=pink!70!black]
+    (0,0) -- (.5,1.1) -- (4.5,1.1) -- (4,0) -- cycle;
+    \draw (2.25,.55) node{#3};
+  \end{scope}
+}%
+\def\BstStream(#1)#2{
+  \begin{scope}[shift={(#1)}]
+    \shade[top color=white!90!green,bottom color=white!60!green,draw=green!40!black,thick]
+    (5,-.5) .. controls (6,0) and (9,-1) .. (10,-.5) -- (10,.5) -- (5,.5) -- cycle;
+    \draw (7.5,0) node {#2};
+  \end{scope}
+}%
+\newenvironment{BstFunction}[1]{\bigskip\par
+  \def\In##1##2{\BstArg0{##1}{##2}}%
+  \def\Out##1##2{\BstArg{11}{##1}{##2}}%
+  \def\Stream##1{\BstStream(12,0.5){##1}}%
+  \begin{tikzpicture}[scale=.5]\sf\itshape\scriptsize
+    \draw[fill=white,dashed,draw = gray]
+    (0,0) -- (.5,1.1) -- (4.5,1.1) -- (4,0) -- cycle;
+    \draw[gray] (2.25,.55) node{ Stack};
+    % ---
+    \begin{scope}[shift={(5,0)},scale=.25]
+      \begin{scope}[shift={(0.5,-0.5)}]
+        \draw[thick,color=white!80!gray,fill==white!70!gray]
+        (0.5,1) -- (19.5,1) -- (19,0) -- (21,2) -- (21.5,4) -- (20.5,3) --
+        (1.5,3) -- cycle;
+      \end{scope}
+      \shade[top color=white!90!gray,bottom color=white!60!gray,draw=gray!40!black,thick]
+      (0.5,1) -- (19.5,1) -- (19,0) -- (21,2) -- (21.5,4) -- (20.5,3) --
+      (1.5,3) -- cycle;
+      \draw (11.5,5) node{#1};
+    \end{scope}
+    % ---
+    \begin{scope}[shift={(11,0)}]
+      \draw[fill=white,dashed,draw = gray]
+      (0,0) -- (.5,1.1) -- (4.5,1.1) -- (4,0) -- cycle;
+      \draw[gray] (2.25,.55) node{ Stack};
+    \end{scope}
+  }{%
+  \end{tikzpicture}%
+  \bigskip\par
+}%
 
-\INCOMPLETE
 
-\subsection{\texttt{<}}
+\section{Functions}
 
-\INCOMPLETE
+The built-in functions are the basic building blocks for user defined
+functions.
 
-\subsection{\texttt{=}}
+\subsection{The Function \texttt{>}}%
+\fctIndex{>}
 
-\INCOMPLETE
+This function pops two numeric arguments from the stack and
+compares them. It succeeds if the first argument is less than the
+second argument. In case of success the integer 1 is pushed otherwise
+the integer 0.
 
-\subsection{\texttt{+}}
+If the stack does not contain enough items or the arguments are not
+integers then an error is raised.
 
-\INCOMPLETE
+\begin{BstFunction}{>}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{boolean}
+\end{BstFunction}
 
-\subsection{\texttt{-}}
-
-\INCOMPLETE
-
-\subsection{\texttt{*}}
-
-\INCOMPLETE
-
-\subsection{\texttt{:=}}
-
-\INCOMPLETE
-
-\subsection{\texttt{add.period\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{call.type\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{change.case\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{chr.to.int\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{cite\$}}
-
-\begin{lstlisting}{}
-  cite$
-\end{lstlisting}
-
-\INCOMPLETE
-
-\subsection{\texttt{duplicate\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{empty\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{format.name\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{if\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{int.to.chr\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{int.to.str\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{missing\$}}
-
-\INCOMPLETE
-
-\subsection{\texttt{newline\$}}
-
-This instruction writes a newline character to the output stream.
+The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}{}
-  newline$
+    { namesleft #0 > }
+    { 
+      % some actions
+
+      namesleft #1 - 'namesleft :=
+    }
+  while$
 \end{lstlisting}
 
-\subsection{\texttt{num.names\$}}
+
+\subsection{The Function \texttt{<}}%
+\fctIndex{<}
+
+This function pops two numeric arguments from the stack and
+compares them. It succeeds if the first argument is greater than the
+second argument. In case of success the integer 1 is pushed otherwise
+the integer 0.
+
+If the stack does not contain enough items or the arguments are not
+integers then an error is raised.
+
+\begin{BstFunction}{<}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{boolean}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+FUNCTION {tie.or.space.connect}
+{ duplicate$ text.length$ #3 <
+    { "~" }
+    { " " }
+  if$
+  swap$ * *
+}
+\end{lstlisting}\fctIndex{<}\fctIndex{*}%
+\fctIndex{duplicate\$}\fctIndex{if\$}\fctIndex{swap\$}\fctIndex{text.length\$}
+
+
+\subsection{The Function \texttt{=}}%
+\fctIndex{=}
+
+This function pops two arguments from the stack and compares them.
+If the arguments are integers then it succeeds if the first argument is
+equal to the second argument. If the arguments are strings then it
+succeeds if both strings contain the same characters. In case of
+success the integer 1 is pushed otherwise the integer 0.
+
+If the stack does not contain enough items or the arguments have
+incomparable types then an error is raised.
+
+\begin{BstFunction}{=}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{boolean}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    output.state mid.sentence =
+    { "number" }
+    { "Number" }
+  if$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{+}}%
+\fctIndex{+}
+
+This function pops two numeric arguments from the stack and
+pushes back the sum of the two numbers to the stack.
+
+If the stack does not contain enough items or the arguments are not
+integers then an error is raised.
+
+\begin{BstFunction}{+}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{sum}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    s len #1 +
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{-}}%
+\fctIndex{-}
+
+This function pops two numeric arguments from the stack and
+pushes back the difference of the two numbers to the stack.
+
+If the stack does not contain enough items or the arguments are not
+integers then an error is raised.
+
+\begin{BstFunction}{-}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{difference}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  namesleft #1 - 'namesleft :=
+\end{lstlisting}\fctIndex{-}\fctIndex{:=}
+
+
+\subsection{The Function \texttt{*}}%
+\fctIndex{*}
+
+This function takes two string arguments from the stack and pushes the
+concatenated string back to the stack. If not enough arguments are on
+the stack or the arguments are no strings then an error is raised.
+
+\begin{BstFunction}{*}
+  \In1{arg2}
+  \In2{arg1}
+  \Out1{concatenated}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  "there's a month but no year in " cite$ * warning$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{:=}}%
+\fctIndex{:=}
+
+This function assigns a value to a variable or field. It takes two
+arguments from the stack. The first argument is the name of the
+target. In general it needs to be quoted (see
+section~\ref{sec:bst.quote}). The second argument is the appropriate
+value.
+
+\begin{BstFunction}{:=}
+  \In1{value}
+  \In2{name}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    { namesleft #0 > }
+    { 
+      % some actions
+
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+\end{lstlisting}\fctIndex{>}\fctIndex{-}\fctIndex{:=}\fctIndex{while\$}
+
+
+\subsection{The Function \texttt{add.period\$}}%
+\fctIndex{add.period\$}
+
+This function pops a string argument from the stack and inspects it.
+It the argument ends in one of the characters period '.', exclamation
+mark '!', or question mark '?' then the argument is pushed back to the
+stack. Otherwise a period '.' is added to the argument and the result
+pushed to the stack.
+
+When determining the last character closing braces are ignored.
+
+\begin{BstFunction}{add.period\$}
+  \In1{string}
+  \Out1{result}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  FUNCTION {fin.entry}
+  { add.period$
+    write$
+    newline$
+  }
+\end{lstlisting}\fctIndex{add.period\$}\fctIndex{write\$}\fctIndex{newline\$}
+
+
+\subsection{The Function \texttt{call.type\$}}%
+\fctIndex{call.type\$}
+
+This function looks at the current entry and calls the function
+with the same name as the type. The name is normalized; i.e.
+translated to lower case.
+
+\begin{BstFunction}{call.type\$}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  ITERATE {call.type$}
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{change.case\$}}%
+\fctIndex{change.case\$}
+
+This function performs case conversion. It takes two arguments from
+the stack. The first argument is the format and the second argument is
+the string to apply it to. The result is pushed back to the stack.
+
+\begin{BstFunction}{change.case\$}
+  \In1{format}
+  \In2{string}
+  \Out1{result}
+\end{BstFunction}
+
+The format controls the operation to be performed. It is a single
+letter string. The following descriptions show the possibilities and
+functions associated with the different format strings.
+
+If the format is \verb|"l"| or \verb|"L"| then the string is converted
+to lower case.
+
+If the format is \verb|"u"| or \verb|"U"| then the string is converted
+to upper case.
+
+If the format is \verb|"t"| or \verb|"T"| then the string is converted
+to title case.
 
 \INCOMPLETE
 
-\subsection{\texttt{pop\$}}
+If the format is not one of the legal values then a message is written
+to the log stream and the input string pushed to the stack as the
+result.
+
+If the stack does not contain enough elements or the types do not
+match then an error is raised.
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  edition "l" change.case$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{chr.to.int\$}}%
+\fctIndex{chr.to.int\$}
+
+This function translates a character to the corresponding integer code
+point. It takes a string argument from the stack. This argument must
+contain exactly one character.
+
+Note\IM{x} that \BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c} and
+\BibTeX~8\index{BibTeX 8@\BibTeX~8} restrict the characters to 8~bit
+characters. \ExBib\ has expanded the definition to 16~bit Unicode
+characters.
+
+\begin{BstFunction}{chr.to.int\$}
+  \In1{character}
+  \Out1{number}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  "a" chr.to.int$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{cite\$}}%
+\fctIndex{cite\$}
+
+This function takes the citation key of the current entry and pushes
+the string value to the stack. If there is no current entry then an
+error is raised.
+
+\begin{BstFunction}{cite\$}
+  \Out1{key}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  "there's a month but no year in " cite$ * warning$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{duplicate\$}}%
+\fctIndex{duplicate\$}
+
+This function takes an element from the stack and pushed it back
+twice. Thus the topmost element on the stack is duplicated. If the
+stack is empty an error is raised.
+
+\begin{BstFunction}{duplicate\$}
+  \In1{arg}
+  \Out1{arg}
+  \Out2{arg}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  "abc"
+  duplicate$
+\end{lstlisting}
+
+\subsection{The Function \texttt{empty\$}}%
+\fctIndex{empty\$}
+
+This function pops a literal from the stack. If the argument is a
+string it checks whether it contains only whitespace characters. If
+the argument is a field reference it checks whether the field is
+missing in the current entry. It pushes the integer 1 in case it
+succeeds and 0 if it fails.
 
 \INCOMPLETE
 
-\subsection{\texttt{preamble\$}}
+\begin{BstFunction}{empty\$}
+  \In1{arg}
+  \Out1{boolean}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  preamble$ empty$
+    'skip$
+    { preamble$ write$ newline$ }
+  if$
+\end{lstlisting}\fctIndex{preamble\$}\fctIndex{empty\$}\fctIndex{skip\$}%
+\fctIndex{write\$}\fctIndex{newline\$}\fctIndex{if\$}
+
+
+\subsection{The Function \texttt{format.name\$}}%
+\fctIndex{format.name\$}
+
+This function extracts a name from a name list and formats it. It
+takes three arguments from the stack. The first argument is a format
+string. It controls how the name should be formatted. The second
+argument is the index of the name to be extracted. The third argument
+is the name list in form of a string. The result is pushed back to the
+stack.
+
+\begin{BstFunction}{format.name\$}
+  \In1{format}
+  \In2{index}
+  \In3{names}
+  \Out1{result}
+\end{BstFunction}
+
+A name list is a string with names. The names are separated by the
+word ``and'' surrounded by whitespace at brace level 0. The second
+argument to the function selects which name should be formatted. The
+counting of names starts with 1 for the first name.
+
+A name may consist of the parts ``first'', ``von'', ``last'', and
+``junior'' (see section~\ref{sec:names}). The format allows you to put
+together those parts in various ways.
+
 
 \INCOMPLETE
 
-\subsection{\texttt{purify\$}}
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  editor #2 "{ff }{vv }{ll}{ jj}" format.name$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{if\$}}%
+\fctIndex{if\$}
+
+This function performs conditional processing. It takes three
+arguments from the stack. The first argument is the else code. The
+second argument is the then code and the third argument is an integer
+interpreted as boolean value. If the boolean value is 0 then the else
+code is executed. Otherwise the then code is executed.
+
+The function itself does not leave anything on the stack.Nevertheless
+the code executed for the branches may.
+
+If there are less than three elements on the stack or the types do not
+match then an error is raised.
+
+\begin{BstFunction}{if\$}
+  \In1{else code}
+  \In2{then code}
+  \In3{boolean}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    output.state mid.sentence =
+    { "number" }
+    { "Number" }
+  if$
+\end{lstlisting}
+
+\subsection{The Function \texttt{int.to.chr\$}}%
+\fctIndex{int.to.chr\$}
+
+This function takes an integer code point from the stack and
+translates it into a single character sting containing the character
+associated to the code point. This string is left on the stack.
+
+Note\IM{x} that \BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c} and
+\BibTeX~8\index{BibTeX 8@\BibTeX~8} restrict the characters to
+8~bit characters. \ExBib\ has expanded the definition to 16~bit
+Unicode characters.
+
+\begin{BstFunction}{int.to.chr\$}
+  \In1{number}
+  \Out1{character}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  #0 int.to.chr$
+\end{lstlisting}
+
+\subsection{The Function \texttt{int.to.str\$}}%
+\fctIndex{int.to.str\$}
+
+This function converts an integer to a string. It takes one integer
+argument from the stack. It pushes the string consisting of the
+decimal representation of the argument back to the stack.
+
+\begin{BstFunction}{int.to.str\$}
+  \In1{number}
+  \Out1{string}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  #123 int.to.str$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{missing\$}}%
+\fctIndex{missing\$}
+
+This function determines whether a field is missing. It takes one
+argument from the stack. If it refers to a missing field it pushes the
+integer 1 to the stack. If it refers to a defined field it pushes 0.
+
+If the stack is empty of the argument does not refer to a field then
+an error is raised.
+ 
+\begin{BstFunction}{missing\$}
+  \In1{field}
+  \Out1{boolean}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    crossref missing$
+    { "author and editor" editor either.or.check }
+    'skip$
+  if$
+\end{lstlisting}\fctIndex{missing\$}\fctIndex{if\$}
+
+
+\subsection{The Function \texttt{newline\$}}%
+\fctIndex{newline\$}
+
+This function writes a newline character to the output stream.
+
+\begin{BstFunction}{newline\$}
+  \Stream{Output Stream}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  "\newcommand{\etalchar}[1]{$^{#1}$}" write$ newline$
+\end{lstlisting}\fctIndex{write\$}\fctIndex{newline\$}
+
+
+\subsection{The Function \texttt{num.names\$}}%
+\fctIndex{num.names\$}
+
+This function takes a string argument from the stack and treats it as
+a list of names. It pushes the number of names in the list as integer
+to the stack.
+
+The names are separated by the word \texttt{and}\index{and}. This word
+has to be preceded and followed by whitespace characters. In addition
+this word has to occur at brace level 0.
+
+\begin{BstFunction}{num.names\$}
+  \In1{names}
+  \Out1{number}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  editor num.names$ #1 >
+    { ", editors" * }
+    { ", editor" * }
+  if$
+\end{lstlisting}\fctIndex{num.names\$}\fctIndex{>}\fctIndex{*}\fctIndex{if\$}
+
+
+\subsection{The Function \texttt{pop\$}}%
+\fctIndex{pop\$}
+
+This function pops the topmost element from the stack. This element is
+discarded.
+
+\begin{BstFunction}{pop\$}
+  \In1{arg}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+FUNCTION {output}
+{ duplicate$ empty$
+    'pop$
+    'output.nonnull
+  if$
+}
+\end{lstlisting}\fctIndex{duplicate\$}\fctIndex{empty\$}\fctIndex{pop\$}\fctIndex{if\$}
+
+\subsection{The Function \texttt{preamble\$}}%
+\fctIndex{preamble\$}
+
+This function takes the collected preamble from the database and
+pushes it as string onto the stack.
+
+\begin{BstFunction}{preamble\$}
+  \Out1{preamble}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  preamble$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{purify\$}}%
+\fctIndex{purify\$}
+
 
 \INCOMPLETE
 
-\subsection{\texttt{quote\$}}
+\begin{BstFunction}{purify\$}
+  \In1{string}
+  \Out1{result}
+\end{BstFunction}
 
-\INCOMPLETE
+The following example is taken from \File{alpha.bst}:
 
-\subsection{\texttt{skip\$}}
+\begin{lstlisting}{}
+FUNCTION {sortify}
+{ purify$
+  "l" change.case$
+}
+\end{lstlisting}\fctIndex{purify\$}\fctIndex{change.case\$}
 
-This instruction does simply nothing. In other languages this might be
-called a noop. This is useful for places where instructions are
+
+\subsection{The Function \texttt{quote\$}}%
+\fctIndex{quote\$}
+
+This function takes no arguments it pushes a string containing the
+double quote character '"' to the stack.
+
+\begin{BstFunction}{quote\$}
+  \Out1{quote}
+\end{BstFunction}
+
+This function can be used to construct a string containing a double
+quote without using the brace trick:
+
+\begin{lstlisting}{}
+  "abc " quote$ * " def" * 
+\end{lstlisting}\fctIndex{quote\$}\fctIndex{*}
+
+
+\subsection{The Function \texttt{skip\$}}%
+\fctIndex{skip\$}
+
+This function does simply nothing. In other languages this might be
+called a noop. This is useful for places where functions are
 mandatory but nothing should be done.
 
-\subsection{\texttt{stack\$}}
+\begin{BstFunction}{skip\$}
+\end{BstFunction}
 
-\INCOMPLETE
+\begin{lstlisting}{}
+  skip$
+\end{lstlisting}
 
-\subsection{\texttt{substring\$}}
 
-\INCOMPLETE
+\subsection{The Function \texttt{stack\$}}%
+\fctIndex{stack\$}
 
-\subsection{\texttt{swap\$}}
+This function empties the stack and prints its elements to the log
+file. This function is useful for debugging purposes.
 
-This instruction takes the two topmost elements from the stack and
+\begin{BstFunction}{stack\$}
+  \In1{...}
+  \In2{...}
+  \Out0{Empty}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  stack$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{substring\$}}%
+\fctIndex{substring\$}
+
+This function computes the substring of a string. It takes three
+arguments from the stack. The first argument is an integer denoting
+the maximal length of the substring. At most this many character units
+will be extracted.
+
+The second argument is the start index of the substring -- an integer.
+If start is positive then the first characters are extracted.  The
+index 1 denotes the first character. If start is negative then the
+last characters are extracted.  The index -1 denotes the last
+character.
+
+The third argument is the string to take the substring from. The
+string is interpreted taking blocks in braces into account. A block in
+braces counts as one character unit. Thus it is guaranteed that blocks
+-- which have a special meaning in \TeX\index{TeX@\TeX} and
+\LaTeX\index{LaTeX@\LaTeX} -- are never broken.
+
+The resulting substring is pushed back to the stack.
+
+If the stack has less than three arguments when the function is
+invoked or the types of the arguments do not fit then an error is
+raised.
+
+\begin{BstFunction}{substring\$}
+  \In1{string}
+  \In2{start}
+  \In3{length}
+  \Out0{substring}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  cite$ #1 #3 substring$
+\end{lstlisting}
+
+\subsection{The Function \texttt{swap\$}}%
+\fctIndex{swap\$}
+
+This function takes the two topmost elements from the stack and
 exchanges their order on the stack. This means that the topmost
 element becomes the second one and the second element becomes the
 topmost one. The elements can be of any type.
@@ -284,43 +1088,192 @@ topmost one. The elements can be of any type.
 If there are less than two elements on the stack then an error is
 raised.
 
-\subsection{\texttt{text.length\$}}
+\begin{BstFunction}{swap\$}
+  \In1{arg1}
+  \In2{arg2}
+  \Out1{arg2}
+  \Out2{arg1}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  swap$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{text.length\$}}%
+\fctIndex{text.length\$}
+
+This function computes the length of a text. The length is the number
+of character units.
 
 \INCOMPLETE
 
-\subsection{\texttt{text.prefix\$}}
+\begin{BstFunction}{text.length\$}
+  \In1{text}
+  \Out1{length}
+\end{BstFunction}
+
+\begin{lstlisting}{}
+  preamble$ text.length$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{text.prefix\$}}%
+\fctIndex{text.prefix\$}
 
 \INCOMPLETE
 
-\subsection{\texttt{top\$}}
+\begin{BstFunction}{text.prefix\$}
+  \In1{text}
+  \In2{length}
+  \Out1{prefix}
+\end{BstFunction}
 
-\INCOMPLETE
+The following example is taken from \File{alpha.bst}:
 
-\subsection{\texttt{type\$}}
+\begin{lstlisting}{}
+  key #3 text.prefix$
+\end{lstlisting}\fctIndex{text.prefix\$}
 
-\INCOMPLETE
 
-\subsection{\texttt{warning\$}}
+\subsection{The Function \texttt{top\$}}%
+\fctIndex{top\$}
 
-This instruction pops a string from the stack and prints it as a
-warning to the log stream.
+This function pops the topmost literal from the stack and prints it
+to the log stream. This function is meant for debugging purposes.
+If the stack is empty an error is raised.
 
-\subsection{\texttt{while\$}}
+\begin{BstFunction}{top\$}
+  \In1{argument}
+\end{BstFunction}
 
-\INCOMPLETE
+\begin{lstlisting}{}
+  top$
+\end{lstlisting}
 
-\subsection{\texttt{width\$}}
 
-This instruction pops a string from the stack and tries to compute the
-width of the string when tyoeset. For this purpose the width of the
-characters in the font cmr10 are used.
+\subsection{The Function \texttt{type\$}}%
+\fctIndex{type\$}
 
-\subsection{\texttt{write\$}}
+If the function is executed in the context of a current entry the type
+of this entry is pushed to the stack as a string. The type is always
+normalized by translating all characters to lower case.
 
-This instruction pops a string from the stack and prints it as a
+If the function is executed outside the scope of a current entry then
+the empty string is pushed to the stack.
+
+\begin{BstFunction}{type\$}
+  \Out1{type}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  type$ "book" =
+  type$ "inbook" =
+  or
+\end{lstlisting}\fctIndex{=}
+
+
+\subsection{The Function \texttt{warning\$}}%
+\fctIndex{warning\$}
+
+This function pops a string from the stack and prints it as a
+warning to the log stream. The message is terminated by a newline character.
+
+The line in the log file may be rewrapped to fit into a given line
+length.
+
+An empty stack leads to an error as well as a wrong type argument on
+the stack.
+
+\begin{BstFunction}{warning\$}
+  \In1{message}
+  \Stream{Log Stream}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  "there's a number but no series in " cite$ * warning$ 
+\end{lstlisting}%
+\fctIndex{cite\$}\fctIndex{warning\$}
+
+
+\subsection{The Function \texttt{while\$}}%
+\fctIndex{while\$}
+
+This function is a loop construction. It takes two arguments form the
+stack. Both of them are code segments. The first argument is code to
+be executed repeatedly. The second argument is a conditional. The
+conditional is executed. If the topmost element of the stack is
+numeric and not 0 then the first argument is executed and the process
+is repeated.
+
+If the stack has less than two elements, the elements are of the
+wrong type, or the conditional does not leave a number on the stack
+then an error is raised.
+
+\begin{BstFunction}{while\$}
+  \In1{code}
+  \In2{condition}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+    { namesleft #0 > }
+    { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
+
+      % some more action
+
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+\end{lstlisting}%
+\fctIndex{while\$}\fctIndex{format.name\$}\fctIndex{+}\fctIndex{-}\fctIndex{>}%
+\fctIndex{:=}
+
+
+\subsection{The Function \texttt{width\$}}%
+\fctIndex{width\$}
+
+This function pops a string from the stack and tries to compute the
+width of the string when typeset. For this purpose the width of the
+characters in the font cmr10 are used. Some control sequences are
+treated specially.
+
+\begin{BstFunction}{width\$}
+  \In1{argument}
+  \Out1{width}
+\end{BstFunction}
+
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  label width$
+\end{lstlisting}
+
+
+\subsection{The Function \texttt{write\$}}%
+\fctIndex{write\$}
+
+This function pops a string from the stack and prints it as a
 message to the output stream.
 
+\begin{BstFunction}{write\$}
+  \In1{message}
+  \Stream{Output Stream}
+\end{BstFunction}
 
+The following example is taken from \File{alpha.bst}:
+
+\begin{lstlisting}{}
+  "\end{thebibliography}" write$
+\end{lstlisting}
+
+\index{BST language|)}%
 \endinput
 %
 % Local Variables: 
