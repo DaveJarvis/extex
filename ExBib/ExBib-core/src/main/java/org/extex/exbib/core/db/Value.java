@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  * The value is a list of {@link ValueItem ValueItem}s. According to the
- * definition of BibT<sub>E</sub>X a {@link ValueItem ValueItem} can be one of
+ * definition of B<small>IB</small>T<sub>E</sub>X a {@link ValueItem ValueItem} can be one of
  * the following
  * <dl>
  * <dt>block</dt>

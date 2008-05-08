@@ -372,24 +372,25 @@ public final class ExBibUtil extends AbstractMain {
             configuration.getConfiguration("AuxReader")).newInstance(finder);
         auxReader.register(new MainResourceObserver(getLogger()));
 
-        try {
-            int[] no = auxReader.process(bibliography, auxfile, encoding);
-
-            if (no[1] == 0) {
-                errors++;
-                log("bst.missing", auxfile);
-            }
-            if (no[0] == 0) {
-                errors++;
-                log("data.missing", auxfile);
-            }
-            if (no[2] == 0) {
-                errors++;
-                log("citation.missing", auxfile);
-            }
-        } catch (FileNotFoundException e) {
-            return log("aux.not.found", e.getMessage());
-        }
+        // try {
+        // int[] no = auxReader.load(bibliography, auxfile, encoding);
+        //
+        // if (no[1] == 0) {
+        // errors++;
+        // log("bst.missing", auxfile);
+        // }
+        // if (no[0] == 0) {
+        // errors++;
+        // log("data.missing", auxfile);
+        // }
+        // if (no[2] == 0) {
+        // errors++;
+        // log("citation.missing", auxfile);
+        // }
+        // } catch (FileNotFoundException e) {
+        // return log("aux.not.found", e.getMessage());
+        // }
+        // TODO rewrite
         return 0;
     }
 

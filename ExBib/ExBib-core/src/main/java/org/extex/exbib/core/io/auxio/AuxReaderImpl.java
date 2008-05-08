@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -44,6 +44,11 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      */
     private static final Pattern PATTERN =
             Pattern.compile("^\\\\([@a-z]+)\\{([^{}]*)\\}");
+
+    /**
+     * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
+     */
+    private static final String DEFAULT_TYPE = "bbl";
 
     /**
      * The field <tt>handlerMap</tt> contains the macro handlers for the aux
@@ -73,40 +78,46 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
         handlerMap = new HashMap<String, AuxHandler>();
         register("citation", new AuxHandler() {
 
-            public void invoke(String arg, Bibliography bibliography,
-                    int[] count, AuxReader engine) {
+            public void invoke(String arg, ProcessorContainer bibliographies,
+                    String type, AuxReader engine)
+                    throws ConfigurationException,
+                        ExBibException {
 
                 String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-                bibliography.addCitation(citations);
-                count[2] += citations.length;
+                bibliographies.findBibliography(type).addCitation(citations);
             }
         });
         register("bibstyle", new AuxHandler() {
 
-            public void invoke(String arg, Bibliography bibliography,
-                    int[] count, AuxReader engine) {
+            public void invoke(String arg, ProcessorContainer bibliographies,
+                    String type, AuxReader engine)
+                    throws ConfigurationException,
+                        ExBibException {
 
-                bibliography.addBibliographyStyle(arg.split(","));
-                count[1]++;
+                bibliographies.findBibliography(type).addBibliographyStyle(
+                    arg.split(","));
             }
         });
         register("bibdata", new AuxHandler() {
 
-            public void invoke(String arg, Bibliography bibliography,
-                    int[] count, AuxReader engine) {
+            public void invoke(String arg, ProcessorContainer bibliographies,
+                    String type, AuxReader engine)
+                    throws ConfigurationException,
+                        ExBibException {
 
-                bibliography.addBibliographyDatabase(arg.split(","));
-                count[0]++;
+                bibliographies.findBibliography(type).addBibliographyDatabase(
+                    arg.split(","));
             }
         });
         register("@include", new AuxHandler() {
 
-            public void invoke(String arg, Bibliography bibliography,
-                    int[] count, AuxReader engine)
+            public void invoke(String arg, ProcessorContainer bibliographies,
+                    String type, AuxReader engine)
                     throws ConfigurationException,
-                        IOException {
+                        IOException,
+                        ExBibException {
 
-                engine.process(bibliography, arg, encoding);
+                engine.load(bibliographies, arg, encoding);
             }
         });
     }
@@ -114,11 +125,15 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#process(
-     *      org.extex.exbib.core.bst.Bibliography, java.lang.String, String)
+     * @see org.extex.exbib.core.io.auxio.AuxReader#load(
+     *      org.extex.exbib.core.io.auxio.ProcessorContainer, java.lang.String,
+     *      java.lang.String)
      */
-    public int[] process(Bibliography bibliography, String resource,
-            String encoding) throws ConfigurationException, IOException {
+    public void load(ProcessorContainer bibliographies, String resource,
+            String encoding)
+            throws ConfigurationException,
+                IOException,
+                ExBibException {
 
         this.encoding = encoding;
         LineNumberReader reader = open(resource, "aux", encoding);
@@ -128,8 +143,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
             observer.observeOpen(resource, "aux", name);
         }
 
-        int[] count = new int[]{0, 0, 0};
-
         try {
             for (String line = reader.readLine(); line != null; line =
                     reader.readLine()) {
@@ -138,7 +151,8 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                 if (m.matches()) {
                     AuxHandler handler = handlerMap.get(m.group(1));
                     if (handler != null) {
-                        handler.invoke(m.group(2), bibliography, count, this);
+                        handler.invoke(m.group(2), bibliographies,
+                            DEFAULT_TYPE, this);
                     }
                 }
             }
@@ -149,7 +163,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
             reader.close();
             close();
         }
-        return count;
     }
 
     /**

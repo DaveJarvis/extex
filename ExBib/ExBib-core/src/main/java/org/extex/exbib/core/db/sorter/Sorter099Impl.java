@@ -28,7 +28,7 @@ import org.extex.exbib.core.db.Entry;
 import org.extex.framework.configuration.Configuration;
 
 /**
- * This class provides a Sorter compatible to the BibT<sub>E</sub>X 0.99c
+ * This class provides a Sorter compatible to the B<small>IB</small>T<sub>E</sub>X 0.99c
  * sorting routine. The sorting order is determined by the byte order of the
  * internal representation of the sorting key. Thus accented characters are
  * located behind all not accented characters.

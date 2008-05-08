@@ -197,6 +197,36 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Bibliography#countBibliographyStyles()
+     */
+    public int countBibliographyStyles() {
+
+        return bibliographyStyles.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Bibliography#countCitations()
+     */
+    public int countCitations() {
+
+        return citations.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Bibliography#countDatabases()
+     */
+    public int countDatabases() {
+
+        return bibliographyDatabases.size();
+    }
+
+    /**
      * Getter for bib style. The bib style is the name of he BST file to use for
      * processing the database.
      * 

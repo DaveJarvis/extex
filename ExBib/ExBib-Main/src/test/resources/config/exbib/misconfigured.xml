@@ -40,18 +40,14 @@
     </Sorter>
   </DB>
 
-  <Engine class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
+  <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 
   <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 
   <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
 
-  <BibPrinter name="bib"
-              class="org.extex.exbib.core.io.bibio.BibPrinterImpl"/>
-  <BibPrinter name="xml"
-              class="org.extex.exbib.core.io.bibio.BibPrinterXMLImpl"/>
-  <BibPrinter name="lisp"
-              class="org.extex.exbib.core.io.bibio.BibPrinterLispImpl"/>
+  <BibPrinter base="exbib/printer/" default="bib"/>
+
 
 </exbib>
   

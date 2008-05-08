@@ -47,8 +47,9 @@ public interface Bibliography {
     /**
      * Adder for the bibliography styles.
      * <p>
-     * In generalization to BibT<sub>E</sub>X several styles can be specified.
-     * In this case the functions specified in the styles are merged.
+     * In generalization to B<small>IB</small>T<sub>E</sub>X several styles
+     * can be specified. In this case the functions specified in the styles are
+     * merged.
      * </p>
      * <p>
      * The Strings passed in as argument are appended to the ones already
@@ -72,6 +73,27 @@ public interface Bibliography {
     void addCitation(String... s);
 
     /**
+     * Count the number of bibliography styles consumed.
+     * 
+     * @return the number of bibliography styles
+     */
+    int countBibliographyStyles();
+
+    /**
+     * Count the number of citations consumed.
+     * 
+     * @return the number of citations
+     */
+    int countCitations();
+
+    /**
+     * Count the number of databases read in.
+     * 
+     * @return the number of databases
+     */
+    int countDatabases();
+
+    /**
      * Getter for the bib style.
      * 
      * @return the list of bib styles
@@ -86,5 +108,4 @@ public interface Bibliography {
      * </ul>
      */
     void reset();
-
 }

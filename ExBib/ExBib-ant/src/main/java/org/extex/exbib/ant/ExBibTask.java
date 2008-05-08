@@ -286,24 +286,25 @@ public class ExBibTask extends Task {
             auxReader.register(new MainResourceObserver(logger));
 
             int errors = 0;
-            try {
-                int[] no = auxReader.process(processor, file, encoding);
-
-                if (no[1] == 0) {
-                    errors++;
-                    log("bst.missing", file);
-                }
-                if (no[0] == 0) {
-                    errors++;
-                    log("data.missing", file);
-                }
-                if (no[2] == 0) {
-                    errors++;
-                    log("citation.missing", file);
-                }
-            } catch (FileNotFoundException e) {
-                throw new BuildException(msg("aux.not.found", e.getMessage()));
-            }
+            // try {
+            // int[] no = auxReader.load(processor, file, encoding);
+            //
+            // if (no[1] == 0) {
+            // errors++;
+            // log("bst.missing", file);
+            // }
+            // if (no[0] == 0) {
+            // errors++;
+            // log("data.missing", file);
+            // }
+            // if (no[2] == 0) {
+            // errors++;
+            // log("citation.missing", file);
+            // }
+            // } catch (FileNotFoundException e) {
+            // throw new BuildException(msg("aux.not.found", e.getMessage()));
+            // }
+            // TODO rewrite
 
             String bst = null;
             if (bst != null) {

@@ -61,7 +61,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * Prints as database as BibT<sub>E</sub>X file.
+     * Prints as database as B<small>IB</small>T<sub>E</sub>X file.
      * 
      * @param db the database context
      * 

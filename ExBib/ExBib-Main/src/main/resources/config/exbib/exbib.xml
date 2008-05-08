@@ -19,7 +19,7 @@
 
   @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
-<exbib>
+<exbib fallback="bbl">
   
   <Resource src="path/exbibFinder"/>
   

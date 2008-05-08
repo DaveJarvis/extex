@@ -46,7 +46,7 @@ import org.extex.exbib.core.io.Writer;
 
 /**
  * This class provides an implementation of a printer for bst files. This
- * implementation produces output compatible to the BibT<sub>E<c/sub>X
+ * implementation produces output compatible to the B<small>IB</small>T<sub>E<c/sub>X
  * notation of bst files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

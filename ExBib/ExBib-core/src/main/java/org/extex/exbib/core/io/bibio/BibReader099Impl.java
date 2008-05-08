@@ -49,8 +49,9 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a class to implement a reader for BibT<sub>E</sub>X files. This
- * reader is compatible with BibT<sub>E</sub>X 0.99c.
+ * This is a class to implement a reader for B<small>IB</small>T<sub>E</sub>X
+ * files. This reader is compatible with B<small>IB</small>T<sub>E</sub>X
+ * 0.99c.
  * <p>
  * This incarnation is characterized as follows:
  * </p>
@@ -438,6 +439,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             StringBuilder buffer = getBuffer();
 
             if (c == '{') {
+                buffer.delete(0, 1);
                 ret.add(new VBlock(parseBlock()));
             } else if (c == '"') {
                 int i = 1;

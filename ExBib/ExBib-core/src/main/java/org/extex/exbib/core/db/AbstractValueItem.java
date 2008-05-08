@@ -78,7 +78,7 @@ public abstract class AbstractValueItem implements ValueItem {
     }
 
     /**
-     * Return a String representation of the object suitable for a BibT<sub>E</sub>X
+     * Return a String representation of the object suitable for a B<small>IB</small>T<sub>E</sub>X
      * file.
      * 
      * @return the string representation

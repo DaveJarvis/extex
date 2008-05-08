@@ -34,7 +34,7 @@ import org.extex.exbib.core.bst.code.impl.Eq;
 import org.extex.exbib.core.bst.code.impl.FormatName099;
 import org.extex.exbib.core.bst.code.impl.Gt;
 import org.extex.exbib.core.bst.code.impl.If;
-import org.extex.exbib.core.bst.code.impl.IntToChr;
+import org.extex.exbib.core.bst.code.impl.IntToChr099;
 import org.extex.exbib.core.bst.code.impl.IntToStr;
 import org.extex.exbib.core.bst.code.impl.Lt;
 import org.extex.exbib.core.bst.code.impl.Minus;
@@ -65,8 +65,7 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 
 /**
- * This implementation of a processor provides the functionality of BibT<sub>E</sub>X
- * 0.99c.
+ * This implementation of a processor provides the functionality of B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -127,7 +126,7 @@ public class ProcessorBibtex099c extends ProcessorCoreImpl {
         addFunction("empty$", new Empty("empty$"), locator);
         addFunction("format.name$", new FormatName099("format.name$"), locator);
         addFunction("if$", new If("if$"), locator);
-        addFunction("int.to.chr$", new IntToChr("int.to.chr$"), locator);
+        addFunction("int.to.chr$", new IntToChr099("int.to.chr$"), locator);
         addFunction("int.to.str$", new IntToStr("int.to.str$"), locator);
         addFunction("missing$", new Missing("missing$"), locator);
         addFunction("newline$", new Newline("newline$"), locator);

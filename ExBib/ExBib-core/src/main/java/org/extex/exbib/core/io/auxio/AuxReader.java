@@ -21,7 +21,7 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 
@@ -43,23 +43,19 @@ public interface AuxReader extends ResourceAware {
     /**
      * Parses an aux file and sends the result to a bibliography.
      * 
-     * @param bibliography the bibliography to send the result to
+     * @param bibliographies the bibliography to send the result to
      * @param resource the resource to be processed
      * @param encoding the encoding for reading
      * 
-     * @return an array of three numbers:
-     *         <ul>
-     *         <li>the number of data entries found</li>
-     *         <li>the number of style entries found</li>
-     *         <li>the number of citation entries found</li>
-     *         </ul>
-     * 
      * @throws IOException in case that the file could not be opened for reading
      * @throws ConfigurationException in case that the configuration is invalid
+     * @throws ExBibException in case of an error
      */
-    int[] process(Bibliography bibliography, String resource, String encoding)
+    void load(ProcessorContainer bibliographies, String resource,
+            String encoding)
             throws IOException,
-                ConfigurationException;
+                ConfigurationException,
+                ExBibException;
 
     /**
      * Register an observer for resource open events.

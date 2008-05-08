@@ -21,7 +21,7 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -36,14 +36,17 @@ public interface AuxHandler {
      * Invoke the handler to do its job.
      * 
      * @param arg the macro parameter argument
-     * @param bibliography the bibliography
-     * @param count the count for activities
-     * @param engine the engine
-     * 
+     * @param bibliographies the bibliography
+     * @param type the type
+     * @param auxReader the engine
      * @throws IOException in case of an I/O error
      * @throws ConfigurationException in case of an configuration error
+     * @throws ExBibException in case of an error
      */
-    void invoke(String arg, Bibliography bibliography, int[] count,
-            AuxReader engine) throws ConfigurationException, IOException;
+    void invoke(String arg, ProcessorContainer bibliographies, String type,
+            AuxReader auxReader)
+            throws ConfigurationException,
+                IOException,
+                ExBibException;
 
 }

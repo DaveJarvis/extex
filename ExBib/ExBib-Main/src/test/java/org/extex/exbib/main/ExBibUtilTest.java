@@ -644,14 +644,14 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testOutfile4() throws Exception {
 
-        File file = new File("test.out");
+        File file = new File("test.output");
         if (file.exists() && !file.delete()) {
             assertTrue(file.toString() + ": deletion failed", false);
         }
 
         try {
             runTest("test", null, CLI.EXIT_OK, Check.START, BANNER
-                    + "The output file: test.out\n" + "Runtime ", //
+                    + "The output file: test.output\n" + "Runtime ", //
                 "-v", "--outfile", file.toString());
             assertTrue(file.exists());
         } finally {

@@ -59,7 +59,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
- * This is the core implementation of an interpreter for the BibT<sub>E</sub>X
+ * This is the core implementation of an interpreter for the B<small>IB</small>T<sub>E</sub>X
  * language.
  * <p>
  * The core implementation contains the full functionality of an interpreter.

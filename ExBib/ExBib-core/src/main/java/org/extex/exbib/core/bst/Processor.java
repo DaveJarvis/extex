@@ -47,8 +47,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the contract of all processors, i.e. the central
- * class containing the interpreter for the BibT<sub>E</sub>X programming
- * language.
+ * class containing the interpreter for the B<small>IB</small>T<sub>E</sub>X
+ * programming language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

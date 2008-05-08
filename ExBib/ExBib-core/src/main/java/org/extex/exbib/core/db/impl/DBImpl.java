@@ -46,7 +46,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 
 /**
- * This is a simple implementation of a BibT<sub>E</sub>X compatible database.
+ * This is a simple implementation of a B<small>IB</small>T<sub>E</sub>X compatible database.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $

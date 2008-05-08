@@ -19,6 +19,8 @@
 
 package org.extex.exbib.core.io.bibio;
 
+import static org.junit.Assert.assertEquals;
+
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.io.StringBufferWriter;
 import org.junit.Test;
@@ -46,7 +48,7 @@ public class BibPrinterImplTest {
         StringBuffer buffer = new StringBuffer();
         new BibPrinterImpl(new StringBufferWriter(buffer)).print(db);
 
-        // assertEquals("", buffer.toString());
+        assertEquals("", buffer.toString());
     }
 
 }
