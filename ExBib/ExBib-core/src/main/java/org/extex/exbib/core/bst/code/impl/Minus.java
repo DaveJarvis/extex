@@ -27,21 +27,15 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>-</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>-</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two (integer) literals and pushes their difference (the
  * first subtracted from the second). </dd>
  * </dl>
  * 
- * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

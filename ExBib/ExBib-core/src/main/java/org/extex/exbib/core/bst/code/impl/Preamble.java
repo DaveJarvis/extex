@@ -30,17 +30,17 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>preamble$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>preamble$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pushes onto the stack the concatenation of all the
  * <code>@PREAMBLE</code> strings read from the database files. </dd>
  *           </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

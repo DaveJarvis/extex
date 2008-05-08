@@ -27,16 +27,16 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>swap$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>swap$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Swaps the top two literals on the stack. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

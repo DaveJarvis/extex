@@ -30,10 +30,10 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>int.to.chr$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>int.to.chr$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top (integer) literal, interpreted as the ASCII integer value
  * of a single character, converts it to the corresponding single-character
@@ -41,7 +41,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>int.to.chr$</code> pops the
  * top (integer) literal, interpreted as the <code>ASCII_code</code> of a
  * single character, converts it to the corresponding single-character string,

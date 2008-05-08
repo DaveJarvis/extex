@@ -33,10 +33,10 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>purify$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>purify$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top (string) literal, removes non alphanumeric characters
  * except for white-space characters and hyphens and ties (these all get
@@ -46,7 +46,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>purify$</code> pops the top
  * (string) literal, removes non alphanumeric characters except for
  * <code>white_space</code> and <code>sep_char</code> characters (these get

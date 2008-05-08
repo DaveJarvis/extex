@@ -28,10 +28,10 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>substring$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>substring$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top three literals (they are the two integers literals <i>len</i>
  * and <i>start</i>, and a string literal, in that order). It pushes the
@@ -43,7 +43,7 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>substring$</code> pops the
  * top three literals (they are the two integers literals <code>pop_lit1</code>
  * and <code>pop_lit2</code> and a string literal, in that order). It pushes

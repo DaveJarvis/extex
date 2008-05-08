@@ -32,17 +32,17 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>add.period$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>add.period$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> Pops the top (string) literal, adds a `<code>.</code>' to it if the
  * last non`<code>}</code>' character isn't a `<code>.</code>', `<code>?</code>',
  * or `<code>!</code>, and pushes this resulting string. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>add.period$</code> pops the
  * top (string) literal, adds a <code>period</code> to a nonnull string if its
  * last non<code>right_brace</code> character isn't a <code>period</code>,

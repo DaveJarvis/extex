@@ -27,21 +27,15 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>empty$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>empty$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top literal and pushes the integer 1 if it's a missing field or
  * a string having no non-white-space characters, 0 otherwise. </dd>
  * </dl>
  * 
- * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -77,8 +71,9 @@ public class Empty extends AbstractCode {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        String a = processor.popString(locator).getValue();
-        processor.push(a.matches("\\s*")
+        String arg = processor.popString(locator).getValue();
+
+        processor.push(arg.matches("\\s*")
                 ? TokenFactory.T_ONE
                 : TokenFactory.T_ZERO);
     }

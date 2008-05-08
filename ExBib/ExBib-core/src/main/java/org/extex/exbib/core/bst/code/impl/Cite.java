@@ -28,17 +28,17 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>cite$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>cite$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pushes the string that was the <code>\cite</code>-command argument
  * for this entry. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>cite$</code> pushes the
  * appropriate string from <code>cite_list</code> onto the stack. </dd>
  * </dl>

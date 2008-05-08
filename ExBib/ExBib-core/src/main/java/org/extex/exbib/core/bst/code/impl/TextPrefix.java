@@ -27,10 +27,10 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>text.prefix$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>text.prefix$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two literals (the integer literal <i>len</i> and a string
  * literal, in that order). It pushes the substring of the (at most) <i>len</i>
@@ -43,7 +43,7 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

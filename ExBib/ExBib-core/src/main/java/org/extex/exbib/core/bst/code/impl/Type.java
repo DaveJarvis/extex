@@ -27,20 +27,23 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>type$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>type$</code>
+ * 
+ * <p>
+ * If the function is executed in the context of a current entry the type of
+ * this entry is pushed to the stack as a string. The type is always normalized
+ * by translating all characters to lower case.
+ * </p>
+ * <p>
+ * If the function is executed outside the scope of a current entry then the
+ * empty string is pushed to the stack.
+ * </p>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops and prints the top of the stack on the terminal and log file. It's
- * useful for debugging. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
+ * <dd> Pushes the current entry's type (book, article, etc.), but pushes the
+ * null string if the type is either unknown or undefined. </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

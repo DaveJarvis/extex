@@ -41,10 +41,10 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>format.name$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>format.name$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top three literals (they are a string, an integer, and a string
  * literal). The last string literal represents a name list (each name
@@ -55,19 +55,19 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>format.name$</code> pops
  * the top three literals (they are a string, an integer, and a string literal,
  * in that order). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
  * from this list, and the first string literal specifies how to format this
- * name, as described in the BibT<sub>E</sub>X documentation. Finally, this
+ * name, as described in the B<small>IB</small>T<sub>E</sub>X documentation. Finally, this
  * function pushes the formatted name. If any of the types is incorrect, it
  * complains and pushes the null string. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> Here we output either the <code>.bst</code> given string if it exists,
  * or else the <code>.bib</code> <code>sep_char</code> if it exists, or else
  * the default string. A <code>tie</code> is the default space character

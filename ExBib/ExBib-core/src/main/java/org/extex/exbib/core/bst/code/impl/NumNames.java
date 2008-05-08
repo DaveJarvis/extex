@@ -32,10 +32,10 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>num.names$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>num.names$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top (string) literal and pushes the number of names the string
  * represents---one plus the number of occurrences of the substring ``and''
@@ -44,7 +44,7 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

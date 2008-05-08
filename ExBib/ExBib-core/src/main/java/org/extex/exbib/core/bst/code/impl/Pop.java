@@ -27,13 +27,13 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> Pops the top of the stack but doesn't print it; this gets rid of an
  * unwanted stack literal. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> The <code>built_in</code> function <code>pop$</code> pops the top of
  * the stack but doesn't print it. </dd>
  * </dl>

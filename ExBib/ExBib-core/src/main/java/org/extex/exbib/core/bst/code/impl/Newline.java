@@ -29,10 +29,10 @@ import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>newline$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>newline$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Writes onto the <code>bbl</code> file what's accumulated in the output
  * buffer. It writes a blank line if and only if the output buffer is empty.
@@ -42,7 +42,7 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

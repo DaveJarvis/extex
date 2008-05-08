@@ -33,17 +33,17 @@ import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>set$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>set$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two literals and assigns to the first (which must be a
  * global or entry variable) the value of the second. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

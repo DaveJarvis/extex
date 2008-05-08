@@ -29,17 +29,17 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>warning$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>warning$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top (string) literal and prints it following a warning message.
  * This also increments a count of the number of warning messages issued. </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>warning$</code> pops the
  * top (string) literal and prints it following a warning message. This is
  * implemented as a special <code>built_in</code> function rather than using
@@ -86,12 +86,13 @@ public class Warning extends AbstractCode {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        Token a = processor.popString(locator);
+        Token arg = processor.popString(locator);
 
         if (localizer == null) {
             localizer = LocalizerFactory.getLocalizer(getClass());
         }
 
-        processor.warning(localizer.format("Message", a.getValue()));
+        processor.warning(localizer.format("Message", arg.getValue()));
     }
+
 }

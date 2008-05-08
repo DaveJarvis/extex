@@ -27,6 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>=</code>
+ * 
  * <p>
  * <i> Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 they're equal, 0 otherwise. </i>

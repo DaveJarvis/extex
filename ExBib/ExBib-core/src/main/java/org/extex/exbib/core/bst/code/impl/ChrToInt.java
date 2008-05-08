@@ -30,17 +30,17 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>char.to.int$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>char.to.int$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> Pops the top (string) literal, makes sure it's a single character,
  * converts it to the corresponding ASCII integer, and pushes this integer.
  * </dd>
  * </dl>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd> The <code>built_in</code> function <code>chr.to.int$</code> pops the
  * top (string) literal, makes sure it's a single character, converts it to the
  * corresponding <code>ASCII_code</code> integer, and pushes this integer. If

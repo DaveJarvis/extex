@@ -31,10 +31,10 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>change.case</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>change.case</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> Pops the top two (string) literals; it changes the case of the second
  * according to the specifications of the first, as follows. (Note: The word
  * `letters' in the next sentence refers only to those at brace-level 0, the
@@ -55,7 +55,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  function.)
  * </dd></dl>
  *
- * <dl><dt>BibT<sub>E</sub>X web documentation:</dt><dd>
+ * <dl><dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt><dd>
  *  The <code>built_in</code> function <code>change.case$</code> pops
  *  the top two (string) literals; it changes the case of the second
  *  according to the specifications of the first, as follows. (Note:

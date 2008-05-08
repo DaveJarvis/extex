@@ -30,10 +30,10 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * BibT<sub>E</sub>X built-in function <code>width$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>width$</code>
  * 
  * <dl>
- * <dt>BibT<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top (string) literal and pushes the integer that represents its
  * width in some relative units (currently, hundredths of a point, as specified
@@ -44,11 +44,6 @@ import org.extex.exbib.core.io.Locator;
  * except that ``special characters'' (even without their right braces) are
  * handled specially. This is meant to be used for comparing widths of label
  * strings. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>BibT<sub>E</sub>X web documentation:</dt>
- * <dd> ... </dd>
  * </dl>
  * 
  * 
