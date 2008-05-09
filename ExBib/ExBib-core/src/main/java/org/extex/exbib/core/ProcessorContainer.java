@@ -187,7 +187,7 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
                 db.setSorter(sorter);
             }
 
-            processor = processorFactory.newInstance(db);
+            processor = processorFactory.newInstance(db, null);
             for (NamedObserver no : obsList) {
                 try {
                     processor.registerObserver(no.getName(), no.getObserver());

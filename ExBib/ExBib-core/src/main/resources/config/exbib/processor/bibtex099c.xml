@@ -19,31 +19,5 @@
 
   @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
-<exbib fallback="bbl">
-  
-  <Resource src="path/exbibFinder"/>
-  
-  <Processor base="exbib/processor/" default="exbib"/>
-
-  <BblWriter class="org.extex.exbib.core.io.bblio.BblWriter">
-    <linelength>79</linelength>
-    <indent>  </indent>
-  </BblWriter>
-
-  <DB class="org.extex.exbib.core.db.impl.DBImpl">
-    <minCrossrefs>2</minCrossrefs>
-    <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl">
-      <Order locale="en"/>
-    </Sorter>
-  </DB>
-
-  <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
-
-  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
-
-  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
-
-  <BibPrinter base="exbib/printer/" default="bib"/>
-
-</exbib>
+<Processor class="org.extex.exbib.core.bst.ProcessorBibtex099c"/>
   

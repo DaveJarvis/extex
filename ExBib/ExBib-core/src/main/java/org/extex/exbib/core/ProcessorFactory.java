@@ -60,6 +60,8 @@ public class ProcessorFactory extends AbstractFactory {
      * Get an instance of a {@link Processor Processor}.
      * 
      * @param db the database
+     * @param type the type for lookup in the configuration; the value
+     *        <code>null</code> singnals the use of the default configuration
      * 
      * @return the {@link Processor Processor}
      * 
@@ -67,11 +69,13 @@ public class ProcessorFactory extends AbstractFactory {
      *         found in the configuration or the class can not be instantiated.
      * @throws ExBibException in case of an error
      */
-    public Processor newInstance(DB db)
+    public Processor newInstance(DB db, String type)
             throws ConfigurationException,
                 ExBibException {
 
-        Processor processor = (Processor) createInstance(Processor.class);
+        Configuration cfg = selectConfiguration(type);
+        Processor processor =
+                (Processor) createInstanceForConfiguration(cfg, Processor.class);
         processor.setDB(db);
         return processor;
     }

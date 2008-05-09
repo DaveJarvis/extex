@@ -671,9 +671,9 @@ public class ExBibTest extends BibTester {
             Check.EQ,
             BANNER
                     + "Installation Error:\n"
-                    + "\tClass `undefined.Undefined\' not found in\n"
-                    + "document(\"config/exbib/misconfigured.xml\")/exbib/Processor\n"
-                    + "\tConsult the log\nfile for details.\n"
+                    + "\t"
+                    + "Configuration `exbib/processor/undefined.xml\' not found.\n"
+                    + "\tConsult the log file for details.\n"
                     + "(There was 1 error)\n", //
             "--config", "misconfigured", "test");
     }

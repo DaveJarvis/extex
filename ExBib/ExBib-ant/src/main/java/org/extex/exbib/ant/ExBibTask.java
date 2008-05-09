@@ -276,7 +276,7 @@ public class ExBibTask extends Task {
             }
 
             Processor processor = new ProcessorFactory(//
-                config.getConfiguration("Processor")).newInstance(db);
+                config.getConfiguration("Processor")).newInstance(db, null);
 
             processor.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
