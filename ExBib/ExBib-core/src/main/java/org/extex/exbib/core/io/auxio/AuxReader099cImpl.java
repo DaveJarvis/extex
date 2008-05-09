@@ -36,7 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
+public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
 
     /**
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
@@ -44,13 +44,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      */
     private static final Pattern PATTERN =
             Pattern.compile("^\\\\([@a-z]+)\\{([^{}]*)\\}");
-
-    /**
-     * The field <tt>OPT_PATTERN</tt> contains the pattern for the recognized
-     * macros with optional arguments.
-     */
-    private static final Pattern OPT_PATTERN =
-            Pattern.compile("^\\\\([@a-z]+)\\[\\{([^]]*)\\}\\]\\{([^{}]*)\\}");
 
     /**
      * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
@@ -79,7 +72,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      * 
      * @throws ConfigurationException in case of a configuration error
      */
-    public AuxReaderImpl() throws ConfigurationException {
+    public AuxReader099cImpl() throws ConfigurationException {
 
         super();
         handlerMap = new HashMap<String, AuxHandler>();
@@ -161,17 +154,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                         handler.invoke(m.group(2), bibliographies,
                             DEFAULT_TYPE, this);
                     }
-                    continue;
-                }
-                m = OPT_PATTERN.matcher(line);
-
-                if (m.matches()) {
-                    AuxHandler handler = handlerMap.get(m.group(1));
-                    if (handler != null) {
-                        handler.invoke(m.group(3), bibliographies, m.group(2),
-                            this);
-                    }
-                    continue;
                 }
             }
             if (observer != null) {

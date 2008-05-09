@@ -182,12 +182,6 @@ public class ExBib extends AbstractMain {
     private static final String AUX_FILE_EXTENSION = ".aux";
 
     /**
-     * The field <tt>BBL_FILE_EXTENSION</tt> contains the extension of output
-     * files (in lower case).
-     */
-    private static final String BBL_FILE_EXTENSION = ".bbl";
-
-    /**
      * The field <tt>BLG_FILE_EXTENSION</tt> contains the extension of log
      * files (in lower case).
      */
@@ -625,30 +619,28 @@ public class ExBib extends AbstractMain {
 
             validate(container);
 
-            Processor processor = container.findBibliography("bbl");
             if (bst != null) {
+                Processor processor = container.findBibliography("bbl");
                 processor.addBibliographyStyle(stripExtension(bst,
                     BST_FILE_EXTENSION));
             }
             Configuration bblWriterConfiguration =
                     config.getConfiguration("BblWriter");
             BstReaderFactory bstReaderFactory =
-                    new BstReaderFactory(config.getConfiguration("BstReader"));
+                    new BstReaderFactory(config.getConfiguration("BstReader"),
+                        finder);
 
             for (String key : container) {
-                processor = container.getBibliography(key);
+                Processor processor = container.getBibliography(key);
 
-                List<String> bibliographyStyles =
-                        processor.getBibliographyStyles();
-
-                if (bibliographyStyles == null || bibliographyStyles.isEmpty()) {
+                List<String> styles = processor.getBibliographyStyles();
+                if (styles.isEmpty()) {
                     return EXIT_FAIL;
                 }
-                bst = stripExtension(bibliographyStyles.get(0), //
-                    BST_FILE_EXTENSION);
-                info("bst.file", bst);
+                for (String style : styles) {
+                    info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
+                }
                 BstReader bstReader = bstReaderFactory.newInstance();
-                bstReader.setResourceFinder(finder);
                 try {
                     bstReader.parse(processor);
                 } catch (FileNotFoundException e) {

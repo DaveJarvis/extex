@@ -34,7 +34,7 @@
     <indent>  </indent>
   </BblWriter>
 
-  <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
+  <AuxReader class="org.extex.exbib.core.io.auxio.AuxReader099cImpl"/>
 
   <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
 

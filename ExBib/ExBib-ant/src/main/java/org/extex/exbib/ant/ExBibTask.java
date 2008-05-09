@@ -321,9 +321,8 @@ public class ExBibTask extends Task {
             bst = stripExtension(bst, BST_FILE_EXTENSION);
             log("bst.file", bst);
             BstReader bstReader =
-                    new BstReaderFactory(config.getConfiguration("BstReader"))
-                        .newInstance();
-            bstReader.setResourceFinder(finder);
+                    new BstReaderFactory(config.getConfiguration("BstReader"),
+                        finder).newInstance();
             try {
                 bstReader.parse(processor);
             } catch (FileNotFoundException e) {

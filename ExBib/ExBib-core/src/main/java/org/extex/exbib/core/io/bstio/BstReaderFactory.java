@@ -23,6 +23,7 @@ package org.extex.exbib.core.io.bstio;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This factory class can be used to get an implementation for the interface
@@ -48,13 +49,15 @@ public class BstReaderFactory extends AbstractFactory {
      * Creates a new object.
      * 
      * @param configuration the configuration
+     * @param finder
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public BstReaderFactory(Configuration configuration)
+    public BstReaderFactory(Configuration configuration, ResourceFinder finder)
             throws ConfigurationException {
 
         super(configuration);
+        setResourceFinder(finder);
     }
 
     /**
@@ -66,7 +69,9 @@ public class BstReaderFactory extends AbstractFactory {
      */
     public synchronized BstReader newInstance() throws ConfigurationException {
 
-        return (BstReader) createInstance(BstReader.class);
+        BstReader reader = (BstReader) createInstance(BstReader.class);
+        reader.setResourceFinder(getResourceFinder());
+        return reader;
     }
 
 }

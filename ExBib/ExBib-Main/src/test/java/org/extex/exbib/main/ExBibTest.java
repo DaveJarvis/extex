@@ -627,7 +627,7 @@ public class ExBibTest extends BibTester {
      */
     @Test
     @Ignore
-    // "strange failure in maven"
+    // strange failure in maven
     public void testConfig3() throws Exception {
 
         runFailure(
@@ -664,18 +664,17 @@ public class ExBibTest extends BibTester {
 
         runTest(
             "test",
-            "",
+            "\\citation{*}\n" //
+                    + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
             CLI.EXIT_FAIL,
             Check.EQ,
             BANNER
-                    + "I found no style file while reading test.aux\n"
-                    + "I found no \\bibdata commands while reading test.aux\n"
-                    + "I found no \\citation commands while reading test.aux\n"
-                    + "Installation Error: Some parts of exbib could not be found: \n"
+                    + "Installation Error:\n"
                     + "\tClass `undefined.Undefined\' not found in\n"
                     + "document(\"config/exbib/misconfigured.xml\")/exbib/Processor\n"
                     + "\tConsult the log\nfile for details.\n"
-                    + "(There were 4 errors)\n", //
+                    + "(There was 1 error)\n", //
             "--config", "misconfigured", "test");
     }
 
