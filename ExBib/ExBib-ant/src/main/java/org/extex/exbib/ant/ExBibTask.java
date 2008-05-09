@@ -35,8 +35,8 @@ import java.util.logging.Logger;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
-import org.extex.exbib.core.bst.Processor;
-import org.extex.exbib.core.bst.ProcessorFactory;
+import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.ProcessorFactory;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.exceptions.ExBibException;

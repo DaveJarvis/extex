@@ -19,7 +19,7 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -106,7 +106,7 @@ public class ChangeCase extends AbstractCode {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override

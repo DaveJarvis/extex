@@ -23,6 +23,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.node.impl.TFieldString;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;

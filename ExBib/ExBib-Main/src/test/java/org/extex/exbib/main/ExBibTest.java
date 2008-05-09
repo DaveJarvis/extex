@@ -1057,7 +1057,7 @@ public class ExBibTest extends BibTester {
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux");
         assertEquals("exbib", exbib.getProgramName());
-        // assertEquals("test.bbl", exbib.getOutfile());
+        assertEquals("test.bbl", exbib.getOutfile());
         assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
         // assertFalse("trace", exbib.isDebug());
@@ -1104,6 +1104,44 @@ public class ExBibTest extends BibTester {
             if (!new File("test.blg").delete()) {
                 assertTrue("test.blg: deletion failed", false);
             }
+        }
+    }
+
+    /**
+     * <testcase> Test that the optional argument in aux file macros redirects
+     * the output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOk3() throws Exception {
+
+        File xxx = new File("test.xxx");
+        if (xxx.exists() && !xxx.delete()) {
+            assertTrue("test.xxx: deletion failed", false);
+        }
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation[xxx]{*}\n"
+                            + "\\bibdata[xxx]{src/test/resources/bibtex/base/xampl.bib}\n"
+                            + "\\bibstyle[xxx]{src/test/resources/bibtex/base/plain}\n",
+                    CLI.EXIT_OK, Check.EQ, BANNER
+                            + "Warning: empty author in whole-journal\n"
+                            + "Warning: empty title in whole-journal\n", //
+                    "test.aux");
+        assertEquals("exbib", exbib.getProgramName());
+        // assertNull(exbib.getOutfile());
+        assertEquals("test.blg", exbib.getLogfile());
+        assertFalse("trace", exbib.isTrace());
+        // assertFalse("trace", exbib.isDebug());
+        assertNull("logger", exbib.getLogger()); // since closed already
+        if (!xxx.exists()) {
+            assertTrue("test.xxx missing", false);
+        }
+
+        if (xxx.exists() && !xxx.delete()) {
+            assertTrue("test.xxx: deletion failed", false);
         }
     }
 
@@ -1288,7 +1326,7 @@ public class ExBibTest extends BibTester {
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--strict");
         assertEquals("exbib", exbib.getProgramName());
-        // assertEquals("test.bbl", exbib.getOutfile());
+        assertEquals("test.bbl", exbib.getOutfile());
         assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
         // assertFalse("trace", exbib.isDebug());

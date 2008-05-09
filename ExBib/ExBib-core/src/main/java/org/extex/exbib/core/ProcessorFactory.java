@@ -18,7 +18,7 @@
  *
  */
 
-package org.extex.exbib.core.bst;
+package org.extex.exbib.core;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;

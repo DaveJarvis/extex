@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 
+import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 

@@ -24,7 +24,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.ProcessorBibtex099c;
 import org.extex.exbib.core.bst.code.impl.Pop;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;

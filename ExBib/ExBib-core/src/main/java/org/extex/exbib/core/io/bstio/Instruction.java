@@ -19,7 +19,7 @@
 
 package org.extex.exbib.core.io.bstio;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 

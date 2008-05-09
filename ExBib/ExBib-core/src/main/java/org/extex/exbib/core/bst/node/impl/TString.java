@@ -22,7 +22,7 @@ package org.extex.exbib.core.bst.node.impl;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Name;
 import org.extex.exbib.core.bst.node.Token;
@@ -93,7 +93,7 @@ public class TString extends AbstractToken implements Token {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override

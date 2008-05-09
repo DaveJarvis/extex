@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.impl.BstExecute;
 import org.extex.exbib.core.bst.command.impl.BstIterate;

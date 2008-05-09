@@ -22,7 +22,7 @@ package org.extex.exbib.main.util;
 
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.util.Observable;

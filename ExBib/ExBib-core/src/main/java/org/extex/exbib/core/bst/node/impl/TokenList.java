@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
@@ -94,7 +94,7 @@ public class TokenList extends AbstractToken implements Token {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override
@@ -110,7 +110,7 @@ public class TokenList extends AbstractToken implements Token {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
-     *      org.extex.exbib.core.bst.Processor)
+     *      org.extex.exbib.core.Processor)
      */
     @Override
     public String expand(Processor processor) {

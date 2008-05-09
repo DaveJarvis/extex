@@ -32,7 +32,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
@@ -41,7 +42,6 @@ import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.WriterFactory;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
-import org.extex.exbib.core.io.auxio.ProcessorContainer;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.bstio.BstReader;
@@ -516,27 +516,24 @@ public class ExBib extends AbstractMain {
         }
         Writer writer = null;
 
-        String out;
-        if (outfile != null && "bbl".equals(key)) {
-            out = outfile;
-        } else {
-            out = file + "." + key;
+        if (outfile == null || !"bbl".equals(key)) {
+            outfile = file + "." + key;
         }
 
-        if (out.equals("")) {
+        if (outfile.equals("")) {
             writer = writerFactory.newInstance();
             info("output.discarted");
-        } else if (out.equals("-")) {
+        } else if (outfile.equals("-")) {
             writer = writerFactory.newInstance(System.out);
             info("output.to.stdout");
         } else {
             try {
-                writer = writerFactory.newInstance(out);
+                writer = writerFactory.newInstance(outfile);
             } catch (FileNotFoundException e) {
-                log("output.could.not.be.opened", out);
+                log("output.could.not.be.opened", outfile);
                 return null;
             }
-            info("output.file", out);
+            info("output.file", outfile);
         }
 
         return new BblWriterFactory(configuration).newInstance(writer);

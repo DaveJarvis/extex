@@ -22,7 +22,7 @@ package org.extex.exbib.core.bst.code.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;
@@ -247,7 +247,7 @@ public class Width extends AbstractCode {
      * BibTeX sources.
      * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override

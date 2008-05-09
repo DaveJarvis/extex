@@ -21,8 +21,8 @@ package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
 
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.node.AbstractToken;
@@ -113,7 +113,7 @@ public class TLiteral extends AbstractToken implements Token {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.node.Token#expand(
-     *      org.extex.exbib.core.bst.Processor)
+     *      org.extex.exbib.core.Processor)
      */
     @Override
     public String expand(Processor processor) {

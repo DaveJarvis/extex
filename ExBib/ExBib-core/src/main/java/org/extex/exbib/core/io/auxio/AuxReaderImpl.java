@@ -26,12 +26,15 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is the core of the aux file reading as performed by BibTeX.
+ * This is the core of the aux file reading. In addition to the one performed by
+ * B<small>IB</small>T<sub>E</sub>X it supports multiple bibliographies via
+ * optional arguments of the macros.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -43,14 +46,14 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      * macros.
      */
     private static final Pattern PATTERN =
-            Pattern.compile("^\\\\([@a-z]+)\\{([^{}]*)\\}");
+            Pattern.compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The field <tt>OPT_PATTERN</tt> contains the pattern for the recognized
      * macros with optional arguments.
      */
     private static final Pattern OPT_PATTERN =
-            Pattern.compile("^\\\\([@a-z]+)\\[\\{([^]]*)\\}\\]\\{([^{}]*)\\}");
+            Pattern.compile("^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}");
 
     /**
      * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
@@ -133,7 +136,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.auxio.AuxReader#load(
-     *      org.extex.exbib.core.io.auxio.ProcessorContainer, java.lang.String,
+     *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
      *      java.lang.String)
      */
     public void load(ProcessorContainer bibliographies, String resource,

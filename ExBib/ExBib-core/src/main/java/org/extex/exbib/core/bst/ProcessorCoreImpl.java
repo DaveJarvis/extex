@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
@@ -373,7 +374,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getEntries()
+     * @see org.extex.exbib.core.Processor#getEntries()
      */
     @Override
     public List<String> getEntries() {
@@ -384,7 +385,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getEntryIntegers()
+     * @see org.extex.exbib.core.Processor#getEntryIntegers()
      */
     public List<String> getEntryIntegers() {
 
@@ -394,7 +395,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getEntryStrings()
+     * @see org.extex.exbib.core.Processor#getEntryStrings()
      */
     public List<String> getEntryStrings() {
 
@@ -416,7 +417,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getFunctionNames()
+     * @see org.extex.exbib.core.Processor#getFunctionNames()
      */
     public List<String> getFunctionNames() {
 
@@ -439,7 +440,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getIntegers()
+     * @see org.extex.exbib.core.Processor#getIntegers()
      */
     public List<String> getIntegers() {
 
@@ -449,7 +450,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getMacroNames()
+     * @see org.extex.exbib.core.Processor#getMacroNames()
      */
     public List<String> getMacroNames() {
 
@@ -459,7 +460,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getNumberOfWarnings()
+     * @see org.extex.exbib.core.Processor#getNumberOfWarnings()
      */
     public long getNumberOfWarnings() {
 
@@ -479,7 +480,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#getStrings()
+     * @see org.extex.exbib.core.Processor#getStrings()
      */
     public List<String> getStrings() {
 
@@ -529,7 +530,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingNumberException in case that no integer is found
      * 
-     * @see org.extex.exbib.core.bst.Processor#popInteger(
+     * @see org.extex.exbib.core.Processor#popInteger(
      *      org.extex.exbib.core.io.Locator)
      */
     public TInteger popInteger(Locator locator)
@@ -565,7 +566,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingStringException in case that no string is found
      * 
-     * @see org.extex.exbib.core.bst.Processor#popString(
+     * @see org.extex.exbib.core.Processor#popString(
      *      org.extex.exbib.core.io.Locator)
      */
     public TString popString(Locator locator)
@@ -707,7 +708,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setEntries(java.util.List,
+     * @see org.extex.exbib.core.Processor#setEntries(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntries(List<String> entries, Locator locator)
@@ -726,7 +727,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setEntryIntegers(java.util.List,
+     * @see org.extex.exbib.core.Processor#setEntryIntegers(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryIntegers(List<String> integers, Locator locator)
@@ -745,7 +746,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setEntryStrings(java.util.List,
+     * @see org.extex.exbib.core.Processor#setEntryStrings(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryStrings(List<String> strings, Locator locator)
@@ -764,7 +765,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setIntegers(
+     * @see org.extex.exbib.core.Processor#setIntegers(
      *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
@@ -793,7 +794,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#setStrings(
+     * @see org.extex.exbib.core.Processor#setStrings(
      *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
     public void setStrings(TokenList list, Locator locator)
@@ -812,7 +813,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#step(java.lang.Object)
+     * @see org.extex.exbib.core.Processor#step(java.lang.Object)
      */
     public void step(Object obj) {
 
@@ -822,7 +823,7 @@ public class ProcessorCoreImpl extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Processor#warning(java.lang.String)
+     * @see org.extex.exbib.core.Processor#warning(java.lang.String)
      */
     public void warning(String message) {
 

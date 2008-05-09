@@ -21,7 +21,7 @@ package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;

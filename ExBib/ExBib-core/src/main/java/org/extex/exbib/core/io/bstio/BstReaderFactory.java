@@ -49,7 +49,7 @@ public class BstReaderFactory extends AbstractFactory {
      * Creates a new object.
      * 
      * @param configuration the configuration
-     * @param finder
+     * @param finder the resource finder
      * 
      * @throws ConfigurationException in case of an configuration error
      */

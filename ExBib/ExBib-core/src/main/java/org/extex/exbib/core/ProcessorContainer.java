@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.io.auxio;
+package org.extex.exbib.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +25,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exbib.core.bst.Processor;
-import org.extex.exbib.core.bst.ProcessorFactory;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;

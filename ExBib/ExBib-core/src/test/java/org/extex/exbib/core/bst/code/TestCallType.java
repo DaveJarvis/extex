@@ -24,8 +24,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
-import org.extex.exbib.core.bst.Processor;
 import org.extex.exbib.core.bst.ProcessorBibtex099c;
 import org.extex.exbib.core.bst.code.impl.CallType;
 import org.extex.exbib.core.db.DB;
@@ -105,7 +105,7 @@ public class TestCallType extends TestCase implements Code {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.Code#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     public void execute(Processor processor, Entry entry, Locator locator)

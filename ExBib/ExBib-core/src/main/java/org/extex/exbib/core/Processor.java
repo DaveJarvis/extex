@@ -18,13 +18,15 @@
  *
  */
 
-package org.extex.exbib.core.bst;
+package org.extex.exbib.core;
 
 import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.Bibliography;
+import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;

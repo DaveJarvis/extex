@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -126,7 +127,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.auxio.AuxReader#load(
-     *      org.extex.exbib.core.io.auxio.ProcessorContainer, java.lang.String,
+     *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
      *      java.lang.String)
      */
     public void load(ProcessorContainer bibliographies, String resource,

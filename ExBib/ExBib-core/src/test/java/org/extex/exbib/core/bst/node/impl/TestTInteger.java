@@ -23,7 +23,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.ProcessorBibtex099c;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.impl.DBImpl;

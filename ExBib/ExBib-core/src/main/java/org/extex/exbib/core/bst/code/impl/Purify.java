@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.extex.exbib.core.bst.Processor;
+import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
@@ -127,7 +127,7 @@ public class Purify extends AbstractCode {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      org.extex.exbib.core.bst.Processor, org.extex.exbib.core.db.Entry,
+     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override
