@@ -61,7 +61,7 @@ public class ProcessorFactory extends AbstractFactory {
      * 
      * @param db the database
      * @param type the type for lookup in the configuration; the value
-     *        <code>null</code> singnals the use of the default configuration
+     *        <code>null</code> signals the use of the default configuration
      * 
      * @return the {@link Processor Processor}
      * 
