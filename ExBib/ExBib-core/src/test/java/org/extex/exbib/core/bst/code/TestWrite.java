@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Write;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TBlock;
@@ -93,7 +93,7 @@ public class TestWrite extends TestCase {
     public void setUp() throws Exception {
 
         out = new StringBuffer();
-        p = new ProcessorBibtex099c(new DBImpl(), //
+        p = new BstProcessor099c(new DBImpl(), //
             new StringBufferWriter(out), null);
     }
 

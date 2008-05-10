@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Newline;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
@@ -86,7 +86,7 @@ public class TestNewline extends TestCase {
     @Override
     public void setUp() throws Exception {
 
-        p = new ProcessorBibtex099c(new DBImpl(), //
+        p = new BstProcessor099c(new DBImpl(), //
             new StringBufferWriter(out), null);
     }
 

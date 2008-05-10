@@ -34,6 +34,7 @@ import org.extex.exbib.core.bst.command.impl.BstIterate;
 import org.extex.exbib.core.bst.command.impl.BstRead;
 import org.extex.exbib.core.bst.command.impl.BstReverse;
 import org.extex.exbib.core.bst.command.impl.BstSort;
+import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TBlock;
 import org.extex.exbib.core.bst.node.impl.TChar;
@@ -690,8 +691,8 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @param processor the processor context to store the result in
      * 
-     * @throws FileNotFoundException in case that the requested file could not
-     *         be opened for reading
+     * @throws ExBibBstNotFoundException in case that the requested file could
+     *         not be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
      * @throws ExBibException in case of an syntax error
@@ -703,13 +704,11 @@ public class BstReaderImpl extends AbstractFileReader
      */
     public void parse(Processor processor)
             throws ExBibException,
-                FileNotFoundException,
+                ExBibBstNotFoundException,
                 ConfigurationException {
 
-        List<String> fileList = processor.getBibliographyStyles();
-
-        for (int ptr = 0; ptr < fileList.size(); ptr++) {
-            parse(processor, fileList.get(ptr));
+        for (String bst : processor.getBibliographyStyles()) {
+            parse(processor, bst);
         }
     }
 
@@ -718,21 +717,24 @@ public class BstReaderImpl extends AbstractFileReader
      * contents.
      * 
      * @param processor the processor context
-     * @param file the name of the file to parse
+     * @param bst the name of the bst file to parse
      * 
-     * @throws FileNotFoundException in case that the requested file could not
-     *         be opened for reading
+     * @throws ExBibBstNotFoundException in case that the requested bst could
+     *         not be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
      * @throws ExBibException in case of an syntax error
      */
-    public void parse(Processor processor, String file)
+    public void parse(Processor processor, String bst)
             throws ExBibException,
-                FileNotFoundException,
                 ConfigurationException {
 
         Token token;
-        open(file, "bst", encoding);
+        try {
+            open(bst, "bst", encoding);
+        } catch (FileNotFoundException e) {
+            throw new ExBibBstNotFoundException(bst, null);
+        }
 
         while ((token = nextToken()) != null) {
             if (!processCommand(token, processor)) {

@@ -36,7 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <pre>
  *   &lt;Processor
- *     class="org.extex.exbib.core.bst.ProcessorImpl"/&gt;
+ *     class="org.extex.exbib.core.bst.BstProcessor"/&gt;
  * </pre>
  * 
  * </p>

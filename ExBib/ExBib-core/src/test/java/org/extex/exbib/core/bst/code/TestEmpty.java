@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Empty;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
@@ -101,7 +101,7 @@ public class TestEmpty extends TestCase {
         db = new DBImpl();
         entry = db.makeEntry("book", "abc", null);
         entry.set("author", new Value());
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
     }
 
     /**

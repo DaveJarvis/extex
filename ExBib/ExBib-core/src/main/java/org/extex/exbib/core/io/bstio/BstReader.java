@@ -22,6 +22,7 @@ package org.extex.exbib.core.io.bstio;
 import java.io.FileNotFoundException;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
@@ -40,13 +41,13 @@ public interface BstReader extends ResourceAware {
      * @param processor the processor context
      * 
      * @throws ExBibException an exception of some kind is thrown upon errors
-     * @throws FileNotFoundException if <i>file</i> can not be opened
+     * @throws ExBibBstNotFoundException if <i>file</i> can not be opened
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
      */
     void parse(Processor processor)
             throws ExBibException,
-                FileNotFoundException,
+                ExBibBstNotFoundException,
                 ConfigurationException;
 
     /**

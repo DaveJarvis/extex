@@ -28,7 +28,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Stack;
 import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
@@ -101,7 +101,7 @@ public class TestStack extends TestCase {
         logger.setLevel(Level.ALL);
         err = new StoringHandler();
         logger.addHandler(err);
-        p = new ProcessorBibtex099c(new DBImpl(), //
+        p = new BstProcessor099c(new DBImpl(), //
             new StringBufferWriter(out), logger);
     }
 

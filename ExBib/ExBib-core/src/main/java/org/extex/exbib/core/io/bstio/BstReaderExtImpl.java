@@ -20,9 +20,8 @@
 
 package org.extex.exbib.core.io.bstio;
 
-import java.io.FileNotFoundException;
-
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -93,8 +92,8 @@ public class BstReaderExtImpl extends BstReaderImpl {
                         reader.configure(cfg);
                     }
                     reader.parse(processor, fname);
-                } catch (FileNotFoundException e) {
-                    throw new ExBibException(e);
+                } catch (ExBibBstNotFoundException e) {
+                    throw new ExBibBstNotFoundException(fname, locator);
                 } catch (ConfigurationException e) {
                     throw e;
                 } catch (Exception e) {

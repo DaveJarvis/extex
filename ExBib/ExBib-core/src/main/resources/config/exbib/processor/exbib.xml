@@ -19,7 +19,7 @@
 
   @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
-  <Processor class="org.extex.exbib.core.bst.ProcessorImpl">
+  <Processor class="org.extex.exbib.core.bst.BstProcessor">
     <globalMax>32000</globalMax>
 
     <function name="&gt;"
@@ -115,4 +115,3 @@
     <function name="write$"
              class="org.extex.exbib.core.bst.code.impl.Write"/>
   </Processor>
-  

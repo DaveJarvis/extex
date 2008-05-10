@@ -25,7 +25,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Preamble;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VBlock;
@@ -92,7 +92,7 @@ public class TestPreamble extends TestCase {
     public void setUp() throws Exception {
 
         // db = new DBImpl();
-        // p = new ProcessorBibtex099c(db, new NullWriter(null),
+        // p = new BstProcessor099c(db, new NullWriter(null),
         // new NullWriter(null));
     }
 
@@ -116,7 +116,7 @@ public class TestPreamble extends TestCase {
     public void testBlock() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VBlock("123")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("123", p.popString(null).getValue());
@@ -131,7 +131,7 @@ public class TestPreamble extends TestCase {
     public void testEmpty() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("", p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -145,7 +145,7 @@ public class TestPreamble extends TestCase {
     public void testNumber() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VNumber("123")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("123", p.popString(null).getValue());
@@ -160,7 +160,7 @@ public class TestPreamble extends TestCase {
     public void testString() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VString("abc")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("abc", p.popString(null).getValue());
@@ -175,7 +175,7 @@ public class TestPreamble extends TestCase {
     public void testValue() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
 
         Value v = new Value();
         v.add(new VBlock("1234"));

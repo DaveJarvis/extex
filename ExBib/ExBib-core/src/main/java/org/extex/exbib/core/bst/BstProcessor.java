@@ -43,14 +43,14 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class ProcessorImpl extends ProcessorCoreImpl {
+public class BstProcessor extends BstProcessorCore {
 
     /**
      * Create a new object.
      * 
      * @throws ExBibException in case of an error
      */
-    public ProcessorImpl() throws ExBibException {
+    public BstProcessor() throws ExBibException {
 
         super();
     }

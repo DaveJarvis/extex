@@ -26,7 +26,7 @@ import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.CallType;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -123,7 +123,7 @@ public class TestCallType extends TestCase implements Code {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new ProcessorBibtex099c(db, new NullWriter(null), null);
+        p = new BstProcessor099c(db, new NullWriter(null), null);
         p.addFunction("book", this, null);
     }
 

@@ -34,6 +34,7 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
+import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
@@ -44,7 +45,6 @@ import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
-import org.extex.exbib.core.io.bstio.BstReader;
 import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.io.csf.CsfReader;
@@ -637,13 +637,7 @@ public class ExBib extends AbstractMain {
                 for (String style : styles) {
                     info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
                 }
-                BstReader bstReader = bstReaderFactory.newInstance();
-                try {
-                    bstReader.parse(processor);
-                } catch (FileNotFoundException e) {
-                    errors++;
-                    return log("bst.not.found", e.getMessage());
-                }
+                bstReaderFactory.newInstance().parse(processor);
 
                 Writer writer =
                         makeBblWriter(file, bblWriterConfiguration, key);
@@ -669,6 +663,9 @@ public class ExBib extends AbstractMain {
         } catch (ExBibImpossibleException e) {
             errors++;
             return logException(e, "internal.error", false);
+        } catch (ExBibBstNotFoundException e) {
+            errors++;
+            return log("bst.not.found", e.getMessage());
         } catch (ExBibFileNotFoundException e) {
             errors++;
             getLogger().severe(e.getLocalizedMessage() + "\n");

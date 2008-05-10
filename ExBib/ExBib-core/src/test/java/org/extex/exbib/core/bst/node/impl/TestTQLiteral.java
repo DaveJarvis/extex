@@ -24,7 +24,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.ProcessorBibtex099c;
+import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.impl.DBImpl;
@@ -86,7 +86,7 @@ public class TestTQLiteral extends TestCase implements TokenVisitor {
     @Override
     public void setUp() throws Exception {
 
-        p = new ProcessorBibtex099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
         p.addFunction("abc", new TInteger(1), null);
     }
 
