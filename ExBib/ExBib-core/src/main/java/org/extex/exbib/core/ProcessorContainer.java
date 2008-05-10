@@ -201,18 +201,6 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param key the key
-     * 
-     * @return the bibliography or <code>null</code>
-     */
-    public Processor getBibliography(String key) {
-
-        return bibliographies.get(key == null ? fallback : key);
-    }
-
-    /**
      * Getter for minCrossrefs.
      * 
      * @return the minCrossrefs
@@ -220,6 +208,18 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     public int getMinCrossrefs() {
 
         return minCrossrefs;
+    }
+
+    /**
+     * Getter for a named processor.
+     * 
+     * @param key the key
+     * 
+     * @return the bibliography or <code>null</code>
+     */
+    public Processor getProcessor(String key) {
+
+        return bibliographies.get(key == null ? fallback : key);
     }
 
     /**

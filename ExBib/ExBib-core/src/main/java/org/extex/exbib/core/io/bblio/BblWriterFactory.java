@@ -20,7 +20,11 @@
 
 package org.extex.exbib.core.io.bblio;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import org.extex.exbib.core.io.Writer;
+import org.extex.exbib.core.io.WriterFactory;
 import org.extex.exbib.core.io.auxio.AuxReaderImpl;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
@@ -48,30 +52,88 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class BblWriterFactory extends AbstractFactory {
 
     /**
+     * The field <tt>writerFactory</tt> contains the writer factory.
+     */
+    private WriterFactory writerFactory;
+
+    /**
      * Creates a new object.
      * 
      * @param configuration the configuration
+     * @param encoding the encoding for writing
      * 
      * @throws ConfigurationException in case of a configuration error
+     * @throws UnsupportedEncodingException in case of an invalid encoding
      */
-    public BblWriterFactory(Configuration configuration)
-            throws ConfigurationException {
+    public BblWriterFactory(Configuration configuration, String encoding)
+            throws ConfigurationException,
+                UnsupportedEncodingException {
 
         super(configuration);
+        writerFactory = new WriterFactory(configuration);
+        if (encoding != null) {
+            writerFactory.setEncoding(encoding);
+        }
+    }
+
+    /**
+     * Callback method to be used when the output is discarded.
+     * 
+     */
+    protected void infoDiscarted() {
+
+        //
+    }
+
+    /**
+     * Callback method to be used when the output is sent to a file.
+     * 
+     * @param file the name of the file
+     */
+    protected void infoOutput(String file) {
+
+        //
+    }
+
+    /**
+     * Callback method to be used when the output is sent to stdout.
+     * 
+     */
+    protected void infoStdout() {
+
+        //
     }
 
     /**
      * Allocates a new instance of a BblWriter.
      * 
-     * @param targetWriter the writer to wrap
+     * @param file the name of the file
      * 
      * @return a new instance of a BblWriter
      * 
      * @throws ConfigurationException in case of a configuration error
+     * @throws UnsupportedEncodingException
+     * @throws FileNotFoundException
      */
-    public synchronized Writer newInstance(Writer targetWriter)
-            throws ConfigurationException {
+    public synchronized Writer newInstance(String file)
+            throws ConfigurationException,
+                UnsupportedEncodingException,
+                FileNotFoundException {
 
-        return (BblWriter) createInstance(BblWriter.class, targetWriter);
+        Writer writer;
+
+        if (file == null || file.equals("")) {
+            writer = writerFactory.newInstance();
+            infoDiscarted();
+        } else if (file.equals("-")) {
+            writer = writerFactory.newInstance(System.out);
+            infoStdout();
+        } else {
+            writer = writerFactory.newInstance(file);
+            infoOutput(file);
+        }
+
+        return (BblWriter) createInstance(BblWriter.class, writer);
     }
+
 }

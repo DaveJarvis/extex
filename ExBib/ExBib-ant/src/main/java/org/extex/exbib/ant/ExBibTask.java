@@ -44,7 +44,6 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
-import org.extex.exbib.core.io.WriterFactory;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
@@ -483,33 +482,51 @@ public class ExBibTask extends Task {
                 ConfigurationException {
 
         Configuration configuration = cfg.getConfiguration("BblWriter");
-        WriterFactory writerFactory = new WriterFactory(configuration);
-        if (encoding != null) {
-            writerFactory.setEncoding(encoding);
-        }
-        Writer writer = null;
-
         if (outfile == null) {
-            outfile = file + BBL_FILE_EXTENSION;
+            outfile = file + ".bbl";
         }
 
-        if (outfile.equals("")) {
-            writer = writerFactory.newInstance();
-            log("output.discarted");
-        } else if (outfile.equals("-")) {
-            writer = writerFactory.newInstance(System.out);
-            log("output.to.stdout");
-        } else {
-            try {
-                writer = writerFactory.newInstance(outfile);
-            } catch (FileNotFoundException e) {
-                log("output.could.not.be.opened", outfile);
-                return null;
-            }
-            log("output.file", outfile);
-        }
+        try {
+            return new BblWriterFactory(configuration, encoding) {
 
-        return new BblWriterFactory(configuration).newInstance(writer);
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
+                 */
+                @Override
+                protected void infoDiscarted() {
+
+                    log("output.discarted");
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
+                 */
+                @Override
+                protected void infoOutput(String file) {
+
+                    log("output.file", outfile);
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
+                 */
+                @Override
+                protected void infoStdout() {
+
+                    log("output.to.stdout");
+                }
+
+            }.newInstance(outfile);
+        } catch (FileNotFoundException e) {
+            log("output.could.not.be.opened", outfile);
+            return null;
+        }
     }
 
     /**

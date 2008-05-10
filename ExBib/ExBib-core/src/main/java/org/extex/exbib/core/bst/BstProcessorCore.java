@@ -605,16 +605,12 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
     }
 
     /**
-     * Run the procedures stored in the processor context. For each procedure
-     * the hook `run' is called before it is executed.
+     * {@inheritDoc}
      * 
-     * @param writer the output writer
-     * @param logger the logger
-     * 
-     * @throws ExBibException in case something went wrong
-     * @throws ExBibIoException in case of an IOException
+     * @see org.extex.exbib.core.Processor#process(
+     *      org.extex.exbib.core.io.Writer, java.util.logging.Logger)
      */
-    public void process(Writer writer, Logger logger) throws ExBibException {
+    public long process(Writer writer, Logger logger) throws ExBibException {
 
         this.outWriter = writer;
         setLogger(logger);
@@ -629,6 +625,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
         } catch (IOException e) {
             throw new ExBibIoException(e);
         }
+        return warnings;
     }
 
     /**

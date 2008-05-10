@@ -46,7 +46,7 @@ import org.junit.Test;
 public class ExBibTest extends BibTester {
 
     /**
-     * The field <tt>USAGE</tt> contains the ...
+     * The field <tt>USAGE</tt> contains the expected usage description.
      */
     private static final String USAGE =
             "Usage: exbib <options> file\n"
@@ -240,16 +240,12 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux10() throws Exception {
 
-        runTest(
-            "test",
-            "\\bibstyle{xyzzy}\n",
-            CLI.EXIT_FAIL,
-            Check.EQ,
-            BANNER
-                    + "I found no \\bibdata commands for bbl while reading test.aux\n"
-                    + "I found no \\citation commands for bbl while reading test.aux\n"
+        runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n"
+                + "\\bibstyle{xyzzy}\n", CLI.EXIT_FAIL, //
+            Check.EQ, //
+            BANNER //
                     + "I couldn\'t open style file xyzzy\n"
-                    + "(There were 3 errors)\n", //
+                    + "(There was 1 error)\n", //
             "test.aux");
     }
 
@@ -262,16 +258,10 @@ public class ExBibTest extends BibTester {
     @Test
     public void testAux11() throws Exception {
 
-        runTest(
-            "test",
-            "\\bibstyle{xyzzy.bst}\n",
-            CLI.EXIT_FAIL,
-            Check.EQ,
-            BANNER
-                    + "I found no \\bibdata commands for bbl while reading test.aux\n"
-                    + "I found no \\citation commands for bbl while reading test.aux\n"
-                    + "I couldn\'t open style file xyzzy.bst\n"
-                    + "(There were 3 errors)\n", //
+        runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n"
+                + "\\bibstyle{xyzzy.bst}\n", CLI.EXIT_FAIL, Check.EQ, BANNER
+                + "I couldn\'t open style file xyzzy.bst\n"
+                + "(There was 1 error)\n", //
             "test.aux");
     }
 
@@ -282,14 +272,13 @@ public class ExBibTest extends BibTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testAux12() throws Exception {
 
-        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER
-                + "I found no style file while reading test.aux\n"
-                + "I found no \\bibdata commands while reading test.aux\n"
-                + "I found no \\citation commands while reading test.aux\n"
-                + "I couldn\'t open style file xyzzy\n"
-                + "(There were 4 errors)\n", //
+        runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n", CLI.EXIT_FAIL,
+            Check.EQ, BANNER + "I found no style file while reading test.aux\n"
+                    + "I couldn\'t open style file xyzzy\n"
+                    + "(There was 1 error)\n", //
             "test.aux", "--bst", "xyzzy");
     }
 
@@ -315,29 +304,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testAux14() throws Exception {
-
-        runTest(
-            "test",
-            "\\bibstyle{xyzzy}\n",
-            CLI.EXIT_FAIL,
-            Check.EQ,
-            BANNER
-                    + "I found no \\bibdata commands for bbl while reading test.aux\n"
-                    + "I found no \\citation commands for bbl while reading test.aux\n"
-                    + "I couldn\'t open style file xyzzy\n"
-                    + "(There were 3 errors)\n", //
-            "test.aux");
-    }
-
-    /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
+     * <testcase> Test that an missing bibdata in the aux file is reported.
      * </testcase>
      * 
      * @throws Exception in case of an error
@@ -352,8 +319,7 @@ public class ExBibTest extends BibTester {
             Check.EQ,
             BANNER
                     + "I found no \\bibdata commands for bbl while reading test.aux\n"
-                    + "I couldn\'t open style file xyzzy\n"
-                    + "(There were 2 errors)\n", //
+                    + "(There was 1 error)\n", //
             "test.aux");
     }
 

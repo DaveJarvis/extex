@@ -23,9 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -34,13 +32,10 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
-import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
-import org.extex.exbib.core.io.WriterFactory;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
@@ -452,6 +447,34 @@ public class ExBib extends AbstractMain {
     }
 
     /**
+     * Report an error and increment the error counter.
+     * 
+     * @param tag the tag of the resource bundle
+     * @param args the arguments to be inserted for braced numbers
+     * 
+     * @return EXIT_FAILURE
+     */
+    protected int error(String tag, Object... args) {
+
+        errors++;
+        return log(tag, args);
+    }
+
+    /**
+     * Report an exception and increment the error counter.
+     * 
+     * @param e the cause
+     * @param tag the tag of the resource bundle
+     * 
+     * @return EXIT_FAILURE
+     */
+    protected int error(Throwable e, String tag) {
+
+        errors++;
+        return logException(e, tag, debug.contains(Debug.MISC));
+    }
+
+    /**
      * Getter for debug.
      * 
      * @return the debug
@@ -492,54 +515,6 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * Create a new {@link java.io.Writer} for a bbl file.
-     * 
-     * @param file the name of the file
-     * @param configuration the configuration
-     * @param key the current extension
-     * 
-     * @return the new writer or <code>null</code> when the file could not be
-     *         opened for writing
-     * 
-     * @throws UnsupportedEncodingException if an error with the encoding is
-     *         encountered
-     * @throws ConfigurationException in case of a configuration error
-     */
-    private Writer makeBblWriter(String file, Configuration configuration,
-            String key)
-            throws UnsupportedEncodingException,
-                ConfigurationException {
-
-        WriterFactory writerFactory = new WriterFactory(configuration);
-        if (encoding != null) {
-            writerFactory.setEncoding(encoding);
-        }
-        Writer writer = null;
-
-        if (outfile == null || !"bbl".equals(key)) {
-            outfile = file + "." + key;
-        }
-
-        if (outfile.equals("")) {
-            writer = writerFactory.newInstance();
-            info("output.discarted");
-        } else if (outfile.equals("-")) {
-            writer = writerFactory.newInstance(System.out);
-            info("output.to.stdout");
-        } else {
-            try {
-                writer = writerFactory.newInstance(outfile);
-            } catch (FileNotFoundException e) {
-                log("output.could.not.be.opened", outfile);
-                return null;
-            }
-            info("output.file", outfile);
-        }
-
-        return new BblWriterFactory(configuration).newInstance(writer);
-    }
-
-    /**
      * This is the top level of the BibT<sub>E</sub>X engine. When all
      * parameters are present then this method can be invoked.
      * 
@@ -558,6 +533,9 @@ public class ExBib extends AbstractMain {
                 new ResourceFinderFactory().createResourceFinder(config
                     .getConfiguration("Resource"), getLogger(), System
                     .getProperties(), null);
+        if (debug.contains(Debug.SEARCH)) {
+            finder.enableTracing(true);
+        }
         if (file == null) {
             return logBanner("missing.file");
         }
@@ -610,48 +588,82 @@ public class ExBib extends AbstractMain {
             try {
                 auxReader.load(container, file, encoding);
             } catch (FileNotFoundException e) {
-                errors++;
-                return log("aux.not.found", e.getMessage());
+                return error("aux.not.found", e.getMessage());
             }
 
-            validate(container);
+            if (!validate(container)) {
+                return EXIT_FAIL;
+            }
 
             if (bst != null) {
                 Processor processor = container.findBibliography("bbl");
                 processor.addBibliographyStyle(stripExtension(bst,
                     BST_FILE_EXTENSION));
             }
-            Configuration bblWriterConfiguration =
-                    config.getConfiguration("BblWriter");
+            BblWriterFactory bblWriterFactory =
+                    new BblWriterFactory(config.getConfiguration("BblWriter"),
+                        encoding) {
+
+                        /**
+                         * {@inheritDoc}
+                         * 
+                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
+                         */
+                        @Override
+                        protected void infoDiscarted() {
+
+                            info("output.discarted");
+                        }
+
+                        /**
+                         * {@inheritDoc}
+                         * 
+                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
+                         */
+                        @Override
+                        protected void infoOutput(String file) {
+
+                            info("output.file", outfile);
+                        }
+
+                        /**
+                         * {@inheritDoc}
+                         * 
+                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
+                         */
+                        @Override
+                        protected void infoStdout() {
+
+                            info("output.to.stdout");
+                        }
+
+                    };
             BstReaderFactory bstReaderFactory =
                     new BstReaderFactory(config.getConfiguration("BstReader"),
                         finder);
 
             for (String key : container) {
-                Processor processor = container.getBibliography(key);
+                Processor processor = container.getProcessor(key);
 
-                List<String> styles = processor.getBibliographyStyles();
-                if (styles.isEmpty()) {
-                    return EXIT_FAIL;
-                }
-                for (String style : styles) {
+                for (String style : processor.getBibliographyStyles()) {
                     info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
                 }
                 bstReaderFactory.newInstance().parse(processor);
 
-                Writer writer =
-                        makeBblWriter(file, bblWriterConfiguration, key);
-                if (writer == null) {
-                    errors++;
-                    return EXIT_FAIL;
+                Writer writer;
+                try {
+                    if (outfile == null || !"bbl".equals(key)) {
+                        outfile = file + "." + key;
+                    }
+                    writer = bblWriterFactory.newInstance(outfile);
+                } catch (FileNotFoundException e) {
+                    return error("output.could.not.be.opened", outfile);
                 }
                 try {
-                    processor.process(writer, getLogger());
+                    warnings += processor.process(writer, getLogger());
                 } finally {
                     writer.close();
                 }
-
-                warnings += processor.getNumberOfWarnings();
             }
 
             info("runtime", Long.toString(System.currentTimeMillis() - time));
@@ -661,31 +673,17 @@ public class ExBib extends AbstractMain {
             }
 
         } catch (ExBibImpossibleException e) {
-            errors++;
-            return logException(e, "internal.error", false);
-        } catch (ExBibBstNotFoundException e) {
-            errors++;
-            return log("bst.not.found", e.getMessage());
-        } catch (ExBibFileNotFoundException e) {
-            errors++;
-            getLogger().severe(e.getLocalizedMessage() + "\n");
-            return EXIT_FAIL;
+            return error(e, "internal.error");
         } catch (ExBibException e) {
-            errors++;
-            getLogger().severe(e.getLocalizedMessage() + "\n");
-            return EXIT_FAIL;
+            return error("verbatim", e.getLocalizedMessage());
         } catch (ConfigurationWrapperException e) {
-            errors++;
-            return logException(e.getCause(), "installation.error", false);
+            return error(e.getCause(), "installation.error");
         } catch (ConfigurationException e) {
-            errors++;
-            return logException(e, "installation.error", false);
+            return error(e, "installation.error");
         } catch (NoClassDefFoundError e) {
-            errors++;
-            return logException(e, "installation.error", false);
+            return error(e, "installation.error");
         } catch (Exception e) {
-            errors++;
-            return logException(e, "internal.error", false);
+            return error(e, "internal.error");
         } finally {
             if (errors > 0) {
                 log(errors == 1 ? "error" : "errors", Long.toString(errors));
@@ -786,7 +784,7 @@ public class ExBib extends AbstractMain {
 
         for (String s : value) {
             try {
-                setDebug(Debug.valueOf(s));
+                setDebug(Debug.valueOf(s.toUpperCase()));
             } catch (IllegalArgumentException e) {
                 return logBanner("debug.mode.unknown", s);
             }
@@ -880,36 +878,35 @@ public class ExBib extends AbstractMain {
      * 
      * @param container the container
      * 
+     * @return <code>true</code> iff everything is fine
+     * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      */
-    private void validate(ProcessorContainer container)
+    private boolean validate(ProcessorContainer container)
             throws ConfigurationException,
                 ExBibException {
 
         if (container.isEmpty()) {
-            log("bst.missing", file);
-            log("data.missing", file);
-            log("citation.missing", file);
-            errors += 3;
-            return;
+            error("bst.missing", file);
+            error("data.missing", file);
+            error("citation.missing", file);
+            return false;
         }
 
         for (String key : container) {
             Processor p = container.findBibliography(key);
             if (p.countBibliographyStyles() == 0) {
-                log("bst.missing.in", key, file);
-                errors++;
+                error("bst.missing.in", key, file);
             }
             if (p.countDatabases() == 0) {
-                log("data.missing.in", key, file);
-                errors++;
+                error("data.missing.in", key, file);
             }
             if (p.countCitations() == 0) {
-                log("citation.missing.in", key, file);
-                errors++;
+                error("citation.missing.in", key, file);
             }
         }
+        return errors <= 0;
     }
 
 }

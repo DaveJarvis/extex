@@ -302,9 +302,11 @@ public interface Processor extends Bibliography, Configurable {
      * @param outWriter the writer output is sent to
      * @param logger the logger
      * 
+     * @return the number of warnings issued
+     * 
      * @throws ExBibException in case of an error
      */
-    void process(Writer outWriter, Logger logger) throws ExBibException;
+    long process(Writer outWriter, Logger logger) throws ExBibException;
 
     /**
      * Push the given item onto the stack.
