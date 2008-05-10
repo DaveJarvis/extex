@@ -198,11 +198,9 @@ public class CLI {
                 last = s;
             }
 
-            if (last != null) {
-                if (b) {
-                    buffer.append(']');
-                    b = false;
-                }
+            if (last != null && b) {
+                buffer.append(']');
+                b = false;
             }
             buffer.append(bundle.getObject(tag));
             buffer.append('\n');
@@ -301,4 +299,5 @@ public class CLI {
         return describeOptions(ResourceBundle.getBundle(getClass().getName()),
             null, null);
     }
+
 }
