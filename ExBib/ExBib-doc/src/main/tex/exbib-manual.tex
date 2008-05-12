@@ -6,7 +6,6 @@
 %%-----------------------------------------------------------------------------
 \documentclass{texinputs/extex-doc}
 
-\newif\ifdraft\drafttrue
 \def\Version{0.1}
 \title{Reference Manual}
 \author{Gerd Neugebauer}
@@ -19,6 +18,7 @@
 \newcommand\CLi[1]{\texttt{-{}#1}\index{#1@\texttt{-{}#1}}}
 \newcommand\CLI[1]{\texttt{-{}-#1}\index{#1@\texttt{-{}-#1}}}
 \newcommand\Property[1]{\texttt{#1}\index{#1@\texttt{#1}}}
+\newcommand\Env[1]{\texttt{#1}\index{#1@\texttt{#1}}}
 \newcommand\File[1]{\texttt{#1}\index{#1@\textsf{#1}}}
 \newcommand\Prog[1]{\texttt{#1}\index{#1}}
 \newcommand\Mode[1]{\texttt{#1}\index{#1}}
@@ -40,7 +40,8 @@
 \def\n{\char`\\n}
 \def\t{\char`\\t}
 
-\providecommand\BibTeX{Bib\TeX}
+\providecommand\BibTeX{\texorpdfstring{%
+    \textsc{Bib}\TeX}{BibTeX}}
 
 \makeindex
 
@@ -94,10 +95,10 @@ under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation. A copy of
 the license is included in the section entitled ``GNU Free
 Documentation License''.
-\bigskip
-
-This product includes software developed by the Apache Software
-Foundation (http://www.apache.org/).
+%\bigskip
+%
+%This product includes software developed by the Apache Software
+%Foundation (http://www.apache.org/).
 
 \vfill
 
@@ -110,13 +111,14 @@ Im Lerchelsb\"ohl 5\\
 
 \end{titlepage}
 
+%------------------------------------------------------------------------------
+
 \tableofcontents
 
 %------------------------------------------------------------------------------
 
 \input{chapter/intro}
 \input{chapter/started}
-\input{chapter/finder}
 \input{chapter/database}
 \input{chapter/styles}
 \input{chapter/tools}
@@ -124,6 +126,7 @@ Im Lerchelsb\"ohl 5\\
 \input{chapter/tex-aux}
 \input{chapter/csf}
 \input{chapter/configuration}
+\input{chapter/finder}
 
 \appendix
 \input{license/licenses}

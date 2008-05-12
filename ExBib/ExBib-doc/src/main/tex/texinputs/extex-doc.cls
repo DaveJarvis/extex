@@ -24,6 +24,8 @@
 \definecolor{colRule}{rgb}{.8,.8,.64}
 %
 \usepackage{listings}
+\xdef\lstlanguagefiles{\lstlanguagefiles,texinputs/lst-bst.sty}
+
 \lstset{%
     language=[AlLaTeX]TEX,%
     float=hbp,%
@@ -193,6 +195,8 @@
 
 \providecommand\eTeX{\ensuremath{\varepsilon}-\TeX}
 
+\newif\ifdraft
+
 \newcommand\INCOMPLETE{\bigskip\par
   {\unitlength=1pt
   \begin{tikzpicture}[scale=.08]\normalsize\sf\bfseries
@@ -200,7 +204,8 @@
     (10,0) -- (30,0) -- (40,6) -- (40,16) -- 
     (30,22) -- (10,22) -- (0,16) -- (0,6) -- cycle;
     \draw (20,11) node[white]{INCOMPLETE};
-  \end{tikzpicture}}
+  \end{tikzpicture}}%
+  \immediate\write\@auxout{\string\global\string\drafttrue}%
   \bigskip\par
 }
 \newcommand\Incomplete{\bigskip\par
@@ -210,7 +215,8 @@
     (10,0) -- (30,0) -- (40,6) -- (40,16) -- 
     (30,22) -- (10,22) -- (0,16) -- (0,6) -- cycle;
     \draw (20,11) node[white]{INCOMPLETE};
-  \end{tikzpicture}}
+  \end{tikzpicture}}%
+  \immediate\write\@auxout{\string\global\string\drafttrue}%
   \bigskip\par
 }
 

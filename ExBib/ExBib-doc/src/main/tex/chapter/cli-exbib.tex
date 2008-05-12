@@ -21,6 +21,113 @@ Windows batch script \Prog{exbib.bat}. After a successful installation
 those scripts should be resent on your execution path.
 
 
+\subsection{Dot Files}%
+\label{sec:dot.files}
+
+Dot files are a means to provide settings in a file -- in contrast to
+the command line parameters. Since the name starts in Unix\index{Unix}
+with a dot they are called dot files.
+
+\ExBib\ supports dot files. The name of the dot file is \File{.exbib}.
+This file is read in the user's home directory and the current
+directory -- if they exist. The settings performed in the different
+places have a certain precedency. From lowest to highest they are:
+
+\begin{itemize}
+\item compiled-in defaults
+\item \File{.exbib} in the home directory
+\item \File{.exbib} in the current directory
+\item command line arguments
+\end{itemize}
+
+Empty lines and lines starting -- after inital whitespace -- with a
+hash mark (\#) are treated as comments and ignored.
+\begin{lstlisting}{}
+# This is a comment
+\end{lstlisting}
+
+The dot files contain key value pairs in a line-based style. The key
+and the value are separated by an equality sign (=). Whitespace before
+the key and around the equality sign is ignored. The value follows the
+equality sign.
+\begin{lstlisting}{}
+exbib.file = file.aux
+\end{lstlisting}
+
+If the last character of the value on one line is a backslash
+(\textbackslash) then the value is continued on the next line. The
+leading whitespace on the next line is ignored.
+\begin{lstlisting}{}
+exbib.file = file.\
+             aux
+\end{lstlisting}
+
+The following properties are recognized in a dot file:
+
+\begin{description}
+\item[\Property{exbib.file}] \ \\
+  This property contains the name of the aux file to read. Note that
+  only one aux file can be given. The value from the dot file in the
+  current directory silently overwrites the value from the dot file in
+  the home directory. If an additional aux file is given on the
+  command line then an error is raised.
+\item[\Property{exbib.config}] \ \\
+  This property contains the name of the configuration to be used. The
+  default is \texttt{exbib}.
+\item[\Property{exbib.logfile}] \ \\
+  This property contains the name of the log file. If it is empty then
+  no log file will be written. The default is derived from the base
+  name of the aux file by appending \texttt{.log}.
+\item[\Property{exbib.bib.encoding}] \ \\
+  This property contains the name of the encoding for reading bib
+  databases. If it is not present or empty then the platform default
+  is used as fallback.
+\item[\Property{exbib.encoding}] \ \\
+  This property contains the name of the encoding for reading aux
+  files and writing. If it is not present or empty then the platform
+  default is used as fallback.
+\item[\Property{exbib.csf.encoding}] \ \\
+  This property contains the name of the encoding for reading cs
+  files. If it is not present or empty then the platform default is
+  used as fallback.
+\item[\Property{exbib.csf}] \ \\
+  This property contains the name of a cs file to define the
+  characters and sorting properties.
+\item[\Property{texinputs}] \ \\
+  This property contains a path for searching resources. The
+  environment variable \Env{TEXINPUTS} is put into this property.
+  Otherwise the default is empty.
+\item[\Property{extex.texinputs}]  \ \\
+  This property contains a path for searching resources. The
+  environment variable \Env{EXTEX\_TEXINPUTS} is put into this property.
+  Otherwise the default is empty.
+\item[\Property{exbib.output}] \ \\
+  This property contains the name of the output file. It replaces the
+  bbl file.
+\item[\Property{program.name}] \ \\
+  This propery can be used to influence how the program calles itself
+  in messages. User's should rarely need to play around with this
+  property.
+\end{description}
+
+Note that any key can be used in a dot file. Unknown keys are silently
+ignored. Thus watch out for typos in keys.
+
+
+\subsubsection{Home Directory on Unix}
+
+The home directory on a Unix\index{Unix} system is user specific
+setting. It is determined from the environment variable \Env{HOME}. A
+typical value is \texttt{/home/donald}.
+
+\subsubsection{Home Directory on Windows}
+
+The home directory on a Windows\index{Windows} system is a user
+specific setting.  A typical value is
+\verb|C:\windows\profiles\donald|.
+
+
+
 \subsection{Command Line Parameters}
 %@author Gerd Neugebauer
 
@@ -28,24 +135,45 @@ The invocation of the executable \Prog{exbib} can be controlled by
 large number of command line arguments. Those command line arguments
 are described in the following sections.
 
+\subsubsection{Defining Properties}
+
+\begin{description}
+\item[\CLi{D}\Arg{property}\texttt{=}\Arg{value}]\ \\
+
+The preferred way to communicate settings to \ExBib\ is via
+properties. The most command line options are for convenience or
+backward compatibility.
+
+The setting of arbitrary properties can be accomplished with the
+command line argument \texttt{-D}. The properties are the same as
+those used in dot files (see section~\ref{sec:dot.files}). This
+command line option as shown in the following example:
+
+\begin{lstlisting}[language=sh]
+# exbib -Dexbib.file=file.aux
+\end{lstlisting}
+
+\end{description}
+
+
 \subsubsection{The Aux File}
 
 \begin{description}
 \item[\Arg{file}]\ \\
   This parameter contains the aux file to read from. A file name may not
   start with minus sign. It has no default.
-  \begin{lstlisting}{}
+  \begin{lstlisting}[language=sh]
     # exbib doc.aux
     This is exbib, Version 0.1
   \end{lstlisting}
   
 \item[\CLi{} \Arg{file}]
 \item[\CLI{} \Arg{file}]\ \\
-  This parameter terminates the intercepts processing of arguments. The
-  next argument -- if present -- is interpreted as input file. With
-  this construction it is possible to process an input file which
-  starts with the special character \verb|-|.
-  \begin{lstlisting}{}
+  This parameter intercepts the processing of arguments. The next
+  argument -- if present -- is interpreted as input file. With this
+  construction it is possible to process an input file which starts
+  with the special character \verb|-|.
+  \begin{lstlisting}[language=sh]
     # exbib -- doc.aux
     This is exbib, Version 0.1
   \end{lstlisting}
@@ -72,7 +200,7 @@ it contains the following items:
 \item[\CLI{copying}]\ \\
   This command line option produces a copyright notice on the standard
   output stream and terminates the program afterwards.
-  \begin{lstlisting}{}
+  \begin{lstlisting}[language=sh]
 # exbib --copying
                  GNU LESSER GENERAL PUBLIC LICENSE
                       Version 2.1, February 1999
@@ -96,7 +224,7 @@ free software--to make sure the software is free for all its users.
 \item[\CLI{help}]\ \\
   This command line option produces a short usage description on the
   standard output stream and terminates the program afterwards.
-  \begin{lstlisting}{}
+  \begin{lstlisting}[language=sh]
 # exbib --help
 This is exbib, Version 0.1
 Usage: exbib <options> file
@@ -114,7 +242,7 @@ The following options are supported:
   This command prints the release number to stdout and exits the
   program. This can be used to enable external programs to easily
   determine the version number of \ExBib.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --release
 0.1
 #
@@ -126,7 +254,7 @@ The following options are supported:
   terminated.\index{version} The version of \ExBib\ is shown. The
   following example shows a possible invocation and the resulting
   output:
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --version
 This is exbib, Version 0.1
 Copyright (C) 2002-2008 Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).
@@ -152,7 +280,7 @@ switch -copying.
   The language is used to select the appropriate messages for logging
   and error messages. If the given language is not supported English
   is silently used as fallback.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --language de --help
 Dies ist exbib, Version 0.1
 Copyright (C) 2002-2008 Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).
@@ -178,7 +306,7 @@ acts as entry point.
 \item[\CLI{configuration} \Arg{config}]\ \\
   Set the configuration file to be used for assembling \ExBib. The
   default is the configuration \texttt{exbib}.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --configuration bibtex099 doc.aux
 This is exbib, Version 0.1
 ...
@@ -187,7 +315,7 @@ This is exbib, Version 0.1
 \item[\CLI{bibtex}]
 \item[\CLI{strict}]\ \\
   Use the configuration \texttt{bibtex099} for assembling \ExBib.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --bibtex doc.aux
 This is exbib, Version 0.1
 ...
@@ -411,7 +539,7 @@ The following command line options are related to encodings:
 \item[\CLI{availableCharsets}]\ \\
   This instruction lists the available character sets on standard
   output and exits the program.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --availableCharsets
 Big5
 Big5-HKSCS
@@ -429,61 +557,70 @@ IBM01140
 \item[\CLi{E} \Arg{enc}]
 \item[\CLI{bib-encoding} \Arg{enc}]
 \item[\CLI{bib.encoding} \Arg{enc}]\ \\
-  Set the configuration for reading bib database files. The encoding
-  needs to be a valid character set. The fallback is the platform
-  default encoding.
-\begin{lstlisting}{}
+  Set the encoding for reading bib database files. The encoding needs
+  to be a valid character set. The fallback is the platform default
+  encoding.
+\begin{lstlisting}[language=sh]
 # exbib --bib-encoding=UTF8 doc.aux
+...
+\end{lstlisting}
+
+\item[\CLI{csf-encoding} \Arg{enc}]
+\item[\CLI{csf.encoding} \Arg{enc}]\ \\
+  Set the encoding for reading cs files. The encoding needs to be a
+  valid character set. The fallback is the platform default encoding.
+\begin{lstlisting}[language=sh]
+# exbib --csf-encoding=UTF8 doc.aux
 ...
 \end{lstlisting}
 
 \item[\CLi{e} \Arg{enc}]
 \item[\CLI{encoding} \Arg{enc}]\ \\
-
-  \INCOMPLETE
-\begin{lstlisting}{}
+  Set the encoding for reading aux files and writing files. The
+  encoding needs to be a valid character set. The fallback is the
+  platform default encoding\index{encoding}.
+\begin{lstlisting}[language=sh]
 # exbib --encoding=UTF8 doc.aux
 ...
 \end{lstlisting}
 
 \end{description}
-%        --e[ncoding] | -e <enc>
-%        	Nutze das gegebene Encoding für die Ausgabedatei.
 \index{encoding|)}
 
 \subsubsection{CS Files}%
 \index{csf|(}
 
+Cs files contain trhe definition of the character set and sortig
+order. They have been introduced in \BibTeX~8\index{BibTeX 8|\BibTeX 8}.
+For details on the format refer to section~\ref{sec:csf}
+
 \begin{description}
 \item[\CLI{csfile} \Arg{csfile}]\ \\
-
-  \INCOMPLETE
-\begin{lstlisting}{}
+  Read the definition of the character sets and sorting order from the
+  given cs file. Refer to section~\ref{sec:csf} for details about the
+  format of the file.
+\begin{lstlisting}[language=sh]
 # exbib --csfile=iso8859-7.csf doc.aux
 ...
 \end{lstlisting}
-%        --cs[file] <csfile>
-%        	Nutze das csf zur Definition von Zeichen und Sortierung.
 
 \item[\CLi{7}]
 \item[\CLI{traditional}]\ \\
+%        	arbeite im originalen 7-Bit-Modus.
   \INCOMPLETE
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --traditional doc.aux
 ...
 \end{lstlisting}
-%        --trad[itional] | -7
-%        	arbeite im originalen 7-Bit-Modus.
 
 \item[\CLi{8}]
 \item[\CLI{8bit}]\ \\
+%        	Erzwinge  8-Bit-Modus, es wird keine CS-Datei eingesetzt.
   \INCOMPLETE
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --8bit doc.aux
 ...
 \end{lstlisting}
-%        --8[bit] | -8
-%        	Erzwinge  8-Bit-Modus, es wird keine CS-Datei eingesetzt.
 \end{description}
 \index{csf|)}
 
@@ -496,20 +633,20 @@ IBM01140
   name of the log file is derived from the base name of the aux file
   by appending \texttt{.blg}. This option overwrites this default.
   behaviour.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --logfile=my.log doc.aux
 ...
 \end{lstlisting}
 
   If the given file name is the value \texttt{-} then the output is
   sent to stdout.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --logfile=- doc.aux
 ...
 \end{lstlisting}
 
   If the given file name is empty then the log output is discarded.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --logfile= doc.aux
 ...
 \end{lstlisting}
@@ -521,20 +658,20 @@ IBM01140
   name of the output file is derived from the base name of the aux file
   by appending \texttt{.bbl}. This option overwrites this default.
   behaviour.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --outfile=my.out doc.aux
 ...
 \end{lstlisting}
 
   If the given file name is the value \texttt{-} then the output is
   sent to stdout.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --outfile=- doc.aux
 ...
 \end{lstlisting}
 
   If the given file name is empty then the output is discarded.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --outfile= doc.aux
 ...
 \end{lstlisting}
@@ -542,30 +679,20 @@ IBM01140
 \end{description}
 
 
-\subsubsection{Changing the Style}
-
-\begin{description}
-\item[\CLi{b} \Arg{style}]
-\item[\CLI{bst} \Arg{style}]\ \\
-  This option sets the name of the bib style to be used. The bib style
-  is normally read from the aux file. This instruction overrules
-  whatever the aux file contains.
-\begin{lstlisting}{}
-# exbib --bst=alpha doc.aux
-...
-\end{lstlisting}\index{bst!alpha}
-
-\end{description}
-
 \subsubsection{Minimum Cross-References}
 
 \begin{description}
 \item[\CLi{M} \Arg{n}]
 \item[\CLI{min-crossrefs} \Arg{n}]
-\item[\CLI{min.crossrefs} \Arg{n}]
+\item[\CLI{min.crossrefs} \Arg{n}] \ \\
   This option sets the minimum number of cross-references before an
-  entry is not collaped.
-\begin{lstlisting}{}
+  entry is not collapsed. The cross referencing in entries provides a
+  means for inheriting fields between entries. Usually the entries are
+  included in the output.  Nevertheless when there are only a few
+  referenes to an entry this entry is collapsed into the referencing
+  entries and does not appear alone. This parameter controlls this
+  behaviour.
+\begin{lstlisting}[language=sh]
 # exbib --min-crossrefs=4 doc.aux
 ...
 \end{lstlisting}
@@ -582,7 +709,7 @@ IBM01140
   This option sets the name of the program. Thus it is possible to
   influence how the program calls itself in logging and error messages
   from outside .
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --progname=BibTeX doc.aux
 This is BibTeX, Version 0.1
 ...
@@ -596,11 +723,56 @@ This is BibTeX, Version 0.1
 \begin{description}
 \item[\CLi{d} \Arg{mode}]
 \item[\CLI{debug} \Arg{mode}]\ \\
-\INCOMPLETE
+  This option turns on the debugging facilities. This means that
+  additional information is written to the log file.  This can be done
+  selectively. Several aspects can be debugged independently. For this
+  purpose the option takes an argument. This argument can be one or
+  more of the following items:
+  \begin{description}
+  \item[all] 
+    Debug all of the items below.
+  \item[none] 
+    Clear all previously entered debugging items.
+  \item[search]
+    Debug the searching algorithm for resources.
+  \item[io] 
+    Debug the I/O.
+  \item[mem] Debug the memory allocation. This is her for
+    compatibility with \BibTeX~8. in ExBib it does nat have a meaning.
+  \item[misc] 
+    Debug miscellaneous items.
+  \item[csf] 
+    Debug the processing of CFS files.
+  \end{description}
+\begin{lstlisting}[language=sh]
+# exbib --debug=search doc.aux
+...
+\end{lstlisting}
+The names can be given in any case combination. Thus the example above
+is equivalent to the following invocation:
+\begin{lstlisting}[language=sh]
+# exbib --debug=SeArCH doc.aux
+...
+\end{lstlisting}
+If several debug items are specified they can be given with several
+invocations of the command line argument. This is shown in the
+following example:
+\begin{lstlisting}[language=sh]
+# exbib --debug=search --debug=io doc.aux
+...
+\end{lstlisting}
+The values can also be combined in one use of the parameter by
+separating the values by comma (,), semicolon (;), colon (:) or space.
+\begin{lstlisting}[language=sh]
+# exbib --debug=search,io doc.aux
+...
+\end{lstlisting}
+
+Note that several command line processors have their own idea of
+special characters. Thus in most cases the embedded semicolon or space
+has to be escaped properly to arrive intact at \ExBib.
 
 \end{description}
-%        --d[ebug] | -d
-%        	Arbeite im Debug-Modus.
 
 \begin{description}
 \item[\CLi{q}]
@@ -609,7 +781,7 @@ This is BibTeX, Version 0.1
   This option switches the operation to quiet mode. Nearly all
   informative messages are suppressed on standard output.
   Nevertheless they can be found in the log file -- if one is written.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --quiet doc.aux
 #
 \end{lstlisting}
@@ -622,7 +794,7 @@ This is BibTeX, Version 0.1
   
   Note that this option can drastically decrease the performance of
   operation.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --trace doc.aux
 This is BibTeX, Version 0.1
 ...
@@ -632,7 +804,7 @@ This is BibTeX, Version 0.1
 \item[\CLI{verbose}]\ \\
   This option switches the operation to verbose mode. Some more
   informative messaged might be presented during the operation.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # exbib --verbose doc.aux
 #
 \end{lstlisting}
@@ -681,11 +853,78 @@ equivalent:\index{prefix}
 \end{verbatim}
 
 
+\subsection{Environment Variables}%
+\index{environment variables|(}
+
+In addition to passing arguments to the executable upon invocation
+there is another mechanism to influence the behaviour of \ExBib.
+\ExBib\ recognizes a small set of environment variables and makes use
+of their value if they happen to be defined.
+
+\begin{description}
+\item [\Env{TEXINPUTS}]\ \\
+  This environment variable has a long tradition in \TeX. It contains
+  the path to directories where files might be found. The elements in
+  this path are separated by a single letter. On Unix this is the
+  colon (:) and on Windows this is the semicolon (;).
+
+  This environment variable is transfered to the property
+  \Property{texinputs}. 
+
+\item [\Env{EXTEX\_TEXINPUTS}]\ \\
+  This environment variable contains the path to directories where
+  files might be found. The elements in this path are separated by a
+  single letter. On Unix this is the colon (:) and on Windows this is
+  the semicolon (;).
+
+  This environment variable is transfered to the property
+  \Property{extex.texinputs}. 
+\end{description}
+
+
+\subsubsection{Environment Variables on Unix -- sh and Friends}%
+\label{sec:env-sh}
+
+Environment variables are typically stored in the home directory of
+any user. Depending on the shell a file is read at startup. \Prog{sh}
+and \Prog{bash} use the file \File{.profile} for initialization. Thus
+environment variables can be defined there.
+
+The syntax is shown in the following example 
+
+\begin{lstlisting}[language=sh]
+export TEXINPUTS='/opt/extex/exbib/texmf'
+\end{lstlisting}
+
+\subsubsection{Environment Variables on Unix -- csh and Friends}
+
+Environment variables are typically stored in the home directory of
+any user. Depending on the shell a file is read at startup. \Prog{csh}
+uses the file \File{.cshrc} for initialization. Thus environment
+variables can be defined there.
+
+The syntax is shown in the following example 
+
+\begin{lstlisting}[language=csh]
+setenv TEXINPUTS '/opt/extex/exbib/texmf'
+\end{lstlisting}
+
+\subsubsection{Environment Variables on WIndows}
+
+Environment variables on Windows are defined via a dialog. In XP the dialog
+can be found via the menu \textsf{System}. The tab \textsf{Extended}
+provides a button \textsf{Environment} which brings up a dialog to
+edit the environment variables.
+
+If you happen to use Cygwin\index{Cygwin} on Windows the same remarks
+as given for \Prog{sh} in section~\ref{sec:env-sh} apply.
+\index{environment variables|)}
+
+
+
 \endinput
 %
 % Local Variables: 
 % mode: latex
-% TeX-master: nil
+% TeX-master: "../exbib-manual"
 % End: 
-%        --r[elease]
-%        	Zeige die Versionsnummer und beende das Programm.

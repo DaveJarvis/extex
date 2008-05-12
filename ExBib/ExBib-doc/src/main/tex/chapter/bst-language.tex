@@ -104,7 +104,7 @@ continues to the end of the line. This is the same definition an in
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   % BibTeX standard bibliography style `alpha'
 \end{lstlisting}
 
@@ -116,8 +116,8 @@ strings contain braces only in matching pairs. As a consequence a
 double quote can be included in a string by enclosing it in braces.
 This is shown in the following example:
 
-\begin{lstlisting}{}
-  "abc {"} def"
+\begin{lstlisting}[language=bst,escapechar=|]
+  "abc {|\char`\"|} def"
 \end{lstlisting}
 
 
@@ -125,14 +125,14 @@ This is shown in the following example:
 
 Integer literals in the code are preceded by a hash mark '\#'.
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   #123
 \end{lstlisting}
 
 Integers can be negative. In this case the sign is written after the
 initial hash mark:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   #-123
 \end{lstlisting}
 
@@ -141,7 +141,7 @@ initial hash mark:
 
 \INCOMPLETE
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   'abc
 \end{lstlisting}
 
@@ -149,7 +149,7 @@ initial hash mark:
 
 \INCOMPLETE
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   { skip$ }
 \end{lstlisting}
 
@@ -177,7 +177,7 @@ common name space. Thus any name has to be unique among those.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   ENTRY
   { address
     author
@@ -220,7 +220,7 @@ Nevertheless the declaration of a variable should precede its use.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   INTEGERS { output.state before.all }
 \end{lstlisting}
 
@@ -238,7 +238,7 @@ Nevertheless the declaration of a variable should precede its use.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   STRINGS { s t }
 \end{lstlisting}
 
@@ -255,7 +255,7 @@ the \texttt{@string} declaration in a bib file.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   MACRO {jan} {"January"}
 \end{lstlisting}
 
@@ -268,7 +268,7 @@ current entry then this code is executed.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   EXECUTE {begin.bib}
 \end{lstlisting}
 
@@ -283,7 +283,7 @@ executed.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   ITERATE{call.type$}
 \end{lstlisting}
 
@@ -298,7 +298,7 @@ executed.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   REVERSE{reverse.pass}
 \end{lstlisting}
 
@@ -310,7 +310,7 @@ This command sorts the entries of the database according to its sort
 key lexicographically increasing. The sort key is taken from the entry
 variable \texttt{sort.key\$}.
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   SORT
 \end{lstlisting}
 
@@ -322,7 +322,7 @@ This command read entries into the database. The database is empty
 before the read command is encountered. The list of entries is ordered
 according to the order they are encountered.
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   READ
 \end{lstlisting}
 
@@ -336,7 +336,7 @@ with it.
 
 \INCOMPLETE
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   FUNCTION {sortify}
   { purify$
     "l" change.case$
@@ -354,7 +354,7 @@ contents of those file would have been included here. \IM{x}
 If the named file or other resource could not be found then an error
 is raised.
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   INPUT{some/other/bst}
 \end{lstlisting}
 
@@ -430,7 +430,7 @@ integers then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     { namesleft #0 > }
     { 
       % some actions
@@ -460,7 +460,7 @@ integers then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
 FUNCTION {tie.or.space.connect}
 { duplicate$ text.length$ #3 <
     { "~" }
@@ -492,7 +492,7 @@ incomparable types then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     output.state mid.sentence =
     { "number" }
     { "Number" }
@@ -517,7 +517,7 @@ integers then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     s len #1 +
 \end{lstlisting}
 
@@ -539,7 +539,7 @@ integers then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   namesleft #1 - 'namesleft :=
 \end{lstlisting}\fctIndex{-}\fctIndex{:=}
 
@@ -559,7 +559,7 @@ the stack or the arguments are no strings then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "there's a month but no year in " cite$ * warning$
 \end{lstlisting}
 
@@ -580,7 +580,7 @@ value.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     { namesleft #0 > }
     { 
       % some actions
@@ -609,7 +609,7 @@ When determining the last character closing braces are ignored.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   FUNCTION {fin.entry}
   { add.period$
     write$
@@ -630,7 +630,7 @@ translated to lower case.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   ITERATE {call.type$}
 \end{lstlisting}
 
@@ -672,7 +672,7 @@ match then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   edition "l" change.case$
 \end{lstlisting}
 
@@ -694,7 +694,7 @@ characters.
   \Out1{number}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "a" chr.to.int$
 \end{lstlisting}
 
@@ -712,7 +712,7 @@ error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "there's a month but no year in " cite$ * warning$
 \end{lstlisting}
 
@@ -730,7 +730,7 @@ stack is empty an error is raised.
   \Out2{arg}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "abc"
   duplicate$
 \end{lstlisting}
@@ -753,7 +753,7 @@ succeeds and 0 if it fails.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   preamble$ empty$
     'skip$
     { preamble$ write$ newline$ }
@@ -793,7 +793,7 @@ together those parts in various ways.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   editor #2 "{ff }{vv }{ll}{ jj}" format.name$
 \end{lstlisting}
 
@@ -821,7 +821,7 @@ match then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     output.state mid.sentence =
     { "number" }
     { "Number" }
@@ -836,16 +836,19 @@ translates it into a single character sting containing the character
 associated to the code point. This string is left on the stack.
 
 Note\IM{x} that \BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c} and
-\BibTeX~8\index{BibTeX 8@\BibTeX~8} restrict the characters to
-8~bit characters. \ExBib\ has expanded the definition to 16~bit
-Unicode characters.
+\BibTeX~8\index{BibTeX 8@\BibTeX~8} restrict the characters to 8~bit
+characters. \ExBib\ has expanded the definition to 16~bit Unicode
+characters. Thus in compatibility mode of \ExBib\ the use of anumber
+larger than 255 leads to an error. In \ExBib\ native mode those
+numbers are treated correctly as larger Unicode\Index{Unicode} code
+points.
 
 \begin{BstFunction}{int.to.chr\$}
   \In1{number}
   \Out1{character}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   #0 int.to.chr$
 \end{lstlisting}
 
@@ -861,7 +864,7 @@ decimal representation of the argument back to the stack.
   \Out1{string}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   #123 int.to.str$
 \end{lstlisting}
 
@@ -883,7 +886,7 @@ an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     crossref missing$
     { "author and editor" editor either.or.check }
     'skip$
@@ -902,7 +905,7 @@ This function writes a newline character to the output stream.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "\newcommand{\etalchar}[1]{$^{#1}$}" write$ newline$
 \end{lstlisting}\fctIndex{write\$}\fctIndex{newline\$}
 
@@ -925,7 +928,7 @@ this word has to occur at brace level 0.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   editor num.names$ #1 >
     { ", editors" * }
     { ", editor" * }
@@ -945,7 +948,7 @@ discarded.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
 FUNCTION {output}
 { duplicate$ empty$
     'pop$
@@ -964,7 +967,7 @@ pushes it as string onto the stack.
   \Out1{preamble}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   preamble$
 \end{lstlisting}
 
@@ -982,7 +985,7 @@ pushes it as string onto the stack.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
 FUNCTION {sortify}
 { purify$
   "l" change.case$
@@ -1003,7 +1006,7 @@ double quote character '"' to the stack.
 This function can be used to construct a string containing a double
 quote without using the brace trick:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "abc " quote$ * " def" * 
 \end{lstlisting}\fctIndex{quote\$}\fctIndex{*}
 
@@ -1018,7 +1021,7 @@ mandatory but nothing should be done.
 \begin{BstFunction}{skip\$}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   skip$
 \end{lstlisting}
 
@@ -1035,7 +1038,7 @@ file. This function is useful for debugging purposes.
   \Out0{Empty}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   stack$
 \end{lstlisting}
 
@@ -1073,7 +1076,7 @@ raised.
   \Out0{substring}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   cite$ #1 #3 substring$
 \end{lstlisting}
 
@@ -1095,7 +1098,7 @@ raised.
   \Out2{arg1}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   swap$
 \end{lstlisting}
 
@@ -1113,7 +1116,7 @@ of character units.
   \Out1{length}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   preamble$ text.length$
 \end{lstlisting}
 
@@ -1131,7 +1134,7 @@ of character units.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   key #3 text.prefix$
 \end{lstlisting}\fctIndex{text.prefix\$}
 
@@ -1147,7 +1150,7 @@ If the stack is empty an error is raised.
   \In1{argument}
 \end{BstFunction}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   top$
 \end{lstlisting}
 
@@ -1168,7 +1171,7 @@ the empty string is pushed to the stack.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   type$ "book" =
   type$ "inbook" =
   or
@@ -1194,7 +1197,7 @@ the stack.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "there's a number but no series in " cite$ * warning$ 
 \end{lstlisting}%
 \fctIndex{cite\$}\fctIndex{warning\$}
@@ -1221,7 +1224,7 @@ then an error is raised.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
     { namesleft #0 > }
     { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
 
@@ -1251,7 +1254,7 @@ treated specially.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   label width$
 \end{lstlisting}
 
@@ -1269,7 +1272,7 @@ message to the output stream.
 
 The following example is taken from \File{alpha.bst}:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bst]
   "\end{thebibliography}" write$
 \end{lstlisting}
 

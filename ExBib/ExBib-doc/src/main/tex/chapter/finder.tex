@@ -11,12 +11,168 @@ resources are plain files. Whenever a resource is needed a search for
 it takes place. We will see how the search works and how it can be
 influenced.
 
+
+\subsection{The Configuration File}
+
+\ExBib\ inherits its resource search from \ExTeX\index{ExTeX@\ExTeX}.
+This resource search is rather flexible and highly configurable. With
+this respect it follows the path defined by kpathsea\index{kpathsea}.
+
+The search for a resource can be configured in a configuration file.
+This configuration files utilizes resource finders which have a
+configuration section each.
+
 \INCOMPLETE
 
+\subsection{Locating the Configuration File in \ExBib}
+
+
+\INCOMPLETE
+
+\subsection{File Search in the Directory Tree}
+
+The simplest search strategy is to look into a list of directories and
+maybe try a list of extensions until a suitable file is found. This
+strategy is implemented in the class
+\texttt{org.extex.resource.FileFinder}.
+
+Attributes
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.FileFinder} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\begin{lstlisting}{}
+  <Finder class="org.extex.resource.FileFinder"
+          default="default">
+    <default>
+      <path>.</path>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <extension>.{type}</extension>
+      <extension/>
+    </default>
+  </Finder>
+\end{lstlisting}
+
+
+\INCOMPLETE
+
+\subsection{Searching in texmf Trees}
+
+Attributes
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[capacity] The attribute \texttt{capacity} gives an initial
+  capacity for the size of the hash used to store the index entries
+  from the \File{ls-R} files. Its fallback is rather small and the
+  performance can be influenced positively by using this attribute
+  with a proper value.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\begin{lstlisting}{}
+  <Finder class="org.extex.resource.LsrFinder"
+          trace="false"
+          capacity="88888"
+          default="default">
+    <path property="extex.texinputs"/>
+    <path property="texinputs"/>
+
+    <default>
+      <extension>.{type}</extension>
+      <extension/>
+    </default>
+  </Finder>
+\end{lstlisting}
+
+\INCOMPLETE
+
+\subsection{Recursively Searching in Directory Trees}
+
+\begin{lstlisting}{}
+\end{lstlisting}
+
+\INCOMPLETE
+
+\subsection{Searching in Archives}
+
+The preferred way to store resources in \ExTeX\ are archives. Archives
+are conpressed files which contain a complete tree of directories and
+files. This archive also contains administrative information.
+
+The archive used in \ExTeX\ have the extension \texttt{.jar}. They are
+special jar files which in turn are special zip files. Thus you can
+use the programs \Prog{jar}, \Prog{unzip}, or \Prog{Winzip} to get a
+listing or extract the directory tree from the archive.
+
+Attributes
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\begin{lstlisting}{}
+  <Finder class="org.extex.resource.ClasspathArchiveFinder"
+          trace="false"
+          default="default">
+    <default>
+      <extension>.{type}</extension>
+    </default>
+  </Finder>
+\end{lstlisting}
+
+\INCOMPLETE
+
+\subsection{The Default Search}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+\end{lstlisting}
+
+\subsection{Tracing the Search}
+
+The tracing can be activated with the trace attributes for some
+sections or globally for the whole search at runtime. As a consequence
+the log file should contain messages describing the search -- where it
+looked and what it found.
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+\end{lstlisting}
 
 \endinput
 %
 % Local Variables: 
 % mode: latex
-% TeX-master: nil
+% TeX-master: "../exbib-manual"
 % End: 

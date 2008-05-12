@@ -15,36 +15,36 @@ open design and a high degree of configurability.
 A tight integration of several components is one of the possibilities
 opened by \ExTeX. To work into this direction \ExBib\ has been
 implemented. It is a plug-in replacement for
-\BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c}\ \cite{btxdoc,btxhak}
+\BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c}\cite{btxdoc,btxhak}
 or \BibTeX~8\index{BibTeX 8@\BibTeX~8}.
 
 \begin{figure}[hb]
   \centering
   \input{fig/bib-files}
-  \caption{\ExBib\ and the Text Processor}
+  \caption{\ExBib\ and the Text Processor}%
   \label{fig:files}
 \end{figure}
 The principal interaction of a bibliography processor and a text
-processor has been defined by \BibTeX\index{BibTeX@\BibTeX}. This is
-depicted in figure~\ref{fig:files}. The underlying communication
-structure is file based. This scheme is supported by \ExBib\ as well.
+processor\index{text processor} has been defined by
+\BibTeX\index{BibTeX@\BibTeX}. This is depicted in
+figure~\ref{fig:files}. The underlying communication structure is file
+based. This scheme is supported by \ExBib\ as well.
 
-The main input from the text processor is transferred in the aux file.
-In \LaTeX\index{LaTeX@\LaTeX} (cf. \cite{lamport:latex}) the directive
-\verb|\include| can be used to conditionally include parts of a
-complete document. To make this work several aux files are written --
-one for each fragment. This \ExBib\ has to cope with several aux
-files.
+The main input from the text processor\index{text processor} is
+transferred in the \texttt{aux} file. In \LaTeX\index{LaTeX@\LaTeX}
+(cf. \cite{lamport:latex,goosens.mittelbach:latex.companion}) the
+directive \macro{include} can be used to conditionally include parts
+of a complete document. To make this work several \texttt{aux} files
+are written -- one for each fragment. This \ExBib\ has to cope with
+several \texttt{aux} files.
 
-The aux files contains the information on the databases to be used
-and the bib style. Accordingly the databases and the style are read.
-
-As a result of the processing a formatted list of database entries is
-produced in a bbl file. Additionally logging information may be sent
-to a log file.
-
-The bbl file can be read in by the text processor to include the
-entries into the document. This completes the cycle.
+The \texttt{aux} files contain the information on the databases to be
+used and the bib style. Accordingly the databases and the style are
+read. As a result of the processing a formatted list of database
+entries is produced in a \texttt{bbl} file. Additionally logging
+information may be sent to a log file. The \texttt{bbl} file can be
+read in by the text processor to include the entries into the
+document. This completes the cycle.
 
 One cycle may not be enough to resolve all citations. If the database
 entries contain references (in form of \verb|\cite|
@@ -52,6 +52,36 @@ macros\index{cite@\verb/\cite/}). Then they can be resolved in a
 second round. Unfortunately this may theoretically continue ad
 infinitum. Practically spoken this has not been observed in real life.
 Most of time one cycle or at most two of them are sufficient.
+
+
+\section{Bibliography Processors -- a Short History}
+
+\BibTeX\ is the well known bibliography processor in the \TeX\ world.
+It has been written by Oren Patashnik\index{Patashnik, Oren} in 1983
+to 1988. The foundations are older. \BibTeX\ refers in some aspects
+back to Scribe\index{Scribe}.
+
+The current release is \BibTeX~0.99c (\cite{btxdoc,btxhak}). The
+development seems to be ended.\IM{0}
+
+The long awaited release \BibTeX~1.0 should finalize the development
+and include some additional features. Several papers have been published
+(\cite{patashnik:bibtex1.0,patashnik:bibtex}) but a working version
+has not been seen yet.\IM{1}
+
+Since \BibTeX~0.99c has some deficiencies with respect to sorting and
+character sets a rewrite in has been done by Niel
+Kempson\index{Kempson, Niel} and Alejandro
+Aguilar-Sierra\index{Aguilar-Sierra, Alejandro} around 1996. This is
+\BibTeX~8. \BibTeX~8 uses internally 8-bit characters and provides
+means to deal with different encodings.\IM{8}
+
+
+ML\BibTeX\index{MLBibTeX@ML\BibTeX} is an attempt oif Jean-Marie
+Hufflen\index{Hufflen, Jean-Marie} to rewrite \BibTeX\ and enhance ot
+with features for multi-lingual processing.
+
+\INCOMPLETE
 
 
 \section{This Document}
@@ -64,13 +94,13 @@ Thus do not expect tutorial type material in this document.
 \section{Web Site}%
 %@author Gerd Neugebauer
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
-  \includegraphics[width=.5\textwidth]{img/www-extex-org}\hfill
+  \includegraphics[width=.5\textwidth]{img/www-extex-org}
   \caption{\texttt{www.extex.org}}
   \label{fig:www.exetex.org}
 \end{figure}
-There is a web site devoted to \ExTeX. \index{WWW}\index{Web Site}This
+There is a web site devoted to \ExTeX.\index{WWW}\index{Web Site} This
 web site (see figure~\ref{fig:www.exetex.org}) can be reached via the
 URL\index{www.extex.org}
 \begin{quotation}
@@ -82,7 +112,7 @@ URL\index{www.extex.org}
 %@author Gerd Neugebauer
 
 If you are ready to try \ExBib{} you might as well want to join a
-mailing list to get in contact with the community.\index{Mailing list}
+mailing list to get in contact with the community.\index{mailing list}
 
 \begin{quotation}
   \url{http://www.dante.de/listman/extex}

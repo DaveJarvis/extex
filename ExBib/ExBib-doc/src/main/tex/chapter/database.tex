@@ -9,8 +9,8 @@
 
 \section{Syntax}
 
-The data base in \BibTeX\ style consists of a simple text file.
-\IM{08x1}
+The data base in \BibTeX\index{BibTeX@\BibTeX} style consists of a
+simple text file. \IM{08x1}
 
 The following characters have a special meaning for the \BibTeX\
 syntax:
@@ -19,19 +19,38 @@ syntax:
 \end{verbatim}
 Any other character is treated equally as ordinary character.
 
-\INCOMPLETE
+An instruction is started with an at sign (@) followed by its name.
+The name is composed of upper or lowercase letters and digits.
+
+Whatever follows the name of the instruction depends on the
+instruction. In most cases the parameters for the instruction are
+following. They are enclosed in braces. For compatibility with
+Scribe\index{Scribe} parentheses are sometimes allowed instead of the
+braces.
 
 
-\section{\texttt{@input}}
-\IM{x1}
+\section{The \texttt{@input} Instruction}%
+\index{@input|(}
+
+Sometimes it might be desirable to split a database into several
+segements. This is supported by the ability to pass inseveral
+databases via the aux file. The \texttt{@input} instruction provides
+another mechanism for the same which acts on the level of the database
+files. \IM{x1}
+
+The instruction takes as argument a resource name. It includes the
+content as if it where present at the place of the instruction.
 
 \begin{verbatim}
   @input(some/other/resource)
 \end{verbatim}
 
-\INCOMPLETE
+\index{@input|)}
 
 \section{Entries}
+
+Any instruction which has no special meaning is considered to be an
+entry in the database.
 \IM{08x1}
 
 \INCOMPLETE
@@ -45,7 +64,7 @@ own.
 \INCOMPLETE
 
 
-\subsection{Comments}
+\section{Comments}
 
 Anything outside of entries and other declarations are considered as a
 comment -- and mainly ignored. Thus you can put anything in between
@@ -62,7 +81,7 @@ input stream.
 Unfortunately in the age of internet it is desirable to include email
 addresses into comment -- and those may contain an @. Thus the
 definition of the \texttt{@comment} declaration is slightly different
-from \BibTeX:
+from \BibTeX\index{BibTeX@\BibTeX}:
 \IM{x}
 \begin{itemize}
 \item If the next non-space character is an opening brace (\verb|{|)
@@ -82,7 +101,7 @@ from \BibTeX:
 \end{itemize}
 
 
-\section{\texttt{@alias}}
+\section{The \texttt{@alias} Instruction}
 \IM{x1}
 
 \begin{verbatim}
@@ -91,14 +110,15 @@ from \BibTeX:
 
 \INCOMPLETE
 
-\section{\texttt{@modify}}
-\IM{x1}
+\section{The \texttt{@modify} Instruction}
+
 The \texttt{@modify} directive can be used to alter the content of
 certain fields in an entry. The question is why would such a directive
 be necessary when you could simply alter the entry itself. The answer
 is that the entry might not be under your control. It might be
 contained in another file which is included via the \texttt{@include}
-directive or
+directive.
+\IM{x1}
 
 \begin{verbatim}
   @modify( abc, author = {A.U. Thor} )
@@ -106,7 +126,7 @@ directive or
 
 \INCOMPLETE
 
-\section{\texttt{@string}}
+\section{The \texttt{@string} Instruction}
 \IM{08x1}
 
 \begin{verbatim}
@@ -115,11 +135,11 @@ directive or
 
 \INCOMPLETE
 
-\section{\texttt{@preamble}}
+\section{The \texttt{@preamble} Instruction}
 \IM{08x1}
 
 \begin{verbatim}
-  @preamble( "\providecommand\BibTeX{Bib\TeX}" )
+  @preamble( "\providecommand\BibTeX{\textsc{Bib}\TeX}" )
 \end{verbatim}
 
 \INCOMPLETE

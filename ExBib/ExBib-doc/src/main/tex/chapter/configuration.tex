@@ -9,10 +9,69 @@
 
 \subsection{Locating the Configuration}
 
-\INCOMPLETE
+If you are looking for the configurations in the distribution or want
+to provide a configuration of your own you need to know how a
+configuraion is found. \ExBib\ has a general mechanism for finding
+resources. Unfortunately this mechanism can not be used for the
+configuration since it is defined in the configuration itself. Thus
+the location of a configuration uses a simpler search.
+
+There are two places where \ExBib\ looks for a configuration. Those
+are mainly located in the \ExBib\ installation directory (cf.
+section~\ref{sec:inst.dir}).
+\begin{itemize}
+\item The current directory may contain a configuration with the
+  proper name and path.
+\item The directory \File{config} in the \ExBib\ installation
+  directory contains an unpacked directory tree. Any configuration in
+  this directory tree with a proper name and path is considered.
+\item The directory \File{lib} in the \ExBib\ installation directory
+  contains jar archives. Any configuration in a jar archive with a
+  proper name and path is considered.
+\end{itemize}
+
+The top level configuration file is located with the path
+\texttt{exbib}. The prefix \texttt{config/} is tried first; then the
+name withpout prefix. The configuration is used with the additional
+extension \texttt{.xml} and as given. Thus the configuration
+\texttt{cfg} passed in as property or via the command line is sought
+with the following full names:
+\begin{verbatim}
+  config/exbib/cfg.xml
+  config/exbib/cfg
+  exbib/cfg.xml
+  exbib/cfg
+\end{verbatim}
+
+
+\subsection{Extracting a Configuration from an Archive}
+
+To get started you may want to examine the configurations in a jar
+archive. This can be accomplished with the program \Prog{jar} whoich
+is part of the installed Java. We assume that the program can be found
+on your search path for executables.
+
+First you can list the files as follows:
+\begin{lstlisting}{}
+  # jar -tvf exbib.jar
+\end{lstlisting}
+
+Then you can extract the files you want from the archive
+\begin{lstlisting}{language=sh}
+  # jar -xvf exbib.jar config/exbib/exbib.xml
+\end{lstlisting}
+
+Note that a directory tree is created containing the extracted files.
 
 
 \subsection{The Configuration Format}
+
+The configuration files are XML files.
+
+\begin{lstlisting}{language=XML}
+  # jar -xvf exbib.jar config/exbib/exbib.xml
+\end{lstlisting}
+
 
 \INCOMPLETE
 

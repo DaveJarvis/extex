@@ -24,11 +24,21 @@ skipping when the \texttt{aux} file is read.
 
 \subsection{Support for Multiple Bibliographies}
 
-\ExBib contains support for multiple sets of citations. Each such set
-is characterized by a own set of databases, a own set of citations and
-a own bib style. Thus it is necessary to allow one as well as several
-sets in one aux file. This is accomplished by adding an optional
-parameter to the specific declaration macros in the aux file.
+\ExBib\IM{x} contains support for multiple sets of citations. Each
+such set is characterized by a own set of databases, a own set of
+citations and a own bib style. Thus it is necessary to allow one as
+well as several sets in one aux file. This is accomplished by adding
+an optional parameter to the specific declaration macros in the aux
+file.
+
+The argument in brachets should mainly consist of letters and digit.
+In practice nearly all characters are allowed. Nevertheless some of
+them might lead to touble somewhere else.
+
+The argument in brackets is taken as the extension of the file to be
+produced. It is added to the base name of the aux file separated by a
+period. Thus you should not include the period in brackets unless you
+want to have it doubled.
 
 
 \subsection{The Declaration of Databases}
@@ -42,7 +52,7 @@ or resource names separated by comma. Those databases are read in.
   \bibdata{the/bibliography}
 \end{lstlisting}
 
-Multiple sets of citations are supported by an optional argument to
+Multiple sets of databases are supported by an optional argument to
 the macro \macro{bibdata}. This optional argument is enclosed in
 brackets. It contains the extension for the output file. The default
 is \texttt{bbl}.\IM{x}
@@ -68,7 +78,7 @@ other citation keys given.
 \end{lstlisting}
 
 Multiple sets of citations are supported by an optional argument to
-the macro \macro{bibdata}. This optional argument is enclosed in
+the macro \macro{citation}. This optional argument is enclosed in
 brackets. It contains the extension for the output file. The default
 is \texttt{bbl}.\IM{x}
 
@@ -90,7 +100,7 @@ used as bst file.\IM{08x1}
 \end{lstlisting}
 
 Multiple sets of citations are supported by an optional argument to
-the macro \macro{bibdata}. This optional argument is enclosed in
+the macro \macro{bibstyle}. This optional argument is enclosed in
 brackets. It contains the extension for the output file. The default
 is \texttt{bbl}.\IM{x}
 
