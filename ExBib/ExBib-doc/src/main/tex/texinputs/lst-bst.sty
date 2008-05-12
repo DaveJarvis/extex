@@ -1,0 +1,76 @@
+%%*****************************************************************************
+%% $Id: lst-bst.sty,v 0.00 2008/05/12 09:26:43 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\lst@definelanguage{bst}{%
+  sensitive=false,%
+  morekeywords={% reserved keywords
+    strings,%
+    integers,%
+    entry,%
+    function,%
+    macro,%
+    read,%
+    sort,%
+    execute,%
+    iterate,%
+    reverse%
+  },%
+  otherkeywords={'},%
+  morekeywords=[2]{% reserved keywords
+    >,%
+    <,%
+    =,%
+    +,%
+    -,%
+    *,%
+    :=,%
+    add.period$,%
+    call.type$,%
+    change.case$,%
+    chr.to.int$,%
+    cite$,%
+    duplicate$,%
+    empty$,%
+    format.name$,%
+    if$,%
+    int.to.chr$,%
+    int.to.str$,%
+    missing$,%
+    newline$,%
+    num.names$,%
+    pop$,%
+    preamble$,%
+    purify$,%
+    quote$,%
+    skip$,%
+    stack$,%
+    substring$,%
+    swap$,%
+    text.length$,%
+    text.prefix$,%
+    top$,%
+    type$,%
+    warning$,%
+    while$,%
+    width$,%
+    write$,%
+    global.max$,%
+    entry.max$%
+  },%
+  alsoletter={<>=+-*:.$_},%
+  morestring=[b]",% not really accurate
+  morecomment=[l]\%%
+}
+
+
+\lstdefinelanguage[exbib]{bst}[]{bst}{%
+  morekeywords={% reserved keywords
+    include%
+  }%
+}
+
+\endinput
+%
