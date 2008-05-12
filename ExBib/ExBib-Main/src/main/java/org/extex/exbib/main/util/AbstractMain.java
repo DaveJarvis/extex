@@ -19,6 +19,8 @@
 
 package org.extex.exbib.main.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,18 +31,22 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.extex.exbib.main.ExBib;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.Option;
 import org.extex.exbib.main.cli.StringOption;
+import org.extex.exbib.main.cli.StringPropertyOption;
 import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
 import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
 import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
@@ -63,9 +69,34 @@ public abstract class AbstractMain extends CLI {
             "org/extex/exbib/main/COPYING";
 
     /**
-     * The field <tt>programName</tt> contains the name of the program.
+     * The field <tt>PROP_OUTFILE</tt> contains the name of the property for
+     * the output.
      */
-    private String programName = getClass().getName();
+    public static final String PROP_OUTFILE = "exbib.output";
+
+    /**
+     * The field <tt>PROP_LANG</tt> contains the name of the property for the
+     * language to use.
+     */
+    private static final String PROP_LANG = "language";
+
+    /**
+     * The field <tt>PROP_LOGFILE</tt> contains the name of the property for
+     * the log file.
+     */
+    public static final String PROP_LOGFILE = "exbib.logfile";
+
+    /**
+     * The field <tt>PROP_PROGNAME</tt> contains the name of the property from
+     * which the name of the program is extracted.
+     */
+    public static final String PROP_PROGNAME = "program.name";
+
+    /**
+     * The constant <tt>PPP</tt> contains the pattern to recognize a define.
+     */
+    private static final Pattern DEFINE_PATTERN =
+            Pattern.compile("^-D([a-z0-9.-]+)=(.*)$");
 
     /**
      * The field <tt>banner</tt> contains the indicator that the banner has
@@ -101,9 +132,9 @@ public abstract class AbstractMain extends CLI {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>logfile</tt> contains the name of the log file.
+     * The field <tt>properties</tt> contains the settings for the program.
      */
-    private String logfile = null;
+    private Properties properties = null;
 
     /**
      * Creates a new object.
@@ -111,11 +142,15 @@ public abstract class AbstractMain extends CLI {
      * @param programName the name of the program
      * @param version the version
      * @param year the inception year
+     * @param dotFile the name of the user's dot file
+     * @param properties the initial properties
+     * 
+     * @throws IOException in case of an I/O error while reading the dot file
      */
-    public AbstractMain(String programName, String version, int year) {
+    public AbstractMain(String programName, String version, int year,
+            String dotFile, Properties properties) throws IOException {
 
         super();
-        this.programName = programName;
         this.version = version;
         this.inceptionYear = year;
 
@@ -128,7 +163,46 @@ public abstract class AbstractMain extends CLI {
         consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new LogFormatter());
         consoleHandler.setLevel(Level.WARNING);
-        getLogger().addHandler(consoleHandler);
+        logger.addHandler(consoleHandler);
+
+        this.properties = (Properties) properties.clone();
+
+        if (dotFile != null) {
+            loadUserProperties(new File(System.getProperty("user.home"),
+                dotFile));
+            loadUserProperties(new File(dotFile));
+
+            applyLanguage();
+        }
+        propertyDefault(PROP_PROGNAME, programName);
+    }
+
+    /**
+     * Try to determine which language to use and configure the localizer
+     * accordingly. If no locale has been given then the default locale is used.
+     * If the given locale is not supported then the default locale is used and
+     * a warning is logged.
+     */
+    protected void applyLanguage() {
+
+        String lang = properties.getProperty(PROP_LANG);
+
+        if (lang == null || "".equals(lang)) {
+            // do nothing
+        } else if (lang.matches("[a-z][a-z]")) {
+            Locale.setDefault(new Locale(lang));
+        } else if (lang.matches("[a-z][a-z][-_][a-z][a-z]")) {
+            Locale.setDefault(new Locale(lang.substring(0, 1), //
+                lang.substring(3, 4)));
+        } else if (lang.matches("[a-z][a-z][-_][a-z][a-z][-_][a-z][a-z]")) {
+            Locale.setDefault(new Locale(lang.substring(0, 1), //
+                lang.substring(3, 4), lang.substring(6, 7)));
+        } else {
+            log("undefined.language", lang);
+            return;
+        }
+
+        bundle = ResourceBundle.getBundle(getClass().getName());
     }
 
     /**
@@ -142,6 +216,7 @@ public abstract class AbstractMain extends CLI {
     protected void attachFileLogger(String log, String extension)
             throws IOException {
 
+        String logfile = getProperty(PROP_LOGFILE);
         if (logfile == null && log != null && !log.equals("")
                 && !log.equals("-")) {
             logfile = log + extension;
@@ -180,7 +255,11 @@ public abstract class AbstractMain extends CLI {
             @Override
             protected int run(String arg) throws UnknownOptionCliException {
 
-                if (arg.startsWith("-")) {
+                Matcher matcher = DEFINE_PATTERN.matcher(arg);
+                if (matcher.matches()) {
+                    properties.setProperty(matcher.group(1), matcher.group(2));
+                    return EXIT_CONTINUE;
+                } else if (arg.startsWith("-")) {
                     throw new UnknownOptionCliException(arg);
                 }
                 return setFile(arg);
@@ -245,15 +324,8 @@ public abstract class AbstractMain extends CLI {
                 return EXIT_FAIL;
             }
         }, "-?");
-        option("-l", "--logfile", new StringOption("opt.logfile") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setLogfile(arg);
-                return EXIT_CONTINUE;
-            }
-        });
+        option("-l", "--logfile", //
+            new StringPropertyOption("opt.logfile", PROP_LOGFILE, properties));
         option("-L", "--language", new StringOption("opt.language") {
 
             @Override
@@ -264,24 +336,15 @@ public abstract class AbstractMain extends CLI {
                 return EXIT_CONTINUE;
             }
         });
-        option("-o", "--output", new StringOption("opt.output") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setOutfile(arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--outfile");
-        option("-p", "--progname", new StringOption("opt.progname") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setProgramName(arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--program.name", "--program-name");
+        option("-o",
+            "--output", //
+            new StringPropertyOption("opt.output", PROP_OUTFILE, properties),
+            "--outfile");
+        option(
+            "-p",
+            "--progname", //
+            new StringPropertyOption("opt.progname", PROP_PROGNAME, properties),
+            "--program.name", "--program-name");
         option("-q", "--quiet", new NoArgOption("opt.quiet") {
 
             @Override
@@ -330,16 +393,6 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
-     * Getter for the log file.
-     * 
-     * @return the log file
-     */
-    public String getLogfile() {
-
-        return logfile;
-    }
-
-    /**
      * Getter for logger.
      * 
      * @return the logger
@@ -356,7 +409,29 @@ public abstract class AbstractMain extends CLI {
      */
     public String getProgramName() {
 
-        return programName;
+        return properties.getProperty(PROP_PROGNAME);
+    }
+
+    /**
+     * Getter for properties.
+     * 
+     * @return the properties
+     */
+    protected Properties getProperties() {
+
+        return properties;
+    }
+
+    /**
+     * Getter for a named property.
+     * 
+     * @param key the property name
+     * 
+     * @return the value of the named property or <code>null</code>
+     */
+    public String getProperty(String key) {
+
+        return properties.getProperty(key);
     }
 
     /**
@@ -376,6 +451,23 @@ public abstract class AbstractMain extends CLI {
                 "missing.tag"), tag));
         }
         return EXIT_FAIL;
+    }
+
+    /**
+     * Load properties from a given file if it exists.
+     * 
+     * @param file the file to consider
+     * 
+     * @throws IOException in case of an IO Error during the reading of the
+     *         properties file
+     */
+    protected void loadUserProperties(File file) throws IOException {
+
+        if (file != null && file.canRead()) {
+            FileInputStream stream = new FileInputStream(file);
+            properties.load(stream);
+            stream.close();
+        }
     }
 
     /**
@@ -609,6 +701,19 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
+     * Set a property to a given value if not set yet.
+     * 
+     * @param name the name of the property
+     * @param value the default value
+     */
+    protected void propertyDefault(String name, String value) {
+
+        if (!properties.containsKey(name) && value != null) {
+            properties.setProperty(name, value);
+        }
+    }
+
+    /**
      * Invoke the processing core.
      * 
      * @return the exit code
@@ -629,23 +734,13 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
-     * Setter for the file name.
+     * Sets a file name to be processed.
      * 
-     * @param arg the file name
+     * @param arg the file
      * 
-     * @return EXIT_CONTINUE
+     * @return the value EXIT_CONTINUE on success and EXIT_FAILURE on an error
      */
     protected abstract int setFile(String arg);
-
-    /**
-     * Setter for the log file.
-     * 
-     * @param logfile the log file
-     */
-    public void setLogfile(String logfile) {
-
-        this.logfile = logfile;
-    }
 
     /**
      * Setter for logger.
@@ -658,20 +753,14 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
-     * Sett for the output file.
+     * Setter for a named property.
      * 
-     * @param arg the output file
+     * @param key the property name
+     * @param value the new value of the named property
      */
-    protected abstract void setOutfile(String arg);
+    protected void setProperty(String key, String value) {
 
-    /**
-     * Setter for the program name.
-     * 
-     * @param programName the program name to set
-     */
-    public void setProgramName(String programName) {
-
-        this.programName = programName;
+        properties.setProperty(key, value);
     }
 
 }

@@ -100,7 +100,7 @@ public class WriterFactory extends AbstractFactory {
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Writer newInstance() throws ConfigurationException {
+    public Writer newInstance() throws ConfigurationException {
 
         Writer writer = new NullWriter();
         writer.configure(getConfiguration());
@@ -118,7 +118,7 @@ public class WriterFactory extends AbstractFactory {
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Writer newInstance(PrintStream stream)
+    public Writer newInstance(PrintStream stream)
             throws UnsupportedEncodingException,
                 ConfigurationException {
 
@@ -142,7 +142,7 @@ public class WriterFactory extends AbstractFactory {
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Writer newInstance(String file)
+    public Writer newInstance(String file)
             throws FileNotFoundException,
                 UnsupportedEncodingException,
                 ConfigurationException {
@@ -165,7 +165,7 @@ public class WriterFactory extends AbstractFactory {
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Writer newInstance(StringBuffer buffer)
+    public Writer newInstance(StringBuffer buffer)
             throws ConfigurationException {
 
         Writer writer = new StringBufferWriter(buffer);
@@ -186,7 +186,7 @@ public class WriterFactory extends AbstractFactory {
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
-    public synchronized Writer newInstance(Writer a, Writer b)
+    public Writer newInstance(Writer a, Writer b)
             throws UnsupportedEncodingException,
                 ConfigurationException {
 

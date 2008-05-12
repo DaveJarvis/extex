@@ -24,12 +24,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
+import org.extex.exbib.core.util.EntryObserver;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.Configurable;
@@ -47,7 +49,7 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     /**
      * This is a pair of name and observer.
      */
-    private class NamedObserver {
+    private static class NamedObserver {
 
         /**
          * The field <tt>name</tt> contains the name.
@@ -100,6 +102,11 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     private List<NamedObserver> obsList = new ArrayList<NamedObserver>();
 
     /**
+     * The field <tt>dbObsList</tt> contains the observers.
+     */
+    private List<NamedObserver> dbObsList = new ArrayList<NamedObserver>();
+
+    /**
      * The field <tt>bibliographies</tt> contains the bibliographies.
      */
     private Map<String, Processor> bibliographies =
@@ -137,14 +144,21 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     private Sorter sorter;
 
     /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger;
+
+    /**
      * Creates a new object.
      * 
      * @param config the configuration
+     * @param logger the logger
      */
-    public ProcessorContainer(Configuration config) {
+    public ProcessorContainer(Configuration config, Logger logger) {
 
         super();
         configure(config);
+        this.logger = logger;
     }
 
     /**
@@ -186,15 +200,22 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
             if (sorter != null) {
                 db.setSorter(sorter);
             }
-
             processor = processorFactory.newInstance(db, null);
-            for (NamedObserver no : obsList) {
-                try {
-                    processor.registerObserver(no.getName(), no.getObserver());
-                } catch (NotObservableException e) {
-                    throw new ExBibException(e);
+
+            try {
+                for (NamedObserver no : dbObsList) {
+                    db.registerObserver(no.getName(), no.getObserver());
                 }
+
+                for (NamedObserver no : obsList) {
+                    processor.registerObserver(no.getName(), no.getObserver());
+                }
+                db.registerObserver("makeEntry", new EntryObserver(logger,
+                    processor));
+            } catch (NotObservableException e) {
+                throw new ExBibException(e);
             }
+
             bibliographies.put(name, processor);
         }
         return processor;
@@ -240,6 +261,21 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     public Iterator<String> iterator() {
 
         return bibliographies.keySet().iterator();
+    }
+
+    /**
+     * Registers an observer for the database.
+     * 
+     * @param name the name of the action to register for
+     * @param observer the observer to invoke upon the action
+     * 
+     * @throws NotObservableException in case that the name does not correspond
+     *         to an observable action
+     */
+    public void registerDbObserver(String name, Observer observer)
+            throws NotObservableException {
+
+        dbObsList.add(new NamedObserver(name, observer));
     }
 
     /**

@@ -18,15 +18,13 @@
  *
  */
 
-package org.extex.exbib.main.util;
+package org.extex.exbib.core.util;
 
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.util.Observable;
-import org.extex.exbib.core.util.Observer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**

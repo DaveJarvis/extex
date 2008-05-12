@@ -145,7 +145,7 @@ public final class ExBibUtil extends AbstractMain {
 
         try {
             return new ExBibUtil().processCommandLine(argv);
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             Logger logger = Logger.getLogger(ExBibUtil.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
@@ -211,10 +211,13 @@ public final class ExBibUtil extends AbstractMain {
 
     /**
      * Creates a new object.
+     * 
+     * @throws IOException in case of an I/O error
      */
-    public ExBibUtil() {
+    public ExBibUtil() throws IOException {
 
-        super(PROGNAME, VERSION, INCEPTION_YEAR);
+        super(PROGNAME, VERSION, INCEPTION_YEAR, ".exbib", System
+            .getProperties());
         declareOptions();
     }
 
@@ -515,17 +518,6 @@ public final class ExBibUtil extends AbstractMain {
             files.add(arg);
         }
         return EXIT_CONTINUE;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.util.AbstractMain#setOutfile(java.lang.String)
-     */
-    @Override
-    protected void setOutfile(String arg) {
-
-        outfile = arg;
     }
 
 }

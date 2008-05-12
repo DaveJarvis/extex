@@ -86,7 +86,7 @@ public class Set extends AbstractCode {
         Token a = processor.pop(locator);
 
         if (!(a instanceof TLiteral)) {
-            new ExBibMissingLiteralException(a.toString(), locator);
+            throw new ExBibMissingLiteralException(a.toString(), locator);
         }
         String var = a.getValue();
         Code code = processor.getFunction(var);

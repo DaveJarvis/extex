@@ -54,7 +54,7 @@ public class WriterFactoryTest {
      * Test configuration.
      * 
      */
-    private class MyConfig implements Configuration {
+    private static class MyConfig implements Configuration {
 
         /**
          * The field <tt>encoding</tt> contains the encoding.

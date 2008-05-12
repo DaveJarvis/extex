@@ -23,7 +23,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -33,6 +35,7 @@ import java.util.logging.Logger;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
+import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Writer;
@@ -47,8 +50,10 @@ import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.NoArgOption;
+import org.extex.exbib.main.cli.NoArgPropertyOption;
 import org.extex.exbib.main.cli.NumberOption;
 import org.extex.exbib.main.cli.StringOption;
+import org.extex.exbib.main.cli.StringPropertyOption;
 import org.extex.exbib.main.util.AbstractMain;
 import org.extex.exbib.main.util.DBObserver;
 import org.extex.exbib.main.util.FuncallObserver;
@@ -73,20 +78,22 @@ import org.extex.resource.ResourceFinderFactory;
  * The following options are supported:
  * </p>
  * <dl>
+ * <dt>-D&lang;property&rang;=&lang;value&rang;</dt>
+ * <dd>Set the property to a given value.</dd>
  * <dt>-[-] &lang;file&rang;</dt>
  * <dd>Use this argument as file name -- even when it looks like an option.</dd>
  * <dt>--a[vailableCharsets] | -a</dt>
  * <dd>List the available encoding names and exit.</dd>
  * <dt>--bib-[encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
  * <dd>Use the given encoding for the bib files.</dd>
- * <dt>--b[st] | -b &lang;style&rang;</dt>
- * <dd>Overwrite the bst file given in the aux file.</dd>
  * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
  * <dd>Use the configuration given. This is not a file!</dd>
  * <dt>--cop[ying]</dt>
  * <dd>Display the copyright conditions.</dd>
  * <dt>--cs[file] &lang;csfile&rang;</dt>
  * <dd>Name the csf for defining characters and the sort order</dd>
+ * <dt>--csf-[encoding] | --csf.[encoding] &lang;enc&rang;</dt>
+ * <dd>Use the given encoding for the csf files.</dd>
  * <dt>--d[ebug] | -d</dt>
  * <dd>Run in debug mode.</dd>
  * <dt>--e[ncoding] | -e &lang;enc&rang;</dt>
@@ -112,7 +119,7 @@ import org.extex.resource.ResourceFinderFactory;
  * <dd>Act quietly; some informative messages are suppressed.</dd>
  * <dt>--r[elease] | -r</dt>
  * <dd>Print the release number and exit.</dd>
- * <dt>--bi[btex] | --s[trict]</dt>
+ * <dt>--b[ibtex] | --s[trict]</dt>
  * <dd>Use the configuration for BibTeX 0.99c.</dd>
  * <dt>--tr[ace] | -t</dt>
  * <dd>Show a detailed trace of many operations.</dd>
@@ -159,16 +166,22 @@ public class ExBib extends AbstractMain {
     public static final String VERSION = "0.1";
 
     /**
+     * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
+     * been started. This is fixed to be 2002 and should not be altered.
+     */
+    private static final int INCEPTION_YEAR = 2002;
+
+    /**
      * The field <tt>CONFIGURATION_0_99</tt> contains the name of the
      * configuration to be used in strict mode.
      */
-    private static final String CONFIGURATION_0_99 = "exbib/bibtex099";
+    private static final String CONFIGURATION_0_99 = "bibtex099";
 
     /**
      * The field <tt>CONFIGURATION_DEFAULT</tt> contains the name of the
      * configuration to be used in default mode.
      */
-    private static final String CONFIGURATION_DEFAULT = "exbib/exbib";
+    private static final String CONFIGURATION_DEFAULT = "exbib";
 
     /**
      * The field <tt>AUX_FILE_EXTENSION</tt> contains the extension of aux
@@ -189,10 +202,40 @@ public class ExBib extends AbstractMain {
     private static final String BST_FILE_EXTENSION = ".bst";
 
     /**
-     * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
-     * been started. This is fixed to be 2002 and should not be altered.
+     * The field <tt>PROP_CONFIG</tt> contains the name of the property to
+     * carry the configuration.
      */
-    static final int INCEPTION_YEAR = 2002;
+    protected static final String PROP_CONFIG = "exbib.config";
+
+    /**
+     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the property
+     * to carry the encoding for bib files.
+     */
+    protected static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
+
+    /**
+     * The field <tt>PROP_CSF</tt> contains the name of the property to carry
+     * the csf file.
+     */
+    protected static final String PROP_CSF = "exbib.csf";
+
+    /**
+     * The field <tt>PROP_CSF_ENCODING</tt> contains the name of the property
+     * to carry the encoding for csf files.
+     */
+    private static final String PROP_CSF_ENCODING = "exbib.csf.encoding";
+
+    /**
+     * The field <tt>PROP_ENCODING</tt> contains the name of the property to
+     * carry the encoding.
+     */
+    public static final String PROP_ENCODING = "exbib.encoding";
+
+    /**
+     * The field <tt>PROP_FILE</tt> contains the name of the property to carry
+     * the aux file.
+     */
+    public static final String PROP_FILE = "exbib.file";
 
     /**
      * The main program. The command line parameters are evaluated and the
@@ -208,7 +251,7 @@ public class ExBib extends AbstractMain {
         try {
             exBib = new ExBib();
             return exBib.processCommandLine(argv);
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             Logger logger = Logger.getLogger(ExBib.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
@@ -238,17 +281,6 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * The field <tt>bst</tt> contains the name of the Bib style.
-     */
-    private String bst = null;
-
-    /**
-     * The field <tt>configSource</tt> contains the name of the configuration
-     * file.
-     */
-    private String configSource = CONFIGURATION_DEFAULT;
-
-    /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
      */
     private Set<Debug> debug = new HashSet<Debug>();
@@ -257,11 +289,6 @@ public class ExBib extends AbstractMain {
      * The field <tt>errors</tt> contains the number of errors reported.
      */
     private int errors = 0;
-
-    /**
-     * The field <tt>outfile</tt> contains the name of the output file.
-     */
-    private String outfile = null;
 
     /**
      * The field <tt>minCrossrefs</tt> contains the <tt>min.crossrefs</tt>
@@ -275,32 +302,38 @@ public class ExBib extends AbstractMain {
     private boolean trace = false;
 
     /**
-     * The field <tt>csf</tt> contains the name of the csf file to read.
+     * The field <tt>warnings</tt> contains the number of warnings.
      */
-    private String csf = null;
-
-    /**
-     * The field <tt>file</tt> contains the file to be processed.
-     */
-    private String file = null;
-
-    /**
-     * The field <tt>encoding</tt> contains the encoding for the bbl writer.
-     */
-    private String encoding = null;
-
-    /**
-     * The field <tt>bibEncoding</tt> contains the encoding for bib files.
-     */
-    private String bibEncoding = null;
+    private long warnings = 0;
 
     /**
      * Creates a new object.
+     * 
+     * @throws IOException in case of an I/O error while reading the dot file
      */
-    public ExBib() {
+    public ExBib() throws IOException {
 
-        super("exbib", VERSION, INCEPTION_YEAR);
+        this(System.getProperties());
+    }
 
+    /**
+     * Creates a new object.
+     * 
+     * @param properties the properties with the settings
+     * 
+     * @throws IOException in case of an I/O error while reading the dot file
+     */
+    public ExBib(Properties properties) throws IOException {
+
+        super("exbib", VERSION, INCEPTION_YEAR, ".exbib", properties);
+
+        propertyDefault(PROP_BIB_ENCODING, null);
+        propertyDefault(PROP_CSF_ENCODING, null);
+        propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
+        propertyDefault(PROP_CSF, null);
+        propertyDefault(PROP_FILE, null);
+        propertyDefault(PROP_ENCODING, null);
+        propertyDefault(PROP_OUTFILE, null);
         declareOptions();
     }
 
@@ -310,51 +343,19 @@ public class ExBib extends AbstractMain {
     protected void declareOptions() {
 
         declareCommonOptions();
-        option("-b", "--bst", new StringOption("opt.bst") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setBst(arg);
-                return EXIT_CONTINUE;
-            }
-        });
-        option(null, "--strict", new NoArgOption("opt.strict") {
-
-            @Override
-            protected int run(String arg) {
-
-                setConfigSource(CONFIGURATION_0_99);
-                return EXIT_CONTINUE;
-            }
-        }, "--bibtex");
-        option("-E", "--bib.encoding", new StringOption("opt.bib.encoding") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                bibEncoding = arg;
-                return EXIT_CONTINUE;
-            }
-        }, "--bib-encoding");
-        option("-c", "--configuration", new StringOption("opt.config") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setConfigSource("exbib/" + arg);
-                return EXIT_CONTINUE;
-            }
-        });
-        option(null, "--csfile", new StringOption("opt.csfile") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setCsfile(arg);
-                return EXIT_CONTINUE;
-            }
-        });
+        Properties properties = getProperties();
+        option(null, "--strict", new NoArgPropertyOption("opt.strict",
+            PROP_CONFIG, CONFIGURATION_0_99, getProperties()), "--bibtex");
+        option("-E", "--bib.encoding", new StringPropertyOption(
+            "opt.bib.encoding", PROP_BIB_ENCODING, getProperties()),
+            "--bib-encoding");
+        option("-c", "--configuration", new StringPropertyOption("opt.config",
+            PROP_CONFIG, getProperties()));
+        option(null, "--csfile", new StringPropertyOption("opt.csfile",
+            PROP_CSF, getProperties()));
+        option(null, "--csf.encoding", new StringPropertyOption(
+            "opt.csf.encoding", PROP_CSF_ENCODING, getProperties()),
+            "--csf-encoding");
         option("-d", "--debug", new StringOption("opt.debug") {
 
             @Override
@@ -363,14 +364,8 @@ public class ExBib extends AbstractMain {
                 return setDebug(value.split("[,;: ]"));
             }
         });
-        option("-e", "--encoding", new StringOption("opt.encoding") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                return setEncoding(arg);
-            }
-        });
+        option("-e", "--encoding", new StringPropertyOption("opt.encoding",
+            PROP_ENCODING, properties));
         option("-M", "--min.crossrefs", new NumberOption("opt.min.crossref") {
 
             @Override
@@ -380,24 +375,11 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         }, "--min-crossrefs", "--min_crossrefs");
-        option("-o", "--output", new StringOption("opt.output") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setOutfile(arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--outfile");
-        option("-p", "--progname", new StringOption("opt.progname") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setProgramName(arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--program.name", "--program-name");
+        option("-o", "--output", new StringPropertyOption("opt.output",
+            PROP_OUTFILE, getProperties()), "--outfile");
+        option("-p", "--progname", //
+            new StringPropertyOption("opt.progname", PROP_PROGNAME,
+                getProperties()), "--program.name", "--program-name");
         option("-t", "--trace", new BooleanOption("opt.trace") {
 
             @Override
@@ -407,24 +389,11 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         });
-        option("-7", "--traditional", new NoArgOption("opt.7.bit") {
-
-            @Override
-            protected int run(String arg) {
-
-                csf = "";
-                return EXIT_CONTINUE;
-            }
-        });
-        option("-8", "--8bit", new NoArgOption("opt.8.bit") {
-
-            @Override
-            protected int run(String arg) {
-
-                csf = "88591lat.csf";
-                return EXIT_CONTINUE;
-            }
-        });
+        option("-7", "--traditional", //
+            new NoArgPropertyOption("opt.7.bit", PROP_CSF, "", getProperties()));
+        option("-8", "--8bit", //
+            new NoArgPropertyOption("opt.8.bit", PROP_CSF, "88591lat.csf",
+                getProperties()));
         option("-B", "--big", new NoArgOption(null) {
 
             @Override
@@ -434,15 +403,17 @@ public class ExBib extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         }, "-H", "--huge", "-W", "--wolfgang");
-        option(null, "--mcites", new NumberOption(null) {
+        option(null, "--mcites",
+            new NumberOption(null) {
 
-            @Override
-            protected int run(String arg, int value) {
+                @Override
+                protected int run(String arg, int value) {
 
-                info("ignore.option", arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--mentints", "-mentstrs", "--mfields", "--mpool", "--mstrings",
+                    info("ignore.option", arg);
+                    return EXIT_CONTINUE;
+                }
+            }, //
+            "--mentints", "-mentstrs", "--mfields", "--mpool", "--mstrings",
             "--mwizfuns");
     }
 
@@ -495,16 +466,6 @@ public class ExBib extends AbstractMain {
     }
 
     /**
-     * Getter for the out file.
-     * 
-     * @return the out file
-     */
-    public String getOutfile() {
-
-        return outfile;
-    }
-
-    /**
      * Getter for trace.
      * 
      * @return the trace
@@ -512,6 +473,45 @@ public class ExBib extends AbstractMain {
     public boolean isTrace() {
 
         return trace;
+    }
+
+    /**
+     * Make a sorter or throw an error.
+     * 
+     * @param finder the resource finder
+     * 
+     * @return the sorter; it can be <code>null</code> if none is required
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a problem with the csf
+     * @throws UnsupportedEncodingException in case of a problem with the
+     *         encoding
+     * @throws ExBibCsfNotFoundException in case the csf could not be found
+     */
+    private CsfSorter makeSorter(ResourceFinder finder)
+            throws IOException,
+                CsfException,
+                UnsupportedEncodingException,
+                ExBibCsfNotFoundException {
+
+        String csf = getProperty(PROP_CSF);
+        if ("".equals(csf)) {
+            return new CsfSorter();
+        } else if (csf != null) {
+            InputStream is = finder.findResource(csf, "csf");
+            if (is == null) {
+                throw new ExBibCsfNotFoundException(csf);
+            }
+            try {
+                String encoding = getProperty(PROP_CSF_ENCODING);
+                return new CsfReader().read(encoding == null
+                        ? new InputStreamReader(is)
+                        : new InputStreamReader(is, encoding));
+            } finally {
+                is.close();
+            }
+        }
+        return null;
     }
 
     /**
@@ -528,50 +528,42 @@ public class ExBib extends AbstractMain {
     public int run() throws IOException, ConfigurationException {
 
         long time = System.currentTimeMillis();
-        Configuration config = ConfigurationFactory.newInstance(configSource);
-        ResourceFinder finder =
-                new ResourceFinderFactory().createResourceFinder(config
-                    .getConfiguration("Resource"), getLogger(), System
-                    .getProperties(), null);
-        if (debug.contains(Debug.SEARCH)) {
-            finder.enableTracing(true);
-        }
-        if (file == null) {
-            return logBanner("missing.file");
-        }
-        file = stripExtension(file, AUX_FILE_EXTENSION);
-
-        attachFileLogger(file, BLG_FILE_EXTENSION);
         logBanner();
 
-        CsfSorter sorter = null;
-        if ("".equals(csf)) {
-            sorter = new CsfSorter();
-        } else if (csf != null) {
-            InputStream is = finder.findResource(csf, "csf");
-            if (is == null) {
-                return logBanner("csf.missing");
-            }
-            try {
-                sorter = new CsfReader().read(new InputStreamReader(is));
-            } catch (CsfException e) {
-                return logBanner(e.getLocalizedMessage());
-            } finally {
-                is.close();
-            }
-        }
-
-        long warnings = 0;
-
         try {
+            String file = getProperty(PROP_FILE);
+            if (file == null) {
+                return error("missing.file");
+            }
+            file = stripExtension(file, AUX_FILE_EXTENSION);
+
+            Configuration config = ConfigurationFactory.newInstance(//
+                "exbib/" + getProperty(PROP_CONFIG));
+
+            ResourceFinder finder =
+                    new ResourceFinderFactory().createResourceFinder(//
+                        config.getConfiguration("Resource"), //
+                        getLogger(), //
+                        getProperties(), //
+                        null);
+
+            if (debug.contains(Debug.SEARCH)) {
+                finder.enableTracing(true);
+            }
+
+            attachFileLogger(file, BLG_FILE_EXTENSION);
+
+            CsfSorter sorter = makeSorter(finder);
             FuncallObserver funcall = null;
 
             BibReaderFactory bibReaderFactory = new BibReaderFactory(//
                 config.getConfiguration("BibReader"), finder);
+            String bibEncoding = getProperty(PROP_BIB_ENCODING);
             if (bibEncoding != null) {
                 bibReaderFactory.setEncoding(bibEncoding);
             }
-            ProcessorContainer container = new ProcessorContainer(config);
+            ProcessorContainer container =
+                    new ProcessorContainer(config, getLogger());
             container.setMinCrossrefs(minCrossrefs);
             container.setSorter(sorter);
             container.setBibReaderFactory(bibReaderFactory);
@@ -585,21 +577,17 @@ public class ExBib extends AbstractMain {
                 config.getConfiguration("AuxReader")).newInstance(finder);
             auxReader.register(new MainResourceObserver(getLogger()));
 
+            String encoding = getProperty(PROP_ENCODING);
             try {
                 auxReader.load(container, file, encoding);
             } catch (FileNotFoundException e) {
                 return error("aux.not.found", e.getMessage());
             }
 
-            if (!validate(container)) {
+            if (!validate(container, file)) {
                 return EXIT_FAIL;
             }
 
-            if (bst != null) {
-                Processor processor = container.findBibliography("bbl");
-                processor.addBibliographyStyle(stripExtension(bst,
-                    BST_FILE_EXTENSION));
-            }
             BblWriterFactory bblWriterFactory =
                     new BblWriterFactory(config.getConfiguration("BblWriter"),
                         encoding) {
@@ -623,7 +611,7 @@ public class ExBib extends AbstractMain {
                         @Override
                         protected void infoOutput(String file) {
 
-                            info("output.file", outfile);
+                            info("output.file", file);
                         }
 
                         /**
@@ -651,6 +639,7 @@ public class ExBib extends AbstractMain {
                 bstReaderFactory.newInstance().parse(processor);
 
                 Writer writer;
+                String outfile = getProperty(PROP_OUTFILE);
                 try {
                     if (outfile == null || !"bbl".equals(key)) {
                         outfile = file + "." + key;
@@ -672,6 +661,8 @@ public class ExBib extends AbstractMain {
                 funcall.print();
             }
 
+        } catch (CsfException e) {
+            return error("verbatim", e.getLocalizedMessage());
         } catch (ExBibImpossibleException e) {
             return error(e, "internal.error");
         } catch (ExBibException e) {
@@ -679,18 +670,18 @@ public class ExBib extends AbstractMain {
         } catch (ConfigurationWrapperException e) {
             return error(e.getCause(), "installation.error");
         } catch (ConfigurationException e) {
-            return error(e, "installation.error");
+            return error("verbatim", e.getLocalizedMessage());
         } catch (NoClassDefFoundError e) {
             return error(e, "installation.error");
         } catch (Exception e) {
             return error(e, "internal.error");
         } finally {
-            if (errors > 0) {
-                log(errors == 1 ? "error" : "errors", Long.toString(errors));
-            }
             if (warnings > 0) {
                 info(warnings == 1 ? "warning" : "warnings", //
                     Long.toString(warnings));
+            }
+            if (errors > 0) {
+                log(errors == 1 ? "error" : "errors", Long.toString(errors));
             }
         }
 
@@ -714,10 +705,6 @@ public class ExBib extends AbstractMain {
         Logger logger = getLogger();
         FuncallObserver funcall = (trace ? new FuncallObserver(logger) : null);
 
-        // db.registerObserver("makeEntry",
-        // new EntryObserver(logger, bibliography));
-        // TODO reactivate
-
         container.registerObserver("step", new TracingObserver(logger,
             getBundle().getString("step_msg")));
 
@@ -731,37 +718,7 @@ public class ExBib extends AbstractMain {
         container.registerObserver("endParse", new TracingObserver(logger,
             getBundle().getString("end_parse_msg")));
         return funcall;
-    }
-
-    /**
-     * Setter for the Bib style
-     * 
-     * @param bst the bib style
-     */
-    public void setBst(String bst) {
-
-        this.bst = bst;
-    }
-
-    /**
-     * Setter for the configuration source.
-     * 
-     * @param configSource the configuration source
-     */
-    public void setConfigSource(String configSource) {
-
-        this.configSource = configSource;
-    }
-
-    /**
-     * Setter for the cs file.
-     * 
-     * @param csf the name of the cs file
-     */
-    private void setCsfile(String csf) {
-
-        this.csf = csf;
-    }
+    };
 
     /**
      * Setter for the debugging indicator.
@@ -770,8 +727,8 @@ public class ExBib extends AbstractMain {
      */
     public void setDebug(Debug d) {
 
-        this.debug.add(d);
-    };
+        debug.add(d);
+    }
 
     /**
      * Setter for the debugging indicator.
@@ -784,24 +741,19 @@ public class ExBib extends AbstractMain {
 
         for (String s : value) {
             try {
-                setDebug(Debug.valueOf(s.toUpperCase()));
+                if ("all".equals(s)) {
+                    for (Debug d : Debug.values()) {
+                        debug.add(d);
+                    }
+                } else if ("none".equals(s)) {
+                    debug.clear();
+                } else {
+                    setDebug(Debug.valueOf(s.toUpperCase()));
+                }
             } catch (IllegalArgumentException e) {
                 return logBanner("debug.mode.unknown", s);
             }
         }
-        return EXIT_CONTINUE;
-    }
-
-    /**
-     * Setter for encoding.
-     * 
-     * @param encoding the encoding to set
-     * 
-     * @return EXIT_CONTINUE
-     */
-    public int setEncoding(String encoding) {
-
-        this.encoding = encoding;
         return EXIT_CONTINUE;
     }
 
@@ -815,12 +767,12 @@ public class ExBib extends AbstractMain {
     @Override
     protected int setFile(String arg) {
 
-        if (file != null) {
-            return logBanner("one.file", file);
+        if (getProperty(PROP_FILE) != null) {
+            return logBanner("one.file", arg);
         } else if ("".equals(arg)) {
-            return logBanner("empty.file", file);
+            return logBanner("empty.file", arg);
         }
-        file = arg;
+        setProperty(PROP_FILE, arg);
         return EXIT_CONTINUE;
     }
 
@@ -832,17 +784,6 @@ public class ExBib extends AbstractMain {
     public void setMinCrossrefs(int minCrossrefs) {
 
         this.minCrossrefs = minCrossrefs;
-    }
-
-    /**
-     * Setter for the output file.
-     * 
-     * @param outfile the output file to set
-     */
-    @Override
-    public void setOutfile(String outfile) {
-
-        this.outfile = outfile;
     }
 
     /**
@@ -877,13 +818,14 @@ public class ExBib extends AbstractMain {
      * Validate the container after a read.
      * 
      * @param container the container
+     * @param file the file currently read for error messages
      * 
      * @return <code>true</code> iff everything is fine
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      */
-    private boolean validate(ProcessorContainer container)
+    private boolean validate(ProcessorContainer container, Object file)
             throws ConfigurationException,
                 ExBibException {
 

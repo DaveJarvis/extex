@@ -31,7 +31,9 @@ import java.io.FileWriter;
 import java.io.PrintStream;
 import java.io.Writer;
 import java.util.Locale;
+import java.util.Set;
 
+import org.extex.exbib.main.ExBib.Debug;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
@@ -51,6 +53,8 @@ public class ExBibTest extends BibTester {
     private static final String USAGE =
             "Usage: exbib <options> file\n"
                     + "The following options are supported:\n"
+                    + "\t-D<property>=<value>\n"
+                    + "\t\tSet the given property to the value.\n"
                     + "\t-[-] <file>\n"
                     + "\t\tUse this argument as file name -- even when it looks like an option.\n"
                     + "\t--trad[itional] | -7\n"
@@ -61,12 +65,12 @@ public class ExBibTest extends BibTester {
                     + "\t\tList the available encoding names and exit.\n"
                     + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
                     + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--b[st] | -b <style>\n"
-                    + "\t\tOverwrite the bst file given in the aux file.\n"
                     + "\t--con[figuration] | -c <configuration>\n"
                     + "\t\tUse the configuration given. This is not a file!\n"
                     + "\t--c[opying]\n"
                     + "\t\tDisplay the copyright conditions.\n"
+                    + "\t--csf-[encoding] | --csf.[encoding] <enc>\n"
+                    + "\t\tUse the given encoding for the csf files.\n"
                     + "\t--cs[file] <csfile>\n"
                     + "\t\tName the csf for defining characters and the sort order\n"
                     + "\t--d[ebug] | -d\n"
@@ -92,7 +96,7 @@ public class ExBibTest extends BibTester {
                     + "\t\tAct quietly; some informative messages are suppressed.\n"
                     + "\t--r[elease]\n"
                     + "\t\tPrint the release number and exit.\n"
-                    + "\t--bi[btex] | --s[trict]\n"
+                    + "\t--b[ibtex] | --s[trict]\n"
                     + "\t\tUse the configuration for BibTeX 0.99c.\n"
                     + "\t--tr[ace] | -t\n"
                     + "\t\tShow a detailed trace of many operations.\n"
@@ -110,7 +114,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void test001() throws Exception {
 
-        runFailure(BANNER + "Missing aux file parameter.\n");
+        runFailure(BANNER + "Missing aux file parameter.\n"
+                + "(There was 1 error)\n");
     }
 
     /**
@@ -548,18 +553,6 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--bst</tt> needs an
-     * argument. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testBst1() throws Exception {
-
-        runFailure(BANNER + "The option `--bst\' needs a parameter.\n", "--bst");
-    }
-
-    /**
      * <testcase> Test that the command line option <tt>--config</tt> needs an
      * argument. </testcase>
      * 
@@ -581,8 +574,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void testConfig2() throws Exception {
 
-        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n",
-            "--config", "undef");
+        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n"
+                + "(There was 1 error)\n", "--config", "undef", "test");
     }
 
     /**
@@ -600,7 +593,7 @@ public class ExBibTest extends BibTester {
             "[Fatal Error] :1:1: Premature end of file.\n"
                     + BANNER
                     + "Configuration syntax error Premature end of file. in config/exbib/empty.xml\n",
-            "--config", "empty");
+            "--config", "empty", "test");
     }
 
     /**
@@ -613,11 +606,12 @@ public class ExBibTest extends BibTester {
     public void testConfig4() throws Exception {
 
         runFailure(
-            "[Fatal Error] :4:1: XML document structures must start and end within the same entity.\n"
-                    + BANNER
+            BANNER
+                    + "[Fatal Error] :4:1: XML document structures must start and end within the same entity.\n"
                     + "Configuration syntax error XML document structures must start and end within\n"
-                    + "the same entity. in config/exbib/incomplete.xml\n",
-            "--config", "incomplete");
+                    + "the same entity. in config/exbib/incomplete.xml\n"
+                    + "(There was 1 error)\n", //
+            "--config", "incomplete", "test");
     }
 
     /**
@@ -636,10 +630,7 @@ public class ExBibTest extends BibTester {
             CLI.EXIT_FAIL,
             Check.EQ,
             BANNER
-                    + "Installation Error:\n"
-                    + "\t"
                     + "Configuration `exbib/processor/undefined.xml\' not found.\n"
-                    + "\tConsult the log file for details.\n"
                     + "(There was 1 error)\n", //
             "--config", "misconfigured", "test");
     }
@@ -680,8 +671,24 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCsfile2() throws Exception {
 
-        runFailure(BANNER + "The csf `exbib\' could not be found.\n",
+        runFailure(BANNER + "The csf `xyzzy\' could not be found.\n"
+                + "(There was 1 error)\n", //
             "--csfile", "xyzzy", "test");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--csfile ''</tt>
+     * works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCsfile3() throws Exception {
+
+        runTest("test", "\\citation{Meone:Title}\n" //
+                + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
+            CLI.EXIT_OK, Check.EQ, BANNER, "--csfile=", "test");
     }
 
     /**
@@ -708,6 +715,97 @@ public class ExBibTest extends BibTester {
 
         runFailure(BANNER + "The debug mode `xxx\' is unknown.\n",
             "--debug=xxx");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--debug all</tt>
+     * works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug3() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{Meone:Title}\n" //
+                            + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
+                    CLI.EXIT_OK, Check.EQ, BANNER, "--debug=all", "test");
+        Set<Debug> d = exbib.getDebug();
+        for (Debug x : d) {
+            assertTrue(x.toString(), d.contains(x));
+        }
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--debug=all,search</tt>
+     * works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug4() throws Exception {
+
+        runTest("test", "\\citation{Meone:Title}\n" //
+                + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
+            CLI.EXIT_OK, Check.EQ, BANNER, "--debug=all,search", "test");
+    }
+
+    /**
+     * <testcase> Test that the command line option
+     * <tt>--debug=search,search</tt>works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug5() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{Meone:Title}\n" //
+                            + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
+                    CLI.EXIT_OK, Check.EQ, BANNER, "--debug=search,search",
+                    "test");
+        Set<Debug> d = exbib.getDebug();
+        for (Debug x : d) {
+            if (x == Debug.SEARCH) {
+                assertTrue(x.toString(), d.contains(x));
+            } else {
+                assertFalse(x.toString(), d.contains(x));
+            }
+        }
+    }
+
+    /**
+     * <testcase> Test that the command line option
+     * <tt>--debug=all,none,search</tt>works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDebug6() throws Exception {
+
+        ExBib exbib =
+                runTest(
+                    "test",
+                    "\\citation{Meone:Title}\n" //
+                            + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                            + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
+                    CLI.EXIT_OK, Check.EQ, BANNER, "--debug=all,none,search",
+                    "test");
+        Set<Debug> d = exbib.getDebug();
+        for (Debug x : d) {
+            if (x == Debug.SEARCH) {
+                assertTrue(x.toString(), d.contains(x));
+            } else {
+                assertFalse(x.toString(), d.contains(x));
+            }
+        }
     }
 
     /**
@@ -782,7 +880,7 @@ public class ExBibTest extends BibTester {
     public void testIgnored1() throws Exception {
 
         runFailure("Ignoring bibtex8 option `-B\'.\n" + BANNER
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "-v", "-B");
     }
 
@@ -796,7 +894,7 @@ public class ExBibTest extends BibTester {
     public void testIgnored2() throws Exception {
 
         runFailure("Ignoring bibtex8 option `--big\'.\n" + BANNER
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "-v", "--big");
     }
 
@@ -810,7 +908,7 @@ public class ExBibTest extends BibTester {
     public void testIgnored3() throws Exception {
 
         runFailure("Ignoring bibtex8 option `--mcites\'.\n" + BANNER
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "-v", "--mcites=123");
     }
 
@@ -836,8 +934,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLanguage2() throws Exception {
 
-        runFailure(BANNER + "Missing aux file parameter.\n", "--language",
-            "xxx");
+        runFailure(BANNER + "Missing aux file parameter.\n"
+                + "(There was 1 error)\n", "--language", "xxx");
     }
 
     /**
@@ -849,7 +947,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLanguage3() throws Exception {
 
-        runFailure(BANNER_DE + "Ein Parameter mit der aux-Datei fehlt.\n",
+        runFailure(BANNER_DE + "Ein Parameter mit der aux-Datei fehlt.\n"
+                + "(Es gab 1 Fehler)\n", //
             "--language", "de");
     }
 
@@ -898,7 +997,7 @@ public class ExBibTest extends BibTester {
                         "--log", log.toString());
             assertTrue(log.exists());
             assertNotNull(exbib);
-            assertEquals("test.lg", exbib.getLogfile());
+            // assertEquals("test.lg", exbib.getLogfile());
 
         } finally {
             if (log.exists() && !log.delete()) {
@@ -1023,8 +1122,8 @@ public class ExBibTest extends BibTester {
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux");
         assertEquals("exbib", exbib.getProgramName());
-        assertEquals("test.bbl", exbib.getOutfile());
-        assertEquals("test.blg", exbib.getLogfile());
+        // assertEquals("test.bbl", exbib.getOutfile());
+        // assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
         // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
@@ -1098,7 +1197,7 @@ public class ExBibTest extends BibTester {
                     "test.aux");
         assertEquals("exbib", exbib.getProgramName());
         // assertNull(exbib.getOutfile());
-        assertEquals("test.blg", exbib.getLogfile());
+        // assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
         // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
@@ -1242,7 +1341,7 @@ public class ExBibTest extends BibTester {
     public void testProgName2() throws Exception {
 
         runFailure("This is abc, Version " + ExBib.VERSION + "\n"
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--progname", "abc");
     }
 
@@ -1255,7 +1354,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testQuiet1() throws Exception {
 
-        runFailure("Missing aux file parameter.\n", //
+        runFailure("Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--quiet");
     }
 
@@ -1292,8 +1391,8 @@ public class ExBibTest extends BibTester {
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--strict");
         assertEquals("exbib", exbib.getProgramName());
-        assertEquals("test.bbl", exbib.getOutfile());
-        assertEquals("test.blg", exbib.getLogfile());
+        // assertEquals("test.bbl", exbib.getOutfile());
+        // assertEquals("test.blg", exbib.getLogfile());
         assertFalse("trace", exbib.isTrace());
         // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
@@ -1308,7 +1407,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testTerse1() throws Exception {
 
-        runFailure("Missing aux file parameter.\n", //
+        runFailure("Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--terse");
     }
 
@@ -1364,7 +1463,7 @@ public class ExBibTest extends BibTester {
     public void testUndefined1() throws Exception {
 
         runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--undefined");
     }
 
@@ -1378,7 +1477,7 @@ public class ExBibTest extends BibTester {
     public void testUndefined2() throws Exception {
 
         runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
-                + "Missing aux file parameter.\n", //
+                + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--undefined=123");
     }
 
