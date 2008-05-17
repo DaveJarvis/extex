@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.extex.framework.configuration.Configuration;
@@ -49,6 +50,8 @@ import org.extex.resource.io.NamedInputStream;
  *   &lt;tex&gt;
  *     &lt;path property="extex.texinputs"/&gt;
  *     &lt;path property="texinputs"/&gt;
+ *     &lt;path env="EXTEX_TEXINPUTS"/&gt;
+ *     &lt;path env="TEXINPUTS"/&gt;
  *     &lt;path&gt;.&lt;/path&gt;
  *     &lt;extension&gt;&lt;/extension&gt;
  *     &lt;extension&gt;.tex&lt;/extension&gt;
@@ -56,6 +59,8 @@ import org.extex.resource.io.NamedInputStream;
  *   &lt;fmt&gt;
  *     &lt;path property="extex.texinputs"/&gt;
  *     &lt;path property="texinputs"/&gt;
+ *     &lt;path env="EXTEX_TEXINPUTS"/&gt;
+ *     &lt;path env="TEXINPUTS"/&gt;
  *     &lt;path&gt;.&lt;/path&gt;
  *     &lt;extension&gt;&lt;/extension&gt;
  *     &lt;extension&gt;.fmt&lt;/extension&gt;
@@ -63,6 +68,8 @@ import org.extex.resource.io.NamedInputStream;
  *   &lt;default&gt;
  *     &lt;path property="extex.texinputs"/&gt;
  *     &lt;path property="texinputs"/&gt;
+ *     &lt;path env="EXTEX_TEXINPUTS"/&gt;
+ *     &lt;path env="TEXINPUTS"/&gt;
  *     &lt;path&gt;.&lt;/path&gt;
  *     &lt;extension&gt;&lt;/extension&gt;
  *   &lt;/default&gt;
@@ -99,6 +106,15 @@ import org.extex.resource.io.NamedInputStream;
  * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
+ * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the
+ * value is ignored and the value is taken from the environment variable named
+ * in the attribute. Otherwise the value of the tag is taken as path. The value
+ * taken from the environment variable can contain several paths. They are
+ * separated by the separator specified for the platform. For instance on
+ * windows the separator <tt>;</tt> is used and on Unix the separator
+ * <tt>:</tt> is used.
+ * </p>
+ * <p>
  * When the full file name contains the string <tt>{type}</tt> this string is
  * replaced by the type currently sought. This can for instance be used in
  * default specification to attach the type as extension.
@@ -119,7 +135,10 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileFinder extends AbstractFinder implements PropertyAware {
+public class FileFinder extends AbstractFinder
+        implements
+            PropertyAware,
+            EnvironmentAware {
 
     /**
      * The constant <tt>PATH_TAG</tt> contains the name of the tag to get the
@@ -131,6 +150,11 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
      * The field <tt>properties</tt> contains the properties instance to use.
      */
     private Properties properties = new Properties();
+
+    /**
+     * The field <tt>environment</tt> contains the environment.
+     */
+    private Map<String, String> environment = System.getenv();
 
     /**
      * Creates a new object.
@@ -234,20 +258,32 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
         Iterator<Configuration> iterator = cfg.iterator(PATH_TAG);
         while (stream == null && iterator.hasNext()) {
             Configuration c = iterator.next();
-            String prop = c.getAttribute("property");
-            if (prop != null) {
-                String path = properties.getProperty(prop, null);
-                if (path != null) {
-                    List<String> list = new ArrayList<String>();
-                    for (String s : path.split(System.getProperty(
-                        "path.separator", ":"))) {
-                        list.add(s);
-                    }
-
-                    stream = find(name, list, cfg, type);
-                } else {
-                    trace("UndefinedProperty", prop, null);
+            String path = null;
+            String p = c.getAttribute("property");
+            if (p != null) {
+                path = properties.getProperty(p, null);
+                if (path == null) {
+                    trace("UndefinedProperty", p, null);
+                    continue;
                 }
+            } else {
+                String env = c.getAttribute("env");
+                if (env != null) {
+                    path = environment.get(env);
+                    if (path == null) {
+                        trace("UndefinedEnv", env, null);
+                        continue;
+                    }
+                }
+            }
+            if (path != null) {
+                List<String> list = new ArrayList<String>();
+                for (String s : path.split(System.getProperty("path.separator",
+                    ":"))) {
+                    list.add(s);
+                }
+
+                stream = find(name, list, cfg, type);
             } else {
                 stream = find(name, c.getValue(), cfg, type);
             }
@@ -258,6 +294,17 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
         }
 
         return stream;
+    }
+
+    /**
+     * Setter for the environment. The default for the environment is the system
+     * environment.
+     * 
+     * @param environment the environment
+     */
+    public void setEnvironment(Map<String, String> environment) {
+
+        this.environment = environment;
     }
 
     /**

@@ -79,6 +79,15 @@ import org.extex.resource.io.NamedInputStream;
  * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
+ * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the
+ * value is ignored and the value is taken from the environment variable named
+ * in the attribute. Otherwise the value of the tag is taken as path. The value
+ * taken from the environment variable can contain several paths. They are
+ * separated by the separator specified for the platform. For instance on
+ * windows the separator <tt>;</tt> is used and on Unix the separator
+ * <tt>:</tt> is used.
+ * </p>
+ * <p>
  * To find a resource its type is used to find the appropriate parameters for
  * the search. If the sub-configuration with the name of the type exists then
  * this sub-configuration is used. For instance if the resource <tt>tex</tt>
@@ -121,7 +130,10 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LsrFinder extends AbstractFinder implements PropertyAware {
+public class LsrFinder extends AbstractFinder
+        implements
+            PropertyAware,
+            EnvironmentAware {
 
     /**
      * The field <tt>ATTR_PROPERTY</tt> contains the attribute name for the
@@ -163,6 +175,11 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
      * finder.
      */
     private Properties properties = System.getProperties();
+
+    /**
+     * The field <tt>environment</tt> contains the environment.
+     */
+    private Map<String, String> environment = System.getenv();
 
     /**
      * Creates a new object.
@@ -289,21 +306,32 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
         while (it.hasNext()) {
             Configuration cfg = it.next();
             String pathProperty = cfg.getAttribute(ATTR_PROPERTY);
-            String name;
+            String path = null;
             if (pathProperty != null) {
-                name = properties.getProperty(pathProperty);
-                if (name == null) {
+                path = properties.getProperty(pathProperty);
+                if (path == null) {
                     trace("UndefinedProperty", pathProperty, null, null);
-                } else {
-                    for (String s : name.split(System.getProperty(
-                        "path.separator", ":"))) {
-                        load(s);
-                    }
+                    continue;
                 }
             } else {
-                name = cfg.getValue();
-                if (name != null && !name.equals("")) {
-                    load(name);
+                String env = cfg.getAttribute("env");
+                if (env != null) {
+                    path = environment.get(env);
+                    if (path == null) {
+                        trace("UndefinedEnv", env, null);
+                        continue;
+                    }
+                }
+            }
+            if (path != null) {
+                for (String s : path.split(System.getProperty("path.separator",
+                    ":"))) {
+                    load(s);
+                }
+            } else {
+                path = cfg.getValue();
+                if (path != null && !path.equals("")) {
+                    load(path);
                 }
             }
         }
@@ -414,6 +442,17 @@ public class LsrFinder extends AbstractFinder implements PropertyAware {
         // err.print(file);
         // err.print('\t');
         // err.println(System.currentTimeMillis() - start);
+    }
+
+    /**
+     * Setter for the environment. The default for the environment is the system
+     * environment.
+     * 
+     * @param environment the environment
+     */
+    public void setEnvironment(Map<String, String> environment) {
+
+        this.environment = environment;
     }
 
     /**
