@@ -39,7 +39,7 @@ case "`uname`" in
         JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
     sep=';'
     EXTEX_HOME=`cygpath -w "$EXTEX_HOME"`
-    LOCALCLASSPATH=.$sep$EXTEX_HOME/config$sep$EXTEX_HOME/target/classes
+    LOCALCLASSPATH=.$sep$EXTEX_HOME/classes
     LOCALCLASSPATH=`cygpath -w "$LOCALCLASSPATH"`
     for i in $LIBDIR/*.jar ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath -w "$i"`
@@ -47,14 +47,15 @@ case "`uname`" in
     ;;
   *)
     sep=':'
-    LOCALCLASSPATH=.$sep$EXTEX_HOME/config$sep$EXTEX_HOME/target/classes
+    LOCALCLASSPATH=.$sep$EXTEX_HOME/classes
     for i in $LIBDIR/*.jar ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
     done
     ;;
 esac
 
-exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
+exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS \
+    -classpath "$LOCALCLASSPATH" \
     org.extex.exbib.main.ExBibUtil --prog=`basename $0` $*
 
 #

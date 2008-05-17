@@ -38,13 +38,13 @@ if "%JAVA_HOME%"=="" (
 
 set EXTEX_HOME=$INSTALL_PATH
 set LIBDIR=%EXTEX_HOME%\lib
-set LOCALCLASSPATH=%EXTEX_HOME%\classes
+set LOCALCLASSPATH=.;%EXTEX_HOME%\classes
 
 for %%i in (%LIBDIR%\*.jar) do (
   set LOCALCLASSPATH=!LOCALCLASSPATH!;%%i
 )
 
-java -classpath %LOCALCLASSPATH% org.extex.exbib.main.ExBibUtil %*
+java -classpath %LOCALCLASSPATH% %EXTEX_JAVA_OPTS% org.extex.exbib.main.ExBibUtil %*
 
 :end
 
