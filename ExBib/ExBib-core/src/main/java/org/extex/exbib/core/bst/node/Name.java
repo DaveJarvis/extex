@@ -148,7 +148,7 @@ public class Name {
      * @throws ExBibNoNameException in case that the given string list does not
      *         constitute a name
      */
-    private void classify0(List<String> sl, StringBuffer sb, Locator locator)
+    private void classify0(List<String> sl, StringBuilder sb, Locator locator)
             throws ExBibNoNameException {
 
         int last;
@@ -199,7 +199,7 @@ public class Name {
      *         constitute a name
      * @throws ExBibImpossibleException in case the comma is not found
      */
-    private void classify1(List<String> sl, StringBuffer sb, Locator locator)
+    private void classify1(List<String> sl, StringBuilder sb, Locator locator)
             throws ExBibNoNameException,
                 ExBibImpossibleException {
 
@@ -242,7 +242,7 @@ public class Name {
      *         constitute a name
      * @throws ExBibImpossibleException in case the two commas are not found
      */
-    private void classify2(List<String> sl, StringBuffer sb, Locator locator)
+    private void classify2(List<String> sl, StringBuilder sb, Locator locator)
             throws ExBibNoNameException,
                 ExBibImpossibleException {
 
@@ -355,7 +355,7 @@ public class Name {
                 ExBibSyntaxException {
 
         List<String> sl = new ArrayList<String>();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         int start = 0;
         int level = 0;
         int commas = 0;
