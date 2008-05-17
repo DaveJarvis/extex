@@ -25,7 +25,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -40,29 +39,11 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileFinderRPathImpl
+public class FileFinderRPath extends AbstractFinder
         implements
             ResourceFinder,
             LogEnabled,
             PropertyAware {
-
-    /**
-     * The field <tt>logger</tt> contains the logger to be used for tracing.
-     */
-    private Logger logger = null;
-
-    /**
-     * The field <tt>trace</tt> contains the indicator that tracing is
-     * required. This field is set to <code>true</code> according to the
-     * configuration.
-     */
-    private boolean trace = false;
-
-    /**
-     * The field <tt>config</tt> contains the configuration object on which
-     * this file finder is based.
-     */
-    private Configuration config;
 
     /**
      * The field <tt>properties</tt> contains the properties.
@@ -74,34 +55,9 @@ public class FileFinderRPathImpl
      * 
      * @param configuration the encapsulated configuration object
      */
-    public FileFinderRPathImpl(Configuration configuration) {
+    public FileFinderRPath(Configuration configuration) {
 
-        super();
-        config = configuration;
-        String t = configuration.getAttribute("trace");
-        if (t != null && Boolean.valueOf(t).booleanValue()) {
-            trace = true;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger alogger) {
-
-        logger = alogger;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(boolean flag) {
-
-        trace = flag;
+        super(configuration);
     }
 
     /**
@@ -120,16 +76,11 @@ public class FileFinderRPathImpl
             file =
                     new File(fpath, name + (ext.equals("") ? "" : ".")
                             + ext.replaceAll("^\\.", ""));
-            if (trace && logger != null) {
-                logger.fine("FileFinder: Try " + file + "\n");
-            }
+            trace("Try", file.toString());
             if (file.canRead()) {
                 try {
                     InputStream stream = new FileInputStream(file);
-                    if (trace && logger != null) {
-                        logger.fine("FileFinder: Found " + file.toString()
-                                + "\n");
-                    }
+                    trace("Found", file.toString());
                     return new NamedInputStream(stream, file.toString());
                 } catch (FileNotFoundException e) {
                     // ignore unreadable files
@@ -163,7 +114,7 @@ public class FileFinderRPathImpl
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
-        // config
+        Configuration config = getConfiguration();
         Configuration cfg = config.findConfiguration(type);
         if (cfg == null) {
             String t = config.getAttribute("default");
@@ -172,16 +123,10 @@ public class FileFinderRPathImpl
                     config);
             }
             cfg = config.getConfiguration(t);
-
-            if (trace && logger != null) {
-                logger.fine("FileFinder: " + type + " not found; Using default"
-                        + t + ".\n");
-            }
+            trace("ConfigurationNotFound", type, t);
         }
 
-        if (trace && logger != null) {
-            logger.fine("FileFinder: Searching " + name + " [" + type + "]\n");
-        }
+        trace("Searching", name, type);
 
         Iterator<Configuration> iterator = cfg.iterator("path");
         while (iterator.hasNext()) {
@@ -197,10 +142,7 @@ public class FileFinderRPathImpl
             // only for directories
             File fpath = new File(path);
             if (!fpath.isDirectory()) {
-                if (trace && logger != null) {
-                    logger.fine("FileFinder: no path : " + fpath.toString()
-                            + "\n");
-                }
+                trace("NoPath", fpath.toString());
                 return null;
             }
 
@@ -213,16 +155,6 @@ public class FileFinderRPathImpl
     }
 
     /**
-     * Getter for logger.
-     * 
-     * @return the logger.
-     */
-    public Logger getLogger() {
-
-        return logger;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
@@ -231,4 +163,5 @@ public class FileFinderRPathImpl
 
         properties = prop;
     }
+
 }

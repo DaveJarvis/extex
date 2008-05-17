@@ -28,10 +28,10 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 import org.extex.framework.logger.LogEnabled;
 
 /**
- * This the abstract base class to provide the infrastructure for
- * resource finders.
- *
- *
+ * This the abstract base class to provide the infrastructure for resource
+ * finders.
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -78,18 +78,19 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
     private Logger logger = null;
 
     /**
-     * The field <tt>trace</tt> contains the indicator that tracing is required.
-     * This field is set to <code>true</code> according to the configuration.
+     * The field <tt>trace</tt> contains the indicator that tracing is
+     * required. This field is set to <code>true</code> according to the
+     * configuration.
      */
     private boolean trace = false;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the encapsulated configuration object
-     *
+     * 
      * @throws ConfigurationMissingException in case of an error: The argument
-     *   configuration is <code>null</code>.
+     *         configuration is <code>null</code>.
      */
     public AbstractFinder(Configuration configuration)
             throws ConfigurationMissingException {
@@ -107,9 +108,9 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param theLogger the logger to set.
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -120,12 +121,12 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
 
     /**
      * Enable or disable the tracing. The argument indicates whether tracing
-     * should be enabled or disabled.
-     * The resource finder can decide on its own how to perform tracing. The
-     * preferred way is to write tracing records to a logger.
-     *
+     * should be enabled or disabled. The resource finder can decide on its own
+     * how to perform tracing. The preferred way is to write tracing records to
+     * a logger.
+     * 
      * @param flag indicator whether tracing should be turned on or off.
-     *
+     * 
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(boolean flag) {
@@ -135,7 +136,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
 
     /**
      * Getter for configuration.
-     *
+     * 
      * @return the configuration
      */
     protected Configuration getConfiguration() {
@@ -145,12 +146,11 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
 
     /**
      * Produce an internationalized trace message.
-     *
+     * 
      * @param key the resource key for the message format
-     * @param arg the first argument to insert
-     * @param arg2 the second argument to insert
+     * @param args the arguments to insert
      */
-    protected void trace(String key, String arg, String arg2) {
+    protected void trace(String key, Object... args) {
 
         if (trace && logger != null) {
             if (bundle == null) {
@@ -158,28 +158,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
             }
 
             logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{arg, arg2}));
-        }
-    }
-
-    /**
-     * Produce an internationalized trace message.
-     *
-     * @param key the resource key for the message format
-     * @param arg the first argument to insert
-     * @param arg2 the second argument to insert
-     * @param arg3 the third argument to insert
-     */
-    protected void trace(String key, String arg, String arg2,
-            String arg3) {
-
-        if (trace && logger != null) {
-            if (bundle == null) {
-                bundle = ResourceBundle.getBundle(LsrFinder.class.getName());
-            }
-
-            logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{arg, arg2, arg3}));
+                new Object[]{args}));
         }
     }
 
