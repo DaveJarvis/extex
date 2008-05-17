@@ -129,6 +129,24 @@ public class NameTest {
      * @throws Exception in case of an error
      */
     @Test
+    public final void testNameDavis2() throws Exception {
+
+        Name n = new Name("Sammy Davis, jr.", null);
+        assertEquals(1, n.getLast().size());
+        assertEquals("Davis", n.getLast().get(0));
+        assertEquals(1, n.getFirst().size());
+        assertEquals("Sammy", n.getFirst().get(0));
+        assertEquals(0, n.getVon().size());
+        assertEquals(1, n.getJr().size());
+        assertEquals("jr.", n.getJr().get(0));
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
     public final void testNameDonQuixote1() throws Exception {
 
         String[] first = {"Don", "Quixote"};
@@ -171,6 +189,17 @@ public class NameTest {
     public final void testNameError1() throws Exception {
 
         new Name("", null);
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibNoNameException.class)
+    public final void testNameError10() throws Exception {
+
+        new Name("{}", null);
     }
 
     /**
@@ -248,6 +277,17 @@ public class NameTest {
     public final void testNameError8() throws Exception {
 
         new Name("C,", null);
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibNoNameException.class)
+    public final void testNameError9() throws Exception {
+
+        new Name("A, C, ", null);
     }
 
     /**

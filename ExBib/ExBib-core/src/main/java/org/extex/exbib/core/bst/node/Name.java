@@ -258,44 +258,46 @@ public class Name {
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
+     * @param name the name for error messages
      * 
      * @throws ExBibNoNameException in case that the given string list does not
      *         constitute a name
      */
-    private void classify0(List<String> list, List<Type> type, Locator locator)
-            throws ExBibNoNameException {
+    private void classify0(List<String> list, List<Type> type, Locator locator,
+            String name) throws ExBibNoNameException {
 
         int len = type.size();
-        int lastIndex;
+        int i;
 
-        for (lastIndex = len - 1; lastIndex >= 0
-                && type.get(lastIndex) == Type.VON; lastIndex--) {
-            type.set(lastIndex, Type.JR);
-        }
-
-        if (list.size() == 1) {
+        if (len == 1) {
+            if (type.get(0) == Type.VON) {
+                throw new ExBibNoNameException(name, locator);
+            }
             type.set(0, Type.LAST);
             return;
         }
 
-        lastIndex = type.lastIndexOf(Type.VON);
+        for (i = len - 1; i >= 0 && type.get(i) == Type.VON; i--) {
+            type.set(i, Type.JR);
+        }
 
-        if (lastIndex >= 0) {
-            for (lastIndex++; lastIndex < len
-                    && type.get(lastIndex) == Type.FIRST; lastIndex++) {
-                type.set(lastIndex, Type.LAST);
+        i = type.lastIndexOf(Type.VON);
+
+        if (i >= 0) {
+            for (i++; i < len && type.get(i) == Type.FIRST; i++) {
+                type.set(i, Type.LAST);
             }
-            if (type.get(lastIndex - 1) != Type.LAST) {
-                throw new ExBibNoNameException(list.toString(), locator);
+            if (type.get(i - 1) != Type.LAST) {
+                throw new ExBibNoNameException(name, locator);
             }
         } else {
-            lastIndex = type.lastIndexOf(Type.FIRST);
+            i = type.lastIndexOf(Type.FIRST);
 
-            if (lastIndex < 0) {
-                throw new ExBibNoNameException(list.toString(), locator);
+            if (i < 0) {
+                throw new ExBibNoNameException(name, locator);
             }
 
-            type.set(lastIndex, Type.LAST);
+            type.set(i, Type.LAST);
         }
     }
 
@@ -312,30 +314,30 @@ public class Name {
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
+     * @param name the name for error messages
      * 
      * @throws ExBibNoNameException in case that the given string list does not
      *         constitute a name
      * @throws ExBibImpossibleException in case the comma is not found
      */
-    private void classify1(List<String> list, List<Type> type, Locator locator)
-            throws ExBibNoNameException,
-                ExBibImpossibleException {
+    private void classify1(List<String> list, List<Type> type, Locator locator,
+            String name) throws ExBibNoNameException, ExBibImpossibleException {
 
-        int last = type.lastIndexOf(Type.COMMA);
+        int index = type.lastIndexOf(Type.COMMA);
         int len = type.size();
 
-        if (last < 0) {
+        if (index < 0) {
             throw new ExBibImpossibleException(LocalizerFactory.getLocalizer(
                 getClass()).format("Comma.not.found"));
-        } else if (last == 0 || last == len - 1) {
-            throw new ExBibNoNameException(list.toString(), locator);
+        } else if (index == len - 1) {
+            throw new ExBibNoNameException(name, locator);
 
         }
 
         boolean j = false;
         boolean l = false;
 
-        for (int i = last; i < len; i++) {
+        for (int i = index + 1; i < len; i++) {
             if (type.get(i) == Type.VON) {
                 j = true;
             } else {
@@ -344,12 +346,12 @@ public class Name {
         }
 
         if (j && !l) {
-            for (int i = last; i < len; i++) {
+            for (int i = index + 1; i < len; i++) {
                 type.set(i, Type.JR);
             }
-            type.set(last - 1, Type.LAST);
+            type.set(index - 1, Type.LAST);
         } else {
-            for (int i = 0; i < last; i++) {
+            for (int i = 0; i < index; i++) {
                 type.set(i, type.get(i) == Type.FIRST ? Type.LAST : Type.VON);
             }
         }
@@ -363,26 +365,26 @@ public class Name {
      * v*l+,j+,f*
      * </pre>
      * 
-     * @param sl the list of name constituents
+     * @param list the list of name constituents
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
+     * @param name the name for error messages
      * 
      * @throws ExBibNoNameException in case that the given string list does not
      *         constitute a name
      * @throws ExBibImpossibleException in case the two commas are not found
      */
-    private void classify2(List<String> sl, List<Type> type, Locator locator)
-            throws ExBibNoNameException,
-                ExBibImpossibleException {
+    private void classify2(List<String> list, List<Type> type, Locator locator,
+            String name) throws ExBibNoNameException, ExBibImpossibleException {
 
         int last = type.indexOf(Type.COMMA);
 
         if (last < 0) {
             throw new ExBibImpossibleException(LocalizerFactory.getLocalizer(
                 getClass()).format("Comma.not.found"));
-        } else if (last == 0 || last == type.size() - 1) {
-            throw new ExBibNoNameException(sl.toString(), locator);
+        } else if (type.get(type.size() - 1) == Type.COMMA) {
+            throw new ExBibNoNameException(name, locator);
         }
 
         for (int i = 0; i < last; i++) {
@@ -533,13 +535,13 @@ public class Name {
 
         switch (commas) {
             case 0:
-                classify0(list, type, locator);
+                classify0(list, type, locator, name);
                 break;
             case 1:
-                classify1(list, type, locator);
+                classify1(list, type, locator, name);
                 break;
             case 2:
-                classify2(list, type, locator);
+                classify2(list, type, locator, name);
                 break;
             default:
                 throw new ExBibNoNameCommasException(name, locator);
