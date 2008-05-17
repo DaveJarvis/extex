@@ -24,10 +24,6 @@ configuration section each.
 
 \INCOMPLETE
 
-\subsection{Locating the Configuration File in \ExBib}
-
-
-\INCOMPLETE
 
 \subsection{File Search in the Directory Tree}
 
@@ -36,7 +32,7 @@ maybe try a list of extensions until a suitable file is found. This
 strategy is implemented in the class
 \texttt{org.extex.resource.FileFinder}.
 
-Attributes
+\subsubsection*{Attributes}
 \begin{description}
 \item[class] The attribute \texttt{class} has the value
   \texttt{org.extex.resource.FileFinder} for the search in
@@ -58,6 +54,8 @@ Attributes
       <path>.</path>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
+      <path env="EXTEX_TEXINPUTS"/>
+      <path env="TEXINPUTS"/>
       <extension>.{type}</extension>
       <extension/>
     </default>
@@ -69,7 +67,11 @@ Attributes
 
 \subsection{Searching in texmf Trees}
 
-Attributes
+The search in texmf utilizes the index file \File{ls-R}.
+
+\INCOMPLETE
+
+\subsubsection*{Attributes}
 \begin{description}
 \item[class] The attribute \texttt{class} has the value
   \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
@@ -96,6 +98,8 @@ Attributes
           default="default">
     <path property="extex.texinputs"/>
     <path property="texinputs"/>
+    <path env="EXTEX_TEXINPUTS"/>
+    <path env="TEXINPUTS"/>
 
     <default>
       <extension>.{type}</extension>
@@ -104,14 +108,45 @@ Attributes
   </Finder>
 \end{lstlisting}
 
-\INCOMPLETE
 
 \subsection{Recursively Searching in Directory Trees}
 
-\begin{lstlisting}[language=XML]
-\end{lstlisting}
+Resources can be sought somewhere in a directory. This means in the
+directory or recursivle in one of its sub-directories. This method
+really traverses the directory tree. This is not advisable since it
+can be rather slow.
 
 \INCOMPLETE
+
+\subsubsection*{Attributes}
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\begin{lstlisting}[language=XML]
+  <Finder class="org.extex.resource.FileFinderRPath"
+          trace="false"
+          default="default">>
+    <path property="extex.texinputs"/>
+    <path property="texinputs"/>
+
+    <default>
+      <extension>.{type}</extension>
+      <extension/>
+    </default>
+  </Finder>
+\end{lstlisting}
+
 
 \subsection{Searching in Archives}
 
@@ -124,7 +159,7 @@ special jar files which in turn are special zip files. Thus you can
 use the programs \Prog{jar}, \Prog{unzip}, or \Prog{Winzip} to get a
 listing or extract the directory tree from the archive.
 
-Attributes
+\subsubsection*{Attributes}
 \begin{description}
 \item[class] The attribute \texttt{class} has the value
   \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in

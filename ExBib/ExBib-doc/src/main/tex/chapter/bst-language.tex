@@ -51,30 +51,59 @@ has access to this database.
 
 \subsection{Entries}
 
-\INCOMPLETE
+Entries tie together the information for one key. It has a set of
+fields. Some of the fields are visible in the BST program. The fields
+visible are defined with the command \texttt{entry} (see
+section~\ref{sec:entry}).
 
-\subsubsection{\texttt{sort.key\$}}%
+
+\subsubsection{The Variable \texttt{sort.key\$}}%
 \varIndex{sort.key\$}
 
-\INCOMPLETE
+One entry local variable is predefined. This is the string-valued
+variable \texttt{sort.key\$}. It is used to sort the entries with the
+command \texttt{sort} (see section~\ref{sec:sort}).
 
 
 \subsection{Global Integers}
 
-\INCOMPLETE
+The processor for the BST language has a global storage for variables.
+First of all there are integer valued variables. The command
+\texttt{integers} (see section~\ref{sec:integers}) can be used to
+define integer variables.
 
-\subsubsection{\texttt{entry.max\$}}%
+
+\subsubsection{The Variable \texttt{entry.max\$}}%
 \varIndex{entry.max\$}
 
-\INCOMPLETE
-\subsubsection{\texttt{global.max\$}}%
+The global integer variable \texttt{entry.max\$} is predefined. It
+contains the maximal number of entries. It is fed from a
+configuration.
+
+In \ExBib\index{ExBib@\ExBib} it contains a large number which does
+not have any influence on the number of entries. It is defined for
+backward compatibility only.
+
+\subsubsection{The Variable \texttt{global.max\$}}%
 \varIndex{global.max\$}
 
-\INCOMPLETE
+The global integer variable \texttt{global.max\$} is predefined. It
+contains the maximal length of strings. It is fed from a
+configuration.
+
+In \ExBib\index{ExBib@\ExBib} it contains a large number which does
+not have any influence on the length of strings. It is defined for
+backward compatibility only.
+
 
 \subsection{Global Strings}
 
-\INCOMPLETE
+The processor for the BST language has a global storage for variables.
+Beside the integer valued variables there are string valued variables.
+The command \texttt{strings} (see section~\ref{sec:bst.strings}) can be
+used to define global string variables.
+
+There are no global string variables predefined.
 
 
 \section{Syntax}
@@ -139,15 +168,24 @@ initial hash mark:
 
 \subsection{Quoting}\label{sec:bst.quote}
 
-\INCOMPLETE
+Ususally any symbol appearing in the program is replaced by its value
+upon evaluation. There are situations where an expansion is not
+desirable. For instance to set a variable to a value you have to
+specify the variable itself and not its value. For this purpose
+symbols can be quoted. This is done by preceding the symbol by a
+aingle quote \verb|'|.
 
 \begin{lstlisting}[language=bst]
   'abc
 \end{lstlisting}
 
+In this case the symbol is pushed to the stack instead of its value.
+
 \subsection{Code}\label{sec:bst.code}
 
-\INCOMPLETE
+Code dnoted a list of function invocations. Code is enclosed in
+braces. When code is encountered during the evaluation of a program it
+is simply pushed onto the stack.
 
 \begin{lstlisting}[language=bst]
   { skip$ }
@@ -155,14 +193,19 @@ initial hash mark:
 
 \section{Expansion of Variables and Fields}
 
-\INCOMPLETE
+Local variables and entry variables -- both integer valued or string
+valued -- as well as fields are replaced by their value before this
+value is pushed to the stack.
 
+All these entities share the same name space. This means that there
+can not be two different variables with the same name.
 
 
 \section{Commands}
 
 \subsection{\texttt{entry}}%
-\cmdIndex{entry}
+\cmdIndex{entry}%
+\label{sec:entry}
 
 The declaration defines the view to an entry. For this purpose it
 defines which fields are defined. In addition it defines the list of
@@ -208,7 +251,8 @@ The following example is taken from \File{alpha.bst}:
 
 
 \subsection{\texttt{integers}}%
-\cmdIndex{integers}
+\cmdIndex{integers}%
+\label{sec:integers}
 
 This declaration defines a set of global integers. It has one
 argument. The argument contains a list of variable names separated by
@@ -304,7 +348,8 @@ The following example is taken from \File{alpha.bst}:
 
 
 \subsection{\texttt{sort}}
-\cmdIndex{sort}
+\cmdIndex{sort}%
+\label{sec:sort}
 
 This command sorts the entries of the database according to its sort
 key lexicographically increasing. The sort key is taken from the entry
@@ -333,8 +378,6 @@ according to the order they are encountered.
 This declaration defines a user defined function. It takes two
 arguments which are the name of the function and the code associated
 with it.
-
-\INCOMPLETE
 
 \begin{lstlisting}[language=bst]
   FUNCTION {sortify}
@@ -744,8 +787,6 @@ the argument is a field reference it checks whether the field is
 missing in the current entry. It pushes the integer 1 in case it
 succeeds and 0 if it fails.
 
-\INCOMPLETE
-
 \begin{BstFunction}{empty\$}
   \In1{arg}
   \Out1{boolean}
@@ -975,6 +1016,7 @@ pushes it as string onto the stack.
 \subsection{The Function \texttt{purify\$}}%
 \fctIndex{purify\$}
 
+This function takes a string valued argument and removes certain characters.
 
 \INCOMPLETE
 
@@ -1123,6 +1165,9 @@ of character units.
 
 \subsection{The Function \texttt{text.prefix\$}}%
 \fctIndex{text.prefix\$}
+
+This function extracts a prefix of a certain length from a text. The
+length is the number of character units.
 
 \INCOMPLETE
 
