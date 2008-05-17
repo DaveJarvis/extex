@@ -1,5 +1,5 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
+ * This resource is part of ExBib a BibTeX compatible database.
  * Copyright (C) 2003-2008 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
@@ -24,7 +24,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * A <code>Locator</code> is a pointer to a certain line and position in a
- * file. This class can be used to store the position to be used in an error
+ * resource. This class can be used to store the position to be used in an error
  * message. The position should point to something meaningful for the user and
  * not merely for internal debugging.
  * 
@@ -34,13 +34,14 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class Locator {
 
     /**
-     * The field <tt>file</tt> contains the name of the file where the Locator
-     * points to.
+     * The field <tt>resource</tt> contains the name of the resource where the
+     * Locator points to.
      */
-    private String file;
+    private String resource;
 
     /**
-     * The field <tt>line</tt> contains the number of the line in the file.
+     * The field <tt>line</tt> contains the number of the line in the
+     * resource.
      */
     private int line;
 
@@ -53,40 +54,27 @@ public class Locator {
     /**
      * Creates a new Locator object. The position is set to 0.
      * 
-     * @param file the name of the file
+     * @param resource the name of the resource
      * @param line the number of the line
      */
-    public Locator(String file, int line) {
+    public Locator(String resource, int line) {
 
-        super();
-        this.file = file;
-        this.line = line;
-        this.position = 0;
+        this(resource, line, 0);
     }
 
     /**
      * Creates a new Locator object.
      * 
-     * @param file the name of the file
+     * @param resource the name of the resource
      * @param line the number of the line
      * @param column the position, i.e. column
      */
-    public Locator(String file, int line, int column) {
+    public Locator(String resource, int line, int column) {
 
         super();
-        this.file = file;
+        this.resource = resource;
         this.line = line;
         this.position = column;
-    }
-
-    /**
-     * Getter for the file name
-     * 
-     * @return the file name
-     */
-    public String getFile() {
-
-        return file;
     }
 
     /**
@@ -94,7 +82,7 @@ public class Locator {
      * 
      * @return the line number
      */
-    public int getLine() {
+    public int getLineNumber() {
 
         return line;
     }
@@ -104,15 +92,25 @@ public class Locator {
      * 
      * @return the position
      */
-    public int getPosition() {
+    public int getLinePointer() {
 
         return position;
     }
 
     /**
+     * Getter for the resource name
+     * 
+     * @return the resource name
+     */
+    public String getResourceName() {
+
+        return resource;
+    }
+
+    /**
      * Conversion to a readable form. The exact text is formatted using the
-     * format <tt>Message</tt> with the line number as argument 0 and the file
-     * as argument 1.
+     * format <tt>Message</tt> with the line number as argument 0 and the
+     * resource as argument 1.
      * 
      * @return the readable form of this object.
      */
@@ -120,6 +118,6 @@ public class Locator {
     public String toString() {
 
         return LocalizerFactory.getLocalizer(getClass()).format("Message",
-            Integer.toString(getLine()), getFile());
+            Integer.toString(getLineNumber()), getResourceName());
     }
 }
