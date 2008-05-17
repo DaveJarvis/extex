@@ -24,6 +24,8 @@
       <path>.</path>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
+      <path env="EXTEX_TEXINPUTS"/>
+      <path env="TEXINPUTS"/>
       <extension>.{type}</extension>
       <extension/>
     </default>
@@ -43,6 +45,8 @@
           default="default">
     <path property="extex.texinputs"/>
     <path property="texinputs"/>
+    <path env="EXTEX_TEXINPUTS"/>
+    <path env="TEXINPUTS"/>
 
     <default>
       <extension>.{type}</extension>
