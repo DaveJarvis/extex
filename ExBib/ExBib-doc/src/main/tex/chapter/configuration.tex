@@ -52,12 +52,12 @@ is part of the installed Java. We assume that the program can be found
 on your search path for executables.
 
 First you can list the files as follows:
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
   # jar -tvf exbib.jar
 \end{lstlisting}
 
 Then you can extract the files you want from the archive
-\begin{lstlisting}{language=sh}
+\begin{lstlisting}[language=sh]
   # jar -xvf exbib.jar config/exbib/exbib.xml
 \end{lstlisting}
 
@@ -68,7 +68,7 @@ Note that a directory tree is created containing the extracted files.
 
 The configuration files are XML files.
 
-\begin{lstlisting}{language=XML}
+\begin{lstlisting}[language=XML]
   # jar -xvf exbib.jar config/exbib/exbib.xml
 \end{lstlisting}
 

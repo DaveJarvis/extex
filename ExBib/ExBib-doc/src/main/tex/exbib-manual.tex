@@ -13,6 +13,7 @@
 \usepackage{texinputs/dirlist}
 \usepackage{texinputs/iconmargin}
 \usepackage{makeidx}
+\usepackage{fleqn}
 
 \newcommand\Arg[1]{\(\langle\){\tt\itshape #1}\(\rangle\)}
 \newcommand\CLi[1]{\texttt{-{}#1}\index{#1@\texttt{-{}#1}}}
@@ -25,17 +26,17 @@
 \newcommand\macro[1]{\texttt{\char`\\ #1}\index{#1@\texttt{\char`\\ #1}}}
 \newcommand\Macro[1]{\texttt{\char`\\ #1}}
 \newcommand\tag[1]{%
-    \(\langle\)\textit{#1}\(\rangle\)%
-    \index{#1@\protect\Tag{#1}}}
+    \ensuremath{\langle\textit{#1\index{#1@\protect\Tag{#1}}}\rangle%
+    }}
 \newcommand\Tag[1]{\texorpdfstring{%
-    \(\langle\)\textit{#1}\(\rangle\)}{<#1>}}
+    \ensuremath{\langle\textit{#1}\rangle}}{<#1>}}
 
 \newenvironment{syntax}{%
-  \begin{tabbing}\kern2em\=\kern2em\=\kill
+  \begin{eqnarray*}%
   }{%
-  \end{tabbing}}
-\newcommand\SyntaxDef{\>\(\rightarrow\)\>}
-\newcommand\SyntaxOr{\>\(|\)\>}
+  \end{eqnarray*}}
+\newcommand\SyntaxDef{&\rightarrow&}
+\newcommand\SyntaxOr{&|&}
 
 \def\n{\char`\\n}
 \def\t{\char`\\t}

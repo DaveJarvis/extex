@@ -48,7 +48,7 @@ given with the macro \macro{bibdata}. The argument is a list of file
 or resource names separated by comma. Those databases are read in.
 \IM{08x1}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \bibdata{the/bibliography}
 \end{lstlisting}
 
@@ -59,7 +59,7 @@ is \texttt{bbl}.\IM{x}
 
 The following example is equivalent to the example above:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \bibdata[bbl]{the/bibliography}
 \end{lstlisting}
 
@@ -73,7 +73,7 @@ encountered then all entries are selected. This value overrules any
 other citation keys given.
 \IM{08x1}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \citation{a.key,another.key}
 \end{lstlisting}
 
@@ -84,7 +84,7 @@ is \texttt{bbl}.\IM{x}
 
 The following example is equivalent to the example above:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \citation[bbl]{a.key,another.key}
 \end{lstlisting}
 
@@ -95,7 +95,7 @@ The aux file must declare the bst to be used. This can be done with
 the macro \macro{bibstyle}. The argument is a file or resource to be
 used as bst file.\IM{08x1}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \bibstyle{the/style}
 \end{lstlisting}
 
@@ -106,7 +106,7 @@ is \texttt{bbl}.\IM{x}
 
 The following example is equivalent to the example above:
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX}]
   \bibstyle[bbl]{the/style}
 \end{lstlisting}
 
@@ -118,7 +118,8 @@ information. Those references are given  with the macro
 This aux file can in turn contain agaion references to other aux
 files. All those references are resolved recursively.\IM{08x1}
 
-\begin{lstlisting}{}
+\begin{lstlisting}[language={[LaTeX]TeX},%
+  alsoletter={@},morekeywords={@include}]
   \@include{the/included/file}
 \end{lstlisting}
 

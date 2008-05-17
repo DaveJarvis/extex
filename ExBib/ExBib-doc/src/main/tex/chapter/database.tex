@@ -41,11 +41,17 @@ files. \IM{x1}
 The instruction takes as argument a resource name. It includes the
 content as if it where present at the place of the instruction.
 
-\begin{verbatim}
+\begin{lstlisting}[language=bibtex,alsoletter={@},morekeywords={@input}]
   @input(some/other/resource)
-\end{verbatim}
+\end{lstlisting}
 
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction}\SyntaxDef \texttt{@input} \texttt{\char`\{}
+                                \tag{resource name} \texttt{\char`\}}
+\end{syntax}%
 \index{@input|)}
+
 
 \section{Entries}
 
@@ -53,15 +59,219 @@ Any instruction which has no special meaning is considered to be an
 entry in the database.
 \IM{08x1}
 
+
+\begin{lstlisting}[language=bibtex]
+  @Book{          knuth:texbook,
+    author      = {Donald E. Knuth},
+    title       = {The {\TeX book}},
+    publisher   = {Addison-Wesley Publishing Company},
+    address     = {Reading, Mass.},
+    year        = 1989,
+    edition     = {15},
+    volume      = {A},
+    series      = {Computers and Typesetting}
+  }
+\end{lstlisting}
+
 \INCOMPLETE
 
-\section{Names}\label{sec:names}
-\IM{08x1}
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction} \SyntaxDef \texttt{@} \tag{type} \texttt{\char`\{}
+                      \tag{key} \texttt{,} \tag{attributes} \texttt{\char`\}} \\
+                    \SyntaxOr  \texttt{@} \tag{type} \texttt{(}
+                      \tag{key} \texttt{,} \tag{attributes} \texttt{)}\\
+  \tag{attributes}  \SyntaxDef \tag{attribute}\\
+                    \SyntaxOr  \tag{attribute} \texttt{,} \tag{attributes}\\
+  \tag{attribute}   \SyntaxDef \tag{field name} \texttt{=} \tag{value}\\
+  \tag{value}       \SyntaxDef \tag{atomic value}\\
+                    \SyntaxOr  \tag{atomic value} \texttt{\#} \tag{value}\\
+  \tag{atomic value}\SyntaxDef \texttt{"} \tag{string} \texttt{"}\\
+                    \SyntaxOr  \texttt{\char`\{} \tag{block} \texttt{\char`\}}\\
+                    \SyntaxOr  \tag{number}\\
+                    \SyntaxOr  \tag{macro name}
+\end{syntax}%
+Several syntactic entities deserve a definition:
+
+\begin{description}
+\item[\tag{type}] \ \\
+  A \tag{type} is a non-empty sequence of characters which is not one
+  of the special characters or white-space. The type is considered
+  case insensitive; i.e. upper and lowercase letters are considered
+  the same.
+\item[\tag{key}] \ \\
+  A \tag{key} is a non-empty sequence of characters which is not one
+  of the special characters or white-space. The type is considered
+  case insensitive.
+\item[\tag{field name}] \ \\
+  A \tag{field name} is a non-empty sequence of characters which is
+  not one of the special characters or white-space. The type is
+  considered case insensitive.
+\item[\tag{string}] \ \\
+  A \tag{string} is a sequence of characters with balenced braces
+  which does not contain a double quote \verb|"| at brace level 0.
+\item[\tag{block}] \ \\
+  A \tag{block} is a sequence of characters with balanced braces; The
+  braces preceded by a backslash do not count for balancing.
+\item[\tag{number}] \ \\
+  A \tag{number} is a not empty sequence of digits.
+\item[\tag{macro name}] \ \\
+  A \tag{macro name} is a non-empty sequence of characters which is
+  not one of the special characters or white-space. The type is
+  considered case insensitive.
+\end{description}
+
+
+\section{Names}\label{sec:names}%
+\index{name|(}
 
 Names are especially complicated and deserve a description of their
-own.
+own. 
+\IM{08x1}
 
-\INCOMPLETE
+\subsection{Name Components}
+
+\BibTeX\ uses four components for names. Any name is analyzed and
+decomposed into the four parts. The following parts of names are
+considered:
+
+\begin{description}
+\item[Last part] \ \\
+  The last name or christian name of a person is usually the last
+  major component of a name. This is the only part which is not
+  optional.
+\item[First parts] \ \\
+  The first name or given name of a person is usually the first
+  component of a name. This part is optional.
+\item[Von part] \ \\
+  The von part of a name usually comes between first name and last
+  name and starts with lowercase letters. It is optional.
+\item[Junior part] \ \\
+  The junior part of a name is an addition appended to the name. This
+  part is optional.
+\end{description}
+
+The parts are separated by white space. This whitespace is only
+consoidered if it occurs at brace level 0. Thus the grouping with
+braces is honored. It can be used to tie together parts which would be
+torn apart otherwise.
+
+Any part can consist of several words. Commas can be used to structure
+a name. Thus we will use the number of commas for the analysis as
+well.
+\def\First#1{#1}%
+\def\Last#1{\textbf{#1}}%
+\def\Von#1{\textit{#1}}%
+\def\Jr#1{\underline{#1}}%
+
+\subsubsection*{No Commas}
+
+If a name does not contain a comma then the following pattern is used
+to determine the parts of the name:
+
+\begin{syntax}
+  \tag{name}\SyntaxDef\tag{first}* \tag{von}* \tag{last} \tag{jr}* 
+\end{syntax}%
+The name parts \emph{first} and \emph{last} consit of words for which
+the first letter is an uppercase letter. The name parts \emph{von} and
+\emph{jr} consit of words for which the first letter is a lowercase
+letter.
+
+The following examples show who teh names are classified. The last
+name is printed in bold, the first name is printed in roman, the von
+part is printed in italics and the junior part is underlined.
+
+\begin{quote}\obeylines
+  \Last{Aristoteles}
+  \First{Leslie} \Last{Lamport}
+  \First{Donald Ervin} \Last{Knuth}
+  \First{Johannes Chrysostomus Wolfgangus Theophilus} \Last{Mozart}
+  \First{Ludwig} \Von{van} \Last{Beethoven}
+  \First{Otto Eduard Leopold} \Von{von} \Last{Bismarck-Schönhausen}
+  \First{Miguel} \Von{de} \Last{Cervantes Saavedra}
+  \First{Sammy} \Last{Davis} \Jr{jr.}
+  \First{Don Quixote} \Von{de la} \Last{Mancha}
+\end{quote}
+
+
+\subsubsection*{One Comma}
+
+If a name does not contain a comma then the following pattern is used
+to determine the parts of the name:
+
+\begin{syntax}
+  \tag{name}\SyntaxDef \tag{von}* \tag{last} \texttt{,} \tag{first}* \\
+            \SyntaxOr  \tag{first}* \tag{von}* \tag{last} \texttt{,} \tag{jr}* 
+\end{syntax}%
+The name parts \emph{first} and \emph{last} consit of words for which
+the first letter is an uppercase letter. The name parts \emph{von} and
+\emph{jr} consit of words for which the first letter is a lowercase
+letter.
+
+The following examples show who teh names are classified. The last
+name is printed in bold, the first name is printed in roman, the von
+part is printed in italics and the junior part is underlined.
+
+\begin{quote}\obeylines
+  \Last{Lamport}, \First{Leslie}
+  \Last{Knuth}, \First{Donald Ervin} 
+  \Last{Mozart}, \First{Johannes Chrysostomus Wolfgangus Theophilus} 
+  \Last{Beethoven}, \First{Ludwig} \Von{van} 
+  \Von{von} \Last{Bismarck-Schönhausen}, \First{Otto Eduard Leopold} 
+  \Von{de} \Last{Cervantes Saavedra}, \First{Miguel} 
+  \First{Sammy} \Last{Davis}, \Jr{Jr.}
+\end{quote}
+
+
+\subsubsection*{Two Commas}
+
+If a name does not contain a comma then the following pattern is used
+to determine the parts of the name:
+
+\begin{syntax}
+  \tag{name}\SyntaxDef \tag{von}* \tag{last} \texttt{,} \tag{first}* \\
+            \SyntaxOr  \tag{last} \tag{von}* \texttt{,} \tag{jr}
+            \texttt{,} \tag{first}* 
+\end{syntax}%
+The name parts \emph{first} and \emph{last} consit of words for which
+the first letter is an uppercase letter. The name parts \emph{von} and
+\emph{jr} consit of words for which the first letter is a lowercase
+letter.
+
+The following examples show who teh names are classified. The last
+name is printed in bold, the first name is printed in roman, the von
+part is printed in italics and the junior part is underlined.
+
+\begin{quote}\obeylines
+  \Last{Davis}, \First{Sammy}, \Jr{Jr.}
+\end{quote}
+
+
+\subsubsection*{More Commas}
+
+More than two commas are not understood by the name parsing in \ExBib.
+
+
+\subsection{Name Lists}
+\index{name list|(}
+
+Names usually come in bibliographies as single names or as lists of
+names. Thus we have to take care of lists of names. Those lists are
+made up of single names separated by the word \texttt{and} surrounded
+by whitespace. This separator is only considered at brace level 0.
+Thus it is possible to protect embedded words ``and''. Those might be
+parts of company names -- e.g. acting an author.
+
+The following example is recognizes as two names:
+\begin{quote}\obeylines
+  \Last{Barnes} and \Last{Noble}
+\end{quote}
+The following example is recognizes a a single name name:
+\begin{quote}\obeylines
+  \Last{\char`\{ Barnes and Noble\char`\}}
+\end{quote}
+\index{name list|)}%
+\index{name|)}
 
 
 \section{Comments}
@@ -69,12 +279,13 @@ own.
 Anything outside of entries and other declarations are considered as a
 comment -- and mainly ignored. Thus you can put anything in between
 the entries.
+\IM{081}
 
-\IM{081} There is one special tag to mark comments. It is the tag
+There is one special tag to mark comments. It is the tag
 \texttt{@comment}. Since anything outside of declarations is already a
 comment. Is has been considered sufficient to ignore the tag in the
 input stream.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bibtex]
   @comment
 \end{lstlisting}
 
@@ -88,31 +299,52 @@ from \BibTeX\index{BibTeX@\BibTeX}:
   then a block is read and treated as comment. This means that the
   block can contain arbitrary characters -- especially the @ sign.
   On the other side the block needs to have balanced braces.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bibtex]
   @comment{ This is a comment with embedded @ }
 \end{lstlisting}
     
 \item If the next non-space character is not an open brace character
   then just the tag is ignored.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=bibtex]
   @comment This is a comment
 \end{lstlisting}
   
 \end{itemize}
 
 
-\section{The \texttt{@alias} Instruction}
+\section{The \texttt{@alias} Instruction}%
+\index{@alias|(}
+
+The \texttt{@alias} instruction can be used to define alternative keys
+for an entry. Whenever an entry is references with one of its keys all
+aliases are considered to be the same. For instance when an entry has
+two keys defined via the \texttt{@alias} and both of them are uned in
+a \macro{cite} then it is included in the result list only once.
 \IM{x1}
 
-\begin{verbatim}
+\begin{lstlisting}[language=bibtex]
   @alias( abc = def )
-\end{verbatim}
+\end{lstlisting}
 
-\INCOMPLETE
+To define an alias give the new key followed by an equality sign and
+the old key as argument to the \texttt{@alias} instruction. The enty
+for the old key has to exist at the time the \texttt{@alias}
+instruction is encountered.
 
-\section{The \texttt{@modify} Instruction}
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction}\SyntaxDef \texttt{@alias} \texttt{\char`\{}
+                     \tag{key1} \texttt{=} \tag{key2} \texttt{\char`\}}\\
+                   \SyntaxDef \texttt{@alias} \texttt{(}
+                     \tag{key1} \texttt{=} \tag{key2} \texttt{)}
+\end{syntax}%
+The instruction name is compared case insensitive.
+\index{@alias|)}
 
-The \texttt{@modify} directive can be used to alter the content of
+\section{The \texttt{@modify} Instruction}%
+\index{@modify|(}
+
+The \texttt{@modify} instruction can be used to alter the content of
 certain fields in an entry. The question is why would such a directive
 be necessary when you could simply alter the entry itself. The answer
 is that the entry might not be under your control. It might be
@@ -120,30 +352,78 @@ contained in another file which is included via the \texttt{@include}
 directive.
 \IM{x1}
 
-\begin{verbatim}
-  @modify( abc, author = {A.U. Thor} )
-\end{verbatim}
+\begin{lstlisting}[language=bibtex]
+  @modify( abc,
+           author = {A.U. Thor} )
+\end{lstlisting}
 
-\INCOMPLETE
+The argument of the \texttt{@modify} instruction looks formally like
+the argument for an entry. Instead of specifying a new entry an
+existing entry with the given key is sought and the given field values
+are overwritten. If no entry corresponding to the given key can be
+found then an error is raised.
 
-\section{The \texttt{@string} Instruction}
+
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction}\SyntaxDef \texttt{@modify} \texttt{\char`\{}
+                     \tag{key} \texttt{,} \tag{attributes} \texttt{\char`\}}\\
+                   \SyntaxDef \texttt{@alias} \texttt{(}
+                     \tag{key} \texttt{,} \tag{attributes} \texttt{)}
+\end{syntax}%
+The instruction name is compared case insensitive.
+\index{@modify|)}
+
+
+\section{The \texttt{@string} Instruction}%
+\index{@string|(}
+
+The \texttt{@string} instruction can be used to define macros. Each
+macro has a name and a value. When a field of an entry is accessed the
+field value is computed. The computation concatenats its parts. In
+this course the macros contained are resolved.
 \IM{08x1}
 
-\begin{verbatim}
-  @string( abc = {The value} )
-\end{verbatim}
+The macros can be defined in several places. One of them is the
+datatebase file. Another is the style file. The place where the
+definition is located does not make a difference.
 
-\INCOMPLETE
+\begin{lstlisting}[language=bibtex]
+  @string( abc = {The value} )
+\end{lstlisting}
+
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction}\SyntaxDef \texttt{@string} \texttt{\char`\{}
+                     \tag{macro name} \texttt{=} \tag{value} \texttt{\char`\}}\\
+                   \SyntaxDef \texttt{@string} \texttt{(}
+                     \tag{macro name} \texttt{=} \tag{value} \texttt{)}
+\end{syntax}%
+The instruction name is compared case in-sensitove.
+\index{@string|)}
+
 
 \section{The \texttt{@preamble} Instruction}
+\index{@preamble|(}
+
+Sometines it is necessary ensure that a certain definition is made
+which is used in the database. Those definitions are collected and can
+be included at the beginning of the generated output.
 \IM{08x1}
 
-\begin{verbatim}
+\begin{lstlisting}[language=bibtex]
   @preamble( "\providecommand\BibTeX{\textsc{Bib}\TeX}" )
-\end{verbatim}
+\end{lstlisting}
 
-\INCOMPLETE
-
+The formal syntax of this instruction is as follows:
+\begin{syntax}
+  \tag{instruction}\SyntaxDef \texttt{@preamble} \texttt{\char`\{}
+                     \tag{value} \texttt{\char`\}}\\
+                   \SyntaxDef \texttt{@preamble} \texttt{(}
+                     \tag{value} \texttt{)}
+\end{syntax}%
+The instruction name is compared case in-sensitove.
+\index{@preamble|(}
 
 \endinput
 %

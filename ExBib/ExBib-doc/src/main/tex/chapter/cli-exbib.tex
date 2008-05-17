@@ -42,7 +42,7 @@ places have a certain precedency. From lowest to highest they are:
 
 Empty lines and lines starting -- after inital whitespace -- with a
 hash mark (\#) are treated as comments and ignored.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 # This is a comment
 \end{lstlisting}
 
@@ -50,7 +50,7 @@ The dot files contain key value pairs in a line-based style. The key
 and the value are separated by an equality sign (=). Whitespace before
 the key and around the equality sign is ignored. The value follows the
 equality sign.
-\begin{lstlisting}{}
+\begin{lstlisting}[language=sh]
 exbib.file = file.aux
 \end{lstlisting}
 
@@ -339,10 +339,10 @@ The following configurations are present in the distribution.
 \subsubsection{Encodings}
 \index{encoding|(}
 
-The internal representation of characters uses Unicode. In general it
-is necessary to translate from and to the internal representation when
-reading and writing files. For this purpose the encodings to be used
-can be configured.
+The internal representation of characters uses Unicode\index{Unicode}.
+In general it is necessary to translate from and to the internal
+representation when reading and writing files. For this purpose the
+encodings to be used can be configured.
 
 The default is to use the default encoding for the platform \ExBib\ is
 currently running. Thus it is not necessary to specify an encoding at
