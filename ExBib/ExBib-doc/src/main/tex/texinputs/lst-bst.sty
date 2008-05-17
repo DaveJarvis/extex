@@ -65,11 +65,23 @@
   morecomment=[l]\%%
 }
 
-
 \lstdefinelanguage[exbib]{bst}[]{bst}{%
   morekeywords={% reserved keywords
     include%
   }%
+}
+
+\lstdefinelanguage{bibtex}{%
+  sensitive=false,%
+  morekeywords={% reserved keywords
+    @string,%
+    @preamble,%
+    @comment,%
+    @include,%
+    @alias,%
+    @modify%
+  },%
+  alsoletter={@\#},%
 }
 
 \endinput
