@@ -556,12 +556,10 @@ public class ExBib extends AbstractMain {
             CsfSorter sorter = makeSorter(finder);
             FuncallObserver funcall = null;
 
-            BibReaderFactory bibReaderFactory = new BibReaderFactory(//
-                config.getConfiguration("BibReader"), finder);
-            String bibEncoding = getProperty(PROP_BIB_ENCODING);
-            if (bibEncoding != null) {
-                bibReaderFactory.setEncoding(bibEncoding);
-            }
+            BibReaderFactory bibReaderFactory =
+                    new BibReaderFactory(config.getConfiguration("BibReader"),
+                        finder, getProperty(PROP_BIB_ENCODING),
+                        getProperty(PROP_ENCODING));
             ProcessorContainer container =
                     new ProcessorContainer(config, getLogger());
             container.setMinCrossrefs(minCrossrefs);

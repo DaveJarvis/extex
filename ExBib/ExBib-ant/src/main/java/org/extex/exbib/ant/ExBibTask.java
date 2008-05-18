@@ -262,11 +262,9 @@ public class ExBibTask extends Task {
                 throw new BuildException();
             }
 
-            BibReaderFactory bibReaderFactory = new BibReaderFactory(//
-                config.getConfiguration("BibReader"), finder);
-            if (bibEncoding != null) {
-                bibReaderFactory.setEncoding(bibEncoding);
-            }
+            BibReaderFactory bibReaderFactory =
+                    new BibReaderFactory(config.getConfiguration("BibReader"),
+                        finder, bibEncoding, encoding);
             DB db =
                     new DBFactory(//
                         config.getConfiguration("DB")).newInstance(

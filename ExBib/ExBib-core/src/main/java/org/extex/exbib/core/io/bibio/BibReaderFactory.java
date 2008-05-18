@@ -57,14 +57,21 @@ public class BibReaderFactory extends AbstractFactory {
      * 
      * @param configuration the configuration
      * @param finder the resource finder
+     * @param enc the required encoding or <code>null</code>
+     * @param encFallback the fallback encoding or <code>null</code>
      */
-    public BibReaderFactory(Configuration configuration, ResourceFinder finder) {
+    public BibReaderFactory(Configuration configuration, ResourceFinder finder,
+            String enc, String encFallback) {
 
         super(configuration);
         setResourceFinder(finder);
-        String enc = configuration.getAttribute("encoding");
+        String e = configuration.getAttribute("encoding");
         if (enc != null) {
             encoding = enc;
+        } else if (encFallback != null) {
+            encoding = encFallback;
+        } else if (e != null) {
+            encoding = e;
         }
     }
 

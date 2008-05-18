@@ -441,11 +441,10 @@ public final class ExBibUtil extends AbstractMain {
                     new ResourceFinderFactory().createResourceFinder(
                         configuration.getConfiguration("Resource"),
                         getLogger(), System.getProperties(), null);
-            BibReaderFactory bibReaderFactory = new BibReaderFactory(//
-                configuration.getConfiguration("BibReader"), finder);
-            if (bibEncoding != null) {
-                bibReaderFactory.setEncoding(bibEncoding);
-            }
+            BibReaderFactory bibReaderFactory =
+                    new BibReaderFactory(configuration
+                        .getConfiguration("BibReader"), finder, bibEncoding,
+                        encoding);
             DB db = new DBFactory(configuration.getConfiguration("DB"))//
                 .newInstance(bibReaderFactory, Integer.MAX_VALUE);
             BibliographyCore bibliography =
