@@ -23,12 +23,15 @@ import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.exception.ExBibNoNameException;
 import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Name;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -110,8 +113,19 @@ public class TString extends AbstractToken implements Token {
      * as cache.
      * 
      * @return the names or <code>null</code>
+     * 
+     * @throws ExBibImpossibleException in case of an error
+     * @throws ExBibNoNameException in case of an error
+     * @throws ExBibSyntaxException in case of an error
      */
-    public List<Name> getNames() {
+    public List<Name> getNames()
+            throws ExBibSyntaxException,
+                ExBibNoNameException,
+                ExBibImpossibleException {
+
+        if (names == null) {
+            names = Name.parse(getValue(), getLocator());
+        }
 
         return names;
     }

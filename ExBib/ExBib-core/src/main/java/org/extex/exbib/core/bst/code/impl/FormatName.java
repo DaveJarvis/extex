@@ -1030,18 +1030,9 @@ public class FormatName extends AbstractCode {
         TInteger tint = processor.popInteger(locator);
         TString names = processor.popString(locator);
         int index = tint.getInt();
-
-        if (index < 1) {
-            throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
-                tint.getLocator());
-        }
-
         List<Name> namelist = names.getNames();
 
-        if (namelist == null) {
-            namelist = Name.parse(names.getValue(), locator);
-        }
-        if (index > namelist.size()) {
+        if (index < 1 || index > namelist.size()) {
             throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
                 tint.getLocator());
         }
