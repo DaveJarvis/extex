@@ -47,9 +47,9 @@ content as if it where present at the place of the instruction.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction}\SyntaxDef \texttt{@input} \texttt{\char`\{}
-                                \tag{resource name} \texttt{\char`\}}
+  <instruction> \+ |@input| | \char`\{\ | <resource name> | \char`\} |
 \end{syntax}%
+The instruction name \texttt{input} is taken case insensitive.
 \index{@input|)}
 
 
@@ -58,7 +58,6 @@ The formal syntax of this instruction is as follows:
 Any instruction which has no special meaning is considered to be an
 entry in the database.
 \IM{08x1}
-
 
 \begin{lstlisting}[language=bibtex]
   @Book{          knuth:texbook,
@@ -77,46 +76,44 @@ entry in the database.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction} \SyntaxDef \texttt{@} \tag{type} \texttt{\char`\{}
-                      \tag{key} \texttt{,} \tag{attributes} \texttt{\char`\}} \\
-                    \SyntaxOr  \texttt{@} \tag{type} \texttt{(}
-                      \tag{key} \texttt{,} \tag{attributes} \texttt{)}\\
-  \tag{attributes}  \SyntaxDef \tag{attribute}\\
-                    \SyntaxOr  \tag{attribute} \texttt{,} \tag{attributes}\\
-  \tag{attribute}   \SyntaxDef \tag{field name} \texttt{=} \tag{value}\\
-  \tag{value}       \SyntaxDef \tag{atomic value}\\
-                    \SyntaxOr  \tag{atomic value} \texttt{\#} \tag{value}\\
-  \tag{atomic value}\SyntaxDef \texttt{"} \tag{string} \texttt{"}\\
-                    \SyntaxOr  \texttt{\char`\{} \tag{block} \texttt{\char`\}}\\
-                    \SyntaxOr  \tag{number}\\
-                    \SyntaxOr  \tag{macro name}
+  <instruction> \+ |@| <type> | \char`\{\ | <key> | , | <attributes> | \char`\} | \\
+                \| |@| <type> | ( | <key> | , | <attributes> | ) |\\
+  <attributes>  \= <attribute>\\
+                \| <attribute> | , | <attributes>\\
+  <attribute>   \= <field name> | = | <value>\\
+  <value>       \= <atomic value>\\
+                \| <atomic value> | \# | <value>\\
+  <atomic value>\= |"| <string> |"|\\
+                \| |\char`\{| <block> |\char`\}| \\
+                \| <number>\\
+                \| <macro name>
 \end{syntax}%
 Several syntactic entities deserve a definition:
 
 \begin{description}
-\item[\tag{type}] \ \\
-  A \tag{type} is a non-empty sequence of characters which is not one
+\item[\Tag{type}] \ \\
+  A \Tag{type} is a non-empty sequence of characters which is not one
   of the special characters or white-space. The type is considered
   case insensitive; i.e. upper and lowercase letters are considered
   the same.
-\item[\tag{key}] \ \\
-  A \tag{key} is a non-empty sequence of characters which is not one
+\item[\Tag{key}] \ \\
+  A \Tag{key} is a non-empty sequence of characters which is not one
   of the special characters or white-space. The type is considered
   case insensitive.
-\item[\tag{field name}] \ \\
-  A \tag{field name} is a non-empty sequence of characters which is
+\item[\Tag{field name}] \ \\
+  A \Tag{field name} is a non-empty sequence of characters which is
   not one of the special characters or white-space. The type is
   considered case insensitive.
-\item[\tag{string}] \ \\
-  A \tag{string} is a sequence of characters with balenced braces
+\item[\Tag{string}] \ \\
+  A \Tag{string} is a sequence of characters with balenced braces
   which does not contain a double quote \verb|"| at brace level 0.
-\item[\tag{block}] \ \\
-  A \tag{block} is a sequence of characters with balanced braces; The
+\item[\Tag{block}] \ \\
+  A \Tag{block} is a sequence of characters with balanced braces; The
   braces preceded by a backslash do not count for balancing.
-\item[\tag{number}] \ \\
-  A \tag{number} is a not empty sequence of digits.
-\item[\tag{macro name}] \ \\
-  A \tag{macro name} is a non-empty sequence of characters which is
+\item[\Tag{number}] \ \\
+  A \Tag{number} is a not empty sequence of digits.
+\item[\Tag{macro name}] \ \\
+  A \Tag{macro name} is a non-empty sequence of characters which is
   not one of the special characters or white-space. The type is
   considered case insensitive.
 \end{description}
@@ -170,16 +167,16 @@ If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
 
 \begin{syntax}
-  \tag{name}\SyntaxDef\tag{first}* \tag{von}* \tag{last} \tag{jr}* 
+  <name> \+ <first>* <von>* <last> <jr>* 
 \end{syntax}%
 The name parts \emph{first} and \emph{last} consit of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
 \emph{jr} consit of words for which the first letter is a lowercase
 letter.
 
-The following examples show who teh names are classified. The last
+The following examples show how the names are classified. The last
 name is printed in bold, the first name is printed in roman, the von
-part is printed in italics and the junior part is underlined.
+part is printed in italics, and the junior part is underlined.
 
 \begin{quote}\obeylines
   \Last{Aristoteles}
@@ -200,17 +197,17 @@ If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
 
 \begin{syntax}
-  \tag{name}\SyntaxDef \tag{von}* \tag{last} \texttt{,} \tag{first}* \\
-            \SyntaxOr  \tag{first}* \tag{von}* \tag{last} \texttt{,} \tag{jr}* 
+  <name> \+ <von>* <last> | , | <first>* \\
+         \|  <first>* <von>* <last> | , | <jr>* 
 \end{syntax}%
 The name parts \emph{first} and \emph{last} consit of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
 \emph{jr} consit of words for which the first letter is a lowercase
 letter.
 
-The following examples show who teh names are classified. The last
+The following examples show how the names are classified. The last
 name is printed in bold, the first name is printed in roman, the von
-part is printed in italics and the junior part is underlined.
+part is printed in italics, and the junior part is underlined.
 
 \begin{quote}\obeylines
   \Last{Lamport}, \First{Leslie}
@@ -229,18 +226,16 @@ If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
 
 \begin{syntax}
-  \tag{name}\SyntaxDef \tag{von}* \tag{last} \texttt{,} \tag{first}* \\
-            \SyntaxOr  \tag{last} \tag{von}* \texttt{,} \tag{jr}
-            \texttt{,} \tag{first}* 
+  <name> \+ <last> <von>* | , | <jr> | , | <first>* 
 \end{syntax}%
 The name parts \emph{first} and \emph{last} consit of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
 \emph{jr} consit of words for which the first letter is a lowercase
 letter.
 
-The following examples show who teh names are classified. The last
+The following examples show how the names are classified. The last
 name is printed in bold, the first name is printed in roman, the von
-part is printed in italics and the junior part is underlined.
+part is printed in italics, and the junior part is underlined.
 
 \begin{quote}\obeylines
   \Last{Davis}, \First{Sammy}, \Jr{Jr.}
@@ -308,8 +303,15 @@ from \BibTeX\index{BibTeX@\BibTeX}:
 \begin{lstlisting}[language=bibtex]
   @comment This is a comment
 \end{lstlisting}
-  
+ 
 \end{itemize}
+
+Formally spoken those two cases correspond to the following syntax
+specification:
+\begin{syntax}
+  <instruction> \+ |@comment| |\char`\{| <block> |\char`\}| \\
+                \| |@comment| 
+\end{syntax}
 
 
 \section{The \texttt{@alias} Instruction}%
@@ -333,10 +335,8 @@ instruction is encountered.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction}\SyntaxDef \texttt{@alias} \texttt{\char`\{}
-                     \tag{key1} \texttt{=} \tag{key2} \texttt{\char`\}}\\
-                   \SyntaxDef \texttt{@alias} \texttt{(}
-                     \tag{key1} \texttt{=} \tag{key2} \texttt{)}
+  <instruction> \+ |@alias| | \char`\{\ | \tag{key} | = | \tag{key} | \char`\} | \\
+                \| |@alias| | ( | \tag{key} | = | \tag{key} | ) | 
 \end{syntax}%
 The instruction name is compared case insensitive.
 \index{@alias|)}
@@ -366,10 +366,8 @@ found then an error is raised.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction}\SyntaxDef \texttt{@modify} \texttt{\char`\{}
-                     \tag{key} \texttt{,} \tag{attributes} \texttt{\char`\}}\\
-                   \SyntaxDef \texttt{@alias} \texttt{(}
-                     \tag{key} \texttt{,} \tag{attributes} \texttt{)}
+  <instruction> \+ |@modify| | \char`\{\ | <key> | , | <attributes> | \char`\} | \\
+                \| |@modify| | ( | <key> | , | <attributes> | ) | 
 \end{syntax}%
 The instruction name is compared case insensitive.
 \index{@modify|)}
@@ -394,10 +392,8 @@ definition is located does not make a difference.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction}\SyntaxDef \texttt{@string} \texttt{\char`\{}
-                     \tag{macro name} \texttt{=} \tag{value} \texttt{\char`\}}\\
-                   \SyntaxDef \texttt{@string} \texttt{(}
-                     \tag{macro name} \texttt{=} \tag{value} \texttt{)}
+  <instruction> \+ |@string| | \char`\{\ | <macro name> | = | <value> | \char`\} | \\
+                \| |@string| | ( | <macro name> | = | <value> | ) | 
 \end{syntax}%
 The instruction name is compared case in-sensitove.
 \index{@string|)}
@@ -417,10 +413,8 @@ be included at the beginning of the generated output.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
-  \tag{instruction}\SyntaxDef \texttt{@preamble} \texttt{\char`\{}
-                     \tag{value} \texttt{\char`\}}\\
-                   \SyntaxDef \texttt{@preamble} \texttt{(}
-                     \tag{value} \texttt{)}
+  <instruction> \+ |@preamble| | \char`\{\ | <value> | \char`\} | \\
+                \| |@preamble| | ( | <value> | ) | 
 \end{syntax}%
 The instruction name is compared case in-sensitove.
 \index{@preamble|(}

@@ -25,18 +25,39 @@
 \newcommand\Mode[1]{\texttt{#1}\index{#1}}
 \newcommand\macro[1]{\texttt{\char`\\ #1}\index{#1@\texttt{\char`\\ #1}}}
 \newcommand\Macro[1]{\texttt{\char`\\ #1}}
+
+
 \newcommand\tag[1]{%
     \ensuremath{\langle\textit{#1\index{#1@\protect\Tag{#1}}}\rangle%
     }}
 \newcommand\Tag[1]{\texorpdfstring{%
     \ensuremath{\langle\textit{#1}\rangle}}{<#1>}}
 
+\begingroup
+  \catcode`\<=13
+  \catcode`\|=13
+  \gdef\SyntaxTag#1>{\tag{#1}}%
+  \gdef\SyntaxConst#1|{\texttt{#1}}%
+  \gdef\StartSyntax{%
+    \let<\SyntaxTag
+    \let|\SyntaxConst
+    \let\IS\SyntaxDef
+    \let\OR\SyntaxOr
+    \let\+\SyntaxDefAdd
+    \let\=\SyntaxDef
+    \let\|\SyntaxOr
+  }%
+\endgroup
+\newcommand\SyntaxDef{&\leftarrow&}
+\newcommand\SyntaxDefAdd{&\leftarrow+&}
+\newcommand\SyntaxOr{&|&}
 \newenvironment{syntax}{%
+  \catcode`\<=13
+  \catcode`\|=13
+  \StartSyntax
   \begin{eqnarray*}%
   }{%
   \end{eqnarray*}}
-\newcommand\SyntaxDef{&\rightarrow&}
-\newcommand\SyntaxOr{&|&}
 
 \def\n{\char`\\n}
 \def\t{\char`\\t}
