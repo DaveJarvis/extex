@@ -327,7 +327,7 @@ public class ExBibTask extends Task {
                 throw new BuildException(msg("bst.not.found", e.getMessage()));
             }
 
-            processor.process(writer, logger);
+            processor.process(writer);
 
             if (errors > 0) {
                 throw new BuildException(msg(errors == 1 ? "error" : "errors",
