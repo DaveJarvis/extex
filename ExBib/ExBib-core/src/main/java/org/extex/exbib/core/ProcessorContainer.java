@@ -26,12 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
-import org.extex.exbib.core.util.EntryObserver;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.Configurable;
@@ -201,6 +201,7 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
                 db.setSorter(sorter);
             }
             processor = processorFactory.newInstance(db, null);
+            processor.setLogger(logger);
 
             try {
                 for (NamedObserver no : dbObsList) {
@@ -210,8 +211,7 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
                 for (NamedObserver no : obsList) {
                     processor.registerObserver(no.getName(), no.getObserver());
                 }
-                db.registerObserver("makeEntry", new EntryObserver(logger,
-                    processor));
+                prepareProcessor(processor, db);
             } catch (NotObservableException e) {
                 throw new ExBibException(e);
             }
@@ -261,6 +261,23 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     public Iterator<String> iterator() {
 
         return bibliographies.keySet().iterator();
+    }
+
+    /**
+     * This method is invoked when a new Processor has been made. It is meant to
+     * be overwritten in a derived class.
+     * 
+     * @param processor the processor
+     * @param db its database
+     * 
+     * @throws NotObservableException in case of an error
+     * @throws ExBibIllegalValueException in case of an error
+     */
+    protected void prepareProcessor(Processor processor, DB db)
+            throws NotObservableException,
+                ExBibIllegalValueException {
+
+        // overwrite me
     }
 
     /**

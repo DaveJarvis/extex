@@ -24,19 +24,14 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.bst.BibliographyCore;
-import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.DBFactory;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.ProcessorContainer;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
 import org.extex.exbib.core.io.StreamWriter;
 import org.extex.exbib.core.io.Writer;
@@ -47,6 +42,7 @@ import org.extex.exbib.core.io.bibio.BibPrinterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.StringOption;
+import org.extex.exbib.main.cli.StringPropertyOption;
 import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.main.util.AbstractMain;
@@ -75,7 +71,7 @@ import org.extex.resource.ResourceFinderFactory;
  * citations from.</dd>
  * <dt>--b[ib-encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
  * <dd>Use the given encoding for the bib files.</dd>
- * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
+ * <dt>--c[onfiguration] | -c &lang;configuration&rang;</dt>
  * <dd>Use the configuration given. This is not a file!</dd>
  * <dt>--cop[ying]</dt>
  * <dd>Display the copyright conditions.</dd>
@@ -135,6 +131,29 @@ public final class ExBibUtil extends AbstractMain {
     private static final int INCEPTION_YEAR = 2002;
 
     /**
+     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the encoding
+     * for bib files.
+     */
+    private static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
+
+    /**
+     * The field <tt>PROP_ENCODING</tt> contains the name of the property to
+     * carry the encoding.
+     */
+    public static final String PROP_ENCODING = "exbib.encoding";
+
+    /**
+     * The field <tt>PROP_CONFIG</tt> contains the name of the property to
+     * carry the configuration.
+     */
+    protected static final String PROP_CONFIG = "exbib.config";
+
+    /**
+     * The field <tt>PROP_TYPE</tt> contains the ...
+     */
+    private static final String PROP_TYPE = "exbib.type";
+
+    /**
      * Run the command line.
      * 
      * @param argv the command line arguments
@@ -176,38 +195,10 @@ public final class ExBibUtil extends AbstractMain {
     private List<String> files = new ArrayList<String>();
 
     /**
-     * The field <tt>outfile</tt> contains the output file or
-     * <code>null</code> for stdout.
-     */
-    private String outfile = null;
-
-    /**
-     * The field <tt>config</tt> contains the name of the configuration to
-     * use.
-     */
-    private String config = "exbib";
-
-    /**
-     * The field <tt>type</tt> contains the type of the output driver.
-     */
-    private String type = "bib";
-
-    /**
      * The field <tt>auxfile</tt> contains the name of the aux file for
      * extraction or <code>null</code> for none.
      */
     private String auxfile = null;
-
-    /**
-     * The field <tt>encoding</tt> contains the encoding or <code>null</code>
-     * for the default encoding.
-     */
-    private String encoding = null;
-
-    /**
-     * The field <tt>bibEncoding</tt> contains the encoding for bib files.
-     */
-    private String bibEncoding = null;
 
     /**
      * Creates a new object.
@@ -218,6 +209,8 @@ public final class ExBibUtil extends AbstractMain {
 
         super(PROGNAME, VERSION, INCEPTION_YEAR, ".exbib", System
             .getProperties());
+        setProperty(PROP_CONFIG, "exbib");
+        setProperty(PROP_TYPE, "bib");
         declareOptions();
     }
 
@@ -227,6 +220,7 @@ public final class ExBibUtil extends AbstractMain {
      */
     protected void declareOptions() {
 
+        declareCommonOptions();
         declareOption(null, new NoArgOption(null) {
 
             @Override
@@ -244,96 +238,19 @@ public final class ExBibUtil extends AbstractMain {
                     throws UnusedArgumentCliException,
                         UnknownOptionCliException {
 
-                if (a.startsWith("-")) {
-                    throw new UnknownOptionCliException(a);
-                }
-                throw new UnusedArgumentCliException(a);
+                throw new UnknownOptionCliException(a);
             }
 
         });
-        declareCommonOptions();
-        option("-E", "--bib.encoding", new StringOption("opt.bib.encoding") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                bibEncoding = arg;
-                return EXIT_CONTINUE;
-            }
-
-        }, "--bib-encoding");
-        option("-c", "--config", new StringOption("opt.config") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                setConfig(arg);
-                return EXIT_CONTINUE;
-            }
-
-        });
-        option(null, "--copying", new NoArgOption("opt.copying") {
-
-            @Override
-            protected int run(String name) {
-
-                return logCopying();
-            }
-
-        });
-        option("-e", "--encoding", new StringOption("opt.encoding") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                encoding = arg;
-                return EXIT_CONTINUE;
-            }
-
-        });
-        option("-l", "--logfile", new StringOption("opt.logfile") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                boolean debug = false;
-                if (arg != null && !arg.equals("")) {
-                    Handler fileHandler;
-                    try {
-                        fileHandler = new FileHandler(arg);
-                    } catch (SecurityException e) {
-                        throw new ConfigurationWrapperException(e);
-                    } catch (IOException e) {
-                        throw new ConfigurationWrapperException(e);
-                    }
-                    fileHandler.setFormatter(new LogFormatter());
-                    fileHandler.setLevel(debug ? Level.ALL : Level.FINE);
-                    getLogger().addHandler(fileHandler);
-                }
-                return EXIT_CONTINUE;
-            }
-        });
-        option("-L", "--language", new StringOption("opt.language") {
-
-            @Override
-            protected int run(String name, String arg) {
-
-                Locale.setDefault(new Locale(arg));
-                setBundle(ResourceBundle.getBundle(ExBibUtil.class.getName()));
-                return EXIT_CONTINUE;
-            }
-
-        });
-        option("-t", "--type", new StringOption("opt.type") {
-
-            @Override
-            protected int run(String arg, String value) {
-
-                type = value;
-                return EXIT_CONTINUE;
-            }
-
-        });
+        option("-E", "--bib.encoding", new StringPropertyOption(
+            "opt.bib.encoding", PROP_BIB_ENCODING, getProperties()),
+            "--bib-encoding");
+        option("-c", "--configuration", new StringPropertyOption("opt.config",
+            PROP_CONFIG, getProperties()));
+        option("-e", "--encoding", new StringPropertyOption("opt.encoding",
+            PROP_ENCODING, getProperties()));
+        option("-t", "--type", new StringPropertyOption("opt.type", PROP_TYPE,
+            getProperties()));
         option("-x", "--auxfile", new StringOption("opt.auxfile") {
 
             @Override
@@ -356,45 +273,32 @@ public final class ExBibUtil extends AbstractMain {
      * 
      * @param configuration the configuration
      * @param finder the resource finder
-     * @param bibliography the bibliography
+     * @param container the bibliography
      * 
-     * @return 0 iff everything went through
+     * @return <code>true</code> iff everything went through
      * 
-     * @throws ExBibImpossibleException this should not happen
      * @throws IOException in case of an I/O error
      * @throws ConfigurationException in case of a configuration problem
+     * @throws ExBibException in case of an error
      */
-    protected int readAux(Configuration configuration, ResourceFinder finder,
-            Bibliography bibliography)
-            throws ExBibImpossibleException,
-                ConfigurationException,
-                IOException {
+    protected boolean readAux(Configuration configuration,
+            ResourceFinder finder, ProcessorContainer container)
+            throws ConfigurationException,
+                IOException,
+                ExBibException {
 
-        int errors = 0;
         AuxReader auxReader = new AuxReaderFactory(//
             configuration.getConfiguration("AuxReader")).newInstance(finder);
         auxReader.register(new MainResourceObserver(getLogger()));
 
-        // try {
-        // int[] no = auxReader.load(bibliography, auxfile, encoding);
-        //
-        // if (no[1] == 0) {
-        // errors++;
-        // log("bst.missing", auxfile);
-        // }
-        // if (no[0] == 0) {
-        // errors++;
-        // log("data.missing", auxfile);
-        // }
-        // if (no[2] == 0) {
-        // errors++;
-        // log("citation.missing", auxfile);
-        // }
-        // } catch (FileNotFoundException e) {
-        // return log("aux.not.found", e.getMessage());
-        // }
-        // TODO rewrite
-        return 0;
+        try {
+            auxReader.load(container, auxfile, getProperty(PROP_ENCODING));
+        } catch (FileNotFoundException e) {
+            log("aux.not.found", e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -412,47 +316,51 @@ public final class ExBibUtil extends AbstractMain {
 
         Writer writer = null;
 
+        String outfile = getProperty(PROP_OUTFILE);
         try {
             if (outfile == null) {
-                writer = new StreamWriter(System.out, encoding);
+                writer =
+                        new StreamWriter(System.out, getProperty(PROP_ENCODING));
                 info("output.to.stdout");
             } else if (outfile.equals("")) {
                 info("output.discarted");
                 writer = new NullWriter(null);
             } else if (outfile.equals("-")) {
                 info("output.to.stdout");
-                writer = new StreamWriter(System.out, encoding);
+                writer =
+                        new StreamWriter(System.out, getProperty(PROP_ENCODING));
             } else {
                 info("output.file", outfile);
-                writer = new StreamWriter(outfile, encoding);
+                writer = new StreamWriter(outfile, getProperty(PROP_ENCODING));
             }
         } catch (FileNotFoundException e) {
-            log("output.could.not.be.opened", outfile);
-            return EXIT_FAIL;
+            return log("output.could.not.be.opened", outfile);
         } catch (UnsupportedEncodingException e) {
-            log("unknown.encoding", encoding);
-            return EXIT_FAIL;
+            return log("unknown.encoding", getProperty(PROP_ENCODING));
         }
 
         try {
             Configuration configuration =
-                    ConfigurationFactory.newInstance("exbib/" + config);
+                    ConfigurationFactory.newInstance("exbib/"
+                            + getProperty(PROP_CONFIG));
             ResourceFinder finder =
                     new ResourceFinderFactory().createResourceFinder(
                         configuration.getConfiguration("Resource"),
                         getLogger(), System.getProperties(), null);
             BibReaderFactory bibReaderFactory =
                     new BibReaderFactory(configuration
-                        .getConfiguration("BibReader"), finder, bibEncoding,
-                        encoding);
-            DB db = new DBFactory(configuration.getConfiguration("DB"))//
-                .newInstance(bibReaderFactory, Integer.MAX_VALUE);
-            BibliographyCore bibliography =
-                    new BibliographyCore(db, getLogger());
+                        .getConfiguration("BibReader"), finder,
+                        getProperty(PROP_BIB_ENCODING),
+                        getProperty(PROP_ENCODING));
+            ProcessorContainer container =
+                    new ProcessorContainer(configuration, getLogger());
+            container.setBibReaderFactory(bibReaderFactory);
+            container.setMinCrossrefs(Integer.MAX_VALUE);
 
+            Processor bibliography = container.findBibliography(null);
             if (auxfile == null) {
                 bibliography.addCitation("*");
-            } else if (readAux(configuration, finder, bibliography) != 0) {
+            } else if (!readAux(configuration, finder, container)) {
                 return EXIT_FAIL;
             }
 
@@ -461,10 +369,13 @@ public final class ExBibUtil extends AbstractMain {
             }
             bibliography.loadDatabases();
 
-            Configuration cfg = configuration.getConfiguration("BibPrinter");
             BibPrinter printer;
+            String type = getProperty(PROP_TYPE);
             try {
-                printer = new BibPrinterFactory(cfg).newInstance(type, writer);
+                printer =
+                        new BibPrinterFactory(configuration
+                            .getConfiguration("BibPrinter")).newInstance(type,
+                            writer);
             } catch (ConfigurationNotFoundException e) {
                 return log("unknown.type", type);
             }
@@ -476,33 +387,18 @@ public final class ExBibUtil extends AbstractMain {
             throw e;
         } catch (FileNotFoundException e) {
             return log("bib.not.found", e.getMessage());
-        } catch (IOException e) {
-            throw e;
         } catch (Exception e) {
-            log("error.format", getProgramName(), e.toString());
-            return EXIT_FAIL;
+            return log("error.format", getProgramName(), e.toString());
         } finally {
             try {
                 writer.close();
             } catch (IOException e) {
-                log("error.format", getProgramName(), e.toString());
-                return EXIT_FAIL;
+                return log("error.format", getProgramName(), e.toString());
             }
         }
 
         info("runtime", Long.toString(System.currentTimeMillis() - time));
-
         return EXIT_OK;
-    }
-
-    /**
-     * Setter for the configuration.
-     * 
-     * @param config the configuration to set
-     */
-    public void setConfig(String config) {
-
-        this.config = config;
     }
 
     /**

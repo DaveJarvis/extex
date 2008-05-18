@@ -300,13 +300,11 @@ public interface Processor extends Bibliography, Configurable {
      * the observers `run' are called before it is executed.
      * 
      * @param outWriter the writer output is sent to
-     * @param logger the logger
-     * 
      * @return the number of warnings issued
      * 
      * @throws ExBibException in case of an error
      */
-    long process(Writer outWriter, Logger logger) throws ExBibException;
+    long process(Writer outWriter) throws ExBibException;
 
     /**
      * Push the given item onto the stack.
@@ -390,6 +388,13 @@ public interface Processor extends Bibliography, Configurable {
     void setIntegers(TokenList list, Locator locator) throws ExBibException;
 
     /**
+     * Setter for the logger.
+     * 
+     * @param logger the new logger
+     */
+    public void setLogger(Logger logger);
+
+    /**
      * Setter for the names of global string variables. The given names are
      * added to the ones already defined.
      * 
@@ -419,5 +424,4 @@ public interface Processor extends Bibliography, Configurable {
      * @param message the warning message to issue
      */
     void warning(String message);
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -82,8 +82,8 @@ public class EntryObserver implements Observer {
 
         if (null == processor.getFunction(type)) {
             logger.warning(LocalizerFactory.getLocalizer(getClass()).format(
-                "not.defined", e.getKey())
-                    + "\t" + e.getLocator().toString());
+                "not.defined", type, e.getKey())
+                    + "\t" + e.getLocator().toString() + "\n");
         }
     }
 

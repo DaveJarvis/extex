@@ -608,12 +608,11 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#process(
-     *      org.extex.exbib.core.io.Writer, java.util.logging.Logger)
+     *      org.extex.exbib.core.io.Writer)
      */
-    public long process(Writer writer, Logger logger) throws ExBibException {
+    public long process(Writer writer) throws ExBibException {
 
         this.outWriter = writer;
-        setLogger(logger);
 
         for (Command command : commands) {
             runObservers.update(this, command);

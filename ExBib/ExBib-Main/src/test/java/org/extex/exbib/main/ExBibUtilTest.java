@@ -61,7 +61,7 @@ public class ExBibUtilTest extends BibUtilTester {
                     + "\t\tList the available encoding names and exit.\n"
                     + "\t--b[ib-encoding] | --bib.[encoding] | -E <enc>\n"
                     + "\t\tUse the given encoding for the bib files.\n"
-                    + "\t--con[fig] | -c <configuration>\n"
+                    + "\t--con[figuration] | -c <configuration>\n"
                     + "\t\tUse the configuration given. This is not a file!\n"
                     + "\t--c[opying]\n"
                     + "\t\tDisplay the copyright conditions.\n"
@@ -212,6 +212,43 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
+     * <testcase> Test that a missing aux file is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux1() throws Exception {
+
+        runFailure(BANNER
+                + "I couldn\'t open file file/which/does/not/exist.aux\n", //
+            "-x", "file/which/does/not/exist");
+    }
+
+    /**
+     * <testcase> Test that an empty aux file is reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux2() throws Exception {
+
+        runFailure(BANNER + "The file argument can not be empty.\n", //
+            "-x", "");
+    }
+
+    /**
+     * <testcase> Test that multiple aux files are reported. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux3() throws Exception {
+
+        runFailure(BANNER + "Only one aux file can be processed.\n", //
+            "-x", "a", "-x", "b");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--config</tt> needs an
      * argument. </testcase>
      * 
@@ -262,12 +299,11 @@ public class ExBibUtilTest extends BibUtilTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testConfig4() throws Exception {
 
         runFailure(
-            "[Fatal Error] :4:1: XML document structures must start and end within the same entity.\n"
-                    + BANNER
+            BANNER
+                    + "[Fatal Error] :4:1: XML document structures must start and end within the same entity.\n"
                     + "Configuration syntax error XML document structures must start and end within\n"
                     + "the same entity. in config/exbib/incomplete.xml\n",
             "--config", "incomplete");
@@ -335,41 +371,38 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     * <testcase> Test that an empty file name is silently consumed. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testEmpty1() throws Exception {
 
-        runFailure(BANNER + "The file argument can not be empty.\n", //
+        runSuccess(BANNER, //
             "");
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     * <testcase> Test that an empty file name is silently consumed. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testEmpty2() throws Exception {
 
-        runFailure(BANNER + "The file argument can not be empty.\n", //
+        runSuccess(BANNER, //
             "-", "");
     }
 
     /**
-     * <testcase> Test that an empty file name is reported. </testcase>
+     * <testcase> Test that an empty file name is silently consumed. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testEmpty3() throws Exception {
 
-        runFailure(BANNER + "The file argument can not be empty.\n", //
+        runSuccess(BANNER, //
             "--", "");
     }
 

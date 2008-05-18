@@ -35,6 +35,7 @@ import java.util.logging.Logger;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
+import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -47,6 +48,7 @@ import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.io.csf.CsfReader;
 import org.extex.exbib.core.io.csf.CsfSorter;
+import org.extex.exbib.core.util.EntryObserver;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.NoArgOption;
@@ -556,12 +558,33 @@ public class ExBib extends AbstractMain {
             CsfSorter sorter = makeSorter(finder);
             FuncallObserver funcall = null;
 
+            String encoding = getProperty(PROP_ENCODING);
             BibReaderFactory bibReaderFactory =
                     new BibReaderFactory(config.getConfiguration("BibReader"),
-                        finder, getProperty(PROP_BIB_ENCODING),
-                        getProperty(PROP_ENCODING));
+                        finder, getProperty(PROP_BIB_ENCODING), encoding);
             ProcessorContainer container =
-                    new ProcessorContainer(config, getLogger());
+                    new ProcessorContainer(config, getLogger()) {
+
+                        /**
+                         * TODO gene: missing JavaDoc
+                         * 
+                         * @param processor the processor
+                         * @param db its database
+                         * 
+                         * @throws NotObservableException in case of an error
+                         * @throws ExBibIllegalValueException in case of an
+                         *         error
+                         */
+                        @Override
+                        protected void prepareProcessor(Processor processor,
+                                DB db)
+                                throws NotObservableException,
+                                    ExBibIllegalValueException {
+
+                            db.registerObserver("makeEntry", new EntryObserver(
+                                getLogger(), processor));
+                        }
+                    };
             container.setMinCrossrefs(minCrossrefs);
             container.setSorter(sorter);
             container.setBibReaderFactory(bibReaderFactory);
@@ -575,7 +598,6 @@ public class ExBib extends AbstractMain {
                 config.getConfiguration("AuxReader")).newInstance(finder);
             auxReader.register(new MainResourceObserver(getLogger()));
 
-            String encoding = getProperty(PROP_ENCODING);
             try {
                 auxReader.load(container, file, encoding);
             } catch (FileNotFoundException e) {
@@ -636,20 +658,20 @@ public class ExBib extends AbstractMain {
                 }
                 bstReaderFactory.newInstance().parse(processor);
 
-                Writer writer;
                 String outfile = getProperty(PROP_OUTFILE);
+                if (outfile == null || !"bbl".equals(key)) {
+                    outfile = file + "." + key;
+                }
+                Writer writer = null;
                 try {
-                    if (outfile == null || !"bbl".equals(key)) {
-                        outfile = file + "." + key;
-                    }
                     writer = bblWriterFactory.newInstance(outfile);
+                    warnings += processor.process(writer);
                 } catch (FileNotFoundException e) {
                     return error("output.could.not.be.opened", outfile);
-                }
-                try {
-                    warnings += processor.process(writer, getLogger());
                 } finally {
-                    writer.close();
+                    if (writer != null) {
+                        writer.close();
+                    }
                 }
             }
 
