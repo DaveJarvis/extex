@@ -29,7 +29,7 @@ import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the class {@link Name}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -37,11 +37,11 @@ import org.junit.Test;
 public class NameTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test with one last and several first names.
      * 
-     * @param in
-     * @param last
-     * @param first
+     * @param in the input string
+     * @param last the single last name
+     * @param first the list of first names
      * 
      * @throws ExBibNoNameException in case of an error
      * @throws ExBibImpossibleException in case of an error
