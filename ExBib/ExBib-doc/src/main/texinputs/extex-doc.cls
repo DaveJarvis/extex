@@ -24,7 +24,7 @@
 \definecolor{colRule}{rgb}{.8,.8,.64}
 %
 \usepackage{listings}
-\xdef\lstlanguagefiles{\lstlanguagefiles,texinputs/lst-bst.sty}
+\xdef\lstlanguagefiles{\lstlanguagefiles,../../texinputs/lst-bst.sty}
 
 \lstset{%
     language=[AlLaTeX]TEX,%
