@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:bst-language.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
@@ -45,9 +45,9 @@ to the stack.
 \subsection{The Database Context}
 
 Whenever a bst program is executed a database is at hand. The program
-has access to this database.
+has access to this database. The database contains a list of entries.
+Those entries are filtered according to the citations given.
 
-\INCOMPLETE
 
 \subsection{Entries}
 
@@ -829,8 +829,18 @@ A name may consist of the parts ``first'', ``von'', ``last'', and
 ``junior'' (see section~\ref{sec:names}). The format allows you to put
 together those parts in various ways.
 
+A format specification is an expression in braces where the braces are
+at brace level 0; i.e. the braces are not enclosed in other braces.
+This expression contains the format letters \texttt{f}, \texttt{ff},
+\texttt{l}, \texttt{ll}, \texttt{v}, \texttt{vv}, \texttt{j}, or
+\texttt{jj}. 
+
+
 
 \INCOMPLETE
+
+Anything in the format specification at brace level 0 is copied to the
+result unmodified.
 
 The following example is taken from \File{alpha.bst}:
 

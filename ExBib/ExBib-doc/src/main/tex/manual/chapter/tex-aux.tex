@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:tex-aux.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
@@ -89,7 +89,7 @@ The following example is equivalent to the example above:
 \end{lstlisting}
 
 
-\subsection{The Declaration of the Style}
+\subsection{The Declaration of the Styles}
 
 The aux file must declare the bst to be used. This can be done with
 the macro \macro{bibstyle}. The argument is a file or resource to be
@@ -109,6 +109,12 @@ The following example is equivalent to the example above:
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \bibstyle[bbl]{the/style}
 \end{lstlisting}
+
+Multiple styles can be specified by providing several \macro{bibstyle}
+instances for the same type. This allows a dynamic compsition of an
+actual style from pieces of code.
+\IM{x}
+
 
 \subsection{The Declaration of Includes}
 
