@@ -25,22 +25,21 @@ import java.io.UnsupportedEncodingException;
 
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.WriterFactory;
-import org.extex.exbib.core.io.auxio.AuxReaderImpl;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This factory class can be used to get an implementation for the interface
- * {@link AuxReaderImpl AuxReader}.
+ * {@link BblWriter}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
  * attribute <code>class</code>. This attribute holds the name of the class
  * to be instantiated. Consider the following example of a configuration file:
  * 
  * <pre>
- *   &lt;AuxReader
- *       class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;
+ *   &lt;BblWriter
+ *       class="org.extex.exbib.core.io.bblio.BblWriterImpl"/&gt;
  * </pre>
  * 
  * </p>
