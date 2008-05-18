@@ -39,7 +39,7 @@ public class ExBibI18NTest {
     private static final String DATA_DIR = "src/test/resources/bibtex/i18n";
 
     /**
-     * The field <tt>STYLE_DIR</tt> contains the ...
+     * The field <tt>STYLE_DIR</tt> contains the style directory.
      */
     private static final String STYLE_DIR = "src/test/resources/bibtex/base";
 
