@@ -35,9 +35,15 @@ import org.junit.Test;
 public class BibReaderImplTest extends BibReaderTester {
 
     /**
+     * Creates a new object.
+     */
+    public BibReaderImplTest() {
+
+        super(false);
+    }
+
+    /**
      * Create a new instance of the BibReader to be tested.
-     * 
-     * @return the test instance
      * 
      * @throws FileNotFoundException this should not happen
      */

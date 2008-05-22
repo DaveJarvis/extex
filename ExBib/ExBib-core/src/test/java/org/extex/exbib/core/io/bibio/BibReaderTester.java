@@ -283,6 +283,24 @@ public abstract class BibReaderTester {
     }
 
     /**
+     * The field <tt>commentSpace</tt> contains the indicator for extra space
+     * after {@literal @comment}.
+     */
+    private boolean commentSpace;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param commentSpace the indicator for extra space after
+     *        {@literal @comment}
+     */
+    public BibReaderTester(boolean commentSpace) {
+
+        super();
+        this.commentSpace = commentSpace;
+    }
+
+    /**
      * Create a new instance of the BibReader to be tested.
      * 
      * @return the test instance
@@ -394,7 +412,8 @@ public abstract class BibReaderTester {
             @Override
             public void storeComment(String comment) {
 
-                assertEquals("abc @comment xyz", comment);
+                assertEquals("abc @comment" + (commentSpace ? " " : "")
+                        + " xyz", comment);
             }
 
         });

@@ -38,6 +38,14 @@ import org.junit.Test;
 public class BibReader099ImplTest extends BibReaderTester {
 
     /**
+     * Creates a new object.
+     */
+    public BibReader099ImplTest() {
+
+        super(true);
+    }
+
+    /**
      * Create a new instance of the BibReader to be tested.
      * 
      * @return the test instance
