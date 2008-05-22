@@ -30,6 +30,7 @@ import java.io.Writer;
 import java.util.Calendar;
 import java.util.Locale;
 
+import org.extex.exbib.core.ExBib;
 import org.extex.exbib.main.cli.CLI;
 
 /**

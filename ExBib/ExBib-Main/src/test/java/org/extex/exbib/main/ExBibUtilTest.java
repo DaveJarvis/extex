@@ -32,6 +32,7 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.util.Locale;
 
+import org.extex.exbib.core.ExBib;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
