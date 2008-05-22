@@ -21,6 +21,7 @@
 package org.extex.exbib.core.exceptions;
 
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
 
 /**
  * This Exception is thrown when a syntax error during the parsing of the input
@@ -72,7 +73,9 @@ public class ExBibUnexpectedEofException extends ExBibSyntaxException {
                         + (expected == null ? "None" : expected.length() == 1
                                 ? "One"
                                 : "");
-        return getLocalizer().format(fmt, found, expected);
+        Locator locator = getLocator();
+        Localizer localizer = getLocalizer();
+        return localizer.format(fmt, found, expected) + formatLocator(locator);
     }
 
 }

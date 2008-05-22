@@ -102,6 +102,23 @@ public class ExBibException extends Exception {
     }
 
     /**
+     * Format a locator for addition to a message.
+     * 
+     * @param locator the locator
+     * 
+     * @return the formatted locator
+     */
+    public String formatLocator(Locator locator) {
+
+        Localizer l =
+                LocalizerFactory.getLocalizer(ExBibException.class.getName());
+        if (locator == null) {
+            return l.format("NoLocator");
+        }
+        return l.format("Locator", locator.toString());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
@@ -123,6 +140,16 @@ public class ExBibException extends Exception {
     protected Localizer getLocalizer() {
 
         return LocalizerFactory.getLocalizer(getClass());
+    }
+
+    /**
+     * Getter for locator.
+     * 
+     * @return the locator
+     */
+    public Locator getLocator() {
+
+        return locator;
     }
 
     /**

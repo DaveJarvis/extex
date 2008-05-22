@@ -233,7 +233,7 @@ public class BibReaderImpl extends BibReader099Impl implements BibReader {
         }
         parseNextNonSpace(false);
         comment.append('{');
-        comment.append(parseBlock());
+        comment.append(parseBlock(0));
         comment.append('}');
     }
 

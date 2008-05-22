@@ -32,7 +32,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>num.names$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>num.names$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -71,42 +72,6 @@ public class NumNames extends AbstractCode {
     public NumNames(String name) {
 
         super(name);
-    }
-
-    /**
-     * Count the number of names in a string. This one more than the number of
-     * occurences of the string "and" in any cases at brace level 0 surrounded
-     * by whitespace.
-     * 
-     * @param names the string to parse
-     * 
-     * @return the number of names found
-     */
-    protected int countNames(String names) {
-
-        int level = 0;
-        int ret = 1;
-
-        for (int i = 0; i < names.length(); i++) {
-            char c = names.charAt(i);
-
-            if (Character.isWhitespace(c) && level == 0) {
-                if (i < names.length() - 4
-                        && Character.toLowerCase(names.charAt(i + 1)) == 'a'
-                        && Character.toLowerCase(names.charAt(i + 2)) == 'n'
-                        && Character.toLowerCase(names.charAt(i + 3)) == 'd'
-                        && Character.isWhitespace(names.charAt(i + 4))) {
-                    i += 4;
-                    ret++;
-                }
-            } else if (c == '{') {
-                level++;
-            } else if (c == '}') {
-                level--;
-            }
-        }
-
-        return ret;
     }
 
     /**

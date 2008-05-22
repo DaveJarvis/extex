@@ -273,6 +273,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                         c = parseNextNonSpace(true);
 
                         if (c == '}' || c == ')') {
+                            c = parseNextNonSpace(true);
                             break;
                         }
 
@@ -344,16 +345,19 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     /**
      * Parse a block.
      * 
+     * @param start the start index
+     * 
      * @return the sting found
      * 
      * @throws ExBibEofInBlockException in case of an unexpected end of file
      */
-    protected String parseBlock() throws ExBibEofInBlockException {
+    protected String parseBlock(int start) throws ExBibEofInBlockException {
 
         StringBuilder buffer = getBuffer();
         int ptr = 1;
+        int depth = 1;
 
-        for (int depth = 1; depth > 0;) {
+        for (;;) {
             if (ptr >= buffer.length()) {
                 if (read() == null) {
                     throw new ExBibEofInBlockException(getLocator());
@@ -366,12 +370,14 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 depth++;
             } else if (c == '}') {
                 depth--;
+                if (depth <= 0) {
+                    String s = buffer.substring(start, ptr - 1);
+                    buffer.delete(0, ptr);
+                    return s;
+                }
             }
         }
 
-        String s = buffer.substring(0, ptr - 1);
-        buffer.delete(0, ptr);
-        return s;
     }
 
     /**
@@ -439,8 +445,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             StringBuilder buffer = getBuffer();
 
             if (c == '{') {
-                buffer.delete(0, 1);
-                ret.add(new VBlock(parseBlock()));
+                ret.add(new VBlock(parseBlock(1)));
             } else if (c == '"') {
                 int i = 1;
                 int depth = 0;
