@@ -53,9 +53,9 @@ import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.io.csf.CsfReader;
 import org.extex.exbib.core.io.csf.CsfSorter;
-import org.extex.exbib.main.util.DBObserver;
+import org.extex.exbib.core.util.DBObserver;
+import org.extex.exbib.core.util.ResourceObserverImpl;
 import org.extex.exbib.main.util.LogFormatter;
-import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -281,7 +281,7 @@ public class ExBibTask extends Task {
 
             AuxReader auxReader = new AuxReaderFactory(//
                 config.getConfiguration("AuxReader")).newInstance(finder);
-            auxReader.register(new MainResourceObserver(logger));
+            auxReader.register(new ResourceObserverImpl(logger));
 
             int errors = 0;
             // try {
