@@ -394,7 +394,7 @@ public abstract class BibReaderTester {
             @Override
             public void storeComment(String comment) {
 
-                assertEquals("abc @comment  xyz", comment);
+                assertEquals("abc @comment xyz", comment);
             }
 
         });
