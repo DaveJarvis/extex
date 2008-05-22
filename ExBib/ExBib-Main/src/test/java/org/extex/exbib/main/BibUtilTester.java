@@ -33,7 +33,7 @@ import java.util.Locale;
 import org.extex.exbib.main.cli.CLI;
 
 /**
- * This is a tester for {@link ExBib}.
+ * This is a tester for {@link ExBibUtil}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
