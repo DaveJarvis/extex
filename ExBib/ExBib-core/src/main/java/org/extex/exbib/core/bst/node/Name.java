@@ -152,7 +152,8 @@ public class Name {
 
     /**
      * Parses a string of names separated by the string "and" enclosed in
-     * whitespace at brace level 0.
+     * whitespace at brace level 0. The last name can be the string "others"
+     * which is otherwise rejected as name.
      * 
      * @param names the string of names to parse
      * @param locator the locator
@@ -200,7 +201,12 @@ public class Name {
         }
 
         if (start < len) {
-            result.add(new Name(names.substring(start), locator));
+            String s = names.substring(start);
+            if ("others".equals(s)) {
+                result.add(new Name(s));
+            } else {
+                result.add(new Name(s, locator));
+            }
         }
         return result;
     }
@@ -224,6 +230,17 @@ public class Name {
      * The field <tt>von</tt> contains the list of von name parts.
      */
     private List<String> von = new ArrayList<String>();
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the complete string representation of the name
+     */
+    private Name(String name) {
+
+        super();
+        last.add(name);
+    }
 
     /**
      * Creates a new object.
