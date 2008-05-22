@@ -746,8 +746,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryStrings(List<String> strings, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibException {
 
         Iterator<String> iterator = strings.iterator();
 

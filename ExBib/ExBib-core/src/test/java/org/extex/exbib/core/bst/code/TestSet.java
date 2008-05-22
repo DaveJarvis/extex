@@ -149,7 +149,7 @@ public class TestSet extends TestCase {
     public void test1Stack() throws Exception {
 
         try {
-            p.push(new TInteger(2));
+            p.push(new TLiteral("a"));
             new Set(":=").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -324,7 +324,7 @@ public class TestSet extends TestCase {
 
         try {
             p.push(new TInteger(2));
-            p.push(new TInteger(2));
+            p.push(new TLiteral("a"));
             new Set(":=").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibFunctionUndefinedException e) {

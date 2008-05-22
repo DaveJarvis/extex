@@ -370,10 +370,12 @@ public interface Processor extends Bibliography, Configurable {
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
+     * @throws ExBibException in case of an error
      */
     void setEntryStrings(List<String> strings, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+                ExBibFunctionExistsException,
+                ExBibException;
 
     /**
      * Setter for global integers. The given arguments are added to the values

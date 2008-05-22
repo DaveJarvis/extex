@@ -23,7 +23,6 @@ import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.TokenVisitor;
@@ -39,14 +38,16 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TFieldString extends AbstractToken implements Token {
+public class TFieldString extends TLiteral implements Token {
 
     /**
      * Create a new object.
      * 
      * @param value the value
+     * 
+     * @throws ExBibException in case of an error
      */
-    public TFieldString(String value) {
+    public TFieldString(String value) throws ExBibException {
 
         super(value, null);
     }
@@ -56,8 +57,10 @@ public class TFieldString extends AbstractToken implements Token {
      * 
      * @param value the value
      * @param locator the locator
+     * 
+     * @throws ExBibException in case of an error
      */
-    public TFieldString(String value, Locator locator) {
+    public TFieldString(String value, Locator locator) throws ExBibException {
 
         super(value, locator);
     }
