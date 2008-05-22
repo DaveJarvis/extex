@@ -21,7 +21,6 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.List;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -164,26 +163,16 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
             writer.print("</preamble>\n\n");
         }
 
-        List<String> macros = db.getMacroNames();
-        Iterator<String> iterator = macros.iterator();
-
-        while (iterator.hasNext()) {
-            String name = iterator.next();
+        for (String name : db.getMacroNames()) {
             writer.print("  <string id=\"", encodeXMLarg(name), "\">");
             db.getMacro(name).visit(this, db);
             writer.print("</string>\n");
         }
 
-        Iterator<Entry> entryIterator = db.getEntries().iterator();
-
-        while (entryIterator.hasNext()) {
-            Entry e = entryIterator.next();
+        for (Entry e : db.getEntries()) {
             writer.print("\n  <", encodeXMLtag(e.getType()), " id=\"");
             writer.print(e.getKey(), "\">");
-            iterator = e.getKeys().iterator();
-
-            while (iterator.hasNext()) {
-                String key = iterator.next();
+            for (String key : e.getKeys()) {
                 writer.print("\n    <", encodeXMLtag(key), ">");
                 e.get(key).visit(this, db);
                 writer.print("</", encodeXMLtag(key), ">");
