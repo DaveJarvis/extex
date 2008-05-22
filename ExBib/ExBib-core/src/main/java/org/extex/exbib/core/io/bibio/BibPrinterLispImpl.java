@@ -43,7 +43,7 @@ import org.extex.exbib.core.io.Writer;
 public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
 
     /**
-     * Translate the characters '"', '&lt;', '&gt;' and '&amp;' to XML entities.
+     * Translate the characters '"', '\n', '\r', and '\' to escaped characters.
      * 
      * @param s the string to encode
      * 
@@ -51,7 +51,7 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
      */
     private static String encodeArg(String s) {
 
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
 
         for (int i = sb.length() - 1; i > 0; i--) {
             switch (sb.charAt(i)) {
@@ -61,6 +61,12 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
                 case '"':
                     sb.replace(i, i + 1, "\\\"");
                     break;
+                case '\n':
+                    sb.replace(i, i + 1, "\\n");
+                    break;
+                case '\r':
+                    sb.replace(i, i + 1, "\\r");
+                    break;
                 default: // leave alone
             }
         }
@@ -69,7 +75,7 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
     }
 
     /**
-     * Translate the characters '&lt;', '&gt;' and '&amp;' to XML entities.
+     * Translate the argument to a string which can safely read as symbol.
      * 
      * @param s the string to encode
      * 
@@ -77,49 +83,8 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
      */
     private static String encodeSymbol(String s) {
 
-        StringBuffer sb = new StringBuffer(s);
-
-        for (int i = sb.length() - 1; i > 0; i--) {
-            switch (sb.charAt(i)) {
-                case '>':
-                    sb.replace(i, i + 1, "&gt;");
-                    break;
-                case '<':
-                    sb.replace(i, i + 1, "&lt;");
-                    break;
-                case '&':
-                    sb.replace(i, i + 1, "&amp;");
-                    break;
-                default: // leave alone
-            }
-        }
-
-        return sb.toString();
-    }
-
-    /**
-     * Translate the characters '&lt;', '&gt;' and '&amp;' to '_'.
-     * 
-     * @param s the string to encode
-     * 
-     * @return the encoded version of the string
-     */
-    private static String encodeXMLtag(String s) {
-
-        StringBuffer sb = new StringBuffer(s);
-
-        for (int i = sb.length() - 1; i > 0; i--) {
-            switch (sb.charAt(i)) {
-                case '>':
-                case '<':
-                case '&':
-                    sb.replace(i, i + 1, "_");
-                    break;
-                default: // leave alone
-            }
-        }
-
-        return sb.toString();
+        // not yet
+        return s;
     }
 
     /**
@@ -171,13 +136,13 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
 
         while (entryIterator.hasNext()) {
             Entry e = entryIterator.next();
-            writer.print("\n  (", encodeXMLtag(e.getType()), " \"");
+            writer.print("\n  (entry '", encodeSymbol(e.getType()), " \"");
             writer.print(e.getKey(), "\"");
             iterator = e.getKeys().iterator();
 
             while (iterator.hasNext()) {
                 String key = iterator.next();
-                writer.print("\n    (", encodeXMLtag(key), " ");
+                writer.print("\n    (field '", encodeSymbol(key), " ");
                 e.get(key).visit(this, db);
                 writer.print(")");
             }
