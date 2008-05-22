@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
- * This file is part of ExBib a BibTeX compatible database.
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,49 +17,39 @@
  *
  */
 
-package org.extex.exbib.main.util;
+package org.extex.exbib.core.util;
 
-import java.text.MessageFormat;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.util.Observable;
-import org.extex.exbib.core.util.Observer;
-
 /**
- * Observer which counts the databases read and prints messages to a writer.
+ * The tracing observer prints a message to the given writer prefixed by a
+ * String.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
  */
-public class DBObserver implements Observer {
+public class TracingObserver implements Observer {
 
     /**
-     * The field <tt>logger</tt> contains the logger for the output produced.
+     * The field <tt>prefix</tt> contains the prefix for the tracing line.
+     */
+    private String prefix;
+
+    /**
+     * The field <tt>writer</tt> contains the writer for the output produced.
      */
     private Logger logger;
 
     /**
-     * The field <tt>dbCount</tt> contains the counter for invocations of
-     * update().
-     */
-    private int dbCount = 0;
-
-    /**
-     * The field <tt>pattern</tt> contains the pattern for the messages.
-     */
-    private String pattern;
-
-    /**
      * Creates a new object.
      * 
-     * @param logger the target logger
-     * @param pattern the pattern for the messages
+     * @param logger the target writer
+     * @param prefix the prefix
      */
-    public DBObserver(Logger logger, String pattern) {
+    public TracingObserver(Logger logger, String prefix) {
 
         super();
         this.logger = logger;
-        this.pattern = pattern;
+        this.prefix = prefix;
     }
 
     /**
@@ -69,10 +58,8 @@ public class DBObserver implements Observer {
      * @see org.extex.exbib.core.util.Observer#update(
      *      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
-    public void update(Observable source, Object db) {
+    public void update(Observable source, Object obj) {
 
-        logger.info(MessageFormat.format(pattern, Integer.toString(++dbCount),
-            db));
+        logger.info(prefix + " " + (obj != null ? obj.toString() : "") + "\n");
     }
-
 }

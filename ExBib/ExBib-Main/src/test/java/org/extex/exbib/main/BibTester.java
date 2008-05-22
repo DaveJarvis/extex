@@ -120,8 +120,9 @@ public class BibTester {
      * 
      * @throws Exception in case of an error
      */
-    protected ExBib runTest(String basename, String auxContents, int exitCode,
-            Check checkOut, String out, String... args) throws Exception {
+    protected ExBibMain runTest(String basename, String auxContents,
+            int exitCode, Check checkOut, String out, String... args)
+            throws Exception {
 
         File aux = new File(basename + ".aux");
         if (auxContents != null) {
@@ -135,11 +136,11 @@ public class BibTester {
 
         Locale.setDefault(Locale.ENGLISH);
         PrintStream err = System.err;
-        ExBib exBib = null;
+        ExBibMain exBib = null;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             System.setErr(new PrintStream(baos));
-            exBib = new ExBib();
+            exBib = new ExBibMain();
             int code = exBib.processCommandLine(args);
             if (exBib != null) {
                 exBib.close();

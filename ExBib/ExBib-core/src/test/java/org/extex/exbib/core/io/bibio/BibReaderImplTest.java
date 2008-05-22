@@ -43,9 +43,9 @@ public class BibReaderImplTest extends BibReaderTester {
     }
 
     /**
-     * Create a new instance of the BibReader to be tested.
+     * {@inheritDoc}
      * 
-     * @throws FileNotFoundException this should not happen
+     * @see org.extex.exbib.core.io.bibio.BibReaderTester#makeTestInstance()
      */
     @Override
     protected BibReader makeTestInstance() throws FileNotFoundException {

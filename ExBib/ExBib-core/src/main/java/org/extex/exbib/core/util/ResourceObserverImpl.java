@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.main.util;
+package org.extex.exbib.core.util;
 
 import java.util.logging.Logger;
 
@@ -26,12 +26,12 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class implements a logging {@link ResourceObserver}.
+ * This class implements a logging {@link ResourceObserverImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainResourceObserver implements ResourceObserver {
+public class ResourceObserverImpl implements ResourceObserver {
 
     /**
      * The constant <tt>localizer</tt> contains the localizer. It is not
@@ -54,12 +54,12 @@ public class MainResourceObserver implements ResourceObserver {
      * 
      * @param logger the logger
      */
-    public MainResourceObserver(Logger logger) {
+    public ResourceObserverImpl(Logger logger) {
 
         super();
         this.logger = logger;
         this.localizer =
-                LocalizerFactory.getLocalizer(MainResourceObserver.class);
+                LocalizerFactory.getLocalizer(ResourceObserverImpl.class);
     }
 
     /**

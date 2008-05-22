@@ -33,7 +33,8 @@ import java.io.Writer;
 import java.util.Locale;
 import java.util.Set;
 
-import org.extex.exbib.main.ExBib.Debug;
+import org.extex.exbib.core.ExBib;
+import org.extex.exbib.core.ExBib.Debug;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
@@ -726,7 +727,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testDebug3() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{Meone:Title}\n" //
@@ -763,7 +764,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testDebug5() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{Meone:Title}\n" //
@@ -790,7 +791,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testDebug6() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{Meone:Title}\n" //
@@ -935,7 +936,8 @@ public class ExBibTest extends BibTester {
     public void testLanguage2() throws Exception {
 
         runFailure(BANNER + "Missing aux file parameter.\n"
-                + "(There was 1 error)\n", "--language", "xxx");
+                + "(There was 1 error)\n", //
+            "--language", "xxx");
     }
 
     /**
@@ -1089,7 +1091,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testMinCrossrefs5() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"
@@ -1111,7 +1113,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testOk1() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"
@@ -1154,7 +1156,7 @@ public class ExBibTest extends BibTester {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             System.setErr(new PrintStream(baos));
-            assertEquals(0, ExBib.commandLine(args));
+            assertEquals(0, ExBibMain.commandLine(args));
             assertEquals(BANNER + "Warning: empty author in whole-journal\n"
                     + "Warning: empty title in whole-journal\n", baos
                 .toString().replaceAll("", ""));
@@ -1185,7 +1187,7 @@ public class ExBibTest extends BibTester {
         if (xxx.exists() && !xxx.delete()) {
             assertTrue("test.xxx: deletion failed", false);
         }
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation[xxx]{*}\n"
@@ -1380,7 +1382,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testStrict1() throws Exception {
 
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"
@@ -1421,7 +1423,7 @@ public class ExBibTest extends BibTester {
     public void testTrace1() throws Exception {
 
         String aux = new File(".", "test.aux").toString();
-        ExBib exbib =
+        ExBibMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"

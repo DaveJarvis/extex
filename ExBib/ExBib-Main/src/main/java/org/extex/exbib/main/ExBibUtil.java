@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -41,6 +42,7 @@ import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bibio.BibPrinter;
 import org.extex.exbib.core.io.bibio.BibPrinterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
+import org.extex.exbib.core.util.ResourceObserverImpl;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.StringPropertyOption;
@@ -48,7 +50,6 @@ import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.main.util.AbstractMain;
 import org.extex.exbib.main.util.LogFormatter;
-import org.extex.exbib.main.util.MainResourceObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -302,7 +303,7 @@ public final class ExBibUtil extends AbstractMain {
 
         AuxReader auxReader = new AuxReaderFactory(//
             configuration.getConfiguration("AuxReader")).newInstance(finder);
-        auxReader.register(new MainResourceObserver(getLogger()));
+        auxReader.register(new ResourceObserverImpl(getLogger()));
 
         try {
             auxReader.load(container, getProperty(PROP_FILE),
@@ -432,6 +433,18 @@ public final class ExBibUtil extends AbstractMain {
             files.add(arg);
         }
         return EXIT_CONTINUE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.main.util.AbstractMain#useLanguage(java.util.Locale)
+     */
+    @Override
+    protected void useLanguage(Locale locale) {
+
+        // TODO gene: useLanguage unimplemented
+
     }
 
 }

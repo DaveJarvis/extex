@@ -51,7 +51,7 @@ public class BblWriter implements Writer {
      * The field <tt>sb</tt> contains the temporary memory before shipping the
      * line to the writer.
      */
-    private StringBuffer sb = new StringBuffer();
+    private StringBuilder sb = new StringBuilder();
 
     /**
      * The field <tt>writer</tt> contains the output writer.

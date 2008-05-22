@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -18,42 +18,46 @@
  *
  */
 
-package org.extex.exbib.main.util;
+package org.extex.exbib.core.util;
 
+import java.text.MessageFormat;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.util.Observable;
-import org.extex.exbib.core.util.Observer;
-
 /**
- * The tracing observer prints a message to the given writer prefixed by a
- * String.
+ * Observer which counts the databases read and prints messages to a writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision: 1.4 $
  */
-public class TracingObserver implements Observer {
+public class DBObserver implements Observer {
 
     /**
-     * The field <tt>prefix</tt> contains the prefix for the tracing line.
-     */
-    private String prefix;
-
-    /**
-     * The field <tt>writer</tt> contains the writer for the output produced.
+     * The field <tt>logger</tt> contains the logger for the output produced.
      */
     private Logger logger;
 
     /**
+     * The field <tt>dbCount</tt> contains the counter for invocations of
+     * update().
+     */
+    private int dbCount = 0;
+
+    /**
+     * The field <tt>pattern</tt> contains the pattern for the messages.
+     */
+    private String pattern;
+
+    /**
      * Creates a new object.
      * 
-     * @param logger the target writer
-     * @param prefix the prefix
+     * @param logger the target logger
+     * @param pattern the pattern for the messages
      */
-    public TracingObserver(Logger logger, String prefix) {
+    public DBObserver(Logger logger, String pattern) {
 
         super();
         this.logger = logger;
-        this.prefix = prefix;
+        this.pattern = pattern;
     }
 
     /**
@@ -62,8 +66,10 @@ public class TracingObserver implements Observer {
      * @see org.extex.exbib.core.util.Observer#update(
      *      org.extex.exbib.core.util.Observable, java.lang.Object)
      */
-    public void update(Observable source, Object obj) {
+    public void update(Observable source, Object db) {
 
-        logger.info(prefix + " " + (obj != null ? obj.toString() : "") + "\n");
+        logger.info(MessageFormat.format(pattern, Integer.toString(++dbCount),
+            db));
     }
+
 }

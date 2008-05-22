@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
- * This file is part of ExBib a BibTeX compatible database.
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.main.util;
+package org.extex.exbib.core.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,8 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.util.Observable;
-import org.extex.exbib.core.util.Observer;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 

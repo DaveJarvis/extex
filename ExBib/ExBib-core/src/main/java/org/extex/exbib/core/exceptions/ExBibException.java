@@ -104,18 +104,18 @@ public class ExBibException extends Exception {
     /**
      * Format a locator for addition to a message.
      * 
-     * @param locator the locator
+     * @param loc the locator
      * 
      * @return the formatted locator
      */
-    public String formatLocator(Locator locator) {
+    public String formatLocator(Locator loc) {
 
         Localizer l =
                 LocalizerFactory.getLocalizer(ExBibException.class.getName());
-        if (locator == null) {
+        if (loc == null) {
             return l.format("NoLocator");
         }
-        return l.format("Locator", locator.toString());
+        return l.format("Locator", loc.toString());
     }
 
     /**

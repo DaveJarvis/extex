@@ -44,7 +44,7 @@ for %%i in (%LIBDIR%\*.jar) do (
   set LOCALCLASSPATH=!LOCALCLASSPATH!;%%i
 )
 
-%JAVA_HOME%\bin\java %EXTEX_JAVA_OPTS% -classpath %LOCALCLASSPATH% org.extex.exbib.main.ExBib %*
+%JAVA_HOME%\bin\java %EXTEX_JAVA_OPTS% -classpath %LOCALCLASSPATH% org.extex.exbib.main.ExBibMain %*
 
 :end
 

@@ -41,7 +41,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.main.ExBib;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.Option;
@@ -332,7 +331,7 @@ public abstract class AbstractMain extends CLI {
             protected int run(String name, String arg) {
 
                 Locale.setDefault(new Locale(arg));
-                setBundle(ResourceBundle.getBundle(ExBib.class.getName()));
+                useLanguage(new Locale(arg));
                 return EXIT_CONTINUE;
             }
         });
@@ -512,44 +511,17 @@ public abstract class AbstractMain extends CLI {
      * has not been shown before.
      * 
      * @param tag the resource tag of the message pattern
+     * @param args the arguments
      * 
      * @return the exit code <code>1</code>
      */
-    protected int logBanner(String tag) {
+    public int logBanner(String tag, Object... args) {
 
         logBanner();
-        return log(tag, getProgramName());
-    }
-
-    /**
-     * Write a message to the logger. It is preceded by the banner if the banner
-     * has not been shown before.
-     * 
-     * @param tag the resource tag of the message pattern
-     * @param arg the argument
-     * 
-     * @return the exit code <code>1</code>
-     */
-    protected int logBanner(String tag, String arg) {
-
-        logBanner();
-        return log(tag, getProgramName(), arg);
-    }
-
-    /**
-     * Write a message to the logger. It is preceded by the banner if the banner
-     * has not been shown before.
-     * 
-     * @param tag the resource tag of the message pattern
-     * @param arg1 the argument
-     * @param arg2 the second argument
-     * 
-     * @return the exit code <code>1</code>
-     */
-    protected int logBanner(String tag, String arg1, String arg2) {
-
-        logBanner();
-        return log(tag, getProgramName(), arg1, arg2);
+        Object[] a = new Object[args.length + 1];
+        a[0] = getProgramName();
+        System.arraycopy(args, 0, a, 1, args.length);
+        return log(tag, a);
     }
 
     /**
@@ -761,6 +733,16 @@ public abstract class AbstractMain extends CLI {
     protected void setProperty(String key, String value) {
 
         properties.setProperty(key, value);
+    }
+
+    /**
+     * Activate a language.
+     * 
+     * @param locale the locale
+     */
+    protected void useLanguage(Locale locale) {
+
+        bundle = ResourceBundle.getBundle(getClass().getName());
     }
 
 }

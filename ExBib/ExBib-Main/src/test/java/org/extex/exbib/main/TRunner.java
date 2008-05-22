@@ -95,7 +95,7 @@ public final class TRunner {
 
             System.setErr(new PrintStream(baos));
 
-            int code = ExBib.commandLine(a);
+            int code = ExBibMain.commandLine(a);
             assertEquals("No error", "", baos.toString());
             assertEquals(0, code);
 
