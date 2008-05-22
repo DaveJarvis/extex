@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -149,9 +150,16 @@ public final class ExBibUtil extends AbstractMain {
     protected static final String PROP_CONFIG = "exbib.config";
 
     /**
-     * The field <tt>PROP_TYPE</tt> contains the ...
+     * The field <tt>PROP_TYPE</tt> contains the name for the property for the
+     * printer type.
      */
     private static final String PROP_TYPE = "exbib.type";
+
+    /**
+     * The field <tt>PROP_FILE</tt> contains the name for the property for the
+     * aux file.
+     */
+    private static final String PROP_FILE = "exbib.file";
 
     /**
      * Run the command line.
@@ -195,22 +203,27 @@ public final class ExBibUtil extends AbstractMain {
     private List<String> files = new ArrayList<String>();
 
     /**
-     * The field <tt>auxfile</tt> contains the name of the aux file for
-     * extraction or <code>null</code> for none.
+     * Creates a new object.
+     * 
+     * @throws IOException in case of an I/O error while reading the dot file
      */
-    private String auxfile = null;
+    public ExBibUtil() throws IOException {
+
+        this(System.getProperties());
+    }
 
     /**
      * Creates a new object.
      * 
+     * @param properties the properties with the settings
+     * 
      * @throws IOException in case of an I/O error
      */
-    public ExBibUtil() throws IOException {
+    public ExBibUtil(Properties properties) throws IOException {
 
-        super(PROGNAME, VERSION, INCEPTION_YEAR, ".exbib", System
-            .getProperties());
-        setProperty(PROP_CONFIG, "exbib");
-        setProperty(PROP_TYPE, "bib");
+        super(PROGNAME, VERSION, INCEPTION_YEAR, ".exbib", properties);
+        propertyDefault(PROP_CONFIG, "exbib");
+        propertyDefault(PROP_TYPE, "bib");
         declareOptions();
     }
 
@@ -256,12 +269,12 @@ public final class ExBibUtil extends AbstractMain {
             @Override
             protected int run(String name, String file) {
 
-                if (auxfile != null) {
+                if (getProperty(PROP_FILE) != null) {
                     return logBanner("one.file", file);
                 } else if ("".equals(file)) {
                     return logBanner("empty.file", file);
                 }
-                auxfile = file;
+                setProperty(PROP_FILE, file);
                 return EXIT_CONTINUE;
             }
 
@@ -292,7 +305,8 @@ public final class ExBibUtil extends AbstractMain {
         auxReader.register(new MainResourceObserver(getLogger()));
 
         try {
-            auxReader.load(container, auxfile, getProperty(PROP_ENCODING));
+            auxReader.load(container, getProperty(PROP_FILE),
+                getProperty(PROP_ENCODING));
         } catch (FileNotFoundException e) {
             log("aux.not.found", e.getMessage());
             return false;
@@ -358,7 +372,7 @@ public final class ExBibUtil extends AbstractMain {
             container.setMinCrossrefs(Integer.MAX_VALUE);
 
             Processor bibliography = container.findBibliography(null);
-            if (auxfile == null) {
+            if (getProperty(PROP_FILE) == null) {
                 bibliography.addCitation("*");
             } else if (!readAux(configuration, finder, container)) {
                 return EXIT_FAIL;
@@ -369,17 +383,22 @@ public final class ExBibUtil extends AbstractMain {
             }
             bibliography.loadDatabases();
 
-            BibPrinter printer;
-            String type = getProperty(PROP_TYPE);
-            try {
-                printer =
-                        new BibPrinterFactory(configuration
-                            .getConfiguration("BibPrinter")).newInstance(type,
-                            writer);
-            } catch (ConfigurationNotFoundException e) {
-                return log("unknown.type", type);
+            for (String key : container) {
+
+                // TODO make a new writer for each iteration
+
+                BibPrinter printer;
+                String type = getProperty(PROP_TYPE);
+                try {
+                    printer =
+                            new BibPrinterFactory(configuration
+                                .getConfiguration("BibPrinter")).newInstance(
+                                type, writer);
+                } catch (ConfigurationNotFoundException e) {
+                    return log("unknown.type", type);
+                }
+                printer.print(container.getProcessor(key).getDB());
             }
-            printer.print(bibliography.getDB());
 
         } catch (ConfigurationWrapperException e) {
             return logException(e.getCause(), "installation.error", false);
