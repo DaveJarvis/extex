@@ -22,7 +22,6 @@ package org.extex.exbib.main;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -159,11 +158,6 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
-     */
-    private ResourceBundle bundle;
-
-    /**
      * The field <tt>exBib</tt> contains the enclosed object.
      */
     private ExBib exBib;
@@ -189,8 +183,6 @@ public class ExBibMain extends AbstractMain {
 
         super("exbib", ExBib.VERSION, ExBib.INCEPTION_YEAR, ".exbib",
             properties);
-
-        this.bundle = ResourceBundle.getBundle(getClass().getName());
 
         this.exBib = new ExBib(getProperties()) {
 
@@ -281,9 +273,9 @@ public class ExBibMain extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         });
-        option("-7", "--traditional", //
-            new NoArgPropertyOption("opt.7.bit", ExBib.PROP_CSF, "",
-                properties));
+        option("-7",
+            "--traditional", //
+            new NoArgPropertyOption("opt.7.bit", ExBib.PROP_CSF, "", properties));
         option("-8", "--8bit", //
             new NoArgPropertyOption("opt.8.bit", ExBib.PROP_CSF,
                 "88591lat.csf", properties));
@@ -311,7 +303,10 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * @return
+     * Getter for the debug description.
+     * 
+     * @return the value
+     * 
      * @see org.extex.exbib.core.ExBib#getDebug()
      */
     public Set<Debug> getDebug() {
@@ -320,7 +315,10 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * @return
+     * Getter for min.crossrefs.
+     * 
+     * @return the value
+     * 
      * @see org.extex.exbib.core.ExBib#getMinCrossrefs()
      */
     public int getMinCrossrefs() {
@@ -329,7 +327,10 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * @return
+     * Getter for the trace indicator.
+     * 
+     * @return the trace indicator
+     * 
      * @see org.extex.exbib.core.ExBib#isTrace()
      */
     public boolean isTrace() {
