@@ -19,10 +19,17 @@
 
 package org.extex.exbib.ant;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Locale;
+
+import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildFileTest;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the ExBib ant task.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,23 +47,176 @@ public class ExBibTaskTest extends BuildFileTest {
     }
 
     /**
-     * {@inheritDoc}
+     * Run a test.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @param invocation the invocation XML
+     * @param aux the contents of the aux file
+     * @param log the contents of the log stream
+     * 
+     * @throws IOException in case of an I/O error during writing a temp file
      */
-    @Override
-    public void setUp() throws Exception {
+    private void runTest(String invocation, String aux, String log)
+            throws IOException {
 
-        configureProject("src/test/resources/build.xml");
+        File build = new File("target/build.xml");
+        FileWriter w = new FileWriter(build);
+        try {
+            w
+                .write("<project name=\"ant-test\">\n"
+                        + "  <taskdef name=\"ExBib\"\n"
+                        + "           classname=\"org.extex.exbib.ant.ExBibTask\"\n"
+                        + "           classpath=\"classes\" />\n"
+                        + "  <target name=\"test.case\"\n"
+                        + "          description=\"...\" >\n" + "");
+            w.write(invocation);
+            w.write("  </target>\n");
+            w.write("</project>\n");
+        } finally {
+            w.close();
+        }
+
+        if (aux != null) {
+            w = new FileWriter("target/test.aux");
+            try {
+                w.write(aux);
+            } finally {
+                w.close();
+            }
+        }
+        Locale.setDefault(Locale.ENGLISH);
+        configureProject("target/build.xml");
+        executeTarget("test.case");
+        assertEquals("Message was logged but should not.", log, //
+            getLog().replaceAll("\\r", ""));
+        build.delete();
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
      */
-    public final void testExecute() {
+    public final void test01() {
 
+        configureProject("src/test/resources/build.xml");
+        Locale.setDefault(Locale.ENGLISH);
         executeTarget("test.case.1");
-        assertEquals("Message was logged but should not.", getLog(), "");
+        assertEquals("Message was logged but should not.",
+            "Missing aux file parameter.\n" + "(There was 1 error)\n",//
+            getLog().replaceAll("\\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     */
+    public final void test02() {
+
+        configureProject("src/test/resources/build.xml");
+        Locale.setDefault(Locale.ENGLISH);
+        executeTarget("test.case.2");
+        assertEquals("Message was logged but should not.",
+            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                    + "(There was 1 error)\n",//
+            getLog().replaceAll("\\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test11() throws Exception {
+
+        runTest("<ExBib\n" //
+                + "  file=\"file/which/does/not/exist.aux\" />\n", //
+            null, //
+            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                    + "(There was 1 error)\n");
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test12() throws Exception {
+
+        runTest("<ExBib\n" //
+                + "  minCrossrefs=\"abc\" \n"
+                + "  file=\"file/which/does/not/exist\"/>\n", //
+            null, //
+            "I found `abc\' instead of the expected number\n"
+                    + "(There was 1 error)\n");
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test13() throws Exception {
+
+        runTest("<ExBib\n" //
+                + "  logfile=\"target/log.log\" \n"
+                + "  file=\"file/which/does/not/exist\"/>\n", //
+            null, //
+            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                    + "(There was 1 error)\n");
+        File log = new File("target/log.log");
+        assertTrue(log.exists());
+        log.delete();
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test21() throws Exception {
+
+        runTest(
+            "<ExBib>\n" //
+                    + "  exbib.file=file/which/does/not/exist.aux\n"
+                    + "</ExBib>\n", //
+            null, //
+            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                    + "(There was 1 error)\n");
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test22() throws Exception {
+
+        try {
+            runTest("<ExBib\n" //
+                    + "  load=\"file/which/does/not/exist\"/>\n", //
+                null, //
+                "");
+            assertTrue(false);
+        } catch (BuildException e) {
+            Throwable cause = e.getCause();
+            assertTrue(cause instanceof FileNotFoundException);
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void test23() throws Exception {
+
+        try {
+            runTest("<ExBib\n" //
+                    + "  load=\"~/file/which/does/not/exist\"/>\n", //
+                null, //
+                "");
+            assertTrue(false);
+        } catch (BuildException e) {
+            Throwable cause = e.getCause();
+            assertTrue(cause instanceof FileNotFoundException);
+        }
     }
 
 }

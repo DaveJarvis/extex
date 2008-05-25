@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExBib-ant</artifactId>
-  <name>ExBib core</name>
+  <name>ExBib ant task</name>
   <description>
     This is the ExBib Ant task.
   </description>
@@ -24,22 +24,20 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
-      <version>0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>ant</groupId>
       <artifactId>ant</artifactId>
       <version>1.6.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-Main</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>ant</groupId>

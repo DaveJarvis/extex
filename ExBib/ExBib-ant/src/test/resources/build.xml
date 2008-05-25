@@ -20,7 +20,7 @@
   #
   ######################################################################### -->
 
-<project name="ant-test" default="nothing" basedir="../../../target">
+<project name="ant-test" basedir="../../../target">
 
   <!-- ==================================================================== -->
   <taskdef name="ExBib"
@@ -28,13 +28,15 @@
            classpath="classes" />
 
   <!-- ==================================================================== -->
-  <target name="nothing"
-          description="Build nearly everything" />
-
-  <!-- ==================================================================== -->
   <target name="test.case.1"
           description="..." >
     <ExBib/>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="test.case.2"
+          description="..." >
+    <ExBib file="file/which/does/not/exist"/>
   </target>
 
 </project>

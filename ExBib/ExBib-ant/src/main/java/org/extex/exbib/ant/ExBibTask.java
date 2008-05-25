@@ -19,14 +19,13 @@
 
 package org.extex.exbib.ant;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.text.MessageFormat;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.Properties;
+import java.util.Set;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -34,46 +33,246 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
-import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.ProcessorFactory;
-import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
-import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.DBFactory;
-import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.io.Writer;
-import org.extex.exbib.core.io.auxio.AuxReader;
-import org.extex.exbib.core.io.auxio.AuxReaderFactory;
-import org.extex.exbib.core.io.bblio.BblWriterFactory;
-import org.extex.exbib.core.io.bibio.BibReaderFactory;
-import org.extex.exbib.core.io.bstio.BstReader;
-import org.extex.exbib.core.io.bstio.BstReaderFactory;
-import org.extex.exbib.core.io.csf.CsfException;
-import org.extex.exbib.core.io.csf.CsfReader;
-import org.extex.exbib.core.io.csf.CsfSorter;
-import org.extex.exbib.core.util.DBObserver;
-import org.extex.exbib.core.util.ResourceObserverImpl;
+import org.extex.exbib.core.ExBib;
+import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.exbib.main.util.LogFormatter;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationFactory;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.resource.ResourceFinder;
-import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This class provides an interface from Ant to ExBib.
+ * This class provides an interface from Ant to &epsilon;&chi;Bib.
+ * 
+ * <h2>The &epsilon;&chi;Bib Ant Task</h2>
+ * 
+ * <h3>Invocation</h3>
+ * 
+ * <p>
+ * &epsilon;&chi;Bib provides an integration into Apache Ant. This allows the
+ * invocation of &epsilon;&chi;Bib from within Ant. For this purpose an Ant task
+ * can be defined as follows.
+ * </p>
  * 
  * <pre>
- *   &lt;taskdef name=&quot;ExBib&quot; class=". . ."/&gt;
- *
- *   &lt;ExBib file=&quot;abc&quot;
- *          executable=&quot;pdflatex&quot;
- *          &gt;
- *   &lt;/ExBib&gt;
+ *  &lt;<b>taskdef</b> name="ExBib"
+ *           classname="org.extex.exbib.ant.ExBibTask" /&gt;
  * </pre>
+ * 
+ * <p>
+ * This assumes that the jars from the &epsilon;&chi;Bib distribution are on the
+ * class path. You can extend the class path for this definition with the
+ * classpath attribute as shown below.
+ * </p>
+ * 
+ * <pre>
+ *  &lt;<b>taskdef</b> name="ExBib"
+ *           classname="org.extex.exbib.ant.ExBibTask"
+ *           classpath="classes" /&gt;
+ * </pre>
+ * 
+ * <p>
+ * As a result you have defined the task named <tt>ExBib</tt>. This task can
+ * be used in arbitrary targets.
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"/&gt;
+ * </pre>
+ * 
+ * <p>
+ * Note that a version of Ant is required. Ant is not not included in the
+ * distribution. Thus it is possible to use the &epsilon;&chi;Bib ant task
+ * together with the existing Ant installation.
+ * </p>
+ * 
+ * 
+ * <h3>Options</h3>
+ * 
+ * <p>
+ * The body of the task invocation can contain options. They are treated as if
+ * they where read from a properties file. The names and values are those which
+ * could also be taken from a dot file.
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"&gt;
+ *      exbib.encoding=UTF-8
+ *     &lt;/ExBib&gt;
+ * </pre>
+ * 
+ * <p>
+ * Note that typos in option names are silently ignored.
+ * </p>
+ * 
+ * 
+ * <h3>Parameters</h3>
+ * 
+ * <p>
+ * The invocation of the task can be controlled by several parameters. Those
+ * parameters are given as attributes to the task.
+ * </p>
+ * 
+ * <dl>
+ * <dt>file="&lang;file&rang;"</dt>
+ * <dd> The parameter is the name of the <tt>aux</tt> file to read further
+ * parameters from. This attribute is mandatory.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"/&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>encoding="&lang;enc&rang;"</dt>
+ * <dd> This option can be used to specify the encoding for reading files. The
+ * default is to use the platform default encoding.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            encoding="UTF-8" /&gt;
+ * </pre>
+ * 
+ * <dt>bibEncoding="&lang;enc&rang;"</dt>
+ * <dd> This option can be used to specify the encoding for reading database
+ * files. The default is to use the same value as the parameter
+ * <tt>encoding</tt>.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            bibEncoding="UTF-8" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>csf="&lang;csf&rang;"</dt>
+ * <dd> The option can be used to specify the CSF which cintains character
+ * definitions and sorting order specification.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            csf="german.csf" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>csfEncoding="&lang;enc&rang;"</dt>
+ * <dd> This option contains the encoding for reading cs files. The encoding
+ * needs to be a valid character set. The fallback is the platform default
+ * encoding.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            csf="german.csf" 
+ *            csfEncoding="UTF-8" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>minCrossrefs="&lang;number&rang;"</dt>
+ * <dd> The parameter is a number. It gives the number of cross references
+ * before the entries are left alone and not collapsed. The default value is 2.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            minCrossrefs="3" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>output="&lang;file&rang;"</dt>
+ * <dd> This parameter redirects the output for the default type of references
+ * to the given file. The default is derived from the name of the aux file by
+ * using the extension <tt>.bbl</tt>.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            output="file.bbl" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>logfile="&lang;file&rang;"] </dt>
+ * <dd> This option can be used to redirect the output to a file. The default is
+ * to print the informative messages to the console only.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            logfile="file.blg" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>config="&lang;config&rang;"</dt>
+ * <dd> This parameter can be used to specify the configuration for assembling
+ * &epsilon;&chi;Bib. The default value is <tt>exbib</tt>. The value
+ * <tt>bibtex099</tt> can be used to switch to the compatibility mode for B<small>IB</small>T<sub>E</sub>X
+ * 0.99c.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            config="bibtex099" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>load="&lang;file&rang;"</dt>
+ * <dd> In contrast to the command line interface no dot files are read by the
+ * Ant task. This attribute can be used to load dot files.
+ * <p>
+ * The value is the name of the parameter file to load. It can be relative to
+ * the current directory or absolute. If the first letter is a <tt>~</tt> the
+ * this is replaced with the user's home directory.
+ * </p>
+ * <p>
+ * This attribute can be given several times to load different dot files.
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            load="~/.exbib"
+ *            load="./.exbib" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * <dt>debug="&lang;flags&rang;"</dt>
+ * <dd> This option can be used to specify debug options.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            logfile="file.blg"
+ *            debug="trace,search" /&gt;
+ * </pre>
+ * 
+ * </dd>
+ * 
+ * </dl>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -81,79 +280,24 @@ import org.extex.resource.ResourceFinderFactory;
 public class ExBibTask extends Task {
 
     /**
-     * The field <tt>AUX_FILE_EXTENSION</tt> contains the extension of aux
-     * files (in lower case).
-     */
-    private static final String AUX_FILE_EXTENSION = ".aux";
-
-    /**
-     * The field <tt>BBL_FILE_EXTENSION</tt> contains the extension of output
-     * files (in lower case).
-     */
-    private static final String BBL_FILE_EXTENSION = ".bbl";
-
-    /**
-     * The field <tt>BLG_FILE_EXTENSION</tt> contains the extension of log
-     * files (in lower case).
-     */
-    private static final String BLG_FILE_EXTENSION = ".blg";
-
-    /**
-     * The field <tt>BST_FILE_EXTENSION</tt> contains the extension of BibTeX
-     * style files (in lower case).
-     */
-    private static final String BST_FILE_EXTENSION = ".bst";
-
-    /**
-     * The field <tt>file</tt> contains the aux file name.
-     */
-    private String file = null;
-
-    /**
-     * The field <tt>encoding</tt> contains the encoding.
-     */
-    private String encoding = null;
-
-    /**
-     * The field <tt>bibEncoding</tt> contains the encoding for bib files.
-     */
-    private String bibEncoding = null;
-
-    /**
-     * The field <tt>csf</tt> contains the name or the csf file or
-     * <code>null</code>.
-     */
-    private String csf = null;
-
-    /**
-     * The field <tt>config</tt> contains the name of the configuration.
-     */
-    private String config = "exbib";
-
-    /**
-     * The field <tt>minCrossrefs</tt> contains the minimum crossref number.
-     */
-    private int minCrossrefs = 2;
-
-    /**
-     * The field <tt>bundle</tt> contains the resource bundle for i18n.
-     */
-    private ResourceBundle bundle;
-
-    /**
-     * The field <tt>outfile</tt> contains the name of the output file.
-     */
-    private String outfile = null;
-
-    /**
      * The field <tt>logfile</tt> contains the name of the log file.
      */
     private String logfile = null;
 
     /**
-     * The field <tt>logger</tt> contains the logger.
+     * The field <tt>properties</tt> contains the properties.
      */
-    private Logger logger;
+    private Properties properties = new Properties();
+
+    /**
+     * The field <tt>debug</tt> contains the debug flags.
+     */
+    private Set<ExBibDebug> debug = null;
+
+    /**
+     * The field <tt>text</tt> contains the body text.
+     */
+    private StringBuilder text = new StringBuilder();
 
     /**
      * Creates a new object.
@@ -161,10 +305,60 @@ public class ExBibTask extends Task {
     public ExBibTask() {
 
         super();
+    }
 
-        bundle = ResourceBundle.getBundle(getClass().getName());
+    /**
+     * Adder for body text.
+     * 
+     * @param t the text
+     */
+    public void addText(String t) {
 
-        logger = Logger.getLogger(ExBibTask.class.getName());
+        this.text.append(t);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.apache.tools.ant.Task#execute()
+     */
+    @Override
+    public void execute() throws BuildException {
+
+        if (text.length() > 0) {
+            StringReader r = new StringReader(text.toString());
+            try {
+                properties.load(r);
+            } catch (IOException e) {
+                throw new BuildException(e);
+            } finally {
+                r.close();
+            }
+        }
+        Logger logger = makeLogger();
+        ExBib exbib;
+        try {
+            exbib = new ExBib(properties);
+            exbib.setLogger(logger);
+            if (debug != null) {
+                for (ExBibDebug d : debug) {
+                    exbib.setDebug(d);
+                }
+            }
+            exbib.run();
+        } catch (Exception e) {
+            throw new BuildException(e);
+        }
+    }
+
+    /**
+     * Create the logger.
+     * 
+     * @return the logger
+     */
+    private Logger makeLogger() {
+
+        Logger logger = Logger.getLogger(ExBibTask.class.getName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
         Handler logAdaptor = new Handler() {
@@ -184,360 +378,25 @@ public class ExBibTask extends Task {
             @Override
             public void publish(LogRecord record) {
 
-                log(record.getMessage());
+                ExBibTask.this.log(record.getMessage(), Project.MSG_WARN);
             }
         };
         logAdaptor.setFormatter(new LogFormatter());
         logAdaptor.setLevel(Level.WARNING);
         logger.addHandler(logAdaptor);
-    }
-
-    /**
-     * Attach a handler to the logger to direct messages to a log file.
-     * 
-     * @param log the base name of the file
-     * @param extension the extension
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    protected void attachFileLogger(String log, String extension)
-            throws IOException {
-
-        if (logfile == null && log != null && !log.equals("")
-                && !log.equals("-")) {
-            logfile = log + extension;
-        }
         if (logfile != null && !logfile.equals("")) {
-            Handler fileHandler = new FileHandler(logfile);
+            Handler fileHandler;
+            try {
+                fileHandler = new FileHandler(logfile);
+            } catch (Exception e) {
+                throw new BuildException(e);
+            }
             fileHandler.setFormatter(new LogFormatter());
             fileHandler.setLevel(Level.FINE);
             logger.addHandler(fileHandler);
         }
-    }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.tools.ant.Task#execute()
-     */
-    @Override
-    public void execute() throws BuildException {
-
-        Writer writer = null;
-
-        try {
-            Configuration config =
-                    ConfigurationFactory.newInstance(this.config);
-            ResourceFinder finder =
-                    new ResourceFinderFactory().createResourceFinder(config
-                        .getConfiguration("Resource"), logger, System
-                        .getProperties(), null);
-            if (file == null) {
-                throw new BuildException(msg("missing.file"));
-            }
-            file = stripExtension(file, AUX_FILE_EXTENSION);
-            CsfSorter sorter = null;
-
-            attachFileLogger(file, BLG_FILE_EXTENSION);
-
-            if ("".equals(csf)) {
-                sorter = new CsfSorter();
-            } else if (csf != null) {
-                InputStream is = finder.findResource(csf, "csf");
-                if (is == null) {
-                    throw new BuildException(msg("csf.missing"));
-                }
-                try {
-                    sorter = new CsfReader().read(new InputStreamReader(is));
-                } catch (CsfException e) {
-                    throw new BuildException(e.getLocalizedMessage());
-                } finally {
-                    is.close();
-                }
-            }
-
-            writer = makeBblWriter(file, config);
-
-            if (writer == null) {
-                throw new BuildException();
-            }
-
-            BibReaderFactory bibReaderFactory =
-                    new BibReaderFactory(config.getConfiguration("BibReader"),
-                        finder, bibEncoding, encoding);
-            DB db =
-                    new DBFactory(//
-                        config.getConfiguration("DB")).newInstance(
-                        bibReaderFactory, minCrossrefs);
-            if (sorter != null) {
-                db.setSorter(sorter);
-            }
-
-            Processor processor = new ProcessorFactory(//
-                config.getConfiguration("Processor")).newInstance(db, null);
-
-            processor.registerObserver("startRead", new DBObserver(logger,
-                bundle.getString("observer.db.pattern")));
-
-            AuxReader auxReader = new AuxReaderFactory(//
-                config.getConfiguration("AuxReader")).newInstance(finder);
-            auxReader.register(new ResourceObserverImpl(logger));
-
-            int errors = 0;
-            // try {
-            // int[] no = auxReader.load(processor, file, encoding);
-            //
-            // if (no[1] == 0) {
-            // errors++;
-            // log("bst.missing", file);
-            // }
-            // if (no[0] == 0) {
-            // errors++;
-            // log("data.missing", file);
-            // }
-            // if (no[2] == 0) {
-            // errors++;
-            // log("citation.missing", file);
-            // }
-            // } catch (FileNotFoundException e) {
-            // throw new BuildException(msg("aux.not.found", e.getMessage()));
-            // }
-            // TODO rewrite
-
-            String bst = null;
-            if (bst != null) {
-                processor.addBibliographyStyle(stripExtension(bst,
-                    BST_FILE_EXTENSION));
-            }
-
-            List<String> bibliographyStyles = processor.getBibliographyStyles();
-
-            if (bibliographyStyles == null || bibliographyStyles.isEmpty()) {
-                throw new BuildException();
-            }
-            bst = bibliographyStyles.get(0);
-            bst = stripExtension(bst, BST_FILE_EXTENSION);
-            log("bst.file", bst);
-            BstReader bstReader =
-                    new BstReaderFactory(config.getConfiguration("BstReader"),
-                        finder).newInstance();
-            try {
-                bstReader.parse(processor);
-            } catch (ExBibBstNotFoundException e) {
-                throw new BuildException(msg("bst.not.found", e.getMessage()));
-            }
-
-            processor.process(writer);
-
-            if (errors > 0) {
-                throw new BuildException(msg(errors == 1 ? "error" : "errors",
-                    Long.toString(errors)));
-            }
-            long warnings = processor.getNumberOfWarnings();
-            if (warnings > 0) {
-                log(warnings == 1 ? "warning" : "warnings", //
-                    Long.toString(warnings));
-            }
-
-        } catch (BuildException e) {
-            throw e;
-        } catch (IOException e) {
-            throw new BuildException(e);
-        } catch (ExBibImpossibleException e) {
-            throw new BuildException(e);
-        } catch (ExBibFileNotFoundException e) {
-            throw new BuildException(e);
-        } catch (ExBibException e) {
-            throw new BuildException(e);
-        } catch (ConfigurationWrapperException e) {
-            throw new BuildException(msg("installation.error", //
-                e.getLocalizedMessage()), e);
-        } catch (ConfigurationException e) {
-            throw new BuildException(msg("installation.error", //
-                e.getLocalizedMessage()), e);
-        } catch (NoClassDefFoundError e) {
-            throw new BuildException(msg("installation.error", //
-                e.getLocalizedMessage()), e);
-        } catch (Exception e) {
-            throw new BuildException(e);
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    throw new BuildException(e);
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Getter for bibEncoding.
-     * 
-     * @return the bibEncoding
-     */
-    public String getBibEncoding() {
-
-        return bibEncoding;
-    }
-
-    /**
-     * Getter for config.
-     * 
-     * @return the config
-     */
-    public String getConfig() {
-
-        return config;
-    }
-
-    /**
-     * Getter for csf.
-     * 
-     * @return the csf
-     */
-    public String getCsf() {
-
-        return csf;
-    }
-
-    /**
-     * Getter for encoding.
-     * 
-     * @return the encoding
-     */
-    public String getEncoding() {
-
-        return encoding;
-    }
-
-    /**
-     * Getter for file.
-     * 
-     * @return the file
-     */
-    public String getFile() {
-
-        return file;
-    }
-
-    /**
-     * Getter for logfile.
-     * 
-     * @return the logfile
-     */
-    public String getLogfile() {
-
-        return logfile;
-    }
-
-    /**
-     * Getter for minCrossrefs.
-     * 
-     * @return the minCrossrefs
-     */
-    public int getMinCrossrefs() {
-
-        return minCrossrefs;
-    }
-
-    /**
-     * Getter for outfile.
-     * 
-     * @return the outfile
-     */
-    public String getOutfile() {
-
-        return outfile;
-    }
-
-    /**
-     * Write a formatted message to the log stream.
-     * 
-     * @param tag the tag name
-     * @param args the arguments
-     */
-    private void log(String tag, Object... args) {
-
-        log(msg(tag, args));
-    }
-
-    /**
-     * Create a new {@link java.io.Writer} for a bbl file.
-     * 
-     * @param file the name of the file
-     * @param cfg the configuration
-     * @return the new writer or <code>null</code> when the file could not be
-     *         opened for writing
-     * 
-     * @throws UnsupportedEncodingException if an error with the encoding is
-     *         encountered
-     * @throws ConfigurationException in case of a configuration error
-     */
-    private Writer makeBblWriter(String file, Configuration cfg)
-            throws UnsupportedEncodingException,
-                ConfigurationException {
-
-        Configuration configuration = cfg.getConfiguration("BblWriter");
-        if (outfile == null) {
-            outfile = file + ".bbl";
-        }
-
-        try {
-            return new BblWriterFactory(configuration, encoding) {
-
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
-                 */
-                @Override
-                protected void infoDiscarted() {
-
-                    log("output.discarted");
-                }
-
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
-                 */
-                @Override
-                protected void infoOutput(String file) {
-
-                    log("output.file", outfile);
-                }
-
-                /**
-                 * {@inheritDoc}
-                 * 
-                 * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
-                 */
-                @Override
-                protected void infoStdout() {
-
-                    log("output.to.stdout");
-                }
-
-            }.newInstance(outfile);
-        } catch (FileNotFoundException e) {
-            log("output.could.not.be.opened", outfile);
-            return null;
-        }
-    }
-
-    /**
-     * Prepare a message from a pattern in the resource bundle.
-     * 
-     * @param tag the make of the pattern
-     * @param args the arguments
-     * 
-     * @return the message
-     */
-    private String msg(String tag, Object... args) {
-
-        return MessageFormat.format(bundle.getString(tag), args);
+        return logger;
     }
 
     /**
@@ -547,7 +406,7 @@ public class ExBibTask extends Task {
      */
     public void setBibEncoding(String bibEncoding) {
 
-        this.bibEncoding = bibEncoding;
+        properties.setProperty(ExBib.PROP_BIB_ENCODING, bibEncoding);
     }
 
     /**
@@ -557,7 +416,7 @@ public class ExBibTask extends Task {
      */
     public void setConfig(String config) {
 
-        this.config = config;
+        properties.setProperty(ExBib.PROP_CONFIG, config);
     }
 
     /**
@@ -567,7 +426,41 @@ public class ExBibTask extends Task {
      */
     public void setCsf(String csf) {
 
-        this.csf = csf;
+        properties.setProperty(ExBib.PROP_CSF, csf);
+    }
+
+    /**
+     * Setter for CSF encoding.
+     * 
+     * @param encoding the encoding to set
+     */
+    public void setCsfEncoding(String encoding) {
+
+        properties.setProperty(ExBib.PROP_CSF_ENCODING, encoding);
+    }
+
+    /**
+     * Setter for debug flags.
+     * 
+     * @param d the aspect to debug
+     */
+    public void setDebug(String d) {
+
+        if ("all".equals(d)) {
+            for (ExBibDebug x : ExBibDebug.values()) {
+                debug.add(x);
+            }
+        } else if ("none".equals(d)) {
+            debug.clear();
+        } else {
+            try {
+                for (String s : d.split("[,;:]")) {
+                    debug.add(ExBibDebug.valueOf(s));
+                }
+            } catch (Exception e) {
+                throw new BuildException(e);
+            }
+        }
     }
 
     /**
@@ -577,7 +470,7 @@ public class ExBibTask extends Task {
      */
     public void setEncoding(String encoding) {
 
-        this.encoding = encoding;
+        properties.setProperty(ExBib.PROP_ENCODING, encoding);
     }
 
     /**
@@ -587,13 +480,38 @@ public class ExBibTask extends Task {
      */
     public void setFile(String file) {
 
-        this.file = file;
+        properties.setProperty(ExBib.PROP_FILE, file);
     }
 
     /**
-     * Setter for logfile.
+     * Setter for load.
      * 
-     * @param logfile the logfile to set
+     * @param file the file to load
+     */
+    public void setLoad(String file) {
+
+        File f;
+        if (file.startsWith("~")) {
+            f = new File(System.getProperty("user.home"), file.substring(1));
+        } else {
+            f = new File(file);
+        }
+        try {
+            Reader r = new FileReader(f);
+            try {
+                properties.load(r);
+            } finally {
+                r.close();
+            }
+        } catch (IOException e) {
+            throw new BuildException(e);
+        }
+    }
+
+    /**
+     * Setter for log file.
+     * 
+     * @param logfile the log file to set
      */
     public void setLogfile(String logfile) {
 
@@ -605,37 +523,19 @@ public class ExBibTask extends Task {
      * 
      * @param minCrossrefs the minCrossrefs to set
      */
-    public void setMinCrossrefs(int minCrossrefs) {
+    public void setMinCrossrefs(String minCrossrefs) {
 
-        this.minCrossrefs = minCrossrefs;
+        properties.setProperty(ExBib.PROP_MIN_CROSSREF, minCrossrefs);
     }
 
     /**
-     * Setter for outfile.
+     * Setter for output file.
      * 
-     * @param outfile the outfile to set
+     * @param outfile the output file to set
      */
-    public void setOutfile(String outfile) {
+    public void setOutput(String outfile) {
 
-        this.outfile = outfile;
-    }
-
-    /**
-     * Remove an extension if the given file name ends with it. The comparison
-     * is performed case-insensitive.
-     * 
-     * @param file the name of the file
-     * @param extension the postfix to remove
-     * 
-     * @return the normalized file name
-     */
-    private String stripExtension(String file, String extension) {
-
-        if (file.toLowerCase().endsWith(extension)) {
-            return file.substring(0, file.length() - extension.length());
-        }
-
-        return file;
+        properties.setProperty(ExBib.PROP_OUTFILE, outfile);
     }
 
 }
