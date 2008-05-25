@@ -20,10 +20,8 @@
 package org.extex.exbib.ant;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
 import java.util.Properties;
 import java.util.Set;
 import java.util.logging.FileHandler;
@@ -35,6 +33,7 @@ import java.util.logging.Logger;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
+import org.apache.tools.ant.filters.StringInputStream;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.exbib.main.util.LogFormatter;
@@ -326,13 +325,15 @@ public class ExBibTask extends Task {
     public void execute() throws BuildException {
 
         if (text.length() > 0) {
-            StringReader r = new StringReader(text.toString());
+            StringInputStream r = new StringInputStream(text.toString());
             try {
-                properties.load(r);
+                try {
+                    properties.load(r);
+                } finally {
+                    r.close();
+                }
             } catch (IOException e) {
                 throw new BuildException(e);
-            } finally {
-                r.close();
             }
         }
         Logger logger = makeLogger();
@@ -497,7 +498,7 @@ public class ExBibTask extends Task {
             f = new File(file);
         }
         try {
-            Reader r = new FileReader(f);
+            FileInputStream r = new FileInputStream(f);
             try {
                 properties.load(r);
             } finally {
