@@ -38,6 +38,7 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
@@ -50,8 +51,8 @@ import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.exbib.core.util.DBObserver;
 import org.extex.exbib.core.util.EntryObserver;
 import org.extex.exbib.core.util.FuncallObserver;
-import org.extex.exbib.core.util.ResourceObserverImpl;
 import org.extex.exbib.core.util.NotObservableException;
+import org.extex.exbib.core.util.ResourceObserverImpl;
 import org.extex.exbib.core.util.TracingObserver;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
@@ -61,66 +62,9 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This class contains the main program for ExBib.
+ * This class contains the assembler for ExBib.
  * <p>
  * </p>
- * <p>
- * Usage: <tt>java org.extex.exbib.main.ExBib </tt><i>&lt;options&gt; file</i>
- * </p>
- * <p>
- * The following options are supported:
- * </p>
- * <dl>
- * <dt>-D&lang;property&rang;=&lang;value&rang;</dt>
- * <dd>Set the property to a given value.</dd>
- * <dt>-[-] &lang;file&rang;</dt>
- * <dd>Use this argument as file name -- even when it looks like an option.</dd>
- * <dt>--a[vailableCharsets] | -a</dt>
- * <dd>List the available encoding names and exit.</dd>
- * <dt>--bib-[encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
- * <dd>Use the given encoding for the bib files.</dd>
- * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
- * <dd>Use the configuration given. This is not a file!</dd>
- * <dt>--cop[ying]</dt>
- * <dd>Display the copyright conditions.</dd>
- * <dt>--cs[file] &lang;csfile&rang;</dt>
- * <dd>Name the csf for defining characters and the sort order</dd>
- * <dt>--csf-[encoding] | --csf.[encoding] &lang;enc&rang;</dt>
- * <dd>Use the given encoding for the csf files.</dd>
- * <dt>--d[ebug] | -d</dt>
- * <dd>Run in debug mode.</dd>
- * <dt>--e[ncoding] | -e &lang;enc&rang;</dt>
- * <dd>Use the given encoding for the output file.</dd>
- * <dt>--h[elp] | -? | -h</dt>
- * <dd>Show a short list of command line arguments.</dd>
- * <dt>--la[nguage] | -L &lang;language></dt>
- * <dd>Use the named language for message. The argument is a two-letter ISO
- * code.</dd>
- * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
- * <dd>Send the output to the log file named instead of the default one.</dd>
- * <dt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
- * &lang;n&rang;</dt>
- * <dd>Set the value for min.crossrefs. The default is 2.</dd>
- * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
- * <dd>Redirect the output to the file given. <br />
- * The file name - can be used to redirect to stdout <br />
- * The empty file name can be used to discard the output completely</dd>
- * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
- * &lang;program&rang;</dt>
- * <dd>Set the program name for messages.</dd>
- * <dt>--q[uiet] | --t[erse] | -q</dt>
- * <dd>Act quietly; some informative messages are suppressed.</dd>
- * <dt>--r[elease] | -r</dt>
- * <dd>Print the release number and exit.</dd>
- * <dt>--b[ibtex] | --s[trict]</dt>
- * <dd>Use the configuration for BibTeX 0.99c.</dd>
- * <dt>--tr[ace] | -t</dt>
- * <dd>Show a detailed trace of many operations.</dd>
- * <dt>--v[erbose] | -v</dt>
- * <dd>Act verbosely; some additional informational messages are displayed.</dd>
- * <dt>--vers[ion]</dt>
- * <dd>Print the version information and exit.</dd>
- * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
@@ -130,7 +74,7 @@ public class ExBib {
     /**
      * This enumeration names the point for debugging.
      */
-    public enum Debug {
+    public enum ExBibDebug {
         /**
          * The field <tt>CSF</tt> contains the csf processing.
          */
@@ -150,7 +94,11 @@ public class ExBib {
         /**
          * The field <tt>SEARCH</tt> contains the search.
          */
-        SEARCH
+        SEARCH,
+        /**
+         * The field <tt>TRACE</tt> contains the indicator for tracing.
+         */
+        TRACE
     }
 
     /**
@@ -225,6 +173,12 @@ public class ExBib {
     public static final String PROP_FILE = "exbib.file";
 
     /**
+     * The field <tt>PROP_MIN_CROSSREF</tt> contains the name of the property
+     * containing the min.crossrefs.
+     */
+    public static final String PROP_MIN_CROSSREF = "exbib.min.crossref";
+
+    /**
      * The field <tt>PROP_OUTFILE</tt> contains the name of the property for
      * the output.
      */
@@ -233,23 +187,12 @@ public class ExBib {
     /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
      */
-    private Set<Debug> debug = new HashSet<Debug>();
+    private Set<ExBibDebug> debug = new HashSet<ExBibDebug>();
 
     /**
      * The field <tt>errors</tt> contains the number of errors reported.
      */
     private int errors = 0;
-
-    /**
-     * The field <tt>minCrossrefs</tt> contains the <tt>min.crossrefs</tt>
-     * parameter for the database.
-     */
-    private int minCrossrefs = 2;
-
-    /**
-     * The field <tt>trace</tt> contains the indicator for trace output.
-     */
-    private boolean trace = false;
 
     /**
      * The field <tt>warnings</tt> contains the number of warnings.
@@ -272,7 +215,8 @@ public class ExBib {
     private ResourceBundle bundle;
 
     /**
-     * Creates a new object.
+     * Creates a new object. The properties containing the controlling
+     * attributes are initialized from the System.properties.
      * 
      * @throws IOException in case of an I/O error while reading the dot file
      */
@@ -293,14 +237,7 @@ public class ExBib {
         super();
 
         useLanguage(Locale.getDefault());
-        this.properties = properties;
-        propertyDefault(PROP_BIB_ENCODING, null);
-        propertyDefault(PROP_CSF_ENCODING, null);
-        propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
-        propertyDefault(PROP_CSF, null);
-        propertyDefault(PROP_FILE, null);
-        propertyDefault(PROP_ENCODING, null);
-        propertyDefault(PROP_OUTFILE, null);
+        setProperties(properties);
     }
 
     /**
@@ -328,7 +265,13 @@ public class ExBib {
     protected boolean error(Throwable e, String tag) {
 
         errors++;
-        return logException(e, tag, debug.contains(Debug.MISC));
+        log(tag, e.getLocalizedMessage());
+
+        if (debug.contains(ExBibDebug.MISC)) {
+            logger.throwing("", "", e);
+        }
+
+        return false;
     }
 
     /**
@@ -336,19 +279,9 @@ public class ExBib {
      * 
      * @return the debug
      */
-    public Set<Debug> getDebug() {
+    public Set<ExBibDebug> getDebug() {
 
         return debug;
-    }
-
-    /**
-     * Getter for minCrossrefs.
-     * 
-     * @return the minCrossrefs
-     */
-    public int getMinCrossrefs() {
-
-        return minCrossrefs;
     }
 
     /**
@@ -380,10 +313,8 @@ public class ExBib {
      * 
      * @param tag the resource tag
      * @param args the arguments to be inserted
-     * 
-     * @return the exit code <code>1</code>
      */
-    protected int info(String tag, Object... args) {
+    protected void info(String tag, Object... args) {
 
         try {
             logger.info(MessageFormat.format(bundle.getString(tag), args));
@@ -391,17 +322,6 @@ public class ExBib {
             logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
                 tag));
         }
-        return -1;
-    }
-
-    /**
-     * Getter for trace.
-     * 
-     * @return the trace
-     */
-    public boolean isTrace() {
-
-        return trace;
     }
 
     /**
@@ -434,27 +354,7 @@ public class ExBib {
      */
     protected boolean logBanner(String tag, Object... args) {
 
-        return false;
-    }
-
-    /**
-     * Log an exception.
-     * 
-     * @param e the exception which has lead to the error
-     * @param tag the resource tag for the format pattern
-     * @param detail indicator whether or not to produce a printed stack trace
-     * 
-     * @return <code>false</code>
-     */
-    protected boolean logException(Throwable e, String tag, boolean detail) {
-
-        logBanner(tag, e.getLocalizedMessage());
-
-        if (detail) {
-            logger.throwing("", "", e);
-        }
-
-        return false;
+        return log(tag, args);
     }
 
     /**
@@ -540,8 +440,7 @@ public class ExBib {
         try {
             String file = properties.getProperty(PROP_FILE);
             if (file == null) {
-                error("missing.file");
-                return false;
+                return error("missing.file");
             }
             file = stripExtension(file, AUX_FILE_EXTENSION);
 
@@ -555,7 +454,7 @@ public class ExBib {
                         properties, //
                         null);
 
-            if (debug.contains(Debug.SEARCH)) {
+            if (debug.contains(ExBibDebug.SEARCH)) {
                 finder.enableTracing(true);
             }
 
@@ -573,14 +472,11 @@ public class ExBib {
                     new ProcessorContainer(config, logger) {
 
                         /**
-                         * TODO gene: missing JavaDoc
+                         * {@inheritDoc}
                          * 
-                         * @param processor the processor
-                         * @param db its database
-                         * 
-                         * @throws NotObservableException in case of an error
-                         * @throws ExBibIllegalValueException in case of an
-                         *         error
+                         * @see org.extex.exbib.core.ProcessorContainer#prepareProcessor(
+                         *      org.extex.exbib.core.Processor,
+                         *      org.extex.exbib.core.db.DB)
                          */
                         @Override
                         protected void prepareProcessor(Processor processor,
@@ -592,12 +488,18 @@ public class ExBib {
                                 logger, processor));
                         }
                     };
-            container.setMinCrossrefs(minCrossrefs);
+            try {
+                container.setMinCrossrefs(Integer.parseInt(properties
+                    .getProperty(PROP_MIN_CROSSREF, "2")));
+            } catch (NumberFormatException e) {
+                throw new ExBibMissingNumberException(properties.getProperty(
+                    PROP_MIN_CROSSREF, "2"), null);
+            }
             container.setSorter(sorter);
             container.setBibReaderFactory(bibReaderFactory);
             container.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
-            if (trace) {
+            if (debug.contains(ExBibDebug.TRACE)) {
                 funcall = runRegisterTracers(container);
             }
 
@@ -608,8 +510,7 @@ public class ExBib {
             try {
                 auxReader.load(container, file, encoding);
             } catch (FileNotFoundException e) {
-                error("aux.not.found", e.getMessage());
-                return false;
+                return error("aux.not.found", e.getMessage());
             }
 
             if (!validate(container, file)) {
@@ -675,8 +576,7 @@ public class ExBib {
                     writer = bblWriterFactory.newInstance(outfile);
                     warnings += processor.process(writer);
                 } catch (FileNotFoundException e) {
-                    error("output.could.not.be.opened", outfile);
-                    return false;
+                    return error("output.could.not.be.opened", outfile);
                 } finally {
                     if (writer != null) {
                         writer.close();
@@ -731,7 +631,10 @@ public class ExBib {
             throws NotObservableException,
                 ExBibIllegalValueException {
 
-        FuncallObserver funcall = (trace ? new FuncallObserver(logger) : null);
+        FuncallObserver funcall =
+                (debug.contains(ExBibDebug.TRACE)
+                        ? new FuncallObserver(logger)
+                        : null);
 
         container.registerObserver("step", new TracingObserver(logger, bundle
             .getString("step_msg")));
@@ -753,7 +656,7 @@ public class ExBib {
      * 
      * @param d indicator for debugging
      */
-    public void setDebug(Debug d) {
+    public void setDebug(ExBibDebug d) {
 
         debug.add(d);
     }
@@ -770,13 +673,13 @@ public class ExBib {
         for (String s : value) {
             try {
                 if ("all".equals(s)) {
-                    for (Debug d : Debug.values()) {
+                    for (ExBibDebug d : ExBibDebug.values()) {
                         debug.add(d);
                     }
                 } else if ("none".equals(s)) {
                     debug.clear();
                 } else {
-                    setDebug(Debug.valueOf(s.toUpperCase()));
+                    setDebug(ExBibDebug.valueOf(s.toUpperCase()));
                 }
             } catch (IllegalArgumentException e) {
                 return logBanner("debug.mode.unknown", s);
@@ -814,16 +717,6 @@ public class ExBib {
     }
 
     /**
-     * Setter for the min.crossrefs.
-     * 
-     * @param minCrossrefs the new value
-     */
-    public void setMinCrossrefs(int minCrossrefs) {
-
-        this.minCrossrefs = minCrossrefs;
-    }
-
-    /**
      * Setter for properties.
      * 
      * @param properties the properties to set
@@ -831,6 +724,13 @@ public class ExBib {
     public void setProperties(Properties properties) {
 
         this.properties = properties;
+        propertyDefault(PROP_BIB_ENCODING, null);
+        propertyDefault(PROP_CSF_ENCODING, null);
+        propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
+        propertyDefault(PROP_CSF, null);
+        propertyDefault(PROP_FILE, null);
+        propertyDefault(PROP_ENCODING, null);
+        propertyDefault(PROP_OUTFILE, null);
     }
 
     /**
@@ -846,16 +746,6 @@ public class ExBib {
     public Object setProperty(String key, String value) {
 
         return properties.setProperty(key, value);
-    }
-
-    /**
-     * Setter for trace.
-     * 
-     * @param trace the trace to set
-     */
-    public void setTrace(boolean trace) {
-
-        this.trace = trace;
     }
 
     /**
@@ -904,8 +794,7 @@ public class ExBib {
         if (container.isEmpty()) {
             error("bst.missing", file);
             error("data.missing", file);
-            error("citation.missing", file);
-            return false;
+            return error("citation.missing", file);
         }
 
         for (String key : container) {

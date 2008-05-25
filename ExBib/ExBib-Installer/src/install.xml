@@ -91,6 +91,8 @@
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
     <pack name="ExBib Ant" id="exbib-ant" required="no">
       <description/>
+      <file src="../ExBib-ant/target/ExBib-ant-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
     </pack>
   </packs>
 

@@ -24,13 +24,13 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -84,6 +84,8 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt>--la[nguage] | -L &lang;language&rang;</dt>
  * <dd>Use the named language for message.</dd>
  * <dt>\tThe argument is a two-letter ISO code.</dd>
+ * <dt>--loa[d] &lang;file&rang;</dt>
+ * <dd>Additionally load settings from the file given.</dd>
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
@@ -331,7 +333,8 @@ public final class ExBibUtil extends AbstractMain {
 
         Writer writer = null;
 
-        String outfile = getProperty(PROP_OUTFILE);
+        String outfile = getProperty(ExBib.PROP_OUTFILE);
+        // strange dependency
         try {
             if (outfile == null) {
                 writer =
@@ -433,18 +436,6 @@ public final class ExBibUtil extends AbstractMain {
             files.add(arg);
         }
         return EXIT_CONTINUE;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.util.AbstractMain#useLanguage(java.util.Locale)
-     */
-    @Override
-    protected void useLanguage(Locale locale) {
-
-        // TODO gene: useLanguage unimplemented
-
     }
 
 }

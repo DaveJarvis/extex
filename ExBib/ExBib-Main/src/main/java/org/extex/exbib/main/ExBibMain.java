@@ -29,12 +29,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.ExBib;
-import org.extex.exbib.core.ExBib.Debug;
+import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.exbib.main.cli.BooleanOption;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.NoArgPropertyOption;
 import org.extex.exbib.main.cli.NumberOption;
+import org.extex.exbib.main.cli.NumberPropertyOption;
 import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.StringPropertyOption;
 import org.extex.exbib.main.util.AbstractMain;
@@ -77,6 +78,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dt>--la[nguage] | -L &lang;language></dt>
  * <dd>Use the named language for message. The argument is a two-letter ISO
  * code.</dd>
+ * <dt>--loa[d] &lang;file&rang;</dt>
+ * <dd>Additionally load settings from the file given.</dd>
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
@@ -116,7 +119,8 @@ public class ExBibMain extends AbstractMain {
 
     /**
      * The main program. The command line parameters are evaluated and the
-     * appropriate actions are performed. Exceptions are caught and reported.
+     * appropriate actions are performed. Exceptions are caught and reported to
+     * the logger with the name of this class.
      * 
      * @param argv list of command line parameters
      * 
@@ -195,7 +199,8 @@ public class ExBibMain extends AbstractMain {
             @Override
             protected boolean logBanner(String tag, Object... args) {
 
-                return ExBibMain.this.logBanner(tag, args) != CLI.EXIT_FAIL;
+                ExBibMain.this.logBanner();
+                return super.logBanner(tag, args);
             }
 
             /**
@@ -248,17 +253,11 @@ public class ExBibMain extends AbstractMain {
         });
         option("-e", "--encoding", new StringPropertyOption("opt.encoding",
             ExBib.PROP_ENCODING, properties));
-        option("-M", "--min.crossrefs", new NumberOption("opt.min.crossref") {
-
-            @Override
-            protected int run(String name, int arg) {
-
-                exBib.setMinCrossrefs(arg);
-                return EXIT_CONTINUE;
-            }
-        }, "--min-crossrefs", "--min_crossrefs");
+        option("-M", "--min.crossrefs", new NumberPropertyOption(
+            "opt.min.crossref", ExBib.PROP_MIN_CROSSREF, properties),
+            "--min-crossrefs", "--min_crossrefs");
         option("-o", "--output", new StringPropertyOption("opt.output",
-            PROP_OUTFILE, properties), "--outfile");
+            ExBib.PROP_OUTFILE, properties), "--outfile");
         option(
             "-p",
             "--progname", //
@@ -269,7 +268,7 @@ public class ExBibMain extends AbstractMain {
             @Override
             protected int run(String arg, boolean value) {
 
-                exBib.setTrace(value);
+                exBib.setDebug("trace");
                 return EXIT_CONTINUE;
             }
         });
@@ -309,33 +308,19 @@ public class ExBibMain extends AbstractMain {
      * 
      * @see org.extex.exbib.core.ExBib#getDebug()
      */
-    public Set<Debug> getDebug() {
+    public Set<ExBibDebug> getDebug() {
 
         return exBib.getDebug();
-    }
-
-    /**
-     * Getter for min.crossrefs.
-     * 
-     * @return the value
-     * 
-     * @see org.extex.exbib.core.ExBib#getMinCrossrefs()
-     */
-    public int getMinCrossrefs() {
-
-        return exBib.getMinCrossrefs();
     }
 
     /**
      * Getter for the trace indicator.
      * 
      * @return the trace indicator
-     * 
-     * @see org.extex.exbib.core.ExBib#isTrace()
      */
     public boolean isTrace() {
 
-        return exBib.isTrace();
+        return exBib.getDebug().contains(ExBib.ExBibDebug.TRACE);
     }
 
     /**

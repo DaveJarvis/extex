@@ -25,17 +25,14 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
     <!--
     <dependency>

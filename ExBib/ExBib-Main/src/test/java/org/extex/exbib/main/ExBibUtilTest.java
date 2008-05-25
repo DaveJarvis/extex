@@ -73,6 +73,8 @@ public class ExBibUtilTest extends BibUtilTester {
                     + "\t--la[nguage] | -L <language>\n"
                     + "\t\tUse the named language for message.\n"
                     + "\t\tThe argument is a two-letter ISO code.\n"
+                    + "\t--loa[d] <file>\n"
+                    + "\t\tAdditionally load settings from the file given.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--o[utfile] | --outp[ut] | -o <file>\n"

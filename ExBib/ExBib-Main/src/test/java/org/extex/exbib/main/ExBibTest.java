@@ -34,7 +34,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.extex.exbib.core.ExBib;
-import org.extex.exbib.core.ExBib.Debug;
+import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
@@ -83,6 +83,8 @@ public class ExBibTest extends BibTester {
                     + "\t--la[nguage] | -L <language>\n"
                     + "\t\tUse the named language for message.\n"
                     + "\t\tThe argument is a two-letter ISO code.\n"
+                    + "\t--loa[d] <file>\n"
+                    + "\t\tAdditionally load settings from the file given.\n"
                     + "\t--l[ogfile] | -l <file>\n"
                     + "\t\tSend the output to the log file named instead of the default one.\n"
                     + "\t--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -M <n>\n"
@@ -330,13 +332,31 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that an unknown bst in the aux file is reported.
+     * <testcase> Test that a mising bst in the aux file is reported.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testAux16() throws Exception {
+
+        runTest("test", //
+            "\\citation{*}\n\\bibdata{qqq}\n", //
+            CLI.EXIT_FAIL, //
+            Check.EQ, //
+            BANNER + "I found no style file for bbl while reading test.aux\n"
+                    + "(There was 1 error)\n", //
+            "test.aux");
+    }
+
+    /**
+     * <testcase> Test that an unknown bst in the aux file is reported.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAux17() throws Exception {
 
         runTest("test", "\\citation{*}\n\\bibdata{qqq}\n\\bibstyle{xyzzy}\n",
             CLI.EXIT_FAIL, Check.EQ, BANNER
@@ -734,8 +754,8 @@ public class ExBibTest extends BibTester {
                             + "\\bibdata{src/test/resources/bibtex/empty/none}\n"
                             + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
                     CLI.EXIT_OK, Check.EQ, BANNER, "--debug=all", "test");
-        Set<Debug> d = exbib.getDebug();
-        for (Debug x : d) {
+        Set<ExBibDebug> d = exbib.getDebug();
+        for (ExBibDebug x : d) {
             assertTrue(x.toString(), d.contains(x));
         }
     }
@@ -772,9 +792,9 @@ public class ExBibTest extends BibTester {
                             + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
                     CLI.EXIT_OK, Check.EQ, BANNER, "--debug=search,search",
                     "test");
-        Set<Debug> d = exbib.getDebug();
-        for (Debug x : d) {
-            if (x == Debug.SEARCH) {
+        Set<ExBibDebug> d = exbib.getDebug();
+        for (ExBibDebug x : d) {
+            if (x == ExBibDebug.SEARCH) {
                 assertTrue(x.toString(), d.contains(x));
             } else {
                 assertFalse(x.toString(), d.contains(x));
@@ -799,9 +819,9 @@ public class ExBibTest extends BibTester {
                             + "\\bibstyle{src/test/resources/bibtex/empty/empty_2}\n",
                     CLI.EXIT_OK, Check.EQ, BANNER, "--debug=all,none,search",
                     "test");
-        Set<Debug> d = exbib.getDebug();
-        for (Debug x : d) {
-            if (x == Debug.SEARCH) {
+        Set<ExBibDebug> d = exbib.getDebug();
+        for (ExBibDebug x : d) {
+            if (x == ExBibDebug.SEARCH) {
                 assertTrue(x.toString(), d.contains(x));
             } else {
                 assertFalse(x.toString(), d.contains(x));
@@ -955,6 +975,75 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--load</tt> needs an
+     * argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLoad1() throws Exception {
+
+        runFailure(BANNER + "The option `--load\' needs a parameter.\n",
+            "--load");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--load</tt> does not
+     * work with an empty argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLoad2() throws Exception {
+
+        runFailure(BANNER + "The file `\' could not be loaded.\n", "--load=");
+    }
+
+    /**
+     * <testcase> Test that a file for <tt>--load</tt> has to exist.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLoad3() throws Exception {
+
+        runFailure(
+            BANNER
+                    + "The file `file/which/does/not/exist\' could not be loaded.\n", //
+            "--load", "file/which/does/not/exist");
+    }
+
+    /**
+     * <testcase> Test that a file for <tt>--load</tt> has to exist.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLoad4() throws Exception {
+
+        runFailure(
+            BANNER
+                    + "The file `file/which/does/not/exist\' could not be loaded.\n", //
+            "--load=file/which/does/not/exist");
+    }
+
+    /**
+     * <testcase> Test that a file for <tt>--load</tt> has to exist.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLoad5() throws Exception {
+
+        runFailure(BANNER + "Missing aux file parameter.\n"
+                + "(There was 1 error)\n", //
+            "--load=src/test/resources/dot/empty");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--logfile</tt> needs
      * an argument. </testcase>
      * 
@@ -1102,7 +1191,7 @@ public class ExBibTest extends BibTester {
                     BANNER + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux", "--min.crossrefs", "3");
-        assertEquals(3, exbib.getMinCrossrefs());
+        assertEquals("3", exbib.getProperty(ExBib.PROP_MIN_CROSSREF));
     }
 
     /**

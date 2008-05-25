@@ -21,6 +21,7 @@ package org.extex.exbib.main.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -41,6 +42,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.exbib.core.ExBib;
 import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.cli.NoArgOption;
 import org.extex.exbib.main.cli.Option;
@@ -66,12 +68,6 @@ public abstract class AbstractMain extends CLI {
      */
     private static final String COPYING_RESOURCE =
             "org/extex/exbib/main/COPYING";
-
-    /**
-     * The field <tt>PROP_OUTFILE</tt> contains the name of the property for
-     * the output.
-     */
-    public static final String PROP_OUTFILE = "exbib.output";
 
     /**
      * The field <tt>PROP_LANG</tt> contains the name of the property for the
@@ -325,20 +321,42 @@ public abstract class AbstractMain extends CLI {
         }, "-?");
         option("-l", "--logfile", //
             new StringPropertyOption("opt.logfile", PROP_LOGFILE, properties));
+        option(null, "--load", new StringOption("opt.load") {
+
+            @Override
+            protected int run(String name, String arg) {
+
+                try {
+                    InputStream inStream = new FileInputStream(arg);
+                    try {
+                        properties.load(inStream);
+                    } finally {
+                        inStream.close();
+                    }
+                } catch (FileNotFoundException e) {
+                    logBanner("properties.not.found", arg);
+                    return EXIT_FAIL;
+                } catch (IOException e) {
+                    logBanner("properties.io.error", arg);
+                    return EXIT_FAIL;
+                }
+                return EXIT_CONTINUE;
+            }
+        });
         option("-L", "--language", new StringOption("opt.language") {
 
             @Override
             protected int run(String name, String arg) {
 
-                Locale.setDefault(new Locale(arg));
-                useLanguage(new Locale(arg));
+                Locale locale = new Locale(arg);
+                Locale.setDefault(locale);
+                useLanguage(locale);
                 return EXIT_CONTINUE;
             }
         });
-        option("-o",
-            "--output", //
-            new StringPropertyOption("opt.output", PROP_OUTFILE, properties),
-            "--outfile");
+        option("-o", "--output", //
+            new StringPropertyOption("opt.output", ExBib.PROP_OUTFILE,
+                properties), "--outfile");
         option(
             "-p",
             "--progname", //
@@ -439,7 +457,7 @@ public abstract class AbstractMain extends CLI {
      * @param tag the resource tag
      * @param args the arguments to be inserted
      * 
-     * @return the exit code <code>1</code>
+     * @return the exit code <code>-1</code>
      */
     protected int info(String tag, Object... args) {
 
