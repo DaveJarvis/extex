@@ -203,7 +203,7 @@ can not be two different variables with the same name.
 
 \section{Commands}
 
-\subsection{\texttt{entry}}%
+\subsection{The \texttt{entry} Declaration}%
 \cmdIndex{entry}%
 \label{sec:entry}
 
@@ -250,7 +250,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{integers}}%
+\subsection{The \texttt{integers} Declaration}%
 \cmdIndex{integers}%
 \label{sec:integers}
 
@@ -269,7 +269,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{strings}}
+\subsection{The \texttt{strings} Declaration}
 \cmdIndex{strings}
 
 This declaration defines a set of global strings. It has one argument.
@@ -287,7 +287,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{macro}}
+\subsection{The \texttt{macro} Declaration}
 \cmdIndex{macro}
 
 This declaration defines a macro. It takes two arguments -- the name
@@ -304,7 +304,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{execute}}
+\subsection{The \texttt{execute} Command}
 \cmdIndex{execute}
 
 This command executes the function in the argument. There is no
@@ -317,7 +317,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{iterate}}
+\subsection{The \texttt{iterate} Command}
 \cmdIndex{iterate}
 
 This command iterates over the entries in the order they are currently
@@ -332,7 +332,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{reverse}}
+\subsection{The \texttt{reverse} Command}
 \cmdIndex{reverse}
 
 This command iterates over the entries in the reverse order they are
@@ -347,7 +347,7 @@ The following example is taken from \File{alpha.bst}:
 \end{lstlisting}
 
 
-\subsection{\texttt{sort}}
+\subsection{The \texttt{sort} Command}
 \cmdIndex{sort}%
 \label{sec:sort}
 
@@ -360,7 +360,7 @@ variable \texttt{sort.key\$}.
 \end{lstlisting}
 
 
-\subsection{\texttt{read}}
+\subsection{The \texttt{read} Command}
 \cmdIndex{read}
 
 This command read entries into the database. The database is empty
@@ -372,7 +372,7 @@ according to the order they are encountered.
 \end{lstlisting}
 
 
-\subsection{\texttt{function}}
+\subsection{The \texttt{function} Definition}
 \cmdIndex{function}
 
 This declaration defines a user defined function. It takes two
@@ -387,7 +387,7 @@ with it.
 \end{lstlisting}\fctIndex{purify\$}\fctIndex{change.case\$}
 
 
-\subsection{\texttt{input}}
+\subsection{The \texttt{input} Command}
 \cmdIndex{input}
 
 The command takes one argument containg the name of another bst file.
@@ -739,7 +739,7 @@ Unicode\index{Unicode} characters.
 
 \begin{lstlisting}[language=bst]
   "a" chr.to.int$
-\end{lstlisting}
+\end{lstlisting}%$
 
 
 \subsection{The Function \texttt{cite\$}}%
@@ -776,7 +776,7 @@ stack is empty an error is raised.
 \begin{lstlisting}[language=bst]
   "abc"
   duplicate$
-\end{lstlisting}
+\end{lstlisting}%$
 
 \subsection{The Function \texttt{empty\$}}%
 \fctIndex{empty\$}
@@ -846,7 +846,7 @@ The following example is taken from \File{alpha.bst}:
 
 \begin{lstlisting}[language=bst]
   editor #2 "{ff }{vv }{ll}{ jj}" format.name$
-\end{lstlisting}
+\end{lstlisting}%$
 
 
 \subsection{The Function \texttt{if\$}}%

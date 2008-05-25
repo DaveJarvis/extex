@@ -177,9 +177,9 @@ are described in the following sections.
 \item[\Arg{file}]\ \\
   This parameter contains the aux file to read from. A file name may not
   start with minus sign. It has no default.
-  \begin{lstlisting}[language=sh]
+  \begin{lstlisting}[language=sh,escapechar=!]
     # exbib doc.aux
-    This is exbib, Version 0.1
+    This is exbib, Version !\Version!
   \end{lstlisting}
   
 \item[\CLi{} \Arg{file}]
@@ -188,9 +188,9 @@ are described in the following sections.
   argument -- if present -- is interpreted as input file. With this
   construction it is possible to process an input file which starts
   with the special character \verb|-|.
-  \begin{lstlisting}[language=sh]
+  \begin{lstlisting}[language=sh,escapechar=!]
     # exbib -- doc.aux
-    This is exbib, Version 0.1
+    This is exbib, Version !\Version!
   \end{lstlisting}
 
 \end{description}
@@ -239,9 +239,9 @@ free software--to make sure the software is free for all its users.
 \item[\CLI{help}]\ \\
   This command line option produces a short usage description on the
   standard output stream and terminates the program afterwards.
-  \begin{lstlisting}[language=sh]
+  \begin{lstlisting}[language=sh,escapechar=!]
 # exbib --help
-This is exbib, Version 0.1
+This is exbib, Version !\Version!
 Usage: exbib <options> file
 The following options are supported:
         -[-] <file>
@@ -257,9 +257,9 @@ The following options are supported:
   This command prints the release number to stdout and exits the
   program. This can be used to enable external programs to easily
   determine the version number of \ExBib.
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --release
-0.1
+!\Version!
 #
 \end{lstlisting}
 
@@ -269,9 +269,9 @@ The following options are supported:
   terminated.\index{version} The version of \ExBib\ is shown. The
   following example shows a possible invocation and the resulting
   output:
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --version
-This is exbib, Version 0.1
+This is exbib, Version !\Version!
 Copyright (C) 2002-2008 Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).
 There is NO warranty.  Redistribution of this software is
 covered by the terms of the GNU Library General Public License.
@@ -295,9 +295,9 @@ switch -copying.
   The language is used to select the appropriate messages for logging
   and error messages. If the given language is not supported English
   is silently used as fallback.
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --language de --help
-Dies ist exbib, Version 0.1
+Dies ist exbib, Version !\Version!
 Copyright (C) 2002-2008 Gerd Neugebauer (mailto:gene@gerd-neugebauer.de).
 There is NO warranty.  Redistribution of this software is
 covered by the terms of the GNU Library General Public License.
@@ -322,18 +322,18 @@ acts as entry point.
 \item[\CLI{configuration} \Arg{config}]\ \\
   Set the configuration file to be used for assembling \ExBib. The
   default is the configuration \texttt{exbib}.
-\begin{lstlisting}[language=sh]
+  \begin{lstlisting}[language=sh,escapechar=!]
 # exbib --configuration bibtex099 doc.aux
-This is exbib, Version 0.1
+This is exbib, Version !\Version!
 ...
 \end{lstlisting}
 
 \item[\CLI{bibtex}]
 \item[\CLI{strict}]\ \\
   Use the configuration \texttt{bibtex099} for assembling \ExBib.
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --bibtex doc.aux
-This is exbib, Version 0.1
+This is exbib, Version !\Version!
 ...
 \end{lstlisting}
 \end{description}
@@ -726,9 +726,9 @@ For details on the format refer to section~\ref{sec:csf}
   This option sets the name of the program. Thus it is possible to
   influence how the program calls itself in logging and error messages
   from outside .
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --progname=BibTeX doc.aux
-This is BibTeX, Version 0.1
+This is BibTeX, Version !\Version!
 ...
 \end{lstlisting}
 
@@ -815,9 +815,9 @@ has to be escaped properly to arrive intact at \ExBib.
   
   Note that this option can drastically decrease the performance of
   operation.
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,escapechar=!]
 # exbib --trace doc.aux
-This is BibTeX, Version 0.1
+This is BibTeX, Version !\Version!
 ...
 \end{lstlisting}
 
