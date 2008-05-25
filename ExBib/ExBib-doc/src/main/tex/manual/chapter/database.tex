@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:database.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
@@ -165,7 +165,6 @@ well.
 
 If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
-
 \begin{syntax}
   <name> \+ <first>* <von>* <last> <jr>* 
 \end{syntax}%
@@ -179,7 +178,7 @@ name is printed in bold, the first name is printed in roman, the von
 part is printed in italics, and the junior part is underlined.
 
 \begin{quote}\obeylines
-  \Last{Aristoteles}
+  \Last{Aristotle}
   \First{Leslie} \Last{Lamport}
   \First{Donald Ervin} \Last{Knuth}
   \First{Johannes Chrysostomus Wolfgangus Theophilus} \Last{Mozart}
@@ -195,7 +194,6 @@ part is printed in italics, and the junior part is underlined.
 
 If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
-
 \begin{syntax}
   <name> \+ <von>* <last> | , | <first>* \\
          \|  <first>* <von>* <last> | , | <jr>* 
@@ -259,12 +257,19 @@ parts of company names -- e.g. acting an author.
 
 The following example is recognizes as two names:
 \begin{quote}\obeylines
-  \Last{Barnes} and \Last{Noble}
+  \Last{Barnes} \texttt{and} \Last{Noble}
 \end{quote}
-The following example is recognizes a a single name name:
+The following example is recognized as a single name name:
 \begin{quote}\obeylines
   \Last{\char`\{ Barnes and Noble\char`\}}
 \end{quote}
+
+The formal syntax is as follows:
+\begin{syntax}
+  <namelist> \= <name>\\
+             \| <name> \verb*/ and / <namelist> 
+\end{syntax}%
+
 \index{name list|)}%
 \index{name|)}
 

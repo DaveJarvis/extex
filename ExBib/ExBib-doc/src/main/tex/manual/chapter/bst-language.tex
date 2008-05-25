@@ -1152,16 +1152,16 @@ raised.
 
 \begin{lstlisting}[language=bst]
   swap$
-\end{lstlisting}
+\end{lstlisting}%$
 
 
 \subsection{The Function \texttt{text.length\$}}%
 \fctIndex{text.length\$}
 
 This function computes the length of a text. The length is the number
-of character units.
-
-\INCOMPLETE
+of text characters. Whitespace braces and brackets do not count as
+text characters. A \TeX\ control sequence counts as one charater -- no
+matter how long the name may be.
 
 \begin{BstFunction}{text.length\$}
   \In1{text}
@@ -1177,9 +1177,10 @@ of character units.
 \fctIndex{text.prefix\$}
 
 This function extracts a prefix of a certain length from a text. The
-length is the number of character units.
-
-\INCOMPLETE
+length is the number of character units. Special characters in braces
+are counted as a single unit. If closing braces are missing the
+missing characters are provided automatically. Thus no unbalances
+braces are contained in the result of theis function.
 
 \begin{BstFunction}{text.prefix\$}
   \In1{text}

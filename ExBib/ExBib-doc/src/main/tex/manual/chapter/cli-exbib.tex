@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:cli-exbib.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
@@ -139,18 +139,33 @@ are described in the following sections.
 
 \begin{description}
 \item[\CLi{D}\Arg{property}\texttt{=}\Arg{value}]\ \\
-
-The preferred way to communicate settings to \ExBib\ is via
-properties. The most command line options are for convenience or
-backward compatibility.
-
-The setting of arbitrary properties can be accomplished with the
-command line argument \texttt{-D}. The properties are the same as
-those used in dot files (see section~\ref{sec:dot.files}). This
-command line option as shown in the following example:
+  
+  The preferred way to communicate settings to \ExBib\ is via
+  properties. The most command line options are for convenience or
+  backward compatibility.
+  
+  The setting of arbitrary properties can be accomplished with the
+  command line argument \texttt{-D}. The properties are the same as
+  those used in dot files (see section~\ref{sec:dot.files}). This
+  command line option as shown in the following example:
 
 \begin{lstlisting}[language=sh]
 # exbib -Dexbib.file=file.aux
+\end{lstlisting}
+
+\item[\CLI{load} \Arg{file}]\ \\
+  
+  At startup \Prog{exbib} tries to load settings from dot files ( see
+  section~\ref{sec:dot.files}). In addition the command line can name
+  other file to read settings from. In contrast to the dot files the
+  files named explicitly have to exist or an error is raised.
+  
+  The properties are the same as those used in dot files (see
+  section~\ref{sec:dot.files}). This command line option as shown in
+  the following example:
+
+\begin{lstlisting}[language=sh]
+# exbib -load ../.exbib
 \end{lstlisting}
 
 \end{description}
@@ -293,11 +308,12 @@ switch -copying.
 \end{description}
 
 
-\subsubsection{Configurations}
+\subsubsection{Configurations}%
+\label{sec:cli.cfg}%
 \index{configuration|(}
 
 \ExBib\ is highly configurable. The whole system is assembled from
-components at run time. The assembly is controlled from a set of
+components at startup time. The assembly is controlled from a set of
 configuration files. There is one central configuration file which
 acts as entry point.
 
@@ -336,7 +352,8 @@ The following configurations are present in the distribution.
 
 \index{configuration|)}
 
-\subsubsection{Encodings}
+\subsubsection{Encodings}%
+\label{sec:encodings}%
 \index{encoding|(}
 
 The internal representation of characters uses Unicode\index{Unicode}.
@@ -570,7 +587,7 @@ IBM01140
   Set the encoding for reading cs files. The encoding needs to be a
   valid character set. The fallback is the platform default encoding.
 \begin{lstlisting}[language=sh]
-# exbib --csf-encoding=UTF8 doc.aux
+# exbib --csf=german.csf --csf-encoding=UTF8 doc.aux
 ...
 \end{lstlisting}
 
@@ -718,7 +735,8 @@ This is BibTeX, Version 0.1
 \end{description}
 
 
-\subsubsection{Tracing and Debugging}
+\subsubsection{Tracing and Debugging}%
+\label{sec:cli.debug}
 
 \begin{description}
 \item[\CLi{d} \Arg{mode}]
@@ -742,7 +760,10 @@ This is BibTeX, Version 0.1
   \item[misc] 
     Debug miscellaneous items.
   \item[csf] 
-    Debug the processing of CFS files.
+    Debug the processing of CSF files.
+  \item[trace] 
+    Trace the processing of styles. This is the same as the command
+    line switch \texttt{--trace}.
   \end{description}
 \begin{lstlisting}[language=sh]
 # exbib --debug=search doc.aux

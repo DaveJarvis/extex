@@ -1,0 +1,216 @@
+%%*****************************************************************************
+%% $Id: ant-exbib.tex,v 0.00 2008/05/25 08:43:35 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\section{The \ExBib{} Ant Task}%
+\index{Ant|(}
+
+\subsection{Invocation}
+
+\ExBib\ provides an integration into Apache Ant. This allows the
+invocation of \ExBib\ from within Ant. For this purpose an Ant task
+can be defined as follows.
+
+\begin{lstlisting}[language=XML,morekeywords={taskdef}]
+ <taskdef name="ExBib"
+          classname="org.extex.exbib.ant.ExBibTask" />
+\end{lstlisting}
+
+This assumes that the jars from the \ExBib\ distribution are on the
+class path. You can extend the class path for this definition with the
+classpath attribute as shown below.
+
+\begin{lstlisting}[language=XML,morekeywords={taskdef}]
+ <taskdef name="ExBib"
+          classname="org.extex.exbib.ant.ExBibTask"
+          classpath="classes" />
+\end{lstlisting}
+
+As a result you have defined the task named \texttt{ExBib}. This task
+can be used in arbitrary targets.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"/>
+\end{lstlisting}
+
+Note that a version of Ant is required. Ant is not not included in the
+distribution. Thus it is possible to use the \ExBib\ ant task together
+with the existing Ant installation.
+
+
+\subsection{Options}
+
+The body of the task invocation can contain options. They are treated
+as if they where read from a properties file. The names and values are
+those which could also be taken from a dot file.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux">
+     exbib.encoding=UTF-8
+    </ExBib>
+\end{lstlisting}
+
+Note that typos in option names are silently ignored.
+
+\subsection{Parameters}
+
+The invocation of the task can be controlled by several parameters.
+Those parameters are given as attributes to the task. 
+
+\begin{description}
+\item[file="\Arg{file}"] \ \\
+  The parameter is the name of the \texttt{aux} file to read further
+  parameters from. This attribute is mandatory.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"/>
+\end{lstlisting}
+
+\item[encoding="\Arg{enc}"] \ \\
+  This option can be used to specify the encoding for reading files.
+  The default is to use the platform default encoding. For possible
+  values refer to section~\ref{sec:encodings}.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           encoding="UTF-8" />
+\end{lstlisting}
+
+\item[bibEncoding="\Arg{enc}"] \ \\
+  This option can be used to specify the encoding for reading database
+  files. The default is to use the same value as the parameter
+  \texttt{encoding}.  For possible values refer to
+  section~\ref{sec:encodings}.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           bibEncoding="UTF-8" />
+\end{lstlisting}
+
+\item[csf="\Arg{csf}"] \ \\
+  The option can be used to specify the CSF which cintains character
+  definitions and sorting order specification.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           csf="german.csf" />
+\end{lstlisting}
+
+\item[csfEncoding="\Arg{enc}"] \ \\
+  This option contains the encoding for reading cs files. The encoding
+  needs to be a valid character set. The fallback is the platform
+  default encoding.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           csf="german.csf" 
+           csfEncoding="UTF-8" />
+\end{lstlisting}
+
+\item[minCrossrefs="\Arg{number}"] \ \\
+  The parameter is a number. It gives the number of cross references
+  before the entries are left alone and not collapsed. The default
+  value is 2.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           minCrossrefs="3" />
+\end{lstlisting}
+
+\item[output="\Arg{file}"] \ \\
+  This parameter redirects the output for the default type of
+  references to the given file. The default is derived from the name
+  of the aux file by using the extension \texttt{.bbl}.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           output="file.bbl" />
+\end{lstlisting}
+
+\item[logfile="\Arg{file}"] \ \\  
+  This option can be used to redirect the output to a file. The
+  default is to print the informative messages to the console only.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           logfile="file.blg" />
+\end{lstlisting}
+
+\item[config="\Arg{config}"] \ \\
+  This parameter can be used to specify the configuration for
+  assembling \ExBib{} (see also section~\ref{sec:cli.cfg}). The
+  default value is \texttt{exbib}. The value \texttt{bibtex099} can be
+  used to switch to the compatibility mode for
+  \BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c}.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           config="bibtex099" />
+\end{lstlisting}
+  
+\item[load="\Arg{file}"] \ \\
+  In contrast to the command line interface no dot files (see
+  section~\ref{sec:dot.files}) are read by the Ant task. This
+  attribute can be used to load dot files.
+  
+  The value is the name of the parameter file to load. It can be
+  relative to the current directory or absolute.  If the first letter
+  is a \verb|~| the this is replaced with the user's home directory.
+
+  This attribute can be given several times to load different dot
+  files.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           load="~/.exbib"
+           load="./.exbib" />
+\end{lstlisting}
+
+\item[debug="\Arg{flags}"] \ \\
+  This option can be used to specify debug options (see also
+  section~\ref{sec:cli.debug}).
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           logfile="file.blg"
+           debug="trace,search" />
+\end{lstlisting}
+
+\end{description}
+
+\index{Ant|)}
+
+\endinput
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
