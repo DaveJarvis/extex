@@ -30,8 +30,8 @@ import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
+import org.extex.exbib.core.db.sorter.DbSorterFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
-import org.extex.exbib.core.db.sorter.SorterFactory;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.bibio.BibPrinter;
@@ -46,7 +46,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 
 /**
- * This is a simple implementation of a B<small>IB</small>T<sub>E</sub>X compatible database.
+ * This is a simple implementation of a B<small>IB</small>T<sub>E</sub>X
+ * compatible database.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
@@ -138,7 +139,8 @@ public class DBImpl implements DB, Observable {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        SorterFactory sf = new SorterFactory(config.getConfiguration("Sorter"));
+        DbSorterFactory sf =
+                new DbSorterFactory(config.getConfiguration("Sorter"));
         sorter = sf.newInstance();
     }
 
