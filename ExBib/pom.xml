@@ -115,10 +115,32 @@
     </dependency>
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExBib-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-resource</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExBib-Main</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
    <module>ExBib-core</module>
    <module>ExBib-Main</module>
    <module>../ExTeX-resource</module>
+   <module>ExBib-ant</module>
+   <module>ExBib-doc</module>
    <module>ExBib-Installer</module>
   </modules>
 
