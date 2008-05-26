@@ -69,4 +69,14 @@ public class StringPropertyOption extends StringOption {
         return CLI.EXIT_CONTINUE;
     }
 
+    /**
+     * Setter for the property.
+     * 
+     * @param arg the value
+     */
+    protected void set(String arg) {
+
+        properties.setProperty(pname, arg);
+    }
+
 }
