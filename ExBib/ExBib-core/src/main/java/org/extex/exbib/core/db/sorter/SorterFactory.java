@@ -20,9 +20,23 @@
 
 package org.extex.exbib.core.db.sorter;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.Properties;
+
+import org.extex.exbib.core.ExBib;
+import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
+import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
+import org.extex.exbib.core.io.csf.CsfException;
+import org.extex.exbib.core.io.csf.CsfReader;
+import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
+import org.extex.resource.PropertyAware;
 
 /**
  * This is a factory to deliver sorters.
@@ -30,7 +44,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class SorterFactory extends AbstractFactory {
+public class SorterFactory extends AbstractFactory implements PropertyAware {
+
+    /**
+     * The field <tt>properties</tt> contains the ...
+     */
+    private Properties properties;
 
     /**
      * Creates a new object.
@@ -47,13 +66,76 @@ public class SorterFactory extends AbstractFactory {
      * {@link Sorter Sorter} is configured with the same configuration as the
      * factory.
      * 
+     * @param type the type
+     * 
      * @return the new Sorter instance
      * 
+     * @throws CsfException ...
      * @throws ConfigurationException in case that something goes wrong
+     * @throws IOException in case of an I/O error
+     * @throws UnsupportedEncodingException ...
+     * @throws ExBibCsfNotFoundException ...
+     * @throws ExBibSorterNotFoundException ...
      */
-    public Sorter newInstance() throws ConfigurationException {
+    public Sorter newInstance(String type)
+            throws CsfException,
+                ConfigurationException,
+                UnsupportedEncodingException,
+                IOException,
+                ExBibCsfNotFoundException,
+                ExBibSorterNotFoundException {
 
-        return (Sorter) createInstance(Sorter.class);
+        if (type == null || "".equals(type)) {
+            return null;
+        } else if ("csf:".equals(type)) {
+            return new CsfSorter();
+        } else if (type.startsWith("csf:")) {
+            InputStream is =
+                    getResourceFinder().findResource(type.substring(4), "csf");
+            if (is == null) {
+                throw new ExBibCsfNotFoundException(type.substring(4));
+            }
+            try {
+                String encoding =
+                        properties.getProperty(ExBib.PROP_CSF_ENCODING);
+                return new CsfReader().read(encoding == null
+                        ? new InputStreamReader(is)
+                        : new InputStreamReader(is, encoding));
+            } finally {
+                is.close();
+            }
+        }
+
+        Sorter sorter;
+        int i = type.indexOf(':');
+
+        try {
+            if (i < 0) {
+                sorter = (Sorter) createInstance(type, Sorter.class);
+            } else {
+                sorter =
+                        (Sorter) createInstance(type.substring(0, i),
+                            Sorter.class, String.class, type.substring(i + 1));
+            }
+        } catch (ConfigurationNotFoundException e) {
+            throw new ExBibSorterNotFoundException(i < 0 ? type : type
+                .substring(0, i));
+        }
+        if (sorter instanceof PropertyAware) {
+            ((PropertyAware) sorter).setProperties(properties);
+        }
+
+        return sorter;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
+     */
+    public void setProperties(Properties properties) {
+
+        this.properties = properties;
     }
 
 }

@@ -37,7 +37,7 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
- * Test suite for {@link Sorter099Impl}.
+ * Test suite for {@link CodepointIgnoreCaseSorter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
@@ -228,7 +228,7 @@ public class TestSorter099 extends TestCase {
     /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
-    private Sorter099Impl s = new Sorter099Impl();
+    private CodepointIgnoreCaseSorter s = new CodepointIgnoreCaseSorter();
 
     /**
      * The field <tt>a</tt> contains an entry.

@@ -114,7 +114,7 @@ public class BibTester {
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
      * @param exitCode the exit code
-     * @param checkOut the tpe of Check to use
+     * @param checkOut the type of Check to use
      * @param out the expected error output
      * @param args the invocation arguments
      * @return the instance used
@@ -122,8 +122,8 @@ public class BibTester {
      * @throws Exception in case of an error
      */
     protected ExBibMain runTest(String basename, String auxContents,
-            int exitCode, Check checkOut, String out, String... args)
-            throws Exception {
+            int exitCode, Check checkOut, String out, Check checkErr,
+            String err, String... args) throws Exception {
 
         File aux = new File(basename + ".aux");
         if (auxContents != null) {
@@ -136,15 +136,36 @@ public class BibTester {
         }
 
         Locale.setDefault(Locale.ENGLISH);
-        PrintStream err = System.err;
+        PrintStream errS = System.err;
+        PrintStream outS = System.out;
         ExBibMain exBib = null;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            System.setErr(new PrintStream(baos));
+            ByteArrayOutputStream baes = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(baes));
+            System.setOut(new PrintStream(baos));
             exBib = new ExBibMain();
             int code = exBib.processCommandLine(args);
             if (exBib != null) {
                 exBib.close();
+            }
+            if (err != null) {
+                String s = baes.toString().replaceAll("\r", "");
+                switch (checkErr) {
+                    case EQ:
+                        assertEquals(err, s);
+                        break;
+                    case START:
+                        assertTrue("Fails to start with " + s, s
+                            .startsWith(err));
+                        break;
+                    case REGEX:
+                        assertTrue("Fails to match " + s, s.matches(err));
+                        break;
+                    case NONE:
+                        // ignore
+                    default:
+                }
             }
             if (out != null) {
                 String s = baos.toString().replaceAll("\r", "");
@@ -166,7 +187,8 @@ public class BibTester {
             }
             assertEquals("exit code", exitCode, code);
         } finally {
-            System.setErr(err);
+            System.setErr(errS);
+            System.setOut(outS);
             if (aux.exists() && !aux.delete()) {
                 assertTrue(aux.toString() + ": deletion failed", false);
             }
@@ -180,6 +202,29 @@ public class BibTester {
             }
         }
         return exBib;
+    }
+
+    /**
+     * Run the command line test. The aux file is written temporarily in the
+     * current directory under the name <tt>test.aux</tt>. The contents can
+     * be given as argument.
+     * 
+     * @param basename the base name of the files to prepare and use
+     * @param auxContents the contents of the aux file
+     * @param exitCode the exit code
+     * @param checkErr the type of Check to use
+     * @param err the expected error output
+     * @param args the invocation arguments
+     * @return the instance used
+     * 
+     * @throws Exception in case of an error
+     */
+    protected ExBibMain runTest(String basename, String auxContents,
+            int exitCode, Check checkErr, String err, String... args)
+            throws Exception {
+
+        return runTest(basename, auxContents, exitCode, null, null, checkErr,
+            err, args);
     }
 
 }

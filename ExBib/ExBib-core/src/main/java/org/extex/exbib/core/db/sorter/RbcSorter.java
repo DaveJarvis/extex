@@ -1,6 +1,5 @@
 /*
- * This file is part of ExBib a BibTeX compatible database.
- * Copyright (C) 2003-2008 Gerd Neugebauer
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -34,12 +33,13 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
- * This is an implementation of a sorter using a collator.
+ * This is an implementation of a sorter using a rule-based collator. The
+ * collating specification is taken from the configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class SorterImpl implements Comparator<Entry>, Sorter {
+public class RbcSorter implements Comparator<Entry>, Sorter {
 
     /**
      * The field <tt>collator</tt> contains the collator.
@@ -76,8 +76,7 @@ public class SorterImpl implements Comparator<Entry>, Sorter {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        String order = config.getValue("Order");
-        // TODO: use config option locale
+        String order = config.getValue();
 
         try {
             collator = new RuleBasedCollator(order);
@@ -96,7 +95,7 @@ public class SorterImpl implements Comparator<Entry>, Sorter {
     public void sort(List<Entry> list) throws ConfigurationMissingException {
 
         if (collator == null) {
-            throw new ConfigurationMissingException("SorterImpl");
+            throw new ConfigurationMissingException("RbcSorter");
         }
 
         Collections.sort(list, this);

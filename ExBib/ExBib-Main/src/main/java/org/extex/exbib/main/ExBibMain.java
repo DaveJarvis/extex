@@ -38,6 +38,7 @@ import org.extex.exbib.main.cli.NumberOption;
 import org.extex.exbib.main.cli.NumberPropertyOption;
 import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.StringPropertyOption;
+import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.util.AbstractMain;
 import org.extex.exbib.main.util.LogFormatter;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -96,6 +97,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dd>Act quietly; some informative messages are suppressed.</dd>
  * <dt>--r[elease] | -r</dt>
  * <dd>Print the release number and exit.</dd>
+ * <dt>--so[rter] | -s &lang;sort&rang;</dt>
+ * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or
+ * <tt>csf:ascii.</tt></dd>
  * <dt>--b[ibtex] | --s[trict]</dt>
  * <dd>Use the configuration for BibTeX 0.99c.</dd>
  * <dt>--tr[ace] | -t</dt>
@@ -237,7 +241,16 @@ public class ExBibMain extends AbstractMain {
         option("-c", "--configuration", new StringPropertyOption("opt.config",
             ExBib.PROP_CONFIG, properties));
         option(null, "--csfile", new StringPropertyOption("opt.csfile",
-            ExBib.PROP_CSF, properties));
+            ExBib.PROP_SORT, properties) {
+
+            @Override
+            protected int run(String a, String arg)
+                    throws UnknownOptionCliException {
+
+                set("csf:" + arg);
+                return CLI.EXIT_CONTINUE;
+            }
+        });
         option(null, "--csf.encoding", new StringPropertyOption(
             "opt.csf.encoding", ExBib.PROP_CSF_ENCODING, properties),
             "--csf-encoding");
@@ -263,6 +276,8 @@ public class ExBibMain extends AbstractMain {
             "--progname", //
             new StringPropertyOption("opt.progname", PROP_PROGNAME, properties),
             "--program.name", "--program-name");
+        option("-s", "--sorter", new StringPropertyOption("opt.sorter",
+            ExBib.PROP_SORT, properties));
         option("-t", "--trace", new BooleanOption("opt.trace") {
 
             @Override
@@ -272,12 +287,12 @@ public class ExBibMain extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         });
-        option("-7",
-            "--traditional", //
-            new NoArgPropertyOption("opt.7.bit", ExBib.PROP_CSF, "", properties));
+        option("-7", "--traditional", //
+            new NoArgPropertyOption("opt.7.bit", ExBib.PROP_SORT, "csf:",
+                properties));
         option("-8", "--8bit", //
-            new NoArgPropertyOption("opt.8.bit", ExBib.PROP_CSF,
-                "88591lat.csf", properties));
+            new NoArgPropertyOption("opt.8.bit", ExBib.PROP_SORT,
+                "csf:88591lat.csf", properties));
         option("-B", "--big", new NoArgOption(null) {
 
             @Override

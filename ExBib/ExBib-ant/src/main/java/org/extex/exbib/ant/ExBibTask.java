@@ -427,7 +427,7 @@ public class ExBibTask extends Task {
      */
     public void setCsf(String csf) {
 
-        properties.setProperty(ExBib.PROP_CSF, csf);
+        properties.setProperty(ExBib.PROP_SORT, "csf:" + csf);
     }
 
     /**

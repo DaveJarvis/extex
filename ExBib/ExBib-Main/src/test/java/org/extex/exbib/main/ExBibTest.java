@@ -99,6 +99,8 @@ public class ExBibTest extends BibTester {
                     + "\t\tAct quietly; some informative messages are suppressed.\n"
                     + "\t--r[elease]\n"
                     + "\t\tPrint the release number and exit.\n"
+                    + "\t--so[rter] | -s <sort>\n"
+                    + "\t\tUse the specified sorter, e.g. locale:de or csf:ascii.\n"
                     + "\t--b[ibtex] | --s[trict]\n"
                     + "\t\tUse the configuration for BibTeX 0.99c.\n"
                     + "\t--tr[ace] | -t\n"
@@ -1340,37 +1342,29 @@ public class ExBibTest extends BibTester {
     @Test
     public void testOutfile3() throws Exception {
 
-        PrintStream out = System.out;
-
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            System.setOut(new PrintStream(baos));
-            runTest("test", "\\citation{*}\n"
+        runTest(
+            "test",
+            "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n", 0,
-                Check.EQ, null, //
-                "test.aux", "--out", "-");
-            assertTrue(baos
-                .toString()
-                .replaceAll("\r", "")
-                .startsWith(
-                    "\\newcommand{\\noopsort}[1]{} \\newcommand{\\printfirst}[2]{#1}\n"
-                            + "  \\newcommand{\\singleletter}[1]{#1} \\newcommand{\\switchargs}[2]{#2#1}\n"
-                            + "\\begin{thebibliography}{10}\n"
-                            + "\n"
-                            + "\\bibitem{article-minimal}\n"
-                            + "L[eslie]~A. Aamport.\n"
-                            + "\\newblock The gnats and gnus document preparation system.\n"
-                            + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 1986.\n"
-                            + "\n"
-                            + "\\bibitem{article-full}\n"
-                            + "L[eslie]~A. Aamport.\n"
-                            + "\\newblock The gnats and gnus document preparation system.\n"
-                            + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 41(7):73+, July 1986.\n"
-                            + "\\newblock This is a full ARTICLE entry.\n"));
-        } finally {
-            System.setOut(out);
-        }
+                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
+            0,
+            Check.START,
+            "\\newcommand{\\noopsort}[1]{} \\newcommand{\\printfirst}[2]{#1}\n"
+                    + "  \\newcommand{\\singleletter}[1]{#1} \\newcommand{\\switchargs}[2]{#2#1}\n"
+                    + "\\begin{thebibliography}{10}\n"
+                    + "\n"
+                    + "\\bibitem{article-minimal}\n"
+                    + "L[eslie]~A. Aamport.\n"
+                    + "\\newblock The gnats and gnus document preparation system.\n"
+                    + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 1986.\n"
+                    + "\n"
+                    + "\\bibitem{article-full}\n"
+                    + "L[eslie]~A. Aamport.\n"
+                    + "\\newblock The gnats and gnus document preparation system.\n"
+                    + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 41(7):73+, July 1986.\n"
+                    + "\\newblock This is a full ARTICLE entry.\n", Check.EQ,
+            null, //
+            "test.aux", "--out", "-");
     }
 
     /**
@@ -1460,6 +1454,100 @@ public class ExBibTest extends BibTester {
 
         runFailure(ExBib.VERSION + "\n", //
             "--release");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> needs an
+     * argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorter01() throws Exception {
+
+        runFailure(BANNER + "The option `--sorter\' needs a parameter.\n",
+            "--sorter");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> needs a
+     * valid argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorter10() throws Exception {
+
+        runFailure(BANNER + "The sorter `unknown\' could not be found.\n"
+                + "(There was 1 error)\n", //
+            "--sorter=unknown:xxx", "test.aux");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> needs a
+     * valid argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorter11() throws Exception {
+
+        runFailure(BANNER + "The sorter `unknown\' could not be found.\n"
+                + "(There was 1 error)\n", //
+            "--sorter", "unknown:xxx", "test.aux");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
+     * locale sorter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    // TODO
+    public void testSorterLocale01() throws Exception {
+
+        runTest("test", "\\citation{*}\n"
+                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
+            BANNER, //
+            "--sorter", "locale:en_US", "test.aux", "--out=-", "--enc=UTF-8");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
+     * locale sorter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorterLocale02() throws Exception {
+
+        runTest("test", "\\citation{*}\n"
+                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\nÃ¤\naf\n", Check.EQ,
+            BANNER, //
+            "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
+     * locale sorter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorterUnicode01() throws Exception {
+
+        runTest("test", "\\citation{*}\n"
+                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
+            BANNER, //
+            "--sorter", "locale:unicode", "test.aux", "--out=-", "--enc=UTF-8");
     }
 
     /**

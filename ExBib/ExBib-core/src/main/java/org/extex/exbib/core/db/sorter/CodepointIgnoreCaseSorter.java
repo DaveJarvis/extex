@@ -40,7 +40,7 @@ import org.extex.framework.configuration.Configuration;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class Sorter099Impl implements Comparator<Entry>, Sorter, Serializable {
+public class CodepointIgnoreCaseSorter implements Comparator<Entry>, Sorter, Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for

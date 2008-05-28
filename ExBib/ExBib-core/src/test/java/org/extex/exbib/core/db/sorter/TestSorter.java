@@ -38,7 +38,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link SorterImpl}.
+ * This is a test suite for the {@link RbcSorter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
@@ -224,7 +224,7 @@ public class TestSorter {
     /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
-    private SorterImpl s = new SorterImpl();
+    private RbcSorter s = new RbcSorter();
 
     /**
      * The field <tt>a</tt> contains an entry.

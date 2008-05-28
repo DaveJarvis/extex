@@ -30,7 +30,7 @@ import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
-import org.extex.exbib.core.db.sorter.DbSorterFactory;
+import org.extex.exbib.core.db.sorter.CodepointIgnoreCaseSorter;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -139,9 +139,7 @@ public class DBImpl implements DB, Observable {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        DbSorterFactory sf =
-                new DbSorterFactory(config.getConfiguration("Sorter"));
-        sorter = sf.newInstance();
+        sorter = new CodepointIgnoreCaseSorter();
     }
 
     /**

@@ -21,8 +21,6 @@ package org.extex.exbib.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.util.HashSet;
@@ -35,10 +33,13 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
+import org.extex.exbib.core.db.sorter.Sorter;
+import org.extex.exbib.core.db.sorter.SorterFactory;
 import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
+import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
@@ -46,8 +47,6 @@ import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
-import org.extex.exbib.core.io.csf.CsfReader;
-import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.exbib.core.util.DBObserver;
 import org.extex.exbib.core.util.EntryObserver;
 import org.extex.exbib.core.util.FuncallObserver;
@@ -149,10 +148,9 @@ public class ExBib {
     public static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
 
     /**
-     * The field <tt>PROP_CSF</tt> contains the name of the property to carry
-     * the csf file.
+     * The field <tt>PROP_SORT</tt> contains the specification for the sorter.
      */
-    public static final String PROP_CSF = "exbib.csf";
+    public static final String PROP_SORT = "exbib.sort";
 
     /**
      * The field <tt>PROP_CSF_ENCODING</tt> contains the name of the property
@@ -361,6 +359,7 @@ public class ExBib {
      * Make a sorter or throw an error.
      * 
      * @param finder the resource finder
+     * @param cfg the configuration
      * 
      * @return the sorter; it can be <code>null</code> if none is required
      * 
@@ -369,31 +368,23 @@ public class ExBib {
      * @throws UnsupportedEncodingException in case of a problem with the
      *         encoding
      * @throws ExBibCsfNotFoundException in case the csf could not be found
+     * @throws ExBibSorterNotFoundException in case of an undefined sorter
+     * @throws ConfigurationException in case of a configuration error
      */
-    private CsfSorter makeSorter(ResourceFinder finder)
+    protected Sorter makeSorter(ResourceFinder finder, Configuration cfg)
             throws IOException,
                 CsfException,
                 UnsupportedEncodingException,
-                ExBibCsfNotFoundException {
+                ExBibCsfNotFoundException,
+                ConfigurationException,
+                ExBibSorterNotFoundException {
 
-        String csf = properties.getProperty(PROP_CSF);
-        if ("".equals(csf)) {
-            return new CsfSorter();
-        } else if (csf != null) {
-            InputStream is = finder.findResource(csf, "csf");
-            if (is == null) {
-                throw new ExBibCsfNotFoundException(csf);
-            }
-            try {
-                String encoding = properties.getProperty(PROP_CSF_ENCODING);
-                return new CsfReader().read(encoding == null
-                        ? new InputStreamReader(is)
-                        : new InputStreamReader(is, encoding));
-            } finally {
-                is.close();
-            }
-        }
-        return null;
+        SorterFactory sorterFactory = new SorterFactory(cfg);
+        sorterFactory.enableLogging(logger);
+        sorterFactory.setResourceFinder(finder);
+        sorterFactory.setProperties(properties);
+        String s = properties.getProperty(PROP_SORT);
+        return sorterFactory.newInstance(s);
     }
 
     /**
@@ -445,7 +436,7 @@ public class ExBib {
             file = stripExtension(file, AUX_FILE_EXTENSION);
 
             Configuration config = ConfigurationFactory.newInstance(//
-                "exbib/" + properties.getProperty(PROP_CONFIG));
+                "exbib/" + properties.getProperty(PROP_CONFIG, ""));
 
             ResourceFinder finder =
                     new ResourceFinderFactory().createResourceFinder(//
@@ -460,7 +451,8 @@ public class ExBib {
 
             recognizeFile(file, BLG_FILE_EXTENSION);
 
-            CsfSorter sorter = makeSorter(finder);
+            Sorter sorter =
+                    makeSorter(finder, config.getConfiguration("Sorter"));
             FuncallObserver funcall = null;
 
             String encoding = properties.getProperty(PROP_ENCODING);
@@ -727,7 +719,7 @@ public class ExBib {
         propertyDefault(PROP_BIB_ENCODING, null);
         propertyDefault(PROP_CSF_ENCODING, null);
         propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
-        propertyDefault(PROP_CSF, null);
+        propertyDefault(PROP_SORT, null);
         propertyDefault(PROP_FILE, null);
         propertyDefault(PROP_ENCODING, null);
         propertyDefault(PROP_OUTFILE, null);

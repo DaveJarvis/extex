@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
+  Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
   This file is part of ExBib a BibTeX compatible database.
-  Copyright (C) 2003-2008 Gerd Neugebauer
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -26,9 +26,10 @@
 
   <DB class="org.extex.exbib.core.db.impl.DBImpl">
     <minCrossrefs>2</minCrossrefs>
-    <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl" />
   </DB>
-  
+
+  <Sorter base="exbib/sorter/" default="locale"/>
+
   <BblWriter class="org.extex.exbib.core.io.bblio.BblWriter">
     <linelength>79</linelength>
     <indent>  </indent>

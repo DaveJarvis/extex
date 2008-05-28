@@ -31,11 +31,9 @@
     <indent>  </indent>
   </BblWriter>
 
-  <DB class="org.extex.exbib.core.db.impl.DBImpl">
-    <Sorter class="org.extex.exbib.core.db.sorter.Sorter099Impl">
-      <Order locale="en"/>
-    </Sorter>
-  </DB>
+  <DB class="org.extex.exbib.core.db.impl.DBImpl"/>
+
+  <Sorter base="exbib/sorter/" default="locale"/>
 
   <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 

@@ -90,9 +90,9 @@ The following properties are recognized in a dot file:
   This property contains the name of the encoding for reading cs
   files. If it is not present or empty then the platform default is
   used as fallback.
-\item[\Property{exbib.csf}] \ \\
-  This property contains the name of a cs file to define the
-  characters and sorting properties.
+\item[\Property{exbib.sort}] \ \\
+  This property contains the specification of the sorter for entries.
+  It is composed of a method and arguments.
 \item[\Property{texinputs}] \ \\
   This property contains a path for searching resources. The
   environment variable \Env{TEXINPUTS} is put into this property.
@@ -604,10 +604,26 @@ IBM01140
 \end{description}
 \index{encoding|)}
 
-\subsubsection{CS Files}%
+\subsubsection{Sorting Entries}%
+
+\begin{description}
+\item[\CLi{s} \Arg{sorter}]
+\item[\CLI{sorter} \Arg{sorter}]\ \\
+  Use the given sorting order . Refer to section~\ref{sec:sorting} for
+  details about the format of the file.
+
+  \INCOMPLETE
+
+\begin{lstlisting}[language=sh]
+# exbib --sort=locale:de doc.aux
+...
+\end{lstlisting}
+
+\end{description}
+
 \index{csf|(}
 
-Cs files contain trhe definition of the character set and sortig
+Cs files contain the definition of the character set and sortig
 order. They have been introduced in \BibTeX~8\index{BibTeX 8|\BibTeX 8}.
 For details on the format refer to section~\ref{sec:csf}
 
