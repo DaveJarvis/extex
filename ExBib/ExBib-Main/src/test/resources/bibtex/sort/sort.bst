@@ -8,6 +8,11 @@ FUNCTION{item}{
   newline$
 }
 
+FUNCTION{make.sort.key}{
+  value 'sort.key$ :=
+}
+
 READ
+ITERATE{make.sort.key}
 SORT
 ITERATE{call.type$}

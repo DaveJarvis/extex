@@ -1528,7 +1528,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\nÃ¤\naf\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1545,9 +1545,9 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
             BANNER, //
-            "--sorter", "locale:unicode", "test.aux", "--out=-", "--enc=UTF-8");
+            "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8");
     }
 
     /**
