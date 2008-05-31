@@ -120,7 +120,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     arg.split(","));
             }
         });
-        register("biboptions", new AuxHandler() {
+        register("biboption", new AuxHandler() {
 
             public void invoke(String arg, ProcessorContainer processors,
                     String type, AuxReader engine)
@@ -128,14 +128,12 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                         ExBibException {
 
                 Processor processor = processors.findBibliography(type);
-                for (String a : arg.split(",")) {
-                    int i = a.indexOf('=');
-                    if (i < 0) {
-                        processor.setOption(a, "true");
-                    } else {
-                        processor.setOption(a.substring(0, i - 1), //
-                            a.substring(i + 1));
-                    }
+                int i = arg.indexOf('=');
+                if (i < 0) {
+                    processor.setOption(arg, "true");
+                } else {
+                    processor.setOption(arg.substring(0, i - 1), //
+                        arg.substring(i + 1));
                 }
             }
         });
