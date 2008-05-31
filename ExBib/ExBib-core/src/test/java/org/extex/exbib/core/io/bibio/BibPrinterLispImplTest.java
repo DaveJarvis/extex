@@ -35,25 +35,14 @@ import org.junit.Test;
 public class BibPrinterLispImplTest {
 
     /**
-     * Test method for
-     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}.
-     * 
-     * 
-     * @throws Exception in case of an error
+     * The field <tt>RESULT_1</tt> contains the ...
      */
-    @Test
-    @Ignore
-    // problems in maven
-    public final void testPrint1() throws Exception {
-
-        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
-
-        StringBuffer buffer = new StringBuffer();
-        new BibPrinterLispImpl(new StringBufferWriter(buffer)).print(db);
-
-        assertEquals(
+    private static final String RESULT_1 =
             "(database\n"
-                    + "  (preamble \"\\newcommand{\\\\noopsort}[1]{} \" \"\\newcommand{\\\\printfirst}[2]{#1} \" \"\\newcommand{\\\\singleletter}[1]{#1} \" \"\\newcommand{\\\\switchargs}[2]{#2#1} \")\n"
+                    + "  (preamble \"\\newcommand{\\\\noopsort}[1]{} \" "
+                    + "\"\\newcommand{\\\\printfirst}[2]{#1} \" "
+                    + "\"\\newcommand{\\\\singleletter}[1]{#1} \" "
+                    + "\"\\newcommand{\\\\switchargs}[2]{#2#1} \")\n"
                     + "\n"
                     + "  (string \'stoc-key \"OX{\\\\singleletter{stoc}}\")\n"
                     + "  (string \'acm \"The OX Association for Computing Machinery\")\n"
@@ -94,7 +83,8 @@ public class BibPrinterLispImplTest {
                     + "    (field \'volume 41)\n"
                     + "    (field \'number 7)\n"
                     + "    (field \'month \'jul )\n"
-                    + "    (field \'note \"The entire issue is devoted to gnats and gnus\t\t(this entry is a cross-referenced ARTICLE (journal))\")\n"
+                    + "    (field \'note \"The entire issue is devoted to gnats and gnus"
+                    + "\t\t(this entry is a cross-referenced ARTICLE (journal))\")\n"
                     + "  )\n"
                     + "\n"
                     + "  (entry \'inbook \"inbook-minimal\"\n"
@@ -398,8 +388,26 @@ public class BibPrinterLispImplTest {
                     + "  (entry \'misc \"random-note-crossref\"\n"
                     + "    (field \'key \"Volume-2\")\n"
                     + "    (field \'note \"Volume~2 is listed under Knuth \\\\cite{book-full}\")\n"
-                    + "  )\n" + "\n" + ")\n", buffer.toString().replaceAll(
-                "\r", ""));
+                    + "  )\n" + "\n" + ")\n";
+
+    /**
+     * Test method for
+     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}.
+     * 
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    // problems in maven
+    public final void testPrint1() throws Exception {
+
+        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
+
+        StringBuffer buffer = new StringBuffer();
+        new BibPrinterLispImpl(new StringBufferWriter(buffer)).print(db);
+
+        assertEquals(RESULT_1, buffer.toString().replaceAll("\r", ""));
     }
 
 }

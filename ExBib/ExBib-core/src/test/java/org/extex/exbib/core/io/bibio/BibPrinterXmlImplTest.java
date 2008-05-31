@@ -35,26 +35,15 @@ import org.junit.Test;
 public class BibPrinterXmlImplTest {
 
     /**
-     * Test method for
-     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}.
-     * 
-     * 
-     * @throws Exception in case of an error
+     * The field <tt>RESULT_1</tt> contains the ...
      */
-    @Test
-    @Ignore
-    // problems in maven
-    public final void testPrint1() throws Exception {
-
-        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
-
-        StringBuffer buffer = new StringBuffer();
-        new BibPrinterXMLImpl(new StringBufferWriter(buffer)).print(db);
-
-        assertEquals(
+    private static final String RESULT_1 =
             "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
                     + "<database>\n"
-                    + "  <preamble>\\newcommand{\\noopsort}[1]{}  \\newcommand{\\printfirst}[2]{#1}  \\newcommand{\\singleletter}[1]{#1}  \\newcommand{\\switchargs}[2]{#2#1} </preamble>\n"
+                    + "  <preamble>\\newcommand{\\noopsort}[1]{} "
+                    + " \\newcommand{\\printfirst}[2]{#1} "
+                    + " \\newcommand{\\singleletter}[1]{#1} "
+                    + " \\newcommand{\\switchargs}[2]{#2#1} </preamble>\n"
                     + "\n"
                     + "  <string id=\"stoc-key\">OX{\\singleletter{stoc}}</string>\n"
                     + "  <string id=\"acm\">The OX Association for Computing Machinery</string>\n"
@@ -95,7 +84,8 @@ public class BibPrinterXmlImplTest {
                     + "    <volume>41</volume>\n"
                     + "    <number>7</number>\n"
                     + "    <month><macro name=\"jul\"/></month>\n"
-                    + "    <note>The entire issue is devoted to gnats and gnus\t\t(this entry is a cross-referenced ARTICLE (journal))</note>\n"
+                    + "    <note>The entire issue is devoted to gnats and gnus"
+                    + "\t\t(this entry is a cross-referenced ARTICLE (journal))</note>\n"
                     + "  </article>\n"
                     + "\n"
                     + "  <inbook id=\"inbook-minimal\">\n"
@@ -399,8 +389,26 @@ public class BibPrinterXmlImplTest {
                     + "  <misc id=\"random-note-crossref\">\n"
                     + "    <key>Volume-2</key>\n"
                     + "    <note>Volume~2 is listed under Knuth \\cite{book-full}</note>\n"
-                    + "  </misc>\n" + "\n" + "</database>\n", buffer.toString()
-                .replaceAll("\r", ""));
+                    + "  </misc>\n" + "\n" + "</database>\n";
+
+    /**
+     * Test method for
+     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}.
+     * 
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    // problems in maven
+    public final void testPrint1() throws Exception {
+
+        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
+
+        StringBuffer buffer = new StringBuffer();
+        new BibPrinterXMLImpl(new StringBufferWriter(buffer)).print(db);
+
+        assertEquals(RESULT_1, buffer.toString().replaceAll("\r", ""));
     }
 
 }
