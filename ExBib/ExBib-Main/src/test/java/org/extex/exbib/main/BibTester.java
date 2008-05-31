@@ -114,8 +114,10 @@ public class BibTester {
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
      * @param exitCode the exit code
-     * @param checkOut the type of Check to use
-     * @param out the expected error output
+     * @param checkOut the type of Check to use for output
+     * @param out the expected output
+     * @param checkErr the type of Check to use for error
+     * @param err the expected error output
      * @param args the invocation arguments
      * @return the instance used
      * 
