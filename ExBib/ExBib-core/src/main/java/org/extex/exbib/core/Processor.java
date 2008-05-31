@@ -426,4 +426,5 @@ public interface Processor extends Bibliography, Configurable {
      * @param message the warning message to issue
      */
     void warning(String message);
+
 }
