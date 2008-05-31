@@ -38,6 +38,7 @@ import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is the core implementation of a bibliography.
@@ -365,6 +366,29 @@ public class BibliographyCore implements Bibliography, Observable {
     public void setLogger(Logger logger) {
 
         this.logger = logger;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
+     *      java.lang.String)
+     */
+    public void setOption(String name, String value) {
+
+        if ("min-crossref".equals(name)) {
+            try {
+                db.setMinCrossrefs(Integer.parseInt(value));
+            } catch (NumberFormatException e) {
+                logger.warning(LocalizerFactory.getLocalizer(
+                    BibliographyCore.class).format("number.format.error", name,
+                    value));
+            }
+            return;
+        }
+
+        logger.warning(LocalizerFactory.getLocalizer(BibliographyCore.class)
+            .format("unused.option", name, value));
     }
 
 }

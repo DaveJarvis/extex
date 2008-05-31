@@ -22,11 +22,9 @@ package org.extex.exbib.core.bst;
 
 import java.util.List;
 
-import org.extex.exbib.core.io.auxio.AuxReader;
-
 /**
- * This interface allows a communication from the {@link AuxReader AuxReader} to
- * an object storing the data read, i.e. a {@link org.extex.exbib.core.db.DB DB}.
+ * This interface allows a communication from the AuxReader to an object storing
+ * the data read, i.e. a {@link org.extex.exbib.core.db.DB DB}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -108,4 +106,12 @@ public interface Bibliography {
      * </ul>
      */
     void reset();
+
+    /**
+     * Setter for an options.
+     * 
+     * @param name the name
+     * @param value the value
+     */
+    void setOption(String name, String value);
 }
