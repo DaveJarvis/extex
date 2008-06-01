@@ -47,7 +47,7 @@ import org.extex.resource.PropertyAware;
 public class SorterFactory extends AbstractFactory implements PropertyAware {
 
     /**
-     * The field <tt>properties</tt> contains the ...
+     * The field <tt>properties</tt> contains the properties.
      */
     private Properties properties;
 
@@ -70,12 +70,12 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
      * 
      * @return the new Sorter instance
      * 
-     * @throws CsfException ...
+     * @throws CsfException in case of an error
      * @throws ConfigurationException in case that something goes wrong
      * @throws IOException in case of an I/O error
-     * @throws UnsupportedEncodingException ...
-     * @throws ExBibCsfNotFoundException ...
-     * @throws ExBibSorterNotFoundException ...
+     * @throws UnsupportedEncodingException in case of an unsupported encoding
+     * @throws ExBibCsfNotFoundException in case of a missing csf
+     * @throws ExBibSorterNotFoundException in case of a missing sorter
      */
     public Sorter newInstance(String type)
             throws CsfException,
@@ -113,9 +113,8 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
             if (i < 0) {
                 sorter = (Sorter) createInstance(type, Sorter.class);
             } else {
-                sorter =
-                        (Sorter) createInstance(type.substring(0, i),
-                            Sorter.class, String.class, type.substring(i + 1));
+                sorter = (Sorter) createInstance(type.substring(0, i), //
+                    Sorter.class, String.class, type.substring(i + 1));
             }
         } catch (ConfigurationNotFoundException e) {
             throw new ExBibSorterNotFoundException(i < 0 ? type : type
