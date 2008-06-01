@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -29,7 +30,9 @@ import java.util.regex.Pattern;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
+import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This is the core of the aux file reading as performed by BibTeX.
@@ -85,7 +88,15 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
                         ExBibException {
 
                 String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-                bibliographies.findBibliography(type).addCitation(citations);
+                try {
+                    bibliographies.findProcessor(type).addCitation(citations);
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("bibstyle", new AuxHandler() {
@@ -95,8 +106,16 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                bibliographies.findBibliography(type).addBibliographyStyle(
-                    arg.split(","));
+                try {
+                    bibliographies.findProcessor(type).addBibliographyStyle(
+                        arg.split(","));
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("bibdata", new AuxHandler() {
@@ -106,8 +125,16 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                bibliographies.findBibliography(type).addBibliographyDatabase(
-                    arg.split(","));
+                try {
+                    bibliographies.findProcessor(type).addBibliographyDatabase(
+                        arg.split(","));
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("@include", new AuxHandler() {

@@ -19,6 +19,8 @@
 
 package org.extex.exbib.core;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,9 +33,13 @@ import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
+import org.extex.exbib.core.db.sorter.SorterFactory;
+import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
+import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
+import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.Configurable;
@@ -141,9 +147,9 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     private String fallback;
 
     /**
-     * The field <tt>sorter</tt> contains the sorter.
+     * The field <tt>sorterFactory</tt> contains the sorterFactory.
      */
-    private Sorter sorter;
+    private SorterFactory sorterFactory;
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -207,11 +213,20 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
      *         <code>null</code>
      * 
      * @throws ExBibException
-     * @throws ConfigurationException
+     * @throws ExBibCsfNotFoundException in case the csf could not be found
+     * @throws ExBibSorterNotFoundException in case of an undefined sorter
+     * @throws ConfigurationException in case of a configuration error
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a problem with the csf
+     * @throws UnsupportedEncodingException in case of a problem with the
+     *         encoding
      */
-    public Processor findBibliography(String key)
+    public Processor findProcessor(String key)
             throws ConfigurationException,
-                ExBibException {
+                ExBibException,
+                UnsupportedEncodingException,
+                CsfException,
+                IOException {
 
         String name = (key == null ? fallback : key);
 
@@ -219,8 +234,8 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
         if (processor == null) {
 
             int mx = minCrossrefs;
-            String p = properties.getProperty(ExBib.PROP_MIN_CROSSREF) //
-                    + "." + name;
+            String p = properties.getProperty(//
+                ExBib.PROP_MIN_CROSSREF + "." + name);
             if (p != null) {
                 try {
                     mx = Integer.parseInt(p);
@@ -230,6 +245,10 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
             }
 
             DB db = dbFactory.newInstance(bibReaderFactory, mx);
+
+            String s = properties.getProperty(ExBib.PROP_SORT);
+            Sorter sorter = sorterFactory.newInstance(s);
+
             if (sorter != null) {
                 db.setSorter(sorter);
             }
@@ -364,13 +383,13 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     }
 
     /**
-     * Setter for sorter.
+     * Setter for sorterFactory.
      * 
-     * @param sorter the sorter to set
+     * @param sorterFactory the sorterFactory to set
      */
-    public void setSorter(Sorter sorter) {
+    public void setSorterFactory(SorterFactory sorterFactory) {
 
-        this.sorter = sorter;
+        this.sorterFactory = sorterFactory;
     }
 
     /**

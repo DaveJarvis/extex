@@ -33,12 +33,9 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.db.sorter.SorterFactory;
-import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
@@ -361,29 +358,15 @@ public class ExBib {
      * @param cfg the configuration
      * 
      * @return the sorter; it can be <code>null</code> if none is required
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws CsfException in case of a problem with the csf
-     * @throws UnsupportedEncodingException in case of a problem with the
-     *         encoding
-     * @throws ExBibCsfNotFoundException in case the csf could not be found
-     * @throws ExBibSorterNotFoundException in case of an undefined sorter
-     * @throws ConfigurationException in case of a configuration error
      */
-    protected Sorter makeSorter(ResourceFinder finder, Configuration cfg)
-            throws IOException,
-                CsfException,
-                UnsupportedEncodingException,
-                ExBibCsfNotFoundException,
-                ConfigurationException,
-                ExBibSorterNotFoundException {
+    protected SorterFactory makeSorterFactory(ResourceFinder finder,
+            Configuration cfg) {
 
         SorterFactory sorterFactory = new SorterFactory(cfg);
         sorterFactory.enableLogging(logger);
         sorterFactory.setResourceFinder(finder);
         sorterFactory.setProperties(properties);
-        String s = properties.getProperty(PROP_SORT);
-        return sorterFactory.newInstance(s);
+        return sorterFactory;
     }
 
     /**
@@ -450,8 +433,6 @@ public class ExBib {
 
             recognizeFile(file, BLG_FILE_EXTENSION);
 
-            Sorter sorter =
-                    makeSorter(finder, config.getConfiguration("Sorter"));
             FuncallObserver funcall = null;
 
             String encoding = properties.getProperty(PROP_ENCODING);
@@ -479,7 +460,8 @@ public class ExBib {
                                 logger, processor));
                         }
                     };
-            container.setSorter(sorter);
+            container.setSorterFactory(makeSorterFactory(finder, config
+                .getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
             container.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
@@ -574,8 +556,8 @@ public class ExBib {
                 funcall.print();
             }
 
-        } catch (CsfException e) {
-            return error("verbatim", e.getLocalizedMessage());
+            // } catch (CsfException e) {
+            // return error("verbatim", e.getLocalizedMessage());
         } catch (ExBibImpossibleException e) {
             return error(e, "internal.error");
         } catch (ExBibException e) {
@@ -770,10 +752,16 @@ public class ExBib {
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration problem
+     * @throws IOException
+     * @throws CsfException
+     * @throws UnsupportedEncodingException
      */
     private boolean validate(ProcessorContainer container, Object file)
             throws ConfigurationException,
-                ExBibException {
+                ExBibException,
+                UnsupportedEncodingException,
+                CsfException,
+                IOException {
 
         if (container.isEmpty()) {
             error("bst.missing", file);
@@ -782,7 +770,7 @@ public class ExBib {
         }
 
         for (String key : container) {
-            Processor p = container.findBibliography(key);
+            Processor p = container.findProcessor(key);
             if (p.countBibliographyStyles() == 0) {
                 error("bst.missing.in", key, file);
             }

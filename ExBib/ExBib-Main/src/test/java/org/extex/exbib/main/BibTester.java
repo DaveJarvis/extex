@@ -103,7 +103,9 @@ public class BibTester {
      */
     protected void runFailure(String msg, String... args) throws Exception {
 
-        runTest("test", null, CLI.EXIT_FAIL, Check.EQ, msg, args);
+        runTest("test", "\\bibdata{src/test/resources/bibtex/empty/none}\n"
+                + "\\bibstyle{none}\n" + "\\citation{*}\n", CLI.EXIT_FAIL,
+            Check.EQ, msg, args);
     }
 
     /**

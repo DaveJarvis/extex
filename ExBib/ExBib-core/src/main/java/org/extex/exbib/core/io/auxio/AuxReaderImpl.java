@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -30,7 +31,9 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
+import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This is the core of the aux file reading. In addition to the one performed by
@@ -95,7 +98,15 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                         ExBibException {
 
                 String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-                bibliographies.findBibliography(type).addCitation(citations);
+                try {
+                    bibliographies.findProcessor(type).addCitation(citations);
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("bibstyle", new AuxHandler() {
@@ -105,8 +116,16 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                bibliographies.findBibliography(type).addBibliographyStyle(
-                    arg.split(","));
+                try {
+                    bibliographies.findProcessor(type).addBibliographyStyle(
+                        arg.split(","));
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("bibdata", new AuxHandler() {
@@ -116,8 +135,16 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                bibliographies.findBibliography(type).addBibliographyDatabase(
-                    arg.split(","));
+                try {
+                    bibliographies.findProcessor(type).addBibliographyDatabase(
+                        arg.split(","));
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
             }
         });
         register("biboption", new AuxHandler() {
@@ -127,7 +154,16 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                Processor processor = processors.findBibliography(type);
+                Processor processor;
+                try {
+                    processor = processors.findProcessor(type);
+                } catch (UnsupportedEncodingException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (CsfException e) {
+                    throw new ConfigurationWrapperException(e);
+                } catch (IOException e) {
+                    throw new ConfigurationWrapperException(e);
+                }
                 int i = arg.indexOf('=');
                 if (i < 0) {
                     processor.setOption(arg, "true");
