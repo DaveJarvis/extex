@@ -35,7 +35,7 @@ import org.junit.Test;
 public class BibPrinterImplTest {
 
     /**
-     * The field <tt>RESULT_1</tt> contains the ...
+     * The field <tt>RESULT_1</tt> contains the result for test case 1.
      */
     private static final String RESULT_1 =
             "@Preamble{\"\\newcommand{\\noopsort}[1]{} \" "

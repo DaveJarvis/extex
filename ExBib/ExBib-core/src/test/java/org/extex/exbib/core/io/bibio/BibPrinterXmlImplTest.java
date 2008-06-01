@@ -35,7 +35,7 @@ import org.junit.Test;
 public class BibPrinterXmlImplTest {
 
     /**
-     * The field <tt>RESULT_1</tt> contains the ...
+     * The field <tt>RESULT_1</tt> contains the result for test case 1.
      */
     private static final String RESULT_1 =
             "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
