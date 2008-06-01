@@ -37,6 +37,7 @@
                       output="${basedir}/target/log.txt"
                       append="false">
                   <arg value="exbib-manual"/>
+                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
                 </exec>
                 <echo message="bibtex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex/manual"
@@ -53,6 +54,7 @@
                       output="${basedir}/target/log.txt"
                       append="true">
                   <arg line="-s ../../texinputs/doc.ist exbib-manual.idx"/>
+                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
                 </exec>
                 <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex/manual"
@@ -61,6 +63,7 @@
                       output="${basedir}/target/log.txt"
                       append="true">
                   <arg value="exbib-manual"/>
+                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
                 </exec>
                 <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex/manual"
@@ -69,6 +72,7 @@
                       output="${basedir}/target/log.txt"
                       append="true">
                   <arg value="exbib-manual"/>
+                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
                 </exec>
                 <echo message="latex exbib-manual"/>
                 <exec dir="${basedir}/src/main/tex/manual"
@@ -77,6 +81,7 @@
                       output="${basedir}/target/log.txt"
                       append="true">
                   <arg value="exbib-manual"/>
+                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
                 </exec>
                 <echo message="moving files to target"/>
                 <move todir="${basedir}/target">

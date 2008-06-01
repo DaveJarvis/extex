@@ -4,16 +4,15 @@
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
-\documentclass{../../texinputs/extex-doc}
+\documentclass{extex-doc}
 
 \def\Version{0.1}
 \title{Reference Manual}
 \author{Gerd Neugebauer}
 
-\usepackage{../../texinputs/dirlist}
-\usepackage{../../texinputs/iconmargin}
+\usepackage{dirlist}
+\usepackage{iconmargin}
 \usepackage{makeidx}
-\usepackage{fleqn}
 
 \newcommand\Arg[1]{\(\langle\){\tt\itshape #1}\(\rangle\)}
 \newcommand\CLi[1]{\texttt{-{}#1}\index{#1@\texttt{-{}#1}}}
@@ -139,18 +138,19 @@ Im Lerchelsb\"ohl 5\\
 
 %------------------------------------------------------------------------------
 
-\input{chapter/intro}
-\input{chapter/started}
-\input{chapter/database}
-\input{chapter/styles}
-\input{chapter/tools}
-\input{chapter/bst-language}
-\input{chapter/tex-aux}
-\input{chapter/configuration}
-\input{chapter/finder}
+\input{intro}
+\input{started}
+\input{database}
+\input{sorting}
+\input{styles}
+\input{tools}
+\input{bst-language}
+\input{tex-aux}
+\input{configuration}
+\input{finder}
 
 \appendix
-\input{chapter/licenses}
+\input{licenses}
 
 %------------------------------------------------------------------------------
 \bibliographystyle{alpha}

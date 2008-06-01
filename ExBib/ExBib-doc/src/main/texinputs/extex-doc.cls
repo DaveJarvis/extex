@@ -1,8 +1,8 @@
 %
-% 2005 Gerd Neugebauer
+% (c) 2005-2008 Gerd Neugebauer
 %
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass[12pt,div12,a4paper,bibtotoc]{scrbook}
+\LoadClass[12pt,fleqn,a4paper,bibtotoc]{scrbook}
 
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -24,7 +24,7 @@
 \definecolor{colRule}{rgb}{.8,.8,.64}
 %
 \usepackage{listings}
-\xdef\lstlanguagefiles{\lstlanguagefiles,../../texinputs/lst-bst.sty}
+\xdef\lstlanguagefiles{\lstlanguagefiles,lst-bst.sty}
 
 \lstset{%
     language=[AlLaTeX]TEX,%

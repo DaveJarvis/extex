@@ -22,7 +22,8 @@ those scripts should be resent on your execution path.
 
 
 \subsection{Dot Files}%
-\label{sec:dot.files}
+\label{sec:dot.files}%
+\index{dot file|(}
 
 Dot files are a means to provide settings in a file -- in contrast to
 the command line parameters. Since the name starts in Unix\index{Unix}
@@ -31,7 +32,7 @@ with a dot they are called dot files.
 \ExBib\ supports dot files. The name of the dot file is \File{.exbib}.
 This file is read in the user's home directory and the current
 directory -- if they exist. The settings performed in the different
-places have a certain precedency. From lowest to highest they are:
+places have a certain precedence. From lowest to highest they are:
 
 \begin{itemize}
 \item compiled-in defaults
@@ -104,7 +105,8 @@ The following properties are recognized in a dot file:
   used as fallback.
 \item[\Property{exbib.sort}] \ \\
   This property contains the specification of the sorter for entries.
-  It is composed of a method and arguments.
+  It is composed of a method and arguments. See
+  section~\ref{sec:sort.order} for details.
 \item[\Property{texinputs}] \ \\
   This property contains a path for searching resources. The
   environment variable \Env{TEXINPUTS} is put into this property.
@@ -122,23 +124,26 @@ The following properties are recognized in a dot file:
   property.
 \end{description}
 
-Note that any key can be used in a dot file. Unknown keys are silently
-ignored. Thus watch out for typos in keys.
+Note that any key can be used in a dot file\index{dot file}. Unknown
+keys are silently ignored. Thus watch out for typos in keys.
 
 
-\subsubsection{Home Directory on Unix}
+\subsubsection{Home Directory on Unix}%
+\index{home directory}
 
 The home directory on a Unix\index{Unix} system is user specific
 setting. It is determined from the environment variable \Env{HOME}. A
 typical value is \texttt{/home/donald}.
 
-\subsubsection{Home Directory on Windows}
+\subsubsection{Home Directory on Windows}%
+\index{home directory}
 
 The home directory on a Windows\index{Windows} system is a user
 specific setting.  A typical value is
 \verb|C:\windows\profiles\donald|.
-
-
+%
+%
+\index{dot file|)}
 
 \subsection{Command Line Parameters}
 %@author Gerd Neugebauer
@@ -158,8 +163,9 @@ are described in the following sections.
   
   The setting of arbitrary properties can be accomplished with the
   command line argument \texttt{-D}. The properties are the same as
-  those used in dot files (see section~\ref{sec:dot.files}). This
-  command line option as shown in the following example:
+  those used in dot files\index{dot file} (see
+  section~\ref{sec:dot.files}). This command line option as shown in
+  the following example:
 
 \begin{lstlisting}[language=sh]
 # exbib -Dexbib.file=file.aux
@@ -167,14 +173,15 @@ are described in the following sections.
 
 \item[\CLI{load} \Arg{file}]\ \\
   
-  At startup \Prog{exbib} tries to load settings from dot files ( see
-  section~\ref{sec:dot.files}). In addition the command line can name
-  other file to read settings from. In contrast to the dot files the
-  files named explicitly have to exist or an error is raised.
+  At startup \Prog{exbib} tries to load settings from dot
+  files\index{dot file} (see section~\ref{sec:dot.files}). In addition
+  the command line can name other file to read settings from. In
+  contrast to the dot files the files named explicitly have to exist
+  or an error is raised.
   
-  The properties are the same as those used in dot files (see
-  section~\ref{sec:dot.files}). This command line option as shown in
-  the following example:
+  The properties are the same as those used in dot files\index{dot
+    file} (see section~\ref{sec:dot.files}). This command line option
+  as shown in the following example:
 
 \begin{lstlisting}[language=sh]
 # exbib -load ../.exbib
@@ -621,10 +628,8 @@ IBM01140
 \begin{description}
 \item[\CLi{s} \Arg{sorter}]
 \item[\CLI{sorter} \Arg{sorter}]\ \\
-  Use the given sorting order . Refer to section~\ref{sec:sorting} for
+  Use the given sorting order . Refer to section~\ref{sec:sort.order} for
   details about the format of the file.
-
-  \INCOMPLETE
 
 \begin{lstlisting}[language=sh]
 # exbib --sort=locale:de doc.aux

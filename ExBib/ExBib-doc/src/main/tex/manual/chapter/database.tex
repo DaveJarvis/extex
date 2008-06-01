@@ -19,8 +19,8 @@ syntax:
 \end{verbatim}
 Any other character is treated equally as ordinary character.
 
-An instruction is started with an at sign (@) followed by its name.
-The name is composed of upper or lowercase letters and digits.
+An instruction is started with an at sign (\texttt{@}) followed by its
+name. The name is composed of upper or lowercase letters and digits.
 
 Whatever follows the name of the instruction depends on the
 instruction. In most cases the parameters for the instruction are
@@ -30,7 +30,7 @@ braces.
 
 
 \section{The \texttt{@input} Instruction}%
-\index{@input|(}
+\index{input@\char64 input|(}
 
 Sometimes it might be desirable to split a database into several
 segements. This is supported by the ability to pass inseveral
@@ -50,7 +50,7 @@ The formal syntax of this instruction is as follows:
   <instruction> \+ |@input| | \char`\{\ | <resource name> | \char`\} |
 \end{syntax}%
 The instruction name \texttt{input} is taken case insensitive.
-\index{@input|)}
+\index{input@\char64 input|)}
 
 
 \section{Entries}
@@ -275,7 +275,7 @@ The formal syntax is as follows:
 
 
 \section{Comments}%
-\index{@comment|(}
+\index{comment@\char64 comment|(}
 
 Anything outside of entries and other declarations are considered as a
 comment -- and mainly ignored. Thus you can put anything in between
@@ -319,11 +319,11 @@ specification:
                 \| |@comment| 
 \end{syntax}
 The instruction name is compared case insensitive.
-\index{@comment|)}
+\index{comment@\char64 comment|)}
 
 
 \section{The \texttt{@alias} Instruction}%
-\index{@alias|(}
+\index{alias@\char64 alias|(}
 
 The \texttt{@alias} instruction can be used to define alternative keys
 for an entry. Whenever an entry is references with one of its keys all
@@ -347,10 +347,10 @@ The formal syntax of this instruction is as follows:
                 \| |@alias| | ( | \tag{key} | = | \tag{key} | ) | 
 \end{syntax}%
 The instruction name is compared case insensitive.
-\index{@alias|)}
+\index{alias@\char64 alias|)}
 
 \section{The \texttt{@modify} Instruction}%
-\index{@modify|(}
+\index{modify@\char64 modify|(}
 
 The \texttt{@modify} instruction can be used to alter the content of
 certain fields in an entry. The question is why would such a directive
@@ -378,11 +378,11 @@ The formal syntax of this instruction is as follows:
                 \| |@modify| | ( | <key> | , | <attributes> | ) | 
 \end{syntax}%
 The instruction name is compared case insensitive.
-\index{@modify|)}
+\index{modify@\char64 modify|)}
 
 
 \section{The \texttt{@string} Instruction}%
-\index{@string|(}
+\index{string@\char64 string|(}
 
 The \texttt{@string} instruction can be used to define macros. Each
 macro has a name and a value. When a field of an entry is accessed the
@@ -404,11 +404,11 @@ The formal syntax of this instruction is as follows:
                 \| |@string| | ( | <macro name> | = | <value> | ) | 
 \end{syntax}%
 The instruction name is compared case in-sensitove.
-\index{@string|)}
+\index{string@\char64 string|)}
 
 
 \section{The \texttt{@preamble} Instruction}
-\index{@preamble|(}
+\index{preamble@\char64 preamble|(}
 
 Sometines it is necessary ensure that a certain definition is made
 which is used in the database. Those definitions are collected and can
@@ -425,7 +425,7 @@ The formal syntax of this instruction is as follows:
                 \| |@preamble| | ( | <value> | ) | 
 \end{syntax}%
 The instruction name is compared case in-sensitove.
-\index{@preamble|(}
+\index{preamble@\char64 preamble|)}
 
 \endinput
 %

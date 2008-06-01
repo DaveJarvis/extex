@@ -16,7 +16,7 @@ can be defined as follows.
 \begin{lstlisting}[language=XML,morekeywords={taskdef}]
  <taskdef name="ExBib"
           classname="org.extex.exbib.ant.ExBibTask" />
-\end{lstlisting}
+\end{lstlisting}\index{taskdef}
 
 This assumes that the jars from the \ExBib\ distribution are on the
 class path. You can extend the class path for this definition with the
@@ -26,7 +26,7 @@ classpath attribute as shown below.
  <taskdef name="ExBib"
           classname="org.extex.exbib.ant.ExBibTask"
           classpath="classes" />
-\end{lstlisting}
+\end{lstlisting}\index{taskdef}
 
 As a result you have defined the task named \texttt{ExBib}. This task
 can be used in arbitrary targets.
@@ -35,7 +35,7 @@ can be used in arbitrary targets.
   <target name="simple"
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"/>
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
 Note that a version of Ant is required. Ant is not not included in the
 distribution. Thus it is possible to use the \ExBib\ ant task together
@@ -52,9 +52,9 @@ those which could also be taken from a dot file.
   <target name="simple"
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux">
-     exbib.encoding=UTF-8
+      exbib.encoding=UTF-8
     </ExBib>
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
 Note that typos in option names are silently ignored.
 
@@ -64,7 +64,7 @@ The invocation of the task can be controlled by several parameters.
 Those parameters are given as attributes to the task. 
 
 \begin{description}
-\item[file="\Arg{file}"] \ \\
+\item[file="\Arg{file}"] \ \index{file!Ant task parameter}\\
   The parameter is the name of the \texttt{aux} file to read further
   parameters from. This attribute is mandatory.
 
@@ -72,9 +72,9 @@ Those parameters are given as attributes to the task.
   <target name="simple"
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"/>
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[encoding="\Arg{enc}"] \ \\
+\item[encoding="\Arg{enc}"] \ \index{encoding!Ant task parameter}\\
   This option can be used to specify the encoding for reading files.
   The default is to use the platform default encoding. For possible
   values refer to section~\ref{sec:encodings}.
@@ -84,9 +84,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            encoding="UTF-8" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[bibEncoding="\Arg{enc}"] \ \\
+\item[bibEncoding="\Arg{enc}"] \ \index{bibEncoding!Ant task parameter}\\
   This option can be used to specify the encoding for reading database
   files. The default is to use the same value as the parameter
   \texttt{encoding}.  For possible values refer to
@@ -97,7 +97,7 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            bibEncoding="UTF-8" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
 \item[csf="\Arg{csf}"] \ \\
   The option can be used to specify the CSF which cintains character
@@ -108,9 +108,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            csf="german.csf" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[csfEncoding="\Arg{enc}"] \ \\
+\item[csfEncoding="\Arg{enc}"] \ \index{csfEncoding!Ant task parameter}\\
   This option contains the encoding for reading cs files. The encoding
   needs to be a valid character set. The fallback is the platform
   default encoding.
@@ -121,9 +121,9 @@ Those parameters are given as attributes to the task.
     <ExBib file="file.aux"
            csf="german.csf" 
            csfEncoding="UTF-8" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[minCrossrefs="\Arg{number}"] \ \\
+\item[minCrossrefs="\Arg{number}"] \ \index{minCrossrefs!Ant task parameter}\\
   The parameter is a number. It gives the number of cross references
   before the entries are left alone and not collapsed. The default
   value is 2.
@@ -133,9 +133,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            minCrossrefs="3" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[output="\Arg{file}"] \ \\
+\item[output="\Arg{file}"] \ \index{output!Ant task parameter}\\
   This parameter redirects the output for the default type of
   references to the given file. The default is derived from the name
   of the aux file by using the extension \texttt{.bbl}.
@@ -145,9 +145,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            output="file.bbl" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[logfile="\Arg{file}"] \ \\  
+\item[logfile="\Arg{file}"] \ \index{logfile!Ant task parameter}\\  
   This option can be used to redirect the output to a file. The
   default is to print the informative messages to the console only.
 
@@ -156,9 +156,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            logfile="file.blg" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[config="\Arg{config}"] \ \\
+\item[config="\Arg{config}"] \ \index{config!Ant task parameter}\\
   This parameter can be used to specify the configuration for
   assembling \ExBib{} (see also section~\ref{sec:cli.cfg}). The
   default value is \texttt{exbib}. The value \texttt{bibtex099} can be
@@ -170,9 +170,9 @@ Those parameters are given as attributes to the task.
           description="This is a simple invocation of ExBib." >
     <ExBib file="file.aux"
            config="bibtex099" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
   
-\item[load="\Arg{file}"] \ \\
+\item[load="\Arg{file}"] \ \index{load!Ant task parameter}\\
   In contrast to the command line interface no dot files (see
   section~\ref{sec:dot.files}) are read by the Ant task. This
   attribute can be used to load dot files.
@@ -190,9 +190,9 @@ Those parameters are given as attributes to the task.
     <ExBib file="file.aux"
            load="~/.exbib"
            load="./.exbib" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
-\item[debug="\Arg{flags}"] \ \\
+\item[debug="\Arg{flags}"] \ \index{debug!Ant task parameter}\\
   This option can be used to specify debug options (see also
   section~\ref{sec:cli.debug}).
 
@@ -202,7 +202,7 @@ Those parameters are given as attributes to the task.
     <ExBib file="file.aux"
            logfile="file.blg"
            debug="trace,search" />
-\end{lstlisting}
+\end{lstlisting}\index{target}
 
 \end{description}
 
@@ -212,5 +212,5 @@ Those parameters are given as attributes to the task.
 %
 % Local Variables: 
 % mode: latex
-% TeX-master: nil
+% TeX-master: "../exbib-manual"
 % End: 
