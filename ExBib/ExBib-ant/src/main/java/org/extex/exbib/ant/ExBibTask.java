@@ -127,6 +127,17 @@ import org.extex.exbib.main.util.LogFormatter;
  * 
  * </dd>
  * 
+ * <dt>sort="&lang;sorter&rang;"</dt>
+ * <dd> This option can be used to specify the sorter.
+ * 
+ * <pre>
+ *   &lt;<b>target</b> name="simple"
+ *           description="This is a simple invocation of ExBib." &gt;
+ *     &lt;ExBib file="file.aux"
+ *            sort="encoding:de" /&gt;
+ * </pre>
+ * 
+ * 
  * <dt>encoding="&lang;enc&rang;"</dt>
  * <dd> This option can be used to specify the encoding for reading files. The
  * default is to use the platform default encoding.
@@ -537,6 +548,16 @@ public class ExBibTask extends Task {
     public void setOutput(String outfile) {
 
         properties.setProperty(ExBib.PROP_OUTFILE, outfile);
+    }
+
+    /**
+     * Setter for the sorter.
+     * 
+     * @param sort the sorter
+     */
+    public void setSort(String sort) {
+
+        properties.setProperty(ExBib.PROP_SORT, sort);
     }
 
 }
