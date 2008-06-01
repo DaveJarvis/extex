@@ -130,6 +130,35 @@ files. All those references are resolved recursively.\IM{08x1}
 \end{lstlisting}
 
 
+\subsection{The Setting of Options}
+
+The aux file can set options with the macro \macro{biboption}. The
+argument is a key/value pair. The key and the value are separated by
+an equals sign.\IM{x}
+
+\begin{lstlisting}[language={[LaTeX]TeX}]
+  \biboption{min-crossref=4}
+\end{lstlisting}
+
+Multiple sets of options are supported by an optional argument to
+the macro \macro{biboption}. This optional argument is enclosed in
+brackets. It contains the extension for the output file. The default
+is \texttt{bbl}.\IM{x}
+
+The following example is equivalent to the example above:
+
+\begin{lstlisting}[language={[LaTeX]TeX}]
+  \biboption[bbl]{min-crossref=4}
+\end{lstlisting}
+
+The following options are known:
+
+\begin{description}
+\item[min-crossref] The value is a number. It is used as minimum
+  number of cross references before the referenced entry is left
+  alone.
+\end{description}
+
 \endinput
 %
 % Local Variables: 

@@ -78,6 +78,18 @@ The following properties are recognized in a dot file:
   This property contains the name of the log file. If it is empty then
   no log file will be written. The default is derived from the base
   name of the aux file by appending \texttt{.log}.
+\item[\Property{exbib.min.crossref}] \ \\
+  This property contains the minimum number of cross-references before
+  an entry is not collapsed. The cross referencing in entries provides
+  a means for inheriting fields between entries. Usually the entries
+  are included in the output.  Nevertheless when there are only a few
+  referenes to an entry this entry is collapsed into the referencing
+  entries and does not appear alone. This parameter controlls this
+  behaviour.
+\item[\Property{exbib.min.crossref.\Arg{type}}] \ \\
+  This property contains the minimum number of cross-references before
+  an entry is not collapsed for a certain type of database. The
+  fallback is taken from the property \Property{exbib.min.crossref}.
 \item[\Property{exbib.bib.encoding}] \ \\
   This property contains the name of the encoding for reading bib
   databases. If it is not present or empty then the platform default
