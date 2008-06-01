@@ -28,8 +28,8 @@ import java.util.Properties;
 
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
-import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.io.csf.CsfReader;
 import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.framework.AbstractFactory;
@@ -70,20 +70,16 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
      * 
      * @return the new Sorter instance
      * 
-     * @throws CsfException in case of an error
+     * @throws ExBibException in case of an error
      * @throws ConfigurationException in case that something goes wrong
      * @throws IOException in case of an I/O error
      * @throws UnsupportedEncodingException in case of an unsupported encoding
-     * @throws ExBibCsfNotFoundException in case of a missing csf
-     * @throws ExBibSorterNotFoundException in case of a missing sorter
      */
     public Sorter newInstance(String type)
-            throws CsfException,
+            throws ExBibException,
                 ConfigurationException,
                 UnsupportedEncodingException,
-                IOException,
-                ExBibCsfNotFoundException,
-                ExBibSorterNotFoundException {
+                IOException {
 
         if (type == null || "".equals(type)) {
             return null;
