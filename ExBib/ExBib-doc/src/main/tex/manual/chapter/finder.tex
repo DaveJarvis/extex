@@ -1,8 +1,10 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:finder.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
+
+\def\LogArg#1{$\langle${\itshape #1}$\rangle$}
 
 \section{Finding Files and Resources}
 
@@ -25,6 +27,14 @@ configuration section each.
 \INCOMPLETE
 
 
+\subsection{Tracing the Search}
+
+The tracing can be activated with the trace attributes for some
+sections or globally for the whole search at runtime. As a consequence
+the log file should contain messages describing the search -- where it
+looked and what it found.
+
+
 \subsection{File Search in the Directory Tree}
 
 The simplest search strategy is to look into a list of directories and
@@ -32,20 +42,7 @@ maybe try a list of extensions until a suitable file is found. This
 strategy is implemented in the class
 \texttt{org.extex.resource.FileFinder}.
 
-\subsubsection*{Attributes}
-\begin{description}
-\item[class] The attribute \texttt{class} has the value
-  \texttt{org.extex.resource.FileFinder} for the search in
-  archives. It is mandatory.
-\item[default] The attribute \texttt{default} names the type shich
-  should be used if no special section for the type at hand is
-  present. This attribute is mandatory.
-\item[trace] The attribute \texttt{trace} can be used to turn on the
-  tracing from within the configuration. It takes a boolean value as
-  argument (\texttt{true} or \texttt{false}). The tracing can be
-  overwritten at runtime. This attribute is optional. The default
-  value is \texttt{false}.
-\end{description}
+\subsubsection*{Example}
 
 \begin{lstlisting}[language=XML]
   <Finder class="org.extex.resource.FileFinder"
@@ -62,34 +59,76 @@ strategy is implemented in the class
   </Finder>
 \end{lstlisting}
 
-
-\INCOMPLETE
-
-\subsection{Searching in texmf Trees}
-
-The search in texmf utilizes the index file \File{ls-R}.
-
-\INCOMPLETE
-
 \subsubsection*{Attributes}
 \begin{description}
 \item[class] The attribute \texttt{class} has the value
-  \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
+  \texttt{org.extex.resource.FileFinder} for the search in
   archives. It is mandatory.
 \item[default] The attribute \texttt{default} names the type shich
   should be used if no special section for the type at hand is
   present. This attribute is mandatory.
-\item[capacity] The attribute \texttt{capacity} gives an initial
-  capacity for the size of the hash used to store the index entries
-  from the \File{ls-R} files. Its fallback is rather small and the
-  performance can be influenced positively by using this attribute
-  with a proper value.
 \item[trace] The attribute \texttt{trace} can be used to turn on the
   tracing from within the configuration. It takes a boolean value as
   argument (\texttt{true} or \texttt{false}). The tracing can be
   overwritten at runtime. This attribute is optional. The default
   value is \texttt{false}.
 \end{description}
+
+\subsubsection*{Nested Elements}
+
+The nested elements are used to select the parameters for the type of
+the resource in question. The nested element with the same name as the
+type is used. If no such nested element is found then the value of the
+\texttt{default} attribute is used to read this nested element
+instead. 
+
+The nested element found must contain nested elements with the name
+\texttt{extension}. The values of those nested \texttt{extension}
+elements are appended to the resource name when it is sought.
+
+The nested element found must contain a nested element named
+\texttt{path}. It is treated as follows:
+\begin{itemize}
+\item If the attribute \texttt{property} is given then the body is
+  ignored and the directory read from the named property.
+\item If the attribute \texttt{env} is given then the body is ignored
+  and the directory read from the named environment variable.
+\item Otherwise the body is used as directory.
+\end{itemize}
+
+The file is constructed from the path, the resource name and the
+extension. The string \verb|{.type}| in the constructed resource name
+is replaced by the currently sought resource. This value can occur in
+the extension or the path. The first readable resource wins.
+
+\subsubsection*{Tracing Output}
+
+The following messages might be written to the log:
+
+{\small
+\begin{itemize}
+\item{\tt FileFinder: Searching \LogArg{name} [\LogArg{type}]}
+\item{\tt FileFinder: Trying \LogArg{full name}}
+\item{\tt FileFinder: Found \LogArg{full name}}
+\item{\tt FileFinder: Not found \LogArg{name}}
+\item{\tt FileFinder: Failed for \LogArg{name}}
+\item{\tt FileFinder: Property \LogArg{property name} is undefined.}
+\item{\tt FileFinder: Environment variable \LogArg{env} is undefined.}
+\item{\tt FileFinder: Configuration for `\LogArg{type}' not found;
+    Using default `\LogArg{element name}'}
+\end{itemize}}
+
+Note that the messages are subject to internationalization. Thus a
+translated version can appear for other user languages than English.
+
+
+\subsection{Searching in texmf Trees}
+
+The search in texmf utilizes the index file \File{ls-R}. If this file
+is not found then the directory is ignored. The index file \File{ls-R}
+is read in and used to find the resources.
+
+\subsubsection*{Example}
 
 \begin{lstlisting}[language=XML]
   <Finder class="org.extex.resource.LsrFinder"
@@ -108,6 +147,84 @@ The search in texmf utilizes the index file \File{ls-R}.
   </Finder>
 \end{lstlisting}
 
+\subsubsection*{Attributes}
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.LsrFinder} for the search in archives. It
+  is mandatory.
+\item[default] The attribute \texttt{default} names the type which
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[capacity] The attribute \texttt{capacity} gives an initial
+  capacity for the size of the hash used to store the index entries
+  from the \File{ls-R} files. Its fallback is rather small and the
+  performance can be influenced positively by using this attribute
+  with a proper value.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\subsubsection*{Nested Elements}
+
+The nested elements are used to select the parameters for the type of
+the resource in question. The nested element with the same name as the
+type is used. If no such nested element is found then the value of the
+\texttt{default} attribute is used to read this nested element
+instead. 
+
+The nested element found may contain nested elements with the name
+\texttt{extension}. The values of those nested \texttt{extension}
+elements are appended to the resource name when it is sought in the
+index. The first readable resource wins.
+
+The string \verb|{.type}| in the constructed resource name is replaced
+by the currently sought resource. This value can occur in the
+extension.
+
+One nested element is treated special:
+
+\begin{description}
+\item[path] The nested element \texttt{path} specified where to look
+  for the index file \File{ls-R}. There are several cases in which
+  this nested element can be used:
+  \begin{itemize}
+  \item If the attribute \texttt{property} is given then the body is
+    ignored and the directory read from the named property.
+  \item If the attribute \texttt{env} is given then the body is
+    ignored and the directory read from the named environment
+    variable.
+  \item Otherwise the body is used as directory to search the index
+    file \File{ls-R}.
+  \end{itemize}
+\end{description}
+
+\subsubsection*{Tracing Output}
+
+The following messages might be written to the log:
+
+{\small
+\begin{itemize}
+\item{\tt LsrFinder: Searching \LogArg{name} [\LogArg{type}]}
+\item{\tt LsrFinder: Trying \LogArg{full name}}
+\item{\tt LsrFinder: Found \LogArg{full name}}
+\item{\tt LsrFinder: Ignoring unreadable file \LogArg{full name}}
+\item{\tt LsrFinder: Database \LogArg{index} is not readable}
+\item{\tt LsrFinder: Failed for \LogArg{name}}
+\item{\tt LsrFinder: Loaded database file `\LogArg{index}' in \LogArg{time} ms, size=\LogArg{size}}
+\item{\tt LsrFinder: Property \LogArg{property name} is undefined.}
+\item{\tt FileFinder: Environment variable \LogArg{env} is undefined.}
+\item{\tt LsrFinder: Configuration for `\LogArg{type}' not found;
+    Using default `\LogArg{element name}'}
+\item{\tt LsrFinder: Default configuration not found}
+\item{\tt LsrFinder: Type `\LogArg{type}' skipped}
+\end{itemize}}
+
+Note that the messages are subject to internationalization. Thus a
+translated version can appear for other user languages than English.
+
 
 \subsection{Recursively Searching in Directory Trees}
 
@@ -116,22 +233,7 @@ directory or recursivle in one of its sub-directories. This method
 really traverses the directory tree. This is not advisable since it
 can be rather slow.
 
-\INCOMPLETE
-
-\subsubsection*{Attributes}
-\begin{description}
-\item[class] The attribute \texttt{class} has the value
-  \texttt{org.extex.resource.ClasspathArchiveFinder} for the search in
-  archives. It is mandatory.
-\item[default] The attribute \texttt{default} names the type shich
-  should be used if no special section for the type at hand is
-  present. This attribute is mandatory.
-\item[trace] The attribute \texttt{trace} can be used to turn on the
-  tracing from within the configuration. It takes a boolean value as
-  argument (\texttt{true} or \texttt{false}). The tracing can be
-  overwritten at runtime. This attribute is optional. The default
-  value is \texttt{false}.
-\end{description}
+\subsubsection*{Example}
 
 \begin{lstlisting}[language=XML]
   <Finder class="org.extex.resource.FileFinderRPath"
@@ -148,6 +250,48 @@ can be rather slow.
 \end{lstlisting}
 
 
+\subsubsection*{Attributes}
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.FileFinderRPath} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\subsubsection*{Nested Elements}
+
+\INCOMPLETE
+
+
+\subsubsection*{Tracing Output}
+
+The following messages might be written to the log:
+
+{\small
+\begin{itemize}
+\item{\tt FileFinderRPath: Searching \LogArg{name} [\LogArg{type}]}
+\item{\tt FileFinderRPath: Trying \LogArg{full name}}
+\item{\tt FileFinderRPath: Found \LogArg{full name}}
+\item{\tt FileFinderRPath: Not found \LogArg{full name}}
+\item{\tt FileFinderRPath: Failed for \LogArg{name}}
+\item{\tt FileFinderRPath: \LogArg{dir} is no path.}
+\item{\tt FileFinderRPath: Property \LogArg{property name} is undefined.}
+\item{\tt FileFinderRPath: Environment variable \LogArg{env} is undefined.}
+\item{\tt FileFinderRPath: Configuration for `\LogArg{type}' not
+    found; Using default `\LogArg{element name}'}
+\end{itemize}}
+
+Note that the messages are subject to internationalization. Thus a
+translated version can appear for other user languages than English.
+
+
 \subsection{Searching in Archives}
 
 The preferred way to store resources in \ExTeX\ are archives. Archives
@@ -158,6 +302,18 @@ The archive used in \ExTeX\ have the extension \texttt{.jar}. They are
 special jar files which in turn are special zip files. Thus you can
 use the programs \Prog{jar}, \Prog{unzip}, or \Prog{Winzip} to get a
 listing or extract the directory tree from the archive.
+
+\subsubsection*{Example}
+
+\begin{lstlisting}[language=XML]
+  <Finder class="org.extex.resource.ClasspathArchiveFinder"
+          trace="false"
+          default="default">
+    <default>
+      <extension>.{type}</extension>
+    </default>
+  </Finder>
+\end{lstlisting}
 
 \subsubsection*{Attributes}
 \begin{description}
@@ -174,36 +330,40 @@ listing or extract the directory tree from the archive.
   value is \texttt{false}.
 \end{description}
 
-\begin{lstlisting}[language=XML]
-  <Finder class="org.extex.resource.ClasspathArchiveFinder"
-          trace="false"
-          default="default">
-    <default>
-      <extension>.{type}</extension>
-    </default>
-  </Finder>
-\end{lstlisting}
+\subsubsection*{Nested Elements}
 
 \INCOMPLETE
+
+\subsubsection*{Tracing Output}
+
+The following messages might be written to the log:
+
+{\small
+\begin{itemize}
+\item{\tt ClasspathArchiveFinder: Searching \LogArg{name} [\LogArg{type}]}
+\item{\tt ClasspathArchiveFinder: Trying \LogArg{full name}}
+\item{\tt ClasspathArchiveFinder: Found \LogArg{full name}}
+\item{\tt ClasspathArchiveFinder: Not found \LogArg{full name}}
+\item{\tt ClasspathArchiveFinder: Failed for \LogArg{full name}}
+\item{\tt ClasspathArchiveFinder: Property \LogArg{property name} is undefined.}
+\item{\tt ClasspathArchiveFinder: Configuration for `\LogArg{type}'
+    not found;  Using default `\LogArg{element name}'}
+\item{\tt ClasspathArchiveFinder: Default configuration not found}
+\item{\tt ClasspathArchiveFinder: Type `\LogArg{type}' skipped}
+\item{\tt ClasspathArchiveFinder: Index loaded in \LogArg{time} ms, size=\LogArg{size}}
+\item{\tt ClasspathArchiveFinder: Using index `\LogArg{index name}'}
+\end{itemize}}
+
+Note that the messages are subject to internationalization. Thus a
+translated version can appear for other user languages than English.
+
 
 \subsection{The Default Search}
 
-\INCOMPLETE
+The default search specification of \ExBib{} is shown below:
 
-\begin{lstlisting}[language=XML]
-\end{lstlisting}
+\lstinputlisting[language=XML]{../../../../../ExBib-Main/src/main/resources/config/path/exbibFinder.xml}
 
-\subsection{Tracing the Search}
-
-The tracing can be activated with the trace attributes for some
-sections or globally for the whole search at runtime. As a consequence
-the log file should contain messages describing the search -- where it
-looked and what it found.
-
-\INCOMPLETE
-
-\begin{lstlisting}[language=XML]
-\end{lstlisting}
 
 \endinput
 %
