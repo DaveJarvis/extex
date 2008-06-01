@@ -137,7 +137,7 @@ argument is a key/value pair. The key and the value are separated by
 an equals sign.\IM{x}
 
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \biboption{min-crossref=4}
+  \biboption{exbib.min.crossref=4}
 \end{lstlisting}
 
 Multiple sets of options are supported by an optional argument to
@@ -148,15 +148,17 @@ is \texttt{bbl}.\IM{x}
 The following example is equivalent to the example above:
 
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \biboption[bbl]{min-crossref=4}
+  \biboption[bbl]{exbib.min.crossref=4}
 \end{lstlisting}
 
 The following options are known:
 
 \begin{description}
-\item[min-crossref] The value is a number. It is used as minimum
+\item[exbib.min.crossref] The value is a number. It is used as minimum
   number of cross references before the referenced entry is left
   alone.
+\item[exbib.sort] The value is the specification of the sorter to be
+  used. For details of the value see section~\ref{sec:sort.order}.
 \end{description}
 
 \endinput
