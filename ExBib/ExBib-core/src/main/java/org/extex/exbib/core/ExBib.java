@@ -38,7 +38,6 @@ import org.extex.exbib.core.db.sorter.SorterFactory;
 import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.io.auxio.AuxReader;
@@ -461,7 +460,7 @@ public class ExBib {
                         finder, properties.getProperty(PROP_BIB_ENCODING),
                         encoding);
             ProcessorContainer container =
-                    new ProcessorContainer(config, logger) {
+                    new ProcessorContainer(config, logger, properties) {
 
                         /**
                          * {@inheritDoc}
@@ -480,13 +479,6 @@ public class ExBib {
                                 logger, processor));
                         }
                     };
-            try {
-                container.setMinCrossrefs(Integer.parseInt(properties
-                    .getProperty(PROP_MIN_CROSSREF, "2")));
-            } catch (NumberFormatException e) {
-                throw new ExBibMissingNumberException(properties.getProperty(
-                    PROP_MIN_CROSSREF, "2"), null);
-            }
             container.setSorter(sorter);
             container.setBibReaderFactory(bibReaderFactory);
             container.registerObserver("startRead", new DBObserver(logger,

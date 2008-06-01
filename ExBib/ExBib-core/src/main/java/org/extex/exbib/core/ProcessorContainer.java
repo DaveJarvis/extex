@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
@@ -31,6 +32,7 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
@@ -149,16 +151,35 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     private Logger logger;
 
     /**
+     * The field <tt>properties</tt> contains the properties.
+     */
+    private Properties properties;
+
+    /**
      * Creates a new object.
      * 
      * @param config the configuration
      * @param logger the logger
+     * @param properties the properties
+     * 
+     * @throws ExBibMissingNumberException in case of a numeric option with a
+     *         non-numeric value
      */
-    public ProcessorContainer(Configuration config, Logger logger) {
+    public ProcessorContainer(Configuration config, Logger logger,
+            Properties properties) throws ExBibMissingNumberException {
 
         super();
         configure(config);
         this.logger = logger;
+        this.properties = properties;
+        try {
+            minCrossrefs =
+                    Integer.parseInt(properties.getProperty(
+                        ExBib.PROP_MIN_CROSSREF, "2"));
+        } catch (NumberFormatException e) {
+            throw new ExBibMissingNumberException(properties.getProperty(
+                ExBib.PROP_MIN_CROSSREF, "2"), null);
+        }
     }
 
     /**
@@ -196,7 +217,19 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
 
         Processor processor = bibliographies.get(name);
         if (processor == null) {
-            DB db = dbFactory.newInstance(bibReaderFactory, minCrossrefs);
+
+            int mx = minCrossrefs;
+            String p = properties.getProperty(ExBib.PROP_MIN_CROSSREF) //
+                    + "." + name;
+            if (p != null) {
+                try {
+                    mx = Integer.parseInt(p);
+                } catch (NumberFormatException e) {
+                    throw new ExBibMissingNumberException(p, null);
+                }
+            }
+
+            DB db = dbFactory.newInstance(bibReaderFactory, mx);
             if (sorter != null) {
                 db.setSorter(sorter);
             }
