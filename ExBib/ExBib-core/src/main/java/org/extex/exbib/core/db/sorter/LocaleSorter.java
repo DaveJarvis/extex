@@ -120,7 +120,7 @@ public class LocaleSorter implements Comparator<Entry>, Sorter {
     @Override
     public String toString() {
 
-        return "locator:" + loc;
+        return "locale:" + loc;
     }
 
 }
