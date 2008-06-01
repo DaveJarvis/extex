@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.AbstractFileReader;
@@ -154,23 +153,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                     throws ConfigurationException,
                         ExBibException {
 
-                Processor processor;
-                try {
-                    processor = processors.findProcessor(type);
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-                int i = arg.indexOf('=');
-                if (i < 0) {
-                    processor.setOption(arg, "true");
-                } else {
-                    processor.setOption(arg.substring(0, i - 1), //
-                        arg.substring(i + 1));
-                }
+                processors.setOption(type, arg);
             }
         });
         register("@include", new AuxHandler() {

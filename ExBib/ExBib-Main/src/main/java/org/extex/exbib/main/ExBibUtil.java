@@ -371,11 +371,12 @@ public final class ExBibUtil extends AbstractMain {
                         getProperty(PROP_BIB_ENCODING),
                         getProperty(PROP_ENCODING));
             ProcessorContainer container =
-                    new ProcessorContainer(configuration, getLogger());
+                    new ProcessorContainer(configuration, getLogger(),
+                        getProperties());
             container.setBibReaderFactory(bibReaderFactory);
             container.setMinCrossrefs(Integer.MAX_VALUE);
 
-            Processor bibliography = container.findBibliography(null);
+            Processor bibliography = container.findProcessor(null);
             if (getProperty(PROP_FILE) == null) {
                 bibliography.addCitation("*");
             } else if (!readAux(configuration, finder, container)) {

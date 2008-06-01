@@ -45,6 +45,7 @@ import org.extex.exbib.core.util.Observer;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This is a container for a named set of bibliographies.
@@ -246,7 +247,10 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
 
             DB db = dbFactory.newInstance(bibReaderFactory, mx);
 
-            String s = properties.getProperty(ExBib.PROP_SORT);
+            String s = properties.getProperty(ExBib.PROP_SORT + "." + name);
+            if (s == null) {
+                s = properties.getProperty(ExBib.PROP_SORT);
+            }
             Sorter sorter = sorterFactory.newInstance(s);
 
             if (sorter != null) {
@@ -380,6 +384,43 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     public void setMinCrossrefs(int minCrossrefs) {
 
         this.minCrossrefs = minCrossrefs;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param type
+     * @param arg
+     * 
+     * @throws ExBibException
+     * @throws ConfigurationException
+     */
+    public void setOption(String type, String arg)
+            throws ConfigurationException,
+                ExBibException {
+
+        Processor processor;
+        try {
+            processor = findProcessor(type);
+        } catch (UnsupportedEncodingException e) {
+            throw new ConfigurationWrapperException(e);
+        } catch (CsfException e) {
+            throw new ConfigurationWrapperException(e);
+        } catch (IOException e) {
+            throw new ConfigurationWrapperException(e);
+        }
+        int i = arg.indexOf('=');
+        String key;
+        String value;
+        if (i < 0) {
+            key = arg;
+            value = "true";
+        } else {
+            key = arg.substring(0, i - 1);
+            value = arg.substring(i + 1);
+        }
+        processor.setOption(key, value);
+        properties.put(key, value);
     }
 
     /**
