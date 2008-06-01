@@ -387,13 +387,13 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Set an option for one or all processors.
      * 
-     * @param type
-     * @param arg
+     * @param type the type of the processor
+     * @param arg the name and value
      * 
-     * @throws ExBibException
-     * @throws ConfigurationException
+     * @throws ExBibException in case of an error
+     * @throws ConfigurationException in case of a configuration error
      */
     public void setOption(String type, String arg)
             throws ConfigurationException,
