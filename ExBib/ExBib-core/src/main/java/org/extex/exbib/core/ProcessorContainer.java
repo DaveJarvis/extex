@@ -399,16 +399,6 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
             throws ConfigurationException,
                 ExBibException {
 
-        Processor processor;
-        try {
-            processor = findProcessor(type);
-        } catch (UnsupportedEncodingException e) {
-            throw new ConfigurationWrapperException(e);
-        } catch (CsfException e) {
-            throw new ConfigurationWrapperException(e);
-        } catch (IOException e) {
-            throw new ConfigurationWrapperException(e);
-        }
         int i = arg.indexOf('=');
         String key;
         String value;
@@ -416,11 +406,29 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
             key = arg;
             value = "true";
         } else {
-            key = arg.substring(0, i - 1);
+            key = arg.substring(0, i);
             value = arg.substring(i + 1);
         }
-        processor.setOption(key, value);
-        properties.put(key, value);
+
+        properties.put(key + "." + type, value);
+
+        try {
+            Processor processor = findProcessor(type);
+
+            if (ExBib.PROP_SORT.equals(key)) {
+                processor.getDB().setSorter(sorterFactory.newInstance(value));
+            } else if (ExBib.PROP_MIN_CROSSREF.equals(key)) {
+                processor.setOption(key, value);
+            } else {
+                processor.setOption(key, value);
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new ConfigurationWrapperException(e);
+        } catch (CsfException e) {
+            throw new ConfigurationWrapperException(e);
+        } catch (IOException e) {
+            throw new ConfigurationWrapperException(e);
+        }
     }
 
     /**
