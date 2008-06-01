@@ -1535,6 +1535,25 @@ public class ExBibTest extends BibTester {
 
     /**
      * <testcase> Test that the command line option <tt>--sorter</tt> knows a
+     * locale sorter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorterLocale03() throws Exception {
+
+        runTest("test",
+            "\\citation{*}\n"
+                    + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
+                    + "\\biboption{exbib.sort=locale:de}\n",//
+            CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
+            BANNER, //
+            "test.aux", "--out=-", "--enc=UTF-8");
+    }
+
+    /**
+     * <testcase> Test that the command line option <tt>--sorter</tt> knows a
      * rbc sorter. </testcase>
      * 
      * @throws Exception in case of an error
