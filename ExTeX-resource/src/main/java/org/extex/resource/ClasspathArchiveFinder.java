@@ -56,7 +56,7 @@ import org.extex.resource.io.NamedInputStream;
  * <pre>
  * &lt;Finder class="org.extex.util.resource.ClasspathArchiveFinder"
  *         trace="false"
- *         toc="toc.index"
+ *         toc="META-INF/toc.index"
  *         default="default"&gt;
  *   &lt;tex&gt;
  *     &lt;extension&gt;&lt;/extension&gt;
@@ -140,10 +140,10 @@ import org.extex.resource.io.NamedInputStream;
 public class ClasspathArchiveFinder extends AbstractFinder {
 
     /**
-     * The constant <tt>DEFALUT_TOC_NAME</tt> contains the default name of the
+     * The constant <tt>DEFAULT_TOC_NAME</tt> contains the default name of the
      * index.
      */
-    private static final String DEFALUT_TOC_NAME = "toc.index";
+    private static final String DEFAULT_TOC_NAME = "META-INF/toc.index";
 
     /**
      * The field <tt>index</tt> contains the mapping from file names to.
@@ -184,7 +184,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
 
         if (index == null) {
             String tocName = getConfiguration().getAttribute("toc");
-            index = initialize(tocName != null ? tocName : DEFALUT_TOC_NAME);
+            index = initialize(tocName != null ? tocName : DEFAULT_TOC_NAME);
         }
 
         Configuration configuration = getConfiguration();
