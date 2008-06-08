@@ -30,6 +30,12 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TFieldString;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TLiteral;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
@@ -39,12 +45,6 @@ import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenFactory;
-import org.extex.exbib.core.node.impl.TFieldString;
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TLiteral;
-import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>:=</tt>.

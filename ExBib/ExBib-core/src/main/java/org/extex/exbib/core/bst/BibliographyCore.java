@@ -26,11 +26,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.node.Token;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;

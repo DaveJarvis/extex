@@ -19,7 +19,7 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import org.extex.exbib.core.node.impl.TString;
+import org.extex.exbib.core.bst.node.impl.TString;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function

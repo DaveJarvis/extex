@@ -21,7 +21,7 @@ package org.extex.exbib.core.bst.command;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.node.TokenVisitor;
+import org.extex.exbib.core.bst.node.TokenVisitor;
 
 /**
  * This interface implements the visitor pattern for commands. The visitor

@@ -27,11 +27,11 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Gt;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.NullWriter;
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>&gt;</tt>.

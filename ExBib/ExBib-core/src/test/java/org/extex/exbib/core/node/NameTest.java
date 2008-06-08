@@ -24,9 +24,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
+import org.extex.exbib.core.bst.node.Name;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
-import org.extex.exbib.core.node.Name;
 import org.junit.Test;
 
 /**

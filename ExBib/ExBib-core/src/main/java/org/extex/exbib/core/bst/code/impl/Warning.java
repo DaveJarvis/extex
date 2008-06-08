@@ -21,10 +21,10 @@ package org.extex.exbib.core.bst.code.impl;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
+import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.Token;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 

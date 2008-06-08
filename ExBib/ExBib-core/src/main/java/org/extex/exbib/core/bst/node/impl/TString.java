@@ -17,22 +17,22 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
+import org.extex.exbib.core.bst.node.AbstractToken;
+import org.extex.exbib.core.bst.node.Name;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.AbstractToken;
-import org.extex.exbib.core.node.Name;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents a <tt>String</tt> token, i.e. a value enclosed in
@@ -85,7 +85,7 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -158,8 +158,8 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#visit(
-     *      org.extex.exbib.core.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

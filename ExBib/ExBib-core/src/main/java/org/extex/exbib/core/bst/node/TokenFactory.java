@@ -17,10 +17,10 @@
  *
  */
 
-package org.extex.exbib.core.node;
+package org.extex.exbib.core.bst.node;
 
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TString;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
 
 /**
  * The token factory is a place to request tokens from. Currently only a few

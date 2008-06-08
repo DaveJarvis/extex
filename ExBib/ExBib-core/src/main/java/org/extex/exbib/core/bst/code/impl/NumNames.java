@@ -23,13 +23,13 @@ import java.util.List;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
+import org.extex.exbib.core.bst.node.Name;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.Name;
-import org.extex.exbib.core.node.TokenFactory;
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TString;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function

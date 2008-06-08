@@ -25,9 +25,9 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.Token;
 
 /**
  * This class represents an <tt>EXECUTE</tt> command.

@@ -17,18 +17,18 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibNoNumberException;
+import org.extex.exbib.core.bst.node.AbstractToken;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.AbstractToken;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents an integer token, i.e. a number which is marked as one.
@@ -83,7 +83,7 @@ public class TInteger extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -119,8 +119,8 @@ public class TInteger extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#visit(
-     *      org.extex.exbib.core.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

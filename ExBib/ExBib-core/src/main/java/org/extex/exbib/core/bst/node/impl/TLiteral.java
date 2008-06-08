@@ -17,20 +17,20 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
+import org.extex.exbib.core.bst.node.AbstractToken;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.AbstractToken;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents a literal token which corresponds to a macro.
@@ -94,7 +94,7 @@ public class TLiteral extends AbstractToken implements Token {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.Token#expand(
+     * @see org.extex.exbib.core.bst.node.Token#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
@@ -107,8 +107,8 @@ public class TLiteral extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#visit(
-     *      org.extex.exbib.core.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

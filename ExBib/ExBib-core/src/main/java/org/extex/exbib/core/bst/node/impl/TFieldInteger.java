@@ -17,66 +17,72 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.bst.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
+import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
+import org.extex.exbib.core.bst.node.AbstractToken;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
+import org.extex.exbib.core.db.VNumber;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.AbstractToken;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenVisitor;
 
 /**
- * A TChar token is used during parsing to represent a single character. It
- * should not make it into the processing cycle.
+ * This class represents an integer valued field local to an entry. This class
+ * is not related to externally stored values but used internally only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TChar extends AbstractToken implements Token {
+public class TFieldInteger extends AbstractToken implements Token {
 
     /**
-     * Creates a new object.
+     * Create a new object.
      * 
-     * @param value a single character for the value
-     * @param locator the locator or <code>null</code>
-     * 
-     * @throws ExBibException in case that the constructor of AbstractToken
-     *         throws it
-     * @throws ExBibIllegalValueException in case that the value is not a single
-     *         character
+     * @param locator the locator
+     * @param value the name of the field
      */
-    public TChar(char value, Locator locator) throws ExBibException {
+    public TFieldInteger(String value, Locator locator) {
 
-        super(Character.toString(value), locator);
+        super(value, locator);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
     @Override
-    public void execute(Processor processor, Entry entry, Locator locator) {
+    public void execute(Processor processor, Entry entry, Locator locator)
+            throws ExBibException {
 
-        processor.push(this);
+        if (entry == null) {
+            throw new ExBibMissingEntryException(null, locator);
+        }
+
+        VNumber val = (VNumber) entry.getLocal(getValue());
+
+        processor.push(val == null ? TokenFactory.T_ZERO : new TInteger(val
+            .getContent(), locator));
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.node.AbstractToken#visit(
-     *      org.extex.exbib.core.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
-        visitor.visitChar(this);
+        visitor.visitFieldInteger(this);
     }
+
 }

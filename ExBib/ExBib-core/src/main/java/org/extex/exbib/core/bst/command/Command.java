@@ -22,9 +22,9 @@ package org.extex.exbib.core.bst.command;
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.node.Token;
 
 /**
  * This interface represents the top-level executable Commands of a BST file.

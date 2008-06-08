@@ -27,13 +27,13 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Write;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.impl.TBlock;
+import org.extex.exbib.core.bst.node.impl.TChar;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TQLiteral;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
-import org.extex.exbib.core.node.impl.TBlock;
-import org.extex.exbib.core.node.impl.TChar;
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TQLiteral;
-import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>write$</tt>.

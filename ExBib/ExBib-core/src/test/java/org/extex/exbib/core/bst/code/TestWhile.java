@@ -27,14 +27,14 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.While;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.NullWriter;
-import org.extex.exbib.core.node.TokenFactory;
-import org.extex.exbib.core.node.impl.TLiteral;
 
 /**
  * Test suite for <tt>while$</tt>.

@@ -24,11 +24,11 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TFieldString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
-import org.extex.exbib.core.node.TokenFactory;
-import org.extex.exbib.core.node.impl.TFieldString;
 
 /**
  * Test suite for sort.key$.

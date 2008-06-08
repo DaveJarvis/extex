@@ -33,6 +33,14 @@ import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
+import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TField;
+import org.extex.exbib.core.bst.node.impl.TFieldInteger;
+import org.extex.exbib.core.bst.node.impl.TFieldString;
+import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
@@ -43,14 +51,6 @@ import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
-import org.extex.exbib.core.node.Token;
-import org.extex.exbib.core.node.TokenFactory;
-import org.extex.exbib.core.node.impl.TField;
-import org.extex.exbib.core.node.impl.TFieldInteger;
-import org.extex.exbib.core.node.impl.TFieldString;
-import org.extex.exbib.core.node.impl.TInteger;
-import org.extex.exbib.core.node.impl.TString;
-import org.extex.exbib.core.node.impl.TokenList;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
@@ -761,7 +761,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setIntegers(
-     *      org.extex.exbib.core.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
@@ -790,7 +790,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setStrings(
-     *      org.extex.exbib.core.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
      */
     public void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
