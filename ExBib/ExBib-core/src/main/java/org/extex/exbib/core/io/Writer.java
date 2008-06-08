@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +20,6 @@
 package org.extex.exbib.core.io;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.extex.framework.configuration.Configurable;
 
@@ -50,84 +48,24 @@ public interface Writer extends Configurable {
     void flush() throws IOException;
 
     /**
-     * Getter for an underlying print stream if one is present.
-     * 
-     * @return the PrintStream or <code>null</code> if none is present
-     */
-    PrintWriter getPrintWriter();
-
-    /**
-     * Print a single String to the destination of this writer. Additionally all
+     * Print some Strings to the destination of this writer. Additionally all
      * "next" writers are called to do the same.
      * 
      * @param s the string to write
      * 
      * @throws IOException in case of an error during writing
      */
-    void print(String s) throws IOException;
+    void print(String... s) throws IOException;
 
     /**
-     * Print a two Strings to the destination of this writer. Additionally all
-     * "next" writers are called to do the same.
-     * 
-     * @param s1 the first String to write
-     * @param s2 the second String to write
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    void print(String s1, String s2) throws IOException;
-
-    /**
-     * Print a three Strings to the destination of this writer. Additionally all
-     * "next" writers are called to do the same.
-     * 
-     * @param s1 the first String to write
-     * @param s2 the second String to write
-     * @param s3 the third String to write
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    void print(String s1, String s2, String s3) throws IOException;
-
-    /**
-     * Print a newline to the destination of this writer.
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    void println() throws IOException;
-
-    /**
-     * Print a single String followed by a newline to the destination of this
+     * Print some Strings followed by a newline to the destination of this
      * writer. Additionally all "next" writers are called to do the same.
      * 
      * @param s the string to write
      * 
      * @throws IOException in case of an I/O error
      */
-    void println(String s) throws IOException;
-
-    /**
-     * Print a two Strings followed by a newline to the destination of this
-     * writer. Additionally all "next" writers are called to do the same.
-     * 
-     * @param s1 the first String to write
-     * @param s2 the second String to write
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    void println(String s1, String s2) throws IOException;
-
-    /**
-     * Print a three Strings followed by a newline to the destination of this
-     * writer. Additionally all "next" writers are called to do the same.
-     * 
-     * @param s1 the first String to write
-     * @param s2 the second String to write
-     * @param s3 the third String to write
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    void println(String s1, String s2, String s3) throws IOException;
+    void println(String... s) throws IOException;
 
     /**
      * Write a single character to the destination of this writer. Additionally

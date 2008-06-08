@@ -527,8 +527,8 @@ public class ExBibUtilTest extends BibUtilTester {
     /**
      * <testcase> Test that the command line option <tt>--logfile</tt> can be
      * used to redirect the log output. It is tested that the log file is
-     * created and the ExBib instance reports the log file with getLogfile().
-     * </testcase>
+     * created and the {@link ExBib} instance reports the log file with
+     * getLogfile(). </testcase>
      * 
      * @throws Exception in case of an error
      */

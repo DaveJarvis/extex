@@ -27,14 +27,14 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Missing;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>missing$</tt>.
@@ -164,7 +164,7 @@ public class TestMissing extends TestCase {
     public void testInteger() throws Exception {
 
         try {
-            p.push(new TInteger(123));
+            p.push(new TInteger(123, null));
             new Missing("missing$").execute(p, entry, null);
             assertTrue(false);
         } catch (ExBibMissingStringException e) {

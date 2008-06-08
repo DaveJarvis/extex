@@ -17,21 +17,20 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents a literal token which corresponds to a macro.
@@ -44,31 +43,14 @@ public class TLiteral extends AbstractToken implements Token {
     /**
      * Creates a new object.
      * 
-     * @param value the literal value
-     * 
-     * @throws ExBibIllegalValueException in case that the given value is
-     *         <code>null</code> or the empty string
-     */
-    public TLiteral(String value) throws ExBibIllegalValueException {
-
-        super(value, null);
-
-        if (value == null || value.equals("")) {
-            throw new ExBibEmptyFunctionNameException(getLocator());
-        }
-    }
-
-    /**
-     * Creates a new object.
-     * 
      * @param locator the locator
      * @param value the literal value
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibIllegalValueException in case that the given value is
+     * @throws ExBibEmptyFunctionNameException in case that the given value is
      *         <code>null</code> or the empty string
      */
-    public TLiteral(String value, Locator locator) throws ExBibException {
+    public TLiteral(String value, Locator locator)
+            throws ExBibEmptyFunctionNameException {
 
         super(value, locator);
 
@@ -112,22 +94,21 @@ public class TLiteral extends AbstractToken implements Token {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.Token#expand(
+     * @see org.extex.exbib.core.node.Token#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
     public String expand(Processor processor) {
 
         String macro = processor.getMacro(getValue());
-
         return (macro != null ? macro : "");
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

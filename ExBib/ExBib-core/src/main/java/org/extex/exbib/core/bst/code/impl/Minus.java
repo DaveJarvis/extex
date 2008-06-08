@@ -21,10 +21,10 @@ package org.extex.exbib.core.bst.code.impl;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TInteger;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>-</code>
@@ -73,7 +73,7 @@ public class Minus extends AbstractCode {
 
         int a = processor.popInteger(locator).getInt();
         int b = processor.popInteger(locator).getInt();
-        processor.push(new TInteger(b - a));
+        processor.push(new TInteger(b - a, locator));
     }
 
 }

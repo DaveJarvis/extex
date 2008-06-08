@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.node;
 
 import java.io.IOException;
 
@@ -49,7 +49,7 @@ public interface Token extends Code {
     /**
      * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
      * locator is a means to get information about where the token came from
-     * originally. If no such information is availlable then <code>null</code>
+     * originally. If no such information is available then <code>null</code>
      * is returned.
      * 
      * @return the locator or <code>null</code>

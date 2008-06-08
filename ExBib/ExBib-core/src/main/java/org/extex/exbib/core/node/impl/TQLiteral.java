@@ -17,17 +17,17 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class encapsulates a {@link TLiteral TLiteral} and protects it from
@@ -39,9 +39,9 @@ import org.extex.exbib.core.io.Locator;
 public class TQLiteral extends AbstractToken implements Token {
 
     /**
-     * The field <tt>theValue</tt> contains the literal value.
+     * The field <tt>value</tt> contains the literal value.
      */
-    private TLiteral theValue = null;
+    private TLiteral value = null;
 
     /**
      * Create a new object.
@@ -54,13 +54,13 @@ public class TQLiteral extends AbstractToken implements Token {
     public TQLiteral(String value, Locator locator) throws ExBibException {
 
         super(value, locator);
-        theValue = new TLiteral(value, locator);
+        this.value = new TLiteral(value, locator);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -69,13 +69,13 @@ public class TQLiteral extends AbstractToken implements Token {
             throws ExBibException {
 
         processor.step(toString());
-        processor.push(theValue);
+        processor.push(value);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     * @see org.extex.exbib.core.node.AbstractToken#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
@@ -90,10 +90,10 @@ public class TQLiteral extends AbstractToken implements Token {
      * 
      * @return the string representation
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#setString()
+     * @see org.extex.exbib.core.node.AbstractToken#getString()
      */
     @Override
-    protected String setString() {
+    protected String getString() {
 
         return "'" + getValue();
     }
@@ -101,8 +101,8 @@ public class TQLiteral extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

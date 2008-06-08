@@ -54,6 +54,7 @@
             <phase>package</phase>
             <configuration>
               <tasks>
+                <mkdir dir="target"/>
                 <echo message="Running IzPack" />
                 <taskdef name="izpack"
                   classpath="${basedir}/src/izPack-install-3.11.0/lib/compiler.jar"

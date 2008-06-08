@@ -22,10 +22,10 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TLiteral;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 

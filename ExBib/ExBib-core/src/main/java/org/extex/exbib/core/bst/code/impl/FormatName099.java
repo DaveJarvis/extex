@@ -19,10 +19,11 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>format.name$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>format.name$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -42,9 +43,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
  * in that order). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
  * from this list, and the first string literal specifies how to format this
- * name, as described in the B<small>IB</small>T<sub>E</sub>X documentation. Finally, this
- * function pushes the formatted name. If any of the types is incorrect, it
- * complains and pushes the null string. </dd>
+ * name, as described in the B<small>IB</small>T<sub>E</sub>X documentation.
+ * Finally, this function pushes the formatted name. If any of the types is
+ * incorrect, it complains and pushes the null string. </dd>
  * </dl>
  * 
  * <dl>
@@ -102,7 +103,7 @@ public class FormatName099 extends FormatName {
         int i = s.length() - 1;
 
         if (i < 0) {
-            return new TString(s);
+            return new TString(s, null);
         }
 
         StringBuffer sb = new StringBuffer(s);
@@ -152,6 +153,6 @@ public class FormatName099 extends FormatName {
         // while ((i = sb.indexOf(" ~", i)) >= 0) {
         // sb.deleteCharAt(i + 1);
         // }
-        return new TString(sb.toString());
+        return new TString(sb.toString(), null);
     }
 }

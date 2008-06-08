@@ -23,16 +23,17 @@ import java.util.regex.Pattern;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.impl.TString;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>add.period$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>add.period$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
@@ -111,9 +112,9 @@ public class AddPeriod extends AbstractCode {
         String value = a.getValue();
 
         if (!value.equals("") && !omitPattern.matcher(value).matches()) {
-            a = new TString(value + ".");
+            a = new TString(value + ".", locator);
         } else if (!(a instanceof TString)) {
-            a = new TString(value);
+            a = new TString(value, locator);
         }
 
         processor.push(a);

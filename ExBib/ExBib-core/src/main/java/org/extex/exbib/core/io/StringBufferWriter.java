@@ -20,7 +20,6 @@
 package org.extex.exbib.core.io;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.extex.framework.configuration.Configuration;
 
@@ -90,93 +89,25 @@ public class StringBufferWriter implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#getPrintWriter()
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public PrintWriter getPrintWriter() {
+    public void print(String... args) {
 
-        return null;
+        for (String s : args) {
+            buffer.append(s);
+        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s) {
+    public void println(String... args) {
 
-        buffer.append(s);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
-     */
-    public void print(String s1, String s2) {
-
-        buffer.append(s1);
-        buffer.append(s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) {
-
-        buffer.append(s1);
-        buffer.append(s2);
-        buffer.append(s3);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println() {
-
-        buffer.append("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println(String s) {
-
-        buffer.append(s);
-        buffer.append("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
-     */
-    public void println(String s1, String s2) {
-
-        buffer.append(s1);
-        buffer.append(s2);
-        buffer.append("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) {
-
-        buffer.append(s1);
-        buffer.append(s2);
-        buffer.append(s3);
+        for (String s : args) {
+            buffer.append(s);
+        }
         buffer.append("\n");
     }
 

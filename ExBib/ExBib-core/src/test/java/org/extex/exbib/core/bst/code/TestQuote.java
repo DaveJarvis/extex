@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,9 +26,9 @@ import junit.framework.TestSuite;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Quote;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
 
 /**
  * Test suite for <tt>quote$</tt>.
@@ -103,7 +102,7 @@ public class TestQuote extends TestCase {
      */
     public void testQuote() throws Exception {
 
-        p.push(new TInteger(1));
+        p.push(TokenFactory.T_ONE);
         new Quote("quote$").execute(p, null, null);
         assertEquals("\"", p.popString(null).getValue());
         assertEquals(1, p.popInteger(null).getInt());

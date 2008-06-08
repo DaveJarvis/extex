@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the

@@ -22,15 +22,16 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TInteger;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>char.to.int$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>char.to.int$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
@@ -90,7 +91,7 @@ public class ChrToInt extends AbstractCode {
                 "invalid.length", c), locator);
         }
 
-        processor.push(new TInteger(c.charAt(0)));
+        processor.push(new TInteger(c.charAt(0), locator));
     }
 
 }

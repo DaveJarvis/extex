@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,11 +30,6 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
@@ -45,6 +39,12 @@ import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TFieldString;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TLiteral;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>:=</tt>.
@@ -127,7 +127,7 @@ public class TestSet extends TestCase {
         entry = db.makeEntry("book", "abc", null);
         entry.set("author", new Value());
         p = new BstProcessor099c(db, new NullWriter(null), null);
-        p.addFunction("abc", new TInteger(1), null);
+        p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 
     /**
@@ -149,7 +149,7 @@ public class TestSet extends TestCase {
     public void test1Stack() throws Exception {
 
         try {
-            p.push(new TLiteral("a"));
+            p.push(new TLiteral("a", null));
             new Set(":=").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -179,7 +179,7 @@ public class TestSet extends TestCase {
      */
     public void testSet1() throws Exception {
 
-        runTest("abc", new TInteger(123));
+        runTest("abc", new TInteger(123, null));
     }
 
     /**
@@ -189,7 +189,7 @@ public class TestSet extends TestCase {
      */
     public void testSet2() throws Exception {
 
-        runTest("abc", new TString("123"));
+        runTest("abc", new TString("123", null));
     }
 
     /**
@@ -203,8 +203,8 @@ public class TestSet extends TestCase {
         strings.add("aaa");
         p.setEntryStrings(strings, null);
 
-        p.push(new TString("123"));
-        p.push(new TFieldString("aaa"));
+        p.push(new TString("123", null));
+        p.push(new TFieldString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         ValueItem value = entry.getLocal("aaa");
@@ -223,8 +223,8 @@ public class TestSet extends TestCase {
         strings.add("aaa");
         p.setEntryStrings(strings, null);
 
-        p.push(new TInteger(123));
-        p.push(new TFieldString("aaa"));
+        p.push(new TInteger(123, null));
+        p.push(new TFieldString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);
@@ -244,8 +244,8 @@ public class TestSet extends TestCase {
         integers.add("aaa");
         p.setEntryIntegers(integers, null);
 
-        p.push(new TInteger(123));
-        p.push(new TFieldString("aaa"));
+        p.push(new TInteger(123, null));
+        p.push(new TFieldString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         ValueItem value = entry.getLocal("aaa");
@@ -264,8 +264,8 @@ public class TestSet extends TestCase {
         integers.add("aaa");
         p.setEntryIntegers(integers, null);
 
-        p.push(new TString("123"));
-        p.push(new TFieldString("aaa"));
+        p.push(new TString("123", null));
+        p.push(new TFieldString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);
@@ -285,8 +285,8 @@ public class TestSet extends TestCase {
         entries.add("aaa");
         p.setEntries(entries, null);
 
-        p.push(new TString("123"));
-        p.push(new TFieldString("aaa"));
+        p.push(new TString("123", null));
+        p.push(new TFieldString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         Value value = entry.get("aaa");
@@ -305,8 +305,8 @@ public class TestSet extends TestCase {
         entries.add("aaa");
         p.setEntries(entries, null);
 
-        p.push(new TInteger(123));
-        p.push(new TFieldString("aaa"));
+        p.push(new TInteger(123, null));
+        p.push(new TFieldString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);
@@ -323,8 +323,8 @@ public class TestSet extends TestCase {
     public void testTypeError1() throws Exception {
 
         try {
-            p.push(new TInteger(2));
-            p.push(new TLiteral("a"));
+            p.push(new TInteger(2, null));
+            p.push(new TLiteral("a", null));
             new Set(":=").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibFunctionUndefinedException e) {
@@ -340,7 +340,7 @@ public class TestSet extends TestCase {
     public void testUndef() throws Exception {
 
         try {
-            p.push(new TInteger(2));
+            p.push(new TInteger(2, null));
             p.push(new TLiteral("undef", null));
             new Set(":=").execute(p, null, null);
             assertTrue(false);

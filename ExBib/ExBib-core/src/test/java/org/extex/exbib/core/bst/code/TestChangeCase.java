@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,10 +28,10 @@ import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.ChangeCase;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>change.case$</tt>.
@@ -324,8 +323,8 @@ public class TestChangeCase extends TestCase {
     private void testChangeCase(String fmt, String s, String res)
             throws Exception {
 
-        p.push(new TString(s));
-        p.push(new TString(fmt));
+        p.push(new TString(s, null));
+        p.push(new TString(fmt, null));
         new ChangeCase("change.case$").execute(p, null, null);
         assertEquals(res, p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -396,7 +395,7 @@ public class TestChangeCase extends TestCase {
     public void testShortStack() throws Exception {
 
         try {
-            p.push(new TString("e"));
+            p.push(new TString("e", null));
             new ChangeCase("change.case$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -412,8 +411,8 @@ public class TestChangeCase extends TestCase {
     public void testTypeError() throws Exception {
 
         try {
-            p.push(new TString("e"));
-            p.push(new TString(""));
+            p.push(new TString("e", null));
+            p.push(new TString("", null));
             new ChangeCase("change.case$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibIllegalValueException e) {

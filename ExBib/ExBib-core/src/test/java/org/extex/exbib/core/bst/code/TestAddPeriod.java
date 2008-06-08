@@ -27,10 +27,10 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.AddPeriod;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>add.period$</tt>.
@@ -119,7 +119,7 @@ public class TestAddPeriod extends TestCase {
      */
     public void testInteger() throws Exception {
 
-        p.push(new TInteger(123));
+        p.push(new TInteger(123, null));
         new AddPeriod("add.period$").execute(p, null, null);
         assertEquals("123.", p.popString(null).getValue());
     }
@@ -133,7 +133,7 @@ public class TestAddPeriod extends TestCase {
      */
     private void testNoAdd(String in) throws Exception {
 
-        p.push(new TString(in));
+        p.push(new TString(in, null));
         new AddPeriod("add.period$").execute(p, null, null);
         assertEquals(in, p.popString(null).getValue());
     }
@@ -199,7 +199,7 @@ public class TestAddPeriod extends TestCase {
      */
     public void testString() throws Exception {
 
-        p.push(new TString("abc"));
+        p.push(new TString("abc", null));
         new AddPeriod("add.period$").execute(p, null, null);
         assertTrue(p.popString(null).getValue().equals("abc."));
     }

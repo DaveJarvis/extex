@@ -20,7 +20,6 @@
 package org.extex.exbib.core.io.bblio;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.extex.exbib.core.io.Writer;
 import org.extex.framework.configuration.Configuration;
@@ -48,10 +47,10 @@ public class BblWriter implements Writer {
     private String indent = "  ";
 
     /**
-     * The field <tt>sb</tt> contains the temporary memory before shipping the
-     * line to the writer.
+     * The field <tt>buffer</tt> contains the temporary memory before shipping
+     * the line to the writer.
      */
-    private StringBuilder sb = new StringBuilder();
+    private StringBuilder buffer = new StringBuilder();
 
     /**
      * The field <tt>writer</tt> contains the output writer.
@@ -115,20 +114,10 @@ public class BblWriter implements Writer {
      */
     public void flush() throws IOException {
 
-        writer.print(sb.toString());
+        writer.print(buffer.toString());
         writer.flush();
-        sb.setLength(0);
+        buffer.setLength(0);
         space = 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#getPrintWriter()
-     */
-    public PrintWriter getPrintWriter() {
-
-        return null;
     }
 
     /**
@@ -142,26 +131,26 @@ public class BblWriter implements Writer {
 
         char c;
 
-        for (int i = space + 1; i < sb.length(); i++) {
-            c = sb.charAt(i);
+        for (int i = space + 1; i < buffer.length(); i++) {
+            c = buffer.charAt(i);
 
             if (c == '\n') {
                 int sp = i;
 
-                while (sp > 0 && Character.isWhitespace(sb.charAt(sp - 1))) {
+                while (sp > 0 && Character.isWhitespace(buffer.charAt(sp - 1))) {
                     sp--;
                 }
 
-                writer.println(sb.substring(0, sp));
-                sb.delete(0, i + 1);
+                writer.println(buffer.substring(0, sp));
+                buffer.delete(0, i + 1);
                 space = -1;
                 i = 0;
             } else if (Character.isWhitespace(c)) {
                 if (c != ' ') {
                     if (space == i - 1) {
-                        sb.deleteCharAt(i--);
+                        buffer.deleteCharAt(i--);
                     } else {
-                        sb.replace(i, i + 1, " ");
+                        buffer.replace(i, i + 1, " ");
                     }
                 }
 
@@ -171,13 +160,13 @@ public class BblWriter implements Writer {
             if (i >= lineLength && space >= 0) {
                 int sp = space;
 
-                while (sp >= 0 && Character.isWhitespace(sb.charAt(sp))) {
+                while (sp >= 0 && Character.isWhitespace(buffer.charAt(sp))) {
                     sp--;
                 }
 
-                writer.println(sb.substring(0, sp + 1));
-                sb.delete(0, space + 1);
-                sb.insert(0, indent);
+                writer.println(buffer.substring(0, sp + 1));
+                buffer.delete(0, space + 1);
+                buffer.insert(0, indent);
                 space = -1;
                 i = 0;
             }
@@ -195,99 +184,62 @@ public class BblWriter implements Writer {
      */
     private void linebreaking(String s) throws IOException {
 
-        sb.append(s);
+        buffer.append(s);
         linebreaking();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public void print(String s) throws IOException {
+    public void print(String... args) throws IOException {
 
-        linebreaking(s);
+        for (String s : args) {
+            linebreaking(s);
+        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s1, String s2) throws IOException {
+    public void println(String... args) throws IOException {
 
-        linebreaking(s1);
-        linebreaking(s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) throws IOException {
-
-        linebreaking(s1);
-        linebreaking(s2);
-        linebreaking(s3);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println()
-     */
-    public void println() throws IOException {
-
-        // delete trailing spaces
-        for (int i = sb.length() - 1; i >= 0
-                && Character.isWhitespace(sb.charAt(i)); i--) {
-            sb.deleteCharAt(i);
+        for (String s : args) {
+            linebreaking(s);
         }
 
-        writer.println(sb.toString());
-        sb.setLength(0);
+        // delete trailing spaces
+        for (int i = buffer.length() - 1; i >= 0
+                && Character.isWhitespace(buffer.charAt(i)); i--) {
+            buffer.deleteCharAt(i);
+        }
+
+        writer.println(buffer.toString());
+        buffer.setLength(0);
         space = -1;
     }
 
     /**
-     * {@inheritDoc}
+     * Setter for indent.
      * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
+     * @param indent the indent to set
      */
-    public void println(String s) throws IOException {
+    public void setIndent(String indent) {
 
-        linebreaking(s);
-        println();
+        this.indent = indent;
     }
 
     /**
-     * {@inheritDoc}
+     * Setter for lineLength.
      * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
+     * @param lineLength the lineLength to set
      */
-    public void println(String s1, String s2) throws IOException {
+    public void setLineLength(int lineLength) {
 
-        linebreaking(s1);
-        linebreaking(s2);
-        println();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) throws IOException {
-
-        linebreaking(s1);
-        linebreaking(s2);
-        linebreaking(s3);
-        println();
+        this.lineLength = lineLength;
     }
 
     /**
@@ -297,7 +249,7 @@ public class BblWriter implements Writer {
      */
     public void write(int c) throws IOException {
 
-        sb.append((char) c);
+        buffer.append((char) c);
         linebreaking();
     }
 

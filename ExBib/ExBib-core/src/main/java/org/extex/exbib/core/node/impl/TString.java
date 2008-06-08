@@ -17,22 +17,22 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Name;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Name;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents a <tt>String</tt> token, i.e. a value enclosed in
@@ -55,17 +55,7 @@ public class TString extends AbstractToken implements Token {
      */
     private List<Name> names = null;
 
-    // TOOD test whether caching of names is useful
-
-    /**
-     * Creates a new object. The locator is not set.
-     * 
-     * @param value its value
-     */
-    public TString(String value) {
-
-        super(value, null);
-    }
+    // TODO test whether caching of names is useful
 
     /**
      * Creates a new object.
@@ -95,7 +85,7 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -131,6 +121,18 @@ public class TString extends AbstractToken implements Token {
     }
 
     /**
+     * Compute the string representation for this object. This value is used by
+     * the method {@link #toString() toString()}.
+     * 
+     * @return the string representation
+     */
+    @Override
+    protected String getString() {
+
+        return "\"" + getValue() + "\"";
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#hashCode()
@@ -145,6 +147,7 @@ public class TString extends AbstractToken implements Token {
      * Setter for the names property.
      * 
      * @param list the new value
+     * 
      * @see #getNames()
      */
     public void setNames(List<Name> list) {
@@ -153,22 +156,10 @@ public class TString extends AbstractToken implements Token {
     }
 
     /**
-     * Compute the string representation for this object. This value is used by
-     * the method {@link #toString() toString()}.
-     * 
-     * @return the string representation
-     */
-    @Override
-    protected String setString() {
-
-        return "\"" + getValue() + "\"";
-    }
-
-    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

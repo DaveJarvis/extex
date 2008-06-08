@@ -27,16 +27,16 @@ import java.util.Map;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.Name;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIndexOutOfBoundsException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.Name;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -1070,7 +1070,7 @@ public class FormatName extends AbstractCode {
      */
     protected TString process(String s) {
 
-        return new TString(s);
+        return new TString(s, null);
     }
 
     /**

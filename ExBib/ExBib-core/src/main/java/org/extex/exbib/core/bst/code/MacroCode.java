@@ -20,10 +20,10 @@
 package org.extex.exbib.core.bst.code;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.Token;
 
 /**
  * This class is a container for interpreted macro

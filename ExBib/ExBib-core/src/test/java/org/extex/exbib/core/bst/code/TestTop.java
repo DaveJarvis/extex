@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
- * This file is part of ExBib a BibTeX compatible database.
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -32,10 +31,10 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Top;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>top$</tt>.
@@ -140,7 +139,7 @@ public class TestTop extends TestCase {
      */
     public void testTopInteger() throws Exception {
 
-        p.push(new TInteger(1234));
+        p.push(new TInteger(1234, null));
         new Top("top$").execute(p, null, null);
         assertEquals("#1234\n", err.toString());
         assertEquals("", out.toString());
@@ -154,7 +153,7 @@ public class TestTop extends TestCase {
      */
     public void testTopString() throws Exception {
 
-        p.push(new TString("abc"));
+        p.push(new TString("abc", null));
         new Top("top$").execute(p, null, null);
         assertEquals("\"abc\"\n", err.toString());
         assertEquals("", out.toString());

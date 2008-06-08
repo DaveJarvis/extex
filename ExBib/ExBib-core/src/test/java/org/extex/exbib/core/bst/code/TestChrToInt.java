@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,9 +29,9 @@ import org.extex.exbib.core.bst.code.impl.ChrToInt;
 import org.extex.exbib.core.bst.code.impl.IntToChr;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>chr.to.int$</tt>.
@@ -108,7 +107,7 @@ public class TestChrToInt extends TestCase {
      */
     private void testChrToInt(int c) throws Exception {
 
-        p.push(new TString(String.valueOf((char) c)));
+        p.push(new TString(String.valueOf((char) c), null));
         new ChrToInt("chr.to.int$").execute(p, null, null);
         assertEquals(c, p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
@@ -152,7 +151,7 @@ public class TestChrToInt extends TestCase {
     public void testChrToIntlong() throws Exception {
 
         try {
-            p.push(new TString(".."));
+            p.push(new TString("..", null));
             new ChrToInt("chr.to.int$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibIllegalValueException e) {

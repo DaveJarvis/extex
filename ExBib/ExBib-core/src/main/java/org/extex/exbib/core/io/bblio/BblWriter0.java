@@ -20,7 +20,6 @@
 package org.extex.exbib.core.io.bblio;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.extex.exbib.core.io.Writer;
 import org.extex.framework.configuration.Configuration;
@@ -110,16 +109,6 @@ public class BblWriter0 implements Writer {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#getPrintWriter()
-     */
-    public PrintWriter getPrintWriter() {
-
-        return null;
-    }
-
-    /**
      * Write a string to the output stream and keep track of lines. Long lines
      * are broken at whitespace.
      * 
@@ -166,86 +155,25 @@ public class BblWriter0 implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public void print(String s) throws IOException {
+    public void print(String... args) throws IOException {
 
-        linebreaking(s);
+        for (String s : args) {
+            linebreaking(s);
+        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s1, String s2) throws IOException {
+    public void println(String... args) throws IOException {
 
-        linebreaking(s1);
-        linebreaking(s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) throws IOException {
-
-        linebreaking(s1);
-        linebreaking(s2);
-        linebreaking(s3);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println()
-     */
-    public void println() throws IOException {
-
-        writer.println();
-        col = 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println(String s) throws IOException {
-
-        linebreaking(s);
-        writer.println();
-        col = 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
-     */
-    public void println(String s1, String s2) throws IOException {
-
-        linebreaking(s1);
-        linebreaking(s2);
-        writer.println();
-        col = 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) throws IOException {
-
-        linebreaking(s1);
-        linebreaking(s2);
-        linebreaking(s3);
+        for (String s : args) {
+            linebreaking(s);
+        }
         writer.println();
         col = 0;
     }

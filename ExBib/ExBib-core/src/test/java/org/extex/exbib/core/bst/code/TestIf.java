@@ -27,10 +27,6 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.If;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
@@ -38,6 +34,10 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TChar;
+import org.extex.exbib.core.node.impl.TLiteral;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>if$</tt>.
@@ -56,8 +56,8 @@ public class TestIf extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      org.extex.exbib.core.io.Locator)
          */
         @Override
         public void execute(Processor processor, Entry entry, Locator locator)
@@ -76,8 +76,8 @@ public class TestIf extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      org.extex.exbib.core.io.Locator)
          */
         @Override
         public void execute(Processor processor, Entry entry, Locator locator)
@@ -173,9 +173,9 @@ public class TestIf extends TestCase {
 
         thenCount = 0;
         elseCount = 0;
-        p.push(new TInteger(0));
-        p.push(new TLiteral("t"));
-        p.push(new TLiteral("e"));
+        p.push(TokenFactory.T_ZERO);
+        p.push(new TLiteral("t", null));
+        p.push(new TLiteral("e", null));
         new If("if$").execute(p, null, null);
         assertEquals(0, thenCount);
         assertEquals(1, elseCount);
@@ -192,9 +192,9 @@ public class TestIf extends TestCase {
 
         thenCount = 0;
         elseCount = 0;
-        p.push(new TInteger(1));
-        p.push(new TLiteral("t"));
-        p.push(new TLiteral("e"));
+        p.push(TokenFactory.T_ONE);
+        p.push(new TLiteral("t", null));
+        p.push(new TLiteral("e", null));
         new If("if$").execute(p, null, null);
         assertEquals(1, thenCount);
         assertEquals(0, elseCount);
@@ -224,7 +224,7 @@ public class TestIf extends TestCase {
     public void testShortStack1() throws Exception {
 
         try {
-            p.push(new TLiteral("e"));
+            p.push(new TLiteral("e", null));
             new If("if$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -240,8 +240,8 @@ public class TestIf extends TestCase {
     public void testShortStack2() throws Exception {
 
         try {
-            p.push(new TLiteral("t"));
-            p.push(new TLiteral("e"));
+            p.push(new TLiteral("t", null));
+            p.push(new TLiteral("e", null));
             new If("if$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -257,9 +257,9 @@ public class TestIf extends TestCase {
     public void testTypeError1() throws Exception {
 
         try {
-            p.push(new TString("xxx"));
-            p.push(new TLiteral("t"));
-            p.push(new TLiteral("e"));
+            p.push(new TString("xxx", null));
+            p.push(new TLiteral("t", null));
+            p.push(new TLiteral("e", null));
             new If("if$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibMissingNumberException e) {
@@ -275,9 +275,9 @@ public class TestIf extends TestCase {
     public void testTypeError2() throws Exception {
 
         try {
-            p.push(new TChar("x", null));
-            p.push(new TLiteral("t"));
-            p.push(new TLiteral("e"));
+            p.push(new TChar('x', null));
+            p.push(new TLiteral("t", null));
+            p.push(new TLiteral("e", null));
             new If("if$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibMissingNumberException e) {

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,9 +27,9 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Purify;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>purify$</tt>.
@@ -107,7 +106,7 @@ public class TestPurify extends TestCase {
      */
     private void test(String in, String res) throws Exception {
 
-        p.push(new TString(in));
+        p.push(new TString(in, null));
         new Purify("purify$").execute(p, null, null);
         assertEquals(res, p.popString(null).getValue());
     }

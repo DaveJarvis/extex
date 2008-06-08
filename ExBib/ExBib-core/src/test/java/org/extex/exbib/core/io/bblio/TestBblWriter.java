@@ -258,7 +258,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA0() throws Exception {
+    public void testA00() throws Exception {
 
         runTest(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
     }
@@ -268,7 +268,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA1() throws Exception {
+    public void testA01() throws Exception {
 
         runTest("z abc xxxxxxxxx1xxxxxxx", "z abc\n  xxxxxxxxx1xxxxxxx");
     }
@@ -278,7 +278,47 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA15() throws Exception {
+    public void testA02() throws Exception {
+
+        runTest("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
+    }
+
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testA03() throws Exception {
+
+        runTest("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
+    }
+
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testA04() throws Exception {
+
+        runTest("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
+    }
+
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testA05() throws Exception {
+
+        runTest("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
+    }
+
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testA15() throws Exception {
 
         runTest("zzzznzzzznzzzzn abc xxxxxxxxx1",
             "zzzznzzzznzzzzn abc\n  xxxxxxxxx1");
@@ -289,7 +329,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA16() throws Exception {
+    public void testA16() throws Exception {
 
         runTest("zzzznzzzznzzzznz abc xxxxxxxxx1",
             "zzzznzzzznzzzznz abc\n  xxxxxxxxx1");
@@ -300,7 +340,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA17() throws Exception {
+    public void testA17() throws Exception {
 
         runTest("zzzznzzzznzzzznzz abc xxxxxxxxx1",
             "zzzznzzzznzzzznzz\n  abc xxxxxxxxx1");
@@ -311,9 +351,15 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA2() throws Exception {
+    public void testPrintln01() throws Exception {
 
-        runTest("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.println();
+        w.close();
+
+        assertEquals("\n", sb.toString());
     }
 
     /**
@@ -321,9 +367,16 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA3() throws Exception {
+    public void testPrintln02() throws Exception {
 
-        runTest("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.print("abc  ");
+        w.println();
+        w.close();
+
+        assertEquals("abc\n", sb.toString());
     }
 
     /**
@@ -331,9 +384,15 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA4() throws Exception {
+    public void testPrintln11() throws Exception {
 
-        runTest("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.println("abc  ");
+        w.close();
+
+        assertEquals("abc\n", sb.toString());
     }
 
     /**
@@ -341,10 +400,47 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testBblWriterA5() throws Exception {
+    public void testPrintln12() throws Exception {
 
-        runTest("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.println("ab\nc  ");
+        w.close();
+
+        assertEquals("ab\nc\n", sb.toString());
     }
 
-    // TODO: Complete the test suite
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testPrintln13() throws Exception {
+
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.println("ab  \nc  ");
+        w.close();
+
+        assertEquals("ab\nc\n", sb.toString());
+    }
+
+    /**
+     * <testcase> Test the line breaking. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testWrite1() throws Exception {
+
+        StringBuffer sb = new StringBuffer();
+        Writer w = new BblWriter(new StringBufferWriter(sb));
+        w.configure(new DummyConfig());
+        w.write('a');
+        w.close();
+
+        assertEquals("a", sb.toString());
+    }
+
 }

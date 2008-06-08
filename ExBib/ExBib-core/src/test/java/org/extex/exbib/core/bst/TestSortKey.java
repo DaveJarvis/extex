@@ -24,11 +24,11 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TFieldString;
 
 /**
  * Test suite for sort.key$.
@@ -87,7 +87,7 @@ public class TestSortKey extends TestCase {
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
-        p.addFunction("abc", new TInteger(1), null);
+        p.addFunction("abc", TokenFactory.T_ONE, null);
         e = p.getDB().makeEntry("book", "k1", null);
     }
 
@@ -111,7 +111,7 @@ public class TestSortKey extends TestCase {
      */
     public void testNoSortKey() throws Exception {
 
-        new TFieldString("sort.key$").execute(p, e, null);
+        new TFieldString("sort.key$", null).execute(p, e, null);
         assertEquals("", p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }
@@ -136,7 +136,7 @@ public class TestSortKey extends TestCase {
     public void testSortKey11() throws Exception {
 
         e.setSortKey("xyz");
-        new TFieldString("sort.key$").execute(p, e, null);
+        new TFieldString("sort.key$", null).execute(p, e, null);
         assertEquals("xyz", p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,11 +27,11 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Lt;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>&lt;</tt>.
@@ -87,8 +86,8 @@ public class TestLt extends TestCase {
      */
     private void runTest(int t1, int t2) throws Exception {
 
-        p.push(new TInteger(t2));
-        p.push(new TInteger(t1));
+        p.push(new TInteger(t2, null));
+        p.push(new TInteger(t1, null));
         new Lt("<").execute(p, null, null);
         assertEquals((t2 < t1 ? 1 : 0), p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
@@ -124,7 +123,7 @@ public class TestLt extends TestCase {
     public void test1Stack() throws Exception {
 
         try {
-            p.push(new TInteger(2));
+            p.push(new TInteger(2, null));
             new Lt("<").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -276,8 +275,8 @@ public class TestLt extends TestCase {
     public void testTypeError1() throws Exception {
 
         try {
-            p.push(new TString("2"));
-            p.push(new TInteger(2));
+            p.push(new TString("2", null));
+            p.push(new TInteger(2, null));
             new Lt("<").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibMissingNumberException e) {
@@ -294,8 +293,8 @@ public class TestLt extends TestCase {
     public void testTypeError2() throws Exception {
 
         try {
-            p.push(new TString("2"));
-            p.push(new TInteger(2));
+            p.push(new TString("2", null));
+            p.push(new TInteger(2, null));
             new Lt("<").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibMissingNumberException e) {

@@ -29,7 +29,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildFileTest;
 
 /**
- * This is a test suite for the ExBib ant task.
+ * This is a test suite for the &epsilon;&chi;Bib ant task.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

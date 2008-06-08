@@ -24,7 +24,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.extex.framework.configuration.Configurable;
@@ -123,95 +122,27 @@ public class StreamWriter implements Writer, Configurable {
     }
 
     /**
-     * Getter for the print stream.
+     * {@inheritDoc}
      * 
-     * @return the print stream
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public PrintWriter getPrintWriter() {
+    public void print(String... args) throws IOException {
 
-        return new PrintWriter(writer, true);
+        for (String s : args) {
+            writer.write(s);
+        }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s) throws IOException {
+    public void println(String... args) throws IOException {
 
-        writer.write(s);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
-     */
-    public void print(String s1, String s2) throws IOException {
-
-        writer.write(s1);
-        writer.write(s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) throws IOException {
-
-        writer.write(s1);
-        writer.write(s2);
-        writer.write(s3);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println()
-     */
-    public void println() throws IOException {
-
-        writer.write("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println(String s) throws IOException {
-
-        writer.write(s);
-        writer.write("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
-     */
-    public void println(String s1, String s2) throws IOException {
-
-        writer.write(s1);
-        writer.write(s2);
-        writer.write("\n");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) throws IOException {
-
-        writer.write(s1);
-        writer.write(s2);
-        writer.write(s3);
+        for (String s : args) {
+            writer.write(s);
+        }
         writer.write("\n");
     }
 

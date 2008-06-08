@@ -26,9 +26,9 @@ import junit.framework.TestSuite;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Width;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>width$</tt>.
@@ -115,7 +115,7 @@ public class TestWidth extends TestCase {
      */
     private void testWidth(String s, int w) throws Exception {
 
-        p.push(new TString(s));
+        p.push(new TString(s, null));
         new Width("width$").execute(p, null, null);
         assertEquals("", err.toString());
         assertEquals("", out.toString());

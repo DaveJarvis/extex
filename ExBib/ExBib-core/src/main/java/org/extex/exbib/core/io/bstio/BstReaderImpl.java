@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,14 +34,6 @@ import org.extex.exbib.core.bst.command.impl.BstRead;
 import org.extex.exbib.core.bst.command.impl.BstReverse;
 import org.extex.exbib.core.bst.command.impl.BstSort;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TBlock;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TQLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
 import org.extex.exbib.core.exceptions.ExBibEofInLiteralListException;
@@ -55,6 +46,14 @@ import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.AbstractFileReader;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.impl.TBlock;
+import org.extex.exbib.core.node.impl.TChar;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TLiteral;
+import org.extex.exbib.core.node.impl.TQLiteral;
+import org.extex.exbib.core.node.impl.TString;
+import org.extex.exbib.core.node.impl.TokenList;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -676,9 +675,8 @@ public class BstReaderImpl extends AbstractFileReader
 
                 return new TString(val, getLocator());
             } else if (buffer.length() > 0) {
-                String c = buffer.substring(0, 1);
+                char c = buffer.charAt(0);
                 buffer.delete(0, 1);
-
                 return new TChar(c, getLocator());
             } else {
                 throw new ExBibImpossibleException(">>" + buffer + "<<");

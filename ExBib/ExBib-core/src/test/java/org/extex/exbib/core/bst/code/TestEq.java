@@ -27,11 +27,12 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Eq;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>eq$</tt>.
@@ -44,17 +45,17 @@ public class TestEq extends TestCase {
     /**
      * The field <tt>INT_MINUS_123</tt> contains -123.
      */
-    private static final TInteger INT_MINUS_123 = new TInteger(-123);
+    private static final TInteger INT_MINUS_123 = new TInteger(-123, null);
 
     /**
      * The field <tt>INT_12</tt> contains 12.
      */
-    private static final TInteger INT_12 = new TInteger(12);
+    private static final TInteger INT_12 = new TInteger(12, null);
 
     /**
      * The field <tt>INT_123</tt> contains 123.
      */
-    private static final TInteger INT_123 = new TInteger(123);
+    private static final TInteger INT_123 = new TInteger(123, null);
 
     /**
      * The main program just uses the text interface of JUnit.
@@ -173,7 +174,7 @@ public class TestEq extends TestCase {
      */
     public void testEqI2() throws Exception {
 
-        runTest(new TInteger(0), new TInteger(0), "1");
+        runTest(TokenFactory.T_ZERO, TokenFactory.T_ZERO, "1");
     }
 
     /**
@@ -203,7 +204,7 @@ public class TestEq extends TestCase {
      */
     public void testEqI5() throws Exception {
 
-        runTest(new TInteger(-1), new TInteger(-1), "1");
+        runTest(new TInteger(-1, null), new TInteger(-1, null), "1");
     }
 
     /**
@@ -213,7 +214,7 @@ public class TestEq extends TestCase {
      */
     public void testEqI6() throws Exception {
 
-        runTest(INT_123, new TInteger(0), "0");
+        runTest(INT_123, TokenFactory.T_ZERO, "0");
     }
 
     /**
@@ -223,7 +224,7 @@ public class TestEq extends TestCase {
      */
     public void testEqI7() throws Exception {
 
-        runTest(new TInteger(1), new TInteger(0), "0");
+        runTest(TokenFactory.T_ONE, TokenFactory.T_ZERO, "0");
     }
 
     /**
@@ -233,7 +234,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS1() throws Exception {
 
-        runTest(new TString("abc"), new TString("abc"), "1");
+        runTest(new TString("abc", null), new TString("abc", null), "1");
     }
 
     /**
@@ -243,7 +244,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS2() throws Exception {
 
-        runTest(new TString(""), new TString(""), "1");
+        runTest(new TString("", null), new TString("", null), "1");
     }
 
     /**
@@ -253,7 +254,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS3() throws Exception {
 
-        runTest(new TString("ab"), new TString("abc"), "0");
+        runTest(new TString("ab", null), new TString("abc", null), "0");
     }
 
     /**
@@ -263,7 +264,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS4() throws Exception {
 
-        runTest(new TString("abc"), new TString("ab"), "0");
+        runTest(new TString("abc", null), new TString("ab", null), "0");
     }
 
     /**
@@ -273,7 +274,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS5() throws Exception {
 
-        runTest(new TString("{}"), new TString(""), "0");
+        runTest(new TString("{}", null), new TString("", null), "0");
     }
 
     /**
@@ -283,7 +284,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS6() throws Exception {
 
-        runTest(new TString("abc"), new TString(""), "0");
+        runTest(new TString("abc", null), new TString("", null), "0");
     }
 
     /**
@@ -293,7 +294,7 @@ public class TestEq extends TestCase {
      */
     public void testEqS7() throws Exception {
 
-        runTest(new TString("a"), new TString(""), "0");
+        runTest(new TString("a", null), new TString("", null), "0");
     }
 
     /**
@@ -304,7 +305,7 @@ public class TestEq extends TestCase {
     public void testShortStack() throws Exception {
 
         try {
-            p.push(new TInteger(2));
+            p.push(new TInteger(2, null));
             new Eq("=").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,12 +27,12 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Pop;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TLiteral;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>pop$</tt>.
@@ -122,7 +121,7 @@ public class TestPop extends TestCase {
      */
     public void testPopInteger() throws Exception {
 
-        testToken(new TInteger(123));
+        testToken(new TInteger(123, null));
     }
 
     /**
@@ -142,7 +141,7 @@ public class TestPop extends TestCase {
      */
     public void testPopString() throws Exception {
 
-        testToken(new TString("123"));
+        testToken(new TString("123", null));
     }
 
     /**

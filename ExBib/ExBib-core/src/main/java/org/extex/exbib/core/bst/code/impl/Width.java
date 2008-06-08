@@ -24,10 +24,10 @@ import java.util.Map;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TInteger;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>width$</code>
@@ -203,7 +203,6 @@ public class Width extends AbstractCode {
      */
     private static Map<String, Integer> newSpecials() {
 
-        // TODO: move to config
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("ae", Integer.valueOf(722));
         map.put("AE", Integer.valueOf(903));
@@ -319,7 +318,7 @@ public class Width extends AbstractCode {
             }
         }
 
-        processor.push(new TInteger(width));
+        processor.push(new TInteger(width, locator));
     }
 
     /**

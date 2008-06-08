@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,11 +27,12 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.FormatName099;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>format.name$</tt>.
@@ -127,9 +127,9 @@ public class TestFormatName extends TestCase {
     private void testFormat(String names, int pos, String fmt, String expected)
             throws Exception {
 
-        p.push(new TString(names));
-        p.push(new TInteger(pos));
-        p.push(new TString(fmt));
+        p.push(new TString(names, null));
+        p.push(new TInteger(pos, null));
+        p.push(new TString(fmt, null));
         new FormatName099("format.name$").execute(p, null, null);
 
         String s = p.popString(null).getValue();
@@ -1033,9 +1033,9 @@ public class TestFormatName extends TestCase {
     private void testNoName(String names, int pos) throws Exception {
 
         try {
-            p.push(new TString(names));
-            p.push(new TInteger(pos));
-            p.push(new TString("{l}"));
+            p.push(new TString(names, null));
+            p.push(new TInteger(pos, null));
+            p.push(new TString("{l}", null));
             new FormatName099("format.name$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibException e) {
@@ -1104,7 +1104,7 @@ public class TestFormatName extends TestCase {
     public void testShortStack1() throws Exception {
 
         try {
-            p.push(new TString("0"));
+            p.push(new TString("0", null));
             new FormatName099("format.name$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -1120,8 +1120,8 @@ public class TestFormatName extends TestCase {
     public void testShortStack2() throws Exception {
 
         try {
-            p.push(new TInteger(0));
-            p.push(new TString("0"));
+            p.push(TokenFactory.T_ZERO);
+            p.push(new TString("0", null));
             new FormatName099("format.name$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {

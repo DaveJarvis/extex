@@ -22,15 +22,15 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.impl.TField;
+import org.extex.exbib.core.node.impl.TFieldInteger;
+import org.extex.exbib.core.node.impl.TFieldString;
+import org.extex.exbib.core.node.impl.TLiteral;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>set$</code>

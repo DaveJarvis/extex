@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.node;
 
 import java.io.IOException;
 
@@ -46,10 +46,10 @@ public abstract class AbstractToken implements Token {
     private Locator locator;
 
     /**
-     * The field <tt>theString</tt> contains the cached string representation
+     * The field <tt>stringCache</tt> contains the cached string representation
      * of the object.
      */
-    private String theString = null;
+    private String stringCache = null;
 
     /**
      * The field <tt>value</tt> contains the String value of the
@@ -128,7 +128,7 @@ public abstract class AbstractToken implements Token {
      * 
      * The expansion of an AbstractToken is the value itself.
      * 
-     * @see org.extex.exbib.core.bst.node.Token#expand(
+     * @see org.extex.exbib.core.node.Token#expand(
      *      org.extex.exbib.core.Processor)
      */
     public String expand(Processor processor) {
@@ -157,6 +157,17 @@ public abstract class AbstractToken implements Token {
     public String getName() {
 
         return "";
+    }
+
+    /**
+     * Compute the string representation for this object. This value is used by
+     * the method {@link #toString() toString()}.
+     * 
+     * @return the string representation
+     */
+    protected String getString() {
+
+        return value;
     }
 
     /**
@@ -193,17 +204,6 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
-     * Compute the string representation for this object. This value is used by
-     * the method {@link #toString() toString()}.
-     * 
-     * @return the string representation
-     */
-    protected String setString() {
-
-        return value;
-    }
-
-    /**
      * Compute a printable string representation for this object.
      * 
      * @return the string representation
@@ -211,18 +211,18 @@ public abstract class AbstractToken implements Token {
     @Override
     public String toString() {
 
-        if (theString == null) {
-            theString = this.setString();
+        if (stringCache == null) {
+            stringCache = getString();
         }
 
-        return theString;
+        return stringCache;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.Token#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.Token#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     public abstract void visit(TokenVisitor visitor) throws IOException;
 

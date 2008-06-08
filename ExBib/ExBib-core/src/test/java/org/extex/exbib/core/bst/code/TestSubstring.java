@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,10 +27,11 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Substring;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>substring$</tt>.
@@ -89,9 +89,9 @@ public class TestSubstring extends TestCase {
     private void runTest(String s, int from, int len, String res)
             throws Exception {
 
-        p.push(new TString(s));
-        p.push(new TInteger(from));
-        p.push(new TInteger(len));
+        p.push(new TString(s, null));
+        p.push(new TInteger(from, null));
+        p.push(new TInteger(len, null));
         new Substring("substring$").execute(p, null, null);
         assertEquals(res, p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -142,7 +142,7 @@ public class TestSubstring extends TestCase {
     public void testShortStack1() throws Exception {
 
         try {
-            p.push(new TInteger(0));
+            p.push(TokenFactory.T_ZERO);
             new Substring("substring$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -158,8 +158,8 @@ public class TestSubstring extends TestCase {
     public void testShortStack2() throws Exception {
 
         try {
-            p.push(new TInteger(0));
-            p.push(new TInteger(0));
+            p.push(TokenFactory.T_ZERO);
+            p.push(TokenFactory.T_ZERO);
             new Substring("substring$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {
@@ -418,7 +418,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 0, 2) = "" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 0, 2) = ""
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -428,7 +429,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -26, 2) = "a" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -26, 2) = "a"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -438,7 +440,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -27, 2) = "" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -27, 2) = ""
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -448,7 +451,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 1, 2) = "ab" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 1, 2) = "ab"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -458,7 +462,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 2, 2) = "bc" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 2, 2) = "bc"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -468,7 +473,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 25, 2) = "yz" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 25, 2) = "yz"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -478,7 +484,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 26, 2) = "z" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 26, 2) = "z"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -488,7 +495,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 27, 2) = "" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", 27, 2) = ""
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -498,7 +506,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -1, 2) = "yz" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -1, 2) = "yz"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -508,7 +517,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -2, 2) = "xy" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -2, 2) = "xy"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -518,7 +528,8 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -25, 2) = "ab" </testcase>
+     * <testcase> substring$("abcdefghijklmnopqrstuvwxyz", -25, 2) = "ab"
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */

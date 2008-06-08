@@ -1061,8 +1061,8 @@ public class ExBibTest extends BibTester {
     /**
      * <testcase> Test that the command line option <tt>--logfile</tt> can be
      * used to redirect the log output. It is tested that the log file is
-     * created and the ExBib instance reports the log file with getLogfile().
-     * </testcase>
+     * created and the {@link ExBib} instance reports the log file with
+     * getLogfile(). </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1593,7 +1593,7 @@ public class ExBibTest extends BibTester {
             "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
-                    + "\\biboption{exbib.sort=locale:de}\n",//
+                    + "\\biboption{exbib.sort=locale:de}\n", //
             CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "test.aux", "--out=-", "--enc=UTF-8");

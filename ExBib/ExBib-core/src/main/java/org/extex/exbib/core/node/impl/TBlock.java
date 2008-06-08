@@ -17,17 +17,17 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This class represents a list of values.
@@ -38,9 +38,9 @@ import org.extex.exbib.core.io.Locator;
 public class TBlock extends AbstractToken implements Token {
 
     /**
-     * The field <tt>theValue</tt> contains the list of Tokens in the block.
+     * The field <tt>value</tt> contains the list of Tokens in the block.
      */
-    private TokenList theValue = null;
+    private TokenList value = null;
 
     /**
      * Creates a new object without any elements.
@@ -50,7 +50,7 @@ public class TBlock extends AbstractToken implements Token {
     public TBlock(Locator locator) {
 
         super(locator);
-        theValue = new TokenList(locator);
+        value = new TokenList(locator);
     }
 
     /**
@@ -60,7 +60,7 @@ public class TBlock extends AbstractToken implements Token {
      */
     public void add(Token token) {
 
-        theValue.add(token);
+        value.add(token);
     }
 
     /**
@@ -76,19 +76,30 @@ public class TBlock extends AbstractToken implements Token {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        processor.push(theValue);
+        processor.push(value);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     * @see org.extex.exbib.core.node.AbstractToken#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
     public String expand(Processor processor) {
 
-        return theValue.expand(processor);
+        return value.expand(processor);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.node.AbstractToken#getString()
+     */
+    @Override
+    protected String getString() {
+
+        return "{" + value.toString() + "}";
     }
 
     /**
@@ -98,26 +109,14 @@ public class TBlock extends AbstractToken implements Token {
      */
     public TokenList getTokenList() {
 
-        return theValue;
-    }
-
-    /**
-     * Compute the string representation for this object. This value is used by
-     * the method {@link #toString() toString()}.
-     * 
-     * @return the string representation
-     */
-    @Override
-    protected String setString() {
-
-        return "{" + theValue.toString() + "}";
+        return value;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

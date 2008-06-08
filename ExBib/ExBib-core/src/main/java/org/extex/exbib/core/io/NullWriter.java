@@ -21,7 +21,6 @@ package org.extex.exbib.core.io;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -88,19 +87,9 @@ public class NullWriter implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#getPrintWriter()
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public PrintWriter getPrintWriter() {
-
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
-     */
-    public void print(String s) throws IOException {
+    public void print(String... args) throws IOException {
 
         //
     }
@@ -108,63 +97,9 @@ public class NullWriter implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s1, String s2) {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println()
-     */
-    public void println() throws IOException {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println(String s) {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
-     */
-    public void println(String s1, String s2) {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) {
+    public void println(String... args) {
 
         //
     }

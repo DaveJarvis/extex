@@ -22,15 +22,16 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TString;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>int.to.chr$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>int.to.chr$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -91,7 +92,7 @@ public class IntToChr extends AbstractCode {
                 "negative.argument", Integer.toString(i)), locator);
         }
 
-        processor.push(new TString(String.valueOf((char) i)));
+        processor.push(new TString(String.valueOf((char) i), locator));
     }
 
 }

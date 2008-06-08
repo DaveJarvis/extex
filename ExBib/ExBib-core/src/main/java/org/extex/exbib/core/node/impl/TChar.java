@@ -17,20 +17,18 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.framework.i18n.Localizer;
-import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * A TChar token is used during parsing to represent a single character. It
@@ -44,7 +42,7 @@ public class TChar extends AbstractToken implements Token {
     /**
      * Creates a new object.
      * 
-     * @param value a single character string containing the value
+     * @param value a single character for the value
      * @param locator the locator or <code>null</code>
      * 
      * @throws ExBibException in case that the constructor of AbstractToken
@@ -52,21 +50,15 @@ public class TChar extends AbstractToken implements Token {
      * @throws ExBibIllegalValueException in case that the value is not a single
      *         character
      */
-    public TChar(String value, Locator locator) throws ExBibException {
+    public TChar(char value, Locator locator) throws ExBibException {
 
-        super(value, locator);
-
-        if (value.length() != 1) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer.format(
-                "invalid.length", value), locator);
-        }
+        super(Character.toString(value), locator);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -77,22 +69,10 @@ public class TChar extends AbstractToken implements Token {
     }
 
     /**
-     * Compute the string representation for this object. This value is used by
-     * the method {@link #toString() toString()}.
-     * 
-     * @return the string representation
-     */
-    @Override
-    protected String setString() {
-
-        return getValue();
-    }
-
-    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,11 +30,11 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This is the basic object stored in a ExBib database.
+ * This is the basic object stored in a &epsilon;&chi;Bib database.
  * 
  * <p>
- * Each Entry has a type and a key. The type classifies the Entry. The key names
- * it.
+ * Each {@link Entry} has a type and a key. The type classifies the
+ * {@link Entry}. The key names it.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

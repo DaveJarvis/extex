@@ -22,15 +22,16 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TString;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>change.case</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>change.case</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
@@ -201,7 +202,7 @@ public class ChangeCase extends AbstractCode {
                     "invalid.spec", fmt), locator);
         }
 
-        processor.push(modified ? new TString(sb.toString()) : ts);
+        processor.push(modified ? new TString(sb.toString(), locator) : ts);
     }
 
 }

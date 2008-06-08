@@ -31,9 +31,9 @@ import java.util.logging.LogRecord;
 public final class StoringHandler extends Handler {
 
     /**
-     * The field <tt>sb</tt> contains the buffer.
+     * The field <tt>buffer</tt> contains the buffer.
      */
-    private StringBuilder sb = new StringBuilder();
+    private StringBuilder buffer = new StringBuilder();
 
     /**
      * Creates a new object.
@@ -73,7 +73,7 @@ public final class StoringHandler extends Handler {
     @Override
     public void publish(LogRecord record) {
 
-        sb.append(record.getMessage());
+        buffer.append(record.getMessage());
     }
 
     /**
@@ -84,7 +84,7 @@ public final class StoringHandler extends Handler {
     @Override
     public String toString() {
 
-        return sb.toString();
+        return buffer.toString();
     }
 
 }

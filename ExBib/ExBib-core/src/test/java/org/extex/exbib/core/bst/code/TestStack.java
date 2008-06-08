@@ -30,10 +30,10 @@ import junit.framework.TestSuite;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Stack;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>stack$</tt>.
@@ -136,7 +136,7 @@ public class TestStack extends TestCase {
      */
     public void testStack1() throws Exception {
 
-        p.push(new TString("abc"));
+        p.push(new TString("abc", null));
         new Stack("stack$").execute(p, null, null);
         assertEquals("\"abc\"\n", err.toString());
         assertEquals("", out.toString());
@@ -150,8 +150,8 @@ public class TestStack extends TestCase {
      */
     public void testStack2() throws Exception {
 
-        p.push(new TInteger(123));
-        p.push(new TString("abc"));
+        p.push(new TInteger(123, null));
+        p.push(new TString("abc", null));
         new Stack("stack$").execute(p, null, null);
         assertEquals("\"abc\"\n#123\n", err.toString());
         assertEquals("", out.toString());

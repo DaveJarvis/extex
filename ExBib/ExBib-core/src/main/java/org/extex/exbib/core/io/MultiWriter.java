@@ -20,7 +20,6 @@
 package org.extex.exbib.core.io;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -89,92 +88,23 @@ public class MultiWriter implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#getPrintWriter()
+     * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
-    public PrintWriter getPrintWriter() {
+    public void print(String... args) throws IOException {
 
-        return null;
+        w1.print(args);
+        w2.print(args);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String)
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void print(String s) throws IOException {
+    public void println(String... args) throws IOException {
 
-        w1.print(s);
-        w2.print(s);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String)
-     */
-    public void print(String s1, String s2) throws IOException {
-
-        w1.print(s1, s2);
-        w2.print(s1, s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#print(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void print(String s1, String s2, String s3) throws IOException {
-
-        w1.print(s1, s2, s3);
-        w2.print(s1, s2, s3);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println()
-     */
-    public void println() throws IOException {
-
-        w1.println();
-        w2.println();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String)
-     */
-    public void println(String s) throws IOException {
-
-        w1.println(s);
-        w2.println(s);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String)
-     */
-    public void println(String s1, String s2) throws IOException {
-
-        w1.println(s1, s2);
-        w2.println(s1, s2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#println(java.lang.String,
-     *      java.lang.String, java.lang.String)
-     */
-    public void println(String s1, String s2, String s3) throws IOException {
-
-        w1.println(s1, s2, s3);
-        w2.println(s1, s2, s3);
+        w1.println(args);
+        w2.println(args);
     }
 
     /**

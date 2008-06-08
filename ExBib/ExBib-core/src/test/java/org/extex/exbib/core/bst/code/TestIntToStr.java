@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,11 +27,11 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.IntToStr;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>int.to.str$</tt>.
@@ -86,7 +85,7 @@ public class TestIntToStr extends TestCase {
      */
     private void runTest(int t1) throws Exception {
 
-        p.push(new TInteger(t1));
+        p.push(new TInteger(t1, null));
         new IntToStr("int.to.str$").execute(p, null, null);
         assertEquals(String.valueOf(t1), p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -177,7 +176,7 @@ public class TestIntToStr extends TestCase {
     public void testString() throws Exception {
 
         try {
-            p.push(new TString("abc"));
+            p.push(new TString("abc", null));
             new IntToStr("int.to.str$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibException e) {

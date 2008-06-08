@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -26,9 +25,10 @@ import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * 
@@ -86,7 +86,7 @@ public class TestTString extends TestCase implements TokenVisitor {
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
-        p.addFunction("abc", new TInteger(1), null);
+        p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 
     /**
@@ -107,7 +107,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      */
     public void testExecute() throws Exception {
 
-        TString t = new TString("987");
+        TString t = new TString("987", null);
         t.execute(p, null, null);
         assertEquals("987", p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -121,7 +121,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      */
     public void testGetValue1() throws Exception {
 
-        TString t = new TString(null);
+        TString t = new TString(null, null);
         assertEquals("", t.getValue());
     }
 
@@ -132,7 +132,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      */
     public void testIsNull1() throws Exception {
 
-        assertTrue(new TString(null).isNull());
+        assertTrue(new TString(null, null).isNull());
     }
 
     /**
@@ -142,7 +142,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      */
     public void testIsNull2() throws Exception {
 
-        assertFalse(new TString("").isNull());
+        assertFalse(new TString("", null).isNull());
     }
 
     /**
@@ -152,7 +152,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      */
     public void testVisit() throws Exception {
 
-        TString t = new TString("x-1");
+        TString t = new TString("x-1", null);
         t.visit(this);
         assertTrue(visit);
         assertEquals("x-1", t.getValue());
@@ -161,8 +161,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.node.impl.TBlock)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitBlock(
+     *      org.extex.exbib.core.node.impl.TBlock)
      */
     public void visitBlock(TBlock block) {
 
@@ -172,8 +172,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.node.impl.TChar)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitChar(
+     *      org.extex.exbib.core.node.impl.TChar)
      */
     public void visitChar(TChar c) {
 
@@ -183,8 +183,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.node.impl.TField)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitField(
+     *      org.extex.exbib.core.node.impl.TField)
      */
     public void visitField(TField field) {
 
@@ -194,8 +194,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(
-     *      org.extex.exbib.core.bst.node.impl.TFieldInteger)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitFieldInteger(
+     *      org.extex.exbib.core.node.impl.TFieldInteger)
      */
     public void visitFieldInteger(TFieldInteger integer) {
 
@@ -205,8 +205,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(
-     *      org.extex.exbib.core.bst.node.impl.TFieldString)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitFieldString(
+     *      org.extex.exbib.core.node.impl.TFieldString)
      */
     public void visitFieldString(TFieldString string) {
 
@@ -216,8 +216,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.node.impl.TInteger)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitInteger(
+     *      org.extex.exbib.core.node.impl.TInteger)
      */
     public void visitInteger(TInteger integer) {
 
@@ -227,8 +227,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TLiteral)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitLiteral(
+     *      org.extex.exbib.core.node.impl.TLiteral)
      */
     public void visitLiteral(TLiteral literal) {
 
@@ -238,8 +238,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TQLiteral)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitQLiteral(
+     *      org.extex.exbib.core.node.impl.TQLiteral)
      */
     public void visitQLiteral(TQLiteral qliteral) {
 
@@ -249,8 +249,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.node.impl.TString)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitString(
+     *      org.extex.exbib.core.node.impl.TString)
      */
     public void visitString(TString string) {
 
@@ -260,8 +260,8 @@ public class TestTString extends TestCase implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.node.TokenVisitor#visitTokenList(
+     *      org.extex.exbib.core.node.impl.TokenList)
      */
     public void visitTokenList(TokenList string) {
 

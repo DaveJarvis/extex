@@ -17,37 +17,29 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
+import org.extex.exbib.core.db.VNumber;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
- * This class represents a field of an entry. This value is usually read from an
- * external source.
+ * This class represents an integer valued field local to an entry. This class
+ * is not related to externally stored values but used internally only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TField extends AbstractToken implements Token {
-
-    /**
-     * Creates a new object.
-     * 
-     * @param value the name of the field
-     */
-    public TField(String value) {
-
-        super(value, null);
-    }
+public class TFieldInteger extends AbstractToken implements Token {
 
     /**
      * Create a new object.
@@ -55,7 +47,7 @@ public class TField extends AbstractToken implements Token {
      * @param locator the locator
      * @param value the name of the field
      */
-    public TField(String value, Locator locator) {
+    public TFieldInteger(String value, Locator locator) {
 
         super(value, locator);
     }
@@ -63,7 +55,7 @@ public class TField extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -75,26 +67,22 @@ public class TField extends AbstractToken implements Token {
             throw new ExBibMissingEntryException(null, locator);
         }
 
-        String val = entry.getExpandedValue(getValue(), processor.getDB());
+        VNumber val = (VNumber) entry.getLocal(getValue());
 
-        // TODO: eliminate brain-dead compatibility code
-        if (getValue().equals("crossref") && val != null) {
-            val = val.toLowerCase();
-        }
-
-        processor.push(new TString(val));
+        processor.push(val == null ? TokenFactory.T_ZERO : new TInteger(val
+            .getContent(), locator));
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
-        visitor.visitField(this);
+        visitor.visitFieldInteger(this);
     }
 
 }

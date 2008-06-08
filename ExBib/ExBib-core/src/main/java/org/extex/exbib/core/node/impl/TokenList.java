@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,13 +25,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
  * This is a container for a sorted sequence of {@link Token Token}s. In
@@ -41,21 +41,13 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TokenList extends AbstractToken implements Token {
-
-    /** The internal representation upon which the list is based. */
-    private List<Token> theValue = null;
+public class TokenList extends AbstractToken implements Token, Iterable<Token> {
 
     /**
-     * Creates a new object.
-     * 
-     * @param value a {@link List List} of {@link Token Token}s
+     * The field <tt>value</tt> contains the internal representation upon
+     * which the list is based.
      */
-    public TokenList(List<Token> value) {
-
-        super(null, null);
-        theValue = value;
-    }
+    private List<Token> value = null;
 
     /**
      * Creates a new object.
@@ -65,19 +57,7 @@ public class TokenList extends AbstractToken implements Token {
     public TokenList(Locator locator) {
 
         super(null, locator);
-        theValue = new ArrayList<Token>();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param locator the locator
-     * @param value a {@link List List} of {@link Token Token}s
-     */
-    public TokenList(Locator locator, List<Token> value) {
-
-        super(null, locator);
-        theValue = new ArrayList<Token>(value);
+        value = new ArrayList<Token>();
     }
 
     /**
@@ -87,13 +67,13 @@ public class TokenList extends AbstractToken implements Token {
      */
     public void add(Token t) {
 
-        theValue.add(t);
+        value.add(t);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -101,24 +81,48 @@ public class TokenList extends AbstractToken implements Token {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        for (int i = 0; i < theValue.size(); i++) {
-            ((theValue.get(i))).execute(processor, entry, locator);
+        for (Token t : value) {
+            t.execute(processor, entry, locator);
         }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     * @see org.extex.exbib.core.node.AbstractToken#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
     public String expand(Processor processor) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < theValue.size(); i++) {
-            sb.append(((theValue.get(i))).expand(processor));
+        for (Token t : value) {
+            sb.append(t.expand(processor));
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * Compute a printable representation of this object.
+     * 
+     * @return the printable representation
+     */
+    @Override
+    protected String getString() {
+
+        String sep = " ";
+        StringBuffer sb = new StringBuffer();
+        boolean first = true;
+
+        for (Token t : value) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(sep);
+            }
+            sb.append(t.toString());
         }
 
         return sb.toString();
@@ -127,12 +131,18 @@ public class TokenList extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#getValue()
+     * @see org.extex.exbib.core.node.AbstractToken#getValue()
      */
     @Override
     public String getValue() {
 
-        return toString();
+        StringBuilder sb = new StringBuilder();
+
+        for (Token t : value) {
+            sb.append(t.toString());
+        }
+
+        return sb.toString();
     }
 
     /**
@@ -142,34 +152,7 @@ public class TokenList extends AbstractToken implements Token {
      */
     public Iterator<Token> iterator() {
 
-        return theValue.iterator();
-    }
-
-    /**
-     * Compute a printable representation of this object.
-     * 
-     * @return the printable representation
-     */
-    @Override
-    protected String setString() {
-
-        String sep = " ";
-        StringBuffer sb = new StringBuffer();
-        boolean first = true;
-        Iterator<Token> iterator = theValue.iterator();
-
-        while (iterator.hasNext()) {
-            if (first) {
-                first = false;
-            } else {
-                sb.append(sep);
-            }
-
-            Token t = iterator.next();
-            sb.append(t.toString());
-        }
-
-        return sb.toString();
+        return value.iterator();
     }
 
     /**
@@ -185,7 +168,7 @@ public class TokenList extends AbstractToken implements Token {
     public List<String> toStringList() throws ExBibMissingLiteralException {
 
         List<String> list = new ArrayList<String>();
-        Iterator<Token> iterator = theValue.iterator();
+        Iterator<Token> iterator = value.iterator();
 
         while (iterator.hasNext()) {
             Token t = iterator.next();
@@ -201,8 +184,8 @@ public class TokenList extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.node.Token#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.Token#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

@@ -17,50 +17,35 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.AbstractToken;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenVisitor;
 
 /**
- * This class represents a string valued field local to an entry. This class is
- * not related to externally stored values but used internally only.
+ * This class represents a field of an entry. This value is usually read from an
+ * external source.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TFieldString extends TLiteral implements Token {
+public class TField extends AbstractToken implements Token {
 
     /**
      * Create a new object.
      * 
-     * @param value the value
-     * 
-     * @throws ExBibException in case of an error
-     */
-    public TFieldString(String value) throws ExBibException {
-
-        super(value, null);
-    }
-
-    /**
-     * Create a new object.
-     * 
-     * @param value the value
      * @param locator the locator
-     * 
-     * @throws ExBibException in case of an error
+     * @param value the name of the field
      */
-    public TFieldString(String value, Locator locator) throws ExBibException {
+    public TField(String value, Locator locator) {
 
         super(value, locator);
     }
@@ -68,7 +53,7 @@ public class TFieldString extends TLiteral implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.node.AbstractToken#execute(
      *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -80,21 +65,27 @@ public class TFieldString extends TLiteral implements Token {
             throw new ExBibMissingEntryException(null, locator);
         }
 
-        VString val = (VString) entry.getLocal(getValue());
-        processor.push(val == null ? TokenFactory.T_EMPTY : new TString(val
-            .getContent()));
+        String field = getValue();
+        String result = entry.getExpandedValue(field, processor.getDB());
+
+        // TODO: eliminate brain-dead compatibility code
+        if (field.equals("crossref") && result != null) {
+            result = result.toLowerCase();
+        }
+
+        processor.push(new TString(result, locator));
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.node.AbstractToken#visit(
+     *      org.extex.exbib.core.node.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
-        visitor.visitFieldString(this);
+        visitor.visitField(this);
     }
 
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,11 +27,11 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Concat;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>concat$</tt>.
@@ -88,8 +87,8 @@ public class TestConcat extends TestCase {
      */
     private void runTest(String s1, String s2, String result) throws Exception {
 
-        p.push(new TString(s1));
-        p.push(new TString(s2));
+        p.push(new TString(s1, null));
+        p.push(new TString(s2, null));
         new Concat("*").execute(p, null, null);
         assertEquals(result, p.popUnchecked().getValue());
         assertNull(p.popUnchecked());
@@ -124,7 +123,7 @@ public class TestConcat extends TestCase {
      */
     public void test1Stack() throws Exception {
 
-        p.push(new TString("abc"));
+        p.push(new TString("abc", null));
 
         try {
             new Concat("*").execute(p, null, null);
@@ -196,7 +195,7 @@ public class TestConcat extends TestCase {
      */
     public void testTypeError1() throws Exception {
 
-        p.push(new TInteger(123));
+        p.push(new TInteger(123, null));
         try {
             new Concat("*").execute(p, null, null);
             assertTrue(false);
@@ -212,8 +211,8 @@ public class TestConcat extends TestCase {
      */
     public void testTypeError2() throws Exception {
 
-        p.push(new TInteger(123));
-        p.push(new TString("123"));
+        p.push(new TInteger(123, null));
+        p.push(new TString("123", null));
         try {
             new Concat("*").execute(p, null, null);
             assertTrue(false);

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.node.impl;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

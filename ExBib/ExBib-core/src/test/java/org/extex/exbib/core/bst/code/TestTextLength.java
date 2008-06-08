@@ -27,10 +27,10 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.TextLength;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>text.length$</tt>.
@@ -85,7 +85,7 @@ public class TestTextLength extends TestCase {
      */
     private void runTest(String in, int len) throws Exception {
 
-        p.push(new TString(in));
+        p.push(new TString(in, null));
         new TextLength("text.length$").execute(p, null, null);
         assertEquals(len, p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
@@ -369,7 +369,7 @@ public class TestTextLength extends TestCase {
      */
     public void testInteger() throws Exception {
 
-        p.push(new TInteger(9876));
+        p.push(new TInteger(9876, null));
         new TextLength("text.length$").execute(p, null, null);
         assertEquals(4, p.popInteger(null).getInt());
         assertEquals(null, p.popUnchecked());

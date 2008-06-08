@@ -17,10 +17,10 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.node;
 
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * The token factory is a place to request tokens from. Currently only a few
@@ -34,16 +34,16 @@ public final class TokenFactory {
     /* Poor man's symbol table: created once, used often */
 
     /** The {@link TInteger TInteger} with the value 1. */
-    public static final TInteger T_ONE = new TInteger(1);
+    public static final TInteger T_ONE = new TInteger(1, null);
 
     /** The {@link TInteger TInteger} with the value 0. */
-    public static final TInteger T_ZERO = new TInteger(0);
+    public static final TInteger T_ZERO = new TInteger(0, null);
 
     /** The {@link TString TString} with the value "". */
-    public static final TString T_EMPTY = new TString("");
+    public static final TString T_EMPTY = new TString("", null);
 
     /** the TString containing the quote character only */
-    public static final TString T_QUOTE = new TString("\"");
+    public static final TString T_QUOTE = new TString("\"", null);
 
     /**
      * Creates a new object.

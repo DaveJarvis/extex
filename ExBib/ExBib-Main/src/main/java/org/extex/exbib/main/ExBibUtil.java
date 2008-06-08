@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.ProcessorContainer;
+import org.extex.exbib.core.db.sorter.SorterFactory;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
 import org.extex.exbib.core.io.StreamWriter;
@@ -285,6 +286,24 @@ public final class ExBibUtil extends AbstractMain {
     }
 
     /**
+     * Make a sorter or throw an error.
+     * 
+     * @param finder the resource finder
+     * @param cfg the configuration
+     * 
+     * @return the sorter; it can be <code>null</code> if none is required
+     */
+    protected SorterFactory makeSorterFactory(ResourceFinder finder,
+            Configuration cfg) {
+
+        SorterFactory sorterFactory = new SorterFactory(cfg);
+        sorterFactory.enableLogging(getLogger());
+        sorterFactory.setResourceFinder(finder);
+        sorterFactory.setProperties(getProperties());
+        return sorterFactory;
+    }
+
+    /**
      * Initialize the database from an aux file.
      * 
      * @param configuration the configuration
@@ -373,6 +392,8 @@ public final class ExBibUtil extends AbstractMain {
             ProcessorContainer container =
                     new ProcessorContainer(configuration, getLogger(),
                         getProperties());
+            container.setSorterFactory(makeSorterFactory(finder, configuration
+                .getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
             container.setMinCrossrefs(Integer.MAX_VALUE);
 

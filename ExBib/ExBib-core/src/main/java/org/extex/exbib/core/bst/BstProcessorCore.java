@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,14 +33,6 @@ import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
@@ -52,6 +43,14 @@ import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
+import org.extex.exbib.core.node.Token;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TField;
+import org.extex.exbib.core.node.impl.TFieldInteger;
+import org.extex.exbib.core.node.impl.TFieldString;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TString;
+import org.extex.exbib.core.node.impl.TokenList;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
@@ -352,7 +351,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
 
         if (i >= 0) {
             try {
-                changeFunction("global.max$", new TInteger(i), locator);
+                changeFunction("global.max$", new TInteger(i, locator), locator);
                 globalMax = i;
             } catch (ExBibException e) {
                 throw new ConfigurationWrapperException(e);
@@ -364,7 +363,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
         if (i >= 0) {
             try {
                 entryMax = i;
-                changeFunction("entry.max$", new TInteger(i), locator);
+                changeFunction("entry.max$", new TInteger(i, locator), locator);
             } catch (ExBibException e) {
                 throw new ConfigurationWrapperException(e);
             }
@@ -691,11 +690,12 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
             functions = new HashMap<String, Code>();
         }
         try {
-            addFunction("global.max$", new TInteger(globalMax), locator);
-            addFunction("entry.max$", new TInteger(entryMax), locator);
-            addFunction("sort.key$", new TFieldString("sort.key$", null),
+            addFunction("global.max$", new TInteger(globalMax, locator),
                 locator);
-            addFunction("crossref", new TField("crossref"), locator);
+            addFunction("entry.max$", new TInteger(entryMax, locator), locator);
+            addFunction("sort.key$", new TFieldString("sort.key$", locator),
+                locator);
+            addFunction("crossref", new TField("crossref", locator), locator);
         } catch (ExBibException e) {
             throw new ConfigurationWrapperException(e);
         }
@@ -716,7 +716,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
         while (iterator.hasNext()) {
             String entry = iterator.next();
             theEntries.add(entry);
-            addFunction(entry, new TField(entry), locator);
+            addFunction(entry, new TField(entry, locator), locator);
         }
     }
 
@@ -761,7 +761,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setIntegers(
-     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.node.impl.TokenList, Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
@@ -790,7 +790,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setStrings(
-     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.node.impl.TokenList, Locator)
      */
     public void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
@@ -800,7 +800,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
 
         while (iterator.hasNext()) {
             String name = iterator.next().getValue();
-            addFunction(name, new MacroCode(new TString("")), locator);
+            addFunction(name, new MacroCode(new TString("", locator)), locator);
             theStrings.add(name);
         }
     }

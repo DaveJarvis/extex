@@ -126,8 +126,7 @@ public class TestSorter {
          */
         public String getValue() throws ConfigurationException {
 
-            // getValue unimplemented
-            return null;
+            return order;
         }
 
         /**

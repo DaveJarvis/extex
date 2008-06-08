@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2003-2008 Gerd Neugebauer
- * This file is part of ExBib a BibTeX compatible database.
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
@@ -28,14 +27,14 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.While;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.TokenFactory;
+import org.extex.exbib.core.node.impl.TLiteral;
 
 /**
  * Test suite for <tt>while$</tt>.
@@ -54,8 +53,8 @@ public class TestWhile extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      org.extex.exbib.core.io.Locator)
          */
         @Override
         public void execute(Processor processor, Entry entry, Locator locator)
@@ -89,8 +88,8 @@ public class TestWhile extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor,
-         *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      org.extex.exbib.core.io.Locator)
          */
         @Override
         public void execute(Processor processor, Entry entry, Locator locator)
@@ -188,8 +187,8 @@ public class TestWhile extends TestCase {
         p.addFunction("cond0", new CondCode(0), null);
         bodyCount = 0;
         condCount = 0;
-        p.push(new TLiteral("cond0"));
-        p.push(new TLiteral("body"));
+        p.push(new TLiteral("cond0", null));
+        p.push(new TLiteral("body", null));
         new While("while$").execute(p, null, null);
         assertEquals(0, bodyCount);
         assertEquals(1, condCount);
@@ -207,8 +206,8 @@ public class TestWhile extends TestCase {
         p.addFunction("cond1", new CondCode(1), null);
         bodyCount = 0;
         condCount = 0;
-        p.push(new TLiteral("cond1"));
-        p.push(new TLiteral("body"));
+        p.push(new TLiteral("cond1", null));
+        p.push(new TLiteral("body", null));
         new While("while$").execute(p, null, null);
         assertEquals(1, bodyCount);
         assertEquals(2, condCount);
@@ -226,8 +225,8 @@ public class TestWhile extends TestCase {
         p.addFunction("cond12", new CondCode(12), null);
         bodyCount = 0;
         condCount = 0;
-        p.push(new TLiteral("cond12"));
-        p.push(new TLiteral("body"));
+        p.push(new TLiteral("cond12", null));
+        p.push(new TLiteral("body", null));
         new While("while$").execute(p, null, null);
         assertEquals(12, bodyCount);
         assertEquals(13, condCount);
@@ -258,7 +257,7 @@ public class TestWhile extends TestCase {
     public void testShortStack1() throws Exception {
 
         try {
-            p.push(new TLiteral("e"));
+            p.push(new TLiteral("e", null));
             new While("while$").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {

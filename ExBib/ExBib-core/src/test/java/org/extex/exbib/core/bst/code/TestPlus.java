@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,9 +27,9 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Plus;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TInteger;
 
 /**
  * Test suite for <tt>+</tt>.
@@ -85,8 +84,8 @@ public class TestPlus extends TestCase {
      */
     private void runTest(int t1, int t2) throws Exception {
 
-        p.push(new TInteger(t2));
-        p.push(new TInteger(t1));
+        p.push(new TInteger(t2, null));
+        p.push(new TInteger(t1, null));
         new Plus("+").execute(p, null, null);
         assertEquals(t1 + t2, p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
@@ -122,7 +121,7 @@ public class TestPlus extends TestCase {
     public void test1Stack() throws Exception {
 
         try {
-            p.push(new TInteger(2));
+            p.push(new TInteger(2, null));
             new Plus("+").execute(p, null, null);
             assertTrue(false);
         } catch (ExBibStackEmptyException e) {

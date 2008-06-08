@@ -22,10 +22,10 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.node.impl.TString;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -97,7 +97,7 @@ public class IntToChr099 extends AbstractCode {
                 "illegal.argument", Integer.toString(arg)), locator);
         }
 
-        processor.push(new TString(String.valueOf((char) arg)));
+        processor.push(new TString(String.valueOf((char) arg), locator));
     }
 
 }

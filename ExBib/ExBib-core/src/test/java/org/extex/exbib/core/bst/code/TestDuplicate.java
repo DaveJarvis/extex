@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- * This file is part of ExBib a BibTeX compatible database.
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,12 +27,12 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Duplicate;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.extex.exbib.core.node.impl.TChar;
+import org.extex.exbib.core.node.impl.TInteger;
+import org.extex.exbib.core.node.impl.TLiteral;
+import org.extex.exbib.core.node.impl.TString;
 
 /**
  * Test suite for <tt>duplicate$</tt>.
@@ -107,7 +106,7 @@ public class TestDuplicate extends TestCase {
      */
     public void testDuplicate1() throws Exception {
 
-        p.push(new TString("abc"));
+        p.push(new TString("abc", null));
         new Duplicate("duplicate$").execute(p, null, null);
         assertEquals("abc", p.popString(null).getValue());
         assertEquals("abc", p.popString(null).getValue());
@@ -121,7 +120,7 @@ public class TestDuplicate extends TestCase {
      */
     public void testDuplicate2() throws Exception {
 
-        p.push(new TInteger(123));
+        p.push(new TInteger(123, null));
         new Duplicate("duplicate$").execute(p, null, null);
         assertEquals("123", p.popInteger(null).getValue());
         assertEquals("123", p.popInteger(null).getValue());
@@ -135,7 +134,7 @@ public class TestDuplicate extends TestCase {
      */
     public void testDuplicate3() throws Exception {
 
-        p.push(new TChar("a", null));
+        p.push(new TChar('a', null));
         new Duplicate("duplicate$").execute(p, null, null);
         assertEquals("a", p.pop(null).getValue());
         assertEquals("a", p.pop(null).getValue());
@@ -149,7 +148,7 @@ public class TestDuplicate extends TestCase {
      */
     public void testDuplicate4() throws Exception {
 
-        p.push(new TLiteral("a"));
+        p.push(new TLiteral("a", null));
         new Duplicate("duplicate$").execute(p, null, null);
         assertEquals("a", p.pop(null).getValue());
         assertEquals("a", p.pop(null).getValue());
