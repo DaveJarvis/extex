@@ -74,6 +74,17 @@ Those parameters are given as attributes to the task.
     <ExBib file="file.aux"/>
 \end{lstlisting}\index{target}
 
+\item[sort="\Arg{sorter}"] \ \index{sort!Ant task parameter}\\
+  This option can be used to specify the sorter For possible
+  values refer to section~\ref{sec:sort.order}.
+
+\begin{lstlisting}[language=XML,morekeywords={target}]
+  <target name="simple"
+          description="This is a simple invocation of ExBib." >
+    <ExBib file="file.aux"
+           sort="encoding:de" />
+\end{lstlisting}\index{target}
+
 \item[encoding="\Arg{enc}"] \ \index{encoding!Ant task parameter}\\
   This option can be used to specify the encoding for reading files.
   The default is to use the platform default encoding. For possible
