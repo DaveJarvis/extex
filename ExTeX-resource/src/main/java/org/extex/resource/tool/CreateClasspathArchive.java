@@ -180,8 +180,9 @@ public class CreateClasspathArchive {
      * 
      * @param jarname The name of the jar archive,
      * @param tocindex The toc index file.
-     * @throws FileNotFoundException TODO mgn
-     * @throws IOException if a IO-error occurred.
+     * 
+     * @throws FileNotFoundException in case the file has not been found
+     * @throws IOException if an I/O error occurred.
      */
     private void createJarFile(String jarname, File tocindex)
             throws FileNotFoundException,
