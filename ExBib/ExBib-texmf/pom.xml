@@ -26,6 +26,7 @@
       <id>gene</id>
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de</url>
       <roles>
         <role>maintainer</role>
         <role>developer</role>
@@ -61,8 +62,8 @@
           <arguments>
             <argument>--omit=.*/\\.svn$</argument>
             <argument>--omit=.*/META-INF$</argument>
-            <argument>--output=target/toc.index</argument>
-            <argument>target/classes/</argument>
+            <argument>--output=${project.build.directory}/toc.index</argument>
+            <argument>${project.build.directory}/classes/</argument>
           </arguments>
         </configuration>
       </plugin>
@@ -75,9 +76,9 @@
             <phase>compile</phase>
             <configuration>
               <tasks>
-                <mkdir dir="target/classes/META-INF" />
-                <move  file="target/toc.index"
-                       todir="target/classes/META-INF"/>
+                <mkdir dir="${project.build.directory}/classes/META-INF" />
+                <move  file="${project.build.directory}/toc.index"
+                       todir="${project.build.directory}/classes/META-INF"/>
               </tasks>
             </configuration>
             <goals>

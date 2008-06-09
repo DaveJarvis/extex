@@ -32,6 +32,7 @@
       <id>gene</id>
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de</url>
       <roles>
         <role>maintainer</role>
         <role>developer</role>
