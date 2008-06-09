@@ -18,9 +18,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/ExBib/</url>
   </scm>
 
   <issueManagement>
@@ -67,6 +67,7 @@
       <id>gene</id>
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de</url>
       <roles>
         <role>developer</role>
         <role>build manager</role>
@@ -141,6 +142,7 @@
    <module>../ExTeX-resource</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
+   <module>ExBib-texmf</module>
    <module>ExBib-Installer</module>
   </modules>
 
@@ -200,6 +202,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.0</version>
         <configuration>
           <type>range</type>
           <range>90</range>
