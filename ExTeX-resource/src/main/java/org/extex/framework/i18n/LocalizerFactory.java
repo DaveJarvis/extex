@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,8 +28,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * This factory provides means to get a localizer.
- *
+ * This factory provides means to get a {@link Localizer}. It implements the
+ * singleton pattern by providing static methods only.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,14 +39,15 @@ public final class LocalizerFactory {
     /**
      * This inner class is the one and only implementation of a Localizer
      * delivered by this factory.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
     private static class BasicLocalizer implements Localizer {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         private static final long serialVersionUID = 2006L;
 
@@ -63,7 +65,7 @@ public final class LocalizerFactory {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param name name of the resource bundle
          */
         public BasicLocalizer(String name) {
@@ -74,10 +76,10 @@ public final class LocalizerFactory {
 
         /**
          * Getter for the value of a format string associated to a given key.
-         *
+         * 
          * @param key the key in the resource bundle to search for
-         * @return the resource string or the String
-         * <tt>???</tt><i>key</i><tt>???</tt> if none is found
+         * @return the resource string or the String <tt>???</tt><i>key</i><tt>???</tt>
+         *         if none is found
          */
         public String format(String key) {
 
@@ -96,10 +98,10 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
          * replaces the substring <tt>'{0}'</tt> in the format.
-         *
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
-         *
+         * 
          * @return the expanded format string
          */
         public String format(String fmt, Object a) {
@@ -112,11 +114,11 @@ public final class LocalizerFactory {
          * bundle under the given key. The argument object's value of toString()
          * replaces the substring <tt>'{0}'</tt> and <tt>'{1}'</tt> in the
          * format.
-         *
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
-         *
+         * 
          * @return the expanded format string
          */
         public String format(String fmt, Object a, Object b) {
@@ -127,18 +129,17 @@ public final class LocalizerFactory {
         /**
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key. The argument object's value of toString()
-         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>, and <tt>'{2}'</tt>
-         * in the format.
-         *
+         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>, and
+         * <tt>'{2}'</tt> in the format.
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
-         *
+         * 
          * @return the expanded format string
          */
-        public String format(String fmt, Object a, Object b,
-                Object c) {
+        public String format(String fmt, Object a, Object b, Object c) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c});
         }
@@ -148,17 +149,16 @@ public final class LocalizerFactory {
          * bundle under the given key. The argument object's value of toString()
          * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
          * and <tt>'{3}'</tt> in the format.
-         *
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
          * @param d the Object used for the substring <tt>{3}</tt>
-         *
+         * 
          * @return the expanded format string
          */
-        public String format(String fmt, Object a, Object b,
-                Object c, Object d) {
+        public String format(String fmt, Object a, Object b, Object c, Object d) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c, d});
         }
@@ -168,18 +168,18 @@ public final class LocalizerFactory {
          * bundle under the given key. The argument object's value of toString()
          * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
          * and <tt>'{3}'</tt> in the format.
-         *
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
          * @param d the Object used for the substring <tt>{3}</tt>
          * @param e the Object used for the substring <tt>{4}</tt>
-         *
+         * 
          * @return the expanded format string
          */
-        public String format(String fmt, Object a, Object b,
-                Object c, Object d, Object e) {
+        public String format(String fmt, Object a, Object b, Object c,
+                Object d, Object e) {
 
             return MessageFormat.format(format(fmt),
                 new Object[]{a, b, c, d, e});
@@ -190,10 +190,10 @@ public final class LocalizerFactory {
          * bundle under the given key. The argument object's value of toString()
          * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
          * and so on in the format.
-         *
+         * 
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substrings <tt>{<i>n</i>}</tt>
-         *
+         * 
          * @return the expanded format string
          */
         public String format(String fmt, Object[] a) {
@@ -203,9 +203,9 @@ public final class LocalizerFactory {
 
         /**
          * Getter for the value of a format string associated to a given key.
-         *
+         * 
          * @param key the key in the resource bundle to search for
-         *
+         * 
          * @return the resource string or <code>null</code>
          */
         public String getFormat(String key) {
@@ -220,7 +220,7 @@ public final class LocalizerFactory {
         /**
          * Get the value of a format string associated to a given key in the
          * resource bundle and print it to the given writer.
-         *
+         * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          */
@@ -234,13 +234,12 @@ public final class LocalizerFactory {
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
          * <tt>'{0}'</tt> in the format.
-         *
+         * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          */
-        public void message(PrintStream writer, String fmt,
-                Object a) {
+        public void message(PrintStream writer, String fmt, Object a) {
 
             writer.println(MessageFormat.format(format(fmt), new Object[]{a}));
         }
@@ -250,14 +249,13 @@ public final class LocalizerFactory {
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
          * <tt>'{0}'</tt> and <tt>'{1}'</tt> in the format.
-         *
+         * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          */
-        public void message(PrintStream writer, String fmt,
-                Object a, Object b) {
+        public void message(PrintStream writer, String fmt, Object a, Object b) {
 
             writer.println(MessageFormat
                 .format(format(fmt), new Object[]{a, b}));
@@ -267,16 +265,17 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
-         * <tt>'{0}'</tt>, <tt>'{1}'</tt>, and <tt>'{2}'</tt> in the format.
-         *
+         * <tt>'{0}'</tt>, <tt>'{1}'</tt>, and <tt>'{2}'</tt> in the
+         * format.
+         * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
          */
-        public void message(PrintStream writer, String fmt,
-                Object a, Object b, Object c) {
+        public void message(PrintStream writer, String fmt, Object a, Object b,
+                Object c) {
 
             writer.println(MessageFormat.format(format(fmt), new Object[]{a, b,
                     c}));
@@ -298,10 +297,10 @@ public final class LocalizerFactory {
     private static Locale locale = Locale.getDefault();
 
     /**
-     * Return the localizer associated to a given name.
-     *
+     * Return the {@link Localizer} associated to a given name.
+     * 
      * @param theClass the class of the localizer
-     *
+     * 
      * @return the localizer for the given name
      */
     public static Localizer getLocalizer(Class<?> theClass) {
@@ -310,10 +309,10 @@ public final class LocalizerFactory {
     }
 
     /**
-     * Return the localizer associated to a given name.
-     *
+     * Return the {@link Localizer} associated to a given name.
+     * 
      * @param name the name of the localizer
-     *
+     * 
      * @return the localizer for the given name
      */
     public static Localizer getLocalizer(String name) {
@@ -331,8 +330,7 @@ public final class LocalizerFactory {
     }
 
     /**
-     * Creates a new object.
-     * The constructor is private to avoid abuse.
+     * Creates a new object. The constructor is private to avoid abuse.
      */
     private LocalizerFactory() {
 
