@@ -98,7 +98,8 @@ public class TocIndex {
      * 
      * @param file the current file to consider
      * @param out the output stream
-     * @param strip
+     * @param strip the number of characters to strip from the beginning of the
+     *        file name
      */
     private void collect(File file, PrintStream out, int strip) {
 
