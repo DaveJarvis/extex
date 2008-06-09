@@ -23,7 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This input stream carries a name to transport the information where the input
+ * is coming from.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
