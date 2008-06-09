@@ -85,6 +85,11 @@ public class TocIndex {
     private String outFile = null;
 
     /**
+     * The field <tt>verbose</tt> contains the verbosity indicator.
+     */
+    private boolean verbose = false;
+
+    /**
      * Creates a new object.
      */
     public TocIndex() {
@@ -100,26 +105,69 @@ public class TocIndex {
      * @param out the output stream
      * @param strip the number of characters to strip from the beginning of the
      *        file name
+     * 
+     * @return the number of entries created
      */
-    private void collect(File file, PrintStream out, int strip) {
+    private long collect(File file, PrintStream out, int strip) {
 
+        long count = 0;
         String f = file.toString().substring(strip).replace('\\', '/');
 
         for (Pattern p : omit) {
             if (p.matcher(f).matches()) {
-                return;
+                return count;
             }
         }
 
         if (file.isDirectory()) {
             for (File fi : file.listFiles()) {
-                collect(fi, out, strip);
+                count += collect(fi, out, strip);
             }
         } else if (file.isFile()) {
             printQuoted(out, file.getName());
             out.print("=");
             printQuoted(out, f);
             out.println();
+            count++;
+        }
+        return count;
+    }
+
+    /**
+     * Initialize the creation of the index and perform the creation itself.
+     * 
+     * @return the number of entries encountered
+     * 
+     * @throws Exception in case of an error
+     */
+    public long createIndex() throws Exception {
+
+        if (base != null && !base.isDirectory()) {
+            throw new Exception(getMessage("IllegalBase", base));
+        }
+
+        if ("".equals(outFile)) {
+            outFile = null;
+        }
+        PrintStream out;
+        try {
+            out = (outFile == null //
+                    ? System.out
+                    : new PrintStream(new FileOutputStream(outFile)));
+        } catch (FileNotFoundException e) {
+            throw new Exception(getMessage("OutFileNotFound", outFile));
+        }
+        try {
+            out.println("#");
+            out.print("# Created ");
+            out.println(new Date().toString());
+            out.println("#");
+            File file = base != null ? base : new File(".");
+            return collect(file, out, file.toString().length());
+        } finally {
+            if (outFile != null) {
+                out.close();
+            }
         }
     }
 
@@ -197,47 +245,17 @@ public class TocIndex {
             } else if ("-help".startsWith(arg) || "--help".startsWith(arg)) {
                 System.err.println(getMessage("usage"));
                 return;
+            } else if ("-verbose".startsWith(arg)
+                    || "--verbose".startsWith(arg)) {
+                verbose = true;
             } else {
                 throw new Exception(getMessage("UnknownArgument", arg));
             }
         }
 
-        run();
-    }
-
-    /**
-     * Initialize the creation of the index and perform the creation itself.
-     * 
-     * @throws Exception in case of an error
-     */
-    public void run() throws Exception {
-
-        if (base != null && !base.isDirectory()) {
-            throw new Exception(getMessage("IllegalBase", base));
-        }
-
-        if ("".equals(outFile)) {
-            outFile = null;
-        }
-        PrintStream out;
-        try {
-            out = (outFile == null //
-                    ? System.out
-                    : new PrintStream(new FileOutputStream(outFile)));
-        } catch (FileNotFoundException e) {
-            throw new Exception(getMessage("OutFileNotFound", outFile));
-        }
-        try {
-            out.println("#");
-            out.print("# Created ");
-            out.println(new Date().toString());
-            out.println("#");
-            File file = base != null ? base : new File(".");
-            collect(file, out, file.toString().length());
-        } finally {
-            if (outFile != null) {
-                out.close();
-            }
+        long count = createIndex();
+        if (verbose) {
+            System.err.println(getMessage("count", Long.toString(count)));
         }
     }
 
