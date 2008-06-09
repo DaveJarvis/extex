@@ -59,14 +59,11 @@
         <configuration>
           <mainClass>org.extex.resource.tool.TocIndex</mainClass>
           <arguments>
-            <argument>--help</argument>
+            <argument>--omit=.*/\\.svn$</argument>
+            <argument>--omit=.*/META-INF$</argument>
+            <argument>--output=target/toc.index</argument>
+            <argument>target/classes/</argument>
           </arguments>
-          <systemProperties>
-            <systemProperty>
-              <key>myproperty</key>
-              <value>myvalue</value>
-            </systemProperty>
-          </systemProperties>
         </configuration>
       </plugin>
 
@@ -78,18 +75,9 @@
             <phase>compile</phase>
             <configuration>
               <tasks>
-                <echo message="Collecting files" />
-<!--
-                <copy todir="target/classes" flatten="true">
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/abbrv.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/alpha.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/apalike.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/ieeetr.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/plain.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/siam.sty"/>
-                    <url url="http://www.ctan.org/tex-archive/biblio/bibtex/distribs/styles/unsrt.sty"/>
-                </copy>
--->
+                <mkdir dir="target/classes/META-INF" />
+                <move  file="target/toc.index"
+                       todir="target/classes/META-INF"/>
               </tasks>
             </configuration>
             <goals>
@@ -98,6 +86,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
