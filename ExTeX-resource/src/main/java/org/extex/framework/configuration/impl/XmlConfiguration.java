@@ -170,8 +170,7 @@ public class XmlConfiguration implements Configuration {
     /**
      * The field <tt>loader</tt> contains the optional loader.
      */
-    private ConfigurationLoader loader = null;
-
+    // private ConfigurationLoader loader = null;
     /**
      * The field <tt>base</tt> contains the base of the resource name; i.e.
      * the resource up to the last slash or the empty string if no slash is
@@ -817,7 +816,7 @@ public class XmlConfiguration implements Configuration {
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
-        this.loader = loader;
+        // this.loader = loader;
     }
 
     /**

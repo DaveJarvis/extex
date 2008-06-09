@@ -71,8 +71,7 @@ public class TexConfiguration implements Configuration {
      * the resource up to the last slash or the empty string if no slash is
      * contained.
      */
-    private String base;
-
+    // private String base;
     /**
      * The field <tt>attributes</tt> contains the attributes.
      */
@@ -87,8 +86,7 @@ public class TexConfiguration implements Configuration {
     /**
      * The field <tt>loader</tt> contains the loader.
      */
-    private ConfigurationLoader loader;
-
+    // private ConfigurationLoader loader;
     /**
      * The field <tt>parts</tt> contains the parts.
      */
@@ -645,9 +643,9 @@ public class TexConfiguration implements Configuration {
      * Read the configuration from a stream.
      * 
      * @param stream the stream to read the configuration from.
-     * @param theResource the name of the resource to be used; i.e. something
-     *        like the file name
-     * @param theBase the new value for base
+     * @param resource the name of the resource to be used; i.e. something like
+     *        the file name
+     * @param base the new value for base
      * 
      * @throws ConfigurationNotFoundException in case that the configuration
      *         could not be found
@@ -655,16 +653,16 @@ public class TexConfiguration implements Configuration {
      * @throws ConfigurationSyntaxException in case of a syntax error in the
      *         configuration XML
      */
-    protected void read(InputStream stream, String theResource, String theBase)
+    protected void read(InputStream stream, String resource, String base)
             throws ConfigurationNotFoundException,
                 ConfigurationIOException,
                 ConfigurationSyntaxException {
 
         if (stream == null) {
-            throw new ConfigurationNotFoundException(theResource, null);
+            throw new ConfigurationNotFoundException(resource, null);
         }
-        this.resource = theResource;
-        this.base = theBase;
+        this.resource = resource;
+        // this.base = base;
 
         PushbackReader reader =
                 new PushbackReader(new InputStreamReader(stream), 2);
@@ -687,7 +685,7 @@ public class TexConfiguration implements Configuration {
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
-        this.loader = loader;
+        // this.loader = loader;
     }
 
 }

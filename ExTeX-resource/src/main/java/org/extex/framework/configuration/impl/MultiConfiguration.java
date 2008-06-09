@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -50,8 +50,7 @@ public class MultiConfiguration implements Configuration {
     /**
      * The field <tt>loader</tt> contains the optional loader.
      */
-    private ConfigurationLoader loader = null;
-
+    // private ConfigurationLoader loader = null;
     /**
      * Creates a new object.
      * 
@@ -332,7 +331,7 @@ public class MultiConfiguration implements Configuration {
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
-        this.loader = loader;
+        // this.loader = loader;
     }
 
 }
