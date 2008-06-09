@@ -66,7 +66,7 @@ public class TocIndex {
      */
     public static void main(String[] args) {
 
-        System.exit(commandLine(args));
+        commandLine(args);
     }
 
     /**
