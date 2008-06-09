@@ -20,6 +20,7 @@
 package org.extex.doc;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,9 @@ import java.util.Map;
 
 import org.extex.doc.util.Doc;
 import org.extex.doc.util.DocParser;
+import org.extex.doc.writer.DocWriter;
+import org.extex.doc.writer.html.HtmlDocWriter;
+import org.extex.doc.writer.latex.LatexDocWriter;
 import org.w3c.dom.Node;
 
 /**
@@ -48,8 +52,9 @@ public class DocMaker extends DocParser {
         LATEX {
 
             @Override
-            public void execute(Map<String, Doc> map) {
+            public DocWriter getWriter() {
 
+                return new LatexDocWriter();
             }
         },
         /**
@@ -58,48 +63,71 @@ public class DocMaker extends DocParser {
         HTML {
 
             @Override
-            public void execute(Map<String, Doc> map) {
+            public DocWriter getWriter() {
 
+                return new HtmlDocWriter();
             }
         },
         /**
-         * The field <tt>VALIDATE</tt> contains the ...
+         * The field <tt>VALIDATE</tt> contains the empty method.
          */
         VALIDATE {
 
             @Override
-            public void execute(Map<String, Doc> map) {
+            public DocWriter getWriter() {
 
-                //
+                return new DocWriter() {
+
+                    public void execute(Map<String, Doc> map) {
+
+                        //
+                    }
+
+                    public void setTarget(String targetDir) {
+
+                        //
+                    }
+                };
             }
         },
         /**
-         * The field <tt>TRACE</tt> contains the ...
+         * The field <tt>TRACE</tt> contains the tracer.
          */
         TRACE {
 
             @Override
-            public void execute(Map<String, Doc> map) {
+            public DocWriter getWriter() {
 
-                for (String k : map.keySet()) {
-                    Doc doc = map.get(k);
-                    System.err.print(k);
-                    System.err.print(" -> ");
-                    System.err.println(doc.get("name"));
-                }
+                return new DocWriter() {
+
+                    public void execute(Map<String, Doc> map) {
+
+                        for (String k : map.keySet()) {
+                            Doc doc = map.get(k);
+                            System.err.print(k);
+                            System.err.print(" -> ");
+                            System.err.println(doc.get("name"));
+                        }
+                    }
+
+                    public void setTarget(String targetDir) {
+
+                        //
+                    }
+                };
             }
         };
 
         /**
-         * TODO gene: missing JavaDoc
+         * Method to get the doc writer.
          * 
-         * @param map
+         * @return the doc writer
          */
-        public abstract void execute(Map<String, Doc> map);
+        public abstract DocWriter getWriter();
     };
 
     /**
-     * TODO gene: missing JavaDoc
+     * Command line interface.
      * 
      * @param args the command line arguments
      */
@@ -111,18 +139,23 @@ public class DocMaker extends DocParser {
             String a = args[i];
             if (a.equals("")) {
                 continue;
-            } else if (a.equals("-")) {
-                //
             } else if (!a.startsWith("-")) {
                 docMaker.addDir(a);
-            } else if (a.startsWith("-verbose")) {
+            } else if (a.equals("-")) {
+                //
+            } else if ("-verbose".startsWith(a)) {
                 docMaker.setVerbose(true);
-            } else if (a.startsWith("-mode")) {
+            } else if ("-output".startsWith(a)) {
                 if (++i >= args.length) {
                     docMaker.error("missing argument for ", a);
                     return;
                 }
-                docMaker.setOutput(args[i]);
+                try {
+                    docMaker.setOutput(args[i]);
+                } catch (IllegalArgumentException e) {
+                    docMaker.error("unkown mode: ", args[i]);
+                    return;
+                }
             } else if ("-classpath".startsWith(a) || "-cp".startsWith(a)) {
                 if (++i >= args.length) {
                     docMaker.error("missing argument for ", a);
@@ -131,12 +164,22 @@ public class DocMaker extends DocParser {
                 for (String x : args[i].split(":")) {
                     docMaker.addDir(x);
                 }
+            } else if ("-targetDir".startsWith(a)) {
+                if (++i >= args.length) {
+                    docMaker.error("missing argument for ", a);
+                    return;
+                }
+                docMaker.setTarget(args[i]);
             } else {
                 docMaker.error("unkown argument: ", a);
+                return;
             }
         }
+
         try {
             docMaker.execute();
+        } catch (FileNotFoundException e) {
+            docMaker.error("File not found: ", e.getMessage());
         } catch (IOException e) {
             docMaker.error(e.toString());
         }
@@ -153,24 +196,29 @@ public class DocMaker extends DocParser {
     private List<String> path = new ArrayList<String>();
 
     /**
-     * The field <tt>verbose</tt> contains the ...
+     * The field <tt>verbose</tt> contains the indicator for verbosity.
      */
     private boolean verbose = false;
 
     /**
-     * The field <tt>srcDir</tt> contains the ...
+     * The field <tt>srcDir</tt> contains the source directory.
      */
     private String srcDir = "src/main/java";
 
     /**
-     * The field <tt>configDir</tt> contains the ...
+     * The field <tt>configDir</tt> contains the configuration directory.
      */
     private String configDir = "src/main/resources/config";
 
     /**
-     * The field <tt>unitDir</tt> contains the ...
+     * The field <tt>unitDir</tt> contains the unit directory.
      */
     private String unitDir = "src/main/resources/config/unit";
+
+    /**
+     * The field <tt>targetDir</tt> contains the target directory.
+     */
+    private String targetDir = ".";
 
     /**
      * Creates a new object.
@@ -197,7 +245,10 @@ public class DocMaker extends DocParser {
      */
     protected void error(String... msg) {
 
-        System.err.println(msg);
+        for (String s : msg) {
+            System.err.print(s);
+        }
+        System.err.println();
     }
 
     /**
@@ -221,7 +272,9 @@ public class DocMaker extends DocParser {
             traverse(new File(x + "/" + srcDir), docMap);
         }
 
-        output.execute(docMap);
+        DocWriter writer = output.getWriter();
+        writer.setTarget(targetDir);
+        writer.execute(docMap);
     }
 
     /**
@@ -252,6 +305,16 @@ public class DocMaker extends DocParser {
     public void setOutput(String out) {
 
         output = Output.valueOf(out);
+    }
+
+    /**
+     * Setter for the target directory.
+     * 
+     * @param target the target directory
+     */
+    public void setTarget(String target) {
+
+        this.targetDir = target;
     }
 
     /**
@@ -298,14 +361,17 @@ public class DocMaker extends DocParser {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param file
+     * @param f the directory to scan for configurations
      * @param configMap
+     * 
+     * @throws FileNotFoundException in case that the given directory can not be
+     *         read
      */
-    private void traverseConfigs(File f, Map<String, Node> map) {
+    private void traverseConfigs(File f, Map<String, Node> map)
+            throws FileNotFoundException {
 
         if (!f.isDirectory()) {
-            // TODO gene: traverseConfigs unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new FileNotFoundException(f.toString());
         }
 
         File[] files = f.listFiles();
