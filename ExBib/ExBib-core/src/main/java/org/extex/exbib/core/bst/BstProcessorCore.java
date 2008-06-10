@@ -770,7 +770,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
 
         while (iterator.hasNext()) {
             String name = iterator.next().getValue();
-            addFunction(name, new MacroCode(new TInteger("0", locator)),
+            addFunction(name, new MacroCode(name, new TInteger("0", locator)),
                 locator);
             theIntegers.add(name);
         }
@@ -800,7 +800,8 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
 
         while (iterator.hasNext()) {
             String name = iterator.next().getValue();
-            addFunction(name, new MacroCode(new TString("", locator)), locator);
+            addFunction(name, new MacroCode(name, new TString("", locator)),
+                locator);
             theStrings.add(name);
         }
     }

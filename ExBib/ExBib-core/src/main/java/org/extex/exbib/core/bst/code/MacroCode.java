@@ -35,9 +35,9 @@ import org.extex.exbib.core.io.Locator;
 public class MacroCode extends AbstractCode {
 
     /**
-     * The field <tt>theToken</tt> contains the value for the macro code.
+     * The field <tt>token </tt> contains the value for the macro code.
      */
-    private Token theToken = null;
+    private Token token = null;
 
     /**
      * Creates a new object.
@@ -47,20 +47,8 @@ public class MacroCode extends AbstractCode {
      */
     public MacroCode(String name, Token token) {
 
-        super();
-        setName(name);
-        theToken = token;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param token the value
-     */
-    public MacroCode(Token token) {
-
-        super();
-        theToken = token;
+        super(name);
+        this.token = token;
     }
 
     /**
@@ -74,7 +62,7 @@ public class MacroCode extends AbstractCode {
     public void execute(Processor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        theToken.execute(processor, entry, locator);
+        token.execute(processor, entry, locator);
     }
 
     /**
@@ -84,7 +72,7 @@ public class MacroCode extends AbstractCode {
      */
     public Token getToken() {
 
-        return theToken;
+        return token;
     }
 
     /**
@@ -95,7 +83,7 @@ public class MacroCode extends AbstractCode {
     @Override
     public String toString() {
 
-        return theToken.toString();
+        return token.toString();
     }
 
 }

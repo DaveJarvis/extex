@@ -28,8 +28,8 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a superclass for classes implementing the interface Code. The
- * handling of the name attribute is located in this class.
+ * This is a superclass for classes implementing the interface {@link Code}.
+ * The handling of the name attribute is located in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -37,7 +37,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public abstract class AbstractCode implements Code {
 
     /**
-     * Each code has a name. This is the STring under which it is registered in
+     * Each code has a name. This is the String under which it is registered in
      * the processor context.
      */
     private String name = "";
@@ -62,10 +62,10 @@ public abstract class AbstractCode implements Code {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * This method can be overloaded in a derived class. The default behavior is
      * that nothing is done.
-     * 
-     * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
@@ -86,7 +86,8 @@ public abstract class AbstractCode implements Code {
             Locator locator) throws ExBibException;
 
     /**
-     * Getter for the name
+     * Getter for the name. Each code has a name. This is the String under which
+     * it is registered in the processor context.
      * 
      * @return the name
      */
@@ -96,7 +97,8 @@ public abstract class AbstractCode implements Code {
     }
 
     /**
-     * Setter for the name
+     * Setter for the name. Each code has a name. This is the String under which
+     * it is registered in the processor context.
      * 
      * @param name the new name
      */
