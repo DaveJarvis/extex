@@ -31,6 +31,17 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This class represents an <tt>EXECUTE</tt> command.
+ * <p>
+ * The <tt>execute</tt> command executes the function in the argument. There
+ * is no current entry then this code is executed.
+ * </p>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   EXECUTE {begin.bib}
+ * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

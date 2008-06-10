@@ -33,6 +33,20 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This class represents a <tt>REVERSE</tt> command.
+ * <p>
+ * The <tt>reverse</tt> command iterates over the entries in the reverse order
+ * they are currently in the entry list from the beginning to the end. Each
+ * entry is considered as current entry and the function in the argument is
+ * executed.
+ * </p>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   REVERSE{reverse.pass}
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

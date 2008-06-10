@@ -36,6 +36,19 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents an <tt>ITERATE</tt> command.
+ * <p>
+ * The <tt>iterate</tt> command iterates over the entries in the order they
+ * are currently in the entry list from the beginning to the end. Each entry is
+ * considered as current entry and the function in the argument is executed.
+ * </p>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   ITERATE{call.type$}
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

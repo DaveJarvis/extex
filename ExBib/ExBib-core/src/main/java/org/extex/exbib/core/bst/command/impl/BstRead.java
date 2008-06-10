@@ -32,6 +32,16 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This class represents a <tt>READ</tt> command.
+ * <p>
+ * The <tt>read</tt> command read entries into the database. The database is
+ * empty before the read command is encountered. The list of entries is ordered
+ * according to the order they are encountered.
+ * </p>
+ * 
+ * <pre>
+ *   READ
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

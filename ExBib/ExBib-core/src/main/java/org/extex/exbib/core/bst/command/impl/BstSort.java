@@ -30,6 +30,16 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This class represents a <tt>SORT</tt> command.
+ * <p>
+ * The <tt>sort</tt> command sorts the entries of the database according to
+ * its sort key lexicographically increasing. The sort key is taken from the
+ * entry variable <tt>sort.key\$</tt>.
+ * <p>
+ * 
+ * <pre>
+ *   SORT
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
