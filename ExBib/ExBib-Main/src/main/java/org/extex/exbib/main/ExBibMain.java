@@ -54,59 +54,59 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * The following options are supported:
  * </p>
  * <dl>
- * <dt>-D&lang;property&rang;=&lang;value&rang;</dt>
+ * <dt><tt>-D&lt;property&gt;=&lt;value&gt;</tt></dt>
  * <dd>Set the property to a given value.</dd>
- * <dt>-[-] &lang;file&rang;</dt>
+ * <dt><tt>-[-] &lt;file&gt;</tt></dt>
  * <dd>Use this argument as file name -- even when it looks like an option.</dd>
- * <dt>--a[vailableCharsets] | -a</dt>
+ * <dt><tt>--a[vailableCharsets] | -a</tt></dt>
  * <dd>List the available encoding names and exit.</dd>
- * <dt>--bib-[encoding] | --bib.[encoding] | -E &lang;enc&rang;</dt>
+ * <dt><tt>--bib-[encoding] | --bib.[encoding] | -E &lt;enc&gt;</tt></dt>
  * <dd>Use the given encoding for the bib files.</dd>
- * <dt>--c[onfig] | -c &lang;configuration&rang;</dt>
+ * <dt><tt>--c[onfig] | -c &lt;configuration&gt;</tt></dt>
  * <dd>Use the configuration given. This is not a file!</dd>
- * <dt>--cop[ying]</dt>
+ * <dt><tt>--cop[ying]</tt></dt>
  * <dd>Display the copyright conditions.</dd>
- * <dt>--cs[file] &lang;csfile&rang;</dt>
+ * <dt><tt>--cs[file] &lt;csfile&gt;</tt></dt>
  * <dd>Name the csf for defining characters and the sort order</dd>
- * <dt>--csf-[encoding] | --csf.[encoding] &lang;enc&rang;</dt>
+ * <dt><tt>--csf-[encoding] | --csf.[encoding] &lt;enc&gt;</tt></dt>
  * <dd>Use the given encoding for the csf files.</dd>
- * <dt>--d[ebug] | -d</dt>
+ * <dt><tt>--d[ebug] | -d</tt></dt>
  * <dd>Run in debug mode.</dd>
- * <dt>--e[ncoding] | -e &lang;enc&rang;</dt>
+ * <dt><tt>--e[ncoding] | -e &lt;enc&gt;</tt></dt>
  * <dd>Use the given encoding for the output file.</dd>
- * <dt>--h[elp] | -? | -h</dt>
+ * <dt><tt>--h[elp] | -? | -h</tt></dt>
  * <dd>Show a short list of command line arguments.</dd>
- * <dt>--la[nguage] | -L &lang;language></dt>
+ * <dt><tt>--la[nguage] | -L &lt;language></tt></dt>
  * <dd>Use the named language for message. The argument is a two-letter ISO
  * code.</dd>
- * <dt>--loa[d] &lang;file&rang;</dt>
+ * <dt><tt>--loa[d] &lt;file&gt;</tt></dt>
  * <dd>Additionally load settings from the file given.</dd>
- * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
+ * <dt><tt>--l[ogfile] | -l &lt;file&gt;</tt></dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
- * <dt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
- * &lang;n&rang;</dt>
+ * <dt><tt>--m[in-crossrefs] | --min.[crossrefs] | --min_[crossrefs] | -m
+ * &lt;n&gt;</tt></dt>
  * <dd>Set the value for min.crossrefs. The default is 2.</dd>
- * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
+ * <dt><tt>--o[utfile] | --outp[ut] | -o &lt;file&gt;</tt></dt>
  * <dd>Redirect the output to the file given. <br />
  * The file name - can be used to redirect to stdout <br />
  * The empty file name can be used to discard the output completely</dd>
- * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
- * &lang;program&rang;</dt>
+ * <dt><tt>--p[rogname] | --progr[am-name] | --program.[name] | -p
+ * &lt;program&gt;</tt></dt>
  * <dd>Set the program name for messages.</dd>
- * <dt>--q[uiet] | --t[erse] | -q</dt>
+ * <dt><tt>--q[uiet] | --t[erse] | -q</tt></dt>
  * <dd>Act quietly; some informative messages are suppressed.</dd>
- * <dt>--r[elease] | -r</dt>
+ * <dt><tt>--r[elease] | -r</dt>
  * <dd>Print the release number and exit.</dd>
- * <dt>--so[rter] | -s &lang;sort&rang;</dt>
+ * <dt><tt>--so[rter] | -s &lt;sort&gt;</tt></dt>
  * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or
  * <tt>csf:ascii.</tt></dd>
- * <dt>--b[ibtex] | --s[trict]</dt>
+ * <dt><tt>--b[ibtex] | --s[trict]</tt></dt>
  * <dd>Use the configuration for BibTeX 0.99c.</dd>
- * <dt>--tr[ace] | -t</dt>
+ * <dt><tt>--tr[ace] | -t</tt></dt>
  * <dd>Show a detailed trace of many operations.</dd>
- * <dt>--v[erbose] | -v</dt>
+ * <dt><tt>--v[erbose] | -v</tt></dt>
  * <dd>Act verbosely; some additional informational messages are displayed.</dd>
- * <dt>--vers[ion]</dt>
+ * <dt><tt>--vers[ion]</tt></dt>
  * <dd>Print the version information and exit.</dd>
  * </dl>
  * 
