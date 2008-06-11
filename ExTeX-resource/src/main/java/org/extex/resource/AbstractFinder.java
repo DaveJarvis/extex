@@ -157,8 +157,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
                 bundle = ResourceBundle.getBundle(getClass().getName());
             }
 
-            logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{args}));
+            logger.fine(MessageFormat.format(bundle.getString(key), args));
         }
     }
 
