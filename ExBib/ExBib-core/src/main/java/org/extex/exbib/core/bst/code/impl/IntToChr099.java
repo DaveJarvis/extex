@@ -32,11 +32,32 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>int.to.chr$</code>
- * 
+ * <p>
+ * This function takes an integer code point from the stack and translates it
+ * into a single character sting containing the character associated to the code
+ * point. This string is left on the stack.
+ * </p>
  * <p>
  * This function limits its argument to the ASCII range 0-255.
  * </p>
+ * <p>
+ * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and B<small>IB</small>T<sub>E</sub>X&nbsp;8
+ * restrict the characters to 8~bit characters. &epsilon;&chi;Bib has expanded
+ * the definition to 16~bit Unicode characters. Thus in compatibility mode of
+ * &epsilon;&chi;Bib\ the use of a number larger than 255 leads to an error. In
+ * &epsilon;&chi;Bib\ native mode those numbers are treated correctly as larger
+ * Unicode code points.
+ * </p>
+ * <img src="doc-files/int.to.chr.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
  * 
+ * <pre>
+ *   #0 int.to.chr$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

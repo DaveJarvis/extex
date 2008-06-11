@@ -29,6 +29,23 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>text.prefix$</code>
+ * <p>
+ * This function extracts a prefix of a certain length from a text. The length
+ * is the number of character units. Special characters in braces are counted as
+ * a single unit. If closing braces are missing the missing characters are
+ * provided automatically. Thus no unbalances braces are contained in the result
+ * of this function.
+ * </p>
+ * <img src="doc-files/text.prefix.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   key #3 text.prefix$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -41,13 +58,6 @@ import org.extex.exbib.core.io.Locator;
  * single text character (rather than however many ASCII characters it actually
  * comprises), and this function doesn't consider braces to be text characters;
  * furthermore, this function appends any needed matching right braces. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

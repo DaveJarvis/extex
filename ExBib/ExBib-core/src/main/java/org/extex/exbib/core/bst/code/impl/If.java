@@ -28,6 +28,34 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>if$</code>
+ * <p>
+ * This function performs conditional processing. It takes three arguments from
+ * the stack. The first argument is the else code. The second argument is the
+ * then code and the third argument is an integer interpreted as boolean value.
+ * If the boolean value is 0 then the else code is executed. Otherwise the then
+ * code is executed.
+ * </p>
+ * <p>
+ * The function itself does not leave anything on the stack.Nevertheless the
+ * code executed for the branches may.
+ * </p>
+ * <p>
+ * If there are less than three elements on the stack or the types do not match
+ * then an error is raised.
+ * </p>
+ * <img src="doc-files/if.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     output.state mid.sentence =
+ *     { "number" }
+ *     { "Number" }
+ *   if$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -35,13 +63,6 @@ import org.extex.exbib.core.io.Locator;
  * <dd> Pops the top three literals (they are two function literals and an
  * integer literal, in that order); if the integer is greater than 0, it
  * executes the second literal, else it executes the first. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

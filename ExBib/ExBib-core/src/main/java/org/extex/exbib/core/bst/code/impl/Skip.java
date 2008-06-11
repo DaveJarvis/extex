@@ -27,18 +27,23 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>skip$</code>
+ * <p>
+ * This function does simply nothing. In other languages this might be called a
+ * noop. This is useful for places where functions are mandatory but nothing
+ * should be done.
+ * </p>
+ * <img src="doc-files/skip.png"/>
+ * 
+ * <pre>
+ *   skip$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Is a no-op. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

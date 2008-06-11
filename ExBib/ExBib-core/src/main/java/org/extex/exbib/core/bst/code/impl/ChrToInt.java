@@ -32,6 +32,26 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>char.to.int$</code>
+ * <p>
+ * This function translates a character to the corresponding integer code point.
+ * It takes a string argument from the stack. This argument must contain exactly
+ * one character.
+ * </p>
+ * <p>
+ * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and B<small>IB</small>T<sub>E</sub>X&nbsp;8
+ * restrict the characters to 8~bit characters. \ExBib\ has expanded the
+ * definition to 16~bit Unicode characters.
+ * </p>
+ * <img src="doc-files/chr.to.int.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   "a" chr.to.int$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>

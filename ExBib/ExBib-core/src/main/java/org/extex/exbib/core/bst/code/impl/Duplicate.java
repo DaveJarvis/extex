@@ -27,19 +27,25 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>duplicate$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>duplicate$</code>
+ * <p>
+ * This function takes an element from the stack and pushed it back twice. Thus
+ * the topmost element on the stack is duplicated. If the stack is empty an
+ * error is raised.
+ * </p>
+ * <img src="doc-files/duplicate.png"/>
+ * 
+ * <pre>
+ *   "abc" duplicate$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top literal from the stack and pushes two copies of it. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

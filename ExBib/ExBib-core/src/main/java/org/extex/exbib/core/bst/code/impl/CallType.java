@@ -30,7 +30,22 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>call.type$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function
+ * <code>call.type$</code>
+ * <p>
+ * This function looks at the current entry and calls the function with the same
+ * name as the type. The name is normalized; i.e. translated to lower case.
+ * </p>
+ * <img src="doc-files/call.type.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   ITERATE {call.type$}
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>

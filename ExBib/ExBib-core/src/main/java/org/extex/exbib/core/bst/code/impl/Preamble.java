@@ -31,18 +31,22 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>preamble$</code>
+ * <p>
+ * This function takes the collected preamble from the database and pushes it as
+ * string onto the stack.
+ * </p>
+ * <img src="doc-files/preamble.png"/>
+ * 
+ * <pre>
+ *   preamble$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
- * <dt>
+ * <dt>B<small>IB</small>T<sub>E</sub>X documentation: </dt>
  * <dd> Pushes onto the stack the concatenation of all the
- * <code>@PREAMBLE</code> strings read from the database files. </dd>
- *           </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
+ * <code>{@literal @PREAMBLE}</code> strings read from the database files.
  * </dd>
  * </dl>
  * 

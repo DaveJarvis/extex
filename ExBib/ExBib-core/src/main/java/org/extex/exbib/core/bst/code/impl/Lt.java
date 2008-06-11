@@ -28,19 +28,37 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>&lt;</code>
+ * <p>
+ * This function pops two numeric arguments from the stack and compares them. It
+ * succeeds if the first argument is greater than the second argument. In case
+ * of success the integer 1 is pushed otherwise the integer 0.
+ * </p>
+ * <p>
+ * If the stack does not contain enough items or the arguments are not integers
+ * then an error is raised.
+ * </p>
+ * <img src="doc-files/lt.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ * FUNCTION {tie.or.space.connect}
+ * { duplicate$ text.length$ #3 &lt;
+ *     { "~" }
+ *     { " " }
+ *   if$
+ *   swap$ * *
+ * }
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 if the second is less than the first, 0 otherwise. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

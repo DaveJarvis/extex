@@ -23,12 +23,35 @@ import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>missing$</code>
+ * <p>
+ * This function determines whether a field is missing. It takes one argument
+ * from the stack. If it refers to a missing field it pushes the integer 1 to
+ * the stack. If it refers to a defined field it pushes 0.
+ * </p>
+ * <p>
+ * If the stack is empty of the argument does not refer to a field then an error
+ * is raised.
+ * </p>
+ * <img src="doc-files/missing.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     crossref missing$
+ *     { "author and editor" editor either.or.check }
+ *     'skip$
+ *   if$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -37,18 +60,12 @@ import org.extex.exbib.core.io.Locator;
  * otherwise. </dd>
  * </dl>
  * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
- * </dl>
- * 
  * 
  * <p>
- * Missing items are represented as TStrings with the value <code>null</code>.
- * Those can be distinguished from TStrings with the value "". They can be
- * detected only by the special method isNull().
+ * Missing items are represented as {@link TString}s with the value
+ * <code>null</code>. Those can be distinguished from {@link TString}s with
+ * the value "". They can be detected only by the special method
+ * {@link TString#isNull()}.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

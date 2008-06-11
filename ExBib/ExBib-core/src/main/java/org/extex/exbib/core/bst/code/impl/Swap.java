@@ -28,18 +28,30 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>swap$</code>
+ * <p>
+ * This function takes the two topmost elements from the stack and exchanges
+ * their order on the stack. This means that the topmost element becomes the
+ * second one and the second element becomes the topmost one. The elements can
+ * be of any type.
+ * </p>
+ * <p>
+ * If there are less than two elements on the stack then an error is raised.
+ * </p>
+ * <img src="doc-files/swap.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   swap$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Swaps the top two literals on the stack. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

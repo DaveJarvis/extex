@@ -30,6 +30,19 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>newline$</code>
+ * <p>
+ * This function writes a newline character to the output stream.
+ * </p>
+ * <img src="doc-files/newline.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     "\newcommand{\etalchar}[1]{$^{#1}$}" write$ newline$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -38,13 +51,6 @@ import org.extex.exbib.core.io.Locator;
  * buffer. It writes a blank line if and only if the output buffer is empty.
  * Since <code>write$</code> does reasonable line breaking, you should use
  * this function only when you want a blank line or an explicit line break.
- * </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
  * </dd>
  * </dl>
  * 

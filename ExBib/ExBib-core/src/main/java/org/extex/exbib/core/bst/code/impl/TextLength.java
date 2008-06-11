@@ -29,6 +29,22 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>text.length$</code>
+ * <p>
+ * This function computes the length of a text. The length is the number of text
+ * characters. Whitespace braces and brackets do not count as text characters. A
+ * T<sub>E</sub>X control sequence counts as one character &ndash; no matter
+ * how long the name may be.
+ * </p>
+ * <img src="doc-files/text.length.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   preamble$ text.length$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -38,13 +54,6 @@ import org.extex.exbib.core.io.Locator;
  * character'', defined in Section&nbsp;4) counts as a single text character,
  * even if it's missing its matching right brace, and where braces don't count
  * as text characters. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

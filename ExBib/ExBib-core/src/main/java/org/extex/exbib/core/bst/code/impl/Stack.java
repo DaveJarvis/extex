@@ -30,19 +30,23 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>skip$</code>
+ * <p>
+ * This function empties the stack and prints its elements to the log file. This
+ * function is useful for debugging purposes.
+ * </p>
+ * <img src="doc-files/stack.png"/>
+ * 
+ * <pre>
+ *   stack$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops and prints the whole stack; it's meant to be used for style
  * designers while debugging. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

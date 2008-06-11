@@ -28,6 +28,24 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>-</code>
+ * <p>
+ * This function pops two numeric arguments from the stack and pushes back the
+ * difference of the two numbers to the stack.
+ * </p>
+ * <p>
+ * If the stack does not contain enough items or the arguments are not integers
+ * then an error is raised.
+ * </p>
+ * <img src="doc-files/minus.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   namesleft #1 - 'namesleft :=
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -35,7 +53,6 @@ import org.extex.exbib.core.io.Locator;
  * <dd> Pops the top two (integer) literals and pushes their difference (the
  * first subtracted from the second). </dd>
  * </dl>
- * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

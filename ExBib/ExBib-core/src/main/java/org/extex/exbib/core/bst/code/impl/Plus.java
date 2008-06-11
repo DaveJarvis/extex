@@ -28,19 +28,30 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>+</code>
+ * <p>
+ * This function pops two numeric arguments from the stack and pushes back the
+ * sum of the two numbers to the stack.
+ * </p>
+ * <p>
+ * If the stack does not contain enough items or the arguments are not integers
+ * then an error is raised.
+ * </p>
+ * <img src="doc-files/plus.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   s len #1 +
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two (integer) literals, compares them, and pushes the
  * integer 1 if the second is greater than the first, 0 otherwise. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

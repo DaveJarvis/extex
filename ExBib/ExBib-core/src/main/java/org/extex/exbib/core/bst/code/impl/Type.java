@@ -28,7 +28,6 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>type$</code>
- * 
  * <p>
  * If the function is executed in the context of a current entry the type of
  * this entry is pushed to the stack as a string. The type is always normalized
@@ -38,6 +37,18 @@ import org.extex.exbib.core.io.Locator;
  * If the function is executed outside the scope of a current entry then the
  * empty string is pushed to the stack.
  * </p>
+ * <img src="doc-files/type.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   type$ "book" =
+ *   type$ "inbook" =
+ *   or
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

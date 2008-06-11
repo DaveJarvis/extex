@@ -29,6 +29,21 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>cite$</code>
+ * <p>
+ * This function takes the citation key of the current entry and pushes the
+ * string value to the stack. If there is no current entry then an error is
+ * raised.
+ * </p>
+ * <img src="doc-files/cite.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   "there's a month but no year in " cite$ * warning$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

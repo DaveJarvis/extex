@@ -30,6 +30,41 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>substring$</code>
+ * <p>
+ * This function computes the substring of a string. It takes three arguments
+ * from the stack. The first argument is an integer denoting the maximal length
+ * of the substring. At most this many character units will be extracted.
+ * </p>
+ * <p>
+ * The second argument is the start index of the substring &ndash; an integer.
+ * If start is positive then the first characters are extracted. The index 1
+ * denotes the first character. If start is negative then the last characters
+ * are extracted. The index -1 denotes the last character.
+ * </p>
+ * <p>
+ * The third argument is the string to take the substring from. The string is
+ * interpreted taking blocks in braces into account. A block in braces counts as
+ * one character unit. Thus it is guaranteed that blocks &ndash; which have a
+ * special meaning in T<sub>E</sub>X and L<sup>A</sup>T<sub>E</sub>X
+ * &ndash; are never broken.
+ * </p>
+ * <p>
+ * The resulting substring is pushed back to the stack.
+ * </p>
+ * <p>
+ * If the stack has less than three arguments when the function is invoked or
+ * the types of the arguments do not fit then an error is raised.
+ * </p>
+ * <img src="doc-files/substring.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   cite$ #1 #3 substring$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

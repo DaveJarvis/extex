@@ -29,6 +29,21 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>int.to.str$</code>
+ * <p>
+ * This function converts an integer to a string. It takes one integer argument
+ * from the stack. It pushes the string consisting of the decimal representation
+ * of the argument back to the stack.
+ * </p>
+ * <img src="doc-files/int.to.str.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   #123 int.to.str$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

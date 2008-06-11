@@ -30,6 +30,25 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>warning$</code>
+ * <p>
+ * This function pops a string from the stack and prints it as a warning to the
+ * log stream. The message is terminated by a newline character. The line in the
+ * log file may be rewrapped to fit into a given line length.
+ * </p>
+ * <p>
+ * An empty stack leads to an error as well as a wrong type argument on the
+ * stack.
+ * </p>
+ * <img src="doc-files/warning.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   "there's a number but no series in " cite$ * warning$ 
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

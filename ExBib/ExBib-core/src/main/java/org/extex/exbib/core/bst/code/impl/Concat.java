@@ -28,17 +28,25 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>*</code>
+ * <p>
+ * This function takes two string arguments from the stack and pushes the
+ * concatenated string back to the stack. If not enough arguments are on the
+ * stack or the arguments are no strings then an error is raised.
+ * </p>
+ * <img src="doc-files/concat.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   "there's a month but no year in " cite$ * warning$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd>
- * 
- * </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>
  * 
  * </dd>

@@ -30,6 +30,20 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>write$</code>
+ * <p>
+ * This function pops a string from the stack and prints it as a message to the
+ * output stream.
+ * </p>
+ * <img src="doc-files/write.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   "\end{thebibliography}" write$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:

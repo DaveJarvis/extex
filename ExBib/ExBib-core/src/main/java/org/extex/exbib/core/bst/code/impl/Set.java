@@ -34,19 +34,33 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>set$</code>
+ * <p>
+ * This function assigns a value to a variable or field. It takes two arguments
+ * from the stack. The first argument is the name of the target. In general it
+ * needs to be quoted. The second argument is the appropriate value.
+ * </p>
+ * <img src="doc-files/set.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     { namesleft #0 &gt; }
+ *     { 
+ *       % some actions
+ * 
+ *       namesleft #1 - 'namesleft :=
+ *     }
+ *   while$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pops the top two literals and assigns to the first (which must be a
  * global or entry variable) the value of the second. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

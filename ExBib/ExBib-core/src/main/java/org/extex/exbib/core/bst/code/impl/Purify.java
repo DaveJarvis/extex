@@ -35,6 +35,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>purify$</code>
  * 
+ * <img src="doc-files/purify.png"/>
+ * 
+ * 
+ * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>

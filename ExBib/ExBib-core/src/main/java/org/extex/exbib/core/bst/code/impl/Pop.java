@@ -26,6 +26,29 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>pop$</code>
+ * <p>
+ * This function pops a string from the stack and prints it as a message to the
+ * output stream.
+ * </p>
+ * <img src="doc-files/pop.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ * FUNCTION {output}
+ * { duplicate$ empty$
+ *     'pop$
+ *     'output.nonnull
+ *   if$
+ * }
+ * </pre>
+ * 
+ * <hr />
+ * 
+ * 
+ * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
  * <dd> Pops the top of the stack but doesn't print it; this gets rid of an

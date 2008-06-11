@@ -32,6 +32,42 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>change.case</code>
+ * <p>
+ * This function performs case conversion. It takes two arguments from the
+ * stack. The first argument is the format and the second argument is the string
+ * to apply it to. The result is pushed back to the stack.
+ * </p>
+ * <p>
+ * The format controls the operation to be performed. It is a single letter
+ * string. The following descriptions show the possibilities and functions
+ * associated with the different format strings.
+ * </p>
+ * <ul>
+ * <li> If the format is \verb|"l"| or \verb|"L"| then the string is converted
+ * to lower case. </li>
+ * <li> If the format is \verb|"u"| or \verb|"U"| then the string is converted
+ * to upper case. </li>
+ * <li> If the format is \verb|"t"| or \verb|"T"| then the string is converted
+ * to title case. </li>
+ * </ul>
+ * <p>
+ * If the format is not one of the legal values then a message is written to the
+ * log stream and the input string pushed to the stack as the result.
+ * </p>
+ * <p>
+ * If the stack does not contain enough elements or the types do not match then
+ * an error is raised.
+ * </p>
+ * <img src="doc-files/change.case.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   edition "l" change.case$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>

@@ -28,6 +28,25 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>empty$</code>
+ * <p>
+ * This function pops a literal from the stack. If the argument is a string it
+ * checks whether it contains only whitespace characters. If the argument is a
+ * field reference it checks whether the field is missing in the current entry.
+ * It pushes the integer 1 in case it succeeds and 0 if it fails.
+ * </p>
+ * <img src="doc-files/empty.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   preamble$ empty$
+ *     'skip$
+ *     { preamble$ write$ newline$ }
+ *   if$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -35,7 +54,6 @@ import org.extex.exbib.core.io.Locator;
  * <dd> Pops the top literal and pushes the integer 1 if it's a missing field or
  * a string having no non-white-space characters, 0 otherwise. </dd>
  * </dl>
- * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $

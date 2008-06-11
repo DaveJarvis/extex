@@ -34,6 +34,28 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>add.period$</code>
+ * <p>
+ * This function pops a string argument from the stack and inspects it. It the
+ * argument ends in one of the characters period '.', exclamation mark '!', or
+ * question mark '?' then the argument is pushed back to the stack. Otherwise a
+ * period '.' is added to the argument and the result pushed to the stack.
+ * 
+ * When determining the last character closing braces are ignored.
+ * </p>
+ * <img src="doc-files/ad.period.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   FUNCTION {fin.entry}
+ *   { add.period$
+ *     write$
+ *     newline$
+ *   }
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>

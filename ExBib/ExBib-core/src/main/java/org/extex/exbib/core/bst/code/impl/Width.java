@@ -32,6 +32,22 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>width$</code>
  * 
+ * <p>
+ * This function pops a string from the stack and tries to compute the width of
+ * the string when typeset. For this purpose the width of the characters in the
+ * font cmr10 are used. Some control sequences are treated specially.
+ * </p>
+ * <img src="doc-files/width.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   label width$
+ * </pre>
+ * 
+ * <hr />
+ * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>

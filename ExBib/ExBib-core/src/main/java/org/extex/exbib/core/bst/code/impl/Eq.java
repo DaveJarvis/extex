@@ -28,6 +28,30 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>=</code>
+ * <p>
+ * This function pops two arguments from the stack and compares them. If the
+ * arguments are integers then it succeeds if the first argument is equal to the
+ * second argument. If the arguments are strings then it succeeds if both
+ * strings contain the same characters. In case of success the integer 1 is
+ * pushed otherwise the integer 0.
+ * </p>
+ * <p>
+ * If the stack does not contain enough items or the arguments have incomparable
+ * types then an error is raised.
+ * </p>
+ * <img src="doc-files/equals.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     output.state mid.sentence =
+ *     { "number" }
+ *     { "Number" }
+ *   if$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <p>
  * <i> Pops the top two (integer) literals, compares them, and pushes the

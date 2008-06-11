@@ -28,18 +28,26 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>quote$</code>
+ * <p>
+ * This function takes no arguments it pushes a string containing the double
+ * quote character '"' to the stack.
+ * </p>
+ * <img src="doc-files/quote.png"/>
+ * <p>
+ * This function can be used to construct a string containing a double quote
+ * without using the brace trick:
+ * <p>
+ * 
+ * <pre>
+ *   "abc " quote$ * " def" * 
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
  * <dd> Pushes the string consisting of the double-quote character. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

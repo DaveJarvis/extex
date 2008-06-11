@@ -34,6 +34,28 @@ import org.extex.exbib.core.io.Locator;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
  * <code>num.names$</code>
+ * <p>
+ * This function takes a string argument from the stack and treats it as a list
+ * of names. It pushes the number of names in the list as integer to the stack.
+ * </p>
+ * <p>
+ * The names are separated by the word \texttt{and}\index{and}. This word has to
+ * be preceded and followed by whitespace characters. In addition this word has
+ * to occur at brace level 0.
+ * </p>
+ * <img src="doc-files/num.names.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *   editor num.names$ #1 &gt;
+ *     { ", editors" * }
+ *     { ", editor" * }
+ *   if$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -42,13 +64,6 @@ import org.extex.exbib.core.io.Locator;
  * represents---one plus the number of occurrences of the substring ``and''
  * (ignoring case differences) surrounded by non-null white-space at the top
  * brace level. </dd>
- * </dl>
- * 
- * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd>
- * 
- * </dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

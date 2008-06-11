@@ -28,6 +28,36 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>while$</code>
+ * <p>
+ * This function is a loop construction. It takes two arguments form the stack.
+ * Both of them are code segments. The first argument is code to be executed
+ * repeatedly. The second argument is a conditional. The conditional is
+ * executed. If the topmost element of the stack is numeric and not 0 then the
+ * first argument is executed and the process is repeated.
+ * </p>
+ * <p>
+ * If the stack has less than two elements, the elements are of the wrong type,
+ * or the conditional does not leave a number on the stack then an error is
+ * raised.
+ * </p>
+ * <img src="doc-files/while.png"/>
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
+ * 
+ * <pre>
+ *     { namesleft #0 &gt; }
+ *     { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
+ * 
+ *       % some more action
+ * 
+ *       nameptr #1 + 'nameptr :=
+ *       namesleft #1 - 'namesleft :=
+ *     }
+ *   while$
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
