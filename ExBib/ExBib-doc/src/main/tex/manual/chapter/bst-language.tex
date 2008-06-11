@@ -890,7 +890,7 @@ Note\IM{x} that \BibTeX~0.99c\index{BibTeX 0.99c@\BibTeX~0.99c} and
 \BibTeX~8\index{BibTeX 8@\BibTeX~8} restrict the characters to 8~bit
 characters. \ExBib\ has expanded the definition to 16~bit
 Unicode\index{Unicode} characters. Thus in compatibility mode of
-\ExBib\ the use of anumber larger than 255 leads to an error. In
+\ExBib\ the use of a number larger than 255 leads to an error. In
 \ExBib\ native mode those numbers are treated correctly as larger
 Unicode\index{Unicode} code points.
 
@@ -1160,8 +1160,8 @@ raised.
 
 This function computes the length of a text. The length is the number
 of text characters. Whitespace braces and brackets do not count as
-text characters. A \TeX\ control sequence counts as one charater -- no
-matter how long the name may be.
+text characters. A \TeX\ control sequence counts as one character --
+no matter how long the name may be.
 
 \begin{BstFunction}{text.length\$}
   \In1{text}
@@ -1180,7 +1180,7 @@ This function extracts a prefix of a certain length from a text. The
 length is the number of character units. Special characters in braces
 are counted as a single unit. If closing braces are missing the
 missing characters are provided automatically. Thus no unbalances
-braces are contained in the result of theis function.
+braces are contained in the result of this function.
 
 \begin{BstFunction}{text.prefix\$}
   \In1{text}
@@ -1237,9 +1237,8 @@ The following example is taken from \File{alpha.bst}:
 \subsection{The Function \texttt{warning\$}}%
 \fctIndex{warning\$}
 
-This function pops a string from the stack and prints it as a
-warning to the log stream. The message is terminated by a newline character.
-
+This function pops a string from the stack and prints it as a warning
+to the log stream. The message is terminated by a newline character.
 The line in the log file may be rewrapped to fit into a given line
 length.
 
