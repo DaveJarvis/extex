@@ -145,8 +145,8 @@ public class FormatName extends AbstractCode {
          * against a given limit.
          * 
          * <p>
-         * This function reimplements the function 418 of the BiBTEX web
-         * sources.
+         * This function reimplements the function 418 of the B<small>IB</small>T<sub>E</sub>X
+         * web sources.
          * </p>
          * 
          * @param buffer the buffer to analyze
@@ -482,7 +482,8 @@ public class FormatName extends AbstractCode {
         public boolean format(StringBuilder sb, Name name, Locator locator)
                 throws ExBibException {
 
-            return fmtInitials(sb, name.getFirst(), ". ", 1, locator);
+            return fmtInitials(sb, name.getFirst(), getMid(), ". ", getPre(),
+                getPost(), 1, locator);
         }
     }
 
@@ -511,7 +512,8 @@ public class FormatName extends AbstractCode {
         public boolean format(StringBuilder sb, Name name, Locator locator) {
 
             List<String> part = name.getFirst();
-            return fmtFull(sb, part, " ", part.size() - 1);
+            return fmtFull(sb, part, getMid(), " ", getPre(), getPost(), part
+                .size() - 1);
         }
     }
 
@@ -553,153 +555,6 @@ public class FormatName extends AbstractCode {
 
             super();
             this.id = id;
-        }
-
-        /**
-         * Extract the initials from a String and append it to the given
-         * {@link StringBuilder}.
-         * 
-         * @param buffer the string buffer to append to
-         * @param s the string to analyze
-         * @param sep the separator
-         * @param locator the locator
-         * 
-         * @throws ExBibException in case of an error
-         */
-        protected void appendInitial(StringBuilder buffer, String s,
-                String sep, Locator locator) throws ExBibException {
-
-            int level = 0;
-            int len = s.length();
-
-            for (int i = 0; i < len;) {
-                // skip spaces
-                while (i < len && Character.isWhitespace(s.charAt(i))) {
-                    i++;
-                }
-
-                if (i >= len) {
-                    return;
-                }
-
-                char c = s.charAt(i);
-
-                // copy unit
-                if (c == '{') {
-                    buffer.append(c);
-                    level = 1;
-
-                    for (i++; i < s.length() && level > 0; i++) {
-                        c = s.charAt(i);
-                        if (c == '{') {
-                            level++;
-                        } else if (c == '}') {
-                            level--;
-                        }
-                        buffer.append(c);
-                    }
-                } else {
-                    buffer.append(c);
-                }
-
-                if (i >= len) {
-                    return;
-                }
-
-                // skip to separator
-                boolean again = true;
-
-                for (; i < len && again; i++) {
-                    c = s.charAt(i);
-
-                    if (c == '{') {
-                        level++;
-                    } else if (c == '}') {
-                        level--;
-                    } else if (c == '-' && level == 0) {
-                        buffer.append(sep);
-                        again = false;
-                    } else if (c == '~' && level == 0) {
-                        buffer.append('.');
-                        buffer.append(tie);
-                        again = false;
-                    } else if (Character.isWhitespace(c) && level == 0) {
-                        again = false;
-                    }
-                }
-            }
-        }
-
-        /**
-         * Format a part of a name part in its full form.
-         * 
-         * @param buffer the target StringBuilder
-         * @param list the list of constituents of the name part
-         * @param midDefault the default value if the attribute mid is not set
-         * @param lineLength the line length
-         * 
-         * @return the indicator that the buffer has been modified.
-         */
-        protected boolean fmtFull(StringBuilder buffer, List<String> list,
-                String midDefault, int lineLength) {
-
-            int len = buffer.length();
-            Iterator<String> iterator = list.iterator();
-
-            if (iterator.hasNext()) {
-                String m = (mid == null ? midDefault : mid);
-                String t = (mid == null ? tie : mid);
-                int i = 1;
-                buffer.append(pre);
-                buffer.append(iterator.next());
-
-                while (iterator.hasNext()) {
-                    buffer.append(i++ == lineLength ? t : m);
-                    buffer.append(iterator.next());
-                }
-
-                buffer.append(post);
-            }
-            return len != buffer.length();
-        }
-
-        /**
-         * Format a part of a name part in its short form; only the initials are
-         * used.
-         * 
-         * @param buffer the target StringBuilder
-         * @param list the list of constituents of the name part
-         * @param midDefault the default value if the attribute mid is not set
-         * @param n the line length?
-         * @param locator the locator from the users perspective
-         * 
-         * @return <code>true</code> iff the buffer has been modified
-         * 
-         * @throws ExBibException in case that no initial is found
-         */
-        protected boolean fmtInitials(StringBuilder buffer, List<String> list,
-                String midDefault, int n, Locator locator)
-                throws ExBibException {
-
-            int len = buffer.length();
-            Iterator<String> iterator = list.iterator();
-
-            if (iterator.hasNext()) {
-                String m = (mid == null ? midDefault : mid);
-                String t = (mid == null ? "." + tie : mid);
-                String sep = (mid == null ? ".-" : mid);
-                int i = 1;
-                buffer.append(pre);
-                appendInitial(buffer, iterator.next(), sep, locator);
-
-                while (iterator.hasNext()) {
-                    buffer.append((i++) % 2 == n ? t : m);
-                    appendInitial(buffer, iterator.next(), sep, locator);
-                }
-
-                buffer.append(post);
-            }
-            return len != buffer.length();
         }
 
         /**
@@ -828,7 +683,8 @@ public class FormatName extends AbstractCode {
         public boolean format(StringBuilder buffer, Name name, Locator locator)
                 throws ExBibException {
 
-            return fmtInitials(buffer, name.getJr(), ". ", 2, locator);
+            return fmtInitials(buffer, name.getJr(), getMid(), ". ", getPre(),
+                getPost(), 2, locator);
         }
     }
 
@@ -856,7 +712,8 @@ public class FormatName extends AbstractCode {
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator) {
 
-            return fmtFull(buffer, name.getJr(), " ", 0);
+            return fmtFull(buffer, name.getJr(), getMid(), " ", getPre(),
+                getPost(), 0);
         }
     }
 
@@ -888,7 +745,8 @@ public class FormatName extends AbstractCode {
                 throws ExBibException {
 
             List<String> part = name.getLast();
-            return fmtInitials(buffer, part, ". ", part.size() - 1, locator);
+            return fmtInitials(buffer, part, getMid(), ". ", getPre(),
+                getPost(), part.size() - 1, locator);
         }
     }
 
@@ -917,7 +775,8 @@ public class FormatName extends AbstractCode {
         public boolean format(StringBuilder buffer, Name name, Locator locator) {
 
             List<String> part = name.getLast();
-            return fmtFull(buffer, part, " ", part.size() - 1);
+            return fmtFull(buffer, part, getMid(), " ", getPre(), getPost(),
+                part.size() - 1);
         }
     }
 
@@ -950,7 +809,8 @@ public class FormatName extends AbstractCode {
 
             List<String> part = name.getVon();
             int n = (part.size() > 1 && part.get(0).length() < 3 ? 1 : -99);
-            return fmtInitials(buffer, part, ". ", n, locator);
+            return fmtInitials(buffer, part, getMid(), ". ", getPre(),
+                getPost(), n, locator);
         }
     }
 
@@ -980,7 +840,7 @@ public class FormatName extends AbstractCode {
 
             List<String> part = name.getVon();
             int n = (part.size() > 1 && part.get(0).length() < 3 ? 1 : 0);
-            return fmtFull(buffer, part, " ", n);
+            return fmtFull(buffer, part, getMid(), " ", getPre(), getPost(), n);
         }
     }
 
@@ -1004,7 +864,7 @@ public class FormatName extends AbstractCode {
     public FormatName() {
 
         super();
-        tie = " ";
+        tie = "~";
     }
 
     /**
@@ -1016,6 +876,102 @@ public class FormatName extends AbstractCode {
 
         this();
         setName(name);
+    }
+
+    /**
+     * Extract the initials from a String and append it to the given
+     * {@link StringBuilder}.
+     * 
+     * @param buffer the string buffer to append to
+     * @param s the string to analyze
+     * @param sep the separator
+     * @param locator the locator
+     * 
+     * @return <code>true</code> if the last non-brace was a dot
+     * 
+     * @throws ExBibException in case of an error
+     */
+    protected boolean appendInitial(StringBuilder buffer, String s, String sep,
+            Locator locator) throws ExBibException {
+
+        int len = s.length();
+        int level = 0;
+        int i = 0;
+        boolean dot = true;
+
+        for (;;) {
+            // skip spaces
+            while (i < len && Character.isWhitespace(s.charAt(i))) {
+                i++;
+            }
+            if (i >= len) {
+                break;
+            }
+
+            for (; i < len; i++) {
+                char c = s.charAt(i);
+                buffer.append(c);
+
+                if (c == '{') {
+                    level++;
+                } else if (c == '}') {
+                    level--;
+                } else if (c == '.') {
+                    dot = true;
+                } else if (c == '\\') {
+                    if (++i >= s.length()) {
+                        break;
+                    }
+                    dot = false;
+                    c = s.charAt(i);
+                    buffer.append(c);
+                    if (Character.isLetter(c)) {
+                        while (++i < len) {
+                            c = s.charAt(i);
+                            if (!Character.isLetter(c)) {
+                                break;
+                            }
+                            buffer.append(c);
+                        }
+                        i--;
+                        break;
+                    }
+                } else if (Character.isLetter(c)) {
+                    dot = false;
+                    break;
+                }
+            }
+
+            for (int subLevel = 0; ++i < len;) {
+                char c = s.charAt(i);
+
+                if (c == '{') {
+                    subLevel++;
+                } else if (c == '}') {
+                    subLevel--;
+                } else if (subLevel == 0) {
+                    if (c == '-') {
+                        buffer.append(sep);
+                        dot = true;
+                        i++;
+                        break;
+                    } else if (c == '~') {
+                        buffer.append('.');
+                        buffer.append(tie);
+                        i++;
+                        dot = true;
+                        break;
+                    } else if (Character.isWhitespace(c)) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        while (level-- > 0) {
+            buffer.append('}');
+        }
+        return dot;
     }
 
     /**
@@ -1047,6 +1003,87 @@ public class FormatName extends AbstractCode {
 
         processor.push(process(format.format(namelist.get(index - 1), //
             locator)));
+    }
+
+    /**
+     * Format a part of a name part in its full form.
+     * 
+     * @param buffer the target StringBuilder
+     * @param list the list of constituents of the name part
+     * @param mid the mid parameter
+     * @param midDefault the default value if the attribute mid is not set
+     * @param pre the pre parameter
+     * @param post the post parameter
+     * @param lineLength the line length
+     * @return the indicator that the buffer has been modified.
+     */
+    protected boolean fmtFull(StringBuilder buffer, List<String> list,
+            String mid, String midDefault, String pre, String post,
+            int lineLength) {
+
+        int len = buffer.length();
+        Iterator<String> iterator = list.iterator();
+
+        if (iterator.hasNext()) {
+            String m = (mid == null ? midDefault : mid);
+            String t = (mid == null ? tie : mid);
+            int i = 1;
+            buffer.append(pre);
+            buffer.append(iterator.next());
+
+            while (iterator.hasNext()) {
+                buffer.append(i++ == lineLength ? t : m);
+                buffer.append(iterator.next());
+            }
+
+            buffer.append(post);
+        }
+        return len != buffer.length();
+    }
+
+    /**
+     * Format a part of a name part in its short form; only the initials are
+     * used.
+     * 
+     * @param buffer the target StringBuilder
+     * @param list the list of constituents of the name part
+     * @param mid the mid parameter
+     * @param midDefault the default value if the attribute mid is not set
+     * @param pre the pre parameter
+     * @param post the post parameter
+     * @param n the line length?
+     * @param locator the locator from the users perspective
+     * @return <code>true</code> iff the buffer has been modified
+     * 
+     * @throws ExBibException in case that no initial is found
+     */
+    protected boolean fmtInitials(StringBuilder buffer, List<String> list,
+            String mid, String midDefault, String pre, String post, int n,
+            Locator locator) throws ExBibException {
+
+        int len = buffer.length();
+        Iterator<String> iterator = list.iterator();
+
+        if (iterator.hasNext()) {
+            String m = (mid == null ? midDefault : mid);
+            String t = (mid == null ? "." + tie : mid);
+            String sep = (mid == null ? ".-" : mid);
+            int i = 1;
+            buffer.append(pre);
+            appendInitial(buffer, iterator.next(), sep, locator);
+
+            while (iterator.hasNext()) {
+                buffer.append((i++) % 2 == n ? t : m);
+                appendInitial(buffer, iterator.next(), sep, locator);
+            }
+
+            if (post.length() != 0 && buffer.length() != 0
+                    && post.charAt(0) == buffer.charAt(buffer.length() - 1)) {
+                buffer.deleteCharAt(buffer.length() - 1);
+            }
+            buffer.append(post);
+        }
+        return len != buffer.length();
     }
 
     /**

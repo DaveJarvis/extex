@@ -19,7 +19,12 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.io.Locator;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
@@ -91,6 +96,94 @@ public class FormatName099 extends FormatName {
     }
 
     /**
+     * Extract the initials from a String and append it to the given
+     * {@link StringBuilder}.
+     * 
+     * @param buffer the string buffer to append to
+     * @param s the string to analyze
+     * @param sep the separator
+     * @param locator the locator
+     * 
+     * @throws ExBibException in case of an error
+     */
+    @Override
+    protected boolean appendInitial(StringBuilder buffer, String s, String sep,
+            Locator locator) throws ExBibException {
+
+        int len = s.length();
+        int i = 0;
+
+        // skip spaces
+        while (i < len && Character.isWhitespace(s.charAt(i))) {
+            i++;
+        }
+        if (i >= len) {
+            return true;
+        }
+        int start = i;
+
+        for (; i < len; i++) {
+            char c = s.charAt(i);
+
+            if (Character.isLetter(c)) {
+                buffer.append(c);
+                return false;
+            } else if (c != '{') {
+                break;
+            }
+        }
+
+        buffer.append(s.substring(start));
+        return false;
+    }
+
+    /**
+     * Format a part of a name part in its short form; only the initials are
+     * used.
+     * 
+     * @param buffer the target StringBuilder
+     * @param list the list of constituents of the name part
+     * @param mid the mid parameter
+     * @param midDefault the default value if the attribute mid is not set
+     * @param pre the pre parameter
+     * @param post the post parameter
+     * @param n the line length?
+     * @param locator the locator from the users perspective
+     * @return <code>true</code> iff the buffer has been modified
+     * 
+     * @throws ExBibException in case that no initial is found
+     */
+    @Override
+    protected boolean fmtInitials(StringBuilder buffer, List<String> list,
+            String mid, String midDefault, String pre, String post, int n,
+            Locator locator) throws ExBibException {
+
+        int len = buffer.length();
+        Iterator<String> iterator = list.iterator();
+
+        if (iterator.hasNext()) {
+            String m = (mid == null ? midDefault : mid);
+            String t = (mid == null ? "." + tie : mid);
+            String sep = (mid == null ? ".-" : mid);
+            int i = 1;
+            buffer.append(pre);
+            appendInitial(buffer, iterator.next(), sep, locator);
+
+            while (iterator.hasNext()) {
+                buffer.append((i++) % 2 == n ? t : m);
+                appendInitial(buffer, iterator.next(), sep, locator);
+            }
+
+            if (post.length() != 0 && buffer.length() != 0
+                    && post.charAt(0) == buffer.charAt(buffer.length() - 1)) {
+                buffer.deleteCharAt(buffer.length() - 1);
+            }
+            buffer.append(post);
+        }
+        return len != buffer.length();
+    }
+
+    /**
      * This is the post-processor for the name formatting engine.
      * 
      * @param s the string to process
@@ -155,4 +248,5 @@ public class FormatName099 extends FormatName {
         // }
         return new TString(sb.toString(), null);
     }
+
 }

@@ -26,6 +26,7 @@ import junit.framework.TestSuite;
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.FormatName;
+import org.extex.exbib.core.bst.code.impl.FormatName099;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.impl.TInteger;
@@ -40,7 +41,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TestFormatName extends TestCase {
+public class TestFormatName099 extends TestCase {
 
     /**
      * The main program just uses the text interface of JUnit.
@@ -59,7 +60,7 @@ public class TestFormatName extends TestCase {
      */
     public static Test suite() {
 
-        return new TestSuite(TestFormatName.class);
+        return new TestSuite(TestFormatName099.class);
     }
 
     /**
@@ -72,7 +73,7 @@ public class TestFormatName extends TestCase {
      * 
      * @param name the name
      */
-    public TestFormatName(String name) {
+    public TestFormatName099(String name) {
 
         super(name);
     }
@@ -84,7 +85,7 @@ public class TestFormatName extends TestCase {
      */
     private FormatName makeFormatter() {
 
-        return new FormatName("format.name$");
+        return new FormatName099("format.name$");
     }
 
     /**
@@ -1008,7 +1009,7 @@ public class TestFormatName extends TestCase {
      */
     public void testFormat107() throws Exception {
 
-        testFormat("J.-P. Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.-P. Satre");
+        testFormat("J.-P. Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.~Satre");
     }
 
     /**
@@ -1018,7 +1019,7 @@ public class TestFormatName extends TestCase {
      */
     public void testFormat108() throws Exception {
 
-        testFormat("Jean-Paul Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.-P. Satre");
+        testFormat("Jean-Paul Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.~Satre");
 
     }
 
@@ -1039,8 +1040,7 @@ public class TestFormatName extends TestCase {
      */
     public void testFormat110() throws Exception {
 
-        testFormat("{Jean-Paul} Satre", 1, "{f.~}{v~}{ll}{, jj}",
-            "{J.-P}. Satre");
+        testFormat("{Jean-Paul} Satre", 1, "{f~}{v~}{ll}{, jj}", "J~Satre");
     }
 
     /**
@@ -1050,7 +1050,7 @@ public class TestFormatName extends TestCase {
      */
     public void testFormat111() throws Exception {
 
-        testFormat("{\\AA{}re} Xxx", 1, "{f~}{v~}{ll}{, jj}", "{\\AA}~Xxx");
+        testFormat("{\\AA{}re} Xxx", 1, "{f~}{v~}{ll}{, jj}", "{\\AA{}re}~Xxx");
     }
 
     /**
@@ -1061,7 +1061,7 @@ public class TestFormatName extends TestCase {
     public void testFormat112() throws Exception {
 
         testFormat("{Arthur Charles} Clarke", 1, "{f~}{v~}{ll}{, jj}",
-            "{AC} Clarke");
+            "A~Clarke");
     }
 
     /**
