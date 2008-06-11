@@ -213,7 +213,7 @@ public class FileFinder extends AbstractFinder
         for (String ext : cfg.getValues(EXTENSION_TAG)) {
 
             String n = (name + ext).replaceAll("\\{type\\}", type);
-            File file = new File(p, n);
+            File file = ("".equals(p) ? new File(n) : new File(p, n));
 
             trace("Try", file.toString(), null);
             if (file.canRead()) {
@@ -255,8 +255,13 @@ public class FileFinder extends AbstractFinder
             trace("ConfigurationNotFound", type, t);
         }
 
+        if (new File(name).isAbsolute()) {
+
+            return find(name, "", cfg, type);
+        }
+
         Iterator<Configuration> iterator = cfg.iterator(PATH_TAG);
-        while (stream == null && iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Configuration c = iterator.next();
             String path = null;
             String p = c.getAttribute("property");
@@ -287,13 +292,14 @@ public class FileFinder extends AbstractFinder
             } else {
                 stream = find(name, c.getValue(), cfg, type);
             }
+            if (stream != null) {
+                return stream;
+            }
         }
 
-        if (stream == null) {
-            trace("Failed", name, null);
-        }
+        trace("Failed", name, null);
 
-        return stream;
+        return null;
     }
 
     /**
