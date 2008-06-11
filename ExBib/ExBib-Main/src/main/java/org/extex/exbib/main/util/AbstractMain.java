@@ -39,8 +39,6 @@ import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.main.cli.CLI;
@@ -86,12 +84,6 @@ public abstract class AbstractMain extends CLI {
      * which the name of the program is extracted.
      */
     public static final String PROP_PROGNAME = "program.name";
-
-    /**
-     * The constant <tt>PPP</tt> contains the pattern to recognize a define.
-     */
-    private static final Pattern DEFINE_PATTERN =
-            Pattern.compile("^-D([a-z0-9.-]+)=(.*)$");
 
     /**
      * The field <tt>banner</tt> contains the indicator that the banner has
@@ -181,23 +173,25 @@ public abstract class AbstractMain extends CLI {
     protected void applyLanguage() {
 
         String lang = properties.getProperty(PROP_LANG);
+        Locale locale;
 
         if (lang == null || "".equals(lang)) {
-            // do nothing
+            return;
         } else if (lang.matches("[a-z][a-z]")) {
-            Locale.setDefault(new Locale(lang));
+            locale = new Locale(lang);
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z]")) {
-            Locale.setDefault(new Locale(lang.substring(0, 1), //
-                lang.substring(3, 4)));
+            locale = new Locale(lang.substring(0, 1), //
+                lang.substring(3, 4));
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z][-_][a-z][a-z]")) {
-            Locale.setDefault(new Locale(lang.substring(0, 1), //
-                lang.substring(3, 4), lang.substring(6, 7)));
+            locale = new Locale(lang.substring(0, 1), //
+                lang.substring(3, 4), lang.substring(6, 7));
         } else {
             log("undefined.language", lang);
             return;
         }
 
-        bundle = ResourceBundle.getBundle(getClass().getName());
+        Locale.setDefault(locale);
+        useLanguage(locale);
     }
 
     /**
@@ -250,11 +244,7 @@ public abstract class AbstractMain extends CLI {
             @Override
             protected int run(String arg) throws UnknownOptionCliException {
 
-                Matcher matcher = DEFINE_PATTERN.matcher(arg);
-                if (matcher.matches()) {
-                    properties.setProperty(matcher.group(1), matcher.group(2));
-                    return EXIT_CONTINUE;
-                } else if (arg.startsWith("-")) {
+                if (arg.startsWith("-")) {
                     throw new UnknownOptionCliException(arg);
                 }
                 return setFile(arg);
@@ -265,7 +255,14 @@ public abstract class AbstractMain extends CLI {
                     throws UnusedArgumentCliException,
                         UnknownOptionCliException {
 
-                if (a.startsWith("-")) {
+                if (a.startsWith("-D")) {
+                    String prop = a.substring(2);
+                    properties.setProperty(prop, arg);
+                    if (prop.equals(PROP_LANG)) {
+                        applyLanguage();
+                    }
+                    return CLI.EXIT_CONTINUE;
+                } else if (a.startsWith("-")) {
                     throw new UnknownOptionCliException(a);
                 }
                 throw new UnusedArgumentCliException(a);

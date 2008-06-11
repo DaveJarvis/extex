@@ -977,6 +977,20 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>-Dlanguage=</tt> can
+     * be used to set the language. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLanguage4() throws Exception {
+
+        runFailure(BANNER_DE + "Ein Parameter mit der aux-Datei fehlt.\n"
+                + "(Es gab 1 Fehler)\n", //
+            "-Dlanguage=de");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--load</tt> needs an
      * argument. </testcase>
      * 
