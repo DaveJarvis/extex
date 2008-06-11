@@ -450,7 +450,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 int depth = 0;
 
                 do {
-                    if (i > buffer.length()) {
+                    if (i >= buffer.length()) {
                         if (read() == null) {
                             throw new ExBibEofInStringException(getLocator());
                         }
