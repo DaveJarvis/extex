@@ -9,7 +9,7 @@
     This is the ExBib documentation.
   </description>
 
-  <version>1.0</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
@@ -21,8 +21,121 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-ant</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>latex-1</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>exbib-manual</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${basedir}/target/manual.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>bibtex</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>bibtex</executable>
+              <arguments>
+                <argument>exbib-manual</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${basedir}/target/manual.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>makeindex</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>makeindex</executable>
+              <arguments>
+                <argument>-s</argument>
+                <argument>../../texinputs/doc.ist</argument>
+                <argument>exbib-manual.idx</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${basedir}/target/manual.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>latex-2</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>exbib-manual</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${basedir}/target/manual.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>latex-3</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>exbib-manual</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${basedir}/target/manual.out</outputFile>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -31,62 +144,6 @@
             <phase>compile</phase>
             <configuration>
               <tasks>
-                <mkdir dir="target"/>
-                <echo message="latex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="pdflatex"
-                      output="${basedir}/target/log.txt"
-                      append="false">
-                  <arg value="-draftmode"/>
-                  <arg value="exbib-manual"/>
-                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
-                </exec>
-                <echo message="bibtex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="bibtex"
-                      failonerror="true"
-                      output="${basedir}/target/log.txt"
-                      append="true">
-                  <arg value="exbib-manual"/>
-                </exec>
-                <echo message="makeindex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="makeindex"
-                      failonerror="false"
-                      output="${basedir}/target/log.txt"
-                      append="true">
-                  <arg line="-s ../../texinputs/doc.ist exbib-manual.idx"/>
-                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
-                </exec>
-                <echo message="latex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="pdflatex"
-                      failonerror="true"
-                      output="${basedir}/target/log.txt"
-                      append="true">
-                  <arg value="-draftmode"/>
-                  <arg value="exbib-manual"/>
-                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
-                </exec>
-                <echo message="latex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="pdflatex"
-                      failonerror="true"
-                      output="${basedir}/target/log.txt"
-                      append="true">
-                  <arg value="-draftmode"/>
-                  <arg value="exbib-manual"/>
-                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
-                </exec>
-                <echo message="latex exbib-manual"/>
-                <exec dir="${basedir}/src/main/tex/manual"
-                      executable="pdflatex"
-                      failonerror="true"
-                      output="${basedir}/target/log.txt"
-                      append="true">
-                  <arg value="exbib-manual"/>
-                  <env key="TEXINPUTS" value="../../texinputs${path.separator}chapter${path.separator}${path.separator}."/>
-                </exec>
                 <echo message="moving files to target"/>
                 <move todir="${basedir}/target">
                   <fileset dir="${basedir}/src/main/tex/manual">
@@ -110,6 +167,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
