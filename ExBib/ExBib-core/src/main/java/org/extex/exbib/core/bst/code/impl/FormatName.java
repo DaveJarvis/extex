@@ -850,8 +850,7 @@ public class FormatName extends AbstractCode {
      * format cache. The key is the string representation. Thus it is possible
      * to get the Format from the cache.
      */
-    private static Map<String, Format> formatCache =
-            new HashMap<String, Format>();
+    private Map<String, Format> formatCache = new HashMap<String, Format>();
 
     /**
      * The field <tt>tie</tt> contains the string used as tie.
