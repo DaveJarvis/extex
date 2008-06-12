@@ -1,6 +1,6 @@
 <projectDescription>
   <name>ExBib-Main</name>
-  <comment>This is ExBib.</comment>
+  <comment>This is the command line interface for ExBib and associated tools.</comment>
   <projects>
     <project>ExBib-core</project>
     <project>ExTeX-resource</project>
