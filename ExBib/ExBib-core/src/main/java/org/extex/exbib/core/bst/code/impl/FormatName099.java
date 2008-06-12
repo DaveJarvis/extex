@@ -96,6 +96,62 @@ public class FormatName099 extends FormatName {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param buffer
+     * @param s
+     * @param len
+     * @param start
+     * 
+     * @return the next index
+     */
+    private int app(StringBuilder buffer, String s, int len, int start) {
+
+        int i = start;
+        int level = 0;
+        boolean bs = false;
+
+        for (; i < len; i++) {
+            char c = s.charAt(i);
+
+            if (Character.isLetter(c)) {
+                if (!bs) {
+                    buffer.append(c);
+                    return skip(s, len, level, i);
+                }
+            } else if (c == '{') {
+                level++;
+            } else if (c == '}') {
+                level--;
+            } else if (c == '\\') {
+                bs = true;
+                i++;
+            }
+        }
+
+        level = 0;
+        boolean letter = false;
+
+        for (i = start; i < len; i++) {
+            char c = s.charAt(i);
+            buffer.append(c);
+
+            if (Character.isLetter(c)) {
+                letter = true;
+            } else if (c == '{') {
+                level++;
+            } else if (c == '}') {
+                level--;
+                if (level <= 0 && letter) {
+                    break;
+                }
+            }
+        }
+
+        return skip(s, len, level, i);
+    }
+
+    /**
      * Extract the initials from a String and append it to the given
      * {@link StringBuilder}.
      * 
@@ -110,8 +166,8 @@ public class FormatName099 extends FormatName {
     protected boolean appendInitial(StringBuilder buffer, String s, String sep,
             Locator locator) throws ExBibException {
 
-        int len = s.length();
         int i = 0;
+        int len = s.length();
 
         // skip spaces
         while (i < len && Character.isWhitespace(s.charAt(i))) {
@@ -120,20 +176,12 @@ public class FormatName099 extends FormatName {
         if (i >= len) {
             return true;
         }
-        int start = i;
 
-        for (; i < len; i++) {
-            char c = s.charAt(i);
-
-            if (Character.isLetter(c)) {
-                buffer.append(c);
-                return false;
-            } else if (c != '{') {
-                break;
-            }
+        for (i = app(buffer, s, len, i) + 1; i < len; i =
+                app(buffer, s, len, i) + 1) {
+            buffer.append(sep);
         }
 
-        buffer.append(s.substring(start));
         return false;
     }
 
@@ -249,4 +297,35 @@ public class FormatName099 extends FormatName {
         return new TString(sb.toString(), null);
     }
 
+    /**
+     * Skip to group level 0 and ignore following spaces.
+     * 
+     * @param s the string to scan
+     * @param len the length of the string
+     * @param startLevel the initial brace level
+     * @param start the start index
+     * 
+     * @return the next suitable index
+     */
+    private int skip(String s, int len, int startLevel, int start) {
+
+        int i = start;
+        int level = startLevel;
+        for (; i < len; i++) {
+            char c = s.charAt(i);
+            if (c == '{') {
+                level++;
+            } else if (c == '}') {
+                level--;
+            } else if (c == '\\') {
+                i++;
+            } else if (level == 0 && (Character.isWhitespace(c) || c == '-')) {
+                break;
+            }
+        }
+        while (i < len && Character.isWhitespace(s.charAt(i))) {
+            i++;
+        }
+        return i;
+    }
 }
