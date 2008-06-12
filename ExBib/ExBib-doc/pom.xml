@@ -24,8 +24,9 @@
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExBib-ant</artifactId>
+      <artifactId>ExBib-Main</artifactId>
       <version>0.1-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -56,21 +57,23 @@
           </execution>
 
           <execution>
-            <id>bibtex</id>
+            <id>exbib</id>
             <goals>
               <goal>exec</goal>
             </goals>
             <phase>compile</phase>
             <configuration>
-              <executable>bibtex</executable>
+              <executable>java</executable>
               <arguments>
-                <argument>exbib-manual</argument>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>org.extex.exbib.main.ExBibMain</argument>
+                <argument>--quiet</argument>
+                <argument>-Dtexinputs=${basedir}/src/main/texinputs/bibtex</argument>
+                <argument>--logfile=${basedir}/target/exbib-manual.blg</argument>
+                <argument>${basedir}/src/main/tex/manual/exbib-manual</argument>
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${basedir}/target/manual.out</outputFile>
             </configuration>
           </execution>
 
