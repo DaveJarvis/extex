@@ -19,9 +19,9 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -34,6 +34,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>format.name$</tt>.
@@ -41,27 +44,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TestFormatName099 extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestFormatName099.class);
-    }
+public class TestFormatName099 {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -70,12 +53,10 @@ public class TestFormatName099 extends TestCase {
 
     /**
      * Create a new object.
-     * 
-     * @param name the name
      */
-    public TestFormatName099(String name) {
+    public TestFormatName099() {
 
-        super(name);
+        super();
     }
 
     /**
@@ -89,22 +70,20 @@ public class TestFormatName099 extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -115,6 +94,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmptyStack() throws Exception {
 
         try {
@@ -154,6 +134,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0110() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{f}", "G");
@@ -164,6 +145,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0111() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{v}", "");
@@ -174,6 +156,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0112() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{j}", "");
@@ -184,6 +167,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat012() throws Exception {
 
         testFormat("Gerd Neugebauer and others", 2, "{ll}", "others");
@@ -194,6 +178,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat013() throws Exception {
 
         testFormat("Gerd Neugebauer and others", 1, "abcd", "abcd");
@@ -204,6 +189,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat014() throws Exception {
 
         testFormat("Gerd Neugebauer and others", 1, "ab{ll}cd",
@@ -215,6 +201,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat015() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{ll}", "Neugebauer");
@@ -225,6 +212,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat016() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{ff}", "Gerd");
@@ -235,6 +223,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat017() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{vv}", "");
@@ -245,6 +234,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat018() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{jj}", "");
@@ -255,6 +245,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat019() throws Exception {
 
         testFormat("Gerd Neugebauer", 1, "{l}", "N");
@@ -265,6 +256,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat022() throws Exception {
 
         testFormat("Cyrano de Bergerac", 1, "{ll}", "Bergerac");
@@ -275,6 +267,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat023() throws Exception {
 
         testFormat("Cyrano de Bergerac", 1, "{vv}", "de");
@@ -285,6 +278,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat024() throws Exception {
 
         testFormat("Cyrano de Bergerac", 1, "{ff}", "Cyrano");
@@ -295,6 +289,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0310() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -306,6 +301,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat032() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -317,6 +313,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat033() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -328,6 +325,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat034() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -339,6 +337,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat035() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -350,6 +349,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat036() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -361,6 +361,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat037() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -372,6 +373,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat038() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -383,6 +385,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat039() throws Exception {
 
         testFormat("Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin", 1,
@@ -394,6 +397,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat042() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{ll}", "Neugebauer");
@@ -404,6 +408,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat043() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{ff}", "Gerd");
@@ -414,6 +419,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat044() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{vv}", "");
@@ -424,6 +430,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat045() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{jj}", "");
@@ -434,6 +441,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat046() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{l}", "N");
@@ -444,6 +452,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat047() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{f}", "G");
@@ -454,6 +463,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat048() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{v}", "");
@@ -464,6 +474,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat049() throws Exception {
 
         testFormat("Neugebauer, Gerd", 1, "{j}", "");
@@ -474,6 +485,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat052() throws Exception {
 
         testFormat("de Bergerac, Cyrano", 1, "{ll}", "Bergerac");
@@ -484,6 +496,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat053() throws Exception {
 
         testFormat("de Bergerac, Cyrano", 1, "{vv}", "de");
@@ -494,6 +507,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat054() throws Exception {
 
         testFormat("de Bergerac, Cyrano", 1, "{ff}", "Cyrano");
@@ -504,6 +518,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0610() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -515,6 +530,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat062() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -526,6 +542,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat063() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -537,6 +554,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat064() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -549,6 +567,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat065() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -561,6 +580,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat066() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -573,6 +593,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat067() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -585,6 +606,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat068() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -597,6 +619,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat069() throws Exception {
 
         testFormat("de la Vall{\\'e}e Poussin, Charles Louis Xavier Joseph", 1,
@@ -608,6 +631,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat072() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{ll}", "Neugebauer");
@@ -618,6 +642,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat073() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{ff}", "Gerd");
@@ -628,6 +653,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat074() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{vv}", "");
@@ -638,6 +664,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat075() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{jj}", "");
@@ -648,6 +675,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat076() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{l}", "N");
@@ -658,6 +686,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat077() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{f}", "G");
@@ -668,6 +697,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat078() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{v}", "");
@@ -678,6 +708,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat079() throws Exception {
 
         testFormat(" Neugebauer ,  Gerd ", 1, "{j}", "");
@@ -688,6 +719,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat082() throws Exception {
 
         testFormat("  de  Bergerac ,  Cyrano ", 1, "{ll}", "Bergerac");
@@ -698,6 +730,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat083() throws Exception {
 
         testFormat("  de  Bergerac ,  Cyrano ", 1, "{vv}", "de");
@@ -708,6 +741,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat084() throws Exception {
 
         testFormat("  de  Bergerac ,  Cyrano ", 1, "{ff}", "Cyrano");
@@ -718,6 +752,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0910() throws Exception {
 
         testFormat(
@@ -730,6 +765,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0911() throws Exception {
 
         testFormat(
@@ -742,6 +778,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0912() throws Exception {
 
         testFormat(
@@ -754,6 +791,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0913() throws Exception {
 
         testFormat(
@@ -766,6 +804,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0914() throws Exception {
 
         testFormat(
@@ -778,6 +817,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0915() throws Exception {
 
         testFormat(
@@ -790,6 +830,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0916() throws Exception {
 
         testFormat(
@@ -802,6 +843,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0917() throws Exception {
 
         testFormat(
@@ -814,6 +856,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0918() throws Exception {
 
         testFormat(
@@ -826,6 +869,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat0919() throws Exception {
 
         testFormat(
@@ -838,6 +882,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat092() throws Exception {
 
         testFormat(
@@ -850,6 +895,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat093() throws Exception {
 
         testFormat(
@@ -862,6 +908,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat094() throws Exception {
 
         testFormat(
@@ -874,6 +921,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat095() throws Exception {
 
         testFormat(
@@ -886,6 +934,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat096() throws Exception {
 
         testFormat(
@@ -898,6 +947,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat097() throws Exception {
 
         testFormat(
@@ -910,6 +960,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat098() throws Exception {
 
         testFormat(
@@ -922,6 +973,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat099() throws Exception {
 
         testFormat(
@@ -934,6 +986,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat1010() throws Exception {
 
         testFormat("{A.}~Nother", 1, "{ff~~}{vv~}{ll}{, jj}", "{A.}~Nother");
@@ -944,6 +997,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat1011() throws Exception {
 
         testFormat("S.O. Meone", 1, "{{}f.~}{vv~}{ll}{, jj}", "{}S. Meone");
@@ -954,6 +1008,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat102() throws Exception {
 
         testFormat("S.O. Meone", 1, "{ff~}{vv~}{ll}{, jj}", "S.O. Meone");
@@ -964,6 +1019,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat103() throws Exception {
 
         testFormat("A. Nother", 1, "{ff~}{vv~}{ll}{, jj}", "A.~Nother");
@@ -974,6 +1030,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat104() throws Exception {
 
         testFormat("S. O. Meone and A. Nother and others", 1,
@@ -985,6 +1042,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat105() throws Exception {
 
         testFormat("Xavier Oscar Handley and S.O. Meone and A. Nother", 1,
@@ -996,6 +1054,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat106() throws Exception {
 
         testFormat("{\\'{E}}. Masterly", 1, "{f.~}{vv~}{ll}{, jj}",
@@ -1007,9 +1066,10 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat107() throws Exception {
 
-        testFormat("J.-P. Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.~Satre");
+        testFormat("J.-P. Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.-P. Satre");
     }
 
     /**
@@ -1017,9 +1077,10 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat108() throws Exception {
 
-        testFormat("Jean-Paul Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.~Satre");
+        testFormat("Jean-Paul Satre", 1, "{f.~}{vv~}{ll}{, jj}", "J.-P. Satre");
 
     }
 
@@ -1028,6 +1089,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat109() throws Exception {
 
         testFormat("{A.} Nother", 1, "{ff~}{vv~}{ll}{, jj}", "{A.} Nother");
@@ -1038,6 +1100,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat110() throws Exception {
 
         testFormat("{Jean-Paul} Satre", 1, "{f~}{v~}{ll}{, jj}", "J~Satre");
@@ -1048,6 +1111,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat111() throws Exception {
 
         testFormat("{\\AA{}re} Xxx", 1, "{f~}{v~}{ll}{, jj}", "{\\AA{}re}~Xxx");
@@ -1058,6 +1122,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testFormat112() throws Exception {
 
         testFormat("{Arthur Charles} Clarke", 1, "{f~}{v~}{ll}{, jj}",
@@ -1065,7 +1130,19 @@ public class TestFormatName099 extends TestCase {
     }
 
     /**
-     * Test a no-name.
+     * <testcase> Test accented initials. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFormat113() throws Exception {
+
+        testFormat("{\\'{E}}douard Masterly", 1, "{f.~}{vv~}{ll}{, jj}",
+            "{\\'{E}}.~Masterly");
+    }
+
+    /**
+     * * Test a no-name.
      * 
      * @param names the names
      * @param pos the position
@@ -1090,6 +1167,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoName0() throws Exception {
 
         testNoName("", 1);
@@ -1101,6 +1179,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoName1() throws Exception {
 
         testNoName("Gerd Neugebauer", 2);
@@ -1112,6 +1191,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoName2() throws Exception {
 
         testNoName("Gerd Neugebauer and others", 3);
@@ -1123,6 +1203,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoName3() throws Exception {
 
         testNoName("Gerd Neugebauer and A.U. Thor", 3);
@@ -1133,6 +1214,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoNameMinus1() throws Exception {
 
         testNoName("", -1);
@@ -1143,6 +1225,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShortStack1() throws Exception {
 
         try {
@@ -1159,6 +1242,7 @@ public class TestFormatName099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testShortStack2() throws Exception {
 
         try {
