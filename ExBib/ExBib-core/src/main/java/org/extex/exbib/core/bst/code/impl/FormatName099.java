@@ -96,12 +96,12 @@ public class FormatName099 extends FormatName {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Find a single letter and skip over the rest.
      * 
-     * @param buffer
-     * @param s
-     * @param len
-     * @param start
+     * @param buffer the output buffer
+     * @param s the string to scan
+     * @param len the length of s
+     * @param start the start index
      * 
      * @return the next index
      */
