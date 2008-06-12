@@ -19,8 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
  * Run all tests.
@@ -28,68 +28,47 @@ import junit.framework.TestSuite;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({TestAddPeriod.class, //
+        TestCallType.class, //
+        TestChangeCase.class, //
+        TestChrToInt.class, //
+        TestCite.class, //
+        TestConcat.class, //
+        TestDuplicate.class, //
+        TestEmpty.class, //
+        TestEq.class, //
+        TestFormatName.class, //
+        TestFormatName099.class, //
+        TestGt.class, //
+        TestIf.class, //
+        TestIntToChr.class, //
+        TestIntToStr.class, //
+        TestLt.class, //
+        TestMinus.class, //
+        TestMissing.class, //
+        TestNewline.class, //
+        TestNumNames.class, //
+        TestPlus.class, //
+        TestPop.class, //
+        TestPreamble.class, //
+        TestPurify.class, //
+        TestQuote.class, //
+        TestSet.class, //
+        TestSkip.class, //
+        TestStack.class, //
+        TestSubstring.class, //
+        TestSwap.class, //
+        TestTextLength.class, //
+        TestTextPrefix.class, //
+        TestTop.class, //
+        TestType.class, //
+        TestWarning.class, //
+        TestWhile.class, //
+        TestWidth.class, //
+        TestWrite.class //
+})
 public final class AllTests {
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        TestSuite suite =
-                new TestSuite("Test for org.extex.exbib.core.bst.code");
-
-        // $JUnit-BEGIN$
-        suite.addTest(TestSkip.suite());
-
-        suite.addTest(TestPop.suite());
-        suite.addTest(TestDuplicate.suite());
-        suite.addTest(TestSwap.suite());
-
-        suite.addTest(TestWrite.suite());
-        suite.addTest(TestNewline.suite());
-        suite.addTest(TestWarning.suite());
-        suite.addTest(TestTop.suite());
-        suite.addTest(TestStack.suite());
-
-        suite.addTest(TestQuote.suite());
-        suite.addTest(TestConcat.suite());
-        suite.addTest(TestEq.suite());
-        suite.addTest(TestGt.suite());
-        suite.addTest(TestLt.suite());
-        suite.addTest(TestPlus.suite());
-        suite.addTest(TestMinus.suite());
-        suite.addTest(TestAddPeriod.suite());
-        suite.addTest(TestIntToChr.suite());
-        suite.addTest(TestIntToStr.suite());
-        suite.addTest(TestChrToInt.suite());
-
-        suite.addTest(TestSubstring.suite());
-        suite.addTest(TestWidth.suite());
-        suite.addTest(TestChangeCase.suite());
-        suite.addTest(TestFormatName.suite());
-        suite.addTest(TestNumNames.suite());
-        suite.addTest(TestTextLength.suite());
-        suite.addTest(TestTextPrefix.suite());
-        suite.addTest(TestPurify.suite());
-
-        suite.addTest(TestIf.suite());
-        suite.addTest(TestWhile.suite());
-
-        suite.addTest(TestSet.suite());
-
-        suite.addTest(TestCite.suite());
-        suite.addTest(TestEmpty.suite());
-        suite.addTest(TestMissing.suite());
-        suite.addTest(TestPreamble.suite());
-        suite.addTest(TestType.suite());
-
-        suite.addTest(TestCallType.suite());
-
-        // $JUnit-END$
-        return suite;
-    }
 
     /**
      * Creates a new object.
