@@ -25,8 +25,8 @@ import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Bibliography;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TokenList;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;

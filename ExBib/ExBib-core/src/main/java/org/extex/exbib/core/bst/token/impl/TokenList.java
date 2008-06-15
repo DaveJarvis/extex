@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ import java.util.List;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
+import org.extex.exbib.core.bst.token.AbstractToken;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
@@ -74,7 +74,7 @@ public class TokenList extends AbstractToken implements Token, Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -90,7 +90,7 @@ public class TokenList extends AbstractToken implements Token, Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     * @see org.extex.exbib.core.bst.token.AbstractToken#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
@@ -132,7 +132,7 @@ public class TokenList extends AbstractToken implements Token, Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#getValue()
+     * @see org.extex.exbib.core.bst.token.AbstractToken#getValue()
      */
     @Override
     public String getValue() {
@@ -185,8 +185,8 @@ public class TokenList extends AbstractToken implements Token, Iterable<Token> {
     }
 
     /**
-     * @see org.extex.exbib.core.bst.node.Token#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.Token#visit(
+     *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

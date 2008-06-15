@@ -25,18 +25,18 @@ import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.TokenVisitor;
-import org.extex.exbib.core.bst.node.impl.TBlock;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TQLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
+import org.extex.exbib.core.bst.token.TokenFactory;
+import org.extex.exbib.core.bst.token.TokenVisitor;
+import org.extex.exbib.core.bst.token.impl.TBlock;
+import org.extex.exbib.core.bst.token.impl.TChar;
+import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TFieldInteger;
+import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TQLiteral;
+import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -211,8 +211,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.node.impl.TBlock)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(
+     *      org.extex.exbib.core.bst.token.impl.TBlock)
      */
     public void visitBlock(TBlock block) {
 
@@ -222,8 +222,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.node.impl.TChar)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(
+     *      org.extex.exbib.core.bst.token.impl.TChar)
      */
     public void visitChar(TChar c) {
 
@@ -233,8 +233,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.node.impl.TField)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(
+     *      org.extex.exbib.core.bst.token.impl.TField)
      */
     public void visitField(TField field) {
 
@@ -244,8 +244,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(
-     *      org.extex.exbib.core.bst.node.impl.TFieldInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldInteger(
+     *      org.extex.exbib.core.bst.token.impl.TFieldInteger)
      */
     public void visitFieldInteger(TFieldInteger integer) {
 
@@ -255,8 +255,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(
-     *      org.extex.exbib.core.bst.node.impl.TFieldString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldString(
+     *      org.extex.exbib.core.bst.token.impl.TFieldString)
      */
     public void visitFieldString(TFieldString string) {
 
@@ -266,8 +266,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.node.impl.TInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(
+     *      org.extex.exbib.core.bst.token.impl.TInteger)
      */
     public void visitInteger(TInteger integer) {
 
@@ -277,8 +277,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(
+     *      org.extex.exbib.core.bst.token.impl.TLiteral)
      */
     public void visitLiteral(TLiteral literal) {
 
@@ -288,8 +288,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(
+     *      org.extex.exbib.core.bst.token.impl.TQLiteral)
      */
     public void visitQLiteral(TQLiteral qliteral) {
 
@@ -299,8 +299,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.node.impl.TString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(
+     *      org.extex.exbib.core.bst.token.impl.TString)
      */
     public void visitString(TString string) {
 
@@ -310,8 +310,8 @@ public class TestTInteger implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(
+     *      org.extex.exbib.core.bst.token.impl.TokenList)
      */
     public void visitTokenList(TokenList string) {
 

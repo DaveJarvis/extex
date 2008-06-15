@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.bst.token;
 
 import java.io.IOException;
 
@@ -129,7 +129,7 @@ public abstract class AbstractToken implements Token {
      * 
      * The expansion of an AbstractToken is the value itself.
      * 
-     * @see org.extex.exbib.core.bst.node.Token#expand(
+     * @see org.extex.exbib.core.bst.token.Token#expand(
      *      org.extex.exbib.core.Processor)
      */
     public String expand(Processor processor) {
@@ -222,8 +222,8 @@ public abstract class AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.Token#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.Token#visit(
+     *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
     public abstract void visit(TokenVisitor visitor) throws IOException;
 

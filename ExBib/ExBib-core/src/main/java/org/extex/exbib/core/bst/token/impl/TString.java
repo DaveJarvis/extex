@@ -17,17 +17,17 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Name;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
+import org.extex.exbib.core.bst.token.AbstractToken;
+import org.extex.exbib.core.bst.token.Name;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -86,7 +86,7 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -159,8 +159,8 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

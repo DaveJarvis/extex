@@ -21,7 +21,7 @@ package org.extex.exbib.core.bst.code.impl;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;

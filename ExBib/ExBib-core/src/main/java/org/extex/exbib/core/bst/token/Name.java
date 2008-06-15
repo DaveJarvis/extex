@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.bst.token;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -215,7 +215,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.node.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -234,7 +234,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.node.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -253,7 +253,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.node.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -272,7 +272,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.node.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -291,7 +291,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.node.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */

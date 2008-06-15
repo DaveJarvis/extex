@@ -23,10 +23,10 @@ import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.node.Name;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.bst.token.Name;
+import org.extex.exbib.core.bst.token.TokenFactory;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;

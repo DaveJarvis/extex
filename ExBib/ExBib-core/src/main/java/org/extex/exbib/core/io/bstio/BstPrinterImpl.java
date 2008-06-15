@@ -29,17 +29,17 @@ import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TBlock;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TQLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.impl.TBlock;
+import org.extex.exbib.core.bst.token.impl.TChar;
+import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TFieldInteger;
+import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TQLiteral;
+import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Writer;
 
@@ -188,8 +188,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.node.impl.TBlock)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(
+     *      org.extex.exbib.core.bst.token.impl.TBlock)
      */
     public void visitBlock(TBlock block) throws IOException {
 
@@ -211,8 +211,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.node.impl.TChar)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(
+     *      org.extex.exbib.core.bst.token.impl.TChar)
      */
     public void visitChar(TChar c) throws IOException {
 
@@ -235,8 +235,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.node.impl.TField)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(
+     *      org.extex.exbib.core.bst.token.impl.TField)
      */
     public void visitField(TField field) throws IOException {
 
@@ -246,8 +246,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldInteger(
-     *      org.extex.exbib.core.bst.node.impl.TFieldInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldInteger(
+     *      org.extex.exbib.core.bst.token.impl.TFieldInteger)
      */
     public void visitFieldInteger(TFieldInteger integer) throws IOException {
 
@@ -257,8 +257,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitFieldString(
-     *      org.extex.exbib.core.bst.node.impl.TFieldString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldString(
+     *      org.extex.exbib.core.bst.token.impl.TFieldString)
      */
     public void visitFieldString(TFieldString string) throws IOException {
 
@@ -268,8 +268,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.node.impl.TInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(
+     *      org.extex.exbib.core.bst.token.impl.TInteger)
      */
     public void visitInteger(TInteger integer) throws IOException {
 
@@ -292,8 +292,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(
+     *      org.extex.exbib.core.bst.token.impl.TLiteral)
      */
     public void visitLiteral(TLiteral literal) throws IOException {
 
@@ -303,8 +303,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.node.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(
+     *      org.extex.exbib.core.bst.token.impl.TQLiteral)
      */
     public void visitQLiteral(TQLiteral qliteral) throws IOException {
 
@@ -349,8 +349,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.node.impl.TString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(
+     *      org.extex.exbib.core.bst.token.impl.TString)
      */
     public void visitString(TString string) throws IOException {
 
@@ -360,8 +360,8 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.node.impl.TokenList)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(
+     *      org.extex.exbib.core.bst.token.impl.TokenList)
      */
     public void visitTokenList(TokenList list) throws IOException {
 

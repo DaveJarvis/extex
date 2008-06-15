@@ -17,15 +17,15 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.node.AbstractToken;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenVisitor;
+import org.extex.exbib.core.bst.token.AbstractToken;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -83,7 +83,7 @@ public class TBlock extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#expand(
+     * @see org.extex.exbib.core.bst.token.AbstractToken#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
@@ -95,7 +95,7 @@ public class TBlock extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#getString()
+     * @see org.extex.exbib.core.bst.token.AbstractToken#getString()
      */
     @Override
     protected String getString() {
@@ -116,8 +116,8 @@ public class TBlock extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

@@ -22,7 +22,7 @@ package org.extex.exbib.core.bst.code.impl;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 

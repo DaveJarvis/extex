@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNull;
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.Quote;
-import org.extex.exbib.core.bst.node.TokenFactory;
+import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;

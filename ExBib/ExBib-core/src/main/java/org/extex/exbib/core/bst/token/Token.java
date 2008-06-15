@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.bst.token;
 
 import java.io.IOException;
 

@@ -21,7 +21,7 @@ package org.extex.exbib.core.bst.code.impl;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.node.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;

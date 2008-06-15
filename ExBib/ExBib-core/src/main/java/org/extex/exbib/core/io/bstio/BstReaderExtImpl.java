@@ -21,7 +21,7 @@ package org.extex.exbib.core.io.bstio;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
-import org.extex.exbib.core.bst.node.Token;
+import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.Configuration;

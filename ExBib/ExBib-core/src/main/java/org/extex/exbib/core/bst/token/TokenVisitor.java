@@ -17,20 +17,20 @@
  *
  */
 
-package org.extex.exbib.core.bst.node;
+package org.extex.exbib.core.bst.token;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.bst.node.impl.TBlock;
-import org.extex.exbib.core.bst.node.impl.TChar;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TLiteral;
-import org.extex.exbib.core.bst.node.impl.TQLiteral;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
+import org.extex.exbib.core.bst.token.impl.TBlock;
+import org.extex.exbib.core.bst.token.impl.TChar;
+import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TFieldInteger;
+import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TQLiteral;
+import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 
 /**
  * This interface implements the visitor pattern for tokens. The visitor pattern

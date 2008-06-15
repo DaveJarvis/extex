@@ -17,15 +17,15 @@
  *
  */
 
-package org.extex.exbib.core.bst.node.impl;
+package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.TokenVisitor;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenFactory;
+import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -56,7 +56,7 @@ public class TFieldString extends TLiteral implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#execute(
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -77,8 +77,8 @@ public class TFieldString extends TLiteral implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.node.AbstractToken#visit(
-     *      org.extex.exbib.core.bst.node.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
     @Override
     public void visit(TokenVisitor visitor) throws IOException {

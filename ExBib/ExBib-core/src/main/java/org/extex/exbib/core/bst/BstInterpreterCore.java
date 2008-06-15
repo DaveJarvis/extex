@@ -33,14 +33,14 @@ import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
-import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.TokenFactory;
-import org.extex.exbib.core.bst.node.impl.TField;
-import org.extex.exbib.core.bst.node.impl.TFieldInteger;
-import org.extex.exbib.core.bst.node.impl.TFieldString;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
-import org.extex.exbib.core.bst.node.impl.TokenList;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenFactory;
+import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TFieldInteger;
+import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
@@ -765,7 +765,7 @@ public class BstInterpreterCore extends BibliographyCore
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setIntegers(
-     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.bst.token.impl.TokenList, Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
@@ -794,7 +794,7 @@ public class BstInterpreterCore extends BibliographyCore
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.Processor#setStrings(
-     *      org.extex.exbib.core.bst.node.impl.TokenList, Locator)
+     *      org.extex.exbib.core.bst.token.impl.TokenList, Locator)
      */
     public void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
