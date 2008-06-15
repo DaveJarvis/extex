@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+%% $Id:styles.tex 7067 2008-05-18 11:06:56Z gene $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
@@ -10,26 +10,419 @@
 style files. They can be used out of the box. They are contained in
 \ExBib\ as well. They are described here.
 
+\def\MACRO#1#2{\texttt{#1} $\hookrightarrow$ \texttt{#2}\\}%
+\def\Entry#1{\texttt{#1}}%
+\def\Field#1{\texttt{#1}}%
+\makeatletter
+\newenvironment{BstSample}{%
+  \begingroup
+  \let\bib@heading\relax
+  \begin{quotation}
+}{
+  \end{quotation}
+  \endgroup
+}%
+\makeatother
+
+As illustrative example we will take the following entry throughout
+this chapter:
+
+\begin{lstlisting}[language=BibTeX]
+@Book{goosens.mittelbach:latex.companion,
+  author =       {Michel Goosens and Frank Mittelbach},
+  title =        {The {\LaTeX} Companion},
+  publisher =    {Addison-Wesley},
+  year =         {2004},
+  edition =      {2\(^{nd}\)}
+}
+\end{lstlisting}
+
 \section{plain}
 \index{bst!plain|(}
+
 \INCOMPLETE
+
+The example is typeset as follows:
+\begin{BstSample}
+\begin{thebibliography}{10}
+
+\bibitem{plain.1}
+Michel Goosens and Frank Mittelbach.
+\newblock {\em The {\LaTeX} Companion}.
+\newblock Addison-Wesley, 2\(^{nd}\) edition, 2004.
+
+\end{thebibliography}
+\end{BstSample}
+
+\subsection*{Entry Types}
+
+\Entry{article}
+\Entry{book}
+\Entry{booklet}
+\Entry{inbook}
+\Entry{incollection}
+\Entry{inproceedings}
+\Entry{conference} % { inproceedings }
+\Entry{manual}
+\Entry{mastersthesis}
+\Entry{misc}
+\Entry{phdthesis}
+\Entry{proceedings}
+\Entry{techreport}
+\Entry{unpublished}
+
+\subsection*{Fields}
+
+\Field{address}
+\Field{author}
+\Field{booktitle}
+\Field{chapter}
+\Field{edition}
+\Field{editor}
+\Field{howpublished}
+\Field{institution}
+\Field{journal}
+\Field{key}
+\Field{month}
+\Field{note}
+\Field{number}
+\Field{organization}
+\Field{pages}
+\Field{publisher}
+\Field{school}
+\Field{series}
+\Field{title}
+\Field{type}
+\Field{volume}
+\Field{year}
+
+\subsection*{Macros}
+
+\MACRO{jan}{"January"}
+\MACRO{feb}{"February"}
+\MACRO{mar}{"March"}
+\MACRO{apr}{"April"}
+\MACRO{may}{"May"}
+\MACRO{jun}{"June"}
+\MACRO{jul}{"July"}
+\MACRO{aug}{"August"}
+\MACRO{sep}{"September"}
+\MACRO{oct}{"October"}
+\MACRO{nov}{"November"}
+\MACRO{dec}{"December"}
+\MACRO{acmcs}{"ACM Computing Surveys"}
+\MACRO{acta}{"Acta Informatica"}
+\MACRO{cacm}{"Communications of the ACM"}
+\MACRO{ibmjrd}{"IBM Journal of Research and Development"}
+\MACRO{ibmsj}{"IBM Systems Journal"}
+\MACRO{ieeese}{"IEEE Transactions on Software Engineering"}
+\MACRO{ieeetc}{"IEEE Transactions on Computers"}
+\MACRO{ieeetcad}{"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
+\MACRO{ipl}{"Information Processing Letters"}
+\MACRO{jacm}{"Journal of the ACM"}
+\MACRO{jcss}{"Journal of Computer and System Sciences"}
+\MACRO{scp}{"Science of Computer Programming"}
+\MACRO{sicomp}{"SIAM Journal on Computing"}
+\MACRO{tocs}{"ACM Transactions on Computer Systems"}
+\MACRO{tods}{"ACM Transactions on Database Systems"}
+\MACRO{tog}{"ACM Transactions on Graphics"}
+\MACRO{toms}{"ACM Transactions on Mathematical Software"}
+\MACRO{toois}{"ACM Transactions on Office Information Systems"}
+\MACRO{toplas}{"ACM Transactions on Programming Languages and Systems"}
+\MACRO{tcs}{"Theoretical Computer Science"}
+
 \index{bst!plain|)}
 
 \section{alpha}
 \index{bst!alpha|(}
+
 \INCOMPLETE
+
+The example is typeset as follows:
+\begin{BstSample}
+\begin{thebibliography}{GM04}
+
+\bibitem[GM04]{alpha.1}
+Michel Goosens and Frank Mittelbach.
+\newblock {\em The {\LaTeX} Companion}.
+\newblock Addison-Wesley, 2\(^{nd}\) edition, 2004.
+
+\end{thebibliography}
+\end{BstSample}
+
+
+\subsection*{Entry Types}
+
+\Entry{article}
+\Entry{book}
+\Entry{booklet}
+\Entry{inbook}
+\Entry{incollection}
+\Entry{inproceedings}
+\Entry{conference} % { inproceedings }
+\Entry{manual}
+\Entry{mastersthesis}
+\Entry{misc}
+\Entry{phdthesis}
+\Entry{proceedings}
+\Entry{techreport}
+\Entry{unpublished}
+
+
+\subsection*{Fields}
+
+\Field{address}
+\Field{author}
+\Field{booktitle}
+\Field{chapter}
+\Field{edition}
+\Field{editor}
+\Field{howpublished}
+\Field{institution}
+\Field{journal}
+\Field{key}
+\Field{month}
+\Field{note}
+\Field{number}
+\Field{organization}
+\Field{pages}
+\Field{publisher}
+\Field{school}
+\Field{series}
+\Field{title}
+\Field{type}
+\Field{volume}
+\Field{year}
+
+\subsection*{Macros}
+
+\MACRO{jan}{"January"}
+\MACRO{feb}{"February"}
+\MACRO{mar}{"March"}
+\MACRO{apr}{"April"}
+\MACRO{may}{"May"}
+\MACRO{jun}{"June"}
+\MACRO{jul}{"July"}
+\MACRO{aug}{"August"}
+\MACRO{sep}{"September"}
+\MACRO{oct}{"October"}
+\MACRO{nov}{"November"}
+\MACRO{dec}{"December"}
+\MACRO{acmcs}{"ACM Computing Surveys"}
+\MACRO{acta}{"Acta Informatica"}
+\MACRO{cacm}{"Communications of the ACM"}
+\MACRO{ibmjrd}{"IBM Journal of Research and Development"}
+\MACRO{ibmsj}{"IBM Systems Journal"}
+\MACRO{ieeese}{"IEEE Transactions on Software Engineering"}
+\MACRO{ieeetc}{"IEEE Transactions on Computers"}
+\MACRO{ieeetcad}{"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
+\MACRO{ipl}{"Information Processing Letters"}
+\MACRO{jacm}{"Journal of the ACM"}
+\MACRO{jcss}{"Journal of Computer and System Sciences"}
+\MACRO{scp}{"Science of Computer Programming"}
+\MACRO{sicomp}{"SIAM Journal on Computing"}
+\MACRO{tocs}{"ACM Transactions on Computer Systems"}
+\MACRO{tods}{"ACM Transactions on Database Systems"}
+\MACRO{tog}{"ACM Transactions on Graphics"}
+\MACRO{toms}{"ACM Transactions on Mathematical Software"}
+\MACRO{toois}{"ACM Transactions on Office Information Systems"}
+\MACRO{toplas}{"ACM Transactions on Programming Languages and Systems"}
+\MACRO{tcs}{"Theoretical Computer Science"}
+
 \index{bst!alpha|)}
 
 \section{unsrt}
 \index{bst!unsrt|(}
+
+The \texttt{unsrt} bibliography style prints the references in the
+order of their appearance. No sorting whatsoever takes place.
+
 \INCOMPLETE
+
+The example is typeset as follows:
+\begin{BstSample}
+\begin{thebibliography}{10}
+
+\bibitem{unsrt.1}
+Michel Goosens and Frank Mittelbach.
+\newblock {\em The {\LaTeX} Companion}.
+\newblock Addison-Wesley, 2\(^{nd}\) edition, 2004.
+
+\end{thebibliography}
+\end{BstSample}
+
+\subsection*{Entry Types}
+
+\Entry{article}
+\Entry{book}
+\Entry{booklet}
+\Entry{inbook}
+\Entry{incollection}
+\Entry{inproceedings}
+\Entry{conference} % { inproceedings }
+\Entry{manual}
+\Entry{mastersthesis}
+\Entry{misc}
+\Entry{phdthesis}
+\Entry{proceedings}
+\Entry{techreport}
+\Entry{unpublished}
+
+\subsection*{Fields}
+
+\Field{address}
+\Field{author}
+\Field{booktitle}
+\Field{chapter}
+\Field{edition}
+\Field{editor}
+\Field{howpublished}
+\Field{institution}
+\Field{journal}
+\Field{key}
+\Field{month}
+\Field{note}
+\Field{number}
+\Field{organization}
+\Field{pages}
+\Field{publisher}
+\Field{school}
+\Field{series}
+\Field{title}
+\Field{type}
+\Field{volume}
+\Field{year}
+
+\subsection*{Macros}
+
+\MACRO{jan}{"January"}
+\MACRO{feb}{"February"}
+\MACRO{mar}{"March"}
+\MACRO{apr}{"April"}
+\MACRO{may}{"May"}
+\MACRO{jun}{"June"}
+\MACRO{jul}{"July"}
+\MACRO{aug}{"August"}
+\MACRO{sep}{"September"}
+\MACRO{oct}{"October"}
+\MACRO{nov}{"November"}
+\MACRO{dec}{"December"}
+\MACRO{acmcs}{"ACM Computing Surveys"}
+\MACRO{acta}{"Acta Informatica"}
+\MACRO{cacm}{"Communications of the ACM"}
+\MACRO{ibmjrd}{"IBM Journal of Research and Development"}
+\MACRO{ibmsj}{"IBM Systems Journal"}
+\MACRO{ieeese}{"IEEE Transactions on Software Engineering"}
+\MACRO{ieeetc}{"IEEE Transactions on Computers"}
+\MACRO{ieeetcad}{"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
+\MACRO{ipl}{"Information Processing Letters"}
+\MACRO{jacm}{"Journal of the ACM"}
+\MACRO{jcss}{"Journal of Computer and System Sciences"}
+\MACRO{scp}{"Science of Computer Programming"}
+\MACRO{sicomp}{"SIAM Journal on Computing"}
+\MACRO{tocs}{"ACM Transactions on Computer Systems"}
+\MACRO{tods}{"ACM Transactions on Database Systems"}
+\MACRO{tog}{"ACM Transactions on Graphics"}
+\MACRO{toms}{"ACM Transactions on Mathematical Software"}
+\MACRO{toois}{"ACM Transactions on Office Information Systems"}
+\MACRO{toplas}{"ACM Transactions on Programming Languages and Systems"}
+\MACRO{tcs}{"Theoretical Computer Science"}
+
 \index{bst!unsrt|)}
 
 \section{abbrev}
 \index{bst!abbrev|(}
-\INCOMPLETE
-\index{bst!abbrev|)}
 
+\INCOMPLETE
+
+
+The example is typeset as follows:
+\begin{BstSample}
+\begin{thebibliography}{10}
+
+\bibitem{abbrev.1}
+M.~Goosens and F.~Mittelbach.
+\newblock {\em The {\LaTeX} Companion}.
+\newblock Addison-Wesley, 2\(^{nd}\) edition, 2004.
+
+\end{thebibliography}
+\end{BstSample}
+
+\subsection*{Entry Types}
+\Entry{article}
+\Entry{book}
+\Entry{booklet}
+\Entry{inbook}
+\Entry{incollection}
+\Entry{inproceedings}
+\Entry{conference} % { inproceedings }
+\Entry{manual}
+\Entry{mastersthesis}
+\Entry{misc}
+\Entry{phdthesis}
+\Entry{proceedings}
+\Entry{techreport}
+\Entry{unpublished}
+
+\subsection*{Fields}
+\Field{address}
+\Field{author}
+\Field{booktitle}
+\Field{chapter}
+\Field{edition}
+\Field{editor}
+\Field{howpublished}
+\Field{institution}
+\Field{journal}
+\Field{key}
+\Field{month}
+\Field{note}
+\Field{number}
+\Field{organization}
+\Field{pages}
+\Field{publisher}
+\Field{school}
+\Field{series}
+\Field{title}
+\Field{type}
+\Field{volume}
+\Field{year}
+
+\subsection*{Macros}
+
+\MACRO{jan}{"Jan."}
+\MACRO{feb}{"Feb."}
+\MACRO{mar}{"Mar."}
+\MACRO{apr}{"Apr."}
+\MACRO{may}{"May"}
+\MACRO{jun}{"June"}
+\MACRO{jul}{"July"}
+\MACRO{aug}{"Aug."}
+\MACRO{sep}{"Sept."}
+\MACRO{oct}{"Oct."}
+\MACRO{nov}{"Nov."}
+\MACRO{dec}{"Dec."}
+\MACRO{acmcs}{"ACM Comput. Surv."}
+\MACRO{acta}{"Acta Inf."}
+\MACRO{cacm}{"Commun. ACM"}
+\MACRO{ibmjrd}{"IBM J. Res. Dev."}
+\MACRO{ibmsj}{"IBM Syst.~J."}
+\MACRO{ieeese}{"IEEE Trans. Softw. Eng."}
+\MACRO{ieeetc}{"IEEE Trans. Comput."}
+\MACRO{ieeetcad}{"IEEE Trans. Comput.-Aided Design Integrated Circuits"}
+\MACRO{ipl}{"Inf. Process. Lett."}
+\MACRO{jacm}{"J.~ACM"}
+\MACRO{jcss}{"J.~Comput. Syst. Sci."}
+\MACRO{scp}{"Sci. Comput. Programming"}
+\MACRO{sicomp}{"SIAM J. Comput."}
+\MACRO{tocs}{"ACM Trans. Comput. Syst."}
+\MACRO{tods}{"ACM Trans. Database Syst."}
+\MACRO{tog}{"ACM Trans. Gr."}
+\MACRO{toms}{"ACM Trans. Math. Softw."}
+\MACRO{toois}{"ACM Trans. Office Inf. Syst."}
+\MACRO{toplas}{"ACM Trans. Prog. Lang. Syst."}
+\MACRO{tcs}{"Theoretical Comput. Sci."}
+\index{bst!abbrev|)}
 
 \endinput
 %

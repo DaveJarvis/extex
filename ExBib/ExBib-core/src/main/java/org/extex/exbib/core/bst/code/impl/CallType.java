@@ -36,6 +36,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This function looks at the current entry and calls the function with the same
  * name as the type. The name is normalized; i.e. translated to lower case.
  * </p>
+ * <p>
+ * If no such function is defined then the user-defined function
+ * <tt>default.type</tt> is consulted and invoked instead.
+ * </p>
  * <img src="doc-files/call.type.png"/>
  * <p>
  * The following example is taken from <tt>alpha.bst</tt>:
@@ -69,12 +73,31 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * 
+ * <h3>Configuration</h3>
+ * <p>
+ * The configuration can take an embedded element with the name <tt>default</tt>.
+ * The text contained in this element is taken as the name of the function to be
+ * called when no appropriate function is found. The default is
+ * <tt>default.type</tt>.
+ * </p>
+ * 
+ * <pre>
+ *   <function name="call.type$"
+ *             class="org.extex.exbib.core.bst.code.impl.CallType">
+ *     <default>default.type</default>
+ *   </function>
+ * </pre>
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
 public class CallType extends AbstractCode {
 
-    /** the name of the default type */
+    /**
+     * The field <tt>defaultType</tt> contains the name of the default type.
+     */
     private String defaultType = "default.type";
 
     /**

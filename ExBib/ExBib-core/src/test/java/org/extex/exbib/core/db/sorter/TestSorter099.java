@@ -19,13 +19,12 @@
 
 package org.extex.exbib.core.db.sorter;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.db.Entry;
 import org.extex.framework.configuration.Configuration;
@@ -35,6 +34,8 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for {@link CodepointIgnoreCaseSorter}.
@@ -42,7 +43,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestSorter099 extends TestCase {
+public class TestSorter099 {
 
     /**
      * A dummy configuration.
@@ -206,26 +207,6 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * Command line program to run the tests.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Get the test suite.
-     * 
-     * @return the suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestSorter099.class);
-    }
-
-    /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
     private CodepointIgnoreCaseSorter s = new CodepointIgnoreCaseSorter();
@@ -246,24 +227,13 @@ public class TestSorter099 extends TestCase {
     private Entry c;
 
     /**
-     * Creates a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestSorter099(String name) {
+    @Before
+    public void setUp() throws Exception {
 
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
-    protected void setUp() throws Exception {
-
-        super.setUp();
         s.configure(new DummyConfig());
 
         a = new Entry(null);
@@ -275,19 +245,11 @@ public class TestSorter099 extends TestCase {
     }
 
     /**
-     * @see junit.framework.TestCase#tearDown()
-     */
-    @Override
-    protected void tearDown() throws Exception {
-
-        super.tearDown();
-    }
-
-    /**
      * <testcase> Sorting an empty list results in an empty list. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
@@ -301,6 +263,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
@@ -316,6 +279,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test21() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
@@ -333,6 +297,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test22() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
@@ -350,6 +315,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test31() throws Exception {
 
         List<Entry> list = new ArrayList<Entry>();
@@ -369,6 +335,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_0() throws Exception {
 
         assertEquals(0, s.compare(a, a));
@@ -379,6 +346,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_1() throws Exception {
 
         assertTrue(0 > s.compare(a, b));
@@ -390,6 +358,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_10() throws Exception {
 
         a.setSortKey("ghi");
@@ -401,6 +370,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_11() throws Exception {
 
         a.setSortKey("ghi");
@@ -412,6 +382,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_12() throws Exception {
 
         a.setSortKey("ghi");
@@ -423,6 +394,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_2() throws Exception {
 
         assertTrue(0 < s.compare(b, a));
@@ -433,6 +405,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_21() throws Exception {
 
         a.setSortKey("ac");
@@ -445,6 +418,7 @@ public class TestSorter099 extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSorter099_22() throws Exception {
 
         a.setSortKey("ac");

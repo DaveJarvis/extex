@@ -149,7 +149,7 @@ considered:
 \end{description}
 
 The parts are separated by white space. This whitespace is only
-consoidered if it occurs at brace level 0. Thus the grouping with
+considered if it occurs at brace level 0. Thus the grouping with
 braces is honored. It can be used to tie together parts which would be
 torn apart otherwise.
 
@@ -166,12 +166,17 @@ well.
 If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
 \begin{syntax}
-  <name> \+ <first>* <von>* <last> <jr>* 
+  <name> \+ <first>* <von>* <last>* <jr>* 
 \end{syntax}%
-The name parts \emph{first} and \emph{last} consit of words for which
+The name parts \emph{first} and \emph{last} consist of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
-\emph{jr} consit of words for which the first letter is a lowercase
+\emph{jr} consist of words for which the first letter is a lowercase
 letter.
+
+Note that the star operator denotes an arbitrary number of repetitions
+of the preceding syntactic entity. Especially, none is allowed. The
+star operator is greedy; i.e. if two conflicting entities adjoin then
+the first one wins.
 
 The following examples show how the names are classified. The last
 name is printed in bold, the first name is printed in roman, the von
@@ -195,12 +200,12 @@ part is printed in italics, and the junior part is underlined.
 If a name does not contain a comma then the following pattern is used
 to determine the parts of the name:
 \begin{syntax}
-  <name> \+ <von>* <last> | , | <first>* \\
-         \|  <first>* <von>* <last> | , | <jr>* 
+  <name> \+ <von>* <last>* | , | <first>* \\
+         \|  <first>* <von>* <last>* | , | <jr>* 
 \end{syntax}%
-The name parts \emph{first} and \emph{last} consit of words for which
+The name parts \emph{first} and \emph{last} consist of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
-\emph{jr} consit of words for which the first letter is a lowercase
+\emph{jr} consist of words for which the first letter is a lowercase
 letter.
 
 The following examples show how the names are classified. The last
@@ -220,15 +225,15 @@ part is printed in italics, and the junior part is underlined.
 
 \subsubsection*{Two Commas}
 
-If a name does not contain a comma then the following pattern is used
+If a name does contain two commas then the following pattern is used
 to determine the parts of the name:
 
 \begin{syntax}
-  <name> \+ <last> <von>* | , | <jr> | , | <first>* 
+  <name> \+ <last>* <von>* | , | <jr>* | , | <first>* 
 \end{syntax}%
-The name parts \emph{first} and \emph{last} consit of words for which
+The name parts \emph{first} and \emph{last} consist of words for which
 the first letter is an uppercase letter. The name parts \emph{von} and
-\emph{jr} consit of words for which the first letter is a lowercase
+\emph{jr} consist of words for which the first letter is a lowercase
 letter.
 
 The following examples show how the names are classified. The last
@@ -236,7 +241,7 @@ name is printed in bold, the first name is printed in roman, the von
 part is printed in italics, and the junior part is underlined.
 
 \begin{quote}\obeylines
-  \Last{Davis}, \First{Sammy}, \Jr{Jr.}
+  \Last{Davis}, \Jr{Jr.}, \First{Sammy}
 \end{quote}
 
 
@@ -259,15 +264,20 @@ The following example is recognizes as two names:
 \begin{quote}\obeylines
   \Last{Barnes} \texttt{and} \Last{Noble}
 \end{quote}
-The following example is recognized as a single name name:
+The following example is recognized as a single name:
 \begin{quote}\obeylines
   \Last{\char`\{ Barnes and Noble\char`\}}
 \end{quote}
 
+It there are more names in a name list than feasible then the
+remaining names after some initial ones can be abbreviated. For this
+purpose simply write \texttt{and others} at the end.
+
 The formal syntax is as follows:
 \begin{syntax}
-  <namelist> \= <name>\\
-             \| <name> \verb*/ and / <namelist> 
+  <name list> \= <name>\\
+             \| <name list> \verb*/ and / <name> \\
+             \| <name list> \verb*/ and others/
 \end{syntax}%
 
 \index{name list|)}%

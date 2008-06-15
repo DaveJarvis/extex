@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -33,8 +32,11 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
-import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>empty$</tt>.
@@ -42,27 +44,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestEmpty extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestEmpty.class);
-    }
+public class TestEmpty {
 
     /**
      * The field <tt>db</tt> contains the database.
@@ -80,21 +62,11 @@ public class TestEmpty extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestEmpty(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -104,11 +76,9 @@ public class TestEmpty extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -136,14 +106,10 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Empty("empty$").execute(p, entry, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Empty("empty$").execute(p, entry, null);
     }
 
     /**
@@ -151,15 +117,11 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingStringException.class)
     public void testInteger() throws Exception {
 
-        try {
-            p.push(new TInteger(123, null));
-            new Empty("empty$").execute(p, entry, null);
-            assertTrue(false);
-        } catch (ExBibException e) {
-            assertTrue(true);
-        }
+        p.push(new TInteger(123, null));
+        new Empty("empty$").execute(p, entry, null);
     }
 
     /**
@@ -167,6 +129,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNo0() throws Exception {
 
         testEmpty("title", 0);
@@ -177,6 +140,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNo1() throws Exception {
 
         testEmpty("a", 0);
@@ -187,6 +151,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNo2() throws Exception {
 
         testEmpty(".", 0);
@@ -197,6 +162,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNo3() throws Exception {
 
         testEmpty("1", 0);
@@ -207,6 +173,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes1() throws Exception {
 
         testEmpty(null, 1);
@@ -217,6 +184,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes2() throws Exception {
 
         testEmpty("", 1);
@@ -227,6 +195,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes3() throws Exception {
 
         testEmpty(" ", 1);
@@ -237,6 +206,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes4() throws Exception {
 
         testEmpty("\t", 1);
@@ -247,6 +217,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes5() throws Exception {
 
         testEmpty("  ", 1);
@@ -257,6 +228,7 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes6() throws Exception {
 
         testEmpty(" \n", 1);
@@ -267,8 +239,10 @@ public class TestEmpty extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testYes7() throws Exception {
 
         testEmpty(" \t", 1);
     }
+
 }

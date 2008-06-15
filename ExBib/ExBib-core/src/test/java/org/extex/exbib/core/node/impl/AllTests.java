@@ -19,8 +19,8 @@
 
 package org.extex.exbib.core.node.impl;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
  * Run all tests.
@@ -28,26 +28,12 @@ import junit.framework.TestSuite;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({TestTInteger.class, //
+        TestTQLiteral.class, //
+        TestTString.class //
+})
 public final class AllTests {
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        TestSuite suite =
-                new TestSuite("Test for org.extex.exbib.core.bst.node.impl");
-
-        // $JUnit-BEGIN$
-        suite.addTest(TestTString.suite());
-        suite.addTest(TestTInteger.suite());
-        suite.addTest(TestTQLiteral.suite());
-
-        // $JUnit-END$
-        return suite;
-    }
 
     /**
      * Creates a new object.

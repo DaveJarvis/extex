@@ -19,9 +19,10 @@
 
 package org.extex.exbib.core.node.impl;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -39,33 +40,16 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTString extends TestCase implements TokenVisitor {
-
-    /**
-     * The main program.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Getter for the suite.
-     * 
-     * @return the suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestTString.class);
-    }
+public class TestTString implements TokenVisitor {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -78,21 +62,11 @@ public class TestTString extends TestCase implements TokenVisitor {
     private boolean visit = false;
 
     /**
-     * Creates a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestTString(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
@@ -100,11 +74,9 @@ public class TestTString extends TestCase implements TokenVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -115,6 +87,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExecute() throws Exception {
 
         TString t = new TString("987", null);
@@ -129,6 +102,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetValue1() throws Exception {
 
         TString t = new TString(null, null);
@@ -140,6 +114,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIsNull1() throws Exception {
 
         assertTrue(new TString(null, null).isNull());
@@ -150,6 +125,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIsNull2() throws Exception {
 
         assertFalse(new TString("", null).isNull());
@@ -160,6 +136,7 @@ public class TestTString extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit() throws Exception {
 
         TString t = new TString("x-1", null);

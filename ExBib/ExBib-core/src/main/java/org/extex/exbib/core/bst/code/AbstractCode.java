@@ -40,14 +40,14 @@ public abstract class AbstractCode implements Code {
      * Each code has a name. This is the String under which it is registered in
      * the processor context.
      */
-    private String name = "";
+    private String name;
 
     /**
-     * Create a new object.
+     * Create a new object with the empty string as name.
      */
     public AbstractCode() {
 
-        super();
+        this("");
     }
 
     /**

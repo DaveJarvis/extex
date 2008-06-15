@@ -42,7 +42,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * When determining the last character closing braces are ignored.
  * </p>
- * <img src="doc-files/ad.period.png"/>
+ * <img src="doc-files/add.period.png"/>
  * <p>
  * The following example is taken from <tt>alpha.bst</tt>:
  * </p>

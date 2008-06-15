@@ -19,12 +19,13 @@
 
 package org.extex.exbib.core.bst.code;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -42,9 +43,13 @@ import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.ValueItem;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
+import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>:=</tt>.
@@ -52,27 +57,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestSet extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestSet.class);
-    }
+public class TestSet {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -88,16 +73,6 @@ public class TestSet extends TestCase {
      * The field <tt>entry</tt> contains the entry.
      */
     private Entry entry;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestSet(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -116,11 +91,11 @@ public class TestSet extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -131,30 +106,12 @@ public class TestSet extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
-    }
-
-    /**
-     * <testcase> A short stack leads to an error. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void test1Stack() throws Exception {
-
-        try {
-            p.push(new TLiteral("a", null));
-            new Set(":=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
     }
 
     /**
@@ -162,14 +119,10 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Set(":=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Set(":=").execute(p, null, null);
     }
 
     /**
@@ -177,6 +130,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet1() throws Exception {
 
         runTest("abc", new TInteger(123, null));
@@ -187,6 +141,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet2() throws Exception {
 
         runTest("abc", new TString("123", null));
@@ -197,6 +152,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet3() throws Exception {
 
         List<String> strings = new ArrayList<String>();
@@ -217,6 +173,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet4() throws Exception {
 
         List<String> strings = new ArrayList<String>();
@@ -238,6 +195,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet5() throws Exception {
 
         List<String> integers = new ArrayList<String>();
@@ -258,6 +216,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet6() throws Exception {
 
         List<String> integers = new ArrayList<String>();
@@ -279,6 +238,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet7() throws Exception {
 
         List<String> entries = new ArrayList<String>();
@@ -299,6 +259,7 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSet8() throws Exception {
 
         List<String> entries = new ArrayList<String>();
@@ -316,20 +277,41 @@ public class TestSet extends TestCase {
     }
 
     /**
-     * <testcase> Test 2 := 2 leads to an error. </testcase>
+     * <testcase> A short stack leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
+    public void testShortStack() throws Exception {
+
+        p.push(new TLiteral("a", null));
+        new Set(":=").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> Test 2 := "a" leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingLiteralException.class)
     public void testTypeError1() throws Exception {
 
-        try {
-            p.push(new TInteger(2, null));
-            p.push(new TLiteral("a", null));
-            new Set(":=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibFunctionUndefinedException e) {
-            assertTrue(true);
-        }
+        p.push(new TLiteral("a", null));
+        p.push(new TInteger(2, null));
+        new Set(":=").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> Test "a" := "a" leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingLiteralException.class)
+    public void testTypeError2() throws Exception {
+
+        p.push(new TString("a", null));
+        p.push(new TString("a", null));
+        new Set(":=").execute(p, null, null);
     }
 
     /**
@@ -337,16 +319,12 @@ public class TestSet extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibFunctionUndefinedException.class)
     public void testUndef() throws Exception {
 
-        try {
-            p.push(new TInteger(2, null));
-            p.push(new TLiteral("undef", null));
-            new Set(":=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibFunctionUndefinedException e) {
-            assertTrue(true);
-        }
+        p.push(new TInteger(2, null));
+        p.push(new TLiteral("undef", null));
+        new Set(":=").execute(p, null, null);
     }
 
 }

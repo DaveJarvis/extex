@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>concat$</tt>.
@@ -39,27 +41,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestConcat extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestConcat.class);
-    }
+public class TestConcat {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -67,20 +49,10 @@ public class TestConcat extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Apply <tt>concat$</tt> on two strings and check the result.
      * 
-     * @param name the name
-     */
-    public TestConcat(String name) {
-
-        super(name);
-    }
-
-    /**
-     * Apply concat$ on two strings and check the result.
-     * 
-     * @param s1 the first string to concat
-     * @param s2 the second string to concat
+     * @param s1 the first string to concatenate
+     * @param s2 the second string to concatenate
      * @param result the expected result
      * 
      * @throws Exception in case of an error
@@ -95,22 +67,20 @@ public class TestConcat extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -121,16 +91,11 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void test1Stack() throws Exception {
 
         p.push(new TString("abc", null));
-
-        try {
-            new Concat("*").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Concat("*").execute(p, null, null);
     }
 
     /**
@@ -138,6 +103,7 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConcat() throws Exception {
 
         runTest("ab", "cd", "abcd");
@@ -148,6 +114,7 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConcatEmpty() throws Exception {
 
         runTest("", "", "");
@@ -158,6 +125,7 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConcatEmptyLeft() throws Exception {
 
         runTest("", "abc", "abc");
@@ -168,6 +136,7 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testConcatEmptyRight() throws Exception {
 
         runTest("abc", "", "abc");
@@ -178,14 +147,10 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Concat("*").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Concat("*").execute(p, null, null);
     }
 
     /**
@@ -193,15 +158,11 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingStringException.class)
     public void testTypeError1() throws Exception {
 
         p.push(new TInteger(123, null));
-        try {
-            new Concat("*").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibMissingStringException e) {
-            assertTrue(true);
-        }
+        new Concat("*").execute(p, null, null);
     }
 
     /**
@@ -209,16 +170,12 @@ public class TestConcat extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingStringException.class)
     public void testTypeError2() throws Exception {
 
         p.push(new TInteger(123, null));
         p.push(new TString("123", null));
-        try {
-            new Concat("*").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibMissingStringException e) {
-            assertTrue(true);
-        }
+        new Concat("*").execute(p, null, null);
     }
 
 }

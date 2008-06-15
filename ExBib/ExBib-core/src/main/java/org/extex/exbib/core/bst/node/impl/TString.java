@@ -51,7 +51,8 @@ import org.extex.exbib.core.io.Locator;
 public class TString extends AbstractToken implements Token {
 
     /**
-     * the list of names which might act as a cache
+     * The field <tt>names</tt> contains the list of names which might act as
+     * a cache.
      */
     private List<Name> names = null;
 

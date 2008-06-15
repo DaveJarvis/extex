@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -31,6 +30,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>text.length$</tt>.
@@ -38,42 +40,12 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestTextLength extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestTextLength.class);
-    }
+public class TestTextLength {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestTextLength(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -92,22 +64,20 @@ public class TestTextLength extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -118,6 +88,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         runTest("a", 1);
@@ -128,6 +99,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1a() throws Exception {
 
         runTest("a!", 2);
@@ -138,6 +110,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1b() throws Exception {
 
         runTest("a!}", 2);
@@ -148,6 +121,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1c() throws Exception {
 
         runTest("a!}}", 2);
@@ -158,6 +132,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1d() throws Exception {
 
         runTest("a!}}}", 2);
@@ -168,6 +143,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1e() throws Exception {
 
         runTest("a.", 2);
@@ -178,6 +154,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1f() throws Exception {
 
         runTest("a.}", 2);
@@ -188,6 +165,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1g() throws Exception {
 
         runTest("a.}}", 2);
@@ -198,6 +176,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1h() throws Exception {
 
         runTest("a.}}}", 2);
@@ -208,6 +187,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3a() throws Exception {
 
         runTest("ac!", 3);
@@ -218,6 +198,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3b() throws Exception {
 
         runTest("ac!}", 3);
@@ -228,6 +209,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3c() throws Exception {
 
         runTest("ac!}}", 3);
@@ -238,6 +220,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3d() throws Exception {
 
         runTest("ac!}}}", 3);
@@ -248,6 +231,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3e() throws Exception {
 
         runTest("ac.", 3);
@@ -258,6 +242,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3f() throws Exception {
 
         runTest("ac.}", 3);
@@ -268,6 +253,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3g() throws Exception {
 
         runTest("ac.}}", 3);
@@ -278,6 +264,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3h() throws Exception {
 
         runTest("ac.}}}", 3);
@@ -289,6 +276,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAcc1() throws Exception {
 
         runTest("a\\\"bc", 3);
@@ -300,6 +288,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAcc2() throws Exception {
 
         runTest("a\\\"{b}c", 3);
@@ -311,6 +300,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAcc3() throws Exception {
 
         runTest("a\\'{b}c", 3);
@@ -322,6 +312,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testAcc4() throws Exception {
 
         runTest("a\\^{b}c", 3);
@@ -332,6 +323,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
         runTest("", 0);
@@ -342,6 +334,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty2() throws Exception {
 
         runTest("{{[[][ ", 0);
@@ -352,14 +345,10 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new TextLength("text.length$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new TextLength("text.length$").execute(p, null, null);
     }
 
     /**
@@ -367,6 +356,7 @@ public class TestTextLength extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testInteger() throws Exception {
 
         p.push(new TInteger(9876, null));

@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.node.TokenFactory;
@@ -29,6 +28,9 @@ import org.extex.exbib.core.bst.node.impl.TFieldString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for sort.key$.
@@ -36,27 +38,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestSortKey extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestSortKey.class);
-    }
+public class TestSortKey {
 
     /**
      * The field <tt>e</tt> contains the entry.
@@ -69,21 +51,11 @@ public class TestSortKey extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestSortKey(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
@@ -92,11 +64,9 @@ public class TestSortKey extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -109,6 +79,7 @@ public class TestSortKey extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoSortKey() throws Exception {
 
         new TFieldString("sort.key$", null).execute(p, e, null);
@@ -121,6 +92,7 @@ public class TestSortKey extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSortKey1() throws Exception {
 
         e.setSortKey("xyz");
@@ -133,6 +105,7 @@ public class TestSortKey extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSortKey11() throws Exception {
 
         e.setSortKey("xyz");

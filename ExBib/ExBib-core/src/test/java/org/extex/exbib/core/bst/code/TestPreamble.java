@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -33,6 +32,9 @@ import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>preamble$</tt>.
@@ -40,27 +42,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
-public class TestPreamble extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestPreamble.class);
-    }
+public class TestPreamble {
 
     /**
      * The field <tt>db</tt> contains the database.
@@ -73,34 +55,21 @@ public class TestPreamble extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestPreamble(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
-        // db = new DBImpl();
-        // p = new BstProcessor099c(db, new NullWriter(null),
-        // new NullWriter(null));
+        db = new DBImpl();
+        p = new BstProcessor099c(db, new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -112,10 +81,9 @@ public class TestPreamble extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBlock() throws Exception {
 
-        db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VBlock("123")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("123", p.popString(null).getValue());
@@ -127,10 +95,9 @@ public class TestPreamble extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmpty() throws Exception {
 
-        db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("", p.popString(null).getValue());
         assertNull(p.popUnchecked());
@@ -141,10 +108,9 @@ public class TestPreamble extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNumber() throws Exception {
 
-        db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VNumber("123")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("123", p.popString(null).getValue());
@@ -156,10 +122,9 @@ public class TestPreamble extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testString() throws Exception {
 
-        db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
         db.storePreamble(new Value(new VString("abc")));
         new Preamble("preamble$").execute(p, null, null);
         assertEquals("abc", p.popString(null).getValue());
@@ -171,10 +136,8 @@ public class TestPreamble extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testValue() throws Exception {
-
-        db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
 
         Value v = new Value();
         v.add(new VBlock("1234"));

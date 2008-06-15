@@ -43,17 +43,27 @@ import org.extex.framework.i18n.LocalizerFactory;
  * associated with the different format strings.
  * </p>
  * <ul>
- * <li> If the format is \verb|"l"| or \verb|"L"| then the string is converted
- * to lower case. </li>
- * <li> If the format is \verb|"u"| or \verb|"U"| then the string is converted
- * to upper case. </li>
- * <li> If the format is \verb|"t"| or \verb|"T"| then the string is converted
- * to title case. </li>
- * </ul>
+ * <li> If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
+ * converted to lower case. This means that each letter is translated to its
+ * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.
+ * </li>
+ * <li> If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
+ * converted to upper case. This means that each letter is translated to its
+ * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.
+ * </li>
+ * <li> If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
+ * converted to title case. This means that the first `letter' is translated to
+ * upper case and the other letters are left unchanged.
  * <p>
- * If the format is not one of the legal values then a message is written to the
- * log stream and the input string pushed to the stack as the result.
+ * When a control sequence occurs then it is translated completely. This mean
+ * that all letters of the control sequence are translated. For instance
+ * <tt>\AA</tt> is translates to <tt>\aa</tt> at the beginning.
  * </p>
+ * </li>
+ * <li> If the format is not one of the legal values then a message is written
+ * to the log stream and the input string pushed to the stack as the result.
+ * </li>
+ * </ul>
  * <p>
  * If the stack does not contain enough elements or the types do not match then
  * an error is raised.

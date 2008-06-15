@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>chr.to.int$</tt>.
@@ -39,27 +41,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestChrToInt extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestChrToInt.class);
-    }
+public class TestChrToInt {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -67,32 +49,20 @@ public class TestChrToInt extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestChrToInt(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -118,6 +88,7 @@ public class TestChrToInt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testChrToInt0() throws Exception {
 
         testChrToInt(0);
@@ -128,6 +99,7 @@ public class TestChrToInt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testChrToInt123() throws Exception {
 
         testChrToInt(123);
@@ -138,6 +110,7 @@ public class TestChrToInt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testChrToInt32() throws Exception {
 
         testChrToInt(32);
@@ -148,15 +121,23 @@ public class TestChrToInt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testChrToIntlong() throws Exception {
+    @Test(expected = ExBibIllegalValueException.class)
+    public void testChrToIntErr1() throws Exception {
 
-        try {
-            p.push(new TString("..", null));
-            new ChrToInt("chr.to.int$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibIllegalValueException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("..", null));
+        new ChrToInt("chr.to.int$").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> The first argument can not be an empty String. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibIllegalValueException.class)
+    public void testChrToIntErr2() throws Exception {
+
+        p.push(new TString("", null));
+        new ChrToInt("chr.to.int$").execute(p, null, null);
     }
 
     /**
@@ -164,14 +145,10 @@ public class TestChrToInt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new IntToChr("chr.to.int$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new IntToChr("chr.to.int$").execute(p, null, null);
     }
 
 }

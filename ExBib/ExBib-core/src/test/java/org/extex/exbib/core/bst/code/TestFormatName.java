@@ -51,14 +51,6 @@ public class TestFormatName {
     private Processor p = null;
 
     /**
-     * Create a new object.
-     */
-    public TestFormatName() {
-
-        super();
-    }
-
-    /**
      * Create a test object.
      * 
      * @return The test object

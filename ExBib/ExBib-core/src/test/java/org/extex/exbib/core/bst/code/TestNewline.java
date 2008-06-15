@@ -19,15 +19,17 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Newline;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>newline$</tt>.
@@ -35,27 +37,7 @@ import org.extex.exbib.core.io.StringBufferWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
-public class TestNewline extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestNewline.class);
-    }
+public class TestNewline {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -68,21 +50,11 @@ public class TestNewline extends TestCase {
     private StringBuffer out = new StringBuffer();
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestNewline(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), //
@@ -90,22 +62,21 @@ public class TestNewline extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
     }
 
     /**
-     * <testcase> a newline is produced. </testcase>
+     * <testcase>Tests that a newline is produced. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testEmptyStack() throws Exception {
+    @Test
+    public void test1() throws Exception {
 
         new Newline("newline$").execute(p, null, null);
         // assertEquals("", err.toString());

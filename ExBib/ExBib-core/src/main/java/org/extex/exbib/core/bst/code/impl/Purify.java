@@ -35,9 +35,48 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>purify$</code>
  * 
+ * This function takes a string valued argument and performs the following
+ * transformations:
+ * 
+ * <ul>
+ * <li> Any known T<sub>E</sub>X macro at brace level 1 is expanded.</li>
+ * <li> Any unknown T<sub>E</sub>X macro at brace level 1 is removed.</li>
+ * <li> Any white-space character, the tilde <tt>~</tt>, and the hyphen
+ * <tt>-</tt> are replaced by a single space character.</li>
+ * <li> Any other non-alphanumeric characters are removed.</li>
+ * </ul>
+ * <p>
+ * The known macros and their expansion text can be found in the following list:
+ * </p>
+ * <div style="margin-left:2em;"> <tt>\l</tt> &rarr; <tt>l</tt><br />
+ * <tt>\L</tt> &rarr; <tt>L</tt><br />
+ * <tt>\i</tt> &rarr; <tt>i</tt><br />
+ * <tt>\j</tt> &rarr; <tt>j</tt><br />
+ * <tt>\o</tt> &rarr; <tt>o</tt><br />
+ * <tt>\O</tt> &rarr; <tt>O</tt><br />
+ * <tt>\aa</tt> &rarr; <tt>a</tt><br />
+ * <tt>\AA</tt> &rarr; <tt>A</tt><br />
+ * <tt>\ss</tt> &rarr; <tt>ss</tt><br />
+ * <tt>\oe</tt> &rarr; <tt>oe</tt><br />
+ * <tt>\OE</tt> &rarr; <tt>OE</tt><br />
+ * <tt>\ae</tt> &rarr; <tt>ae</tt><br />
+ * <tt>\AE</tt> &rarr; <tt>AE</tt><br />
+ * </div>
+ * 
  * <img src="doc-files/purify.png"/>
  * 
+ * <p>
+ * The following example is taken from <tt>alpha.bst</tt>:
+ * </p>
  * 
+ * <pre>
+ * FUNCTION {sortify}
+ * { purify$
+ *   "l" change.case$
+ * }
+ * </pre>
+ * 
+ * <hr />
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
@@ -60,6 +99,43 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * complains and pushes the null string. </dd>
  * </dl>
  * 
+ * 
+ * <h3>Configuration</h3>
+ * <p>
+ * The configuration can take embedded elements with the name <tt>map</tt> to
+ * specify the mapping of known macros. The attribute <tt>name</tt> names the
+ * macro &ndash; without leading backslash. The body contains the replacement
+ * text.
+ * </p>
+ * <p>
+ * Initially the mapping contains the known macros shown above. Specified
+ * mappings are added to the predefined list. older mappings are overwritten by
+ * newer ones. If you want to remove the predefined mappings before starting to
+ * define new ones you can use the attribute <tt>clear</tt>. If it is present
+ * &ndash; no matter what its value may be &ndash; the predefined mappings re
+ * discarded.
+ * </p>
+ * 
+ * <pre>
+ *  <function name="purify$"
+ *           class="org.extex.exbib.core.bst.code.impl.Purify"
+ *           clear="true">
+ *    <map name="ae">ae</map>
+ *    <map name="AE">AE</map>
+ *    <map name="oe">oe</map>
+ *    <map name="OE">OE</map>
+ *    <map name="ss">ss</map>
+ *    <map name="i">i</map>
+ *    <map name="j">j</map>
+ *    <map name="l">l</map>
+ *    <map name="L">L</map>
+ *    <map name="aa">a</map>
+ *    <map name="AA">A</map>
+ *    <map name="o">o</map>
+ *    <map name="O">O</map>
+ *  </function>
+ * </pre>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
@@ -75,20 +151,7 @@ public class Purify extends AbstractCode {
      */
     public Purify() {
 
-        super();
-        macro.put("l", "l");
-        macro.put("L", "L");
-        macro.put("i", "i");
-        macro.put("j", "j");
-        macro.put("o", "o");
-        macro.put("O", "O");
-        macro.put("aa", "aa");
-        macro.put("AA", "AA");
-        macro.put("ss", "ss");
-        macro.put("oe", "oe");
-        macro.put("OE", "OE");
-        macro.put("ae", "ae");
-        macro.put("AE", "AE");
+        this("");
     }
 
     /**
@@ -98,8 +161,20 @@ public class Purify extends AbstractCode {
      */
     public Purify(String name) {
 
-        this();
-        setName(name);
+        super(name);
+        macro.put("l", "l");
+        macro.put("L", "L");
+        macro.put("i", "i");
+        macro.put("j", "j");
+        macro.put("o", "o");
+        macro.put("O", "O");
+        macro.put("aa", "a");
+        macro.put("AA", "A");
+        macro.put("ss", "ss");
+        macro.put("oe", "oe");
+        macro.put("OE", "OE");
+        macro.put("ae", "ae");
+        macro.put("AE", "AE");
     }
 
     /**
@@ -117,7 +192,7 @@ public class Purify extends AbstractCode {
             return;
         }
         if (config.getAttribute("clear") != null) {
-            macro = new HashMap<String, String>();
+            macro.clear();
         }
         Iterator<Configuration> it = config.iterator("macro");
         while (it.hasNext()) {

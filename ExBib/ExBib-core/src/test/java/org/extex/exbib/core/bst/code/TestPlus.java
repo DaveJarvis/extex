@@ -19,17 +19,21 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
 import org.extex.exbib.core.bst.code.impl.Plus;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
+import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>+</tt>.
@@ -37,42 +41,12 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestPlus extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestPlus.class);
-    }
+public class TestPlus {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestPlus(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -92,41 +66,23 @@ public class TestPlus extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
-    }
-
-    /**
-     * <testcase> A short stack leads to an error. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void test1Stack() throws Exception {
-
-        try {
-            p.push(new TInteger(2, null));
-            new Plus("+").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
     }
 
     /**
@@ -134,14 +90,61 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Plus("+").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Plus("+").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> A short stack leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibStackEmptyException.class)
+    public void testShortStack() throws Exception {
+
+        p.push(new TInteger(2, null));
+        new Plus("+").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> A type error leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingNumberException.class)
+    public void testTypeError1() throws Exception {
+
+        p.push(new TString("2", null));
+        p.push(new TString("2", null));
+        new Plus("+").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> A type error leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingNumberException.class)
+    public void testTypeError2() throws Exception {
+
+        p.push(new TInteger(2, null));
+        p.push(new TString("2", null));
+        new Plus("+").execute(p, null, null);
+    }
+
+    /**
+     * <testcase> A type error leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingNumberException.class)
+    public void testTypeError3() throws Exception {
+
+        p.push(new TString("2", null));
+        p.push(new TInteger(2, null));
+        new Plus("+").execute(p, null, null);
     }
 
     /**
@@ -149,6 +152,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus00() throws Exception {
 
         runTest(0, 0);
@@ -159,6 +163,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus10() throws Exception {
 
         runTest(1, 0);
@@ -169,6 +174,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus11() throws Exception {
 
         runTest(1, 1);
@@ -179,6 +185,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus12() throws Exception {
 
         runTest(1, 2);
@@ -189,6 +196,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus123123() throws Exception {
 
         runTest(123, 123);
@@ -199,6 +207,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus123Minus123() throws Exception {
 
         runTest(123, -123);
@@ -209,6 +218,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus1Minus1() throws Exception {
 
         runTest(1, -1);
@@ -219,6 +229,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus21() throws Exception {
 
         runTest(2, 1);
@@ -229,6 +240,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlus22() throws Exception {
 
         runTest(2, 2);
@@ -239,6 +251,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlusMinus123123() throws Exception {
 
         runTest(-123, 123);
@@ -249,6 +262,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlusMinus1Minus2() throws Exception {
 
         runTest(-1, -2);
@@ -259,6 +273,7 @@ public class TestPlus extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void textPlusMinus2Minus1() throws Exception {
 
         runTest(-2, -1);

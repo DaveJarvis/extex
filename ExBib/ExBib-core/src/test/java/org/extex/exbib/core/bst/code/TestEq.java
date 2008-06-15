@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -33,6 +32,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>eq$</tt>.
@@ -40,7 +42,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestEq extends TestCase {
+public class TestEq {
 
     /**
      * The field <tt>INT_MINUS_123</tt> contains -123.
@@ -58,39 +60,9 @@ public class TestEq extends TestCase {
     private static final TInteger INT_123 = new TInteger(123, null);
 
     /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestEq.class);
-    }
-
-    /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestEq(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -111,22 +83,20 @@ public class TestEq extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -137,14 +107,10 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Eq("=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Eq("=").execute(p, null, null);
     }
 
     /**
@@ -152,6 +118,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI1() throws Exception {
 
         runTest(INT_123, INT_123, "1");
@@ -162,6 +129,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI1n() throws Exception {
 
         runTest(INT_MINUS_123, INT_MINUS_123, "1");
@@ -172,6 +140,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI2() throws Exception {
 
         runTest(TokenFactory.T_ZERO, TokenFactory.T_ZERO, "1");
@@ -182,6 +151,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI3() throws Exception {
 
         runTest(INT_12, INT_123, "0");
@@ -192,6 +162,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI4() throws Exception {
 
         runTest(INT_123, INT_12, "0");
@@ -202,6 +173,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI5() throws Exception {
 
         runTest(new TInteger(-1, null), new TInteger(-1, null), "1");
@@ -212,6 +184,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI6() throws Exception {
 
         runTest(INT_123, TokenFactory.T_ZERO, "0");
@@ -222,6 +195,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqI7() throws Exception {
 
         runTest(TokenFactory.T_ONE, TokenFactory.T_ZERO, "0");
@@ -232,6 +206,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS1() throws Exception {
 
         runTest(new TString("abc", null), new TString("abc", null), "1");
@@ -242,6 +217,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS2() throws Exception {
 
         runTest(new TString("", null), new TString("", null), "1");
@@ -252,6 +228,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS3() throws Exception {
 
         runTest(new TString("ab", null), new TString("abc", null), "0");
@@ -262,6 +239,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS4() throws Exception {
 
         runTest(new TString("abc", null), new TString("ab", null), "0");
@@ -272,6 +250,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS5() throws Exception {
 
         runTest(new TString("{}", null), new TString("", null), "0");
@@ -282,6 +261,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS6() throws Exception {
 
         runTest(new TString("abc", null), new TString("", null), "0");
@@ -292,6 +272,7 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEqS7() throws Exception {
 
         runTest(new TString("a", null), new TString("", null), "0");
@@ -302,15 +283,11 @@ public class TestEq extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack() throws Exception {
 
-        try {
-            p.push(new TInteger(2, null));
-            new Eq("=").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(new TInteger(2, null));
+        new Eq("=").execute(p, null, null);
     }
 
 }

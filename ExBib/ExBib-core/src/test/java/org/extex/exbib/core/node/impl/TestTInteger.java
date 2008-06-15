@@ -19,9 +19,9 @@
 
 package org.extex.exbib.core.node.impl;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -39,6 +39,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test case for {@link TInteger}.
@@ -46,27 +49,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTInteger extends TestCase implements TokenVisitor {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestTInteger.class);
-    }
+public class TestTInteger implements TokenVisitor {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -80,21 +63,11 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     private boolean visit = false;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestTInteger(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
@@ -102,11 +75,9 @@ public class TestTInteger extends TestCase implements TokenVisitor {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -117,6 +88,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExecute() throws Exception {
 
         TInteger t = new TInteger("987", null);
@@ -130,6 +102,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt0() throws Exception {
 
         TInteger t = TokenFactory.T_ZERO;
@@ -141,6 +114,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt0s() throws Exception {
 
         TInteger t = new TInteger("0", null);
@@ -152,6 +126,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt1() throws Exception {
 
         TInteger t = TokenFactory.T_ONE;
@@ -163,6 +138,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt123() throws Exception {
 
         TInteger t = new TInteger(123, null);
@@ -174,6 +150,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt123s() throws Exception {
 
         TInteger t = new TInteger("123", null);
@@ -185,6 +162,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetInt1s() throws Exception {
 
         TInteger t = new TInteger("1", null);
@@ -196,6 +174,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetIntMinus1() throws Exception {
 
         TInteger t = new TInteger(-1, null);
@@ -207,6 +186,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGetIntMinus1s() throws Exception {
 
         TInteger t = new TInteger("-1", null);
@@ -219,6 +199,7 @@ public class TestTInteger extends TestCase implements TokenVisitor {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit() throws Exception {
 
         TInteger t = new TInteger("-1", null);

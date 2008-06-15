@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>int.to.str$</tt>.
@@ -39,42 +41,12 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestIntToStr extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestIntToStr.class);
-    }
+public class TestIntToStr {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestIntToStr(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -92,22 +64,20 @@ public class TestIntToStr extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -118,14 +88,10 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new IntToStr("int.to.str$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new IntToStr("int.to.str$").execute(p, null, null);
     }
 
     /**
@@ -133,6 +99,7 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIntToStr0() throws Exception {
 
         runTest(0);
@@ -143,6 +110,7 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIntToStr123() throws Exception {
 
         runTest(123);
@@ -153,6 +121,7 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIntToStr32() throws Exception {
 
         runTest(32);
@@ -163,6 +132,7 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testIntToStrMinus1() throws Exception {
 
         runTest(-1);
@@ -173,14 +143,11 @@ public class TestIntToStr extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibException.class)
     public void testString() throws Exception {
 
-        try {
-            p.push(new TString("abc", null));
-            new IntToStr("int.to.str$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("abc", null));
+        new IntToStr("int.to.str$").execute(p, null, null);
     }
+
 }

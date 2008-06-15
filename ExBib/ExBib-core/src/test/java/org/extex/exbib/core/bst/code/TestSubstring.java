@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>substring$</tt>.
@@ -39,42 +41,12 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestSubstring extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestSubstring.class);
-    }
+public class TestSubstring {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestSubstring(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -98,22 +70,20 @@ public class TestSubstring extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -124,14 +94,10 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Substring("substring$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Substring("substring$").execute(p, null, null);
     }
 
     /**
@@ -139,15 +105,11 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack1() throws Exception {
 
-        try {
-            p.push(TokenFactory.T_ZERO);
-            new Substring("substring$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(TokenFactory.T_ZERO);
+        new Substring("substring$").execute(p, null, null);
     }
 
     /**
@@ -155,16 +117,12 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack2() throws Exception {
 
-        try {
-            p.push(TokenFactory.T_ZERO);
-            p.push(TokenFactory.T_ZERO);
-            new Substring("substring$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(TokenFactory.T_ZERO);
+        p.push(TokenFactory.T_ZERO);
+        new Substring("substring$").execute(p, null, null);
     }
 
     /**
@@ -172,6 +130,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour1() throws Exception {
 
         runTest("abcd", 0, 0, "");
@@ -182,6 +141,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour2() throws Exception {
 
         runTest("abcd", 1, 1, "a");
@@ -192,6 +152,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour3() throws Exception {
 
         runTest("abcd", -1, 1, "d");
@@ -202,6 +163,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour4() throws Exception {
 
         runTest("abcd", 2, 1, "b");
@@ -212,6 +174,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour5() throws Exception {
 
         runTest("abcd", -2, 1, "c");
@@ -222,6 +185,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour6() throws Exception {
 
         runTest("abcd", 1, 2, "ab");
@@ -232,6 +196,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringFour7() throws Exception {
 
         runTest("abcd", -1, 2, "cd");
@@ -242,6 +207,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne1() throws Exception {
 
         runTest("a", 0, 0, "");
@@ -252,6 +218,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne10() throws Exception {
 
         runTest("a", -2, -4, "");
@@ -262,6 +229,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne11() throws Exception {
 
         runTest("a", -3, -6, "");
@@ -272,6 +240,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne2() throws Exception {
 
         runTest("a", 1, 1, "a");
@@ -282,6 +251,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne3() throws Exception {
 
         runTest("a", -1, 1, "a");
@@ -292,6 +262,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne4() throws Exception {
 
         runTest("a", 2, 1, "");
@@ -302,6 +273,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne5() throws Exception {
 
         runTest("a", -2, 1, "");
@@ -312,6 +284,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne6() throws Exception {
 
         runTest("a", 1, 2, "a");
@@ -322,6 +295,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne7() throws Exception {
 
         runTest("a", -1, 2, "a");
@@ -332,6 +306,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne8() throws Exception {
 
         runTest("a", -2, -2, "");
@@ -342,6 +317,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringOne9() throws Exception {
 
         runTest("a", -2, -3, "");
@@ -352,6 +328,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree1() throws Exception {
 
         runTest("abc", 0, 0, "");
@@ -362,6 +339,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree2() throws Exception {
 
         runTest("abc", 1, 1, "a");
@@ -372,6 +350,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree3() throws Exception {
 
         runTest("abc", -1, 1, "c");
@@ -382,6 +361,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree4() throws Exception {
 
         runTest("abc", 2, 1, "b");
@@ -392,6 +372,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree5() throws Exception {
 
         runTest("abc", -2, 1, "b");
@@ -402,6 +383,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree6() throws Exception {
 
         runTest("abc", 1, 2, "ab");
@@ -412,6 +394,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringThree7() throws Exception {
 
         runTest("abc", -1, 2, "bc");
@@ -423,6 +406,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix1() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 0, 2, "");
@@ -434,6 +418,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix10() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", -26, 2, "a");
@@ -445,6 +430,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix11() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", -27, 2, "");
@@ -456,6 +442,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix2() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 1, 2, "ab");
@@ -467,6 +454,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix3() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 2, 2, "bc");
@@ -478,6 +466,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix4() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 25, 2, "yz");
@@ -489,6 +478,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix5() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 26, 2, "z");
@@ -500,6 +490,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix6() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", 27, 2, "");
@@ -511,6 +502,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix7() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", -1, 2, "yz");
@@ -522,6 +514,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix8() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", -2, 2, "xy");
@@ -533,6 +526,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwentysix9() throws Exception {
 
         runTest("abcdefghijklmnopqrstuvwxyz", -25, 2, "ab");
@@ -543,6 +537,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo1() throws Exception {
 
         runTest("ab", 0, 0, "");
@@ -553,6 +548,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo2() throws Exception {
 
         runTest("ab", 1, 1, "a");
@@ -563,6 +559,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo3() throws Exception {
 
         runTest("ab", -1, 1, "b");
@@ -573,6 +570,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo4() throws Exception {
 
         runTest("ab", 2, 1, "b");
@@ -583,6 +581,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo5() throws Exception {
 
         runTest("ab", -2, 1, "a");
@@ -593,6 +592,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo6() throws Exception {
 
         runTest("ab", 1, 2, "ab");
@@ -603,6 +603,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringTwo7() throws Exception {
 
         runTest("ab", -1, 2, "ab");
@@ -613,6 +614,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero1() throws Exception {
 
         runTest("", 0, 0, "");
@@ -623,6 +625,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero2() throws Exception {
 
         runTest("", 1, 1, "");
@@ -633,6 +636,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero3() throws Exception {
 
         runTest("", -1, 1, "");
@@ -643,6 +647,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero4() throws Exception {
 
         runTest("", 2, 1, "");
@@ -653,6 +658,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero5() throws Exception {
 
         runTest("", -2, 1, "");
@@ -663,6 +669,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero6() throws Exception {
 
         runTest("", 1, 2, "");
@@ -673,6 +680,7 @@ public class TestSubstring extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testSubstringZero7() throws Exception {
 
         runTest("", -1, 2, "");

@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>change.case$</tt>.
@@ -39,27 +41,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestChangeCase extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command-line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestChangeCase.class);
-    }
+public class TestChangeCase {
 
     /**
      * The field <tt>db</tt> contains the database.
@@ -72,21 +54,11 @@ public class TestChangeCase extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestChangeCase(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -94,11 +66,9 @@ public class TestChangeCase extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -111,6 +81,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test01l() throws Exception {
 
         testChangeCaseL("a", "a");
@@ -122,6 +93,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test01t() throws Exception {
 
         testChangeCaseT("a", "a");
@@ -133,6 +105,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test01u() throws Exception {
 
         testChangeCaseU("a", "A");
@@ -144,6 +117,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test02l() throws Exception {
 
         testChangeCaseL("A", "a");
@@ -155,6 +129,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test02t() throws Exception {
 
         testChangeCaseT("A", "A");
@@ -166,6 +141,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test02u() throws Exception {
 
         testChangeCaseU("A", "A");
@@ -176,6 +152,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0l() throws Exception {
 
         testChangeCaseL("", "");
@@ -186,6 +163,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0t() throws Exception {
 
         testChangeCaseT("", "");
@@ -196,6 +174,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0u() throws Exception {
 
         testChangeCaseU("", "");
@@ -206,6 +185,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11l() throws Exception {
 
         testChangeCaseL("abc: def", "abc: def");
@@ -216,6 +196,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11t() throws Exception {
 
         testChangeCaseT("abc: def", "abc: def");
@@ -226,6 +207,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test11u() throws Exception {
 
         testChangeCaseU("abc: def", "ABC: DEF");
@@ -236,6 +218,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12l() throws Exception {
 
         testChangeCaseL("ABC: DEF", "abc: def");
@@ -246,6 +229,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12t() throws Exception {
 
         testChangeCaseT("ABC: DEF", "Abc: Def");
@@ -256,6 +240,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12u() throws Exception {
 
         testChangeCaseU("ABC: DEF", "ABC: DEF");
@@ -266,6 +251,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13l() throws Exception {
 
         testChangeCaseL("ABC{TeX}DEF", "abc{TeX}def");
@@ -276,6 +262,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13t() throws Exception {
 
         testChangeCaseT("ABC {TeX}DEF", "Abc {TeX}def");
@@ -286,6 +273,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13u() throws Exception {
 
         testChangeCaseU("ABC{TeX}DEF", "ABC{TeX}DEF");
@@ -296,6 +284,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test13ub() throws Exception {
 
         testChangeCaseU("abc{TeX}def", "ABC{TeX}DEF");
@@ -306,6 +295,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test20t() throws Exception {
 
         testChangeCaseT("{PhD} Dissertation", "{PhD} dissertation");
@@ -377,14 +367,10 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new ChangeCase("change.case$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new ChangeCase("change.case$").execute(p, null, null);
     }
 
     /**
@@ -392,15 +378,11 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack() throws Exception {
 
-        try {
-            p.push(new TString("e", null));
-            new ChangeCase("change.case$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("e", null));
+        new ChangeCase("change.case$").execute(p, null, null);
     }
 
     /**
@@ -408,16 +390,12 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibIllegalValueException.class)
     public void testTypeError() throws Exception {
 
-        try {
-            p.push(new TString("e", null));
-            p.push(new TString("", null));
-            new ChangeCase("change.case$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibIllegalValueException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("e", null));
+        p.push(new TString("", null));
+        new ChangeCase("change.case$").execute(p, null, null);
     }
 
     /**
@@ -425,6 +403,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testx2l() throws Exception {
 
         testChangeCaseL("ABC: {DE}F", "abc: {DE}f");
@@ -435,6 +414,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testx2t() throws Exception {
 
         testChangeCaseT("AB{C}: DEF", "Ab{C}: Def");
@@ -445,6 +425,7 @@ public class TestChangeCase extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testx2u() throws Exception {
 
         testChangeCaseU("abc: d{e}f", "ABC: D{e}F");

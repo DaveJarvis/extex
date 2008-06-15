@@ -668,6 +668,9 @@ This function looks at the current entry and calls the function
 with the same name as the type. The name is normalized; i.e.
 translated to lower case.
 
+If no such function is defined then the user-defined function
+\fctIndex{default.type} is consulted and invoked instead.
+
 \begin{BstFunction}{call.type\$}
 \end{BstFunction}
 
@@ -695,20 +698,25 @@ The format controls the operation to be performed. It is a single
 letter string. The following descriptions show the possibilities and
 functions associated with the different format strings.
 
-If the format is \verb|"l"| or \verb|"L"| then the string is converted
-to lower case.
-
-If the format is \verb|"u"| or \verb|"U"| then the string is converted
-to upper case.
-
-If the format is \verb|"t"| or \verb|"T"| then the string is converted
-to title case.
-
-\INCOMPLETE
-
-If the format is not one of the legal values then a message is written
-to the log stream and the input string pushed to the stack as the
-result.
+\begin{itemize}
+\item If the format is \verb|"l"| or \verb|"L"| then the string is
+  converted to lower case. This means that each letter is translated
+  to its lowercase counterpart -- even the letters in \TeX\ macros.
+\item If the format is \verb|"u"| or \verb|"U"| then the string is
+  converted to upper case. This means that each letter is translated
+  to its uppercase counterpart -- even the letters in \TeX\ macros.
+\item If the format is \verb|"t"| or \verb|"T"| then the string is
+  converted to title case. This means that the first ``letter'' is
+  translated to upper case and the other letters are left unchanged.
+  
+  When a control sequence occurs then it is translated completely.
+  This mean that all letters of the control sequence are translated.
+  For instance \verb|\AA| is translates to \verb|\aa| at the
+  beginning.
+\item If the format is not one of the legal values then a message is
+  written to the log stream and the input string pushed to the stack
+  as the result.
+\end{itemize}
 
 If the stack does not contain enough elements or the types do not
 match then an error is raised.
@@ -835,7 +843,37 @@ This expression contains the format letters \texttt{f}, \texttt{ff},
 \texttt{l}, \texttt{ll}, \texttt{v}, \texttt{vv}, \texttt{j}, or
 \texttt{jj}. 
 
+\begin{description}
+\item[f] This format letter denotes the first part of the name
+  abbreviated to initial letters.
+\item[ff] This format letter denotes the first part of the name as
+  given in the database.
+\item[l] This format letter denotes the last part of the name
+  abbreviated to initial letters. 
+\item[ll] This format letter denotes the last part of the name as
+  given in the database.
+\item[v] This format letter denotes the von part of the name
+  abbreviated to initial letters.
+\item[vv] This format letter denotes the von part of the name as
+  given in the database.
+\item[j] This format letter denotes the junior part of the name
+  abbreviated to initial letters.
+\item[jj] This format letter denotes the junior part of the name as
+  given in the database.
+\end{description}
 
+The string in the group before the format letters is called the pre
+string. It is included into the output before the name part if this
+part is not empty.
+
+The string in the group after the format letter is called the post
+string. It is included into the output after the name part if this
+part is not empty.
+
+If the format letters are immediately followed by a group then this
+group constitutes the separator. This separator is inserted between
+words of one name part; it is for instance inserted between several
+first names. The separator is optional.
 
 \INCOMPLETE
 
@@ -1026,9 +1064,35 @@ pushes it as string onto the stack.
 \subsection{The Function \texttt{purify\$}}%
 \fctIndex{purify\$}
 
-This function takes a string valued argument and removes certain characters.
+This function takes a string valued argument and performs the
+following transformations:
 
-\INCOMPLETE
+\begin{itemize}
+\item Any known \TeX\ macro at brace level 1 is expanded.
+\item Any unknown \TeX\ macro at brace level 1 is removed.
+\item Any white-space character, the tilde \verb|~|, and the hyphen
+  \verb|-| are replaced by a single space character.
+\item Any other non-alphanumeric characters are removed.
+\end{itemize}
+
+The known macros and their expansion text can be found in the
+following list:
+
+\begin{tabular}{lll}
+  \verb|\l|  &$\hookrightarrow$& \verb|l|\\
+  \verb|\L|  &$\hookrightarrow$& \verb|L|\\
+  \verb|\i|  &$\hookrightarrow$& \verb|i|\\
+  \verb|\j|  &$\hookrightarrow$& \verb|j|\\
+  \verb|\o|  &$\hookrightarrow$& \verb|o|\\
+  \verb|\O|  &$\hookrightarrow$& \verb|O|\\
+  \verb|\aa| &$\hookrightarrow$& \verb|a|\\
+  \verb|\AA| &$\hookrightarrow$& \verb|A|\\
+  \verb|\ss| &$\hookrightarrow$& \verb|ss|\\
+  \verb|\oe| &$\hookrightarrow$& \verb|oe|\\
+  \verb|\OE| &$\hookrightarrow$& \verb|OE|\\
+  \verb|\ae| &$\hookrightarrow$& \verb|ae|\\
+  \verb|\AE| &$\hookrightarrow$& \verb|AE|\\
+\end{tabular}
 
 \begin{BstFunction}{purify\$}
   \In1{string}

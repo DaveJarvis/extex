@@ -30,7 +30,173 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class represents a single name.
+ * This class represents a single name. It also contains utility methods to deal
+ * with name lists.
+ * 
+ * <h2>Name Components</h2>
+ * 
+ * <p>
+ * B<small>IB</small>T<sub>E</sub>X uses four components for names. Any name
+ * is analyzed and decomposed into the four parts. The following parts of names
+ * are considered:
+ * </p>
+ * <dl>
+ * <dt>Last part</dt>
+ * <dd> The last name or christian name of a person is usually the last major
+ * component of a name. This is the only part which is not optional. </dd>
+ * <dt>First parts</dt>
+ * <dd> The first name or given name of a person is usually the first component
+ * of a name. This part is optional. </dd>
+ * <dt>Von part</dt>
+ * <dd> The von part of a name usually comes between first name and last name
+ * and starts with lowercase letters. It is optional. </dd>
+ * <dt>Junior part</dt>
+ * <dd> The junior part of a name is an addition appended to the name. This part
+ * is optional. </dd>
+ * </dl>
+ * 
+ * <p>
+ * The parts are separated by white space. This whitespace is only considered if
+ * it occurs at brace level 0. Thus the grouping with braces is honored. It can
+ * be used to tie together parts which would be torn apart otherwise.
+ * </p>
+ * <p>
+ * Any part can consist of several words. Commas can be used to structure a
+ * name. Thus we will use the number of commas for the analysis as well.
+ * </p>
+ * 
+ * <h3>No Commas</h3>
+ * 
+ * <p>
+ * If a name does not contain a comma then the following pattern is used to
+ * determine the parts of the name:
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt;* &lt;<i>jr</i>&gt;* 
+ * </pre>
+ * 
+ * <p>
+ * The name parts <em>first</em> and <em>last</em> consist of words for
+ * which the first letter is an uppercase letter. The name parts <em>von</em>
+ * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * letter.
+ * </p>
+ * <p>
+ * Note that the star operator denotes an arbitrary number of repetitions of the
+ * preceding syntactic entity. Especially, none is allowed. The star operator is
+ * greedy; i.e. if two conflicting entities adjoin then the first one wins.
+ * </p>
+ * <p>
+ * The following examples show how the names are classified. The last name is
+ * printed in bold, the first name is printed in roman, the von part is printed
+ * in italics, and the junior part is underlined.
+ * </p>
+ * <div style="margin-left:2em;"> <b>Aristotle</b><br />
+ * <span>Leslie</span> <b>Lamport</b><br />
+ * <span>Donald Ervin</span> <b>Knuth</b><br />
+ * <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <b>Mozart</b><br />
+ * <span>Ludwig</span> <i>van</i> <b>Beethoven</b><br />
+ * <span>Otto Eduard Leopold</span> <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b><br />
+ * <span>Miguel</span> <i>de</i> <b>Cervantes Saavedra</b><br />
+ * <span>Sammy</span> <b>Davis</b> <u>jr.</u><br />
+ * <span>Don Quixote</span> <i>de la</i> <b>Mancha</b> </div>
+ * 
+ * <h3>One Comma</h3>
+ * <p>
+ * If a name does not contain a comma then the following pattern is used to
+ * determine the parts of the name:
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; <tt>,</tt> &lt;<i>first</i>&gt;*
+ *          |  &lt;<i>first</i>&gt;* &lt;<i>von</i>&gt;* &lt;<i>last</i>&gt; <tt>,</tt> &lt;<i>jr</i>&gt;* 
+ * </pre>
+ * 
+ * <p>
+ * The name parts <em>first</em> and <em>last</em> consist of words for
+ * which the first letter is an uppercase letter. The name parts <em>von</em>
+ * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * letter.
+ * </p>
+ * <p>
+ * The following examples show how the names are classified. The last name is
+ * printed in bold, the first name is printed in roman, the von part is printed
+ * in italics, and the junior part is underlined.
+ * </p>
+ * <div style="margin-left:2em;"> <b>Lamport</b>, <span>Leslie</span><br />
+ * <b>Knuth</b>, <span>Donald Ervin</span> <br />
+ * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span>
+ * <br />
+ * <b>Beethoven</b>, <span>Ludwig</span> <i>van</i> <br />
+ * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span>
+ * <br />
+ * <i>de</i> <b>Cervantes Saavedra</b>, <span>Miguel</span> <br />
+ * <span>Sammy</span> <b>Davis</b>, <u>Jr.</u> </div>
+ * 
+ * <h3>Two Commas</h3>
+ * <p>
+ * If a name does contain two commas then the following pattern is used to
+ * determine the parts of the name:
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>last</i>&gt; &lt;<i>von</i>&gt;* <tt>,</tt> &lt;<i>jr</i>&gt; <tt>,</tt> &lt;<i>first</i>&gt;* 
+ * </pre>
+ * 
+ * <p>
+ * The name parts <em>first</em> and <em>last</em> consist of words for
+ * which the first letter is an uppercase letter. The name parts <em>von</em>
+ * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * letter.
+ * </p>
+ * <p>
+ * The following examples show how the names are classified. The last name is
+ * printed in bold, the first name is printed in roman, the von part is printed
+ * in italics, and the junior part is underlined.
+ * </p>
+ * <div style="margin-left:2em;"> <b>Davis</b>, <u>Jr.</u>, <span>Sammy</span>
+ * </div>
+ * 
+ * <h3>More Commas</h3>
+ * <p>
+ * More than two commas are not understood by the name parsing in
+ * &epsilon;&chi;Bib.
+ * </p>
+ * 
+ * <h2>Name Lists</h2>
+ * <p>
+ * Names usually come in bibliographies as single names or as lists of names.
+ * Thus we have to take care of lists of names. Those lists are made up of
+ * single names separated by the word <tt>and</tt> surrounded by whitespace.
+ * This separator is only considered at brace level 0. Thus it is possible to
+ * protect embedded words `and'. Those might be parts of company names &ndash;
+ * e.g. acting an author.
+ * </p>
+ * <p>
+ * The following example is recognizes as two names:
+ * </p>
+ * <div style="margin-left:2em;"> <b>Barnes</b> <tt>and</tt> <b>Noble</b>
+ * </div>
+ * <p>
+ * The following example is recognized as a single name:
+ * </p>
+ * <div style="margin-left:2em;"> <b>{Barnes and Noble}</b> </div>
+ * <p>
+ * It there are more names in a name list than feasible then the remaining names
+ * after some initial ones can be abbreviated. For this purpose simply write
+ * <tt>and others</tt> at the end.
+ * </p>
+ * <p>
+ * The formal syntax is as follows:
+ * </p>
+ * 
+ * <pre>
+ *   &lt;<i>name list</i>&gt; &equiv; &lt;<i>name</i>&gt;
+ *               | &lt;<i>name list</i>&gt; <tt> and </tt> &lt;<i>name</i>&gt; 
+ *               | &lt;<i>name list</i>&gt; <tt> and others</tt> 
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
@@ -232,7 +398,7 @@ public class Name {
     private List<String> von = new ArrayList<String>();
 
     /**
-     * Creates a new object.
+     * Creates a new object and fill the last name with the given string.
      * 
      * @param name the complete string representation of the name
      */
@@ -243,7 +409,8 @@ public class Name {
     }
 
     /**
-     * Creates a new object.
+     * Creates a new object and fills it with the attributes from a string. For
+     * this purpose the string is parsed to determine its constituents.
      * 
      * @param name the complete string representation of the name
      * @param locator the locator
@@ -455,11 +622,11 @@ public class Name {
     }
 
     /**
-     * Search for the first letter in the String and determine whether this
+     * Search for the first letter in the argument and determine whether this
      * character is in upper case. If no letter is found then <code>false</code>
      * is returned.
      * 
-     * @param s the String to examine
+     * @param s the {@link String} to examine
      * 
      * @return <code>true</code> iff the first letter is upper case
      */
@@ -599,4 +766,5 @@ public class Name {
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
+
 }

@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -31,6 +30,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>add.period$</tt>.
@@ -38,27 +40,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestAddPeriod extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestAddPeriod.class);
-    }
+public class TestAddPeriod {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -66,32 +48,20 @@ public class TestAddPeriod extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestAddPeriod(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -102,14 +72,10 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new AddPeriod("add.period$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new AddPeriod("add.period$").execute(p, null, null);
     }
 
     /**
@@ -143,6 +109,7 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoAddEmpty() throws Exception {
 
         testNoAdd("");
@@ -154,12 +121,45 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testNoAddExclamationMark() throws Exception {
+    @Test
+    public void testNoAddExclamationMark1() throws Exception {
 
         testNoAdd("abc!");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is an
+     * exclamation mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddExclamationMark2() throws Exception {
+
         testNoAdd("abc!}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is an
+     * exclamation mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddExclamationMark3() throws Exception {
 
         testNoAdd("abc!}}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is an
+     * exclamation mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddExclamationMark4() throws Exception {
+
         testNoAdd("abc!}}}");
     }
 
@@ -169,11 +169,45 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testNoAddPeriod() throws Exception {
+    @Test
+    public void testNoAddPeriod1() throws Exception {
 
         testNoAdd("abc.");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * period. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddPeriod2() throws Exception {
+
         testNoAdd("abc.}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * period. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddPeriod3() throws Exception {
+
         testNoAdd("abc.}}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * period. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddPeriod4() throws Exception {
+
         testNoAdd("abc.}}}");
     }
 
@@ -183,11 +217,45 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
-    public void testNoAddQuestionMark() throws Exception {
+    @Test
+    public void testNoAddQuestionMark1() throws Exception {
 
         testNoAdd("abc?");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * question mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddQuestionMark2() throws Exception {
+
         testNoAdd("abc?}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * question mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddQuestionMark3() throws Exception {
+
         testNoAdd("abc?}}");
+    }
+
+    /**
+     * <testcase> No period is added if the last non-brace character is a
+     * question mark. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNoAddQuestionMark4() throws Exception {
+
         testNoAdd("abc?}}}");
     }
 
@@ -197,6 +265,7 @@ public class TestAddPeriod extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testString() throws Exception {
 
         p.push(new TString("abc", null));

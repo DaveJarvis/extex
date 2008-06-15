@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -29,6 +28,9 @@ import org.extex.exbib.core.bst.code.impl.Width;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>width$</tt>.
@@ -36,27 +38,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestWidth extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestWidth.class);
-    }
+public class TestWidth {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -74,32 +56,20 @@ public class TestWidth extends TestCase {
     private StringBuffer out = new StringBuffer();
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestWidth(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -128,6 +98,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0110() throws Exception {
 
         testWidth("ae", 944);
@@ -138,6 +109,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0111() throws Exception {
 
         testWidth("\\AE", 1931);
@@ -148,6 +120,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0112() throws Exception {
 
         testWidth("oe", 944);
@@ -158,6 +131,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0113() throws Exception {
 
         testWidth("\\OE", 1959);
@@ -168,6 +142,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0114() throws Exception {
 
         testWidth("\\singleletter", 5286);
@@ -178,6 +153,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0115() throws Exception {
 
         testWidth(".\\singleletter.", 5842);
@@ -188,6 +164,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0116() throws Exception {
 
         testWidth("OX{\\singleletter{stoc}}83b", 4811);
@@ -198,6 +175,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0117() throws Exception {
 
         testWidth("OX{\\singleletter  {stoc}}83b", 4811);
@@ -208,6 +186,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0118() throws Exception {
 
         testWidth("OXstoc83b", 4811);
@@ -218,6 +197,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth0119() throws Exception {
 
         testWidth("{\\AE}", 903);
@@ -228,6 +208,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth012() throws Exception {
 
         testWidth("abc", 1500);
@@ -238,6 +219,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth013() throws Exception {
 
         testWidth("abcdefghijklmnopqrstuvwxyz", 12706);
@@ -248,6 +230,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth014() throws Exception {
 
         testWidth(".,-=)(/&%$§!", 5334);
@@ -258,6 +241,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth015() throws Exception {
 
         testWidth("{}", 1000);
@@ -268,6 +252,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth016() throws Exception {
 
         testWidth("AA", 1500);
@@ -278,6 +263,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth017() throws Exception {
 
         testWidth("\\AA", 2000);
@@ -288,6 +274,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth018() throws Exception {
 
         testWidth("ss", 788);
@@ -298,6 +285,7 @@ public class TestWidth extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWidth019() throws Exception {
 
         testWidth("\\ss", 1288);

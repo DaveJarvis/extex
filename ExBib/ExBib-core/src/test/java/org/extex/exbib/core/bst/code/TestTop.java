@@ -19,13 +19,12 @@
 
 package org.extex.exbib.core.bst.code;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -35,6 +34,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>top$</tt>.
@@ -42,27 +44,7 @@ import org.extex.exbib.core.io.StringBufferWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestTop extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestTop.class);
-    }
+public class TestTop {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -80,21 +62,11 @@ public class TestTop extends TestCase {
     private Handler err;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestTop(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         Logger logger = Logger.getLogger("test");
@@ -107,11 +79,9 @@ public class TestTop extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -122,14 +92,10 @@ public class TestTop extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Top("top$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Top("top$").execute(p, null, null);
     }
 
     /**
@@ -137,6 +103,7 @@ public class TestTop extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTopInteger() throws Exception {
 
         p.push(new TInteger(1234, null));
@@ -151,6 +118,7 @@ public class TestTop extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTopString() throws Exception {
 
         p.push(new TString("abc", null));

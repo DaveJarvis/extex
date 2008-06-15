@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>&gt;</tt>.
@@ -39,42 +41,12 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestGt extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestGt.class);
-    }
+public class TestGt {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestGt(String name) {
-
-        super(name);
-    }
 
     /**
      * Run a test case.
@@ -94,22 +66,20 @@ public class TestGt extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
+     * Set-up method.
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @throws Exception in case of an error
      */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -120,15 +90,11 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void test1Stack() throws Exception {
 
-        try {
-            p.push(new TInteger(2, null));
-            new Gt(">").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(new TInteger(2, null));
+        new Gt(">").execute(p, null, null);
     }
 
     /**
@@ -136,14 +102,10 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Gt(">").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Gt(">").execute(p, null, null);
     }
 
     /**
@@ -151,6 +113,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt00() throws Exception {
 
         run(0, 0);
@@ -161,6 +124,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt10() throws Exception {
 
         run(1, 0);
@@ -171,6 +135,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt11() throws Exception {
 
         run(1, 1);
@@ -181,6 +146,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt12() throws Exception {
 
         run(1, 2);
@@ -191,6 +157,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt123123() throws Exception {
 
         run(123, 123);
@@ -201,6 +168,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt123Minus123() throws Exception {
 
         run(123, -123);
@@ -211,6 +179,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt1Minus1() throws Exception {
 
         run(1, -1);
@@ -221,6 +190,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt21() throws Exception {
 
         run(2, 1);
@@ -231,6 +201,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGt22() throws Exception {
 
         run(2, 2);
@@ -241,6 +212,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGtMinus123123() throws Exception {
 
         run(-123, 123);
@@ -251,6 +223,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGtMinus1Minus2() throws Exception {
 
         run(-1, -2);
@@ -261,6 +234,7 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testGtMinus2Minus1() throws Exception {
 
         run(-2, -1);
@@ -272,16 +246,12 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingNumberException.class)
     public void testTypeError1() throws Exception {
 
-        try {
-            p.push(new TString("2", null));
-            p.push(new TInteger(2, null));
-            new Gt(">").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibMissingNumberException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("2", null));
+        p.push(new TInteger(2, null));
+        new Gt(">").execute(p, null, null);
     }
 
     /**
@@ -290,16 +260,12 @@ public class TestGt extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingNumberException.class)
     public void testTypeError2() throws Exception {
 
-        try {
-            p.push(new TString("2", null));
-            p.push(new TInteger(2, null));
-            new Gt(">").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibMissingNumberException e) {
-            assertTrue(true);
-        }
+        p.push(new TString("2", null));
+        p.push(new TInteger(2, null));
+        new Gt(">").execute(p, null, null);
     }
 
 }

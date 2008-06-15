@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -35,6 +34,9 @@ import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>while$</tt>.
@@ -42,7 +44,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestWhile extends TestCase {
+public class TestWhile {
 
     /**
      * The code to be repeated.
@@ -102,26 +104,6 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestWhile.class);
-    }
-
-    /**
      * The field <tt>bodyCount</tt> contains the body counter.
      */
     private int bodyCount = 0;
@@ -142,21 +124,11 @@ public class TestWhile extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestWhile(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -165,11 +137,9 @@ public class TestWhile extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -182,6 +152,7 @@ public class TestWhile extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         p.addFunction("cond0", new CondCode(0), null);
@@ -201,6 +172,7 @@ public class TestWhile extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         p.addFunction("cond1", new CondCode(1), null);
@@ -220,6 +192,7 @@ public class TestWhile extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test12() throws Exception {
 
         p.addFunction("cond12", new CondCode(12), null);
@@ -238,14 +211,10 @@ public class TestWhile extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new While("while$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new While("while$").execute(p, null, null);
     }
 
     /**
@@ -254,15 +223,11 @@ public class TestWhile extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack1() throws Exception {
 
-        try {
-            p.push(new TLiteral("e", null));
-            new While("while$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(new TLiteral("e", null));
+        new While("while$").execute(p, null, null);
     }
 
 }

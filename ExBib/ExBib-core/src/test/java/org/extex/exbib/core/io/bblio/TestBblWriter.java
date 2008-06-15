@@ -19,12 +19,10 @@
 
 package org.extex.exbib.core.io.bblio;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Iterator;
 import java.util.List;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.io.StringBufferWriter;
 import org.extex.exbib.core.io.Writer;
@@ -35,6 +33,7 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.junit.Test;
 
 /**
  * This is a test suite for the {@link BblWriter}.
@@ -42,7 +41,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestBblWriter extends TestCase {
+public class TestBblWriter {
 
     /**
      * This is a dummy configuration.
@@ -205,36 +204,6 @@ public class TestBblWriter extends TestCase {
     }
 
     /**
-     * The main program.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * The test suite itself.
-     * 
-     * @return the test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestBblWriter.class);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name
-     */
-    public TestBblWriter(String name) {
-
-        super(name);
-    }
-
-    /**
      * Run a test and compare the result.
      * 
      * @param in the input string
@@ -258,6 +227,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA00() throws Exception {
 
         runTest(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
@@ -268,6 +238,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA01() throws Exception {
 
         runTest("z abc xxxxxxxxx1xxxxxxx", "z abc\n  xxxxxxxxx1xxxxxxx");
@@ -278,6 +249,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA02() throws Exception {
 
         runTest("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
@@ -288,6 +260,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA03() throws Exception {
 
         runTest("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
@@ -298,6 +271,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA04() throws Exception {
 
         runTest("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
@@ -308,6 +282,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA05() throws Exception {
 
         runTest("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
@@ -318,6 +293,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA15() throws Exception {
 
         runTest("zzzznzzzznzzzzn abc xxxxxxxxx1",
@@ -329,6 +305,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA16() throws Exception {
 
         runTest("zzzznzzzznzzzznz abc xxxxxxxxx1",
@@ -340,6 +317,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testA17() throws Exception {
 
         runTest("zzzznzzzznzzzznzz abc xxxxxxxxx1",
@@ -351,6 +329,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrintln01() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -367,6 +346,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrintln02() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -384,6 +364,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrintln11() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -400,6 +381,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrintln12() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -416,6 +398,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPrintln13() throws Exception {
 
         StringBuffer sb = new StringBuffer();
@@ -432,6 +415,7 @@ public class TestBblWriter extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testWrite1() throws Exception {
 
         StringBuffer sb = new StringBuffer();

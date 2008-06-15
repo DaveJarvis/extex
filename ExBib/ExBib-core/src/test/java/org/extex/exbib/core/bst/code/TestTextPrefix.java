@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -32,6 +31,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>text.prefix$</tt>.
@@ -39,27 +41,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestTextPrefix extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestTextPrefix.class);
-    }
+public class TestTextPrefix {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -67,32 +49,20 @@ public class TestTextPrefix extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestTextPrefix(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -103,14 +73,10 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new TextPrefix("text.prefix$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new TextPrefix("text.prefix$").execute(p, null, null);
     }
 
     /**
@@ -119,15 +85,11 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testShortStack1() throws Exception {
 
-        try {
-            p.push(TokenFactory.T_ZERO);
-            new TextPrefix("text.prefix$").execute(p, null, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        p.push(TokenFactory.T_ZERO);
+        new TextPrefix("text.prefix$").execute(p, null, null);
     }
 
     /**
@@ -135,6 +97,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix1() throws Exception {
 
         testTextPrefixing("123", 2, "12");
@@ -145,6 +108,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix11() throws Exception {
 
         testTextPrefixing("1{23}4567", 1, "1");
@@ -155,6 +119,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix12() throws Exception {
 
         testTextPrefixing("1{23}4567", 2, "1{2}");
@@ -165,6 +130,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix13() throws Exception {
 
         testTextPrefixing("1{23}4567", 3, "1{23}");
@@ -175,6 +141,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix14() throws Exception {
 
         testTextPrefixing("1{23}4567", 4, "1{23}4");
@@ -185,6 +152,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix2() throws Exception {
 
         testTextPrefixing("123", 5, "123");
@@ -195,6 +163,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix21() throws Exception {
 
         testTextPrefixing("+*@", 2, "+*");
@@ -205,6 +174,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix22() throws Exception {
 
         testTextPrefixing("+*@", 5, "+*@");
@@ -215,6 +185,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix31() throws Exception {
 
         testTextPrefixing("+{*@}abc7", 1, "+");
@@ -225,6 +196,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix32() throws Exception {
 
         testTextPrefixing("+{*@}abc7", 2, "+{*}");
@@ -235,6 +207,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix33() throws Exception {
 
         testTextPrefixing("+{*@}abc7", 3, "+{*@}");
@@ -245,6 +218,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix34() throws Exception {
 
         testTextPrefixing("+{*@}abc7", 4, "+{*@}a");
@@ -255,6 +229,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefix44() throws Exception {
 
         testTextPrefixing("Ab{\\def{12}}xyz", 4, "Ab{\\def{12}}x");
@@ -265,6 +240,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefixEmpty() throws Exception {
 
         testTextPrefixing("", 0, "");
@@ -275,6 +251,7 @@ public class TestTextPrefix extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTextPrefixEmpty2() throws Exception {
 
         testTextPrefixing("", 1, "");
@@ -298,4 +275,5 @@ public class TestTextPrefix extends TestCase {
         assertEquals(res, p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }
+
 }

@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -35,6 +34,9 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.NullWriter;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>call.type$</tt>.
@@ -42,27 +44,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestCallType extends TestCase implements Code {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestCallType.class);
-    }
+public class TestCallType implements Code {
 
     /**
      * The field <tt>executed</tt> contains the executed flag.
@@ -78,16 +60,6 @@ public class TestCallType extends TestCase implements Code {
      * The field <tt>p</tt> contains the processor.
      */
     private Processor p = null;
-
-    /**
-     * Create a new object.
-     * 
-     * @param name the name
-     */
-    public TestCallType(String name) {
-
-        super(name);
-    }
 
     /**
      * {@inheritDoc}
@@ -116,9 +88,29 @@ public class TestCallType extends TestCase implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see junit.framework.TestCase#setUp()
+     * @see org.extex.exbib.core.bst.Code#getName()
      */
-    @Override
+    public String getName() {
+
+        return "";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Code#setName(java.lang.String)
+     */
+    public void setName(String name) {
+
+        // 
+    }
+
+    /**
+     * Set-up method.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -127,11 +119,9 @@ public class TestCallType extends TestCase implements Code {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -143,6 +133,7 @@ public class TestCallType extends TestCase implements Code {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         Entry e = new Entry(null);
@@ -159,6 +150,7 @@ public class TestCallType extends TestCase implements Code {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         Entry e = new Entry(null);
@@ -175,6 +167,7 @@ public class TestCallType extends TestCase implements Code {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test2() throws Exception {
 
         Entry e = new Entry(null);
@@ -190,6 +183,7 @@ public class TestCallType extends TestCase implements Code {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test3() throws Exception {
 
         Entry e = new Entry(null);
@@ -210,6 +204,7 @@ public class TestCallType extends TestCase implements Code {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test4() throws Exception {
 
         Entry e = new Entry(null);

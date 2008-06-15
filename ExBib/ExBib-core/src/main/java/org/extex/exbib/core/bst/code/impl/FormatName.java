@@ -862,8 +862,7 @@ public class FormatName extends AbstractCode {
      */
     public FormatName() {
 
-        super();
-        tie = "~";
+        this("");
     }
 
     /**
@@ -873,8 +872,8 @@ public class FormatName extends AbstractCode {
      */
     public FormatName(String name) {
 
-        this();
-        setName(name);
+        super(name);
+        tie = "~";
     }
 
     /**

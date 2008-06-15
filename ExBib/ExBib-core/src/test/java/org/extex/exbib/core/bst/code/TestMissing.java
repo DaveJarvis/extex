@@ -19,9 +19,8 @@
 
 package org.extex.exbib.core.bst.code;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -35,6 +34,9 @@ import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.NullWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>missing$</tt>.
@@ -42,27 +44,7 @@ import org.extex.exbib.core.io.NullWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestMissing extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestMissing.class);
-    }
+public class TestMissing {
 
     /**
      * The field <tt>db</tt> contains the database.
@@ -80,21 +62,11 @@ public class TestMissing extends TestCase {
     private Processor p = null;
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestMissing(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         db = new DBImpl();
@@ -104,11 +76,9 @@ public class TestMissing extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -120,6 +90,7 @@ public class TestMissing extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test0() throws Exception {
 
         p.push(new TString("title", null));
@@ -133,6 +104,7 @@ public class TestMissing extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         p.push(new TString(null, null));
@@ -146,14 +118,10 @@ public class TestMissing extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        try {
-            new Missing("missing$").execute(p, entry, null);
-            assertTrue(false);
-        } catch (ExBibStackEmptyException e) {
-            assertTrue(true);
-        }
+        new Missing("missing$").execute(p, entry, null);
     }
 
     /**
@@ -161,15 +129,11 @@ public class TestMissing extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibMissingStringException.class)
     public void testInteger() throws Exception {
 
-        try {
-            p.push(new TInteger(123, null));
-            new Missing("missing$").execute(p, entry, null);
-            assertTrue(false);
-        } catch (ExBibMissingStringException e) {
-            assertTrue(true);
-        }
+        p.push(new TInteger(123, null));
+        new Missing("missing$").execute(p, entry, null);
     }
 
 }

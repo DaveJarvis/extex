@@ -96,7 +96,7 @@ The nested element found must contain a nested element named
 \item Otherwise the body is used as directory.
 \end{itemize}
 
-The file is constructed from the path, the resource name and the
+The file is constructed from the path, the resource name, and the
 extension. The string \verb|{.type}| in the constructed resource name
 is replaced by the currently sought resource. This value can occur in
 the extension or the path. The first readable resource wins.
@@ -150,8 +150,8 @@ is read in and used to find the resources.
 \subsubsection*{Attributes}
 \begin{description}
 \item[class] The attribute \texttt{class} has the value
-  \texttt{org.extex.resource.LsrFinder} for the search in archives. It
-  is mandatory.
+  \texttt{org.extex.resource.LsrFinder} for the search in indexed
+  directories. It is mandatory.
 \item[default] The attribute \texttt{default} names the type which
   should be used if no special section for the type at hand is
   present. This attribute is mandatory.
@@ -267,7 +267,15 @@ can be rather slow.
 
 \subsubsection*{Nested Elements}
 
-\INCOMPLETE
+The nested elements are used to select the parameters for the type of
+the resource in question. The nested element with the same name as the
+type is used. If no such nested element is found then the value of the
+\texttt{default} attribute is used to read this nested element
+instead. 
+
+The nested element found must contain nested elements with the name
+\texttt{extension}. The values of those nested \texttt{extension}
+elements are appended to the resource name when it is sought.
 
 
 \subsubsection*{Tracing Output}
@@ -296,7 +304,8 @@ translated version can appear for other user languages than English.
 
 The preferred way to store resources in \ExTeX\ are archives. Archives
 are conpressed files which contain a complete tree of directories and
-files. This archive also contains administrative information.
+files. This archive also contains administrative information,
+including an index of the contents.
 
 The archive used in \ExTeX\ have the extension \texttt{.jar}. They are
 special jar files which in turn are special zip files. Thus you can
@@ -332,7 +341,21 @@ listing or extract the directory tree from the archive.
 
 \subsubsection*{Nested Elements}
 
-\INCOMPLETE
+The nested elements are used to select the parameters for the type of
+the resource in question. The nested element with the same name as the
+type is used. If no such nested element is found then the value of the
+\texttt{default} attribute is used to read this nested element
+instead. 
+
+The nested element found must contain nested elements with the name
+\texttt{extension}. The values of those nested \texttt{extension}
+elements are appended to the resource name when it is sought.
+
+The file is constructed from the resource name and the
+extension. The string \verb|{.type}| in the constructed resource name
+is replaced by the currently sought resource. This value can occur in
+the extension or the path. The first readable resource wins.
+
 
 \subsubsection*{Tracing Output}
 

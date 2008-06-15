@@ -19,13 +19,12 @@
 
 package org.extex.exbib.core.bst.code;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor099c;
@@ -34,6 +33,9 @@ import org.extex.exbib.core.bst.node.impl.TInteger;
 import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test suite for <tt>stack$</tt>.
@@ -41,27 +43,7 @@ import org.extex.exbib.core.io.StringBufferWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestStack extends TestCase {
-
-    /**
-     * The main program just uses the text interface of JUnit.
-     * 
-     * @param args command line parameters are ignored
-     */
-    public static void main(String[] args) {
-
-        junit.textui.TestRunner.run(suite());
-    }
-
-    /**
-     * Generate a new test suite
-     * 
-     * @return the new test suite
-     */
-    public static Test suite() {
-
-        return new TestSuite(TestStack.class);
-    }
+public class TestStack {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -79,21 +61,11 @@ public class TestStack extends TestCase {
     private StringBuffer out = new StringBuffer();
 
     /**
-     * Create a new object.
+     * Set-up method.
      * 
-     * @param name the name
+     * @throws Exception in case of an error
      */
-    public TestStack(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
-    @Override
+    @Before
     public void setUp() throws Exception {
 
         Logger logger = Logger.getLogger("test");
@@ -106,11 +78,9 @@ public class TestStack extends TestCase {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tear-down method.
      */
-    @Override
+    @After
     public void tearDown() {
 
         p = null;
@@ -121,6 +91,7 @@ public class TestStack extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEmptyStack() throws Exception {
 
         new Stack("stack$").execute(p, null, null);
@@ -134,6 +105,7 @@ public class TestStack extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testStack1() throws Exception {
 
         p.push(new TString("abc", null));
@@ -148,6 +120,7 @@ public class TestStack extends TestCase {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testStack2() throws Exception {
 
         p.push(new TInteger(123, null));
