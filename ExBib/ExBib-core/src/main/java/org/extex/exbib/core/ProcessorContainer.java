@@ -213,7 +213,7 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
      * @return the bibliography for the key. This is guaranteed to be not
      *         <code>null</code>
      * 
-     * @throws ExBibException
+     * @throws ExBibException in case of an error
      * @throws ExBibCsfNotFoundException in case the csf could not be found
      * @throws ExBibSorterNotFoundException in case of an undefined sorter
      * @throws ConfigurationException in case of a configuration error
