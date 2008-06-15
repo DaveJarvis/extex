@@ -279,14 +279,6 @@ public interface Processor extends Bibliography, Configurable {
                 ExBibFunctionExistsException;
 
     /**
-     * This method should be invoked for every step in the execution to allow
-     * the step observers to be informed.
-     * 
-     * @param obj the object which steps
-     */
-    void step(Object obj);
-
-    /**
      * This method can be used to issue a warning message.
      * 
      * @param message the warning message to issue

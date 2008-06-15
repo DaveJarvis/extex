@@ -812,7 +812,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#step(java.lang.Object)
+     * @see org.extex.exbib.core.bst.BstProcessor#step(java.lang.Object)
      */
     public void step(Object obj) {
 
