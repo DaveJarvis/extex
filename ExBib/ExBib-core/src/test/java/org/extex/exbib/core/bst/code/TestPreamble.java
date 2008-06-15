@@ -22,8 +22,8 @@ package org.extex.exbib.core.bst.code;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.Preamble;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VBlock;
@@ -52,7 +52,7 @@ public class TestPreamble {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * Set-up method.

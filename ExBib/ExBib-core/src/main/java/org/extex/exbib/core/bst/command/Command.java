@@ -21,7 +21,7 @@ package org.extex.exbib.core.bst.command;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -42,7 +42,7 @@ public interface Command {
      * 
      * @throws ExBibException in case that something goes wrong
      */
-    void execute(Processor processor, Locator locator) throws ExBibException;
+    void execute(BstProcessor processor, Locator locator) throws ExBibException;
 
     /**
      * Getter for the locator of the command. Each command may have associated

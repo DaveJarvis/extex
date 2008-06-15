@@ -19,7 +19,7 @@
 
 package org.extex.exbib.core.io.bstio;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
@@ -38,7 +38,6 @@ public interface Instruction {
      * @param locator the locator
      * @throws ExBibException in case of an error
      */
-    void parse(Processor processor, Locator locator)
-            throws ExBibException;
+    void parse(BstProcessor processor, Locator locator) throws ExBibException;
 
 }

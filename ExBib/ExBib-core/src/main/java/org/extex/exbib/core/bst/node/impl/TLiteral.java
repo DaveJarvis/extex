@@ -22,6 +22,7 @@ package org.extex.exbib.core.bst.node.impl;
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.node.AbstractToken;
@@ -73,7 +74,7 @@ public class TLiteral extends AbstractToken implements Token {
      *         in this object is not defined
      */
     @Override
-    public void execute(Processor processor, Entry entry, Locator locator)
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         String name = getValue();

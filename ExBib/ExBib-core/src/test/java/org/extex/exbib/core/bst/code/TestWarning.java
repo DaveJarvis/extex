@@ -28,8 +28,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.Warning;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
@@ -50,11 +50,6 @@ import org.junit.Test;
 public class TestWarning {
 
     /**
-     * The field <tt>p</tt> contains the processor.
-     */
-    private Processor p = null;
-
-    /**
      * The field <tt>err</tt> contains the error buffer.
      */
     private Handler err = new StoringHandler();
@@ -63,6 +58,11 @@ public class TestWarning {
      * The field <tt>out</tt> contains the output buffer.
      */
     private StringBuffer out = new StringBuffer();
+
+    /**
+     * The field <tt>p</tt> contains the processor.
+     */
+    private BstProcessor p = null;
 
     /**
      * Set-up method.

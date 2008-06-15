@@ -20,25 +20,16 @@
 package org.extex.exbib.core;
 
 import java.io.FileNotFoundException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.bst.Code;
-import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
-import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.Token;
-import org.extex.exbib.core.bst.node.impl.TInteger;
-import org.extex.exbib.core.bst.node.impl.TString;
 import org.extex.exbib.core.bst.node.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
-import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
-import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
-import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.util.NotObservableException;
@@ -57,32 +48,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public interface Processor extends Bibliography, Configurable {
 
     /**
-     * Add a command to the list of commands to execute. The commands constitute
-     * the main program. All commands in the command list are executed in turn
-     * when the processor is run.
-     * 
-     * @param command the command to add
-     */
-    void addCommand(Command command);
-
-    /**
-     * Define a new function if not already defined in the processor context. A
-     * function can be made undefined by specifying the code <code>null</code>
-     * to it.
-     * 
-     * @param name the name of the function
-     * @param body the Code associated with the function
-     * @param locator The locator
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
-     */
-    void addFunction(String name, Code body, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
-
-    /**
      * Store an additional <tt>STRING</tt> in the database. To delete a
      * <tt>STRING</tt> the value <code>null</code> can be used.
      * 
@@ -90,30 +55,6 @@ public interface Processor extends Bibliography, Configurable {
      * @param value the value as Token
      */
     void addMacro(String name, Token value);
-
-    /**
-     * Change the meaning of a function definition. If the function does not
-     * exist then an exception is thrown.
-     * 
-     * @param name the name of the function to change
-     * @param body the new code for the function
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionUndefinedException in case that the function isn't
-     *         defined yet
-     */
-    void changeFunction(String name, Code body, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionUndefinedException;
-
-    /**
-     * Getter for an Iterator on the commands.
-     * 
-     * @return the iterator on commands
-     */
-    public Iterator<Command> commandsIterator();
 
     /**
      * Get the original cite key for a given key. I.e. the casing might be
@@ -160,23 +101,6 @@ public interface Processor extends Bibliography, Configurable {
      * @return the entries
      */
     List<String> getEntryStrings();
-
-    /**
-     * Getter for function code. If the requested function is not defined then
-     * <code>null</code> is returned.
-     * 
-     * @param name the name of the function
-     * 
-     * @return the function definition or <code>null</code>
-     */
-    Code getFunction(String name);
-
-    /**
-     * Getter for the list of defined functions.
-     * 
-     * @return the list of functions defined
-     */
-    List<String> getFunctionNames();
 
     /**
      * Getter for the list of global integers.
@@ -245,56 +169,6 @@ public interface Processor extends Bibliography, Configurable {
                 ConfigurationException;
 
     /**
-     * Pop an element from the stack. If the stack is empty an exception is
-     * thrown.
-     * 
-     * @param locator the locator
-     * 
-     * @return the top of stack
-     * 
-     * @throws ExBibStackEmptyException in case that no element is left to pop
-     */
-    Token pop(Locator locator) throws ExBibStackEmptyException;
-
-    /**
-     * Pop an integer literal from the stack. If the stack is empty or the
-     * element isn't an integer then an error condition is raised.
-     * 
-     * @param locator the locator
-     * 
-     * @return the top of stack
-     * 
-     * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibMissingNumberException in case that no integer is found
-     */
-    TInteger popInteger(Locator locator)
-            throws ExBibStackEmptyException,
-                ExBibMissingNumberException;
-
-    /**
-     * Pop an integer literal from the stack. If the stack is empty or the
-     * element isn't an string then an error condition is raised.
-     * 
-     * @param locator the locator
-     * 
-     * @return the top of stack
-     * 
-     * @throws ExBibStackEmptyException in case that no element is left to pop
-     * @throws ExBibMissingStringException in case that no integer is found
-     */
-    TString popString(Locator locator)
-            throws ExBibStackEmptyException,
-                ExBibMissingStringException;
-
-    /**
-     * Pop an element from the stack. If the stack is empty then
-     * <code>null</code> is returned.
-     * 
-     * @return the top of stack or <codeC>null</code>
-     */
-    Token popUnchecked();
-
-    /**
      * Run the procedures stored in the processor context. For each procedure
      * the observers `run' are called before it is executed.
      * 
@@ -304,13 +178,6 @@ public interface Processor extends Bibliography, Configurable {
      * @throws ExBibException in case of an error
      */
     long process(Writer outWriter) throws ExBibException;
-
-    /**
-     * Push the given item onto the stack.
-     * 
-     * @param token the token to push
-     */
-    void push(Token token);
 
     /**
      * Registers an observer.

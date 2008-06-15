@@ -27,8 +27,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.Token;
@@ -60,11 +60,6 @@ import org.junit.Test;
 public class TestSet {
 
     /**
-     * The field <tt>p</tt> contains the processor.
-     */
-    private Processor p = null;
-
-    /**
      * The field <tt>db</tt> contains the database.
      */
     private DB db;
@@ -73,6 +68,11 @@ public class TestSet {
      * The field <tt>entry</tt> contains the entry.
      */
     private Entry entry;
+
+    /**
+     * The field <tt>p</tt> contains the processor.
+     */
+    private BstProcessor p = null;
 
     /**
      * Run a test case.

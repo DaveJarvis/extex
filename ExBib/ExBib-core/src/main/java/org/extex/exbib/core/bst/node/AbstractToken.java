@@ -22,6 +22,7 @@ package org.extex.exbib.core.bst.node;
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -117,10 +118,10 @@ public abstract class AbstractToken implements Token {
      * abstract which forces that it is defined in any derived class.
      * 
      * @see org.extex.exbib.core.bst.Code#execute(
-     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+     *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
-    public abstract void execute(Processor processor, Entry entry, Locator l)
+    public abstract void execute(BstProcessor processor, Entry entry, Locator l)
             throws ExBibException;
 
     /**

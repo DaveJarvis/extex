@@ -23,8 +23,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.TokenVisitor;
 import org.extex.exbib.core.bst.node.impl.TBlock;
@@ -54,7 +54,7 @@ public class TestTInteger implements TokenVisitor {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * The field <tt>visit</tt> contains the indicator that the appropriate

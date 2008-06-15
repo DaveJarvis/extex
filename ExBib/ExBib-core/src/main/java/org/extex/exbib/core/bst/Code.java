@@ -19,7 +19,6 @@
 
 package org.extex.exbib.core.bst;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -54,7 +53,7 @@ public interface Code extends Configurable {
      * 
      * @throws ExBibException in case of an error.
      */
-    void execute(Processor processor, Entry entry, Locator locator)
+    void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException;
 
     /**

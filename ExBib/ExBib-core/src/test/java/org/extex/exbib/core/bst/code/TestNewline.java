@@ -22,8 +22,8 @@ package org.extex.exbib.core.bst.code;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.Newline;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.StringBufferWriter;
@@ -42,7 +42,7 @@ public class TestNewline {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * The field <tt>out</tt> contains the output buffer.

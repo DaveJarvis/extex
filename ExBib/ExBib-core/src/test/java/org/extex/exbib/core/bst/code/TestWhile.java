@@ -22,8 +22,8 @@ package org.extex.exbib.core.bst.code;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.impl.While;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.TokenFactory;
@@ -55,11 +55,11 @@ public class TestWhile {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      BstProcessor, org.extex.exbib.core.db.Entry,
          *      org.extex.exbib.core.io.Locator)
          */
         @Override
-        public void execute(Processor processor, Entry entry, Locator locator)
+        public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
 
             bodyCount++;
@@ -90,11 +90,11 @@ public class TestWhile {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-         *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
+         *      BstProcessor, org.extex.exbib.core.db.Entry,
          *      org.extex.exbib.core.io.Locator)
          */
         @Override
-        public void execute(Processor processor, Entry entry, Locator locator)
+        public void execute(BstProcessor processor, Entry entry, Locator locator)
                 throws ExBibException {
 
             condCount++;
@@ -121,7 +121,7 @@ public class TestWhile {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * Set-up method.

@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.impl.BstExecute;
 import org.extex.exbib.core.bst.command.impl.BstIterate;
@@ -462,10 +462,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 List<String> entries = parseLiteralList().toStringList();
@@ -481,10 +481,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 Token value = parseLiteralArg();
@@ -496,10 +496,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 String fname = parseLiteralArg().getValue();
@@ -514,10 +514,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor.setIntegers(parseLiteralList(), locator);
@@ -529,10 +529,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor
@@ -545,10 +545,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 String mname = parseLiteralArg().getValue();
@@ -560,10 +560,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor.addCommand(new BstRead(locator));
@@ -574,10 +574,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor
@@ -590,10 +590,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor.setStrings(parseLiteralList(), locator);
@@ -604,10 +604,10 @@ public class BstReaderImpl extends AbstractFileReader
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 processor.addCommand(new BstSort(locator));
@@ -700,7 +700,7 @@ public class BstReaderImpl extends AbstractFileReader
      * @throws ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
-    public void parse(Processor processor)
+    public void parse(BstProcessor processor)
             throws ExBibException,
                 ExBibBstNotFoundException,
                 ConfigurationException {
@@ -723,7 +723,7 @@ public class BstReaderImpl extends AbstractFileReader
      *         a misconfiguration
      * @throws ExBibException in case of an syntax error
      */
-    public void parse(Processor processor, String bst)
+    public void parse(BstProcessor processor, String bst)
             throws ExBibException,
                 ConfigurationException {
 
@@ -936,7 +936,7 @@ public class BstReaderImpl extends AbstractFileReader
      * @throws ExBibSyntaxException in case of an syntax error
      * @throws ExBibImpossibleException in case something impossible happens
      */
-    protected boolean processCommand(Token token, Processor processor)
+    protected boolean processCommand(Token token, BstProcessor processor)
             throws ExBibException {
 
         if (!(token instanceof TLiteral)) {

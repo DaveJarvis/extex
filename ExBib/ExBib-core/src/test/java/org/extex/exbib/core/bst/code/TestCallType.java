@@ -22,8 +22,8 @@ package org.extex.exbib.core.bst.code;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstInterpreter099c;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.impl.CallType;
 import org.extex.exbib.core.db.DB;
@@ -59,7 +59,7 @@ public class TestCallType implements Code {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * {@inheritDoc}
@@ -75,11 +75,10 @@ public class TestCallType implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(
-     *      org.extex.exbib.core.Processor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.Code#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    public void execute(Processor processor, Entry entry, Locator locator)
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         executed = true;

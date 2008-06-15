@@ -22,7 +22,6 @@ package org.extex.exbib.core.bst;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.node.TokenFactory;
 import org.extex.exbib.core.bst.node.impl.TFieldString;
 import org.extex.exbib.core.db.Entry;
@@ -48,7 +47,7 @@ public class TestSortKey {
     /**
      * The field <tt>p</tt> contains the processor.
      */
-    private Processor p = null;
+    private BstProcessor p = null;
 
     /**
      * Set-up method.

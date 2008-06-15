@@ -21,7 +21,7 @@ package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -45,7 +45,7 @@ public interface BstReader extends ResourceAware {
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
      */
-    void parse(Processor processor)
+    void parse(BstProcessor processor)
             throws ExBibException,
                 ExBibBstNotFoundException,
                 ConfigurationException;
@@ -63,7 +63,7 @@ public interface BstReader extends ResourceAware {
      *         a misconfiguration
      * @throws ExBibException in case of an syntax error
      */
-    void parse(Processor processor, String file)
+    void parse(BstProcessor processor, String file)
             throws ExBibException,
                 FileNotFoundException,
                 ConfigurationException;

@@ -22,7 +22,7 @@ package org.extex.exbib.core.bst.command.impl;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
@@ -68,10 +68,10 @@ public class BstReverse extends AbstractCommand implements Command {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.command.AbstractCommand#execute(
-     *      org.extex.exbib.core.Processor, org.extex.exbib.core.io.Locator)
+     *      BstProcessor, org.extex.exbib.core.io.Locator)
      */
     @Override
-    public void execute(Processor processor, Locator locator)
+    public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
 
         Token token = getValue();

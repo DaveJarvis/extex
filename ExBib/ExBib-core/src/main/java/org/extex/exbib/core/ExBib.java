@@ -31,6 +31,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.sorter.SorterFactory;
@@ -531,7 +532,12 @@ public class ExBib {
                 for (String style : processor.getBibliographyStyles()) {
                     info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
                 }
-                bstReaderFactory.newInstance().parse(processor);
+                try {
+                    bstReaderFactory.newInstance().parse(
+                        (BstProcessor) processor);
+                } catch (ClassCastException e) {
+                    throw e; // TODO
+                }
 
                 String outfile = properties.getProperty(PROP_OUTFILE);
                 if (outfile == null || !"bbl".equals(key)) {

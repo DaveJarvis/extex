@@ -19,7 +19,7 @@
 
 package org.extex.exbib.core.io.bstio;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -76,10 +76,10 @@ public class BstReaderExtImpl extends BstReaderImpl {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(Processor,
+             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
-            public void parse(Processor processor, Locator locator)
+            public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
                 String fname = parseLiteralArg().getValue();

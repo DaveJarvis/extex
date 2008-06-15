@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
@@ -79,7 +79,9 @@ public class BstPrinterImpl implements CommandVisitor {
      * @throws ExBibException in case that getting some information from the
      *         processor context fails
      */
-    public void print(Processor processor) throws IOException, ExBibException {
+    public void print(BstProcessor processor)
+            throws IOException,
+                ExBibException {
 
         writer.print("ENTRY {\n");
 

@@ -21,7 +21,7 @@ package org.extex.exbib.core.bst.command;
 
 import java.io.IOException;
 
-import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -64,9 +64,9 @@ public abstract class AbstractCommand implements Command {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.command.Command#execute(
-     *      org.extex.exbib.core.Processor, org.extex.exbib.core.io.Locator)
+     *      BstProcessor, org.extex.exbib.core.io.Locator)
      */
-    public abstract void execute(Processor processor, Locator l)
+    public abstract void execute(BstProcessor processor, Locator l)
             throws ExBibException;
 
     /**

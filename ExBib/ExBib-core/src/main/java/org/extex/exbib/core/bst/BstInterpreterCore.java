@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
@@ -108,7 +107,9 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstInterpreterCore extends BibliographyCore implements Processor {
+public class BstInterpreterCore extends BibliographyCore
+        implements
+            BstProcessor {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -416,7 +417,7 @@ public class BstInterpreterCore extends BibliographyCore implements Processor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#getFunctionNames()
+     * @see org.extex.exbib.core.bst.BstProcessor#getFunctionNames()
      */
     public List<String> getFunctionNames() {
 
@@ -529,7 +530,9 @@ public class BstInterpreterCore extends BibliographyCore implements Processor {
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingNumberException in case that no integer is found
      * 
-     * @see org.extex.exbib.core.Processor#popInteger(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.BstProcessor#popInteger(
      *      org.extex.exbib.core.io.Locator)
      */
     public TInteger popInteger(Locator locator)
@@ -565,7 +568,7 @@ public class BstInterpreterCore extends BibliographyCore implements Processor {
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingStringException in case that no string is found
      * 
-     * @see org.extex.exbib.core.Processor#popString(
+     * @see org.extex.exbib.core.bst.BstProcessor#popString(
      *      org.extex.exbib.core.io.Locator)
      */
     public TString popString(Locator locator)

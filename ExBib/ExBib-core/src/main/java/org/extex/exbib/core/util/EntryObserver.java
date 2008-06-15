@@ -22,6 +22,7 @@ package org.extex.exbib.core.util;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.Entry;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -79,7 +80,9 @@ public class EntryObserver implements Observer {
         Entry e = (Entry) o;
         String type = e.getType();
 
-        if (null == processor.getFunction(type)) {
+        if (null == ((BstProcessor) processor).getFunction(type)) { // TODO
+                                                                    // eliminate
+                                                                    // cast
             logger.warning(LocalizerFactory.getLocalizer(getClass()).format(
                 "not.defined", type, e.getKey())
                     + "\t" + e.getLocator().toString() + "\n");
