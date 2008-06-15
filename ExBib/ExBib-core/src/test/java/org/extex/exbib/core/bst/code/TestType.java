@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.Type;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -60,7 +60,7 @@ public class TestType {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(null), null);
     }
 
     /**

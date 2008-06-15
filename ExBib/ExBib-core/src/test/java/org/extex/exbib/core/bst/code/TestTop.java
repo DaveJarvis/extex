@@ -27,7 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.Top;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
@@ -74,7 +74,7 @@ public class TestTop {
         logger.setLevel(Level.ALL);
         err = new StoringHandler();
         logger.addHandler(err);
-        p = new BstProcessor099c(new DBImpl(), //
+        p = new BstInterpreter099c(new DBImpl(), //
             new StringBufferWriter(out), logger);
     }
 

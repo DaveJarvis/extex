@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.impl.CallType;
 import org.extex.exbib.core.db.DB;
@@ -114,7 +114,7 @@ public class TestCallType implements Code {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(null), null);
         p.addFunction("book", this, null);
     }
 

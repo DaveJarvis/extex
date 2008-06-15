@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.While;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.TokenFactory;
@@ -132,7 +132,7 @@ public class TestWhile {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstProcessor099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(null), null);
         p.addFunction("body", new BodyCode(), null);
     }
 

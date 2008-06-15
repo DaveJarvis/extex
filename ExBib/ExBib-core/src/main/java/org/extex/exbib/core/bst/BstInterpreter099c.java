@@ -69,7 +69,7 @@ import org.extex.exbib.core.io.Writer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstProcessor099c extends BstProcessorCore {
+public class BstInterpreter099c extends BstInterpreterCore {
 
     /**
      * Creates a new object.
@@ -77,7 +77,7 @@ public class BstProcessor099c extends BstProcessorCore {
      * @throws ExBibException in case that the constructor of the superclass
      *         throws one.
      */
-    public BstProcessor099c() throws ExBibException {
+    public BstInterpreter099c() throws ExBibException {
 
         this(null, null, null);
     }
@@ -93,7 +93,7 @@ public class BstProcessor099c extends BstProcessorCore {
      *         complain or one of the functions is already defined by the
      *         superclass
      */
-    public BstProcessor099c(DB db, Writer outWriter, Logger logger)
+    public BstInterpreter099c(DB db, Writer outWriter, Logger logger)
             throws ExBibException {
 
         super(db, outWriter, logger);

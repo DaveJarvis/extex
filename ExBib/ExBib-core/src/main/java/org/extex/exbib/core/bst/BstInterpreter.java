@@ -42,14 +42,14 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class BstProcessor extends BstProcessorCore {
+public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * Create a new object.
      * 
      * @throws ExBibException in case of an error
      */
-    public BstProcessor() throws ExBibException {
+    public BstInterpreter() throws ExBibException {
 
         super();
     }

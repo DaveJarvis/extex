@@ -108,7 +108,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstProcessorCore extends BibliographyCore implements Processor {
+public class BstInterpreterCore extends BibliographyCore implements Processor {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -219,7 +219,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * @throws ExBibImpossibleException if an programming error has been
      *         detected
      */
-    public BstProcessorCore() throws ExBibImpossibleException {
+    public BstInterpreterCore() throws ExBibImpossibleException {
 
         this(null, null, null);
     }
@@ -236,7 +236,7 @@ public class BstProcessorCore extends BibliographyCore implements Processor {
      * @throws ExBibImpossibleException if an programming error has been
      *         detected
      */
-    public BstProcessorCore(DB db, Writer out, Logger log)
+    public BstInterpreterCore(DB db, Writer out, Logger log)
             throws ExBibImpossibleException {
 
         super(db, log);

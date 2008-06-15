@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.Write;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TBlock;
@@ -64,7 +64,7 @@ public class TestWrite {
     public void setUp() throws Exception {
 
         out = new StringBuffer();
-        p = new BstProcessor099c(new DBImpl(), //
+        p = new BstInterpreter099c(new DBImpl(), //
             new StringBufferWriter(out), null);
     }
 

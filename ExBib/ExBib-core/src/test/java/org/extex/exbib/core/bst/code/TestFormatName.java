@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.FormatName;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.TokenFactory;
@@ -68,7 +68,7 @@ public class TestFormatName {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.Cite;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.Entry;
@@ -71,7 +71,7 @@ public class TestCite {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
         p.addCitation("aBc,dEF".split(","));
     }
 

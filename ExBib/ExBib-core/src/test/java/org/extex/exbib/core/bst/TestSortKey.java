@@ -58,7 +58,7 @@ public class TestSortKey {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
         p.addFunction("abc", TokenFactory.T_ONE, null);
         e = p.getDB().makeEntry("book", "k1", null);
     }

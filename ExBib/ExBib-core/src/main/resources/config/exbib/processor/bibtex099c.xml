@@ -19,5 +19,5 @@
 
   @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
-<Processor class="org.extex.exbib.core.bst.BstProcessor099c"/>
+<Processor class="org.extex.exbib.core.bst.BstInterpreter099c"/>
   

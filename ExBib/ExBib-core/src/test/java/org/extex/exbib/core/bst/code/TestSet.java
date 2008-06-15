@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.Token;
@@ -101,7 +101,7 @@ public class TestSet {
         db = new DBImpl();
         entry = db.makeEntry("book", "abc", null);
         entry.set("author", new Value());
-        p = new BstProcessor099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(null), null);
         p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 

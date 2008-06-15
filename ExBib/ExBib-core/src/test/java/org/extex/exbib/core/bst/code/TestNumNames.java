@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor099c;
+import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.code.impl.NumNames;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.node.impl.TInteger;
@@ -56,7 +56,7 @@ public class TestNumNames {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstProcessor099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
     }
 
     /**
