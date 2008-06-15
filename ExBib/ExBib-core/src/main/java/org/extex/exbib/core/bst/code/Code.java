@@ -17,8 +17,9 @@
  *
  */
 
-package org.extex.exbib.core.bst;
+package org.extex.exbib.core.bst.code;
 
+import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;

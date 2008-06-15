@@ -70,7 +70,7 @@ public class TBlock extends AbstractToken implements Token {
      * To execute an object of this class the token list of the value is simply
      * pushed to the stack of the processor for further treatment.
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override

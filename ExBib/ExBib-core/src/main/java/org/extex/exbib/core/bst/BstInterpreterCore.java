@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;

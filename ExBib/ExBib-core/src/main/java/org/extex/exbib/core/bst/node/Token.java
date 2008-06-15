@@ -22,7 +22,7 @@ package org.extex.exbib.core.bst.node;
 import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.Code;
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.io.Locator;
 
 /**

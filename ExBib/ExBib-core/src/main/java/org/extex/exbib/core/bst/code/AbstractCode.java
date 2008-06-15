@@ -20,7 +20,6 @@
 package org.extex.exbib.core.bst.code;
 
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -78,7 +77,7 @@ public abstract class AbstractCode implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(
+     * @see org.extex.exbib.core.bst.code.Code#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */

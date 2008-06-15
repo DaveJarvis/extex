@@ -117,7 +117,7 @@ public abstract class AbstractToken implements Token {
      * The execute method is specific to any sub-type. Thus it is declared as
      * abstract which forces that it is defined in any derived class.
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(
+     * @see org.extex.exbib.core.bst.code.Code#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
@@ -153,7 +153,7 @@ public abstract class AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#getName()
+     * @see org.extex.exbib.core.bst.code.Code#getName()
      */
     public String getName() {
 
@@ -197,7 +197,7 @@ public abstract class AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#setName(java.lang.String)
+     * @see org.extex.exbib.core.bst.code.Code#setName(java.lang.String)
      */
     public void setName(String name) {
 

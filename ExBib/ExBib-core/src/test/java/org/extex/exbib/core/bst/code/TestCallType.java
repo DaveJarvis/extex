@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.impl.CallType;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -75,7 +74,7 @@ public class TestCallType implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute( BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -87,7 +86,7 @@ public class TestCallType implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#getName()
+     * @see org.extex.exbib.core.bst.code.Code#getName()
      */
     public String getName() {
 
@@ -97,7 +96,7 @@ public class TestCallType implements Code {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#setName(java.lang.String)
+     * @see org.extex.exbib.core.bst.code.Code#setName(java.lang.String)
      */
     public void setName(String name) {
 

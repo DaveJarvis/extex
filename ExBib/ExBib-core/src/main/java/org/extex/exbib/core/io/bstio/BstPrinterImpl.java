@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.Code;
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;

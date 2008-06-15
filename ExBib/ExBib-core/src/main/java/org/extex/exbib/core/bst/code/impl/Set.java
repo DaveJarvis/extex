@@ -20,8 +20,8 @@
 package org.extex.exbib.core.bst.code.impl;
 
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.Code;
 import org.extex.exbib.core.bst.code.AbstractCode;
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.node.Token;
 import org.extex.exbib.core.bst.node.impl.TField;
 import org.extex.exbib.core.bst.node.impl.TFieldInteger;

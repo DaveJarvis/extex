@@ -94,7 +94,7 @@ public class Missing extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(
+     * @see org.extex.exbib.core.bst.code.Code#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */

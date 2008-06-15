@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.Code;
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.node.AbstractToken;
 import org.extex.exbib.core.bst.node.Token;

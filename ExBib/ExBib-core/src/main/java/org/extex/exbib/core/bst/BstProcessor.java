@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;

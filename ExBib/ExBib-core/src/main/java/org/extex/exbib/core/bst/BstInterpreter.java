@@ -21,6 +21,7 @@ package org.extex.exbib.core.bst;
 
 import java.util.Iterator;
 
+import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.Configuration;

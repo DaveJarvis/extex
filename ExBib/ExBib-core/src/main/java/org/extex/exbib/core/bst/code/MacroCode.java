@@ -27,7 +27,7 @@ import org.extex.exbib.core.io.Locator;
 
 /**
  * This class is a container for interpreted macro
- * {@link org.extex.exbib.core.bst.Code Code}. The actual action for execution
+ * {@link org.extex.exbib.core.bst.code.Code Code}. The actual action for execution
  * is attached to a token embedded in this class.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -58,7 +58,7 @@ public class MacroCode extends AbstractCode {
      * It is a delegate method to the embedded token.
      * </p>
      * 
-     * @see org.extex.exbib.core.bst.Code#execute(
+     * @see org.extex.exbib.core.bst.code.Code#execute(
      *      BstProcessor, org.extex.exbib.core.db.Entry,
      *      org.extex.exbib.core.io.Locator)
      */
