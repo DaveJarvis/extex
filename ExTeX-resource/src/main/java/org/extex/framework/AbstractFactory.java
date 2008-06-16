@@ -275,12 +275,9 @@ public abstract class AbstractFactory
         }
 
         try {
-            Object instance = null;
-            Constructor[] constructors = theClass.getConstructors();
-
-            for (int i = 0; i < constructors.length; i++) {
-                Constructor<?> constructor = constructors[i];
+            for (Constructor<?> constructor : theClass.getConstructors()) {
                 Class[] args = constructor.getParameterTypes();
+                Object instance = null;
                 switch (args.length) {
                     case 0:
                         return createInstanceForConfiguration0(config,
@@ -364,15 +361,14 @@ public abstract class AbstractFactory
         }
 
         try {
-            Constructor[] constructors = theClass.getConstructors();
             Object instance = null;
 
-            for (int i = 0; i < constructors.length; i++) {
-                Class<?>[] args = constructors[i].getParameterTypes();
+            for (Constructor<?> constructor : theClass.getConstructors()) {
+                Class<?>[] args = constructor.getParameterTypes();
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(argClass)) {
-                            instance = constructors[i].newInstance(arg);
+                            instance = constructor.newInstance(arg);
                             enableLogging(instance, logger);
                             configure(instance, config);
                             return instance;
@@ -383,13 +379,13 @@ public abstract class AbstractFactory
                         if (args[1].isAssignableFrom(argClass)) {
                             if (args[0].isAssignableFrom(Configuration.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructors[i].newInstance(//
+                                instance = constructor.newInstance(//
                                     config, arg);
                                 enableLogging(instance, logger);
                                 return instance;
                             } else if (args[0].isAssignableFrom(Logger.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructors[i].newInstance(//
+                                instance = constructor.newInstance(//
                                     config, arg);
                                 configure(instance, config);
                                 return instance;
@@ -450,15 +446,14 @@ public abstract class AbstractFactory
                     theClass.getName(), target.getName(), config);
             }
 
-            Constructor[] constructors = theClass.getConstructors();
             Object instance = null;
 
-            for (int i = 0; i < constructors.length; i++) {
-                Class<?>[] args = constructors[i].getParameterTypes();
+            for (Constructor<?> constructor : theClass.getConstructors()) {
+                Class<?>[] args = constructor.getParameterTypes();
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(arg.getClass())) {
-                            instance = constructors[i].newInstance(arg);
+                            instance = constructor.newInstance(arg);
                             enableLogging(instance, logger);
                             configure(instance, config);
                             return instance;
