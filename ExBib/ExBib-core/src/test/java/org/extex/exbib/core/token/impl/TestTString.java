@@ -17,15 +17,15 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.token.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.bst.token.impl.TBlock;
@@ -45,12 +45,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link TQLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTQLiteral implements TokenVisitor {
+public class TestTString implements TokenVisitor {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -58,7 +57,7 @@ public class TestTQLiteral implements TokenVisitor {
     private BstProcessor p = null;
 
     /**
-     * The field <tt>visit</tt> contains the visited indicator.
+     * The field <tt>visit</tt> contains the indicator for the visited.
      */
     private boolean visit = false;
 
@@ -84,49 +83,66 @@ public class TestTQLiteral implements TokenVisitor {
     }
 
     /**
-     * <testcase> A QLiteral executes to itself. </testcase>
+     * <testcase> A TString can be executed and returns itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testExecute() throws Exception {
 
-        TQLiteral t = new TQLiteral("aaa", null);
+        TString t = new TString("987", null);
         t.execute(p, null, null);
-
-        Token x = p.pop(null);
+        assertEquals("987", p.popString(null).getValue());
         assertNull(p.popUnchecked());
-        assertTrue(x instanceof TLiteral);
-        assertEquals("aaa", x.getValue());
     }
 
     /**
-     * <testcase> A QLiteral executes to itself. </testcase>
+     * <testcase> getValue() of a null value returns the empty string.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExpand() throws Exception {
+    public void testGetValue1() throws Exception {
 
-        TQLiteral t = new TQLiteral("aaa", null);
-        String s = t.expand(p);
-
-        assertNull(p.popUnchecked());
-        assertEquals("aaa", s);
+        TString t = new TString(null, null);
+        assertEquals("", t.getValue());
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     * <testcase> isNull() can detect a null value. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIsNull1() throws Exception {
+
+        assertTrue(new TString(null, null).isNull());
+    }
+
+    /**
+     * <testcase> isNull() can detect a null value. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIsNull2() throws Exception {
+
+        assertFalse(new TString("", null).isNull());
+    }
+
+    /**
+     * <testcase> Test the visiting. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TQLiteral t = new TQLiteral("acd", null);
+        TString t = new TString("x-1", null);
         t.visit(this);
         assertTrue(visit);
-        assertEquals("acd", t.getValue());
+        assertEquals("x-1", t.getValue());
     }
 
     /**
@@ -214,7 +230,7 @@ public class TestTQLiteral implements TokenVisitor {
      */
     public void visitQLiteral(TQLiteral qliteral) {
 
-        visit = true;
+        assertTrue("should not be visited", false);
     }
 
     /**
@@ -225,7 +241,7 @@ public class TestTQLiteral implements TokenVisitor {
      */
     public void visitString(TString string) {
 
-        assertTrue("should not be visited", false);
+        visit = true;
     }
 
     /**

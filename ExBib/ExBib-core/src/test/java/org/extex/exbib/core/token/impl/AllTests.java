@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.token.impl;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

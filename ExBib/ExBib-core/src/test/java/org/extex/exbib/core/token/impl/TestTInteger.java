@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.node.impl;
+package org.extex.exbib.core.token.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
