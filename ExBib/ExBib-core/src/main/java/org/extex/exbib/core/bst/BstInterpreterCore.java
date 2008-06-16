@@ -217,8 +217,14 @@ public class BstInterpreterCore extends BibliographyCore
      */
     private long warnings = 0;
 
+    /**
+     * The field <tt>configuration</tt> contains the configuration.
+     */
     private Configuration configuration;
 
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
     private ResourceFinder finder;
 
     /**

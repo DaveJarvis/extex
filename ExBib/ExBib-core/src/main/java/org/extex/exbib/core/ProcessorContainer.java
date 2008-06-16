@@ -168,6 +168,9 @@ public class ProcessorContainer
      */
     private Properties properties;
 
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
     private ResourceFinder finder;
 
     /**
