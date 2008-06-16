@@ -125,12 +125,6 @@ public class ExBib {
     private static final String BLG_FILE_EXTENSION = ".blg";
 
     /**
-     * The field <tt>BST_FILE_EXTENSION</tt> contains the extension of BibTeX
-     * style files (in lower case).
-     */
-    private static final String BST_FILE_EXTENSION = ".bst";
-
-    /**
      * The field <tt>PROP_CONFIG</tt> contains the name of the property to
      * carry the configuration.
      */
@@ -526,7 +520,7 @@ public class ExBib {
                 Processor processor = container.getProcessor(key);
 
                 for (String style : processor.getBibliographyStyles()) {
-                    info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
+                    info("bst.file", style);
                 }
 
                 String outfile = properties.getProperty(PROP_OUTFILE);
