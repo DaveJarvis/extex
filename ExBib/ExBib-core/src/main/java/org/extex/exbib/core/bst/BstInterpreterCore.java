@@ -505,6 +505,16 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.Processor#isKnown(java.lang.String)
+     */
+    public boolean isKnown(String type) {
+
+        return (null == getFunction(type));
+    }
+
+    /**
      * Pop an element from the stack. If the stack is empty an exception is
      * thrown.
      * 

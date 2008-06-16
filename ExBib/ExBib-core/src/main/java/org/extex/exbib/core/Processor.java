@@ -116,6 +116,15 @@ public interface Processor extends Bibliography, Configurable {
     Writer getOutWriter();
 
     /**
+     * Check if the entry type is known.
+     * 
+     * @param type the entry type
+     * 
+     * @return <code>true</code> iff the entry type is known
+     */
+    boolean isKnown(String type);
+
+    /**
      * Load all databases named in the processor context in turn.
      * 
      * @throws ExBibException in case that something went wrong
