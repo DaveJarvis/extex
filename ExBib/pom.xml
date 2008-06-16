@@ -140,6 +140,7 @@
    <module>ExBib-core</module>
    <module>ExBib-Main</module>
    <module>../ExTeX-resource</module>
+   <module>ExBib-groovy</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
    <module>ExBib-texmf</module>
@@ -176,6 +177,20 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <aggregate>true</aggregate>
+          <groups>
+            <group>
+              <title>Core Packages</title>
+              <packages>org.extex.exbib.core*</packages>
+            </group>
+            <group>
+              <title>Main Packages</title>
+              <packages>org.extex.exbib.main*</packages>
+            </group>
+            <group>
+              <title>Framework Packages</title>
+              <packages>org.extex.framework*:org.extex.resource*</packages>
+            </group>
+          </groups>
         </configuration>
       </plugin>
 
@@ -207,6 +222,25 @@
           <type>range</type>
           <range>90</range>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>1.5</targetJdk>
+          <excludes>
+            <exclude>**/*Bean.java</exclude>
+            <exclude>**/generated/*.java</exclude>
+          </excludes>
+          <excludeRoots>
+            <excludeRoot>target/generated-sources/stubs</excludeRoot>
+          </excludeRoots>
+        </configuration> 
       </plugin>
 
     </plugins>
