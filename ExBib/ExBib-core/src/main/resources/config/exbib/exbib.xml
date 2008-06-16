@@ -38,8 +38,6 @@
 
   <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
 
-  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
-
   <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
 
   <BibPrinter base="exbib/printer/" default="bib"/>

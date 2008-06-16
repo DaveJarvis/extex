@@ -46,6 +46,8 @@ import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This is a container for a named set of bibliographies.
@@ -53,7 +55,11 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ProcessorContainer implements Configurable, Iterable<String> {
+public class ProcessorContainer
+        implements
+            Configurable,
+            ResourceAware,
+            Iterable<String> {
 
     /**
      * This is a pair of name and observer.
@@ -162,6 +168,8 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
      */
     private Properties properties;
 
+    private ResourceFinder finder;
+
     /**
      * Creates a new object.
      * 
@@ -258,6 +266,9 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
             }
             processor = processorFactory.newInstance(db, null);
             processor.setLogger(logger);
+            if (processor instanceof ResourceAware) {
+                ((ResourceAware) processor).setResourceFinder(finder);
+            }
 
             try {
                 for (NamedObserver no : dbObsList) {
@@ -429,6 +440,17 @@ public class ProcessorContainer implements Configurable, Iterable<String> {
         } catch (IOException e) {
             throw new ConfigurationWrapperException(e);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
     /**

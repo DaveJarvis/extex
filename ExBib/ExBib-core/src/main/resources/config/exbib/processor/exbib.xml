@@ -20,6 +20,8 @@
   @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 -->
   <Processor class="org.extex.exbib.core.bst.BstInterpreter">
+    <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
+
     <globalMax>32000</globalMax>
 
     <function name="&gt;"

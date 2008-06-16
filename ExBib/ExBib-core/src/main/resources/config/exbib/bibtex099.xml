@@ -37,8 +37,6 @@
 
   <AuxReader class="org.extex.exbib.core.io.auxio.AuxReader099cImpl"/>
 
-  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
-
   <BibReader class="org.extex.exbib.core.io.bibio.BibReader099Impl"/>
 
 </exbib>

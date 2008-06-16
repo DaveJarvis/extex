@@ -51,12 +51,15 @@ import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
+import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This is the core implementation of an interpreter for the B<small>IB</small>T<sub>E</sub>X
@@ -110,7 +113,8 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  */
 public class BstInterpreterCore extends BibliographyCore
         implements
-            BstProcessor {
+            BstProcessor,
+            ResourceAware {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -212,6 +216,10 @@ public class BstInterpreterCore extends BibliographyCore
      * The field <tt>warnings</tt> contains the number of warnings.
      */
     private long warnings = 0;
+
+    private Configuration configuration;
+
+    private ResourceFinder finder;
 
     /**
      * Creates a new Processor object. This method is mainly meant to be used in
@@ -340,16 +348,18 @@ public class BstInterpreterCore extends BibliographyCore
      * <dt>obsolete variable entries.max$</dt>
      * </dl>
      * 
-     * @param config the configuration to consult
+     * @param configuration the configuration to consult
      * 
      * @throws ConfigurationException in case of an error
      */
     @Override
-    public void configure(Configuration config) throws ConfigurationException {
+    public void configure(Configuration configuration)
+            throws ConfigurationException {
 
-        super.configure(config);
+        super.configure(configuration);
+        this.configuration = configuration;
         Locator locator = new Locator(getClass().getName() + "#configure()", 0);
-        int i = config.getValueAsInteger("globalMax", -1);
+        int i = configuration.getValueAsInteger("globalMax", -1);
 
         if (i >= 0) {
             try {
@@ -360,7 +370,7 @@ public class BstInterpreterCore extends BibliographyCore
             }
         }
 
-        i = config.getValueAsInteger("entryMax", -1);
+        i = configuration.getValueAsInteger("entryMax", -1);
 
         if (i >= 0) {
             try {
@@ -617,6 +627,11 @@ public class BstInterpreterCore extends BibliographyCore
 
         this.outWriter = writer;
 
+        BstReaderFactory bstReaderFactory =
+                new BstReaderFactory(configuration
+                    .getConfiguration("BstReader"), finder);
+        bstReaderFactory.newInstance().parse(this);
+
         for (Command command : commands) {
             runObservers.update(this, command);
             command.execute(this, command.getLocator());
@@ -789,6 +804,17 @@ public class BstInterpreterCore extends BibliographyCore
     public void setOutWriter(Writer writer) {
 
         outWriter = writer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
     /**

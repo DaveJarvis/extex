@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.sorter.SorterFactory;
@@ -42,7 +41,6 @@ import org.extex.exbib.core.io.auxio.AuxReader;
 import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
-import org.extex.exbib.core.io.bstio.BstReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.util.DBObserver;
 import org.extex.exbib.core.util.EntryObserver;
@@ -464,6 +462,7 @@ public class ExBib {
             container.setSorterFactory(makeSorterFactory(finder, config
                 .getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
+            container.setResourceFinder(finder);
             container.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
             if (debug.contains(ExBibDebug.TRACE)) {
@@ -522,21 +521,12 @@ public class ExBib {
                         }
 
                     };
-            BstReaderFactory bstReaderFactory =
-                    new BstReaderFactory(config.getConfiguration("BstReader"),
-                        finder);
 
             for (String key : container) {
                 Processor processor = container.getProcessor(key);
 
                 for (String style : processor.getBibliographyStyles()) {
                     info("bst.file", stripExtension(style, BST_FILE_EXTENSION));
-                }
-                try {
-                    bstReaderFactory.newInstance().parse(
-                        (BstProcessor) processor);
-                } catch (ClassCastException e) {
-                    throw e; // TODO
                 }
 
                 String outfile = properties.getProperty(PROP_OUTFILE);
@@ -562,8 +552,6 @@ public class ExBib {
                 funcall.print();
             }
 
-            // } catch (CsfException e) {
-            // return error("verbatim", e.getLocalizedMessage());
         } catch (ExBibImpossibleException e) {
             return error(e, "internal.error");
         } catch (ExBibException e) {
