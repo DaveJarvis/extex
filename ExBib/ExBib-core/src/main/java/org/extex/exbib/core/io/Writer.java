@@ -25,7 +25,7 @@ import org.extex.framework.configuration.Configurable;
 
 /**
  * This is the generic interface for any class which implements some sort of
- * writing in ExBib.
+ * writing in &epsilon;&chi;Bib.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
