@@ -24,13 +24,9 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.Bibliography;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
-import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
-import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.Writer;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
@@ -81,35 +77,6 @@ public interface Processor extends Bibliography, Configurable {
     List<String> getEntries();
 
     /**
-     * Getter for local integers. The given arguments are added to the values
-     * already stored.
-     * 
-     * @return the list of integers
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
-     */
-    List<String> getEntryIntegers()
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
-
-    /**
-     * Getter for local strings.
-     * 
-     * @return the entries
-     */
-    List<String> getEntryStrings();
-
-    /**
-     * Getter for the list of global integers.
-     * 
-     * @return the list of global integers
-     */
-    List<String> getIntegers();
-
-    /**
      * Getter for the logger.
      * 
      * @return the logger
@@ -139,7 +106,7 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @return the umber of warnings
      */
-    public long getNumberOfWarnings();
+    long getNumberOfWarnings();
 
     /**
      * Getter for the output writer.
@@ -147,13 +114,6 @@ public interface Processor extends Bibliography, Configurable {
      * @return the output writer
      */
     Writer getOutWriter();
-
-    /**
-     * Getter for the names of global string variables.
-     * 
-     * @return the list of strings
-     */
-    List<String> getStrings();
 
     /**
      * Load all databases named in the processor context in turn.
@@ -199,84 +159,11 @@ public interface Processor extends Bibliography, Configurable {
     public void setDB(DB db);
 
     /**
-     * Setter for the entry names.
-     * 
-     * @param entries the list of entries
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
-     */
-    void setEntries(List<String> entries, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
-
-    /**
-     * Setter for the local integers. The given arguments are added to the
-     * values already stored.
-     * 
-     * @param integers the list of integers
-     * @param locator the locator
-     * @throws ExBibException in case that a name is given which is already
-     *         defined
-     */
-    void setEntryIntegers(List<String> integers, Locator locator)
-            throws ExBibException;
-
-    /**
-     * Setter for local strings. The given arguments are added to the values
-     * already stored.
-     * 
-     * @param strings the list of strings
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
-     * @throws ExBibException in case of an error
-     */
-    void setEntryStrings(List<String> strings, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException,
-                ExBibException;
-
-    /**
-     * Setter for global integers. The given arguments are added to the values
-     * already stored.
-     * 
-     * @param list the list of global integers
-     * @param locator the locator
-     * 
-     * @throws ExBibException in case that a name is given which is already
-     *         defined
-     */
-    void setIntegers(TokenList list, Locator locator) throws ExBibException;
-
-    /**
      * Setter for the logger.
      * 
      * @param logger the new logger
      */
     public void setLogger(Logger logger);
-
-    /**
-     * Setter for the names of global string variables. The given names are
-     * added to the ones already defined.
-     * 
-     * @param list the list of additional string names
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
-     */
-    void setStrings(TokenList list, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
 
     /**
      * This method can be used to issue a warning message.

@@ -386,7 +386,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#getEntryIntegers()
+     * @see org.extex.exbib.core.bst.BstProcessor#getEntryIntegers()
      */
     public List<String> getEntryIntegers() {
 
@@ -396,7 +396,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#getEntryStrings()
+     * @see org.extex.exbib.core.bst.BstProcessor#getEntryStrings()
      */
     public List<String> getEntryStrings() {
 
@@ -441,7 +441,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#getIntegers()
+     * @see org.extex.exbib.core.bst.BstProcessor#getIntegers()
      */
     public List<String> getIntegers() {
 
@@ -481,7 +481,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#getStrings()
+     * @see org.extex.exbib.core.bst.BstProcessor#getStrings()
      */
     public List<String> getStrings() {
 
@@ -708,7 +708,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#setEntries(java.util.List,
+     * @see org.extex.exbib.core.bst.BstProcessor#setEntries(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntries(List<String> entries, Locator locator)
@@ -727,7 +727,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#setEntryIntegers(java.util.List,
+     * @see org.extex.exbib.core.bst.BstProcessor#setEntryIntegers(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryIntegers(List<String> integers, Locator locator)
@@ -746,7 +746,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#setEntryStrings(java.util.List,
+     * @see org.extex.exbib.core.bst.BstProcessor#setEntryStrings(java.util.List,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryStrings(List<String> strings, Locator locator)
@@ -764,8 +764,9 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#setIntegers(
-     *      org.extex.exbib.core.bst.token.impl.TokenList, Locator)
+     * @see org.extex.exbib.core.bst.BstProcessor#setIntegers(
+     *      org.extex.exbib.core.bst.token.impl.TokenList,
+     *      org.extex.exbib.core.io.Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
@@ -793,8 +794,9 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#setStrings(
-     *      org.extex.exbib.core.bst.token.impl.TokenList, Locator)
+     * @see org.extex.exbib.core.bst.BstProcessor#setStrings(
+     *      org.extex.exbib.core.bst.token.impl.TokenList,
+     *      org.extex.exbib.core.io.Locator)
      */
     public void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,

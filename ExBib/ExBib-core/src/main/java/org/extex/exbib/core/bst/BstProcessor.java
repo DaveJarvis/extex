@@ -30,6 +30,8 @@ import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TokenList;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
@@ -99,6 +101,28 @@ public interface BstProcessor extends Processor {
     public Iterator<Command> commandsIterator();
 
     /**
+     * Getter for local integers. The given arguments are added to the values
+     * already stored.
+     * 
+     * @return the list of integers
+     * 
+     * @throws ExBibIllegalValueException in case that the name is
+     *         <code>null</code> or empty
+     * @throws ExBibFunctionExistsException in case that the named function
+     *         already exists
+     */
+    List<String> getEntryIntegers()
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException;
+
+    /**
+     * Getter for local strings.
+     * 
+     * @return the entries
+     */
+    List<String> getEntryStrings();
+
+    /**
      * Getter for function code. If the requested function is not defined then
      * <code>null</code> is returned.
      * 
@@ -121,6 +145,13 @@ public interface BstProcessor extends Processor {
      * @return the list of global integers
      */
     List<String> getIntegers();
+
+    /**
+     * Getter for the names of global string variables.
+     * 
+     * @return the list of strings
+     */
+    List<String> getStrings();
 
     /**
      * Pop an element from the stack. If the stack is empty an exception is
@@ -190,6 +221,79 @@ public interface BstProcessor extends Processor {
      */
     void registerObserver(String name, Observer observer)
             throws NotObservableException;
+
+    /**
+     * Setter for the entry names.
+     * 
+     * @param entries the list of entries
+     * @param locator the locator
+     * 
+     * @throws ExBibIllegalValueException in case that the name is
+     *         <code>null</code> or empty
+     * @throws ExBibFunctionExistsException in case that the named function
+     *         already exists
+     */
+    void setEntries(List<String> entries, Locator locator)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException;
+
+    /**
+     * Setter for the local integers. The given arguments are added to the
+     * values already stored.
+     * 
+     * @param integers the list of integers
+     * @param locator the locator
+     * @throws ExBibException in case that a name is given which is already
+     *         defined
+     */
+    void setEntryIntegers(List<String> integers, Locator locator)
+            throws ExBibException;
+
+    /**
+     * Setter for local strings. The given arguments are added to the values
+     * already stored.
+     * 
+     * @param strings the list of strings
+     * @param locator the locator
+     * 
+     * @throws ExBibIllegalValueException in case that the name is
+     *         <code>null</code> or empty
+     * @throws ExBibFunctionExistsException in case that the named function
+     *         already exists
+     * @throws ExBibException in case of an error
+     */
+    void setEntryStrings(List<String> strings, Locator locator)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException,
+                ExBibException;
+
+    /**
+     * Setter for global integers. The given arguments are added to the values
+     * already stored.
+     * 
+     * @param list the list of global integers
+     * @param locator the locator
+     * 
+     * @throws ExBibException in case that a name is given which is already
+     *         defined
+     */
+    void setIntegers(TokenList list, Locator locator) throws ExBibException;
+
+    /**
+     * Setter for the names of global string variables. The given names are
+     * added to the ones already defined.
+     * 
+     * @param list the list of additional string names
+     * @param locator the locator
+     * 
+     * @throws ExBibIllegalValueException in case that the name is
+     *         <code>null</code> or empty
+     * @throws ExBibFunctionExistsException in case that the named function
+     *         already exists
+     */
+    void setStrings(TokenList list, Locator locator)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException;
 
     /**
      * This method should be invoked for every step in the execution to allow
