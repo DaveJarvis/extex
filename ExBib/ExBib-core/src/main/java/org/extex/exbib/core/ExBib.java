@@ -161,7 +161,7 @@ public class ExBib {
 
     /**
      * The field <tt>PROP_MIN_CROSSREF</tt> contains the name of the property
-     * containing the min.crossrefs.
+     * containing the value for <tt>min.crossrefs</tt>.
      */
     public static final String PROP_MIN_CROSSREF = "exbib.min.crossref";
 
@@ -170,6 +170,12 @@ public class ExBib {
      * the output.
      */
     public static final String PROP_OUTFILE = "exbib.output";
+
+    /**
+     * The field <tt>PROP_PROCESSOR</tt> contains the name of the property for
+     * the processor type.
+     */
+    public static final String PROP_PROCESSOR = "exbib.processor";
 
     /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
