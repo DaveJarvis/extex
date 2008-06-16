@@ -267,7 +267,8 @@ public class ProcessorContainer
             if (sorter != null) {
                 db.setSorter(sorter);
             }
-            processor = processorFactory.newInstance(db, null);
+            processor = processorFactory.newInstance(db, //
+                properties.getProperty(ExBib.PROP_PROCESSOR));
             processor.setLogger(logger);
             if (processor instanceof ResourceAware) {
                 ((ResourceAware) processor).setResourceFinder(finder);
