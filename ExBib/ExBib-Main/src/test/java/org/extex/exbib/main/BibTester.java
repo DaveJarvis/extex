@@ -160,8 +160,9 @@ public class BibTester {
                         assertEquals(err, s);
                         break;
                     case START:
-                        assertTrue("Fails to start with " + s, s
-                            .startsWith(err));
+                        assertTrue("Result is too short " + s,
+                            s.length() >= err.length());
+                        assertEquals(err, s.substring(0, err.length()));
                         break;
                     case REGEX:
                         assertTrue("Fails to match " + s, s.matches(err));
