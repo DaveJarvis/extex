@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
-import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
@@ -53,7 +52,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class BstIterate extends AbstractCommand implements Command {
+public class BstIterate extends AbstractCommand {
 
     /**
      * Creates a new object.
