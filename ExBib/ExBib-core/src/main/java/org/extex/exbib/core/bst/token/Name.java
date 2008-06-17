@@ -438,7 +438,6 @@ public class Name {
      *   f*v*l+j*
      * </pre>
      * 
-     * @param list the list of name constituents
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
@@ -447,8 +446,8 @@ public class Name {
      * @throws ExBibNoNameException in case that the given string list does not
      *         constitute a name
      */
-    private void classify0(List<String> list, List<Type> type, Locator locator,
-            String name) throws ExBibNoNameException {
+    private void classify0(List<Type> type, Locator locator, String name)
+            throws ExBibNoNameException {
 
         int len = type.size();
         int i;
@@ -494,7 +493,6 @@ public class Name {
      * f*v*l+,j*
      * </pre>
      * 
-     * @param list the list of name constituents
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
@@ -504,8 +502,9 @@ public class Name {
      *         constitute a name
      * @throws ExBibImpossibleException in case the comma is not found
      */
-    private void classify1(List<String> list, List<Type> type, Locator locator,
-            String name) throws ExBibNoNameException, ExBibImpossibleException {
+    private void classify1(List<Type> type, Locator locator, String name)
+            throws ExBibNoNameException,
+                ExBibImpossibleException {
 
         int index = type.lastIndexOf(Type.COMMA);
         int len = type.size();
@@ -549,7 +548,6 @@ public class Name {
      * v*l+,j+,f*
      * </pre>
      * 
-     * @param list the list of name constituents
      * @param type the buffer containing the type information of the
      *        constituents
      * @param locator the locator
@@ -559,8 +557,9 @@ public class Name {
      *         constitute a name
      * @throws ExBibImpossibleException in case the two commas are not found
      */
-    private void classify2(List<String> list, List<Type> type, Locator locator,
-            String name) throws ExBibNoNameException, ExBibImpossibleException {
+    private void classify2(List<Type> type, Locator locator, String name)
+            throws ExBibNoNameException,
+                ExBibImpossibleException {
 
         int last = type.indexOf(Type.COMMA);
 
@@ -699,10 +698,10 @@ public class Name {
                         type.add(isUpper(s) ? Type.FIRST : Type.VON);
                     }
 
-                    for (i++; i < name.length()
-                            && Character.isWhitespace(name.charAt(i)); i++) {
-                        // skip spaces;
-                    }
+                    do {
+                        i++;
+                    } while (i < name.length()
+                            && Character.isWhitespace(name.charAt(i)));
 
                     start = i--;
                 }
@@ -719,13 +718,13 @@ public class Name {
 
         switch (commas) {
             case 0:
-                classify0(list, type, locator, name);
+                classify0(type, locator, name);
                 break;
             case 1:
-                classify1(list, type, locator, name);
+                classify1(type, locator, name);
                 break;
             case 2:
-                classify2(list, type, locator, name);
+                classify2(type, locator, name);
                 break;
             default:
                 throw new ExBibNoNameCommasException(name, locator);

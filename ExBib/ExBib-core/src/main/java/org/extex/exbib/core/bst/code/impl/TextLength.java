@@ -82,9 +82,8 @@ public class TextLength extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -106,10 +105,10 @@ public class TextLength extends AbstractCode {
                 case '\\':
 
                     if (i++ < s.length() && Character.isLetter(s.charAt(i))) {
-                        while ((++i < s.length())
-                                && Character.isLetter(s.charAt(i))) {
-                            //
-                        }
+                        do {
+                            i++;
+                        } while (i < s.length()
+                                && Character.isLetter(s.charAt(i)));
 
                         result++;
                     }

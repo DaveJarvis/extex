@@ -167,15 +167,14 @@ public class FormatName extends AbstractCode {
                 ++ptr;
                 if (buffer.charAt(ptr - 1) == '{') {
                     ++brace_level;
-                    if (brace_level == 1 && ptr < end) {
-                        if (buffer.charAt(ptr) == '\\') {
-                            for (ptr++; ptr < end && brace_level > 0; ptr++) {
-                                char c = buffer.charAt(ptr);
-                                if (c == '}') {
-                                    --brace_level;
-                                } else if (c == '{') {
-                                    ++brace_level;
-                                }
+                    if (brace_level == 1 && ptr < end
+                            && buffer.charAt(ptr) == '\\') {
+                        for (ptr++; ptr < end && brace_level > 0; ptr++) {
+                            char c = buffer.charAt(ptr);
+                            if (c == '}') {
+                                --brace_level;
+                            } else if (c == '{') {
+                                ++brace_level;
                             }
                         }
                     }
