@@ -86,9 +86,8 @@ public class TString extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -103,7 +102,7 @@ public class TString extends AbstractToken implements Token {
      * be used to store the result of parsing the value to names. Thus it works
      * as cache.
      * 
-     * @return the names or <code>null</code>
+     * @return the names which is never <code>null</code>
      * 
      * @throws ExBibImpossibleException in case of an error
      * @throws ExBibNoNameException in case of an error
