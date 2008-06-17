@@ -92,9 +92,8 @@ public class NumNames extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -102,11 +101,6 @@ public class NumNames extends AbstractCode {
 
         TString names = processor.popString(locator);
         List<Name> namelist = names.getNames();
-
-        if (namelist == null) {
-            namelist = Name.parse(names.getValue(), locator);
-        }
-
         int n = namelist.size();
         processor.push((n == 0 ? TokenFactory.T_ZERO : n == 1
                 ? TokenFactory.T_ONE
