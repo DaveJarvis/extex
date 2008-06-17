@@ -511,7 +511,7 @@ public class BstInterpreterCore extends BibliographyCore
      */
     public boolean isKnown(String type) {
 
-        return (null == getFunction(type));
+        return (null != getFunction(type));
     }
 
     /**
