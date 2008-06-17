@@ -87,6 +87,7 @@ public class GroovyTest {
             assertTrue(exBib.run());
         } finally {
             new File(aux).delete();
+            new File(aux.replaceAll(".aux$", ".bbl")).delete();
             new File(gy).delete();
             new File(bib).delete();
         }
