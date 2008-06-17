@@ -25,7 +25,6 @@ import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibNoNumberException;
 import org.extex.exbib.core.bst.token.AbstractToken;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.io.Locator;
@@ -39,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TInteger extends AbstractToken implements Token {
+public class TInteger extends AbstractToken {
 
     /**
      * The integer value is stored separately to avoid repeated conversion to
@@ -83,9 +82,8 @@ public class TInteger extends AbstractToken implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator) {

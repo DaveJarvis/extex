@@ -26,7 +26,6 @@ import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.token.AbstractToken;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -39,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TLiteral extends AbstractToken implements Token {
+public class TLiteral extends AbstractToken {
 
     /**
      * Creates a new object.

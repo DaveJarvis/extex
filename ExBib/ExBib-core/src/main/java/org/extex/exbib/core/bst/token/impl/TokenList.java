@@ -42,7 +42,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TokenList extends AbstractToken implements Token, Iterable<Token> {
+public class TokenList extends AbstractToken implements Iterable<Token> {
 
     /**
      * The field <tt>value</tt> contains the internal representation upon
@@ -74,9 +74,8 @@ public class TokenList extends AbstractToken implements Token, Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

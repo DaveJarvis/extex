@@ -23,7 +23,6 @@ import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
@@ -38,7 +37,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TFieldString extends TLiteral implements Token {
+public class TFieldString extends TLiteral {
 
     /**
      * Create a new object.
@@ -56,9 +55,8 @@ public class TFieldString extends TLiteral implements Token {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)

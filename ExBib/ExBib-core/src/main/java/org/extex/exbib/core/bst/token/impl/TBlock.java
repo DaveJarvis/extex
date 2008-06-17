@@ -36,7 +36,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TBlock extends AbstractToken implements Token {
+public class TBlock extends AbstractToken {
 
     /**
      * The field <tt>value</tt> contains the list of Tokens in the block.

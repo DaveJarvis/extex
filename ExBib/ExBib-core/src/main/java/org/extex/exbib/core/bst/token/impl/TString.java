@@ -26,7 +26,6 @@ import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
 import org.extex.exbib.core.bst.token.AbstractToken;
 import org.extex.exbib.core.bst.token.Name;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -48,7 +47,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TString extends AbstractToken implements Token {
+public class TString extends AbstractToken {
 
     /**
      * The field <tt>names</tt> contains the list of names which might act as
