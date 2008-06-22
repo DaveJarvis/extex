@@ -20,7 +20,6 @@
 package org.extex.exbib.core.bst.command.impl;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
@@ -90,10 +89,8 @@ public class BstIterate extends AbstractCommand {
                 .format("empty.token"), locator);
         }
 
-        List<Entry> rec = processor.getDB().getEntries();
-
-        for (int i = 0; i < rec.size(); i++) {
-            token.execute(processor, rec.get(i), getLocator());
+        for (Entry entry : processor.getDB().getEntries()) {
+            token.execute(processor, entry, getLocator());
         }
     }
 
@@ -105,9 +102,7 @@ public class BstIterate extends AbstractCommand {
     @Override
     public String toString() {
 
-        return "ITERATE { " + getValue() //$NON-NLS-1$
-
-            .toString() + " }"; //$NON-NLS-1$
+        return "ITERATE { " + getValue().toString() + " }";
     }
 
     /**
