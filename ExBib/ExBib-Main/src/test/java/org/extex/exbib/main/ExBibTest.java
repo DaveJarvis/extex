@@ -1225,13 +1225,13 @@ public class ExBibTest extends BibTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
-                            + "\\biboption{exbib.min.crossref=3}\n", //
+                            + "\\biboption{min.crossref=3}\n", //
                     CLI.EXIT_OK, //
                     Check.EQ, //
                     BANNER + "Warning: empty author in whole-journal\n"
                             + "Warning: empty title in whole-journal\n", //
                     "test.aux");
-        assertEquals("3", exbib.getProperty(ExBib.PROP_MIN_CROSSREF + ".bbl"));
+        assertEquals("3", exbib.getProperty("min.crossref.bbl"));
     }
 
     /**
@@ -1247,11 +1247,11 @@ public class ExBibTest extends BibTester {
             "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
-                    + "\\biboption{exbib.min.crossref=xyz}\n", //
+                    + "\\biboption{min.crossref=xyz}\n", //
             CLI.EXIT_OK, //
             Check.EQ, //
             BANNER
-                    + "The option `exbib.min.crossref' must be numeric instead of `xyz'.\n"
+                    + "The option `min.crossref' must be numeric instead of `xyz'.\n"
                     + "Warning: empty author in whole-journal\n"
                     + "Warning: empty title in whole-journal\n", //
             "test.aux");
@@ -1607,7 +1607,7 @@ public class ExBibTest extends BibTester {
             "\\citation{*}\n"
                     + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
-                    + "\\biboption{exbib.sort=locale:de}\n", //
+                    + "\\biboption{sort=locale:de}\n", //
             CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "test.aux", "--out=-", "--enc=UTF-8");
