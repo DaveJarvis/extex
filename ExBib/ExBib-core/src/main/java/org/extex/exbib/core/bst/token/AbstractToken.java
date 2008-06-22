@@ -19,15 +19,9 @@
 
 package org.extex.exbib.core.bst.token;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.Processor;
-import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.io.Locator;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the base class for all {@link Token Token}s. It is declared abstract
@@ -38,7 +32,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public abstract class AbstractToken implements Token {
+public abstract class AbstractToken extends AbstractCode implements Token {
 
     /**
      * The field <tt>locator</tt> contains the locator for the
@@ -47,8 +41,8 @@ public abstract class AbstractToken implements Token {
     private Locator locator;
 
     /**
-     * The field <tt>stringCache</tt> contains the cached string representation
-     * of the object.
+     * The field <tt>stringCache</tt> contains the cached string
+     * representation of the object.
      */
     private String stringCache = null;
 
@@ -98,33 +92,6 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
-     * This method can be overloaded in a derived class. The default behavior is
-     * that nothing is done.
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
-
-        //
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * The execute method is specific to any sub-type. Thus it is declared as
-     * abstract which forces that it is defined in any derived class.
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
-     */
-    public abstract void execute(BstProcessor processor, Entry entry, Locator l)
-            throws ExBibException;
-
-    /**
      * {@inheritDoc}
      * 
      * The expansion of an AbstractToken is the value itself.
@@ -148,16 +115,6 @@ public abstract class AbstractToken implements Token {
     public Locator getLocator() {
 
         return locator;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#getName()
-     */
-    public String getName() {
-
-        return "";
     }
 
     /**
@@ -195,16 +152,6 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.Code#setName(java.lang.String)
-     */
-    public void setName(String name) {
-
-        //
-    }
-
-    /**
      * Compute a printable string representation for this object.
      * 
      * @return the string representation
@@ -218,13 +165,5 @@ public abstract class AbstractToken implements Token {
 
         return stringCache;
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(
-     *      org.extex.exbib.core.bst.token.TokenVisitor)
-     */
-    public abstract void visit(TokenVisitor visitor) throws IOException;
 
 }

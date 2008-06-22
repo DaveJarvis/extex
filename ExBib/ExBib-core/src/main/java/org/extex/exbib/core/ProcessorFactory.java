@@ -20,7 +20,6 @@
 package org.extex.exbib.core;
 
 import org.extex.exbib.core.db.DB;
-import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -58,23 +57,19 @@ public class ProcessorFactory extends AbstractFactory {
     /**
      * Get an instance of a {@link Processor Processor}.
      * 
-     * @param db the database
      * @param type the type for lookup in the configuration; the value
      *        <code>null</code> signals the use of the default configuration
+     * @param db the database
      * 
      * @return the {@link Processor Processor}
      * 
      * @throws ConfigurationException if the item <tt>class</tt> can not be
      *         found in the configuration or the class can not be instantiated.
-     * @throws ExBibException in case of an error
      */
-    public Processor newInstance(DB db, String type)
-            throws ConfigurationException,
-                ExBibException {
+    public Processor newInstance(String type, DB db)
+            throws ConfigurationException {
 
-        Configuration cfg = selectConfiguration(type);
-        Processor processor =
-                (Processor) createInstanceForConfiguration(cfg, Processor.class);
+        Processor processor = (Processor) createInstance(type, Processor.class);
         processor.setDB(db);
         return processor;
     }

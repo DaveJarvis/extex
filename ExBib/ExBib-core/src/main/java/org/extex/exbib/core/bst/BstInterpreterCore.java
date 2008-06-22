@@ -36,8 +36,8 @@ import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TFieldInteger;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
@@ -728,7 +728,7 @@ public class BstInterpreterCore extends BibliographyCore
             addFunction("global.max$", new TInteger(globalMax, locator),
                 locator);
             addFunction("entry.max$", new TInteger(entryMax, locator), locator);
-            addFunction("sort.key$", new TFieldString("sort.key$", locator),
+            addFunction("sort.key$", new TLocalString("sort.key$", locator),
                 locator);
             addFunction("crossref", new TField("crossref", locator), locator);
         } catch (ExBibException e) {
@@ -770,7 +770,7 @@ public class BstInterpreterCore extends BibliographyCore
         while (iterator.hasNext()) {
             String e = iterator.next();
             theEntryIntegers.add(e);
-            addFunction(e, new TFieldInteger(e, null), locator);
+            addFunction(e, new TLocalInteger(e, null), locator);
         }
     }
 
@@ -788,7 +788,7 @@ public class BstInterpreterCore extends BibliographyCore
         while (iterator.hasNext()) {
             String e = iterator.next();
             theEntryStrings.add(e);
-            addFunction(e, new TFieldString(e, null), locator);
+            addFunction(e, new TLocalString(e, null), locator);
         }
     }
 

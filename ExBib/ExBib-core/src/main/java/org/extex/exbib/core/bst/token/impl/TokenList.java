@@ -74,10 +74,10 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute(
+     *      org.extex.exbib.core.bst.BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -89,7 +89,7 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#expand(
+     * @see org.extex.exbib.core.bst.token.Token#expand(
      *      org.extex.exbib.core.Processor)
      */
     @Override
@@ -108,12 +108,14 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
      * Compute a printable representation of this object.
      * 
      * @return the printable representation
+     * 
+     * @see org.extex.exbib.core.bst.token.AbstractToken#getString()
      */
     @Override
     protected String getString() {
 
         String sep = " ";
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         boolean first = true;
 
         for (Token t : value) {
@@ -162,17 +164,14 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
      * 
      * @return the StringList of the literal names
      * 
-     * @throws ExBibMissingLiteralException if some other Token than a TLiteral
-     *         is found
+     * @throws ExBibMissingLiteralException if some other {@link Token} than a
+     *         {@link TLiteral} is found
      */
     public List<String> toStringList() throws ExBibMissingLiteralException {
 
         List<String> list = new ArrayList<String>();
-        Iterator<Token> iterator = value.iterator();
 
-        while (iterator.hasNext()) {
-            Token t = iterator.next();
-
+        for (Token t : value) {
             if (!(t instanceof TLiteral)) {
                 throw new ExBibMissingLiteralException(t.toString(), null);
             }
@@ -184,10 +183,11 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitTokenList(this);

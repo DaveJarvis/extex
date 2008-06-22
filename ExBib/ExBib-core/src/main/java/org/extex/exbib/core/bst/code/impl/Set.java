@@ -24,8 +24,8 @@ import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TFieldInteger;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -89,11 +89,9 @@ public class Set extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -105,9 +103,9 @@ public class Set extends AbstractCode {
         String var = a.getValue();
         Code code = processor.getFunction(var);
 
-        if (code instanceof TFieldString) {
+        if (code instanceof TLocalString) {
             entry.setLocal(var, processor.popString(locator).getValue());
-        } else if (code instanceof TFieldInteger) {
+        } else if (code instanceof TLocalInteger) {
             entry.setLocal(var, processor.popInteger(locator).getInt());
         } else if (code instanceof TField) {
             entry.set(var, processor.popString(locator).getValue());

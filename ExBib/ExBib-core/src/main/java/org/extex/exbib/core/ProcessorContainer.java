@@ -267,8 +267,8 @@ public class ProcessorContainer
             if (sorter != null) {
                 db.setSorter(sorter);
             }
-            processor = processorFactory.newInstance(db, //
-                properties.getProperty(ExBib.PROP_PROCESSOR));
+            processor = processorFactory.newInstance(properties.getProperty(ExBib.PROP_PROCESSOR), //
+                db);
             processor.setLogger(logger);
             if (processor instanceof ResourceAware) {
                 ((ResourceAware) processor).setResourceFinder(finder);
@@ -430,9 +430,9 @@ public class ProcessorContainer
         try {
             Processor processor = findProcessor(type);
 
-            if (ExBib.PROP_SORT.equals(key)) {
+            if ("sort".equals(key)) {
                 processor.getDB().setSorter(sorterFactory.newInstance(value));
-            } else if (ExBib.PROP_MIN_CROSSREF.equals(key)) {
+            } else if ("min.crossref".equals(key)) {
                 processor.setOption(key, value);
             } else {
                 processor.setOption(key, value);

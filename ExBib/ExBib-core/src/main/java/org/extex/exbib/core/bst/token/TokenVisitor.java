@@ -24,10 +24,10 @@ import java.io.IOException;
 import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TFieldInteger;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
@@ -76,24 +76,6 @@ public interface TokenVisitor {
     void visitField(TField field) throws IOException;
 
     /**
-     * Visitor method invoked by <tt>local integers</tt> tokens.
-     * 
-     * @param integer the local integer visited
-     * 
-     * @throws IOException just in case
-     */
-    void visitFieldInteger(TFieldInteger integer) throws IOException;
-
-    /**
-     * Visitor method invoked by <tt>local string</tt> tokens.
-     * 
-     * @param string the local string visited
-     * 
-     * @throws IOException just in case
-     */
-    void visitFieldString(TFieldString string) throws IOException;
-
-    /**
      * Visitor method invoked by <tt>integer</tt> tokens.
      * 
      * @param integer the integer visited
@@ -110,6 +92,24 @@ public interface TokenVisitor {
      * @throws IOException just in case
      */
     void visitLiteral(TLiteral literal) throws IOException;
+
+    /**
+     * Visitor method invoked by <tt>local integers</tt> tokens.
+     * 
+     * @param integer the local integer visited
+     * 
+     * @throws IOException just in case
+     */
+    void visitLocalInteger(TLocalInteger integer) throws IOException;
+
+    /**
+     * Visitor method invoked by <tt>local string</tt> tokens.
+     * 
+     * @param string the local string visited
+     * 
+     * @throws IOException just in case
+     */
+    void visitLocalString(TLocalString string) throws IOException;
 
     /**
      * Visitor method invoked by <tt>qliteral</tt> tokens.

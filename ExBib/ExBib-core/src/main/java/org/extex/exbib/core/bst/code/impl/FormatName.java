@@ -27,7 +27,6 @@ import java.util.Map;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.token.Name;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -37,6 +36,8 @@ import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIndexOutOfBoundsException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.name.Name;
+import org.extex.exbib.core.name.NameFactory;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -975,7 +976,6 @@ public class FormatName extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -983,7 +983,8 @@ public class FormatName extends AbstractCode {
         TInteger tint = processor.popInteger(locator);
         TString names = processor.popString(locator);
         int index = tint.getInt();
-        List<Name> namelist = names.getNames();
+        List<Name> namelist =
+                NameFactory.getFactory().getNames(names.getValue(), locator);
 
         if (index < 1 || index > namelist.size()) {
             throw new ExBibIndexOutOfBoundsException(Integer.toString(index),

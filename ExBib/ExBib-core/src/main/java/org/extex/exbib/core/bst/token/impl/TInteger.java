@@ -44,7 +44,7 @@ public class TInteger extends AbstractToken {
      * The integer value is stored separately to avoid repeated conversion to
      * and from String
      */
-    private int theInt;
+    private int value;
 
     /**
      * Creates a new TInteger object.
@@ -55,7 +55,7 @@ public class TInteger extends AbstractToken {
     public TInteger(int value, Locator locator) {
 
         super(Integer.toString(value), locator);
-        this.theInt = value;
+        this.value = value;
     }
 
     /**
@@ -73,7 +73,7 @@ public class TInteger extends AbstractToken {
         super(value, locator);
 
         try {
-            theInt = Integer.parseInt(value);
+            this.value = Integer.parseInt(value);
         } catch (NumberFormatException e) {
             throw new ExBibNoNumberException(value, locator);
         }
@@ -85,7 +85,6 @@ public class TInteger extends AbstractToken {
      * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator) {
 
         processor.step(toString());
@@ -99,7 +98,7 @@ public class TInteger extends AbstractToken {
      */
     public int getInt() {
 
-        return theInt;
+        return value;
     }
 
     /**
@@ -117,10 +116,9 @@ public class TInteger extends AbstractToken {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitInteger(this);

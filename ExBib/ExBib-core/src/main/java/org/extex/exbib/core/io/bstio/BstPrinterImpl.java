@@ -33,8 +33,8 @@ import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TFieldInteger;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
@@ -246,10 +246,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldInteger(
-     *      org.extex.exbib.core.bst.token.impl.TFieldInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(
+     *      org.extex.exbib.core.bst.token.impl.TLocalInteger)
      */
-    public void visitFieldInteger(TFieldInteger integer) throws IOException {
+    public void visitLocalInteger(TLocalInteger integer) throws IOException {
 
         writer.print(integer.getValue());
     }
@@ -257,10 +257,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldString(
-     *      org.extex.exbib.core.bst.token.impl.TFieldString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(
+     *      org.extex.exbib.core.bst.token.impl.TLocalString)
      */
-    public void visitFieldString(TFieldString string) throws IOException {
+    public void visitLocalString(TLocalString string) throws IOException {
 
         writer.print(string.getValue());
     }

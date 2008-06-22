@@ -26,8 +26,8 @@ import java.util.List;
 
 /**
  * The value is a list of {@link ValueItem ValueItem}s. According to the
- * definition of B<small>IB</small>T<sub>E</sub>X a {@link ValueItem ValueItem} can be one of
- * the following
+ * definition of B<small>IB</small>T<sub>E</sub>X a
+ * {@link ValueItem ValueItem} can be one of the following
  * <dl>
  * <dt>block</dt>
  * <dd>this is a sequence of characters enclosed in matching braces.
@@ -74,7 +74,10 @@ import java.util.List;
  */
 public class Value {
 
-    /** The list of items stored in the value */
+    /**
+     * The field <tt>value</tt> contains the list of items stored in the
+     * Value.
+     */
     private List<ValueItem> value = new ArrayList<ValueItem>();
 
     /**
@@ -131,10 +134,8 @@ public class Value {
     public String expand(DB db) {
 
         StringBuilder sb = new StringBuilder();
-        Iterator<ValueItem> iterator = value.iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next().expand(sb, db);
+        for (ValueItem v : value) {
+            v.expand(sb, db);
         }
 
         return sb.toString();

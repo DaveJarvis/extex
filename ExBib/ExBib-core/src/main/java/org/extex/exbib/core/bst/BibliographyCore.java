@@ -375,7 +375,7 @@ public class BibliographyCore implements Bibliography, Observable {
      */
     public void setOption(String name, String value) {
 
-        if ("exbib.min.crossref".equals(name)) {
+        if ("min.crossref".equals(name)) {
             try {
                 db.setMinCrossrefs(Integer.parseInt(value));
             } catch (NumberFormatException e) {

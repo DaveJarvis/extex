@@ -33,7 +33,7 @@ import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -160,7 +160,7 @@ public class TestSet {
         p.setEntryStrings(strings, null);
 
         p.push(new TString("123", null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         ValueItem value = entry.getLocal("aaa");
@@ -181,7 +181,7 @@ public class TestSet {
         p.setEntryStrings(strings, null);
 
         p.push(new TInteger(123, null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);
@@ -203,7 +203,7 @@ public class TestSet {
         p.setEntryIntegers(integers, null);
 
         p.push(new TInteger(123, null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         ValueItem value = entry.getLocal("aaa");
@@ -224,7 +224,7 @@ public class TestSet {
         p.setEntryIntegers(integers, null);
 
         p.push(new TString("123", null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);
@@ -246,7 +246,7 @@ public class TestSet {
         p.setEntries(entries, null);
 
         p.push(new TString("123", null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         new Set(":=").execute(p, entry, null);
         assertNull(p.popUnchecked());
         Value value = entry.get("aaa");
@@ -267,7 +267,7 @@ public class TestSet {
         p.setEntries(entries, null);
 
         p.push(new TInteger(123, null));
-        p.push(new TFieldString("aaa", null));
+        p.push(new TLocalString("aaa", null));
         try {
             new Set(":=").execute(p, null, null);
             assertTrue(false);

@@ -30,7 +30,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * A TChar token is used during parsing to represent a single character. It
+ * 
+ * A TChar token represents a single character. It is used during parsing and
  * should not make it into the processing cycle.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -57,10 +58,10 @@ public class TChar extends AbstractToken {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute(
+     *      org.extex.exbib.core.bst.BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator) {
 
         processor.push(this);
@@ -69,12 +70,12 @@ public class TChar extends AbstractToken {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitChar(this);
     }
+
 }

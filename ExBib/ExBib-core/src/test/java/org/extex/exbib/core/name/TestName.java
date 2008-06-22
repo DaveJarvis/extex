@@ -17,14 +17,13 @@
  *
  */
 
-package org.extex.exbib.core.token;
+package org.extex.exbib.core.name;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
-import org.extex.exbib.core.bst.token.Name;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.junit.Test;
@@ -35,7 +34,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NameTest {
+public class TestName {
 
     /**
      * Run a test with one last and several first names.
@@ -469,6 +468,20 @@ public class NameTest {
         assertEquals(2, list.size());
         assertEquals("Barnes", list.get(0).getLast().get(0));
         assertEquals("Noble", list.get(1).getLast().get(0));
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testParse6() throws Exception {
+
+        List<Name> list = Name.parse("Barnes and others", null);
+        assertEquals(2, list.size());
+        assertEquals("Barnes", list.get(0).getLast().get(0));
+        assertEquals("others", list.get(1).getLast().get(0));
     }
 
     /**

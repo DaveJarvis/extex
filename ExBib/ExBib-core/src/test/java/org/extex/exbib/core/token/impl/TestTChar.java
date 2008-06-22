@@ -20,19 +20,11 @@
 package org.extex.exbib.core.token.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.token.Token;
-import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -40,11 +32,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test case for {@link TChar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTString {
+public class TestTChar {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -60,7 +53,6 @@ public class TestTString {
     public void setUp() throws Exception {
 
         p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
-        p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 
     /**
@@ -73,80 +65,39 @@ public class TestTString {
     }
 
     /**
-     * <testcase> A TString can be executed and returns itself. </testcase>
+     * <testcase> A character evaluates to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testExecute() throws Exception {
 
-        TString t = new TString("987", null);
+        TChar t = new TChar('a', null);
         t.execute(p, null, null);
-        assertEquals("987", p.popString(null).getValue());
+        assertEquals("a", p.pop(null).getValue());
         assertNull(p.popUnchecked());
     }
 
     /**
-     * <testcase> getValue() of a null value returns the empty string.
-     * </testcase>
+     * <testcase> toString() works. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testGetValue1() throws Exception {
+    public void testToString() throws Exception {
 
-        TString t = new TString(null, null);
-        assertEquals("", t.getValue());
+        assertEquals("a", new TChar('a', null).toString());
     }
 
     /**
-     * <testcase> A TString can be stored in a Hash and retrieved with another
-     * instance. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHash1() throws Exception {
-
-        TString t = new TString("abc", null);
-        Map<Token, String> map = new HashMap<Token, String>();
-        map.put(t, "value");
-        String s = map.get(new TString("abc", null));
-        assertNotNull(s);
-        assertEquals("value", s);
-    }
-
-    /**
-     * <testcase> isNull() can detect a null value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull1() throws Exception {
-
-        assertTrue(new TString(null, null).isNull());
-    }
-
-    /**
-     * <testcase> isNull() can detect a null value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull2() throws Exception {
-
-        assertFalse(new TString("", null).isNull());
-    }
-
-    /**
-     * <testcase> Test the visiting. </testcase>
+     * <testcase> Visiting a char calls the correct method. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TString t = new TString("x-1", null);
+        TChar t = new TChar('.', null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

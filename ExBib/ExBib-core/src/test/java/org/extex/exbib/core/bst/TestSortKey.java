@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
@@ -81,7 +81,7 @@ public class TestSortKey {
     @Test
     public void testNoSortKey() throws Exception {
 
-        new TFieldString("sort.key$", null).execute(p, e, null);
+        new TLocalString("sort.key$", null).execute(p, e, null);
         assertEquals("", p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }
@@ -108,7 +108,7 @@ public class TestSortKey {
     public void testSortKey11() throws Exception {
 
         e.setSortKey("xyz");
-        new TFieldString("sort.key$", null).execute(p, e, null);
+        new TLocalString("sort.key$", null).execute(p, e, null);
         assertEquals("xyz", p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }

@@ -23,31 +23,30 @@ import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
+import org.extex.exbib.core.bst.token.AbstractToken;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.db.VString;
+import org.extex.exbib.core.db.VNumber;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This class represents a string valued field local to an entry. This class is
- * not related to externally stored values but used internally only.
+ * This class represents an integer valued field local to an entry. This class
+ * is not related to externally stored values but used internally only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TFieldString extends TLiteral {
+public class TLocalInteger extends AbstractToken {
 
     /**
      * Create a new object.
      * 
-     * @param value the value
      * @param locator the locator
-     * 
-     * @throws ExBibException in case of an error
+     * @param value the name of the field
      */
-    public TFieldString(String value, Locator locator) throws ExBibException {
+    public TLocalInteger(String value, Locator locator) {
 
         super(value, locator);
     }
@@ -55,10 +54,10 @@ public class TFieldString extends TLiteral {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute(
+     *      org.extex.exbib.core.bst.BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -66,22 +65,21 @@ public class TFieldString extends TLiteral {
             throw new ExBibMissingEntryException(null, locator);
         }
 
-        VString val = (VString) entry.getLocal(getValue());
-        processor.push(val == null //
-                ? TokenFactory.T_EMPTY
-                : new TString(val.getContent(), locator));
+        VNumber val = (VNumber) entry.getLocal(getValue());
+
+        processor.push(val == null ? TokenFactory.T_ZERO : new TInteger(val
+            .getContent(), locator));
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
-        visitor.visitFieldString(this);
+        visitor.visitLocalInteger(this);
     }
 
 }

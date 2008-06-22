@@ -85,7 +85,6 @@ public class TextLength extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

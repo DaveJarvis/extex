@@ -61,10 +61,9 @@ public class BstExecute extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.AbstractCommand#execute(
-     *      BstProcessor, org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.command.Command#execute( BstProcessor,
+     *      org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Locator locator)
             throws ExBibException {
 
@@ -85,10 +84,9 @@ public class BstExecute extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.AbstractCommand#visit(
+     * @see org.extex.exbib.core.bst.command.Command#visit(
      *      org.extex.exbib.core.bst.command.CommandVisitor)
      */
-    @Override
     public void visit(CommandVisitor visitor) throws IOException {
 
         visitor.visitExecute(this);

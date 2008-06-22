@@ -20,17 +20,12 @@
 package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.exception.ExBibNoNameException;
 import org.extex.exbib.core.bst.token.AbstractToken;
-import org.extex.exbib.core.bst.token.Name;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibImpossibleException;
-import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -48,14 +43,6 @@ import org.extex.exbib.core.io.Locator;
  * @version $Revision: 1.1 $
  */
 public class TString extends AbstractToken {
-
-    /**
-     * The field <tt>names</tt> contains the list of names which might act as
-     * a cache.
-     */
-    private List<Name> names = null;
-
-    // TODO test whether caching of names is useful
 
     /**
      * Creates a new object.
@@ -85,38 +72,15 @@ public class TString extends AbstractToken {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.Code#execute(
+     *      org.extex.exbib.core.bst.BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         processor.step(toString());
         processor.push(this);
-    }
-
-    /**
-     * Getter for the name list associated with this object. The name list can
-     * be used to store the result of parsing the value to names. Thus it works
-     * as cache.
-     * 
-     * @return the names which is never <code>null</code>
-     * 
-     * @throws ExBibImpossibleException in case of an error
-     * @throws ExBibNoNameException in case of an error
-     * @throws ExBibSyntaxException in case of an error
-     */
-    public List<Name> getNames()
-            throws ExBibSyntaxException,
-                ExBibNoNameException,
-                ExBibImpossibleException {
-
-        if (names == null) {
-            names = Name.parse(getValue(), getLocator());
-        }
-
-        return names;
     }
 
     /**
@@ -143,24 +107,11 @@ public class TString extends AbstractToken {
     }
 
     /**
-     * Setter for the names property.
-     * 
-     * @param list the new value
-     * 
-     * @see #getNames()
-     */
-    public void setNames(List<Name> list) {
-
-        names = list;
-    }
-
-    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitString(this);

@@ -19,11 +19,7 @@
 
 package org.extex.exbib.core.bst.command;
 
-import java.io.IOException;
-
-import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.token.Token;
-import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -61,15 +57,6 @@ public abstract class AbstractCommand implements Command {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#execute(
-     *      BstProcessor, org.extex.exbib.core.io.Locator)
-     */
-    public abstract void execute(BstProcessor processor, Locator l)
-            throws ExBibException;
-
-    /**
      * Getter for the Locator
      * 
      * @return the locator
@@ -88,13 +75,5 @@ public abstract class AbstractCommand implements Command {
 
         return value;
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(
-     *      org.extex.exbib.core.bst.command.CommandVisitor)
-     */
-    public abstract void visit(CommandVisitor visitor) throws IOException;
 
 }

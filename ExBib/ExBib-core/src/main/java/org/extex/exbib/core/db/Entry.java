@@ -120,7 +120,7 @@ public class Entry {
                 Entry entry = db.getEntry(crossKey);
 
                 if (entry == null) {
-                    throw new ExBibMissingEntryException(key, getLocator());
+                    throw new ExBibMissingEntryException(crossKey, getLocator());
                 }
 
                 val = entry.get(key);

@@ -29,7 +29,11 @@ import org.junit.runners.Suite;
  * @version $Revision: 1.1 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestTInteger.class, //
+@Suite.SuiteClasses({TestTBlock.class, //
+        TestTChar.class, //
+        TestTField.class, //
+        TestTInteger.class, //
+        TestTLiteral.class, //
         TestTQLiteral.class, //
         TestTString.class //
 })

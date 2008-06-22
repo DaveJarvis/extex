@@ -20,31 +20,32 @@
 package org.extex.exbib.core.token.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
+import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.db.VString;
+import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
+import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * This is a test suite for {@link TLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTString {
+public class TestTLiteral {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -73,80 +74,111 @@ public class TestTString {
     }
 
     /**
-     * <testcase> A TString can be executed and returns itself. </testcase>
+     * <testcase> A Literal can nor have an <code>null</code> name.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError1() throws Exception {
+
+        new TLiteral(null, null);
+    }
+
+    /**
+     * <testcase> A Literal can nor have an empty name. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError2() throws Exception {
+
+        new TLiteral("", null);
+    }
+
+    /**
+     * <testcase> A Literal executes to an exception if the function is
+     * undefined. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibFunctionUndefinedException.class)
+    public void testExecute1() throws Exception {
+
+        TLiteral t = new TLiteral("aaa", null);
+        t.execute(p, null, null);
+    }
+
+    /**
+     * <testcase> A Literal executes to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExecute() throws Exception {
+    public void testExecute2() throws Exception {
 
-        TString t = new TString("987", null);
+        TLiteral t = new TLiteral("abc", null);
         t.execute(p, null, null);
-        assertEquals("987", p.popString(null).getValue());
+
+        Token x = p.pop(null);
         assertNull(p.popUnchecked());
+        assertTrue(x instanceof TInteger);
+        assertEquals("1", x.getValue());
     }
 
     /**
-     * <testcase> getValue() of a null value returns the empty string.
+     * <testcase> A Literal for an undefined macro expands to the empty string.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testGetValue1() throws Exception {
+    public void testExpand1() throws Exception {
 
-        TString t = new TString(null, null);
-        assertEquals("", t.getValue());
+        TLiteral t = new TLiteral("aaa", null);
+        String s = t.expand(p);
+
+        assertNull(p.popUnchecked());
+        assertEquals("", s);
     }
 
     /**
-     * <testcase> A TString can be stored in a Hash and retrieved with another
-     * instance. </testcase>
+     * <testcase> A Literal for an defined macro expands to the macro value.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testHash1() throws Exception {
+    public void testExpand2() throws Exception {
 
-        TString t = new TString("abc", null);
-        Map<Token, String> map = new HashMap<Token, String>();
-        map.put(t, "value");
-        String s = map.get(new TString("abc", null));
-        assertNotNull(s);
-        assertEquals("value", s);
+        p.getDB().storeString("def", new Value(new VString("D E F")));
+        TLiteral t = new TLiteral("def", null);
+        String s = t.expand(p);
+
+        assertNull(p.popUnchecked());
+        assertEquals("D E F", s);
     }
 
     /**
-     * <testcase> isNull() can detect a null value. </testcase>
+     * <testcase> toString() works. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testIsNull1() throws Exception {
+    public void testToString() throws Exception {
 
-        assertTrue(new TString(null, null).isNull());
+        assertEquals("abc", new TLiteral("abc", null).toString());
     }
 
     /**
-     * <testcase> isNull() can detect a null value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull2() throws Exception {
-
-        assertFalse(new TString("", null).isNull());
-    }
-
-    /**
-     * <testcase> Test the visiting. </testcase>
+     * <testcase> The token visitor invokes the correct method. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TString t = new TString("x-1", null);
+        TLiteral t = new TLiteral("acd", null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

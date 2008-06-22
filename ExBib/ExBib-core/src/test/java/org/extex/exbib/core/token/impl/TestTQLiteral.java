@@ -25,19 +25,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
+import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.TokenVisitor;
-import org.extex.exbib.core.bst.token.impl.TBlock;
-import org.extex.exbib.core.bst.token.impl.TChar;
-import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TFieldInteger;
-import org.extex.exbib.core.bst.token.impl.TFieldString;
-import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
-import org.extex.exbib.core.bst.token.impl.TString;
-import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -50,17 +42,12 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTQLiteral implements TokenVisitor {
+public class TestTQLiteral {
 
     /**
      * The field <tt>p</tt> contains the processor.
      */
     private BstProcessor p = null;
-
-    /**
-     * The field <tt>visit</tt> contains the visited indicator.
-     */
-    private boolean visit = false;
 
     /**
      * Set-up method.
@@ -81,6 +68,29 @@ public class TestTQLiteral implements TokenVisitor {
     public void tearDown() {
 
         p = null;
+    }
+
+    /**
+     * <testcase> A QLiteral can nor have an <code>null</code> name.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError1() throws Exception {
+
+        new TQLiteral(null, null);
+    }
+
+    /**
+     * <testcase> A QLiteral can nor have an empty name. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError2() throws Exception {
+
+        new TQLiteral("", null);
     }
 
     /**
@@ -116,6 +126,17 @@ public class TestTQLiteral implements TokenVisitor {
     }
 
     /**
+     * <testcase> toString() works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString() throws Exception {
+
+        assertEquals("'abc", new TQLiteral("abc", null).toString());
+    }
+
+    /**
      * <testcase> The token visitor invokes the correct method. </testcase>
      * 
      * @throws Exception in case of an error
@@ -124,119 +145,9 @@ public class TestTQLiteral implements TokenVisitor {
     public void testVisit() throws Exception {
 
         TQLiteral t = new TQLiteral("acd", null);
-        t.visit(this);
-        assertTrue(visit);
-        assertEquals("acd", t.getValue());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.token.impl.TBlock)
-     */
-    public void visitBlock(TBlock block) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.token.impl.TChar)
-     */
-    public void visitChar(TChar c) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.token.impl.TField)
-     */
-    public void visitField(TField field) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldInteger(
-     *      org.extex.exbib.core.bst.token.impl.TFieldInteger)
-     */
-    public void visitFieldInteger(TFieldInteger integer) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitFieldString(
-     *      org.extex.exbib.core.bst.token.impl.TFieldString)
-     */
-    public void visitFieldString(TFieldString string) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.token.impl.TInteger)
-     */
-    public void visitInteger(TInteger integer) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TLiteral)
-     */
-    public void visitLiteral(TLiteral literal) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TQLiteral)
-     */
-    public void visitQLiteral(TQLiteral qliteral) {
-
-        visit = true;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.token.impl.TString)
-     */
-    public void visitString(TString string) {
-
-        assertTrue("should not be visited", false);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.token.impl.TokenList)
-     */
-    public void visitTokenList(TokenList string) {
-
-        assertTrue("should not be visited", false);
+        RecordingTokenVisitor tv = new RecordingTokenVisitor();
+        t.visit(tv);
+        assertEquals(t, tv.getVisited());
     }
 
 }

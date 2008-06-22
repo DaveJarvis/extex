@@ -83,7 +83,7 @@ public interface Token extends Code {
 
     /**
      * This is the entry point for a {@link TokenVisitor TokenVisitor} to start
-     * visiting
+     * visiting.
      * 
      * @param visitor the visitor
      * 

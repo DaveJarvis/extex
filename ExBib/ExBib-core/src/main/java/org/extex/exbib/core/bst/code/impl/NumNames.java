@@ -23,13 +23,14 @@ import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
-import org.extex.exbib.core.bst.token.Name;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.exbib.core.name.Name;
+import org.extex.exbib.core.name.NameFactory;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function
@@ -39,9 +40,9 @@ import org.extex.exbib.core.io.Locator;
  * of names. It pushes the number of names in the list as integer to the stack.
  * </p>
  * <p>
- * The names are separated by the word \texttt{and}\index{and}. This word has to
- * be preceded and followed by whitespace characters. In addition this word has
- * to occur at brace level 0.
+ * The names are separated by the word <tt>and</tt>. This word has to be
+ * preceded and followed by whitespace characters. In addition this word has to
+ * occur at brace level 0.
  * </p>
  * <img src="doc-files/num.names.png"/>
  * <p>
@@ -95,12 +96,12 @@ public class NumNames extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         TString names = processor.popString(locator);
-        List<Name> namelist = names.getNames();
+        List<Name> namelist =
+                NameFactory.getFactory().getNames(names.getValue(), locator);
         int n = namelist.size();
         processor.push((n == 0 ? TokenFactory.T_ZERO : n == 1
                 ? TokenFactory.T_ONE

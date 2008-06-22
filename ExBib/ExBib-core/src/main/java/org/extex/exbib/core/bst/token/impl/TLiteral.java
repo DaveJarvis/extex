@@ -71,8 +71,11 @@ public class TLiteral extends AbstractToken {
      * @throws ExBibException in case that something goes wrong
      * @throws ExBibFunctionUndefinedException in case that the function named
      *         in this object is not defined
+     * 
+     * @see org.extex.exbib.core.bst.code.Code#execute(
+     *      org.extex.exbib.core.bst.BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
@@ -107,10 +110,9 @@ public class TLiteral extends AbstractToken {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.AbstractToken#visit(
+     * @see org.extex.exbib.core.bst.token.Token#visit(
      *      org.extex.exbib.core.bst.token.TokenVisitor)
      */
-    @Override
     public void visit(TokenVisitor visitor) throws IOException {
 
         visitor.visitLiteral(this);

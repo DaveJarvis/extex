@@ -261,15 +261,25 @@ public class Width extends AbstractCode {
      * This implementation follows quite closely the section 451--453 of the
      * BibTeX sources.
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         String s = processor.popString(locator).getValue();
+        processor.push(new TInteger(execute(s), locator));
+    }
+
+    /**
+     * Compute the width of a string.
+     * 
+     * @param s the input string
+     * 
+     * @return the width in pk units
+     */
+    public int execute(String s) {
+
         int width = 0;
         int length = s.length();
         int level = 0;
@@ -334,7 +344,7 @@ public class Width extends AbstractCode {
             }
         }
 
-        processor.push(new TInteger(width, locator));
+        return width;
     }
 
     /**

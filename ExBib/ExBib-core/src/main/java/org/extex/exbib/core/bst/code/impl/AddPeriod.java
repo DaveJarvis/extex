@@ -122,24 +122,29 @@ public class AddPeriod extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         Token a = processor.pop(locator);
-        String value = a.getValue();
+        processor.push(new TString(execute(a.getValue()), locator));
+    }
+
+    /**
+     * Attach a period if feasible.
+     * 
+     * @param value the value to attach a period to
+     * 
+     * @return the result
+     */
+    public String execute(String value) {
 
         if (!value.equals("") && !omitPattern.matcher(value).matches()) {
-            a = new TString(value + ".", locator);
-        } else if (!(a instanceof TString)) {
-            a = new TString(value, locator);
+            return value + ".";
         }
-
-        processor.push(a);
+        return value;
     }
 
 }

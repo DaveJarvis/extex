@@ -152,22 +152,55 @@ public class ChangeCase extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(
-     *      BstProcessor, org.extex.exbib.core.db.Entry,
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
-    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         String fmt = processor.popString(locator).getValue();
-        TString ts = processor.popString(locator);
-        String s = ts.getValue();
-        StringBuilder sb = new StringBuilder(s);
-        boolean modified = false;
+        TString tvalue = processor.popString(locator);
+        String value = tvalue.getValue();
+        String result;
+        try {
+            result = execute(fmt, value, locator);
+        } catch (IllegalArgumentException e) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer.format(
+                "invalid.spec", fmt), locator);
+        }
+        processor.push(!value.equals(result)
+                ? new TString(result, locator)
+                : tvalue);
+    }
+
+    /**
+     * Perform the case conversion like <tt>change.case$</tt>.
+     * 
+     * @param fmt the format; i.e. one of the following:
+     *        <ul>
+     *        <li>"u" or "u" for upper case</li>
+     *        <li>"l" or "L" for lower case</li>
+     *        <li>"t" or "T" for title case</li>
+     *        </ul>
+     * @param input the initial string
+     * @param locator the locator
+     * 
+     * @return the changed string
+     * 
+     * @throws IllegalArgumentException in case of illegal format
+     */
+    public String execute(String fmt, String input, Locator locator)
+            throws IllegalArgumentException {
+
+        StringBuilder sb = new StringBuilder(input);
         int level = 0;
 
-        switch (fmt.length() == 1 ? fmt.charAt(0) : '\0') {
+        if (fmt == null || fmt.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+
+        switch (fmt.charAt(0)) {
             case 't':
             case 'T':
                 boolean sc = true;
@@ -199,7 +232,6 @@ public class ChangeCase extends AbstractCode {
 
                         if (lc != c) {
                             sb.setCharAt(i, lc);
-                            modified = true;
                         }
                     }
                 }
@@ -218,7 +250,6 @@ public class ChangeCase extends AbstractCode {
 
                         if (lc != c) {
                             sb.setCharAt(i, lc);
-                            modified = true;
                         }
                     }
                 }
@@ -237,18 +268,15 @@ public class ChangeCase extends AbstractCode {
 
                         if (lc != c) {
                             sb.setCharAt(i, lc);
-                            modified = true;
                         }
                     }
                 }
                 break;
             default:
-                Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-                throw new ExBibIllegalValueException(localizer.format(
-                    "invalid.spec", fmt), locator);
+                throw new IllegalArgumentException();
         }
 
-        processor.push(modified ? new TString(sb.toString(), locator) : ts);
+        return sb.toString();
     }
 
 }

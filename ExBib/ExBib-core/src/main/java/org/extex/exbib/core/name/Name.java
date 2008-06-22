@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.core.bst.token;
+package org.extex.exbib.core.name;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,7 +141,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * 
  * <pre>
- *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>last</i>&gt; &lt;<i>von</i>&gt;* <tt>,</tt> &lt;<i>jr</i>&gt; <tt>,</tt> &lt;<i>first</i>&gt;* 
+ *   &lt;<i>name</i>&gt; +&equiv; &lt;<i>last</i>&gt;* &lt;<i
+ *   >von</i>&gt;* <tt>,</tt> &lt;<i>jr</i>&gt;* <tt>,</tt> &lt;<i>first</i>&gt;* 
  * </pre>
  * 
  * <p>
@@ -215,7 +216,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -234,7 +235,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -253,7 +254,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -272,7 +273,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
@@ -291,7 +292,7 @@ public class Name {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.bst.token.Name.Type#store(java.lang.String,
+             * @see org.extex.exbib.core.name.Name.Type#store(java.lang.String,
              *      java.util.List, java.util.List, java.util.List,
              *      java.util.List)
              */
