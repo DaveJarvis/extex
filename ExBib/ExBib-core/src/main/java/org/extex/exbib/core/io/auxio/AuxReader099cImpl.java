@@ -46,13 +46,13 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
-    private static final Pattern PATTERN =
-            Pattern.compile("^\\\\([@a-z]+)\\{([^{}]*)\\}");
+    protected static final Pattern PATTERN =
+            Pattern.compile("^\\\\([@cb]+)\\{([^{}]*)\\}");
 
     /**
      * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
      */
-    private static final String DEFAULT_TYPE = "bbl";
+    protected static final String DEFAULT_TYPE = "bbl";
 
     /**
      * The field <tt>handlerMap</tt> contains the macro handlers for the aux
@@ -151,6 +151,28 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     }
 
     /**
+     * Get a handler for a given key.
+     * 
+     * @param key the key
+     * 
+     * @return the handler or <code>null</code>
+     */
+    protected AuxHandler getHandler(String key) {
+
+        return handlerMap.get(key);
+    }
+
+    /**
+     * Getter for observer.
+     * 
+     * @return the observer
+     */
+    protected ResourceObserver getObserver() {
+
+        return observer;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.auxio.AuxReader#load(
@@ -217,6 +239,16 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     public AuxHandler register(String name, AuxHandler handler) {
 
         return handlerMap.put(name, handler);
+    }
+
+    /**
+     * Setter for encoding.
+     * 
+     * @param encoding the encoding to set
+     */
+    protected void setEncoding(String encoding) {
+
+        this.encoding = encoding;
     }
 
 }

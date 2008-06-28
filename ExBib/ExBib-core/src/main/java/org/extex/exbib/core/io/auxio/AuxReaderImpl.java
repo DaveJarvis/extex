@@ -21,18 +21,12 @@ package org.extex.exbib.core.io.auxio;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.extex.exbib.core.ProcessorContainer;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.io.AbstractFileReader;
-import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
  * This is the core of the aux file reading. In addition to the one performed by
@@ -42,13 +36,13 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
+public class AuxReaderImpl extends AuxReader099cImpl {
 
     /**
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
-    private static final Pattern PATTERN =
+    protected static final Pattern PATTERN =
             Pattern.compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
@@ -59,28 +53,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
             Pattern.compile("^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}");
 
     /**
-     * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
-     */
-    private static final String DEFAULT_TYPE = "bbl";
-
-    /**
-     * The field <tt>handlerMap</tt> contains the macro handlers for the aux
-     * file.
-     */
-    private Map<String, AuxHandler> handlerMap;
-
-    /**
-     * The field <tt>observer</tt> contains the observer.
-     */
-    private ResourceObserver observer = null;
-
-    /**
-     * The field <tt>encoding</tt> contains the encoding for transporting it
-     * to the registered handler.
-     */
-    private String encoding;
-
-    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException in case of a configuration error
@@ -88,64 +60,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
     public AuxReaderImpl() throws ConfigurationException {
 
         super();
-        handlerMap = new HashMap<String, AuxHandler>();
-        register("citation", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-                try {
-                    bibliographies.findProcessor(type).addCitation(citations);
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
-        register("bibstyle", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                try {
-                    bibliographies.findProcessor(type).addBibliographyStyle(
-                        arg.split(","));
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
-        register("bibdata", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                try {
-                    bibliographies.findProcessor(type).addBibliographyDatabase(
-                        arg.split(","));
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
         register("biboption", new AuxHandler() {
 
             public void invoke(String arg, ProcessorContainer processors,
@@ -154,17 +68,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                         ExBibException {
 
                 processors.setOption(type, arg);
-            }
-        });
-        register("@include", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        IOException,
-                        ExBibException {
-
-                engine.load(bibliographies, arg, encoding);
             }
         });
     }
@@ -176,16 +79,18 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
      *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public void load(ProcessorContainer bibliographies, String resource,
             String encoding)
             throws ConfigurationException,
                 IOException,
                 ExBibException {
 
-        this.encoding = encoding;
+        setEncoding(encoding);
         LineNumberReader reader = open(resource, "aux", encoding);
         String name = getFilename();
 
+        ResourceObserver observer = getObserver();
         if (observer != null) {
             observer.observeOpen(resource, "aux", name);
         }
@@ -196,7 +101,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                 Matcher m = PATTERN.matcher(line);
 
                 if (m.matches()) {
-                    AuxHandler handler = handlerMap.get(m.group(1));
+                    AuxHandler handler = getHandler(m.group(1));
                     if (handler != null) {
                         handler.invoke(m.group(2), bibliographies,
                             DEFAULT_TYPE, this);
@@ -206,7 +111,7 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
                 m = OPT_PATTERN.matcher(line);
 
                 if (m.matches()) {
-                    AuxHandler handler = handlerMap.get(m.group(1));
+                    AuxHandler handler = getHandler(m.group(1));
                     if (handler != null) {
                         handler.invoke(m.group(3), bibliographies, m.group(2),
                             this);
@@ -221,32 +126,6 @@ public class AuxReaderImpl extends AbstractFileReader implements AuxReader {
             reader.close();
             close();
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#register(
-     *      org.extex.exbib.core.io.auxio.ResourceObserver)
-     */
-    public ResourceObserver register(ResourceObserver observer) {
-
-        ResourceObserver obs = this.observer;
-        this.observer = observer;
-        return obs;
-    }
-
-    /**
-     * Register a handler for a macro in the aux file.
-     * 
-     * @param name the name
-     * @param handler the handler
-     * 
-     * @return the old handler or <code>null</code> for none
-     */
-    public AuxHandler register(String name, AuxHandler handler) {
-
-        return handlerMap.put(name, handler);
     }
 
 }
