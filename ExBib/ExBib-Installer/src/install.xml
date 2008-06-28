@@ -38,12 +38,18 @@
     <res id="packsLang.xml_eng" src="src/en/packs.en" />
     <res id="userInputLang.xml_deu" src="src/de/packs.de" />
     <res id="userInputLang.xml_eng" src="src/en/packs.en" />
+
+    <res id="ImgPacksPanel.img.1" src="src/images/ExBib-core-side.png" />
+    <res id="ImgPacksPanel.img.2" src="src/images/ExBib-docs-side.png" />
+    <res id="ImgPacksPanel.img.3" src="src/images/ExBib-side.png" />
+    <res id="ImgPacksPanel.img.4" src="src/images/ExBib-Ant-side.png" />
+    <res id="ImgPacksPanel.img.5" src="src/images/ExBib-Groovy-side.png" />
   </resources>
 
   <panels>
     <panel classname="HTMLInfoPanel"/>
     <panel classname="LicencePanel"/>
-    <panel classname="PacksPanel"/>
+    <panel classname="ImgPacksPanel"/>
     <panel classname="TargetPanel"/> 
     <panel classname="InstallPanel"/>
     <panel classname="FinishPanel"/>
@@ -51,7 +57,9 @@
 
   <packs>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-    <pack name="ExBib Core" id="exbib-core" required="yes">
+    <pack name="ExBib Core"
+          id="exbib-core"
+          required="yes">
       <description/>
       <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
 
@@ -77,28 +85,38 @@
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-    <pack name="ExBib docs" id="exbib-docs" required="no">
+    <pack name="ExBib docs"
+          id="exbib-docs"
+          required="no">
       <description/>
       <file src="../ExBib-Doc/target/exbib-manual.pdf"
             targetdir="$INSTALL_PATH/doc"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-    <pack name="ExBib styles" id="exbib-styles" required="no">
+    <pack name="ExBib styles"
+          id="exbib-styles"
+          required="no">
       <description/>
       <file src="../ExBib-texmf/target/ExBib-styles-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-    <pack name="ExBib Ant" id="exbib-ant" required="no">
+    <pack name="ExBib Ant"
+          id="exbib-ant"
+          required="no"
+          preselected="no">
       <description/>
       <file src="../ExBib-ant/target/ExBib-ant-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-    <pack name="ExBib Groovy" id="exbib-groovy" required="no">
+    <pack name="ExBib Groovy"
+          id="exbib-groovy"
+          required="no"
+          preselected="no">
       <description/>
-      <file src="../ExBib-groovy/target/ExBib-groovy-0.1-SNAPSHOT.jar"
-            targetdir="$INSTALL_PATH/lib"/>
+      <file    src="../ExBib-groovy/target/ExBib-groovy-0.1-SNAPSHOT.jar"
+               targetdir="$INSTALL_PATH/lib"/>
       <fileset dir="../ExBib-groovy/target/dependency"
                targetdir="$INSTALL_PATH/lib"/>
     </pack>
