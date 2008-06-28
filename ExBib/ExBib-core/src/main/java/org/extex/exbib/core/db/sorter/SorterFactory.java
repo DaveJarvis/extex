@@ -48,7 +48,7 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
     /**
      * The field <tt>properties</tt> contains the properties.
      */
-    private Properties properties;
+    private Properties properties = null;
 
     /**
      * Creates a new object.
