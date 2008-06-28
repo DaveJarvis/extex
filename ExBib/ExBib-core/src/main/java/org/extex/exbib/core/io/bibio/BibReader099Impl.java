@@ -358,10 +358,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         int depth = 1;
 
         for (;;) {
-            if (ptr >= buffer.length()) {
-                if (read() == null) {
-                    throw new ExBibEofInBlockException(getLocator());
-                }
+            if (ptr >= buffer.length() && read() == null) {
+                throw new ExBibEofInBlockException(getLocator());
             }
 
             char c = buffer.charAt(ptr++);
@@ -451,10 +449,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 int depth = 0;
 
                 do {
-                    if (i >= buffer.length()) {
-                        if (read() == null) {
-                            throw new ExBibEofInStringException(getLocator());
-                        }
+                    if (i >= buffer.length() && read() == null) {
+                        throw new ExBibEofInStringException(getLocator());
                     }
 
                     c = buffer.charAt(i++);

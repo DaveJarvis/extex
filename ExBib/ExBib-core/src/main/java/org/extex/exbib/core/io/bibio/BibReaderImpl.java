@@ -36,10 +36,11 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a reader for BibTeX files. It extends the reader for the BibTeX 0.99c
- * format. The constructions supported roughly approximate the features
- * announced for BibTeX 1.0 (which has net been published at the time of this
- * writing &ndash; and probably never will).
+ * This is a reader for B<small>IB</small>T<sub>E</sub>X files. It extends
+ * the reader for the B<small>IB</small>T<sub>E</sub>X 0.99c format. The
+ * constructions supported roughly approximate the features announced for B<small>IB</small>T<sub>E</sub>X
+ * 1.0 (which has net been published at the time of this writing &ndash; and
+ * probably never will).
  * <p>
  * The following constructs are supported:
  * </p>
@@ -97,7 +98,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
-public class BibReaderImpl extends BibReader099Impl implements BibReader {
+public class BibReaderImpl extends BibReader099Impl {
 
     /**
      * The field <tt>filenamePattern</tt> contains the pattern for file names.

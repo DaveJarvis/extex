@@ -19,6 +19,7 @@
 
 package org.extex.exbib.core.db.sorter;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
@@ -35,7 +36,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LocaleSorter implements Comparator<Entry>, Sorter {
+public class LocaleSorter implements Comparator<Entry>, Sorter, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>collator</tt> contains the collator.

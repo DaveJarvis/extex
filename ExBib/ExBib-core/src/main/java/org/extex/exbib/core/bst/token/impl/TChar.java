@@ -22,7 +22,6 @@ package org.extex.exbib.core.bst.token.impl;
 import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.AbstractToken;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.db.Entry;
@@ -47,8 +46,6 @@ public class TChar extends AbstractToken {
      * 
      * @throws ExBibException in case that the constructor of AbstractToken
      *         throws it
-     * @throws ExBibIllegalValueException in case that the value is not a single
-     *         character
      */
     public TChar(char value, Locator locator) throws ExBibException {
 

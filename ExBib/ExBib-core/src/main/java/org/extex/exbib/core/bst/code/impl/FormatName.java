@@ -19,6 +19,7 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,7 +88,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class FormatName extends AbstractCode {
+public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * The class Format is a container for a list of FormatItems.
@@ -843,6 +844,12 @@ public class FormatName extends AbstractCode {
             return fmtFull(buffer, part, getMid(), " ", getPre(), getPost(), n);
         }
     }
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>formatCache</tt> contains the format cache. To avoid the

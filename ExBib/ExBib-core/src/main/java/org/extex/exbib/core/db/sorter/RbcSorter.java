@@ -19,6 +19,7 @@
 
 package org.extex.exbib.core.db.sorter;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
@@ -39,12 +40,18 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class RbcSorter implements Comparator<Entry>, Sorter {
+public class RbcSorter implements Comparator<Entry>, Sorter, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
 
     /**
      * The field <tt>collator</tt> contains the collator.
      */
-    private Collator collator;
+    private Collator collator = null;
 
     /**
      * {@inheritDoc}

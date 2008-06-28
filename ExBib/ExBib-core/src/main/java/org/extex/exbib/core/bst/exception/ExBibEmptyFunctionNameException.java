@@ -43,7 +43,7 @@ public class ExBibEmptyFunctionNameException extends ExBibIllegalValueException 
      */
     public ExBibEmptyFunctionNameException(Locator locator) {
 
-        super("", null);
+        super("", locator);
     }
 
 }

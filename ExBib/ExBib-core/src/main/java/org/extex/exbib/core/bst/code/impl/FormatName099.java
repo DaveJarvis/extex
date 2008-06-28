@@ -76,6 +76,12 @@ import org.extex.exbib.core.io.Locator;
 public class FormatName099 extends FormatName {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
+
+    /**
      * Create a new FormatName099 object.
      */
     public FormatName099() {
