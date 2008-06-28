@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -247,7 +248,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 throw new ExBibMissingEntryTypeException(null, getLocator());
             }
 
-            String s = tag.toLowerCase();
+            String s = tag.toLowerCase(Locale.ENGLISH);
 
             if (s.equals("comment")) {
                 handleComment(comment, tag);

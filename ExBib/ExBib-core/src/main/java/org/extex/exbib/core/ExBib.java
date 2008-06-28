@@ -639,7 +639,7 @@ public class ExBib {
                 } else if ("none".equals(s)) {
                     debug.clear();
                 } else {
-                    setDebug(ExBibDebug.valueOf(s.toUpperCase()));
+                    setDebug(ExBibDebug.valueOf(s.toUpperCase(Locale.ENGLISH)));
                 }
             } catch (IllegalArgumentException e) {
                 return logBanner("debug.mode.unknown", s);

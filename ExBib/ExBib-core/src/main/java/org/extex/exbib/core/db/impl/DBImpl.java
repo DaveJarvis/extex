@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
@@ -166,7 +167,7 @@ public class DBImpl implements DB, Observable {
      */
     public Entry getEntry(String key) {
 
-        return entryHash.get(key.toLowerCase());
+        return entryHash.get(key.toLowerCase(Locale.ENGLISH));
     }
 
     /**
@@ -188,7 +189,7 @@ public class DBImpl implements DB, Observable {
      */
     public Value getMacro(String name) {
 
-        return strings.get(name.toLowerCase());
+        return strings.get(name.toLowerCase(Locale.ENGLISH));
     }
 
     /**
@@ -275,7 +276,7 @@ public class DBImpl implements DB, Observable {
         do {
             List<String> open = new ArrayList<String>();
             for (String key : stack) {
-                key = key.toLowerCase();
+                key = key.toLowerCase(Locale.ENGLISH);
                 Entry entry = getEntry(key);
 
                 if (entry == null) {
@@ -284,7 +285,8 @@ public class DBImpl implements DB, Observable {
                     newEntries.add(entry);
                     Value xref = entry.get("crossref");
                     if (xref != null) {
-                        String crossref = xref.expand(this).toLowerCase();
+                        String crossref =
+                                xref.expand(this).toLowerCase(Locale.ENGLISH);
                         List<Entry> xr = cite.get(crossref);
                         if (xr == null) {
                             xr = new ArrayList<Entry>();
@@ -334,7 +336,7 @@ public class DBImpl implements DB, Observable {
         entry.setKey(key);
         entry.setType(type);
         entries.add(entry);
-        entryHash.put(key.toLowerCase(), entry);
+        entryHash.put(key.toLowerCase(Locale.ENGLISH), entry);
         makeEntryHook.update(this, entry);
 
         return entry;
@@ -475,7 +477,7 @@ public class DBImpl implements DB, Observable {
      */
     public void storeString(String name, Value value) {
 
-        strings.put(name.toLowerCase(), value);
+        strings.put(name.toLowerCase(Locale.ENGLISH), value);
         makeStringHook.update(this, name);
     }
 

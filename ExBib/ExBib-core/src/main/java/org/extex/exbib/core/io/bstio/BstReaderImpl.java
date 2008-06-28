@@ -22,6 +22,7 @@ package org.extex.exbib.core.io.bstio;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -397,7 +398,7 @@ public class BstReaderImpl extends AbstractFileReader
      */
     public void addInstruction(String name, Instruction instruction) {
 
-        instructionMap.put(name.toLowerCase(), instruction);
+        instructionMap.put(name.toLowerCase(Locale.ENGLISH), instruction);
     }
 
     /**
@@ -665,7 +666,7 @@ public class BstReaderImpl extends AbstractFileReader
 
                 return new TInteger(val, getLocator());
             } else if ((matcher = LITERAL_PATTERN.matcher(buffer)).lookingAt()) {
-                String val = matcher.group(1).toLowerCase();
+                String val = matcher.group(1).toLowerCase(Locale.ENGLISH);
                 buffer.delete(0, matcher.end());
 
                 return new TLiteral(val, getLocator());
@@ -943,7 +944,7 @@ public class BstReaderImpl extends AbstractFileReader
             return false;
         }
 
-        String name = token.getValue().toLowerCase();
+        String name = token.getValue().toLowerCase(Locale.ENGLISH);
         Instruction instruction = instructionMap.get(name);
 
         if (instruction != null) {

@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -167,7 +168,7 @@ public class BibliographyCore implements Bibliography, Observable {
     public void addCitation(String... sa) {
 
         for (int i = 0; i < sa.length; i++) {
-            citations.put(sa[i].toLowerCase(), sa[i]);
+            citations.put(sa[i].toLowerCase(Locale.ENGLISH), sa[i]);
         }
     }
 
@@ -247,7 +248,7 @@ public class BibliographyCore implements Bibliography, Observable {
      */
     public String getCite(String key) {
 
-        return citations.get(key.toLowerCase());
+        return citations.get(key.toLowerCase(Locale.ENGLISH));
     }
 
     /**

@@ -20,6 +20,7 @@
 package org.extex.exbib.core.io.bibio.options;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import org.extex.exbib.core.io.Writer;
 
@@ -62,7 +63,7 @@ public enum Cased {
         @Override
         public void write(Writer writer, String s) throws IOException {
 
-            writer.print(s.toLowerCase());
+            writer.print(s.toLowerCase(Locale.ENGLISH));
         }
     },
     /**

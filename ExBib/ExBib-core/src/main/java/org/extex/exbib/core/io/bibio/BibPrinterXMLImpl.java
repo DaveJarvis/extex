@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.bibio;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -204,7 +205,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
     public void visitMacro(VMacro value, DB db) throws IOException {
 
         writer.print("<macro name=\"", encodeXMLarg(value.getContent())
-            .toLowerCase(), "\"/>");
+            .toLowerCase(Locale.ENGLISH), "\"/>");
     }
 
     /**

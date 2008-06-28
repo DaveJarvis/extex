@@ -20,6 +20,7 @@
 package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
@@ -67,7 +68,7 @@ public class TField extends AbstractToken {
 
         // TODO: eliminate brain-dead compatibility code
         if (field.equals("crossref") && result != null) {
-            result = result.toLowerCase();
+            result = result.toLowerCase(Locale.ENGLISH);
         }
 
         processor.push(new TString(result, locator));

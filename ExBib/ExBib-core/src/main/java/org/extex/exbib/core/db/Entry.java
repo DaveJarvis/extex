@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
@@ -326,7 +327,7 @@ public class Entry {
      */
     public void setType(String t) {
 
-        type = t.toLowerCase();
+        type = t.toLowerCase(Locale.ENGLISH);
     }
 
     /**
