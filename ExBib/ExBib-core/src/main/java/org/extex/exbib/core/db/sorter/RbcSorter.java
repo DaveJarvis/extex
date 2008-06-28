@@ -51,7 +51,7 @@ public class RbcSorter implements Comparator<Entry>, Sorter, Serializable {
     /**
      * The field <tt>collator</tt> contains the collator.
      */
-    private Collator collator = null;
+    private transient Collator collator = null;
 
     /**
      * {@inheritDoc}
