@@ -46,7 +46,7 @@ public enum Cased {
         @Override
         public void write(Writer writer, String s) throws IOException {
 
-            writer.print(s.toUpperCase());
+            writer.print(s.toUpperCase(Locale.ENGLISH));
         }
     },
     /**
