@@ -57,14 +57,14 @@
                 <mkdir dir="target"/>
                 <echo message="Running IzPack" />
                 <taskdef name="izpack"
-                  classpath="${basedir}/src/izPack-install-3.11.0/lib/compiler.jar"
+                  classpath="${basedir}/src/izPack-install-4.0.0/lib/compiler.jar"
                   classname="com.izforge.izpack.ant.IzPackTask" />
 
                 <izpack input="${basedir}/src/install.xml"
                   output="${basedir}/target/ExBib-setup.jar"
                   installerType="standard"
                   basedir="${basedir}"
-                  izPackDir="${basedir}/src/izPack-install-3.11.0/" />
+                  izPackDir="${basedir}/src/izPack-install-4.0.0/" />
               </tasks>
             </configuration>
             <goals>
