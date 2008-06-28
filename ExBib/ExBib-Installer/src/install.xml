@@ -38,18 +38,12 @@
     <res id="packsLang.xml_eng" src="src/en/packs.en" />
     <res id="userInputLang.xml_deu" src="src/de/packs.de" />
     <res id="userInputLang.xml_eng" src="src/en/packs.en" />
-
-    <res id="ImgPacksPanel.img.1" src="src/images/ExBib-core-side.png" />
-    <res id="ImgPacksPanel.img.2" src="src/images/ExBib-docs-side.png" />
-    <res id="ImgPacksPanel.img.3" src="src/images/ExBib-side.png" />
-    <res id="ImgPacksPanel.img.4" src="src/images/ExBib-Ant-side.png" />
-    <res id="ImgPacksPanel.img.5" src="src/images/ExBib-Groovy-side.png" />
   </resources>
 
   <panels>
     <panel classname="HTMLInfoPanel"/>
     <panel classname="LicencePanel"/>
-    <panel classname="ImgPacksPanel"/>
+    <panel classname="PacksPanel"/>
     <panel classname="TargetPanel"/> 
     <panel classname="InstallPanel"/>
     <panel classname="FinishPanel"/>
