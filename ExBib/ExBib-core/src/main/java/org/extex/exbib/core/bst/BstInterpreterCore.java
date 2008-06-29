@@ -337,7 +337,7 @@ public class BstInterpreterCore extends BibliographyCore
      * 
      * @return the iterator
      */
-    public Iterator<Command> commandsIterator() {
+    public Iterator<Command> iterator() {
 
         return commands.iterator();
     }

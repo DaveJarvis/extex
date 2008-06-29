@@ -19,7 +19,6 @@
 
 package org.extex.exbib.core.bst;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.Processor;
@@ -48,7 +47,7 @@ import org.extex.exbib.core.util.Observer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public interface BstProcessor extends Processor {
+public interface BstProcessor extends Processor, Iterable<Command> {
 
     /**
      * Add a command to the list of commands to execute. The commands constitute
@@ -92,13 +91,6 @@ public interface BstProcessor extends Processor {
     void changeFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionUndefinedException;
-
-    /**
-     * Getter for an Iterator on the commands.
-     * 
-     * @return the iterator on commands
-     */
-    Iterator<Command> commandsIterator();
 
     /**
      * Getter for local integers. The given arguments are added to the values
