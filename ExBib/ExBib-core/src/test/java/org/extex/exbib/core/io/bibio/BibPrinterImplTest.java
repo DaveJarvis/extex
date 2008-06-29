@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.io.StringBufferWriter;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -43,9 +42,9 @@ public class BibPrinterImplTest {
                     + "# \"\\newcommand{\\singleletter}[1]{#1} \" "
                     + "# \"\\newcommand{\\switchargs}[2]{#2#1} \"}\n"
                     + "\n"
-                    + "@String{stoc-key = \"OX{\\singleletter{stoc}}\"}\n"
                     + "@String{acm = \"The OX Association for Computing Machinery\"}\n"
                     + "@String{stoc = \" Symposium on the Theory of Computing\"}\n"
+                    + "@String{stoc-key = \"OX{\\singleletter{stoc}}\"}\n"
                     + "\n"
                     + "@article{ article-minimal,\n"
                     + "\tauthor = {L[eslie] A. Aamport},\n"
@@ -397,12 +396,9 @@ public class BibPrinterImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
-    // problems in maven
     public final void testPrint1() throws Exception {
 
         DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
-
         StringBuffer buffer = new StringBuffer();
         new BibPrinterImpl(new StringBufferWriter(buffer)).print(db);
 

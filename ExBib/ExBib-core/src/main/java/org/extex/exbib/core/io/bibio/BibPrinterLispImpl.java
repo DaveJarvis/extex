@@ -20,7 +20,8 @@
 package org.extex.exbib.core.io.bibio;
 
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import org.extex.exbib.core.db.DB;
@@ -122,7 +123,10 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
             writer.print(")\n\n");
         }
 
-        for (String name : db.getMacroNames()) {
+        List<String> macroNames = db.getMacroNames();
+        Collections.sort(macroNames);
+
+        for (String name : macroNames) {
             writer.print("  (string '", encodeSymbol(name), " ");
             db.getMacro(name).visit(this, db);
             writer.print(")\n");
@@ -197,17 +201,16 @@ public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
      */
     public void visitValue(Value value, DB db) throws IOException {
 
-        Iterator<ValueItem> iterator = value.iterator();
         boolean first = true;
 
-        while (iterator.hasNext()) {
+        for (ValueItem item : value) {
             if (first) {
                 first = false;
             } else {
                 writer.print(" ");
             }
-
-            iterator.next().visit(this, db);
+            item.visit(this, db);
         }
     }
+
 }

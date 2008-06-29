@@ -23,7 +23,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.io.StringBufferWriter;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -399,12 +398,9 @@ public class BibPrinterXmlImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
-    // problems in maven
     public final void testPrint1() throws Exception {
 
         DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
-
         StringBuffer buffer = new StringBuffer();
         new BibPrinterXMLImpl(new StringBufferWriter(buffer)).print(db);
 
