@@ -72,7 +72,7 @@ import java.util.List;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class Value {
+public class Value implements Iterable<ValueItem> {
 
     /**
      * The field <tt>value</tt> contains the list of items stored in the
@@ -106,10 +106,8 @@ public class Value {
      */
     public void add(Value item) {
 
-        Iterator<ValueItem> iterator = item.iterator();
-
-        while (iterator.hasNext()) {
-            value.add(iterator.next());
+        for (ValueItem v : item) {
+            value.add(v);
         }
     }
 
@@ -170,14 +168,12 @@ public class Value {
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
-        Iterator<ValueItem> iterator = value.iterator();
 
-        while (iterator.hasNext()) {
+        for (ValueItem item : this) {
             if (sb.length() > 0) {
                 sb.append('#');
             }
-
-            sb.append(iterator.next().toString());
+            sb.append(item.toString());
         }
 
         return sb.toString();
@@ -195,4 +191,5 @@ public class Value {
 
         visitor.visitValue(this, db);
     }
+
 }
