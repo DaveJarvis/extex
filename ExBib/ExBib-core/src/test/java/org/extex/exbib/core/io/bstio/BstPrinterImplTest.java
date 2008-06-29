@@ -48,7 +48,7 @@ public class BstPrinterImplTest {
     /**
      * The field <tt>RESULT_1</tt> contains the result for test case 1.
      */
-    private final String RESULT_1 =
+    private static final String RESULT_1 =
             "ENTRY {\n" //
                     + "    address\n" //
                     + "    author\n" //
