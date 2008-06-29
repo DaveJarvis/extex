@@ -47,7 +47,7 @@ public class LocaleSorter implements Comparator<Entry>, Sorter, Serializable {
     /**
      * The field <tt>collator</tt> contains the collator.
      */
-    private Collator collator;
+    private transient Collator collator;
 
     /**
      * The field <tt>loc</tt> contains the name of the locale.
