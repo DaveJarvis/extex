@@ -34,10 +34,8 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.DBFactory;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.db.sorter.SorterFactory;
-import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
-import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
 import org.extex.exbib.core.util.NotObservableException;
@@ -112,7 +110,7 @@ public class ProcessorContainer
     }
 
     /**
-     * The field <tt>obsList</tt> contains the observers.
+     * < The field <tt>obsList</tt> contains the observers.
      */
     private List<NamedObserver> obsList = new ArrayList<NamedObserver>();
 
@@ -225,8 +223,6 @@ public class ProcessorContainer
      *         <code>null</code>
      * 
      * @throws ExBibException in case of an error
-     * @throws ExBibCsfNotFoundException in case the csf could not be found
-     * @throws ExBibSorterNotFoundException in case of an undefined sorter
      * @throws ConfigurationException in case of a configuration error
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a problem with the csf
@@ -267,8 +263,10 @@ public class ProcessorContainer
             if (sorter != null) {
                 db.setSorter(sorter);
             }
-            processor = processorFactory.newInstance(properties.getProperty(ExBib.PROP_PROCESSOR), //
-                db);
+            processor =
+                    processorFactory.newInstance(properties
+                        .getProperty(ExBib.PROP_PROCESSOR), //
+                        db);
             processor.setLogger(logger);
             if (processor instanceof ResourceAware) {
                 ((ResourceAware) processor).setResourceFinder(finder);
