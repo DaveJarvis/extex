@@ -40,24 +40,6 @@ public class ExBibSyntaxException extends ExBibException {
 
     /**
      * Create a new object.
-     */
-    public ExBibSyntaxException() {
-
-        super();
-    }
-
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     */
-    public ExBibSyntaxException(String message) {
-
-        super(message);
-    }
-
-    /**
-     * Create a new object.
      * 
      * @param message the message
      * @param locator the locator
@@ -65,27 +47,6 @@ public class ExBibSyntaxException extends ExBibException {
     public ExBibSyntaxException(String message, Locator locator) {
 
         super(message, locator);
-    }
-
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param cause the chained Throwable
-     */
-    public ExBibSyntaxException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Create a new object.
-     * 
-     * @param cause the chained Throwable
-     */
-    public ExBibSyntaxException(Throwable cause) {
-
-        super(cause);
     }
 
     /**
