@@ -98,7 +98,7 @@ public interface BstProcessor extends Processor {
      * 
      * @return the iterator on commands
      */
-    public Iterator<Command> commandsIterator();
+    Iterator<Command> commandsIterator();
 
     /**
      * Getter for local integers. The given arguments are added to the values

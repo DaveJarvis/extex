@@ -202,7 +202,7 @@ public interface DB extends Configurable {
      * @param sorter the new
      *        {@link org.extex.exbib.core.db.sorter.Sorter Sorter}
      */
-    public void setSorter(Sorter sorter);
+    void setSorter(Sorter sorter);
 
     /**
      * Sort the entries according to the configured sorter.

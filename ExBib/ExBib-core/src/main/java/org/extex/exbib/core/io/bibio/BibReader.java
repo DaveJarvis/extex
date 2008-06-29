@@ -68,7 +68,7 @@ public interface BibReader extends ResourceAware {
      * @throws FileNotFoundException in case that the reader is
      *         <code>null</code>
      */
-    public LineNumberReader open(String name, Reader r)
+    LineNumberReader open(String name, Reader r)
             throws FileNotFoundException,
                 ConfigurationException;
 

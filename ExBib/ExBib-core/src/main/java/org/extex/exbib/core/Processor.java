@@ -165,14 +165,14 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @param db the database to use
      */
-    public void setDB(DB db);
+    void setDB(DB db);
 
     /**
      * Setter for the logger.
      * 
      * @param logger the new logger
      */
-    public void setLogger(Logger logger);
+    void setLogger(Logger logger);
 
     /**
      * This method can be used to issue a warning message.
