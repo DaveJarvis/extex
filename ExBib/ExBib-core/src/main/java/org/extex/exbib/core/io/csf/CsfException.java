@@ -45,15 +45,4 @@ public class CsfException extends ExBibException {
         super(message);
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     * @param cause the cause
-     */
-    public CsfException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
-
 }

@@ -57,14 +57,4 @@ public class ExBibImpossibleException extends ExBibException {
         super(message, locator);
     }
 
-    /**
-     * Create a new object.
-     * 
-     * @param cause the chained throwable
-     */
-    public ExBibImpossibleException(Throwable cause) {
-
-        super(cause);
-    }
-
 }

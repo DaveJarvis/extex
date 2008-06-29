@@ -52,14 +52,6 @@ public class ExBibException extends Exception {
 
     /**
      * Create a new object.
-     */
-    public ExBibException() {
-
-        super();
-    }
-
-    /**
-     * Create a new object.
      * 
      * @param message the message
      */
@@ -78,17 +70,6 @@ public class ExBibException extends Exception {
 
         super(message);
         this.locator = locator;
-    }
-
-    /**
-     * Create a new object.
-     * 
-     * @param message the message
-     * @param cause the cause
-     */
-    public ExBibException(String message, Throwable cause) {
-
-        super(message, cause);
     }
 
     /**
