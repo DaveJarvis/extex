@@ -166,7 +166,7 @@ public class BstPrinterImpl implements CommandVisitor {
         List<String> functionVector = processor.getFunctionNames();
         Collections.sort(functionVector);
 
-        for (String function : processor.getFunctionNames()) {
+        for (String function : functionVector) {
             Code code = processor.getFunction(function);
             writer.print("FUNCTION { ", function, " }{\n", in);
             this.nl = true;
@@ -179,7 +179,7 @@ public class BstPrinterImpl implements CommandVisitor {
         List<String> macroVector = processor.getMacroNames();
         Collections.sort(macroVector);
 
-        for (String key : processor.getFunctionNames()) {
+        for (String key : macroVector) {
             String value = processor.getMacro(key);
 
             if (value != null) {
