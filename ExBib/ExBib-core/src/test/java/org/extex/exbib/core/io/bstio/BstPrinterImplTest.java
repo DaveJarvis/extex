@@ -1204,23 +1204,24 @@ public class BstPrinterImplTest {
                     + "\n" //
                     + "\n" //
                     + "READ\n" //
-                    + "ITERATE {  presort }\n" //
+                    + "ITERATE { presort }\n" //
                     + "SORT\n" //
-                    + "EXECUTE {  initialize.longest.label }\n" //
-                    + "ITERATE {  longest.label.pass }\n" //
-                    + "EXECUTE {  begin.bib }\n" //
-                    + "EXECUTE {  init.state.consts }\n" //
-                    + "ITERATE {  call.type$\n" //
+                    + "EXECUTE { initialize.longest.label }\n" //
+                    + "ITERATE { longest.label.pass }\n" //
+                    + "EXECUTE { begin.bib }\n" //
+                    + "EXECUTE { init.state.consts }\n" //
+                    + "ITERATE { call.type$\n" //
                     + "     }\n" //
                     + "EXECUTE { end.bib }\n";
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run a test and compare the result.
      * 
-     * @param processor
-     * @param expected
-     * @throws IOException
-     * @throws ExBibException
+     * @param processor the processor
+     * @param expected the expected result
+     * 
+     * @throws IOException in case of an error
+     * @throws ExBibException in case of an error
      */
     private void runTest(BstProcessor processor, String expected)
             throws IOException,

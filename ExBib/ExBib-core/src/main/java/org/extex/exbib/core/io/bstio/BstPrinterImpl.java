@@ -242,7 +242,8 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitExecute(Command command) throws IOException {
 
-        writer.print("EXECUTE { ");
+        writer.print("EXECUTE {");
+        this.nl = false;
         command.getValue().visit(this);
         writer.print(" }");
         this.nl = false;
@@ -286,7 +287,8 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitIterate(Command command) throws IOException {
 
-        writer.print("ITERATE { ");
+        writer.print("ITERATE {");
+        this.nl = false;
         command.getValue().visit(this);
         writer.print(" }");
     }
@@ -376,7 +378,8 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitReverse(Command command) throws IOException {
 
-        writer.print("REVERSE { ");
+        writer.print("REVERSE {");
+        this.nl = false;
         command.getValue().visit(this);
         writer.print(" }");
     }
