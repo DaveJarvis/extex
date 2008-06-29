@@ -346,12 +346,7 @@ public abstract class AbstractMain extends CLI {
             protected int run(String name, String arg) {
 
                 try {
-                    InputStream inStream = new FileInputStream(arg);
-                    try {
-                        properties.load(inStream);
-                    } finally {
-                        inStream.close();
-                    }
+                    loadUserProperties(new File(arg));
                 } catch (FileNotFoundException e) {
                     logBanner("properties.not.found", arg);
                     return EXIT_FAIL;
@@ -419,6 +414,19 @@ public abstract class AbstractMain extends CLI {
     }
 
     /**
+     * Format a message from a resource bundle.
+     * 
+     * @param tag the resource tag
+     * @param args the arguments to be inserted
+     * 
+     * @return the formatted string
+     */
+    private String format(String tag, Object... args) {
+
+        return MessageFormat.format(getBundle().getString(tag), args);
+    }
+
+    /**
      * Getter for bundle.
      * 
      * @return the bundle
@@ -480,13 +488,7 @@ public abstract class AbstractMain extends CLI {
      */
     protected int info(String tag, Object... args) {
 
-        try {
-            logger.info(MessageFormat.format(getBundle().getString(tag), args));
-        } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(getBundle().getString(
-                "missing.tag"), tag));
-        }
-        return EXIT_FAIL;
+        return log(Level.INFO, tag, args);
     }
 
     /**
@@ -501,9 +503,31 @@ public abstract class AbstractMain extends CLI {
 
         if (file != null && file.canRead()) {
             FileInputStream stream = new FileInputStream(file);
-            properties.load(stream);
-            stream.close();
+            try {
+                properties.load(stream);
+            } finally {
+                stream.close();
+            }
         }
+    }
+
+    /**
+     * Log a severe message.
+     * 
+     * @param level the log level
+     * @param tag the resource tag
+     * @param args the arguments to be inserted
+     * 
+     * @return the exit code <code>1</code>
+     */
+    private int log(Level level, String tag, Object... args) {
+
+        try {
+            logger.log(level, format(tag, args));
+        } catch (MissingResourceException e) {
+            logger.severe(format("missing.tag", tag));
+        }
+        return EXIT_FAIL;
     }
 
     /**
@@ -516,14 +540,7 @@ public abstract class AbstractMain extends CLI {
      */
     protected int log(String tag, Object... args) {
 
-        try {
-            logger.severe(MessageFormat
-                .format(getBundle().getString(tag), args));
-        } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(getBundle().getString(
-                "missing.tag"), tag));
-        }
-        return EXIT_FAIL;
+        return log(Level.SEVERE, tag, args);
     }
 
     /**
@@ -537,10 +554,7 @@ public abstract class AbstractMain extends CLI {
             return EXIT_FAIL;
         }
         banner = true;
-
-        logger.warning(MessageFormat.format(getBundle().getString("version"),
-            getProgramName(), version));
-        return EXIT_FAIL;
+        return log(Level.WARNING, "version", getProgramName(), version);
     }
 
     /**
@@ -569,21 +583,17 @@ public abstract class AbstractMain extends CLI {
      */
     protected int logBannerCopyright() {
 
-        if (banner) {
-            return EXIT_FAIL;
-        }
-        banner = true;
+        if (!banner) {
+            banner = true;
 
-        logger.warning(MessageFormat.format(getBundle().getString("version"),
-            getProgramName(), version));
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        String copyrightYear =
-                (year <= inceptionYear
+            log(Level.WARNING, "version", getProgramName(), version);
+            int year = Calendar.getInstance().get(Calendar.YEAR);
+            log(Level.SEVERE, "copyright", getProgramName(), //
+                (year <= inceptionYear //
                         ? Integer.toString(inceptionYear)
                         : Integer.toString(inceptionYear) + "-"
-                                + Integer.toString(year));
-        logger.severe(MessageFormat.format(getBundle().getString("copyright"),
-            getProgramName(), copyrightYear));
+                                + Integer.toString(year)));
+        }
         return EXIT_FAIL;
     }
 
@@ -645,7 +655,6 @@ public abstract class AbstractMain extends CLI {
         if (debug) {
             logger.throwing("", "", e);
         }
-
         return EXIT_FAIL;
     }
 

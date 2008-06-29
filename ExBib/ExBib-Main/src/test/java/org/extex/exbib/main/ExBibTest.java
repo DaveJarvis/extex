@@ -1792,6 +1792,20 @@ public class ExBibTest extends BibTester {
     }
 
     /**
+     * <testcase> Test that the command line option <tt>--verbose</tt> works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVerbose2() throws Exception {
+
+        runFailure(BANNER
+                + "The option `--verbose\' does not cope with arguments.\n", //
+            "--verbose=123", "test.aux");
+    }
+
+    /**
      * <testcase> Test that the command line option <tt>--version</tt> works.
      * </testcase>
      * 
