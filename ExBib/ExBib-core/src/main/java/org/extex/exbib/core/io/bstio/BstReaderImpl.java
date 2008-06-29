@@ -693,12 +693,7 @@ public class BstReaderImpl extends AbstractFileReader
      *         not be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
-     * @throws ExBibException in case of an syntax error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the legal end
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
-     *         should not happen
+     * @throws ExBibException in case of an error
      */
     public void parse(BstProcessor processor)
             throws ExBibException,

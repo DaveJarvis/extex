@@ -26,11 +26,9 @@ import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.KeyValue;
-import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFileNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
-import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -146,8 +144,7 @@ public class BibReaderImpl extends BibReader099Impl {
      * @return <code>true</code> iff the item is special and has been handled
      * successfully.
      *
-     * @throws ExBibEofException in case of an unexpected end of file
-     * @throws ExBibSyntaxException in case of an syntax error
+     * @throws ExBibException in case of an syntax error
      */
     @Override
     protected boolean handle(String tag, DB db, String brace, Locator locator)
