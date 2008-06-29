@@ -47,7 +47,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * macros.
      */
     protected static final Pattern PATTERN =
-            Pattern.compile("^\\\\([@cb]+)\\{([^{}]*)\\}");
+            Pattern.compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
