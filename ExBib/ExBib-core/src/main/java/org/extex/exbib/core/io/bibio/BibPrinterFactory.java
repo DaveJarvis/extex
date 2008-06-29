@@ -68,9 +68,8 @@ public class BibPrinterFactory extends AbstractFactory {
     public BibPrinter newInstance(String type, Writer writer)
             throws ConfigurationException {
 
-        Configuration cfg = selectConfiguration(type);
-        return (BibPrinter) createInstanceForConfiguration(cfg,
-            BibPrinter.class, writer);
+        return (BibPrinter) createInstance(type, BibPrinter.class,
+            Writer.class, writer);
     }
 
 }
