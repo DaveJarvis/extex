@@ -20,6 +20,7 @@
 package org.extex.exbib.core.bst.token.impl;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -36,7 +37,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TBlock extends AbstractToken {
+public class TBlock extends AbstractToken implements Iterable<Token> {
 
     /**
      * The field <tt>value</tt> contains the list of Tokens in the block.
@@ -111,6 +112,16 @@ public class TBlock extends AbstractToken {
     public TokenList getTokenList() {
 
         return value;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Iterable#iterator()
+     */
+    public Iterator<Token> iterator() {
+
+        return value.iterator();
     }
 
     /**
