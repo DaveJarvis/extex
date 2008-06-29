@@ -423,9 +423,8 @@ public class BstReaderImpl extends AbstractFileReader
      * @param value the expected value
      * 
      * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the expected character could be read
-     * @throws ExBibSyntaxException in case of an syntax error
+     * @throws ExBibUnexpectedEofException in case that the end of file has been
+     *         reached before the expected character could be read
      * @throws ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
