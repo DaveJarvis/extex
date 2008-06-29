@@ -719,7 +719,7 @@ public class ExBib {
      */
     private String stripExtension(String file, String extension) {
 
-        if (file.toLowerCase().endsWith(extension)) {
+        if (file.toLowerCase(Locale.ENGLISH).endsWith(extension)) {
             return file.substring(0, file.length() - extension.length());
         }
 
