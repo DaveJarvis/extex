@@ -42,7 +42,7 @@ public class StringBufferWriter implements Writer {
      */
     public StringBufferWriter() {
 
-        super();
+        this(new StringBuffer());
     }
 
     /**
