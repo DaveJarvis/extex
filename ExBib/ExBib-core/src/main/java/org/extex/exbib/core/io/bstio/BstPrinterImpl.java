@@ -21,7 +21,6 @@ package org.extex.exbib.core.io.bstio;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.bst.BstProcessor;
@@ -33,10 +32,10 @@ import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TLocalInteger;
-import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
@@ -58,6 +57,24 @@ public class BstPrinterImpl implements CommandVisitor {
      * should be written.
      */
     private Writer writer;
+
+    /**
+     * The field <tt>in</tt> contains the string to produce an indentation for
+     * code.
+     */
+    private String in = "    ";
+
+    /**
+     * The field <tt>nl</tt> contains the indicator that the last character in
+     * the output stream is a newline.
+     */
+    private boolean nl = true;
+
+    /**
+     * The field <tt>processor</tt> contains the processor. It is only used
+     * during printing to transport the processor to the visitor methods
+     */
+    private BstProcessor processor = null;
 
     /**
      * Creates a new object.
@@ -83,23 +100,22 @@ public class BstPrinterImpl implements CommandVisitor {
             throws IOException,
                 ExBibException {
 
-        writer.print("ENTRY {\n");
+        this.processor = processor;
+        writer.println("ENTRY {");
 
-        Iterator<String> iterator = processor.getEntries().iterator();
-
-        while (iterator.hasNext()) {
-            writer.print("    ", iterator.next(), "\n");
+        for (String entry : processor.getEntries()) {
+            writer.println(in, entry);
         }
 
         writer.print("  } {");
 
-        iterator = processor.getEntryIntegers().iterator();
+        List<String> integers = processor.getEntryIntegers();
 
-        if (iterator.hasNext()) {
-            writer.print("\n");
+        if (!integers.isEmpty()) {
+            writer.println();
 
-            while (iterator.hasNext()) {
-                writer.print("    ", iterator.next(), "\n");
+            for (String ints : integers) {
+                writer.println(in, ints);
             }
 
             writer.print("  ");
@@ -107,82 +123,80 @@ public class BstPrinterImpl implements CommandVisitor {
 
         writer.print("} {");
 
-        iterator = processor.getEntryStrings().iterator();
+        List<String> strings = processor.getEntryStrings();
 
-        if (iterator.hasNext()) {
-            writer.print("\n");
+        if (!strings.isEmpty()) {
+            writer.println();
+            Collections.sort(strings);
 
-            while (iterator.hasNext()) {
-                writer.print("    ", iterator.next(), "\n");
+            for (String s : strings) {
+                writer.println(in, s);
             }
 
             writer.print("  ");
         }
 
-        writer.print("}\n\n");
+        writer.println("}\n");
 
-        iterator = processor.getIntegers().iterator();
+        integers = processor.getIntegers();
 
-        if (iterator.hasNext()) {
+        if (!integers.isEmpty()) {
             writer.print("INTEGERS {");
-
-            while (iterator.hasNext()) {
-                writer.print(" ", iterator.next());
+            Collections.sort(integers);
+            for (String key : integers) {
+                writer.print("\n", in, key);
             }
 
-            writer.print(" }\n\n");
+            writer.println("\n}\n");
         }
 
-        iterator = processor.getStrings().iterator();
+        strings = processor.getStrings();
 
-        if (iterator.hasNext()) {
+        if (!strings.isEmpty()) {
             writer.print("STRINGS {");
+            Collections.sort(strings);
 
-            while (iterator.hasNext()) {
-                writer.print(" ", iterator.next());
+            for (String key : strings) {
+                writer.print("\n", in, key);
             }
 
-            writer.print(" }\n\n");
+            writer.println("\n}\n");
         }
 
         List<String> functionVector = processor.getFunctionNames();
         Collections.sort(functionVector);
 
-        iterator = processor.getFunctionNames().iterator();
-
-        while (iterator.hasNext()) {
-            String key = iterator.next();
-            Code code = processor.getFunction(key);
-            writer.print("FUNCTION { ", key, " }{ ");
+        for (String function : processor.getFunctionNames()) {
+            Code code = processor.getFunction(function);
+            writer.print("FUNCTION { ", function, " }{\n", in);
+            this.nl = true;
             ((MacroCode) code).getToken().visit(this);
-            writer.print("}\n");
+            writer.println("}\n");
         }
 
-        writer.print("\n");
+        writer.println();
 
         List<String> macroVector = processor.getMacroNames();
         Collections.sort(macroVector);
-        iterator = macroVector.iterator();
 
-        while (iterator.hasNext()) {
-            String key = iterator.next();
+        for (String key : processor.getFunctionNames()) {
             String value = processor.getMacro(key);
 
             if (value != null) {
                 writer.print("MACRO { ", key, " }{ \"");
                 writer.print(value);
-                writer.print("\" }\n");
+                writer.println("\" }");
             }
         }
 
-        writer.print("\n");
+        writer.println();
 
-        Iterator<Command> iter = processor.commandsIterator();
-
-        while (iter.hasNext()) {
-            iter.next().visit(this);
-            writer.print("\n");
+        for (Command command : processor) {
+            command.visit(this);
+            writer.println();
         }
+
+        this.processor = null;
     }
 
     /**
@@ -193,19 +207,20 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitBlock(TBlock block) throws IOException {
 
+        String i = this.in;
+        if (!this.nl) {
+            writer.print("\n", in);
+        }
+        this.in = this.in + "    ";
         writer.print("{");
-        boolean first = true;
+        this.nl = false;
 
-        for (Token t : block.getTokenList()) {
-            if (first) {
-                first = false;
-            } else {
-                writer.print(" ");
-            }
-
+        for (Token t : block) {
             t.visit(this);
         }
-        writer.print("}");
+        writer.print(i, "}\n", in);
+        this.nl = true;
+        this.in = i;
     }
 
     /**
@@ -230,6 +245,7 @@ public class BstPrinterImpl implements CommandVisitor {
         writer.print("EXECUTE { ");
         command.getValue().visit(this);
         writer.print(" }");
+        this.nl = false;
     }
 
     /**
@@ -240,29 +256,11 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitField(TField field) throws IOException {
 
+        if (!this.nl) {
+            writer.print(" ");
+        }
         writer.print(field.getValue());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(
-     *      org.extex.exbib.core.bst.token.impl.TLocalInteger)
-     */
-    public void visitLocalInteger(TLocalInteger integer) throws IOException {
-
-        writer.print(integer.getValue());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(
-     *      org.extex.exbib.core.bst.token.impl.TLocalString)
-     */
-    public void visitLocalString(TLocalString string) throws IOException {
-
-        writer.print(string.getValue());
+        this.nl = false;
     }
 
     /**
@@ -273,7 +271,11 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitInteger(TInteger integer) throws IOException {
 
+        if (!this.nl) {
+            writer.print(" ");
+        }
         writer.print("#", integer.getValue());
+        this.nl = false;
     }
 
     /**
@@ -297,7 +299,47 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitLiteral(TLiteral literal) throws IOException {
 
+        if (!this.nl) {
+            writer.print(" ");
+        }
         writer.print(literal.getValue());
+        Code code = processor.getFunction(literal.getValue());
+        if (code != null && !(code instanceof MacroCode)) {
+            writer.print("\n", in);
+            this.nl = true;
+        } else {
+            this.nl = false;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(
+     *      org.extex.exbib.core.bst.token.impl.TLocalInteger)
+     */
+    public void visitLocalInteger(TLocalInteger integer) throws IOException {
+
+        if (!this.nl) {
+            writer.print(" ");
+        }
+        writer.print(integer.getValue());
+        this.nl = false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(
+     *      org.extex.exbib.core.bst.token.impl.TLocalString)
+     */
+    public void visitLocalString(TLocalString string) throws IOException {
+
+        if (!this.nl) {
+            writer.print(" ");
+        }
+        writer.print(string.getValue());
+        this.nl = false;
     }
 
     /**
@@ -308,7 +350,11 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitQLiteral(TQLiteral qliteral) throws IOException {
 
+        if (!this.nl) {
+            writer.print(" ");
+        }
         writer.print("'", qliteral.getValue());
+        this.nl = false;
     }
 
     /**
@@ -354,7 +400,11 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitString(TString string) throws IOException {
 
+        if (!this.nl) {
+            writer.print(" ");
+        }
         writer.print("\"", string.getValue(), "\"");
+        this.nl = false;
     }
 
     /**
@@ -365,15 +415,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitTokenList(TokenList list) throws IOException {
 
-        boolean first = true;
-
         for (Token t : list) {
-            if (first) {
-                first = false;
-            } else {
-                writer.print(" ");
-            }
-
             t.visit(this);
         }
     }
