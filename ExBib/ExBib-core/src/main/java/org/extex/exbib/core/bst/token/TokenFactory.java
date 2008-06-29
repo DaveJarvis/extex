@@ -50,7 +50,7 @@ public final class TokenFactory {
      */
     private TokenFactory() {
 
-        super();
+        // not used
     }
 
 }
