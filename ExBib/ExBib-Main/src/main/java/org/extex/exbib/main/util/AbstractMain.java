@@ -86,6 +86,37 @@ public abstract class AbstractMain extends CLI {
     public static final String PROP_PROGNAME = "program.name";
 
     /**
+     * Create a console handler and attach it to a logger.
+     * 
+     * @param log the logger
+     * 
+     * @return the console handler
+     */
+    protected static ConsoleHandler makeConsoleHandler(Logger log) {
+
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setFormatter(new LogFormatter());
+        ch.setLevel(Level.WARNING);
+        log.addHandler(ch);
+        return ch;
+    }
+
+    /**
+     * Create a logger.
+     * 
+     * @param className the name of the class
+     * 
+     * @return the logger
+     */
+    protected static Logger makeLogger(String className) {
+
+        Logger logger = Logger.getLogger(className);
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.ALL);
+        return logger;
+    }
+
+    /**
      * The field <tt>banner</tt> contains the indicator that the banner has
      * already been printed.
      */
@@ -140,18 +171,9 @@ public abstract class AbstractMain extends CLI {
         super();
         this.version = version;
         this.inceptionYear = year;
-
-        bundle = ResourceBundle.getBundle(getClass().getName());
-
-        logger = Logger.getLogger(getClass().getName());
-        logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL);
-
-        consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new LogFormatter());
-        consoleHandler.setLevel(Level.WARNING);
-        logger.addHandler(consoleHandler);
-
+        this.bundle = ResourceBundle.getBundle(getClass().getName());
+        this.logger = makeLogger(getClass().getName());
+        this.consoleHandler = makeConsoleHandler(logger);
         this.properties = (Properties) properties.clone();
 
         if (dotFile != null) {

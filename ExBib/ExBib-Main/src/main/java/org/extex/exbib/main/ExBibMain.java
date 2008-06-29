@@ -23,9 +23,6 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.ExBib;
@@ -40,7 +37,6 @@ import org.extex.exbib.main.cli.StringOption;
 import org.extex.exbib.main.cli.StringPropertyOption;
 import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.util.AbstractMain;
-import org.extex.exbib.main.util.LogFormatter;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -137,13 +133,8 @@ public class ExBibMain extends AbstractMain {
             main = new ExBibMain();
             return main.processCommandLine(argv);
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(ExBibMain.class.getName());
-            logger.setUseParentHandlers(false);
-            logger.setLevel(Level.ALL);
-            Handler consoleHandler = new ConsoleHandler();
-            consoleHandler.setFormatter(new LogFormatter());
-            consoleHandler.setLevel(Level.WARNING);
-            logger.addHandler(consoleHandler);
+            Logger logger = makeLogger(ExBibMain.class.getName());
+            makeConsoleHandler(logger);
             logger.severe(e.toString());
             return EXIT_FAIL;
         } finally {
