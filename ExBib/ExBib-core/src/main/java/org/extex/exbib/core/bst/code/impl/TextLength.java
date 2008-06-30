@@ -103,7 +103,7 @@ public class TextLength extends AbstractCode {
                     break;
                 case '\\':
 
-                    if (i++ < s.length() && Character.isLetter(s.charAt(i))) {
+                    if (++i < s.length() && Character.isLetter(s.charAt(i))) {
                         do {
                             i++;
                         } while (i < s.length()
