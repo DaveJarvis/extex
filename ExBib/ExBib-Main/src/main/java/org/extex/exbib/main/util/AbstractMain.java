@@ -21,7 +21,6 @@ package org.extex.exbib.main.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -346,13 +345,11 @@ public abstract class AbstractMain extends CLI {
             protected int run(String name, String arg) {
 
                 try {
-                    loadUserProperties(new File(arg));
-                } catch (FileNotFoundException e) {
-                    logBanner("properties.not.found", arg);
-                    return EXIT_FAIL;
+                    if (!loadUserProperties(new File(arg))) {
+                        return logBanner("properties.not.found", arg);
+                    }
                 } catch (IOException e) {
-                    logBanner("properties.io.error", arg);
-                    return EXIT_FAIL;
+                    return logBanner("properties.io.error", arg);
                 }
                 return EXIT_CONTINUE;
             }
@@ -496,10 +493,12 @@ public abstract class AbstractMain extends CLI {
      * 
      * @param file the file to consider
      * 
+     * @return <code>true</code> iff the file could be read
+     * 
      * @throws IOException in case of an IO Error during the reading of the
      *         properties file
      */
-    protected void loadUserProperties(File file) throws IOException {
+    protected boolean loadUserProperties(File file) throws IOException {
 
         if (file != null && file.canRead()) {
             FileInputStream stream = new FileInputStream(file);
@@ -508,7 +507,9 @@ public abstract class AbstractMain extends CLI {
             } finally {
                 stream.close();
             }
+            return true;
         }
+        return false;
     }
 
     /**
