@@ -337,7 +337,7 @@ public class TestTextLength {
     @Test
     public void testEmpty2() throws Exception {
 
-        runTest("{{[[][ ", 0);
+        runTest("{{[[][\t\n ", 0);
     }
 
     /**
@@ -363,6 +363,50 @@ public class TestTextLength {
         new TextLength("text.length$").execute(p, null, null);
         assertEquals(4, p.popInteger(null).getInt());
         assertEquals(null, p.popUnchecked());
+    }
+
+    /**
+     * <testcase> The backslash at the end does not count. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro1() throws Exception {
+
+        runTest("\\", 0);
+    }
+
+    /**
+     * <testcase> A macro of length 1 counts as one character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro2() throws Exception {
+
+        runTest("\\a", 1);
+    }
+
+    /**
+     * <testcase> A macro of length 3 counts as one character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro3() throws Exception {
+
+        runTest("\\abc", 1);
+    }
+
+    /**
+     * <testcase> A macro of length 3 counts as one character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro4() throws Exception {
+
+        runTest("\\abc x", 2);
     }
 
 }
