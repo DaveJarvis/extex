@@ -54,6 +54,16 @@ public class TestChangeCase {
     private BstProcessor p = null;
 
     /**
+     * Create an object to be tested.
+     * 
+     * @return the test object
+     */
+    protected ChangeCase makeTestInstance() {
+
+        return new ChangeCase("change.case$");
+    }
+
+    /**
      * Set-up method.
      * 
      * @throws Exception in case of an error
@@ -315,7 +325,7 @@ public class TestChangeCase {
 
         p.push(new TString(s, null));
         p.push(new TString(fmt, null));
-        new ChangeCase("change.case$").execute(p, null, null);
+        makeTestInstance().execute(p, null, null);
         assertEquals(res, p.popString(null).getValue());
         assertNull(p.popUnchecked());
     }
@@ -370,7 +380,7 @@ public class TestChangeCase {
     @Test(expected = ExBibStackEmptyException.class)
     public void testEmptyStack() throws Exception {
 
-        new ChangeCase("change.case$").execute(p, null, null);
+        makeTestInstance().execute(p, null, null);
     }
 
     /**
@@ -382,7 +392,7 @@ public class TestChangeCase {
     public void testShortStack() throws Exception {
 
         p.push(new TString("e", null));
-        new ChangeCase("change.case$").execute(p, null, null);
+        makeTestInstance().execute(p, null, null);
     }
 
     /**
@@ -395,7 +405,7 @@ public class TestChangeCase {
 
         p.push(new TString("e", null));
         p.push(new TString("", null));
-        new ChangeCase("change.case$").execute(p, null, null);
+        makeTestInstance().execute(p, null, null);
     }
 
     /**
