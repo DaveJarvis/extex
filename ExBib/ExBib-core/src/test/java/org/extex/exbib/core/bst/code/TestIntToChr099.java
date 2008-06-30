@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.code.impl.IntToChr;
+import org.extex.exbib.core.bst.code.impl.IntToChr099;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.impl.TInteger;
@@ -42,7 +42,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestIntToChr {
+public class TestIntToChr099 {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -56,7 +56,7 @@ public class TestIntToChr {
      */
     protected Code makeTestInstance() {
 
-        return new IntToChr("int.to.chr$");
+        return new IntToChr099("int.to.chr$");
     }
 
     /**
