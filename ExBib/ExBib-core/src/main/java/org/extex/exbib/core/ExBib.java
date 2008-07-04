@@ -29,6 +29,7 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
@@ -306,15 +307,33 @@ public class ExBib {
      * 
      * @param tag the resource tag
      * @param args the arguments to be inserted
+     * 
+     * @return <code>false</code>
      */
-    protected void info(String tag, Object... args) {
+    protected boolean info(String tag, Object... args) {
+
+        return log(Level.INFO, tag, args);
+    }
+
+    /**
+     * Log a message.
+     * 
+     * @param level the log level
+     * @param tag the resource tag
+     * @param args the arguments to be inserted
+     * 
+     * @return <code>false</code>
+     */
+    protected boolean log(Level level, String tag, Object... args) {
 
         try {
-            logger.info(MessageFormat.format(bundle.getString(tag), args));
+            logger.log(level, //
+                MessageFormat.format(bundle.getString(tag), args));
         } catch (MissingResourceException e) {
             logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
                 tag));
         }
+        return false;
     }
 
     /**
@@ -327,13 +346,7 @@ public class ExBib {
      */
     protected boolean log(String tag, Object... args) {
 
-        try {
-            logger.severe(MessageFormat.format(bundle.getString(tag), args));
-        } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
-        }
-        return false;
+        return log(Level.SEVERE, tag, args);
     }
 
     /**
@@ -347,7 +360,7 @@ public class ExBib {
      */
     protected boolean logBanner(String tag, Object... args) {
 
-        return log(tag, args);
+        return log(Level.SEVERE, tag, args);
     }
 
     /**
@@ -562,7 +575,9 @@ public class ExBib {
             return error("verbatim", e.getLocalizedMessage());
         } catch (NoClassDefFoundError e) {
             return error(e, "installation.error");
-        } catch (Exception e) {
+        } catch (NotObservableException e) {
+            return error(e, "internal.error");
+        } catch (RuntimeException e) {
             return error(e, "internal.error");
         } finally {
             if (warnings > 0) {
@@ -700,8 +715,6 @@ public class ExBib {
      * @param value the value
      * 
      * @return the old value
-     * 
-     * @see java.util.Properties#setProperty(java.lang.String, java.lang.String)
      */
     public Object setProperty(String key, String value) {
 
@@ -746,9 +759,9 @@ public class ExBib {
      * 
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case of an configuration problem
-     * @throws IOException
-     * @throws CsfException
-     * @throws UnsupportedEncodingException
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of an error in the CSF processing
+     * @throws UnsupportedEncodingException in case of an unsupported encoding
      */
     private boolean validate(ProcessorContainer container, Object file)
             throws ConfigurationException,
