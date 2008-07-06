@@ -36,6 +36,36 @@ package org.extex.font.format.dvi.command;
 public class DviChar extends DviCommand {
 
     /**
+     * MIN_SET_CHAR
+     */
+    private static final int MIN_SET_CHAR = 0;
+
+    /**
+     * MAX_SET_CHAR
+     */
+    private static final int MAX_SET_CHAR = 127;
+
+    /**
+     * MIN_SET
+     */
+    private static final int MIN_SET = 128;
+
+    /**
+     * MAX_SET
+     */
+    private static final int MAX_SET = 131;
+
+    /**
+     * MIN_PUT
+     */
+    private static final int MIN_PUT = 133;
+
+    /**
+     * MAX_PUT
+     */
+    private static final int MAX_PUT = 136;
+
+    /**
      * the character
      */
     private int ch;
@@ -85,6 +115,25 @@ public class DviChar extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        if (getOpcode() >= MIN_SET_CHAR && getOpcode() <= MAX_SET_CHAR) {
+            buf.append("setchar").append(getOpcode());
+        } else if (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET) {
+            buf.append("set").append(getOpcode() - MAX_SET_CHAR);
+        } else {
+            buf.append("put").append(getOpcode() - MIN_PUT + 1);
+        }
+        return buf.toString();
+    }
+
+    /**
      * Returns the put.
      * 
      * @return Returns the put.
@@ -106,53 +155,5 @@ public class DviChar extends DviCommand {
             return true;
         }
         return false;
-    }
-
-    /**
-     * MIN_SET_CHAR
-     */
-    private static final int MIN_SET_CHAR = 0;
-
-    /**
-     * MAX_SET_CHAR
-     */
-    private static final int MAX_SET_CHAR = 127;
-
-    /**
-     * MIN_SET
-     */
-    private static final int MIN_SET = 128;
-
-    /**
-     * MAX_SET
-     */
-    private static final int MAX_SET = 131;
-
-    /**
-     * MIN_PUT
-     */
-    private static final int MIN_PUT = 133;
-
-    /**
-     * MAX_PUT
-     */
-    private static final int MAX_PUT = 136;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        StringBuffer buf = new StringBuffer();
-        if (getOpcode() >= MIN_SET_CHAR && getOpcode() <= MAX_SET_CHAR) {
-            buf.append("setchar").append(getOpcode());
-        } else if (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET) {
-            buf.append("set").append(getOpcode() - MAX_SET_CHAR);
-        } else {
-            buf.append("put").append(getOpcode() - MIN_PUT + 1);
-        }
-        return buf.toString();
     }
 }

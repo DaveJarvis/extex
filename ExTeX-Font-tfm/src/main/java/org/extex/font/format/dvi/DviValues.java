@@ -160,19 +160,6 @@ public class DviValues {
     }
 
     /**
-     * Check, if the values (h,v,w,x,z,z) all zero.
-     * 
-     * @return Returns <code>true</code>, if all values are zero.
-     */
-    public boolean isClear() {
-
-        if (h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Returns the f.
      * 
      * @return Returns the f.
@@ -240,6 +227,19 @@ public class DviValues {
     public int getZ() {
 
         return z;
+    }
+
+    /**
+     * Check, if the values (h,v,w,x,z,z) all zero.
+     * 
+     * @return Returns <code>true</code>, if all values are zero.
+     */
+    public boolean isClear() {
+
+        if (h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -314,8 +314,11 @@ public class DviValues {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

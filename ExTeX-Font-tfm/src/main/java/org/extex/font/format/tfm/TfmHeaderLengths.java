@@ -213,11 +213,12 @@ public class TfmHeaderLengths implements Serializable {
         if (lf == 0
                 || lf < HEADERBYTES
                 || lh < 2
-                || (bc > ec + 1 || ec > MAXCHARS)
-                || (ne > MAXCHARS + 1)
-                || ((HEADERBYTES + lh + (ec - bc + 1) + nw + nh + nd + ni + nl
-                        + nk + ne + np) != lf)
-                || (nw == 0 || nh == 0 || nd == 0 || ni == 0)) {
+                || bc > ec + 1
+                || ec > MAXCHARS
+                || ne > MAXCHARS + 1
+                || (HEADERBYTES + lh + (ec - bc + 1) + nw + nh + nd + ni + nl
+                        + nk + ne + np) != lf || nw == 0 || nh == 0 || nd == 0
+                || ni == 0) {
             throw new IOException();
             // mgn: umbauen
             // throw new TFMReadFileException();

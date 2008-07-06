@@ -64,6 +64,17 @@ public class DviBOP extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        return "bop";
+    }
+
+    /**
      * Returns the p.
      * 
      * @return Returns the p.
@@ -71,15 +82,5 @@ public class DviBOP extends DviCommand {
     public int getP() {
 
         return p;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        return "bop";
     }
 }

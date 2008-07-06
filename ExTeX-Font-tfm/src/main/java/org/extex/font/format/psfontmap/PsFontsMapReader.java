@@ -53,8 +53,10 @@ public class PsFontsMapReader implements Serializable {
      * Returns the single instance of the {@link PsFontsMapReader}.
      * 
      * @param in The input stream.
+     * 
      * @return Returns the single instance of the {@link PsFontsMapReader}.
-     * @throws FontException
+     * 
+     * @throws FontException if an font-error occurred.
      */
     public static PsFontsMapReader getInstance(InputStream in)
             throws FontException {

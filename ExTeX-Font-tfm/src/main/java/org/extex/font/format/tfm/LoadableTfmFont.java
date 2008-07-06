@@ -173,6 +173,11 @@ public class LoadableTfmFont
     private byte[] xtfdata = null;
 
     /**
+     * The code point map reverse.
+     */
+    private Map<Integer, UnicodeChar> codepointmapreverse = null;
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.CharNodeBuilder#buildCharNode(org.extex.core.UnicodeChar,
@@ -661,6 +666,32 @@ public class LoadableTfmFont
     }
 
     /**
+     * Returns the Unicode char for the position or <code>null</code>, if not
+     * found.
+     * 
+     * @param pos The position.
+     * @return Returns the Unicode char.
+     */
+    @SuppressWarnings("boxing")
+    public UnicodeChar getUnicodeChar(int pos) {
+
+        if (codepointmapreverse == null) {
+
+            codepointmapreverse = new HashMap<Integer, UnicodeChar>();
+
+            Iterator<UnicodeChar> it = codepointmap.keySet().iterator();
+            while (it.hasNext()) {
+                UnicodeChar uc = it.next();
+                Integer value = codepointmap.get(uc);
+                codepointmapreverse.put(value, uc);
+            }
+        }
+
+        return codepointmapreverse.get(pos);
+
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
@@ -893,36 +924,6 @@ public class LoadableTfmFont
     public void usedCharacter(BackendCharacter bc) {
 
         // ignored
-
-    }
-
-    /**
-     * The code point map reverse.
-     */
-    private Map<Integer, UnicodeChar> codepointmapreverse = null;
-
-    /**
-     * Returns the Unicode char for the position or <code>null</code>, if not
-     * found.
-     * 
-     * @param pos The position.
-     * @return Returns the Unicode char.
-     */
-    public UnicodeChar getUnicodeChar(int pos) {
-
-        if (codepointmapreverse == null) {
-
-            codepointmapreverse = new HashMap<Integer, UnicodeChar>();
-
-            Iterator<UnicodeChar> it = codepointmap.keySet().iterator();
-            while (it.hasNext()) {
-                UnicodeChar uc = it.next();
-                Integer value = codepointmap.get(uc);
-                codepointmapreverse.put(value, uc);
-            }
-        }
-
-        return codepointmapreverse.get(pos);
 
     }
 }

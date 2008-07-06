@@ -44,6 +44,7 @@ public class DviPush extends DviCommand {
      * 
      * @see org.extex.font.format.dvi.command.DviCommand#getName()
      */
+    @Override
     public String getName() {
 
         return "push";

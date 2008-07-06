@@ -38,8 +38,10 @@ public class VfCommandPost extends VfCommand {
     /**
      * Create e new object.
      * 
-     * @param rar the input.
-     * @param ccode the command code.
+     * @param localizer TODO
+     * @param rar the input
+     * @param ccode the command code
+     * 
      * @throws FontException if a font error occurred.
      */
     public VfCommandPost(Localizer localizer, RandomAccessR rar, final int ccode)

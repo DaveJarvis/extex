@@ -29,6 +29,11 @@ package org.extex.font.format.dvi.command;
 public class DviX extends DviCommand {
 
     /**
+     * x0
+     */
+    private static final int X0 = 152;
+
+    /**
      * the value
      */
     private int value;
@@ -66,6 +71,19 @@ public class DviX extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("x").append(getOpcode() - X0);
+        return buf.toString();
+    }
+
+    /**
      * Returns the value.
      * 
      * @return Returns the value.
@@ -83,22 +101,5 @@ public class DviX extends DviCommand {
     public boolean isX0() {
 
         return x0;
-    }
-
-    /**
-     * x0
-     */
-    private static final int X0 = 152;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("x").append(getOpcode() - X0);
-        return buf.toString();
     }
 }

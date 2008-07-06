@@ -130,6 +130,7 @@ public class EncReader implements Serializable {
      * @return Returns the position of the glyph in the table or -1 if not
      *         found.
      */
+    @SuppressWarnings("boxing")
     public int getPosition(String name) {
 
         if (glyphlist == null) {

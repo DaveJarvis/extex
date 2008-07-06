@@ -19,11 +19,6 @@
 
 package org.extex.font;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.HashMap;
 
 import org.extex.core.dimen.Dimen;
@@ -135,7 +130,7 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
         FontKey key = factory.getFontKey("empty");
 
         try {
-            ExtexFont font = factory.getInstance(key);
+            factory.getInstance(key);
         } catch (CorruptFontException e) {
             assertEquals("Font file is corrupt: empty\n", e
                 .getLocalizedMessage());

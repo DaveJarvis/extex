@@ -29,6 +29,11 @@ package org.extex.font.format.dvi.command;
 public class DviDown extends DviCommand {
 
     /**
+     * down1
+     */
+    private static final int DOWN1 = 157;
+
+    /**
      * the value
      */
     private int value;
@@ -47,6 +52,19 @@ public class DviDown extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("down").append(getOpcode() - DOWN1 + 1);
+        return buf.toString();
+    }
+
+    /**
      * Returns the value.
      * 
      * @return Returns the value.
@@ -54,23 +72,6 @@ public class DviDown extends DviCommand {
     public int getValue() {
 
         return value;
-    }
-
-    /**
-     * down1
-     */
-    private static final int DOWN1 = 157;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("down").append(getOpcode() - DOWN1 + 1);
-        return buf.toString();
     }
 
 }

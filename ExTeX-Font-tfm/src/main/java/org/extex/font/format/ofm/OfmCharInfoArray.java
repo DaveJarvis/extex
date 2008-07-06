@@ -33,6 +33,11 @@ import org.extex.util.file.random.RandomAccessR;
 public class OfmCharInfoArray extends TfmCharInfoArray {
 
     /**
+     * The field <tt>serialVersionUID</tt>.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The char-info-word array.
      */
     private OfmCharInfoWord[] charinfoword;
@@ -53,15 +58,11 @@ public class OfmCharInfoArray extends TfmCharInfoArray {
     }
 
     /**
-     * The field <tt>serialVersionUID</tt>.
-     */
-    private static final long serialVersionUID = 1L;
-
-    /**
      * Getter for charinfoword.
      * 
      * @return the charinfoword
      */
+    @Override
     public OfmCharInfoWord[] getCharinfoword() {
 
         return charinfoword;

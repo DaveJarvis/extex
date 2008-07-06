@@ -87,6 +87,20 @@ public class DviRule extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        if (put) {
+            return "putrule";
+        }
+        return "setrule";
+    }
+
+    /**
      * Returns the width.
      * 
      * @return Returns the width.
@@ -104,18 +118,5 @@ public class DviRule extends DviCommand {
     public boolean isPut() {
 
         return put;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        if (put) {
-            return "putrule";
-        }
-        return "setrule";
     }
 }

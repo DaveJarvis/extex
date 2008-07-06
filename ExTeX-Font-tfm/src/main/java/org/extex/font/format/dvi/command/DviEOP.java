@@ -20,7 +20,7 @@
 package org.extex.font.format.dvi.command;
 
 /**
- * DVI: eop: End of Page. 
+ * DVI: eop: End of Page.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -44,6 +44,7 @@ public class DviEOP extends DviCommand {
      * 
      * @see org.extex.font.format.dvi.command.DviCommand#getName()
      */
+    @Override
     public String getName() {
 
         return "eop";

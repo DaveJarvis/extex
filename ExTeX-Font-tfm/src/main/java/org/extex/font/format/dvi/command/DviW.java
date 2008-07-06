@@ -29,6 +29,11 @@ package org.extex.font.format.dvi.command;
 public class DviW extends DviCommand {
 
     /**
+     * w0
+     */
+    private static final int W0 = 147;
+
+    /**
      * the value
      */
     private int value;
@@ -66,6 +71,19 @@ public class DviW extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("w").append(getOpcode() - W0);
+        return buf.toString();
+    }
+
+    /**
      * Returns the value.
      * 
      * @return Returns the value.
@@ -83,22 +101,5 @@ public class DviW extends DviCommand {
     public boolean isW0() {
 
         return w0;
-    }
-
-    /**
-     * w0
-     */
-    private static final int W0 = 147;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("w").append(getOpcode() - W0);
-        return buf.toString();
     }
 }

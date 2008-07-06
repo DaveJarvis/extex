@@ -170,12 +170,35 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * Add the node to the virtual char node.
+     * 
+     * If (x,y) differed to (h,l), then a horizontal box is used.
+     * 
+     * @param node The node.
+     */
+    private void addNode(Node node) {
+
+        if (isEquals()) {
+            vCharNode.add(node);
+            x.add(node.getWidth());
+        } else {
+            HorizontalListNode hbox = new HorizontalListNode();
+            hbox.add(node);
+            hbox.setMove(getXDiff());
+            hbox.setShift(getYDiff());
+            x.add(hbox.getWidth());
+            vCharNode.add(hbox);
+        }
+    }
+
+    /**
      * Check, if the font is changed.
      * 
      * If it changed, it create a new typesetting context with the new font.
      * 
      * @return Returns the actual extex font.
      */
+    @SuppressWarnings("boxing")
     private ExtexFont checkFont() {
 
         ExtexFont ff = extexfonts.get(val.getF());
@@ -228,28 +251,6 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
                 .getLength()));
         }
 
-    }
-
-    /**
-     * Add the node to the virtual char node.
-     * 
-     * If (x,y) differed to (h,l), then a horizontal box is used.
-     * 
-     * @param node The node.
-     */
-    private void addNode(Node node) {
-
-        if (isEquals()) {
-            vCharNode.add(node);
-            x.add(node.getWidth());
-        } else {
-            HorizontalListNode hbox = new HorizontalListNode();
-            hbox.add(node);
-            hbox.setMove(getXDiff());
-            hbox.setShift(getYDiff());
-            x.add(hbox.getWidth());
-            vCharNode.add(hbox);
-        }
     }
 
     /**

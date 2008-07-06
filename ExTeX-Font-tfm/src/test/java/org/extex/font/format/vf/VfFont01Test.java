@@ -40,6 +40,64 @@ import org.extex.util.xml.XMLStreamWriter;
 public class VfFont01Test extends TestCase {
 
     /**
+     * Font values.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testChars01() throws Exception {
+
+        File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
+        File tfm = new File("../ExTeX-Font-tfm/src/font/aer12.tfm");
+
+        assertTrue(vf.canRead());
+        assertTrue(tfm.canRead());
+
+        TfmReader tfmReader = new TfmReader(new FileInputStream(tfm), "aer12");
+        assertNotNull(tfmReader);
+
+        VfFont vfFont = new VfFont("aer12", new FileInputStream(vf), tfmReader);
+        assertNotNull(vfFont);
+
+        assertEquals("aer12", vfFont.getFontname());
+        VfCommandCharacterPackets ccmd = vfFont.getChar(-1);
+        assertNull(ccmd);
+
+        ccmd = vfFont.getChar(256);
+        assertNull(ccmd);
+
+        ccmd = vfFont.getChar(255);
+        assertNotNull(ccmd);
+
+        assertEquals(255, ccmd.getCharactercode());
+        assertEquals("0.488994", ccmd.getWidth().toString());
+
+        byte[] dvi = ccmd.getDvi();
+        assertNotNull(dvi);
+        assertEquals(1, dvi.length);
+
+        assertEquals(25, dvi[0]);
+    }
+
+    /**
+     * Font parameters.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testFontArgs01() throws Exception {
+
+        try {
+            new VfFont("aer12", null, null);
+            assertTrue(false);
+
+            new VfFont(null, null, null);
+            assertTrue(false);
+
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
+        }
+    }
+
+    /**
      * Font exists.
      * 
      * @throws Exception if an error occurred.
@@ -75,25 +133,6 @@ public class VfFont01Test extends TestCase {
     }
 
     /**
-     * Font parameters.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testFontArgs01() throws Exception {
-
-        try {
-            new VfFont("aer12", null, null);
-            assertTrue(false);
-
-            new VfFont(null, null, null);
-            assertTrue(false);
-
-        } catch (IllegalArgumentException e) {
-            assertTrue(true);
-        }
-    }
-
-    /**
      * Font values.
      * 
      * @throws Exception if an error occurred.
@@ -115,38 +154,6 @@ public class VfFont01Test extends TestCase {
         assertEquals("aer12", vfFont.getFontname());
         assertNotNull(vfFont.getCmds());
 
-    }
-
-    /**
-     * Font xml export.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testFontXml01() throws Exception {
-
-        File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
-        File tfm = new File("../ExTeX-Font-tfm/src/font/aer12.tfm");
-
-        assertTrue(vf.canRead());
-        assertTrue(tfm.canRead());
-
-        TfmReader tfmReader = new TfmReader(new FileInputStream(tfm), "aer12");
-        assertNotNull(tfmReader);
-
-        VfFont vfFont = new VfFont("aer12", new FileInputStream(vf), tfmReader);
-        assertNotNull(vfFont);
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        XMLStreamWriter writer = new XMLStreamWriter(out, "ISO8859-1");
-        writer.setBeauty(true);
-
-        vfFont.writeXML(writer);
-
-        writer.close();
-        byte[] b = out.toByteArray();
-        assertNotNull(b);
-
-        // System.out.println(new String(b, "ISO8859-1"));
     }
 
     /**
@@ -192,45 +199,6 @@ public class VfFont01Test extends TestCase {
         assertNotNull(fcmd);
         assertEquals("cmu10", fcmd.getFontname());
 
-    }
-
-    /**
-     * Font values.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testChars01() throws Exception {
-
-        File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
-        File tfm = new File("../ExTeX-Font-tfm/src/font/aer12.tfm");
-
-        assertTrue(vf.canRead());
-        assertTrue(tfm.canRead());
-
-        TfmReader tfmReader = new TfmReader(new FileInputStream(tfm), "aer12");
-        assertNotNull(tfmReader);
-
-        VfFont vfFont = new VfFont("aer12", new FileInputStream(vf), tfmReader);
-        assertNotNull(vfFont);
-
-        assertEquals("aer12", vfFont.getFontname());
-        VfCommandCharacterPackets ccmd = vfFont.getChar(-1);
-        assertNull(ccmd);
-
-        ccmd = vfFont.getChar(256);
-        assertNull(ccmd);
-
-        ccmd = vfFont.getChar(255);
-        assertNotNull(ccmd);
-
-        assertEquals(255, ccmd.getCharactercode());
-        assertEquals("0.488994", ccmd.getWidth().toString());
-
-        byte[] dvi = ccmd.getDvi();
-        assertNotNull(dvi);
-        assertEquals(1, dvi.length);
-
-        assertEquals(25, dvi[0]);
     }
 
     /**
@@ -288,6 +256,38 @@ public class VfFont01Test extends TestCase {
         assertEquals("10.0pt", fcmd.getDesignsizeAsDimen().toString());
         assertEquals("1.0", fcmd.getScalefactor().toString());
 
+    }
+
+    /**
+     * Font xml export.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testFontXml01() throws Exception {
+
+        File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
+        File tfm = new File("../ExTeX-Font-tfm/src/font/aer12.tfm");
+
+        assertTrue(vf.canRead());
+        assertTrue(tfm.canRead());
+
+        TfmReader tfmReader = new TfmReader(new FileInputStream(tfm), "aer12");
+        assertNotNull(tfmReader);
+
+        VfFont vfFont = new VfFont("aer12", new FileInputStream(vf), tfmReader);
+        assertNotNull(vfFont);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        XMLStreamWriter writer = new XMLStreamWriter(out, "ISO8859-1");
+        writer.setBeauty(true);
+
+        vfFont.writeXML(writer);
+
+        writer.close();
+        byte[] b = out.toByteArray();
+        assertNotNull(b);
+
+        // System.out. println(new String(b, "ISO8859-1"));
     }
 
 }

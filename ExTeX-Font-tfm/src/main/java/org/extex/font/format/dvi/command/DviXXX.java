@@ -49,6 +49,17 @@ public class DviXXX extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        return "xxx";
+    }
+
+    /**
      * Returns the values.
      * 
      * @return Returns the values.
@@ -86,15 +97,5 @@ public class DviXXX extends DviCommand {
             buf.append("0x").append(Integer.toHexString(values[i])).append(" ");
         }
         return buf.toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        return "xxx";
     }
 }

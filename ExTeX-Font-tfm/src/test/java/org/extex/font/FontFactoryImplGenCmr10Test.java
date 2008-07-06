@@ -19,10 +19,6 @@
 
 package org.extex.font;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;

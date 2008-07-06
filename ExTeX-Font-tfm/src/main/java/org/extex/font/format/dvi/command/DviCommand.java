@@ -37,29 +37,6 @@ import org.extex.util.file.random.RandomAccessR;
 public abstract class DviCommand {
 
     /**
-     * the opcode of the command
-     */
-    private int opc;
-
-    /**
-     * the start pointer (in the file) of the command
-     */
-    private int startpointer;
-
-    /**
-     * Create a new object.
-     * 
-     * @param opcode the opcode
-     * @param sp the start pointer
-     */
-    protected DviCommand(final int opcode, final int sp) {
-
-        super();
-        opc = opcode;
-        startpointer = sp;
-    }
-
-    /**
      * The length of <code>c</code> elements of the bob command.
      */
     public static final int BOP_LENGTH = 10;
@@ -77,8 +54,9 @@ public abstract class DviCommand {
          * width, so one cannot be sure that <code>h</code> will advance after
          * this command; but <code>h</code> usually does increase.
          * 
-         * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-         *      de.dante.util.file.random.RandomAccessR, int, int)
+         * 
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+         *      org.extex.util.file.random.RandomAccessR, int, int)
          */
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp)
@@ -104,8 +82,8 @@ public abstract class DviCommand {
          * fnt_num_1 through fnt_num_63 (opcodes 172 to 234): Set
          * <code>f = 1</code>, ..., <code>f = 63</code>, respectively.
          * 
-         * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-         *      de.dante.util.file.random.RandomAccessR, int, int)
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+         *      org.extex.util.file.random.RandomAccessR, int, int)
          */
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp)
@@ -127,8 +105,10 @@ public abstract class DviCommand {
         /**
          * undefined opcode
          * 
-         * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-         *      de.dante.util.file.random.RandomAccessR, int, int)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+         *      org.extex.util.file.random.RandomAccessR, int, int)
          */
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp) throws IOException, FontException {
@@ -293,8 +273,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -318,8 +298,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -336,8 +316,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -355,8 +335,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -381,8 +361,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -403,8 +383,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -421,8 +401,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -439,8 +419,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -457,8 +437,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -476,8 +456,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -498,8 +478,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -525,8 +505,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -549,8 +529,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -569,8 +549,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -591,8 +571,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -612,8 +592,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -632,8 +612,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -652,8 +632,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -672,8 +652,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -694,8 +674,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -716,8 +696,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -735,8 +715,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -754,8 +734,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -773,8 +753,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -794,8 +774,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -816,8 +796,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -835,8 +815,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -854,8 +834,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -873,8 +853,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -894,8 +874,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -914,8 +894,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int)
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -934,8 +916,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -954,8 +936,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -976,8 +958,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -998,8 +980,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1017,8 +999,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1036,8 +1018,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1055,8 +1037,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1076,8 +1058,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1098,8 +1080,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1117,8 +1099,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1136,8 +1118,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1155,8 +1137,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1174,8 +1156,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1214,8 +1196,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1237,8 +1219,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1257,8 +1239,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1277,8 +1259,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1302,8 +1284,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1327,8 +1309,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1352,8 +1334,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1378,8 +1360,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1426,8 +1408,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1461,8 +1443,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1496,8 +1478,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1531,8 +1513,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1590,8 +1572,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1654,8 +1636,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1699,8 +1681,8 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see de.dante.extex.format.dvi.command.DviReadCommand#read(
-                 *      de.dante.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
+                 *      org.extex.util.file.random.RandomAccessR, int, int)
                  */
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
@@ -1728,27 +1710,6 @@ public abstract class DviCommand {
             };
 
     /**
-     * Reads the next dvi command.
-     * 
-     * @param rar the input
-     * @return Returns the next command
-     * @throws IOException if an IO-error occurs.
-     * @throws FontException if a font-error occurs.
-     */
-    public static DviCommand getNextCommand(final RandomAccessR rar)
-            throws IOException,
-                FontException,
-                ConfigurationException {
-
-        if (rar.isEOF()) {
-            return null;
-        }
-        int sp = (int) rar.getPointer();
-        int opcode = rar.readByteAsInt();
-        return OPCODEARRAY[opcode].read(rar, opcode, sp);
-    }
-
-    /**
      * the end marker of the dvi file
      */
     private static final int ENDMARKER = 223;
@@ -1767,62 +1728,6 @@ public abstract class DviCommand {
      * q - 4 bytes
      */
     private static final int Q_LENGTH = 4;
-
-    /**
-     * Reads the <code>DviPost</code> command.
-     * 
-     * @param rar the input
-     * @return Returns the <code>DviPost</code> command
-     * @throws IOException if an IO-error occurs.
-     * @throws FontException if a font-error occurs.
-     */
-    public static DviPost getPost(final RandomAccessR rar)
-            throws IOException,
-                FontException,
-                ConfigurationException {
-
-        // jump to the end and read the pointer
-        rar.seek(rar.length() - 1);
-        long pos = rar.getPointer();
-        while (rar.readByteAsInt() == ENDMARKER) {
-            rar.seek(--pos);
-        }
-
-        // q (4 bytes)
-        pos -= Q_LENGTH;
-        rar.seek(pos);
-        int pointer = rar.readInt();
-
-        // read post
-        rar.seek(pointer);
-        int opcode = rar.readByteAsInt();
-        if (opcode != POST) {
-            throw new FontException("dvi post not found");// DviPostNotFoundException();
-        }
-        return (DviPost) OPCODEARRAY[opcode].read(rar, opcode, pointer);
-    }
-
-    /**
-     * Reads the <code>DviPre</code> command.
-     * 
-     * @param rar the input
-     * @return Returns the <code>DviPre</code> command
-     * @throws IOException if an IO-error occurs.
-     * @throws FontException if a font-error occurs.
-     */
-    public static DviPre getPre(final RandomAccessR rar)
-            throws IOException,
-                FontException,
-                ConfigurationException {
-
-        // read pre
-        rar.seek(0);
-        int opcode = rar.readByteAsInt();
-        if (opcode != PRE) {
-            throw new FontException("dvi pre not found");// DviPreNotFoundException();
-        }
-        return (DviPre) OPCODEARRAY[opcode].read(rar, opcode, 0);
-    }
 
     /**
      * the min fnt_def opcode
@@ -1865,6 +1770,121 @@ public abstract class DviCommand {
     }
 
     /**
+     * Reads the next dvi command.
+     * 
+     * @param rar the input
+     * 
+     * @return Returns the next command
+     * 
+     * @throws IOException if an IO-error occurs.
+     * @throws FontException if a font-error occurs.
+     * @throws ConfigurationException in case of an configuration error
+     */
+    public static DviCommand getNextCommand(final RandomAccessR rar)
+            throws IOException,
+                FontException,
+                ConfigurationException {
+
+        if (rar.isEOF()) {
+            return null;
+        }
+        int sp = (int) rar.getPointer();
+        int opcode = rar.readByteAsInt();
+        return OPCODEARRAY[opcode].read(rar, opcode, sp);
+    }
+
+    /**
+     * Reads the <code>DviPost</code> command.
+     * 
+     * @param rar the input
+     * @return Returns the <code>DviPost</code> command
+     * 
+     * @throws IOException if an IO-error occurs.
+     * @throws FontException if a font-error occurs.
+     * @throws ConfigurationException in case of an configuration error
+     */
+    public static DviPost getPost(final RandomAccessR rar)
+            throws IOException,
+                FontException,
+                ConfigurationException {
+
+        // jump to the end and read the pointer
+        rar.seek(rar.length() - 1);
+        long pos = rar.getPointer();
+        while (rar.readByteAsInt() == ENDMARKER) {
+            rar.seek(--pos);
+        }
+
+        // q (4 bytes)
+        pos -= Q_LENGTH;
+        rar.seek(pos);
+        int pointer = rar.readInt();
+
+        // read post
+        rar.seek(pointer);
+        int opcode = rar.readByteAsInt();
+        if (opcode != POST) {
+            throw new FontException("dvi post not found");// DviPostNotFoundException();
+        }
+        return (DviPost) OPCODEARRAY[opcode].read(rar, opcode, pointer);
+    }
+
+    /**
+     * Reads the <code>DviPre</code> command.
+     * 
+     * @param rar the input
+     * 
+     * @return Returns the <code>DviPre</code> command
+     * 
+     * @throws IOException if an IO-error occurs.
+     * @throws FontException if a font-error occurs.
+     * @throws ConfigurationException in case of an configuration error
+     */
+    public static DviPre getPre(final RandomAccessR rar)
+            throws IOException,
+                FontException,
+                ConfigurationException {
+
+        // read pre
+        rar.seek(0);
+        int opcode = rar.readByteAsInt();
+        if (opcode != PRE) {
+            throw new FontException("dvi pre not found");// DviPreNotFoundException();
+        }
+        return (DviPre) OPCODEARRAY[opcode].read(rar, opcode, 0);
+    }
+
+    /**
+     * the opcode of the command
+     */
+    private int opc;
+
+    /**
+     * the start pointer (in the file) of the command
+     */
+    private int startpointer;
+
+    /**
+     * Create a new object.
+     * 
+     * @param opcode the opcode
+     * @param sp the start pointer
+     */
+    protected DviCommand(final int opcode, final int sp) {
+
+        super();
+        opc = opcode;
+        startpointer = sp;
+    }
+
+    /**
+     * Returns the name of the command.
+     * 
+     * @return Returns the name of the command.
+     */
+    public abstract String getName();
+
+    /**
      * Returns the opcode of the command.
      * 
      * @return Returns the opcode of the command.
@@ -1885,15 +1905,14 @@ public abstract class DviCommand {
     }
 
     /**
-     * Returns the name of the command.
+     * {@inheritDoc}
      * 
-     * @return Returns the name of the command.
+     * @see java.lang.Object#toString()
      */
-    public abstract String getName();
-
     @Override
     public String toString() {
 
         return getName();
     }
+
 }

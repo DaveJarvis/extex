@@ -85,27 +85,6 @@ public abstract class VfCommand implements XMLWriterConvertible {
     public static final int SHIFT16 = 16;
 
     /**
-     * the command code
-     */
-    private int ccode;
-
-    /**
-     * The localizer for the messages.
-     */
-    private Localizer localizer;
-
-    /**
-     * Create a new object. (only from subclasses)
-     * 
-     * @param c the command code
-     */
-    VfCommand(Localizer localizer, final int c) {
-
-        this.localizer = localizer;
-        ccode = c;
-    }
-
-    /**
      * Return the new instance of the command. The command read itself the data
      * from the input.
      * 
@@ -146,6 +125,28 @@ public abstract class VfCommand implements XMLWriterConvertible {
         } catch (IOException e) {
             throw new FontException(e.getLocalizedMessage());
         }
+    }
+
+    /**
+     * the command code
+     */
+    private int ccode;
+
+    /**
+     * The localizer for the messages.
+     */
+    private Localizer localizer;
+
+    /**
+     * Create a new object. (only from subclasses)
+     * 
+     * @param localizer ...
+     * @param c the command code
+     */
+    VfCommand(Localizer localizer, final int c) {
+
+        this.localizer = localizer;
+        ccode = c;
     }
 
     /**

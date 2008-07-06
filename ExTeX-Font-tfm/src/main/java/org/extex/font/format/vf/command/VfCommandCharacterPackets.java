@@ -200,6 +200,11 @@ public class VfCommandCharacterPackets extends VfCommand {
         return width;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 
@@ -209,7 +214,8 @@ public class VfCommandCharacterPackets extends VfCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

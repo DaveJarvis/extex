@@ -29,6 +29,11 @@ package org.extex.font.format.dvi.command;
 public class DviZ extends DviCommand {
 
     /**
+     * z0
+     */
+    private static final int Z0 = 166;
+
+    /**
      * the value
      */
     private int value;
@@ -66,6 +71,19 @@ public class DviZ extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.dvi.command.DviCommand#getName()
+     */
+    @Override
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("z").append(getOpcode() - Z0);
+        return buf.toString();
+    }
+
+    /**
      * Returns the value.
      * 
      * @return Returns the value.
@@ -83,23 +101,6 @@ public class DviZ extends DviCommand {
     public boolean isZ0() {
 
         return z0;
-    }
-
-    /**
-     * z0
-     */
-    private static final int Z0 = 166;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.dvi.command.DviCommand#getName()
-     */
-    public String getName() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("z").append(getOpcode() - Z0);
-        return buf.toString();
     }
 
 }

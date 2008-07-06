@@ -59,15 +59,15 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class VfFont implements XMLWriterConvertible {
 
     /**
+     * units per em (default-value)
+     */
+    public static final int UNITS_PER_EM_DEFAULT = 1000;
+
+    /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory.getLocalizer(VfFont.class);
-
-    /**
-     * units per em (default-value)
-     */
-    public static final int UNITS_PER_EM_DEFAULT = 1000;
 
     /**
      * The font anme.
@@ -80,20 +80,19 @@ public class VfFont implements XMLWriterConvertible {
     private TfmReader tfmReader;
 
     /**
-     * @see org.extex.font.format.tfm.TfmReader#getDesignSize()
+     * The list of commands.
      */
-    public FixedDimen getDesignSize() {
-
-        return tfmReader.getDesignSize();
-    }
+    private List<VfCommand> cmds;
 
     /**
-     * @see org.extex.font.format.tfm.TfmReader#getDesignSizeAsFixWord()
+     * The map for the fonts.
      */
-    public TfmFixWord getDesignSizeAsFixWord() {
+    private Map<Integer, VfCommandFontDef> fonts;
 
-        return tfmReader.getDesignSizeAsFixWord();
-    }
+    /**
+     * The map for the characters.
+     */
+    private Map<Integer, VfCommandCharacterPackets> chars;
 
     /**
      * Creates a new object.
@@ -123,25 +122,92 @@ public class VfFont implements XMLWriterConvertible {
     }
 
     /**
-     * The list of commands.
-     */
-    private List<VfCommand> cmds;
-
-    /**
-     * The map for the fonts.
-     */
-    private Map<Integer, VfCommandFontDef> fonts;
-
-    /**
-     * The map for the characters.
-     */
-    private Map<Integer, VfCommandCharacterPackets> chars;
-
-    /**
-     * reads the virtual font.
+     * Returns the char command or <code>null</code>, if not found.
      * 
-     * @throws IOException if an
+     * @param number The number of the char.
+     * @return Returns the char command.
      */
+    @SuppressWarnings("boxing")
+    public VfCommandCharacterPackets getChar(int number) {
+
+        return chars.get(number);
+    }
+
+    /**
+     * Getter for cmds.
+     * 
+     * @return the cmds
+     */
+    public List<VfCommand> getCmds() {
+
+        return cmds;
+    }
+
+    /**
+     * Returns the design size.
+     * 
+     * @return Returns the design size.
+     * 
+     * @see org.extex.font.format.tfm.TfmReader#getDesignSize()
+     */
+    public FixedDimen getDesignSize() {
+
+        return tfmReader.getDesignSize();
+    }
+
+    /**
+     * Returns the design size as fix word.
+     * 
+     * @return Returns the design size as fix word.
+     * 
+     * @see org.extex.font.format.tfm.TfmReader#getDesignSizeAsFixWord()
+     */
+    public TfmFixWord getDesignSizeAsFixWord() {
+
+        return tfmReader.getDesignSizeAsFixWord();
+    }
+
+    /**
+     * Returns the font command or <code>null</code>, if not found.
+     * 
+     * @param number The number of the font.
+     * 
+     * @return Returns the font command.
+     */
+    @SuppressWarnings("boxing")
+    public VfCommandFontDef getFont(int number) {
+
+        return fonts.get(number);
+    }
+
+    /**
+     * Getter for font name.
+     * 
+     * @return the font name
+     */
+    public String getFontname() {
+
+        return fontname;
+    }
+
+    /**
+     * Getter for fonts.
+     * 
+     * @return the fonts
+     */
+    public Map<Integer, VfCommandFontDef> getFonts() {
+
+        return fonts;
+    }
+
+    /**
+     * Reads the virtual font.
+     * 
+     * @param in ...
+     * 
+     * @throws FontException if an
+     */
+    @SuppressWarnings("boxing")
     private void readVF(InputStream in) throws FontException {
 
         cmds = new ArrayList<VfCommand>();
@@ -176,48 +242,6 @@ public class VfFont implements XMLWriterConvertible {
     }
 
     /**
-     * Getter for fontname.
-     * 
-     * @return the fontname
-     */
-    public String getFontname() {
-
-        return fontname;
-    }
-
-    /**
-     * Getter for cmds.
-     * 
-     * @return the cmds
-     */
-    public List<VfCommand> getCmds() {
-
-        return cmds;
-    }
-
-    /**
-     * Returns the font command or <code>null</code>, if not found.
-     * 
-     * @param number The number of the font.
-     * @return Returns the font command.
-     */
-    public VfCommandFontDef getFont(int number) {
-
-        return fonts.get(number);
-    }
-
-    /**
-     * Returns the char command or <code>null</code>, if not found.
-     * 
-     * @param number The number of the char.
-     * @return Returns the char command.
-     */
-    public VfCommandCharacterPackets getChar(int number) {
-
-        return chars.get(number);
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
@@ -233,16 +257,6 @@ public class VfFont implements XMLWriterConvertible {
         }
         writer.writeEndElement();
 
-    }
-
-    /**
-     * Getter for fonts.
-     * 
-     * @return the fonts
-     */
-    public Map<Integer, VfCommandFontDef> getFonts() {
-
-        return fonts;
     }
 
     // /**
