@@ -40,7 +40,7 @@ import org.extex.exbib.main.util.AbstractMain;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class contains the main program for ExBib.
+ * This class contains the main program for &epsilon;&chi;Bib.
  * <p>
  * </p>
  * <p>
