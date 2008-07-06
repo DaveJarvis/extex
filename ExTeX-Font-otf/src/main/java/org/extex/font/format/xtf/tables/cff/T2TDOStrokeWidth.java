@@ -45,18 +45,23 @@ public class T2TDOStrokeWidth extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_STROKEWIDTH;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "strokewidth";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_STROKEWIDTH;
     }
 
 }

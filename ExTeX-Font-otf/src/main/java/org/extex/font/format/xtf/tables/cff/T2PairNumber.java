@@ -60,16 +60,6 @@ public class T2PairNumber {
     }
 
     /**
-     * Setter for a.
-     * 
-     * @param a the a to set
-     */
-    public void setA(T2Number a) {
-
-        this.a = a;
-    }
-
-    /**
      * Getter for b.
      * 
      * @return the b
@@ -77,6 +67,16 @@ public class T2PairNumber {
     public T2Number getB() {
 
         return b;
+    }
+
+    /**
+     * Setter for a.
+     * 
+     * @param a the a to set
+     */
+    public void setA(T2Number a) {
+
+        this.a = a;
     }
 
     /**
@@ -89,6 +89,11 @@ public class T2PairNumber {
         this.b = b;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
 

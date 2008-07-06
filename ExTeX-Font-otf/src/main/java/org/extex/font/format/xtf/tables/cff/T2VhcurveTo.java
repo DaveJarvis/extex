@@ -59,10 +59,22 @@ public class T2VhcurveTo extends T2PathConstruction {
     private T2EightNumber[] eight;
 
     /**
+     * The dxf.
+     */
+    private T2Number dxf;
+
+    /**
+     * Type 1 command.
+     */
+    private boolean type1;
+
+    /**
      * Create a new object.
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2VhcurveTo(List<T2CharString> stack, CharString ch)
             throws IOException {
@@ -112,16 +124,6 @@ public class T2VhcurveTo extends T2PathConstruction {
     }
 
     /**
-     * The dxf.
-     */
-    private T2Number dxf;
-
-    /**
-     * Type 1 command.
-     */
-    private boolean type1;
-
-    /**
      * Getter for dx2.
      * 
      * @return the dx2
@@ -139,6 +141,16 @@ public class T2VhcurveTo extends T2PathConstruction {
     public T2Number getDx3() {
 
         return dx3;
+    }
+
+    /**
+     * Getter for dxf.
+     * 
+     * @return the dxf
+     */
+    public T2Number getDxf() {
+
+        return dxf;
     }
 
     /**
@@ -207,41 +219,6 @@ public class T2VhcurveTo extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("dy1", dy1);
-        writer.writeAttribute("dx2", dx2);
-        writer.writeAttribute("dy2", dy2);
-        writer.writeAttribute("dx3", dx3);
-        writer.writeAttribute("dxf", dxf);
-        if (eight != null) {
-            for (int i = 0; i < eight.length; i++) {
-                writer.writeStartElement("pair");
-                writer.writeAttribute("id", i);
-                writer.writeAttribute("value", eight[i].toString());
-                writer.writeEndElement();
-            }
-        }
-        writer.writeEndElement();
-    }
-
-    /**
-     * Getter for dxf.
-     * 
-     * @return the dxf
-     */
-    public T2Number getDxf() {
-
-        return dxf;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
      */
     @Override
@@ -266,6 +243,31 @@ public class T2VhcurveTo extends T2PathConstruction {
 
         buf.append(getName());
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("dy1", dy1);
+        writer.writeAttribute("dx2", dx2);
+        writer.writeAttribute("dy2", dy2);
+        writer.writeAttribute("dx3", dx3);
+        writer.writeAttribute("dxf", dxf);
+        if (eight != null) {
+            for (int i = 0; i < eight.length; i++) {
+                writer.writeStartElement("pair");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", eight[i].toString());
+                writer.writeEndElement();
+            }
+        }
+        writer.writeEndElement();
     }
 
 }

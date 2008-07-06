@@ -96,24 +96,26 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Creates a new object.
+     * Creates a new object. Scan the <code>TokenSource</code> for a
+     * <code>Transform</code>.
      * 
-     * @param v1 the value 1
-     * @param v2 the value 2
-     * @param v3 the value 3
-     * @param v4 the value 4
-     * @param v5 the value 5
-     * @param v6 the value 6
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typsesetter
      */
-    public Transform(Real v1, Real v2, Real v3, Real v4, Real v5, Real v6) {
+    public Transform(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         super();
-        val[T1] = v1;
-        val[T2] = v2;
-        val[T3] = v3;
-        val[T4] = v4;
-        val[T5] = v5;
-        val[T6] = v6;
+        for (int i = 0; i < MAXVAL; i++) {
+            val[i] = new Real(context, source, typesetter);
+        }
     }
 
     /**
@@ -139,26 +141,24 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Creates a new object. Scan the <code>TokenSource</code> for a
-     * <code>Transform</code>.
+     * Creates a new object.
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @throws HelpingException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     * @throws TypesetterException in case of an error in the typsesetter
+     * @param v1 the value 1
+     * @param v2 the value 2
+     * @param v3 the value 3
+     * @param v4 the value 4
+     * @param v5 the value 5
+     * @param v6 the value 6
      */
-    public Transform(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                ConfigurationException,
-                TypesetterException {
+    public Transform(Real v1, Real v2, Real v3, Real v4, Real v5, Real v6) {
 
         super();
-        for (int i = 0; i < MAXVAL; i++) {
-            val[i] = new Real(context, source, typesetter);
-        }
+        val[T1] = v1;
+        val[T2] = v2;
+        val[T3] = v3;
+        val[T4] = v4;
+        val[T5] = v5;
+        val[T6] = v6;
     }
 
     /**
@@ -195,15 +195,17 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Setter for the value.
+     * Return the idx-value for the transfomation
      * 
-     * @param value the new value
+     * @param idx the number of the value
+     * @return the value on index idx
      */
-    public void set(Transform value) {
+    public Real get(int idx) {
 
-        for (int i = 0; i < MAXVAL; i++) {
-            val[i] = value.get(i);
+        if (idx >= 0 && idx < MAXVAL) {
+            return val[idx];
         }
+        throw new IndexOutOfBoundsException();
     }
 
     /**
@@ -221,17 +223,15 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Return the idx-value for the transfomation
+     * Setter for the value.
      * 
-     * @param idx the number of the value
-     * @return the value on index idx
+     * @param value the new value
      */
-    public Real get(int idx) {
+    public void set(Transform value) {
 
-        if (idx >= 0 && idx < MAXVAL) {
-            return val[idx];
+        for (int i = 0; i < MAXVAL; i++) {
+            val[i] = value.get(i);
         }
-        throw new IndexOutOfBoundsException();
     }
 
     /**
@@ -239,6 +239,7 @@ public class Transform implements Serializable {
      * 
      * @return the value as <code>String</code>
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

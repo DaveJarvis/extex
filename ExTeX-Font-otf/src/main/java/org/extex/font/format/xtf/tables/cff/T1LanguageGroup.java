@@ -38,7 +38,7 @@ public class T1LanguageGroup extends T1DictNumber {
      */
     public T1LanguageGroup(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{LanguageGroup});
+        super(stack, new short[]{LANGUAGE_GROUP});
     }
 
     /**

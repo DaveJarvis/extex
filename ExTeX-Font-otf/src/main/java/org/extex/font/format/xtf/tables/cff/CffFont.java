@@ -146,7 +146,7 @@ public class CffFont implements XMLWriterConvertible {
     private int underlineposition = -100;
 
     /**
-     * The underline thickness. (dedault: 50)
+     * The underline thickness. (default: 50)
      */
     private int underlinethickness = 50;
 
@@ -207,7 +207,7 @@ public class CffFont implements XMLWriterConvertible {
     /**
      * Returns the bias.
      * 
-     * @param nSubrs The number of subr indexies.
+     * @param nSubrs The number of subr indexes.
      * @return Returns the bias.
      */
     private int getBias(int nSubrs) {
@@ -938,7 +938,8 @@ public class CffFont implements XMLWriterConvertible {
      * 
      * @param rar The input.
      * @param cff The cff table.
-     * @param baseoffset The baseoffset of the table.
+     * @param baseoffset The base offset of the table.
+     * 
      * @throws IOException if a io-error occurred.
      */
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
@@ -1122,6 +1123,8 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

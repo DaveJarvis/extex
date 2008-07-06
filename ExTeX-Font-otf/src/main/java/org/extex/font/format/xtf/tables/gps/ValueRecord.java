@@ -124,47 +124,47 @@ public class ValueRecord implements XMLWriterConvertible {
     /**
      * For future use.
      */
-    public static final int Reserved = 8;
+    public static final int RESERVED = 8;
 
     /**
      * Includes horizontal adjustment for advance.
      */
-    public static final int XAdvance = 2;
+    public static final int X_ADVANCE = 2;
 
     /**
      * Includes horizontal Device table for advance.
      */
-    public static final int XAdvDevice = 6;
+    public static final int X_ADV_DEVICE = 6;
 
     /**
      * Includes horizontal adjustment for placement.
      */
-    public static final int XPlacement = 0;
+    public static final int X_PLACEMENT = 0;
 
     /**
      * Includes horizontal Device table for placement.
      */
-    public static final int XPlaDevice = 4;
+    public static final int X_PLA_DEVICE = 4;
 
     /**
      * Includes vertical adjustment for advance.
      */
-    public static final int YAdvance = 3;
+    public static final int Y_ADVANCE = 3;
 
     /**
      * Includes vertical Device table for advance.
      */
-    public static final int YAdvDevice = 7;
+    public static final int Y_ADV_DEVICE = 7;
 
     /**
      * Includes vertical adjustment for placement.
      */
-    public static final int YPlacement = 1;
+    public static final int Y_PLACEMENT = 1;
 
     /**
      * Includes vertical Device table for placement.
      */
-    public static final int YPlaDevice = 5;
+    public static final int Y_PLA_DEVICE = 5;
 
     /**
      * Returns the mask of the ValueFormat or -1, if not found.
@@ -366,35 +366,35 @@ public class ValueRecord implements XMLWriterConvertible {
         // this.xtfGlyph = xtfGlyph;
         this.valueFormat = valueFormat;
 
-        if (isMaskSet(valueFormat, getMask(XPlacement))) {
+        if (isMaskSet(valueFormat, getMask(X_PLACEMENT))) {
             isXPlacement = true;
             xPlacement = (short) rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(YPlacement))) {
+        if (isMaskSet(valueFormat, getMask(Y_PLACEMENT))) {
             isYPlacement = true;
             yPlacement = (short) rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(XAdvance))) {
+        if (isMaskSet(valueFormat, getMask(X_ADVANCE))) {
             isXAdvance = true;
             xAdvance = (short) rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(YAdvance))) {
+        if (isMaskSet(valueFormat, getMask(Y_ADVANCE))) {
             isYAdvance = true;
             yAdvance = (short) rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(XPlaDevice))) {
+        if (isMaskSet(valueFormat, getMask(X_PLA_DEVICE))) {
             isXPlaDevice = true;
             xPlaDeviceOffset = rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(YPlaDevice))) {
+        if (isMaskSet(valueFormat, getMask(Y_PLA_DEVICE))) {
             isYPlaDevice = true;
             yPlaDeviceOffset = rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(XAdvDevice))) {
+        if (isMaskSet(valueFormat, getMask(X_ADV_DEVICE))) {
             isXAdvDevice = true;
             xAdvDeviceOffset = rar.readUnsignedShort();
         }
-        if (isMaskSet(valueFormat, getMask(YAdvDevice))) {
+        if (isMaskSet(valueFormat, getMask(Y_ADV_DEVICE))) {
             isYAdvDevice = true;
             yAdvDeviceOffset = rar.readUnsignedShort();
         }

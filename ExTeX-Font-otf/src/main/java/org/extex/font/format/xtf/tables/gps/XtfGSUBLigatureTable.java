@@ -525,6 +525,7 @@ public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
     /**
      * Returns the ligature set or <code>null</code>, if not found.
      * 
+     * @param glyphiD TODO
      * @return Returns the ligature set.
      */
     public abstract LigatureSet getLigatureSet(int glyphiD);

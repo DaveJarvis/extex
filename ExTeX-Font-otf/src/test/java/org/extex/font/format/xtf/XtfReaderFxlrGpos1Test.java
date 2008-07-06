@@ -298,7 +298,7 @@ public class XtfReaderFxlrGpos1Test extends TestCase {
                         "q.sc", "v.sc", "w.sc", "x.sc", "y.sc", "hyphen.sc",
                         "ograve.sc", "oacute.sc", "ocircumflex.sc",
                         "otilde.sc", "odieresis.sc", "oslash.sc", "yacute.sc",
-                        "ydieresis.sc", "W.alt", "V.alt", "K.alt", "f_f",};
+                        "ydieresis.sc", "W.alt", "V.alt", "K.alt", "f_f"};
 
         assertEquals("glyph count", gNames.length, glyphs.length);
 

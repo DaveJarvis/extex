@@ -40,97 +40,98 @@ public abstract class T1DictKey extends T2CharString
     /**
      * BlueFuzz.
      */
-    public static final int BlueFuzz = 11;
+    public static final int BLUE_FUZZ = 11;
 
     /**
      * BlueScale.
      */
-    public static final int BlueScale = 9;
+    public static final int BLUE_SCALE = 9;
 
     /**
      * BlueShift.
      */
-    public static final int BlueShift = 10;
+    public static final int BLUE_SHIFT = 10;
 
     /**
      * BlueValues.
      */
-    public static final int BlueValues = 6;
+    public static final int BLUE_VALUES = 6;
 
     /**
      * defaultWidthX.
      */
-    public static final int defaultWidthX = 20;
+    public static final int DEFAULT_WIDTH_X = 20;
 
     /**
      * ExpansionFactor.
      */
-    public static final int ExpansionFactor = 18;
+    public static final int EXPANSION_FACTOR = 18;
 
     /**
      * FamilyBlues.
      */
-    public static final int FamilyBlues = 8;
+    public static final int FAMILY_BLUES = 8;
 
     /**
      * FamilyOtherBlues.
      */
-    public static final int FamilyOtherBlues = 9;
+    public static final int FAMILY_OTHER_BLUES = 9;
 
     /**
      * ForceBold
      */
-    public static final int ForceBold = 14;
+    public static final int FORCES_BOLD = 14;
 
     /**
      * initialRandomSeed.
      */
-    public static final int initialRandomSeed = 19;
+    public static final int INITIAL_RANDOM_SEED = 19;
 
     /**
      * LanguageGroup.
      */
-    public static final int LanguageGroup = 17;
+    public static final int LANGUAGE_GROUP = 17;
 
     /**
      * nominalWidthX.
      */
-    public static final int nominalWidthX = 21;
+    public static final int NOMINAL_WIDTH_X = 21;
 
     /**
      * OtherBlues.
      */
-    public static final int OtherBlues = 7;
+    public static final int OTHER_BLUES = 7;
 
     /**
      * StdHW.
      */
-    public static final int StdHW = 10;
+    public static final int STD_H_W = 10;
 
     /**
      * StdVW
      */
-    public static final int StdVW = 11;
+    public static final int STD_V_W = 11;
 
     /**
      * StemSnapH.
      */
-    public static final int StemSnapH = 12;
+    public static final int STEM_SNAP_H = 12;
 
     /**
      * StemSnapV.
      */
-    public static final int StemSnapV = 13;
+    public static final int STEM_SNAP_V = 13;
 
     /**
      * Subrs.
      */
-    public static final int Subrs = 19;
+    public static final int SUBRS = 19;
 
     /**
      * Create a new instance.
      * 
      * @param rar the input
+     * 
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
@@ -143,48 +144,48 @@ public abstract class T1DictKey extends T2CharString
             int b = rar.readUnsignedByte();
 
             switch (b) {
-                case BlueValues:
+                case BLUE_VALUES:
                     return new T1BlueValues(stack);
-                case OtherBlues:
+                case OTHER_BLUES:
                     return new T1OtherBlues(stack);
-                case FamilyBlues:
+                case FAMILY_BLUES:
                     return new T1FamilyBlues(stack);
-                case FamilyOtherBlues:
+                case FAMILY_OTHER_BLUES:
                     return new T1FamilyOtherBlues(stack);
-                case StdHW:
+                case STD_H_W:
                     return new T1StdHW(stack);
-                case StdVW:
+                case STD_V_W:
                     return new T1StdVW(stack);
                 case ESCAPE_BYTE:
                     int b1 = rar.readUnsignedByte();
                     switch (b1) {
-                        case BlueScale:
+                        case BLUE_SCALE:
                             return new T1BlueScale(stack);
-                        case BlueShift:
+                        case BLUE_SHIFT:
                             return new T1BlueShift(stack);
-                        case BlueFuzz:
+                        case BLUE_FUZZ:
                             return new T1BlueFuzz(stack);
-                        case StemSnapH:
+                        case STEM_SNAP_H:
                             return new T1StemSnapH(stack);
-                        case StemSnapV:
+                        case STEM_SNAP_V:
                             return new T1StemSnapV(stack);
-                        case ForceBold:
+                        case FORCES_BOLD:
                             return new T1ForceBold(stack);
-                        case LanguageGroup:
+                        case LANGUAGE_GROUP:
                             return new T1LanguageGroup(stack);
-                        case ExpansionFactor:
+                        case EXPANSION_FACTOR:
                             return new T1ExpansionFactor(stack);
-                        case initialRandomSeed:
+                        case INITIAL_RANDOM_SEED:
                             return new T1initialRandomSeed(stack);
                         default:
                             throw new T2NotAOperatorException();
 
                     }
-                case Subrs:
+                case SUBRS:
                     return new T1Subrs(stack);
-                case defaultWidthX:
+                case DEFAULT_WIDTH_X:
                     return new T1defaultWidthX(stack);
-                case nominalWidthX:
+                case NOMINAL_WIDTH_X:
                     return new T1nominalWidthX(stack);
                 default:
                     // number

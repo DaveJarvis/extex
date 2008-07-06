@@ -45,18 +45,23 @@ public class T2TDOCharStringType extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CHARSTRINGTYPE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "charstringtype";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_CHARSTRINGTYPE;
     }
 
 }

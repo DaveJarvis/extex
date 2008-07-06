@@ -45,18 +45,23 @@ public class T2TDOFullName extends T2TDOSID {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_FULLNAME;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "fullname";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_FULLNAME;
     }
 
 }

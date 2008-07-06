@@ -45,18 +45,23 @@ public class T2TDOItalicAngle extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_ITALICANGLE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "italicangle";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_ITALICANGLE;
     }
 
 }

@@ -38,7 +38,7 @@ public class T1ExpansionFactor extends T1DictNumber {
      */
     public T1ExpansionFactor(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{ExpansionFactor});
+        super(stack, new short[]{EXPANSION_FACTOR});
     }
 
     /**

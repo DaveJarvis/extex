@@ -33,7 +33,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-
 /**
  * The register 'bool'.
  * 
@@ -227,6 +226,7 @@ public class Bool implements Serializable {
      * 
      * @return the value as <code>String</code>
      */
+    @Override
     public String toString() {
 
         return Boolean.toString(value);

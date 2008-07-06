@@ -38,7 +38,7 @@ public class T1defaultWidthX extends T1DictNumber {
      */
     public T1defaultWidthX(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{defaultWidthX});
+        super(stack, new short[]{DEFAULT_WIDTH_X});
     }
 
     /**

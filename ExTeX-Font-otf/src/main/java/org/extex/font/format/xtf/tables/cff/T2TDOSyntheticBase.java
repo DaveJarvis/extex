@@ -45,18 +45,23 @@ public class T2TDOSyntheticBase extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_SYNTHETICBASE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "syntheticbase";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_SYNTHETICBASE;
     }
 
 }

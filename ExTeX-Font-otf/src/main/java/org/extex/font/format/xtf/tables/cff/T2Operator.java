@@ -75,7 +75,7 @@ public abstract class T2Operator extends T2CharString
                 case T2RRCURVETO:
                     return new T2RrCurveTo(stack, ch);
                 case 9:
-                    return new T2Dummy(stack, ch, "Reserved");// Reserved
+                    return new T2Dummy(stack, ch, "Reserved"); // Reserved
                 case T2CALLSUBR:
                     return new T2CallSubr(stack, ch);
                 case T2RETURN:

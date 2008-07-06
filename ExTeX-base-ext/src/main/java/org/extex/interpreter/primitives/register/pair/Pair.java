@@ -70,32 +70,6 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * 
-     * @param x the x-value
-     * @param y the y-value
-     */
-    public Pair(Real x, Real y) {
-
-        super();
-        xval = x;
-        yval = y;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param x the x-value
-     * @param y the y-value
-     */
-    public Pair(double x, double y) {
-
-        super();
-        xval = new Real(x);
-        yval = new Real(y);
-    }
-
-    /**
      * Creates a new object. Scan the <code>TokenSource</code> for a
      * <code>Pair</code>.
      * 
@@ -115,6 +89,32 @@ public class Pair implements Serializable {
         super();
         xval = new Real(context, source, typesetter);
         yval = new Real(context, source, typesetter);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param x the x-value
+     * @param y the y-value
+     */
+    public Pair(double x, double y) {
+
+        super();
+        xval = new Real(x);
+        yval = new Real(y);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param x the x-value
+     * @param y the y-value
+     */
+    public Pair(Real x, Real y) {
+
+        super();
+        xval = x;
+        yval = y;
     }
 
     /**
@@ -152,63 +152,15 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Setter for the x-value.
+     * add
      * 
-     * @param x the new x-value
+     * @param x the x-value to add
+     * @param y the x-value to add
      */
-    public void setX(Real x) {
+    public void add(double x, double y) {
 
-        xval = x;
-    }
-
-    /**
-     * Setter for the y-value.
-     * 
-     * @param y the new y-value
-     */
-    public void setY(Real y) {
-
-        xval = y;
-    }
-
-    /**
-     * Setter for the x-value.
-     * 
-     * @param x the new x-value
-     */
-    public void setX(double x) {
-
-        xval = new Real(x);
-    }
-
-    /**
-     * Setter for the y-value.
-     * 
-     * @param y the new y-value
-     */
-    public void setY(double y) {
-
-        xval = new Real(y);
-    }
-
-    /**
-     * Getter for the x-value
-     * 
-     * @return the x-value
-     */
-    public Real getX() {
-
-        return xval;
-    }
-
-    /**
-     * Getter for the y-value
-     * 
-     * @return the y-value
-     */
-    public Real getY() {
-
-        return yval;
+        xval.add(x);
+        yval.add(y);
     }
 
     /**
@@ -235,15 +187,63 @@ public class Pair implements Serializable {
     }
 
     /**
-     * add
+     * Getter for the x-value
      * 
-     * @param x the x-value to add
-     * @param y the x-value to add
+     * @return the x-value
      */
-    public void add(double x, double y) {
+    public Real getX() {
 
-        xval.add(x);
-        yval.add(y);
+        return xval;
+    }
+
+    /**
+     * Getter for the y-value
+     * 
+     * @return the y-value
+     */
+    public Real getY() {
+
+        return yval;
+    }
+
+    /**
+     * Setter for the x-value.
+     * 
+     * @param x the new x-value
+     */
+    public void setX(double x) {
+
+        xval = new Real(x);
+    }
+
+    /**
+     * Setter for the x-value.
+     * 
+     * @param x the new x-value
+     */
+    public void setX(Real x) {
+
+        xval = x;
+    }
+
+    /**
+     * Setter for the y-value.
+     * 
+     * @param y the new y-value
+     */
+    public void setY(double y) {
+
+        xval = new Real(y);
+    }
+
+    /**
+     * Setter for the y-value.
+     * 
+     * @param y the new y-value
+     */
+    public void setY(Real y) {
+
+        xval = y;
     }
 
     /**
@@ -251,6 +251,7 @@ public class Pair implements Serializable {
      * 
      * @return the value as <code>String</code>
      */
+    @Override
     public String toString() {
 
         return xval.toString() + " " + yval.toString();

@@ -45,18 +45,23 @@ public class T2TDOFontMatrix extends T2TDOArray {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_FONTMATRIX;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "fontmatrix";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_FONTMATRIX;
     }
 
 }

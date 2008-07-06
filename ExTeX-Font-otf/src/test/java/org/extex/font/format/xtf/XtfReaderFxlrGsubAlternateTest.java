@@ -139,7 +139,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test a.
      */
     @Test
-    public void testGSUBAlternate_aalt_a() {
+    public void testGSUBAlternateAAlta() {
 
         check("aalt", "a", new String[]{"a.sc", null});
     }
@@ -148,7 +148,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test aacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_aacute() {
+    public void testGSUBAlternateAAltaacute() {
 
         check("aalt", "aacute", new String[]{"aacute.sc", null});
     }
@@ -157,7 +157,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Aacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Aacute() {
+    public void testGSUBAlternateAAltAacute() {
 
         check("aalt", "Aacute", new String[]{"aacute.sc", null});
     }
@@ -166,7 +166,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test abreve.
      */
     @Test
-    public void testGSUBAlternate_aalt_abreve() {
+    public void testGSUBAlternateAAltabreve() {
 
         check("aalt", "abreve", new String[]{"abreve.sc", null});
     }
@@ -175,7 +175,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test acircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_acircumflex() {
+    public void testGSUBAlternateAAltacircumflex() {
 
         check("aalt", "acircumflex", new String[]{"acircumflex.sc", null});
     }
@@ -184,7 +184,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Acircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_Acircumflex() {
+    public void testGSUBAlternateAAltAcircumflex() {
 
         check("aalt", "Acircumflex", new String[]{"acircumflex.sc", null});
     }
@@ -193,7 +193,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test adieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_adieresis() {
+    public void testGSUBAlternateAAltadieresis() {
 
         check("aalt", "adieresis", new String[]{"adieresis.sc", null});
     }
@@ -202,7 +202,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Adieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_Adieresis() {
+    public void testGSUBAlternateAAltAdieresis() {
 
         check("aalt", "Adieresis", new String[]{"adieresis.sc", null});
     }
@@ -211,7 +211,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Adieresis.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_Adieresisalt() {
+    public void testGSUBAlternateAAltAdieresisalt() {
 
         check("aalt", "Adieresis.alt", new String[]{"adieresis.sc", null});
     }
@@ -220,7 +220,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ae.
      */
     @Test
-    public void testGSUBAlternate_aalt_ae() {
+    public void testGSUBAlternateAAltae() {
 
         check("aalt", "ae", new String[]{"ae.sc", "ae.alt", null});
     }
@@ -229,7 +229,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test AE.
      */
     @Test
-    public void testGSUBAlternate_aalt_AE() {
+    public void testGSUBAlternateAAltAE() {
 
         check("aalt", "AE", new String[]{"ae.sc", null});
     }
@@ -238,7 +238,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ae.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_aealt() {
+    public void testGSUBAlternateAAltaealt() {
 
         check("aalt", "ae.alt", new String[]{"ae", null});
     }
@@ -247,7 +247,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test agrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_agrave() {
+    public void testGSUBAlternateAAltagrave() {
 
         check("aalt", "agrave", new String[]{"agrave.sc", null});
     }
@@ -256,7 +256,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Agrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_Agrave() {
+    public void testGSUBAlternateAAltAgrave() {
 
         check("aalt", "Agrave", new String[]{"agrave.sc", null});
     }
@@ -265,7 +265,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ampersand.
      */
     @Test
-    public void testGSUBAlternate_aalt_ampersand() {
+    public void testGSUBAlternateAAltampersand() {
 
         check("aalt", "ampersand", new String[]{"ampersand.alt", null});
     }
@@ -274,7 +274,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ampersand.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_ampersandalt() {
+    public void testGSUBAlternateAAltampersandalt() {
 
         check("aalt", "ampersand.alt", new String[]{"ampersand", null});
     }
@@ -283,7 +283,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test aogonek.
      */
     @Test
-    public void testGSUBAlternate_aalt_aogonek() {
+    public void testGSUBAlternateAAltaogonek() {
 
         check("aalt", "aogonek", new String[]{"aogonek.sc", null});
     }
@@ -292,7 +292,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test aring.
      */
     @Test
-    public void testGSUBAlternate_aalt_aring() {
+    public void testGSUBAlternateAAltaring() {
 
         check("aalt", "aring", new String[]{"aring.sc", null});
     }
@@ -301,7 +301,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Aring.
      */
     @Test
-    public void testGSUBAlternate_aalt_Aring() {
+    public void testGSUBAlternateAAltAring() {
 
         check("aalt", "Aring", new String[]{"aring.sc", null});
     }
@@ -310,7 +310,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test a.sc.
      */
     @Test
-    public void testGSUBAlternate_aalt_asc() {
+    public void testGSUBAlternateAAltasc() {
 
         check("aalt", "a.sc", new String[]{"a.scalt", "A", "a", null});
     }
@@ -319,7 +319,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test atilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_atilde() {
+    public void testGSUBAlternateAAltatilde() {
 
         check("aalt", "atilde", new String[]{"atilde.sc", null});
     }
@@ -328,7 +328,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Atilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_Atilde() {
+    public void testGSUBAlternateAAltAtilde() {
 
         check("aalt", "Atilde", new String[]{"atilde.sc", null});
     }
@@ -337,7 +337,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test b.
      */
     @Test
-    public void testGSUBAlternate_aalt_b() {
+    public void testGSUBAlternateAAltb() {
 
         check("aalt", "b", new String[]{"b.sc", null});
     }
@@ -346,7 +346,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test beta.
      */
     @Test
-    public void testGSUBAlternate_aalt_beta() {
+    public void testGSUBAlternateAAltbeta() {
 
         check("aalt", "beta", new String[]{"uni03D0", null});
     }
@@ -355,7 +355,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test braceleft.
      */
     @Test
-    public void testGSUBAlternate_aalt_braceleft() {
+    public void testGSUBAlternateAAltbraceleft() {
 
         check("aalt", "braceleft", new String[]{"braceleft.sc", null});
     }
@@ -364,7 +364,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test braceright.
      */
     @Test
-    public void testGSUBAlternate_aalt_braceright() {
+    public void testGSUBAlternateAAltbraceright() {
 
         check("aalt", "braceright", new String[]{"braceright.sc", null});
     }
@@ -373,7 +373,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test bracketleft.
      */
     @Test
-    public void testGSUBAlternate_aalt_bracketleft() {
+    public void testGSUBAlternateAAltbracketleft() {
 
         check("aalt", "bracketleft", new String[]{"bracketleft.sc", null});
     }
@@ -382,7 +382,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test bracketright.
      */
     @Test
-    public void testGSUBAlternate_aalt_bracketright() {
+    public void testGSUBAlternateAAltbracketright() {
 
         check("aalt", "bracketright", new String[]{"bracketright.sc", null});
     }
@@ -391,7 +391,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test c.
      */
     @Test
-    public void testGSUBAlternate_aalt_c() {
+    public void testGSUBAlternateAAltc() {
 
         check("aalt", "c", new String[]{"c.sc", null});
     }
@@ -400,7 +400,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test cacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_cacute() {
+    public void testGSUBAlternateAAltcacute() {
 
         check("aalt", "cacute", new String[]{"cacute.sc", null});
     }
@@ -409,7 +409,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ccaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_ccaron() {
+    public void testGSUBAlternateAAltccaron() {
 
         check("aalt", "ccaron", new String[]{"ccaron.sc", null});
     }
@@ -418,7 +418,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ccedilla.
      */
     @Test
-    public void testGSUBAlternate_aalt_ccedilla() {
+    public void testGSUBAlternateAAltccedilla() {
 
         check("aalt", "ccedilla", new String[]{"ccedilla.sc", null});
     }
@@ -427,7 +427,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ccedilla.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ccedilla() {
+    public void testGSUBAlternateAAltCcedilla() {
 
         check("aalt", "Ccedilla", new String[]{"ccedilla.sc", null});
     }
@@ -436,7 +436,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test d.
      */
     @Test
-    public void testGSUBAlternate_aalt_d() {
+    public void testGSUBAlternateAAltd() {
 
         check("aalt", "d", new String[]{"d.sc", null});
     }
@@ -445,7 +445,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test dcaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_dcaron() {
+    public void testGSUBAlternateAAltdcaron() {
 
         check("aalt", "dcaron", new String[]{"dcaron.sc", null});
     }
@@ -454,7 +454,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test dcroat.
      */
     @Test
-    public void testGSUBAlternate_aalt_dcroat() {
+    public void testGSUBAlternateAAltdcroat() {
 
         check("aalt", "dcroat", new String[]{"dcroat.sc", null});
     }
@@ -463,7 +463,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test e.
      */
     @Test
-    public void testGSUBAlternate_aalt_e() {
+    public void testGSUBAlternateAAlte() {
 
         check("aalt", "e", new String[]{"e.sc", null});
     }
@@ -472,7 +472,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_eacute() {
+    public void testGSUBAlternateAAlteacute() {
 
         check("aalt", "eacute", new String[]{"eacute.sc", null});
     }
@@ -481,7 +481,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Eacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Eacute() {
+    public void testGSUBAlternateAAltEacute() {
 
         check("aalt", "Eacute", new String[]{"eacute.sc", null});
     }
@@ -490,7 +490,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ecaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_ecaron() {
+    public void testGSUBAlternateAAltecaron() {
 
         check("aalt", "ecaron", new String[]{"ecaron.sc", null});
     }
@@ -499,7 +499,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ecircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_ecircumflex() {
+    public void testGSUBAlternateAAltecircumflex() {
 
         check("aalt", "ecircumflex", new String[]{"ecircumflex.sc", null});
     }
@@ -508,7 +508,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ecircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ecircumflex() {
+    public void testGSUBAlternateAAltEcircumflex() {
 
         check("aalt", "Ecircumflex", new String[]{"ecircumflex.sc", null});
     }
@@ -517,7 +517,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test edieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_edieresis() {
+    public void testGSUBAlternateAAltedieresis() {
 
         check("aalt", "edieresis", new String[]{"edieresis.sc", null});
     }
@@ -526,7 +526,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Edieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_Edieresis() {
+    public void testGSUBAlternateAAltEdieresis() {
 
         check("aalt", "Edieresis", new String[]{"edieresis.sc", null});
     }
@@ -535,7 +535,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test egrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_egrave() {
+    public void testGSUBAlternateAAltegrave() {
 
         check("aalt", "egrave", new String[]{"egrave.sc", null});
     }
@@ -544,7 +544,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Egrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_Egrave() {
+    public void testGSUBAlternateAAltEgrave() {
 
         check("aalt", "Egrave", new String[]{"egrave.sc", null});
     }
@@ -553,7 +553,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eight.
      */
     @Test
-    public void testGSUBAlternate_aalt_eight() {
+    public void testGSUBAlternateAAlteight() {
 
         check("aalt", "eight", new String[]{"eight.oldstyle", "eight.superior",
                 "eight.fitted", null});
@@ -563,7 +563,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eight.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_eightfitted() {
+    public void testGSUBAlternateAAlteightfitted() {
 
         check("aalt", "eight.fitted", new String[]{"eight", "eight.oldstyle",
                 null});
@@ -573,7 +573,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eng.
      */
     @Test
-    public void testGSUBAlternate_aalt_eng() {
+    public void testGSUBAlternateAAlteng() {
 
         check("aalt", "eng", new String[]{"eng.sc", null});
     }
@@ -582,7 +582,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eogonek.
      */
     @Test
-    public void testGSUBAlternate_aalt_eogonek() {
+    public void testGSUBAlternateAAlteogonek() {
 
         check("aalt", "eogonek", new String[]{"eogonek.sc", null});
     }
@@ -591,7 +591,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test equal.
      */
     @Test
-    public void testGSUBAlternate_aalt_equal() {
+    public void testGSUBAlternateAAltequal() {
 
         check("aalt", "equal", new String[]{"equal.superior", null});
     }
@@ -600,7 +600,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test eth.
      */
     @Test
-    public void testGSUBAlternate_aalt_eth() {
+    public void testGSUBAlternateAAlteth() {
 
         check("aalt", "eth", new String[]{"eth.sc", null});
     }
@@ -609,7 +609,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Eth.
      */
     @Test
-    public void testGSUBAlternate_aalt_Eth() {
+    public void testGSUBAlternateAAltEth() {
 
         check("aalt", "Eth", new String[]{"eth.sc", null});
     }
@@ -618,7 +618,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Euro.
      */
     @Test
-    public void testGSUBAlternate_aalt_Euro() {
+    public void testGSUBAlternateAAltEuro() {
 
         check("aalt", "Euro", new String[]{"Euro.fitted", null});
     }
@@ -627,7 +627,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test exclamdown.
      */
     @Test
-    public void testGSUBAlternate_aalt_exclamdown() {
+    public void testGSUBAlternateAAltexclamdown() {
 
         check("aalt", "exclamdown", new String[]{"exclamdown.sc", null});
     }
@@ -636,7 +636,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test f.
      */
     @Test
-    public void testGSUBAlternate_aalt_f() {
+    public void testGSUBAlternateAAltf() {
 
         check("aalt", "f", new String[]{"f.sc", null});
     }
@@ -645,7 +645,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test five.
      */
     @Test
-    public void testGSUBAlternate_aalt_five() {
+    public void testGSUBAlternateAAltfive() {
 
         check("aalt", "five", new String[]{"five.oldstyle", "five.superior",
                 "five.fitted", null});
@@ -655,7 +655,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test five.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_fivefitted() {
+    public void testGSUBAlternateAAltfivefitted() {
 
         check("aalt", "five.fitted",
             new String[]{"five", "five.oldstyle", null});
@@ -665,7 +665,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test five.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_fiveoldstyle() {
+    public void testGSUBAlternateAAltfiveoldstyle() {
 
         check("aalt", "five.oldstyle",
             new String[]{"five", "five.fitted", null});
@@ -675,7 +675,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test four.
      */
     @Test
-    public void testGSUBAlternate_aalt_four() {
+    public void testGSUBAlternateAAltfour() {
 
         check("aalt", "four", new String[]{"four.oldstyle", "four.superior",
                 "four.fitted", null});
@@ -685,7 +685,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test four.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_fourfitted() {
+    public void testGSUBAlternateAAltfourfitted() {
 
         check("aalt", "four.fitted",
             new String[]{"four", "four.oldstyle", null});
@@ -695,7 +695,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test four.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_fouroldstyle() {
+    public void testGSUBAlternateAAltfouroldstyle() {
 
         check("aalt", "four.oldstyle",
             new String[]{"four", "four.fitted", null});
@@ -705,7 +705,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test g.
      */
     @Test
-    public void testGSUBAlternate_aalt_g() {
+    public void testGSUBAlternateAAltg() {
 
         check("aalt", "g", new String[]{"g.sc", null});
     }
@@ -714,7 +714,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test gbreve.
      */
     @Test
-    public void testGSUBAlternate_aalt_gbreve() {
+    public void testGSUBAlternateAAltgbreve() {
 
         check("aalt", "gbreve", new String[]{"gbreve.sc", null});
     }
@@ -723,7 +723,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test germandbls.
      */
     @Test
-    public void testGSUBAlternate_aalt_germandbls() {
+    public void testGSUBAlternateAAltgermandbls() {
 
         check("aalt", "germandbls", new String[]{"germandbls.sc",
                 "germandbls.alt", "germandbls.scalt", "germandbls.ss03", null});
@@ -733,7 +733,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Germandbls.
      */
     @Test
-    public void testGSUBAlternate_aalt_Germandbls() {
+    public void testGSUBAlternateAAltGermandbls() {
 
         check("aalt", "Germandbls", new String[]{"Germandbls.alt", null});
     }
@@ -742,7 +742,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test guillemotleft.
      */
     @Test
-    public void testGSUBAlternate_aalt_guillemotleft() {
+    public void testGSUBAlternateAAltguillemotleft() {
 
         check("aalt", "guillemotleft", new String[]{"guillemotleft.sc", null});
     }
@@ -751,7 +751,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test guillemotright.
      */
     @Test
-    public void testGSUBAlternate_aalt_guillemotright() {
+    public void testGSUBAlternateAAltguillemotright() {
 
         check("aalt", "guillemotright", new String[]{"guillemotright.sc", null});
     }
@@ -760,7 +760,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test guilsinglleft.
      */
     @Test
-    public void testGSUBAlternate_aalt_guilsinglleft() {
+    public void testGSUBAlternateAAltguilsinglleft() {
 
         check("aalt", "guilsinglleft", new String[]{"guilsinglleft.sc", null});
     }
@@ -769,7 +769,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test guilsinglright.
      */
     @Test
-    public void testGSUBAlternate_aalt_guilsinglright() {
+    public void testGSUBAlternateAAltguilsinglright() {
 
         check("aalt", "guilsinglright", new String[]{"guilsinglright.sc", null});
     }
@@ -778,7 +778,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test h.
      */
     @Test
-    public void testGSUBAlternate_aalt_h() {
+    public void testGSUBAlternateAAlth() {
 
         check("aalt", "h", new String[]{"h.sc", "h.alt", null});
     }
@@ -787,7 +787,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test h.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_halt() {
+    public void testGSUBAlternateAAlthalt() {
 
         check("aalt", "h.alt", new String[]{"h", null});
     }
@@ -796,7 +796,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test hyphen.
      */
     @Test
-    public void testGSUBAlternate_aalt_hyphen() {
+    public void testGSUBAlternateAAlthyphen() {
 
         check("aalt", "hyphen", new String[]{"hyphen.sc", null});
     }
@@ -805,7 +805,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test i.
      */
     @Test
-    public void testGSUBAlternate_aalt_i() {
+    public void testGSUBAlternateAAlti() {
 
         check("aalt", "i", new String[]{"i.sc", null});
     }
@@ -814,7 +814,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test iacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_iacute() {
+    public void testGSUBAlternateAAltiacute() {
 
         check("aalt", "iacute", new String[]{"iacute.sc", null});
     }
@@ -823,7 +823,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Iacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Iacute() {
+    public void testGSUBAlternateAAltIacute() {
 
         check("aalt", "Iacute", new String[]{"iacute.sc", null});
     }
@@ -832,7 +832,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test icircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_icircumflex() {
+    public void testGSUBAlternateAAlticircumflex() {
 
         check("aalt", "icircumflex", new String[]{"icircumflex.sc", null});
     }
@@ -841,7 +841,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Icircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_Icircumflex() {
+    public void testGSUBAlternateAAltIcircumflex() {
 
         check("aalt", "Icircumflex", new String[]{"icircumflex.sc", null});
     }
@@ -850,7 +850,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test idieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_idieresis() {
+    public void testGSUBAlternateAAltidieresis() {
 
         check("aalt", "idieresis", new String[]{"idieresis.sc", null});
     }
@@ -859,7 +859,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Idieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_Idieresis() {
+    public void testGSUBAlternateAAltIdieresis() {
 
         check("aalt", "Idieresis", new String[]{"idieresis.sc", null});
     }
@@ -868,7 +868,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test igrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_igrave() {
+    public void testGSUBAlternateAAltigrave() {
 
         check("aalt", "igrave", new String[]{"igrave.sc", null});
     }
@@ -877,7 +877,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Igrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_Igrave() {
+    public void testGSUBAlternateAAltIgrave() {
 
         check("aalt", "Igrave", new String[]{"igrave.sc", null});
     }
@@ -886,7 +886,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ij.
      */
     @Test
-    public void testGSUBAlternate_aalt_ij() {
+    public void testGSUBAlternateAAltij() {
 
         check("aalt", "ij", new String[]{"ij.sc", null});
     }
@@ -895,7 +895,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test IJ.
      */
     @Test
-    public void testGSUBAlternate_aalt_IJ() {
+    public void testGSUBAlternateAAltIJ() {
 
         check("aalt", "IJ", new String[]{"ij.sc", null});
     }
@@ -904,7 +904,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test j.
      */
     @Test
-    public void testGSUBAlternate_aalt_j() {
+    public void testGSUBAlternateAAltj() {
 
         check("aalt", "j", new String[]{"j.sc", null});
     }
@@ -913,7 +913,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test k.
      */
     @Test
-    public void testGSUBAlternate_aalt_k() {
+    public void testGSUBAlternateAAltk() {
 
         check("aalt", "k", new String[]{"k.sc", null});
     }
@@ -922,7 +922,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test K.
      */
     @Test
-    public void testGSUBAlternate_aalt_K() {
+    public void testGSUBAlternateAAltK() {
 
         check("aalt", "K", new String[]{"K.alt",
 
@@ -933,7 +933,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test kappa.
      */
     @Test
-    public void testGSUBAlternate_aalt_kappa() {
+    public void testGSUBAlternateAAltkappa() {
 
         check("aalt", "kappa", new String[]{"uni03F0", null});
     }
@@ -942,7 +942,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test l.
      */
     @Test
-    public void testGSUBAlternate_aalt_l() {
+    public void testGSUBAlternateAAltl() {
 
         check("aalt", "l", new String[]{"l.sc", null});
     }
@@ -951,7 +951,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test lacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_lacute() {
+    public void testGSUBAlternateAAltlacute() {
 
         check("aalt", "lacute", new String[]{"lacute.sc", null});
     }
@@ -960,7 +960,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test lcaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_lcaron() {
+    public void testGSUBAlternateAAltlcaron() {
 
         check("aalt", "lcaron", new String[]{"lcaron.sc", null});
     }
@@ -969,7 +969,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test lslash.
      */
     @Test
-    public void testGSUBAlternate_aalt_lslash() {
+    public void testGSUBAlternateAAltlslash() {
 
         check("aalt", "lslash", new String[]{"lslash.sc", null});
     }
@@ -978,7 +978,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test m.
      */
     @Test
-    public void testGSUBAlternate_aalt_m() {
+    public void testGSUBAlternateAAltm() {
 
         check("aalt", "m", new String[]{"m.sc", null});
     }
@@ -987,7 +987,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test minus.
      */
     @Test
-    public void testGSUBAlternate_aalt_minus() {
+    public void testGSUBAlternateAAltminus() {
 
         check("aalt", "minus", new String[]{"minus.superior", "minus.inferior",
                 "uni2099", null});
@@ -997,7 +997,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test n.
      */
     @Test
-    public void testGSUBAlternate_aalt_n() {
+    public void testGSUBAlternateAAltn() {
 
         check("aalt", "n", new String[]{"n.sc", null});
     }
@@ -1006,7 +1006,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test nacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_nacute() {
+    public void testGSUBAlternateAAltnacute() {
 
         check("aalt", "nacute", new String[]{"nacute.sc", null});
     }
@@ -1015,7 +1015,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ncaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_ncaron() {
+    public void testGSUBAlternateAAltncaron() {
 
         check("aalt", "ncaron", new String[]{"ncaron.sc", null});
     }
@@ -1024,7 +1024,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test nine.
      */
     @Test
-    public void testGSUBAlternate_aalt_nine() {
+    public void testGSUBAlternateAAltnine() {
 
         check("aalt", "nine", new String[]{"nine.oldstyle", "nine.superior",
                 "nine.fitted", null});
@@ -1034,7 +1034,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test nine.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_nineoldstyle() {
+    public void testGSUBAlternateAAltnineoldstyle() {
 
         check("aalt", "nine.oldstyle",
             new String[]{"nine", "nine.fitted", null});
@@ -1044,7 +1044,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ntilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_ntilde() {
+    public void testGSUBAlternateAAltntilde() {
 
         check("aalt", "ntilde", new String[]{"ntilde.sc", null});
     }
@@ -1053,7 +1053,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ntilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ntilde() {
+    public void testGSUBAlternateAAltNtilde() {
 
         check("aalt", "Ntilde", new String[]{"ntilde.sc", null});
     }
@@ -1062,7 +1062,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test o.
      */
     @Test
-    public void testGSUBAlternate_aalt_o() {
+    public void testGSUBAlternateAAlto() {
 
         check("aalt", "o", new String[]{"o.sc", null});
     }
@@ -1071,7 +1071,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test oacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_oacute() {
+    public void testGSUBAlternateAAltoacute() {
 
         check("aalt", "oacute", new String[]{"oacute.sc", null});
     }
@@ -1080,7 +1080,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Oacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Oacute() {
+    public void testGSUBAlternateAAltOacute() {
 
         check("aalt", "Oacute", new String[]{"oacute.sc", null});
     }
@@ -1089,7 +1089,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ocircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_ocircumflex() {
+    public void testGSUBAlternateAAltocircumflex() {
 
         check("aalt", "ocircumflex", new String[]{"ocircumflex.sc", null});
     }
@@ -1098,7 +1098,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ocircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ocircumflex() {
+    public void testGSUBAlternateAAltOcircumflex() {
 
         check("aalt", "Ocircumflex", new String[]{"ocircumflex.sc", null});
     }
@@ -1107,7 +1107,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test odieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_odieresis() {
+    public void testGSUBAlternateAAltodieresis() {
 
         check("aalt", "odieresis", new String[]{"odieresis.sc", null});
     }
@@ -1116,7 +1116,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Odieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_Odieresis() {
+    public void testGSUBAlternateAAltOdieresis() {
 
         check("aalt", "Odieresis", new String[]{"odieresis.sc", null});
     }
@@ -1125,7 +1125,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Odieresis.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_Odieresisalt() {
+    public void testGSUBAlternateAAltOdieresisalt() {
 
         check("aalt", "Odieresis.alt", new String[]{"odieresis.sc", null});
     }
@@ -1134,7 +1134,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test oe.
      */
     @Test
-    public void testGSUBAlternate_aalt_oe() {
+    public void testGSUBAlternateAAltoe() {
 
         check("aalt", "oe", new String[]{"oe.sc", null});
     }
@@ -1143,7 +1143,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ograve.
      */
     @Test
-    public void testGSUBAlternate_aalt_ograve() {
+    public void testGSUBAlternateAAltograve() {
 
         check("aalt", "ograve", new String[]{"ograve.sc", null});
     }
@@ -1152,7 +1152,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ograve.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ograve() {
+    public void testGSUBAlternateAAltOgrave() {
 
         check("aalt", "Ograve", new String[]{"ograve.sc", null});
     }
@@ -1161,7 +1161,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ohungarumlaut.
      */
     @Test
-    public void testGSUBAlternate_aalt_ohungarumlaut() {
+    public void testGSUBAlternateAAltohungarumlaut() {
 
         check("aalt", "ohungarumlaut", new String[]{"ohungarumlaut.sc", null});
     }
@@ -1170,7 +1170,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test one.
      */
     @Test
-    public void testGSUBAlternate_aalt_one() {
+    public void testGSUBAlternateAAltone() {
 
         check("aalt", "one", new String[]{"one.oldstyle", "one.superior",
                 "one.fitted", null});
@@ -1180,7 +1180,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test one.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_onefitted() {
+    public void testGSUBAlternateAAltonefitted() {
 
         check("aalt", "one.fitted", new String[]{"one", "one.oldstyle", null});
     }
@@ -1189,7 +1189,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test one.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_oneoldstyle() {
+    public void testGSUBAlternateAAltoneoldstyle() {
 
         check("aalt", "one.oldstyle", new String[]{"one", "one.fitted", null});
     }
@@ -1198,7 +1198,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test oslash.
      */
     @Test
-    public void testGSUBAlternate_aalt_oslash() {
+    public void testGSUBAlternateAAltoslash() {
 
         check("aalt", "oslash", new String[]{"oslash.sc", null});
     }
@@ -1207,7 +1207,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Oslash.
      */
     @Test
-    public void testGSUBAlternate_aalt_Oslash() {
+    public void testGSUBAlternateAAltOslash() {
 
         check("aalt", "Oslash", new String[]{"oslash.sc", null});
     }
@@ -1216,7 +1216,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test otilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_otilde() {
+    public void testGSUBAlternateAAltotilde() {
 
         check("aalt", "otilde", new String[]{"otilde.sc", null});
     }
@@ -1225,7 +1225,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Otilde.
      */
     @Test
-    public void testGSUBAlternate_aalt_Otilde() {
+    public void testGSUBAlternateAAltOtilde() {
 
         check("aalt", "Otilde", new String[]{"otilde.sc", null});
     }
@@ -1234,7 +1234,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test p.
      */
     @Test
-    public void testGSUBAlternate_aalt_p() {
+    public void testGSUBAlternateAAltp() {
 
         check("aalt", "p", new String[]{"p.sc", null});
     }
@@ -1243,7 +1243,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test parenleft.
      */
     @Test
-    public void testGSUBAlternate_aalt_parenleft() {
+    public void testGSUBAlternateAAltparenleft() {
 
         check("aalt", "parenleft", new String[]{"parenleft.sc", null});
     }
@@ -1252,7 +1252,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test parenright.
      */
     @Test
-    public void testGSUBAlternate_aalt_parenright() {
+    public void testGSUBAlternateAAltparenright() {
 
         check("aalt", "parenright", new String[]{"parenright.sc", null});
     }
@@ -1261,7 +1261,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test phi.
      */
     @Test
-    public void testGSUBAlternate_aalt_phi() {
+    public void testGSUBAlternateAAltphi() {
 
         check("aalt", "phi", new String[]{"phi1", null});
     }
@@ -1270,7 +1270,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test plus.
      */
     @Test
-    public void testGSUBAlternate_aalt_plus() {
+    public void testGSUBAlternateAAltplus() {
 
         check("aalt", "plus", new String[]{"plus.superior", "plus.inferior",
                 "uni2098", null});
@@ -1280,7 +1280,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test q.
      */
     @Test
-    public void testGSUBAlternate_aalt_q() {
+    public void testGSUBAlternateAAltq() {
 
         check("aalt", "q", new String[]{"q.sc", null});
     }
@@ -1289,7 +1289,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test questiondown.
      */
     @Test
-    public void testGSUBAlternate_aalt_questiondown() {
+    public void testGSUBAlternateAAltquestiondown() {
 
         check("aalt", "questiondown", new String[]{"questiondown.sc", null});
     }
@@ -1298,7 +1298,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test r.
      */
     @Test
-    public void testGSUBAlternate_aalt_r() {
+    public void testGSUBAlternateAAltr() {
 
         check("aalt", "r", new String[]{"r.sc", null});
     }
@@ -1307,7 +1307,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test R.
      */
     @Test
-    public void testGSUBAlternate_aalt_R() {
+    public void testGSUBAlternateAAltR() {
 
         check("aalt", "R", new String[]{"R.alt",
 
@@ -1318,7 +1318,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test racute.
      */
     @Test
-    public void testGSUBAlternate_aalt_racute() {
+    public void testGSUBAlternateAAltracute() {
 
         check("aalt", "racute", new String[]{"racute.sc", null});
     }
@@ -1327,7 +1327,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test rcaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_rcaron() {
+    public void testGSUBAlternateAAltrcaron() {
 
         check("aalt", "rcaron", new String[]{"rcaron.sc", null});
     }
@@ -1336,7 +1336,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test rho.
      */
     @Test
-    public void testGSUBAlternate_aalt_rho() {
+    public void testGSUBAlternateAAltrho() {
 
         check("aalt", "rho", new String[]{"uni03F1", null});
     }
@@ -1345,7 +1345,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test s.
      */
     @Test
-    public void testGSUBAlternate_aalt_s() {
+    public void testGSUBAlternateAAlts() {
 
         check("aalt", "s", new String[]{"s.sc", null});
     }
@@ -1354,7 +1354,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test sacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_sacute() {
+    public void testGSUBAlternateAAltsacute() {
 
         check("aalt", "sacute", new String[]{"sacute.sc", null});
     }
@@ -1363,7 +1363,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test scaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_scaron() {
+    public void testGSUBAlternateAAltscaron() {
 
         check("aalt", "scaron", new String[]{"scaron.sc", null});
     }
@@ -1372,7 +1372,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test scedilla.
      */
     @Test
-    public void testGSUBAlternate_aalt_scedilla() {
+    public void testGSUBAlternateAAltscedilla() {
 
         check("aalt", "scedilla", new String[]{"scedilla.sc", null});
     }
@@ -1381,7 +1381,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test seven.
      */
     @Test
-    public void testGSUBAlternate_aalt_seven() {
+    public void testGSUBAlternateAAltseven() {
 
         check("aalt", "seven", new String[]{"seven.oldstyle", "seven.superior",
                 "seven.fitted", null});
@@ -1391,7 +1391,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test seven.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_sevenoldstyle() {
+    public void testGSUBAlternateAAltsevenoldstyle() {
 
         check("aalt", "seven.oldstyle", new String[]{"seven", "seven.fitted",
                 null});
@@ -1401,7 +1401,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test sigma1.
      */
     @Test
-    public void testGSUBAlternate_aalt_sigma1() {
+    public void testGSUBAlternateAAltsigma1() {
 
         check("aalt", "sigma1", new String[]{"sigma1", "uni03F2", null});
     }
@@ -1410,7 +1410,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test six.
      */
     @Test
-    public void testGSUBAlternate_aalt_six() {
+    public void testGSUBAlternateAAltsix() {
 
         check("aalt", "six", new String[]{"six.oldstyle", "six.superior",
                 "six.fitted", null});
@@ -1420,7 +1420,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test six.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_sixfitted() {
+    public void testGSUBAlternateAAltsixfitted() {
 
         check("aalt", "six.fitted", new String[]{"six", "six.oldstyle", null});
     }
@@ -1429,7 +1429,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test slash.
      */
     @Test
-    public void testGSUBAlternate_aalt_slash() {
+    public void testGSUBAlternateAAltslash() {
 
         check("aalt", "slash", new String[]{"uni2215", null});
     }
@@ -1438,7 +1438,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test t.
      */
     @Test
-    public void testGSUBAlternate_aalt_t() {
+    public void testGSUBAlternateAAltt() {
 
         check("aalt", "t", new String[]{"t.sc", null});
     }
@@ -1447,7 +1447,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test tbar.
      */
     @Test
-    public void testGSUBAlternate_aalt_tbar() {
+    public void testGSUBAlternateAAlttbar() {
 
         check("aalt", "tbar", new String[]{"tbar.sc", null});
     }
@@ -1456,7 +1456,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test tcaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_tcaron() {
+    public void testGSUBAlternateAAlttcaron() {
 
         check("aalt", "tcaron", new String[]{"tcaron.sc", null});
     }
@@ -1465,7 +1465,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test tcommaaccent.
      */
     @Test
-    public void testGSUBAlternate_aalt_tcommaaccent() {
+    public void testGSUBAlternateAAlttcommaaccent() {
 
         check("aalt", "tcommaaccent", new String[]{"tcommaaccent.sc", null});
     }
@@ -1474,7 +1474,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test theta.
      */
     @Test
-    public void testGSUBAlternate_aalt_theta() {
+    public void testGSUBAlternateAAlttheta() {
 
         check("aalt", "theta", new String[]{"theta1", null});
     }
@@ -1483,7 +1483,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test thorn.
      */
     @Test
-    public void testGSUBAlternate_aalt_thorn() {
+    public void testGSUBAlternateAAltthorn() {
 
         check("aalt", "thorn", new String[]{"thorn.sc", null});
     }
@@ -1492,7 +1492,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Thorn.
      */
     @Test
-    public void testGSUBAlternate_aalt_Thorn() {
+    public void testGSUBAlternateAAltThorn() {
 
         check("aalt", "Thorn", new String[]{"thorn.sc", null});
     }
@@ -1501,7 +1501,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test three.
      */
     @Test
-    public void testGSUBAlternate_aalt_three() {
+    public void testGSUBAlternateAAltthree() {
 
         check("aalt", "three", new String[]{"three.oldstyle", "three.superior",
                 "three.fitted", null});
@@ -1511,7 +1511,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test three.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_threefitted() {
+    public void testGSUBAlternateAAltthreefitted() {
 
         check("aalt", "three.fitted", new String[]{"three", "three.oldstyle",
                 null});
@@ -1521,7 +1521,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test three.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_threeoldstyle() {
+    public void testGSUBAlternateAAltthreeoldstyle() {
 
         check("aalt", "three.oldstyle", new String[]{"three", "three.fitted",
                 null});
@@ -1531,7 +1531,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test two.
      */
     @Test
-    public void testGSUBAlternate_aalt_two() {
+    public void testGSUBAlternateAAlttwo() {
 
         check("aalt", "two", new String[]{"two.oldstyle", "two.superior",
                 "two.fitted", null});
@@ -1541,7 +1541,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test two.fitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_twofitted() {
+    public void testGSUBAlternateAAlttwofitted() {
 
         check("aalt", "two.fitted", new String[]{"two", "two.oldstyle", null});
     }
@@ -1550,7 +1550,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test two.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_twooldstyle() {
+    public void testGSUBAlternateAAlttwooldstyle() {
 
         check("aalt", "two.oldstyle", new String[]{"two", "two.fitted", null});
     }
@@ -1559,7 +1559,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test u.
      */
     @Test
-    public void testGSUBAlternate_aalt_u() {
+    public void testGSUBAlternateAAltu() {
 
         check("aalt", "u", new String[]{"u.sc", null});
     }
@@ -1568,7 +1568,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test uacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_uacute() {
+    public void testGSUBAlternateAAltuacute() {
 
         check("aalt", "uacute", new String[]{"uacute.sc", null});
     }
@@ -1577,7 +1577,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Uacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Uacute() {
+    public void testGSUBAlternateAAltUacute() {
 
         check("aalt", "Uacute", new String[]{"uacute.sc", null});
     }
@@ -1586,7 +1586,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ucircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_ucircumflex() {
+    public void testGSUBAlternateAAltucircumflex() {
 
         check("aalt", "ucircumflex", new String[]{"ucircumflex.sc", null});
     }
@@ -1595,7 +1595,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ucircumflex.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ucircumflex() {
+    public void testGSUBAlternateAAltUcircumflex() {
 
         check("aalt", "Ucircumflex", new String[]{"ucircumflex.sc", null});
     }
@@ -1604,7 +1604,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test udieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_udieresis() {
+    public void testGSUBAlternateAAltudieresis() {
 
         check("aalt", "udieresis", new String[]{"udieresis.sc", null});
     }
@@ -1613,7 +1613,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Udieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_Udieresis() {
+    public void testGSUBAlternateAAltUdieresis() {
 
         check("aalt", "Udieresis", new String[]{"udieresis.sc", null});
     }
@@ -1622,7 +1622,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Udieresis.alt.
      */
     @Test
-    public void testGSUBAlternate_aalt_Udieresisalt() {
+    public void testGSUBAlternateAAltUdieresisalt() {
 
         check("aalt", "Udieresis.alt", new String[]{"udieresis.sc", null});
     }
@@ -1631,7 +1631,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ugrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_ugrave() {
+    public void testGSUBAlternateAAltugrave() {
 
         check("aalt", "ugrave", new String[]{"ugrave.sc", null});
     }
@@ -1640,7 +1640,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Ugrave.
      */
     @Test
-    public void testGSUBAlternate_aalt_Ugrave() {
+    public void testGSUBAlternateAAltUgrave() {
 
         check("aalt", "Ugrave", new String[]{"ugrave.sc", null});
     }
@@ -1649,7 +1649,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test uhungarumlaut.
      */
     @Test
-    public void testGSUBAlternate_aalt_uhungarumlaut() {
+    public void testGSUBAlternateAAltuhungarumlaut() {
 
         check("aalt", "uhungarumlaut", new String[]{"uhungarumlaut.sc", null});
     }
@@ -1658,7 +1658,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test uring.
      */
     @Test
-    public void testGSUBAlternate_aalt_uring() {
+    public void testGSUBAlternateAAlturing() {
 
         check("aalt", "uring", new String[]{"uring.sc", null});
     }
@@ -1667,7 +1667,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test v.
      */
     @Test
-    public void testGSUBAlternate_aalt_v() {
+    public void testGSUBAlternateAAltv() {
 
         check("aalt", "v", new String[]{"v.sc", null});
     }
@@ -1676,7 +1676,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test V.
      */
     @Test
-    public void testGSUBAlternate_aalt_V() {
+    public void testGSUBAlternateAAltV() {
 
         check("aalt", "V", new String[]{"V.alt", null});
     }
@@ -1685,7 +1685,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test w.
      */
     @Test
-    public void testGSUBAlternate_aalt_w() {
+    public void testGSUBAlternateAAltw() {
 
         check("aalt", "w", new String[]{"w.sc", null});
     }
@@ -1694,7 +1694,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test W.
      */
     @Test
-    public void testGSUBAlternate_aalt_W() {
+    public void testGSUBAlternateAAltW() {
 
         check("aalt", "W", new String[]{"W.alt", null});
     }
@@ -1703,7 +1703,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test x.
      */
     @Test
-    public void testGSUBAlternate_aalt_x() {
+    public void testGSUBAlternateAAltx() {
 
         check("aalt", "x", new String[]{"x.sc", null});
     }
@@ -1712,7 +1712,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test y.
      */
     @Test
-    public void testGSUBAlternate_aalt_y() {
+    public void testGSUBAlternateAAlty() {
 
         check("aalt", "y", new String[]{"y.sc", null});
     }
@@ -1721,7 +1721,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test yacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_yacute() {
+    public void testGSUBAlternateAAltyacute() {
 
         check("aalt", "yacute", new String[]{"yacute.sc", null});
     }
@@ -1730,7 +1730,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test Yacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_Yacute() {
+    public void testGSUBAlternateAAltYacute() {
 
         check("aalt", "Yacute", new String[]{"yacute.sc", null});
     }
@@ -1739,7 +1739,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test ydieresis.
      */
     @Test
-    public void testGSUBAlternate_aalt_ydieresis() {
+    public void testGSUBAlternateAAltydieresis() {
 
         check("aalt", "ydieresis", new String[]{"ydieresis.sc", null});
     }
@@ -1748,7 +1748,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test z.
      */
     @Test
-    public void testGSUBAlternate_aalt_z() {
+    public void testGSUBAlternateAAltz() {
 
         check("aalt", "z", new String[]{"z.sc", null});
     }
@@ -1757,7 +1757,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zacute.
      */
     @Test
-    public void testGSUBAlternate_aalt_zacute() {
+    public void testGSUBAlternateAAltzacute() {
 
         check("aalt", "zacute", new String[]{"zacute.sc", null});
     }
@@ -1766,7 +1766,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zcaron.
      */
     @Test
-    public void testGSUBAlternate_aalt_zcaron() {
+    public void testGSUBAlternateAAltzcaron() {
 
         check("aalt", "zcaron", new String[]{"zcaron.sc", null});
     }
@@ -1775,7 +1775,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zdotaccent.
      */
     @Test
-    public void testGSUBAlternate_aalt_zdotaccent() {
+    public void testGSUBAlternateAAltzdotaccent() {
 
         check("aalt", "zdotaccent", new String[]{"zdotaccent.sc", null});
     }
@@ -1784,7 +1784,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zero.
      */
     @Test
-    public void testGSUBAlternate_aalt_zero() {
+    public void testGSUBAlternateAAltzero() {
 
         check("aalt", "zero", new String[]{"zero.oldstyle", "zero.fitted",
                 "zero.slash", "zero.slashfitted", "perthousandzero", null});
@@ -1794,7 +1794,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zero.oldstyle.
      */
     @Test
-    public void testGSUBAlternate_aalt_zerooldstyle() {
+    public void testGSUBAlternateAAltzerooldstyle() {
 
         check("aalt", "zero.oldstyle",
             new String[]{"zero", "zero.fitted", null});
@@ -1804,7 +1804,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * test zero.slashfitted.
      */
     @Test
-    public void testGSUBAlternate_aalt_zeroslashfitted() {
+    public void testGSUBAlternateAAltzeroslashfitted() {
 
         check("aalt", "zero.slashfitted", new String[]{"zero.fitted",
                 "zero.oldstyle", "zero.slashfitted", null});

@@ -21,12 +21,12 @@ package org.extex.font.format.xtf.tables;
 
 /**
  * Constants for TTF/OTF.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class XtfConstants {
+public final class XtfConstants {
 
     /**
      * Shift 8
@@ -62,4 +62,12 @@ public class XtfConstants {
      * const 0xff
      */
     public static final int CONSTXFF = 0xff;
+
+    /**
+     * Creates a new object.
+     */
+    private XtfConstants() {
+
+        // 
+    }
 }

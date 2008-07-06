@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.tables.cff;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
  * Abstract class for all hint masks.
  * 
@@ -42,6 +41,8 @@ public abstract class T2AbstractHintMask extends T2Hints {
      * @param stack the stack
      * @param id the operator-id for the value
      * @param ch The char string.
+     * 
+     * @throws IOException in case of an error
      */
     protected T2AbstractHintMask(List<T2CharString> stack, short[] id,
             CharString ch) throws IOException {

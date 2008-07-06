@@ -38,7 +38,7 @@ public class T1BlueFuzz extends T1DictNumber {
      */
     public T1BlueFuzz(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{BlueFuzz});
+        super(stack, new short[]{BLUE_FUZZ});
     }
 
     /**

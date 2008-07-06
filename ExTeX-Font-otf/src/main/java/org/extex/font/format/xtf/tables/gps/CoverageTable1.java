@@ -78,7 +78,7 @@ public class CoverageTable1 extends CoverageTable {
      * 
      * @param format The format.
      * @param rar The input.
-     * @throws IOException if a io-error occuured.
+     * @throws IOException if a io-error occurred.
      */
     protected CoverageTable1(int format, RandomAccessR rar) throws IOException {
 
@@ -103,6 +103,8 @@ public class CoverageTable1 extends CoverageTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

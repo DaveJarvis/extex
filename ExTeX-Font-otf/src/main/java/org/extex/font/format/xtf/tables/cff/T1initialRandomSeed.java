@@ -38,7 +38,7 @@ public class T1initialRandomSeed extends T1DictNumber {
      */
     public T1initialRandomSeed(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{initialRandomSeed});
+        super(stack, new short[]{INITIAL_RANDOM_SEED});
     }
 
     /**

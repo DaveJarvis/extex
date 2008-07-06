@@ -384,6 +384,7 @@ public abstract class XtfCoverage implements XMLWriterConvertible {
      * Create a new object.
      * 
      * @param fm the format
+     * @param xtfGlyph TODO
      */
     XtfCoverage(int fm, XtfGlyphName xtfGlyph) {
 

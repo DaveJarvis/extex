@@ -47,6 +47,8 @@ public class T2VMoveTo extends T2PathConstruction {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2VMoveTo(List<T2CharString> stack, CharString ch)
             throws IOException {
@@ -115,19 +117,6 @@ public class T2VMoveTo extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeAttribute("dy", dy);
-        writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
      */
     @Override
@@ -140,6 +129,19 @@ public class T2VMoveTo extends T2PathConstruction {
         buf.append(dy.toString()).append(" ");
         buf.append(getName());
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("dy", dy);
+        writer.writeEndElement();
     }
 
 }

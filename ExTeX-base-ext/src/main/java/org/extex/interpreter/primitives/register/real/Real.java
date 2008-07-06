@@ -67,17 +67,6 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * 
-     * @param val initialize with double value
-     */
-    public Real(double val) {
-
-        super();
-        value = val;
-    }
-
-    /**
-     * Creates a new object.
-     * 
      * Scan the <code>TokenSource</code> for a <code>Real</code>.
      * 
      * @param context the interpreter context
@@ -95,6 +84,169 @@ public class Real implements Serializable {
 
         super();
         value = scanReal(context, source, typesetter);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param val initialize with double value
+     */
+    public Real(double val) {
+
+        super();
+        value = val;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param val the value as float
+     */
+    public Real(float val) {
+
+        value = val;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param i the value as int
+     */
+    public Real(int i) {
+
+        value = i;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param l the value as long
+     */
+    public Real(long l) {
+
+        value = l;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param val the value
+     */
+    public Real(Real val) {
+
+        value = val.getValue();
+    }
+
+    /**
+     * Creates a new object.
+     * <p>
+     * If the string equals <code>null</code> or empty, the value is set to
+     * zero
+     * 
+     * @param s the value as String
+     * 
+     * @throws HelpingException if a NumberFormatException is throws
+     */
+    public Real(String s) throws HelpingException {
+
+        if (s == null || s.trim().length() == 0) {
+            value = 0.0d;
+        } else {
+
+            try {
+                value = Double.valueOf(s).doubleValue();
+            } catch (NumberFormatException e) {
+                throw new MissingNumberException();
+            }
+        }
+    }
+
+    /**
+     * add
+     * 
+     * @param val the value to add
+     */
+    public void add(double val) {
+
+        value += val;
+    }
+
+    /**
+     * add
+     * 
+     * @param real the value to add
+     */
+    public void add(Real real) {
+
+        value += real.getValue();
+    }
+
+    /**
+     * divide
+     * 
+     * @param val the value to divide
+     * 
+     * @throws HelpingException in case of a division by zero
+     */
+    public void divide(double val) throws HelpingException {
+
+        if (val == 0.0d) {
+            throw new ArithmeticOverflowException("");
+        }
+
+        value /= val;
+    }
+
+    /**
+     * divide
+     * 
+     * @param val the value to divide
+     * 
+     * @throws HelpingException in case of a division by zero
+     */
+    public void divide(Real val) throws HelpingException {
+
+        divide(val.getValue());
+    }
+
+    /**
+     * Return the value as long.
+     * 
+     * @return the value as long
+     */
+    public long getLong() {
+
+        return (long) value;
+    }
+
+    /**
+     * Getter for the value
+     * 
+     * @return the value
+     */
+    public double getValue() {
+
+        return value;
+    }
+
+    /**
+     * multiply
+     * 
+     * @param val the value to multiply
+     */
+    public void multiply(double val) {
+
+        value *= val;
+    }
+
+    /**
+     * multiply
+     * 
+     * @param val the value to multiply
+     */
+    public void multiply(Real val) {
+
+        value *= val.getValue();
     }
 
     /**
@@ -147,8 +299,7 @@ public class Real implements Serializable {
             sb.append('-');
         }
 
-        if (t != null && !t.eq(Catcode.OTHER, ".")
-                && !t.eq(Catcode.OTHER, ",")) {
+        if (t != null && !t.eq(Catcode.OTHER, ".") && !t.eq(Catcode.OTHER, ",")) {
             source.push(t);
             val = source.parseNumber(context, source, typesetter);
             t = source.getToken(context);
@@ -158,9 +309,7 @@ public class Real implements Serializable {
         sb.append('.');
         val = 0;
 
-        if (t != null
-                && (t.eq(Catcode.OTHER, ".") || t
-                    .eq(Catcode.OTHER, ","))) {
+        if (t != null && (t.eq(Catcode.OTHER, ".") || t.eq(Catcode.OTHER, ","))) {
             val = source.parseNumber(context, source, typesetter);
         } else {
             source.push(t);
@@ -168,70 +317,6 @@ public class Real implements Serializable {
         sb.append(Long.toString(val));
 
         return (new Real(sb.toString())).getValue();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param val the value
-     */
-    public Real(Real val) {
-
-        value = val.getValue();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param val the value as float
-     */
-    public Real(float val) {
-
-        value = val;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param l the value as long
-     */
-    public Real(long l) {
-
-        value = l;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param i the value as int
-     */
-    public Real(int i) {
-
-        value = i;
-    }
-
-    /**
-     * Creates a new object.
-     * <p>
-     * If the string equals <code>null</code> or empty, the value is set to
-     * zero
-     * 
-     * @param s the value as String
-     * 
-     * @throws HelpingException if a NumberFormatException is throws
-     */
-    public Real(String s) throws HelpingException {
-
-        if (s == null || s.trim().length() == 0) {
-            value = 0.0d;
-        } else {
-
-            try {
-                value = Double.valueOf(s).doubleValue();
-            } catch (NumberFormatException e) {
-                throw new MissingNumberException();
-            }
-        }
     }
 
     /**
@@ -245,98 +330,11 @@ public class Real implements Serializable {
     }
 
     /**
-     * Getter for the value
-     * 
-     * @return the value
-     */
-    public double getValue() {
-
-        return value;
-    }
-
-    /**
-     * add
-     * 
-     * @param val the value to add
-     */
-    public void add(double val) {
-
-        value += val;
-    }
-
-    /**
-     * add
-     * 
-     * @param real the value to add
-     */
-    public void add(Real real) {
-
-        value += real.getValue();
-    }
-
-    /**
-     * divide
-     * 
-     * @param val the value to divide
-     * 
-     * @throws HelpingException in case of a division by zero
-     */
-    public void divide(double val) throws HelpingException {
-
-        if (val == 0.0d) {
-            throw new ArithmeticOverflowException("");
-        }
-
-        value /= val;
-    }
-
-    /**
-     * divide
-     * 
-     * @param val the value to divide
-     * 
-     * @throws HelpingException in case of a division by zero
-     */
-    public void divide(Real val) throws HelpingException {
-
-        divide(val.getValue());
-    }
-
-    /**
-     * multiply
-     * 
-     * @param val the value to multiply
-     */
-    public void multiply(double val) {
-
-        value *= val;
-    }
-
-    /**
-     * multiply
-     * 
-     * @param val the value to multiply
-     */
-    public void multiply(Real val) {
-
-        value *= val.getValue();
-    }
-
-    /**
-     * Return the value as long.
-     * 
-     * @return the value as long
-     */
-    public long getLong() {
-
-        return (long) value;
-    }
-
-    /**
      * Return the value as <code>String</code>
      * 
      * @return the value as <code>String</code>
      */
+    @Override
     public String toString() {
 
         return Double.toString(value);

@@ -109,14 +109,15 @@ public class HashToks implements Serializable {
     }
 
     /**
-     * Put the tokens on the hash with the key.
+     * Contains the key
      * 
      * @param key the key
-     * @param toks the tokens
+     * @return <code>true</code> if the key exists, otherwise
+     *         <code>false</code>
      */
-    public void put(String key, Tokens toks) {
+    public boolean containsKey(String key) {
 
-        map.put(key, toks);
+        return map.containsKey(key);
     }
 
     /**
@@ -135,6 +136,17 @@ public class HashToks implements Serializable {
     }
 
     /**
+     * Put the tokens on the hash with the key.
+     * 
+     * @param key the key
+     * @param toks the tokens
+     */
+    public void put(String key, Tokens toks) {
+
+        map.put(key, toks);
+    }
+
+    /**
      * Return the size of the hash.
      * 
      * @return the size of the hash
@@ -145,22 +157,11 @@ public class HashToks implements Serializable {
     }
 
     /**
-     * Contains the key
-     * 
-     * @param key the key
-     * @return <code>true</code> if the key exists, otherwise
-     *         <code>false</code>
-     */
-    public boolean containsKey(String key) {
-
-        return map.containsKey(key);
-    }
-
-    /**
      * Return the value as <code>String</code>
      * 
      * @return the value as <code>String</code>
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

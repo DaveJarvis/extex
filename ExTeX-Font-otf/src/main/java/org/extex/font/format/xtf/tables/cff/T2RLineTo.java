@@ -42,6 +42,8 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2RLineTo(List<T2CharString> stack, CharString ch)
             throws IOException {
@@ -62,6 +64,21 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
             pairs[i / 2] = pn;
         }
 
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.CharStringCalc#calculate(org.extex.font.format.xtf.tables.cff.CharString)
+     */
+    public void calculate(CharString ch) {
+
+        for (int i = 0; i < pairs.length; i++) {
+            int x = pairs[i].getA().getInteger();
+            int y = pairs[i].getB().getInteger();
+            ch.setMX(x);
+            ch.setMY(y);
+        }
     }
 
     /**
@@ -110,24 +127,6 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        for (int i = 0; i < pairs.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", pairs[i].toString());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
      */
     @Override
@@ -144,16 +143,19 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.format.xtf.tables.cff.CharStringCalc#calculate(org.extex.font.format.xtf.tables.cff.CharString)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void calculate(CharString ch) {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
+        writer.writeStartElement(getName());
         for (int i = 0; i < pairs.length; i++) {
-            int x = pairs[i].getA().getInteger();
-            int y = pairs[i].getB().getInteger();
-            ch.setMX(x);
-            ch.setMY(y);
+            writer.writeStartElement("pair");
+            writer.writeAttribute("id", i);
+            writer.writeAttribute("value", pairs[i].toString());
+            writer.writeEndElement();
         }
+        writer.writeEndElement();
     }
 
 }

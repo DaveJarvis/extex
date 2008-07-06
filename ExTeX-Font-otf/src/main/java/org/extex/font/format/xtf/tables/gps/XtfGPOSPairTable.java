@@ -518,7 +518,7 @@ public abstract class XtfGPOSPairTable extends XtfLookupTable {
          * @param rar the input
          * @param offset the offset
          * @param posOffset The offset of the pos table (GPOS, GSUB).
-         * @param xtfGlyp The glyph name.
+         * @param xtfGlyph The glyph name.
          * @throws IOException if an IO_error occurs
          */
         PairTableFormat2(RandomAccessR rar, int posOffset, int offset,

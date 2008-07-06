@@ -38,7 +38,7 @@ public class T1StemSnapV extends T1DictDelta {
      */
     public T1StemSnapV(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{StemSnapV});
+        super(stack, new short[]{STEM_SNAP_V});
     }
 
     /**

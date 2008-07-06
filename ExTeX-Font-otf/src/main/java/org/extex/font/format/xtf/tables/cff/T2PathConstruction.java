@@ -21,7 +21,6 @@ package org.extex.font.format.xtf.tables.cff;
 
 import java.util.List;
 
-
 /**
  * Path construction.
  * 
@@ -30,6 +29,11 @@ import java.util.List;
  */
 
 public abstract class T2PathConstruction extends T2Operator {
+
+    /**
+     * bytes
+     */
+    private short[] bytes;
 
     /**
      * Create a new object
@@ -45,11 +49,6 @@ public abstract class T2PathConstruction extends T2Operator {
 
         bytes = convertStackaddID(stack, id);
     }
-
-    /**
-     * bytes
-     */
-    private short[] bytes;
 
     /**
      * {@inheritDoc}

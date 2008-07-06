@@ -52,6 +52,8 @@ public class T2RcurveLine extends T2PathConstruction {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2RcurveLine(List<T2CharString> stack, CharString ch)
             throws IOException {
@@ -144,6 +146,25 @@ public class T2RcurveLine extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+
+        buf.append(dxd.toString()).append(" ");
+        buf.append(dyd.toString()).append(" ");
+        for (int i = 0; i < eight.length; i++) {
+            buf.append(eight[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -159,25 +180,6 @@ public class T2RcurveLine extends T2PathConstruction {
             writer.writeEndElement();
         }
         writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
-    public String toText() {
-
-        StringBuffer buf = new StringBuffer();
-
-        buf.append(dxd.toString()).append(" ");
-        buf.append(dyd.toString()).append(" ");
-        for (int i = 0; i < eight.length; i++) {
-            buf.append(eight[i].toString()).append(" ");
-        }
-        buf.append(getName());
-        return buf.toString();
     }
 
 }

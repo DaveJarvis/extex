@@ -243,6 +243,8 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -294,7 +296,8 @@ public class OtfTableGPOS extends AbstractXtfSFLTable
             case XtfLookup.GPOS_4_MARKTOBASE_ATTACHMENT:
                 return XtfGPOSMarkToBaseTable
                     .newInstance(rar, offset, xtfGlyph);
+            default:
+                return null;
         }
-        return null;
     }
 }

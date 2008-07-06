@@ -45,18 +45,23 @@ public class T2TDOPostscript extends T2TDOSID {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.CFF_POSTSCRIPT;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "postscript";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.CFF_POSTSCRIPT;
     }
 
 }

@@ -37,7 +37,7 @@ import java.util.Map;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class ScriptTag extends Tag {
+public final class ScriptTag extends Tag {
 
     /**
      * The map for the names.
@@ -49,37 +49,37 @@ public class ScriptTag extends Tag {
      * The script tag list.
      */
     static {
-        getInstance("arab");// Arabic
-        getInstance("armn");// Armenian
-        getInstance("beng");// Bengali
-        getInstance("bopo");// Bopomofo
-        getInstance("brai");// Braille
-        getInstance("byzm");// Byzantine Music
-        getInstance("cans");// Canadian Syllabics
-        getInstance("cher");// Cherokee
-        getInstance("hani");// CJK Ideographic
-        getInstance("cyrl");// Cyrillic
-        getInstance("DFLT");// Default
-        getInstance("deva");// Devanagari
-        getInstance("ethi");// Ethiopic
-        getInstance("geor");// Georgian
-        getInstance("grek");// Greek
-        getInstance("gujr");// Gujarati
-        getInstance("guru");// Gurmukhi
-        getInstance("jamo");// Hangul Jamo
-        getInstance("hang");// Hangul
-        getInstance("hebr");// Hebrew
-        getInstance("kana");// Hiragana
-        getInstance("knda");// Kannada
-        getInstance("kana");// Katakana
-        getInstance("khmr");// Khmer
-        getInstance("lao");// Lao
-        getInstance("latn");// Latin
-        getInstance("mlym");// Malayalam
-        getInstance("mong");// Mongolian
-        getInstance("mymr");// Myanmar
-        getInstance("ogam");// Ogham
-        getInstance("orya");// Oriya
+        getInstance("arab"); // Arabic
+        getInstance("armn"); // Armenian
+        getInstance("beng"); // Bengali
+        getInstance("bopo"); // Bopomofo
+        getInstance("brai"); // Braille
+        getInstance("byzm"); // Byzantine Music
+        getInstance("cans"); // Canadian Syllabics
+        getInstance("cher"); // Cherokee
+        getInstance("hani"); // CJK Ideographic
+        getInstance("cyrl"); // Cyrillic
+        getInstance("DFLT"); // Default
+        getInstance("deva"); // Devanagari
+        getInstance("ethi"); // Ethiopic
+        getInstance("geor"); // Georgian
+        getInstance("grek"); // Greek
+        getInstance("gujr"); // Gujarati
+        getInstance("guru"); // Gurmukhi
+        getInstance("jamo"); // Hangul Jamo
+        getInstance("hang"); // Hangul
+        getInstance("hebr"); // Hebrew
+        getInstance("kana"); // Hiragana
+        getInstance("knda"); // Kannada
+        getInstance("kana"); // Katakana
+        getInstance("khmr"); // Khmer
+        getInstance("lao"); // Lao
+        getInstance("latn"); // Latin
+        getInstance("mlym"); // Malayalam
+        getInstance("mong"); // Mongolian
+        getInstance("mymr"); // Myanmar
+        getInstance("ogam"); // Ogham
+        getInstance("orya"); // Oriya
     }
 
     /**

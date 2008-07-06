@@ -129,6 +129,8 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.AbstractXtfTable#getInitOrder()
      */
     @Override
@@ -156,6 +158,8 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -215,6 +219,8 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

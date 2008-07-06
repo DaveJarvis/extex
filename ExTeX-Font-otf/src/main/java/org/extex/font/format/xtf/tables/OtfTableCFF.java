@@ -318,6 +318,8 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -385,6 +387,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param fontnumber The fontnumber.
      * @return Returns the position of the glyph name.
      */
+    @SuppressWarnings("boxing")
     public int mapGlyphNameToGlyphPos(String glyphname, int fontnumber) {
 
         // find the sid for the name
@@ -519,10 +522,11 @@ public class OtfTableCFF extends AbstractXtfTable
      * 
      * TODO mgn: incomplete
      * 
-     * @param nextOffset
-     * @param rar
-     * @return
-     * @throws IOException
+     * @param nextOffset TODO
+     * @param rar TODO
+     * @return TODO
+     * 
+     * @throws IOException in case of an error
      */
     private long readGSubrIndex(long nextOffset, RandomAccessR rar)
             throws IOException {
@@ -619,8 +623,11 @@ public class OtfTableCFF extends AbstractXtfTable
      * must be at least one entry in this INDEX, i.e. the FontSet must contain
      * at least one font.
      * 
+     * @param offset TODO
      * @param rar The Input.
+     * 
      * @return Returns the next offset.
+     * 
      * @throws IOException if an io-error occurred.
      */
     private long readNameIndex(int offset, RandomAccessR rar)
@@ -763,6 +770,8 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

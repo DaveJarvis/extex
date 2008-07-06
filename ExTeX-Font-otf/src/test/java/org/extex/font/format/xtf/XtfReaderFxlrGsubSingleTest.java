@@ -129,7 +129,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test a.
      */
     @Test
-    public void testGSUBSingle_a() {
+    public void testGSUBSinglea() {
 
         check("sups", "a", "a.superior");
     }
@@ -138,7 +138,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test b.
      */
     @Test
-    public void testGSUBSingle_b() {
+    public void testGSUBSingleb() {
 
         check("sups", "b", "b.superior");
     }
@@ -147,7 +147,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test c.
      */
     @Test
-    public void testGSUBSingle_c() {
+    public void testGSUBSinglec() {
 
         check("sups", "c", "c.superior");
     }
@@ -156,7 +156,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test A.
      */
     @Test
-    public void testGSUBSingle_c2sc_A() {
+    public void testGSUBSinglec2scA() {
 
         check("c2sc", "A", "a.sc");
     }
@@ -165,7 +165,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Aacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Aacute() {
+    public void testGSUBSinglec2scAacute() {
 
         check("c2sc", "Aacute", "aacute.sc");
     }
@@ -174,7 +174,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Abreve.
      */
     @Test
-    public void testGSUBSingle_c2sc_Abreve() {
+    public void testGSUBSinglec2scAbreve() {
 
         check("c2sc", "Abreve", "abreve.sc");
     }
@@ -183,7 +183,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Acircumflex.
      */
     @Test
-    public void testGSUBSingle_c2sc_Acircumflex() {
+    public void testGSUBSinglec2scAcircumflex() {
 
         check("c2sc", "Acircumflex", "acircumflex.sc");
     }
@@ -192,7 +192,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Adieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Adieresis() {
+    public void testGSUBSinglec2scAdieresis() {
 
         check("c2sc", "Adieresis", "adieresis.sc");
     }
@@ -201,7 +201,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Adieresis.alt.
      */
     @Test
-    public void testGSUBSingle_c2sc_Adieresisalt() {
+    public void testGSUBSinglec2scAdieresisalt() {
 
         check("c2sc", "Adieresis.alt", "adieresis.sc");
     }
@@ -210,7 +210,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test AE.
      */
     @Test
-    public void testGSUBSingle_c2sc_AE() {
+    public void testGSUBSinglec2scAE() {
 
         check("c2sc", "AE", "ae.sc");
     }
@@ -219,7 +219,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Agrave.
      */
     @Test
-    public void testGSUBSingle_c2sc_Agrave() {
+    public void testGSUBSinglec2scAgrave() {
 
         check("c2sc", "Agrave", "agrave.sc");
     }
@@ -228,7 +228,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ampersand.
      */
     @Test
-    public void testGSUBSingle_c2sc_ampersand() {
+    public void testGSUBSinglec2scampersand() {
 
         check("c2sc", "ampersand", "ampersand.alt");
     }
@@ -237,7 +237,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Aogonek.
      */
     @Test
-    public void testGSUBSingle_c2sc_Aogonek() {
+    public void testGSUBSinglec2scAogonek() {
 
         check("c2sc", "Aogonek", "aogonek.sc");
     }
@@ -246,7 +246,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Aring.
      */
     @Test
-    public void testGSUBSingle_c2sc_Aring() {
+    public void testGSUBSinglec2scAring() {
 
         check("c2sc", "Aring", "aring.sc");
     }
@@ -255,7 +255,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Atilde.
      */
     @Test
-    public void testGSUBSingle_c2sc_Atilde() {
+    public void testGSUBSinglec2scAtilde() {
 
         check("c2sc", "Atilde", "atilde.sc");
     }
@@ -264,7 +264,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test B.
      */
     @Test
-    public void testGSUBSingle_c2sc_B() {
+    public void testGSUBSinglec2scB() {
 
         check("c2sc", "B", "b.sc");
     }
@@ -273,7 +273,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test braceleft.
      */
     @Test
-    public void testGSUBSingle_c2sc_braceleft() {
+    public void testGSUBSinglec2scbraceleft() {
 
         check("c2sc", "braceleft", "braceleft.sc");
     }
@@ -282,7 +282,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test braceright.
      */
     @Test
-    public void testGSUBSingle_c2sc_braceright() {
+    public void testGSUBSinglec2scbraceright() {
 
         check("c2sc", "braceright", "braceright.sc");
     }
@@ -291,7 +291,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test bracketleft.
      */
     @Test
-    public void testGSUBSingle_c2sc_bracketleft() {
+    public void testGSUBSinglec2scbracketleft() {
 
         check("c2sc", "bracketleft", "bracketleft.sc");
     }
@@ -300,7 +300,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test bracketright.
      */
     @Test
-    public void testGSUBSingle_c2sc_bracketright() {
+    public void testGSUBSinglec2scbracketright() {
 
         check("c2sc", "bracketright", "bracketright.sc");
     }
@@ -309,7 +309,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test C.
      */
     @Test
-    public void testGSUBSingle_c2sc_C() {
+    public void testGSUBSinglec2scC() {
 
         check("c2sc", "C", "c.sc");
     }
@@ -318,7 +318,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Cacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Cacute() {
+    public void testGSUBSinglec2scCacute() {
 
         check("c2sc", "Cacute", "cacute.sc");
     }
@@ -327,7 +327,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ccaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ccaron() {
+    public void testGSUBSinglec2scCcaron() {
 
         check("c2sc", "Ccaron", "ccaron.sc");
     }
@@ -336,7 +336,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ccedilla.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ccedilla() {
+    public void testGSUBSinglec2scCcedilla() {
 
         check("c2sc", "Ccedilla", "ccedilla.sc");
     }
@@ -345,7 +345,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test D.
      */
     @Test
-    public void testGSUBSingle_c2sc_D() {
+    public void testGSUBSinglec2scD() {
 
         check("c2sc", "D", "d.sc");
     }
@@ -354,7 +354,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Dcaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Dcaron() {
+    public void testGSUBSinglec2scDcaron() {
 
         check("c2sc", "Dcaron", "dcaron.sc");
     }
@@ -363,7 +363,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Dcroat.
      */
     @Test
-    public void testGSUBSingle_c2sc_Dcroat() {
+    public void testGSUBSinglec2scDcroat() {
 
         check("c2sc", "Dcroat", "dcroat.sc");
     }
@@ -372,7 +372,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test E.
      */
     @Test
-    public void testGSUBSingle_c2sc_E() {
+    public void testGSUBSinglec2scE() {
 
         check("c2sc", "E", "e.sc");
     }
@@ -381,7 +381,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Eacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Eacute() {
+    public void testGSUBSinglec2scEacute() {
 
         check("c2sc", "Eacute", "eacute.sc");
     }
@@ -390,7 +390,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ecaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ecaron() {
+    public void testGSUBSinglec2scEcaron() {
 
         check("c2sc", "Ecaron", "ecaron.sc");
     }
@@ -399,7 +399,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ecircumflex.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ecircumflex() {
+    public void testGSUBSinglec2scEcircumflex() {
 
         check("c2sc", "Ecircumflex", "ecircumflex.sc");
     }
@@ -408,7 +408,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Edieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Edieresis() {
+    public void testGSUBSinglec2scEdieresis() {
 
         check("c2sc", "Edieresis", "edieresis.sc");
     }
@@ -417,7 +417,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Egrave.
      */
     @Test
-    public void testGSUBSingle_c2sc_Egrave() {
+    public void testGSUBSinglec2scEgrave() {
 
         check("c2sc", "Egrave", "egrave.sc");
     }
@@ -426,7 +426,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Eng.
      */
     @Test
-    public void testGSUBSingle_c2sc_Eng() {
+    public void testGSUBSinglec2scEng() {
 
         check("c2sc", "Eng", "eng.sc");
     }
@@ -435,7 +435,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Eogonek.
      */
     @Test
-    public void testGSUBSingle_c2sc_Eogonek() {
+    public void testGSUBSinglec2scEogonek() {
 
         check("c2sc", "Eogonek", "eogonek.sc");
     }
@@ -444,7 +444,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Eth.
      */
     @Test
-    public void testGSUBSingle_c2sc_Eth() {
+    public void testGSUBSinglec2scEth() {
 
         check("c2sc", "Eth", "eth.sc");
     }
@@ -453,7 +453,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test exclamdown.
      */
     @Test
-    public void testGSUBSingle_c2sc_exclamdown() {
+    public void testGSUBSinglec2scexclamdown() {
 
         check("c2sc", "exclamdown", "exclamdown.sc");
     }
@@ -462,7 +462,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test F.
      */
     @Test
-    public void testGSUBSingle_c2sc_F() {
+    public void testGSUBSinglec2scF() {
 
         check("c2sc", "F", "f.sc");
     }
@@ -471,7 +471,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test G.
      */
     @Test
-    public void testGSUBSingle_c2sc_G() {
+    public void testGSUBSinglec2scG() {
 
         check("c2sc", "G", "g.sc");
     }
@@ -480,7 +480,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Gbreve.
      */
     @Test
-    public void testGSUBSingle_c2sc_Gbreve() {
+    public void testGSUBSinglec2scGbreve() {
 
         check("c2sc", "Gbreve", "gbreve.sc");
     }
@@ -489,7 +489,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test germandbls.
      */
     @Test
-    public void testGSUBSingle_c2sc_germandbls() {
+    public void testGSUBSinglec2scgermandbls() {
 
         check("c2sc", "germandbls", "germandbls.sc");
     }
@@ -498,7 +498,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Germandbls.
      */
     @Test
-    public void testGSUBSingle_c2sc_Germandbls() {
+    public void testGSUBSinglec2scGermandbls() {
 
         check("c2sc", "Germandbls", "germandbls.sc");
     }
@@ -507,7 +507,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test guillemotleft.
      */
     @Test
-    public void testGSUBSingle_c2sc_guillemotleft() {
+    public void testGSUBSinglec2scguillemotleft() {
 
         check("c2sc", "guillemotleft", "guillemotleft.sc");
     }
@@ -516,7 +516,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test guillemotright.
      */
     @Test
-    public void testGSUBSingle_c2sc_guillemotright() {
+    public void testGSUBSinglec2scguillemotright() {
 
         check("c2sc", "guillemotright", "guillemotright.sc");
     }
@@ -525,7 +525,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test guilsinglleft.
      */
     @Test
-    public void testGSUBSingle_c2sc_guilsinglleft() {
+    public void testGSUBSinglec2scguilsinglleft() {
 
         check("c2sc", "guilsinglleft", "guilsinglleft.sc");
     }
@@ -534,7 +534,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test guilsinglright.
      */
     @Test
-    public void testGSUBSingle_c2sc_guilsinglright() {
+    public void testGSUBSinglec2scguilsinglright() {
 
         check("c2sc", "guilsinglright", "guilsinglright.sc");
     }
@@ -543,7 +543,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test H.
      */
     @Test
-    public void testGSUBSingle_c2sc_H() {
+    public void testGSUBSinglec2scH() {
 
         check("c2sc", "H", "h.sc");
     }
@@ -552,7 +552,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test hyphen.
      */
     @Test
-    public void testGSUBSingle_c2sc_hyphen() {
+    public void testGSUBSinglec2schyphen() {
 
         check("c2sc", "hyphen", "hyphen.sc");
     }
@@ -561,7 +561,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test I.
      */
     @Test
-    public void testGSUBSingle_c2sc_I() {
+    public void testGSUBSinglec2scI() {
 
         check("c2sc", "I", "i.sc");
     }
@@ -570,7 +570,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Iacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Iacute() {
+    public void testGSUBSinglec2scIacute() {
 
         check("c2sc", "Iacute", "iacute.sc");
     }
@@ -579,7 +579,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Icircumflex.
      */
     @Test
-    public void testGSUBSingle_c2sc_Icircumflex() {
+    public void testGSUBSinglec2scIcircumflex() {
 
         check("c2sc", "Icircumflex", "icircumflex.sc");
     }
@@ -588,7 +588,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Idieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Idieresis() {
+    public void testGSUBSinglec2scIdieresis() {
 
         check("c2sc", "Idieresis", "idieresis.sc");
     }
@@ -597,7 +597,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Igrave.
      */
     @Test
-    public void testGSUBSingle_c2sc_Igrave() {
+    public void testGSUBSinglec2scIgrave() {
 
         check("c2sc", "Igrave", "igrave.sc");
     }
@@ -606,7 +606,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test IJ.
      */
     @Test
-    public void testGSUBSingle_c2sc_IJ() {
+    public void testGSUBSinglec2scIJ() {
 
         check("c2sc", "IJ", "ij.sc");
     }
@@ -615,7 +615,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test J.
      */
     @Test
-    public void testGSUBSingle_c2sc_J() {
+    public void testGSUBSinglec2scJ() {
 
         check("c2sc", "J", "j.sc");
     }
@@ -624,7 +624,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test K.
      */
     @Test
-    public void testGSUBSingle_c2sc_K() {
+    public void testGSUBSinglec2scK() {
 
         check("c2sc", "K", "k.sc");
     }
@@ -633,7 +633,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test L.
      */
     @Test
-    public void testGSUBSingle_c2sc_L() {
+    public void testGSUBSinglec2scL() {
 
         check("c2sc", "L", "l.sc");
     }
@@ -642,7 +642,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Lacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Lacute() {
+    public void testGSUBSinglec2scLacute() {
 
         check("c2sc", "Lacute", "lacute.sc");
     }
@@ -651,7 +651,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Lcaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Lcaron() {
+    public void testGSUBSinglec2scLcaron() {
 
         check("c2sc", "Lcaron", "lcaron.sc");
     }
@@ -660,7 +660,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Lslash.
      */
     @Test
-    public void testGSUBSingle_c2sc_Lslash() {
+    public void testGSUBSinglec2scLslash() {
 
         check("c2sc", "Lslash", "lslash.sc");
     }
@@ -669,7 +669,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test M.
      */
     @Test
-    public void testGSUBSingle_c2sc_M() {
+    public void testGSUBSinglec2scM() {
 
         check("c2sc", "M", "m.sc");
     }
@@ -678,7 +678,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test N.
      */
     @Test
-    public void testGSUBSingle_c2sc_N() {
+    public void testGSUBSinglec2scN() {
 
         check("c2sc", "N", "n.sc");
     }
@@ -687,7 +687,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Nacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Nacute() {
+    public void testGSUBSinglec2scNacute() {
 
         check("c2sc", "Nacute", "nacute.sc");
     }
@@ -696,7 +696,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ncaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ncaron() {
+    public void testGSUBSinglec2scNcaron() {
 
         check("c2sc", "Ncaron", "ncaron.sc");
     }
@@ -705,7 +705,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ntilde.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ntilde() {
+    public void testGSUBSinglec2scNtilde() {
 
         check("c2sc", "Ntilde", "ntilde.sc");
     }
@@ -714,7 +714,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test O.
      */
     @Test
-    public void testGSUBSingle_c2sc_O() {
+    public void testGSUBSinglec2scO() {
 
         check("c2sc", "O", "o.sc");
     }
@@ -723,7 +723,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Oacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Oacute() {
+    public void testGSUBSinglec2scOacute() {
 
         check("c2sc", "Oacute", "oacute.sc");
     }
@@ -732,7 +732,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ocircumflex.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ocircumflex() {
+    public void testGSUBSinglec2scOcircumflex() {
 
         check("c2sc", "Ocircumflex", "ocircumflex.sc");
     }
@@ -741,7 +741,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Odieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Odieresis() {
+    public void testGSUBSinglec2scOdieresis() {
 
         check("c2sc", "Odieresis", "odieresis.sc");
     }
@@ -750,7 +750,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Odieresis.alt.
      */
     @Test
-    public void testGSUBSingle_c2sc_Odieresisalt() {
+    public void testGSUBSinglec2scOdieresisalt() {
 
         check("c2sc", "Odieresis.alt", "odieresis.sc");
     }
@@ -759,7 +759,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ograve.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ograve() {
+    public void testGSUBSinglec2scOgrave() {
 
         check("c2sc", "Ograve", "ograve.sc");
     }
@@ -768,7 +768,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ohungarumlaut.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ohungarumlaut() {
+    public void testGSUBSinglec2scOhungarumlaut() {
 
         check("c2sc", "Ohungarumlaut", "ohungarumlaut.sc");
     }
@@ -777,7 +777,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Oslash.
      */
     @Test
-    public void testGSUBSingle_c2sc_Oslash() {
+    public void testGSUBSinglec2scOslash() {
 
         check("c2sc", "Oslash", "oslash.sc");
     }
@@ -786,7 +786,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Otilde.
      */
     @Test
-    public void testGSUBSingle_c2sc_Otilde() {
+    public void testGSUBSinglec2scOtilde() {
 
         check("c2sc", "Otilde", "otilde.sc");
     }
@@ -795,7 +795,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test P.
      */
     @Test
-    public void testGSUBSingle_c2sc_P() {
+    public void testGSUBSinglec2scP() {
 
         check("c2sc", "P", "p.sc");
     }
@@ -804,7 +804,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenleft.
      */
     @Test
-    public void testGSUBSingle_c2sc_parenleft() {
+    public void testGSUBSinglec2scparenleft() {
 
         check("c2sc", "parenleft", "parenleft.sc");
     }
@@ -813,7 +813,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenright.
      */
     @Test
-    public void testGSUBSingle_c2sc_parenright() {
+    public void testGSUBSinglec2scparenright() {
 
         check("c2sc", "parenright", "parenright.sc");
     }
@@ -822,7 +822,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Q.
      */
     @Test
-    public void testGSUBSingle_c2sc_Q() {
+    public void testGSUBSinglec2scQ() {
 
         check("c2sc", "Q", "q.sc");
     }
@@ -831,7 +831,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test questiondown.
      */
     @Test
-    public void testGSUBSingle_c2sc_questiondown() {
+    public void testGSUBSinglec2scquestiondown() {
 
         check("c2sc", "questiondown", "questiondown.sc");
     }
@@ -840,7 +840,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test R.
      */
     @Test
-    public void testGSUBSingle_c2sc_R() {
+    public void testGSUBSinglec2scR() {
 
         check("c2sc", "R", "r.sc");
     }
@@ -849,7 +849,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Racute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Racute() {
+    public void testGSUBSinglec2scRacute() {
 
         check("c2sc", "Racute", "racute.sc");
     }
@@ -858,7 +858,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Rcaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Rcaron() {
+    public void testGSUBSinglec2scRcaron() {
 
         check("c2sc", "Rcaron", "rcaron.sc");
     }
@@ -867,7 +867,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test S.
      */
     @Test
-    public void testGSUBSingle_c2sc_S() {
+    public void testGSUBSinglec2scS() {
 
         check("c2sc", "S", "s.sc");
     }
@@ -876,7 +876,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Sacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Sacute() {
+    public void testGSUBSinglec2scSacute() {
 
         check("c2sc", "Sacute", "sacute.sc");
     }
@@ -885,7 +885,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Scaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Scaron() {
+    public void testGSUBSinglec2scScaron() {
 
         check("c2sc", "Scaron", "scaron.sc");
     }
@@ -894,7 +894,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Scedilla.
      */
     @Test
-    public void testGSUBSingle_c2sc_Scedilla() {
+    public void testGSUBSinglec2scScedilla() {
 
         check("c2sc", "Scedilla", "scedilla.sc");
     }
@@ -903,7 +903,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test T.
      */
     @Test
-    public void testGSUBSingle_c2sc_T() {
+    public void testGSUBSinglec2scT() {
 
         check("c2sc", "T", "t.sc");
     }
@@ -912,7 +912,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Tbar.
      */
     @Test
-    public void testGSUBSingle_c2sc_Tbar() {
+    public void testGSUBSinglec2scTbar() {
 
         check("c2sc", "Tbar", "tbar.sc");
     }
@@ -921,7 +921,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Tcaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Tcaron() {
+    public void testGSUBSinglec2scTcaron() {
 
         check("c2sc", "Tcaron", "tcaron.sc");
     }
@@ -930,7 +930,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Tcommaaccent.
      */
     @Test
-    public void testGSUBSingle_c2sc_Tcommaaccent() {
+    public void testGSUBSinglec2scTcommaaccent() {
 
         check("c2sc", "Tcommaaccent", "tcommaaccent.sc");
     }
@@ -939,7 +939,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Thorn.
      */
     @Test
-    public void testGSUBSingle_c2sc_Thorn() {
+    public void testGSUBSinglec2scThorn() {
 
         check("c2sc", "Thorn", "thorn.sc");
     }
@@ -948,7 +948,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test U.
      */
     @Test
-    public void testGSUBSingle_c2sc_U() {
+    public void testGSUBSinglec2scU() {
 
         check("c2sc", "U", "u.sc");
     }
@@ -957,7 +957,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Uacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Uacute() {
+    public void testGSUBSinglec2scUacute() {
 
         check("c2sc", "Uacute", "uacute.sc");
     }
@@ -966,7 +966,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ucircumflex.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ucircumflex() {
+    public void testGSUBSinglec2scUcircumflex() {
 
         check("c2sc", "Ucircumflex", "ucircumflex.sc");
     }
@@ -975,7 +975,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Udieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Udieresis() {
+    public void testGSUBSinglec2scUdieresis() {
 
         check("c2sc", "Udieresis", "udieresis.sc");
     }
@@ -984,7 +984,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Udieresis.alt.
      */
     @Test
-    public void testGSUBSingle_c2sc_Udieresisalt() {
+    public void testGSUBSinglec2scUdieresisalt() {
 
         check("c2sc", "Udieresis.alt", "udieresis.sc");
     }
@@ -993,7 +993,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ugrave.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ugrave() {
+    public void testGSUBSinglec2scUgrave() {
 
         check("c2sc", "Ugrave", "ugrave.sc");
     }
@@ -1002,7 +1002,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Uhungarumlaut.
      */
     @Test
-    public void testGSUBSingle_c2sc_Uhungarumlaut() {
+    public void testGSUBSinglec2scUhungarumlaut() {
 
         check("c2sc", "Uhungarumlaut", "uhungarumlaut.sc");
     }
@@ -1011,7 +1011,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Uring.
      */
     @Test
-    public void testGSUBSingle_c2sc_Uring() {
+    public void testGSUBSinglec2scUring() {
 
         check("c2sc", "Uring", "uring.sc");
     }
@@ -1020,7 +1020,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test V.
      */
     @Test
-    public void testGSUBSingle_c2sc_V() {
+    public void testGSUBSinglec2scV() {
 
         check("c2sc", "V", "v.sc");
     }
@@ -1029,7 +1029,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test W.
      */
     @Test
-    public void testGSUBSingle_c2sc_W() {
+    public void testGSUBSinglec2scW() {
 
         check("c2sc", "W", "w.sc");
     }
@@ -1038,7 +1038,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test X.
      */
     @Test
-    public void testGSUBSingle_c2sc_X() {
+    public void testGSUBSinglec2scX() {
 
         check("c2sc", "X", "x.sc");
     }
@@ -1047,7 +1047,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Y.
      */
     @Test
-    public void testGSUBSingle_c2sc_Y() {
+    public void testGSUBSinglec2scY() {
 
         check("c2sc", "Y", "y.sc");
     }
@@ -1056,7 +1056,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Yacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Yacute() {
+    public void testGSUBSinglec2scYacute() {
 
         check("c2sc", "Yacute", "yacute.sc");
     }
@@ -1065,7 +1065,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Ydieresis.
      */
     @Test
-    public void testGSUBSingle_c2sc_Ydieresis() {
+    public void testGSUBSinglec2scYdieresis() {
 
         check("c2sc", "Ydieresis", "ydieresis.sc");
     }
@@ -1074,7 +1074,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Z.
      */
     @Test
-    public void testGSUBSingle_c2sc_Z() {
+    public void testGSUBSinglec2scZ() {
 
         check("c2sc", "Z", "z.sc");
     }
@@ -1083,7 +1083,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Zacute.
      */
     @Test
-    public void testGSUBSingle_c2sc_Zacute() {
+    public void testGSUBSinglec2scZacute() {
 
         check("c2sc", "Zacute", "zacute.sc");
     }
@@ -1092,7 +1092,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Zcaron.
      */
     @Test
-    public void testGSUBSingle_c2sc_Zcaron() {
+    public void testGSUBSinglec2scZcaron() {
 
         check("c2sc", "Zcaron", "zcaron.sc");
     }
@@ -1101,7 +1101,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Zdotaccent.
      */
     @Test
-    public void testGSUBSingle_c2sc_Zdotaccent() {
+    public void testGSUBSinglec2scZdotaccent() {
 
         check("c2sc", "Zdotaccent", "zdotaccent.sc");
     }
@@ -1110,7 +1110,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test d.
      */
     @Test
-    public void testGSUBSingle_d() {
+    public void testGSUBSingled() {
 
         check("sups", "d", "d.superior");
     }
@@ -1119,7 +1119,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test e.
      */
     @Test
-    public void testGSUBSingle_e() {
+    public void testGSUBSinglee() {
 
         check("sups", "e", "e.superior");
     }
@@ -1128,7 +1128,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eight.
      */
     @Test
-    public void testGSUBSingle_eight() {
+    public void testGSUBSingleeight() {
 
         check("sups", "eight", "eight.superior");
     }
@@ -1137,7 +1137,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eight.oldstyle.
      */
     @Test
-    public void testGSUBSingle_eightoldstyle() {
+    public void testGSUBSingleeightoldstyle() {
 
         check("sups", "eight.oldstyle", "eight.superior");
     }
@@ -1146,7 +1146,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test equal.
      */
     @Test
-    public void testGSUBSingle_equal() {
+    public void testGSUBSingleequal() {
 
         check("sups", "equal", "equal.superior");
     }
@@ -1155,7 +1155,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test f.
      */
     @Test
-    public void testGSUBSingle_f() {
+    public void testGSUBSinglef() {
 
         check("sups", "f", "f.superior");
     }
@@ -1164,7 +1164,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test sigma.
      */
     @Test
-    public void testGSUBSingle_fina_sigma() {
+    public void testGSUBSinglefinasigma() {
 
         check("fina", "sigma", "sigma1");
     }
@@ -1173,7 +1173,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test five.
      */
     @Test
-    public void testGSUBSingle_five() {
+    public void testGSUBSinglefive() {
 
         check("sups", "five", "five.superior");
     }
@@ -1182,7 +1182,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test four.
      */
     @Test
-    public void testGSUBSingle_four() {
+    public void testGSUBSinglefour() {
 
         check("sups", "four", "four.superior");
     }
@@ -1191,7 +1191,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test g.
      */
     @Test
-    public void testGSUBSingle_g() {
+    public void testGSUBSingleg() {
 
         check("sups", "g", "g.superior");
     }
@@ -1200,7 +1200,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test gammalatin.
      */
     @Test
-    public void testGSUBSingle_gammalatin() {
+    public void testGSUBSinglegammalatin() {
 
         check("sups", "gammalatin", "gammalatin.superior");
     }
@@ -1209,7 +1209,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test glottalstopreversed.
      */
     @Test
-    public void testGSUBSingle_glottalstopreversed() {
+    public void testGSUBSingleglottalstopreversed() {
 
         check("sups", "glottalstopreversed", "glottalstopreversed.superior");
     }
@@ -1218,7 +1218,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test h.
      */
     @Test
-    public void testGSUBSingle_h() {
+    public void testGSUBSingleh() {
 
         check("sups", "h", "h.superior");
     }
@@ -1227,7 +1227,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test hhook.
      */
     @Test
-    public void testGSUBSingle_hhook() {
+    public void testGSUBSinglehhook() {
 
         check("sups", "hhook", "hhook.superior");
     }
@@ -1236,7 +1236,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test i.
      */
     @Test
-    public void testGSUBSingle_i() {
+    public void testGSUBSinglei() {
 
         check("sups", "i", "i.superior");
     }
@@ -1245,7 +1245,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test j.
      */
     @Test
-    public void testGSUBSingle_j() {
+    public void testGSUBSinglej() {
 
         check("sups", "j", "j.superior");
     }
@@ -1254,7 +1254,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test k.
      */
     @Test
-    public void testGSUBSingle_k() {
+    public void testGSUBSinglek() {
 
         check("sups", "k", "k.superior");
     }
@@ -1263,7 +1263,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test l.
      */
     @Test
-    public void testGSUBSingle_l() {
+    public void testGSUBSinglel() {
 
         check("sups", "l", "l.superior");
     }
@@ -1272,7 +1272,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test m.
      */
     @Test
-    public void testGSUBSingle_m() {
+    public void testGSUBSinglem() {
 
         check("sups", "m", "m.superior");
     }
@@ -1281,7 +1281,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test minus.
      */
     @Test
-    public void testGSUBSingle_minus() {
+    public void testGSUBSingleminus() {
 
         check("sups", "minus", "minus.superior");
     }
@@ -1290,7 +1290,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test n.
      */
     @Test
-    public void testGSUBSingle_n() {
+    public void testGSUBSinglen() {
 
         check("sups", "n", "n.superior");
     }
@@ -1299,7 +1299,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test nine.
      */
     @Test
-    public void testGSUBSingle_nine() {
+    public void testGSUBSinglenine() {
 
         check("sups", "nine", "nine.superior");
     }
@@ -1308,7 +1308,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test o.
      */
     @Test
-    public void testGSUBSingle_o() {
+    public void testGSUBSingleo() {
 
         check("sups", "o", "o.superior");
     }
@@ -1317,7 +1317,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test one.
      */
     @Test
-    public void testGSUBSingle_one() {
+    public void testGSUBSingleone() {
 
         check("sups", "one", "one.superior");
     }
@@ -1326,7 +1326,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test p.
      */
     @Test
-    public void testGSUBSingle_p() {
+    public void testGSUBSinglep() {
 
         check("sups", "p", "p.superior");
     }
@@ -1335,7 +1335,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenleft.
      */
     @Test
-    public void testGSUBSingle_parenleft() {
+    public void testGSUBSingleparenleft() {
 
         check("sups", "parenleft", "parenleft.superior");
     }
@@ -1344,7 +1344,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenright.
      */
     @Test
-    public void testGSUBSingle_parenright() {
+    public void testGSUBSingleparenright() {
 
         check("sups", "parenright", "parenright.superior");
     }
@@ -1353,7 +1353,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test plus.
      */
     @Test
-    public void testGSUBSingle_plus() {
+    public void testGSUBSingleplus() {
 
         check("sups", "plus", "plus.superior");
     }
@@ -1362,7 +1362,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test q.
      */
     @Test
-    public void testGSUBSingle_q() {
+    public void testGSUBSingleq() {
 
         check("sups", "q", "q.superior");
     }
@@ -1371,7 +1371,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test r.
      */
     @Test
-    public void testGSUBSingle_r() {
+    public void testGSUBSingler() {
 
         check("sups", "r", "r.superior");
     }
@@ -1380,7 +1380,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test rhookturned.
      */
     @Test
-    public void testGSUBSingle_rhookturned() {
+    public void testGSUBSinglerhookturned() {
 
         check("sups", "rhookturned", "rhookturned.superior");
     }
@@ -1389,7 +1389,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Rsmallinverted.
      */
     @Test
-    public void testGSUBSingle_Rsmallinverted() {
+    public void testGSUBSingleRsmallinverted() {
 
         check("sups", "Rsmallinverted", "Rsmallinverted.superior");
     }
@@ -1398,7 +1398,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test rturned.
      */
     @Test
-    public void testGSUBSingle_rturned() {
+    public void testGSUBSinglerturned() {
 
         check("sups", "rturned", "rturned.superior");
     }
@@ -1407,7 +1407,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test s.
      */
     @Test
-    public void testGSUBSingle_s() {
+    public void testGSUBSingles() {
 
         check("sups", "s", "s.superior");
     }
@@ -1416,7 +1416,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test seven.
      */
     @Test
-    public void testGSUBSingle_seven() {
+    public void testGSUBSingleseven() {
 
         check("sups", "seven", "seven.superior");
     }
@@ -1425,7 +1425,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test six.
      */
     @Test
-    public void testGSUBSingle_six() {
+    public void testGSUBSinglesix() {
 
         check("sups", "six", "six.superior");
     }
@@ -1434,7 +1434,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test a.
      */
     @Test
-    public void testGSUBSingle_smcp_a() {
+    public void testGSUBSinglesmcpa() {
 
         check("smcp", "a", "a.sc");
     }
@@ -1443,7 +1443,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test aacute.
      */
     @Test
-    public void testGSUBSingle_smcp_aacute() {
+    public void testGSUBSinglesmcpaacute() {
 
         check("smcp", "aacute", "aacute.sc");
     }
@@ -1452,7 +1452,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test abreve.
      */
     @Test
-    public void testGSUBSingle_smcp_abreve() {
+    public void testGSUBSinglesmcpabreve() {
 
         check("smcp", "abreve", "abreve.sc");
     }
@@ -1461,7 +1461,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test acircumflex.
      */
     @Test
-    public void testGSUBSingle_smcp_acircumflex() {
+    public void testGSUBSinglesmcpacircumflex() {
 
         check("smcp", "acircumflex", "acircumflex.sc");
     }
@@ -1470,7 +1470,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test adieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_adieresis() {
+    public void testGSUBSinglesmcpadieresis() {
 
         check("smcp", "adieresis", "adieresis.sc");
     }
@@ -1479,7 +1479,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ae.
      */
     @Test
-    public void testGSUBSingle_smcp_ae() {
+    public void testGSUBSinglesmcpae() {
 
         check("smcp", "ae", "ae.sc");
     }
@@ -1488,7 +1488,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test agrave.
      */
     @Test
-    public void testGSUBSingle_smcp_agrave() {
+    public void testGSUBSinglesmcpagrave() {
 
         check("smcp", "agrave", "agrave.sc");
     }
@@ -1497,7 +1497,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ampersand.
      */
     @Test
-    public void testGSUBSingle_smcp_ampersand() {
+    public void testGSUBSinglesmcpampersand() {
 
         check("smcp", "ampersand", "ampersand.alt");
     }
@@ -1506,7 +1506,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test aogonek.
      */
     @Test
-    public void testGSUBSingle_smcp_aogonek() {
+    public void testGSUBSinglesmcpaogonek() {
 
         check("smcp", "aogonek", "aogonek.sc");
     }
@@ -1515,7 +1515,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test aring.
      */
     @Test
-    public void testGSUBSingle_smcp_aring() {
+    public void testGSUBSinglesmcparing() {
 
         check("smcp", "aring", "aring.sc");
     }
@@ -1524,7 +1524,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test atilde.
      */
     @Test
-    public void testGSUBSingle_smcp_atilde() {
+    public void testGSUBSinglesmcpatilde() {
 
         check("smcp", "atilde", "atilde.sc");
     }
@@ -1533,7 +1533,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test b.
      */
     @Test
-    public void testGSUBSingle_smcp_b() {
+    public void testGSUBSinglesmcpb() {
 
         check("smcp", "b", "b.sc");
     }
@@ -1542,7 +1542,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test c.
      */
     @Test
-    public void testGSUBSingle_smcp_c() {
+    public void testGSUBSinglesmcpc() {
 
         check("smcp", "c", "c.sc");
     }
@@ -1551,7 +1551,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test cacute.
      */
     @Test
-    public void testGSUBSingle_smcp_cacute() {
+    public void testGSUBSinglesmcpcacute() {
 
         check("smcp", "cacute", "cacute.sc");
     }
@@ -1560,7 +1560,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ccaron.
      */
     @Test
-    public void testGSUBSingle_smcp_ccaron() {
+    public void testGSUBSinglesmcpccaron() {
 
         check("smcp", "ccaron", "ccaron.sc");
     }
@@ -1569,7 +1569,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ccedilla.
      */
     @Test
-    public void testGSUBSingle_smcp_ccedilla() {
+    public void testGSUBSinglesmcpccedilla() {
 
         check("smcp", "ccedilla", "ccedilla.sc");
     }
@@ -1578,7 +1578,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test d.
      */
     @Test
-    public void testGSUBSingle_smcp_d() {
+    public void testGSUBSinglesmcpd() {
 
         check("smcp", "d", "d.sc");
     }
@@ -1587,7 +1587,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test dcaron.
      */
     @Test
-    public void testGSUBSingle_smcp_dcaron() {
+    public void testGSUBSinglesmcpdcaron() {
 
         check("smcp", "dcaron", "dcaron.sc");
     }
@@ -1596,7 +1596,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test dcroat.
      */
     @Test
-    public void testGSUBSingle_smcp_dcroat() {
+    public void testGSUBSinglesmcpdcroat() {
 
         check("smcp", "dcroat", "dcroat.sc");
     }
@@ -1605,7 +1605,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test e.
      */
     @Test
-    public void testGSUBSingle_smcp_e() {
+    public void testGSUBSinglesmcpe() {
 
         check("smcp", "e", "e.sc");
     }
@@ -1614,7 +1614,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eacute.
      */
     @Test
-    public void testGSUBSingle_smcp_eacute() {
+    public void testGSUBSinglesmcpeacute() {
 
         check("smcp", "eacute", "eacute.sc");
     }
@@ -1623,7 +1623,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ecaron.
      */
     @Test
-    public void testGSUBSingle_smcp_ecaron() {
+    public void testGSUBSinglesmcpecaron() {
 
         check("smcp", "ecaron", "ecaron.sc");
     }
@@ -1632,7 +1632,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ecircumflex.
      */
     @Test
-    public void testGSUBSingle_smcp_ecircumflex() {
+    public void testGSUBSinglesmcpecircumflex() {
 
         check("smcp", "ecircumflex", "ecircumflex.sc");
     }
@@ -1641,7 +1641,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test edieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_edieresis() {
+    public void testGSUBSinglesmcpedieresis() {
 
         check("smcp", "edieresis", "edieresis.sc");
     }
@@ -1650,7 +1650,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test egrave.
      */
     @Test
-    public void testGSUBSingle_smcp_egrave() {
+    public void testGSUBSinglesmcpegrave() {
 
         check("smcp", "egrave", "egrave.sc");
     }
@@ -1659,7 +1659,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eng.
      */
     @Test
-    public void testGSUBSingle_smcp_eng() {
+    public void testGSUBSinglesmcpeng() {
 
         check("smcp", "eng", "eng.sc");
     }
@@ -1668,7 +1668,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eogonek.
      */
     @Test
-    public void testGSUBSingle_smcp_eogonek() {
+    public void testGSUBSinglesmcpeogonek() {
 
         check("smcp", "eogonek", "eogonek.sc");
     }
@@ -1677,7 +1677,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eth.
      */
     @Test
-    public void testGSUBSingle_smcp_eth() {
+    public void testGSUBSinglesmcpeth() {
 
         check("smcp", "eth", "eth.sc");
     }
@@ -1686,34 +1686,34 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test f.
      */
     @Test
-    public void testGSUBSingle_smcp_f() {
+    public void testGSUBSinglesmcpf() {
 
         check("smcp", "f", "f.sc");
     }
 
     /**
-     * test f_i.
+     * test fi.
      */
     @Test
-    public void testGSUBSingle_smcp_f_i() {
+    public void testGSUBSinglesmcpfi() {
 
-        check("smcp", "f_i", "f_i.sc");
+        check("smcp", "fi", "fi.sc");
     }
 
     /**
-     * test f_l.
+     * test fl.
      */
     @Test
-    public void testGSUBSingle_smcp_f_l() {
+    public void testGSUBSinglesmcpfl() {
 
-        check("smcp", "f_l", "f_l.sc");
+        check("smcp", "fl", "fl.sc");
     }
 
     /**
      * test g.
      */
     @Test
-    public void testGSUBSingle_smcp_g() {
+    public void testGSUBSinglesmcpg() {
 
         check("smcp", "g", "g.sc");
     }
@@ -1722,7 +1722,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test gbreve.
      */
     @Test
-    public void testGSUBSingle_smcp_gbreve() {
+    public void testGSUBSinglesmcpgbreve() {
 
         check("smcp", "gbreve", "gbreve.sc");
     }
@@ -1731,7 +1731,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test germandbls.
      */
     @Test
-    public void testGSUBSingle_smcp_germandbls() {
+    public void testGSUBSinglesmcpgermandbls() {
 
         check("smcp", "germandbls", "germandbls.sc");
     }
@@ -1740,7 +1740,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test h.
      */
     @Test
-    public void testGSUBSingle_smcp_h() {
+    public void testGSUBSinglesmcph() {
 
         check("smcp", "h", "h.sc");
     }
@@ -1749,7 +1749,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test hyphen.
      */
     @Test
-    public void testGSUBSingle_smcp_hyphen() {
+    public void testGSUBSinglesmcphyphen() {
 
         check("smcp", "hyphen", "hyphen.sc");
     }
@@ -1758,7 +1758,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test i.
      */
     @Test
-    public void testGSUBSingle_smcp_i() {
+    public void testGSUBSinglesmcpi() {
 
         check("smcp", "i", "i.sc");
     }
@@ -1767,7 +1767,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test iacute.
      */
     @Test
-    public void testGSUBSingle_smcp_iacute() {
+    public void testGSUBSinglesmcpiacute() {
 
         check("smcp", "iacute", "iacute.sc");
     }
@@ -1776,7 +1776,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test icircumflex.
      */
     @Test
-    public void testGSUBSingle_smcp_icircumflex() {
+    public void testGSUBSinglesmcpicircumflex() {
 
         check("smcp", "icircumflex", "icircumflex.sc");
     }
@@ -1785,7 +1785,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test idieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_idieresis() {
+    public void testGSUBSinglesmcpidieresis() {
 
         check("smcp", "idieresis", "idieresis.sc");
     }
@@ -1794,7 +1794,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test igrave.
      */
     @Test
-    public void testGSUBSingle_smcp_igrave() {
+    public void testGSUBSinglesmcpigrave() {
 
         check("smcp", "igrave", "igrave.sc");
     }
@@ -1803,7 +1803,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ij.
      */
     @Test
-    public void testGSUBSingle_smcp_ij() {
+    public void testGSUBSinglesmcpij() {
 
         check("smcp", "ij", "ij.sc");
     }
@@ -1812,7 +1812,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test j.
      */
     @Test
-    public void testGSUBSingle_smcp_j() {
+    public void testGSUBSinglesmcpj() {
 
         check("smcp", "j", "j.sc");
     }
@@ -1821,7 +1821,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test k.
      */
     @Test
-    public void testGSUBSingle_smcp_k() {
+    public void testGSUBSinglesmcpk() {
 
         check("smcp", "k", "k.sc");
     }
@@ -1830,7 +1830,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test kgreenlandic.
      */
     @Test
-    public void testGSUBSingle_smcp_kgreenlandic() {
+    public void testGSUBSinglesmcpkgreenlandic() {
 
         check("smcp", "kgreenlandic", "k.sc");
     }
@@ -1839,7 +1839,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test l.
      */
     @Test
-    public void testGSUBSingle_smcp_l() {
+    public void testGSUBSinglesmcpl() {
 
         check("smcp", "l", "l.sc");
     }
@@ -1848,7 +1848,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test lacute.
      */
     @Test
-    public void testGSUBSingle_smcp_lacute() {
+    public void testGSUBSinglesmcplacute() {
 
         check("smcp", "lacute", "lacute.sc");
     }
@@ -1857,7 +1857,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test lcaron.
      */
     @Test
-    public void testGSUBSingle_smcp_lcaron() {
+    public void testGSUBSinglesmcplcaron() {
 
         check("smcp", "lcaron", "lcaron.sc");
     }
@@ -1866,7 +1866,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test longs.
      */
     @Test
-    public void testGSUBSingle_smcp_longs() {
+    public void testGSUBSinglesmcplongs() {
 
         check("smcp", "longs", "s.sc");
     }
@@ -1875,7 +1875,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test lslash.
      */
     @Test
-    public void testGSUBSingle_smcp_lslash() {
+    public void testGSUBSinglesmcplslash() {
 
         check("smcp", "lslash", "lslash.sc");
     }
@@ -1884,7 +1884,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test m.
      */
     @Test
-    public void testGSUBSingle_smcp_m() {
+    public void testGSUBSinglesmcpm() {
 
         check("smcp", "m", "m.sc");
     }
@@ -1893,7 +1893,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test n.
      */
     @Test
-    public void testGSUBSingle_smcp_n() {
+    public void testGSUBSinglesmcpn() {
 
         check("smcp", "n", "n.sc");
     }
@@ -1902,7 +1902,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test nacute.
      */
     @Test
-    public void testGSUBSingle_smcp_nacute() {
+    public void testGSUBSinglesmcpnacute() {
 
         check("smcp", "nacute", "nacute.sc");
     }
@@ -1911,7 +1911,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ncaron.
      */
     @Test
-    public void testGSUBSingle_smcp_ncaron() {
+    public void testGSUBSinglesmcpncaron() {
 
         check("smcp", "ncaron", "ncaron.sc");
     }
@@ -1920,7 +1920,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ntilde.
      */
     @Test
-    public void testGSUBSingle_smcp_ntilde() {
+    public void testGSUBSinglesmcpntilde() {
 
         check("smcp", "ntilde", "ntilde.sc");
     }
@@ -1929,7 +1929,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test o.
      */
     @Test
-    public void testGSUBSingle_smcp_o() {
+    public void testGSUBSinglesmcpo() {
 
         check("smcp", "o", "o.sc");
     }
@@ -1938,7 +1938,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test oacute.
      */
     @Test
-    public void testGSUBSingle_smcp_oacute() {
+    public void testGSUBSinglesmcpoacute() {
 
         check("smcp", "oacute", "oacute.sc");
     }
@@ -1947,7 +1947,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ocircumflex.
      */
     @Test
-    public void testGSUBSingle_smcp_ocircumflex() {
+    public void testGSUBSinglesmcpocircumflex() {
 
         check("smcp", "ocircumflex", "ocircumflex.sc");
     }
@@ -1956,7 +1956,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test odieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_odieresis() {
+    public void testGSUBSinglesmcpodieresis() {
 
         check("smcp", "odieresis", "odieresis.sc");
     }
@@ -1965,7 +1965,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test oe.
      */
     @Test
-    public void testGSUBSingle_smcp_oe() {
+    public void testGSUBSinglesmcpoe() {
 
         check("smcp", "oe", "oe.sc");
     }
@@ -1974,7 +1974,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ograve.
      */
     @Test
-    public void testGSUBSingle_smcp_ograve() {
+    public void testGSUBSinglesmcpograve() {
 
         check("smcp", "ograve", "ograve.sc");
     }
@@ -1983,7 +1983,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ohungarumlaut.
      */
     @Test
-    public void testGSUBSingle_smcp_ohungarumlaut() {
+    public void testGSUBSinglesmcpohungarumlaut() {
 
         check("smcp", "ohungarumlaut", "ohungarumlaut.sc");
     }
@@ -1992,7 +1992,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test oslash.
      */
     @Test
-    public void testGSUBSingle_smcp_oslash() {
+    public void testGSUBSinglesmcposlash() {
 
         check("smcp", "oslash", "oslash.sc");
     }
@@ -2001,7 +2001,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test otilde.
      */
     @Test
-    public void testGSUBSingle_smcp_otilde() {
+    public void testGSUBSinglesmcpotilde() {
 
         check("smcp", "otilde", "otilde.sc");
     }
@@ -2010,7 +2010,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test p.
      */
     @Test
-    public void testGSUBSingle_smcp_p() {
+    public void testGSUBSinglesmcpp() {
 
         check("smcp", "p", "p.sc");
     }
@@ -2019,7 +2019,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test q.
      */
     @Test
-    public void testGSUBSingle_smcp_q() {
+    public void testGSUBSinglesmcpq() {
 
         check("smcp", "q", "q.sc");
     }
@@ -2028,7 +2028,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test r.
      */
     @Test
-    public void testGSUBSingle_smcp_r() {
+    public void testGSUBSinglesmcpr() {
 
         check("smcp", "r", "r.sc");
     }
@@ -2037,7 +2037,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test racute.
      */
     @Test
-    public void testGSUBSingle_smcp_racute() {
+    public void testGSUBSinglesmcpracute() {
 
         check("smcp", "racute", "racute.sc");
     }
@@ -2046,7 +2046,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test rcaron.
      */
     @Test
-    public void testGSUBSingle_smcp_rcaron() {
+    public void testGSUBSinglesmcprcaron() {
 
         check("smcp", "rcaron", "rcaron.sc");
     }
@@ -2055,7 +2055,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test s.
      */
     @Test
-    public void testGSUBSingle_smcp_s() {
+    public void testGSUBSinglesmcps() {
 
         check("smcp", "s", "s.sc");
     }
@@ -2064,7 +2064,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test sacute.
      */
     @Test
-    public void testGSUBSingle_smcp_sacute() {
+    public void testGSUBSinglesmcpsacute() {
 
         check("smcp", "sacute", "sacute.sc");
     }
@@ -2073,7 +2073,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test scaron.
      */
     @Test
-    public void testGSUBSingle_smcp_scaron() {
+    public void testGSUBSinglesmcpscaron() {
 
         check("smcp", "scaron", "scaron.sc");
     }
@@ -2082,7 +2082,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test scedilla.
      */
     @Test
-    public void testGSUBSingle_smcp_scedilla() {
+    public void testGSUBSinglesmcpscedilla() {
 
         check("smcp", "scedilla", "scedilla.sc");
     }
@@ -2091,7 +2091,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test t.
      */
     @Test
-    public void testGSUBSingle_smcp_t() {
+    public void testGSUBSinglesmcpt() {
 
         check("smcp", "t", "t.sc");
     }
@@ -2100,7 +2100,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test tbar.
      */
     @Test
-    public void testGSUBSingle_smcp_tbar() {
+    public void testGSUBSinglesmcptbar() {
 
         check("smcp", "tbar", "tbar.sc");
     }
@@ -2109,7 +2109,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test tcaron.
      */
     @Test
-    public void testGSUBSingle_smcp_tcaron() {
+    public void testGSUBSinglesmcptcaron() {
 
         check("smcp", "tcaron", "tcaron.sc");
     }
@@ -2118,7 +2118,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test tcommaaccent.
      */
     @Test
-    public void testGSUBSingle_smcp_tcommaaccent() {
+    public void testGSUBSinglesmcptcommaaccent() {
 
         check("smcp", "tcommaaccent", "tcommaaccent.sc");
     }
@@ -2127,7 +2127,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test thorn.
      */
     @Test
-    public void testGSUBSingle_smcp_thorn() {
+    public void testGSUBSinglesmcpthorn() {
 
         check("smcp", "thorn", "thorn.sc");
     }
@@ -2136,7 +2136,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test u.
      */
     @Test
-    public void testGSUBSingle_smcp_u() {
+    public void testGSUBSinglesmcpu() {
 
         check("smcp", "u", "u.sc");
     }
@@ -2145,7 +2145,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test uacute.
      */
     @Test
-    public void testGSUBSingle_smcp_uacute() {
+    public void testGSUBSinglesmcpuacute() {
 
         check("smcp", "uacute", "uacute.sc");
     }
@@ -2154,7 +2154,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ucircumflex.
      */
     @Test
-    public void testGSUBSingle_smcp_ucircumflex() {
+    public void testGSUBSinglesmcpucircumflex() {
 
         check("smcp", "ucircumflex", "ucircumflex.sc");
     }
@@ -2163,7 +2163,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test udieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_udieresis() {
+    public void testGSUBSinglesmcpudieresis() {
 
         check("smcp", "udieresis", "udieresis.sc");
     }
@@ -2172,7 +2172,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ugrave.
      */
     @Test
-    public void testGSUBSingle_smcp_ugrave() {
+    public void testGSUBSinglesmcpugrave() {
 
         check("smcp", "ugrave", "ugrave.sc");
     }
@@ -2181,7 +2181,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test uhungarumlaut.
      */
     @Test
-    public void testGSUBSingle_smcp_uhungarumlaut() {
+    public void testGSUBSinglesmcpuhungarumlaut() {
 
         check("smcp", "uhungarumlaut", "uhungarumlaut.sc");
     }
@@ -2190,7 +2190,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test uring.
      */
     @Test
-    public void testGSUBSingle_smcp_uring() {
+    public void testGSUBSinglesmcpuring() {
 
         check("smcp", "uring", "uring.sc");
     }
@@ -2199,7 +2199,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test v.
      */
     @Test
-    public void testGSUBSingle_smcp_v() {
+    public void testGSUBSinglesmcpv() {
 
         check("smcp", "v", "v.sc");
     }
@@ -2208,7 +2208,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test w.
      */
     @Test
-    public void testGSUBSingle_smcp_w() {
+    public void testGSUBSinglesmcpw() {
 
         check("smcp", "w", "w.sc");
     }
@@ -2217,7 +2217,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test x.
      */
     @Test
-    public void testGSUBSingle_smcp_x() {
+    public void testGSUBSinglesmcpx() {
 
         check("smcp", "x", "x.sc");
     }
@@ -2226,7 +2226,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test y.
      */
     @Test
-    public void testGSUBSingle_smcp_y() {
+    public void testGSUBSinglesmcpy() {
 
         check("smcp", "y", "y.sc");
     }
@@ -2235,7 +2235,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test yacute.
      */
     @Test
-    public void testGSUBSingle_smcp_yacute() {
+    public void testGSUBSinglesmcpyacute() {
 
         check("smcp", "yacute", "yacute.sc");
     }
@@ -2244,7 +2244,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test ydieresis.
      */
     @Test
-    public void testGSUBSingle_smcp_ydieresis() {
+    public void testGSUBSinglesmcpydieresis() {
 
         check("smcp", "ydieresis", "ydieresis.sc");
     }
@@ -2253,7 +2253,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test z.
      */
     @Test
-    public void testGSUBSingle_smcp_z() {
+    public void testGSUBSinglesmcpz() {
 
         check("smcp", "z", "z.sc");
     }
@@ -2262,7 +2262,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zacute.
      */
     @Test
-    public void testGSUBSingle_smcp_zacute() {
+    public void testGSUBSinglesmcpzacute() {
 
         check("smcp", "zacute", "zacute.sc");
     }
@@ -2271,7 +2271,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zcaron.
      */
     @Test
-    public void testGSUBSingle_smcp_zcaron() {
+    public void testGSUBSinglesmcpzcaron() {
 
         check("smcp", "zcaron", "zcaron.sc");
     }
@@ -2280,7 +2280,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zdotaccent.
      */
     @Test
-    public void testGSUBSingle_smcp_zdotaccent() {
+    public void testGSUBSinglesmcpzdotaccent() {
 
         check("smcp", "zdotaccent", "zdotaccent.sc");
     }
@@ -2289,7 +2289,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test a.
      */
     @Test
-    public void testGSUBSingle_sups_a() {
+    public void testGSUBSinglesupsa() {
 
         check("sups", "a", "a.superior");
     }
@@ -2298,7 +2298,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test b.
      */
     @Test
-    public void testGSUBSingle_sups_b() {
+    public void testGSUBSinglesupsb() {
 
         check("sups", "b", "b.superior");
     }
@@ -2307,7 +2307,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test c.
      */
     @Test
-    public void testGSUBSingle_sups_c() {
+    public void testGSUBSinglesupsc() {
 
         check("sups", "c", "c.superior");
     }
@@ -2316,7 +2316,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test d.
      */
     @Test
-    public void testGSUBSingle_sups_d() {
+    public void testGSUBSinglesupsd() {
 
         check("sups", "d", "d.superior");
     }
@@ -2325,7 +2325,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test e.
      */
     @Test
-    public void testGSUBSingle_sups_e() {
+    public void testGSUBSinglesupse() {
 
         check("sups", "e", "e.superior");
     }
@@ -2334,7 +2334,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eight.
      */
     @Test
-    public void testGSUBSingle_sups_eight() {
+    public void testGSUBSinglesupseight() {
 
         check("sups", "eight", "eight.superior");
     }
@@ -2343,7 +2343,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test eight.oldstyle.
      */
     @Test
-    public void testGSUBSingle_sups_eightoldstyle() {
+    public void testGSUBSinglesupseightoldstyle() {
 
         check("sups", "eight.oldstyle", "eight.superior");
     }
@@ -2352,7 +2352,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test equal.
      */
     @Test
-    public void testGSUBSingle_sups_equal() {
+    public void testGSUBSinglesupsequal() {
 
         check("sups", "equal", "equal.superior");
     }
@@ -2361,7 +2361,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test f.
      */
     @Test
-    public void testGSUBSingle_sups_f() {
+    public void testGSUBSinglesupsf() {
 
         check("sups", "f", "f.superior");
     }
@@ -2370,7 +2370,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test five.
      */
     @Test
-    public void testGSUBSingle_sups_five() {
+    public void testGSUBSinglesupsfive() {
 
         check("sups", "five", "five.superior");
     }
@@ -2379,7 +2379,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test four.
      */
     @Test
-    public void testGSUBSingle_sups_four() {
+    public void testGSUBSinglesupsfour() {
 
         check("sups", "four", "four.superior");
     }
@@ -2388,7 +2388,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test g.
      */
     @Test
-    public void testGSUBSingle_sups_g() {
+    public void testGSUBSinglesupsg() {
 
         check("sups", "g", "g.superior");
     }
@@ -2397,7 +2397,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test gammalatin.
      */
     @Test
-    public void testGSUBSingle_sups_gammalatin() {
+    public void testGSUBSinglesupsgammalatin() {
 
         check("sups", "gammalatin", "gammalatin.superior");
     }
@@ -2406,7 +2406,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test glottalstopreversed.
      */
     @Test
-    public void testGSUBSingle_sups_glottalstopreversed() {
+    public void testGSUBSinglesupsglottalstopreversed() {
 
         check("sups", "glottalstopreversed", "glottalstopreversed.superior");
     }
@@ -2415,7 +2415,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test h.
      */
     @Test
-    public void testGSUBSingle_sups_h() {
+    public void testGSUBSinglesupsh() {
 
         check("sups", "h", "h.superior");
     }
@@ -2424,7 +2424,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test hhook.
      */
     @Test
-    public void testGSUBSingle_sups_hhook() {
+    public void testGSUBSinglesupshhook() {
 
         check("sups", "hhook", "hhook.superior");
     }
@@ -2433,7 +2433,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test i.
      */
     @Test
-    public void testGSUBSingle_sups_i() {
+    public void testGSUBSinglesupsi() {
 
         check("sups", "i", "i.superior");
     }
@@ -2442,7 +2442,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test j.
      */
     @Test
-    public void testGSUBSingle_sups_j() {
+    public void testGSUBSinglesupsj() {
 
         check("sups", "j", "j.superior");
     }
@@ -2451,7 +2451,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test k.
      */
     @Test
-    public void testGSUBSingle_sups_k() {
+    public void testGSUBSinglesupsk() {
 
         check("sups", "k", "k.superior");
     }
@@ -2460,7 +2460,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test l.
      */
     @Test
-    public void testGSUBSingle_sups_l() {
+    public void testGSUBSinglesupsl() {
 
         check("sups", "l", "l.superior");
     }
@@ -2469,7 +2469,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test m.
      */
     @Test
-    public void testGSUBSingle_sups_m() {
+    public void testGSUBSinglesupsm() {
 
         check("sups", "m", "m.superior");
     }
@@ -2478,7 +2478,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test minus.
      */
     @Test
-    public void testGSUBSingle_sups_minus() {
+    public void testGSUBSinglesupsminus() {
 
         check("sups", "minus", "minus.superior");
     }
@@ -2487,7 +2487,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test n.
      */
     @Test
-    public void testGSUBSingle_sups_n() {
+    public void testGSUBSinglesupsn() {
 
         check("sups", "n", "n.superior");
     }
@@ -2496,7 +2496,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test nine.
      */
     @Test
-    public void testGSUBSingle_sups_nine() {
+    public void testGSUBSinglesupsnine() {
 
         check("sups", "nine", "nine.superior");
     }
@@ -2505,7 +2505,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test o.
      */
     @Test
-    public void testGSUBSingle_sups_o() {
+    public void testGSUBSinglesupso() {
 
         check("sups", "o", "o.superior");
     }
@@ -2514,7 +2514,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test one.
      */
     @Test
-    public void testGSUBSingle_sups_one() {
+    public void testGSUBSinglesupsone() {
 
         check("sups", "one", "one.superior");
     }
@@ -2523,7 +2523,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test p.
      */
     @Test
-    public void testGSUBSingle_sups_p() {
+    public void testGSUBSinglesupsp() {
 
         check("sups", "p", "p.superior");
     }
@@ -2532,7 +2532,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenleft.
      */
     @Test
-    public void testGSUBSingle_sups_parenleft() {
+    public void testGSUBSinglesupsparenleft() {
 
         check("sups", "parenleft", "parenleft.superior");
     }
@@ -2541,7 +2541,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test parenright.
      */
     @Test
-    public void testGSUBSingle_sups_parenright() {
+    public void testGSUBSinglesupsparenright() {
 
         check("sups", "parenright", "parenright.superior");
     }
@@ -2550,7 +2550,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test plus.
      */
     @Test
-    public void testGSUBSingle_sups_plus() {
+    public void testGSUBSinglesupsplus() {
 
         check("sups", "plus", "plus.superior");
     }
@@ -2559,7 +2559,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test q.
      */
     @Test
-    public void testGSUBSingle_sups_q() {
+    public void testGSUBSinglesupsq() {
 
         check("sups", "q", "q.superior");
     }
@@ -2568,7 +2568,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test r.
      */
     @Test
-    public void testGSUBSingle_sups_r() {
+    public void testGSUBSinglesupsr() {
 
         check("sups", "r", "r.superior");
     }
@@ -2577,7 +2577,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test rhookturned.
      */
     @Test
-    public void testGSUBSingle_sups_rhookturned() {
+    public void testGSUBSinglesupsrhookturned() {
 
         check("sups", "rhookturned", "rhookturned.superior");
     }
@@ -2586,7 +2586,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test Rsmallinverted.
      */
     @Test
-    public void testGSUBSingle_sups_Rsmallinverted() {
+    public void testGSUBSinglesupsRsmallinverted() {
 
         check("sups", "Rsmallinverted", "Rsmallinverted.superior");
     }
@@ -2595,7 +2595,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test rturned.
      */
     @Test
-    public void testGSUBSingle_sups_rturned() {
+    public void testGSUBSinglesupsrturned() {
 
         check("sups", "rturned", "rturned.superior");
     }
@@ -2604,7 +2604,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test s.
      */
     @Test
-    public void testGSUBSingle_sups_s() {
+    public void testGSUBSinglesupss() {
 
         check("sups", "s", "s.superior");
     }
@@ -2613,7 +2613,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test seven.
      */
     @Test
-    public void testGSUBSingle_sups_seven() {
+    public void testGSUBSinglesupsseven() {
 
         check("sups", "seven", "seven.superior");
     }
@@ -2622,7 +2622,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test six.
      */
     @Test
-    public void testGSUBSingle_sups_six() {
+    public void testGSUBSinglesupssix() {
 
         check("sups", "six", "six.superior");
     }
@@ -2631,7 +2631,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test t.
      */
     @Test
-    public void testGSUBSingle_sups_t() {
+    public void testGSUBSinglesupst() {
 
         check("sups", "t", "t.superior");
     }
@@ -2640,7 +2640,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test three.
      */
     @Test
-    public void testGSUBSingle_sups_three() {
+    public void testGSUBSinglesupsthree() {
 
         check("sups", "three", "three.superior");
     }
@@ -2649,7 +2649,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test two.
      */
     @Test
-    public void testGSUBSingle_sups_two() {
+    public void testGSUBSinglesupstwo() {
 
         check("sups", "two", "two.superior");
     }
@@ -2658,7 +2658,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test u.
      */
     @Test
-    public void testGSUBSingle_sups_u() {
+    public void testGSUBSinglesupsu() {
 
         check("sups", "u", "u.superior");
     }
@@ -2667,7 +2667,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test v.
      */
     @Test
-    public void testGSUBSingle_sups_v() {
+    public void testGSUBSinglesupsv() {
 
         check("sups", "v", "v.superior");
     }
@@ -2676,7 +2676,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test w.
      */
     @Test
-    public void testGSUBSingle_sups_w() {
+    public void testGSUBSinglesupsw() {
 
         check("sups", "w", "w.superior");
     }
@@ -2685,7 +2685,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test x.
      */
     @Test
-    public void testGSUBSingle_sups_x() {
+    public void testGSUBSinglesupsx() {
 
         check("sups", "x", "x.superior");
     }
@@ -2694,7 +2694,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test y.
      */
     @Test
-    public void testGSUBSingle_sups_y() {
+    public void testGSUBSinglesupsy() {
 
         check("sups", "y", "y.superior");
     }
@@ -2703,7 +2703,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test z.
      */
     @Test
-    public void testGSUBSingle_sups_z() {
+    public void testGSUBSinglesupsz() {
 
         check("sups", "z", "z.superior");
     }
@@ -2712,7 +2712,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zero.
      */
     @Test
-    public void testGSUBSingle_sups_zero() {
+    public void testGSUBSinglesupszero() {
 
         check("sups", "zero", "zero.superior");
     }
@@ -2721,7 +2721,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zero.slash.
      */
     @Test
-    public void testGSUBSingle_sups_zeroslash() {
+    public void testGSUBSinglesupszeroslash() {
 
         check("sups", "zero.slash", "zero.superior");
     }
@@ -2730,7 +2730,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test t.
      */
     @Test
-    public void testGSUBSingle_t() {
+    public void testGSUBSinglet() {
 
         check("sups", "t", "t.superior");
     }
@@ -2739,7 +2739,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test three.
      */
     @Test
-    public void testGSUBSingle_three() {
+    public void testGSUBSinglethree() {
 
         check("sups", "three", "three.superior");
     }
@@ -2748,7 +2748,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test two.
      */
     @Test
-    public void testGSUBSingle_two() {
+    public void testGSUBSingletwo() {
 
         check("sups", "two", "two.superior");
     }
@@ -2757,7 +2757,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test u.
      */
     @Test
-    public void testGSUBSingle_u() {
+    public void testGSUBSingleu() {
 
         check("sups", "u", "u.superior");
     }
@@ -2766,7 +2766,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test v.
      */
     @Test
-    public void testGSUBSingle_v() {
+    public void testGSUBSinglev() {
 
         check("sups", "v", "v.superior");
     }
@@ -2775,7 +2775,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test w.
      */
     @Test
-    public void testGSUBSingle_w() {
+    public void testGSUBSinglew() {
 
         check("sups", "w", "w.superior");
     }
@@ -2784,7 +2784,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test x.
      */
     @Test
-    public void testGSUBSingle_x() {
+    public void testGSUBSinglex() {
 
         check("sups", "x", "x.superior");
     }
@@ -2793,7 +2793,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test y.
      */
     @Test
-    public void testGSUBSingle_y() {
+    public void testGSUBSingley() {
 
         check("sups", "y", "y.superior");
     }
@@ -2802,7 +2802,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test z.
      */
     @Test
-    public void testGSUBSingle_z() {
+    public void testGSUBSinglez() {
 
         check("sups", "z", "z.superior");
     }
@@ -2811,7 +2811,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zero.
      */
     @Test
-    public void testGSUBSingle_zero() {
+    public void testGSUBSinglezero() {
 
         check("zero", "zero", "zero.slash");
     }
@@ -2820,7 +2820,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zero.fitted.
      */
     @Test
-    public void testGSUBSingle_zerofitted() {
+    public void testGSUBSinglezerofitted() {
 
         check("zero", "zero.fitted", "zero.slashfitted");
     }
@@ -2829,7 +2829,7 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      * test zero.slash.
      */
     @Test
-    public void testGSUBSingle_zeroslash() {
+    public void testGSUBSinglezeroslash() {
 
         check("sups", "zero.slash", "zero.superior");
     }

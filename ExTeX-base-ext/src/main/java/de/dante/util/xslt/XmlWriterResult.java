@@ -25,29 +25,18 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-
 /**
  * Transformer result, which use the <code>XMLStreamWriter</code>.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public class XmlWriterResult extends SAXResult {
 
     /**
-     * Create a new object.
-     *
-     * @param writer    The xml stream writer.
-     */
-    public XmlWriterResult(XMLStreamWriter writer) {
-
-        super.setHandler(new RemoveSingleNewline(writer));
-
-    }
-
-    /**
-     * The RemoveSingleNewline handler removes single NL or CR from the characters.
+     * The RemoveSingleNewline handler removes single NL or CR from the
+     * characters.
      */
     public static class RemoveSingleNewline extends DefaultHandler {
 
@@ -58,7 +47,7 @@ public class XmlWriterResult extends SAXResult {
 
         /**
          * Create a new object.
-         *
+         * 
          * @param w The xml writer.
          */
         public RemoveSingleNewline(XMLStreamWriter w) {
@@ -69,13 +58,14 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start,
-                int length) throws SAXException {
+        @Override
+        public void characters(char[] ch, int start, int length)
+                throws SAXException {
 
             try {
                 String text = new String(ch, start, length);
                 if (!(text.equals("\n") || text.equals("\r") || text
-                        .equals("\r\n"))) {
+                    .equals("\r\n"))) {
                     writer.writeCharacters(text);
                 }
             } catch (Exception e) {
@@ -86,6 +76,7 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#endDocument()
          */
+        @Override
         public void endDocument() throws SAXException {
 
             try {
@@ -99,8 +90,9 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          *      java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName,
-                String qName) throws SAXException {
+        @Override
+        public void endElement(String uri, String localName, String qName)
+                throws SAXException {
 
             try {
                 writer.writeEndElement();
@@ -113,8 +105,9 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
          */
-        public void ignorableWhitespace(char[] ch, int start,
-                int length) throws SAXException {
+        @Override
+        public void ignorableWhitespace(char[] ch, int start, int length)
+                throws SAXException {
 
             // TODO incomplete
             throw new SAXException("not implemented");
@@ -124,6 +117,7 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public void processingInstruction(String target, String data)
                 throws SAXException {
 
@@ -134,6 +128,7 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#startDocument()
          */
+        @Override
         public void startDocument() throws SAXException {
 
             try {
@@ -148,8 +143,9 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
          *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
-        public void startElement(String uri, String localName,
-                String qName, Attributes atts) throws SAXException {
+        @Override
+        public void startElement(String uri, String localName, String qName,
+                Attributes atts) throws SAXException {
 
             try {
                 writer.writeStartElement(qName);
@@ -163,6 +159,17 @@ public class XmlWriterResult extends SAXResult {
             }
 
         }
+
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param writer The xml stream writer.
+     */
+    public XmlWriterResult(XMLStreamWriter writer) {
+
+        super.setHandler(new RemoveSingleNewline(writer));
 
     }
 }

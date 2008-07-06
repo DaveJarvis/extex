@@ -193,14 +193,14 @@ public class XtfLookup implements XMLWriterConvertible {
     /**
      * The name of the lookup types (GPOS).
      */
-    public final static String[] LOOKUP_TYPE_NAMES_GPOS =
+    public static final String[] LOOKUP_TYPE_NAMES_GPOS =
             {"Single", "Pair", "Cursive", "MarkToBase", "MarkToLigature",
                     "MarkToMark", "Context", "Chained", "Extension"};
 
     /**
      * The name of the lookup types (GSUB).
      */
-    public final static String[] LOOKUP_TYPE_NAMES_GSUB =
+    public static final String[] LOOKUP_TYPE_NAMES_GSUB =
             {"Single", "Multiple", "Alternate", "Ligature", "Context",
                     "Chaining Context", "Extension Substitution",
                     "Reverse chaining context single"};

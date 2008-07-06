@@ -127,8 +127,9 @@ public class OtfTableGSUB extends AbstractXtfSFLTable
                 return XtfGSUBContextTable.newInstance(rar, offset, this);
             case XtfLookup.GSUB_6_CHAINING_CONTEXTUAL:
                 return XtfGSUBChainingTable.newInstance(rar, offset, this);
+            default:
+                return null;
         }
-        return null;
     }
 
 }

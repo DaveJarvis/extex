@@ -50,17 +50,17 @@ public class T2TDOEncoding extends T2TDONumber {
     /**
      * ExpertEncoding
      */
-    public static final int ExpertEncoding = 1;
+    public static final int EXPERT_ENCODING = 1;
 
     /**
      * FontDefined
      */
-    public static final int FontDefined = 2;
+    public static final int FONT_DEFINED = 2;
 
     /**
      * StandardEncoding
      */
-    public static final int StandardEncoding = 0;
+    public static final int STANDARD_ENCODING = 0;
 
     /**
      * The cff table.
@@ -75,7 +75,7 @@ public class T2TDOEncoding extends T2TDONumber {
     /**
      * The encoding of the font.
      */
-    private int encoding = StandardEncoding;
+    private int encoding = STANDARD_ENCODING;
 
     /**
      * The name of the encoding.
@@ -128,7 +128,7 @@ public class T2TDOEncoding extends T2TDONumber {
         for (int i = 0; i < enc.length; i++) {
 
             // copy the default encoding
-            if (encoding == StandardEncoding) {
+            if (encoding == STANDARD_ENCODING) {
                 enc[i] = T2StandardEncoding.getString(i);
             } else {
                 enc[i] = T2ExpertEncoding.getString(i);
@@ -169,6 +169,11 @@ public class T2TDOEncoding extends T2TDONumber {
         return ".notdef";
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
     @Override
     public int getID() {
 
@@ -176,6 +181,8 @@ public class T2TDOEncoding extends T2TDONumber {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
@@ -199,13 +206,13 @@ public class T2TDOEncoding extends T2TDONumber {
         this.cff = cff;
 
         if (offset == 0) {
-            encoding = StandardEncoding;
+            encoding = STANDARD_ENCODING;
             encodingName = "StandardEncoding";
         } else if (offset == 1) {
-            encoding = ExpertEncoding;
+            encoding = EXPERT_ENCODING;
             encodingName = "ExpertEncoding";
         } else {
-            encoding = FontDefined;
+            encoding = FONT_DEFINED;
             encodingName = "FontDefined";
 
             rar.seek(baseoffset + offset);
@@ -216,6 +223,12 @@ public class T2TDOEncoding extends T2TDONumber {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2TDONumber#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
     @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

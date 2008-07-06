@@ -38,7 +38,7 @@ public class T1FamilyBlues extends T1DictDelta {
      */
     public T1FamilyBlues(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{FamilyBlues});
+        super(stack, new short[]{FAMILY_BLUES});
     }
 
     /**

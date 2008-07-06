@@ -45,18 +45,23 @@ public class T2TDOisFixedPitch extends T2TDOBoolean {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_ISFIXEDPITCH;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "isfixedpitch";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_ISFIXEDPITCH;
     }
 
 }

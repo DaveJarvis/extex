@@ -45,18 +45,23 @@ public class T2TDOUniqueID extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_UNIQUEID;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "uniqueid";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_UNIQUEID;
     }
 
 }

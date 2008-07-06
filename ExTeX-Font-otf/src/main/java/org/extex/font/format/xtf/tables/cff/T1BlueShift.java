@@ -38,7 +38,7 @@ public class T1BlueShift extends T1DictNumber {
      */
     public T1BlueShift(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{BlueShift});
+        super(stack, new short[]{BLUE_SHIFT});
     }
 
     /**

@@ -42,6 +42,8 @@ public abstract class T2Subroutine extends T2Operator {
      * @param stack the stack
      * @param id the operator-id for the value
      * @param ch The char string.
+     * 
+     * @throws IOException in case of an error
      */
     protected T2Subroutine(List<T2CharString> stack, short[] id, CharString ch)
             throws IOException {

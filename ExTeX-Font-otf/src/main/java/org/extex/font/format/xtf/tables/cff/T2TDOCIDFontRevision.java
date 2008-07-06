@@ -45,18 +45,23 @@ public class T2TDOCIDFontRevision extends T2TDONumber {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CIDFONTREVISION;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "CIDFontRevision";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_CIDFONTREVISION;
     }
 
 }

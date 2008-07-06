@@ -61,36 +61,14 @@ import org.extex.util.xml.XMLWriterConvertible;
 public abstract class CoverageTable implements XMLWriterConvertible {
 
     /**
-     * The CoverageFormat.
-     */
-    private int coverageFormat;
-
-    /**
-     * Getter for coverageFormat.
-     * 
-     * @return the coverageFormat
-     */
-    public int getCoverageFormat() {
-
-        return coverageFormat;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param format The format
-     */
-    protected CoverageTable(int format) {
-
-        coverageFormat = format;
-    }
-
-    /**
      * Return a instance.
      * 
      * @param rar input
      * @param offset The offset for the table.
      * @param baseoffset The baseofset.
+     * 
+     * @return TODO
+     * 
      * @throws IOException if a io-error occurred.
      */
     public static CoverageTable getInstance(RandomAccessR rar, int baseoffset,
@@ -108,5 +86,30 @@ public abstract class CoverageTable implements XMLWriterConvertible {
             default:
                 throw new IOException("wrong format tpye");
         }
+    }
+
+    /**
+     * The CoverageFormat.
+     */
+    private int coverageFormat;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param format The format
+     */
+    protected CoverageTable(int format) {
+
+        coverageFormat = format;
+    }
+
+    /**
+     * Getter for coverageFormat.
+     * 
+     * @return the coverageFormat
+     */
+    public int getCoverageFormat() {
+
+        return coverageFormat;
     }
 }

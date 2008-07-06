@@ -48,7 +48,7 @@ public class T1Subrs extends T1DictNumber {
      */
     public T1Subrs(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{Subrs});
+        super(stack, new short[]{SUBRS});
     }
 
     /**

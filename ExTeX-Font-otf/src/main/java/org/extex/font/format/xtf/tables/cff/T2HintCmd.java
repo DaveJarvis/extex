@@ -53,6 +53,8 @@ public abstract class T2HintCmd extends T2Hints {
      * @param stack the stack
      * @param id the operator-id for the value
      * @param ch The char string.
+     * 
+     * @throws IOException in case of an error
      */
     protected T2HintCmd(List<T2CharString> stack, short[] id, CharString ch)
             throws IOException {
@@ -113,23 +115,6 @@ public abstract class T2HintCmd extends T2Hints {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        for (int i = 0; i < pairs.length; i++) {
-            writer.writeStartElement("pair");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", pairs[i].toString());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
      */
     @Override
@@ -144,6 +129,23 @@ public abstract class T2HintCmd extends T2Hints {
         }
         buf.append(getName());
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        for (int i = 0; i < pairs.length; i++) {
+            writer.writeStartElement("pair");
+            writer.writeAttribute("id", i);
+            writer.writeAttribute("value", pairs[i].toString());
+            writer.writeEndElement();
+        }
+        writer.writeEndElement();
     }
 
 }

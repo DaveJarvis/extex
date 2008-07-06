@@ -38,7 +38,7 @@ public class T1StdHW extends T1DictNumber {
      */
     public T1StdHW(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{StdHW});
+        super(stack, new short[]{STD_H_W});
     }
 
     /**

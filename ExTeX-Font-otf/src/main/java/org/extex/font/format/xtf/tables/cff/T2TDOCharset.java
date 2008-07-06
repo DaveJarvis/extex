@@ -204,6 +204,26 @@ import org.extex.util.xml.XMLStreamWriter;
 public class T2TDOCharset extends T2TDONumber {
 
     /**
+     * ISOAdobe
+     */
+    public static final int ISO_ADOPE = 0;
+
+    /**
+     * Expert
+     */
+    public static final int EXPERT = 1;
+
+    /**
+     * ExpertSubset
+     */
+    public static final int EXPERT_SUBSET = 2;
+
+    /**
+     * FontDefine
+     */
+    public static final int FONT_DEFINE = -1;
+
+    /**
      * The cff table.
      */
     private OtfTableCFF cff;
@@ -224,6 +244,11 @@ public class T2TDOCharset extends T2TDONumber {
     private Map<Integer, Integer> valuesid = null;
 
     /**
+     * The charset of the font
+     */
+    private int charSet = FONT_DEFINE;
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
@@ -234,6 +259,11 @@ public class T2TDOCharset extends T2TDONumber {
         super(stack, new short[]{CFF_CHARSET});
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
     @Override
     public int getID() {
 
@@ -241,12 +271,39 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "charset";
+    }
+
+    /**
+     * Returns the name for a position.
+     * 
+     * @param pos The position.
+     * @return Returns the name for a position.
+     */
+    public String getNameForPos(int pos) {
+
+        switch (charSet) {
+            case FONT_DEFINE:
+                if (pos >= 0 && pos < sid.length) {
+                    return cff.getStringIndex(sid[pos]);
+                }
+                return ".notdef";
+            case ISO_ADOPE:
+                return T2PredefinedCharsetISOAdobe.getName(pos);
+            case EXPERT:
+                return T2PredefinedCharsetExpert.getName(pos);
+            case EXPERT_SUBSET:
+                return T2PredefinedCharsetExpertSubset.getName(pos);
+            default:
+                return ".notdef";
+        }
     }
 
     /**
@@ -267,36 +324,13 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
-     * Returns the name for a position.
-     * 
-     * @param pos The position.
-     * @return Returns the name for a position.
-     */
-    public String getNameForPos(int pos) {
-
-        switch (charSet) {
-            case FontDefine:
-                if (pos >= 0 && pos < sid.length) {
-                    return cff.getStringIndex(sid[pos]);
-                }
-                return ".notdef";
-            case ISOAdobe:
-                return T2PredefinedCharsetISOAdobe.getName(pos);
-            case Expert:
-                return T2PredefinedCharsetExpert.getName(pos);
-            case ExpertSubset:
-                return T2PredefinedCharsetExpertSubset.getName(pos);
-        }
-        return ".notdef";
-    }
-
-    /**
      * Returns the sid for a value. If the value is not found, 0 is returned.
      * 
      * @param stringIndexpos TODO
-     *
+     * 
      * @return Returns the sid for a value.
      */
+    @SuppressWarnings("boxing")
     public int getSidForStringIndex(int stringIndexpos) {
 
         // initialize
@@ -315,31 +349,6 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
-     * The charset of the font
-     */
-    private int charSet = FontDefine;
-
-    /**
-     * ISOAdobe
-     */
-    public static final int ISOAdobe = 0;
-
-    /**
-     * Expert
-     */
-    public static final int Expert = 1;
-
-    /**
-     * ExpertSubset
-     */
-    public static final int ExpertSubset = 2;
-
-    /**
-     * FontDefine
-     */
-    public static final int FontDefine = -1;
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
@@ -354,13 +363,13 @@ public class T2TDOCharset extends T2TDONumber {
 
         int offset = getInteger();
         if (offset == 0) {
-            charSet = ISOAdobe;
+            charSet = ISO_ADOPE;
         } else if (offset == 1) {
-            charSet = Expert;
+            charSet = EXPERT;
         } else if (offset == 2) {
-            charSet = ExpertSubset;
+            charSet = EXPERT_SUBSET;
         } else {
-            charSet = FontDefine;
+            charSet = FONT_DEFINE;
             rar.seek(baseoffset + offset);
 
             format = rar.readUnsignedByte();
@@ -447,6 +456,8 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -457,7 +468,7 @@ public class T2TDOCharset extends T2TDONumber {
         writer.writeAttribute("format", format);
 
         switch (charSet) {
-            case FontDefine:
+            case FONT_DEFINE:
                 writer.writeAttribute("charset", "FontDefine");
 
                 for (int i = 0; i < sid.length; i++) {
@@ -468,7 +479,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
 
                 break;
-            case ISOAdobe:
+            case ISO_ADOPE:
                 writer.writeAttribute("charset", "ISOAdobe");
 
                 for (int i = 0; i < T2PredefinedCharsetISOAdobe.DATA.length; i++) {
@@ -480,7 +491,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
 
                 break;
-            case Expert:
+            case EXPERT:
                 writer.writeAttribute("charset", "Expert");
 
                 for (int i = 0; i < T2PredefinedCharsetExpert.DATA.length; i++) {
@@ -492,7 +503,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
 
                 break;
-            case ExpertSubset:
+            case EXPERT_SUBSET:
                 writer.writeAttribute("charset", "ExpertSubset");
 
                 for (int i = 0; i < T2PredefinedCharsetExpertSubset.DATA.length; i++) {
@@ -504,6 +515,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
 
                 break;
+            default: //
         }
 
         writer.writeEndElement();

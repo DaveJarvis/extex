@@ -27,22 +27,37 @@ package org.extex.font.format.xtf.tables.cff;
  */
 public class T2DummyNumber extends T2Number {
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
+     */
+    @Override
+    public short[] getBytes() {
+
+        return new short[]{};
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
+     */
     @Override
     public double getDouble() {
 
         return 0;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
+     */
     @Override
     public int getInteger() {
 
         return 0;
-    }
-
-    @Override
-    public short[] getBytes() {
-
-        return new short[]{};
     }
 
 }

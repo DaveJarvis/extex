@@ -200,6 +200,8 @@ public class LangSysRecord implements XMLWriterConvertible {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

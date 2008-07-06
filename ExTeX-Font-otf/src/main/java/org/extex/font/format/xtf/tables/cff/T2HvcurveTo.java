@@ -73,6 +73,8 @@ public class T2HvcurveTo extends T2PathConstruction {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2HvcurveTo(List<T2CharString> stack, CharString ch)
             throws IOException {

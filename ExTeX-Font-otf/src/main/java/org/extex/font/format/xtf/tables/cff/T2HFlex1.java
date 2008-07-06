@@ -82,6 +82,8 @@ public class T2HFlex1 extends T2PathConstruction {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2HFlex1(List<T2CharString> stack, CharString ch) throws IOException {
 

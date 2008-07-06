@@ -147,6 +147,8 @@ public abstract class Tag {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

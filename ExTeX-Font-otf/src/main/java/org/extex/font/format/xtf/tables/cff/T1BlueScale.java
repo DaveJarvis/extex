@@ -38,7 +38,7 @@ public class T1BlueScale extends T1DictNumber {
      */
     public T1BlueScale(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{BlueScale});
+        super(stack, new short[]{BLUE_SCALE});
     }
 
     /**

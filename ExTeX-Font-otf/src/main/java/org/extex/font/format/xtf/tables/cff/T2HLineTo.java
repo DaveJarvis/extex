@@ -47,6 +47,8 @@ public class T2HLineTo extends T2PathConstruction {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * 
+     * @throws IOException in case of an error
      */
     public T2HLineTo(List<T2CharString> stack, CharString ch)
             throws IOException {
@@ -151,6 +153,25 @@ public class T2HLineTo extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        StringBuffer buf = new StringBuffer();
+        if (dx != null) {
+            buf.append(dx.toString()).append(" ");
+        }
+        for (int i = 0; i < pairs.length; i++) {
+            buf.append(pairs[i].toString()).append(" ");
+        }
+        buf.append(getName());
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -167,25 +188,6 @@ public class T2HLineTo extends T2PathConstruction {
             writer.writeEndElement();
         }
         writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
-    public String toText() {
-
-        StringBuffer buf = new StringBuffer();
-        if (dx != null) {
-            buf.append(dx.toString()).append(" ");
-        }
-        for (int i = 0; i < pairs.length; i++) {
-            buf.append(pairs[i].toString()).append(" ");
-        }
-        buf.append(getName());
-        return buf.toString();
     }
 
 }

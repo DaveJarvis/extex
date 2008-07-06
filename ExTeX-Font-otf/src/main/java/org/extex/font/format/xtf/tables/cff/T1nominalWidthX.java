@@ -38,7 +38,7 @@ public class T1nominalWidthX extends T1DictNumber {
      */
     public T1nominalWidthX(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{nominalWidthX});
+        super(stack, new short[]{NOMINAL_WIDTH_X});
     }
 
     /**

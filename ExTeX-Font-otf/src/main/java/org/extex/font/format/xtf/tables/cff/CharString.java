@@ -103,6 +103,7 @@ public class CharString implements XMLWriterConvertible {
     /**
      * Creates a new object.
      * 
+     * @param cffFont TODO
      * @param idx The index.
      */
     public CharString(CffFont cffFont, int idx) {
@@ -113,7 +114,9 @@ public class CharString implements XMLWriterConvertible {
     /**
      * Creates a new object.
      * 
+     * @param cffFont TODO
      * @param idx The index.
+     * @param noname TODO
      */
     public CharString(CffFont cffFont, int idx, boolean noname) {
 

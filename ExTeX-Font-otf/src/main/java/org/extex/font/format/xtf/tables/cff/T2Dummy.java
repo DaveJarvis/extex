@@ -47,6 +47,9 @@ public class T2Dummy extends T2Operator {
      * 
      * @param ch The char string.
      * @param stack The stack.
+     * @param cmd TODO
+     * 
+     * @throws IOException in case of an error
      */
     public T2Dummy(List<T2CharString> stack, CharString ch, String cmd)
             throws IOException {

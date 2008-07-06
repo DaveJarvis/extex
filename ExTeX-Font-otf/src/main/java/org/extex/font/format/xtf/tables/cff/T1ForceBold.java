@@ -38,7 +38,7 @@ public class T1ForceBold extends T1DictBoolean {
      */
     public T1ForceBold(List<T2Number> stack) throws IOException {
 
-        super(stack, new short[]{ForceBold});
+        super(stack, new short[]{FORCES_BOLD});
     }
 
     /**

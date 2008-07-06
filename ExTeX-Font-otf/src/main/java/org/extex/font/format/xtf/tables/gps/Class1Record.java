@@ -57,14 +57,14 @@ public class Class1Record implements XMLWriterConvertible {
      * @throws IOException if a io-error occurred.
      */
     public Class1Record(RandomAccessR rar, int posOffset, int class2Count,
-            XtfGlyphName xtfGlyp, int idx, int valueFormat1, int valueFormat2)
+            XtfGlyphName xtfGlyph, int idx, int valueFormat1, int valueFormat2)
             throws IOException {
 
         this.idx = idx;
         class2RecordArray = new Class2Record[class2Count];
         for (int i = 0; i < class2Count; i++) {
             class2RecordArray[i] =
-                    new Class2Record(rar, posOffset, xtfGlyp, i, valueFormat1,
+                    new Class2Record(rar, posOffset, xtfGlyph, i, valueFormat1,
                         valueFormat2);
         }
     }
@@ -108,7 +108,10 @@ public class Class1Record implements XMLWriterConvertible {
     }
 
     /**
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

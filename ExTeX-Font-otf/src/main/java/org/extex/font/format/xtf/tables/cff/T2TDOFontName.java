@@ -45,18 +45,23 @@ public class T2TDOFontName extends T2TDOSID {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#getID()
+     */
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_FONTNAME;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getName()
      */
     @Override
     public String getName() {
 
         return "FontName";
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_FONTNAME;
     }
 
 }
