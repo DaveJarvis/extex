@@ -22,7 +22,6 @@ package org.extex.exbib.core.io.bibio;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.FileNotFoundException;
 import java.io.StringReader;
 
 import org.extex.exbib.core.db.Entry;
@@ -49,11 +48,9 @@ public class BibReader099ImplTest extends BibReaderTester {
      * Create a new instance of the BibReader to be tested.
      * 
      * @return the test instance
-     * 
-     * @throws FileNotFoundException this should not happen
      */
     @Override
-    protected BibReader makeTestInstance() throws FileNotFoundException {
+    protected BibReader makeTestInstance() {
 
         return new BibReader099Impl();
     }

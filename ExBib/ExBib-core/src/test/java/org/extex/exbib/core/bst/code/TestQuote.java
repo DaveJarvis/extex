@@ -53,7 +53,7 @@ public class TestQuote {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(null), null);
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
     }
 
     /**

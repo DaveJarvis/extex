@@ -106,11 +106,9 @@ public class BibReaderImpl extends BibReader099Impl {
     /**
      * Creates a new object.
      * 
-     * @throws FileNotFoundException is thrown if the file could not be opened
-     *         for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    public BibReaderImpl() throws FileNotFoundException, ConfigurationException {
+    public BibReaderImpl() throws ConfigurationException {
 
         super();
     }
@@ -137,12 +135,13 @@ public class BibReaderImpl extends BibReader099Impl {
      * </pre
      *
      * @param tag the name of the item encountered.
-     * This String has been converted to lower case already.
+     *            This String has been converted to lower case already.
      * @param db the database to store the information in
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
-     * depending in the opening brace
+     *              depending in the opening brace
+     *              
      * @return <code>true</code> iff the item is special and has been handled
-     * successfully.
+     *         successfully.
      *
      * @throws ExBibException in case of an syntax error
      */
@@ -163,14 +162,14 @@ public class BibReaderImpl extends BibReader099Impl {
         } else if (tag.equals("alias")) {
             KeyValue pair = parseAssign();
             expect(brace);
-            db.storeAlias(pair.getKey(), pair.getValue().expand(db),
+            db.storeAlias(pair.getKey(), pair.getValue().toString(),
                 getLocator());
 
             return true;
         } else if (tag.equals("modify")) {
             String key = parseKey();
 
-            if (key.equals("")) {
+            if (key == null || key.equals("")) {
                 throw new ExBibMissingKeyException(null, getLocator());
             }
 
@@ -194,13 +193,8 @@ public class BibReaderImpl extends BibReader099Impl {
             }
 
             if (c != brace.charAt(0)) {
-                if (c < 0) {
-                    throw new ExBibUnexpectedException(null, brace,
-                        getLocator());
-                }
-
-                throw new ExBibUnexpectedException(Character.toString(c),
-                    brace, getLocator());
+                throw new ExBibUnexpectedException(//
+                    (c > 0 ? Character.toString(c) : null), brace, getLocator());
             }
 
             return true;

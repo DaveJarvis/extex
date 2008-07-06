@@ -96,13 +96,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     /**
      * Creates a new object.
      * 
-     * @throws FileNotFoundException is thrown if the file could not be opened
-     *         for reading
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    public BibReader099Impl()
-            throws FileNotFoundException,
-                ConfigurationException {
+    public BibReader099Impl() throws ConfigurationException {
 
         super();
     }

@@ -33,9 +33,9 @@ import org.extex.exbib.core.bst.code.impl.Set;
 import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
@@ -101,7 +101,7 @@ public class TestSet {
         db = new DBImpl();
         entry = db.makeEntry("book", "abc", null);
         entry.set("author", new Value());
-        p = new BstInterpreter099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(), null);
         p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 

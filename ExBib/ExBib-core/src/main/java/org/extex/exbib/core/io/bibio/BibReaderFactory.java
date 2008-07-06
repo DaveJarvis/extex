@@ -50,7 +50,7 @@ public class BibReaderFactory extends AbstractFactory {
      * The field <tt>encoding</tt> contains the encoding the encoding for
      * reading or <code>null</code> for the platform default
      */
-    private String encoding = null;
+    private String encoding;
 
     /**
      * Creates a new object.
@@ -65,13 +65,12 @@ public class BibReaderFactory extends AbstractFactory {
 
         super(configuration);
         setResourceFinder(finder);
-        String e = configuration.getAttribute("encoding");
         if (enc != null) {
             encoding = enc;
         } else if (encFallback != null) {
             encoding = encFallback;
-        } else if (e != null) {
-            encoding = e;
+        } else {
+            encoding = configuration.getAttribute("encoding");
         }
     }
 

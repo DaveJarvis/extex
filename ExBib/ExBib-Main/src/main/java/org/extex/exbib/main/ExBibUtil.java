@@ -361,7 +361,7 @@ public final class ExBibUtil extends AbstractMain {
                 info("output.to.stdout");
             } else if (outfile.equals("")) {
                 info("output.discarted");
-                writer = new NullWriter(null);
+                writer = new NullWriter();
             } else if (outfile.equals("-")) {
                 info("output.to.stdout");
                 writer =
@@ -438,7 +438,7 @@ public final class ExBibUtil extends AbstractMain {
             try {
                 writer.close();
             } catch (IOException e) {
-                return log("error.format", getProgramName(), e.toString());
+                log("error.format", getProgramName(), e.toString());
             }
         }
 

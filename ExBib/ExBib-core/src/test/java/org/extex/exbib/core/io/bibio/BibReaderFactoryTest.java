@@ -299,6 +299,20 @@ public class BibReaderFactoryTest {
      * 
      * @throws Exception in case of an error
      */
+    @Test
+    public void test4() throws Exception {
+
+        BibReaderFactory factory =
+                new BibReaderFactory(cfg, resourceFinder, null, null);
+        factory.setEncoding("ASCII");
+        assertEquals("ASCII", factory.getEncoding());
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testError1() throws Exception {
 

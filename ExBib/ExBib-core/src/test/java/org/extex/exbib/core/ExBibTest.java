@@ -275,6 +275,110 @@ public class ExBibTest {
     }
 
     /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testExBibUnknownFile1() throws Exception {
+
+        ExBib exBib = makeTestInstance(new Properties());
+        exBib.setFile("non-existent-file-name");
+        assertFalse(exBib.run());
+    }
+
+    /**
+     * <testcase> setFile() interacts with the properties. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testMinCrossref1() throws Exception {
+
+        Properties properties = new Properties();
+        properties.setProperty(ExBib.PROP_MIN_CROSSREF, "xxx");
+        ExBib exBib = makeTestInstance(properties);
+        assertFalse(exBib.run());
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOptions1() throws Exception {
+
+        String aux = "target/test.aux";
+        makeFile(aux, "\\citation{*}\n" //
+                + "\\biboption{min.crossref=4}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
+
+        try {
+            Properties p = new Properties();
+            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            ExBib exBib = makeTestInstance(p);
+            exBib.setDebug(ExBibDebug.TRACE);
+            assertTrue(exBib.run());
+        } finally {
+            assertTrue(new File(aux).delete());
+            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+        }
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOptions2() throws Exception {
+
+        String aux = "target/test.aux";
+        makeFile(aux, "\\citation{*}\n" //
+                + "\\biboption{sort=42}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
+
+        try {
+            Properties p = new Properties();
+            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            ExBib exBib = makeTestInstance(p);
+            exBib.setDebug(ExBibDebug.TRACE);
+            assertFalse(exBib.run());
+        } finally {
+            assertTrue(new File(aux).delete());
+        }
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testOptions3() throws Exception {
+
+        String aux = "target/test.aux";
+        makeFile(aux, "\\citation{*}\n" //
+                + "\\biboption{sort=locale:en}\n"
+                + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
+
+        try {
+            Properties p = new Properties();
+            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            ExBib exBib = makeTestInstance(p);
+            exBib.setDebug(ExBibDebug.TRACE);
+            assertTrue(exBib.run());
+        } finally {
+            assertTrue(new File(aux).delete());
+            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+        }
+    }
+
+    /**
      * <testcase> setFile() interacts with the properties. </testcase>
      * 
      * @throws Exception in case of an error

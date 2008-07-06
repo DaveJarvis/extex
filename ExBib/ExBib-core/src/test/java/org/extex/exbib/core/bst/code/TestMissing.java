@@ -72,7 +72,7 @@ public class TestMissing {
         db = new DBImpl();
         entry = db.makeEntry("book", "abc", null);
         entry.set("author", new Value());
-        p = new BstInterpreter099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(), null);
     }
 
     /**

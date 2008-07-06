@@ -82,16 +82,16 @@ public class Stack extends AbstractCode {
             throws ExBibException {
 
         Logger logger = processor.getLogger();
-        if (logger == null) {
-            for (Token t = processor.popUnchecked(); t != null; t =
-                    processor.popUnchecked()) {
-                //
-            }
-        } else {
+        if (logger != null) {
             for (Token t = processor.popUnchecked(); t != null; t =
                     processor.popUnchecked()) {
                 logger.info(t.toString() + "\n");
             }
+        } else {
+            Token t;
+            do {
+                t = processor.popUnchecked();
+            } while (t != null);
         }
     }
 

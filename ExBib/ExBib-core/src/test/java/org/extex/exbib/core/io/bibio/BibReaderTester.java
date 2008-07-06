@@ -20,6 +20,7 @@
 package org.extex.exbib.core.io.bibio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
@@ -304,11 +305,62 @@ public abstract class BibReaderTester {
      * Create a new instance of the BibReader to be tested.
      * 
      * @return the test instance
-     * 
-     * @throws FileNotFoundException this should not happen
      */
-    protected abstract BibReader makeTestInstance()
-            throws FileNotFoundException;
+    protected abstract BibReader makeTestInstance();
+
+    /**
+     * <testcase> A {@code @book} is read in. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testBook1() throws Exception {
+
+        BibReader r = makeTestInstance();
+        r.open("test", new StringReader("@book{abc,author={S.O. Meone}}"));
+        TestDB db = new TestDB() {
+
+            /**
+             * The field <tt>entry</tt> contains the entry.
+             */
+            private Entry entry = null;
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
+             *      java.lang.String)
+             */
+            @Override
+            public Entry getEntry(String key) {
+
+                return entry;
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#makeEntry(
+             *      java.lang.String, java.lang.String,
+             *      org.extex.exbib.core.io.Locator)
+             */
+            @Override
+            public Entry makeEntry(String type, String key, Locator locator) {
+
+                assertEquals("book", type);
+                assertEquals("abc", key);
+                entry = new Entry(locator);
+                entry.setKey(key);
+                entry.setType(type);
+                return entry;
+            }
+
+        };
+        r.load(db);
+        Entry e = db.getEntry("abc");
+        assertNotNull(e);
+        assertEquals("{S.O. Meone}", e.get("author").toString());
+    }
 
     /**
      * <testcase> The empty input is accepted and does not require anything to

@@ -117,7 +117,7 @@ public class TestIf {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstInterpreter099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(), null);
         p.addFunction("t", new ThenCode(), null);
         p.addFunction("e", new ElseCode(), null);
     }

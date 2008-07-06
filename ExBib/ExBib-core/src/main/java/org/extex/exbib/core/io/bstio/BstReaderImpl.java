@@ -722,14 +722,13 @@ public class BstReaderImpl extends AbstractFileReader
             throws ExBibException,
                 ConfigurationException {
 
-        Token token;
         try {
             open(bst, "bst", encoding);
         } catch (FileNotFoundException e) {
             throw new ExBibBstNotFoundException(bst, null);
         }
 
-        while ((token = nextToken()) != null) {
+        for (Token token = nextToken(); token != null; token = nextToken()) {
             if (!processCommand(token, processor)) {
                 throw new ExBibUnexpectedException(token.toString(), null,
                     getLocator());
@@ -780,9 +779,9 @@ public class BstReaderImpl extends AbstractFileReader
 
         Locator start = getLocator();
         TBlock block = new TBlock(start);
-        Token token;
 
-        while ((token = nextToken()) != null) {
+        for (Token token = nextToken(); token != null; token = nextToken()) {
+
             if (token instanceof TChar) {
                 String val = token.getValue();
 
@@ -860,7 +859,8 @@ public class BstReaderImpl extends AbstractFileReader
 
         Token token;
 
-        while (((token = nextToken()) != null) && token instanceof TLiteral) {
+        for (token = nextToken(); token != null && token instanceof TLiteral; token =
+                nextToken()) {
             literal.add(token);
         }
 

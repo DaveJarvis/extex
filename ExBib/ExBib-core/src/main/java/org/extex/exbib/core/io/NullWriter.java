@@ -20,7 +20,6 @@
 package org.extex.exbib.core.io;
 
 import java.io.IOException;
-import java.io.PrintStream;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -44,23 +43,13 @@ public class NullWriter implements Writer {
     }
 
     /**
-     * Creates a new object.
-     * 
-     * @param ps ignored
-     */
-    public NullWriter(PrintStream ps) {
-
-        super();
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.Writer#close()
      */
     public void close() {
 
-        //
+        // noop
     }
 
     /**
@@ -71,7 +60,7 @@ public class NullWriter implements Writer {
      */
     public void configure(Configuration cfg) throws ConfigurationException {
 
-        //
+        // noop
     }
 
     /**
@@ -81,7 +70,7 @@ public class NullWriter implements Writer {
      */
     public void flush() {
 
-        //
+        // noop
     }
 
     /**
@@ -91,7 +80,7 @@ public class NullWriter implements Writer {
      */
     public void print(String... args) throws IOException {
 
-        //
+        // noop
     }
 
     /**
@@ -101,7 +90,7 @@ public class NullWriter implements Writer {
      */
     public void println(String... args) {
 
-        //
+        // noop
     }
 
     /**
@@ -111,7 +100,7 @@ public class NullWriter implements Writer {
      */
     public void write(int c) {
 
-        //
+        // noop
     }
 
 }

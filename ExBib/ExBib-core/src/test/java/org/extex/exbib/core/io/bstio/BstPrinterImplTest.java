@@ -105,10 +105,12 @@ public class BstPrinterImplTest {
                     + "    }\n" //
                     + "\n" //
                     + "FUNCTION { article }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block crossref\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block crossref\n" //
                     + "    missing$\n" //
                     + "    { journal\n" //
-                    + "        emphasize \"journal\" output.check format.vol.num.pages output format.date \"year\" output.check    }\n" //
+                    + "        emphasize \"journal\" output.check format.vol.num.pages "
+                    + "output format.date \"year\" output.check    }\n" //
                     + "        { format.article.crossref output.nonnull format.pages output    }\n" //
                     + "        if$\n" //
                     + "    new.block note\n" //
@@ -781,18 +783,23 @@ public class BstPrinterImplTest {
                     + "        if$\n" //
                     + "    new.block format.btitle \"title\" output.check crossref\n" //
                     + "    missing$\n" //
-                    + "    { format.bvolume output format.chapter.pages \"chapter and pages\" output.check new.block format.number.series output new.sentence publisher\n" //
+                    + "    { format.bvolume output format.chapter.pages "
+                    + "\"chapter and pages\" output.check new.block format.number.series output new.sentence publisher\n" //
                     + "        \"publisher\" output.check address\n" //
                     + "        output    }\n" //
-                    + "        { format.chapter.pages \"chapter and pages\" output.check new.block format.book.crossref output.nonnull    }\n" //
+                    + "        { format.chapter.pages \"chapter and pages\" "
+                    + "output.check new.block format.book.crossref output.nonnull    }\n" //
                     + "        if$\n" //
                     + "    format.edition output format.date \"year\" output.check new.block note\n" //
                     + "    output fin.entry}\n" //
                     + "\n" //
                     + "FUNCTION { incollection }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block crossref\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block crossref\n" //
                     + "    missing$\n" //
-                    + "    { format.in.ed.booktitle \"booktitle\" output.check format.bvolume output format.number.series output format.chapter.pages output new.sentence publisher\n" //
+                    + "    { format.in.ed.booktitle \"booktitle\" output.check "
+                    + "format.bvolume output format.number.series output "
+                    + "format.chapter.pages output new.sentence publisher\n" //
                     + "        \"publisher\" output.check address\n" //
                     + "        output format.edition output format.date \"year\" output.check    }\n" //
                     + "        { format.incoll.inproc.crossref output.nonnull format.chapter.pages output    }\n" //
@@ -814,9 +821,11 @@ public class BstPrinterImplTest {
                     + "    }\n" //
                     + "\n" //
                     + "FUNCTION { inproceedings }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block crossref\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block crossref\n" //
                     + "    missing$\n" //
-                    + "    { format.in.ed.booktitle \"booktitle\" output.check format.bvolume output format.number.series output format.pages output address\n" //
+                    + "    { format.in.ed.booktitle \"booktitle\" output.check "
+                    + "format.bvolume output format.number.series output format.pages output address\n" //
                     + "        empty$\n" //
                     + "        { organization\n" //
                     + "            publisher\n" //
@@ -883,7 +892,9 @@ public class BstPrinterImplTest {
                     + "    output fin.entry}\n" //
                     + "\n" //
                     + "FUNCTION { mastersthesis }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block \"Master's thesis\" format.thesis.type output.nonnull school\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block "
+                    + "\"Master's thesis\" format.thesis.type output.nonnull school\n" //
                     + "    \"school\" output.check address\n" //
                     + "    output format.date \"year\" output.check new.block note\n" //
                     + "    output fin.entry}\n" //
@@ -1073,7 +1084,9 @@ public class BstPrinterImplTest {
                     + "    s}\n" //
                     + "\n" //
                     + "FUNCTION { phdthesis }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.btitle \"title\" output.check new.block \"PhD thesis\" format.thesis.type output.nonnull school\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.btitle \"title\" output.check new.block "
+                    + "\"PhD thesis\" format.thesis.type output.nonnull school\n" //
                     + "    \"school\" output.check address\n" //
                     + "    output format.date \"year\" output.check new.block note\n" //
                     + "    output fin.entry}\n" //
@@ -1112,7 +1125,8 @@ public class BstPrinterImplTest {
                     + "        output    }\n" //
                     + "        { format.editors output.nonnull    }\n" //
                     + "        if$\n" //
-                    + "    new.block format.btitle \"title\" output.check format.bvolume output format.number.series output address\n" //
+                    + "    new.block format.btitle \"title\" output.check "
+                    + "format.bvolume output format.number.series output address\n" //
                     + "    empty$\n" //
                     + "    { editor\n" //
                     + "        empty$\n" //
@@ -1180,7 +1194,8 @@ public class BstPrinterImplTest {
                     + "    }\n" //
                     + "\n" //
                     + "FUNCTION { techreport }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block format.tr.number output.nonnull institution\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block format.tr.number output.nonnull institution\n" //
                     + "    \"institution\" output.check address\n" //
                     + "    output format.date \"year\" output.check new.block note\n" //
                     + "    output fin.entry}\n" //
@@ -1198,7 +1213,8 @@ public class BstPrinterImplTest {
                     + "    }\n" //
                     + "\n" //
                     + "FUNCTION { unpublished }{\n" //
-                    + "    output.bibitem format.authors \"author\" output.check new.block format.title \"title\" output.check new.block note\n" //
+                    + "    output.bibitem format.authors \"author\" output.check "
+                    + "new.block format.title \"title\" output.check new.block note\n" //
                     + "    \"note\" output.check format.date output fin.entry}\n" //
                     + "\n" //
                     + "\n" //

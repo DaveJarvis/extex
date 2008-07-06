@@ -323,7 +323,12 @@ public abstract class AbstractMain extends CLI {
             @Override
             protected int run(String name) {
 
-                return logCopying();
+                try {
+                    return logCopying();
+                } catch (IOException e) {
+                    // shit happens
+                    return EXIT_FAIL;
+                }
             }
         });
         option("-h", "--help", new NoArgOption("opt.help") {
@@ -602,8 +607,10 @@ public abstract class AbstractMain extends CLI {
      * Show the copying information (license) which is sought on the classpath.
      * 
      * @return the exit code EXIT_FAILURE
+     * 
+     * @throws IOException in case of an I/O error
      */
-    protected int logCopying() {
+    protected int logCopying() throws IOException {
 
         InputStream is =
                 getClass().getClassLoader().getResourceAsStream(
@@ -622,17 +629,11 @@ public abstract class AbstractMain extends CLI {
                 sb.append(s);
                 sb.append('\n');
             }
-        } catch (IOException e) {
-            // shit happens
         } finally {
-            try {
-                if (r != null) {
-                    r.close();
-                } else {
-                    is.close();
-                }
-            } catch (IOException e) {
-                // finally ignore it
+            if (r != null) {
+                r.close();
+            } else {
+                is.close();
             }
         }
         logger.severe(sb.toString());

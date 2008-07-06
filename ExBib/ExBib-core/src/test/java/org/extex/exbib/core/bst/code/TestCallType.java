@@ -112,7 +112,7 @@ public class TestCallType implements Code {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstInterpreter099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(), null);
         p.addFunction("book", this, null);
     }
 

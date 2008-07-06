@@ -63,7 +63,7 @@ public class TestPreamble {
     public void setUp() throws Exception {
 
         db = new DBImpl();
-        p = new BstInterpreter099c(db, new NullWriter(null), null);
+        p = new BstInterpreter099c(db, new NullWriter(), null);
     }
 
     /**
