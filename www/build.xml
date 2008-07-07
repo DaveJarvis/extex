@@ -73,14 +73,15 @@
       <arg line="-dest=${site}" />
     </exec>
   </target>
+
+  <taskdef name="testSummary"
+           classname="org.extex.site.TestSummary"
+           classpath="target/classes:${ant.project.name}.jar" />
+
   <!-- ==================================================================== -->
   <target name="test-summary"
           description="Create test summary page fragment"
           depends="init">
-
-    <taskdef name="testSummary"
-             classname="org.extex.site.TestSummary"
-             classpath="target/classes:${ant.project.name}.jar" />
 
     <mkdir dir="${target}" />
     <testSummary input="${overview-summary}"
