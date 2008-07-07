@@ -630,7 +630,7 @@ public class BstReaderImpl extends AbstractFileReader
         StringBuilder buffer = getBuffer();
         Matcher matcher;
 
-        if (!canRead()) {
+        if (buffer == null) {
             return null;
         }
 

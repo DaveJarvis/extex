@@ -99,6 +99,7 @@ public abstract class AbstractFileReader implements Observable {
         try {
             if (reader != null) {
                 reader.close();
+                line = null;
             }
         } finally {
             reader = null;
