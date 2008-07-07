@@ -18,10 +18,12 @@
    </div>
 
    <div class="info">
-    Developer Meeting
+    &ExBib; Close to First Release
     <div class="infoitems">
-     The &ExTeX; developers have scheduled a meeting for mid of August
-     2007 in Haimhausen near Munich (Germany).
+     The sub-project &ExBiB; is close to a first public release. It is a
+     bibliography processor which can be used as a plug-in replacement for
+     &BibTeX;. It provides already some of the features announced for
+     &BibTeX;&nbsp;1.0.
     </div>
    </div>
 
