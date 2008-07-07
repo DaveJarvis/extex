@@ -1,6 +1,6 @@
 #!/bin/perl.exe -w
 ##*****************************************************************************
-## $Id$
+## $Id:make.pl 6501 2007-11-04 18:29:15Z gene $
 ##*****************************************************************************
 ## Author: Gerd Neugebauer
 ##=============================================================================
@@ -252,11 +252,13 @@ sub includeFile
 #    s|\&eTeX;|&epsilon;-T<span style="vertical-align:-20%;">E</span>X|g;
 #    s|\&pdfTeX;|pdfT<span style="vertical-align:-20%;">E</span>X|g;
 #    s|\&TeX;|T<span style="vertical-align:-20%;">E</span>X|g;
-    s|\&eTeX;|&epsilon;-TeX|g;
-    s|\&pdfTeX;|pdfTeX|g;
-    s|\&TeX;|TeX|g;
-    s|\&LaTeX;|LaTeX|g;
-    s|\&ExTeX;|ExTeX|g;
+    s|\&eTeX;|&epsilon;-T<sub>E</sub>X|g;
+    s|\&pdfTeX;|pdfT<sub>E</sub>X|g;
+    s|\&TeX;|T<sub>E</sub>X|g;
+    s|\&LaTeX;|L<sup>A</sup>T<sub>E</sub>X|g;
+    s|\&ExTeX;|&epsilon;&chi;T<sub>E</sub>X|g;
+    s|\&ExBib;|&epsilon;&chi;Bib|g;
+    s|\&BibTeX;|B<small>IB</small>T<sub>E</sub>X|g;
     if ( m|<teaser pattern="([^"]*)" max="([^"]*)"[ ]*/>|i ) {
       print $out $`;
       my $a = $';
