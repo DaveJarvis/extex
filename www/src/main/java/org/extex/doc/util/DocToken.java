@@ -27,6 +27,11 @@ package org.extex.doc.util;
  */
 public interface DocToken {
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param visitor ...
+     */
     void visit(TokenVisitor visitor);
 
 }

@@ -88,10 +88,7 @@ public class HtmlDocWriter extends AbstractDocWriter implements DocWriter {
     /**
      * {@inheritDoc}
      * 
-     * @param map
-     * @throws IOException
-     * 
-     * @see org.extex.doc.writer.DocWriter#execute()
+     * @see org.extex.doc.writer.DocWriter#execute(java.util.Map)
      */
     public void execute(Map<String, Doc> map) throws IOException {
 
@@ -121,6 +118,7 @@ public class HtmlDocWriter extends AbstractDocWriter implements DocWriter {
 
     /**
      * TODO gene: missing JavaDoc
+     * 
      * @param name TODO
      * 
      * @throws IOException

@@ -33,10 +33,11 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @param a
-     * @param result
-     * @return
+     * @param buffer ...
+     * @param a ...
+     * @param result ...
+     * 
+     * @return ...
      */
     private static int scanEndTag(StringBuilder buffer, int a,
             List<DocToken> result) {
@@ -52,10 +53,11 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @param i
-     * @param result
-     * @return
+     * @param buffer ...
+     * @param a ...
+     * @param result ...
+     * 
+     * @return ...
      */
     private static int scanEntity(StringBuilder buffer, int a,
             List<DocToken> result) {
@@ -71,10 +73,11 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @param i
-     * @param result
-     * @return
+     * @param buffer ...
+     * @param a ...
+     * @param result ...
+     * 
+     * @return ...
      */
     private static int scanReference(StringBuilder buffer, int a,
             List<DocToken> result) {
@@ -90,10 +93,11 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @param i
-     * @param result
-     * @return
+     * @param buffer ...
+     * @param a ...
+     * @param result ...
+     * 
+     * @return ...
      */
     private static int scanTag(StringBuilder buffer, int a,
             List<DocToken> result) {
@@ -154,9 +158,10 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @param a
-     * @return
+     * @param buffer ...
+     * @param a ...
+     * 
+     * @return ...
      */
     private static int skipSpace(StringBuilder buffer, int a) {
 
@@ -170,8 +175,9 @@ public class DocTokenizer {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param buffer
-     * @return
+     * @param buffer ...
+     * 
+     * @return ...
      */
     public static List<DocToken> tokenize(StringBuilder buffer) {
 

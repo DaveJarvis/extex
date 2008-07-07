@@ -362,7 +362,7 @@ public class DocMaker extends DocParser {
      * TODO gene: missing JavaDoc
      * 
      * @param f the directory to scan for configurations
-     * @param configMap
+     * @param map ...
      * 
      * @throws FileNotFoundException in case that the given directory can not be
      *         read
@@ -380,7 +380,7 @@ public class DocMaker extends DocParser {
         }
         for (File file : files) {
             if (file.getName().endsWith(".xml")) {
-
+                //
             }
         }
     }

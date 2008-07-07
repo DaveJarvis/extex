@@ -27,6 +27,9 @@ package org.extex.doc.util;
  */
 public class EndNode implements DocToken {
 
+    /**
+     * The field <tt>name</tt> contains the name.
+     */
     private String name;
 
     /**

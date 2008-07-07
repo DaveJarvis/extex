@@ -27,14 +27,21 @@ package org.extex.doc.util;
  */
 public class LinkNode implements DocToken {
 
+    /**
+     * The field <tt>ref</tt> contains the ...
+     */
     private String ref;
 
+    /**
+     * The field <tt>text</tt> contains the ...
+     */
     private String text;
 
     /**
      * Creates a new object.
      * 
-     * @param ref
+     * @param ref ...
+     * @param text ...
      */
     public LinkNode(String ref, String text) {
 

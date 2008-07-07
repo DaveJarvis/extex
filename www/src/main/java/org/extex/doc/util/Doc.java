@@ -42,8 +42,8 @@ public class Doc {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param args
-     * @param sb
+     * @param args ...
+     * @param sb ...
      * 
      * @return the new doc
      */
@@ -83,8 +83,8 @@ public class Doc {
     /**
      * Creates a new object.
      * 
-     * @param list
-     * @param m
+     * @param list ...
+     * @param m ...
      */
     private Doc(Map<String, String> m, List<DocToken> list) {
 

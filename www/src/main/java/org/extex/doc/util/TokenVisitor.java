@@ -27,20 +27,39 @@ package org.extex.doc.util;
  */
 public interface TokenVisitor {
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     */
     void visitEnd();
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name ...
+     */
     void visitEntity(String name);
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param ref
-     * @param text
+     * @param ref ...
+     * @param text ...
      */
     void visitLink(String ref, String text);
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param startNode ...
+     */
     void visitStart(StartNode startNode);
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s ...
+     */
     void visitString(String s);
 
 }

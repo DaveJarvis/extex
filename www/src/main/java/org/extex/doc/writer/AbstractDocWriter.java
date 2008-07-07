@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -44,11 +43,6 @@ public class AbstractDocWriter {
     private String targetDir = ".";
 
     /**
-     * The field <tt>loc</tt> contains the ...
-     */
-    private Locale loc = Locale.ENGLISH;
-
-    /**
      * Creates a new object.
      */
     public AbstractDocWriter() {
@@ -59,8 +53,8 @@ public class AbstractDocWriter {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param lang
-     * @param name
+     * @param lang ...
+     * @param name ...
      * 
      * @throws IOException in case of an I/O error
      */
@@ -93,9 +87,9 @@ public class AbstractDocWriter {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param lang
-     * @param name
-     * @param eh
+     * @param lang ...
+     * @param name ...
+     * @param eh ...
      * 
      * @throws IOException in case of an I/O error
      */
@@ -149,9 +143,10 @@ public class AbstractDocWriter {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param name
-     * @return
-     * @throws FileNotFoundException
+     * @param name ...
+     * @return ...
+     * 
+     * @throws FileNotFoundException in case of an error
      */
     protected OutputStream openOutputStream(String name)
             throws FileNotFoundException {
@@ -165,10 +160,12 @@ public class AbstractDocWriter {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param lang
-     * @param name
-     * @return
-     * @throws FileNotFoundException
+     * @param lang ...
+     * @param name ...
+     * 
+     * @return ...
+     * 
+     * @throws FileNotFoundException in case of an error
      */
     protected InputStream openTemplate(String lang, String name)
             throws FileNotFoundException {
@@ -187,9 +184,9 @@ public class AbstractDocWriter {
     }
 
     /**
-     * {@inheritDoc}
+     * TODO gene: missing JavaDoc
      * 
-     * @see org.extex.doc.writer.DocWriter#setTarget(java.lang.String)
+     * @param targetDir ...
      */
     public void setTarget(String targetDir) {
 
