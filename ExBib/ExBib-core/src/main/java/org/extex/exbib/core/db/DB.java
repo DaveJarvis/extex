@@ -20,7 +20,6 @@
 package org.extex.exbib.core.db;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +27,6 @@ import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.io.bibio.BibPrinter;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
@@ -170,17 +168,6 @@ public interface DB extends Configurable {
      */
     void registerObserver(String name, Observer observer)
             throws NotObservableException;
-
-    /**
-     * Write the database to the given BibWriter. Thus it is possible to
-     * decouple the database from the printing methods and allow the program to
-     * use different external representations
-     * 
-     * @param writer the target writer
-     * 
-     * @throws IOException just in case
-     */
-    void save(BibPrinter writer) throws IOException;
 
     /**
      * Setter for the BibReaderFactory.

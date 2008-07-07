@@ -24,7 +24,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
@@ -183,17 +182,6 @@ public abstract class BibReaderTester {
                 throws NotObservableException {
 
             assertTrue("unexpected registerObserver()", false);
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#save(
-         *      org.extex.exbib.core.io.bibio.BibPrinter)
-         */
-        public void save(BibPrinter writer) throws IOException {
-
-            assertTrue("unexpected save()", false);
         }
 
         /**

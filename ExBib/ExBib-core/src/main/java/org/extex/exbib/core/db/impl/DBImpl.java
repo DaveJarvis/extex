@@ -20,7 +20,6 @@
 package org.extex.exbib.core.db.impl;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +34,6 @@ import org.extex.exbib.core.db.sorter.CodepointIgnoreCaseSorter;
 import org.extex.exbib.core.db.sorter.Sorter;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.io.bibio.BibPrinter;
 import org.extex.exbib.core.io.bibio.BibReader;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.util.NotObservableException;
@@ -364,17 +362,6 @@ public class DBImpl implements DB, Observable {
         } else {
             throw new NotObservableException(name);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#save(
-     *      org.extex.exbib.core.io.bibio.BibPrinter)
-     */
-    public void save(BibPrinter writer) throws IOException {
-
-        writer.print(this);
     }
 
     /**
