@@ -158,7 +158,7 @@ public class FontKeyFactory extends AbstractFactory {
      * 
      * @param theFontname The font name.
      * @param size The size.
-     * @param value The value.
+     * 
      * @return Returns a new font key instance.
      */
     public FontKey newInstance(String theFontname, FixedDimen size) {
