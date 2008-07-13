@@ -57,7 +57,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * <pre>
- * @alias{abc=xyz}
+ * {@literal @alias}{abc=xyz}
  * </pre>
  * 
  * 
@@ -69,7 +69,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * <pre>
- * @include{some_resource}
+ * {@literal @include}{some_resource}
  * </pre>
  * 
  * 
@@ -80,8 +80,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * <pre>
- * @modify{abc,
- *   title={The Title}}
+ * {@literal @modify}{abc,
+ *         title={The Title}}
  * </pre>
  * 
  * 
