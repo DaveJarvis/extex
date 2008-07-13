@@ -57,9 +57,79 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This class contains the assembler for ExBib.
+ * This class contains the assembler for &epsilon;&chi;Bib.
+ * 
+ * <h2>Parameters</h2>
  * <p>
+ * The parameters to &epsilon;&chi;Bib are passed in as {@link Properties}. The
+ * keys and values in the properties are {@link String}s. See
+ * {@link #setProperty(String, String)}. The names of some of the supported
+ * parameters are provided as symbolic constants in this file:
  * </p>
+ * <ul>
+ * <li> {@link #PROP_BIB_ENCODING} </li>
+ * <li> {@link #PROP_CONFIG} </li>
+ * <li> {@link #PROP_CSF_ENCODING} </li>
+ * <li> {@link #PROP_ENCODING} </li>
+ * <li> {@link #PROP_FILE} </li>
+ * <li> {@link #PROP_MIN_CROSSREF} </li>
+ * <li> {@link #PROP_OUTFILE} </li>
+ * <li> {@link #PROP_PROCESSOR} </li>
+ * <li> {@link #PROP_SORT} </li>
+ * </ul>
+ * 
+ * <h2>Invocation</h2>
+ * <p>
+ * The tasks performed by this class can be applied with a fews lines of code:
+ * </p>
+ * 
+ * <pre>
+ *  new ExBib(new Properties());
+ *  exbib.setFile("abc.aux");
+ *  exbib.run();
+ * </pre>
+ * 
+ * <p>
+ * This example used the built-in defaults to read the data from the given aux
+ * file and process it.
+ * </p>
+ * 
+ * <h2>Configuration</h2>
+ * <p>
+ * The method {@link #run()} reads part of the information needed for assembling
+ * the application from a configuration file. The follow example illustrates how
+ * such a configuration file looks like.
+ * </p>
+ * 
+ * <pre>
+ * &lt;<b>exbib</b> fallback="bbl"&gt;<b></b>
+ *   &lt;<b>Resource</b> src="path/exbibFinder"/&gt;<b></b>
+ *   &lt;<b>Processor</b> base="exbib/processor/" default="exbib"/&gt;<b></b>
+ *   &lt;<b>BblWriter</b> class="org.extex.exbib.core.io.bblio.BblWriter"&gt;<b></b>
+ *     &lt;<b>linelength</b>&gt;<b></b>79&lt;<b>/linelength</b>&gt;<b></b>
+ *     &lt;<b>indent</b>&gt;<b></b>  &lt;<b>/indent</b>&gt;<b></b>
+ *   &lt;<b>/BblWriter</b>&gt;<b></b>
+ *   &lt;<b>DB</b> class="org.extex.exbib.core.db.impl.DBImpl"&gt;<b></b>
+ *     &lt;<b>minCrossrefs</b>&gt;<b></b>2&lt;<b>/minCrossrefs</b>&gt;<b></b>
+ *   &lt;<b>/DB</b>&gt;<b></b>
+ *   &lt;<b>Sorter</b> base="exbib/sorter/" default="locale"/&gt;<b></b>
+ *   &lt;<b>AuxReader</b> class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/&gt;<b></b>
+ *   &lt;<b>BibReader</b> class="org.extex.exbib.core.io.bibio.BibReaderImpl"/&gt;<b></b>
+ *   &lt;<b>BibPrinter</b> base="exbib/printer/" default="bib"/&gt;<b></b>
+ * &lt;<b>/exbib</b>&gt;<b></b>
+ * </pre>
+ * 
+ * <p>
+ * The configuration is sought on the classpath in the package
+ * <tt>config/exbib</tt>.
+ * </p>
+ * 
+ * <h2>Dot Files</h2>
+ * <p>
+ * This class does <em>not</em> try to load settings from a dot file. This
+ * should be done before creating an instance of this class.
+ * </p>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
@@ -67,27 +137,32 @@ import org.extex.resource.ResourceFinderFactory;
 public class ExBib {
 
     /**
-     * This enumeration names the point for debugging.
+     * This enumeration names the points for debugging.
      */
     public enum ExBibDebug {
         /**
-         * The field <tt>CSF</tt> contains the csf processing.
+         * The field <tt>CSF</tt> contains the indicator for debugging the csf
+         * processing.
          */
         CSF,
         /**
-         * The field <tt>IO</tt> contains the I/O.
+         * The field <tt>IO</tt> contains the indicator for debugging the I/O
+         * operations.
          */
         IO,
         /**
-         * The field <tt>MEM</tt> contains the memory allocation.
+         * The field <tt>MEM</tt> contains the indicator for debugging the
+         * memory allocation.
          */
         MEM,
         /**
-         * The field <tt>MISC</tt> contains miscellaneous.
+         * The field <tt>MISC</tt> contains indicator for debugging
+         * miscellaneous.
          */
         MISC,
         /**
-         * The field <tt>SEARCH</tt> contains the search.
+         * The field <tt>SEARCH</tt> contains the indicator for debugging the
+         * search.
          */
         SEARCH,
         /**
@@ -127,7 +202,7 @@ public class ExBib {
 
     /**
      * The field <tt>PROP_CONFIG</tt> contains the name of the property to
-     * carry the configuration.
+     * carry the configuration. The default value is <tt>"extex"</tt>.
      */
     public static final String PROP_CONFIG = "exbib.config";
 
@@ -209,6 +284,12 @@ public class ExBib {
     private ResourceBundle bundle;
 
     /**
+     * The field <tt>resourceFinder</tt> contains the fallback resource
+     * finder. If not set then a new one is created from the configuration.
+     */
+    private ResourceFinder resourceFinder = null;
+
+    /**
      * Creates a new object. The properties containing the controlling
      * attributes are initialized from the System.properties.
      * 
@@ -222,7 +303,7 @@ public class ExBib {
     /**
      * Creates a new object.
      * 
-     * @param properties the properties with the settings
+     * @param properties the properties with the parameters
      * 
      * @throws IOException in case of an I/O error while reading the dot file
      */
@@ -232,6 +313,7 @@ public class ExBib {
 
         useLanguage(Locale.getDefault());
         setProperties(properties);
+        logger = Logger.getLogger(ExBib.class.getName());
     }
 
     /**
@@ -409,8 +491,20 @@ public class ExBib {
     }
 
     /**
-     * This is the top level of the BibT<sub>E</sub>X engine. When all
+     * This is the top level of the &epsilon;&chi;Bib engine. When all
      * parameters are present then this method can be invoked.
+     * <p>
+     * The following steps are performed:
+     * </p>
+     * <ul>
+     * <li>Read the configuration to get basic parameters.</li>
+     * <li>Optionally make a new resource finder.</li>
+     * <li>Make a {@link ProcessorContainer}.</li>
+     * <li>Make an {@link AuxReader}</li>
+     * and use it to read the aux file storing the data in the container.
+     * <li>For each processor in the container run it to produce the output
+     * file.</li>
+     * </ul>
      * 
      * @return <code>false</code> iff an error has occurred
      * 
@@ -433,11 +527,13 @@ public class ExBib {
                 "exbib/" + properties.getProperty(PROP_CONFIG, ""));
 
             ResourceFinder finder =
-                    new ResourceFinderFactory().createResourceFinder(//
-                        config.getConfiguration("Resource"), //
-                        logger, //
-                        properties, //
-                        null);
+                    (resourceFinder != null
+                            ? resourceFinder
+                            : new ResourceFinderFactory().createResourceFinder(//
+                                config.getConfiguration("Resource"), //
+                                logger, //
+                                properties, //
+                                null));
 
             if (debug.contains(ExBibDebug.SEARCH)) {
                 finder.enableTracing(true);
@@ -590,7 +686,7 @@ public class ExBib {
         }
 
         return errors <= 0;
-    };
+    }
 
     /**
      * Register observers to get tracing output.
@@ -624,7 +720,7 @@ public class ExBib {
         container.registerObserver("endParse", new TracingObserver(logger,
             bundle.getString("end_parse_msg")));
         return funcall;
-    }
+    };
 
     /**
      * Setter for the debugging indicator.
@@ -664,7 +760,11 @@ public class ExBib {
     }
 
     /**
-     * Setter for the file name
+     * Setter for the file name. This is a convenience method to set the file
+     * name in the properties. Before the assignment is performed it is checked
+     * that the file name is not already set and the file name is not the empty
+     * string. In those cases a message is written to the logger and nothing is
+     * changed.
      * 
      * @param arg the file name
      * 
@@ -682,12 +782,17 @@ public class ExBib {
     }
 
     /**
-     * Setter for logger.
+     * Setter for logger. The logger is set to a new value. The new value must
+     * not be <code>null</code> or an {@link IllegalArgumentException} is
+     * thrown.
      * 
-     * @param logger the logger to set
+     * @param logger the logger to set which must not be <code>null</code>
      */
     public void setLogger(Logger logger) {
 
+        if (logger == null) {
+            throw new IllegalArgumentException();
+        }
         this.logger = logger;
     }
 
@@ -709,7 +814,8 @@ public class ExBib {
     }
 
     /**
-     * Setter for a property.
+     * Setter for a property. The properties carry the parameters. The used
+     * parameters in this class are provided as constants.
      * 
      * @param key the key
      * @param value the value
@@ -719,6 +825,16 @@ public class ExBib {
     public Object setProperty(String key, String value) {
 
         return properties.setProperty(key, value);
+    }
+
+    /**
+     * Setter for resourceFinder.
+     * 
+     * @param resourceFinder the resourceFinder to set
+     */
+    protected void setResourceFinder(ResourceFinder resourceFinder) {
+
+        this.resourceFinder = resourceFinder;
     }
 
     /**
@@ -740,7 +856,9 @@ public class ExBib {
     }
 
     /**
-     * Activate the language from
+     * Activate the language for the given locale. As a consequence the resource
+     * bundle associated with the class {@link ExBib} and the locale is
+     * activated.
      * 
      * @param locale the locale
      */
