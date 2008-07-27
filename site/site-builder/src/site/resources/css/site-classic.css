@@ -1,0 +1,309 @@
+/*
+ *
+ */
+body {
+  background-color:black;
+  font-family:sans-serif;
+  line-height:120%;
+  margin:0pt;
+  padding:0pt;
+}
+body.header {
+  background:#126094 url("../image/head.png");
+  margin:0pt;
+  padding:0pt;
+}
+.left {
+  min-width:10em;
+  padding-top:2pt;
+  vertical-align:top;
+  background:white url("../image/cutoff-left.png") repeat-y left; 
+}
+.right {
+  min-width:10em;
+  padding-top:2pt;
+  vertical-align:top;
+  background:white url("../image/cutoff-right.png") repeat-y right; 
+}
+td.head {
+  color:white;
+  font-size:200%;
+  font-style:bold;
+}
+#root {
+  height:100%;
+}
+.head {
+  border-bottom:0pt;
+  border-left:0pt;
+  border-right:0pt;
+  border-top:6pt;
+  margin:0pt;
+  padding-bottom:0px;
+  padding-left:16pt;
+  padding-right:16pt;
+  padding-top:6pt;
+}
+div.top {
+  border-bottom:0pt;
+  border-left:0pt;
+  border-right:0pt;
+  border-top:6pt;
+  margin:0pt;
+  padding-bottom:0px;
+  padding-left:16pt;
+  padding-right:16pt;
+  padding-top:6pt;
+  text-align:left;
+  background: white url(../image/head.png) repeat-x;
+  min-width:700px;
+}
+.logo {
+  float:right;
+  margin:10px;
+}
+iframe.ad {
+  width:468px;
+  height:60px;
+  margin:0pt;
+}
+div.ad {
+  text-align:center;
+  margin:2pt;
+}
+.tabs {
+}
+.tabOff	{
+  height:1em;
+  font-size:75%;
+  font-weight:bold;
+  color:#333333;
+  background:#dddddd url("../image/tab-off.png");
+  border-bottom-color:#333333;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left-width:0pt;
+  border-right-width:0px;
+  border-top:6pt;
+  margin:0pt;
+  padding:4pt 0pt 4pt 0pt;
+}
+.tabOffL {
+  height:1em;
+  font-size:1px;
+  background:#dddddd url("../image/tab-off-l.png");
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left:0pt;
+  border-right:0pt;
+  border-top:6pt;
+  margin:0pt;
+  padding:0pt 0pt 0pt 13px;
+}
+.tabOffR {
+  height:1em;
+  font-size:1px;
+  background:#dddddd url("../image/tab-off-r.png");
+  border-bottom-color:#333333;
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+  border-left:0pt;
+  border-right:0pt;
+  border-top:6pt;
+  margin:0pt 4pt 0pt 0pt;
+  padding:0pt 0pt 0pt 13px;
+}
+.tabOn {
+  height:1em;
+  background:#e9d965 url("../image/tab-on.png");
+  color:black;
+  font-size:75%;
+  font-weight:bold;
+  border-bottom:0pt;
+  border-left:0pt;
+  border-right-width:0px;
+  border-top:6pt;
+  margin:0pt;
+  padding:4pt 0pt 4pt 0pt;
+}
+.tabOnL {
+  height:1em;
+  font-size:1px;
+  background:#e9d965 url("../image/tab-on-l.png");
+  border:6pt 0pt 0pt 0pt;
+  margin:0pt;
+  padding:0pt 0pt 0pt 13px;
+}
+.tabOnR {
+  height:1em;
+  font-size:1px;
+  background:#e9d965 url("../image/tab-on-r.png");
+  border:6pt 0pt 0pt 0pt;
+  margin:0pt 4pt 0pt 0pt;
+  padding:0pt 0pt 0pt 13px;
+}
+.tabSep {
+  background:#e9d965 url("../image/sep.png");
+  line-height:6pt;
+  margin:0pt;
+  padding:0pt;
+  padding:0pt;
+}
+address {
+  background:#dddd99 url("../image/blend-address.png");
+  border-bottom:1px solid #54532c;
+  border-top:1px solid #54532c;
+  font-size:70%;
+  margin-bottom:12pt;
+  padding:2pt;
+}
+h1 {
+  font-size:160%;
+  padding:6pt;
+  margin-top:8pt;
+  margin-bottom:8pt;
+  background:#cad8e4 url("../image/blend-h1.png");
+  border-width:1px;
+  border-color:#dddd99;
+  border-style:solid;
+  border-bottom:2pt solid #54532c;
+  border-right:2pt solid #54532c;
+}
+h2 {
+  font-size:140%;
+  padding:4pt 16pt 4pt 8pt;
+  margin-left:8pt;
+  margin-top:8pt;
+  margin-bottom:8pt;
+  background:#cad8e4 url("../image/blend-h1.png");
+  border-width:1px;
+  border-color:#dddd99;
+  border-style:solid;
+  border-bottom:2pt solid #54532c;
+  border-right:2pt solid #54532c;
+}
+h3 {
+  font-size:120%;
+  padding:2pt 26pt 2pt 16pt;
+  margin-left:16pt;
+  margin-top:8pt;
+  margin-bottom:8pt;
+  background:#cad8e4 url("../image/blend-h1.png");
+  border-width:1px;
+  border-color:#dddd99;
+  border-style:solid;
+  border-bottom:2pt solid #54532c;
+  border-right:2pt solid #54532c;
+}
+a {
+  color:firebrick;
+  text-decoration:none;
+}
+a:hover {
+  color:navy;
+  text-decoration:underline;
+}
+a.nav {
+  color:#666666;
+  text-decoration:none;
+}
+a.nav:hover {
+  color:black;
+  text-decoration:none;
+}
+.text {
+  margin-bottom:0pt;
+  padding:10pt 10pt 10pt 10pt;
+  background-color:white;
+  font-size:90%;
+  vertical-align:top;
+}
+.navi {
+  font-size:80%;
+  font-weight:bold;
+  border-color:#54532c;
+  border-style:solid;
+  border-left-width:1px;
+  border-top-width:1px;
+  border-right-width:3pt;
+  border-bottom-width:3pt;
+  padding:4pt;
+  margin:2pt 2pt 4pt 2pt;
+  background:#e9d965 url("../image/blend.png") fixed;
+}
+.navitems {
+  background:#eeeedd url("../image/corner-tl.png") no-repeat;
+  border-color:#54532c;
+  border-style:solid;
+  border-top-width:1.2pt;
+  border-right-width:0pt;
+  border-bottom-width:0pt;
+  border-left-width:1.2pt;
+  padding:4pt;
+  margin-top:2pt;
+  margin-bottom:2pt;
+  font-weight:normal;
+}
+.info {
+  font-size:80%;
+  font-weight:bold;
+  border-left-width:1px;
+  border-top-width:1px;
+  border-right-width:3pt;
+  border-bottom-width:3pt;
+  border-color:#54532c;
+  border-style:solid;
+  padding:4pt;
+  margin:2pt 2pt 4pt 2pt;
+  background:#e9d965 url("../image/blend.png") fixed;
+}
+.infoitems {
+  background:#eeeedd url("../image/corner-tl.png") no-repeat;
+  border-color:#54532c;
+  border-style:solid;
+  border-left-width:1.2pt;
+  border-top-width:1.2pt;
+  border-right-width:0pt;
+  border-bottom-width:0pt;
+  padding:4pt;
+  margin-top:4pt;
+  font-weight:normal;
+}
+table {
+  border-style:solid;
+  border-color:black;
+  border-top-width:1pt;
+  border-bottom-width:1pt;
+  border-left-width:0pt;
+  border-right-width:0pt;
+  margin:12pt;
+}
+table.internal {
+  border-style:solid;
+  border-width:0pt;
+  margin:0pt;
+}
+dt {
+  font-weight:bold;
+  padding-top:4pt;
+}
+dd {
+  padding-bottom:6pt;
+}
+ul {
+  margin-left:6pt;
+  padding-left:6pt;
+}
+pre {
+  background-color:#eeeedd;
+  border:1px solid lightgray;
+  padding:3pt;
+}
+.pdf {
+  margin-left:36px;
+  text-indent:-36px;
+}
+.eps {
+  margin-left:36px;
+  text-indent:-36px;
+}

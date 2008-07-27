@@ -1,0 +1,9 @@
+#macro ( ExTeX )<i>&epsilon;&chi;</i>T<sub>E</sub>X#end
+#macro ( ExBib )<i>&epsilon;&chi;</i>Bib#end
+#macro ( LaTeX )L<sup style="vertical-align:top;">A</sup>T<sub>E</sub>X#end
+#macro ( BibTeX )B<small>IB</small>T<sub>E</sub>X#end
+#macro ( TeX )T<sub>E</sub>X#end
+#macro ( eTeX )&epsilon;-T<sub>E</sub>X#end
+#macro ( pdfTeX )pdfT<sub>E</sub>X#end
+#macro ( Omega )&Omega;#end
+#macro ( NTS )<i>NTS</i>#end

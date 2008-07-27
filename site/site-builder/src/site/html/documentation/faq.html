@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//3.2//EN">
+<html>
+<head>
+  <title>ExTeX: FAQ</title>
+  <meta name="author" content="Gerd Neugebauer" />
+</head>
+<body>
+  <h1>FAQ</h1>
+
+  Here you can find some frequently asked questions &ndash; and
+  their answers.
+
+  <dl>
+    <dt>Is #ExTeX() ready for use?</dt>
+    <dd>#ExTeX() is still under development. When version 0.1 is
+      released then you can consider it to be feature complete for the
+      #TeX() compatibility mode. This means that DVI can be produced which
+      is comparable &ndash; but not necessarily identical &ndash; to the
+      DVI obtained from #TeX().
+    </dd>
+
+    <dt>Under which License is #ExTeX() distributed?</dt>
+    <dd>The core part of #ExTeX() is distributed under the
+     <a href="license.html">LGPL</a>.
+     Some libraries are used by #ExTeX() which come with their own licenses.
+    </dd>
+
+    <dt>How is #ExTeX() pronounced?</dt>
+    <dd>The first syllable is pronounced ex as in expandable. And you
+     know how to pronounce #TeX()...
+    </dd>
+
+    <dt>How is the #ExTeX() logo typeset?</dt>
+    <dd>
+      Here is the (#LaTeX()) definition of the logo for #ExTeX():
+      <pre>
+  \def\ExTeX{\textrm{% Logo always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.15em\TeX
+  }}</pre>
+    </dd>
+
+    <dt>Which version of Java is required for #ExTeX()?</dt>
+    <dd>#ExTeX() requires Java in version 5 or newer. Older versions
+     will not suffice since generics are used extensively.
+    </dd>
+
+    <dt>Does #ExTeX() run under a "free" Java?</dt>
+    <dd>#ExTeX() is developed with the Sun JDK and the Eclipse system.
+     The last time we checked #ExTeX() did not compile with GCJ.
+     If anyone is willing to work on a compatibility layer this
+     help is welcome.
+     <br/>
+     On the other side SUN has released Java under an open source license.
+     Thus this issue might no longer be of such a high priority.
+    </dd>
+
+    <dt>Can #ExTeX() be used as Java component?</dt>
+    <dd>#ExTeX() has been designed with the application as library in
+     mind. Thus interaction with the user or the environment are
+     encapsulated and can be replaced. The command line interface is
+     one example how to do it. The test driver for 
+     <a href="http://www.junit.org">JUnit</a> is also
+     embedding #ExTeX() directly.
+     <p>
+     For a real application as library a texmf tree has to be present.
+     An activity has been started in #ExTeX() to provide a texmf tree in the
+     form of jar archives. Further volunteers are welcome.
+     </p>
+    </dd>
+
+  </dl>
+</body>
+</html>

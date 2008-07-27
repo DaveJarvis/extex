@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+#macro(directory)
+  #foreach( $item in $directory )
+   <div class="dir">
+     <a href="$item.getName()">$item.getName()</a>
+   </div>
+  #end
+#end
+<head>
+  $headContent
+  <link rel="alternate" type="application/rss+xml"
+        title="ExTeX News" href="http://www.extex.org/rss/2.0/ExTeX.rss" />
+  <meta name="date" content="Jul 8, 2008" />
+  <link rel="stylesheet" href="$relativePath/css/site.css" type="text/css" />
+</head>
+<body>
+<div class="top">
+ <a href="index.html" title="ExTeX" class="logo"
+ ><img src="$relativePath/image/ExTeX-small.gif"
+       width="172" height="63" border="0"
+       title="ExTeX" alt="ExTeX"/></a>
+ <div class="ad">
+   <iframe src="$relativePath/ad/extex.html" class="ad" name="ADframe"
+           scrolling="no" marginheight="0" marginwidth="0" frameborder="0">
+    <a href="http://www.extex.org/"
+       title="ExTeX - Typesetting for the 21st century"
+    ><img src="image/extex5.2.gif" width="468" heigt="60"
+          alt="Typesetting for the 21st century" /></a>
+   </iframe>
+ </div>
+#if($tabs)
+ <div class="tabs">
+  <table class="head" cellspacing="0" cellpadding="0">
+   <tr>
+$tabs
+   </tr>
+  </table>
+ </div>
+#else
+ <br />
+#end
+</div>
+
+<div class="tabSep"><br/></div>
+
+<table id="root" cellspacing="0" width="100%" class="internal">
+ <tr>
+  <td width="20%" class="left">
+   $navigation
+  </td>
+  <td width="60%" class="text">
+   $bodyContent
+  </td>
+  <td width="20%" class="right">
+   $info
+  </td>
+ </tr>
+</table>
+
+<address>
+&copy; #set($y=$currentDate.year+1900)$y <a href="$relativePath/imprint.html">The <i>&epsilon;&chi;</i>T<sub>E</sub>X Group</a>
+</address>
+</body>

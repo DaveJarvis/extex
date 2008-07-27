@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ====================================================================== -->
+<item>
+  <title>Repository moved to Subversion</title>
+  <description>
+    The repository of ExTeX has been moved from CVS to Subversion.
+    Subversion seems to be the better choice to preserve history information
+    during refactoring. A major restructuring of the sources is overdue and this
+    is the first step in this direction.
+  </description>
+  <author>gene@gerd-neugebauer.de (Gerd Neugebauer)</author>
+</item>

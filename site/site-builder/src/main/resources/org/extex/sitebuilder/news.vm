@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+#set($year = $currentDate.year + 1900)
+<rss version="2.0">
+  <channel>
+    <title>ExTeX News</title>
+    <link>http://www.extex.org/</link>
+    <description>ExTeX - Typesetting for the 21st Century</description>
+    <language>en-us</language>
+    <copyright>(c) $year The ExTeX Group</copyright>
+    <pubDate>$currentDate.toString()</pubDate>
+    <lastBuildDate>$currentDate.toString()</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <generator>ExTeX News Builder</generator>
+    <managingEditor>gene@gerd-neugebauer.de</managingEditor>
+    <webMaster>gene@gerd-neugebauer.de</webMaster>
+    <ttl>1440</ttl>
+    <image>
+      <url>http://www.extex.org/rss/ExTeX.png</url>
+      <title>ExTeX News</title>
+      <link>http://www.extex.org/</link>
+    </image>
+$content
+  </channel>
+</rss>

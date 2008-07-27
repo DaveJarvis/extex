@@ -1,0 +1,41 @@
+   <div class="navi">
+     <a href="$relativePath/index.html">#ExTeX()</a>
+   </div>
+
+   <div class="navi">
+    <a href="$relativePath/development/index.html">Development</a><br />
+    <div class="navitems">
+     <a href="$relativePath/development/state.html">State of Development</a><br />
+     <a href="$relativePath/development/systems.html">#TeX() and Successors</a><br />
+     <a href="$relativePath/development/bug-tracking.html">Bug Tracking</a><br />
+     <a href="$relativePath/development/feature-requests.html">Feature Requests</a><br />
+     <a href="$relativePath/development/nightly-build.html">Nightly Build</a><br />
+    </div>
+
+    <a href="$relativePath/documentation/index.html">Documentation</a><br />
+    <div class="navitems">
+     <a href="$relativePath/documentation/objectives.html">Objectives</a><br />
+     <a href="$relativePath/documentation/man/extex-users.pdf">#ExTeX() User's Guide (PDF)</a><br />
+     <a href="$relativePath/documentation/faq.html">FAQ</a><br />
+     <a href="$relativePath/snapshot/javadoc/">Javadoc (Snapshot)</a><br />
+    </div>
+ 
+    <a href="$relativePath/sources/index.html">Download</a><br />
+    <div class="navitems">
+     <a href="$relativePath/snapshot/ExTeX-setup.jar">#ExTeX() Installer (Snapshot)</a><br />
+     <a href="$relativePath/sources/repository.html">Subversion Repository</a><br />
+    </div>
+   </div>
+
+   <div class="navi">
+    Sub-Project
+    <div class="navitems">
+     <a href="$relativePath/ExBib/index.html">#ExBib()</a>
+    </div>
+   </div>
+
+   <div class="navi" style="margin-top:2em;">
+    <div class="navitems">
+     <a href="$relativePath/imprint.html">Imprint</a>
+    </div>
+   </div>
