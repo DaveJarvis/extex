@@ -54,8 +54,8 @@ import org.apache.velocity.context.Context;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
-import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
+import org.apache.velocity.runtime.log.JdkLogChute;
 import org.apache.velocity.runtime.log.LogChute;
 import org.xml.sax.SAXException;
 
@@ -548,10 +548,12 @@ public class SiteBuilder {
      * 
      * @throws Exception in case of an error
      */
+    @SuppressWarnings("static-access")
     private VelocityEngine makeEngine() throws Exception {
 
         VelocityEngine engine = new VelocityEngine();
-        engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM, logChute);
+        // engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, logChute);
+        engine.setProperty(JdkLogChute.RUNTIME_LOG_JDK_LOGGER, "xxx");
 
         Properties prop = new Properties();
         String name = getClass().getName().replace('.', '/') + ".properties";

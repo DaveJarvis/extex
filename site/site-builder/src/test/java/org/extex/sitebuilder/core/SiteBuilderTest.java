@@ -70,6 +70,7 @@ public class SiteBuilderTest {
     @Test
     public void test1() throws Exception {
 
+        Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
         SiteBuilder siteBuilder = new SiteBuilder();
         Logger logger = siteBuilder.getLogger();
         logger.setLevel(Level.WARNING);
