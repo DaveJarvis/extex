@@ -8,18 +8,16 @@
    </div>
   #end
 #end
-#macro(scanDir $dir $path)
-  #foreach( $item in $dir.listFiles() )
-   <ul class="sitemap">
-     #if($item.isDirectory() || $item.getName().endsWith(".html"))
-    <li><a href="$path/$item.getName()">$item.getName()</a>
+#macro(scanDir $dir)
+  <ul class="sitemap">
+  #foreach( $item in $dir.files() )
+    <li><a href="$item.getRelativePath()/$item.getName()">$item.getTitle()</a>
      #if($item.isDirectory())
-       #scanDir($item $path)
-     #end
+       #scanDir($item)
      #end
      </li>
-   </ul>
   #end
+  </ul>
 #end
 <head>
   $headContent
@@ -56,7 +54,7 @@
   </td>
   <td width="60%" class="text">
    $bodyContent
-   #scanDir($targetDirectory ".")
+   #scanDir($targetDirectory)
   </td>
 #if($info)
   <td width="20%" class="right">

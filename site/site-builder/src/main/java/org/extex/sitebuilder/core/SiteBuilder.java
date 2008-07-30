@@ -401,7 +401,7 @@ public class SiteBuilder {
         context.put("headContent", "");
         context.put("bodyContent", "");
         context.put("relativePath", ".");
-        context.put("targetDirectory", targetDirectory);
+        context.put("targetDirectory", new FileWrapper(targetDirectory));
         siteMap.getParentFile().mkdirs();
         Writer writer = new BufferedWriter(new FileWriter(siteMap));
         try {

@@ -1,0 +1,162 @@
+/*
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package org.extex.sitebuilder.core;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+
+/**
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
+public class FileWrapper extends File implements FileFilter {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 2008L;
+
+    /**
+     * The field <tt>relativePath</tt> contains the ...
+     */
+    private String relativePath;
+
+    /**
+     * The field <tt>title</tt> contains the cached title.
+     */
+    private String title = null;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param dir
+     */
+    public FileWrapper(File dir) {
+
+        this(dir, ".");
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param file the file
+     * @param relativePath
+     */
+    protected FileWrapper(File file, String relativePath) {
+
+        super(file.getParent(), file.getName());
+        this.relativePath = relativePath;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.FileFilter#accept(java.io.File)
+     */
+    public boolean accept(File pathname) {
+
+        if (pathname.isDirectory()) {
+            return new File(pathname, "index.html").exists();
+        }
+        String name = pathname.getName();
+        return name.endsWith(".html") && !name.equals("index.html");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the files in wrappers
+     */
+    public FileWrapper[] files() {
+
+        File[] files = listFiles(this);
+        FileWrapper[] result = new FileWrapper[files.length];
+        int i = 0;
+
+        String path = relativePath.equals(".") ? ".." : relativePath + "/..";
+        for (File f : files) {
+            result[i++] = new FileWrapper(f, path);
+        }
+        return result;
+    }
+
+    /**
+     * Getter for the relativePath.
+     * 
+     * @return the relativePath
+     */
+    public String getRelativePath() {
+
+        return relativePath;
+    }
+
+    /**
+     * Getter for the title.
+     * 
+     * @return the title
+     */
+    public String getTitle() {
+
+        if (title != null) {
+            return title;
+        }
+        File f;
+        if (isDirectory()) {
+            f = new File(this, "index.html");
+            if (!f.exists()) {
+                return getName();
+            }
+
+        } else if (isFile()) {
+            f = this;
+        } else {
+            return getName();
+        }
+        try {
+            Reader r = new BufferedReader(new FileReader(f));
+            try {
+                StringBuilder buffer = new StringBuilder();
+                for (int c = r.read(); c >= 0; c = r.read()) {
+                    buffer.append((char) c);
+                    if (c == '>'
+                            && buffer.substring(buffer.length() - 8).equals(
+                                "</title>")) {
+                        title =
+                                buffer.substring(buffer.indexOf("<title>") + 7,
+                                    buffer.length() - 8);
+
+                        return title;
+                    }
+                }
+            } finally {
+                r.close();
+            }
+        } catch (IOException e) {
+            // fall through
+        }
+        return getName();
+    }
+}
