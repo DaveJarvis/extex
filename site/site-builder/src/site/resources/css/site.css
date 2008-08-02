@@ -123,7 +123,7 @@ table.internal {
 td.head {
   color:white;
   font-size:200%;
-  font-style:bold;
+  font-weight:bold;
 }
 #root {
   height:100%;
@@ -132,12 +132,12 @@ table.head {
   border:0pt;
   }
 .head {
-  border:6pt 0pt 0pt 0pt;
+  border:0pt;
   padding:6pt 16pt 0px 16pt;
   margin:0pt;
 }
 div.top {
-  border:6pt 0pt 0pt 0pt;
+  border:0pt;
   padding:6pt 16pt 0px 16pt;
   margin:0pt;
   text-align:left;
@@ -260,4 +260,32 @@ div.ad {
 .eps {
   margin-left:36px;
   text-indent:-36px;
+}
+#PopUp {
+  width:25em;
+  min-height:20em;
+  position:fixed;
+  top:3em;
+  left:5em;
+  background:#eeeeee;
+  color:black;
+  text-align:left;
+  border:4pt groove gray;
+}
+#PopUp h2 {
+  background: #666666 url(none);
+  border-width:0pt;
+  color: white;
+  margin-top:0pt;
+}
+#PopUp h3 {
+  background: #666666 url(none);
+  border-width:0pt;
+  color: white;
+  margin-top:0pt;
+}
+#PopUp p {
+  background: url(none);
+  border-width:0pt;
+  color:black;
 }

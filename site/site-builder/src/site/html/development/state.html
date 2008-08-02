@@ -3,6 +3,30 @@
 <head>
   <title>ExTeX: State of Development</title>
   <meta name="author" content="Gerd Neugebauer" />
+  <script type="text/javascript">
+   var popupTT = false;
+   function showTT(name) {
+     popupTT = true;
+     var node = document.getElementById("PopUp");
+     while ( node.hasChildNodes() ) {
+       node.removeChild(node.firstChild);
+     }
+     var x = document.getElementsByName(name)[0].cloneNode(true);
+     x.setAttribute("name", "popup");
+     node.appendChild(x);
+     node.style.visibility = "visible";
+   }
+   function hideTT() {
+     popupTT = false;
+     window.setTimeout("withdrawTT()",500);
+   }
+   function withdrawTT() {
+     if (!popupTT) {
+       document.getElementById("PopUp").style.visibility = "hidden";
+       popupTT = false;
+     }
+   }
+  </script>
 </head>
 <body>
   <h1>State of Development</h1>
@@ -12,6 +36,7 @@
    the corresponding information or read the comments below.
   </p>
   <center>
+   <div id="PopUp" style="visibility:hidden;" > </div>
    <img src="ExTeX-components.png"
         alt="ExTeX Component Diagram"
         title="ExTeX Component Diagram"
@@ -20,98 +45,105 @@
         border="0"
         usemap="#map"/>
    <map name="map">
-    <area shape="rect" coords="287,3,400,43" alt="Main Control" href="#main" />
-    <area shape="rect" coords="287,58,400,100" alt="ExTeX Instance" href="#extex" />
-    <area shape="rect" coords="235,243,292,270" alt="Interpreter Context" href="#context" />
-    <area shape="rect" coords="34,163,137,205" alt="Input Filter" href="#inputfilter" />
-    <area shape="rect" coords="13,112,155,288" alt="Input Subsystem" href="#input-subsystem" />
-    <area shape="rect" coords="208,161,314,204" alt="Interpreter" href="#interpreter" />
-    <area shape="rect" coords="182,112,334,290" alt="Interpreter Subsystem" href="#interpreter-subsystem" />
-    <area shape="rect" coords="533,208,568,234" alt="DVI Writer" href="#dvi" />
-    <area shape="rect" coords="532,250,566,276" alt="PDF Writer" href="#pdf" />
-    <area shape="rect" coords="583,209,618,235" alt="PS Writer" href="#ps" />
-    <area shape="rect" coords="583,251,618,277" alt="EPS Writer" href="#eps" />
-    <area shape="rect" coords="634,209,669,236" alt="SVG Writer" href="#svg" />
-    <area shape="rect" coords="532,146,652,188" alt="Output Filter" href="#outputfilter" />
-    <area shape="rect" coords="378,148,497,189" alt="Node Pipe" href="#nodepipe" />
-    <area shape="rect" coords="376,222,496,263" alt="Document Writer" href="#documentwriter" />
-    <area shape="rect" coords="361,111,683,289" alt="Backend" href="#backend" />
-    <area shape="rect" coords="29,235,137,279" alt="Scanner" href="#scanner" />
-    <area shape="rect" coords="184,326,309,368" alt="Typesetter" href="#typesetter" />
-    <area shape="rect" coords="38,326,165,365" alt="Page Builder" href="#pagebuilder" />
-    <area shape="rect" coords="36,389,166,431" alt="Paragraph Builder" href="#paragraphbuilder" />
-    <area shape="rect" coords="184,391,310,432" alt="Ligature Builder" href="#ligaturebuilder" />
-    <area shape="rect" coords="117,449,247,491" alt="Hypenation" href="#hyphenation" />
-    <area shape="rect" coords="9,300,337,507" alt="Typesetting Subsystem" href="#typesetting" />
-    <area shape="rect" coords="44,524,141,551" alt="Localizer" href="#localizer" />
-    <area shape="rect" coords="216,525,315,552" alt="Generic Factory" href="#factory" />
-    <area shape="rect" coords="391,525,487,552" alt="Configuration Support" href="#configuration" />
-    <area shape="rect" coords="565,525,661,551" alt="Resource Finder" href="#resourcefinder" />
-    <area shape="rect" coords="13,512,685,569" alt="Framework" href="#framework" />
-    <area shape="rect" coords="373,341,497,378" alt="Font" href="#font" />
-    <area shape="rect" coords="530,324,566,350" alt="ExTeX Font Metrics" href="#efm" />
-    <area shape="rect" coords="581,324,618,350" alt="TeX Font Metrics" href="#tfm" />
-    <area shape="rect" coords="630,323,670,351" alt="Adobe Font Metrics" href="#afm" />
-    <area shape="rect" coords="529,366,566,396" alt="TrueType Fonts" href="#ttf" />
-    <area shape="rect" coords="581,365,618,393" alt="Virtual Fonts" href="#vf" />
-    <area shape="rect" coords="634,364,670,393" alt="PFB" href="#pfb" />
-    <area shape="rect" coords="528,405,565,431" alt="OpenType Fonts" href="#otf" />
-    <area shape="rect" coords="382,435,491,474" alt="Font Family" href="#fontfamily" />
-    <area shape="rect" coords="361,300,685,503" alt="Font Subsystem" href="#fontsubsystem" />
+    <area shape="rect" coords="287,3,400,43" alt="Main Control" href="#main" onmouseover="showTT('main')" onmouseout="hideTT()" />
+    <area shape="rect" coords="287,58,400,100" alt="ExTeX Instance" href="#extex" onmouseover="showTT('extex')" onmouseout="hideTT()" />
+    <area shape="rect" coords="235,243,292,270" alt="Interpreter Context" href="#context" onmouseover="showTT('context')" onmouseout="hideTT()" />
+    <area shape="rect" coords="34,163,137,205" alt="Input Filter" href="#inputfilter" onmouseover="showTT('inputfilter')" onmouseout="hideTT()" />
+    <area shape="rect" coords="13,112,155,288" alt="Input Subsystem" href="#inputsubsystem" onmouseover="showTT('inputsubsystem')" onmouseout="hideTT()" />
+    <area shape="rect" coords="208,161,314,204" alt="Interpreter" href="#interpreter" onmouseover="showTT('interpreter')" onmouseout="hideTT()" />
+    <area shape="rect" coords="182,112,334,290" alt="Interpreter Subsystem" href="#interpretersubsystem" onmouseover="showTT('interpretersubsystem')" onmouseout="hideTT()"subsystem" />
+    <area shape="rect" coords="533,208,568,234" alt="DVI Writer" href="#dvi" onmouseover="showTT('dvi')" onmouseout="hideTT()" />
+    <area shape="rect" coords="532,250,566,276" alt="PDF Writer" href="#pdf" onmouseover="showTT('pdf')" onmouseout="hideTT()" />
+    <area shape="rect" coords="583,209,618,235" alt="PS Writer" href="#ps" onmouseover="showTT('pß)" onmouseout="hideTT()" />
+    <area shape="rect" coords="583,251,618,277" alt="EPS Writer" href="#eps" onmouseover="showTT('epß)" onmouseout="hideTT()" />
+    <area shape="rect" coords="634,209,669,236" alt="SVG Writer" href="#svg" onmouseover="showTT('svg')" onmouseout="hideTT()" />
+    <area shape="rect" coords="532,146,652,188" alt="Output Filter" href="#outputfilter" onmouseover="showTT('outputfilter')" onmouseout="hideTT()" />
+    <area shape="rect" coords="378,148,497,189" alt="Node Pipe" href="#nodepipe" onmouseover="showTT('nodepipe')" onmouseout="hideTT()" />
+    <area shape="rect" coords="376,222,496,263" alt="Document Writer" href="#documentwriter" onmouseover="showTT('documentwriter')" onmouseout="hideTT()" />
+    <area shape="rect" coords="361,111,683,289" alt="Backend" href="#backend" onmouseover="showTT('backend')" onmouseout="hideTT()" />
+    <area shape="rect" coords="29,235,137,279" alt="Scanner" href="#scanner" onmouseover="showTT('scanner')" onmouseout="hideTT()" />
+    <area shape="rect" coords="184,326,309,368" alt="Typesetter" href="#typesetter" onmouseover="showTT('typesetter')" onmouseout="hideTT()" />
+    <area shape="rect" coords="38,326,165,365" alt="Page Builder" href="#pagebuilder" onmouseover="showTT('pagebuilder')" onmouseout="hideTT()" />
+    <area shape="rect" coords="36,389,166,431" alt="Paragraph Builder" href="#paragraphbuilder" onmouseover="showTT('paragraphbuilder')" onmouseout="hideTT()" />
+    <area shape="rect" coords="184,391,310,432" alt="Ligature Builder" href="#ligaturebuilder" onmouseover="showTT('ligaturebuilder')" onmouseout="hideTT()" />
+    <area shape="rect" coords="117,449,247,491" alt="Hypenation" href="#hyphenation" onmouseover="showTT('hyphenation')" onmouseout="hideTT()" />
+    <area shape="rect" coords="9,300,337,507" alt="Typesetting Subsystem" href="#typesetting" onmouseover="showTT('typesetting')" onmouseout="hideTT()" />
+    <area shape="rect" coords="44,524,141,551" alt="Localizer" href="#localizer" onmouseover="showTT('localizer')" onmouseout="hideTT()" />
+    <area shape="rect" coords="216,525,315,552" alt="Generic Factory" href="#factory" onmouseover="showTT('factory')" onmouseout="hideTT()" />
+    <area shape="rect" coords="391,525,487,552" alt="Configuration Support" href="#configuration" onmouseover="showTT('configuration')" onmouseout="hideTT()" />
+    <area shape="rect" coords="565,525,661,551" alt="Resource Finder" href="#resourcefinder" onmouseover="showTT('resourcefinder')" onmouseout="hideTT()" />
+    <area shape="rect" coords="13,512,685,569" alt="Framework" href="#framework" onmouseover="showTT('framework')" onmouseout="hideTT()" />
+    <area shape="rect" coords="373,341,497,378" alt="Font" href="#font" onmouseover="showTT('font')" onmouseout="hideTT()" />
+    <area shape="rect" coords="530,324,566,350" alt="ExTeX Font Metrics" href="#efm" onmouseover="showTT('efm')" onmouseout="hideTT()" />
+    <area shape="rect" coords="581,324,618,350" alt="TeX Font Metrics" href="#tfm" onmouseover="showTT('tfm')" onmouseout="hideTT()" />
+    <area shape="rect" coords="630,323,670,351" alt="Adobe Font Metrics" href="#afm" onmouseover="showTT('afm')" onmouseout="hideTT()" />
+    <area shape="rect" coords="529,366,566,396" alt="TrueType Fonts" href="#ttf" onmouseover="showTT('ttf')" onmouseout="hideTT()" />
+    <area shape="rect" coords="581,365,618,393" alt="Virtual Fonts" href="#vf" onmouseover="showTT('vf')" onmouseout="hideTT()" />
+    <area shape="rect" coords="634,364,670,393" alt="PFB" href="#pfb" onmouseover="showTT('pfb')" onmouseout="hideTT()" />
+    <area shape="rect" coords="528,405,565,431" alt="OpenType Fonts" href="#otf" onmouseover="showTT('otf')" onmouseout="hideTT()" />
+    <area shape="rect" coords="382,435,491,474" alt="Font Family" href="#fontfamily" onmouseover="showTT('fontfamily')" onmouseout="hideTT()" />
+    <area shape="rect" coords="361,300,685,503" alt="Font Subsystem" href="#fontsubsystem" onmouseover="showTT('fontsubsystem')" onmouseout="hideTT()" />
    </map>
   </center>
 
-  <a name="main"></a><h2>Main Control</h2>
+  <a name="main"><h2>Main Control</h2>
   <p>
    The components of #ExTeX() are tied together by a main program.
    Currently a #TeX()-compatible command line program is provided as main
    program with #ExTeX(). This main program is pretty complete.
    Other main programs can be envisaged in the future.
   </p>
+  </a>
 
-  <a name="extex"></a><h2>#ExTeX() Instance</h2>
+  <a name="extex"><h2>#ExTeX() Instance</h2>
   <p>
    The #ExTeX() instance ties together the core functionality. It
    abstracts from any user interaction. This central component is
    fully functional.
   </p>
+  </a>
 
-  <a name="input-subsystem"></a><h2>Input Subsystem</h2>
+  <a name="inputsubsystem"><h2>Input Subsystem</h2>
   <p>
    The input subsystem is responsible for reading from an input
    stream and tokenizes it.
   </p>
+  </a>
 
-  <a name="inputfilter"></a><h3>Input Filter</h3>
+  <a name="inputfilter"><h3>Input Filter</h3>
   <p>
    Input filters can be used to preprocess the input stream before
    it is seen by the scanner. Currently no input filters are
    provided.
   </p>
+  </a>
 
-  <a name="scanner"></a><h3>Scanner</h3>
+  <a name="scanner"><h3>Scanner</h3>
   <p>
    Two implementations for the scanner are
    fully functional. They provide a #TeX()-compatible and an extended
    functionality. 
   </p>
+  </a>
 
-  <a name="interpreter-subsystem"></a><h2>Interpreter Subsystem</h2>
+  <a name="interpretersubsystem"><h2>Interpreter Subsystem</h2>
   <p>
    The interpreter subsystem provides a #TeX()-compatible macro
    processor. This is based on a context which contains the state of
    the whole engine &ndash; like the eqtable of #TeX().
   </p>
+  </a>
 
-  <a name="interpreter"></a><h2>Interpreter</h2>
+  <a name="interpreter"><h2>Interpreter</h2>
   <p>
    The interpreter is nearly complete. Registers, conditionals,
    macros, file IO &ndash; including a configurable <tt>\write18</tt> &ndash;
    are in place. Some functionality is not complete &ndash; like the
    outer flag for macros.
   </p>
+  </a>
 
-  <a name="context"></a><h2>Interpreter Context</h2>
+  <a name="context"><h2>Interpreter Context</h2>
   <p>
    There are two implementation of the context. One with the
    #TeX()-compatible set of registers and one with additional registers
@@ -125,8 +157,9 @@
    typesetting need further attention. Some extensions from #eTeX(),
    #pdfTeX(), and &Omega;  have already been implemented.
   </p>
+  </a>
 
-  <a name="backend"></a><h2>Backend</h2>
+  <a name="backend"><h2>Backend</h2>
   <p>
    The backend contains all components which process the page after
    the typesetting is complete. Usually this processing involves the
@@ -134,57 +167,66 @@
    some processing can be performed on the nodes before they are
    translated and on the byte stream after the translation.
   </p>
+  </a>
 
-  <a name="documentwriter"></a><h3>Document Writer</h3>
+  <a name="documentwriter"><h3>Document Writer</h3>
   <p>
    The document writer defines the translation of nodes into a
    native output format. Several implementations are provided.
    </p>
+  </a>
    
-  <a name="dvi"></a><h3>DVI Writer</h3>
+  <a name="dvi"><h3>DVI Writer</h3>
   <p>
    The DVI format is the original output format of #TeX(). #ExTeX()
    comes with two implementations to produce DVI. One is just for
    plain DVI and one includes support for dvips specials. Both are
    pretty complete.
   </p>
+  </a>
 
-  <a name="pdf"></a><h3>PDF Writer</h3>
+  <a name="pdf"><h3>PDF Writer</h3>
   <p>
    The first draft of a translation into PDF is present.
   </p>
+  </a>
 
-  <a name="ps"></a><h3>PS Writer</h3>
+  <a name="ps"><h3>PS Writer</h3>
   <p>
    A translation into PostScript format is present. The embedding of
    fonts is missing.
   </p>
+  </a>
 
-  <a name="eps"></a><h3>EPS Writer</h3>
+  <a name="eps"><h3>EPS Writer</h3>
   <p>
    A translation into encapsulated PostScript format is present. The
    embedding of fonts is missing.
   </p>
+  </a>
 
-  <a name="svg"></a><h3>SVG Writer</h3>
+  <a name="svg"><h3>SVG Writer</h3>
   <p>
    The SVG writer produces SVG files.
   </p>
+  </a>
 
-  <a name="nodepipe"></a><h3>Node Pipe</h3>
+  <a name="nodepipe"><h3>Node Pipe</h3>
   <p>
    The node pipe processes the nodes before they are translated to a
    native format.
   </p>
+  </a>
 
-  <a name="outputfilter"></a><h3>Output Filter</h3>
+  <a name="outputfilter"><h3>Output Filter</h3>
   <p>
    The concept of an ouput filter completes the chain of processing
    by manipulation on the level of the output format. This component
    is not implemented at all.
   </p>
+  </a>
 
-  <a name="typesetting"></a><h2>Typesetting Subsystem</h2>
+  <a name="typesetting"><h2>Typesetting Subsystem</h2>
   <p>
    The typesetting subsystem is responsible of taking a stream of
    nodes and producing pages. In the course of this action several
@@ -195,33 +237,38 @@
    The interfaces for the componets are defined. The implementation
    of several components has to be completed.
   </p>
+  </a>
 
-  <a name="typesetter"></a><h3>Typesetter</h3>
+  <a name="typesetter"><h3>Typesetter</h3>
   <p>
    The typesetter ties togeter the sub-components. It is fully
    functional.
   </p>
+  </a>
 
-  <a name="pagebuilder"></a><h3>Page Builder</h3>
+  <a name="pagebuilder"><h3>Page Builder</h3>
   <p>
    The page builder splits material off the main vertical list and
    ships it out as pages. A basic implementation id present. Further
    implementations have to be provided.
   </p>
+  </a>
 
-  <a name="paragraphbuilder"></a><h3>Paragraph Builder</h3>
+  <a name="paragraphbuilder"><h3>Paragraph Builder</h3>
   <p>
    The paragraph builder splits paragraphs into lines and aligns
    them properly. Several implementations are provided. One of them
    is a #TeX()-compatible reimplementation.
   </p>
+  </a>
 
-  <a name="ligaturebuilder"></a><h3>Ligature Builder</h3>
+  <a name="ligaturebuilder"><h3>Ligature Builder</h3>
   <p>
    The ligature builder inserts ligatures into the paragraph at hand.
   </p>
+  </a>
 
-  <a name="hyphenation"></a><h3>Hypenation</h3>
+  <a name="hyphenation"><h3>Hypenation</h3>
   <p>
    The hyphenation component encapsulates language specific
    processing of the paragraph at hand. The insertion of soft
@@ -229,8 +276,9 @@
    #TeX()-compatible implementation is present; Other implementations
    with enhanced functionality can be envisioned.
   </p>
+  </a>
 
-  <a name="fontsubsystem"></a><h2>Font Subsystem</h2>
+  <a name="fontsubsystem"><h2>Font Subsystem</h2>
   <p>
    The task of the font subsystem is to provide the information
    about the glyphs in a font. Various types of fonts should be
@@ -238,63 +286,73 @@
    Other types like vf fonts have to be completed or completely
    implemented. 
   </p>
+  </a>
 
-  <a name="font"></a><h3>Font</h3>
+  <a name="font"><h3>Font</h3>
   <p>
    Font is the generic interface to handle different kinds of fonts
    in #ExTeX(). A first implementation is present. A massive
    refactoring towards full support of Unicode fonts is under way.
   </p>
+  </a>
 
-  <a name="efm"></a><h3>#ExTeX() Font Metrics</h3>
+  <a name="efm"><h3>#ExTeX() Font Metrics</h3>
   <p>
    EFM provides a means to store the internal representation of a
    font for fast loading. This feaure is functional for the first
    generation of fonts.
   </p>
+  </a>
 
-  <a name="tfm"></a><h3>TeX Font Metrics</h3>
+  <a name="tfm"><h3>TeX Font Metrics</h3>
   <p>
    TFM files as defined by #TeX() can be read and used.
   </p>
+  </a>
 
-  <a name="afm"></a><h3>Adobe Font Metrics</h3>
+  <a name="afm"><h3>Adobe Font Metrics</h3>
   <p>
    AFM files can be read. A massive
    refactoring towards full support of Unicode fonts is under way.
   </p>
+  </a>
 
-  <a name="ttf"></a><h3>TrueType Fonts</h3>
+  <a name="ttf"><h3>TrueType Fonts</h3>
   <p>
    Truetype fonts can be read. A massive
    refactoring towards full support of Unicode fonts is under way.
   </p>
+  </a>
 
-  <a name="vf"></a><h3>Virtual Fonts</h3>
+  <a name="vf"><h3>Virtual Fonts</h3>
   <p>
    Virtal fonts can be read and used.
   </p>
+  </a>
 
-  <a name="pfb"></a><h3>PFB</h3>
+  <a name="pfb"><h3>PFB</h3>
   <p>
    PFB files can be read. A massive
    refactoring towards full support of Unicode fonts is under way.
   </p>
+  </a>
 
-  <a name="otf"></a><h3>OpenType Fonts</h3>
+  <a name="otf"><h3>OpenType Fonts</h3>
   <p>
    Work on OpenType fonts has been started.
   </p>
+  </a>
 
-  <a name="fontfamily"></a><h3>Font Family</h3>
+  <a name="fontfamily"><h3>Font Family</h3>
   <p>
    The concept of font families is known from macro packages like
    #LaTeX() on the other side target output formats like RTF use font
    families as well. Thus #ExTeX() will be extended to support font
    families in addition to solitary fonts.
   </p>
+  </a>
 
-  <a name="framework"></a><h2>Framework</h2>
+  <a name="framework"><h2>Framework</h2>
   <p>
    The implementation of #ExTeX() is based on a component framework.
    This component framework provides means for managing the
@@ -306,8 +364,9 @@
    The framework is pretty stable. The functionality needed is
    provided. This part can be considered complete.
   </p>
+  </a>
 
-  <a name="localizer"></a><h3>Localizer</h3>
+  <a name="localizer"><h3>Localizer</h3>
   <p>
    The localizer can be used to access resource bundles. It provides
    some convenience functionality for localizing, i.e. the
@@ -315,22 +374,25 @@
    language is English. This is fully functional. Some experiments
    with German have shown that the concept is vlaid and complete.
   </p>
+  </a>
 
-  <a name="factory"></a><h3>Generic Factory</h3>
+  <a name="factory"><h3>Generic Factory</h3>
   <p>
    The generic facory provides support for all kinds of factories.
    It automaticaly takes care of several cross cutting concerns like
    logging and configuration. The generic factory is completed.
   </p>
+  </a>
 
-  <a name="configuration"></a><h3>Configuration Support</h3>
+  <a name="configuration"><h3>Configuration Support</h3>
   <p>
    The configuration support can be used to configure an
    application. Currently an implementation based on an XML
    configuration is provided. This is fully functional.
   </p>
+  </a>
 
-  <a name="resourcefinder"></a><h3>Resource Finder</h3>
+  <a name="resourcefinder"><h3>Resource Finder</h3>
   <p>
    The start of processing consists of the finding of an input file.
    This applies to #TeX() documents, formats, fonts, etc. The task of
@@ -339,6 +401,6 @@
    implementations of file finders are present. They can be selected
    and combined in the configuration.
   </p>
-
+  </a>
 </body>
 </html>
