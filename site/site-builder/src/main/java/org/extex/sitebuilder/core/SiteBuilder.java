@@ -144,8 +144,8 @@ public class SiteBuilder {
     private String template = "org/extex/sitebuilder/site.vm";
 
     /**
-     * The field <tt>baseDirectory</tt> contains the name of the base
-     * directory for the files to be transformed.
+     * The field <tt>baseDirectory</tt> contains the name of the base directory
+     * for the files to be transformed.
      */
     private File baseDirectory = new File("src/site/html");
 
@@ -166,8 +166,8 @@ public class SiteBuilder {
     private Logger logger;
 
     /**
-     * The field <tt>omit</tt> contains the list of files and directories to
-     * be omitted.
+     * The field <tt>omit</tt> contains the list of files and directories to be
+     * omitted.
      */
     private List<String> omit = new ArrayList<String>();
 
@@ -548,7 +548,6 @@ public class SiteBuilder {
      * 
      * @throws Exception in case of an error
      */
-    @SuppressWarnings("static-access")
     private VelocityEngine makeEngine() throws Exception {
 
         VelocityEngine engine = new VelocityEngine();
