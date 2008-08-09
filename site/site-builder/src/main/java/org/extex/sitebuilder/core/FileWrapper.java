@@ -35,12 +35,14 @@ import java.io.Reader;
 public class FileWrapper extends File implements FileFilter {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>relativePath</tt> contains the ...
+     * The field <tt>relativePath</tt> contains the relative path to the top of
+     * the tree.
      */
     private String relativePath;
 
@@ -50,25 +52,33 @@ public class FileWrapper extends File implements FileFilter {
     private String title = null;
 
     /**
+     * The field <tt>depth</tt> contains the depth in the tree.
+     */
+    private int depth;
+
+    /**
      * Creates a new object.
      * 
-     * @param dir
+     * @param file the file
+     * @param relativePath the path to the top of the tree
      */
-    public FileWrapper(File dir) {
+    public FileWrapper(File file, String relativePath) {
 
-        this(dir, ".");
+        this(file, relativePath, 0);
     }
 
     /**
      * Creates a new object.
      * 
      * @param file the file
-     * @param relativePath
+     * @param relativePath the path to the top of the tree
+     * @param d the current depth in the tree
      */
-    protected FileWrapper(File file, String relativePath) {
+    private FileWrapper(File file, String relativePath, int d) {
 
         super(file.getParent(), file.getName());
         this.relativePath = relativePath;
+        depth = d;
     }
 
     /**
@@ -86,7 +96,7 @@ public class FileWrapper extends File implements FileFilter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the files and directories contained in this one.
      * 
      * @return the files in wrappers
      */
@@ -96,11 +106,23 @@ public class FileWrapper extends File implements FileFilter {
         FileWrapper[] result = new FileWrapper[files.length];
         int i = 0;
 
-        String path = relativePath.equals(".") ? ".." : relativePath + "/..";
+        String path = depth == 0 //
+                ? relativePath
+                : relativePath + "/" + getName();
         for (File f : files) {
-            result[i++] = new FileWrapper(f, path);
+            result[i++] = new FileWrapper(f, path, depth + 1);
         }
         return result;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the full name relative to the root
+     */
+    public String getRelativeName() {
+
+        return relativePath + "/" + getName();
     }
 
     /**

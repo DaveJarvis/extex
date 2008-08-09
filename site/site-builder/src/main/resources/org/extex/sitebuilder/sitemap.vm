@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-#macro(directory)
-  #foreach( $item in $directory )
-   <div class="dir">
-     <a href="$item.getName()">$item.getName()</a>
-   </div>
-  #end
-#end
 #macro(scanDir $dir)
   <ul class="sitemap">
   #foreach( $item in $dir.files() )
-    <li><a href="$item.getRelativePath()/$item.getName()">$item.getTitle()</a>
-     #if($item.isDirectory())
+    #if($item.isDirectory())
+    <li><a href="$item.getRelativeName()/index.html">$item.getTitle()</a>
        #scanDir($item)
-     #end
-     </li>
+    #else
+    <li><a href="$item.getRelativeName()">$item.getTitle()</a>
+    #end
+    </li>
   #end
   </ul>
 #end

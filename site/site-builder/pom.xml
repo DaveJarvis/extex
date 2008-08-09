@@ -139,6 +139,7 @@
       <id>gene</id>
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de/</url>
       <roles>
         <role>developer</role>
         <role>build manager</role>

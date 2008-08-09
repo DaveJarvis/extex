@@ -9,7 +9,8 @@ body {
   padding:0pt;
 }
 body.header {
-  background:#126094 url("../image/head.png");
+/*  background:#126094 url("../image/head.png");
+*/
   margin:0pt;
   padding:0pt;
 }
@@ -141,7 +142,9 @@ div.top {
   padding:6pt 16pt 0px 16pt;
   margin:0pt;
   text-align:left;
+  /*
   background: white url(../image/head.png) repeat-x;
+  */
   min-width:700px;
 }
 .logo {
@@ -169,37 +172,42 @@ div.ad {
 .tabOffL,.tabOffR,.tabOnL,.tabOnR {
   width:0px;
   font-size:1px;
-  padding:0pt 0pt 0pt 13px;
+  padding:20px 0pt 0pt 30px;
   margin:0pt;
+  border-top:1px solid black            ;
 }
 .tabOff,.tabOn {
   font-size:75%;
   font-weight:bold;
   margin:0pt;
-  padding:4pt 0pt 4pt 0pt;
+  padding:20px 0pt 4pt 0pt;
+  border-top:1px dashed #333333;
+  border-left:1px dashed #333333;
+  border-right:1px dashed #333333;
 }
 .tabOff {
   color:#333333;
-  background:#dddddd url("../image/tab-off.png") repeat-x;
+  background:#dddddd url("../image/head-line/tab.png") repeat-x;
 }
 .tabOffL {
-  background:#dddddd url("../image/tab-off-l.png") no-repeat;
+  background:#dddddd url("../image/head-line/tab-l.png") no-repeat;
 }
 .tabOffR {
-  background:#dddddd url("../image/tab-off-r.png") no-repeat;
+  background:#dddddd url("../image/head-line/tab-r.png") no-repeat;
 }
 .tabOn {
   color:black;
-  background:#e9d965 url("../image/tab-on.png") repeat-x;
+  background:#e9d965 url("../image/head-line/tab-off.png") repeat-x;
 }
 .tabOnL {
-  background:#e9d965 url("../image/tab-on-l.png") no-repeat;
+  background:#e9d965 url("../image/head-line/tab-off-l.png") no-repeat;
 }
 .tabOnR {
-  background:#e9d965 url("../image/tab-on-r.png") no-repeat;
+  background:#e9d965 url("../image/head-line/tab-off-r.png") no-repeat;
 }
 .tabSep {
-  background:#e9d965 url("../image/sep.png");
+  height:2px;
+  background-color:white;
   line-height:6pt;
   margin:0pt;
   padding:0pt;

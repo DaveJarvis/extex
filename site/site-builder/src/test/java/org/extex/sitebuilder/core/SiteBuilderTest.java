@@ -28,7 +28,7 @@ import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class contains the entry point to the site builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,7 +36,7 @@ import org.junit.Test;
 public class SiteBuilderTest {
 
     /**
-     * The field <tt>handler</tt> contains the ...
+     * The field <tt>handler</tt> contains the log handler.
      */
     private Handler handler = new Handler() {
 

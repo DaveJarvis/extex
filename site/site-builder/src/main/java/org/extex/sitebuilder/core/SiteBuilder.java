@@ -54,7 +54,6 @@ import org.apache.velocity.context.Context;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
-import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.JdkLogChute;
 import org.apache.velocity.runtime.log.LogChute;
 import org.xml.sax.SAXException;
@@ -105,35 +104,6 @@ public class SiteBuilder {
     };
 
     /**
-     * The field <tt>ls</tt> contains the adapter for the logging.
-     */
-    private LogChute logChute = new LogChute() {
-
-        public void init(RuntimeServices rs) throws Exception {
-
-            //
-        }
-
-        public boolean isLevelEnabled(int level) {
-
-            return false;
-        }
-
-        public void log(int id, String message) {
-
-            Level l = levelMap.get(Integer.valueOf(id));
-            logger.log(l != null ? l : Level.FINER, message);
-        }
-
-        public void log(int id, String message, Throwable cause) {
-
-            Level l = levelMap.get(Integer.valueOf(id));
-            logger.log(l != null ? l : Level.FINER, message, cause);
-        }
-
-    };
-
-    /**
      * The field <tt>siteMap</tt> contains the name of the site map file.
      */
     private File siteMap = null;
@@ -177,7 +147,7 @@ public class SiteBuilder {
     private List<String> lib = new ArrayList<String>();
 
     /**
-     * The field <tt>sitemapTempate</tt> contains the ...
+     * The field <tt>sitemapTempate</tt> contains the template for the site map.
      */
     private String sitemapTempate = "org/extex/sitebuilder/sitemap.vm";
 
@@ -227,6 +197,7 @@ public class SiteBuilder {
             stream.close();
         }
 
+        context.put("relatvePath", ".");
         context.put("headContent", "");
         context.put("bodyContent", "");
         String head = applyFindTag("head", engine, buffer, context);
@@ -401,7 +372,7 @@ public class SiteBuilder {
         context.put("headContent", "");
         context.put("bodyContent", "");
         context.put("relativePath", ".");
-        context.put("targetDirectory", new FileWrapper(targetDirectory));
+        context.put("targetDirectory", new FileWrapper(targetDirectory, "."));
         siteMap.getParentFile().mkdirs();
         Writer writer = new BufferedWriter(new FileWriter(siteMap));
         try {
