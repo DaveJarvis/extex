@@ -13,13 +13,6 @@
     This is ExTeX documentation.
   </description>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>extex</artifactId>
-    <version>SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-
   <repositories>
     <repository>
       <id>extexSnapshots</id>
@@ -34,6 +27,10 @@
       </snapshots>
     </repository>
   </repositories>
+
+  <modules>
+   <module>DevelopersGuide</module>
+  </modules>
 
   <developers>
     <developer>
