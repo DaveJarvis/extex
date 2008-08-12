@@ -2,11 +2,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <artifactId>ExBib-Documentation</artifactId>
-  <name>ExBib documentation</name>
+  <groupId>org.extex</groupId>
+  <artifactId>ExTeX-Developers-Guide</artifactId>
+  <name>ExTeX Developers Guide</name>
   <description>
-    This is the ExBib documentation.
+    This is the ExTeX Developers Guide.
   </description>
 
   <version>0.1-SNAPSHOT</version>
@@ -17,13 +17,6 @@
   <properties>
     <basename>extex-developers</basename>
   </properties>
-
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>ExBib</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
 
   <dependencies>
     <dependency>
@@ -54,11 +47,11 @@
                 <argument>-output-directory=${project.build.directory}</argument>
                 <argument>${basename}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/manual.out</outputFile>
+              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
             </configuration>
           </execution>
 
@@ -79,7 +72,7 @@
                 <argument>--logfile=${project.build.directory}/${basename}.blg</argument>
                 <argument>${project.build.directory}/${basename}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
             </configuration>
           </execution>
 
@@ -100,7 +93,7 @@
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/manual.out</outputFile>
+              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
             </configuration>
           </execution>
 
@@ -117,11 +110,11 @@
                 <argument>-output-directory=${project.build.directory}</argument>
                 <argument>${basename}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/manual.out</outputFile>
+              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
             </configuration>
           </execution>
 
@@ -138,50 +131,17 @@
                 <argument>-output-directory=${project.build.directory}</argument>
                 <argument>${basename}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/manual.out</outputFile>
+              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
             </configuration>
           </execution>
 
         </executions>
       </plugin>
 
-<!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <configuration>
-              <tasks>
-                <echo message="moving files to target"/>
-                <move todir="${basedir}/target">
-                  <fileset dir="${basedir}/src/main/tex/manual">
-                    <include name="*.log"/>
-                    <include name="*.aux"/>
-                    <include name="*.blg"/>
-                    <include name="*.bbl"/>
-                    <include name="*.idx"/>
-                    <include name="*.ind"/>
-                    <include name="*.ilg"/>
-                    <include name="*.toc"/>
-                    <include name="*.out"/>
-                    <include name="*.pdf"/>
-                  </fileset>
-                </move>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
--->
     </plugins>
   </build>
 
