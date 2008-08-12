@@ -1,0 +1,219 @@
+%%*****************************************************************************
+%% $Id: chapter-directory.tex 5718 2007-05-28 19:00:01Z gene $
+%%*****************************************************************************
+%%
+%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%%
+%% This library is free software; you can redistribute it and/or modify it
+%% under the terms of the GNU Lesser General Public License as published by the
+%% Free Software Foundation; either version 2.1 of the License, or (at your
+%% option) any later version.
+%%
+%% This library is distributed in the hope that it will be useful, but WITHOUT
+%% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+%% for more details.
+%%
+%% You should have received a copy of the GNU Lesser General Public License
+%% along with this library; if not, write to the Free Software Foundation,
+%% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+%%
+%%*****************************************************************************
+%% @author Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\chapter{The Source Tree Organization}
+
+In this section the description of the directory hierarchy is
+contained. This structure is oriented on the structuring proposed by
+Maven (\url{http://maven.apache.org}).
+
+
+\section{The Toplevel Directory}
+
+The toplevel directory of an \ExTeX\ project contains the sub-projects
+of \ExTeX. The sources are organized in components with predefined
+dependencies. Those components are Eclipse projects as well as Maven
+modules.
+
+The components are cotained in directories staring with
+\texttt{ExTeX-}. In addition some directories contain additional
+material, the build system, or the web pages.
+
+The following is an excpert of the modules present in the top-level
+directory.
+
+{
+\begin{multicols}3 \footnotesize\sf\obeylines
+  ExTeX-Backend-dump
+  ExTeX-Backend-dvi
+  ExTeX-Backend-dvix
+  ExTeX-Backend-pdfbox
+  ExTeX-Backend-ps
+  ExTeX-Backend-rtf
+  ExTeX-Backend-svg
+  ExTeX-Backend-text
+  ExTeX-Backend-xml
+  ExTeX-Font
+  ExTeX-Font-API
+  ExTeX-Font-afm
+  ExTeX-Font-otf
+  ExTeX-Font-tfm
+  ExTeX-Interpreter-API
+  ExTeX-Interpreter-max
+  ExTeX-Main-fmt
+  ExTeX-Main-tex
+  ExTeX-Scanner
+  ExTeX-Scanner-API
+  ExTeX-Scanner32
+  ExTeX-Typesetter-API
+  ExTeX-Typesetter-tex
+  ExTeX-Unit-color
+  ExTeX-Unit-etex
+  ExTeX-Unit-extex
+  ExTeX-Unit-image
+  ExTeX-Unit-namespace
+  ExTeX-Unit-native
+  ExTeX-Unit-omega
+  ExTeX-Unit-pdftex
+  ExTeX-Unit-tex
+  ExTeX-base
+  ExTeX-base-ext
+  ExTeX-core
+  ExTeX-fontware
+  build
+  develop
+  doc
+  library
+  texmf
+  util
+  www
+\end{multicols}
+}
+
+
+Some of the modules will be described in the following sections.
+
+
+\section{\texttt{ExTeX-*}: Components}
+
+Those sub-directories starting with \texttt{ExTeX-} are considered to
+contain source code for modules. Internally it is organized according
+to the Maven conventions. Thus the following sub-directories may be
+present:
+
+\begin{description}
+\item[src/main/java] \ \\
+  This directory contains the Java source code and additional files
+  meant for documenting it with Javadoc. Note that other files will
+  not be copied to the classpath or included into the jar.
+\item[src/main/resources] \ \\
+  This directory contains files which are copied to the output
+  directory and included in the jar. For instance properties and XML
+  configurations files for the productive version are contained here.
+\item[src/test/java] \ \\
+  This directory contains Java source code for the tests. These are
+  JUnit test cases and test suites as well as supporting files. These
+  files are not contained in the jar and not be present in the
+  productive environment. Note that non-Java files will not be copied
+  to the outut directory and thus they will not be present during the
+  tests.
+\item[src/test/resources] \ \\
+  This directory contains files which are copied to the output
+  directory for test files.
+\item[src/site] \ \\
+  This directory contains files included into the site produced by
+  Maven. This site describes the result of building and testing the
+  current module.
+\item[src/target] \ \\
+  This directory contains files generated during the build process.
+  Thus this directory is excluded from the Subversion repository.
+\item[src/target/classes] \ \\
+  This directory continas the classes and files for the productive
+  environment.
+\item[src/target/test-classes] \ \\
+  This directory contains the additional classes and files for the
+  tests.
+\end{description}
+
+Note that Eclipse does not provide a fine-grained differentiation as
+proposed above. Thus many files will be placed in the same output
+directory. As a consequence some constellations might run under
+Eclipse and produce a result which is different from the one in a
+productive environment.
+
+Until Maven is fully integrated the following directories may contain
+third-party libraries needed for the differet phases:
+
+
+
+\begin{description}
+\item[lib] \ \\
+  These libraries are needed for production.
+\item[src/test/lib] \ \\
+  These libraries are needed for tests only.
+\end{description}
+
+
+\section{\texttt{build}: The Build System}
+
+The directory \texttt{build} contains the build system for \ExTeX.
+This means all nuts and bolds needed for the build exclusively are
+located here.
+
+
+\section{\texttt{doc}: Documentation}
+
+The directory \texttt{doc} contains documentation written for \ExTeX.
+
+\begin{description}
+\item[DevelopersGuide] 
+\item[Library] 
+\item[Publications] 
+\item[UsersGuide] 
+\item[models] 
+\item[notes] 
+\end{description}
+
+
+\section{\texttt{library}: Collected Works}
+
+The sub-directory \texttt{library} contains documents not written
+within the \ExTeX\ project. Interesting papers on \TeX\ and friends
+might be found here.
+
+
+
+\section{\texttt{util}: Utilities}
+
+This directory contains vairous utitlies and scripts.
+
+\begin{description}
+\item[Installer] 
+\end{description}
+
+\section{\texttt{develop}: Development Support}
+
+This directory contains some files needed for development. This
+document references some of those.
+
+\begin{description}
+\item[eclipse] 
+\item[lib] 
+\end{description}
+
+\section{\texttt{Sandbox-*}: User's Working Area}
+
+Any developer may have some files in the project area which are not
+yet ready for production. Nevertheless it might be desirable to have
+them incuded in the Subversion repository.  For this purpose the
+directory \texttt{Sandbox-*} is reserved where * is one of the user
+ids of the committer.
+
+\section{\texttt{www}: The Web Site}
+
+This directory contains the source files for the web site for \ExTeX.
+
+\begin{description}
+\item[src] 
+\end{description}
+

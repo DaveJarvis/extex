@@ -1,0 +1,122 @@
+%%*****************************************************************************
+%% $Id: extex-developers.tex 5720 2007-05-28 19:00:36Z gene $
+%%*****************************************************************************
+%%
+%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%%
+%% This library is free software; you can redistribute it and/or modify it
+%% under the terms of the GNU Lesser General Public License as published by the
+%% Free Software Foundation; either version 2.1 of the License, or (at your
+%% option) any later version.
+%%
+%% This library is distributed in the hope that it will be useful, but WITHOUT
+%% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+%% for more details.
+%%
+%% You should have received a copy of the GNU Lesser General Public License
+%% along with this library; if not, write to the Free Software Foundation,
+%% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+%%
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%% Author: Michael Niedermair
+%%-----------------------------------------------------------------------------
+\documentclass{extex-doc}
+
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{makeidx}
+
+\def\setVersion$#1: #2 ${\gdef\Version{#2}}
+\setVersion$Revision: 5720 $
+
+\newcommand\menu{\textsf}
+\newcommand\sub{\(\rightarrow\) }
+
+\makeindex
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}\parindent=0pt
+
+  \title{Developer's Guide}
+  \author{Gerd Neugebauer\\[2ex]%
+    Michael Niedermair\\[2ex]%
+    With contribtions of Bastien Roucaries}
+  \maketitle
+
+  \begin{center}
+    \begin{abstract}\parindent=0pt
+      This document describes some basic steps to develop and test
+      \ExTeX.  It is meant for newcomers to the project or people who
+      want to evaluate \ExTeX\ by inspecting the sources.
+    \end{abstract}
+  \end{center}
+  \newpage
+  \footnotesize
+  \copyright\ 2005-2008 The \ExTeX\ Group and individual authors listed below
+  \medskip
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation. A copy of
+the license is included in the section entitled ``GNU Free
+Documentation License''.
+\bigskip
+
+This product includes software developed by the Apache Software
+Foundation (\url{http://www.apache.org/}).
+
+\vfill
+
+Gerd Neugebauer\\
+Im Lerchelsb\"ohl 5\\
+64521 Gro\ss-Gerau (Germany)
+\smallskip\par
+\href{mailto://gene@gerd-neugebauer.de}{gene@gerd-neugebauer.de}
+\bigskip
+
+Michael Niedermair
+\smallskip\par
+\href{mailto://m.g.n@gmx.de}{m.g.n@gmx.de}
+\bigskip
+
+Bastien Roucaries
+\smallskip\par
+\href{mailto://roucaries.bastien@gmail.com}{roucaries.bastien@gmail.com}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%------------------------------------------------------------------------------
+
+\input{chapter-intro}
+\input{chapter-prerequisites}
+\input{chapter-ide}
+\input{chapter-documentation}
+\input{chapter-testing}
+\input{chapter-directory}
+\input{chapter-howto}
+\input{chapter-web}
+\input{chapter-licenses}
+
+%------------------------------------------------------------------------------
+\appendix
+%------------------------------------------------------------------------------
+\chapter{Licenses}
+\input{fdl}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\printindex
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables:
+% mode: latex
+% TeX-master: nil
+% End:
