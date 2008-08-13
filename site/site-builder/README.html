@@ -6,10 +6,25 @@
   <style>
 body {
   background-color:white;
-  font-family: sans-serif;
+  font-family:sans-serif;
   margin-left:150px;
   margin-right:2em;
   background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
 }
 .left {
   position:absolute;
@@ -37,12 +52,12 @@ pre {
 <body>
 <img class="left" src="src/images/ExTeX-site-builder-side.png"/>
 
-<h1>The &epsilon;&chi;T<sub>E</sub>X Site Builder</h1>
+<h1>The &epsilon;&chi;T<span class="e">e</span>X Site Builder</h1>
 
 <p>
- The site for &epsilon;&chi;T<sub>E</sub>X is created from a set of sources.
- This creation utilizes <a href="http://velocity.apache.org">Apache velocity</a>
- as templating engine.
+ The site for &epsilon;&chi;T<span class="e">e</span>X is created from a set of
+ sources. This creation utilizes <a href="http://velocity.apache.org">Apache
+ velocity</a> as templating engine.
 </p>
 <p>
  The following kind of files are created:
@@ -57,28 +72,28 @@ pre {
 
 <p>
  The &epsilon;&chi;Bib installer can be created in this directory with the help
- of Maven2:
+ of <a href="http://maven.apache.org">Maven2</a>:
 </p>
 <pre>
   # <b>mvn package</b>
 </pre>
 <p>
-This command requires that <a
-href="http://maven.apache.org">Maven2</a> is properly installed on
-your system and the executable can be found on the search path.
+ This command requires that <a
+ href="http://maven.apache.org">Maven2</a> is properly installed on
+ your system and the executable can be found on the search path.
 </p>
 <p>
-After a successful completion of the command the site can be found
-in the directory <a href="target/site/"><tt>target/site</tt><a>. 
+ After a successful completion of the command the site can be found
+ in the directory <a href="target/site/"><tt>target/site</tt><a>. 
 </p>
 <p>
-If the build fails the verbose log messages of Maven can be used to
-determine the problem. Usually just reading the messages leads you
-into the right direction.
+ If the build fails the verbose log messages of Maven can be used to
+ determine the problem. Usually just reading the messages leads you
+ into the right direction.
 </p>
 
 <address>
-© 2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;T<sub>E</sub>X Group</a>
+© 2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;T<span class="e">e</span>X Group</a>
 </address>
 </body>
 </html>
