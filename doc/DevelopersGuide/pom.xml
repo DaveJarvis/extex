@@ -15,7 +15,8 @@
   <url>http://www.extex.org</url>
 
   <properties>
-    <basename>extex-developers</basename>
+    <doc.file>extex-developers</doc.file>
+    <doc.dir>dev-guide</doc.dir>
   </properties>
 
   <dependencies>
@@ -45,13 +46,13 @@
               <arguments>
                 <argument>-halt-on-error</argument>
                 <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${basename}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
 
@@ -68,11 +69,11 @@
                 <classpath/>
                 <argument>org.extex.exbib.main.ExBibMain</argument>
                 <argument>--quiet</argument>
-                <argument>-Dtexinputs=${basedir}/../src/main/texinputs/bibtex${path.separator}${basedir}/../src/main/bibtex</argument>
-                <argument>--logfile=${project.build.directory}/${basename}.blg</argument>
-                <argument>${project.build.directory}/${basename}</argument>
+                <argument>-Dtexinputs=${basedir}/../src/main/texinputs/bibtex${path.separator}${basedir}/../src/main/bibtex${path.separator}${basedir}/src/main/bibtex</argument>
+                <argument>--logfile=${project.build.directory}/${doc.file}.blg</argument>
+                <argument>${project.build.directory}/${doc.file}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
             </configuration>
           </execution>
 
@@ -87,13 +88,13 @@
               <arguments>
                 <argument>-s</argument>
                 <argument>../../src/main/texinputs/makeindex/doc.ist</argument>
-                <argument>${basename}.idx</argument>
+                <argument>${doc.file}.idx</argument>
               </arguments>
               <workingDirectory>${project.build.directory}</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
 
@@ -108,13 +109,13 @@
               <arguments>
                 <argument>-halt-on-error</argument>
                 <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${basename}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
 
@@ -129,13 +130,13 @@
               <arguments>
                 <argument>-halt-on-error</argument>
                 <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${basename}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/dev-guide</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
                 <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${project.build.directory}/dev-guide.out</outputFile>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
 
