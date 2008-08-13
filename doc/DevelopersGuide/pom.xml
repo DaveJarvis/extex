@@ -50,7 +50,7 @@
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
-                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
               <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
@@ -113,7 +113,7 @@
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
-                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
               <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
@@ -134,7 +134,7 @@
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
               <environmentVariables>
-                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
               </environmentVariables>
               <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>

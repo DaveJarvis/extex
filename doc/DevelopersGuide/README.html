@@ -11,6 +11,24 @@ body {
   margin-right:2em;
   background: url(src/main/image/side.png) repeat-y;
 }
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
 .left {
   position:absolute;
   top:0;
@@ -39,7 +57,7 @@ pre {
 <body>
 <img class="left" src="src/main/image/dev-guide-side.png"/>
 
-<h1>The &epsilon;&chi;T<sub>E</sub>X Developer's Guide</h1>
+<h1>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Developer's Guide</h1>
 
 <p>
 </p>
@@ -72,12 +90,15 @@ pre {
        +&mdash; main/
             +&mdash; bibtex/
             |    +&mdash; references.bib
+            +&mdash; tex/
+            |    +&mdash; license/
+            |         +&mdash; ...
             +&mdash; texinputs/
                  +&mdash; bibtex/
                  |    +&mdash; alpha.bst
                  +&mdash; makeindex/
                  |    +&mdash; doc.ist
-                 +&mdash; extex.doc.cls
+                 +&mdash; extex-doc.cls
 </pre>
 
 
@@ -85,14 +106,14 @@ pre {
 
 <p>
  Currently the building of the Developer's Guide relies on an externally
- installed T<sub>E</sub>X system. The commands <tt>pdftex</tt> and
+ installed T<span class="e">e</span>X system. The commands <tt>pdftex</tt> and
  <tt>makeindex</tt> are used. &epsilon;&chi;Bib is used as bibliography
  processor. Other components of &epsilon;&chi;T<sub>E</sub>X will be plugged in
  as soon as they are ready.
 </p>
 <p>
- The &epsilon;&chi;T<sub>E</sub>X developer's guide can be created in this
- directory with the help of <a
+ The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X developer's
+ guide can be created in this directory with the help of <a
  href="http://maven.apache.org">Maven2</a>. As a prerequisite the Maven module 
  <tt>ExBib-Main</tt> needs to be accessible at least from the local repository.
  This is accomplished by
@@ -108,7 +129,7 @@ pre {
  connection is required to download all artifacts not present locally.
 </p>
 <p>
- Then the pdf can be generated with the following command:
+ Then the PDF file can be generated with the following command:
 </p>
 <pre>
   # <b>mvn compile</b>
