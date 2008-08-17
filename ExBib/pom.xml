@@ -9,7 +9,10 @@
   <inceptionYear>2007</inceptionYear>
   <url>http://www.extex.org</url>
   <description>
-   ExBib the BibTeX compatible database
+   ExBib is the BibTeX compatible database developed within the
+   context of ExTeX. ExBib is prepared to be used as a plug-in
+   replacement for BibTeX as well as from within other environments
+   like Ant.
   </description>
 
   <organization>
@@ -157,6 +160,20 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>clean</id>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -196,6 +213,11 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <configLocation>../develop/eclipse/checkstyle42.cfg</configLocation>
@@ -214,6 +236,7 @@
         </configuration>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
@@ -223,6 +246,7 @@
           <range>90</range>
         </configuration>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -241,6 +265,25 @@
             <excludeRoot>target/generated-sources/stubs</excludeRoot>
           </excludeRoots>
         </configuration> 
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <xmlOutput>true</xmlOutput>
+        </configuration>
       </plugin>
 
     </plugins>
