@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.StringWriter;
 
-import org.extex.doctools.pomCollector.Main;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -72,6 +72,7 @@ public class MainTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public final void testAll() throws Exception {
 
         Main main = new Main();
