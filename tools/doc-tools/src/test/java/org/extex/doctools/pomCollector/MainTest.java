@@ -19,7 +19,11 @@
 package org.extex.doctools.pomCollector;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.io.StringWriter;
 
 import org.junit.Ignore;
@@ -32,6 +36,14 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class MainTest {
+
+    /**
+     * The field <tt>EXPECTED_DOT</tt> contains the ...
+     */
+    private static final String EXPECTED_DOT =
+            "%%\n\\begin{PomList}\n"
+                    + "  \\begin{Pom}{org.extex}{doc-tools}{Doc Tools}\\end{Pom}\n"
+                    + "\\end{PomList}\n%%\n";
 
     /**
      * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
@@ -57,13 +69,10 @@ public class MainTest {
 
         Main main = new Main();
         main.addBase(".");
+        main.omit(".svn");
         StringWriter w = new StringWriter();
         main.run(w);
-        assertEquals(
-            "%%\n\\begin{PomList}\n"
-                    + "  \\begin{Pom}{org.extex}{PomCollector}{Pom Collector}\\end{Pom}\n"
-                    + "\\end{PomList}\n%%\n", //
-            w.toString().replaceAll("\r", ""));
+        assertEquals(EXPECTED_DOT, w.toString().replaceAll("\r", ""));
     }
 
     /**
@@ -82,6 +91,207 @@ public class MainTest {
         main.run(w);
         assertEquals("%%\n\\begin{PomList}??\\end{PomList}\n%%\n", w.toString()
             .replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI1() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            Main main = new Main();
+            main.omit(".svn");
+            main.run(new String[]{"."});
+            System.out.flush();
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI2() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            Main main = new Main();
+            main.omit(".svn");
+            main.run(new String[]{"-", "."});
+            System.out.flush();
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI3() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            Main main = new Main();
+            main.omit(".svn");
+            main.run(new String[]{"-out", "-", "."});
+            System.out.flush();
+            assertNull(main.getOutput());
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI4() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            Main main = new Main();
+            main.omit(".svn");
+            main.run(new String[]{"-out", "", "."});
+            System.out.flush();
+            assertNull(main.getOutput());
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI5() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            Main main = new Main();
+            main.run(new String[]{"-omit", ".svn", "-out", "", "."});
+            System.out.flush();
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownArgumentException.class)
+    public final void testError1() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-xyzzy"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MissingArgumentException.class)
+    public final void testError2() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-out"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MissingArgumentException.class)
+    public final void testError3() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-omit"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MissingArgumentException.class)
+    public final void testError4() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-xsl"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MissingArgumentException.class)
+    public final void testError5() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = FileNotFoundException.class)
+    public final void testErrorXls1() throws Exception {
+
+        Main main = new Main();
+        main.run(new String[]{"-xsl", "this.does.not.exist"});
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = FileNotFoundException.class)
+    public final void testErrorXls2() throws Exception {
+
+        Main main = new Main();
+        main.setXslt("this.does.not.exist");
+        main.run(new String[]{"."});
     }
 
 }

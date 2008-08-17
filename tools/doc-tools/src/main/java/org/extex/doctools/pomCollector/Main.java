@@ -132,6 +132,25 @@ public class Main {
     }
 
     /**
+     * Get the next argument and complain if none is found.
+     * 
+     * @param args the array of arguments
+     * @param i the index of the next argument
+     * 
+     * @return the next argument
+     * 
+     * @throws MissingArgumentException in case of a missing argument
+     */
+    private String nextArgument(String[] args, int i)
+            throws MissingArgumentException {
+
+        if (i >= args.length) {
+            throw new MissingArgumentException(args[i - 1]);
+        }
+        return args[i];
+    }
+
+    /**
      * Add a file to be omitted.
      * 
      * @param name the name
@@ -171,7 +190,9 @@ public class Main {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Traverse a set of directory hierarchies collecting poms and store the
+     * transformed result in a given output file. If no output file has been
+     * given then the result is written to stdout.
      * 
      * @throws IOException in case of an I/O error
      * @throws SAXException in case of a SAX exception
@@ -203,7 +224,7 @@ public class Main {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Traverse a directory tree and collect the POMs in a buffer.
      * 
      * @param file the file to consider
      * @param buffer the output writer
@@ -212,9 +233,7 @@ public class Main {
      */
     private void run(File file, StringBuilder buffer) throws IOException {
 
-        if (!file.isDirectory()) {
-            return;
-        } else if (omit.contains(file.getName())) {
+        if (omit.contains(file.getName())) {
             return;
         }
 
@@ -229,7 +248,7 @@ public class Main {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Process a list of strings like the command line options.
      * 
      * @param args the arguments
      * 
@@ -241,7 +260,7 @@ public class Main {
      * @throws MissingArgumentException
      * @throws UnknownArgumentException
      */
-    private void run(String[] args)
+    public void run(String[] args)
             throws IOException,
                 ParserConfigurationException,
                 TransformerFactoryConfigurationError,
@@ -253,11 +272,14 @@ public class Main {
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             if (arg.startsWith("-")) {
-                if ("-output".startsWith(arg)) {
-                    if (++i >= args.length) {
-                        throw new MissingArgumentException(arg);
-                    }
-                    output = args[i];
+                if ("-".equals(arg)) {
+                    bases.add(nextArgument(args, ++i));
+                } else if ("-output".startsWith(arg)) {
+                    setOutput(nextArgument(args, ++i));
+                } else if ("-omit".startsWith(arg)) {
+                    omit.add(nextArgument(args, ++i));
+                } else if ("-xsl".startsWith(arg)) {
+                    xslt = nextArgument(args, ++i);
                 } else {
                     throw new UnknownArgumentException(arg);
                 }
@@ -270,7 +292,8 @@ public class Main {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Traverse a set of directory trees collecting poms and write the
+     * transformed result to the given writer.
      * 
      * @param writer the writer for the output
      * 
@@ -296,7 +319,10 @@ public class Main {
         buffer.append("<top>");
 
         for (String base : bases) {
-            run(new File(base), buffer);
+            File dir = new File(base);
+            if (dir.isDirectory()) {
+                run(dir, buffer);
+            }
         }
 
         buffer.append("</top>");
@@ -308,13 +334,14 @@ public class Main {
     }
 
     /**
-     * Setter for the output.
+     * Setter for the output. The empty string and the string containing a '-'
+     * only are treated as <code>null</code>.
      * 
      * @param output the output to set
      */
     public void setOutput(String output) {
 
-        this.output = output;
+        this.output = "".equals(output) || "-".equals(output) ? null : output;
     }
 
     /**
