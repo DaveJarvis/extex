@@ -16,29 +16,58 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.doctools.pomCollector;
+package org.extex.doctools;
+
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals a missing argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnknownArgumentException extends Exception {
+public class MissingArgumentException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
      * 
-     * @param message
+     * @param message the message
      */
-    public UnknownArgumentException(String message) {
+    public MissingArgumentException(String message) {
 
         super(message);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
+
+        return MessageFormat.format(bundle.getString("message"), super
+            .getMessage());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#toString()
+     */
+    @Override
+    public String toString() {
+
+        return getLocalizedMessage();
     }
 
 }
