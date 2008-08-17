@@ -4,8 +4,8 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>PomCollector</artifactId>
-  <name>Pom Collector</name>
+  <artifactId>doc-tools</artifactId>
+  <name>Doc Tools</name>
   <version>1.0</version>
   <url>http://maven.apache.org</url>
 

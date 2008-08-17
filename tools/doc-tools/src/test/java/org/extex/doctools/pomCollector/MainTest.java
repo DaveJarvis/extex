@@ -16,12 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.tool.pomCollector;
+package org.extex.doctools.pomCollector;
 
 import static org.junit.Assert.assertEquals;
 
 import java.io.StringWriter;
 
+import org.extex.doctools.pomCollector.Main;
 import org.junit.Test;
 
 /**
@@ -33,7 +34,7 @@ import org.junit.Test;
 public class MainTest {
 
     /**
-     * Test method for {@link org.extex.tool.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
      * 
      * @throws Exception in case of an error
      */
@@ -47,7 +48,7 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.tool.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +67,7 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.tool.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
      * 
      * @throws Exception in case of an error
      */
