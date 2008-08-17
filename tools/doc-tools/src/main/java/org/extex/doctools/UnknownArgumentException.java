@@ -22,7 +22,7 @@ import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals a unknown argument.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,7 +30,8 @@ import java.util.ResourceBundle;
 public class UnknownArgumentException extends Exception {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2008L;
 
