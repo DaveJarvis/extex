@@ -58,7 +58,7 @@ import org.xml.sax.SAXException;
  * <dt><tt>- &lt;base&gt;</tt></dt>
  * <dd>Use this argument as base name &ndash; even when it looks like an option.
  * </dd>
- * <dt><tt>-o[utout] &lt;file&gt;</tt></dt>
+ * <dt><tt>-o[utput] &lt;file&gt;</tt></dt>
  * <dd>Use this argument as output file name.</dd>
  * <dt><tt>-om[it] &lt;name&gt;</tt></dt>
  * <dd>Add the argument to the list of omitted files and directories.</dd>
