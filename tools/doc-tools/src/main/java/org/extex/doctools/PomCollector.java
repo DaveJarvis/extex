@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.doctools.pomCollector;
+package org.extex.doctools;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -40,31 +40,65 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import org.extex.doctools.MissingArgumentException;
-import org.extex.doctools.UnknownArgumentException;
 import org.xml.sax.SAXException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class contains the main program to collect the POMs is a set of base
+ * directories.
+ * <p>
+ * </p>
+ * <p>
+ * Usage: <tt>java org.extex.doctools.pomCollector.Main </tt><i>&lt;options&gt;
+ * bases</i>
+ * </p>
+ * <p>
+ * The following options are supported:
+ * </p>
+ * <dl>
+ * <dt><tt>- &lt;base&gt;</tt></dt>
+ * <dd>Use this argument as base name &ndash; even when it looks like an option.
+ * </dd>
+ * <dt><tt>-o[utout] &lt;file&gt;</tt></dt>
+ * <dd>Use this argument as output file name.</dd>
+ * <dt><tt>-om[it] &lt;name&gt;</tt></dt>
+ * <dd>Add the argument to the list of omitted files and directories.</dd>
+ * <dt><tt>-x[sl] &lt;xsl file&gt;</tt></dt>
+ * <dd>Name the XSL resource for processing the collected POMs. The XSL file is
+ * sought on the classpath.</dd>
+ * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Main {
+public class PomCollector {
 
     /**
-     * The command line interface.
+     * The command line interface. The command line is processed. Finally
+     * {@link System#exit(int)} is invoked.
      * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        System.exit(mainFacade(args));
+    }
+
+    /**
+     * The command line interface facade. Any exception is caught and a message
+     * written to {@link System#err}. Then an exit code is returned.
+     * 
+     * @param args the command line arguments
+     * 
+     * @return the exit code; i.e. 0 for success and -1 for failure
+     */
+    public static int mainFacade(String[] args) {
+
         try {
-            new Main().run(args);
-            System.exit(0);
+            new PomCollector().run(args);
+            return 0;
         } catch (Exception e) {
             System.err.println(e.toString());
-            System.exit(-1);
+            return -1;
         }
     }
 
@@ -92,6 +126,11 @@ public class Main {
      */
     private static final FileFilter DIR_FILTER = new FileFilter() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.io.FileFilter#accept(java.io.File)
+         */
         public boolean accept(File f) {
 
             return f.isDirectory();
@@ -101,7 +140,7 @@ public class Main {
     /**
      * The field <tt>xslt</tt> contains the name of the xslt resource.
      */
-    private String xslt = Main.class.getName().replace('.', '/') + ".xsl";
+    private String xslt = PomCollector.class.getName().replace('.', '/') + ".xsl";
 
     /**
      * Add a base directory.
@@ -255,12 +294,12 @@ public class Main {
      * @param args the arguments
      * 
      * @throws IOException in case of an I/O error
-     * @throws ParserConfigurationException
-     * @throws TransformerFactoryConfigurationError
-     * @throws TransformerException
-     * @throws SAXException
-     * @throws MissingArgumentException
-     * @throws UnknownArgumentException
+     * @throws ParserConfigurationException in case of an error
+     * @throws TransformerFactoryConfigurationError in case of an error
+     * @throws TransformerException in case of a transformer error
+     * @throws SAXException in case of a SAX error
+     * @throws MissingArgumentException in case of an error
+     * @throws UnknownArgumentException in case of an error
      */
     public void run(String[] args)
             throws IOException,

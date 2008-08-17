@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.doctools.pomCollector;
+package org.extex.doctools;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.StringWriter;
 
+import org.extex.doctools.PomCollector;
 import org.extex.doctools.MissingArgumentException;
 import org.extex.doctools.UnknownArgumentException;
 import org.junit.Ignore;
@@ -37,10 +38,11 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainTest {
+public class PomCollectorTest {
 
     /**
-     * The field <tt>EXPECTED_DOT</tt> contains the ...
+     * The field <tt>EXPECTED_DOT</tt> contains the result for analyzing the
+     * current directory.
      */
     private static final String EXPECTED_DOT =
             "%%\n\\begin{PomList}\n"
@@ -48,7 +50,7 @@ public class MainTest {
                     + "\\end{PomList}\n%%\n";
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
@@ -56,20 +58,20 @@ public class MainTest {
     public final void test1() throws Exception {
 
         StringWriter w = new StringWriter();
-        new Main().run(w);
+        new PomCollector().run(w);
         assertEquals("%%\n\\begin{PomList}\\end{PomList}\n%%\n", //
             w.toString().replaceAll("\r", ""));
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void test2() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.addBase(".");
         main.omit(".svn");
         StringWriter w = new StringWriter();
@@ -78,7 +80,7 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
@@ -86,7 +88,7 @@ public class MainTest {
     @Ignore
     public final void testAll() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.addBase("../..");
         main.omit(".svn");
         StringWriter w = new StringWriter();
@@ -96,18 +98,18 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCLI1() throws Exception {
+    public final void testCLI01() throws Exception {
 
         PrintStream out = System.out;
         ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         try {
             System.setOut(new PrintStream(myOut));
-            Main main = new Main();
+            PomCollector main = new PomCollector();
             main.omit(".svn");
             main.run(new String[]{"."});
             System.out.flush();
@@ -119,18 +121,18 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCLI2() throws Exception {
+    public final void testCLI02() throws Exception {
 
         PrintStream out = System.out;
         ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         try {
             System.setOut(new PrintStream(myOut));
-            Main main = new Main();
+            PomCollector main = new PomCollector();
             main.omit(".svn");
             main.run(new String[]{"-", "."});
             System.out.flush();
@@ -142,18 +144,18 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCLI3() throws Exception {
+    public final void testCLI03() throws Exception {
 
         PrintStream out = System.out;
         ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         try {
             System.setOut(new PrintStream(myOut));
-            Main main = new Main();
+            PomCollector main = new PomCollector();
             main.omit(".svn");
             main.run(new String[]{"-out", "-", "."});
             System.out.flush();
@@ -166,18 +168,18 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCLI4() throws Exception {
+    public final void testCLI04() throws Exception {
 
         PrintStream out = System.out;
         ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         try {
             System.setOut(new PrintStream(myOut));
-            Main main = new Main();
+            PomCollector main = new PomCollector();
             main.omit(".svn");
             main.run(new String[]{"-out", "", "."});
             System.out.flush();
@@ -190,18 +192,18 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCLI5() throws Exception {
+    public final void testCLI05() throws Exception {
 
         PrintStream out = System.out;
         ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         try {
             System.setOut(new PrintStream(myOut));
-            Main main = new Main();
+            PomCollector main = new PomCollector();
             main.run(new String[]{"-omit", ".svn", "-out", "", "."});
             System.out.flush();
         } finally {
@@ -212,86 +214,131 @@ public class MainTest {
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI11() throws Exception {
+
+        PrintStream out = System.out;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            assertEquals(0, PomCollector.mainFacade(new String[]{"-omit", ".svn", "."}));
+            System.out.flush();
+        } finally {
+            System.setOut(out);
+        }
+
+        assertEquals(EXPECTED_DOT, myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testCLI12() throws Exception {
+
+        PrintStream out = System.out;
+        PrintStream err = System.err;
+        ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        try {
+            System.setOut(new PrintStream(myOut));
+            System.setErr(new PrintStream(myOut));
+            assertEquals(-1, PomCollector.mainFacade(new String[]{"-omit"}));
+        } finally {
+            System.setOut(out);
+            System.setErr(err);
+        }
+
+        assertEquals("Option `-omit needs an argument.\n", //
+            myOut.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = UnknownArgumentException.class)
     public final void testError1() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-xyzzy"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentException.class)
     public final void testError2() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-out"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentException.class)
     public final void testError3() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-omit"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentException.class)
     public final void testError4() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-xsl"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = MissingArgumentException.class)
     public final void testError5() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = FileNotFoundException.class)
     public final void testErrorXls1() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.run(new String[]{"-xsl", "this.does.not.exist"});
     }
 
     /**
-     * Test method for {@link org.extex.doctools.pomCollector.Main#run()}.
+     * Test method for {@link org.extex.doctools.PomCollector#run()}.
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = FileNotFoundException.class)
     public final void testErrorXls2() throws Exception {
 
-        Main main = new Main();
+        PomCollector main = new PomCollector();
         main.setXslt("this.does.not.exist");
         main.run(new String[]{"."});
     }
