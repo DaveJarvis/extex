@@ -48,7 +48,7 @@ import org.xml.sax.SAXException;
  * <p>
  * </p>
  * <p>
- * Usage: <tt>java org.extex.doctools.pomCollector.Main </tt><i>&lt;options&gt;
+ * Usage: <tt>java org.extex.doctools.PomCollector </tt><i>&lt;options&gt;
  * bases</i>
  * </p>
  * <p>
@@ -140,7 +140,8 @@ public class PomCollector {
     /**
      * The field <tt>xslt</tt> contains the name of the xslt resource.
      */
-    private String xslt = PomCollector.class.getName().replace('.', '/') + ".xsl";
+    private String xslt =
+            PomCollector.class.getName().replace('.', '/') + ".xsl";
 
     /**
      * Add a base directory.
