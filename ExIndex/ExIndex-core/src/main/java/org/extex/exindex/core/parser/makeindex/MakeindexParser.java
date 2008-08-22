@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.parser.makeindex;
@@ -47,8 +46,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This parser is a reader for input in the form of the <logo>makeindex</logo>
  * format and some extensions of it.
  * 
- * <doc section="Makeindex Index Format">
- * <h2>The <logo>makeindex</logo> Raw Index Format</h2>
+ * <doc section="Makeindex Index Format"> <h2>The <logo>makeindex</logo> Raw
+ * Index Format</h2>
  * 
  * <p>
  * The raw index format for <logo>makeindex</logo> is used to parse the input
@@ -87,10 +86,10 @@ import org.extex.framework.i18n.LocalizerFactory;
  * range of applications.
  * </p>
  * <p>
- * The original need to introduce the parameters is the flexibility of <logo>TeX</logo>.
- * In <logo>TeX</logo> the category codes of characters can be redefined. Thus
- * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
- * such a situation.
+ * The original need to introduce the parameters is the flexibility of
+ * <logo>TeX</logo>. In <logo>TeX</logo> the category codes of characters can be
+ * redefined. Thus <logo>makeindex</logo> needs to be able to adjust its
+ * behavior to cope with such a situation.
  * </p>
  * <p>
  * The following table shows the parameters with their <logo>ExIndex</logo>
@@ -261,7 +260,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * c.
  * </p>
  * 
- * <doc>
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -384,7 +383,8 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * Gather the parameters from an interpreter. If the interpreter does not
      * have an appropriate value then a fallback is used. The following
-     * parameters are used by this parser: <br/> <table>
+     * parameters are used by this parser: <br/>
+     * <table>
      * <tr>
      * <th>Name</th>
      * <th>Fallback</th>

@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.parser.xindy;
@@ -44,8 +43,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This parser is a reader for input in the form of the xindy raw index format
  * and some extensions of it.
  * 
- * <doc section="Raw Index Format">
- * <h2>The Extended xindy Raw Index Format</h2>
+ * <doc section="Raw Index Format"> <h2>The Extended xindy Raw Index Format</h2>
  * <p>
  * The basic syntax is the Lisp syntax with the backslash character as escape
  * character in strings. Semicolon initiates an end-line comment.
@@ -156,9 +154,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  *  (indexentry :key ("alpha" "$\alpha$") :locref "A-123")   </pre>
  * 
  * <p>
- * In addition the flags <tt>:open-range</tT> and <tt>:close-range</tt> can
- * be used to signal that the entry corresponds to a range and is the beginning
- * or the end of such a range. Not both of them can be given in one entry.
+ * In addition the flags <tt>:open-range</tt> and <tt>:close-range</tt> can be
+ * used to signal that the entry corresponds to a range and is the beginning or
+ * the end of such a range. Not both of them can be given in one entry.
  * </p>
  * <p>
  * The other type of reference is a cross reference. It refers to another entry
@@ -177,7 +175,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <pre>
  *  (indexentry :key ("alpha" "$\alpha$") :xref "greek")   </pre>
  * 
- * <doc>
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -190,8 +188,8 @@ public class XindyParser extends LParser implements RawIndexParser {
     private static final LSymbol ATTR = LSymbol.get(":attr");
 
     /**
-     * The constant <tt>CLOSE_RANGE</tt> contains the symbol for the
-     * close-range flag.
+     * The constant <tt>CLOSE_RANGE</tt> contains the symbol for the close-range
+     * flag.
      */
     private static final LSymbol CLOSE_RANGE = LSymbol.get(":close-range");
 
@@ -201,8 +199,8 @@ public class XindyParser extends LParser implements RawIndexParser {
     private static final LSymbol INDEX = LSymbol.get(":index");
 
     /**
-     * The constant <tt>INDEXENTRY</tt> contains the symbol for the index
-     * entry head.
+     * The constant <tt>INDEXENTRY</tt> contains the symbol for the index entry
+     * head.
      */
     private static final LSymbol INDEXENTRY = LSymbol.get("indexentry");
 
