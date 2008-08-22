@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -62,7 +62,7 @@ import org.extex.typesetter.type.node.CenteredLeadersNode;
  * Note that there are also the primitives <tt>\xleaders</tt> and
  * <tt>\leaders</tt> which provide essentially the same functionality but
  * adjust the material within the final space differently.
- * <p>
+ * </p>
  * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:

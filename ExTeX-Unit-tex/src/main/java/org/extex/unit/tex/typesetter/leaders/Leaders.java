@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,6 +45,7 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * 
  * <doc name="leaders">
  * <h3>The Primitive <tt>\leaders</tt></h3>
+ * <p>
  * The primitive <tt>\leaders</tt> is a leaders construction which aligns the
  * material on an imaginary grid on the page. The primitive takes as the first
  * argument a box or rule. The second argument is a horizontal or vertical skip
@@ -84,7 +85,7 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * Note that there are also the primitives <tt>\cleaders</tt> and
  * <tt>\xleaders</tt> which provide essentially the same functionality but
  * adjust the material within the final space differently.
- * <p>
+ * </p>
  * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
