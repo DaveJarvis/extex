@@ -94,7 +94,7 @@ import org.extex.resource.ResourceFinderFactory;
  * </p>
  * 
  * <dl>
- * <dt><a name="-style"><tt>--style &lang;style-file&rang;</tt><br />
+ * <dt><a name="-style"/><tt>--style &lang;style-file&rang;</tt></dt>
  * <dd>This parameter contains the name of the style to use. The style contains
  * instructions which control the behavior of <logo>ExIndex</logo>. Several
  * styles are supported. The program can read makeindex styles (*.ist) as well
@@ -110,88 +110,86 @@ import org.extex.resource.ResourceFinderFactory;
  * <dd>This parameter contains the raw index file to read from. A file name may
  * start with any character since it is protected by the prefix <tt>--</tt>.</dd>
  * 
- * <dt><a name="-input"><tt>--input &lang;raw-file&rang;</tt><br />
+ * <dt><a name="-input"/><tt>--input &lang;raw-file&rang;</tt></dt>
  * <dd>This parameter contains the raw index file to read from. A file name may
  * start with any character since it is protected by the prefix <tt>--input</tt>
  * . The file name has no default. several input file can be given in one of the
  * three forms. If no input file is given the program reads from standard input.
  * The empty raw file is also interpreted as standard input.</dd>
  * 
- * <dt><a name="-output"><tt>--output &lang;index-file&rang;</tt><br />
+ * <dt><a name="-output"/><tt>--output &lang;index-file&rang;</tt></dt>
  * <dd>This parameter names the output file to write the structured index to. If
  * not given ...</dd>
  * 
- * <dt><a name="-transcript"><tt>--transcript &lang;transcript file&rang;</tt>
- * <br />
+ * <dt><a name="-transcript"/><tt>--transcript &lang;transcript file&rang;</tt></dt>
  * <dd>This parameter requests that the log is sent to a file as well as to the
  * console.</dd>
  * 
- * <dt><a name="-quiet"><tt>--quiet</tt><br />
+ * <dt><a name="-quiet"/><tt>--quiet</tt></dt>
  * <dd>This parameter disables the informative output to the console. It a
  * transcript is requested it will be used otherwise the program is deadly
  * silent.</dd>
  * 
- * <dt><a name="-Charset"><tt>--Charset &lang;charset-name&rang;</tt><br />
+ * <dt><a name="-Charset"/><tt>--Charset &lang;charset-name&rang;</tt></dt>
  * <dd>This parameter can be used to set the character set to be used when
  * reading raw index files. If the charset-name is empty the platform default
  * will be used. All raw index files are read with the same charset. The default
  * value is utf-8.</dd>
  * 
- * <dt><a name="-collate-spaces"><tt>--collate-spaces</tt><br />
+ * <dt><a name="-collate-spaces"/><tt>--collate-spaces</tt></dt>
  * <dd>This parameter instructs the program to delete spaces from the sort key.</dd>
  * 
- * <dt><a name="-Encoding"><tt>-Encoding &lang;encoding-name&rang;</tt><br />
+ * <dt><a name="-Encoding"/><tt>-Encoding &lang;encoding-name&rang;</tt></dt>
  * <dd>This parameter can be used to set the character set to be used when
  * reading style files. All style files share the same character set. If the
  * encoding-name is empty the platform default will be used. The default is
  * utf-8.</dd>
  * 
- * <dt><a name="-Module"><tt>--Module &lang;module-name&rang;</tt><br />
+ * <dt><a name="-Module"/><tt>--Module &lang;module-name&rang;</tt></dt>
  * <dd>This instruction can be used to load the named module.</dd>
  * 
- * <dt><a name="-filter"><tt>--filter &lang;filter-name&rang;</tt><br />
+ * <dt><a name="-filter"/><tt>--filter &lang;filter-name&rang;</tt></dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-german"><tt>--german</tt><br />
+ * <dt><a name="-german"/><tt>--german</tt></dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-r"><tt>--r</tt><br />
+ * <dt><a name="-r"/><tt>--r</tt></dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-letter-ordering"><tt>--letter-ordering</tt><br />
+ * <dt><a name="-letter-ordering"/><tt>--letter-ordering</tt></dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-page"><tt>--page &lang;page&rang;</tt><br />
+ * <dt><a name="-page"/><tt>--page &lang;page&rang;</tt></dt>
  * <dd>...</dd>
  * 
- * <dt><a name="-trace"><tt>--trace</tt><br />
+ * <dt><a name="-trace"/><tt>--trace</tt></dt>
  * <dd>This parameter instructs the program to emit tracing output.</dd>
  * 
- * <dt><a name="-Log-level"><tt>--Log-level &lang;level&rang;</tt><br />
+ * <dt><a name="-Log-level"/><tt>--Log-level &lang;level&rang;</tt></dt>
  * <dd>This parameter can be used to set the log level to a given value.
  * Possible levels are 0, 1, and 2.</dd>
  * 
- * <dt><a name="-help"><tt>--help</tt></a></dt>
+ * <dt><a name="-help"/><tt>--help</tt></dt>
  * <dd>This command line option produces a short usage description on the
  * standard output stream and terminates the program afterwards.</dd>
  * 
  * <!--
  * 
  * <dt><a name="-progname"/><tt>- -progname &lang;name&rang;</tt><br />
- * <tt>-progname=&lang;name&rang;</tt> </a></dt>
+ * <tt>-progname=&lang;name&rang;</tt></dt>
  * <dd>This parameter can be used to overrule the name of the program shown in
  * the banner and the version information.</dd>
  * 
- * <dt><a name="-copyright"><tt>- -copyright</tt></a></dt>
+ * <dt><a name="-copyright"/><tt>- -copyright</tt></dt>
  * <dd>This command line option produces a copyright notice on the standard
  * output stream and terminates the program afterwards.</dd>
  * 
  * 
  * <dt><a name="-texinputs"/><tt>- -texinputs &lang;path&rang;</tt><br />
- * <tt>-texinputs=&lang;path&rang;</tt> </a></dt>
+ * <tt>-texinputs=&lang;path&rang;</tt></dt>
  * <dd>This parameter contains the additional directories for searching
  * <logo>exindex</logo> input files.</dd>
- * </dd>
  * 
  * -->
  * 
