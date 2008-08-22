@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,13 +44,14 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * TODO missing documentation
  * 
  * <h4>Syntax</h4>
+ * <p>
  * The formal description of this primitive is the following:
+ * </p>
  * 
  * <pre class="syntax">
  *    &lang;odelimiter&rang;
  *       &rarr; <tt>\odelimiter</tt> &lang;delcode&rang; </pre>
  * 
- * </p>
  * 
  * <h4>Examples</h4>
  * 
