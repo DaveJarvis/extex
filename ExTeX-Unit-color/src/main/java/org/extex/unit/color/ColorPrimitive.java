@@ -132,7 +132,6 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <p>
  * </p>
- * </p>
  * 
  * <pre class="TeXSample">
  *    \color rgb {1 .2 .3333}  </pre>
@@ -148,8 +147,6 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \color alpha 500 rgb {\r \b \g} </pre>
- * 
- * <p>
  * 
  * </doc>
  * 
