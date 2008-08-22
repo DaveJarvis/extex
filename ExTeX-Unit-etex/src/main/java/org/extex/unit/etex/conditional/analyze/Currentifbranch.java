@@ -61,13 +61,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * 
  * <h4>Syntax</h4>
+ * <p>
  * The formal description of this primitive is the following:
+ * </p>
  * 
  * <pre class="syntax">
  *    &lang;currentifbranch&rang;
  *     &rarr; <tt>\currentifbranch</tt> </pre>
- * 
- * </p>
  * 
  * <h4>Examples</h4>
  * 

@@ -157,13 +157,14 @@ import org.extex.unit.tex.conditional.Ifx;
  * </p>
  * 
  * <h4>Syntax</h4>
+ * <p>
  * The formal description of this primitive is the following:
+ * </p>
  * 
  * <pre class="syntax">
  *    &lang;currentiftype&rang;
  *     &rarr; <tt>\currentiftype</tt> </pre>
  * 
- * </p>
  * 
  * <h4>Examples</h4>
  * 
