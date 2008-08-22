@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.command;
@@ -32,8 +31,7 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to trace the markup.
  * 
- * <doc command="markup-trace">
- * <h3>The Command <tt>markup-trace</tt></h3>
+ * <doc command="markup-trace"> <h3>The Command <tt>markup-trace</tt></h3>
  * 
  * <p>
  * The command <tt>markup-trace</tt> can be used to control the tracing of the
@@ -56,28 +54,28 @@ import org.extex.exindex.lisp.type.value.LValue;
  *  (markup-trace :on)   </pre>
  * 
  * <p>
- * The tracing is initially off. With the argument <tt>:on</tt> it can be
- * turned on. When the tracing is on the description of the markup is printed on
- * the output stream in addition to the contents of the structured index.
+ * The tracing is initially off. With the argument <tt>:on</tt> it can be turned
+ * on. When the tracing is on the description of the markup is printed on the
+ * output stream in addition to the contents of the structured index.
  * </p>
  * 
  * <pre>
- *  (markup-trace :on :open ">" :close "<")   </pre>
+ *  (markup-trace :on :open "&gt;" :close "&lt;")   </pre>
  * 
  * <p>
- * The arguments <tt>:open</tt> and <tt>:close</tt> can be used to specify
- * the strings which should precede and follow the symbolic name. The default
- * for <tt>:open</tt> is <tt>&lt;</tt> and the default for <tt>:close</tt>
- * is <tt>&gt;</tt>.
+ * The arguments <tt>:open</tt> and <tt>:close</tt> can be used to specify the
+ * strings which should precede and follow the symbolic name. The default for
+ * <tt>:open</tt> is <tt>&lt;</tt> and the default for <tt>:close</tt> is
+ * <tt>&gt;</tt>.
  * </p>
  * 
  * <pre>
- *  (markup-trace :on :open "%  <" :close ">~n")   </pre>
+ *  (markup-trace :on :open "%  &lt;" :close "&gt;~n")   </pre>
  * 
  * <p>
  * To neutralize the effect on the processed output <tt>:open</tt> and
- * <tt>:close</tt> can be defined to include the tracing information as
- * comment into the generated sources of the structured index.
+ * <tt>:close</tt> can be defined to include the tracing information as comment
+ * into the generated sources of the structured index.
  * </p>
  * 
  * <p>
@@ -85,11 +83,11 @@ import org.extex.exindex.lisp.type.value.LValue;
  * </p>
  * 
  * <pre>
- * <INDEX:OPEN>
- *   <LETTER-GROUP-LIST:OPEN>
+ * &lt;INDEX:OPEN&gt;
+ *   &lt;LETTER-GROUP-LIST:OPEN&gt;
  *   &hellip;
- *   <LETTER-GROUP-LIST:CLOSE>
- * <INDEX:CLOSE>   </pre>
+ *   &lt;LETTER-GROUP-LIST:CLOSE&gt;
+ * &lt;INDEX:CLOSE&gt;   </pre>
  * 
  * </doc>
  * 
