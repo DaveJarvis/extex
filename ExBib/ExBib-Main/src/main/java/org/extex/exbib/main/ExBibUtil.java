@@ -68,7 +68,8 @@ import org.extex.resource.ResourceFinderFactory;
  * </p>
  * <dl>
  * <dt>-[-] &lang;file&rang;</dt>
- * <dd>Use this argument as file name -- even when it looks like an option.</dd>
+ * <dd>Use this argument as file name &ndash; even when it looks like an option.
+ * </dd>
  * <dt>--au[xfile] | --ex[tract] | -x &lang;file&rang;</dt>
  * <dd>Use this argument as file name of an aux file to get databases and
  * citations from.</dd>
@@ -90,9 +91,9 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
- * <dd>Redirect the output to the file given. <br />
- * The file name - can be used to redirect to stdout <br />
- * The empty file name can be used to discard the output completely</dd>
+ * <dd>Redirect the output to the file given. <br /> The file name - can be used
+ * to redirect to stdout <br /> The empty file name can be used to discard the
+ * output completely</dd>
  * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lang;program&rang;</dt>
  * <dd>Set the program name for messages.</dd>
@@ -114,8 +115,7 @@ import org.extex.resource.ResourceFinderFactory;
 public final class ExBibUtil extends AbstractMain {
 
     /**
-     * The field <tt>LOG_EXTENSION</tt> contains the extension for the log
-     * file.
+     * The field <tt>LOG_EXTENSION</tt> contains the extension for the log file.
      */
     private static final String LOG_EXTENSION = ".blg";
 
@@ -148,8 +148,8 @@ public final class ExBibUtil extends AbstractMain {
     public static final String PROP_ENCODING = "exbib.encoding";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the name of the property to
-     * carry the configuration.
+     * The field <tt>PROP_CONFIG</tt> contains the name of the property to carry
+     * the configuration.
      */
     protected static final String PROP_CONFIG = "exbib.config";
 

@@ -53,7 +53,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dt><tt>-D&lt;property&gt;=&lt;value&gt;</tt></dt>
  * <dd>Set the property to a given value.</dd>
  * <dt><tt>-[-] &lt;file&gt;</tt></dt>
- * <dd>Use this argument as file name -- even when it looks like an option.</dd>
+ * <dd>Use this argument as file name &ndash; even when it looks like an option.
+ * </dd>
  * <dt><tt>--a[vailableCharsets] | -a</tt></dt>
  * <dd>List the available encoding names and exit.</dd>
  * <dt><tt>--bib-[encoding] | --bib.[encoding] | -E &lt;enc&gt;</tt></dt>
@@ -83,9 +84,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * &lt;n&gt;</tt></dt>
  * <dd>Set the value for min.crossrefs. The default is 2.</dd>
  * <dt><tt>--o[utfile] | --outp[ut] | -o &lt;file&gt;</tt></dt>
- * <dd>Redirect the output to the file given. <br />
- * The file name - can be used to redirect to stdout <br />
- * The empty file name can be used to discard the output completely</dd>
+ * <dd>Redirect the output to the file given. <br /> The file name - can be used
+ * to redirect to stdout <br /> The empty file name can be used to discard the
+ * output completely</dd>
  * <dt><tt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lt;program&gt;</tt></dt>
  * <dd>Set the program name for messages.</dd>
@@ -94,8 +95,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dt><tt>--r[elease] | -r</dt>
  * <dd>Print the release number and exit.</dd>
  * <dt><tt>--so[rter] | -s &lt;sort&gt;</tt></dt>
- * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or
- * <tt>csf:ascii.</tt></dd>
+ * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or <tt>csf:ascii.</tt></dd>
  * <dt><tt>--b[ibtex] | --s[trict]</tt></dt>
  * <dd>Use the configuration for BibTeX 0.99c.</dd>
  * <dt><tt>--tr[ace] | -t</tt></dt>
