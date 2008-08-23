@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -104,16 +104,16 @@ import org.extex.typesetter.type.node.GlueNode;
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *     &amp;langeverymath&amp;rang
- *       &amp;rarr
+ *     &lang;everymath&rang;
+ *       &rarr;
  * <tt>
  * \everymath
  * </tt>
  *  {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *         &amp;langequals&amp;rang} {@linkplain
+ *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
- *         &amp;langtokens&amp;rang}
+ *         &lang;tokens&rang;}
  * </pre>
  * 
  * <h4>Examples</h4>
@@ -136,16 +136,16 @@ import org.extex.typesetter.type.node.GlueNode;
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *     &amp;langeverymathend&amp;rang
- *       &amp;rarr
+ *     &lang;everymathend&rang;
+ *       &rarr;
  * <tt>
  * \everymathend
  * </tt>
  *  {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *         &amp;langequals&amp;rang} {@linkplain
+ *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
- *         &amp;langtokens&amp;rang}
+ *         &lang;tokens&rang;}
  * </pre>
  * 
  * <h4>Examples</h4>
