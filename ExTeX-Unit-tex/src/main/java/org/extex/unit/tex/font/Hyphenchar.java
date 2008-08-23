@@ -70,7 +70,7 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * <h4>Incompatibility</h4>
  * <p>
- * The TeXbook gives no indication ow the primitive should react for negative
+ * The <logo>TeX</logo>book gives no indication ow the primitive should react for negative
  * values &ndash; except -1. The implementation of <logo>TeX</logo> allows to
  * store and retrieve arbitrary negative values. This behavior of <logo>TeX</logo>
  * is not preserved in <logo>ExTeX</logo>.
