@@ -525,16 +525,9 @@ public class PrimitiveCollector {
             case Node.ENTITY_REFERENCE_NODE:
             case Node.ENTITY_NODE:
                 String name = node.getNodeName();
-                if ("amp".equals(name) || "lt".equals(name)
-                        || "gt".equals(name)) {
-                    buffer.append("&");
-                    buffer.append(name);
-                    buffer.append(";");
-                } else {
-                    buffer.append("<");
-                    buffer.append(name);
-                    buffer.append("/>");
-                }
+                buffer.append("&");
+                buffer.append(name);
+                buffer.append(";");
                 break;
             case Node.PROCESSING_INSTRUCTION_NODE:
             case Node.COMMENT_NODE:
@@ -637,7 +630,7 @@ public class PrimitiveCollector {
     };
 
     /**
-     * TODO gene: missing JavaDoc
+     * Traverse a directory tree and search for Java files.
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
@@ -673,10 +666,11 @@ public class PrimitiveCollector {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Post-process a buffer to translate it to XML.
      * 
-     * @param buffer
-     * @return
+     * @param buffer the buffer; it is modified in the course of translation
+     * 
+     * @return the XML form
      */
     private String javadoc2xml(StringBuilder buffer) {
 
@@ -886,11 +880,11 @@ public class PrimitiveCollector {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Process a unit.
      * 
-     * @param f
-     * @param name
-     * @param root
+     * @param f the file
+     * @param name the name
+     * @param root the root node
      * @param dir the base directory
      */
     private void processUnit(File f, String name, Element root, File dir) {
