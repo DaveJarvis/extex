@@ -84,7 +84,7 @@ foreach my $m (@modules) {
     my $file = $_;
     s|.*/(.*)\.xml|$1|;
     $cfg{$_} = $file;
-    print STDERR "--- Got configuration $_ -> $file" if $verbose;
+    print STDERR "--- Got configuration $_ -> $file\n" if $verbose;
   }
 }
 
