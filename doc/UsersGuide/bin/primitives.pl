@@ -201,13 +201,20 @@ sub processPrimitives {
   my ($out, $name, $file) = @_;
   my %prim = ();
   local $_;
+  
+  $file .= ".xml" if not $file =~ m/.xml$/ and not -e $file;
+  if (not -r $file)
+  {
+  	print STDERR "$file: file not found.\n";
+  	return;
+  }
   print $out <<__EOF__;
 \\subsubsection{The Primitive Unit \\texttt{$name}}
 
 The primitive unit \\texttt{$name} defines the following primitives:
 \\begin{primitives}
 __EOF__
-  my $fd = new FileHandle($file,'r') || die "$file:$!\n";
+  my $fd = new FileHandle($file,'r') || die "$file:$! (unit $name)\n";
   while (<$fd>) {
     chomp;
     $_ = $_ . "\n";
