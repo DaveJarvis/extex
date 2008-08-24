@@ -220,7 +220,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * <h4>Examples</h4>
      * 
      * <pre class="TeXSample">
-     *     &tilde;
+     *     ~
      * </pre>
      * 
      * <p>
