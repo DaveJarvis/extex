@@ -340,33 +340,24 @@
   <!-- ===================================================================== -->
   <xsl:template name="translateSyntax">
     <xsl:param name="in"/>
-    <xsl:choose>
-     <xsl:when test="string-length($in)=0"></xsl:when>
-     <xsl:when test="starts-with($in,'\')">\textbackspace{}<xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'_')">\_<xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'&lang;')">\langle <xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'&rang;')">\rangle <xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'&rarr;')">\SyntaxDef <xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,7)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'|')">\SyntaxOr <xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
-       /><xsl:call-template name="translateSyntax"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
-        /></xsl:with-param></xsl:call-template>
-</xsl:otherwise>
-    </xsl:choose>
+    <xsl:if test="string-length($in)!=0">
+     <xsl:choose>
+      <xsl:when test="starts-with($in,'\')">\textbackspace{}</xsl:when>
+      <xsl:when test="starts-with($in,'_')">\_</xsl:when>
+      <xsl:when test="starts-with($in,'$')">\$</xsl:when>
+      <xsl:when test="starts-with($in,'~')">\texttilde </xsl:when>
+      <xsl:when test="starts-with($in,'&nbsp;')">~</xsl:when>
+      <xsl:when test="starts-with($in,'&ndash;')">--</xsl:when>
+      <xsl:when test="starts-with($in,'|')">\SyntaxOr </xsl:when>
+      <xsl:when test="starts-with($in,'&lang;')">\tag{</xsl:when>
+      <xsl:when test="starts-with($in,'&rang;')">}</xsl:when>
+      <xsl:when test="starts-with($in,'&rarr;')">\SyntaxDef </xsl:when>
+      <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
+       /></xsl:otherwise>
+     </xsl:choose>
+     <xsl:call-template name="translateSyntax"
+       ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
+       /></xsl:with-param></xsl:call-template></xsl:if>
   </xsl:template>
-
 
 </xsl:stylesheet>
