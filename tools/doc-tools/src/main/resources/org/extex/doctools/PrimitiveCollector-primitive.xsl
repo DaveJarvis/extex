@@ -246,7 +246,7 @@
 <xsl:stylesheet version="1.0"
                 xmlns:pom="http://maven.apache.org/POM/4.0.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output encoding="iso-8859-1" method="html"/>
+  <xsl:output encoding="iso-8859-1" method="text"/>
 
   <!-- ===================================================================== -->
   <xsl:template match="/primitives">%%
@@ -269,7 +269,12 @@
   <xsl:template match="em">\emph{<xsl:apply-templates select="text()|*"/>}</xsl:template>
   <xsl:template match="strong">\emph{<xsl:apply-templates select="text()|*"/>}</xsl:template>
 
-  <xsl:template match="tt">\texttt{<xsl:apply-templates select="text()|*"/>}</xsl:template>
+  <xsl:template match="tt"><xsl:variable name="x"><xsl:value-of select="."
+  /></xsl:variable>\macro{<xsl:choose>
+    <xsl:when test="$x='\ '">\[</xsl:when>
+    <xsl:when test="$x='\\'">\char`\\</xsl:when>
+    <xsl:otherwise><xsl:value-of select="substring($x,2)"/></xsl:otherwise>
+  </xsl:choose>}</xsl:template>
 
   <xsl:template match="sub">\ensuremath{_<xsl:apply-templates select="text()|*"/>}</xsl:template>
   <xsl:template match="sup">\ensuremath{^<xsl:apply-templates select="text()|*"/>}</xsl:template>
@@ -279,21 +284,25 @@
   <xsl:template match="h3">\subsection{<xsl:apply-templates select="text()|*"/>}</xsl:template>
   <xsl:template match="h4">\subsubsection{<xsl:apply-templates select="text()|*"/>}</xsl:template>
 
-  <xsl:template match="dl">\begin{description}<xsl:apply-templates select="dt|dd"/>\end{description}</xsl:template>
-  <xsl:template match="dt">\item{<xsl:apply-templates select="*|text()"/>}</xsl:template>
+  <xsl:template match="dl">\begin{description}<xsl:apply-templates select="dt|dd"/>
+\end{description}</xsl:template>
+  <xsl:template match="dt">
+  \item{<xsl:apply-templates select="*|text()"/>}</xsl:template>
   <xsl:template match="dd"><xsl:apply-templates select="*|text()"/></xsl:template>
-  <xsl:template match="ul">\begin{itemize}<xsl:apply-templates select="li"/>\end{itemize}</xsl:template>
-  <xsl:template match="ol">\begin{enumerate}<xsl:apply-templates select="li"/>\end{enumerate}</xsl:template>
-  <xsl:template match="li">\item <xsl:apply-templates select="text()|*"/>
+  <xsl:template match="ul">\begin{itemize}<xsl:apply-templates select="li"/>
+\end{itemize}</xsl:template>
+  <xsl:template match="ol">\begin{enumerate}<xsl:apply-templates select="li"/>
+\end{enumerate}</xsl:template>
+  <xsl:template match="li">
+  \item <xsl:apply-templates select="text()|*"/>
   </xsl:template>
 
   <xsl:template match="table">\begin{table}{<xsl:copy-of select="@format"/>}
-  <xsl:apply-templates select="tr"/>
-  \end{table}
+  <xsl:apply-templates select="tr"/> \end{table}
   </xsl:template>
   <xsl:template match="tr"><xsl:apply-templates select="td"/>\\
   </xsl:template>
-  <xsl:template match="td"><xsl:apply-templates select="*|text()"/>&amp;</xsl:template>
+  <xsl:template match="td"><xsl:if test="position()>1">&amp;</xsl:if><xsl:apply-templates select="*|text()"/></xsl:template>
 
   <xsl:template match="logo">\<xsl:value-of select="text()|*"/>{}</xsl:template>
 
@@ -331,8 +340,13 @@
       <xsl:when test="starts-with($in,'_')">\_</xsl:when>
       <xsl:when test="starts-with($in,'$')">\$</xsl:when>
       <xsl:when test="starts-with($in,'~')">\texttilde </xsl:when>
-      <xsl:when test="starts-with($in,'$nbsp;')">~</xsl:when>
-      <xsl:when test="starts-with($in,'$ndash;')">--</xsl:when>
+      <xsl:when test="starts-with($in,'&nbsp;')">~</xsl:when>
+      <xsl:when test="starts-with($in,'&ndash;')">--</xsl:when>
+      <xsl:when test="starts-with($in,'&Omega;')">\ensuremath{\Omega}</xsl:when>
+      <xsl:when test="starts-with($in,'&alpha;')">\ensuremath{\alpha}</xsl:when>
+      <xsl:when test="starts-with($in,'&beta;')">\ensuremath{\beta}</xsl:when>
+      <xsl:when test="starts-with($in,'&lang;')">\tag{</xsl:when>
+      <xsl:when test="starts-with($in,'&rang;')">}</xsl:when>
       <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
        /></xsl:otherwise>
      </xsl:choose>
@@ -356,6 +370,9 @@
       <xsl:when test="starts-with($in,'&lang;')">\tag{</xsl:when>
       <xsl:when test="starts-with($in,'&rang;')">}</xsl:when>
       <xsl:when test="starts-with($in,'&rarr;')">\SyntaxDef </xsl:when>
+      <xsl:when test="starts-with($in,'&Omega;')">\ensuremath{\Omega}</xsl:when>
+      <xsl:when test="starts-with($in,'&alpha;')">\ensuremath{\alpha}</xsl:when>
+      <xsl:when test="starts-with($in,'&beta;')">\ensuremath{\beta}</xsl:when>
       <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
        /></xsl:otherwise>
      </xsl:choose>
