@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,7 +43,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * The group is usually ended by a corresponding
  * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}. If the job is
  * completed without encountering a proper
- * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}. then an error
+ * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>} then an error
  * is raised.
  * </p>
  * 
