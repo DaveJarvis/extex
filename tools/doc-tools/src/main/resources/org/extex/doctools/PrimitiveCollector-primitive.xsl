@@ -297,6 +297,10 @@
 
   <xsl:template match="logo">\<xsl:value-of select="text()|*"/>{}</xsl:template>
 
+  <xsl:template match="todo">
+  \INCOMPLETE{<xsl:value-of select="text()|*"/>}
+</xsl:template>
+
   <xsl:template match="pre[@class='syntax']">\begin{syntax}<xsl:apply-templates select="text()|*" mode="syntax"/>\end{syntax}</xsl:template>
   <xsl:template match="pre[@class='TeXSample']">\begin{lstlisting}[language={[LaTeX]TeX}]<xsl:copy-of select="text()|*"/>\end{lstlisting}</xsl:template>
   <xsl:template match="pre[@class='JavaSample']">\begin{lstlisting}[language=Java]<xsl:copy-of select="text()|*"/>\end{lstlisting}</xsl:template>
@@ -313,10 +317,10 @@
    ><xsl:with-param name="in"><xsl:value-of select="."/></xsl:with-param
    ></xsl:call-template></xsl:template>
 
-  <xsl:template match="*"><xsl:message terminate="yes"><xsl:copy-of select="."/>
-    </xsl:message><xsl:copy-of select="."/></xsl:template>
-  <xsl:template match="@*"><xsl:message terminate="yes"><xsl:copy-of select="."/>
-    </xsl:message></xsl:template>
+  <xsl:template match="*">
+    <xsl:message terminate="yes">Unhandled node: <xsl:copy-of select="."/>
+    </xsl:message>
+  </xsl:template>
 
   <!-- ===================================================================== -->
   <xsl:template name="translate">

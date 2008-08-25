@@ -440,6 +440,12 @@ public class PrimitiveCollector {
             + "]>";
 
     /**
+     * The field <tt>TODO_PATTERN</tt> contains the pattern to recognize todos.
+     */
+    private static final Pattern TODO_PATTERN =
+            Pattern.compile(".* TODO[: ].*");
+
+    /**
      * The command line interface. The command line is processed. Finally
      * {@link System#exit(int)} is invoked.
      * 
@@ -597,15 +603,20 @@ public class PrimitiveCollector {
 
         super();
         builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-    }
+    };
 
     /**
      * Add a base directory.
      * 
      * @param base the base directory
+     * 
+     * @throws FileNotFoundException in case the given base is not a directory
      */
-    public void addBase(String base) {
+    public void addBase(String base) throws FileNotFoundException {
 
+        if (!new File(base).isDirectory()) {
+            throw new FileNotFoundException(base);
+        }
         bases.add(base);
     };
 
@@ -627,7 +638,7 @@ public class PrimitiveCollector {
                 traverse(dir);
             }
         }
-    };
+    }
 
     /**
      * Traverse a directory tree and search for Java files.
@@ -828,10 +839,10 @@ public class PrimitiveCollector {
                 primitives.put(name + " " + f.toString(), new Info(f, root));
 
                 return;
-            } else if (s.matches("^[ ]*TODO\\(.*\\)")) {
-                buffer.append("<todo");
-                buffer.append(s.trim().substring(5));
-                buffer.append("</todo");
+            } else if (TODO_PATTERN.matcher(s).matches()) {
+                buffer.append("<todo>");
+                buffer.append(s.substring(s.indexOf("TODO") + 5));
+                buffer.append("</todo>");
             } else {
                 buffer.append(s.replaceAll("^[ ]*\\*", ""));
             }
@@ -987,7 +998,7 @@ public class PrimitiveCollector {
             String arg = args[i];
             if (arg.startsWith("-")) {
                 if ("-".equals(arg)) {
-                    bases.add(nextArgument(args, ++i));
+                    addBase(nextArgument(args, ++i));
                 } else if ("-output".startsWith(arg)) {
                     setOutput(nextArgument(args, ++i));
                 } else if ("-omit".startsWith(arg)) {
@@ -1000,7 +1011,7 @@ public class PrimitiveCollector {
                     throw new UnknownArgumentException(arg);
                 }
             } else {
-                bases.add(arg);
+                addBase(arg);
             }
         }
 
