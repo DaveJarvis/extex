@@ -53,14 +53,6 @@ import org.extex.typesetter.exception.TypesetterException;
 public final class ConstantCountParser implements Parser<Count>, CountParser {
 
     /**
-     * Creates a new object.
-     */
-    public ConstantCountParser() {
-
-        super();
-    }
-
-    /**
      * This interface describes a binary operation on two longs.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -233,17 +225,15 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="integer">
-     * <h3>A Number</h3>
+     * <doc type="syntax" name="integer"> <h3>A Number</h3>
      * 
-     * <pre class="syntax">
-     *    &amp;langnumber&amp;rang
-     * </pre>
+     * <pre class="syntax"> &lang;number&rang; </pre>
      * 
      * <p>
      * A number consists of a non-empty sequence of digits with category code
      * {@link org.extex.scanner.type.Catcode#OTHER OTHER}. The number is
-     * optionally preceded by white space and a sign <tt>+</tt> or <tt>-</tt>.
+     * optionally preceded by white space and a sign <code>+</code> or
+     * <code>-</code>.
      * </p>
      * <p>
      * Tokens are expanded while gathering the requested values.
@@ -317,12 +307,9 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
      * definitions from <logo>TeX</logo>:
      * </p>
      * 
-     * <doc type="syntax" name="number">
-     * <h3>A Number</h3>
+     * <doc type="syntax" name="number"> <h3>A Number</h3>
      * 
-     * <pre class="syntax">
-     *    &amp;langnumber&amp;rang
-     * </pre>
+     * <pre class="syntax"> &lang;number&rang; </pre>
      * 
      * <p>
      * A number consists of a non-empty sequence of digits with category code
@@ -333,9 +320,8 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
      * 
      * 
      * Scan the input stream for tokens making up a number, this is a sequence
-     * of digits with category code <tt>OTHER</tt>. The number can be
-     * preceded by optional white space. Alternate representations for an
-     * integer exist.
+     * of digits with category code <tt>OTHER</tt>. The number can be preceded
+     * by optional white space. Alternate representations for an integer exist.
      * 
      * @param context the processor context
      * @param source the source for new tokens
@@ -356,9 +342,8 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
 
     /**
      * Scan the input stream for tokens making up a number, this is a sequence
-     * of digits with category code <tt>OTHER</tt>. The number can be
-     * preceded by optional white space. Alternate representations for an
-     * integer exist.
+     * of digits with category code <tt>OTHER</tt>. The number can be preceded
+     * by optional white space. Alternate representations for an integer exist.
      * 
      * @param context the processor context
      * @param source the source for new tokens
@@ -535,10 +520,17 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
     }
 
     /**
+     * Creates a new object.
+     */
+    public ConstantCountParser() {
+
+        super();
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.Parser#parse(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.Parser#parse(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Count parse(Context context, TokenSource source,
@@ -550,8 +542,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountParser#parseInteger(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountParser#parseInteger(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long parseInteger(Context context, TokenSource source,
@@ -563,8 +554,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountParser#parseNumber(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountParser#parseNumber(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long parseNumber(Context context, TokenSource source,
