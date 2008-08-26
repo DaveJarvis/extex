@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,39 +44,35 @@ import org.extex.typesetter.exception.TypesetterException;
  * This primitive initiates the loading of native code and implements the
  * primitive <tt>\nativeload</tt>.
  * 
- * <doc name="nativeload">
- * <h3>The Primitive <tt>\nativeload</tt></h3>
+ * <doc name="nativeload"> <h3>The Primitive <tt>\nativeload</tt></h3>
  * <p>
  * The primitive <tt>\nativeload</tt> loads some native language code. As
  * parameter the type of the native extension and a specification of the loader
  * to be used are given.
  * </p>
  * <p>
- * With this method it is possible to load larger extensions of <logo>ExTeX</logo>
- * in one junk. There is no need to declare each single macro with <tt>\def</tt>.
- * It is even possible to define extension macros in other programming languages
- * than the <logo>TeX</logo> language.
+ * With this method it is possible to load larger extensions of
+ * <logo>ExTeX</logo> in one junk. There is no need to declare each single macro
+ * with <tt>\def</tt>. It is even possible to define extension macros in other
+ * programming languages than the <logo>TeX</logo> language.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The general form of this primitive is
+ * <h4>Syntax</h4> The general form of this primitive is
  * 
- * <pre class="syntax">
- *   &lang;nativeload&rang;
- *       &rarr; <tt>\nativeload</tt> &lang;type&rang; &lang;tokens&rang; </pre>
+ * <pre class="syntax"> &lang;nativeload&rang; &rarr; <tt>\nativeload</tt>
+ * &lang;type&rang; &lang;tokens&rang; </pre>
  * 
  * <p>
- * The <tt>&lang;type&rang;</tt> is any specification of a list of tokens like
- * a constant list enclosed in braces or a token register. The value of these
- * tokens are taken and resolved via the configuration.
+ * The <code>&lang;type&rang;</code> is any specification of a list of tokens
+ * like a constant list enclosed in braces or a token register. The value of
+ * these tokens are taken and resolved via the configuration.
  * </p>
  * <p>
- * The <tt>&lang;tokens&rang;</tt> is any specification of a list of tokens
+ * The <code>&lang;tokens&rang;</code> is any specification of a list of tokens
  * like a constant list enclosed in braces or a tokens register. For the Java
  * loader the value of these tokens are taken and interpreted as the name of a
  * Java class. This class is loaded if needed, instantiated, and its method
- * {@linkplain org.extex.unit.dynamic.java.Loadable#init(
- * org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter)
+ * {@linkplain org.extex.unit.dynamic.java.Loadable#init(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter)
  * init()} is invoked. The instantiation requires the empty constructor to be
  * visible.
  * </p>
@@ -85,36 +81,29 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * The following example illustrates the use of this primitive:
  * 
- * <pre class="TeXSample">
- *    \nativeload{java}{my.unit.MyUnitLoader}  </pre>
+ * <pre class="TeXSample"> \nativeload{java}{my.unit.MyUnitLoader} </pre>
  * 
  * </p>
  * <p>
  * For the loading of the Java class it is necessary that this Java class
- * implements the interface
- * {@link org.extex.unit.dynamic.java.Loadable Loadable}.
+ * implements the interface {@link org.extex.unit.dynamic.java.Loadable
+ * Loadable}.
  * 
- * <pre class="JavaSample">
- *   <b>package</b> my.package;
- *
- *   <b>import</b> org.extex.interpreter.contect.Context;
- *   <b>import</b> org.extex.interpreter.primitives.dynamic.java.Loadable;
- *   <b>import</b> org.extex.typesetter.Typesetter;
- *   <b>import</b> org.extex.util.exception.GeneralException;
- *
- *   <b>class</b> MyModule <b>implements</b> Loadable {
- *
- *     <b>public</b> MyModule() {
- *       super();
- *       <i>// initialization code &ndash; if required</i>
- *     }
- *
- *     <b>public void</b> init(<b>final</b> Context context,
- *                      <b>final</b> Typesetter typesetter
- *                     ) <b>throws</b> GeneralException {
- *       <i>// implement the initialization code here</i>
- *     }
- *   } </pre>
+ * <pre class="JavaSample"> <b>package</b> my.package;
+ * 
+ * <b>import</b> org.extex.interpreter.contect.Context; <b>import</b>
+ * org.extex.interpreter.primitives.dynamic.java.Loadable; <b>import</b>
+ * org.extex.typesetter.Typesetter; <b>import</b>
+ * org.extex.util.exception.GeneralException;
+ * 
+ * <b>class</b> MyModule <b>implements</b> Loadable {
+ * 
+ * <b>public</b> MyModule() { super(); <i>// initialization code &ndash; if
+ * required</i> }
+ * 
+ * <b>public void</b> init(<b>final</b> Context context, <b>final</b> Typesetter
+ * typesetter ) <b>throws</b> GeneralException { <i>// implement the
+ * initialization code here</i> } } </pre>
  * 
  * </p>
  * 
@@ -127,13 +116,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * future other languages can be added easily.
  * </p>
  * 
- * <pre class="Configuration">
- *  &lt;define name="nativeload"
- *          class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
- *    &lt;load name="java"
- *          class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
- *  &lt;/define&gt;
- * </pre>
+ * <pre class="Configuration"> &lt;define name="nativeload"
+ * class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt; &lt;load
+ * name="java"
+ * class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
+ * &lt;/define&gt; </pre>
  * 
  * <p>
  * The body of the define tag for the primitive may contain an arbitrary number
@@ -158,8 +145,7 @@ public class NativeLoad extends AbstractCode
             LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -192,8 +178,7 @@ public class NativeLoad extends AbstractCode
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -209,8 +194,7 @@ public class NativeLoad extends AbstractCode
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -220,8 +204,8 @@ public class NativeLoad extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
