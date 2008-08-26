@@ -54,9 +54,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <h4>Syntax</h4> The general form of this primitive is
  * 
- * <pre class="syntax"> &lang;nativedef&rang; &rarr; <tt>\nativedef</tt>
- * &lang;type&rang;
- * {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
+ * <pre class="syntax">
+ *   &lang;nativedef&rang; &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  * &lang;control sequence&rang;} &lang;name&rang; </pre>
  * 
  * <p>
@@ -67,7 +66,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * the <i>&lang;control sequence&rang;</i>.
  * </p>
  * <p>
- * The <tt>&lang;control sequence&rang;</tt> is any macro or active character.
+ * The <code>&lang;control sequence&rang;</code> is any macro or active character.
  * If this token is missing or of the wrong type then an error is raised.
  * </p>
  * <p>
