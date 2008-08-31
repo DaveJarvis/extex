@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -59,7 +59,7 @@ import org.extex.typesetter.tc.font.Font;
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
- *         &amp;lang8-bit number&amp;rang}
+ *         &lang;8-bit number&rang;}
  * </pre>
  * 
  * <h4>Examples</h4>

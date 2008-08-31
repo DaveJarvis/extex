@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,6 +39,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This primitive inserts an explicit space into the current list. This has an
  * effect in horizontal or restricted horizontal modes only. In other modes it
  * has no effect.
+ * </p>
+ * <p>
+ * In contrast to a normal space it is not collapsed with adjacent spaces of
+ * any kind. This means that several invocation in row add up extra space. 
+ * This is not recommended. See the macro <tt>\hskip</tt> instead.
  * </p>
  * 
  * <h4>Syntax</h4>

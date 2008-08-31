@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -95,8 +95,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <li>Interacting with the user to get an input file.</li>
  * <li>Interacting with the user in case on an error</li>
  * </ul>
- * 
- * <h3>ExTeX: Command Line Usage</h3>
+ *
+ * <doc type="cli"> 
+ * <h3><logo>ExTeX</logo>: Command Line Usage</h3>
  * 
  * <p>
  * This program is normally used through a wrapper which performs all necessary
@@ -575,7 +576,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <li>Java needs to be installed (see section <a
  * href="#installation">Installation</a>. The program <tt>java</tt> is
  * assumed to be on the path of executables. </li>
- * <li>Java must be configured to find the jar files from the ExTeX
+ * <li>Java must be configured to find the jar files from the <logo>ExTeX</logo>
  * distribution. This can be accomplished by setting the environment variable
  * <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the documentation of your
  * Java system for details. </li>
@@ -591,7 +592,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <p>
  * The result should be the same as the invocation of the wrapper.
  * </p>
- * 
+ * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>

@@ -105,11 +105,7 @@ import org.extex.typesetter.type.node.GlueNode;
  * 
  * <pre class="syntax">
  *     &lang;everymath&rang;
- *       &rarr;
- * <tt>
- * \everymath
- * </tt>
- *  {@linkplain
+ *       &rarr;  <tt>\everymath</tt> {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
@@ -137,11 +133,7 @@ import org.extex.typesetter.type.node.GlueNode;
  * 
  * <pre class="syntax">
  *     &lang;everymathend&rang;
- *       &rarr;
- * <tt>
- * \everymathend
- * </tt>
- *  {@linkplain
+ *       &rarr;  <tt>\everymathend</tt> {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &lang;equals&rang;} {@linkplain
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)

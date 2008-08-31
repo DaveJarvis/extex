@@ -55,9 +55,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h4>Syntax</h4> The general form of this primitive is
  * 
  * <pre class="syntax">
- *   &lang;nativedef&rang; &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
+ *    &lang;nativedef&rang;
+ *      &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  * &lang;control sequence&rang;} &lang;name&rang; </pre>
- * 
+ *
  * <p>
  * The <code>&lang;type&rang;</code> is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
@@ -93,7 +94,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <h4>Examples</h4>
  * 
- * <pre class="TeXSample"> \nativedef{java}\x{my.primitive.MyPrimitive} </pre>
+ * <pre class="TeXSample"> 
+ *   \nativedef{java}\x{my.primitive.MyPrimitive} </pre>
  * 
  * <p>
  * This example shows how the control sequence <tt>\x</tt> is bound to the Java
@@ -101,7 +103,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * current group.
  * </p>
  * 
- * <pre class="TeXSample"> \global\nativedef{java}\x{my.primitive.MyPrimitive}
+ * <pre class="TeXSample"> 
+ *   \global\nativedef{java}\x{my.primitive.MyPrimitive}
  * </pre>
  * 
  * <p>
@@ -119,11 +122,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * future other languages can be added easily.
  * </p>
  * 
- * <pre class="Configuration"> &lt;define name="nativedef"
- * class="org.extex.interpreter.primitives.dynamic.NativeDef"&gt; &lt;load
- * name="java"
- * class="org.extex.interpreter.primitives.dynamic.java.JavaDef"/&gt;
- * &lt;/define&gt; </pre>
+ * <pre class="configuration"> 
+ *   &lt;define name="nativedef"
+ *           class="org.extex.interpreter.primitives.dynamic.NativeDef"&gt;
+ *     &lt;load name="java"
+ *           class="org.extex.interpreter.primitives.dynamic.java.JavaDef"/&gt;
+ *   &lt;/define&gt; </pre>
  * 
  * <p>
  * The body of the define tag for the primitive may contain an arbitrary number

@@ -59,8 +59,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <h4>Syntax</h4> The general form of this primitive is
  * 
- * <pre class="syntax"> &lang;nativeload&rang; &rarr; <tt>\nativeload</tt>
- * &lang;type&rang; &lang;tokens&rang; </pre>
+ * <pre class="syntax"> 
+ *    &lang;nativeload&rang;
+ *      &rarr; <tt>\nativeload</tt> &lang;type&rang; &lang;tokens&rang; </pre>
  * 
  * <p>
  * The <code>&lang;type&rang;</code> is any specification of a list of tokens
@@ -80,30 +81,36 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h4>Examples</h4>
  * <p>
  * The following example illustrates the use of this primitive:
- * 
- * <pre class="TeXSample"> \nativeload{java}{my.unit.MyUnitLoader} </pre>
- * 
  * </p>
+ * <pre class="TeXSample">
+ *   \nativeload{java}{my.unit.MyUnitLoader} </pre>
+ * 
  * <p>
  * For the loading of the Java class it is necessary that this Java class
  * implements the interface {@link org.extex.unit.dynamic.java.Loadable
  * Loadable}.
  * 
- * <pre class="JavaSample"> <b>package</b> my.package;
+ * <pre class="JavaSample">
+ * <b>package</b> my.package;
  * 
- * <b>import</b> org.extex.interpreter.contect.Context; <b>import</b>
- * org.extex.interpreter.primitives.dynamic.java.Loadable; <b>import</b>
- * org.extex.typesetter.Typesetter; <b>import</b>
- * org.extex.util.exception.GeneralException;
+ * <b>import</b> org.extex.interpreter.context.Context;
+ * <b>import</b> org.extex.interpreter.primitives.dynamic.java.Loadable;
+ * <b>import</b> org.extex.typesetter.Typesetter;
+ * <b>import</b> org.extex.util.exception.GeneralException;
  * 
  * <b>class</b> MyModule <b>implements</b> Loadable {
  * 
- * <b>public</b> MyModule() { super(); <i>// initialization code &ndash; if
- * required</i> }
+ *     <b>public</b> MyModule() {
+ *         super();
+ *         <i>// initialization code &ndash; if required</i>
+ *     }
  * 
- * <b>public void</b> init(<b>final</b> Context context, <b>final</b> Typesetter
- * typesetter ) <b>throws</b> GeneralException { <i>// implement the
- * initialization code here</i> } } </pre>
+ *     <b>public void</b> init(<b>final</b> Context context, <b>final</b> Typesetter
+ * typesetter )
+ *         <b>throws</b> GeneralException {
+ *             <i>// implement the initialization code here</i>
+ *     }
+ * } </pre>
  * 
  * </p>
  * 
@@ -116,10 +123,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * future other languages can be added easily.
  * </p>
  * 
- * <pre class="Configuration"> &lt;define name="nativeload"
- * class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt; &lt;load
- * name="java"
- * class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
+ * <pre class="configuration">
+ * &lt;define name="nativeload"
+ *         class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
+ *   &lt;load name="java"
+ *         class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
  * &lt;/define&gt; </pre>
  * 
  * <p>

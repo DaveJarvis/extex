@@ -64,10 +64,13 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
      *
      *   &lang;component&rang;
      *     &rarr; &lang;dimen;&rang;
-     *       |  &lang;float&rang; &lang;unit&rang;
+     *      |  &lang;float&rang; &lang;unit&rang;
      *
      *   &lang;unit&rang;
-     *     &rarr; fi | fil | fill | filll    </pre>
+     *     &rarr; fi
+     *      |  fil
+     *      |  fill
+     *      |  filll    </pre>
      * 
      * <p>
      * TODO gene: documentation incomplete

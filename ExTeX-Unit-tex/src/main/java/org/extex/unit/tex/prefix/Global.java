@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -72,7 +72,7 @@ import org.extex.typesetter.Typesetter;
  * 
  * <p>
  * The following example shows that two count registers are set in a group. The
- * first count register keeps its value untile the group is closed and falls
+ * first count register keeps its value until the group is closed and falls
  * back to the value it had when the group has been entered. The second count
  * register keeps its value even when the group is closed.
  * </p>

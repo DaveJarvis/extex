@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -48,9 +48,9 @@ import org.extex.unit.base.conditional.AbstractIf;
  * <pre class="syntax">
  *    &lang;iffontchar&rang;
  *      &rarr; <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) code&rang; &lang;true text&rang;} <tt>\fi</tt>
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} <tt>\fi</tt>
  *      | <tt>\iffontchar</tt> {@link TokenSource#getFont(Context,CodeToken) &lang;font&rang;} {@link 
- *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      TokenSource#scanCharacterCode(Context,Typesetter,CodeToken) &lang;code&rang; &lang;true text&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * 
  * <h4>Examples</h4>
  * 
