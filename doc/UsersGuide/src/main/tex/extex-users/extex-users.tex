@@ -2,10 +2,29 @@
 %%*****************************************************************************
 %% $Id$
 %%*****************************************************************************
+%%
+%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%%
+%% This library is free software; you can redistribute it and/or modify it
+%% under the terms of the GNU Lesser General Public License as published by the
+%% Free Software Foundation; either version 2.1 of the License, or (at your
+%% option) any later version.
+%%
+%% This library is distributed in the hope that it will be useful, but WITHOUT
+%% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+%% for more details.
+%%
+%% You should have received a copy of the GNU Lesser General Public License
+%% along with this library; if not, write to the Free Software Foundation,
+%% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+%%
+%%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
 \documentclass{extex-doc}
 
+\usepackage{textcomp}
 \usepackage{makeidx}
 
 \title{\ExTeX\ User's Guide}
@@ -14,11 +33,11 @@
 \newcommand\Arg[1]{\(\langle\){\tt\itshape #1}\(\rangle\)}
 \newcommand\CLI[1]{\texttt{-#1}\index{#1@\texttt{-#1}}}
 \newcommand\Property[1]{\texttt{#1}\index{#1@\texttt{#1}}}
-\newcommand\File[1]{\texttt{#1}\index{#1@\textsf{#1}}}
+\renewcommand\File[1]{\texttt{#1}\index{#1@\textsf{#1}}}
 \newcommand\Prog[1]{\texttt{#1}\index{#1}}
 \newcommand\Mode[1]{\texttt{#1}\index{#1}}
 \newcommand\macro[1]{\texttt{\char`\\ #1}\index{#1@\texttt{\char`\\ #1}}}
-\newcommand\Macro[1]{\texttt{\char`\\ #1}}
+\renewcommand\Macro[1]{\texttt{\char`\\ #1}}
 \newcommand\tag[1]{%
     \(\langle\)\textit{#1}\(\rangle\)%
     \index{#1@\protect\Tag{#1}}}
@@ -40,8 +59,24 @@
 
 \makeindex
 
+\newenvironment{doc}[1]{}{}
+
 \newenvironment{primitives}{\begin{quotation}\noindent\small\rightskip=0pt
   plus 20em }{\end{quotation}}
+
+\def\ConfigUnit#1{\texttt{#1} }
+\newenvironment{configurations}{}{}
+\newenvironment{configuration}[2]{\let\unit\ConfigUnit 
+\subsection{The Configuration \texttt{#1}}
+}{
+}
+
+\def\UnitDefine#1#2{ \Macro{#1} }
+\newenvironment{units}{}{}
+\newenvironment{unit}[1]{\let\define\UnitDefine
+\subsection{The Unit \texttt{#1}}
+}{
+}
 
 \def\[{\leavevmode\hbox{\tt\char`\ }}
 
@@ -80,7 +115,7 @@
   \end{center}
 \newpage
 \footnotesize
-\copyright\ 2005-2006 The \ExTeX\ Group and individual authors listed below 
+\copyright\ 2005-2008 The \ExTeX\ Group and individual authors listed below 
 \medskip
 
 Permission is granted to copy, distribute and/or modify this document
@@ -111,7 +146,7 @@ Im Lerchelsb\"ohl 5\\
 %@author Gerd Neugebauer
 
 \ExTeX{} aims at providing a high-quality typesetting system. The
-development of \ExTeX\ has been inspired by the experiences with \TeX.
+development of \ExTeX\ has been inspired by the experiences with \TeX\ \cite{knuth:texbook}.
 The focus lies on an open design and a high degree of configurability.
 Thus \ExTeX\ should be a good base for further development.
 
@@ -197,7 +232,7 @@ be not too hard to get started.
 \subsection{Java}
 %@author Gerd Neugebauer
 
-You need to have Java 1.4.2\index{Java} or later installed on your
+You need to have Java 1.5\index{Java} or later installed on your
 system. You can get Java for a several systems directly from
 \url{java.sun.com}. Download and install it according to the
 installation instructions for your environment.
@@ -209,9 +244,9 @@ can be seen in the following listing:
 \lstset{morecomment=[l]{\#}}%
 \begin{lstlisting}{morecomment=[l][keywordstyle]{>}}
 # java -version
-java version "1.4.2_06"
-Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2_06-b03)
-Java HotSpot(TM) Client VM (build 1.4.2_06-b03, mixed mode)
+java version "1.5.0_15"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_15-b04)
+Java HotSpot(TM) Client VM (build 1.5.0_15-b04, mixed mode, sharing)
 #
 \end{lstlisting}
 
@@ -306,7 +341,7 @@ in this section.
 
 \begin{figure}[tp]
   \centering
-  \includegraphics[width=.8\textwidth]{img/inst1}
+  \includegraphics[width=.8\textwidth]{image/inst1}
   \caption{The Language Selection in the Installer}
 
   \label{fig:inst1}
@@ -348,7 +383,7 @@ similar machines. This means that the answers to the questions in the
 installer are the same. This process can be automated.
 \begin{figure}[tp]
   \centering
-  \includegraphics[width=.8\textwidth]{img/inst8}
+  \includegraphics[width=.8\textwidth]{image/inst8}
   \caption{Generating a Auto-Configuration for the Installer}
   \label{fig:inst8}
 \end{figure}
@@ -722,7 +757,13 @@ for \ExTeX. Those files can be used to provide additional features in
 
 \INCOMPLETE
 
-\InputIfFileExists{tmp/configurations}{}
+\subsection{Predefined Configurations}
+
+\InputIfFileExists{generated/configurations}{}
+
+\subsection{Primitive Units}
+
+\InputIfFileExists{generated/units}{}
 
 %------------------------------------------------------------------------------
 \section{Running \ExTeX}
@@ -996,7 +1037,6 @@ Several restrictions should be taken into account:
 \item No output has been made yet when the format is dumped.
 \end{itemize}
 
-
 As an example we consider the macros contained in \texttt{plain.tex}.
 The following log shows the interaction wit the user:
 
@@ -1013,7 +1053,7 @@ Beginning to dump on file ./plain.fmt
 
 No pages of output.
 Transcript written on ./plain.log.
-\end{lstlisting}
+\end{lstlisting}}
 
 The file \texttt{plain.tex} does not contain an \macro{end}. Thus
 after the file is processed the user is asked for more input. Here
@@ -1072,20 +1112,22 @@ The underlying parsing routines provide several sytactic entities
 which are user across the parsing of primitives and their arguments.
 These general syntactic entities are describes in this section.
 
-\InputIfFileExists{tmp/syntax}{}
+\InputIfFileExists{generated/syntax}{}
 
 \section{Primitives of \ExTeX}
 
 \ExTeX\ defines a lot of primitives. Those primitives are described below.
 
-\InputIfFileExists{tmp/primitives}{}
+\InputIfFileExists{generated/primitives}{}
 
 
 %------------------------------------------------------------------------------
 \appendix
 
-\input{Licenses/licenses}
+\input{licenses}
 
+\bibliographystyle{alpha}
+\bibliography{references}
 %------------------------------------------------------------------------------
 {\scriptsize\printindex}
 

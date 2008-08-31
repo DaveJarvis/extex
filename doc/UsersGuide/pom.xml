@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.extex</groupId>
+  <artifactId>ExTeX-Users-Guide</artifactId>
+  <name>ExTeX Users Guide</name>
+  <description>
+    This is the ExTeX Users Guide.
+  </description>
+
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <inceptionYear>2008</inceptionYear>
+  <url>http://www.extex.org</url>
+
+  <properties>
+    <doc.file>extex-users</doc.file>
+    <doc.dir>extex-users</doc.dir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-Main</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>doc-tools</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+
+          <execution>
+            <id>doc-tool</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>java</executable>
+              <arguments>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>org.extex.doctools.PrimitiveCollector</argument>
+                <argument>-output</argument>
+                <argument>${project.build.directory}/generated</argument>
+                <argument>../../ExTeX-base</argument>
+                <argument>../../ExTeX-Unit-*</argument>
+                <argument>../../ExTeX-Typesetter-*</argument>
+              </arguments>
+              <workingDirectory>${basedir}</workingDirectory>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>latex-1</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>exbib</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>java</executable>
+              <arguments>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>org.extex.exbib.main.ExBibMain</argument>
+                <argument>--quiet</argument>
+                <argument>-Dtexinputs=${basedir}/../src/main/texinputs/bibtex${path.separator}${basedir}/../src/main/bibtex${path.separator}${basedir}/src/main/bibtex</argument>
+                <argument>--logfile=${project.build.directory}/${doc.file}.blg</argument>
+                <argument>${project.build.directory}/${doc.file}</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>makeindex</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>makeindex</executable>
+              <arguments>
+                <argument>-s</argument>
+                <argument>../../src/main/texinputs/makeindex/doc.ist</argument>
+                <argument>${doc.file}.idx</argument>
+              </arguments>
+              <workingDirectory>${project.build.directory}</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>latex-2</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>latex-3</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>pdflatex</executable>
+              <arguments>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
+              </arguments>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
+              <environmentVariables>
+                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+              </environmentVariables>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de</url>
+      <roles>
+        <role>maintainer</role>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+</project>
