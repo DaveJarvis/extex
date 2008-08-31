@@ -239,9 +239,9 @@ public class PomCollector {
      * @throws IOException in case of an I/O error
      * @throws SAXException in case of a SAX exception
      * @throws ParserConfigurationException in case of a parser configuration
-     *         exception
+     *             exception
      * @throws TransformerFactoryConfigurationError in case of a transformer
-     *         factory configuration exception
+     *             factory configuration exception
      * @throws TransformerException in case of a transformer exception
      */
     public void run()
@@ -251,10 +251,15 @@ public class PomCollector {
                 TransformerFactoryConfigurationError,
                 TransformerException {
 
-        Writer writer =
-                output == null
-                        ? new OutputStreamWriter(System.out)
-                        : new FileWriter(output);
+        Writer writer;
+
+        if (output != null) {
+            File outfile = new File(output);
+            outfile.getParentFile().mkdirs();
+            writer = new FileWriter(outfile);
+        } else {
+            writer = new OutputStreamWriter(System.out);
+        }
         try {
             run(writer);
         } finally {
