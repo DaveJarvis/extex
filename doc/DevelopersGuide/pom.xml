@@ -26,6 +26,13 @@
       <version>0.1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>doc-tools</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -35,6 +42,28 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.1</version>
         <executions>
+
+          <execution>
+            <id>doc-tool</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <executable>java</executable>
+              <arguments>
+                <argument>-classpath</argument>
+                <classpath/>
+                <argument>org.extex.doctools.PomCollector</argument>
+                <argument>-output</argument>
+                <argument>${project.build.directory}/modules.tex</argument>
+                <argument>../..</argument>
+              </arguments>
+              <workingDirectory>${basedir}</workingDirectory>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
+            </configuration>
+          </execution>
+
           <execution>
             <id>latex-1</id>
             <goals>
