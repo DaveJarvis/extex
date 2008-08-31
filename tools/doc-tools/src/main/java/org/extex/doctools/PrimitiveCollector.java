@@ -31,6 +31,7 @@ import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,23 +154,6 @@ public class PrimitiveCollector {
         public boolean accept(File f) {
 
             return f.isDirectory();
-        }
-    };
-
-    /**
-     * The field <tt>JAVA_FILTER</tt> contains the filter to select only
-     * directories.
-     */
-    private static final FileFilter JAVA_FILTER = new FileFilter() {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.io.FileFilter#accept(java.io.File)
-         */
-        public boolean accept(File f) {
-
-            return f.isFile() && f.getName().endsWith(".java");
         }
     };
 
@@ -437,7 +421,7 @@ public class PrimitiveCollector {
             + "<!ENTITY permil \"&#8240;\">" //
             + "<!ENTITY lsaquo \"&#8249;\">" //
             + "<!ENTITY rsaquo \"&#8250;\">" //
-            + "]>";
+            + "]>\n";
 
     /**
      * The field <tt>TODO_PATTERN</tt> contains the pattern to recognize todos.
@@ -595,6 +579,11 @@ public class PrimitiveCollector {
     private boolean verbose = false;
 
     /**
+     * The field <tt>defaultType</tt> contains the default type.
+     */
+    private String defaultType = "primitive";;
+
+    /**
      * Creates a new object.
      * 
      * @throws ParserConfigurationException in case of an error
@@ -618,7 +607,7 @@ public class PrimitiveCollector {
             throw new FileNotFoundException(base);
         }
         bases.add(base);
-    };
+    }
 
     /**
      * Traverse a directory hierarchy and collect whatever is needed.
@@ -725,14 +714,6 @@ public class PrimitiveCollector {
                     + text + "</" + tag + ">");
         }
 
-        // String s =
-        // buffer
-        // .toString()
-        // .replaceAll(
-        // "\\{@linkplain \\([a-zA-Z.0-9 (\n]*)\\)[ \t\n]+\\([^{}]*\\)\\}",
-        // "<linkplain href=\"$1\">$2</linkplain>")
-        // .replaceAll("\\{@link ([^}]*)\\}",
-        // "<link href=\"\">$1</linkplain>");
         return buffer.toString();
     }
 
@@ -769,25 +750,34 @@ public class PrimitiveCollector {
      * Process a Java file.
      * 
      * @param f the java file
+     * @param inJava indicator, whether the JavaDoc prefix needs to be removed
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    private void processJava(File f) throws IOException, SyntaxException {
+    private void processDoc(File f, boolean inJava)
+            throws IOException,
+                SyntaxException {
 
         LineNumberReader reader = new LineNumberReader(new FileReader(f));
+        String clazz = "";
 
         try {
             for (String s = reader.readLine(); s != null; s = reader.readLine()) {
                 int i = s.indexOf("<doc");
                 if (i >= 0 && DOC_PATTERN.matcher(s).matches()) {
-                    processJava(reader, f, s.substring(i));
+                    processDoc(reader, f, clazz, s.substring(i + 4), inJava);
+                } else if (inJava && s.matches("package .*;")) {
+                    clazz =
+                            s.substring(7, s.length() - 1).trim()
+                                    + "."
+                                    + f.getName().replaceAll(
+                                        "\\.[a-zA-Z0-9]*$", "");
                 }
             }
         } finally {
             reader.close();
         }
-
     }
 
     /**
@@ -795,14 +785,15 @@ public class PrimitiveCollector {
      * 
      * @param reader the reader
      * @param f the java file
+     * @param clazz the name of the class
      * @param start the start string
+     * @param inJava indicator, whether the JavaDoc prefix needs to be removed
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    private void processJava(LineNumberReader reader, File f, String start)
-            throws IOException,
-                SyntaxException {
+    private void processDoc(LineNumberReader reader, File f, String clazz,
+            String start, boolean inJava) throws IOException, SyntaxException {
 
         if (verbose) {
             System.err.print("--- ");
@@ -810,11 +801,19 @@ public class PrimitiveCollector {
         }
 
         StringBuilder buffer = new StringBuilder(XML_INIT);
+        buffer.append("<doc class=\"");
+        buffer.append(clazz);
+        buffer.append("\"");
+        if (!start.contains(" type=")) {
+            buffer.append(" type=\"" + defaultType + "\"");
+        }
         buffer.append(start);
         buffer.append('\n');
 
         for (String s = reader.readLine(); s != null; s = reader.readLine()) {
-            s.replaceAll("^ *\\*", "");
+            if (inJava) {
+                s.replaceAll("^ *\\*[ ]?", "");
+            }
             int i = s.indexOf("</doc>");
             if (i >= 0) {
                 s = s.substring(0, i + 6).replaceAll("^[ ]*\\*", "");
@@ -831,13 +830,9 @@ public class PrimitiveCollector {
                 }
 
                 String name = root.getAttribute("name");
-                if ("".equals(name)) {
-                    return;
+                if (!"".equals(name)) {
+                    primitives.put(name + " " + clazz, new Info(f, root));
                 }
-                // String type = root.getAttribute("type");
-
-                primitives.put(name + " " + f.toString(), new Info(f, root));
-
                 return;
             } else if (TODO_PATTERN.matcher(s).matches()) {
                 buffer.append("<todo>");
@@ -865,14 +860,13 @@ public class PrimitiveCollector {
                 IOException {
 
         for (File f : config.listFiles(XML_FILTER)) {
-            String name = f.getName();
-            Element root;
             try {
-                root = builder.parse(f).getDocumentElement();
+                Element root = builder.parse(f).getDocumentElement();
+                configs.put(f.getName().replaceAll(".xml$", ""), //
+                    new Info(f, root));
             } catch (SAXException e) {
                 throw new SyntaxException(f.toString(), e.getLocalizedMessage());
             }
-            configs.put(name.replaceAll(".xml$", ""), new Info(f, root));
         }
 
         File unit = new File(config, "unit");
@@ -901,20 +895,6 @@ public class PrimitiveCollector {
     private void processUnit(File f, String name, Element root, File dir) {
 
         units.put(name.replaceAll(".xml$", ""), new Info(f, root));
-
-        // NodeList nl = root.getElementsByTagName("define");
-        // int len = nl.getLength();
-        // for (int i = 0; i < len; i++) {
-        // Node n = nl.item(i);
-        // File clazz =
-        // new File(dir, "src/main/java/"
-        // + n.getAttributes().getNamedItem("class")
-        // .getNodeValue().replaceAll("\\.", "/")
-        // + ".java");
-        // System.err.print(clazz.exists());
-        // System.err.print("\t");
-        // System.err.println(clazz.toString());
-        // }
     }
 
     /**
@@ -925,7 +905,7 @@ public class PrimitiveCollector {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      * @throws TransformerFactoryConfigurationError in case of a transformer
-     *         factory configuration exception
+     *             factory configuration exception
      * @throws TransformerException in case of a transformer exception
      */
     public void run()
@@ -934,10 +914,15 @@ public class PrimitiveCollector {
                 TransformerFactoryConfigurationError,
                 TransformerException {
 
-        Writer writer =
-                output == null
-                        ? new OutputStreamWriter(System.out)
-                        : new FileWriter(new File(output, "configs.tex"));
+        Writer writer;
+
+        if (output != null) {
+            File outDir = output == null ? null : new File(output);
+            outDir.mkdirs();
+            writer = new FileWriter(new File(outDir, "configurations.tex"));
+        } else {
+            writer = new OutputStreamWriter(System.out);
+        }
         try {
             writeConfigs(writer);
         } finally {
@@ -953,6 +938,19 @@ public class PrimitiveCollector {
                         : new FileWriter(new File(output, "units.tex"));
         try {
             writeUnits(writer);
+        } finally {
+            writer.flush();
+            if (output != null) {
+                writer.close();
+            }
+        }
+
+        writer =
+                output == null
+                        ? new OutputStreamWriter(System.out)
+                        : new FileWriter(new File(output, "syntax.tex"));
+        try {
+            writeSyntax(writer);
         } finally {
             writer.flush();
             if (output != null) {
@@ -1042,32 +1040,32 @@ public class PrimitiveCollector {
     /**
      * Traverse a directory tree and collect the POMs in a buffer.
      * 
-     * @param file the file to consider
+     * @param dir the file to consider
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    private void traverse(File file) throws IOException, SyntaxException {
+    private void traverse(File dir) throws IOException, SyntaxException {
 
-        if (omit.contains(file.getName())) {
+        if (omit.contains(dir.getName())) {
             return;
         }
 
-        File pom = new File(file, "pom.xml");
+        File pom = new File(dir, "pom.xml");
         if (pom.exists()) {
             File config =
-                    new File(new File(new File(new File(file, "src"), "main"),
+                    new File(new File(new File(new File(dir, "src"), "main"),
                         "resources"), "config");
             if (config.isDirectory()) {
                 processModule(pom, config);
             }
 
-            File dir = new File(file, "src/main/java");
-            if (dir.isDirectory()) {
-                traverseSource(dir);
+            File src = new File(dir, "src/main/java");
+            if (src.isDirectory()) {
+                traverseSource(src);
             }
 
-            for (File f : file.listFiles(DIR_FILTER)) {
+            for (File f : dir.listFiles(DIR_FILTER)) {
                 traverse(f);
             }
         }
@@ -1076,18 +1074,24 @@ public class PrimitiveCollector {
     /**
      * Traverse a directory tree and process the java files.
      * 
-     * @param file the file
+     * @param dir the directory to start with
      * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    private void traverseSource(File file) throws IOException, SyntaxException {
+    private void traverseSource(File dir) throws IOException, SyntaxException {
 
-        for (File f : file.listFiles(JAVA_FILTER)) {
-            processJava(f);
-        }
-        for (File f : file.listFiles(DIR_FILTER)) {
-            traverseSource(f);
+        for (File f : dir.listFiles()) {
+            if (f.isFile()) {
+                String name = f.getName();
+                if (name.endsWith(".java")) {
+                    processDoc(f, true);
+                } else if (name.endsWith(".html")) {
+                    processDoc(f, false);
+                }
+            } else if (f.isDirectory()) {
+                traverseSource(f);
+            }
         }
     }
 
@@ -1107,13 +1111,22 @@ public class PrimitiveCollector {
                 TransformerFactoryConfigurationError,
                 TransformerException {
 
+        String tags =
+                tag + (tag.matches(".*[aeijklmnopqrtuvwxy]") ? "s" : "es");
+
         StringBuilder buffer = new StringBuilder();
         buffer.append("<");
-        buffer.append(tag);
-        buffer.append("s>");
+        buffer.append(tags);
+        buffer.append(">");
 
         Object[] ks = map.keySet().toArray();
-        Arrays.sort(ks);
+        Arrays.sort(ks, new Comparator<Object>() {
+
+            public int compare(Object o1, Object o2) {
+
+                return o1.toString().compareToIgnoreCase(o2.toString());
+            }
+        });
         for (Object key : ks) {
             Info config = map.get(key);
             buffer.append("<");
@@ -1127,8 +1140,8 @@ public class PrimitiveCollector {
             buffer.append(">\n");
         }
         buffer.append("</");
-        buffer.append(tag);
-        buffer.append("s>\n");
+        buffer.append(tags);
+        buffer.append(">\n");
 
         InputStream in =
                 getClass().getClassLoader().getResourceAsStream(
@@ -1145,21 +1158,8 @@ public class PrimitiveCollector {
             in.close();
         }
 
-        String s = javadoc2xml(buffer);
-        try {
-            transformer.transform(new StreamSource(new StringReader(s)),
-                new StreamResult(writer));
-        } catch (TransformerException e) {
-
-            // FileWriter w = new FileWriter("err.xml");
-            // try {
-            // w.write(buffer.toString());
-            // } finally {
-            // w.close();
-            // }
-            throw e;
-        }
-
+        transformer.transform(new StreamSource(new StringReader(
+            javadoc2xml(buffer))), new StreamResult(writer));
     }
 
     /**
@@ -1202,6 +1202,27 @@ public class PrimitiveCollector {
             collectPrimitives();
         }
         write(writer, primitives, "primitive");
+    }
+
+    /**
+     * Traverse a set of directory trees collecting POMs and write the
+     * transformed result to the given writer.
+     * 
+     * @param writer the writer for the output
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws TransformerException in case of an error in the transformer
+     * @throws SyntaxException in case of a syntax error
+     */
+    public void writeSyntax(Writer writer)
+            throws IOException,
+                TransformerException,
+                SyntaxException {
+
+        if (primitives == null) {
+            collectPrimitives();
+        }
+        write(writer, primitives, "syntax");
     }
 
     /**

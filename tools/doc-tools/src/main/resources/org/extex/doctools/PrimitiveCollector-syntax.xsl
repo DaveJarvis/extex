@@ -269,8 +269,9 @@
   <xsl:output encoding="iso-8859-1" method="text"/>
 
   <!-- ===================================================================== -->
-  <xsl:template match="/primitives">
-\begin{primitives}<xsl:apply-templates select="primitive/doc[@type='register' or @type='primitive']"/>\end{primitives}
+  <xsl:template match="/syntaxes">%%
+\begin{primitives}<xsl:apply-templates select="syntax/doc[@type='syntax']"/>\end{primitives}
+%%
 </xsl:template>
 
   <!-- ===================================================================== -->
