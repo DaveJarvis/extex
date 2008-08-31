@@ -45,13 +45,13 @@ our @EXPORT    = qw(translate processDocTag);
 our @EXPORT_OK = qw();
 
 #------------------------------------------------------------------------------
-# Variable:	$VERSION
-# Description:	
+# Variable:        $VERSION
+# Description:        
 #
 our $VERSION = ('$Revision$ ' =~ m/[0-9.]+/ ? $& : '0.0' );
 
 #------------------------------------------------------------------------------
-# Function:	translate
+# Function:        translate
 #
 sub translate {
   local $_ = shift;
@@ -87,7 +87,7 @@ sub translate {
 }
 
 #------------------------------------------------------------------------------
-# Function:	processDocTag
+# Function:        processDocTag
 #
 sub processDocTag {
   my ($name, $fd, $s) = @_;
@@ -136,25 +136,25 @@ sub processDocTag {
       $s .= $`;
       my $spec = '\\begin{syntax}';
       while(<$fd>) {
-	chop;
-	$_ = $_ . "\n";
-	s|^ *\* ?||;
-	$_ = translate($_) ;
-	next if m/^\s*$/;
-	
-	s|^(\s*)\\rightarrow{}|$1\\SyntaxDef|;
-	s/^(\s*)\|/$1\\SyntaxOr/;
-	s/\[([a-z \<=\>\&;]*)\]/[\\texttt{$1}]/;
-	
-	if (m|</pre>|) {
-	    $spec .= $`;
-	    last;
-	  }
-	$spec .= $_;
+        chop;
+        $_ = $_ . "\n";
+        s|^ *\* ?||;
+        $_ = translate($_) ;
+        next if m/^\s*$/;
+        
+        s|^(\s*)\\rightarrow{}|$1\\SyntaxDef|;
+        s/^(\s*)\|/$1\\SyntaxOr/;
+        s/\[([a-z \<=\>\&;]*)\]/[\\texttt{$1}]/;
+        
+        if (m|</pre>|) {
+            $spec .= $`;
+            last;
+        }
+        $spec .= $_;
       }
       $_ = $spec;
-#	s|\@linkplain\s+\\([^)]+\\)\s+||sg;
-#	s|\@linkplain\s+[^()]+\s+||sg;
+#        s|\@linkplain\s+\\([^)]+\\)\s+||sg;
+#        s|\@linkplain\s+[^()]+\s+||sg;
       s|\@linkplain\s+[a-zA-Z0-9.\#(,)_]+\s+||sg;
       s|\@link\s+[a-zA-Z0-9.\#_]+\\([^)]+\\)\s+|\\texttt|sg;
       s|\@link\s+[^()]+\s+|\\texttt|sg;
@@ -165,19 +165,19 @@ sub processDocTag {
       $s .= $`;
       my $spec = '\\begin{lstlisting}{language=Java}' . $';
       while(<$fd>) {
-	chomp;
-	$_ = $_ . "\n";
-	s|^ \* ?||;
-#	  s|([~_\%\$])|\\$1|g;
-	s|\&\#x0*5c;|\\|g;
-	s|\&ndash;\s*|--|g;
-	s|</?[bi]>||g;
-	
-	if (m|</pre>|) {
-	  $spec .= $`;
-	  last;
-	}
-	$spec .= $_;
+        chomp;
+        $_ = $_ . "\n";
+        s|^ \* ?||;
+#          s|([~_\%\$])|\\$1|g;
+        s|\&\#x0*5c;|\\|g;
+        s|\&ndash;\s*|--|g;
+        s|</?[bi]>||g;
+        
+        if (m|</pre>|) {
+          $spec .= $`;
+          last;
+        }
+        $spec .= $_;
       }
       $_ = $spec;
       $_ .= "\\end{lstlisting}\n";
@@ -186,19 +186,19 @@ sub processDocTag {
       $s .= $`;
       my $spec = '\\begin{lstlisting}{language=TeX}' . $';
       while(<$fd>) {
-	chomp;
-	$_ = $_ . "\n";
-	s|^ *\* ?||;
-#	  s|([~_\%\$])|\\$1|g;
-	s|\&\#x0*5c;|\\|g;
-	s|\&ndash;\s*|--|g;
-	s|</?[bi]>||g;
-	
-	if (m|</pre>|) {
-	  $spec .= $`;
-	  last;
-	}
-	$spec .= $_;
+        chomp;
+        $_ = $_ . "\n";
+        s|^ *\* ?||;
+#          s|([~_\%\$])|\\$1|g;
+        s|\&\#x0*5c;|\\|g;
+        s|\&ndash;\s*|--|g;
+        s|</?[bi]>||g;
+        
+        if (m|</pre>|) {
+          $spec .= $`;
+          last;
+        }
+        $spec .= $_;
       }
       $_ = $spec;
       $_ .= "\n\\end{lstlisting}\n";
@@ -207,18 +207,18 @@ sub processDocTag {
       $s .= $`;
       my $spec = '\\begin{lstlisting}{language=XML}' . $';
       while(<$fd>) {
-	chomp;
-	$_ = $_ . "\n";
-	s|^ *\* ?||;
-#	  s|([~_\%\$])|\\$1|g;
-	s|\&\#x0*5c;|\\|g;
-	s|\&ndash;\s*|--|g;
-	
-	if (m|</pre>|) {
-	  $spec .= $`;
-	  last;
-	}
-	$spec .= $_;
+        chomp;
+        $_ = $_ . "\n";
+        s|^ *\* ?||;
+#          s|([~_\%\$])|\\$1|g;
+        s|\&\#x0*5c;|\\|g;
+        s|\&ndash;\s*|--|g;
+        
+        if (m|</pre>|) {
+          $spec .= $`;
+          last;
+        }
+        $spec .= $_;
       }
       $_ = $spec;
       $_ .= "\n\\end{lstlisting}\n";
