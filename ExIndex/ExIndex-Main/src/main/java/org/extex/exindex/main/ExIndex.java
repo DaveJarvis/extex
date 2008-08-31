@@ -59,7 +59,7 @@ import org.extex.resource.ResourceFinderFactory;
 /**
  * This is the main program for the indexer.
  * 
- * <doc section="Command Line Use">
+ * <doc type="cli" section="Command Line Use">
  * 
  * <h2>Command Line Use</h2>
  * <p>
@@ -360,9 +360,9 @@ public class ExIndex extends Indexer {
      * Creates a new object.
      * 
      * @throws IOException in case of an I/O error when reading the default
-     *         settings
+     *             settings
      * @throws NoSuchMethodException in case of an undefined method in a
-     *         function definition
+     *             function definition
      * @throws SecurityException in case of an security problem
      * @throws LException in case of an error
      * @throws InvocationTargetException in case of an error
@@ -661,7 +661,7 @@ public class ExIndex extends Indexer {
      * Set the log level.
      * 
      * @param level the level which is is one of the following values: "1",
-     *        "fine", "2", "fine", "3", "finest"
+     *            "fine", "2", "fine", "3", "finest"
      * 
      * @throws MainException in case of an undefined log level name
      */
