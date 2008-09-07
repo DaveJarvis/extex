@@ -456,9 +456,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <dd> This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
  * instead. </dd>
- * <dd>Command line:<a href="#-job"> <tt>-job-name &lang;name&rang;</tt></a><br>
- * <tt>-jobname &lang;name&rang;</tt></a><br>
- * <tt>-job-name=&lang;name&rang;</tt></a><br>
+ * <dd>Command line:<a href="#-job"> <tt>-job-name &lang;name&rang;</tt></a><br />
+ * <tt>-jobname &lang;name&rang;</tt></a><br />
+ * <tt>-job-name=&lang;name&rang;</tt></a><br />
  * <tt>-jobname=&lang;name&rang;</tt></a></dd>
  * <dd>Default: <tt>texput</tt></dd>
  * 
