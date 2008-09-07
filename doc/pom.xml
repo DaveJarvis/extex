@@ -10,7 +10,7 @@
   <url>http://www.extex.org</url>
 
   <description>
-    This is ExTeX documentation.
+    This is the ExTeX documentation.
   </description>
 
   <repositories>
@@ -30,6 +30,7 @@
 
   <modules>
    <module>DevelopersGuide</module>
+   <module>UsersGuide</module>
   </modules>
 
   <developers>
