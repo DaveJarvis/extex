@@ -55,7 +55,7 @@
           id="exbib-core"
           required="yes">
       <description/>
-      <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
+      <file src="LICENSE.html" targetdir="$INSTALL_PATH"/>
 
       <file src="src/bin/exbib" targetdir="$INSTALL_PATH/bin"/>
       <executable targetfile="$INSTALL_PATH/bin/exbib"/>

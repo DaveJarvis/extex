@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.main.cli;
@@ -58,8 +57,8 @@ public class CLI {
     public static final int EXIT_CONTINUE = Integer.MAX_VALUE;
 
     /**
-     * The field <tt>options</tt> contains the mapping from actual arguments
-     * to closures for options.
+     * The field <tt>options</tt> contains the mapping from actual arguments to
+     * closures for options.
      */
     private Map<String, Option> options = new HashMap<String, Option>();
 
@@ -69,13 +68,15 @@ public class CLI {
      * {@link Option}. Thus the sequence of declarations is important.
      * <p>
      * Consider the following invocations:
+     * </p>
      * 
      * <pre>
      *   declareOption("--version", option1);
      *   declareOption("--verbose", option2);
      * </pre>
-     * 
+     * <p>
      * Afterwards the options are bound as follows:
+     * </p>
      * 
      * <pre>
      *   "" &rarr; option1
@@ -94,12 +95,10 @@ public class CLI {
      *   "--verbose" &rarr; option2
      * </pre>
      * 
-     * </p>
      * <p>
-     * The name <code>null</code> has a special meaning. It denotes the
-     * fallback handler for any option not otherwise recognized. When declaring
-     * a default handler any previously existing fallback handler is
-     * overwritten.
+     * The name <code>null</code> has a special meaning. It denotes the fallback
+     * handler for any option not otherwise recognized. When declaring a default
+     * handler any previously existing fallback handler is overwritten.
      * </p>
      * 
      * @param name the name of the argument
@@ -132,11 +131,10 @@ public class CLI {
      * 
      * @param bundle the resource bundle for the descriptions
      * @param tagBefore the tag of the resource bundle entry to be inserted at
-     *        the beginning; it can be <code>null</code>; then nothing is
-     *        inserted at the beginning
+     * the beginning; it can be <code>null</code>; then nothing is inserted at
+     * the beginning
      * @param tagAfter the tag of the resource bundle entry to be inserted at
-     *        the end; it can be <code>null</code>; then nothing is inserted
-     *        at the end
+     * the end; it can be <code>null</code>; then nothing is inserted at the end
      * @param args additional arguments for the before and after text
      * 
      * @return the description
@@ -224,7 +222,7 @@ public class CLI {
      * @throws MissingArgumentCliException in case of a missing argument
      * @throws UnusedArgumentCliException in case of an superfluous argument
      * @throws NonNumericArgumentCliException in case of a non-numeric value for
-     *         a numeric option
+     * a numeric option
      */
     public int run(List<String> args)
             throws UnknownOptionCliException,
@@ -272,7 +270,7 @@ public class CLI {
      * @throws MissingArgumentCliException in case of a missing argument
      * @throws UnusedArgumentCliException in case of an superfluous argument
      * @throws NonNumericArgumentCliException in case of a non-numeric value for
-     *         a numeric option
+     * a numeric option
      */
     public int run(String[] argv)
             throws UnknownOptionCliException,
