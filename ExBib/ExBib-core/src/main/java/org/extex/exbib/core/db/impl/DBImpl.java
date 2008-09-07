@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.db.impl;
@@ -54,8 +53,8 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 public class DBImpl implements DB, Observable {
 
     /**
-     * The field <tt>bibReaderFactory</tt> contains the factory used to get
-     * new Readers.
+     * The field <tt>bibReaderFactory</tt> contains the factory used to get new
+     * Readers.
      */
     private BibReaderFactory bibReaderFactory = null;
 
@@ -77,20 +76,20 @@ public class DBImpl implements DB, Observable {
     private Map<String, Value> strings = new HashMap<String, Value>();
 
     /**
-     * The field <tt>makeAliasHook</tt> contains the observers for the
-     * creation of an alias.
+     * The field <tt>makeAliasHook</tt> contains the observers for the creation
+     * of an alias.
      */
     private ObserverList makeAliasHook = new ObserverList();
 
     /**
-     * The field <tt>makeEntryHook</tt> contains the observers for the
-     * creation of an entry.
+     * The field <tt>makeEntryHook</tt> contains the observers for the creation
+     * of an entry.
      */
     private ObserverList makeEntryHook = new ObserverList();
 
     /**
-     * The field <tt>makeMacroHook</tt> contains the observers for the
-     * creation of a macro.
+     * The field <tt>makeMacroHook</tt> contains the observers for the creation
+     * of a macro.
      */
     private ObserverList makeMacroHook = new ObserverList();
 
@@ -101,8 +100,8 @@ public class DBImpl implements DB, Observable {
     private ObserverList makePreambleHook = new ObserverList();
 
     /**
-     * The field <tt>makeStringHook</tt> contains the observers for the
-     * creation of a string.
+     * The field <tt>makeStringHook</tt> contains the observers for the creation
+     * of a string.
      */
     private ObserverList makeStringHook = new ObserverList();
 
@@ -118,7 +117,7 @@ public class DBImpl implements DB, Observable {
 
     /**
      * The field <tt>minCrossref</tt> contains the minimum number of crossrefs
-     * to leave the crossreferenced entry alone; otherwise it is inlined.
+     * to leave the cross-referenced entry alone; otherwise it is inlined.
      */
     private int minCrossrefs = 2;
 
@@ -133,8 +132,7 @@ public class DBImpl implements DB, Observable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -344,7 +342,7 @@ public class DBImpl implements DB, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.db.DB#registerObserver(java.lang.String,
-     *      org.extex.exbib.core.util.Observer)
+     * org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -387,8 +385,8 @@ public class DBImpl implements DB, Observable {
     /**
      * Setter for the sorter.
      * 
-     * @param sorter the new
-     *        {@link org.extex.exbib.core.db.sorter.Sorter Sorter}
+     * @param sorter the new {@link org.extex.exbib.core.db.sorter.Sorter
+     * Sorter}
      */
     public void setSorter(Sorter sorter) {
 
@@ -419,7 +417,7 @@ public class DBImpl implements DB, Observable {
      * @param locator the locator
      * 
      * @throws ExBibEntryUndefinedException in case that the key can not be
-     *         resolved
+     * resolved
      */
     public void storeAlias(String alias, String key, Locator locator)
             throws ExBibEntryUndefinedException {
@@ -459,7 +457,7 @@ public class DBImpl implements DB, Observable {
      * Store a string definition in the database.
      * 
      * @param name the name of the string definition. The name is not case
-     *        sensitive. Thus it is translated to lower case internally
+     * sensitive. Thus it is translated to lower case internally
      * @param value the value of the string definition
      */
     public void storeString(String name, Value value) {
