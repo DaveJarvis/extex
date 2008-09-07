@@ -31,7 +31,9 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to trace the markup.
  * 
- * <doc command="markup-trace"> <h3>The Command <tt>markup-trace</tt></h3>
+ * <doc type="exindex-command" command="markup-trace">
+ * 
+ * <h3>The Command <tt>markup-trace</tt></h3>
  * 
  * <p>
  * The command <tt>markup-trace</tt> can be used to control the tracing of the
@@ -123,7 +125,7 @@ public class LMarkupTrace extends LFunction {
      * @param container the container for indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
+     * argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
     public LMarkupTrace(String name, IndexContainer container)

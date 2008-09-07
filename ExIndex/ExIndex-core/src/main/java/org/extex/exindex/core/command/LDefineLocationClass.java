@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.command;
@@ -35,7 +34,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is the adapter for the L system to define a location class.
  * 
- * <doc command="define-location-class">
+ * <doc type="exindex-command" command="define-location-class">
+ * 
  * <h3>The Command <tt>define-location-class</tt></h3>
  * 
  * <p>
@@ -80,10 +80,10 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <dd>This location class consists of a non-empty sequence of digits.</dd>
  * <dt>alpha</dt>
  * <dd>This location class consists of a non-empty sequence of lowercase
- * letters; i.e. the characters 'a' to 'z'. </dd>
+ * letters; i.e. the characters 'a' to 'z'.</dd>
  * <dt>ALPHA</dt>
  * <dd>This location class consists of a non-empty sequence of uppercase
- * letters; i.e. the characters 'A' to 'Z'. </dd>
+ * letters; i.e. the characters 'A' to 'Z'.</dd>
  * <dt>digits</dt>
  * <dd>This location class consists of the single digits; i.e. the characters
  * '0' to '9'.</dd>
@@ -111,8 +111,7 @@ public class LDefineLocationClass extends LFunction {
     private static final LSymbol SEP = LSymbol.get(":sep");
 
     /**
-     * The field <tt>container</tt> contains the container for location
-     * classes.
+     * The field <tt>container</tt> contains the container for location classes.
      */
     private LocationClassContainer container;
 
@@ -123,7 +122,7 @@ public class LDefineLocationClass extends LFunction {
      * @param container the container to store the information in
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
+     * argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
     public LDefineLocationClass(String name, LocationClassContainer container)

@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.command;
@@ -32,7 +31,8 @@ import org.extex.exindex.lisp.type.value.LValue;
 /**
  * This is the adapter for the L system to parse a merge rule.
  * 
- * <doc command="merge-rule">
+ * <doc type="exindex-command" command="merge-rule">
+ * 
  * <h3>The Command <tt>merge-rule</tt></h3>
  * 
  * <p>
@@ -91,7 +91,7 @@ public class LMergeRule extends LFunction {
      * @param container the container to store the information
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
+     * argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
     public LMergeRule(String name, IndexContainer container)
@@ -155,7 +155,7 @@ public class LMergeRule extends LFunction {
      * @param bregexp the indicator for bregexp type rules
      * @param eregexp the indicator for eregexp type rules
      * @param again the optional indicator to restart the replacement cycle from
-     *        start
+     * start
      * 
      * @return <tt>null</tt>
      * 

@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.core.command;
@@ -42,7 +41,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is the adapter for the L system to define a rule set.
  * 
- * <doc command="define-rule-set">
+ * <doc type="exindex-command" command="define-rule-set">
+ * 
  * <h3>The Command <tt>define-rule-set</tt></h3>
  * 
  * <p>
@@ -72,9 +72,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The specification of a rule set can be contain an inherit instruction. This
- * instruction starts with the keyword <tt>:inherit-from</tt>. This keyword
- * is followed by a list of strings denoting rule set names. Those names need to
- * be defined. The definitions of those names are included at this place.
+ * instruction starts with the keyword <tt>:inherit-from</tt>. This keyword is
+ * followed by a list of strings denoting rule set names. Those names need to be
+ * defined. The definitions of those names are included at this place.
  * </p>
  * 
  * <pre>
@@ -91,8 +91,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The other possibility for a specification is an explicit rule set. It is
- * stared with the keyword <tt>:rules</tt>. This keyword is followed by a
- * list containing the rules.
+ * stared with the keyword <tt>:rules</tt>. This keyword is followed by a list
+ * containing the rules.
  * </p>
  * 
  * <pre>
@@ -176,7 +176,7 @@ public class LDefineRuleSet extends LFunction {
      * @param container the container for indices
      * 
      * @throws NoSuchMethodException in case that no method corresponding to the
-     *         argument specification could be found
+     * argument specification could be found
      * @throws SecurityException in case a security problem occurred
      */
     public LDefineRuleSet(String name, RuleSetContainer container)

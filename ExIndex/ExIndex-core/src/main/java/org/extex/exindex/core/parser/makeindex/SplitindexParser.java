@@ -32,9 +32,9 @@ import org.extex.exindex.lisp.LInterpreter;
  * This parser is a reader for input in the form of the splitindex format and
  * some extensions of it.
  * 
+ * <doc type="exindex-format" section="Splitindex Index Format">
  * 
- * <doc section="Splitindex Index Format"> <h2>The <logo>splitindex</logo> Raw
- * Index Format</h2>
+ * <h2>The <logo>splitindex</logo> Raw Index Format</h2>
  * 
  * <p>
  * The raw index format for <logo>splitindex</logo> is used to parse the input
@@ -401,7 +401,7 @@ public class SplitindexParser extends MakeindexParser {
      * @param interpreter the interpreter to query for the parameters
      * 
      * @throws RawIndexException in case that the value from the interpreter has
-     *         the wrong type
+     * the wrong type
      */
     @Override
     public void configure(LInterpreter interpreter) throws RawIndexException {
@@ -421,7 +421,7 @@ public class SplitindexParser extends MakeindexParser {
      * @throws RawIndexMissingCharException in case of an error
      * 
      * @see org.extex.exindex.core.parser.makeindex.MakeindexParser#scanIndex(org.extex.exindex.core.parser.reader.ReaderLocator,
-     *      java.lang.String)
+     * java.lang.String)
      */
     @Override
     protected String scanIndex(ReaderLocator reader, String fallback)

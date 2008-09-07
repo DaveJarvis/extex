@@ -46,8 +46,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This parser is a reader for input in the form of the <logo>makeindex</logo>
  * format and some extensions of it.
  * 
- * <doc section="Makeindex Index Format"> <h2>The <logo>makeindex</logo> Raw
- * Index Format</h2>
+ * <doc type="exindex-format" section="Makeindex Index Format">
+ * 
+ * <h2>The <logo>makeindex</logo> Raw Index Format</h2>
  * 
  * <p>
  * The raw index format for <logo>makeindex</logo> is used to parse the input
@@ -464,7 +465,7 @@ public class MakeindexParser implements RawIndexParser {
      * @param interpreter the interpreter to query for the parameters
      * 
      * @throws RawIndexException in case that the value from the interpreter has
-     *         the wrong type
+     * the wrong type
      */
     protected void configure(LInterpreter interpreter) throws RawIndexException {
 
