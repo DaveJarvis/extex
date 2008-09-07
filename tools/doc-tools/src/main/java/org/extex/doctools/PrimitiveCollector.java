@@ -569,9 +569,9 @@ public class PrimitiveCollector {
     private DocumentBuilder builder;
 
     /**
-     * The field <tt>primitives</tt> contains the collected primitives.
+     * The field <tt>docs</tt> contains the collected docs.
      */
-    private Map<String, Info> primitives = null;
+    private Map<String, Info> docs = null;
 
     /**
      * The field <tt>verbose</tt> contains the verbosity indicator.
@@ -619,7 +619,7 @@ public class PrimitiveCollector {
 
         units = new HashMap<String, Info>();
         configs = new HashMap<String, Info>();
-        primitives = new HashMap<String, Info>();
+        docs = new HashMap<String, Info>();
 
         for (String base : bases) {
             File dir = new File(base);
@@ -831,7 +831,7 @@ public class PrimitiveCollector {
 
                 String name = root.getAttribute("name");
                 if (!"".equals(name)) {
-                    primitives.put(name + " " + clazz, new Info(f, root));
+                    docs.put(name + " " + clazz, new Info(f, root));
                 }
                 return;
             } else if (TODO_PATTERN.matcher(s).matches()) {
@@ -905,7 +905,7 @@ public class PrimitiveCollector {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      * @throws TransformerFactoryConfigurationError in case of a transformer
-     *             factory configuration exception
+     * factory configuration exception
      * @throws TransformerException in case of a transformer exception
      */
     public void run()
@@ -1198,10 +1198,10 @@ public class PrimitiveCollector {
                 TransformerException,
                 SyntaxException {
 
-        if (primitives == null) {
+        if (docs == null) {
             collectPrimitives();
         }
-        write(writer, primitives, "primitive");
+        write(writer, docs, "primitive");
     }
 
     /**
@@ -1219,10 +1219,10 @@ public class PrimitiveCollector {
                 TransformerException,
                 SyntaxException {
 
-        if (primitives == null) {
+        if (docs == null) {
             collectPrimitives();
         }
-        write(writer, primitives, "syntax");
+        write(writer, docs, "syntax");
     }
 
     /**
