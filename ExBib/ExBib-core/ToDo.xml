@@ -30,15 +30,9 @@
       New functions: access to all fields.
     </task>
     <task class="extension">
-      Implement #include for bst files.
-    </task>
-    <task class="extension">
       Implement importers for other types of database formats (refer, tib, endnote, medline,...).
-	  One kind of importer might be an inverter which takes the output of a bibliopgraphy
-	  processing and reconstructs a database (often requested in the news).
-    </task>
-    <task class="extension">
-      Implement BibTeX 1.0 features: @include, @alias,@modify
+      One kind of importer might be an inverter which takes the output of a bibliopgraphy
+      processing and reconstructs a database (often requested in the news).
     </task>
   </todo>
 
@@ -46,7 +40,7 @@
     <task class="bug">
       The final flush of the output buffer is missing in BibTeX if there is no
       terminating newline$.
-      This has been fixed in bcd.
+      This has been fixed in exbib.
     </task>
     <task>
       Consider the parameter min-crossref and make a test case for it
@@ -60,6 +54,12 @@
     </task>
     <task class="extension">
       Use unicode (UTF8) as base encoding.
+    </task>
+    <task class="extension">
+      Implement BibTeX 1.0 features: @include, @alias, @modify
+    </task>
+    <task class="extension">
+      Implement #include for bst files.
     </task>
   </done>
 </tasklist>

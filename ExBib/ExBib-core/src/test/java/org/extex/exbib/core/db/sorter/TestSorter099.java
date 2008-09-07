@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.db.sorter;
@@ -23,17 +22,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.extex.exbib.core.db.Entry;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,167 +35,6 @@ import org.junit.Test;
  * @version $Revision: 1.1 $
  */
 public class TestSorter099 {
-
-    /**
-     * A dummy configuration.
-     */
-    private static class DummyConfig implements Configuration {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String)
-         */
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
-
-            // findConfiguration unimplemented
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String, java.lang.String)
-         */
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            // findConfiguration unimplemented
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(
-         *      java.lang.String)
-         */
-        public String getAttribute(String name) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String)
-         */
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String, java.lang.String)
-         */
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() throws ConfigurationException {
-
-            // getValue unimplemented
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValue(
-         *      java.lang.String)
-         */
-        public String getValue(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-         *      java.lang.String, int)
-         */
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
-
-            return 20;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.util.List, java.lang.String)
-         */
-        public void getValues(List<String> list, String key) {
-
-            // getValues unimplemented
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.lang.String)
-         */
-        public List<String> getValues(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator()
-         */
-        public Iterator<Configuration> iterator() throws ConfigurationException {
-
-            // iterator unimplemented
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#iterator(
-         *      java.lang.String)
-         */
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-         *      org.extex.framework.configuration.ConfigurationLoader)
-         */
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-            // setConfigurationLoader unimplemented
-        }
-
-    }
 
     /**
      * The field <tt>s</tt> contains the instance to be tested.
@@ -233,8 +63,6 @@ public class TestSorter099 {
      */
     @Before
     public void setUp() throws Exception {
-
-        s.configure(new DummyConfig());
 
         a = new Entry(null);
         a.setKey("abc");
@@ -336,7 +164,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_0() throws Exception {
+    public void testSorter099x0() throws Exception {
 
         assertEquals(0, s.compare(a, a));
     }
@@ -347,7 +175,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_1() throws Exception {
+    public void testSorter099x1() throws Exception {
 
         assertTrue(0 > s.compare(a, b));
     }
@@ -359,7 +187,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_10() throws Exception {
+    public void testSorter099x10() throws Exception {
 
         a.setSortKey("ghi");
         assertEquals(0, s.compare(a, a));
@@ -371,7 +199,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_11() throws Exception {
+    public void testSorter099x11() throws Exception {
 
         a.setSortKey("ghi");
         assertTrue(0 < s.compare(a, b));
@@ -383,7 +211,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_12() throws Exception {
+    public void testSorter099x12() throws Exception {
 
         a.setSortKey("ghi");
         assertTrue(0 > s.compare(b, a));
@@ -395,7 +223,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_2() throws Exception {
+    public void testSorter099x2() throws Exception {
 
         assertTrue(0 < s.compare(b, a));
     }
@@ -406,7 +234,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_21() throws Exception {
+    public void testSorter099x21() throws Exception {
 
         a.setSortKey("ac");
         b.setSortKey("aa");
@@ -419,7 +247,7 @@ public class TestSorter099 {
      * @throws Exception in case of an error
      */
     @Test
-    public void testSorter099_22() throws Exception {
+    public void testSorter099x22() throws Exception {
 
         a.setSortKey("ac");
         b.setSortKey("aa");
