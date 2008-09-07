@@ -11,6 +11,24 @@ body {
   margin-right:2em;
   background: url(src/images/side.png) repeat-y;
 }
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
 .left {
   position:absolute;
   top:0;
@@ -47,8 +65,8 @@ pre.output {
 
 <p>
  &epsilon;&chi;Bib is a bibliography processor in the spirit of
- B<small>IB</small>T<sub>E</sub>X. It comes with some documentation. 
- This documentation is packaged in this module.
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X.
+ It comes with some documentation. This documentation is packaged in this module.
 </p>
 
 <h2>Creating the &epsilon;&chi;Bib Documentation</h2>
@@ -66,10 +84,11 @@ href="http://maven.apache.org">Maven2</a> is properly installed on
 your system and the executable can be found on the search path.
 </p>
 <p>
-In addition a working T<sub>E</sub>X system is needed. The commands must be
-found on the search path. Step by step the components of 
-&epsilon;&chi;T<sub>E</sub>X might be plugged in to remove the dependency on a
-separate T<sub>E</sub>X system.
+In addition a working <span class="t">T</span><span class="e">e</span>X system
+is needed. The commands must be found on the search path. Step by step the
+components of &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
+might be plugged in to remove the dependency on a separate 
+<span class="t">T</span><span class="e">e</span>X system.
 </p>
 <pre class="output">
 [INFO] Scanning for projects...
@@ -99,10 +118,13 @@ determine the problem. Usually just reading the messages leads you
 into the right direction.
 </p>
 
+<h2>License</h2>
+
+The &epsilon;&chi;Bib documentation is released under the 
+<a href="LICENSE.html">GNU Free Documentation License</a>.
+
 <address>
-<font face="helvetica,sans-serif" size="1">
-© 2008 <a href="mailto:extex@dante.de">The ExTeX Group</a>
-</font>
+© 2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
 </address>
 </body>
 </html>

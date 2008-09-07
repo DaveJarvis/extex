@@ -1,4 +1,12 @@
 %%*****************************************************************************
+%% Copyright (c) 2008 Gerd Neugebauer
+%%
+%% Permission is granted to copy, distribute and/or modify this document
+%% under the terms of the GNU Free Documentation License, Version 1.2
+%% or any later version published by the Free Software Foundation;
+%% with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%%
+%%*****************************************************************************
 %% $Id: sorting.tex,v 0.00 2008/05/28 22:47:23 gene Exp $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
@@ -7,25 +15,72 @@
 \chapter{Sort Order}%
 \label{sec:sort.order}
 
-\INCOMPLETE
+Sorting is an important feature in the bibliography. Thus several
+mechanisms are provided to determine the sorting order od entries.
+the preferred way to specify the sort order is in the aux file with
+the help of the macro \verb|\biboptions|. Alternatively the sort order
+can be specified via the command line.
+
+In any case the specification is a string naming the sorting method
+and optional parameters.
+
+
+\section{Reverse Ordering}
+
+Whatever sorting order is given the need arises to describe an
+ascending and descending variant of it. The default is ascending
+order. The descending order can be achieved by reversing the given
+order.
+
+The reversing can be achieved wir the keyword \texttt{reverse}
+followed by the a sort order specification after a colon. This is
+shown in the following example.
+
+\begin{verbatim}
+  sort=reverse:unicode
+\end{verbatim}
 
 \section{Unicode Ordering}
 
-\INCOMPLETE
+The Unicode orderings assume a certain semantics for the code points.
+This semantics is given by the Unicode specification.
 
 \subsection{Unicode}
 
-\INCOMPLETE
+The sort order \texttt{unicode} sorts the entries in ascending order
+according to the lexicographical ordering of their sort keys.
+
+\begin{verbatim}
+  sort=unicode
+\end{verbatim}
 
 \subsection{ignoreCase}
 
-\INCOMPLETE
+The sort order \texttt{ignoreCase} sorts the entries in ascending order
+according to the lexicographical ordering of their sort keys
+translated to their lowercase counterpart. This translation is
+possible since the meaning of the characters are known from the
+Unicode tables.
+
+\begin{verbatim}
+  sort=ignoreCase
+\end{verbatim}
 
 \section{Locale Based Ordering}
 
-\INCOMPLETE
+The sort order \texttt{locale} sorts the entries in ascending order
+according to the lexicographical ordering of their sort keys
+normalized by the locale given as argument.
+
+\begin{verbatim}
+  sort=locale:de
+\end{verbatim}
 
 \section{Rule Based Collators}
+
+\begin{verbatim}
+  sort=rbc:resource
+\end{verbatim}
 
 \INCOMPLETE
 

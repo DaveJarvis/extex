@@ -14,6 +14,11 @@
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
 
+  <properties>
+    <doc.file>exbib-manual</doc.file>
+    <doc.dir>manual</doc.dir>
+  </properties>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
@@ -46,7 +51,9 @@
             <configuration>
               <executable>pdflatex</executable>
               <arguments>
-                <argument>exbib-manual</argument>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
               <environmentVariables>
@@ -69,11 +76,11 @@
                 <classpath/>
                 <argument>org.extex.exbib.main.ExBibMain</argument>
                 <argument>--quiet</argument>
-                <argument>-Dtexinputs=${basedir}/src/main/texinputs/bibtex</argument>
-                <argument>--logfile=${basedir}/target/exbib-manual.blg</argument>
-                <argument>${basedir}/src/main/tex/manual/exbib-manual</argument>
+                <argument>-Dtexinputs=${basedir}/src/main/texinputs/bibtex${path.separator}${basedir}/src/main/bibtex${path.separator}${basedir}/src/main/bibtex</argument>
+                <argument>--logfile=${project.build.directory}/${doc.file}.blg</argument>
+                <argument>${project.build.directory}/${doc.file}</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
             </configuration>
           </execution>
 
@@ -87,14 +94,14 @@
               <executable>makeindex</executable>
               <arguments>
                 <argument>-s</argument>
-                <argument>../../texinputs/doc.ist</argument>
-                <argument>exbib-manual.idx</argument>
+                <argument>../src/main/texinputs/doc.ist</argument>
+                <argument>${doc.file}.idx</argument>
               </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
+              <workingDirectory>${project.build.directory}</workingDirectory>
               <environmentVariables>
-                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
+                <TEXINPUTS>${basedir}/src/main/texinputs${path.separator}.</TEXINPUTS>
               </environmentVariables>
-              <outputFile>${basedir}/target/manual.out</outputFile>
+              <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
 
@@ -107,7 +114,9 @@
             <configuration>
               <executable>pdflatex</executable>
               <arguments>
-                <argument>exbib-manual</argument>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
               <environmentVariables>
@@ -126,7 +135,9 @@
             <configuration>
               <executable>pdflatex</executable>
               <arguments>
-                <argument>exbib-manual</argument>
+                <argument>-halt-on-error</argument>
+                <argument>-output-directory=${project.build.directory}</argument>
+                <argument>${doc.file}</argument>
               </arguments>
               <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
               <environmentVariables>
@@ -139,6 +150,7 @@
         </executions>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -170,7 +182,7 @@
           </execution>
         </executions>
       </plugin>
-
+-->
     </plugins>
   </build>
 
