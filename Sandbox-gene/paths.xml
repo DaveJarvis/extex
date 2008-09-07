@@ -1,0 +1,1628 @@
+<!-- TeX Live texmf.cnf                                                        -->
+<!-- What follows is a super-summary of what this .cnf file can                -->
+<!-- contain. Please read the Kpathsea manual for more information.            -->
+<!--                                                                           -->
+<!-- texmf.cnf is generated from texmf.in, by replacing @var@ with the         -->
+<!-- value of the Make variable `var', via a sed file texmf.sed, generated     -->
+<!-- (once) by kpathsea/Makefile (itself generated from kpathsea/Makefile.in   -->
+<!-- by configure).                                                            -->
+<!--                                                                           -->
+<!-- Any identifier (sticking to A-Za-z_ for names is safest) can be assigned. -->
+<!-- The `=' (and surrounding spaces) is optional.                             -->
+<!-- No % or @ in texmf.in, for the sake of autogeneration.                    -->
+<!-- (However, %'s and @'s can be edited into texmf.cnf or put in envvar values.)-->
+<!-- $foo (or ${foo}) in a value expands to the envvar or cnf value of foo.    -->
+<!--                                                                           -->
+<!-- Earlier entries (in the same or another file) override later ones, and    -->
+<!-- an environment variable foo overrides any texmf.cnf definition of foo.    -->
+<!--                                                                           -->
+<!-- All definitions are read before anything is expanded, so you can use      -->
+<!-- variables before they are defined.                                        -->
+<!--                                                                           -->
+<!-- If a variable assignment is qualified with `.PROGRAM', it is ignored      -->
+<!-- unless the current executable (last filename component of argv[0]) is     -->
+<!-- named PROGRAM.  This foo.PROGRAM construct is not recognized on the       -->
+<!-- right-hand side. For environment variables, use FOO_PROGRAM.              -->
+<!--                                                                           -->
+<!-- Which file formats use which paths for searches is described in the       -->
+<!-- various programs' and the kpathsea documentation.                         -->
+<!--                                                                           -->
+<!-- // means to search subdirectories (recursively).                          -->
+<!-- A leading !! means to look only in the ls-R db, never on the disk.        -->
+<!-- A leading/trailing/doubled ; in the paths will be expanded into the       -->
+<!--   compile-time default. Probably not what you want.                       -->
+<!--                                                                           -->
+<!-- You can use brace notation, for example: /usr/local/{mytex:othertex}      -->
+<!-- expands to /usr/local/mytex:/usr/local/othertex.  Instead of the path     -->
+<!-- separator you can use a comma: /usr/local/{mytex,othertex} also expands   -->
+<!-- to /usr/local/mytex:/usr/local/othertex.  However, the use of the comma   -->
+<!-- instead of the path separator is deprecated.                              -->
+<!--                                                                           -->
+<!-- The text above assumes thet path separator is a colon (:).  Non-UNIX      -->
+<!-- systems use different path separators, like the semicolon (;).            -->
+
+<!--  Part 1: Search paths and directories.                                    -->
+
+<!-- You can set an environment variable to override TEXMF if you're testing   -->
+<!-- a new TeX tree, without changing anything else.                           -->
+<!--                                                                           -->
+<!-- You may wish to use one of the $SELFAUTO... variables here so TeX will    -->
+<!-- find where to look dynamically.  See the manual and the definition        -->
+<!-- below of TEXMFCNF.                                                        -->
+
+<!-- The main tree, which must be mentioned in $TEXMF, below:                  -->
+<def name="TEXMFMAIN">D:<sep/>Programme<sep/>TeXlive<sep/>texmf</def>
+<!-- A place for local additions to a "standard" texmf tree.                   -->
+<def name="TEXMFLOCAL">D:<sep/>Programme<sep/>TeX<sep/>texmf</def>
+
+<!-- User texmf trees can be catered for like this...                          -->
+<def name="HOMETEXMF"><var refid="HOME"/><sep/>lib<sep/>texmf</def>
+
+<!-- A place where texconfig stores modifications (instead of the TEXMFMAIN    -->
+<!-- tree).  texconfig relies on the name, so don't change it.                 -->
+<def name="VARTEXMF">D:<sep/>Programme<sep/>TeX<sep/>texmf-var</def>
+
+<!-- Now, list all the texmf trees. If you have multiple trees,                -->
+<!-- use shell brace notation, like this:                                      -->
+<!--   TEXMF = {$HOMETEXMF,!!$VARTEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN}             -->
+<!-- The braces are necessary.                                                 -->
+<!--                                                                           -->
+<!-- A place where to store other TeX support files. It can be a remote        -->
+<!-- texmf tree, or a tree to store non-free stuff, or ...                     -->
+<!--   TEXMFEXTRA=$SELFAUTOPARENT/texmf-extra                                  -->
+<!-- If you set this, add $TEXMFEXTRA in the list below                        -->
+<!--                                                                           -->
+<def name="TEXMF">
+  <group>
+    <element><var refid="HOMETEXMF"/></element>
+    <element cacheonly="true"><var refid="VARTEXMF"/></element>
+    <element cacheonly="true"><var refid="TEXMFLOCAL"/></element>
+    <element cacheonly="true"><var refid="TEXMFMAIN"/></element>
+  </group>
+</def>
+
+<!-- The system trees.  These are the trees that are shared by all the users.  -->
+<def name="SYSTEXMF"><var refid="TEXMF"/></def>
+
+<!-- The temporary area                                                        -->
+<!-- TEMP = /var/tmp                                                           -->
+
+<!-- Where generated fonts may be written.  This tree is used when the sources -->
+<!-- were found in a system tree and either that tree wasn't writable, or the  -->
+<!-- varfonts feature was enabled in MT_FEATURES in mktex.cnf.                 -->
+<def name="VARTEXFONTS">D:<sep/>Programme<sep/>TeX<sep/>VARFONTS</def>
+
+<!-- Where to look for ls-R files.  There need not be an ls-R in the           -->
+<!-- directories in this path, but if there is one, Kpathsea will use it.      -->
+<def name="TEXMFDBS">
+  <list>
+    <element><var refid="TEXMF"/></element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </list>
+</def>
+
+<!-- It may be convenient to define TEXMF like this:                           -->
+<!--   TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN,$HOME}                   -->
+<!-- which allows users to set up entire texmf trees, and tells TeX to         -->
+<!-- look in places like ~/tex and ~/bibtex.  If you do this, define TEXMFDBS  -->
+<!-- like this:                                                                -->
+<!--   TEXMFDBS = $HOMETEXMF;$TEXMFLOCAL;$TEXMFMAIN;$VARTEXFONTS               -->
+<!-- or mktexlsr will generate an ls-R file for $HOME when called, which is    -->
+<!-- rarely desirable.  If you do this you'll want to define SYSTEXMF like     -->
+<!-- this:                                                                     -->
+<!--   SYSTEXMF = $TEXMFLOCAL;$TEXMFMAIN                                       -->
+<!-- so that fonts from a user's tree won't escape into the global trees.      -->
+<!--                                                                           -->
+<!-- On some systems, there will be a system tree which contains all the font  -->
+<!-- files that may be created as well as the formats.  For example            -->
+<!--   VARTEXMF = /var/lib/texmf                                               -->
+<!-- is used on many Linux systems.  In this case, set VARTEXFONTS like this   -->
+<!--   VARTEXFONTS = $VARTEXMF/fonts                                           -->
+<!-- and do not mention it in TEXMFDBS (but _do_ mention VARTEXMF).            -->
+
+
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- Usually you will not need to edit any of the other variables in part 1. % -->
+<!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- WEB2C is for Web2C specific files.  The current directory may not be      -->
+<!-- a good place to look for them.                                            -->
+<def name="WEB2C"><var refid="TEXMF"/><sep/>web2c</def>
+
+<!-- TEXINPUTS is for TeX input files -- i.e., anything to be found by \input  -->
+<!-- or \openin, including .sty, .eps, etc.                                    -->
+
+<!-- LaTeX-specific macros are stored in latex.                                -->
+<def name="TEXINPUTS.latex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.hugelatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Fontinst needs to read afm files.                                         -->
+<def name="TEXINPUTS.fontinst">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>tex<group>
+					<element><sep/>fontinst</element>
+			</group></element>
+		<element>fonts<sep/>afm</element>
+		</group><somewhere/>
+	</element>
+  </list>
+</def>
+
+<!-- Plain TeX.  Have the command tex check all directories as a last          -->
+<!-- resort, we may have plain-compatible stuff anywhere.                      -->
+<def name="TEXINPUTS.tex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<!-- other plain-based formats                                                 -->
+<def name="TEXINPUTS.amstex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>amstex</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.ftex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>formate</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.texinfo">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>texinfo</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.eplain">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>eplain</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- e-TeX.                                                                    -->
+<def name="TEXINPUTS.elatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>etex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.etex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>etex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- PDFTeX.  This form of the input paths is borrowed from teTeX.  A certain  -->
+<!-- variant of TDS is assumed here, unaffected by the build variables.        -->
+<def name="TEXINPUTS.pdftexinfo">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdftex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>texinfo</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdflatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdftex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdftex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdftex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfelatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdfetex</element>
+			<element>pdftex</element>
+			<element>etex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfetex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdfetex</element>
+			<element>pdftex</element>
+			<element>etex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Omega.                                                                    -->
+<def name="TEXINPUTS.lambda">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>omega</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>lambda</element>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.omega">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>omega</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Context macros by Hans Hagen:                                             -->
+<def name="TEXINPUTS.context">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdfetex</element>
+			<element>pdftex</element>
+			<element>etex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>context</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+  </list>
+</def>
+
+<!-- cstex, from Petr Olsak                                                    -->
+<def name="TEXINPUTS.cslatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>cslatex</element>
+			<element>csplain</element>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.csplain">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/>tex<sep/><group>
+			<element>csplain</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfcslatex">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdftex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>cslatex</element>
+			<element>csplain</element>
+			<element>latex</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfcsplain">
+  <list>
+    <element>.</element>
+    <element>
+		<var refid="TEXMF"/><sep/><group>
+			<element>pdftex</element>
+			<element>tex</element>
+		</group><sep/><group>
+			<element>csplain</element>
+			<element>plain</element>
+			<element>generic</element>
+		</group><somewhere/>
+	</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Polish                                                                    -->
+<def name="TEXINPUTS.platex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>platex</element>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfmex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>pdftex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>mex</element>
+    <element>plain</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.mex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>mex</element>
+    <element>plain</element>
+    <element>generic</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfplatex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>pdftex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>platex</element>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- french                                                                    -->
+<def name="TEXINPUTS.frtex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>mltex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>plain</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.frlatex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>mltex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>frlatex</element>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- MLTeX                                                                     -->
+<def name="TEXINPUTS.mltex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>mltex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>plain</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXINPUTS.mllatex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>mltex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- odd formats  needing their own paths                                      -->
+<def name="TEXINPUTS.lollipop">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>lollipop</element>
+    <element>generic</element>
+    <element>plain</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+<def name="TEXINPUTS.lamstex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>lamstex</element>
+    <element>generic</element>
+    <element>plain</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+
+<!-- David Carlisle's xmltex                                                   -->
+<def name="TEXINPUTS.xmltex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>xmltex</element>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+<def name="TEXINPUTS.pdfxmltex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>pdftex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>xmltex</element>
+    <element>latex</element>
+    <element>generic</element>
+  </group><somewhere/>
+
+</element>
+  </list>
+</def>
+
+<!-- Sebastian Rahtz' jadetex for DSSSL                                        -->
+<def name="TEXINPUTS.pdfjadetex">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <var refid="TEXMF"/><sep/><group>
+    <element>pdftex</element>
+    <element>tex</element>
+  </group><sep/><group>
+    <element>jadetex</element>
+    <element>generic</element>
+    <element>plain</element>
+  </group><somewhere/>
+
+</element>
+  </list>
+</def>
+<def name="TEXINPUTS.jadetex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>jadetex</element>
+    <element>generic</element>
+    <element>plain</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+
+<!-- Earlier entries override later ones, so put this last.                    -->
+<def name="TEXINPUTS">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex<sep/><group>
+    <element>generic</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Metafont, MetaPost inputs.                                                -->
+<def name="MFINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>metafont<somewhere/></element>
+    <element>
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="MPINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>metapost<somewhere/></element>
+  </list>
+</def>
+
+<!-- Dump files (fmt/base/mem) for vir{tex,mf,mp} to read (see web2c/INSTALL), -->
+<!-- and string pools (.pool) for ini{tex,mf,mp}.  It is silly that we have six-->
+<!-- paths and directories here (they all resolve to a single place by default),-->
+<!-- but historically ...                                                      -->
+<def name="TEXFORMATS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>web2c</element>
+  </list>
+</def>
+<def name="MFBASES">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="MPMEMS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>web2c</element>
+  </list>
+</def>
+<def name="TEXPOOL">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>web2c</element>
+  </list>
+</def>
+<def name="MFPOOL">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>web2c</element>
+  </list>
+</def>
+<def name="MPPOOL">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>web2c</element>
+  </list>
+</def>
+
+<!-- Device-independent font metric files.                                     -->
+<def name="VFFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TFMFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="VARTEXFONTS"/><somewhere/></element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- The $MAKETEX_MODE below means the drivers will not use a cx font when     -->
+<!-- the mode is ricoh.  If no mode is explicitly specified, kpse_prog_init    -->
+<!-- sets MAKETEX_MODE to /, so all subdirectories are searched.  See the manual.-->
+<!-- The modeless part guarantees that bitmaps for PostScript fonts are found. -->
+<def name="PKFONTS">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><sep/>pk<sep/><group>
+    <element><var refid="MAKETEX_MODE"/></element>
+    <element>modeless</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TEXMF"/><sep/>fonts<somewhere/></element>
+  </list>
+</def>
+
+<!-- Similarly for the GF format, which only remains in existence because      -->
+<!-- Metafont outputs it (and MF isn't going to change).                       -->
+<def name="GFFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>fonts<sep/>gf<sep/><var refid="MAKETEX_MODE"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- A backup for PKFONTS and GFFONTS. Not used for anything.                  -->
+<def name="GLYPHFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>fonts<somewhere/></element>
+  </list>
+</def>
+
+<!-- For texfonts.map and included map files used by mktexpk.                  -->
+<!-- See ftp://ftp.tug.org/tex/fontname.tar.gz.                                -->
+<def name="TEXFONTMAPS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>fontname</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- BibTeX bibliographies and style files.                                    -->
+<def name="BIBINPUTS">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>bibtex<sep/><group>
+    <element>bib</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+<def name="BSTINPUTS">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/>bibtex<sep/><group>
+    <element>bst</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+
+<!-- PostScript headers, prologues (.pro), encodings (.enc) and fonts;         -->
+<!-- this is also where pdftex finds included figures files!                   -->
+
+<def name="TEXPSHEADERS.pdflatex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfelatex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdftexinfo">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfcslatex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfcsplain">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfetex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfjadetex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfplatex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfxmltex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdfmex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdftex">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.pdftexinfo">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.cont-de">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.cont-en">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.cont-nl">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TEXPSHEADERS.context">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>etex</element>
+    <element>tex</element>
+    <element>pdftex</element>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+<def name="TEXPSHEADERS">
+  <list>
+    <element>.</element>
+    <element>
+  <var refid="TEXMF"/><sep/><group>
+    <element>dvips</element>
+    <element>fonts<sep/>type1</element>
+    <element>pdftex</element>
+  </group><somewhere/>
+</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- PostScript Type 1 outline fonts.                                          -->
+<def name="T1FONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- PostScript AFM metric files.                                              -->
+<def name="AFMFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- TrueType outline fonts.                                                   -->
+<def name="TTFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+<def name="TTF2TFMINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Type 42 outline fonts.                                                    -->
+<def name="T42FONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- A place to puth everything that doesn't fit the other font categories.    -->
+<def name="MISCFONTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>fonts<sep/>misc<somewhere/></element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- Dvips' config.* files (this name should not start with `TEX'!).           -->
+<def name="TEXCONFIG">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>dvips<somewhere/></element>
+  </list>
+</def>
+
+<!-- Makeindex style (.ist) files.                                             -->
+<def name="INDEXSTYLE">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>makeindex<somewhere/></element>
+  </list>
+</def>
+
+<!-- Used by DMP (ditroff-to-mpx), called by makempx -troff.                   -->
+<def name="TRFONTS"><sep/>usr<sep/>lib<sep/>font<sep/>devpost</def>
+<def name="MPSUPPORT">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>metapost<sep/>support</element>
+  </list>
+</def>
+
+<!-- For xdvi to find mime.types and .mailcap, if they do not exist in         -->
+<!-- $HOME.  These are single directories, not paths.                          -->
+<!-- (But the default mime.types, at least, may well suffice.)                 -->
+<def name="MIMELIBDIR"><var refid="SELFAUTOPARENT"/><sep/>etc</def>
+<def name="MAILCAPLIBDIR"><var refid="SELFAUTOPARENT"/><sep/>etc</def>
+
+<!-- TeX documentation and source files, for use with kpsewhich.               -->
+<def name="TEXDOCS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>doc<somewhere/></element>
+  </list>
+</def>
+<def name="TEXSOURCES">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><somewhere/></element>
+  </list>
+</def>
+
+<!-- allo for compressed files, and various extenions                          -->
+<def name="TEXDOCSSUFFIX">:.dvi:.ps:.html:.txt</def>
+<def name="TEXDOCSCOMPRESS">:.gz:.bz2:.zip:.Z</def>
+<def name="TEXDOCEXT">
+  
+  <group>
+    <element><var refid="TEXDOCSSUFFIX"/></element>
+  </group><group>
+    <element><var refid="TEXDOCSCOMPRESS"/></element>
+  </group>
+
+</def>
+
+<!-- Omega-related fonts and other files.  The odd construction for OFMFONTS   -->
+<!-- makes it behave in the face of a definition of TFMFONTS.  Unfortunately   -->
+<!-- no default substitution would take place for TFMFONTS, so an explicit     -->
+<!-- path is retained.                                                         -->
+<def name="OFMFONTS">
+  <list>
+    <element>.</element>
+    <element>
+  
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><sep/><group>
+    <element>ofm</element>
+    <element>tfm</element>
+  </group><somewhere/>
+
+</element>
+    <element><var refid="TFMFONTS"/></element>
+  </list>
+</def>
+<def name="OPLFONTS">
+  <list>
+    <element>.</element>
+    <element>
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><sep/>opl<somewhere/>
+</element>
+  </list>
+</def>
+<def name="OVFFONTS">
+  <list>
+    <element>.</element>
+    <element>
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><sep/>ovf<somewhere/>
+</element>
+  </list>
+</def>
+<def name="OVPFONTS">
+  <list>
+    <element>.</element>
+    <element>
+  <group>
+    <element><var refid="TEXMF"/><sep/>fonts</element>
+    <element><var refid="VARTEXFONTS"/></element>
+  </group><sep/>ovp<somewhere/>
+</element>
+  </list>
+</def>
+<def name="OTPINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>omega<sep/>otp<somewhere/></element>
+  </list>
+</def>
+<def name="OCPINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>omega<sep/>ocp<somewhere/></element>
+  </list>
+</def>
+
+<!--% t4ht utility, sharing files with TeX4ht                                  -->
+<def name="TEX4HTFONTSET">alias,iso8859</def>
+<def name="TEX4HTINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>tex4ht<sep/>base<somewhere/></element>
+    <element>
+  <var refid="TEXMF"/><sep/>tex4ht<sep/>ht-fonts<sep/><group>
+    <element><var refid="TEX4HTFONTSET"/></element>
+  </group><somewhere/>
+</element>
+  </list>
+</def>
+<def name="T4HTINPUTS">
+  <list>
+    <element>.</element>
+    <element><var refid="TEXMF"/><sep/>tex4ht<sep/>base<somewhere/></element>
+  </list>
+</def>
+<!--% The mktex* scripts rely on KPSE_DOT. Do not set it in the environment.   -->
+<def name="KPSE_DOT">.</def>
+
+<!-- This definition isn't used from this .cnf file itself (that would be      -->
+<!-- paradoxical), but the compile-time default in paths.h is built from it.   -->
+<!-- The SELFAUTO* variables are set automatically from the location of        -->
+<!-- argv[0], in kpse_set_progname.                                            -->
+<!--                                                                           -->
+<!-- About the /. construction:                                                -->
+<!-- 1) if the variable is undefined, we'd otherwise have an empty path        -->
+<!--    element in the compile-time path.  This is not meaningful.             -->
+<!-- 2) if we used /$VARIABLE, we'd end up with // if VARIABLE is defined,     -->
+<!--    which would search the entire world.                                   -->
+<!--                                                                           -->
+<!-- The TETEXDIR stuff isn't likely to be relevant unless you're using teTeX, -->
+<!-- but it doesn't hurt.                                                      -->
+<!--                                                                           -->
+<def name="TEXMFCNF">
+  <list>
+    <element>.</element>
+    <element>
+  <group>
+    <element><var refid="SELFAUTOLOC"/></element>
+    <element><var refid="SELFAUTODIR"/></element>
+    <element><var refid="SELFAUTOPARENT"/></element>
+  </group>\
+</element>
+  </list>
+</def>
+{,{<sep/>share,}<sep/>texmf{.local,}<sep/>web2c};d:<sep/>Programme<sep/>TeXlive<sep/>texmf<sep/>web2c
+
+
+<!-- Suggestions for editor settings under Windows. Uncomment your             -->
+<!-- preferred option. The corresponding MFEDIT can also be set for use with   -->
+<!-- Metafont.                                                                 -->
+<!--                                                                           -->
+<!-- Winedt:                                                                   -->
+<!--  TEXEDIT=C:\WinEdt\WinEdt.exe "[Open('%s');SelLine(%d,7)]                 -->
+<!-- Textpad:                                                                  -->
+<!--  TEXEDIT = c:\Progra~1\TextPad\System\Ddeopn32 TextPad %s(%d)             -->
+<!-- UltraEdit (newer Win32 versions):                                         -->
+<!--  TEXEDIT = uedit32 %s/%d/1                                                -->
+<!-- WinTeXShell32:                                                            -->
+<!--  TEXEDIT = texshell.exe /l=%d %s                                          -->
+<!-- vi, vim, gvim. here we show Windows gvim.exe:                             -->
+<!--  TEXEDIT = gvim.exe %s +%d                                                -->
+<!-- PFE:                                                                      -->
+<!--  TEXEDIT=pfe32/g%d  %s                                                    -->
+<!-- MED:                                                                      -->
+<!--  TEXEDIT=med.exe "%s" %d                                                  -->
+<!-- TSE:                                                                      -->
+<!--  TEXEDIT=e32.exe "%s" -n%d                                                -->
+<!-- Epsilon (Lugaru)            http://www.lugaru.com/                        -->
+<!--  TEXEDIT="c:\Program Files\eps90\bin\e32.exe" +%d %s                      -->
+
+<!-- For unix                                                                  -->
+<!--                                                                           -->
+<!-- vi, vim, NEdit, (X)Emacs, pico, jed                                       -->
+<!-- TEXEDIT = vi     +%d %s                                                   -->
+<!-- TEXEDIT = vim    +%d %s                                                   -->
+<!-- TEXEDIT = nedit  +%d %s                                                   -->
+<!-- TEXEDIT = xemacs +%d %s                                                   -->
+
+<!--(x)fte:                                                                    -->
+<!-- TEXEDIT = xfte   -l%d %s                                                  -->
+
+
+<!---------------------------------------------------------------------------------->
+<!-- Write .log/.dvi/etc. files here, if the current directory is unwritable.  -->
+<!-- TEXMFOUTPUT = /tmp                                                        -->
+
+<!-- If a dynamic file creation fails, log the command to this file, in        -->
+<!-- either the current directory or TEXMFOUTPUT.  Set to the                  -->
+<!-- empty string or  0  to avoid logging.                                     -->
+<def name="MISSFONT_LOG">missfont.log</def>
+
+<!-- Set to a colon-separated list of words specifying warnings to suppress.   -->
+<!-- To suppress everything, use TEX_HUSH = all; this is equivalent to         -->
+<!-- TEX_HUSH = checksum:lostchar:readable:special                             -->
+<def name="TEX_HUSH">none</def>
+
+<!-- Enable system commands via \write18{...}?                                 -->
+<def name="shell_escape">f</def>
+
+<!-- Allow TeX \openout/\openin on filenames starting with `.' (e.g., .rhosts)?-->
+<!-- a (any)        : any file can be opened.                                  -->
+<!-- r (restricted) : disallow opening "dotfiles".                             -->
+<!-- p (paranoid)   : as 'r' and disallow going to parent directories, and     -->
+<!--                  restrict absolute paths to be under $TEXMFOUTPUT.        -->
+<def name="openout_any">p</def>
+<def name="openin_any">a</def>
+<!-- Allow TeX, MF, and MP to parse the first line of an input file for        -->
+<!-- the %&amp;format construct.                                               -->
+<def name="parse_first_line">t</def>
+
+<!-- Allow TeX, eTeX, Omega to include `src:' specials in the dvi file.        -->
+<!-- These specials are used by viewers to jump from the viewer into           -->
+<!-- the editor at the right page/lineno.                                      -->
+<!-- Possible values : none auto cr display hbox math par parend vbox          -->
+<def name="src_specials">none</def>
+
+<!-- Disable search on multiple suffixes filenames. In many case, when `foo.bar'-->
+<!-- is looked for, you do not want to look for `foo.bar.tex' before. This flag-->
+<!-- disables searching for standard suffixes if the file name has already an  -->
+<!-- extension of 3 characters. Default value is true (old behaviour).         -->
+<!-- allow_multiple_suffixes = f                                               -->
+
+<!-- Enable the mktex... scripts by default?  These must be set to 0 or 1.     -->
+<!-- Particular programs can and do override these settings, for example       -->
+<!-- dvips's -M option.  Your first chance to specify whether the scripts      -->
+<!-- are invoked by default is at configure time.                              -->
+<!--                                                                           -->
+<!-- These values are ignored if the script names are changed; e.g., if you    -->
+<!-- set DVIPSMAKEPK to `foo', what counts is the value of the environment     -->
+<!-- variable/config value `FOO', not the `MKTEXPK' value.                     -->
+<!--                                                                           -->
+<!-- MKTEXTEX = 0                                                              -->
+<!-- MKTEXPK = 0                                                               -->
+<!-- MKTEXMF = 0                                                               -->
+<!-- MKTEXTFM = 0                                                              -->
+<!-- MKOCP = 0                                                                 -->
+<!-- MKOFM = 0                                                                 -->
+
+<!-- What MetaPost runs to make MPX files.  This is passed an option -troff    -->
+<!-- if MP is in troff mode.  Set to `0' to disable this feature.              -->
+<def name="MPXCOMMAND">makempx</def>
+
+
+<!--  Part 3: Array and other sizes for TeX (and Metafont and MetaPost).       -->
+<!--                                                                           -->
+<!-- If you want to change some of these sizes only for a certain TeX          -->
+<!-- variant, the usual dot notation works, e.g.,                              -->
+<!-- main_memory.hugetex = 20000000                                            -->
+<!--                                                                           -->
+<!-- If a change here appears to be ignored, try redumping the format file.    -->
+
+<!-- Memory. Must be less than 8,000,000 total.                                -->
+<!--                                                                           -->
+<!-- main_memory is relevant only to initex, extra_mem_* only to non-ini.      -->
+<!-- Thus, have to redump the .fmt file after changing main_memory; to add     -->
+<!-- to existing fmt files, increase extra_mem_*.  (To get an idea of how      -->
+<!-- much, try \tracingstats=2 in your TeX source file;                        -->
+<!-- web2c/tests/memtest.tex might also be interesting.)                       -->
+<!--                                                                           -->
+<!-- To increase space for boxes (as might be needed by, e.g., PiCTeX),        -->
+<!-- increase extra_mem_bot.                                                   -->
+<!--                                                                           -->
+<!-- For some xy-pic samples, you may need as much as 700000 words of memory.  -->
+<!-- For the vast majority of documents, 60000 or less will do.                -->
+<!--                                                                           -->
+<def name="main_memory">363000</def><!-- words of inimemory available; also applies to inimf&amp;mp -->
+<def name="extra_mem_top">0</def><!-- extra high memory for chars, tokens, etc. -->
+<def name="extra_mem_bot">0</def><!-- extra low memory for boxes, glue, breakpoints, etc. -->
+
+<!-- Words of font info for TeX (total size of all TFM files, approximately).  -->
+<def name="font_mem_size">200000</def>
+
+<!-- Total number of fonts. Must be &gt;= 50 and &lt;= 2000 (without tex.ch changes).-->
+<def name="font_max">1000</def>
+
+<!-- Extra space for the hash table of control sequences (which allows 10K     -->
+<!-- names as distributed).                                                    -->
+<def name="hash_extra">0</def>
+
+<!-- Max number of characters in all strings, including all error messages,    -->
+<!-- help texts, font names, file names, control sequences.                    -->
+<!-- These values apply to TeX and MP.                                         -->
+<def name="pool_size">125000		</def>
+
+<!-- Minimum pool space after TeX/MP's own strings; must be at least           -->
+<!-- 25000 less than pool_size, but doesn't need to be nearly that large.      -->
+<def name="string_vacancies">25000</def>
+<def name="max_strings">15000</def><!-- max number of strings -->
+<def name="pool_free">5000</def><!-- min pool space left after loading .fmt -->
+
+<!-- Hyphenation trie. As distributed, the maximum is 65535; this should       -->
+<!-- work unless `unsigned short' is not supported or is smaller than 16       -->
+<!-- bits.  This value should suffice for UK English, US English, French,      -->
+<!-- and German (for example).  To increase, you must change                   -->
+<!-- `ssup_trie_opcode' and `ssup_trie_size' in tex.ch (and rebuild TeX);      -->
+<!-- the trie will then consume four bytes per entry, instead of two.          -->
+<!--                                                                           -->
+<!-- US English, German, and Portuguese: 30000.                                -->
+<!-- German: 14000.                                                            -->
+<!-- US English: 10000.                                                        -->
+<!--                                                                           -->
+<def name="trie_size">64000</def>
+
+<!-- Buffer size.  TeX uses the buffer to contain input lines, but macro       -->
+<!-- expansion works by writing material into the buffer and reparsing the     -->
+<!-- line.  As a consequence, certain constructs require the buffer to be      -->
+<!-- very large.  As distributed, the size is 50000; most documents can be     -->
+<!-- handled within a tenth of this size.                                      -->
+<def name="buf_size">200000</def>
+
+<!-- These are Omega-specific.                                                 -->
+<def name="ocp_buf_size">20000</def><!-- character buffers for ocp filters. -->
+<def name="ocp_stack_size">10000</def><!-- stacks for ocp computations. -->
+<def name="ocp_list_size">1000</def><!-- control for multiple ocps. -->
+
+<!-- These work best if they are the same as the I/O buffer size, but it       -->
+<!-- doesn't matter much.  Must be a multiple of 8.                            -->
+<def name="dvi_buf_size">16384</def><!-- TeX -->
+<def name="gf_buf_size">16384</def><!-- MF -->
+
+<!-- It's probably inadvisable to change these. At any rate, we must have:     -->
+<!-- 45 &lt; error_line      &lt; 255;                                         -->
+<!-- 30 &lt; half_error_line &lt; error_line - 15;                             -->
+<!-- 60 &lt;= max_print_line;                                                  -->
+<!-- These apply to Metafont and MetaPost as well.                             -->
+<def name="error_line">79</def>
+<def name="half_error_line">50</def>
+<def name="max_print_line">79</def>
+<def name="stack_size">300</def><!-- simultaneous input sources -->
+<def name="save_size">4000</def><!-- for saving values outside current group -->
+<def name="param_size">500</def><!-- simultaneous macro parameters -->
+<def name="max_in_open">15</def><!-- simultaneous input files and error insertions -->
+<def name="hyph_size">1000</def><!-- number of hyphenation exceptions, &gt;610 and &lt;32767 -->
+<def name="nest_size">100</def><!-- simultaneous semantic levels (e.g., groups) -->
+<def name="obj_tab_size">200000</def><!-- PDF objects -->
+
+
+<def name="main_memory.mpost">1000000</def>
+
+<def name="main_memory.context">1500000</def>
+<def name="hash_extra.context">25000</def>
+<def name="pool_size.context">750000</def>
+<def name="string_vacancies.context">45000</def>
+<def name="max_strings.context">55000</def>
+<def name="pool_free.context">47500</def>
+<def name="nest_size.context">500</def>
+<def name="param_size.context">1500</def>
+<def name="save_size.context">5000</def>
+<def name="stack_size.context">1500</def>
+<def name="obj_tab_size.context">256000</def>
+
+<def name="main_memory.hugetex">1100000</def>
+<def name="param_size.hugetex">1500</def>
+<def name="stack_size.hugetex">1500</def>
+<def name="hash_extra.hugetex">15000</def>
+<def name="string_vacancies.hugetex">45000</def>
+<def name="pool_free.hugetex">47500</def>
+<def name="nest_size.hugetex">500</def>
+<def name="save_size.hugetex">5000</def>
+<def name="pool_size.hugetex">500000</def>
+<def name="max_strings.hugetex">55000</def>
+
+<def name="main_memory.cslatex">1100000</def>
+<def name="param_size.cslatex">1500</def>
+<def name="stack_size.cslatex">1500</def>
+<def name="hash_extra.cslatex">15000</def>
+<def name="string_vacancies.cslatex">45000</def>
+<def name="pool_free.cslatex">47500</def>
+<def name="nest_size.cslatex">500</def>
+<def name="save_size.cslatex">5000</def>
+<def name="pool_size.cslatex">500000</def>
+<def name="max_strings.cslatex">55000</def>
+<def name="font_mem_size.cslatex">400000</def>
+
+<def name="main_memory.hugelatex">1100000</def>
+<def name="param_size.hugelatex">1500</def>
+<def name="stack_size.hugelatex">1500</def>
+<def name="hash_extra.hugelatex">15000</def>
+<def name="string_vacancies.hugelatex">45000</def>
+<def name="pool_free.hugelatex">47500</def>
+<def name="nest_size.hugelatex">500</def>
+<def name="save_size.hugelatex">5000</def>
+<def name="pool_size.hugelatex">500000</def>
+<def name="max_strings.hugelatex">55000</def>
+<def name="font_mem_size.hugelatex">400000</def>
+
+<def name="main_memory.jadetex">1500000</def>
+<def name="param_size.jadetex">1500</def>
+<def name="stack_size.jadetex">1500</def>
+<def name="hash_extra.jadetex">50000</def>
+<def name="string_vacancies.jadetex">45000</def>
+<def name="pool_free.jadetex">47500</def>
+<def name="nest_size.jadetex">500</def>
+<def name="save_size.jadetex">5000</def>
+<def name="pool_size.jadetex">500000</def>
+<def name="max_strings.jadetex">55000</def>
+
+<def name="main_memory.pdfjadetex">2500000</def>
+<def name="param_size.pdfjadetex">1500</def>
+<def name="stack_size.pdfjadetex">1500</def>
+<def name="hash_extra.pdfjadetex">50000</def>
+<def name="string_vacancies.pdfjadetex">55000</def>
+<def name="pool_free.pdfjadetex">47500</def>
+<def name="nest_size.pdfjadetex">500</def>
+<def name="save_size.pdfjadetex">5000</def>
+<def name="pool_size.pdfjadetex">500000</def>
+<def name="max_strings.pdfjadetex">55000</def>
+
+<def name="main_memory.xmltex">1500000</def>
+<def name="param_size.xmltex">1500</def>
+<def name="stack_size.xmltex">1500</def>
+<def name="hash_extra.xmltex">50000</def>
+<def name="string_vacancies.xmltex">45000</def>
+<def name="pool_free.xmltex">47500</def>
+<def name="nest_size.xmltex">500</def>
+<def name="save_size.xmltex">10000</def>
+<def name="pool_size.xmltex">500000</def>
+<def name="max_strings.xmltex">55000</def>
+
+<def name="main_memory.pdfxmltex">2500000</def>
+<def name="param_size.pdfxmltex">1500</def>
+<def name="stack_size.pdfxmltex">1500</def>
+<def name="hash_extra.pdfxmltex">50000</def>
+<def name="string_vacancies.pdfxmltex">45000</def>
+<def name="pool_free.pdfxmltex">47500</def>
+<def name="nest_size.pdfxmltex">500</def>
+<def name="save_size.pdfxmltex">10000</def>
+<def name="pool_size.pdfxmltex">500000</def>
+<def name="max_strings.pdfxmltex">55000</def>
+
+<def name="font_mem_size.pdflatex">210000</def>
+<def name="main_memory.pdflatex">1500000</def>
+<def name="param_size.pdflatex">3000</def>
+<def name="stack_size.pdflatex">3000</def>
+<def name="hash_extra.pdflatex">15000</def>
+<def name="string_vacancies.pdflatex">55000</def>
+<def name="pool_free.pdflatex">47500</def>
+<def name="nest_size.pdflatex">500</def>
+<def name="pool_size.pdflatex">500000</def>
+<def name="save_size.pdflatex">5000</def>
+<def name="max_strings.pdflatex">55000</def>
+
+<def name="main_memory.pdfelatex">1500000</def>
+<def name="param_size.pdfelatex">1500</def>
+<def name="stack_size.pdfelatex">1500</def>
+<def name="hash_extra.pdfelatex">15000</def>
+<def name="string_vacancies.pdfelatex">45000</def>
+<def name="pool_free.pdfelatex">47500</def>
+<def name="nest_size.pdfelatex">500</def>
+<def name="pool_size.pdfelatex">500000</def>
+<def name="save_size.pdfelatex">5000</def>
+<def name="max_strings.pdfelatex">55000</def>
+
