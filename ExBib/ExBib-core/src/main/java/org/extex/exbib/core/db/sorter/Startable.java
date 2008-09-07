@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,26 +18,22 @@
 
 package org.extex.exbib.core.db.sorter;
 
-import java.util.List;
-
-import org.extex.exbib.core.db.Entry;
-import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
- * This interface describes a function object for sorting a list of entries.
+ * This interface describes a class which has a start() method to be invoked
+ * after creation.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
-public interface Sorter {
+public interface Startable {
 
     /**
-     * Sort the given list in place.
+     * Start the class.
      * 
-     * @param list the list to sort
-     * 
-     * @throws ConfigurationException in case of a configuration error
+     * @throws ExBibException in case of an error
      */
-    void sort(List<Entry> list) throws ConfigurationException;
+    void start() throws ExBibException;
 
 }

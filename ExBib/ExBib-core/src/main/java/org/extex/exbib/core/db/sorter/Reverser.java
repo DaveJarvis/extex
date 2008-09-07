@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -24,20 +24,37 @@ import org.extex.exbib.core.db.Entry;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This interface describes a function object for sorting a list of entries.
+ * This sorter reverses the order of an embedded sorter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
-public interface Sorter {
+public class Reverser implements Sorter {
 
     /**
-     * Sort the given list in place.
-     * 
-     * @param list the list to sort
-     * 
-     * @throws ConfigurationException in case of a configuration error
+     * The field <tt>sorter</tt> contains the embedded sorter.
      */
-    void sort(List<Entry> list) throws ConfigurationException;
+    private Sorter sorter;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param sorter the embedded sorter
+     */
+    public Reverser(Sorter sorter) {
+
+        super();
+        this.sorter = sorter;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
+     */
+    public void sort(List<Entry> list) throws ConfigurationException {
+
+        sorter.sort(list);
+    }
 
 }

@@ -1,36 +1,28 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.db.sorter;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
-import org.extex.exbib.core.ExBib;
-import org.extex.exbib.core.exceptions.ExBibCsfNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
-import org.extex.exbib.core.io.csf.CsfReader;
-import org.extex.exbib.core.io.csf.CsfSorter;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -61,9 +53,8 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
     }
 
     /**
-     * Provides a {@link Sorter Sorter} implementation. The new
-     * {@link Sorter Sorter} is configured with the same configuration as the
-     * factory.
+     * Provides a {@link Sorter Sorter} implementation. The new {@link Sorter
+     * Sorter} is configured with the same configuration as the factory.
      * 
      * @param type the type
      * 
@@ -72,51 +63,48 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
      * @throws ExBibException in case of an error
      * @throws ConfigurationException in case that something goes wrong
      * @throws IOException in case of an I/O error
-     * @throws UnsupportedEncodingException in case of an unsupported encoding
      */
     public Sorter newInstance(String type)
             throws ExBibException,
                 ConfigurationException,
-                UnsupportedEncodingException,
                 IOException {
 
         if (type == null || "".equals(type)) {
             return null;
-        } else if ("csf:".equals(type)) {
-            return new CsfSorter();
-        } else if (type.startsWith("csf:")) {
-            InputStream is =
-                    getResourceFinder().findResource(type.substring(4), "csf");
-            if (is == null) {
-                throw new ExBibCsfNotFoundException(type.substring(4));
-            }
-            try {
-                String encoding =
-                        properties.getProperty(ExBib.PROP_CSF_ENCODING);
-                return new CsfReader().read(encoding == null
-                        ? new InputStreamReader(is)
-                        : new InputStreamReader(is, encoding));
-            } finally {
-                is.close();
-            }
         }
 
         Sorter sorter;
+        String t;
+        String arg;
         int i = type.indexOf(':');
+        if (i < 0) {
+            t = type;
+            arg = null;
+        } else {
+            t = type.substring(0, i);
+            arg = type.substring(i + 1);
+        }
+
+        if ("reverse".equals(t)) {
+            sorter = newInstance(arg);
+            return sorter == null ? null : new Reverser(sorter);
+        }
 
         try {
-            if (i < 0) {
-                sorter = (Sorter) createInstance(type, Sorter.class);
+            if (arg == null) {
+                sorter = (Sorter) createInstance(t, Sorter.class);
             } else {
-                sorter = (Sorter) createInstance(type.substring(0, i), //
-                    Sorter.class, String.class, type.substring(i + 1));
+                sorter = (Sorter) createInstance(t, //
+                    Sorter.class, String.class, arg);
             }
         } catch (ConfigurationNotFoundException e) {
-            throw new ExBibSorterNotFoundException(i < 0 ? type : type
-                .substring(0, i));
+            throw new ExBibSorterNotFoundException(t);
         }
         if (sorter instanceof PropertyAware) {
             ((PropertyAware) sorter).setProperties(properties);
+        }
+        if (sorter instanceof Startable) {
+            ((Startable) sorter).start();
         }
 
         return sorter;
