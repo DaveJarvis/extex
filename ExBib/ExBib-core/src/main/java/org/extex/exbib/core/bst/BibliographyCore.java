@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst;
@@ -111,7 +110,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param db The database associated with this processor.
      * @param log This argument is a writer which receives the logging output.
-     *        It is an object implementing the interface <code>Writer</code>.
+     * It is an object implementing the interface <code>Writer</code>.
      */
     public BibliographyCore(DB db, Logger log) {
 
@@ -131,13 +130,12 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param sa the array of resources to add
      * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(
-     *      java.lang.String[])
+     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(java.lang.String[])
      */
     public void addBibliographyDatabase(String... sa) {
 
-        for (int i = 0; i < sa.length; i++) {
-            bibliographyDatabases.add(sa[i]);
+        for (String s : sa) {
+            bibliographyDatabases.add(s);
         }
     }
 
@@ -147,13 +145,12 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param style the new bib style
      * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyStyle(
-     *      java.lang.String[])
+     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyStyle(java.lang.String[])
      */
     public void addBibliographyStyle(String... style) {
 
-        for (int i = 0; i < style.length; i++) {
-            bibliographyStyles.add(style[i]);
+        for (String s : style) {
+            bibliographyStyles.add(s);
         }
     }
 
@@ -167,8 +164,8 @@ public class BibliographyCore implements Bibliography, Observable {
      */
     public void addCitation(String... sa) {
 
-        for (int i = 0; i < sa.length; i++) {
-            citations.put(sa[i].toLowerCase(Locale.ENGLISH), sa[i]);
+        for (String s : sa) {
+            citations.put(s.toLowerCase(Locale.ENGLISH), s);
         }
     }
 
@@ -286,8 +283,8 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param name the name of the macro to search for
      * 
-     * @return the expanded value of the macro or <code>null</code> if none
-     *         has been found.
+     * @return the expanded value of the macro or <code>null</code> if none has
+     * been found.
      */
     public String getMacro(String name) {
 
@@ -300,7 +297,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @throws ExBibException in case that something went wrong
      * @throws ConfigurationException in case that the configuration is invalid
      * @throws FileNotFoundException in case that the requested file or one of
-     *         the subsequent files (@input) could not be found
+     * the subsequent files (@input) could not be found
      */
     public void loadDatabases()
             throws ExBibException,
@@ -316,8 +313,8 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.util.Observable#registerObserver(
-     *      java.lang.String, org.extex.exbib.core.util.Observer)
+     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
+     * org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -372,7 +369,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
-     *      java.lang.String)
+     * java.lang.String)
      */
     public void setOption(String name, String value) {
 
