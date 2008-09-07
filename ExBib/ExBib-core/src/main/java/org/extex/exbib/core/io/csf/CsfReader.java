@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.csf;
@@ -213,13 +212,29 @@ public class CsfReader {
      * @return the sorter containing the configuration read
      * 
      * @throws IOException in case of an I/O error
-     * @throws CsfException
+     * @throws CsfException in case of a csf error
      */
     public CsfSorter read(Reader reader) throws IOException, CsfException {
 
-        Reader r = new BufferedReader(reader);
+        return read(reader, new CsfSorter());
+    }
 
-        CsfSorter csf = new CsfSorter();
+    /**
+     * Read the configuration from a csf.
+     * 
+     * @param reader the reader to acquire characters from
+     * @param csf the CSF to store the read information in
+     * 
+     * @return the sorter containing the configuration read
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a csf error
+     */
+    public CsfSorter read(Reader reader, CsfSorter csf)
+            throws IOException,
+                CsfException {
+
+        Reader r = new BufferedReader(reader);
 
         for (String s = readToken(r); s != null; s = readToken(r)) {
             if (s.equals("\\order")) {
