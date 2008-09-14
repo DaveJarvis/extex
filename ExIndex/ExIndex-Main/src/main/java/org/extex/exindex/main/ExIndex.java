@@ -37,6 +37,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.cli.CLI;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
@@ -297,7 +298,7 @@ public class ExIndex extends Indexer {
         } catch (Exception e) {
             System.err.println(e.getLocalizedMessage());
         }
-        return -1;
+        return CLI.EXIT_FAIL;
     }
 
     /**
@@ -639,7 +640,7 @@ public class ExIndex extends Indexer {
             if (fileHandler != null) {
                 fileHandler.flush();
             }
-            return 0;
+            return CLI.EXIT_OK;
 
         } catch (FileNotFoundException e) {
             showBanner();
@@ -664,7 +665,7 @@ public class ExIndex extends Indexer {
         if (fileHandler != null) {
             fileHandler.flush();
         }
-        return -1;
+        return CLI.EXIT_FAIL;
     }
 
     /**
