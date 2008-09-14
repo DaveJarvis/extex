@@ -181,25 +181,25 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </p>
  * </dd>
  * 
- * <dt><a name="-configuration"><tt>-configuration &lang;resource&rang;</tt></a>
+ * <dt><a name="-configuration"/><tt>-configuration &lang;resource&rang;</tt>
  * <br />
- * <tt>-configuration=&lang;resource&rang;</tt></a> </dt>
+ * <tt>-configuration=&lang;resource&rang;</tt> </dt>
  * <dd> This parameter contains the name of the configuration resource to use.
  * This configuration resource is sought on the class path. </dd>
  * <dd>Property: <tt><a href="#extex.config">extex.config</a></tt></dd>
  * 
- * <dt><a name="-copyright"><tt>-copyright</tt></a></dt>
+ * <dt><a name="-copyright"/><tt>-copyright</tt></dt>
  * <dd> This command line option produces a copyright notice on the standard
  * output stream and terminates the program afterwards. </dd>
  * 
  * <dt><tt>&amp;&lang;format&rang;</tt></dt>
- * <dt><a name="-fmt"><tt>-fmt &lang;format&rang;</tt></a></dt>
+ * <dt><a name="-fmt"/><tt>-fmt &lang;format&rang;</tt></dt>
  * <dd> This parameter contains the name of the format to read. An empty string
  * denotes that no format should be read. This is the default. </dd>
  * <dd>Property: <tt><a href="#extex.format">extex.format</a></tt></dd>
  * 
- * <dt><a name="-debug"><tt>-debug &lang;spec&rang;</tt><br />
- * <tt>-debug=&lang;spec&rang;</tt> </a></dt>
+ * <dt><a name="-debug"/><tt>-debug &lang;spec&rang;</tt><br />
+ * <tt>-debug=&lang;spec&rang;</tt> </dt>
  * <dd> This command line parameter can be used to instruct the program to
  * produce debugging output of several kinds. The specification &lang;spec&rang;
  * is interpreted left to right. Each character is interpreted according to the
@@ -236,74 +236,74 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </tr>
  * </table> </dd>
  * 
- * <dt><a name="-halt"><tt>-halt-on-error</tt></a></dt>
+ * <dt><a name="-halt"/><tt>-halt-on-error</tt></dt>
  * <dd> This parameter contains the indicator whether the processing should halt
  * after the first error has been encountered. </dd>
  * <dd>Property:
  * <tt><a href="#extex.halt.on.error">extex.halt.on.error</a></tt></dd>
  * 
- * <dt><a name="-help"><tt>-help</tt></a></dt>
+ * <dt><a name="-help"/><tt>-help</tt></dt>
  * <dd> This command line option produces a short usage description on the
  * standard output stream and terminates the program afterwards. </dd>
  * 
- * <dt><a name="-ini"><tt>-ini</tt></a></dt>
+ * <dt><a name="-ini"/><tt>-ini</tt></dt>
  * <dd> If set to <code>true</code> then the attempt to load a format with the
  * name derived from the program name is omitted. </dd>
  * <dd>Property: <tt><a href="#extex.ini">extex.ini</a></tt> </dd>
  * 
- * <dt><a name="-interaction"><tt>-interaction &lang;mode&rang;</tt> <br />
- * <tt>-interaction=&lang;mode&rang;</tt></a> </a></dt>
+ * <dt><a name="-interaction"/><tt>-interaction &lang;mode&rang;</tt> <br />
+ * <tt>-interaction=&lang;mode&rang;</tt> </dt>
  * <dd> This parameter contains the interaction mode. Possible values are the
  * numbers 0..3 and the symbolic names batchmode (0), nonstopmode (1),
  * scrollmode (2), and errorstopmode (3). The symbolic names can be abbreviated
  * up to at least one character. </dd>
  * <dd>Property: <tt><a href="#extex.interaction">extex.interaction</a></tt></dd>
  * 
- * <dt><a name="-job"><tt>-job-name &lang;name&rang;</tt><br />
- * <tt>-job-name=&lang;name&rang;</tt></a><br />
- * <tt>-jobname &lang;name&rang;</tt></a><br />
- * <tt>-jobname=&lang;name&rang;</tt></a> </a></dt>
+ * <dt><a name="-job"/><tt>-job-name &lang;name&rang;</tt><br />
+ * <tt>-job-name=&lang;name&rang;</tt><br />
+ * <tt>-jobname &lang;name&rang;</tt><br />
+ * <tt>-jobname=&lang;name&rang;</tt> </dt>
  * <dd> This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
  * instead. </dd>
  * <dd>Property: <tt><a href="#extex.jobname">extex.jobname</a></tt></dd>
  * 
- * <dt><a name="-language"><tt>-language &lang;language&rang;</tt><br />
- * <tt>-language=&lang;language&rang;</tt> </a></dt>
+ * <dt><a name="-language"/><tt>-language &lang;language&rang;</tt><br />
+ * <tt>-language=&lang;language&rang;</tt> </dt>
  * <dd> This parameter contains the name of the locale to be used for the
  * messages. </dd>
  * <dd>Property: <tt><a href="#extex.lang">extex.lang</a></tt> </dd>
  * 
- * <dt><a name="-output"><tt>-output &lang;format&rang;</tt><br />
- * <tt>-output=&lang;format&rang;</tt> </a></dt>
+ * <dt><a name="-output"/><tt>-output &lang;format&rang;</tt><br />
+ * <tt>-output=&lang;format&rang;</tt> </dt>
  * <dd> This parameter contains the output format. This logical name is resolved
  * via the configuration. Reasonable values are <tt>dvi</tt>, <tt>ps</tt>,
  * and <tt>pdf</tt>. </dd>
  * <dd>Property: <tt><a href="#extex.output">extex.output</a></tt></dd>
  * 
- * <dt><a name="-outputdir"><tt>-output-directory &lang;directory&rang;</tt><br />
+ * <dt><a name="-outputdir"/><tt>-output-directory &lang;directory&rang;</tt><br />
  * <tt>-output-directory=&lang;directory&rang;</tt><br />
  * <tt>-texoutputs &lang;directory&rang;</tt><br />
- * <tt>-texoutputs=&lang;directory&rang;</tt> </a></dt>
+ * <tt>-texoutputs=&lang;directory&rang;</tt> </dt>
  * <dd> This parameter contains the output directory. The normal output files
  * are tried to place there. If this fails a fallback is tried additionally.
  * </dd>
  * <dd>Property: <tt><a href="#tex.output.dir">tex.output.dir</a></tt></dd>
  * 
- * <dt><a name="-parse-first-line"/><tt>-parse-first-line</tt></a></dt>
+ * <dt><a name="-parse-first-line"/><tt>-parse-first-line</tt></dt>
  * <dd> This parameter can be used to force the parsing of the first line of the
  * input file. </dd>
  * <dd>Property:
  * <tt><a href="#extex.parse.first.line">extex.parse.first.line</a></tt></dd>
  * 
  * <dt><a name="-progname"/><tt>-progname &lang;name&rang;</tt><br />
- * <tt>-progname=&lang;name&rang;</tt> </a></dt>
+ * <tt>-progname=&lang;name&rang;</tt> </dt>
  * <dd> This parameter can be used to overrule the name of the program shown in
  * the banner and the version information. </dd>
  * <dd>Property: <tt><a href="#extex.progname">extex.progname</a></tt></dd>
  * 
  * <dt><a name="-recorder"/><tt>-recorder</tt><br />
- * <tt>-recorder=&lang;file name&rang;</tt> </a></dt>
+ * <tt>-recorder=&lang;file name&rang;</tt> </dt>
  * <dd> This parameter can be used to activate the file name recorder. If the
  * file name recorder is active then all files opened during the run are
  * collected and written to a file. The file name used is the jobname with the
@@ -312,14 +312,14 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <dd>Property: <tt><a href="#tex.recorder">tex.recorder</a></tt></dd>
  * 
  * <dt><a name="-texinputs"/><tt>-texinputs &lang;path&rang;</tt><br />
- * <tt>-texinputs=&lang;path&rang;</tt> </a></dt>
+ * <tt>-texinputs=&lang;path&rang;</tt></dt>
  * <dd> This parameter contains the additional directories for searching
  * <logo>ExTeX</logo> input files. </dd>
  * <dd>Property: <tt><a href="#extex.texinputs">extex.texinputs</a></tt>
  * </dd>
  * 
- * <dt><a name="-texmfoutputs"><tt>-texmfoutputs &lang;dir&rang;</tt><br />
- * <tt>-texmfoutputs=&lang;dir&rang;</tt> </a></dt>
+ * <dt><a name="-texmfoutputs"/><tt>-texmfoutputs &lang;dir&rang;</tt><br />
+ * <tt>-texmfoutputs=&lang;dir&rang;</tt> </dt>
  * <dd> This parameter contains the name of the property for the fallback if the
  * output directory fails to be writable. </dd>
  * <dd>Property:
@@ -356,13 +356,13 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </p>
  * <p>
  * If the feature is enabled then the first line of the first input file is
- * parsed. If this line starts with <tt>%&</tt> then the next characters up to
+ * parsed. If this line starts with <tt>%&amp;</tt> then the next characters up to
  * a white-space are taken as format name to be loaded. The remaining characters
  * up to the newline characters are ignored.
  * </p>
  * <p>
  * The first line is simply passed to the interpreter if it does not start with
- * <tt>%&</tt>.
+ * <tt>%&amp;</tt>.
  * </p>
  * <p>
  * The following sample shows a first line which pre-loads the format
@@ -370,7 +370,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </p>
  * 
  * <pre class="TeX">
- *  %&latex some comment
+ *  %&amp;latex some comment
  * </pre>
  * 
  * 
@@ -392,7 +392,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * The following properties are recognized:
  * </p>
  * <dl>
- * <dt><a name="extex.code"/><tt>extex.code</tt></a></dt>
+ * <dt><a name="extex.code"/><tt>extex.code</tt></dt>
  * <dd> This parameter contains <logo>ExTeX</logo> code to be executed
  * directly. The execution is performed after any code specified in an input
  * file. on the command line the code has to start with a backslash. This
@@ -430,9 +430,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * processing should stop after the first error. </dd>
  * <dd>Command line: <a href="#-halt"><tt>-halt-on-error</tt></a> </dd>
  * 
- * <dt><a name="extex.file"><tt>extex.file</tt></a></dt>
+ * <dt><a name="extex.file"/><tt>extex.file</tt></dt>
  * <dd> This parameter contains the file to read from. It has no default </dd>
- * <dd>Command line: <a href="&lang"><tt>&lang;file&rang;</tt></a> </dd>
+ * <dd>Command line: <a href="#-lang"><tt>&lang;file&rang;</tt></a> </dd>
  * 
  * <dt><a name="extex.format"/><tt>extex.format</tt></dt>
  * <dd> This parameter contains the name of the format to read. An empty string
@@ -457,9 +457,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * is given to read from. In this case the base name of the input file is used
  * instead. </dd>
  * <dd>Command line:<a href="#-job"> <tt>-job-name &lang;name&rang;</tt></a><br />
- * <tt>-jobname &lang;name&rang;</tt></a><br />
- * <tt>-job-name=&lang;name&rang;</tt></a><br />
- * <tt>-jobname=&lang;name&rang;</tt></a></dd>
+ * <tt>-jobname &lang;name&rang;</tt><br />
+ * <tt>-job-name=&lang;name&rang;</tt><br />
+ * <tt>-jobname=&lang;name&rang;</tt></dd>
  * <dd>Default: <tt>texput</tt></dd>
  * 
  * <dt><a name="extex.jobnameMaster"/><tt>extex.jobnameMaster</tt></dt>
