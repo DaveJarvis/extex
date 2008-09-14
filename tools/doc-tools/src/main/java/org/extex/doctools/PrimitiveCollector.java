@@ -48,6 +48,10 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.tools.ant.filters.StringInputStream;
+import org.extex.doctools.exceptions.MissingArgumentException;
+import org.extex.doctools.exceptions.MissingEndTagException;
+import org.extex.doctools.exceptions.SyntaxException;
+import org.extex.doctools.exceptions.UnknownArgumentException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -534,7 +538,7 @@ public class PrimitiveCollector {
      * The field <tt>bases</tt> contains the list of base directories to
      * consider.
      */
-    private List<String> bases = new ArrayList<String>();
+    private List<File> bases = new ArrayList<File>();
 
     /**
      * The field <tt>output</tt> contains the output file name or
@@ -584,6 +588,30 @@ public class PrimitiveCollector {
     private String defaultType = "primitive";;
 
     /**
+     * The field <tt>configurationsFileName</tt> contains the name of the file i
+     * which the configurations are written.
+     */
+    private String configurationsFileName = "configurations.tex";;
+
+    /**
+     * The field <tt>unitsFileName</tt> contains the name of the file on which
+     * the unit are written.
+     */
+    private String unitsFileName = "units.tex";
+
+    /**
+     * The field <tt>primitivesFileName</tt> contains the file name foe the
+     * primitives.
+     */
+    private String primitivesFileName = "primitives.tex";
+
+    /**
+     * The field <tt>syntaxFileName</tt> contains the file name for the syntax
+     * file.
+     */
+    private String syntaxFileName = "syntax.tex";
+
+    /**
      * Creates a new object.
      * 
      * @throws ParserConfigurationException in case of an error
@@ -592,7 +620,7 @@ public class PrimitiveCollector {
 
         super();
         builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-    };
+    }
 
     /**
      * Add a base directory.
@@ -603,10 +631,29 @@ public class PrimitiveCollector {
      */
     public void addBase(String base) throws FileNotFoundException {
 
-        if (!new File(base).isDirectory()) {
+        File dir = new File(base);
+        if (!dir.isDirectory()) {
             throw new FileNotFoundException(base);
         }
-        bases.add(base);
+        bases.add(dir);
+    }
+
+    /**
+     * Traverse a directory tree and search for Java and package.html files.
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     */
+    public void collectDocs() throws IOException, SyntaxException {
+
+        docs = new HashMap<String, Info>();
+
+        for (File base : bases) {
+            File dir = new File(base, "src/main/java");
+            if (dir.isDirectory()) {
+                traverseSource(dir);
+            }
+        }
     }
 
     /**
@@ -615,32 +662,15 @@ public class PrimitiveCollector {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    public void collect() throws IOException, SyntaxException {
+    public void collectXml() throws IOException, SyntaxException {
 
-        units = new HashMap<String, Info>();
         configs = new HashMap<String, Info>();
+        units = new HashMap<String, Info>();
         docs = new HashMap<String, Info>();
 
-        for (String base : bases) {
-            File dir = new File(base);
+        for (File dir : bases) {
             if (dir.isDirectory()) {
                 traverse(dir);
-            }
-        }
-    }
-
-    /**
-     * Traverse a directory tree and search for Java files.
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws SyntaxException in case of a syntax error
-     */
-    public void collectPrimitives() throws IOException, SyntaxException {
-
-        for (String base : bases) {
-            File dir = new File(base, "src/main/java");
-            if (dir.isDirectory()) {
-                traverseSource(dir);
             }
         }
     }
@@ -919,12 +949,12 @@ public class PrimitiveCollector {
         if (output != null) {
             File outDir = output == null ? null : new File(output);
             outDir.mkdirs();
-            writer = new FileWriter(new File(outDir, "configurations.tex"));
+            writer = new FileWriter(new File(outDir, configurationsFileName));
         } else {
             writer = new OutputStreamWriter(System.out);
         }
         try {
-            writeConfigs(writer);
+            writeConfigs(writer, "config");
         } finally {
             writer.flush();
             if (output != null) {
@@ -933,9 +963,9 @@ public class PrimitiveCollector {
         }
 
         writer =
-                output == null
+                output == null || unitsFileName == null
                         ? new OutputStreamWriter(System.out)
-                        : new FileWriter(new File(output, "units.tex"));
+                        : new FileWriter(new File(output, unitsFileName));
         try {
             writeUnits(writer);
         } finally {
@@ -946,11 +976,11 @@ public class PrimitiveCollector {
         }
 
         writer =
-                output == null
+                output == null || syntaxFileName == null
                         ? new OutputStreamWriter(System.out)
-                        : new FileWriter(new File(output, "syntax.tex"));
+                        : new FileWriter(new File(output, syntaxFileName));
         try {
-            writeSyntax(writer);
+            writeDocs(writer, "syntax");
         } finally {
             writer.flush();
             if (output != null) {
@@ -959,11 +989,11 @@ public class PrimitiveCollector {
         }
 
         writer =
-                output == null
+                output == null || primitivesFileName == null
                         ? new OutputStreamWriter(System.out)
-                        : new FileWriter(new File(output, "primitives.tex"));
+                        : new FileWriter(new File(output, primitivesFileName));
         try {
-            writePrimitives(writer);
+            writeDocs(writer, "primitive");
         } finally {
             writer.flush();
             if (output != null) {
@@ -1060,7 +1090,7 @@ public class PrimitiveCollector {
                 processModule(pom, config);
             }
 
-            File src = new File(dir, "src/main/java");
+            File src = new File(new File(new File(dir, "src"), "main"), "java");
             if (src.isDirectory()) {
                 traverseSource(src);
             }
@@ -1111,13 +1141,12 @@ public class PrimitiveCollector {
                 TransformerFactoryConfigurationError,
                 TransformerException {
 
-        String tags =
-                tag + (tag.matches(".*[aeijklmnopqrtuvwxy]") ? "s" : "es");
+        String tags = tag + (tag.matches(".*[aeijklmnopqrtuvwy]") ? "s" : "es");
 
         StringBuilder buffer = new StringBuilder();
-        buffer.append("<");
+        buffer.append('<');
         buffer.append(tags);
-        buffer.append(">");
+        buffer.append('>');
 
         Object[] ks = map.keySet().toArray();
         Arrays.sort(ks, new Comparator<Object>() {
@@ -1129,7 +1158,7 @@ public class PrimitiveCollector {
         });
         for (Object key : ks) {
             Info config = map.get(key);
-            buffer.append("<");
+            buffer.append('<');
             buffer.append(tag);
             buffer.append(" name=\"");
             buffer.append(key.toString());
@@ -1167,20 +1196,21 @@ public class PrimitiveCollector {
      * transformed result to the given writer.
      * 
      * @param writer the writer for the output
+     * @param tagName name of the outer XML tag
      * 
      * @throws IOException in case of an I/O error
      * @throws TransformerException in case of an error in the transformer
      * @throws SyntaxException in case of a syntax error
      */
-    public void writeConfigs(Writer writer)
+    public void writeConfigs(Writer writer, String tagName)
             throws IOException,
                 TransformerException,
                 SyntaxException {
 
         if (configs == null) {
-            collect();
+            collectXml();
         }
-        write(writer, configs, "config");
+        write(writer, configs, tagName);
     }
 
     /**
@@ -1188,41 +1218,21 @@ public class PrimitiveCollector {
      * transformed result to the given writer.
      * 
      * @param writer the writer for the output
+     * @param docTag name of the outer doc tag
      * 
      * @throws IOException in case of an I/O error
      * @throws TransformerException in case of an error in the transformer
      * @throws SyntaxException in case of a syntax error
      */
-    public void writePrimitives(Writer writer)
+    public void writeDocs(Writer writer, String docTag)
             throws IOException,
                 TransformerException,
                 SyntaxException {
 
         if (docs == null) {
-            collectPrimitives();
+            collectDocs();
         }
-        write(writer, docs, "primitive");
-    }
-
-    /**
-     * Traverse a set of directory trees collecting POMs and write the
-     * transformed result to the given writer.
-     * 
-     * @param writer the writer for the output
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws TransformerException in case of an error in the transformer
-     * @throws SyntaxException in case of a syntax error
-     */
-    public void writeSyntax(Writer writer)
-            throws IOException,
-                TransformerException,
-                SyntaxException {
-
-        if (docs == null) {
-            collectPrimitives();
-        }
-        write(writer, docs, "syntax");
+        write(writer, docs, docTag);
     }
 
     /**
@@ -1241,7 +1251,7 @@ public class PrimitiveCollector {
                 SyntaxException {
 
         if (units == null) {
-            collect();
+            collectXml();
         }
         write(writer, units, "unit");
     }

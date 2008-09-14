@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.doctools;
+package org.extex.doctools.exceptions;
 
 import java.text.MessageFormat;
 import java.util.ResourceBundle;

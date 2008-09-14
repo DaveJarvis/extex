@@ -16,18 +16,18 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.doctools;
+package org.extex.doctools.exceptions;
 
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 /**
- * This exception signals a syntax error.
+ * This exception signals a missing end tag.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SyntaxException extends Exception {
+public class MissingEndTagException extends SyntaxException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -36,20 +36,14 @@ public class SyntaxException extends Exception {
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
-     */
-    private String resource;
-
-    /**
      * Creates a new object.
      * 
      * @param resource the resource
-     * @param message the message
+     * @param tag the message
      */
-    public SyntaxException(String resource, String message) {
+    public MissingEndTagException(String resource, String tag) {
 
-        super(message);
-        this.resource = resource;
+        super(resource, tag);
     }
 
     /**
@@ -62,29 +56,8 @@ public class SyntaxException extends Exception {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
 
-        return MessageFormat.format(bundle.getString("message"), resource,
+        return MessageFormat.format(bundle.getString("message"), getResource(),
             super.getMessage());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Throwable#getMessage()
-     */
-    @Override
-    public String getMessage() {
-
-        return super.getMessage();
-    }
-
-    /**
-     * Getter for the resource.
-     * 
-     * @return the resource
-     */
-    protected String getResource() {
-
-        return resource;
     }
 
     /**

@@ -27,8 +27,8 @@ import java.io.PrintStream;
 import java.io.StringWriter;
 
 import org.extex.doctools.PomCollector;
-import org.extex.doctools.MissingArgumentException;
-import org.extex.doctools.UnknownArgumentException;
+import org.extex.doctools.exceptions.MissingArgumentException;
+import org.extex.doctools.exceptions.UnknownArgumentException;
 import org.junit.Ignore;
 import org.junit.Test;
 

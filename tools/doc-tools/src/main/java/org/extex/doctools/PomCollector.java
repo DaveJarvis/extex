@@ -40,6 +40,8 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.extex.doctools.exceptions.MissingArgumentException;
+import org.extex.doctools.exceptions.UnknownArgumentException;
 import org.xml.sax.SAXException;
 
 /**

@@ -27,16 +27,17 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the doc collector.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class PrimitiveCollectorTest {
 
-    /*
-     * Test method for {@link
-     * org.extex.doctools.PrimitiveCollector#mainFacade(java.lang.String[])} .
+    /**
+     * Test method for
+     * {@link org.extex.doctools.PrimitiveCollector#mainFacade(java.lang.String[])}
+     * .
      */
     @Test
     @Ignore
