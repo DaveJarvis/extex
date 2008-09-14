@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.main.util;
@@ -50,6 +49,7 @@ import org.extex.cli.exception.UnknownOptionCliException;
 import org.extex.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.core.ExBib;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.logging.LogFormatter;
 
 /**
  * This is an abstract base class for main programs.
@@ -60,8 +60,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public abstract class AbstractMain extends CLI {
 
     /**
-     * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource
-     * for the copyright file (in the jar).
+     * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource for
+     * the copyright file (in the jar).
      */
     private static final String COPYING_RESOURCE =
             "org/extex/exbib/main/COPYING";
@@ -73,8 +73,8 @@ public abstract class AbstractMain extends CLI {
     private static final String PROP_LANG = "language";
 
     /**
-     * The field <tt>PROP_LOGFILE</tt> contains the name of the property for
-     * the log file.
+     * The field <tt>PROP_LOGFILE</tt> contains the name of the property for the
+     * log file.
      */
     public static final String PROP_LOGFILE = "exbib.logfile";
 
@@ -137,8 +137,7 @@ public abstract class AbstractMain extends CLI {
     private String version;
 
     /**
-     * The field <tt>inceptionYear</tt> contains the first year of
-     * development.
+     * The field <tt>inceptionYear</tt> contains the first year of development.
      */
     private int inceptionYear;
 

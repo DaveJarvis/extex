@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.ant;
@@ -36,7 +35,7 @@ import org.apache.tools.ant.Task;
 import org.apache.tools.ant.filters.StringInputStream;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
-import org.extex.exbib.main.util.LogFormatter;
+import org.extex.logging.LogFormatter;
 
 /**
  * This class provides an interface from Ant to &epsilon;&chi;Bib.
@@ -69,8 +68,8 @@ import org.extex.exbib.main.util.LogFormatter;
  * </pre>
  * 
  * <p>
- * As a result you have defined the task named <tt>ExBib</tt>. This task can
- * be used in arbitrary targets.
+ * As a result you have defined the task named <tt>ExBib</tt>. This task can be
+ * used in arbitrary targets.
  * </p>
  * 
  * <pre>
@@ -116,7 +115,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * 
  * <dl>
  * <dt>file="&lang;file&rang;"</dt>
- * <dd> The parameter is the name of the <tt>aux</tt> file to read further
+ * <dd>The parameter is the name of the <tt>aux</tt> file to read further
  * parameters from. This attribute is mandatory.
  * 
  * <pre>
@@ -128,7 +127,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>sort="&lang;sorter&rang;"</dt>
- * <dd> This option can be used to specify the sorter.
+ * <dd>This option can be used to specify the sorter.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"
@@ -139,7 +138,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * 
  * 
  * <dt>encoding="&lang;enc&rang;"</dt>
- * <dd> This option can be used to specify the encoding for reading files. The
+ * <dd>This option can be used to specify the encoding for reading files. The
  * default is to use the platform default encoding.
  * 
  * <pre>
@@ -150,7 +149,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </pre>
  * 
  * <dt>bibEncoding="&lang;enc&rang;"</dt>
- * <dd> This option can be used to specify the encoding for reading database
+ * <dd>This option can be used to specify the encoding for reading database
  * files. The default is to use the same value as the parameter
  * <tt>encoding</tt>.
  * 
@@ -164,7 +163,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>csf="&lang;csf&rang;"</dt>
- * <dd> The option can be used to specify the CSF which cintains character
+ * <dd>The option can be used to specify the CSF which cintains character
  * definitions and sorting order specification.
  * 
  * <pre>
@@ -177,7 +176,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>csfEncoding="&lang;enc&rang;"</dt>
- * <dd> This option contains the encoding for reading cs files. The encoding
+ * <dd>This option contains the encoding for reading cs files. The encoding
  * needs to be a valid character set. The fallback is the platform default
  * encoding.
  * 
@@ -192,8 +191,8 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>minCrossrefs="&lang;number&rang;"</dt>
- * <dd> The parameter is a number. It gives the number of cross references
- * before the entries are left alone and not collapsed. The default value is 2.
+ * <dd>The parameter is a number. It gives the number of cross references before
+ * the entries are left alone and not collapsed. The default value is 2.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"
@@ -205,9 +204,9 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>output="&lang;file&rang;"</dt>
- * <dd> This parameter redirects the output for the default type of references
- * to the given file. The default is derived from the name of the aux file by
- * using the extension <tt>.bbl</tt>.
+ * <dd>This parameter redirects the output for the default type of references to
+ * the given file. The default is derived from the name of the aux file by using
+ * the extension <tt>.bbl</tt>.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"
@@ -218,8 +217,8 @@ import org.extex.exbib.main.util.LogFormatter;
  * 
  * </dd>
  * 
- * <dt>logfile="&lang;file&rang;"] </dt>
- * <dd> This option can be used to redirect the output to a file. The default is
+ * <dt>logfile="&lang;file&rang;"]</dt>
+ * <dd>This option can be used to redirect the output to a file. The default is
  * to print the informative messages to the console only.
  * 
  * <pre>
@@ -232,10 +231,10 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>config="&lang;config&rang;"</dt>
- * <dd> This parameter can be used to specify the configuration for assembling
+ * <dd>This parameter can be used to specify the configuration for assembling
  * &epsilon;&chi;Bib. The default value is <tt>exbib</tt>. The value
- * <tt>bibtex099</tt> can be used to switch to the compatibility mode for B<small>IB</small>T<sub>E</sub>X
- * 0.99c.
+ * <tt>bibtex099</tt> can be used to switch to the compatibility mode for
+ * B<small>IB</small>T<sub>E</sub>X 0.99c.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"
@@ -247,7 +246,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>load="&lang;file&rang;"</dt>
- * <dd> In contrast to the command line interface no dot files are read by the
+ * <dd>In contrast to the command line interface no dot files are read by the
  * Ant task. This attribute can be used to load dot files.
  * <p>
  * The value is the name of the parameter file to load. It can be relative to
@@ -269,7 +268,7 @@ import org.extex.exbib.main.util.LogFormatter;
  * </dd>
  * 
  * <dt>debug="&lang;flags&rang;"</dt>
- * <dd> This option can be used to specify debug options.
+ * <dd>This option can be used to specify debug options.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"
