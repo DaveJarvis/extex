@@ -32,6 +32,7 @@ import org.extex.exindex.core.type.raw.LocationReference;
 import org.extex.exindex.core.type.raw.OpenLocationReference;
 import org.extex.exindex.core.type.raw.RawIndexentry;
 import org.extex.exindex.core.type.raw.Reference;
+import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.lisp.parser.LParser;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
@@ -247,9 +248,22 @@ public class XindyParser extends LParser implements RawIndexParser {
      * 
      * @param reader the source to read from
      * @param resource the name of the resource for error messages
+     * @param indexer the indexer
+     */
+    public XindyParser(Reader reader, String resource, Indexer indexer) {
+
+        super(reader, resource);
+        locator = new ReaderLocator(resource, reader);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param reader the source to read from
+     * @param resource the name of the resource for error messages
      * @param interpreter the interpreter
      */
-    public XindyParser(Reader reader, String resource, Indexer interpreter) {
+    public XindyParser(Reader reader, String resource, LInterpreter interpreter) {
 
         super(reader, resource);
         locator = new ReaderLocator(resource, reader);
