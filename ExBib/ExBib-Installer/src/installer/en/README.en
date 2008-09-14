@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//3.2//EN">
+<html>
+<head>
+  <title>&epsilon;&chi;Bib</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+  </style>
+</head>
+<body>
+
+<h1>Welcome to &epsilon;&chi;Bib</h1>
+<p>
+ &epsilon;&chi;Bib (or <tt>ExBib</tt> in pure ASCII) is a bibliography processor.
+ It provides a compatibility mode which makes it possible to use it as a
+ replacement for B<small>IB</small><span class="t">T</span><span class="e">e</span>X 0.99c or
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X8.
+</p>
+<p>
+ &epsilon;&chi;Bib is a re-implementation. As such &epsilon;&chi;Bib contains
+ some extensions to B<small>IB</small><span class="t">T</span><span class="e">e</span>X. For instance some feature
+ which are announced for B<small>IB</small><span class="t">T</span><span class="e">e</span>X 1.0 are already included.
+ Details can be found in the documentation.
+</p>
+
+<h1>Homepage</h1>
+<p>
+&epsilon;&chi;Bib is developed within the scope of the &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X project.
+&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is present on the Web. On the Homepage you can find additional
+information:
+</p>
+<p>
+<a href="http://www.extex.org">http://www.extex.org</a>
+</p>
+
+<hr>
+
+<address>
+© 2003-2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
+</body>
+</html>

@@ -1,6 +1,6 @@
 #!/bin/sh
 #------------------------------------------------------------------------------
-# This is the start script for ExBib
+# This is the start script for ExBibUtil
 #------------------------------------------------------------------------------
 # Copyright (C) 2008 The ExTeX Group
 #
@@ -28,7 +28,7 @@ if [ "$JAVA_HOME" = "" ] ; then
   exit 1
 fi
 
-EXTEX_HOME=`dirname $0`/..
+EXTEX_HOME=`dirname $0`/../..
 LIBDIR="$EXTEX_HOME/lib"
 
 # OS specific support.
@@ -56,6 +56,6 @@ esac
 
 exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS \
     -classpath "$LOCALCLASSPATH" \
-    org.extex.exbib.main.ExBibMain --prog=`basename $0` $*
+    org.extex.exbib.main.ExBibUtil --prog=`basename $0` $*
 
 #
