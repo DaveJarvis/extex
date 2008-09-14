@@ -17,35 +17,43 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
-import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.NonNumericArgumentCliException;
 
 /**
- * This class represents a base class for options without parameters.
+ * This class represents a base class for options with a number parameters.
  * <p>
  * This option can for instance be used to recognize command line parameters
- * without additional argument:
+ * with additional argument:
  * </p>
  * 
  * <pre>
- *     --abc
+ *     --abc 123
+ * </pre>
+ * 
+ * <p>
+ * or:
+ * </p>
+ * 
+ * <pre>
+ *     --abc=123
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class NoArgOption extends Option {
+public abstract class NumberOption extends Option {
 
     /**
      * Creates a new object.
      * 
      * @param tag the tag for the description of the option
      */
-    public NoArgOption(String tag) {
+    public NumberOption(String tag) {
 
         super(tag);
     }
@@ -54,37 +62,46 @@ public abstract class NoArgOption extends Option {
      * Do whatever the option requires to be done.
      * 
      * @param a the name the option has actually used
+     * @param arg the argument
      * 
      * @return the exit code
-     * 
-     * @throws UnknownOptionCliException just in case
      */
-    protected abstract int run(String a) throws UnknownOptionCliException;
+    protected abstract int run(String a, int arg);
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.util.List)
      */
     @Override
-    public int run(String a, List<String> arg) throws UnknownOptionCliException {
+    public int run(String a, List<String> arg)
+            throws MissingArgumentCliException,
+                NonNumericArgumentCliException {
 
-        return run(a);
+        if (arg.isEmpty()) {
+            throw new MissingArgumentCliException(a);
+        }
+        return run(a, arg.remove(0), arg);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)
-            throws UnusedArgumentCliException,
-                UnknownOptionCliException {
+            throws NonNumericArgumentCliException {
 
-        throw new UnusedArgumentCliException(a);
+        int num;
+        try {
+            num = Integer.parseInt(firstArg);
+        } catch (NumberFormatException e) {
+            throw new NonNumericArgumentCliException(a, firstArg);
+        }
+        return run(a, num);
     }
 
 }

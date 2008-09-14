@@ -39,16 +39,16 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.cli.CLI;
+import org.extex.cli.NoArgOption;
+import org.extex.cli.Option;
+import org.extex.cli.StringOption;
+import org.extex.cli.StringPropertyOption;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnusedArgumentCliException;
 import org.extex.exbib.core.ExBib;
-import org.extex.exbib.main.cli.CLI;
-import org.extex.exbib.main.cli.NoArgOption;
-import org.extex.exbib.main.cli.Option;
-import org.extex.exbib.main.cli.StringOption;
-import org.extex.exbib.main.cli.StringPropertyOption;
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
-import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**

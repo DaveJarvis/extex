@@ -33,9 +33,9 @@ import java.io.Writer;
 import java.util.Locale;
 import java.util.Set;
 
+import org.extex.cli.CLI;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
-import org.extex.exbib.main.cli.CLI;
 import org.extex.exbib.main.util.AbstractMain;
 import org.junit.Ignore;
 import org.junit.Test;

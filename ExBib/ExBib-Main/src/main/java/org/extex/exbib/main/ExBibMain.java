@@ -25,17 +25,17 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import org.extex.cli.BooleanOption;
+import org.extex.cli.CLI;
+import org.extex.cli.NoArgOption;
+import org.extex.cli.NoArgPropertyOption;
+import org.extex.cli.NumberOption;
+import org.extex.cli.NumberPropertyOption;
+import org.extex.cli.StringOption;
+import org.extex.cli.StringPropertyOption;
+import org.extex.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
-import org.extex.exbib.main.cli.BooleanOption;
-import org.extex.exbib.main.cli.CLI;
-import org.extex.exbib.main.cli.NoArgOption;
-import org.extex.exbib.main.cli.NoArgPropertyOption;
-import org.extex.exbib.main.cli.NumberOption;
-import org.extex.exbib.main.cli.NumberPropertyOption;
-import org.extex.exbib.main.cli.StringOption;
-import org.extex.exbib.main.cli.StringPropertyOption;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.main.util.AbstractMain;
 import org.extex.framework.configuration.exception.ConfigurationException;
 

@@ -17,16 +17,15 @@
  *
  */
 
-package org.extex.exbib.main.cli.exception;
+package org.extex.cli.exception;
 
 /**
- * This exception signals an option needs a numeric argument and something else
- * is found.
+ * This exception signals an unknown option.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NonNumericArgumentCliException extends Exception {
+public class UnknownOptionCliException extends Exception {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,30 +34,13 @@ public class NonNumericArgumentCliException extends Exception {
     private static final long serialVersionUID = 2008L;
 
     /**
-     * The field <tt>value</tt> contains the value.
-     */
-    private String value;
-
-    /**
      * Creates a new object.
      * 
      * @param optionName the name of the option
-     * @param optionValue the actual value
      */
-    public NonNumericArgumentCliException(String optionName, String optionValue) {
+    public UnknownOptionCliException(String optionName) {
 
         super(optionName);
-        this.value = optionValue;
-    }
-
-    /**
-     * Getter for value.
-     * 
-     * @return the value
-     */
-    public String getValue() {
-
-        return value;
     }
 
 }

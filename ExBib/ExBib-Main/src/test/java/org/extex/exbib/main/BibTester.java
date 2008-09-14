@@ -30,8 +30,8 @@ import java.io.Writer;
 import java.util.Calendar;
 import java.util.Locale;
 
+import org.extex.cli.CLI;
 import org.extex.exbib.core.ExBib;
-import org.extex.exbib.main.cli.CLI;
 
 /**
  * This is a tester for {@link ExBib}.

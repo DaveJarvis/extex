@@ -17,16 +17,15 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
-import java.util.Properties;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
 
 /**
- * This class represents a base class for options with a number parameters.
+ * This class represents a base class for options with a string parameters.
  * <p>
  * This option can for instance be used to recognize command line parameters
  * with additional argument:
@@ -47,67 +46,59 @@ import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NumberPropertyOption extends Option {
-
-    /**
-     * The field <tt>pname</tt> contains the name of the property.
-     */
-    private String pname;
-
-    /**
-     * The field <tt>properties</tt> contains the properties to store the
-     * value in.
-     */
-    private Properties properties;
+public abstract class StringOption extends Option {
 
     /**
      * Creates a new object.
      * 
      * @param tag the tag for the description of the option
-     * @param pname the name of the property to set
-     * @param properties the properties
      */
-    public NumberPropertyOption(String tag, String pname, Properties properties) {
+    public StringOption(String tag) {
 
         super(tag);
-        this.pname = pname;
-        this.properties = properties;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
             throws MissingArgumentCliException,
-                NonNumericArgumentCliException {
+                UnknownOptionCliException {
 
         if (arg.isEmpty()) {
             throw new MissingArgumentCliException(a);
         }
-        return run(a, arg.remove(0), arg);
+        return run(a, arg.remove(0));
     }
+
+    /**
+     * Do whatever the option requires to be done.
+     * 
+     * @param a the name the option has actually used
+     * @param arg the argument
+     * 
+     * @return the exit code
+     * 
+     * @throws UnknownOptionCliException just in case
+     */
+    protected abstract int run(String a, String arg)
+            throws UnknownOptionCliException;
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)
-            throws NonNumericArgumentCliException {
+            throws UnknownOptionCliException {
 
-        try {
-            Integer.parseInt(firstArg);
-        } catch (NumberFormatException e) {
-            throw new NonNumericArgumentCliException(a, firstArg);
-        }
-        properties.setProperty(pname, firstArg);
-        return CLI.EXIT_CONTINUE;
+        return run(a, firstArg);
     }
 
 }

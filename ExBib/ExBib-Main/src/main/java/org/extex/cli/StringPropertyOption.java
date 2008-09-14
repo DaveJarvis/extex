@@ -17,19 +17,19 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.Properties;
 
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
 
 /**
- * This option stores a predefined value in the properties given.
+ * This option takes a string argument and stores it in a property.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NoArgPropertyOption extends NoArgOption {
+public class StringPropertyOption extends StringOption {
 
     /**
      * The field <tt>pname</tt> contains the name of the property.
@@ -43,37 +43,40 @@ public class NoArgPropertyOption extends NoArgOption {
     private Properties properties;
 
     /**
-     * The field <tt>arg</tt> contains the value to store.
-     */
-    private String arg;
-
-    /**
      * Creates a new object.
      * 
      * @param tag the name of the tag in the resource bundle for help
      * @param pname the name of the property to set
-     * @param arg the value to set
      * @param properties the properties
      */
-    public NoArgPropertyOption(String tag, String pname, String arg,
-            Properties properties) {
+    public StringPropertyOption(String tag, String pname, Properties properties) {
 
         super(tag);
         this.pname = pname;
         this.properties = properties;
-        this.arg = arg;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.NoArgOption#run(java.lang.String)
+     * @see org.extex.cli.StringOption#run(java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    protected int run(String a) throws UnknownOptionCliException {
+    protected int run(String a, String arg) throws UnknownOptionCliException {
 
         properties.setProperty(pname, arg);
         return CLI.EXIT_CONTINUE;
+    }
+
+    /**
+     * Setter for the property.
+     * 
+     * @param arg the value
+     */
+    protected void set(String arg) {
+
+        properties.setProperty(pname, arg);
     }
 
 }

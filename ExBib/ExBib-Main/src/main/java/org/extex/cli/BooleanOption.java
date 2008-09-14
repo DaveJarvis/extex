@@ -17,45 +17,45 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.MissingArgumentCliException;
 
 /**
- * This class represents a base class for options with a number parameters.
- * <p>
- * This option can for instance be used to recognize command line parameters
- * with additional argument:
- * </p>
- * 
- * <pre>
- *     --abc 123
- * </pre>
- * 
- * <p>
- * or:
- * </p>
- * 
- * <pre>
- *     --abc=123
- * </pre>
+ * This class represents a base class for options with a boolean parameter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class NumberOption extends Option {
+public abstract class BooleanOption extends Option {
+
+    /**
+     * The field <tt>value</tt> contains the value.
+     */
+    private boolean value;
+
+    /**
+     * Creates a new object. The initial value is <code>true</code>.
+     * 
+     * @param tag the tag for the description of the option
+     */
+    public BooleanOption(String tag) {
+
+        this(tag, true);
+    }
 
     /**
      * Creates a new object.
      * 
      * @param tag the tag for the description of the option
+     * @param value the value if invoked without argument
      */
-    public NumberOption(String tag) {
+    public BooleanOption(String tag, boolean value) {
 
         super(tag);
+        this.value = value;
     }
 
     /**
@@ -66,42 +66,31 @@ public abstract class NumberOption extends Option {
      * 
      * @return the exit code
      */
-    protected abstract int run(String a, int arg);
+    protected abstract int run(String a, boolean arg);
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
-            throws MissingArgumentCliException,
-                NonNumericArgumentCliException {
+            throws MissingArgumentCliException {
 
-        if (arg.isEmpty()) {
-            throw new MissingArgumentCliException(a);
-        }
-        return run(a, arg.remove(0), arg);
+        return run(a, value);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.lang.String, java.util.List)
      */
     @Override
-    public int run(String a, String firstArg, List<String> arg)
-            throws NonNumericArgumentCliException {
+    public int run(String a, String firstArg, List<String> arg) {
 
-        int num;
-        try {
-            num = Integer.parseInt(firstArg);
-        } catch (NumberFormatException e) {
-            throw new NonNumericArgumentCliException(a, firstArg);
-        }
-        return run(a, num);
+        return run(a, Boolean.parseBoolean(firstArg));
     }
 
 }

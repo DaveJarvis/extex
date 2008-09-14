@@ -17,15 +17,15 @@
  *
  */
 
-package org.extex.exbib.main.cli.exception;
+package org.extex.cli.exception;
 
 /**
- * This exception signals an option needs no argument and one is found.
+ * This exception signals an option needs an argument and none is found.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnusedArgumentCliException extends Exception {
+public class MissingArgumentCliException extends Exception {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -38,7 +38,7 @@ public class UnusedArgumentCliException extends Exception {
      * 
      * @param optionName the name of the option
      */
-    public UnusedArgumentCliException(String optionName) {
+    public MissingArgumentCliException(String optionName) {
 
         super(optionName);
     }

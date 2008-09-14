@@ -17,14 +17,14 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
-import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnusedArgumentCliException;
 
 /**
  * This abstract base class describes the closure for an option.

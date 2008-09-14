@@ -17,22 +17,23 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
 
 /**
- * This class represents a base class for options with a long number parameters.
+ * This class represents a base class for options with an optional string
+ * parameters.
  * <p>
  * This option can for instance be used to recognize command line parameters
- * with an additional argument:
+ * with additional argument:
  * </p>
  * 
  * <pre>
- *     --abc 123
+ *     --abc
  * </pre>
  * 
  * <p>
@@ -40,20 +41,20 @@ import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
  * </p>
  * 
  * <pre>
- *     --abc=123
+ *     --abc=xzy
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class LongOption extends Option {
+public abstract class OptionalStringOption extends Option {
 
     /**
      * Creates a new object.
      * 
      * @param tag the tag for the description of the option
      */
-    public LongOption(String tag) {
+    public OptionalStringOption(String tag) {
 
         super(tag);
     }
@@ -61,18 +62,18 @@ public abstract class LongOption extends Option {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
             throws MissingArgumentCliException,
-                NonNumericArgumentCliException {
+                UnknownOptionCliException {
 
         if (arg.isEmpty()) {
-            throw new MissingArgumentCliException(a);
+            return run(a, (String) null);
         }
-        return run(a, arg.remove(0), arg);
+        return run(a, arg.remove(0));
     }
 
     /**
@@ -82,26 +83,23 @@ public abstract class LongOption extends Option {
      * @param arg the argument
      * 
      * @return the exit code
+     * 
+     * @throws UnknownOptionCliException just in case
      */
-    protected abstract int run(String a, long arg);
+    protected abstract int run(String a, String arg)
+            throws UnknownOptionCliException;
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)
-            throws NonNumericArgumentCliException {
+            throws UnknownOptionCliException {
 
-        long num;
-        try {
-            num = Long.parseLong(firstArg);
-        } catch (NumberFormatException e) {
-            throw new NonNumericArgumentCliException(a, firstArg);
-        }
-        return run(a, num);
+        return run(a, firstArg);
     }
 
 }

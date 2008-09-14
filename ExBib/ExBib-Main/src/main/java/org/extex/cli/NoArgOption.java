@@ -17,88 +17,74 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnusedArgumentCliException;
 
 /**
- * This class represents a base class for options with a string parameters.
+ * This class represents a base class for options without parameters.
  * <p>
  * This option can for instance be used to recognize command line parameters
- * with additional argument:
+ * without additional argument:
  * </p>
  * 
  * <pre>
- *     --abc 123
- * </pre>
- * 
- * <p>
- * or:
- * </p>
- * 
- * <pre>
- *     --abc=123
+ *     --abc
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class StringOption extends Option {
+public abstract class NoArgOption extends Option {
 
     /**
      * Creates a new object.
      * 
      * @param tag the tag for the description of the option
      */
-    public StringOption(String tag) {
+    public NoArgOption(String tag) {
 
         super(tag);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
-     *      java.util.List)
-     */
-    @Override
-    public int run(String a, List<String> arg)
-            throws MissingArgumentCliException,
-                UnknownOptionCliException {
-
-        if (arg.isEmpty()) {
-            throw new MissingArgumentCliException(a);
-        }
-        return run(a, arg.remove(0));
     }
 
     /**
      * Do whatever the option requires to be done.
      * 
      * @param a the name the option has actually used
-     * @param arg the argument
      * 
      * @return the exit code
      * 
      * @throws UnknownOptionCliException just in case
      */
-    protected abstract int run(String a, String arg)
-            throws UnknownOptionCliException;
+    protected abstract int run(String a) throws UnknownOptionCliException;
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.cli.Option#run(java.lang.String,
+     * @see org.extex.cli.Option#run(java.lang.String,
+     *      java.util.List)
+     */
+    @Override
+    public int run(String a, List<String> arg) throws UnknownOptionCliException {
+
+        return run(a);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.cli.Option#run(java.lang.String,
      *      java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)
-            throws UnknownOptionCliException {
+            throws UnusedArgumentCliException,
+                UnknownOptionCliException {
 
-        return run(a, firstArg);
+        throw new UnusedArgumentCliException(a);
     }
 
 }

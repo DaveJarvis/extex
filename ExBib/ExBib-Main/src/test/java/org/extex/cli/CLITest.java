@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.main.cli;
+package org.extex.cli;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -26,10 +26,14 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exbib.main.cli.exception.MissingArgumentCliException;
-import org.extex.exbib.main.cli.exception.NonNumericArgumentCliException;
-import org.extex.exbib.main.cli.exception.UnknownOptionCliException;
-import org.extex.exbib.main.cli.exception.UnusedArgumentCliException;
+import org.extex.cli.CLI;
+import org.extex.cli.NoArgOption;
+import org.extex.cli.NumberOption;
+import org.extex.cli.StringOption;
+import org.extex.cli.exception.MissingArgumentCliException;
+import org.extex.cli.exception.NonNumericArgumentCliException;
+import org.extex.cli.exception.UnknownOptionCliException;
+import org.extex.cli.exception.UnusedArgumentCliException;
 import org.junit.Test;
 
 /**
