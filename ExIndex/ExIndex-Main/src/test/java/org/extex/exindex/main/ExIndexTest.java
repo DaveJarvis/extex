@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.main;
@@ -309,7 +308,8 @@ public class ExIndexTest {
             -1,
             "Starting the processing phase.\n"
                     + "Reading <stdin>.\n"
-                    + "The class java.lang.String for filter test0 does not extend Reader.\n");
+                    + "The class java.lang.String for filter test0 does not extend Reader. This is\n"
+                    + "most probable a programming or configuration error.\n");
     }
 
     /**
@@ -321,9 +321,13 @@ public class ExIndexTest {
     @Test
     public final void testFilter3() throws Exception {
 
-        runTest(new String[]{"-filter", "test1"}, -1,
-            "Starting the processing phase.\n" + "Reading <stdin>.\n"
-                    + "No filter class found in properties.\n");
+        runTest(
+            new String[]{"-filter", "test1"},
+            -1,
+            "Starting the processing phase.\n"
+                    + "Reading <stdin>.\n"
+                    + "No filter class found in properties.This is most probable a programming or\n"
+                    + "configuration error.\n");
     }
 
     /**
@@ -340,7 +344,8 @@ public class ExIndexTest {
             -1,
             "Starting the processing phase.\n"
                     + "Reading <stdin>.\n"
-                    + "The class org.extex.UnDeF for filter test2 could not be found.\n");
+                    + "The class org.extex.UnDeF for filter test2 could not be found. This is most\n"
+                    + "probable a programming or configuration error.\n");
     }
 
     /**
@@ -358,7 +363,7 @@ public class ExIndexTest {
             "Starting the processing phase.\n"
                     + "Reading <stdin>.\n"
                     + "The filter class java.io.Reader for filter test3 does not have a proper\n"
-                    + "constructor.\n");
+                    + "constructor. This is most probable a programming or configuration error.\n");
     }
 
     /**
@@ -376,7 +381,7 @@ public class ExIndexTest {
             "Starting the processing phase.\n"
                     + "Reading <stdin>.\n"
                     + "The filter class java.io.StringReader for filter test4 does not have a proper\n"
-                    + "constructor.\n");
+                    + "constructor. This is most probable a programming or configuration error.\n");
     }
 
     /**
@@ -607,8 +612,8 @@ public class ExIndexTest {
         runTest(
             new String[]{"-s", "../ExIndex-Main/src/test/resources/doc"},
             0,
-            "Scanning style file ../ExIndex-Main/src/test/resources/doc...done (? attributes\n"
-                    + "redefined, ? ignored).\n"
+            "Scanning style file ../ExIndex-Main/src/test/resources/doc...done (7 attributes\n"
+                    + "redefined, 0 ignored).\n"
                     + "Starting the processing phase.\n"
                     + "Reading <stdin>.\n"
                     + "Starting the pre-processing phase.\n"

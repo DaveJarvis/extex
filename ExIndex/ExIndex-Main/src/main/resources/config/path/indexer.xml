@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2007 The ExTeX Group
+  -  Copyright (C) 2007-2008 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -25,6 +25,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path>.</path>
+      <extension></extension>
       <extension>.ist</extension>
     </ist>
     <xdy>

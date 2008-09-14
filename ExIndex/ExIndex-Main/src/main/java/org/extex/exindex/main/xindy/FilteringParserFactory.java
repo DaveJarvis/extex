@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exindex.main.xindy;
@@ -31,7 +30,6 @@ import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.parser.RawIndexParser;
 import org.extex.exindex.core.parser.xindy.XindyParserFactory;
-import org.extex.exindex.lisp.LInterpreter;
 import org.extex.exindex.main.ExIndex;
 import org.extex.exindex.main.exception.MainException;
 import org.extex.framework.i18n.Localizer;
@@ -39,12 +37,12 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.resource.ResourceFinder;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This parser factory arranges to use a filter if one is given.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class XindyFilteringParserFactory extends XindyParserFactory {
+public class FilteringParserFactory extends XindyParserFactory {
 
     /**
      * The field <tt>LOCALIZER</tt> contains the the localizer.
@@ -58,14 +56,19 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
     private ResourceFinder finder;
 
     /**
-     * The field <tt>filter</tt> contains the ...
+     * The field <tt>filter</tt> contains the name of the filter.
      */
     private String filter = null;
 
     /**
+     * The field <tt>parser</tt> contains the name of the parser.
+     */
+    private String parser = "xindy";
+
+    /**
      * Creates a new object.
      */
-    public XindyFilteringParserFactory() {
+    public FilteringParserFactory() {
 
         super();
     }
@@ -73,27 +76,33 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(
-     *      java.lang.String, java.lang.String, Indexer)
+     * @see org.extex.exindex.core.parser.RawIndexParserFactory#create(java.lang.String,
+     *      java.lang.String, Indexer)
      */
     @Override
     public RawIndexParser create(String resource, String charset,
             Indexer indexer) throws RawIndexException, IOException {
 
-        String parser = "xindy";
         InputStream stream;
         if (resource == null) {
             stream = System.in;
+        } else if (resource.endsWith(".raw")) {
+            stream = finder.findResource(resource, "raw");
+        } else if (resource.endsWith(".idx")) {
+            stream = finder.findResource(resource, "idx");
+            parser = "makeindex";
         } else {
             stream = finder.findResource(resource, "raw");
             if (stream == null) {
                 stream = finder.findResource(resource, "idx");
                 parser = "makeindex";
-                if (stream == null) {
-                    return null;
-                }
             }
         }
+
+        if (stream == null) {
+            return null;
+        }
+
         Reader reader = new InputStreamReader(stream, charset);
         if (filter != null) {
             stream = getClass().getClassLoader().getResourceAsStream(//
@@ -163,9 +172,8 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
         try {
             Constructor<?> cons =
                     Class.forName(clazz).getConstructor(Reader.class,
-                        String.class, LInterpreter.class);
-            return (RawIndexParser) cons.newInstance(reader, resource,
-                indexer);
+                        String.class, Indexer.class);
+            return (RawIndexParser) cons.newInstance(reader, resource, indexer);
         } catch (SecurityException e) {
             throw new MainException(LOCALIZER.format("ParserError", parser, e
                 .toString()), e);
@@ -191,10 +199,29 @@ public class XindyFilteringParserFactory extends XindyParserFactory {
     }
 
     /**
+     * Setter for the filter.
+     * 
+     * @param filter the filter to set
+     */
+    public void setFilter(String filter) {
+
+        this.filter = filter;
+    }
+
+    /**
+     * Setter for the parser.
+     * 
+     * @param parser the parser to set
+     */
+    public void setParser(String parser) {
+
+        this.parser = parser;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exindex.core.parser.RawIndexParserFactory#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.exindex.core.parser.RawIndexParserFactory#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     @Override
     public void setResourceFinder(ResourceFinder finder) {

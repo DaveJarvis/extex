@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- **************************************************************************
+ * This is the configuration for the IzPack installer of ExIndex
+ ******************************************************************************
+ * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or (at
+ * your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ ************************************************************************* -->
 
 <installation version="1.0">
   <info>
     <appname>ExIndex</appname>
-    <appversion>0.0-snapshot</appversion>
+    <appversion>0.1-SNAPSHOT</appversion>
     <authors>
       <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
       <author name="Michael Niedermair" email="m.g.n@gmx.de"/>
@@ -27,21 +47,21 @@
   </locale>
 
   <resources>
-    <res id="LicencePanel.licence" src="LICENSE.txt"/>
-    <res id="HTMLInfoPanel.info_eng" src="README.en"/>
-    <res id="HTMLInfoPanel.info_deu" src="README.de"/>
-    <res id="installer.langsel.img" src="ExIndex-splash.png" />
-    <res id="Installer.image" src="ExIndex-side.png" />
-    <res id="packsLang.xml_deu" src="packs.de" />
-    <res id="packsLang.xml_eng" src="packs.en" />
-    <res id="userInputLang.xml_deu" src="packs.de" />
-    <res id="userInputLang.xml_eng" src="packs.en" />
+    <res id="HTMLLicencePanel.licence" src="LICENSE.html"/>
+    <res id="HTMLInfoPanel.info_eng" src="en/README.en"/>
+    <res id="HTMLInfoPanel.info_deu" src="de/README.de"/>
+    <res id="installer.langsel.img" src="images/ExIndex-splash.png" />
+    <res id="Installer.image" src="images/ExIndex-side.png" />
+    <res id="packsLang.xml_deu" src="de/packs.de" />
+    <res id="packsLang.xml_eng" src="en/packs.en" />
+    <res id="userInputLang.xml_deu" src="de/packs.de" />
+    <res id="userInputLang.xml_eng" src="en/packs.en" />
     <res id="userInputSpec.xml" src="input.xml" />
   </resources>
 
   <panels>
     <panel classname="HTMLInfoPanel"/>
-    <panel classname="LicencePanel"/>
+    <panel classname="HTMLLicencePanel"/>
     <panel classname="PacksPanel"/>
     <panel classname="TargetPanel"/> 
     <panel classname="UserInputPanel"/>
@@ -50,12 +70,17 @@
   </panels>
 
   <packs>
-    <pack name="ExIndex" id="exindex" required="yes">
+    <pack name="ExIndex Core"
+          id="exindex"
+          required="yes">
       <description/>
-      <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
-      <file src="exindex" targetdir="$INSTALL_PATH/bin/unix"/>
+      <file src="LICENSE.html"
+            targetdir="$INSTALL_PATH"/>
+      <file src="bin/exindex"
+            targetdir="$INSTALL_PATH/bin/unix"/>
       <executable targetfile="$INSTALL_PATH/bin/unix/exindex"/>
-      <file src="exindex.bat" targetdir="$INSTALL_PATH/bin/win32"/>
+      <file src="bin/exindex.bat"
+            targetdir="$INSTALL_PATH/bin/win32"/>
       <parsable targetfile="$INSTALL_PATH/bin/win32/exindex.bat"/>
       <executable targetfile="$INSTALL_PATH/bin/win32/exindex.bat"/>
       <file src="../../../ExIndex-core/target/ExIndex-core-0.1-SNAPSHOT.jar"
@@ -64,11 +89,13 @@
             targetdir="$INSTALL_PATH/lib"/>
       <file src="../../../ExIndex-Main/target/ExIndex-Main-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
-      <file src="../../../../ExTeX-core/target/ExTeX-core-0.1-SNAPSHOT.jar"
+      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
 
-    <pack name="Documentation" id="doc" required="no">
+    <pack name="ExIndex Documentation"
+          id="exindex-docs"
+          required="no">
       <description/>
 <!--
       <file src="../../../ExIndex-core/doc/exindex-users.pdf"

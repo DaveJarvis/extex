@@ -2,7 +2,7 @@
 rem ---------------------------------------------------------------------------
 rem  This is the start script for ExIndex
 rem ---------------------------------------------------------------------------
-rem  Copyright (C) 2007 The ExTeX Group
+rem  Copyright (C) 2007-2008 The ExTeX Group
 rem 
 rem  This library is free software; you can redistribute it and/or modify it
 rem  under the terms of the GNU Lesser General Public License as published by

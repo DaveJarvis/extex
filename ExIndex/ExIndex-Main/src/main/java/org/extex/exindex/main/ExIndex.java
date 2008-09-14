@@ -40,13 +40,12 @@ import java.util.logging.Logger;
 import org.extex.exindex.core.Indexer;
 import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
-import org.extex.exindex.core.parser.xindy.XindyParserFactory;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.main.exception.MainException;
-import org.extex.exindex.main.xindy.XindyFilteringParserFactory;
+import org.extex.exindex.main.xindy.FilteringParserFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.i18n.Localizer;
@@ -269,17 +268,36 @@ public class ExIndex extends Indexer {
     }
 
     /**
-     * This is the command line interface to the indexer.
+     * This is the command line interface to the indexer. The command line
+     * parameters are evaluated and the appropriate actions are performed.
+     * Finally the program exits with an exit code which signals success or
+     * failure.
      * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        System.exit(mainFacade(args));
+    }
+
+    /**
+     * This is the command line interface to the indexer. The command line
+     * parameters are evaluated and the appropriate actions are performed.
+     * Finally the program returns an exit code which signals success or
+     * failure.
+     * 
+     * @param args the command line arguments
+     * 
+     * @return the exit code
+     */
+    public static int mainFacade(String[] args) {
+
         try {
-            System.exit(new ExIndex().run(args));
+            return new ExIndex().run(args);
         } catch (Exception e) {
             System.err.println(e.getLocalizedMessage());
         }
+        return -1;
     }
 
     /**
@@ -304,12 +322,6 @@ public class ExIndex extends Indexer {
      * The field <tt>fileHandler</tt> contains the file handler for logging.
      */
     private FileHandler fileHandler = null;
-
-    /**
-     * The field <tt>filter</tt> contains the name of the filter or
-     * <code>null</code> for none.
-     */
-    private String filter = null;
 
     /**
      * The field <tt>logger</tt> contains the logger for messages.
@@ -357,12 +369,17 @@ public class ExIndex extends Indexer {
     private boolean letterOrdering = false;
 
     /**
+     * The field <tt>myParserFactory</tt> contains the parser factory.
+     */
+    private FilteringParserFactory myParserFactory;
+
+    /**
      * Creates a new object.
      * 
      * @throws IOException in case of an I/O error when reading the default
-     *             settings
+     *         settings
      * @throws NoSuchMethodException in case of an undefined method in a
-     *             function definition
+     *         function definition
      * @throws SecurityException in case of an security problem
      * @throws LException in case of an error
      * @throws InvocationTargetException in case of an error
@@ -403,9 +420,9 @@ public class ExIndex extends Indexer {
         consoleHandler.setLevel(Level.INFO);
         logger.addHandler(consoleHandler);
 
-        XindyParserFactory parserFactory = new XindyFilteringParserFactory();
-        parserFactory.setResourceFinder(f);
-        setParserFactory(parserFactory);
+        myParserFactory = new FilteringParserFactory();
+        myParserFactory.setResourceFinder(f);
+        setParserFactory(myParserFactory);
     }
 
     /**
@@ -513,7 +530,7 @@ public class ExIndex extends Indexer {
                         new LString("")));
 
                 } else if ("-filter".startsWith(a)) {
-                    filter = getArg(a, args, ++i);
+                    myParserFactory.setFilter(getArg(a, args, ++i));
 
                 } else if ("-german".startsWith(a)) {
                     collateGerman = true;
@@ -523,6 +540,9 @@ public class ExIndex extends Indexer {
 
                 } else if ("-letter-ordering".startsWith(a)) {
                     letterOrdering = true;
+
+                } else if ("-makeindex".startsWith(a)) {
+                    myParserFactory.setParser("makeindex");
 
                 } else if ("-output".startsWith(a)) {
                     output = getArg(a, args, ++i);
@@ -639,7 +659,7 @@ public class ExIndex extends Indexer {
             logger.log(Level.SEVERE, LOCALIZER.format("SevereError", e
                 .toString()));
             logger.log(Level.FINE, "", e);
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         if (fileHandler != null) {
             fileHandler.flush();
@@ -661,7 +681,7 @@ public class ExIndex extends Indexer {
      * Set the log level.
      * 
      * @param level the level which is is one of the following values: "1",
-     *            "fine", "2", "fine", "3", "finest"
+     *        "fine", "2", "fine", "3", "finest"
      * 
      * @throws MainException in case of an undefined log level name
      */
@@ -711,43 +731,40 @@ public class ExIndex extends Indexer {
 
         showBanner();
 
+        int[] ret;
+
         for (String style : styles) {
             logger.log(Level.INFO, LOCALIZER.format("ScanningStyle", style));
 
             InputStream stream = getResourceFinder().findResource(style, "ist");
             if (stream != null) {
-
-                Reader reader;
-                if (inCharset == null) {
-                    reader = new InputStreamReader(stream);
-                } else {
-                    reader = new InputStreamReader(stream, inCharset);
-                }
+                Reader reader =
+                        inCharset == null
+                                ? new InputStreamReader(stream)
+                                : new InputStreamReader(stream, inCharset);
                 try {
-                    MakeindexLoader.load(reader, style, this);
+                    ret = MakeindexLoader.load(reader, style, this);
                 } finally {
                     reader.close();
                 }
-
             } else {
                 stream = getResourceFinder().findResource(style, "xdy");
                 if (stream == null) {
                     throw new FileNotFoundException(style);
                 }
-                Reader reader;
-                if (inCharset == null) {
-                    reader = new InputStreamReader(stream);
-                } else {
-                    reader = new InputStreamReader(stream, inCharset);
-                }
+                Reader reader =
+                        inCharset == null
+                                ? new InputStreamReader(stream)
+                                : new InputStreamReader(stream, inCharset);
                 try {
                     load(reader, style);
+                    ret = new int[]{99999, 0}; // TODO provide reasonable values
                 } finally {
                     reader.close();
                 }
             }
             logger.log(Level.INFO, LOCALIZER.format("ScanningStyleDone", //
-                "?", "?"));
+                Integer.toString(ret[0]), Integer.toString(ret[1])));
         }
     }
 

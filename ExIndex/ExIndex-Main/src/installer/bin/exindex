@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # This is the start script for ExIndex
 #------------------------------------------------------------------------------
-# Copyright (C) 2007 The ExTeX Group
+# Copyright (C) 2007-2008 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -28,7 +28,7 @@ if [ "$JAVA_HOME" = "" ] ; then
   exit 1
 fi
 
-EXINDEX_HOME=`dirname $0`
+EXINDEX_HOME=`dirname $0`/../..
 LIBDIR="$EXINDEX_HOME/lib"
 
 # OS specific support.
