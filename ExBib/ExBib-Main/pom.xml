@@ -25,9 +25,15 @@
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>CLI</artifactId>
     </dependency>
   </dependencies>
 
