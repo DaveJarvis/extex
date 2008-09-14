@@ -119,7 +119,6 @@
    <module>ExIndex-core</module>
    <module>ExIndex-lisp</module>
    <module>ExIndex-Main</module>
-   <module>../ExTeX-core</module>
   </modules>
 
   <build>
