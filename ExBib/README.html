@@ -6,10 +6,33 @@
   <style>
 body {
   background-color:white;
-  font-family: sans-serif;
+  font-family:sans-serif;
   margin-left:150px;
   margin-right:2em;
-  background: url(ExBib-Installer/src/images/exbib-side.png) no-repeat;
+  background: url(ExBib-Installer/src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:0;
 }
 h1,h2,h3 {
   color:firebrick;
@@ -28,29 +51,32 @@ pre {
   </style>
 </head>
 <body>
+<img class="left" src="ExBib-Installer/src/images/exbib-side.png"/>
 
 <h1>&epsilon;&chi;Bib</h1>
 
 <p>
  &epsilon;&chi;Bib is a bibliography processor in the spirit of
- B<small>IB</small>TeX and B<small>IB</small>TeX&nbsp;8. It is meant
- to be usable as a plug-in replacement for those.
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X and
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X&nbsp;8.
+ It is meant to be usable as a plug-in replacement for those.
 </p>
 <p>
- In addition several attempts have been made to make it highly
- configurable.
+ In addition several attempts have been made to make it highly configurable.
 </p>
 <p>
  It is meant to be in line with <a
- href="http://www.extex.org">ExTeX</a>. Eventually it can be
- integrated into ExTeX or other tools. Thus the funtionality of the
- command line program is separated from the core functionality.
+ href="http://www.extex.org">&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X</a>.
+ Eventually it can be integrated into 
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X or other tools.
+ Thus the functionality of the command line program is separated from the core
+ functionality.
 </p>
 
 <h2>The &epsilon;&chi;Bib Installer</h2>
 
 <p>
- &epsilon;&chi;Bib is delived in form of an installer. This installer
+ &epsilon;&chi;Bib is delivered in form of an installer. This installer
  is created with the help of <a href="http://izpack.org">IzPack</a>.
 </p>
 <p>
