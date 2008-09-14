@@ -95,7 +95,7 @@ The following properties are recognized in a dot file:
   referenes to an entry this entry is collapsed into the referencing
   entries and does not appear alone. This parameter controlls this
   behaviour.
-\item[\Property{exbib.min.crossref.\Arg{type}}] \ \\
+\item[\property{exbib.min.crossref.\protect\Arg{type}}{exbib.min.crossref.type}] \ \\
   This property contains the minimum number of cross-references before
   an entry is not collapsed for a certain type of database. The
   fallback is taken from the property \Property{exbib.min.crossref}.
@@ -115,7 +115,7 @@ The following properties are recognized in a dot file:
   This property contains the specification of the sorter for entries.
   It is composed of a method and arguments. See
   section~\ref{sec:sort.order} for details.
-\item[\Property{exbib.sort.\Arg{type}}] \ \\
+\item[\property{exbib.sort.\protect\Arg{type}}{exbib.sort.type}] \ \\
   This property contains the specification for the sorter to be used
   for the given output type. The fallback is taken from the property
   \Property{exbib.sort}.
@@ -218,8 +218,8 @@ are described in the following sections.
     This is exbib, Version !\Version!
   \end{lstlisting}
   
-\item[\CLi{} \Arg{file}]
-\item[\CLI{} \Arg{file}]\ \\
+\item[\cli{-} \Arg{file}]
+\item[\cli{-{}-} \Arg{file}]\ \\
   This parameter intercepts the processing of arguments. The next
   argument -- if present -- is interpreted as input file. With this
   construction it is possible to process an input file which starts
