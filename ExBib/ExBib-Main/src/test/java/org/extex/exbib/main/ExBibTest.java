@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.main;
@@ -700,8 +699,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--csfile ''</tt>
-     * works. </testcase>
+     * <testcase> Test that the command line option <tt>--csfile ''</tt> works.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -741,8 +740,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--debug all</tt>
-     * works. </testcase>
+     * <testcase> Test that the command line option <tt>--debug all</tt> works.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -936,8 +935,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--language</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -977,8 +976,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-Dlanguage=</tt> can
-     * be used to set the language. </testcase>
+     * <testcase> Test that the command line option <tt>-Dlanguage=</tt> can be
+     * used to set the language. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1016,8 +1015,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist.
-     * </testcase>
+     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1031,8 +1029,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist.
-     * </testcase>
+     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1046,8 +1043,7 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that a file for <tt>--load</tt> has to exist.
-     * </testcase>
+     * <testcase> Test that a file for <tt>--load</tt> has to exist. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1060,8 +1056,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--logfile</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1365,8 +1361,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1378,8 +1374,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt>
-     * complains if the output file can not be opened. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> complains
+     * if the output file can not be opened. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1429,8 +1425,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> takes
-     * an empty argument to discard the output. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> takes an
+     * empty argument to discard the output. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1445,8 +1441,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--progname</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1492,8 +1488,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--quiet</tt> is
-     * honored. </testcase>
+     * <testcase> Test that the command line option <tt>--quiet</tt> is honored.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -1565,14 +1561,12 @@ public class ExBibTest extends BibTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
-    // TODO
     public void testSorterLocale01() throws Exception {
 
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "--sorter", "locale:en_US", "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1589,7 +1583,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1608,7 +1602,7 @@ public class ExBibTest extends BibTester {
                     + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
                     + "\\biboption{sort=locale:de}\n", //
-            CLI.EXIT_OK, Check.EQ, "a\nA\nÃ¤\nab\nac\nae\naf\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
             BANNER, //
             "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1627,7 +1621,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\nÃ¤\naf\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\nä\naf\n", Check.EQ,
             BANNER, //
             "--sorter", "de-ae", "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1644,7 +1638,7 @@ public class ExBibTest extends BibTester {
         runTest("test", "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\nÃ¤\n", Check.EQ,
+            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\nä\n", Check.EQ,
             BANNER, //
             "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8");
     }
@@ -1677,8 +1671,8 @@ public class ExBibTest extends BibTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--terse</tt> is
-     * honored. </testcase>
+     * <testcase> Test that the command line option <tt>--terse</tt> is honored.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
