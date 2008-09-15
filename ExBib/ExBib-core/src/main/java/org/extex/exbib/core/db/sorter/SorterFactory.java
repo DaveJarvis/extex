@@ -28,6 +28,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
 
 /**
  * This is a factory to deliver sorters.
@@ -99,6 +100,9 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
             }
         } catch (ConfigurationNotFoundException e) {
             throw new ExBibSorterNotFoundException(t);
+        }
+        if (sorter instanceof ResourceAware) {
+            ((ResourceAware) sorter).setResourceFinder(getResourceFinder());
         }
         if (sorter instanceof PropertyAware) {
             ((PropertyAware) sorter).setProperties(properties);
