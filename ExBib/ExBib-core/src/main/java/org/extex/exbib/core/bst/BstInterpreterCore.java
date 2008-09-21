@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst;
@@ -36,9 +35,9 @@ import org.extex.exbib.core.bst.exception.ExBibStackEmptyException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
-import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.DB;
@@ -57,13 +56,14 @@ import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
- * This is the core implementation of an interpreter for the B<small>IB</small>T<sub>E</sub>X
- * language.
+ * This is the core implementation of an interpreter for the
+ * B<small>IB</small>T<sub>E</sub>X language.
  * <p>
  * The core implementation contains the full functionality of an interpreter.
  * But not functions, strings, integers etc are predefined. Thus usually this
@@ -134,32 +134,32 @@ public class BstInterpreterCore extends BibliographyCore
     private ObserverList addFunctionObservers = new ObserverList();
 
     /**
-     * The field <tt>changeFunctionObservers</tt> contains the list of
-     * observers triggered when functions are changed.
+     * The field <tt>changeFunctionObservers</tt> contains the list of observers
+     * triggered when functions are changed.
      */
     private ObserverList changeFunctionObservers = new ObserverList();
 
     /**
-     * The field <tt>popObservers</tt> contains the list of observers
-     * triggered when a Token is popped.
+     * The field <tt>popObservers</tt> contains the list of observers triggered
+     * when a Token is popped.
      */
     private ObserverList popObservers = new ObserverList();
 
     /**
-     * The field <tt>pushObservers</tt> contains the list of observers
-     * triggered when a token is pushed.
+     * The field <tt>pushObservers</tt> contains the list of observers triggered
+     * when a token is pushed.
      */
     private ObserverList pushObservers = new ObserverList();
 
     /**
-     * The field <tt>runObservers</tt> contains the list of observers
-     * triggered when processing a command.
+     * The field <tt>runObservers</tt> contains the list of observers triggered
+     * when processing a command.
      */
     private ObserverList runObservers = new ObserverList();
 
     /**
-     * The field <tt>stepObservers</tt> contains the list of observers
-     * triggered by the execution of one step.
+     * The field <tt>stepObservers</tt> contains the list of observers triggered
+     * by the execution of one step.
      */
     private ObserverList stepObservers = new ObserverList();
 
@@ -169,8 +169,7 @@ public class BstInterpreterCore extends BibliographyCore
     private List<String> theEntries;
 
     /**
-     * The field <tt>theEntryIntegers</tt> contains the list of local
-     * integers.
+     * The field <tt>theEntryIntegers</tt> contains the list of local integers.
      */
     private List<String> theEntryIntegers;
 
@@ -333,21 +332,11 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
-     * Get an iterator over all commands.
-     * 
-     * @return the iterator
-     */
-    public Iterator<Command> iterator() {
-
-        return commands.iterator();
-    }
-
-    /**
      * Configure the current instance. The following values are considered for
      * configuration:
      * <dl>
      * <dd>minCrossrefs</dd>
-     * <dt>the minimum crossrefs considered when collapsing records </dt>
+     * <dt>the minimum crossrefs considered when collapsing records</dt>
      * <dd>globalMax</dd>
      * <dt>obsolete variable global.max$</dt>
      * <dd>entryMax</dd>
@@ -515,6 +504,16 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
+     * Get an iterator over all commands.
+     * 
+     * @return the iterator
+     */
+    public Iterator<Command> iterator() {
+
+        return commands.iterator();
+    }
+
+    /**
      * Pop an element from the stack. If the stack is empty an exception is
      * thrown.
      * 
@@ -557,10 +556,9 @@ public class BstInterpreterCore extends BibliographyCore
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingNumberException in case that no integer is found
      * 
-     * {@inheritDoc}
+     *         {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.BstProcessor#popInteger(
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.BstProcessor#popInteger(org.extex.exbib.core.io.Locator)
      */
     public TInteger popInteger(Locator locator)
             throws ExBibStackEmptyException,
@@ -595,8 +593,7 @@ public class BstInterpreterCore extends BibliographyCore
      * @throws ExBibStackEmptyException in case that no element is left to pop
      * @throws ExBibMissingStringException in case that no string is found
      * 
-     * @see org.extex.exbib.core.bst.BstProcessor#popString(
-     *      org.extex.exbib.core.io.Locator)
+     * @see org.extex.exbib.core.bst.BstProcessor#popString(org.extex.exbib.core.io.Locator)
      */
     public TString popString(Locator locator)
             throws ExBibStackEmptyException,
@@ -636,11 +633,13 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.Processor#process(
-     *      org.extex.exbib.core.io.Writer)
+     * @see org.extex.exbib.core.Processor#process(org.extex.exbib.core.io.Writer)
      */
     public long process(Writer writer) throws ExBibException {
 
+        if (configuration == null) {
+            throw new ConfigurationMissingException("*");
+        }
         this.outWriter = writer;
 
         BstReaderFactory bstReaderFactory =
@@ -665,8 +664,8 @@ public class BstInterpreterCore extends BibliographyCore
      * Push the given token onto the stack.
      * 
      * <p>
-     * The observers for <code>push</code> are notified. They receive the
-     * token as argument.
+     * The observers for <code>push</code> are notified. They receive the token
+     * as argument.
      * </p>
      * 
      * @param token the token to push
@@ -795,8 +794,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setIntegers(
-     *      org.extex.exbib.core.bst.token.impl.TokenList,
+     * @see org.extex.exbib.core.bst.BstProcessor#setIntegers(org.extex.exbib.core.bst.token.impl.TokenList,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setIntegers(TokenList list, Locator locator)
@@ -825,8 +823,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 
@@ -836,8 +833,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.BstProcessor#setStrings(
-     *      org.extex.exbib.core.bst.token.impl.TokenList,
+     * @see org.extex.exbib.core.bst.BstProcessor#setStrings(org.extex.exbib.core.bst.token.impl.TokenList,
      *      org.extex.exbib.core.io.Locator)
      */
     public void setStrings(TokenList list, Locator locator)
