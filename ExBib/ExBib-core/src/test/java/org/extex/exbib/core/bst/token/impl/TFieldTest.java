@@ -18,10 +18,8 @@
 
 package org.extex.exbib.core.bst.token.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.StringReader;
 import java.util.Iterator;
 import java.util.List;
@@ -146,17 +144,6 @@ public class TFieldTest {
     @Test(expected = ExBibUndefinedFieldException.class)
     public void test1() throws Exception {
 
-        File bst = new File("target", "test.bst");
-        FileWriter fw = new FileWriter(bst);
-        try {
-            fw.write("entry{abc}{}{}\n" + "function{book}{}\n"
-                    + "function{xxx}{\n" + "  abc\n" + "  write$\n"
-                    + "  newline$\n" + "}\n" + "\n" + "read\n"
-                    + "iterate{xxx}\n");
-        } finally {
-            fw.close();
-        }
-
         DB db = new DBImpl();
         db.setBibReaderFactory(new BibReaderFactory(config, null, null, null) {
 
@@ -190,22 +177,17 @@ public class TFieldTest {
             public NamedInputStream findResource(String name, String type)
                     throws ConfigurationException {
 
-                try {
-                    return new NamedInputStream(new FileInputStream(new File(
-                        ".", name)), "");
-                } catch (FileNotFoundException e) {
-                    throw new ConfigurationNotFoundException(name, "");
-                }
+                return new NamedInputStream(new ByteArrayInputStream(
+                    ("entry{abc}{}{}\n" + "function{book}{}\n"
+                            + "function{xxx}{\n" + "  abc\n" + "  write$\n"
+                            + "  newline$\n" + "}\n" + "\n" + "read\n"
+                            + "iterate{xxx}\n").getBytes()), "");
             }
         });
         p.addBibliographyDatabase(". . .");
         p.addBibliographyStyle("target/test.bst");
         p.addCitation("*");
-        try {
-            p.process(new NullWriter());
-        } finally {
-            bst.delete();
-        }
+        p.process(new NullWriter());
     }
 
 }
