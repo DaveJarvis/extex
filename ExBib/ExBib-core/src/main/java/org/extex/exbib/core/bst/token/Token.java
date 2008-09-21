@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.token;
@@ -23,12 +22,12 @@ import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.Code;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
  * A <code>Token</code> is the basic entity of which programs are made up.
- * Programs also handle <code>Token</code>s as their way to store
- * information.
+ * Programs also handle <code>Token</code>s as their way to store information.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -43,14 +42,16 @@ public interface Token extends Code {
      * @param processor the processor context
      * 
      * @return the expanded value of this Token
+     * 
+     * @throws ExBibException in case of an error
      */
-    String expand(Processor processor);
+    String expand(Processor processor) throws ExBibException;
 
     /**
      * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
      * locator is a means to get information about where the token came from
-     * originally. If no such information is available then <code>null</code>
-     * is returned.
+     * originally. If no such information is available then <code>null</code> is
+     * returned.
      * 
      * @return the locator or <code>null</code>
      */
@@ -69,8 +70,7 @@ public interface Token extends Code {
      * Usually the value <code>null</code> is treated as empty string. This
      * method is the only way to distinguish these two cases.
      * 
-     * @return <code>true</code> iff the value has been set to
-     *         <code>null</code>
+     * @return <code>true</code> iff the value has been set to <code>null</code>
      */
     boolean isNull();
 

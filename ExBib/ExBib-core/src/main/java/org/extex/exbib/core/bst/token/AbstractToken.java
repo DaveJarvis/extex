@@ -1,26 +1,26 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.token;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.AbstractCode;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
@@ -35,26 +35,26 @@ import org.extex.exbib.core.io.Locator;
 public abstract class AbstractToken extends AbstractCode implements Token {
 
     /**
-     * The field <tt>locator</tt> contains the locator for the
-     * {@link Token Token}.
+     * The field <tt>locator</tt> contains the locator for the {@link Token
+     * Token}.
      */
     private Locator locator;
 
     /**
-     * The field <tt>stringCache</tt> contains the cached string
-     * representation of the object.
+     * The field <tt>stringCache</tt> contains the cached string representation
+     * of the object.
      */
     private String stringCache = null;
 
     /**
-     * The field <tt>value</tt> contains the String value of the
-     * {@link Token Token}.
+     * The field <tt>value</tt> contains the String value of the {@link Token
+     * Token}.
      */
     private String value;
 
     /**
-     * The field <tt>isNull</tt> contains the indicator that the value has
-     * been set to <code>null</code> initially.
+     * The field <tt>isNull</tt> contains the indicator that the value has been
+     * set to <code>null</code> initially.
      */
     private boolean isNull;
 
@@ -96,10 +96,9 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      * 
      * The expansion of an AbstractToken is the value itself.
      * 
-     * @see org.extex.exbib.core.bst.token.Token#expand(
-     *      org.extex.exbib.core.Processor)
+     * @see org.extex.exbib.core.bst.token.Token#expand(org.extex.exbib.core.Processor)
      */
-    public String expand(Processor processor) {
+    public String expand(Processor processor) throws ExBibException {
 
         return value;
     }
@@ -107,8 +106,8 @@ public abstract class AbstractToken extends AbstractCode implements Token {
     /**
      * Getter for the {@link org.extex.exbib.core.io.Locator Locator}. The
      * locator is a means to get information about where the token came from
-     * originally. If no such information is available then <code>null</code>
-     * is returned.
+     * originally. If no such information is available then <code>null</code> is
+     * returned.
      * 
      * @return the locator or <code>null</code>
      */
@@ -143,8 +142,7 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      * value <code>null</code> is treated as empty string. This method is the
      * only way to distinguish these two cases.
      * 
-     * @return <code>true</code> iff the value has been set to
-     *         <code>null</code>
+     * @return <code>true</code> iff the value has been set to <code>null</code>
      */
     public boolean isNull() {
 
