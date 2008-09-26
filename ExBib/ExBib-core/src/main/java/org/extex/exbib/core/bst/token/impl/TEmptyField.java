@@ -38,6 +38,11 @@ public class TEmptyField extends TString {
     private String entryName;
 
     /**
+     * The field <tt>name</tt> contains the name.
+     */
+    private String name;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name of the field
@@ -46,7 +51,8 @@ public class TEmptyField extends TString {
      */
     public TEmptyField(String name, String entryName, Locator locator) {
 
-        super(name, locator);
+        super(null, locator);
+        this.name = name;
         this.entryName = entryName;
     }
 
@@ -58,8 +64,7 @@ public class TEmptyField extends TString {
     @Override
     public String expand(Processor processor) throws ExBibException {
 
-        throw new ExBibUndefinedFieldException(getValue(), entryName,
-            getLocator());
+        throw new ExBibUndefinedFieldException(name, entryName, getLocator());
     }
 
 }
