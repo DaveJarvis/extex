@@ -26,7 +26,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.Writer;
 import java.util.Locale;
@@ -108,6 +112,28 @@ public class ExBibTest extends BibTester {
                     + "\t\tAct verbosely; some additional informational messages are displayed.\n"
                     + "\t--vers[ion]\n"
                     + "\t\tPrint the version information and exit.\n";
+
+    /**
+     * Create a file.
+     * 
+     * @param name the name of the file
+     * @param encoding the name of the character set
+     * @param data the content
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void makeFile(File name, String encoding, String data)
+            throws IOException {
+
+        OutputStream stream = new FileOutputStream(name);
+        Writer w = new OutputStreamWriter(stream, encoding);
+        try {
+            w.write(data);
+        } finally {
+            w.close();
+            stream.close();
+        }
+    }
 
     /**
      * <testcase> Test that no command line option at all leads to an error.
@@ -1563,12 +1589,26 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale01() throws Exception {
 
-        runTest("test", "\\citation{*}\n"
-                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
-                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
-            BANNER, //
-            "--sorter", "locale:en_US", "test.aux", "--out=-", "--enc=UTF-8");
+        File data = new File("target/data.bib");
+        makeFile(data, "UTF-8", "@Item{ a,  value = {a} }\n"
+                + "@Item{ ae,  value = {ae} }\n"
+                + "@Item{ ab,  value = {ab} }\n"
+                + "@Item{ af,  value = {af} }\n"
+                + "@Item{ a1,  value = {A} }\n"
+                + "@Item{ ae1, value = {\u00e4} }\n"
+                + "@Item{ ac,  value = {ac} }\n");
+
+        try {
+            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n",
+                Check.EQ,
+                BANNER, //
+                "--sorter", "locale:en_US", "test.aux", "--out=-",
+                "--enc=UTF-8");
+        } finally {
+            data.delete();
+        }
     }
 
     /**
@@ -1580,12 +1620,24 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale02() throws Exception {
 
-        runTest("test", "\\citation{*}\n"
-                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
-                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
-            BANNER, //
-            "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
+        File data = new File("target/data.bib");
+        makeFile(data, "UTF-8", "@Item{ a,  value = {a} }\n"
+                + "@Item{ ae,  value = {ae} }\n"
+                + "@Item{ ab,  value = {ab} }\n"
+                + "@Item{ af,  value = {af} }\n"
+                + "@Item{ a1,  value = {A} }\n"
+                + "@Item{ ae1, value = {\u00e4} }\n"
+                + "@Item{ ac,  value = {ac} }\n");
+
+        try {
+            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
+                BANNER, //
+                "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
+        } finally {
+            data.delete();
+        }
     }
 
     /**
@@ -1597,14 +1649,26 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale03() throws Exception {
 
-        runTest("test",
-            "\\citation{*}\n"
-                    + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
-                    + "\\biboption{sort=locale:de}\n", //
-            CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
-            BANNER, //
-            "test.aux", "--out=-", "--enc=UTF-8");
+        File data = new File("target/data.bib");
+        makeFile(data, "UTF-8", "@Item{ a,  value = {a} }\n"
+                + "@Item{ ae,  value = {ae} }\n"
+                + "@Item{ ab,  value = {ab} }\n"
+                + "@Item{ af,  value = {af} }\n"
+                + "@Item{ a1,  value = {A} }\n"
+                + "@Item{ ae1, value = {\u00e4} }\n"
+                + "@Item{ ac,  value = {ac} }\n");
+
+        try {
+            runTest("test",
+                "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                        + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
+                        + "\\biboption{sort=locale:de}\n", //
+                CLI.EXIT_OK, Check.EQ, "a\nA\nä\nab\nac\nae\naf\n", Check.EQ,
+                BANNER, //
+                "test.aux", "--out=-", "--enc=UTF-8");
+        } finally {
+            data.delete();
+        }
     }
 
     /**
@@ -1635,12 +1699,24 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterUnicode01() throws Exception {
 
-        runTest("test", "\\citation{*}\n"
-                + "\\bibdata{src/test/resources/bibtex/sort/data.bib}\n"
-                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-            CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\nä\n", Check.EQ,
-            BANNER, //
-            "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8");
+        File data = new File("target/data.bib");
+        makeFile(data, "UTF-8", "@Item{ a,  value = {a} }\n"
+                + "@Item{ ae,  value = {ae} }\n"
+                + "@Item{ ab,  value = {ab} }\n"
+                + "@Item{ af,  value = {af} }\n"
+                + "@Item{ a1,  value = {A} }\n"
+                + "@Item{ ae1, value = {\u00e4} }\n"
+                + "@Item{ ac,  value = {ac} }\n");
+
+        try {
+            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\nä\n", Check.EQ,
+                BANNER, //
+                "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8");
+        } finally {
+            data.delete();
+        }
     }
 
     /**
