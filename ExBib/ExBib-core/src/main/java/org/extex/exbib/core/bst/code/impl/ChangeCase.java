@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -30,8 +29,7 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>change.case</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>change.case</code>
  * <p>
  * This function performs case conversion. It takes two arguments from the
  * stack. The first argument is the format and the second argument is the string
@@ -43,15 +41,13 @@ import org.extex.framework.i18n.LocalizerFactory;
  * associated with the different format strings.
  * </p>
  * <ul>
- * <li> If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
+ * <li>If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
  * converted to lower case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.
- * </li>
- * <li> If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
+ * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.</li>
+ * <li>If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
  * converted to upper case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.
- * </li>
- * <li> If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
+ * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.</li>
+ * <li>If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
  * converted to title case. This means that the first `letter' is translated to
  * upper case and the other letters are left unchanged.
  * <p>
@@ -60,9 +56,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <tt>\AA</tt> is translates to <tt>\aa</tt> at the beginning.
  * </p>
  * </li>
- * <li> If the format is not one of the legal values then a message is written
- * to the log stream and the input string pushed to the stack as the result.
- * </li>
+ * <li>If the format is not one of the legal values then a message is written to
+ * the log stream and the input string pushed to the stack as the result.</li>
  * </ul>
  * <p>
  * If the stack does not contain enough elements or the types do not match then
@@ -81,7 +76,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
- * <dd> Pops the top two (string) literals; it changes the case of the second
+ * <dd>Pops the top two (string) literals; it changes the case of the second
  * according to the specifications of the first, as follows. (Note: The word
  * `letters' in the next sentence refers only to those at brace-level 0, the
  * top-most brace level; no other characters are changed, except perhaps for
@@ -89,43 +84,44 @@ import org.extex.framework.i18n.LocalizerFactory;
  * If the first literal is the string `<code>t</code>', it converts to lower
  * case all letters except the very first character in the string, which it
  * leaves alone, and except the first character following any colon and then
- * nonnull white space, which it also leaves alone; if it's the string `<code>l</code>',
- * it converts all letters to lower case; and if it's the string `<code>u</code>',
- * it converts all letters to upper case. It then pushes this resulting string.
- * If either type is incorrect, it complains and pushes the null string;
+ * nonnull white space, which it also leaves alone; if it's the string `
+ * <code>l</code>', it converts all letters to lower case; and if it's the
+ * string `<code>u</code>', it converts all letters to upper case. It then
+ * pushes this resulting string. If either type is incorrect, it complains and
+ * pushes the null string; however, if both types are correct but the
+ * specification string (i.e., the first string) isn't one of the legal ones, it
+ * merely pushes the second back onto the stack, after complaining. (Another
+ * note: It ignores case differences in the specification string; for example,
+ * the strings <code>t</code> and
+ * <code>T<code> are equivalent for the purposes of this built-in
+ *  function.)</dd>
+ * </dl>
+ * 
+ * <dl>
+ * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dd>
+ * The <code>built_in</code> function <code>change.case$</code> pops the top two
+ * (string) literals; it changes the case of the second according to the
+ * specifications of the first, as follows. (Note: The word `letters' in the
+ * next sentence refers only to those at brace-level 0, the top-most brace
+ * level; no other characters are changed, except perhaps for special
+ * characters, described shortly.) If the first literal is the string
+ * <code>t</code>, it converts to lower case all letters except the very first
+ * character in the string, which it leaves alone, and except the first
+ * character following any <code>colon</code> and then nonnull
+ * <code>white_space</code>, which it also leaves alone; if it's the string
+ * <code>l</code>, it converts all letters to lower case; if it's the string
+ * <code>u</code>, it converts all letters to upper case; and if it's anything
+ * else, it complains and does no conversion. It then pushes this resulting
+ * string. If either type is incorrect, it complains and pushes the null string;
  * however, if both types are correct but the specification string (i.e., the
  * first string) isn't one of the legal ones, it merely pushes the second back
  * onto the stack, after complaining. (Another note: It ignores case differences
  * in the specification string; for example, the strings <code>t</code> and
- * <code>T<code> are equivalent for the purposes of this built-in
- *  function.)
- * </dd></dl>
- *
- * <dl><dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt><dd>
- *  The <code>built_in</code> function <code>change.case$</code> pops
- *  the top two (string) literals; it changes the case of the second
- *  according to the specifications of the first, as follows. (Note:
- *  The word `letters' in the next sentence refers only to those at
- *  brace-level 0, the top-most brace level; no other characters are
- *  changed, except perhaps for special characters, described
- *  shortly.) If the first literal is the string <code>t</code>, it
- *  converts to lower case all letters except the very first character
- *  in the string, which it leaves alone, and except the first
- *  character following any <code>colon</code> and then nonnull
- *  <code>white_space</code>, which it also leaves alone; if it's the
- *  string <code>l</code>, it converts all letters to lower case; if
- *  it's the string <code>u</code>, it converts all letters to upper
- *  case; and if it's anything else, it complains and does no
- *  conversion. It then pushes this resulting string. If either type
- *  is incorrect, it complains and pushes the null string; however, if
- *  both types are correct but the specification string (i.e., the
- *  first string) isn't one of the legal ones, it merely pushes the
- *  second back onto the stack, after complaining. (Another note: It
- *  ignores case differences in the specification string; for example,
- *  the strings <code>t</code> and <code>T</code> are equivalent for
- *  the purposes of this <code>built_in</code> function.)
- * </dd></dl>
- *
+ * <code>T</code> are equivalent for the purposes of this <code>built_in</code>
+ * function.)</dd>
+ * </dl>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
@@ -150,31 +146,6 @@ public class ChangeCase extends AbstractCode {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        String fmt = processor.popString(locator).getValue();
-        TString tvalue = processor.popString(locator);
-        String value = tvalue.getValue();
-        String result;
-        try {
-            result = execute(fmt, value, locator);
-        } catch (IllegalArgumentException e) {
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
-            throw new ExBibIllegalValueException(localizer.format(
-                "invalid.spec", fmt), locator);
-        }
-        processor.push(!value.equals(result)
-                ? new TString(result, locator)
-                : tvalue);
-    }
-
-    /**
      * Perform the case conversion like <tt>change.case$</tt>.
      * 
      * @param fmt the format; i.e. one of the following:
@@ -184,13 +155,12 @@ public class ChangeCase extends AbstractCode {
      *        <li>"t" or "T" for title case</li>
      *        </ul>
      * @param input the initial string
-     * @param locator the locator
      * 
      * @return the changed string
      * 
      * @throws IllegalArgumentException in case of illegal format
      */
-    public String execute(String fmt, String input, Locator locator)
+    public String changeCase(String fmt, String input)
             throws IllegalArgumentException {
 
         StringBuilder sb = new StringBuilder(input);
@@ -277,6 +247,31 @@ public class ChangeCase extends AbstractCode {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     */
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
+            throws ExBibException {
+
+        String fmt = processor.popString(locator).getValue();
+        TString tvalue = processor.popString(locator);
+        String value = tvalue.getValue();
+        String result;
+        try {
+            result = changeCase(fmt, value);
+        } catch (IllegalArgumentException e) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(localizer.format(
+                "invalid.spec", fmt), locator);
+        }
+        processor.push(!value.equals(result)
+                ? new TString(result, locator)
+                : tvalue);
     }
 
 }
