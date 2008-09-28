@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -39,11 +38,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * transformations:
  * 
  * <ul>
- * <li> Any known T<sub>E</sub>X macro at brace level 1 is expanded.</li>
- * <li> Any unknown T<sub>E</sub>X macro at brace level 1 is removed.</li>
- * <li> Any white-space character, the tilde <tt>~</tt>, and the hyphen
+ * <li>Any known T<sub>E</sub>X macro at brace level 1 is expanded.</li>
+ * <li>Any unknown T<sub>E</sub>X macro at brace level 1 is removed.</li>
+ * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
  * <tt>-</tt> are replaced by a single space character.</li>
- * <li> Any other non-alphanumeric characters are removed.</li>
+ * <li>Any other non-alphanumeric characters are removed.</li>
  * </ul>
  * <p>
  * The known macros and their expansion text can be found in the following list:
@@ -81,22 +80,22 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops the top (string) literal, removes non alphanumeric characters
- * except for white-space characters and hyphens and ties (these all get
- * converted to a space), removes certain alphabetic characters contained in the
- * control sequences associated with a ``macro character'', and pushes the
- * resulting string. </dd>
+ * <dd>Pops the top (string) literal, removes non alphanumeric characters except
+ * for white-space characters and hyphens and ties (these all get converted to a
+ * space), removes certain alphabetic characters contained in the control
+ * sequences associated with a ``macro character'', and pushes the resulting
+ * string.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>purify$</code> pops the top
+ * <dd>The <code>built_in</code> function <code>purify$</code> pops the top
  * (string) literal, removes non alphanumeric characters except for
  * <code>white_space</code> and <code>sep_char</code> characters (these get
- * converted to a <code>space</code>) and removes certain alphabetic
- * characters contained in the control sequences associated with a macro
- * character, and pushes the resulting string. If the literal isn't a string, it
- * complains and pushes the null string. </dd>
+ * converted to a <code>space</code>) and removes certain alphabetic characters
+ * contained in the control sequences associated with a macro character, and
+ * pushes the resulting string. If the literal isn't a string, it complains and
+ * pushes the null string.</dd>
  * </dl>
  * 
  * 
@@ -180,8 +179,7 @@ public class Purify extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
      */
     @Override
     public void configure(Configuration config) throws ConfigurationException {
@@ -205,14 +203,27 @@ public class Purify extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        StringBuilder sb =
-                new StringBuilder(processor.popString(locator).getValue());
+        String value = processor.popString(locator).getValue();
+        processor.push(new TString(purify(value), locator));
+    }
+
+    /**
+     * Apply the core functionality of this BST code outside the processor
+     * context.
+     * 
+     * @param value the value to purify
+     * 
+     * @return the purified value
+     */
+    public String purify(String value) {
+
+        StringBuilder sb = new StringBuilder(value);
         int level = 0;
 
         for (int i = 0; i < sb.length();) {
@@ -252,7 +263,8 @@ public class Purify extends AbstractCode {
             }
         }
 
-        processor.push(new TString(sb.toString(), locator));
+        String result = sb.toString();
+        return result;
     }
 
 }
