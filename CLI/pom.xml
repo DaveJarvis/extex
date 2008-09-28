@@ -8,7 +8,7 @@
   <name>Command Line Interface</name>
   <version>0.1-SNAPSHOT</version>
   <description>
-    These is the ExTeX command line interface support component.
+    This is the ExTeX command line interface support component.
   </description>
 
   <packaging>jar</packaging>
