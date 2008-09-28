@@ -143,6 +143,7 @@
    <module>ExBib-core</module>
    <module>ExBib-Main</module>
    <module>../ExTeX-resource</module>
+   <module>../CLI</module>
    <module>ExBib-groovy</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
@@ -158,6 +159,15 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
         </configuration>
       </plugin>
 
