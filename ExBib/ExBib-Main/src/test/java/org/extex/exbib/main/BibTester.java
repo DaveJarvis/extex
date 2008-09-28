@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.main;
@@ -22,9 +21,15 @@ package org.extex.exbib.main;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.Writer;
 import java.util.Calendar;
@@ -62,7 +67,7 @@ public class BibTester {
          * expression.
          */
         REGEX
-    };
+    }
 
     /**
      * The field <tt>YEAR</tt> contains the current year as four-digit string.
@@ -70,7 +75,7 @@ public class BibTester {
      * the end of the year.
      */
     public static final String YEAR =
-            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));;
 
     /**
      * The field <tt>BANNER</tt> contains the default banner.
@@ -79,11 +84,53 @@ public class BibTester {
             "This is exbib, Version " + ExBib.VERSION + "\n";
 
     /**
-     * The field <tt>BANNER_DE</tt> contains the default banner for the
-     * language de.
+     * The field <tt>BANNER_DE</tt> contains the default banner for the language
+     * de.
      */
     public static final String BANNER_DE =
             "Dies ist exbib, Version " + ExBib.VERSION + "\n";
+
+    /**
+     * Create a file.
+     * 
+     * @param name the name of the file
+     * @param encoding the name of the character set
+     * @param data the content
+     * 
+     * @return the file created
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public static File makeFile(File name, String encoding, String data)
+            throws IOException {
+
+        OutputStream stream = new FileOutputStream(name);
+        Writer w = new OutputStreamWriter(stream, encoding);
+        try {
+            w.write(data);
+        } finally {
+            w.close();
+            stream.close();
+        }
+        return name;
+    }
+
+    /**
+     * Create a file.
+     * 
+     * @param name the name of the file
+     * @param encoding the name of the character set
+     * @param data the content
+     * 
+     * @return the file created
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public static File makeFile(String name, String encoding, String data)
+            throws IOException {
+
+        return makeFile(new File(name), encoding, data);
+    }
 
     /**
      * Creates a new object.
@@ -110,8 +157,8 @@ public class BibTester {
 
     /**
      * Run the command line test. The aux file is written temporarily in the
-     * current directory under the name <tt>test.aux</tt>. The contents can
-     * be given as argument.
+     * current directory under the name <tt>test.aux</tt>. The contents can be
+     * given as argument.
      * 
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
@@ -121,6 +168,7 @@ public class BibTester {
      * @param checkErr the type of Check to use for error
      * @param err the expected error output
      * @param args the invocation arguments
+     * 
      * @return the instance used
      * 
      * @throws Exception in case of an error
@@ -173,7 +221,16 @@ public class BibTester {
                 }
             }
             if (out != null) {
-                String s = baos.toString().replaceAll("\r", "");
+
+                InputStreamReader sr =
+                        new InputStreamReader(new ByteArrayInputStream(baos
+                            .toByteArray()), "UTF-8");
+                StringBuilder buffer = new StringBuilder();
+                for (int c = sr.read(); c >= 0; c = sr.read()) {
+                    buffer.append((char) c);
+                }
+                sr.close();
+                String s = buffer.toString().replaceAll("\r", "");
                 switch (checkOut) {
                     case EQ:
                         assertEquals(out, s);
@@ -211,8 +268,8 @@ public class BibTester {
 
     /**
      * Run the command line test. The aux file is written temporarily in the
-     * current directory under the name <tt>test.aux</tt>. The contents can
-     * be given as argument.
+     * current directory under the name <tt>test.aux</tt>. The contents can be
+     * given as argument.
      * 
      * @param basename the base name of the files to prepare and use
      * @param auxContents the contents of the aux file
