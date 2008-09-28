@@ -71,7 +71,7 @@ public class GroovyTest {
     public void test1() throws Exception {
 
         String gy = "target/test.gy";
-        makeFile(gy, "println(exbibDB.getEntries())\n");
+        makeFile(gy, "println(bibDB.getEntries())\n");
         String bib = "target/test.bib";
         makeFile(bib,
             "@book{abc,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");

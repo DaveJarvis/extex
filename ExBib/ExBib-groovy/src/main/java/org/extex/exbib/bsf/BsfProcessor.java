@@ -199,9 +199,9 @@ public class BsfProcessor extends BibliographyCore
 
         try {
             BSFManager manager = new BSFManager();
-            manager.declareBean("exbibDB", getDB(), DB.class);
-            manager.declareBean("exbibWriter", outWriter, Writer.class);
-            manager.declareBean("exbibProcessor", this, Processor.class);
+            manager.declareBean("bibDB", getDB(), DB.class);
+            manager.declareBean("bibWriter", outWriter, Writer.class);
+            manager.declareBean("bibProcessor", this, Processor.class);
 
             for (String sty : getBibliographyStyles()) {
                 manager.exec(script, "file", 0, 0, load(sty));
