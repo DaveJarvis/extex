@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.db;
@@ -30,7 +29,6 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
-import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -38,7 +36,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  */
-public interface DB extends Configurable {
+public interface DB extends Iterable<Entry> {
 
     /**
      * Get the list of all entries.
@@ -58,7 +56,7 @@ public interface DB extends Configurable {
      * 
      * @param key the reference key
      * 
-     * @return the record or null
+     * @return the record or <code>null</code>
      */
     Entry getEntry(String key);
 
@@ -67,8 +65,8 @@ public interface DB extends Configurable {
      * performed by recursively replacing macro names by the definitions and
      * concatenating the resulting list of values.
      * <p>
-     * Any macro is not during the expansion then the empty string is used
-     * instead.
+     * For any macro which is not defined during the expansion the empty string
+     * is used instead.
      * </p>
      * <p>
      * If the named macro the expansion is started with does not exist then
@@ -114,7 +112,7 @@ public interface DB extends Configurable {
     int getMinCrossrefs();
 
     /**
-     * Getter for the preamble
+     * Getter for the preamble.
      * 
      * @return the preamble
      */
@@ -186,8 +184,8 @@ public interface DB extends Configurable {
     /**
      * Setter for the sorter.
      * 
-     * @param sorter the new
-     *        {@link org.extex.exbib.core.db.sorter.Sorter Sorter}
+     * @param sorter the new {@link org.extex.exbib.core.db.sorter.Sorter
+     *        Sorter}
      */
     void setSorter(Sorter sorter);
 

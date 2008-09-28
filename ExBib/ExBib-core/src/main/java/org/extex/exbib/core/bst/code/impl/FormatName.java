@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -43,40 +42,38 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>format.name$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>format.name$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops the top three literals (they are a string, an integer, and a string
+ * <dd>Pops the top three literals (they are a string, an integer, and a string
  * literal). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
  * from this list, and the first string literal specifies how to format this
  * name, as explained in the next subsection. Finally, this function pushes the
- * formatted name. </dd>
+ * formatted name.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>format.name$</code> pops
- * the top three literals (they are a string, an integer, and a string literal,
- * in that order). The last string literal represents a name list (each name
+ * <dd>The <code>built_in</code> function <code>format.name$</code> pops the top
+ * three literals (they are a string, an integer, and a string literal, in that
+ * order). The last string literal represents a name list (each name
  * corresponding to a person), the integer literal specifies which name to pick
  * from this list, and the first string literal specifies how to format this
  * name, as described in the B<small>IB</small>T<sub>E</sub>X documentation.
  * Finally, this function pushes the formatted name. If any of the types is
- * incorrect, it complains and pushes the null string. </dd>
+ * incorrect, it complains and pushes the null string.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> Here we output either the <code>.bst</code> given string if it exists,
- * or else the <code>.bib</code> <code>sep_char</code> if it exists, or else
- * the default string. A <code>tie</code> is the default space character
- * between the last two tokens of the name part, and between the first two
- * tokens if the first token is short enough; otherwise, a <code>space</code>
- * is the default.
+ * <dd>Here we output either the <code>.bst</code> given string if it exists, or
+ * else the <code>.bib</code> <code>sep_char</code> if it exists, or else the
+ * default string. A <code>tie</code> is the default space character between the
+ * last two tokens of the name part, and between the first two tokens if the
+ * first token is short enough; otherwise, a <code>space</code> is the default.
  * 
  * <pre>
  *     long_token = 3       {a token this length or longer is ``long''}
@@ -147,8 +144,8 @@ public class FormatName extends AbstractCode implements Serializable {
          * against a given limit.
          * 
          * <p>
-         * This function reimplements the function 418 of the B<small>IB</small>T<sub>E</sub>X
-         * web sources.
+         * This function reimplements the function 418 of the
+         * B<small>IB</small>T<sub>E</sub>X web sources.
          * </p>
          * 
          * @param buffer the buffer to analyze
@@ -253,8 +250,8 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param start start position in the format
          * @param item the item to store the result in
          * @param format the format string to parse
-         * @param midp if <code>true</code> then the result is stored in the
-         *        Mid attribute of item, otherwise it is stored in the Post
+         * @param midp if <code>true</code> then the result is stored in the Mid
+         *        attribute of item, otherwise it is stored in the Post
          *        attribute
          * @param locator the locator for the format string
          * 
@@ -413,8 +410,8 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Find the matching closing brace in a String. The starting position
-         * <tt>start</tt> points to the first character after the opening
-         * brace in the format string <tt>fmt</tt>.
+         * <tt>start</tt> points to the first character after the opening brace
+         * in the format string <tt>fmt</tt>.
          * 
          * @param start the starting position to consider
          * @param format the format string to parse
@@ -619,9 +616,9 @@ public class FormatName extends AbstractCode implements Serializable {
         }
 
         /**
-         * Setter for the <i>post</i> string. The <i>post</i> string is
-         * inserted after multi-part fragments of a name if those fragments are
-         * not empty.
+         * Setter for the <i>post</i> string. The <i>post</i> string is inserted
+         * after multi-part fragments of a name if those fragments are not
+         * empty.
          * 
          * @param string the new value
          */
@@ -980,6 +977,8 @@ public class FormatName extends AbstractCode implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
@@ -988,17 +987,18 @@ public class FormatName extends AbstractCode implements Serializable {
 
         Token tformat = processor.popString(locator);
         TInteger tint = processor.popInteger(locator);
-        TString names = processor.popString(locator);
+        TString tnames = processor.popString(locator);
         int index = tint.getInt();
-        List<Name> namelist =
-                NameFactory.getFactory().getNames(names.getValue(), locator);
+        String fmt = tformat.getValue();
+        String names = tnames.getValue();
+
+        List<Name> namelist = NameFactory.getFactory().getNames(names, locator);
 
         if (index < 1 || index > namelist.size()) {
             throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
                 tint.getLocator());
         }
 
-        String fmt = tformat.getValue();
         Format format = formatCache.get(fmt);
 
         if (format == null) {
@@ -1006,8 +1006,9 @@ public class FormatName extends AbstractCode implements Serializable {
             formatCache.put(fmt, format);
         }
 
-        processor.push(process(format.format(namelist.get(index - 1), //
-            locator)));
+        TString result = process(format.format(namelist.get(index - 1), //
+            locator));
+        processor.push(result);
     }
 
     /**

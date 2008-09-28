@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.command.impl;
@@ -35,8 +34,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This class represents an <tt>ITERATE</tt> command.
  * <p>
- * The <tt>iterate</tt> command iterates over the entries in the order they
- * are currently in the entry list from the beginning to the end. Each entry is
+ * The <tt>iterate</tt> command iterates over the entries in the order they are
+ * currently in the entry list from the beginning to the end. Each entry is
  * considered as current entry and the function in the argument is executed.
  * </p>
  * <p>
@@ -75,7 +74,7 @@ public class BstIterate extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.Command#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
      *      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
@@ -89,7 +88,7 @@ public class BstIterate extends AbstractCommand {
                 .format("empty.token"), locator);
         }
 
-        for (Entry entry : processor.getDB().getEntries()) {
+        for (Entry entry : processor.getDB()) {
             token.execute(processor, entry, getLocator());
         }
     }
@@ -108,8 +107,7 @@ public class BstIterate extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(
-     *      org.extex.exbib.core.bst.command.CommandVisitor)
+     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor)
      */
     public void visit(CommandVisitor visitor) throws IOException {
 

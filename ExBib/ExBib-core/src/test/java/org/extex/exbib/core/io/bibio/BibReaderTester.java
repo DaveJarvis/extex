@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bibio;
@@ -25,6 +24,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.StringReader;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,8 +57,7 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configurable#configure(
-         *      org.extex.framework.configuration.Configuration)
+         * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
          */
         public void configure(Configuration config)
                 throws ConfigurationException {
@@ -149,6 +148,17 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
+         * @see java.lang.Iterable#iterator()
+         */
+        public Iterator<Entry> iterator() {
+
+            // TODO gene: iterator unimplemented
+            return null;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map)
          */
         public List<String> load(String file, Map<String, String> citation)
@@ -187,8 +197,7 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.core.db.DB#setBibReaderFactory(
-         *      org.extex.exbib.core.io.bibio.BibReaderFactory)
+         * @see org.extex.exbib.core.db.DB#setBibReaderFactory(org.extex.exbib.core.io.bibio.BibReaderFactory)
          */
         public void setBibReaderFactory(BibReaderFactory factory) {
 
@@ -208,8 +217,7 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.core.db.DB#setSorter(
-         *      org.extex.exbib.core.db.sorter.Sorter)
+         * @see org.extex.exbib.core.db.DB#setSorter(org.extex.exbib.core.db.sorter.Sorter)
          */
         public void setSorter(Sorter sorter) {
 
@@ -251,8 +259,7 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.core.db.DB#storePreamble(
-         *      org.extex.exbib.core.db.Value)
+         * @see org.extex.exbib.core.db.DB#storePreamble(org.extex.exbib.core.db.Value)
          */
         public void storePreamble(Value pre) {
 
@@ -280,8 +287,8 @@ public abstract class BibReaderTester {
     /**
      * Creates a new object.
      * 
-     * @param commentSpace the indicator for extra space after
-     *        {@literal @comment}
+     * @param commentSpace the indicator for extra space after {@literal
+     *        @comment}
      */
     public BibReaderTester(boolean commentSpace) {
 
@@ -316,8 +323,7 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(
-             *      java.lang.String)
+             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#getEntry(java.lang.String)
              */
             @Override
             public Entry getEntry(String key) {
@@ -328,9 +334,8 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#makeEntry(
-             *      java.lang.String, java.lang.String,
-             *      org.extex.exbib.core.io.Locator)
+             * @see org.extex.exbib.core.io.bibio.BibReaderTester.TestDB#makeEntry(java.lang.String,
+             *      java.lang.String, org.extex.exbib.core.io.Locator)
              */
             @Override
             public Entry makeEntry(String type, String key, Locator locator) {
@@ -366,7 +371,7 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see BibReaderTester.TestDB#storeComment( java.lang.String)
+             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
              */
             @Override
             public void storeComment(String comment) {
@@ -393,7 +398,7 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see BibReaderTester.TestDB#storeComment( java.lang.String)
+             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
              */
             @Override
             public void storeComment(String comment) {
@@ -420,7 +425,7 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see BibReaderTester.TestDB#storeComment( java.lang.String)
+             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
              */
             @Override
             public void storeComment(String comment) {
@@ -447,7 +452,7 @@ public abstract class BibReaderTester {
             /**
              * {@inheritDoc}
              * 
-             * @see BibReaderTester.TestDB#storeComment( java.lang.String)
+             * @see BibReaderTester.TestDB#storeComment(java.lang.String)
              */
             @Override
             public void storeComment(String comment) {

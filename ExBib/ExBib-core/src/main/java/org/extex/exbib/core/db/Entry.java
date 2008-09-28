@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.db;
@@ -41,7 +40,7 @@ import org.extex.exbib.core.io.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class Entry {
+public class Entry implements Iterable<String> {
 
     /**
      * The field <tt>locator</tt> contains the locator for error messages.
@@ -49,9 +48,9 @@ public class Entry {
     private Locator locator = null;
 
     /**
-     * The field <tt>hash</tt> contains the hash of "normal" values.
+     * The field <tt>values</tt> contains the hash of "normal" values.
      */
-    private Map<String, Value> hash = new HashMap<String, Value>();
+    private Map<String, Value> values = new HashMap<String, Value>();
 
     /**
      * The field <tt>local</tt> contains the hash of local values.
@@ -88,13 +87,13 @@ public class Entry {
     /**
      * Getter for the Value stored under a given key in the Entry.
      * 
-     * @param k the key of the value
+     * @param name the key of the value
      * 
      * @return the Value or <code>null</code> if none is found
      */
-    public Value get(String k) {
+    public Value get(String name) {
 
-        return hash.get(k);
+        return values.get(name);
     }
 
     /**
@@ -111,7 +110,7 @@ public class Entry {
      */
     public Value get(String key, DB db) throws ExBibException {
 
-        Value val = hash.get(key);
+        Value val = values.get(key);
 
         if (val == null) {
             val = get("crossref");
@@ -133,14 +132,14 @@ public class Entry {
 
     /**
      * This method searches for a normal value and concatenates all expanded
-     * constituents. Macro are looked up in the database given and their values
+     * constituents. Macros are looked up in the database given and their values
      * are inserted.
      * 
      * @param key the key of the "normal" value to expand
      * @param db the database context
      * 
-     * @return the expanded version of the value or <code>null</code> if it
-     *         does not exist
+     * @return the expanded version of the value or <code>null</code> if it does
+     *         not exist
      * 
      * @throws ExBibException in case of an error
      */
@@ -198,7 +197,8 @@ public class Entry {
     }
 
     /**
-     * Getter for the locator for this Entry.
+     * Getter for the locator for this Entry. The locator allows you to
+     * determine where this Entry is coming from.
      * 
      * @return the locator
      */
@@ -230,6 +230,16 @@ public class Entry {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Iterable#iterator()
+     */
+    public Iterator<String> iterator() {
+
+        return keys.iterator();
+    }
+
+    /**
      * Setter for the Value stored under a given key in the Entry. The String
      * valued parameter is wrapped into a {@link Value Value} before it is
      * stored.
@@ -241,7 +251,7 @@ public class Entry {
 
         Value val = new Value();
         val.add(new VString(value));
-        hash.put(key, val);
+        values.put(key, val);
     }
 
     /**
@@ -253,7 +263,7 @@ public class Entry {
      */
     public void set(String key, Value value) {
 
-        hash.put(key, value);
+        values.put(key, value);
         keys.add(key);
     }
 

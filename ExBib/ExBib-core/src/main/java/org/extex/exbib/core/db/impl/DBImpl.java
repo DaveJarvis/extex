@@ -21,6 +21,7 @@ package org.extex.exbib.core.db.impl;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -39,6 +40,7 @@ import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
@@ -50,7 +52,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class DBImpl implements DB, Observable {
+public class DBImpl implements DB, Configurable, Observable {
 
     /**
      * The field <tt>bibReaderFactory</tt> contains the factory used to get new
@@ -247,6 +249,16 @@ public class DBImpl implements DB, Observable {
     /**
      * {@inheritDoc}
      * 
+     * @see java.lang.Iterable#iterator()
+     */
+    public Iterator<Entry> iterator() {
+
+        return entries.iterator();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.db.DB#load(java.lang.String, java.util.Map)
      */
     public List<String> load(String file, Map<String, String> citation)
@@ -342,7 +354,7 @@ public class DBImpl implements DB, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.db.DB#registerObserver(java.lang.String,
-     * org.extex.exbib.core.util.Observer)
+     *      org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -386,7 +398,7 @@ public class DBImpl implements DB, Observable {
      * Setter for the sorter.
      * 
      * @param sorter the new {@link org.extex.exbib.core.db.sorter.Sorter
-     * Sorter}
+     *        Sorter}
      */
     public void setSorter(Sorter sorter) {
 
@@ -417,7 +429,7 @@ public class DBImpl implements DB, Observable {
      * @param locator the locator
      * 
      * @throws ExBibEntryUndefinedException in case that the key can not be
-     * resolved
+     *         resolved
      */
     public void storeAlias(String alias, String key, Locator locator)
             throws ExBibEntryUndefinedException {
@@ -457,7 +469,7 @@ public class DBImpl implements DB, Observable {
      * Store a string definition in the database.
      * 
      * @param name the name of the string definition. The name is not case
-     * sensitive. Thus it is translated to lower case internally
+     *        sensitive. Thus it is translated to lower case internally
      * @param value the value of the string definition
      */
     public void storeString(String name, Value value) {
