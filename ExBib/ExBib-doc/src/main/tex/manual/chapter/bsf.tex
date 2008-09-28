@@ -22,25 +22,25 @@ used. The value of this property must be set to th value \verb|groovy|
 to activate the Groovy entension language. In the simplest case this
 is done on the command line as shown in the following example:
 
-\begin{listings}[language=sh]
+\begin{lstlisting}[language=sh]
 # exbib -Dexbib.processor=groovy myDocument.aux
-\end{listings}
+\end{lstlisting}
 
 If you want to activate this property for any invocation of \ExBib\ in
 this directory then you can alternatively create a file named
 \File{.exbib} in the current directory. This file should contain the
 following line:
 
-\begin{listings}
+\begin{lstlisting}
 exbib.processor=groovy
-\end{listings}
+\end{lstlisting}
 
 Then the usual invocation uses the Groovy extension instead of bst
 style files:
 
-\begin{listings}[language=sh]
+\begin{lstlisting}[language=sh]
 # exbib myDocument.aux
-\end{listings}
+\end{lstlisting}
 
 See also section \ref{sec:dot.files} for details.
 
@@ -72,16 +72,16 @@ This writer can be used to write to the output file.
 
 It has a method \texttt{print} to print some strings:
 
-\begin{listings}[language=Java]
+\begin{lstlisting}[language=Java]
   bibWriter.print("{\em ", series, "\/}" )
-\end{listings}
+\end{lstlisting}
 
 It has a method \texttt{println} to print some strings followed by a
 newline character:
 
-\begin{listings}[language=Java]
+\begin{lstlisting}[language=Java]
   bibWriter.println("\newcommand{\etalchar}[1]{$^{#1}$}" )
-\end{listings}
+\end{lstlisting}
 
 
 \subsection{The Processor Context}
@@ -96,11 +96,11 @@ log file.
 The important methods of the DB provide reading access to the stored
 information. They are described below.
 
-\newenvironment{methods}{\begin{description}\def\method#1{\item[#1]\ \\}%
+\newenvironment{methods}{\begin{description}\def\method##1{\item[##1]\ \\}%
 }{\end{description}}
 
 \begin{methods}
-  \method{Entry getEntry(String key) %
+  \method{Entry getEntry(String key} %
     Get a single entry stored under the given reference key. The key
     is normalized before the entry is sought, i.e. the search is case
     insensitive.
@@ -108,7 +108,7 @@ information. They are described below.
     If no record is stored under the given key then <code>null</code>
     is returned.
 
-  \method{String getExpandedMacro(String key)) %
+  \method{String getExpandedMacro(String key)} %
     Compute the expanded representation of a macro. The expansion is
     performed by recursively replacing macro names by the definitions
     and concatenating the resulting list of values.
@@ -173,7 +173,7 @@ information. They are described below.
 
   \method{String getSortKey()}%
     Getter for the sort key of this Entry. The sort key is stored as local
-    value under the key <tt>sort.key$</tt>.
+    value under the key \texttt{sort.key\$}.
 
   \method{String getType()}%
     Getter for the type of this Entry.
@@ -183,8 +183,7 @@ information. They are described below.
 
   \method{set(String key, String value)}%
     Setter for the Value stored under a given key in the Entry. The String
-    valued parameter is wrapped into a {@link Value Value} before it is
-    stored.
+    valued parameter is wrapped into a  Value before it is stored.
 
   \method{void set(String key, Value value)}%
     Setter for the Value stored under a given key in the Entry. An already
@@ -212,7 +211,7 @@ information. They are described below.
 
   \method{void setSortKey(String sortKey)}%
     Setter for the sort key of this Entry. The sort key is stored as
-    local value under the key \texttt{sort.key$}.
+    local value under the key \texttt{sort.key\$}.
 
   \method{void setType(String t)}%
     Setter for the type of this Entry.
