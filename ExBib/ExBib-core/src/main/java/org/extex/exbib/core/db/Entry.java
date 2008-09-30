@@ -143,22 +143,18 @@ public class Entry implements Iterable<String> {
      * 
      * @throws ExBibException in case of an error
      */
-    public String getExpandedValue(String key, DB db) throws ExBibException {
+    public String getExpanded(String key, DB db) throws ExBibException {
 
         Value val = get(key, db);
-
-        if (val != null) {
-            StringBuilder sb = new StringBuilder();
-            Iterator<ValueItem> iterator = val.iterator();
-
-            while (iterator.hasNext()) {
-                iterator.next().expand(sb, db);
-            }
-
-            return sb.toString();
+        if (val == null) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (ValueItem item : val) {
+            item.expand(sb, db);
         }
 
-        return null;
+        return sb.toString();
     }
 
     /**
