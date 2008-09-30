@@ -29,6 +29,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Properties;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -88,6 +89,10 @@ public class GroovyTest {
             ExBib exBib = new ExBib(prop);
             Logger logger = Logger.getLogger("test");
             logger.setLevel(Level.WARNING);
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+            consoleHandler.setFormatter(new LogFormatter());
+            consoleHandler.setLevel(Level.INFO);
+            logger.addHandler(consoleHandler);
             exBib.setLogger(logger);
             assertTrue(exBib.run());
             assertEquals("[@book{abc,...}]\n", outStream.toString().replaceAll(

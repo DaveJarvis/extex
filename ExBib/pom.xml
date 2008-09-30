@@ -144,6 +144,7 @@
    <module>ExBib-Main</module>
    <module>../ExTeX-resource</module>
    <module>../CLI</module>
+   <module>ExBib-bsf</module>
    <module>ExBib-groovy</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
