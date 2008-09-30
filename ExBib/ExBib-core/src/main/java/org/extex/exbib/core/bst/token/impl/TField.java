@@ -63,7 +63,7 @@ public class TField extends AbstractToken {
         }
 
         String field = getValue();
-        String result = entry.getExpandedValue(field, processor.getDB());
+        String result = entry.getExpanded(field, processor.getDB());
 
         if (result == null) {
             processor.push(new TEmptyField(field, entry.getKey(), locator));
