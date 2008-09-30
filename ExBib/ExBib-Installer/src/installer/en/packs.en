@@ -22,6 +22,11 @@
   <str id="exbib-ant.description"
        txt="This package contains the definition of an Ant task for ExBib."/>
 
+  <str id="exbib-bsf"
+       txt="ExBib BSF"/>
+  <str id="exbib-bsf.description"
+       txt="This package contains the BSF adaptor for extension languages of ExBib."/>
+
   <str id="exbib-groovy"
        txt="ExBib Groovy"/>
   <str id="exbib-groovy.description"
