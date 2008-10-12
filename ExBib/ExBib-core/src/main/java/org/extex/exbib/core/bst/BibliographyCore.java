@@ -110,7 +110,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param db The database associated with this processor.
      * @param log This argument is a writer which receives the logging output.
-     * It is an object implementing the interface <code>Writer</code>.
+     *        It is an object implementing the interface <code>Writer</code>.
      */
     public BibliographyCore(DB db, Logger log) {
 
@@ -167,6 +167,16 @@ public class BibliographyCore implements Bibliography, Observable {
         for (String s : sa) {
             citations.put(s.toLowerCase(Locale.ENGLISH), s);
         }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param entry the name of the entry
+     */
+    public void addEntry(String entry) {
+
+        theEntries.add(entry);
     }
 
     /**
@@ -284,7 +294,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @param name the name of the macro to search for
      * 
      * @return the expanded value of the macro or <code>null</code> if none has
-     * been found.
+     *         been found.
      */
     public String getMacro(String name) {
 
@@ -297,7 +307,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @throws ExBibException in case that something went wrong
      * @throws ConfigurationException in case that the configuration is invalid
      * @throws FileNotFoundException in case that the requested file or one of
-     * the subsequent files (@input) could not be found
+     *         the subsequent files (@input) could not be found
      */
     public void loadDatabases()
             throws ExBibException,
@@ -314,7 +324,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
-     * org.extex.exbib.core.util.Observer)
+     *      org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -369,7 +379,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
-     * java.lang.String)
+     *      java.lang.String)
      */
     public void setOption(String name, String value) {
 
@@ -377,15 +387,27 @@ public class BibliographyCore implements Bibliography, Observable {
             try {
                 db.setMinCrossrefs(Integer.parseInt(value));
             } catch (NumberFormatException e) {
-                logger.warning(LocalizerFactory.getLocalizer(
-                    BibliographyCore.class).format("number.format.error", name,
-                    value));
+                warning(LocalizerFactory.getLocalizer(BibliographyCore.class)
+                    .format("number.format.error", name, value));
             }
             return;
         }
 
-        logger.warning(LocalizerFactory.getLocalizer(BibliographyCore.class)
-            .format("unused.option", name, value));
+        warning(LocalizerFactory.getLocalizer(BibliographyCore.class).format(
+            "unused.option", name, value));
+    }
+
+    /**
+     * Write a warning to the logger if a logger is present. Otherwise simply do
+     * nothing.
+     * 
+     * @param message the message
+     */
+    public void warning(String message) {
+
+        if (logger != null) {
+            logger.warning(message);
+        }
     }
 
 }

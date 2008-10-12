@@ -987,10 +987,9 @@ public class FormatName extends AbstractCode implements Serializable {
 
         Token tformat = processor.popString(locator);
         TInteger tint = processor.popInteger(locator);
-        TString tnames = processor.popString(locator);
+        String names = processor.popString(locator).getValue();
         int index = tint.getInt();
         String fmt = tformat.getValue();
-        String names = tnames.getValue();
 
         List<Name> namelist = NameFactory.getFactory().getNames(names, locator);
 
@@ -1090,6 +1089,40 @@ public class FormatName extends AbstractCode implements Serializable {
             buffer.append(post);
         }
         return len != buffer.length();
+    }
+
+    /**
+     * Format a name like the B<small>IB</small>T<sub>E</sub>X built-in function
+     * <code>format.name$</code>.
+     * 
+     * @param names the names string
+     * @param index the index of the name
+     * @param fmt the format
+     * 
+     * @return the formatted name
+     * 
+     * @throws ExBibException in case that no initial is found
+     */
+    public String formatName(String names, int index, String fmt)
+            throws ExBibException {
+
+        List<Name> namelist =
+                NameFactory.getFactory().getNames(names, new Locator("?", 0));
+
+        if (index < 1 || index > namelist.size()) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        }
+
+        Format format = formatCache.get(fmt);
+
+        if (format == null) {
+            format = new Format(fmt, new Locator("?", 0));
+            formatCache.put(fmt, format);
+        }
+
+        TString result = process(format.format(namelist.get(index - 1), //
+            new Locator("?", 0)));
+        return result.getValue();
     }
 
     /**

@@ -233,6 +233,15 @@ public interface DB extends Iterable<Entry> {
      *        sensitive. Thus it is translated to lower case internally
      * @param value the value of the string definition
      */
+    void storeString(String name, String value);
+
+    /**
+     * Store a string definition in the database.
+     * 
+     * @param name the name of the string definition. The name is not case
+     *        sensitive. Thus it is translated to lower case internally
+     * @param value the value of the string definition
+     */
     void storeString(String name, Value value);
 
 }

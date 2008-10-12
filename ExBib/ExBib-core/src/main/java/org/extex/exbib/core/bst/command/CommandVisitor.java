@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.command;
@@ -39,7 +38,7 @@ public interface CommandVisitor extends TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitExecute(Command command) throws IOException;
+    void visitExecute(Command command, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>iterate</tt> commands.
@@ -48,7 +47,7 @@ public interface CommandVisitor extends TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitIterate(Command command) throws IOException;
+    void visitIterate(Command command, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>read</tt> commands.
@@ -57,7 +56,7 @@ public interface CommandVisitor extends TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitRead(Command command) throws IOException;
+    void visitRead(Command command, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>reverse</tt> commands.
@@ -66,7 +65,7 @@ public interface CommandVisitor extends TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitReverse(Command command) throws IOException;
+    void visitReverse(Command command, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>sort</tt> commands.
@@ -75,5 +74,5 @@ public interface CommandVisitor extends TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitSort(Command command) throws IOException;
+    void visitSort(Command command, Object... args) throws IOException;
 }

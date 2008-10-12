@@ -124,11 +124,12 @@ public class TBlock extends AbstractToken implements Iterable<Token> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor)
+     * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
+     *      java.lang.Object[])
      */
-    public void visit(TokenVisitor visitor) throws IOException {
+    public void visit(TokenVisitor visitor, Object... args) throws IOException {
 
-        visitor.visitBlock(this);
+        visitor.visitBlock(this, args);
     }
 
 }

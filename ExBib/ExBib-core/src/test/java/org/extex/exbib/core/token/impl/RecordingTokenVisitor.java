@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.token.impl;
@@ -58,10 +57,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.token.impl.TBlock)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
+     *      java.lang.Object[])
      */
-    public void visitBlock(TBlock block) {
+    public void visitBlock(TBlock block, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -72,10 +71,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.token.impl.TChar)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
+     *      java.lang.Object[])
      */
-    public void visitChar(TChar c) {
+    public void visitChar(TChar c, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -86,10 +85,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.token.impl.TField)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
+     *      java.lang.Object[])
      */
-    public void visitField(TField field) {
+    public void visitField(TField field, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -100,10 +99,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.token.impl.TInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
+     *      java.lang.Object[])
      */
-    public void visitInteger(TInteger integer) {
+    public void visitInteger(TInteger integer, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -114,10 +113,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
+     *      java.lang.Object[])
      */
-    public void visitLiteral(TLiteral literal) {
+    public void visitLiteral(TLiteral literal, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -128,10 +127,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(
-     *      org.extex.exbib.core.bst.token.impl.TLocalInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
+     *      java.lang.Object[])
      */
-    public void visitLocalInteger(TLocalInteger integer) {
+    public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -142,10 +141,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(
-     *      org.extex.exbib.core.bst.token.impl.TLocalString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
+     *      java.lang.Object[])
      */
-    public void visitLocalString(TLocalString string) {
+    public void visitLocalString(TLocalString string, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -156,10 +155,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
+     *      java.lang.Object[])
      */
-    public void visitQLiteral(TQLiteral qliteral) {
+    public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -170,10 +169,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.token.impl.TString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
+     *      java.lang.Object[])
      */
-    public void visitString(TString string) {
+    public void visitString(TString string, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();
@@ -184,10 +183,10 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.token.impl.TokenList)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
+     *      java.lang.Object[])
      */
-    public void visitTokenList(TokenList list) {
+    public void visitTokenList(TokenList list, Object... args) {
 
         if (t != null) {
             throw new IllegalStateException();

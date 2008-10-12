@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.command.impl;
@@ -31,8 +30,8 @@ import org.extex.exbib.core.io.Locator;
 /**
  * This class represents an <tt>EXECUTE</tt> command.
  * <p>
- * The <tt>execute</tt> command executes the function in the argument. There
- * is no current entry then this code is executed.
+ * The <tt>execute</tt> command executes the function in the argument. There is
+ * no current entry then this code is executed.
  * </p>
  * <p>
  * The following example is taken from <tt>alpha.bst</tt>:
@@ -61,7 +60,7 @@ public class BstExecute extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.Command#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.command.Command#execute(BstProcessor,
      *      org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Locator locator)
@@ -84,11 +83,12 @@ public class BstExecute extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(
-     *      org.extex.exbib.core.bst.command.CommandVisitor)
+     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
+     *      java.lang.Object[])
      */
-    public void visit(CommandVisitor visitor) throws IOException {
+    public void visit(CommandVisitor visitor, Object... args)
+            throws IOException {
 
-        visitor.visitExecute(this);
+        visitor.visitExecute(this, args);
     }
 }

@@ -114,12 +114,23 @@ import org.extex.resource.ResourceFinder;
 public class BstInterpreterCore extends BibliographyCore
         implements
             BstProcessor,
-            ResourceAware {
+            ResourceAware,
+            Iterable<Command> {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
      */
     private List<Command> commands;
+
+    /**
+     * The field <tt>configuration</tt> contains the configuration.
+     */
+    private Configuration configuration;
+
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private ResourceFinder finder;
 
     /**
      * The field <tt>functions</tt> contains the mapping from the name to the
@@ -162,11 +173,6 @@ public class BstInterpreterCore extends BibliographyCore
      * by the execution of one step.
      */
     private ObserverList stepObservers = new ObserverList();
-
-    /**
-     * The field <tt>theEntries</tt> contains the list of entries.
-     */
-    private List<String> theEntries;
 
     /**
      * The field <tt>theEntryIntegers</tt> contains the list of local integers.
@@ -217,16 +223,6 @@ public class BstInterpreterCore extends BibliographyCore
     private long warnings = 0;
 
     /**
-     * The field <tt>configuration</tt> contains the configuration.
-     */
-    private Configuration configuration;
-
-    /**
-     * The field <tt>finder</tt> contains the resource finder.
-     */
-    private ResourceFinder finder;
-
-    /**
      * Creates a new Processor object. This method is mainly meant to be used in
      * the factory. Please make sure that database, log writer, and out writer
      * are set immediately.
@@ -275,9 +271,10 @@ public class BstInterpreterCore extends BibliographyCore
 
     /**
      * Define a new function if not already defined in the processor context. If
-     * the function has been defined already then a exception is thrown.
+     * the function has been defined already then a exception is thrown. The add
+     * function observers are informed about the new function.
      * 
-     * @param name name of the function
+     * @param name name of the function; it can not be null or empty
      * @param body code to be executed in case it is called
      * @param locator the locator
      * 
@@ -295,11 +292,14 @@ public class BstInterpreterCore extends BibliographyCore
                 locator);
         }
 
-        if (functions.get(name) != null) {
+        if (functions.put(name, body) != null) {
             throw new ExBibFunctionExistsException(name, locator);
         }
 
         functions.put(name, body);
+        if (addFunctionObservers != null) {
+            addFunctionObservers.update(this, name);
+        }
     }
 
     /**
@@ -378,14 +378,13 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
-     * {@inheritDoc}
+     * Getter for the configuration.
      * 
-     * @see org.extex.exbib.core.Processor#getEntries()
+     * @return the configuration
      */
-    @Override
-    public List<String> getEntries() {
+    public Configuration getConfiguration() {
 
-        return theEntries;
+        return configuration;
     }
 
     /**
@@ -409,6 +408,16 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
+     * Getter for the finder.
+     * 
+     * @return the finder
+     */
+    public ResourceFinder getFinder() {
+
+        return finder;
+    }
+
+    /**
      * Getter for function code.
      * 
      * @param name the name of the function to retrieve
@@ -428,12 +437,9 @@ public class BstInterpreterCore extends BibliographyCore
     public List<String> getFunctionNames() {
 
         List<String> sl = new ArrayList<String>();
-        Iterator<String> iterator = functions.keySet().iterator();
 
-        while (iterator.hasNext()) {
-            String name = iterator.next();
-            Code code = (getFunction(name));
-
+        for (String name : functions.keySet()) {
+            Code code = getFunction(name);
             if (code instanceof MacroCode
                     && ((MacroCode) code).getToken() instanceof TokenList) {
                 sl.add(name);
@@ -714,7 +720,6 @@ public class BstInterpreterCore extends BibliographyCore
         Locator locator = new Locator(getClass().getName() + "#reset()", 0);
 
         super.reset();
-        theEntries = new ArrayList<String>();
         theEntryIntegers = new ArrayList<String>();
         theEntryStrings = new ArrayList<String>();
         theIntegers = new ArrayList<String>();
@@ -745,11 +750,8 @@ public class BstInterpreterCore extends BibliographyCore
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Iterator<String> iterator = entries.iterator();
-
-        while (iterator.hasNext()) {
-            String entry = iterator.next();
-            theEntries.add(entry);
+        for (String entry : entries) {
+            addEntry(entry);
             addFunction(entry, new TField(entry, locator), locator);
         }
     }
@@ -764,12 +766,9 @@ public class BstInterpreterCore extends BibliographyCore
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Iterator<String> iterator = integers.iterator();
-
-        while (iterator.hasNext()) {
-            String e = iterator.next();
-            theEntryIntegers.add(e);
-            addFunction(e, new TLocalInteger(e, null), locator);
+        for (String name : integers) {
+            theEntryIntegers.add(name);
+            addFunction(name, new TLocalInteger(name, null), locator);
         }
     }
 
@@ -782,12 +781,9 @@ public class BstInterpreterCore extends BibliographyCore
     public void setEntryStrings(List<String> strings, Locator locator)
             throws ExBibException {
 
-        Iterator<String> iterator = strings.iterator();
-
-        while (iterator.hasNext()) {
-            String e = iterator.next();
-            theEntryStrings.add(e);
-            addFunction(e, new TLocalString(e, null), locator);
+        for (String name : strings) {
+            theEntryStrings.add(name);
+            addFunction(name, new TLocalString(name, null), locator);
         }
     }
 
@@ -800,10 +796,8 @@ public class BstInterpreterCore extends BibliographyCore
     public void setIntegers(TokenList list, Locator locator)
             throws ExBibException {
 
-        Iterator<Token> iterator = list.iterator();
-
-        while (iterator.hasNext()) {
-            String name = iterator.next().getValue();
+        for (Token t : list) {
+            String name = t.getValue();
             addFunction(name, new MacroCode(name, new TInteger("0", locator)),
                 locator);
             theIntegers.add(name);
@@ -840,10 +834,8 @@ public class BstInterpreterCore extends BibliographyCore
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        Iterator<Token> iterator = list.iterator();
-
-        while (iterator.hasNext()) {
-            String name = iterator.next().getValue();
+        for (Token t : list) {
+            String name = t.getValue();
             addFunction(name, new MacroCode(name, new TString("", locator)),
                 locator);
             theStrings.add(name);
@@ -865,12 +857,10 @@ public class BstInterpreterCore extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#warning(java.lang.String)
      */
+    @Override
     public void warning(String message) {
 
-        Logger logger = getLogger();
-        if (logger != null) {
-            logger.warning(message);
-        }
+        super.warning(message);
         warnings++;
     }
 

@@ -29,6 +29,7 @@ import java.util.Map;
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
+import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.sorter.CodepointIgnoreCaseSorter;
 import org.extex.exbib.core.db.sorter.Sorter;
@@ -463,6 +464,17 @@ public class DBImpl implements DB, Configurable, Observable {
 
         preamble.add(pre);
         makePreambleHook.update(this, pre);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
+     *      java.lang.String)
+     */
+    public void storeString(String name, String value) {
+
+        storeString(name, new Value(new VString(value)));
     }
 
     /**

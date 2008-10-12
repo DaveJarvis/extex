@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bstio;
@@ -44,8 +43,8 @@ import org.extex.exbib.core.io.Writer;
 
 /**
  * This class provides an implementation of a printer for bst files. This
- * implementation produces output compatible to the B<small>IB</small>T<sub>E<c/sub>X
- * notation of bst files.
+ * implementation produces output compatible to the
+ * B<small>IB</small>T<sub>E<c/sub>X notation of bst files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
@@ -202,10 +201,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(
-     *      org.extex.exbib.core.bst.token.impl.TBlock)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
+     *      java.lang.Object[])
      */
-    public void visitBlock(TBlock block) throws IOException {
+    public void visitBlock(TBlock block, Object... args) throws IOException {
 
         String i = this.in;
         if (!this.nl) {
@@ -226,10 +225,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(
-     *      org.extex.exbib.core.bst.token.impl.TChar)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
+     *      java.lang.Object[])
      */
-    public void visitChar(TChar c) throws IOException {
+    public void visitChar(TChar c, Object... args) throws IOException {
 
         //
     }
@@ -237,10 +236,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitExecute(
-     *      org.extex.exbib.core.bst.command.Command)
+     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitExecute(org.extex.exbib.core.bst.command.Command,
+     *      java.lang.Object[])
      */
-    public void visitExecute(Command command) throws IOException {
+    public void visitExecute(Command command, Object... args)
+            throws IOException {
 
         writer.print("EXECUTE {");
         this.nl = false;
@@ -252,10 +252,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(
-     *      org.extex.exbib.core.bst.token.impl.TField)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
+     *      java.lang.Object[])
      */
-    public void visitField(TField field) throws IOException {
+    public void visitField(TField field, Object... args) throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -267,10 +267,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(
-     *      org.extex.exbib.core.bst.token.impl.TInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
+     *      java.lang.Object[])
      */
-    public void visitInteger(TInteger integer) throws IOException {
+    public void visitInteger(TInteger integer, Object... args)
+            throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -282,10 +283,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitIterate(
-     *      org.extex.exbib.core.bst.command.Command)
+     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitIterate(org.extex.exbib.core.bst.command.Command,
+     *      java.lang.Object[])
      */
-    public void visitIterate(Command command) throws IOException {
+    public void visitIterate(Command command, Object... args)
+            throws IOException {
 
         writer.print("ITERATE {");
         this.nl = false;
@@ -296,10 +298,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
+     *      java.lang.Object[])
      */
-    public void visitLiteral(TLiteral literal) throws IOException {
+    public void visitLiteral(TLiteral literal, Object... args)
+            throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -317,10 +320,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(
-     *      org.extex.exbib.core.bst.token.impl.TLocalInteger)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
+     *      java.lang.Object[])
      */
-    public void visitLocalInteger(TLocalInteger integer) throws IOException {
+    public void visitLocalInteger(TLocalInteger integer, Object... args)
+            throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -332,10 +336,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(
-     *      org.extex.exbib.core.bst.token.impl.TLocalString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
+     *      java.lang.Object[])
      */
-    public void visitLocalString(TLocalString string) throws IOException {
+    public void visitLocalString(TLocalString string, Object... args)
+            throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -347,10 +352,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(
-     *      org.extex.exbib.core.bst.token.impl.TQLiteral)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
+     *      java.lang.Object[])
      */
-    public void visitQLiteral(TQLiteral qliteral) throws IOException {
+    public void visitQLiteral(TQLiteral qliteral, Object... args)
+            throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -362,10 +368,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitRead(
-     *      org.extex.exbib.core.bst.command.Command)
+     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitRead(org.extex.exbib.core.bst.command.Command,
+     *      java.lang.Object[])
      */
-    public void visitRead(Command command) throws IOException {
+    public void visitRead(Command command, Object... args) throws IOException {
 
         writer.print("READ");
     }
@@ -373,10 +379,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitReverse(
-     *      org.extex.exbib.core.bst.command.Command)
+     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitReverse(org.extex.exbib.core.bst.command.Command,
+     *      java.lang.Object[])
      */
-    public void visitReverse(Command command) throws IOException {
+    public void visitReverse(Command command, Object... args)
+            throws IOException {
 
         writer.print("REVERSE {");
         this.nl = false;
@@ -387,10 +394,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitSort(
-     *      org.extex.exbib.core.bst.command.Command)
+     * @see org.extex.exbib.core.bst.command.CommandVisitor#visitSort(org.extex.exbib.core.bst.command.Command,
+     *      java.lang.Object[])
      */
-    public void visitSort(Command command) throws IOException {
+    public void visitSort(Command command, Object... args) throws IOException {
 
         writer.print("SORT");
     }
@@ -398,10 +405,10 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(
-     *      org.extex.exbib.core.bst.token.impl.TString)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
+     *      java.lang.Object[])
      */
-    public void visitString(TString string) throws IOException {
+    public void visitString(TString string, Object... args) throws IOException {
 
         if (!this.nl) {
             writer.print(" ");
@@ -413,10 +420,11 @@ public class BstPrinterImpl implements CommandVisitor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(
-     *      org.extex.exbib.core.bst.token.impl.TokenList)
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
+     *      java.lang.Object[])
      */
-    public void visitTokenList(TokenList list) throws IOException {
+    public void visitTokenList(TokenList list, Object... args)
+            throws IOException {
 
         for (Token t : list) {
             t.visit(this);

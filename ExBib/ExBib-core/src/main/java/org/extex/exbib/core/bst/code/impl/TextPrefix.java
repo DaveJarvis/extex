@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -27,8 +26,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>text.prefix$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>text.prefix$</code>
  * <p>
  * This function extracts a prefix of a certain length from a text. The length
  * is the number of character units. Special characters in braces are counted as
@@ -50,14 +48,14 @@ import org.extex.exbib.core.io.Locator;
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops the top two literals (the integer literal <i>len</i> and a string
+ * <dd>Pops the top two literals (the integer literal <i>len</i> and a string
  * literal, in that order). It pushes the substring of the (at most) <i>len</i>
  * consecutive text characters starting from the beginning of the string. This
  * function is similar to <code>substring</code>, but this one considers a
  * ``special character'', even if it's missing its matching right brace, to be a
  * single text character (rather than however many ASCII characters it actually
  * comprises), and this function doesn't consider braces to be text characters;
- * furthermore, this function appends any needed matching right braces. </dd>
+ * furthermore, this function appends any needed matching right braces.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -86,7 +84,7 @@ public class TextPrefix extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
@@ -94,18 +92,33 @@ public class TextPrefix extends AbstractCode {
 
         int len = processor.popInteger(locator).getInt();
         String s = processor.popString(locator).getValue();
+        processor.push(new TString(textPrefix(s, len), locator));
+    }
+
+    /**
+     * Compute the text prefix like the B<small>IB</small>T<sub>E</sub>X
+     * built-in function <code>text.prefix$</code>
+     * 
+     * @param s the input string
+     * @param length the length of the prefix
+     * 
+     * @return the prefix
+     */
+    private String textPrefix(String s, int length) {
+
+        int len = length;
         int level = 0;
-        int length = s.length();
+        int sLength = s.length();
         int i;
         char c;
 
-        for (i = 0; i < length && len > 0; i++) {
+        for (i = 0; i < sLength && len > 0; i++) {
             c = s.charAt(i);
             if (c == '{') {
                 level++;
-                if (level == 1 && i < length - 1 && s.charAt(i + 1) == '\\') {
+                if (level == 1 && i < sLength - 1 && s.charAt(i + 1) == '\\') {
                     i += 2;
-                    while (i < length && level > 0) {
+                    while (i < sLength && level > 0) {
                         c = s.charAt(++i);
                         if (c == '{') {
                             level++;
@@ -123,12 +136,14 @@ public class TextPrefix extends AbstractCode {
             }
         }
 
-        StringBuffer sb = new StringBuffer(s.substring(0, i));
+        StringBuilder sb = new StringBuilder(s.substring(0, i));
 
         while (level-- > 0) {
             sb.append('}');
         }
 
-        processor.push(new TString(sb.toString(), locator));
+        String value = sb.toString();
+        return value;
     }
+
 }

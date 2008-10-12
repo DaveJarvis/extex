@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bstio;
@@ -62,11 +61,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * This class implements a reader for bst files.
  * <p>
- * The syntax follows the definition of B<small>IB</small>T<sub>E</sub>X
- * 0.99c.
+ * The syntax follows the definition of B<small>IB</small>T<sub>E</sub>X 0.99c.
  * </p>
  * 
- * <small> <table>
+ * <small>
+ * <table>
  * <tr>
  * <td><i>all</i></td>
  * <td><tt>:==</tt></td>
@@ -135,7 +134,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <td><i>entry</i></td>
  * <td><tt>:==</tt></td>
  * <td>'ENTRY' '{' <i>fieldnames</i> '}' '{' <i>integernames</i> '}' '{'
- * <i>stringnames</i> '}' </td>
+ * <i>stringnames</i> '}'</td>
  * </tr>
  * 
  * <tr>
@@ -187,31 +186,31 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td><i>integers</i></td>
  * <td><tt>:==</tt></td>
- * <td>'INTEGERS' '{' <i>integernames</i> '}' </td>
+ * <td>'INTEGERS' '{' <i>integernames</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>integers</i></td>
  * <td><tt>:==</tt></td>
- * <td>'STRINGS' '{' <i>stringnames</i> '}' </td>
+ * <td>'STRINGS' '{' <i>stringnames</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>execute</i></td>
  * <td><tt>:==</tt></td>
- * <td>'EXECUTE' '{' <i>name</i> '}' </td>
+ * <td>'EXECUTE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>iterate</i></td>
  * <td><tt>:==</tt></td>
- * <td>'ITERATE' '{' <i>name</i> '}' </td>
+ * <td>'ITERATE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>reverse</i></td>
  * <td><tt>:==</tt></td>
- * <td>'REVERSE' '{' <i>name</i> '}' </td>
+ * <td>'REVERSE' '{' <i>name</i> '}'</td>
  * </tr>
  * 
  * <tr>
@@ -229,13 +228,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td><i>macro</i></td>
  * <td><tt>:==</tt></td>
- * <td>'MACRO' '{' <i>name</i> '}' '{' <i>body</i> '}' </td>
+ * <td>'MACRO' '{' <i>name</i> '}' '{' <i>body</i> '}'</td>
  * </tr>
  * 
  * <tr>
  * <td><i>function</i></td>
  * <td><tt>:==</tt></td>
- * <td>'FUNCTION' '{' <i>name</i> '}' '{' <i>body</i> '}' </td>
+ * <td>'FUNCTION' '{' <i>name</i> '}' '{' <i>body</i> '}'</td>
  * </tr>
  * 
  * <tr>
@@ -286,7 +285,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <td>'"' <tt>[^"]*</tt> '"'</td>
  * </tr>
  * 
- * </table> </small>
+ * </table>
+ * </small>
  * 
  * Example
  * 
@@ -337,14 +337,13 @@ public class BstReaderImpl extends AbstractFileReader
             Configurable {
 
     /**
-     * The constant <tt>EMPTY_APTTERN</tt> contains the pattern for
-     * whitespace.
+     * The constant <tt>EMPTY_PATTERN</tt> contains the pattern for whitespace.
      */
-    private static final Pattern EMPTY_APTTERN = Pattern.compile("\\s*");
+    private static final Pattern EMPTY_PATTERN = Pattern.compile("\\s*");
 
     /**
-     * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a
-     * literal at the beginning.
+     * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a literal
+     * at the beginning.
      */
     private static final Pattern LITERAL_PATTERN =
             Pattern.compile("([^{}\\//\\\"\\' \t\n]+)");
@@ -404,8 +403,7 @@ public class BstReaderImpl extends AbstractFileReader
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -640,7 +638,7 @@ public class BstReaderImpl extends AbstractFileReader
                 buffer.delete(0, 1);
             }
 
-            while (EMPTY_APTTERN.matcher(buffer).matches()) {
+            while (EMPTY_PATTERN.matcher(buffer).matches()) {
                 if (read() == null) {
                     return null;
                 }
@@ -741,9 +739,9 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * <dl>
      * <dt>Example</dt>
-     * <dd> <code>{ "abc" "def" * }</code> is parsed into the
-     * {@link TokenList TokenList} consisting of two {@link TString TString}
-     * tokens and a {@link TChar TChar} token. </dd>
+     * <dd> <code>{ "abc" "def" * }</code> is parsed into the {@link TokenList
+     * TokenList} consisting of two {@link TString TString} tokens and a
+     * {@link TChar TChar} token.</dd>
      * </dl>
      * 
      * @return the contents of the block as {@link TokenList TokenList}

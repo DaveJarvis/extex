@@ -107,11 +107,13 @@ public class BstIterate extends AbstractCommand {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor)
+     * @see org.extex.exbib.core.bst.command.Command#visit(org.extex.exbib.core.bst.command.CommandVisitor,
+     *      java.lang.Object[])
      */
-    public void visit(CommandVisitor visitor) throws IOException {
+    public void visit(CommandVisitor visitor, Object... args)
+            throws IOException {
 
-        visitor.visitIterate(this);
+        visitor.visitIterate(this, args);
     }
 
 }

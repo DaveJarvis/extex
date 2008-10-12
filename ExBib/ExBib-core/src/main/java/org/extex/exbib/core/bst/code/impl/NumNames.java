@@ -110,6 +110,25 @@ public class NumNames extends AbstractCode {
      * Perform the numbering without the need for an processor context.
      * 
      * @param value the value
+     * 
+     * @return the number of names
+     * 
+     * @throws ExBibSyntaxException in case of a syntax error
+     * @throws ExBibNoNameException in case of an error
+     * @throws ExBibImpossibleException in case of an impossible error
+     */
+    public int numNames(String value)
+            throws ExBibSyntaxException,
+                ExBibNoNameException,
+                ExBibImpossibleException {
+
+        return numNames(value, new Locator("?", 0));
+    }
+
+    /**
+     * Perform the numbering without the need for an processor context.
+     * 
+     * @param value the value
      * @param locator the locator
      * 
      * @return the number of names
@@ -126,5 +145,4 @@ public class NumNames extends AbstractCode {
         List<Name> namelist = NameFactory.getFactory().getNames(value, locator);
         return namelist.size();
     }
-
 }

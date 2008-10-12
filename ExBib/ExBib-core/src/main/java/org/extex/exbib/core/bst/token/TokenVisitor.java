@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.token;
@@ -55,7 +54,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitBlock(TBlock block) throws IOException;
+    void visitBlock(TBlock block, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>character</tt> tokens.
@@ -64,7 +63,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitChar(TChar c) throws IOException;
+    void visitChar(TChar c, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>field</tt> tokens.
@@ -73,7 +72,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitField(TField field) throws IOException;
+    void visitField(TField field, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>integer</tt> tokens.
@@ -82,7 +81,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitInteger(TInteger integer) throws IOException;
+    void visitInteger(TInteger integer, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>literal</tt> tokens.
@@ -91,7 +90,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitLiteral(TLiteral literal) throws IOException;
+    void visitLiteral(TLiteral literal, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>local integers</tt> tokens.
@@ -100,7 +99,8 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitLocalInteger(TLocalInteger integer) throws IOException;
+    void visitLocalInteger(TLocalInteger integer, Object... args)
+            throws IOException;
 
     /**
      * Visitor method invoked by <tt>local string</tt> tokens.
@@ -109,7 +109,8 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitLocalString(TLocalString string) throws IOException;
+    void visitLocalString(TLocalString string, Object... args)
+            throws IOException;
 
     /**
      * Visitor method invoked by <tt>qliteral</tt> tokens.
@@ -118,7 +119,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitQLiteral(TQLiteral qliteral) throws IOException;
+    void visitQLiteral(TQLiteral qliteral, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>string</tt> tokens.
@@ -127,7 +128,7 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitString(TString string) throws IOException;
+    void visitString(TString string, Object... args) throws IOException;
 
     /**
      * Visitor method invoked by <tt>token list</tt> tokens.
@@ -136,6 +137,6 @@ public interface TokenVisitor {
      * 
      * @throws IOException just in case
      */
-    void visitTokenList(TokenList list) throws IOException;
+    void visitTokenList(TokenList list, Object... args) throws IOException;
 
 }

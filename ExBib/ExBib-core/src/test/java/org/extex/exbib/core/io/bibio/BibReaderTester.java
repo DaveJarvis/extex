@@ -37,7 +37,6 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
-import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.junit.Test;
 
@@ -53,17 +52,6 @@ public abstract class BibReaderTester {
      * A database implementation for testing.
      */
     protected class TestDB implements DB {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-         */
-        public void configure(Configuration config)
-                throws ConfigurationException {
-
-            //
-        }
 
         /**
          * {@inheritDoc}
@@ -152,7 +140,7 @@ public abstract class BibReaderTester {
          */
         public Iterator<Entry> iterator() {
 
-            // TODO gene: iterator unimplemented
+            assertTrue("unexpected iterator()", false);
             return null;
         }
 
@@ -270,6 +258,17 @@ public abstract class BibReaderTester {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
+         *      java.lang.String)
+         */
+        public void storeString(String name, String value) {
+
+            assertTrue("unexpected storeString()", false);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
          *      org.extex.exbib.core.db.Value)
          */
         public void storeString(String name, Value value) {
@@ -284,7 +283,7 @@ public abstract class BibReaderTester {
      */
     private boolean commentSpace;
 
-    /**
+/**
      * Creates a new object.
      * 
      * @param commentSpace the indicator for extra space after {@literal

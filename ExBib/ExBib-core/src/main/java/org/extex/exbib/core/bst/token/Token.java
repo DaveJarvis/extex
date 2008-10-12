@@ -86,9 +86,10 @@ public interface Token extends Code {
      * visiting.
      * 
      * @param visitor the visitor
+     * @param args the arguments
      * 
      * @throws IOException in case of an I/O error
      */
-    void visit(TokenVisitor visitor) throws IOException;
+    void visit(TokenVisitor visitor, Object... args) throws IOException;
 
 }
