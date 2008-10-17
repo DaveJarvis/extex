@@ -1,0 +1,94 @@
+/*
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+
+package org.extex.exbib.bst2groovy.data.types;
+
+import java.io.IOException;
+import java.io.Writer;
+
+import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.core.bst.token.Token;
+
+/**
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
+public class CodeBlock implements GCode {
+
+    /**
+     * The field <tt>t</tt> contains the ...
+     */
+    private Token t;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param t the token
+     */
+    public CodeBlock(Token t) {
+
+        super();
+        this.t = t;
+    }
+
+    /**
+     * Getter for the token.
+     * 
+     * @return the token
+     */
+    public Token getToken() {
+
+        return t;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
+     */
+    public GType getType() {
+
+        return GType.VOID;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     *      java.lang.String)
+     */
+    public void print(Writer writer, String prefix) throws IOException {
+
+        // TODO gene: print unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return t.toString();
+    }
+
+}

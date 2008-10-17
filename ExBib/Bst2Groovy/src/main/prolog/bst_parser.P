@@ -1,0 +1,476 @@
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% $Id: bst.P,v 0.00 2008/10/03 18:54:25 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%=============================================================================
+
+\PL*/
+:- import concat_atom/2 from string.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate read_bst/1(+File).
+
+\PL*/
+read_bst(File) :-
+	see(File),
+	repeat,
+	bst_tokenize(Token),
+	bst_parse(Token, Command),
+	bst_store(Command),
+	Token = eof,
+	seen,
+	!.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+:- dynamic main/1.
+:- dynamic function/2.
+:- dynamic macro/2.
+:- dynamic variable/2.
+:- dynamic translated/2.
+:- dynamic lib_method/1.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+clear_program :-
+	retractall(main(_)),
+	retractall(function(_,_)),
+	retractall(macro(_)),
+	retractall(variable(_,_)),
+	retractall(lib_method(_)),
+	retractall(translated(_,_)).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_store/2(+List,?Type).
+
+\PL*/
+bst_store([], _).
+bst_store([V|T], Type) :-
+	assertz(variable(V,Type)),
+	bst_store(T,Type).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+bst_store(sort) :-
+	!,
+	assertz(main('bibDB.sort()')).
+bst_store(read) :-
+	!,
+	assertz(main('// read')).
+bst_store(function(Name,Code)) :-
+	!,
+	assertz(function(Name,Code)).
+bst_store(execute(Code)) :-
+	!,
+	bst_translate(Code,C),
+	assertz(main([C,'()'])).
+bst_store(iterate(Code)) :-
+	!,
+	bst_translate(Code,F),
+	assertz(main('bibDB.each {')),
+	assertz(main(['  ',F,'(it)'])),
+	assertz(main('}')).
+bst_store(reverse(Code)) :-
+	!,
+	bst_translate(Code,F),
+	assertz(main('bibDB.getEntries().reverse().each {')),
+	assertz(main(['  ',F,'(it)'])),
+	assertz(main('}')).
+bst_store(macro(Name,Code)) :-
+	!,
+	assertz(macro(Name,Code)).
+bst_store(integers(L)) :-
+	!,
+	bst_store(L,global_int).
+bst_store(strings(L)) :-
+	!,
+	bst_store(L,global_string).
+bst_store(entry(A,B,C)) :-
+	!,
+	bst_store(A,field),
+	bst_store(B,local_int),
+	bst_store(C,local_string).
+bst_store(eof) :-
+	!.
+bst_store(Command) :-
+	concat_atom(['*** Unknown command encountered: ', Command],Message),
+	abort(Message).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_translate/2().
+
+\PL*/
+bst_translate(atom(A),X) :-
+	!,
+	( translated(A,X) ->
+	    true
+	;
+	    name(A,L),
+	    bst_translate_2(L,L2),
+	    name(X,[0'_|L2]),
+	    assertz(translated(A,X))
+	).
+bst_translate(A,X) :-
+	!,
+	( translated(A,X) ->
+	    true
+	;
+	    name(A,L),
+	    bst_translate_2(L,L2),
+	    name(X,[0'_|L2]),
+	    assertz(translated(A,X))
+	).
+
+bst_translate_2([],[]).
+bst_translate_2([C|T],[C|TT]) :-
+	C >= 0'a,
+	C =< 0'z,
+	!,
+	bst_translate_2(T,TT).
+bst_translate_2([C|T],[C|TT]) :-
+	C >= 0'A,
+	C =< 0'Z,
+	!,
+	bst_translate_2(T,TT).
+bst_translate_2([_,C|T],[U|TT]) :-
+	C >= 0'a,
+	C =< 0'z,
+	!,
+	U is C + 0'A - 0'a,
+	bst_translate_2(T,TT).
+bst_translate_2([_|T],[0'_|TT]) :-
+	bst_translate_2(T,TT).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate translate_string/1(+Token,?String).
+
+\PL*/
+translate_string(string(X),S) :-
+	name(X,CC),
+	translate_string(CC,TCC),
+	name(S,[0'"|TCC]).
+translate_string([],[0'"]).
+translate_string([C|T],TC) :-
+	( C = 0'" ->
+	    TC = [0'\,C|TT]
+	; C = 0'$ ->
+	    TC = [0'\,C|TT]
+	; C = 0'\ ->
+	    TC = [0'\,C|TT]
+	;   TC = [C|TT]
+	),
+	translate_string(T,TT).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_parse/2().
+
+\PL*/
+bst_parse(eof, eof) :-
+	!.
+bst_parse(atom(entry), entry(A,B,C)) :-
+	!,
+	bst_parse_atom_list(A),
+	bst_parse_atom_list(B),
+	bst_parse_atom_list(C).
+bst_parse(atom(integers), integers(A)) :-
+	!,
+	bst_parse_atom_list(A).
+bst_parse(atom(strings), strings(A)) :-
+	!,
+	bst_parse_atom_list(A).
+bst_parse(atom(function), function(Name, Code)) :-
+	!,
+	bst_parse_atom_list([Name]),
+	bst_parse_program(Code).
+bst_parse(atom(macro), macro(Name, B)) :-
+	!,
+	bst_parse_atom_list([atom(Name)]),
+	bst_parse_program(B).
+bst_parse(atom(read), read) :-
+	!.
+bst_parse(atom(sort), sort) :-
+	!.
+bst_parse(atom(iterate), iterate(A)) :-
+	!,
+	bst_parse_atom_list([A]).
+bst_parse(atom(reverse), reverse(A)) :-
+	!,
+	bst_parse_atom_list([A]).
+bst_parse(atom(execute), execute(A)) :-
+	!,
+	bst_parse_atom_list([A]).
+%bst_parse(Token, _) :-
+%	concat_atom(['*** Unknown token encountered: ',Token],Message),
+%	abort(Message).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_parse_atom_list/1(+Atoms).
+
+\PL*/
+bst_parse_atom_list(Atoms) :-
+	bst_tokenize('{'),
+	!,
+	bst_parse_atoms(Atoms).
+bst_parse_atoms(Atoms) :-
+	bst_tokenize(Token),
+	( Token = atom(_) ->
+	    Atoms = [Token|Tail],
+	    bst_parse_atoms(Tail)
+	; Token = '}' ->
+	    Atoms = []
+	;
+	    concat_atom(['*** Expecting atom instead of ', Token], Message),
+	    abort(Message)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_parse_program/1(+CodeList).
+
+\PL*/
+bst_parse_program(CodeList) :-
+	bst_tokenize('{'),
+	!,
+	bst_parse_code(CodeList).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_parse_code/1(?CodeList).
+
+\PL*/
+bst_parse_code(CodeList) :-
+	bst_tokenize(Token),
+	!,
+	( Token = '{' ->
+	    bst_parse_block(Block),
+	    CodeList = [block(Block)|Tail],
+	    bst_parse_code(Tail)
+	; Token = '}' ->
+	    CodeList = []
+	;
+	    CodeList = [Token|Tail],
+	    bst_parse_code(Tail)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_parse_block/1(?Block).
+
+\PL*/
+bst_parse_block(Block) :-
+	bst_tokenize(Token),
+	!,
+	( Token = '{' ->
+	    bst_parse_block(B),
+	    Block = [block( B)|Tail],
+	    bst_parse_block(Tail)
+	; Token = '}' ->
+	    Block = []
+	;
+	    Block = [Token|Tail],
+	    bst_parse_block(Tail)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize/1(Token).
+
+\PL*/
+bst_tokenize(Token) :- 
+	getchar(Char), 
+	bst_tokenize(Char, Token).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize/2(+Char,?Token).
+
+\PL*/
+bst_tokenize(-1, eof) :-
+	!.
+bst_tokenize(0'#, number(N)) :-
+	!,
+	getchar(C),
+	bst_tokenize_integer(C, L),
+	name(N, L).
+bst_tokenize(0'", string(N)) :-
+	!,
+	getchar(C),
+	bst_tokenize_string(C, L),
+	name(N, L).
+bst_tokenize(0'%, Token) :- 
+	repeat,
+	getchar(C),
+	(C == 10 ; C == 13 ; C < 0),
+	!,
+	bst_tokenize(Token).
+bst_tokenize(0'{, '{') :-
+	!.
+bst_tokenize(0'}, '}') :-
+	!.
+bst_tokenize(0'', quote(Token)) :-
+	!,
+	getchar(C),
+	bst_tokenize_atom(C, Token).
+bst_tokenize(Char, Token) :-
+	Char =< 32,
+	!,
+	getchar(C),
+	bst_tokenize(C, Token).
+bst_tokenize(Char, Token) :-
+	( bst_special_char(Char) ->
+	    name(C, [Char]),
+	    concat_atom(['*** Unknown character: ',C], Message),
+	    abort(Message)
+	;
+	    bst_tokenize_atom(Char, Token)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
+
+\Predicate bst_tokenize_string/2().
+
+\PL*/
+bst_tokenize_string(0'", []) :-
+	!.
+bst_tokenize_string(-1, []) :-
+	!.
+bst_tokenize_string(C, [C|L]) :-
+	getchar(D),
+	bst_tokenize_string(D, L).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize_integer/2().
+
+Tokenize an integer starting with a given character. An integer is
+made up of a non-empty sequence of digits optionally preceeded by a
+'-' sign.
+
+\PL*/
+bst_tokenize_integer(Char, Integer) :-
+	( Char = 0'- ->
+	    Integer = [0'-|N],
+	    getchar(C)
+	; Char >= 0'0,
+	  Char =< 0'9 ->
+	    C = Char,
+	    Integer = N
+        ),
+	bst_tokenize_number(C, N).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize_number/2(+Char, ?Number).
+
+Tokenize a number starting with a given character. A number is made up
+of a sequence of digits.
+
+\PL*/
+bst_tokenize_number(Char, Number) :-
+	( Char >= 0'0,
+	  Char =< 0'9 ->
+	    Number = [Char|Tail],
+	    getchar(NextChar),
+	    bst_tokenize_number(NextChar, Tail)
+	;   Number = []
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize_atom/2(+Char, ?Token).
+
+Tokenize an atom starting with a given character.
+
+\PL*/
+bst_tokenize_atom(Char, Token) :-
+	bst_tokenize_atom_list(Char, Atom),
+	name(Norm, Atom),
+	( builtin(Norm) ->
+	    Token = builtin(Norm)
+	;   Token = atom(Norm)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_tokenize_atom_list/2(+Char,?List).
+
+Collect a list characters making up an atom and translate uppercase
+letters to lower case on the fly.
+
+\PL*/
+bst_tokenize_atom_list(Char, List) :-
+	( bst_special_char(Char) ->
+	    ungetchar(Char),
+	    List = []
+	;
+	    ( Char >= 0'A,
+	      Char =< 0'Z ->
+		LC is Char - 0'A + 0'a,
+		List = [LC|Tail]
+	    ;   List = [Char|Tail]
+	    ),
+	    getchar(NextChar),
+	    bst_tokenize_atom_list(NextChar, Tail)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate bst_special_char/1(?CharacterCode).
+
+Classify the ASCII character codes which have a special meaning in the
+BST language.
+
+\PL*/
+bst_special_char(0).
+bst_special_char(1).
+bst_special_char(2).
+bst_special_char(3).
+bst_special_char(4).
+bst_special_char(5).
+bst_special_char(6).
+bst_special_char(7).
+bst_special_char(8).
+bst_special_char(9).
+bst_special_char(10).
+bst_special_char(11).
+bst_special_char(12).
+bst_special_char(13).
+bst_special_char(14).
+bst_special_char(15).
+bst_special_char(16).
+bst_special_char(17).
+bst_special_char(18).
+bst_special_char(19).
+bst_special_char(20).
+bst_special_char(21).
+bst_special_char(22).
+bst_special_char(23).
+bst_special_char(24).
+bst_special_char(25).
+bst_special_char(26).
+bst_special_char(27).
+bst_special_char(28).
+bst_special_char(29).
+bst_special_char(30).
+bst_special_char(31).
+bst_special_char(32).
+bst_special_char(0'').
+bst_special_char(0'").
+bst_special_char(0'{).
+bst_special_char(0'}).
+bst_special_char(0'#).
+bst_special_char(0'%).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
+
+\PL*/
+:- dynamic getcharPushback/1.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate getchar/1(?Char).
+
+\PL*/
+getchar(Char) :-
+	( retract(getcharPushback(Char)) ->
+	    true
+	;
+	    get0(Char)
+	),
+	!.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate ungetchar/1(+Char).
+
+\PL*/
+ungetchar(Char) :-
+	assertz(getcharPushback(Char)).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+\EndProlog */

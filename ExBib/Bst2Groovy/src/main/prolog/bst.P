@@ -1,0 +1,646 @@
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% $Id: bst.P,v 0.00 2008/10/03 18:54:25 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%=============================================================================
+
+\PL*/
+:- [bst_parser].
+:- import concat_atom/2 from string.
+:- import term_to_atom/2 from string.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate load/1(+File).
+
+\PL*/
+load(File) :-
+	clear_program,
+	read_bst(File).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate run/1(+File).
+
+\PL*/
+run(File) :-
+	load(File),
+	write_prog.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate run/2(+InFile, +OutFile).
+
+\PL*/
+run(InFile, OutFile) :-
+	load(InFile),
+	tell(OutFile),
+	write_prog,
+	told.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate write_prog/0().
+
+\PL*/
+write_prog :-
+	println('import org.extex.exbib.core.db.DB'),
+	println('import org.extex.exbib.core.io.*'),
+	println('import org.extex.exbib.core.*'),
+	nl,
+	println('class Style {'),
+	println('  DB bibDB'),
+	println('  Writer bibWriter'),
+	println('  Processor bibProcessor'),
+	nl,
+	(   variable(Name, global_int),
+	    bst_translate(Name, N),
+	    println('  private int ', N, ' = 0'),
+	    fail
+	;   nl
+	),
+	(   variable(Name,global_string),
+	    bst_translate(Name, N),
+	    println('  private String ', N, ' = ""'),
+	    fail
+	;   nl
+	),
+	println('  Style(bibDB, bibWriter, bibProcessor) {'),
+	println('    this.bibDB = bibDB'),
+	println('    this.bibWriter = bibWriter'),
+	println('    this.bibProcessor = bibProcessor'),
+	println('  }'),
+	nl,
+	println('  void run() {'),
+	(   retract(main(Code)),
+	    println('    ', Code),
+	    fail
+	;
+	    println('  }'),
+	    println('}'),
+	    nl
+	),
+	( macro(_,_) ->
+	    write_macros
+	;
+	    true
+	),
+	println('new Style(bibDB, bibWriter, bibProcessor).run()'),
+	nl.
+
+write_macros :-
+	(   println('['),
+	    macro(Name, [Value]),
+	    translate_string(Value, S),
+	    println('  ', Name,': ', S, ','),
+	    fail
+	;
+	    println('].each { name, value ->'),
+	    println('    bibDB.bst_storeString(name, value)'),
+	    println('}'),
+	    nl
+	).
+
+println(A, B) :-
+	write(A),
+	println(B).
+println(A, B, C) :-
+	write(A),
+	println(B, C).
+println(A, B, C, D) :-
+	write(A),
+	println(B, C, D).
+println(A, B, C, D, E) :-
+	write(A),
+	println(B, C, D, E).
+println(X) :-
+	( X = [] ->
+	    nl
+	; X = [H|T] ->
+	    println(H, T)
+	;   writeln(X)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate print_method/6(+Name, +Args, ?UseEntry, +Entry, +Return, +Code).
+
+\PL*/
+print_method(Name, Args, UseEntry, Entry, Return, Code) :-
+	write('  '),
+	( Return = [] ->
+	    write('void')
+	; Return = string(_) ->
+	    write('String')
+	; Return = int(_) ->
+	    write('int')
+	; Return = '+'(_,_) ->
+	    write('int')
+	; Return = '-'(_,_) ->
+	    write('int')
+	; Return = '*'(_,_) ->
+	    write('String')
+	; Return = var(_) ->
+	    write('var')
+	;   writeln(Return),
+	    abort('*** print_method() could not determine return type')
+	),
+	write(' '),
+	bst_translate(Name, TName),
+	write(TName),
+	write('('),
+	( var(UseEntry) ->
+	    A = Args
+	;   A = [Entry|Args]
+	),
+	print_args(A),
+	println(') {'),
+	print_method(Code,'    '),
+	( Return = [] ->
+	    true
+	;   write('    return '),
+	    print_term(Return,_),
+	    nl
+	),
+	println('  }').
+print_method([],_).
+print_method([H|T], Prefix) :-
+	write('    '),
+	print_term(H, Prefix),
+	nl,
+	print_method(T, Prefix).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate print_args/1(+List).
+
+\PL*/
+print_args([]).
+print_args([H]) :-
+	!,
+	print_term(H, _).
+print_args([H|T]) :-
+	!,
+	print_term(H, _),
+	write(', '),
+	print_args(T).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate print_term/2().
+
+\PL*/
+print_term('='(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' == '),
+	print_term(B, Prefix).
+print_term('<'(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' < '),
+	print_term(B, Prefix).
+print_term('>'(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' > '),
+	print_term(B, Prefix).
+print_term('+'(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' + '),
+	print_term(B, Prefix).
+print_term('-'(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' - '),
+	print_term(B, Prefix).
+print_term('*'(A,B), Prefix) :-
+	!,
+	print_term(A, Prefix),
+	write(' + '),
+	print_term(B, Prefix).
+print_term(arg(N),_) :-
+	!,
+	write('a'),
+	write(N).
+print_term(var(N), _) :-
+	!,
+	write('v'),
+	write(N).
+print_term(string(S), _) :-
+	!,
+	translate_string(string(S), ST),
+	write(ST).
+print_term(global_int(V), _) :-
+	!,
+	bst_translate(V, X),
+	write(X).
+print_term(global_string(V), _) :-
+	!,
+	bst_translate(V, X),
+	write(X).
+print_term(number(V), _) :-
+	!,
+	write(V).
+print_term(local(Name, Value), Prefix) :-
+	!,
+	write('var '),
+	print_term(Name, Prefix),
+	write(' = '),
+	print_term(Value, Prefix),
+	nl,
+	write(Prefix).
+print_term(set_int(Name, Value), Prefix) :-
+	!,
+	bst_translate(Name, N),
+	write(N),
+	write(' = '),
+	print_term(Value, Prefix),
+	nl,
+	write(Prefix).
+print_term(set_string(Name, Value), Prefix) :-
+	!,
+	bst_translate(Name,N),
+	write(N),
+	write(' = '),
+	print_term(Value, Prefix),
+	nl,
+	write(Prefix).
+print_term(local_string(Entry,S),_) :-
+	!,
+	translate_string(string(S), ST),
+	write(Entry),
+	write('.getLocal('),
+	write(ST),
+	write('").getContent()').
+print_term(block(B), Prefix) :-
+	!,
+	print_term(B, Prefix).
+print_term('add.period$'(A), Prefix) :-
+	!,
+	write('addPeriod('),
+	print_term(A, Prefix),
+	write(')').
+print_term('cite$'(A), Prefix) :-
+	!,
+	write(_Entry),
+	write('.getKey('),
+	print_term(A, Prefix),
+	write(')').
+print_term('if$'(Cond,Then,Else), Prefix) :-
+	!,
+	concat_atom([Prefix,'  '], Pre),
+	write('if ('),
+	print_term(Cond, Prefix),
+	writeln(') {'),
+	print_term(Then, Pre),
+	write('} else {'),
+	print_term(Else, Pre),
+	write('}').
+print_term('int.to.chr$'(A), Prefix) :-
+	!,
+	write('intToChr('),
+	print_term(A, Prefix),
+	write(')').
+print_term('int.to.str$'(A), Prefix) :-
+	!,
+	write('intToStr('),
+	print_term(A, Prefix),
+	write(')').
+print_term('newline$',_Prefix) :-
+	!,
+	write('bstWriter.println()').
+print_term('substring$'(A,B,C), Prefix) :-
+	!,
+	write('substring('),
+	print_term(A, Prefix),
+	write(', '),
+	print_term(B, Prefix),
+	write(', '),
+	print_term(C, Prefix),
+	write(')').
+print_term('while$'(Init,Cond,Body), Prefix) :-
+	!,
+	write(' // '), writeln('while$'(Init,Cond,Body)), write(Prefix),
+	print_term(Init, Prefix),
+	write('while ('),
+	print_term(Cond, Prefix),
+	writeln(') {'),
+	write(Prefix),
+	concat_atom([Prefix,'  '], Prefix2),
+	print_term(Body, Prefix2),
+	writeln('}').
+print_term('write$'(A), Prefix) :-
+	!,
+	write('bstWriter.println('),
+	print_term(A, Prefix),
+	write(')').
+print_term([],_) :-
+	!.
+print_term([H|T], Prefix) :-
+	!,
+	print_term(H, Prefix),
+	print_term(T, Prefix).
+print_term(X,_) :-
+	term_to_atom(X,A),
+	concat_atom(['*** Can not print ',A], Message),
+	abort(Message).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate builtin/1(+Name).
+
+\PL*/
+builtin('>').
+builtin('<').
+builtin('=').
+builtin('+').
+builtin('-').
+builtin('*').
+builtin(':=').
+builtin('add.period$').
+builtin('call.type$').
+builtin('change.case$').
+builtin('chr.to.int$').
+builtin('cite$').
+builtin('duplicate$').
+builtin('empty$').
+builtin('format.name$').
+builtin('if$').
+builtin('int.to.chr$').
+builtin('int.to.str$').
+builtin('missing$').
+builtin('newline$').
+builtin('num.names$').
+builtin('pop$').
+builtin('preamble$').
+builtin('purify$').
+builtin('quote$').
+builtin('skip$').
+builtin('stack$').
+builtin('substring$').
+builtin('swap$').
+builtin('text.length$').
+builtin('text.prefix$').
+builtin('top$').
+builtin('type$').
+builtin('warning$').
+builtin('while$').
+builtin('width$').
+builtin('write$').
+builtin('global.max$').
+builtin('entry.max$').
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+set(Name,Value,Term,UseEntry,Entry) :-
+	variable(atom(Name),Type),
+	( Type = global_string ->
+	    Term = set_string(Name,Value)
+	; Type = global_int ->
+	    Term = set_int(Name,Value)
+	; Type = local_string ->
+	    Term = set_local_string(Entry, Name, Value),
+	    UseEntry = 1
+	; Type = local_int ->
+	    Term = set_local_int(Entry, Name, Value),
+	    UseEntry = 1
+	; Type = field ->
+	    Term = set_field(Entry, Name, Value),
+	    UseEntry = 1
+	;   concat_atom(['*** Can not determine the type of ', Name], Message),
+	    abort(Message)
+	).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+\Predicate bst_pe/6(+Expression, ?UseEntry, +Entry, ?Term, ?StackIn, ?StackOut).
+
+\PL*/
+bst_pe('=',_,_,[],[A,B|S],['='(B,A)|S]) :-
+	!.
+bst_pe('<',_,_,[],[A,B|S],['<'(B,A)|S]) :-
+	!.
+bst_pe('>',_,_,[],[A,B|S],['>'(B,A)|S]) :-
+	!.
+bst_pe('+',_,_,[],[A,B|S],['+'(B,A)|S]) :-
+	!.
+bst_pe('-',_,_,[],[A,B|S],['-'(B,A)|S]) :-
+	!.
+bst_pe('*',_,_,[],[A,B|S],['*'(B,A)|S]) :-
+	!.
+bst_pe(':=',UseEntry,Entry,Term,[Arg,Value|S],S) :-
+	!,
+	( var(Arg) ->
+	    Term = set(Arg, Value)
+	; Arg = int(Name) ->
+	    Term = set_int(Name,Value)
+	; Arg = string(Name) ->
+	    Term = set_string(Name,Value)
+	; Arg = local_int(Name) ->
+	    Term = set_local_int(Entry,Name,Value),
+	    UseEntry = 1
+	; Arg = local_string(Name) ->
+	    Term = set_local_string(Entry,Name,Value),
+	    UseEntry = 1
+	; Arg = field(Name) ->
+	    Term = set_field(Entry, Name, Value),
+	    UseEntry = 1
+	; Arg = quote(Name) ->
+	    set(Name, Value, Term, UseEntry, Entry)
+	;
+	    Term = set(Arg, Value)
+	).
+bst_pe('add.period$',_,_,[],[A|S],['add.period$'(A)|S]) :-
+	!.
+bst_pe('call.type$',_,Entry,'callType'(Entry),S,S) :-
+	!.
+bst_pe('change.case$',_,_,[],[B,A|S],['change.case$'(A,B)|S]) :-
+	!.
+bst_pe('chr.to.int$',_,_,[],[C|Stack],['chr.to.int$'(C)|Stack]) :-
+	!.
+bst_pe('cite$',1,Entry,[],S,['cite$'(Entry)|S]) :-
+	!.
+bst_pe('duplicate$',_,_,[],[X|S],[X,X|S]) :-
+	!.
+bst_pe('empty$',_,_,[],[X|S],['empty$'(X)|S]) :-
+	!.
+bst_pe('format.name$',_,_,[],[C,B,A|S],['format.name$'(A,B,C)|S]) :-
+	!.
+bst_pe('if$',_,_,'if$'(Cond,Then,Else),[Else,Then,Cond|S],S) :-
+	!.
+bst_pe('int.to.chr$',_,_,[],[Int|Stack],['int.to.chr$'(Int)|Stack]) :-
+	!.
+bst_pe('int.to.str$',_,_,[],[Int|Stack],['int.to.str$'(Int)|Stack]) :-
+	!.
+bst_pe('missing$',_,_,'missing$'(X),[X|S],S) :-
+	!.
+bst_pe('newline$',_,_,'newline$',S,S) :-
+	!.
+bst_pe('num.names$',_,_,[],[C|Stack],['num.names$'(C)|Stack]) :-
+	!.
+bst_pe('pop$',_,_,[],[_|S],S) :-
+	!.
+bst_pe('preamble$',_,_,'preamble$',S,S) :-
+	!.
+bst_pe('purify$',_,_,[],[C|Stack],['purify$'(C)|Stack]) :-
+	!.
+bst_pe('quote$',_,_,[],S,[string('"')|S]) :-
+	!.
+bst_pe('skip',_,_,'skip',S,S) :-
+	!.
+bst_pe('stack$',_,_,[],_,[]) :-
+	!.
+bst_pe('substring$',_,_,[],[C,B,A|S],['substring$'(A,B,C)|S]) :-
+	!.
+bst_pe('swap$',_,_,[],[A,B|S],[B,A|S]) :-
+	!.
+bst_pe('text.length$',_,_,[],[A|S],['text.length$'(A)|S]) :-
+	!.
+bst_pe('text.prefix$',_,_,[],[B,A|S],['text.prefix$'(A,B)|S]) :-
+	!.
+bst_pe('top$',_,_,[_|S],_,S) :-
+	!.
+bst_pe('type$',1,Entry,[],S,['type$'(Entry)|S]) :-
+	!.
+bst_pe('warning$',_,_,'warning$'(X),[X|S],S) :-
+	!.
+bst_pe('while$', UseEntry, Entry, Term, [Body,Cond|Stack], BSout) :-
+	!,
+	bst_expand(Cond, UseEntry, Entry, CondTerm, CondStackIn, CondStackOut),
+	( CondStackOut = [CondOut|CondTail] ->
+	    true
+	;   abort('*** missing output term')
+	),
+	( CondTail = CondStackIn ->
+	    true
+	;   abort('*** complex stack for while$ condition')
+	),
+	init_local(CondTail, Stack, Stack2, Init, Stack2, Stack3),
+%	writeln(CondTail - Init),
+	writeln(init_local(CondTail, Stack, Stack2, Init, Stack2, Stack3)),
+	( CondTerm = [] ->
+	    Start = Init
+	; Init = [] ->
+	    Start = CondTerm
+	;   Start = [CondTerm,Init]
+	),
+	Term = 'while$'(Start,CondOut,WhileBody),
+%	( CondStackIn = [] ->
+%	    true
+%	;   writeln(CondStackIn),
+%	    abort('*** complex in')
+%	),
+	bst_expand(Body, UseEntry, Entry, WhileBody, Stack3, BSout),
+	writeln(bst_expand(Body, UseEntry, Entry, WhileBody, Stack3, BSout)),
+	
+%	abort('unimplemented'),
+	true.
+bst_pe('width$',_,_,'width$'(X),[X|S],S) :-
+	!.
+bst_pe('write$',_,_,'write$'(X),[X|S],S) :-
+	!.
+bst_pe('global.max$',_,_,[],S,[global_int('global.max$')|S]) :-
+	!.
+bst_pe([], _, _, [], Stack, Stack) :-
+	!.
+bst_pe([H|T], UseEntry, Entry, Term, StackIn, StackOut) :-
+	bst_pe(H, UseEntry, Entry, T1, StackIn, Stack),
+	bst_pe(T, UseEntry, Entry, T2, Stack, StackOut),
+	( T1 = [] ->
+	    Term = T2
+	;   Term = [T1|T2]
+	).
+bst_pe(builtin(B), UseEntry, Entry, Term, StackIn, StackOut) :-
+	!,
+	bst_pe(B, UseEntry, Entry, Term, StackIn, StackOut).
+bst_pe(block(Block), _UseEntry, _Entry, [], Stack, [block(Block)|Stack]) :-
+	!.
+bst_pe(string(String), _UseEntry, _Entry, [], Stack, [string(String)|Stack]) :-
+	!.
+bst_pe(number(N), _UseEntry, _Entry, [], Stack, [number(N)|Stack]) :-
+	!.
+bst_pe(atom(Name), UseEntry, Entry, Term, Stack, StackOut) :-
+	function(atom(Name),Code),
+	!,
+	Term = function(Name),
+	bst_pe(Code, UseEntry, Entry, _, Stack, StackOut).
+bst_pe(atom(Name), _UseEntry, _Entry, [], Stack, [Term|Stack]) :-
+	variable(atom(Name),Type),
+	!,
+	Term =.. [Type,Name].
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+bst_expand(block(X), UseEntry, Entry, Term, Stack, StackOut) :-
+	bst_pe(X, UseEntry, Entry, Term, Stack, StackOut).
+bst_expand(quote(X), UseEntry, Entry, Term, Stack, StackOut) :-
+	bst_pe(X, UseEntry, Entry, Term, Stack, StackOut).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate init_local/6(+VarList, ?StackIn, ?StackOut, ?Init, ?Xin, ?Xout).
+
+\PL*/
+init_local([], Stack, Stack, [], X, X) :-
+	!.
+init_local([H|T], [V|Stack], Stack2, [local(H,V)|Init], X, [H|XX]) :-
+	( var(H) ->
+	    retract(varno(No)),
+	    No1 is No + 1,
+	    assertz(varno(No1)),
+	    H = var(No)
+	;   true
+	),
+	init_local(T, Stack, Stack2, Init, X, XX).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+analyze_function(Name,Term,Sin,Sout) :-
+	function(atom(Name),Code),
+	bst_pe(Code,_,entry,Term,Sin,Sout).
+
+analyze_function(Name) :-
+	function(atom(Name), Code),
+	bst_pe(Code, UseEntry, entry, Term, Args, Ret),
+	enum_args(Args),
+	( Ret = [] ->
+	    Result = []
+	; Ret = [Result] ->
+	    true
+	;   fail
+	),
+	print_method(Name, Args, UseEntry, entry, Result, Term).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate enum_args/1(+List).
+
+\PL*/
+enum_args(List) :-
+	enum_args(List, 1).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\Predicate enum_args/2().
+
+\PL*/
+enum_args([],_) :-
+	!.
+enum_args([arg(N)|Tail], N) :-
+	N1 is N + 1,
+	enum_args(Tail, N1).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+:- dynamic varno/1.
+:- retractall(varno(_)),
+   assert(varno(1)).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+enum_vars(List) :-
+	retract(varno(X)),
+	enum_vars(List, X, Y),
+	assert(varno(Y)),
+	!.
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+\PL*/
+enum_vars([],X,X) :-
+	!.
+enum_vars([var(N)|Tail], N, Nout) :-
+	N1 is N + 1,
+	enum_vars(Tail, N1, Nout).
+/*PL%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+\EndProlog */
