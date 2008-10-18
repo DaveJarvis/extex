@@ -296,7 +296,6 @@ public class BstInterpreterCore extends BibliographyCore
             throw new ExBibFunctionExistsException(name, locator);
         }
 
-        functions.put(name, body);
         if (addFunctionObservers != null) {
             addFunctionObservers.update(this, name);
         }
