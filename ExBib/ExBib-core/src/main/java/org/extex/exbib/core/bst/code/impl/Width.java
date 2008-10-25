@@ -268,7 +268,7 @@ public class Width extends AbstractCode {
             throws ExBibException {
 
         String s = processor.popString(locator).getValue();
-        processor.push(new TInteger(execute(s), locator));
+        processor.push(new TInteger(width(s), locator));
     }
 
     /**
@@ -278,7 +278,7 @@ public class Width extends AbstractCode {
      * 
      * @return the width in pk units
      */
-    public int execute(String s) {
+    public int width(String s) {
 
         int width = 0;
         int length = s.length();
