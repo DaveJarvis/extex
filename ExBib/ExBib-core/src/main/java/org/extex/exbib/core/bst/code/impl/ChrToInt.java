@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -30,17 +29,16 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>char.to.int$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>char.to.int$</code>
  * <p>
  * This function translates a character to the corresponding integer code point.
  * It takes a string argument from the stack. This argument must contain exactly
  * one character.
  * </p>
  * <p>
- * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and B<small>IB</small>T<sub>E</sub>X&nbsp;8
- * restrict the characters to 8~bit characters. \ExBib\ has expanded the
- * definition to 16~bit Unicode characters.
+ * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and
+ * B<small>IB</small>T<sub>E</sub>X&nbsp;8 restrict the characters to 8~bit
+ * characters. ExBib has expanded the definition to 16~bit Unicode characters.
  * </p>
  * <img src="doc-files/chr.to.int.png"/>
  * <p>
@@ -55,18 +53,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
- * <dd> Pops the top (string) literal, makes sure it's a single character,
- * converts it to the corresponding ASCII integer, and pushes this integer.
- * </dd>
+ * <dd>Pops the top (string) literal, makes sure it's a single character,
+ * converts it to the corresponding ASCII integer, and pushes this integer.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>chr.to.int$</code> pops the
- * top (string) literal, makes sure it's a single character, converts it to the
+ * <dd>The <code>built_in</code> function <code>chr.to.int$</code> pops the top
+ * (string) literal, makes sure it's a single character, converts it to the
  * corresponding <code>ASCII_code</code> integer, and pushes this integer. If
  * the literal isn't an appropriate string, it complains and pushes the integer
- * 0. </dd>
+ * 0.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -95,7 +92,7 @@ public class ChrToInt extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
