@@ -128,24 +128,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class ChangeCase extends AbstractCode {
 
     /**
-     * Create a new object.
-     */
-    public ChangeCase() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public ChangeCase(String name) {
-
-        super(name);
-    }
-
-    /**
      * Perform the case conversion like <tt>change.case$</tt>.
      * 
      * @param fmt the format; i.e. one of the following:
@@ -160,7 +142,7 @@ public class ChangeCase extends AbstractCode {
      * 
      * @throws IllegalArgumentException in case of illegal format
      */
-    public String changeCase(String fmt, String input)
+    public static String changeCase(String fmt, String input)
             throws IllegalArgumentException {
 
         StringBuilder sb = new StringBuilder(input);
@@ -247,6 +229,24 @@ public class ChangeCase extends AbstractCode {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Create a new object.
+     */
+    public ChangeCase() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the function name in the processor context
+     */
+    public ChangeCase(String name) {
+
+        super(name);
     }
 
     /**
