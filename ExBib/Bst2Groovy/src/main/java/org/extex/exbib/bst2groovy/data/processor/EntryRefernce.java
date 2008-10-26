@@ -16,68 +16,69 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
-
-import java.io.IOException;
-import java.io.Writer;
-
-import org.extex.exbib.bst2groovy.Bst2Groovy;
-import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.types.GType;
+package org.extex.exbib.bst2groovy.data.processor;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a reference to an entry variable. Any access to the
+ * name is recorded as use. Thus one can determine whether the entry is
+ * effectively used somewhere in the invoked code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SetInteger implements GCode {
+public class EntryRefernce {
 
     /**
-     * The field <tt>name</tt> contains the name of the field.
+     * The field <tt>name</tt> contains the the name of the entry.
      */
     private String name;
 
     /**
-     * The field <tt>value</tt> contains the the new value.
+     * The field <tt>used</tt> contains the the indicator that the entry is
+     * used.
      */
-    private GCode value;
+    private boolean used = false;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the filed
-     * @param value the new value
+     * @param name the name of the reference
      */
-    public SetInteger(String name, GCode value) {
+    public EntryRefernce(String name) {
 
-        super();
         this.name = name;
-        this.value = value;
+    }
+
+    /**
+     * Getter for the name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        used = true;
+        return name;
+    }
+
+    /**
+     * Getter for the used.
+     * 
+     * @return the used
+     */
+    public boolean isUsed() {
+
+        return used;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
+     * @see java.lang.Object#toString()
      */
-    public GType getType() {
+    @Override
+    public String toString() {
 
-        return GType.VOID;
+        return (used ? "*" : "-") + name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-     *      java.lang.String)
-     */
-    public void print(Writer writer, String prefix) throws IOException {
-
-        writer.write("\n");
-        writer.write(prefix);
-        writer.write(Bst2Groovy.translate(name));
-        writer.write(" = ");
-        value.print(writer, prefix);
-    }
 }

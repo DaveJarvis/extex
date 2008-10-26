@@ -16,57 +16,30 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data;
+package org.extex.exbib.bst2groovy.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that the return type could not be determined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EntryRefernce {
+public class UnknownReturnTypeException extends RuntimeException {
 
     /**
-     * The field <tt>name</tt> contains the the name of the entry.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private String name;
-
-    /**
-     * The field <tt>used</tt> contains the the indicator that the entry is
-     * used.
-     */
-    private boolean used = false;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
      * 
-     * @param name the name of the reference
+     * @param message
      */
-    public EntryRefernce(String name) {
+    public UnknownReturnTypeException(String message) {
 
-        super();
-        this.name = name;
-    }
-
-    /**
-     * Getter for the name.
-     * 
-     * @return the name
-     */
-    public String getName() {
-
-        used = true;
-        return name;
-    }
-
-    /**
-     * Getter for the used.
-     * 
-     * @return the used
-     */
-    public boolean isUsed() {
-
-        return used;
+        super("unknown return type for " + message);
     }
 
 }

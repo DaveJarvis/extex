@@ -19,22 +19,22 @@
 package org.extex.exbib.bst2groovy.data.types;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This enumeration represents the return types in the target language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public enum GType {
+public enum ReturnType {
 
     /**
-     * The field <tt>INT</tt> contains the ...
+     * The field <tt>INT</tt> contains the indicator for an integer.
      */
     INT {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.types.GType#toString()
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
         public String toString() {
@@ -44,14 +44,14 @@ public enum GType {
 
     },
     /**
-     * The field <tt>STRING</tt> contains the ...
+     * The field <tt>STRING</tt> contains the indicator for a String.
      */
     STRING {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.types.GType#toString()
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
         public String toString() {
@@ -61,14 +61,14 @@ public enum GType {
 
     },
     /**
-     * The field <tt>VOID</tt> contains the ...
+     * The field <tt>VOID</tt> contains the indicator for a procedure.
      */
     VOID {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.types.GType#toString()
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
         public String toString() {
@@ -78,19 +78,36 @@ public enum GType {
 
     },
     /**
-     * The field <tt>CODE</tt> contains the ...
+     * The field <tt>CODE</tt> contains the indicator for a definition.
      */
     CODE {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.types.GType#toString()
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
         public String toString() {
 
             return "def";
+        }
+
+    },
+    /**
+     * The field <tt>UNKNOWN</tt> contains the indicator for an unknown type.
+     */
+    UNKNOWN {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "???";
         }
 
     };

@@ -21,15 +21,15 @@ package org.extex.exbib.bst2groovy.data.types;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.IntGCode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an integer constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GInt implements GCode {
+public class GInt extends IntGCode {
 
     /**
      * The field <tt>value</tt> contains the value.
@@ -43,18 +43,7 @@ public class GInt implements GCode {
      */
     public GInt(int value) {
 
-        super();
         this.value = value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public GType getType() {
-
-        return GType.INT;
     }
 
     /**
@@ -66,6 +55,17 @@ public class GInt implements GCode {
     public void print(Writer writer, String prefix) throws IOException {
 
         writer.write(Integer.toString(value));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return Integer.toString(value);
     }
 
 }

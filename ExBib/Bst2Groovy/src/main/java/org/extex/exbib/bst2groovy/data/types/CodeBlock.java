@@ -21,7 +21,7 @@ package org.extex.exbib.bst2groovy.data.types;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.core.bst.token.Token;
 
 /**
@@ -30,10 +30,10 @@ import org.extex.exbib.core.bst.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CodeBlock implements GCode {
+public class CodeBlock extends VoidGCode {
 
     /**
-     * The field <tt>t</tt> contains the ...
+     * The field <tt>t</tt> contains the token.
      */
     private Token t;
 
@@ -44,7 +44,6 @@ public class CodeBlock implements GCode {
      */
     public CodeBlock(Token t) {
 
-        super();
         this.t = t;
     }
 
@@ -56,16 +55,6 @@ public class CodeBlock implements GCode {
     public Token getToken() {
 
         return t;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public GType getType() {
-
-        return GType.VOID;
     }
 
     /**

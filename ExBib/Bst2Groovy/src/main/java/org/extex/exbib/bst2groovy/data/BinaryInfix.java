@@ -21,61 +21,48 @@ package org.extex.exbib.bst2groovy.data;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.types.GType;
-
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for binary infix operators.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class BinaryInfix implements GCode {
+public abstract class BinaryInfix extends IntGCode {
 
     /**
-     * The field <tt>a</tt> contains the ...
+     * The field <tt>a</tt> contains the first argument.
      */
     private GCode a;
 
     /**
-     * The field <tt>b</tt> contains the ...
+     * The field <tt>b</tt> contains the second argument.
      */
     private GCode b;
 
     /**
-     * The field <tt>op</tt> contains the ...
+     * The field <tt>op</tt> contains the operator.
      */
     private String op;
 
     /**
-     * The field <tt>level</tt> contains the ...
+     * The field <tt>level</tt> contains the precedence.
      */
     private int level;
 
     /**
      * Creates a new object.
      * 
-     * @param a
-     * @param b
-     * @param op
-     * @param level
+     * @param a the first argument
+     * @param b the second argument
+     * @param op the operator
+     * @param level the precedence
      */
     public BinaryInfix(GCode a, GCode b, String op, int level) {
 
-        super();
         this.a = a;
         this.b = b;
         this.op = op;
         this.level = level;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public GType getType() {
-
-        return GType.INT;
     }
 
     /**
@@ -112,6 +99,17 @@ public abstract class BinaryInfix implements GCode {
         } else {
             x.print(writer, prefix);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "(" + a.toString() + " " + op + " " + b.toString() + ")";
     }
 
 }

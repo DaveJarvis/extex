@@ -21,27 +21,28 @@ package org.extex.exbib.bst2groovy.data.types;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.StringGCode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a string constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GString implements GCode {
+public class GString extends StringGCode {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Translate a String into a printable representation for Java/Groovy.
      * 
-     * @param s
+     * @param s the string
      * 
      * @return the translated string
      */
     public static String translate(String s) {
 
-        return s.replace("\\", "\\\\").replace("\"", "\\\"")
-            .replace("$", "\\$");
+        return "\""
+                + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("$",
+                    "\\$") + "\"";
     }
 
     /**
@@ -56,18 +57,7 @@ public class GString implements GCode {
      */
     public GString(String value) {
 
-        super();
         this.value = value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    public GType getType() {
-
-        return GType.STRING;
     }
 
     /**
@@ -78,9 +68,7 @@ public class GString implements GCode {
      */
     public void print(Writer writer, String prefix) throws IOException {
 
-        writer.write("\"");
         writer.write(translate(value));
-        writer.write("\"");
     }
 
     /**
@@ -91,7 +79,7 @@ public class GString implements GCode {
     @Override
     public String toString() {
 
-        return "\"" + translate(value) + "\"";
+        return translate(value);
     }
 
 }

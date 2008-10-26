@@ -16,30 +16,47 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.info;
+package org.extex.exbib.bst2groovy.data;
 
-import org.extex.exbib.bst2groovy.Evaluator;
-import org.extex.exbib.bst2groovy.data.EntryRefernce;
-import org.extex.exbib.bst2groovy.data.GCodeContainer;
-import org.extex.exbib.bst2groovy.evaluator.OpenEndedStack;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for GCode with the type String.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Info {
+public abstract class StringGCode implements GCode {
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param entryRefernce
-     * @param stack
-     * @param code TODO
-     * @param evaluator TODO
+     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
-    public void evaluate(EntryRefernce entryRefernce, OpenEndedStack stack,
-            GCodeContainer code, Evaluator evaluator);
+    public ReturnType getType() {
+
+        return ReturnType.STRING;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        Writer w = new StringWriter();
+        try {
+            print(w, "");
+        } catch (IOException e) {
+            //
+        }
+        return w.toString();
+    }
 
 }

@@ -22,10 +22,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 
-import org.extex.exbib.bst2groovy.data.types.GType;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a container of target code which exposes the methods
+ * for target code itself.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,28 +34,19 @@ import org.extex.exbib.bst2groovy.data.types.GType;
 public class GCodeContainer extends ArrayList<GCode> implements GCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2008L;
-
-    /**
-     * Creates a new object.
-     * 
-     */
-    public GCodeContainer() {
-
-        super();
-    }
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
-    public GType getType() {
+    public ReturnType getType() {
 
-        // TODO gene: getType unimplemented
-        throw new RuntimeException("unimplemented");
+        return ReturnType.VOID;
     }
 
     /**
@@ -70,4 +62,19 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.util.AbstractCollection#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder buffer = new StringBuilder();
+
+        for (GCode c : this) {
+            buffer.append(c.toString());
+        }
+        return buffer.toString();
+    }
 }

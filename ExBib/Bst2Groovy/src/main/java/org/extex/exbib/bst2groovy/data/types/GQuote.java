@@ -47,9 +47,9 @@ public class GQuote extends CodeBlock {
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
     @Override
-    public GType getType() {
+    public ReturnType getType() {
 
-        // TODO gene: getType unimplemented
+        // This should not happen
         throw new RuntimeException("unimplemented");
     }
 
@@ -72,7 +72,7 @@ public class GQuote extends CodeBlock {
     @Override
     public void print(Writer writer, String prefix) throws IOException {
 
-        // TODO gene: print unimplemented
+        // This should not happen
         throw new RuntimeException("unimplemented");
     }
 

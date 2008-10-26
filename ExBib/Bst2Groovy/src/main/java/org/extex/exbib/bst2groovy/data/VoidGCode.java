@@ -16,66 +16,47 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
+package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.types.GType;
-import org.extex.exbib.bst2groovy.evaluator.GLocal;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for GCode with the type void.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InitLocal implements GCode {
-
-    /**
-     * The field <tt>value</tt> contains the the new value.
-     */
-    private GLocal value;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param value the new value
-     */
-    public InitLocal(GLocal value) {
-
-        super();
-        this.value = value;
-    }
+public abstract class VoidGCode implements GCode {
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
-    public GType getType() {
+    public ReturnType getType() {
 
-        return GType.VOID;
+        return ReturnType.VOID;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-     *      java.lang.String)
+     * @see java.lang.Object#toString()
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    @Override
+    public String toString() {
 
-        writer.write("\n");
-        writer.write(prefix);
-        value.printType(writer, prefix);
-        writer.write(" ");
-        value.print(writer, prefix);
-        GCode v = value.getValue();
-        if (v != null) {
-            writer.write(" = ");
-            v.print(writer, prefix);
+        Writer w = new StringWriter();
+        try {
+            print(w, "");
+        } catch (IOException e) {
+            //
         }
+        return w.toString();
     }
+
 }

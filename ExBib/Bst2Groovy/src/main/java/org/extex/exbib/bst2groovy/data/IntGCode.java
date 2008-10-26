@@ -16,68 +16,47 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
+package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
-import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.types.GType;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for GCode with the type int.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SetString implements GCode {
-
-    /**
-     * The field <tt>name</tt> contains the name of the field.
-     */
-    private String name;
-
-    /**
-     * The field <tt>value</tt> contains the the new value.
-     */
-    private GCode value;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the name of the filed
-     * @param value the new value
-     */
-    public SetString(String name, GCode value) {
-
-        super();
-        this.name = name;
-        this.value = value;
-    }
+public abstract class IntGCode implements GCode {
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
-    public GType getType() {
+    public ReturnType getType() {
 
-        return GType.VOID;
+        return ReturnType.INT;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-     *      java.lang.String)
+     * @see java.lang.Object#toString()
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    @Override
+    public String toString() {
 
-        writer.write("\n");
-        writer.write(prefix);
-        writer.write(Bst2Groovy.translate(name));
-        writer.write(" = ");
-        value.print(writer, prefix);
+        Writer w = new StringWriter();
+        try {
+            print(w, "");
+        } catch (IOException e) {
+            //
+        }
+        return w.toString();
     }
+
 }

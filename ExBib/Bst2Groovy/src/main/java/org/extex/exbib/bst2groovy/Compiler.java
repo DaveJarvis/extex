@@ -16,28 +16,29 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
+package org.extex.exbib.bst2groovy;
 
-import org.extex.exbib.bst2groovy.data.BinaryInfix;
-import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.Evaluator;
+import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a compiler.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Minus extends BinaryInfix {
+public interface Compiler {
 
     /**
-     * Creates a new object.
+     * Evaluate in a certain context.
      * 
-     * @param a
-     * @param b
+     * @param entryRefernce the entry reference indicator
+     * @param state the state
+     * @param evaluator the evaluator
+     * @param linkData the link data container
      */
-    public Minus(GCode a, GCode b) {
-
-        super(a, b, "-", 500);
-    }
+    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+            Evaluator evaluator, LinkContainer linkData);
 
 }

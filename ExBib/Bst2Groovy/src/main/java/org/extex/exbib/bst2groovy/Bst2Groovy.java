@@ -19,56 +19,64 @@
 package org.extex.exbib.bst2groovy;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exbib.bst2groovy.data.EntryRefernce;
+import org.extex.exbib.bst2groovy.compiler.AddPeriodCompiler;
+import org.extex.exbib.bst2groovy.compiler.AssignCompiler;
+import org.extex.exbib.bst2groovy.compiler.CallTypeCompiler;
+import org.extex.exbib.bst2groovy.compiler.ChangeCaseCompiler;
+import org.extex.exbib.bst2groovy.compiler.ChrToIntCompiler;
+import org.extex.exbib.bst2groovy.compiler.CiteCompiler;
+import org.extex.exbib.bst2groovy.compiler.ConcatCompiler;
+import org.extex.exbib.bst2groovy.compiler.DuplicateCompiler;
+import org.extex.exbib.bst2groovy.compiler.EmptyCompiler;
+import org.extex.exbib.bst2groovy.compiler.EqualsCompiler;
+import org.extex.exbib.bst2groovy.compiler.FormatNameCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetFieldCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetIntegerCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetLocalIntegerCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetLocalStringCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetStringCompiler;
+import org.extex.exbib.bst2groovy.compiler.GreaterCompiler;
+import org.extex.exbib.bst2groovy.compiler.IfCompiler;
+import org.extex.exbib.bst2groovy.compiler.IntToChrCompiler;
+import org.extex.exbib.bst2groovy.compiler.IntToStrCompiler;
+import org.extex.exbib.bst2groovy.compiler.LessCompiler;
+import org.extex.exbib.bst2groovy.compiler.MinusCompiler;
+import org.extex.exbib.bst2groovy.compiler.MissingCompiler;
+import org.extex.exbib.bst2groovy.compiler.NewlineCompiler;
+import org.extex.exbib.bst2groovy.compiler.NumNamesCompiler;
+import org.extex.exbib.bst2groovy.compiler.PlusCompiler;
+import org.extex.exbib.bst2groovy.compiler.PopCompiler;
+import org.extex.exbib.bst2groovy.compiler.PreambleCompiler;
+import org.extex.exbib.bst2groovy.compiler.PurifyCompiler;
+import org.extex.exbib.bst2groovy.compiler.SkipCompiler;
+import org.extex.exbib.bst2groovy.compiler.SubstringCompiler;
+import org.extex.exbib.bst2groovy.compiler.SwapCompiler;
+import org.extex.exbib.bst2groovy.compiler.TextLengthCompiler;
+import org.extex.exbib.bst2groovy.compiler.TextPrefixCompiler;
+import org.extex.exbib.bst2groovy.compiler.TypeCompiler;
+import org.extex.exbib.bst2groovy.compiler.WarningCompiler;
+import org.extex.exbib.bst2groovy.compiler.WhileCompiler;
+import org.extex.exbib.bst2groovy.compiler.WidthCompiler;
+import org.extex.exbib.bst2groovy.compiler.WriteCompiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.GCodeContainer;
-import org.extex.exbib.bst2groovy.data.builtin.Equals;
-import org.extex.exbib.bst2groovy.data.builtin.Greater;
-import org.extex.exbib.bst2groovy.data.builtin.Less;
-import org.extex.exbib.bst2groovy.data.builtin.Minus;
-import org.extex.exbib.bst2groovy.data.builtin.Plus;
-import org.extex.exbib.bst2groovy.data.builtin.SetField;
-import org.extex.exbib.bst2groovy.data.builtin.SetInteger;
-import org.extex.exbib.bst2groovy.data.builtin.SetLocalInteger;
-import org.extex.exbib.bst2groovy.data.builtin.SetLocalString;
-import org.extex.exbib.bst2groovy.data.builtin.SetString;
+import org.extex.exbib.bst2groovy.data.local.GLocal;
+import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.Evaluator;
+import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GInt;
 import org.extex.exbib.bst2groovy.data.types.GQuote;
 import org.extex.exbib.bst2groovy.data.types.GString;
-import org.extex.exbib.bst2groovy.evaluator.OpenEndedStack;
-import org.extex.exbib.bst2groovy.info.AddPeriodInfo;
-import org.extex.exbib.bst2groovy.info.CiteInfo;
-import org.extex.exbib.bst2groovy.info.GetFieldInfo;
-import org.extex.exbib.bst2groovy.info.GetIntegerInfo;
-import org.extex.exbib.bst2groovy.info.GetLocalIntegerInfo;
-import org.extex.exbib.bst2groovy.info.GetLocalStringInfo;
-import org.extex.exbib.bst2groovy.info.GetStringInfo;
-import org.extex.exbib.bst2groovy.info.IfInfo;
-import org.extex.exbib.bst2groovy.info.Info;
-import org.extex.exbib.bst2groovy.info.MissingInfo;
-import org.extex.exbib.bst2groovy.info.NewlineInfo;
-import org.extex.exbib.bst2groovy.info.PopInfo;
-import org.extex.exbib.bst2groovy.info.PreambleInfo;
-import org.extex.exbib.bst2groovy.info.TextLengthInfo;
-import org.extex.exbib.bst2groovy.info.TextPrefixInfo;
-import org.extex.exbib.bst2groovy.info.TypeInfo;
-import org.extex.exbib.bst2groovy.info.WarningInfo;
-import org.extex.exbib.bst2groovy.info.WidthInfo;
-import org.extex.exbib.bst2groovy.info.WriteInfo;
 import org.extex.exbib.core.bst.BstInterpreterCore;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
-import org.extex.exbib.core.bst.command.Command;
-import org.extex.exbib.core.bst.command.CommandVisitor;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
@@ -83,6 +91,7 @@ import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
+import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -102,25 +111,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     /**
      * The field <tt>INDENT</tt> contains the String used for indentation.
      */
-    public static String INDENT = "  ";
-
-    /**
-     * Translate a bst name int a groovy name for functions and variables.
-     * 
-     * @param value the value to translate
-     * 
-     * @return the translated string
-     */
-    public static String translate(String value) {
-
-        String t = translationMap.get(value);
-        if (t != null) {
-            return t;
-        }
-        t = "_" + value.replaceAll("[^a-zA-Z0-9]", "_");
-        translationMap.put(value, t);
-        return t;
-    }
+    public static final String INDENT = "  ";
 
     /**
      * The field <tt>factory</tt> contains the factory for bst readers.
@@ -128,143 +119,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private BstReaderFactory factory = null;
 
     /**
-     * The field <tt>translationMap</tt> contains the already mapped names.
-     */
-    private static Map<String, String> translationMap =
-            new HashMap<String, String>();
-
-    /**
-     * The field <tt>CV</tt> contains the command visitor for printing.
-     */
-    private final CommandVisitor CV = new CommandVisitor() {
-
-        public void visitBlock(TBlock block, Object... args) throws IOException {
-
-            // TODO gene: enclosing_method unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitChar(TChar c, Object... args) throws IOException {
-
-            // TODO gene: visitChar unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitExecute(Command command, Object... args)
-                throws IOException {
-
-            Writer w = (Writer) args[0];
-            w.write(INDENT);
-            w.write(translate(command.getValue().toString()));
-            w.write("()\n");
-        }
-
-        public void visitField(TField field, Object... args) throws IOException {
-
-            // TODO gene: visitField unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitInteger(TInteger integer, Object... args)
-                throws IOException {
-
-            // TODO gene: visitInteger unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitIterate(Command command, Object... args)
-                throws IOException {
-
-            Writer w = (Writer) args[0];
-            w.write(INDENT);
-            w.write("bibDB.each {\n");
-            w.write(INDENT);
-            w.write(INDENT);
-            w.write(translate(command.getValue().toString()));
-            w.write("(it)\n");
-            w.write(INDENT);
-            w.write(")\n");
-        }
-
-        public void visitLiteral(TLiteral literal, Object... args)
-                throws IOException {
-
-            // TODO gene: visitLiteral unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitLocalInteger(TLocalInteger integer, Object... args)
-                throws IOException {
-
-            // TODO gene: visitLocalInteger unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitLocalString(TLocalString string, Object... args)
-                throws IOException {
-
-            // TODO gene: visitLocalString unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitQLiteral(TQLiteral qliteral, Object... args)
-                throws IOException {
-
-            // TODO gene: visitQLiteral unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitRead(Command command, Object... args)
-                throws IOException {
-
-            Writer writer = (Writer) args[0];
-            writer.write(INDENT);
-            writer.write("// read\n");
-        }
-
-        public void visitReverse(Command command, Object... args)
-                throws IOException {
-
-            Writer w = (Writer) args[0];
-            w.write(INDENT);
-            w.write("bibDB.getEntries().reverse().each {\n");
-            w.write(INDENT);
-            w.write(INDENT);
-            w.write(translate(command.getValue().toString()));
-            w.write("(it)\n");
-            w.write(INDENT);
-            w.write(")\n");
-        }
-
-        public void visitSort(Command command, Object... args)
-                throws IOException {
-
-            Writer writer = (Writer) args[0];
-            writer.write(INDENT);
-            writer.write("bibDB.sort();\n");
-        }
-
-        public void visitString(TString string, Object... args)
-                throws IOException {
-
-            // TODO gene: visitString unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-        public void visitTokenList(TokenList list, Object... args)
-                throws IOException {
-
-            // TODO gene: visitTokenList unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-
-    };
-
-    /**
      * The field <tt>infos</tt> contains the infos on functions, fields, and
      * variables.
      */
-    private Map<String, Info> infos = null;
+    private Map<String, Compiler> compilers = null;
 
     /**
      * The field <tt>EVALUATE_TOKEN_VISITOR</tt> contains the token visitor for
@@ -275,80 +133,78 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         public void visitBlock(TBlock block, Object... args) {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
-            OpenEndedStack stack = (OpenEndedStack) args[1];
-            GCodeContainer code = (GCodeContainer) args[2];
+            ProcessorState state = (ProcessorState) args[1];
             for (Token t : block) {
-                evaluatePartially(t, entryRefernce, stack, code);
+                evaluatePartially(t, entryRefernce, state);
             }
         }
 
         public void visitChar(TChar c, Object... args) {
 
-            // TODO gene: visitChar unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitChar()");
         }
 
         public void visitField(TField field, Object... args) {
 
-            // TODO gene: visitField unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitField()");
         }
 
         public void visitInteger(TInteger integer, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GInt(integer.getInt()));
         }
 
         public void visitLiteral(TLiteral literal, Object... args) {
 
             String name = literal.getValue().toString();
-            Info info = infos.get(name);
-            if (info == null) {
+            Compiler compiler = compilers.get(name);
+            if (compiler == null) {
                 throw new RuntimeException(name + " is unknown");
             }
 
-            info.evaluate((EntryRefernce) args[0], (OpenEndedStack) args[1],
-                (GCodeContainer) args[2], (Evaluator) args[3]);
+            compiler.evaluate((EntryRefernce) args[0],
+                (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
-            // TODO gene: visitLocalInteger unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitLocalInteger()");
         }
 
         public void visitLocalString(TLocalString string, Object... args) {
 
-            // TODO gene: visitLocalString unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitLocalString()");
         }
 
         public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
             String name = qliteral.getValue();
-            Info info = infos.get(name);
-            if (info == null) {
+            Compiler compiler = compilers.get(name);
+            if (compiler == null) {
                 throw new RuntimeException(name + " is unknown");
             }
 
-            info.evaluate((EntryRefernce) args[0], (OpenEndedStack) args[1],
-                (GCodeContainer) args[2], (Evaluator) args[3]);
+            compiler.evaluate((EntryRefernce) args[0],
+                (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
         public void visitString(TString string, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GString(string.getValue()));
         }
 
         public void visitTokenList(TokenList list, Object... args) {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
-            OpenEndedStack stack = (OpenEndedStack) args[1];
-            GCodeContainer code = (GCodeContainer) args[2];
+            ProcessorState state = (ProcessorState) args[1];
             for (Token t : list) {
-                evaluatePartially(t, entryRefernce, stack, code);
+                evaluatePartially(t, entryRefernce, state);
 
             }
         }
@@ -362,72 +218,70 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         public void visitBlock(TBlock block, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new CodeBlock(block));
         }
 
         public void visitChar(TChar c, Object... args) {
 
-            // TODO gene: visitChar unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitChar()");
         }
 
         public void visitField(TField field, Object... args) {
 
-            // TODO gene: visitField unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitField()");
         }
 
         public void visitInteger(TInteger integer, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GInt(integer.getInt()));
         }
 
         public void visitLiteral(TLiteral literal, Object... args) {
 
             String name = literal.getValue().toString();
-            Info info = infos.get(name);
-            if (info == null) {
+            Compiler compiler = compilers.get(name);
+            if (compiler == null) {
                 throw new RuntimeException(name + " is unknown");
             }
 
-            info.evaluate((EntryRefernce) args[0], (OpenEndedStack) args[1],
-                (GCodeContainer) args[2], (Evaluator) args[3]);
+            compiler.evaluate((EntryRefernce) args[0],
+                (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
-            // TODO gene: visitLocalInteger unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitLocalInteger()");
         }
 
         public void visitLocalString(TLocalString string, Object... args) {
 
-            // TODO gene: visitLocalString unimplemented
-            throw new RuntimeException("unimplemented");
+            // this does should happen
+            throw new RuntimeException("visitLocalString()");
         }
 
         public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GQuote(qliteral));
         }
 
         public void visitString(TString string, Object... args) {
 
-            OpenEndedStack stack = (OpenEndedStack) args[1];
+            ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GString(string.getValue()));
         }
 
         public void visitTokenList(TokenList list, Object... args) {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
-            OpenEndedStack stack = (OpenEndedStack) args[1];
-            GCodeContainer code = (GCodeContainer) args[2];
+            ProcessorState state = (ProcessorState) args[1];
             for (Token t : list) {
-                evaluatePartially(t, entryRefernce, stack, code);
-
+                evaluatePartially(t, entryRefernce, state);
             }
         }
     };
@@ -437,318 +291,108 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private List<GFunction> functionList = new ArrayList<GFunction>();
 
+    /**
+     * The field <tt>linkData</tt> contains the data for linking.
+     */
+    private LinkContainer linkData;
+
+    /**
+     * The field <tt>types</tt> contains the supported types.
+     */
+    private Map<String, GFunction> types = new HashMap<String, GFunction>();
+
     {
-        if (infos == null) {
-            infos = new HashMap<String, Info>();
+        if (compilers == null) {
+            compilers = new HashMap<String, Compiler>();
         }
-        infos.put(">", new Info() {
+        compilers.put(">", new GreaterCompiler());
+        compilers.put("<", new LessCompiler());
+        compilers.put("=", new EqualsCompiler());
+        compilers.put("+", new PlusCompiler());
+        compilers.put("-", new MinusCompiler());
+        compilers.put("*", new ConcatCompiler());
+        compilers.put(":=", new AssignCompiler(this));
+        compilers.put("add.period$", new AddPeriodCompiler());
+        compilers.put("call.type$", new CallTypeCompiler());
+        compilers.put("change.case$", new ChangeCaseCompiler());
+        compilers.put("chr.to.int$", new ChrToIntCompiler());
+        compilers.put("cite$", new CiteCompiler());
+        compilers.put("duplicate$", new DuplicateCompiler());
+        compilers.put("empty$", new EmptyCompiler());
+        compilers.put("format.name$", new FormatNameCompiler());
+        compilers.put("if$", new IfCompiler());
+        compilers.put("int.to.chr$", new IntToChrCompiler());
+        compilers.put("int.to.str$", new IntToStrCompiler());
+        compilers.put("missing$", new MissingCompiler());
+        compilers.put("newline$", new NewlineCompiler());
+        compilers.put("num.names$", new NumNamesCompiler());
+        compilers.put("pop$", new PopCompiler());
+        compilers.put("preamble$", new PreambleCompiler());
+        compilers.put("purify$", new PurifyCompiler());
+        compilers.put("quote$", new Compiler() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+             *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
+             *      org.extex.exbib.bst2groovy.LinkContainer)
+             */
             public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
+                    ProcessorState state, Evaluator evaluator,
+                    LinkContainer linkData) {
 
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(new Greater(a, b));
+                state.push(new GString("\""));
             }
         });
-        infos.put("<", new Info() {
+        compilers.put("skip$", new SkipCompiler());
+        compilers.put("stack$", new SkipCompiler());
+        compilers.put("substring$", new SubstringCompiler());
+        compilers.put("swap$", new SwapCompiler());
+        compilers.put("text.length$", new TextLengthCompiler());
+        compilers.put("text.prefix$", new TextPrefixCompiler());
+        compilers.put("top$", new SkipCompiler());
+        compilers.put("type$", new TypeCompiler());
+        compilers.put("warning$", new WarningCompiler());
+        compilers.put("while$", new WhileCompiler());
+        compilers.put("width$", new WidthCompiler());
+        compilers.put("write$", new WriteCompiler());
+        compilers.put("global.max$", new Compiler() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+             *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
+             *      org.extex.exbib.bst2groovy.LinkContainer)
+             */
             public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
+                    ProcessorState state, Evaluator evaluator,
+                    LinkContainer linkData) {
 
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(new Less(a, b));
+                state.push(new GInt(0xffff));
             }
         });
-        infos.put("=", new Info() {
+        compilers.put("entry.max$", new Compiler() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+             *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
+             *      org.extex.exbib.bst2groovy.LinkContainer)
+             */
             public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
+                    ProcessorState state, Evaluator evaluator,
+                    LinkContainer linkData) {
 
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(new Equals(a, b));
+                state.push(new GInt(0xffff));
             }
         });
-        infos.put("+", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(new Plus(a, b));
-            }
-        });
-        infos.put("-", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(new Minus(a, b));
-            }
-        });
-        infos.put("*", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put(":=", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                GCode q = stack.pop();
-                GCode value = stack.pop();
-                if (!(q instanceof GQuote)) {
-                    throw new RuntimeException("illegal variable type: "
-                            + q.toString());
-                }
-                String v = ((GQuote) q).getToken().getValue();
-
-                Code f = getFunction(v);
-                if (!(f instanceof MacroCode)) {
-                    throw new RuntimeException(
-                        "unable to determine variable type for " + v);
-                }
-                Token t = ((MacroCode) f).getToken();
-
-                if (t instanceof TField) {
-                    code.add(new SetField(entryRefernce.getName(), v, value));
-                } else if (t instanceof TString) {
-                    code.add(new SetString(v, value));
-                } else if (t instanceof TInteger) {
-                    code.add(new SetInteger(v, value));
-                } else if (t instanceof TLocalString) {
-                    code.add(new SetLocalString(entryRefernce.getName(), v,
-                        value));
-                } else if (t instanceof TLocalInteger) {
-                    code.add(new SetLocalInteger(entryRefernce.getName(), v,
-                        value));
-                } else {
-                    throw new RuntimeException(
-                        "unable to determine variable type");
-                }
-            }
-        });
-        infos.put("add.period$", new AddPeriodInfo());
-        infos.put("call.type$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("change.case$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("chr.to.int$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("cite$", new CiteInfo());
-        infos.put("duplicate$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                GCode a = stack.pop();
-                stack.push(a);
-                stack.push(a);
-            }
-        });
-        infos.put("empty$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("format.name$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("if$", new IfInfo());
-        infos.put("int.to.chr$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("int.to.str$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("missing$", new MissingInfo());
-        infos.put("newline$", new NewlineInfo());
-        infos.put("num.names$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("pop$", new PopInfo());
-        infos.put("preamble$", new PreambleInfo());
-        infos.put("purify$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("quote$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                stack.push(new GString("\""));
-            }
-        });
-        infos.put("skip$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                //
-            }
-        });
-        infos.put("stack$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("substring$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("swap$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                GCode a = stack.pop();
-                GCode b = stack.pop();
-                stack.push(a);
-                stack.push(b);
-            }
-        });
-        infos.put("text.length$", new TextLengthInfo());
-        infos.put("text.prefix$", new TextPrefixInfo());
-        infos.put("top$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("type$", new TypeInfo());
-        infos.put("warning$", new WarningInfo());
-        infos.put("while$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("width$", new WidthInfo());
-        infos.put("write$", new WriteInfo());
-        infos.put("global.max$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
-        infos.put("entry.max$", new Info() {
-
-            public void evaluate(EntryRefernce entryRefernce,
-                    OpenEndedStack stack, GCodeContainer code,
-                    Evaluator evaluator) {
-
-                // TODO gene: enclosing_method unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        });
+        compilers.put("crossref", new GetFieldCompiler("crossref"));
     }
 
     /**
@@ -758,7 +402,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public Bst2Groovy() throws ExBibImpossibleException {
 
-        super();
+        linkData = new LinkContainer();
+        setDB(new DBImpl());
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/')
                 + ".config"));
@@ -775,41 +420,40 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
-        if (infos == null) {
-            infos = new HashMap<String, Info>();
+        if (compilers == null) {
+            compilers = new HashMap<String, Compiler>();
         }
+        Code code = body;
 
-        if (body instanceof MacroCode) {
-            Token token = ((MacroCode) body).getToken();
+        if (code instanceof MacroCode) {
+            Token token = ((MacroCode) code).getToken();
             if (token instanceof TokenList) {
                 analyzeFunction(name, (TokenList) token);
             } else if (token instanceof TField) {
-                infos.put(name, new GetFieldInfo(((TField) token).getName()));
+                compilers.put(name, new GetFieldCompiler(name));
             } else if (token instanceof TInteger) {
-                infos.put(name, new GetIntegerInfo(name));
+                compilers.put(name, //
+                    new GetIntegerCompiler(GFunction.translate(name)));
             } else if (token instanceof TString) {
-                infos.put(name, new GetStringInfo(name));
+                compilers.put(name, //
+                    new GetStringCompiler(GFunction.translate(name)));
             } else if (token instanceof TLocalInteger) {
-                infos.put(name, new GetLocalIntegerInfo(((TLocalInteger) token)
-                    .getName()));
+                compilers.put(name, new GetLocalIntegerCompiler(name));
             } else if (token instanceof TLocalString) {
-                infos.put(name, new GetLocalStringInfo(((TLocalString) token)
-                    .getName()));
+                compilers.put(name, new GetLocalStringCompiler(name));
             }
-        } else if (body instanceof TField) {
-            infos.put(name, new GetFieldInfo(((TField) body).getName()));
-        } else if (body instanceof TInteger) {
-            infos.put(name, new GetIntegerInfo(name));
-        } else if (body instanceof TString) {
-            infos.put(name, new GetStringInfo(name));
-        } else if (body instanceof TLocalInteger) {
-            infos.put(name, new GetLocalIntegerInfo(((TLocalInteger) body)
-                .getName()));
-        } else if (body instanceof TLocalString) {
-            infos.put(name, new GetLocalStringInfo(((TLocalString) body)
-                .getName()));
+        } else if (code instanceof TField) {
+            compilers.put(name, new GetFieldCompiler(name));
+        } else if (code instanceof TInteger) {
+            compilers.put(name, new GetIntegerCompiler(name));
+        } else if (code instanceof TString) {
+            compilers.put(name, new GetStringCompiler(name));
+        } else if (code instanceof TLocalInteger) {
+            compilers.put(name, new GetLocalIntegerCompiler(name));
+        } else if (code instanceof TLocalString) {
+            compilers.put(name, new GetLocalStringCompiler(name));
         }
-        super.addFunction(name, body, locator);
+        super.addFunction(name, code, locator);
     }
 
     /**
@@ -820,60 +464,63 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void analyzeFunction(String name, TokenList body) {
 
-        OpenEndedStack.reset();
-        OpenEndedStack stack = new OpenEndedStack();
-        GCodeContainer code = new GCodeContainer();
-        evaluatePartially(body, new EntryRefernce("entry"), stack, code);
+        ProcessorState.reset();
+        ProcessorState state = new ProcessorState();
+        EntryRefernce entry = new EntryRefernce("entry");
+        evaluatePartially(body, entry, state);
 
-        List<GCode> st = stack.getStack();
-        GCode ret;
-        if (st.isEmpty()) {
-            ret = null;
-        } else if (st.size() == 1) {
-            ret = st.get(0);
+        List<GCode> stack = state.getStack();
+        GCode returnValue;
+        if (stack.isEmpty()) {
+            returnValue = null;
+        } else if (stack.size() == 1) {
+            returnValue = stack.get(0);
         } else {
             throw new RuntimeException("function " + name
-                    + ": complex return values unimplemented " + st.toString());
+                    + ": complex return values unimplemented "
+                    + stack.toString());
         }
 
-        GFunction f = new GFunction(ret, name, stack.getFutures(), code);
-        functionList.add(f);
-
-        Writer writer = new OutputStreamWriter(System.out);
-        try {
-            f.print(writer, "");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("unimplemented");
+        GFunction function =
+                new GFunction(returnValue, GFunction.translate(name), state
+                    .getLocals(), state.getCode(), entry.isUsed());
+        functionList.add(function);
+        compilers.put(name, function);
+        if (function.needsEntry() && function.getType() == null) {
+            types.put(name, function);
         }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.Evaluator#evaluate(org.extex.exbib.core.bst.token.Token,
-     *      org.extex.exbib.bst2groovy.data.EntryRefernce,
-     *      org.extex.exbib.bst2groovy.evaluator.OpenEndedStack,
-     *      org.extex.exbib.bst2groovy.data.GCodeContainer)
+     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluate(org.extex.exbib.core.bst.token.Token,
+     *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
      */
     public void evaluate(Token token, EntryRefernce entryRefernce,
-            OpenEndedStack stack, GCodeContainer code) {
+            ProcessorState state) {
 
         try {
-            token.visit(EVALUATE_TOKEN_VISITOR, entryRefernce, stack, code,
-                this);
+            token.visit(EVALUATE_TOKEN_VISITOR, entryRefernce, state, this);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluatePartially(org.extex.exbib.core.bst.token.Token,
+     *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
+     */
     public void evaluatePartially(Token token, EntryRefernce entryRefernce,
-            OpenEndedStack stack, GCodeContainer code) {
+            ProcessorState state) {
 
         try {
-            token.visit(EVALUATE_PARTIALLY_TOKEN_VISITOR, entryRefernce, stack,
-                code, this);
+            token.visit(EVALUATE_PARTIALLY_TOKEN_VISITOR, entryRefernce, state,
+                this);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
         }
@@ -902,11 +549,28 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * @param styles the styles to incorporate
      * 
      * @throws IOException in case of an I/O error
+     * @throws ExBibException in case of an error
+     * @throws ExBibBstNotFoundException in case of an error
      */
-    public void run(Writer writer, String... styles) throws IOException {
+    public void run(Writer writer, String... styles)
+            throws IOException,
+                ExBibBstNotFoundException,
+                ExBibException {
 
         addBibliographyStyle(styles);
+        load();
         write(writer);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "<" + getClass().getName().replaceAll(".*\\.", "") + ">";
     }
 
     /**
@@ -918,55 +582,95 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public void write(Writer writer) throws IOException {
 
-        writer.write("import org.extex.exbib.core.db.DB\n");
-        writer.write("import org.extex.exbib.core.io.*\n");
-        writer.write("import org.extex.exbib.core.*\n");
-        writer.write("\n");
-        writer.write("class Style {\n");
-        writer.write("  private DB bibDB\n");
-        writer.write("  private Writer bibWriter\n");
-        writer.write("  private Processor bibProcessor\n");
-        writer.write("\n");
+        functionList.add(new GFunction(null, "run", new ArrayList<GLocal>(),
+            new CommandTranslator(this).translate(this), false));
+
+        linkData.addImports("org.extex.exbib.core.db.DB");
+        linkData.addImports("org.extex.exbib.core.io.*");
+        linkData.addImports("org.extex.exbib.core.*");
+        linkData.writeImports(writer);
+        write(writer, //
+            "class Style {\n", //
+            "  private DB bibDB\n", //
+            "  private Writer bibWriter\n", //
+            "  private Processor bibProcessor\n", //
+            "\n");
 
         for (String name : getIntegers()) {
             writer.write("  private int ");
-            writer.write(translate(name));
+            writer.write(GFunction.translate(name));
             writer.write(" = 0\n");
         }
+        writer.write("\n");
         for (String name : getStrings()) {
             writer.write("  private String ");
-            writer.write(translate(name));
-            writer.write(" = 0\n");
+            writer.write(GFunction.translate(name));
+            writer.write(" = \"\"\n");
         }
-        writer.write("  Style(bibDB, bibWriter, bibProcessor) {\n");
-        writer.write("    this.bibDB = bibDB\n");
-        writer.write("    this.bibWriter = bibWriter\n");
-        writer.write("    this.bibProcessor = bibProcessor\n");
-        writer.write("  }\n");
-        writer.write("\n");
-        writer.write("  void run() {\n");
-
-        for (Command c : this) {
-            c.visit(CV, writer);
+        write(writer, //
+            "\n" //
+        );
+        for (String type : types.keySet()) {
+            GFunction fct = types.get(type);
+            write(writer, //
+                "\n  '", //
+                type, //
+                "' : {\n  ", //
+                "\n  ", //
+                "},");
         }
-        writer.write("  }\n");
-        writer.write("}\n\n");
 
-        List<String> strings = this.getStrings();
+        write(writer, //
+            "\n\n", //
+            "  Style(bibDB, bibWriter, bibProcessor) {\n", //
+            "    this.bibDB = bibDB\n", //
+            "    this.bibWriter = bibWriter\n", //
+            "    this.bibProcessor = bibProcessor\n", //
+            "  }\n");
+
+        linkData.writeMethods(writer);
+
+        for (GFunction fct : functionList) {
+            fct.print(writer, "\n" + INDENT);
+        }
+
+        List<String> strings = this.getMacroNames();
         if (!strings.isEmpty()) {
             writer.write("  {\n");
             for (String s : strings) {
-                writer.write("  ");
-                writer.write(s); // TODO ?
-                writer.write(": \"");
-                writer.write(GString.translate(getMacro(s)));
-                writer.write("\",\n");
+                write(writer, //
+                    INDENT, INDENT, //
+                    s, // TODO ?
+                    ": ", //
+                    GString.translate(getMacro(s)), //
+                    ",\n");
             }
-            writer.write("].each { name, value ->\n");
-            writer.write("    bibDB.bst_storeString(name, value)\n");
-            writer.write("}\n");
+            write(writer, //
+                INDENT, //
+                "].each { name, value ->\n", //
+                INDENT, //
+                INDENT, //
+                "bibDB.bst_storeString(name, value)\n", //
+                INDENT, //
+                "}\n");
         }
-        writer.write("new Style(bibDB, bibWriter, bibProcessor).run()\n");
+        writer
+            .write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).run()\n");
+    }
+
+    /**
+     * Write several arguments to a writer.
+     * 
+     * @param writer the writer
+     * @param args the arguments to write
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void write(Writer writer, String... args) throws IOException {
+
+        for (String a : args) {
+            writer.write(a);
+        }
     }
 
 }

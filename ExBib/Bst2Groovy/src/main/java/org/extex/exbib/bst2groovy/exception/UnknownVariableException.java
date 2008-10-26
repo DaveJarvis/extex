@@ -16,28 +16,30 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
-
-import org.extex.exbib.bst2groovy.data.BinaryInfix;
-import org.extex.exbib.bst2groovy.data.GCode;
+package org.extex.exbib.bst2groovy.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that the variable type could not be determined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Equals extends BinaryInfix {
+public class UnknownVariableException extends RuntimeException {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
      * 
-     * @param a
-     * @param b
+     * @param message the name of the variable
      */
-    public Equals(GCode a, GCode b) {
+    public UnknownVariableException(String message) {
 
-        super(a, b, "==", 700);
+        super("Unable to determine variable type for " + message);
     }
 
 }

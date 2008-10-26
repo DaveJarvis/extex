@@ -16,28 +16,35 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.builtin;
+package org.extex.exbib.bst2groovy.data.processor;
 
-import org.extex.exbib.bst2groovy.data.BinaryInfix;
-import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.core.bst.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a (partial) evaluator.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Less extends BinaryInfix {
+public interface Evaluator {
 
     /**
-     * Creates a new object.
+     * Evaluate a token.
      * 
-     * @param a
-     * @param b
+     * @param token the token to evaluate
+     * @param entryRefernce the entry reference
+     * @param state the state
      */
-    public Less(GCode a, GCode b) {
+    void evaluate(Token token, EntryRefernce entryRefernce, ProcessorState state);
 
-        super(a, b, "<", 700);
-    }
+    /**
+     * Partially evaluate a token.
+     * 
+     * @param token the token to evaluate
+     * @param entryRefernce the entry reference
+     * @param state the state
+     */
+    void evaluatePartially(Token token, EntryRefernce entryRefernce,
+            ProcessorState state);
 
 }

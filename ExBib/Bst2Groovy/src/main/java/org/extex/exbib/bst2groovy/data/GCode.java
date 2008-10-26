@@ -21,10 +21,10 @@ package org.extex.exbib.bst2groovy.data;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.types.GType;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes some code in the target language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,7 +36,7 @@ public interface GCode {
      * 
      * @return the type
      */
-    GType getType();
+    ReturnType getType();
 
     /**
      * Print the expression to a writer.
