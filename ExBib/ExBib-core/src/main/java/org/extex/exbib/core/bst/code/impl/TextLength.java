@@ -98,7 +98,7 @@ public class TextLength extends AbstractCode {
      * 
      * @return the length
      */
-    private int textLength(String s) {
+    public int textLength(String s) {
 
         int result = 0;
 
