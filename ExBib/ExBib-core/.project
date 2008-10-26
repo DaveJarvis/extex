@@ -1,6 +1,7 @@
 <projectDescription>
   <name>ExBib-core</name>
-  <comment>This is the ExBib core.</comment>
+  <comment>This is the ExBib core component. It provides the functionality of ExBib to
+    be used from Java.</comment>
   <projects>
     <project>ExTeX-resource</project>
   </projects>
@@ -8,12 +9,8 @@
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
     </buildCommand>
-    <buildCommand>
-      <name>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</name>
-    </buildCommand>
   </buildSpec>
   <natures>
     <nature>org.eclipse.jdt.core.javanature</nature>
-    <nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
   </natures>
 </projectDescription>
