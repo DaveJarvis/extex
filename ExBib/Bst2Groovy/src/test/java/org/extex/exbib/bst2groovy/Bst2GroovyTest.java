@@ -18,17 +18,26 @@
 
 package org.extex.exbib.bst2groovy;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
+import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
-import org.extex.resource.ResourceFinderFactory;
+import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for Bst2Groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,30 +45,871 @@ import org.junit.Test;
 public class Bst2GroovyTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * TODO gene: missing JavaDoc.
+     * 
+     */
+    public static final class TestResourceFinder implements ResourceFinder {
+
+        /**
+         * The field <tt>content</tt> contains the content.
+         */
+        private String content = "";
+
+        /**
+         * Creates a new object.
+         * 
+         * @param content the content
+         */
+        public TestResourceFinder(String content) {
+
+            this.content = content;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
+         */
+        public void enableTracing(boolean flag) {
+
+            //
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
+         *      java.lang.String)
+         */
+        public NamedInputStream findResource(String name, String type)
+                throws ConfigurationException {
+
+            return new NamedInputStream(new ByteArrayInputStream(content
+                .getBytes()), name);
+        }
+    }
+
+    /**
+     * The field <tt>POST_RUN</tt> contains the ...
+     */
+    private static final String POST_RUN =
+            "  }\n" + "\n" + "}\n" + "\n"
+                    + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
+
+    /**
+     * The field <tt>RUN</tt> contains the ...
+     */
+    private static final String RUN = "\n" + "  def run() {\n";
+
+    /**
+     * The field <tt>HEAD</tt> contains the ...
+     */
+    private static final String HEAD =
+            "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n"
+                    + "    this.bibDB = bibDB\n"
+                    + "    this.bibWriter = bibWriter\n"
+                    + "    this.bibProcessor = bibProcessor\n";
+
+    /**
+     * The field <tt>POSTFIX</tt> contains the ...
+     */
+    private static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
+
+    /**
+     * The field <tt>PREFIX</tt> contains the ...
+     */
+    private static final String PREFIX =
+            "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n";
+
+    /**
+     * Run a test.
+     * 
+     * @param input the input
+     * @param output the output
+     * 
+     * @throws ExBibImpossibleException in case of an error
+     * @throws ExBibBstNotFoundException in case of an error
+     * @throws ExBibException in case of an error
+     * @throws IOException in case of an error
+     */
+    private void run(String input, String output)
+            throws ExBibImpossibleException,
+                ExBibBstNotFoundException,
+                ExBibException,
+                IOException {
+
+        Bst2Groovy bst2Groovy = new Bst2Groovy();
+        Logger logger = Logger.getLogger(getClass().getName());
+        logger.setLevel(Level.SEVERE);
+        ConsoleHandler handler = new ConsoleHandler();
+        handler.setLevel(Level.ALL);
+        logger.addHandler(handler);
+        ResourceFinder finder = new TestResourceFinder(input);
+        bst2Groovy.setResourceFinder(finder);
+        Writer w = new StringWriter();
+        bst2Groovy.run(w, "test");
+        w.flush();
+        assertEquals(output, w.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * <testcase> Test the empty program. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void test1() throws Exception {
 
-        Bst2Groovy bst2Groovy = new Bst2Groovy();
-        ResourceFinderFactory rff = new ResourceFinderFactory();
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.setLevel(Level.SEVERE);
-        ConsoleHandler handler = new ConsoleHandler();
-        handler.setLevel(Level.ALL);
-        logger.addHandler(handler);
-        ResourceFinder finder =
-                rff.createResourceFinder(ConfigurationFactory
-                    .newInstance("config/path/testFinder"), logger, System
-                    .getProperties(), null);
-        finder.enableTracing(true);
-        bst2Groovy.setResourceFinder(finder);
-        bst2Groovy.addBibliographyStyle("a.bst");
-        bst2Groovy.load();
-        // OutputStreamWriter w = new OutputStreamWriter(System.out);
-        // bst2Groovy.write(w);
-        // w.close();
+        run("", PREFIX + "\n\n" + POSTFIX);
     }
+
+    /**
+     * <testcase> Test that the code for chr.to.int$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testChrToInt1() throws Exception {
+
+        run(
+            "function{abc}{chr.to.int$}", //
+            PREFIX
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  int chrToInt(String s) {\n"
+                    + "    if (s.length() != 1) {\n"
+                    + "      bstProcessor.warning(\"argument to chrToInt has wrong length\")\n"
+                    + "    }\n" + "    return s.charAt(0)\n" + "  }\n" + "\n"
+                    + "  int _abc(v1) {\n" + "    return chrToInt(v1)\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for cite$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCite1() throws Exception {
+
+        run("function{abc}{cite$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  String _abc(entry) {\n"
+                    + "    return entry.getKey()\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat1() throws Exception {
+
+        run("function{abc}{\"x\" *}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc(v1) {\n"
+                    + "    return v1 + \"x\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for duplicate$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDuplicate1() throws Exception {
+
+        run("function{abc}{#2 duplicate$ +}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc() {\n"
+                    + "    return 2 + 2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for duplicate$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDuplicate2() throws Exception {
+
+        run("function{abc}{\"2\" duplicate$ *}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc() {\n"
+                    + "    return \"2\" + \"2\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that empty$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEmpty1() throws Exception {
+
+        run("function{abc}{empty$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  boolean isEmpty(String s) {\n"
+                    + "    return s == null || s.trim().equals(\"\")\n"
+                    + "  }\n" + "\n" + "  int _abc(v1) {\n"
+                    + "    return isEmpty(v1)\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the entry itself does not add code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry1() throws Exception {
+
+        run("entry {a b c}{}{}", //
+            PREFIX + "\n\n" + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that entry reading is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry2() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{a}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  String _abc(entry) {\n"
+                    + "    return entry.get(\"a\")\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that entry writing is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry3() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{'a := #0}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  int _abc(entry, v1) {\n"
+                    + "    entry.set(\"a\", v1)\n" + "    return 0\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that entry string reading is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry4() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{b}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(entry) {\n"
+                    + "    return entry.getLocal(\"b\").getValue()\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that entry string writing is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry5() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{'b := #0}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  int _abc(entry, v1) {\n"
+                    + "    entry.setLocal(\"b\", v1)\n" + "    return 0\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that entry integer reading is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry6() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{c}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  String _abc(entry) {\n"
+                    + "    return entry.getLocal(\"c\").getValue()\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that entry integer writing is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEntry7() throws Exception {
+
+        run("entry{a}{b}{c}function{abc}{'c := #0}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  int _abc(entry, v1) {\n"
+                    + "    entry.setLocal(\"c\", v1)\n" + "    return 0\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that = is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEq1() throws Exception {
+
+        run("function{abc}{#1 =}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1) {\n"
+                    + "    return v1 == 1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExecute1() throws Exception {
+
+        run("entry {a b c}{}{}\nexecute{skip$}",//
+            PREFIX + "\n\n" + HEAD + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that an empty function is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction1() throws Exception {
+
+        run("function{abc}{}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc() {\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function with an argument is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction2() throws Exception {
+
+        run("function{abc}{pop$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc(v1) {\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function with an integer return type is created
+     * properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction3() throws Exception {
+
+        run("function{abc}{#123}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  int _abc() {\n    return 123\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function with a String return type is created
+     * properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction4() throws Exception {
+
+        run("function{abc}{\"abc\"}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  String _abc() {\n    return \"abc\"\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that > is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGt1() throws Exception {
+
+        run("function{abc}{>}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1, v2) {\n"
+                    + "    return v1 > v2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf1() throws Exception {
+
+        run("function{abc}{#1 'skip$ 'skip$ if$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc() {\n"
+                    + "    if (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf2() throws Exception {
+
+        run(
+            "function{abc}{#1 {#2} {#3} if$}", //
+            PREFIX
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  int _abc() {\n"
+                    + "    int v1\n"
+                    + "    if (1) {\n      v1 = 2\n    } {\n      v1 = 3\n    }\n"
+                    + "    return v1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that one integer is properly initialized. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntegers1() throws Exception {
+
+        run("integers {abc}", PREFIX + "  private int _abc = 0\n\n\n" + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that three integers are properly initialized. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntegers2() throws Exception {
+
+        run("integers {a b c}", //
+            PREFIX + "  private int _a = 0\n" + "  private int _b = 0\n"
+                    + "  private int _c = 0\n\n\n" + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that reading an integer variable works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntegers3() throws Exception {
+
+        run("integers{a} function{abc}{a}", //
+            PREFIX + "  private int _a = 0\n" + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  int _abc() {\n" + "    return _a\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that writing an integer variable works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntegers4() throws Exception {
+
+        run("integers{a} function{abc}{'a :=}", //
+            PREFIX + "  private int _a = 0\n" + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  def _abc(v1) {\n" + "    _a = v1\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for int.to.chr$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntToChr1() throws Exception {
+
+        run("function{abc}{int.to.chr$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc(v1) {\n"
+                    + "    return Character.toString(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for int.to.str$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIntToStr1() throws Exception {
+
+        run("function{abc}{int.to.str$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc(v1) {\n"
+                    + "    return Integer.toString(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIterate1() throws Exception {
+
+        run("iterate{call.type$}",//
+            PREFIX + "\n\n" + HEAD + "  }\n\n"
+                    + "  def callType(Entry entry) {\n"
+                    + "      var t = types.get(entry.getType())\n"
+                    + "      if (t == null) {\n"
+                    + "        t = types.get('default.type')\n" + "      }\n"
+                    + "      t(entry)\n" + "  }\n" + RUN + "    bibDB.each {\n"
+                    + "      callType(it)\n" + "    )\n" + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that < is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLt1() throws Exception {
+
+        run("function{abc}{<}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1, v2) {\n"
+                    + "    return v1 < v2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that - is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMinus1() throws Exception {
+
+        run("function{abc}{-}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1, v2) {\n"
+                    + "    return v2 - v1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that - is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMinus2() throws Exception {
+
+        run("function{abc}{#1 #2 -}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc() {\n"
+                    + "    return 1 - 2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that missing$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMissing1() throws Exception {
+
+        run("function{abc}{missing$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1) {\n"
+                    + "    return v1 == null\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that newline$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNewline1() throws Exception {
+
+        run("function{abc}{newline$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc() {\n"
+                    + "    bibWriter.println()\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that + is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPlus1() throws Exception {
+
+        run("function{abc}{+}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(v1, v2) {\n"
+                    + "    return v2 + v1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that + is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPlus2() throws Exception {
+
+        run("function{abc}{#1 #2 +}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc() {\n"
+                    + "    return 1 + 2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that preamble$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPreamble1() throws Exception {
+
+        run("function{abc}{preamble$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc() {\n"
+                    + "    return bibDB.getPreamble()\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for purify$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPurify1() throws Exception {
+
+        run("function{abc}{purify$}", //
+            "import org.extex.exbib.core.bst.code.impl.Purify\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n"
+                    + "  private static Purify purifyCode = new Purify()\n"
+                    + "\n" + "  String _abc(v1) {\n"
+                    + "    return purifyCode.purify(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that READ just adds a comment. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRead1() throws Exception {
+
+        run("read", PREFIX + "\n\n" + HEAD + "  }\n" + RUN + "    // read()\n"
+                + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testReverse1() throws Exception {
+
+        run("reverse{call.type$}",//
+            PREFIX + "\n\n" + HEAD + "  }\n\n"
+                    + "  def callType(Entry entry) {\n"
+                    + "      var t = types.get(entry.getType())\n"
+                    + "      if (t == null) {\n"
+                    + "        t = types.get('default.type')\n" + "      }\n"
+                    + "      t(entry)\n" + "  }\n" + RUN
+                    + "    bibDB.getEntries().reverse().each {\n"
+                    + "      callType(it)\n" + "    )\n" + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that SORT generates proper code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSort1() throws Exception {
+
+        run("sort", PREFIX + "\n\n" + HEAD + "  }\n" + RUN
+                + "    bibDB.sort()\n" + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that one String is properly initialized. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testString1() throws Exception {
+
+        run("strings {abc}", PREFIX + "\n  private String _abc = \"\"\n\n"
+                + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that three Strings are properly initialized. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testString2() throws Exception {
+
+        run("strings {a b c}", //
+            PREFIX + "\n  private String _a = \"\"\n"
+                    + "  private String _b = \"\"\n"
+                    + "  private String _c = \"\"\n\n" + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that reading a String variable works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testStrings3() throws Exception {
+
+        run("strings{a} function{abc}{a}", //
+            PREFIX + "\n  private String _a = \"\"\n" + "\n" + HEAD + "  }\n"
+                    + "\n" + "  String _abc() {\n" + "    return _a\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that writing a String variable works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testStrings4() throws Exception {
+
+        run("strings{a} function{abc}{'a :=}", //
+            PREFIX + "\n  private String _a = \"\"\n" + "\n" + HEAD + "  }\n"
+                    + "\n" + "  def _abc(v1) {\n" + "    _a = v1\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSwap1() throws Exception {
+
+        run("function{abc}{#1 #2 swap$ +}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc() {\n"
+                    + "    return 2 + 1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSwap2() throws Exception {
+
+        run("function{abc}{\"1\" \"2\" swap$ *}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc() {\n"
+                    + "    return \"2\" + \"1\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for type$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testType1() throws Exception {
+
+        run("function{abc}{type$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
+                    + "  String _abc(entry) {\n"
+                    + "    return entry.getType()\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that warning$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWarning1() throws Exception {
+
+        run("function{abc}{warning$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc(v1) {\n"
+                    + "    bibProcessor.warning(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for width$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWidth1() throws Exception {
+
+        run("function{abc}{width$}", //
+            "import org.extex.exbib.core.bst.code.impl.Width\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n"
+                    + "  private static Width widthCode = new Width()\n" + "\n"
+                    + "  int _abc(v1) {\n" + "    return widthCode.width(v1)\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite1() throws Exception {
+
+        run("function{abc}{write$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc(v1) {\n"
+                    + "    bibWriter.print(v1)\n" + "  }\n" + RUN + POST_RUN);
+    }
+
 }
