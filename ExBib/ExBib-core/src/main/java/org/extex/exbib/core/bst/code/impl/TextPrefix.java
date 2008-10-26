@@ -64,38 +64,6 @@ import org.extex.exbib.core.io.Locator;
 public class TextPrefix extends AbstractCode {
 
     /**
-     * Creates a new object.
-     */
-    public TextPrefix() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public TextPrefix(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        int len = processor.popInteger(locator).getInt();
-        String s = processor.popString(locator).getValue();
-        processor.push(new TString(textPrefix(s, len), locator));
-    }
-
-    /**
      * Compute the text prefix like the B<small>IB</small>T<sub>E</sub>X
      * built-in function <code>text.prefix$</code>
      * 
@@ -104,7 +72,7 @@ public class TextPrefix extends AbstractCode {
      * 
      * @return the prefix
      */
-    private String textPrefix(String s, int length) {
+    private static String textPrefix(String s, int length) {
 
         int len = length;
         int level = 0;
@@ -144,6 +112,38 @@ public class TextPrefix extends AbstractCode {
 
         String value = sb.toString();
         return value;
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public TextPrefix() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the function name in the processor context
+     */
+    public TextPrefix(String name) {
+
+        super(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     */
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
+            throws ExBibException {
+
+        int len = processor.popInteger(locator).getInt();
+        String s = processor.popString(locator).getValue();
+        processor.push(new TString(textPrefix(s, len), locator));
     }
 
 }
