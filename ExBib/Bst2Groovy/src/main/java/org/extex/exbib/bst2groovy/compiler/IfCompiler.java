@@ -1,0 +1,253 @@
+/*
+ * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+
+package org.extex.exbib.bst2groovy.compiler;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.extex.exbib.bst2groovy.Bst2Groovy;
+import org.extex.exbib.bst2groovy.Compiler;
+import org.extex.exbib.bst2groovy.LinkContainer;
+import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.GCodeContainer;
+import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.local.GLocal;
+import org.extex.exbib.bst2groovy.data.local.InitLocal;
+import org.extex.exbib.bst2groovy.data.local.SetLocal;
+import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.Evaluator;
+import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+
+/**
+ * This class implements the analyzer for an if-then-else instruction.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
+public class IfCompiler implements Compiler {
+
+    /**
+     * This inner class is the expression for a if-then-else in the target
+     * program.
+     */
+    private static class If extends VoidGCode {
+
+        /**
+         * The field <tt>arg</tt> contains the condition.
+         */
+        private GCode cond;
+
+        /**
+         * The field <tt>thenBranch</tt> contains the then branch.
+         */
+        private GCode thenBranch;
+
+        /**
+         * The field <tt>elseBranch</tt> contains the else branch.
+         */
+        private GCode elseBranch;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param cond the condition
+         * @param thenBranch the then branch
+         * @param elseBranch the else branch
+         */
+        private If(GCode cond, GCode thenBranch, GCode elseBranch) {
+
+            this.cond = cond;
+            this.thenBranch = thenBranch;
+            this.elseBranch = elseBranch;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         *      java.lang.String)
+         */
+        public void print(Writer writer, String prefix) throws IOException {
+
+            String prefix2 = prefix + Bst2Groovy.INDENT;
+            writer.write(prefix);
+            writer.write("if (");
+            cond.print(writer, prefix);
+            writer.write(") {");
+            thenBranch.print(writer, prefix2);
+            writer.write(prefix);
+            if (elseBranch instanceof GCodeContainer
+                    && !((GCodeContainer) elseBranch).isEmpty()) {
+                writer.write("} {");
+                elseBranch.print(writer, prefix2);
+                writer.write(prefix);
+            }
+            writer.write("}");
+        }
+    }
+
+    /**
+     * Adjust a stack to a given size by optionally popping elements and pushing
+     * them back. The open ended stack will create locals for the missing
+     * elements.
+     * 
+     * @param stack the stack
+     * @param size the target size
+     */
+    public static void adjustStackSize(ProcessorState stack, int size) {
+
+        List<GCode> ts = stack.getStack();
+        List<GCode> diff = new ArrayList<GCode>();
+        for (int i = size - ts.size(); i > 0; i--) {
+            diff.add(stack.pop());
+        }
+        for (int i = diff.size() - 1; i >= 0; i--) {
+            stack.push(diff.get(i));
+        }
+    }
+
+    /**
+     * Adjust the two argument stacks to the same size.
+     * 
+     * @param tstack the first stack
+     * @param estack the second stack
+     * 
+     * @return the final size
+     */
+    public static int adjustStackSize(ProcessorState tstack,
+            ProcessorState estack) {
+
+        List<GCode> ts = tstack.getStack();
+        List<GCode> es = estack.getStack();
+        if (estack.size() != ts.size()) {
+            adjustStackSize(tstack, es.size());
+            adjustStackSize(estack, ts.size());
+        }
+        return ts.size();
+    }
+
+    /**
+     * Unify two lists of variables.
+     * 
+     * @param l1 the first list
+     * @param l2 the second list
+     * 
+     * @return the longer list
+     */
+    public static List<GLocal> unify(List<GLocal> l1, List<GLocal> l2) {
+
+        int s1 = l1.size();
+        int s2 = l2.size();
+        if (s1 >= s2) {
+            for (int i = 0; i < s2; i++) {
+                l1.get(i).unify(l2.get(i));
+            }
+            return l1;
+        }
+        for (int i = 0; i < s1; i++) {
+            l2.get(i).unify(l1.get(i));
+        }
+        return l2;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
+     *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
+     *      org.extex.exbib.bst2groovy.LinkContainer)
+     */
+    public void evaluate(EntryRefernce entry, ProcessorState state,
+            Evaluator evaluator, LinkContainer linkData) {
+
+        GCode e = state.pop();
+        GCode t = state.pop();
+        GCode cond = state.pop();
+
+        //
+        ProcessorState thenState = new ProcessorState();
+        if (t instanceof CodeBlock) {
+            evaluator.evaluate(((CodeBlock) t).getToken(), entry, thenState);
+        } else {
+            throw new RuntimeException("syntax error in then for if$");
+        }
+        ProcessorState elseState = new ProcessorState();
+        if (e instanceof CodeBlock) {
+            evaluator.evaluate(((CodeBlock) e).getToken(), entry, elseState);
+        } else {
+            throw new RuntimeException("syntax error in else for if$");
+        }
+        //
+        int size = adjustStackSize(thenState, elseState);
+        //
+        List<GLocal> locals =
+                unify(elseState.getLocals(), thenState.getLocals());
+        for (GLocal x : locals) {
+            GCode v = state.pop();
+            if (v instanceof GLocal) {
+                ((GLocal) v).unify(x);
+            } else {
+                state.add(new InitLocal(x, v));
+            }
+        }
+
+        ProcessorState os = new ProcessorState();
+
+        if (size > 0) {
+            thenState.eliminateSideEffects();
+            elseState.eliminateSideEffects();
+            List<GCode> ts = thenState.getStack();
+            List<GCode> es = elseState.getStack();
+            for (GCode x : ts) {
+                os.pop();
+            }
+            int i = 0;
+            for (GLocal x : os.getLocals()) {
+                GCode tsi = ts.get(i);
+                GCode esi = es.get(i);
+                if (tsi instanceof GLocal) {
+                    ((GLocal) tsi).unify(x);
+                    // if (esi instanceof GLocal) {
+                    // ((GLocal) esi).unify(x);
+                    // } else {
+                    elseState.add(new SetLocal(x, esi));
+                    // }
+                } else if (esi instanceof GLocal) {
+                    ((GLocal) esi).unify(x);
+                    thenState.add(new SetLocal(x, tsi));
+                } else {
+                    state.add(new InitLocal(x, null));
+                    thenState.add(new SetLocal(x, tsi));
+                    elseState.add(new SetLocal(x, esi));
+                }
+            }
+        }
+
+        state.add(new If(cond, thenState.getCode(), elseState.getCode()));
+
+        for (GLocal x : os.getLocals()) {
+            state.push(x);
+        }
+    }
+
+}
