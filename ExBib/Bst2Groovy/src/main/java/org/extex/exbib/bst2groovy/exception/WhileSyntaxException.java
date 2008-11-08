@@ -24,7 +24,7 @@ package org.extex.exbib.bst2groovy.exception;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CommandWithoutEntryException extends Bst2GroovyException {
+public class WhileSyntaxException extends Bst2GroovyException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,13 +35,13 @@ public class CommandWithoutEntryException extends Bst2GroovyException {
     /**
      * Creates a new object.
      * 
-     * @param command the name of the command
-     * @param message the name of the variable
+     * @param cond the indicator whether the exception applies to the condition
+     *        or the body
      */
-    public CommandWithoutEntryException(String command, String message) {
+    public WhileSyntaxException(boolean cond) {
 
-        super("Invoking " + command
-                + " on a function which can not cope with an entry: " + message);
+        super("syntax error in " + (cond ? "condition" : "body")
+                + " for while$");
     }
 
 }

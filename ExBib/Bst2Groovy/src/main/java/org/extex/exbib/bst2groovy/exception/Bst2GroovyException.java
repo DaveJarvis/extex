@@ -19,12 +19,12 @@
 package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This exception signals that the code passed to a command is not proper.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CommandWithoutEntryException extends Bst2GroovyException {
+public class Bst2GroovyException extends RuntimeException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,13 +35,43 @@ public class CommandWithoutEntryException extends Bst2GroovyException {
     /**
      * Creates a new object.
      * 
-     * @param command the name of the command
-     * @param message the name of the variable
      */
-    public CommandWithoutEntryException(String command, String message) {
+    public Bst2GroovyException() {
 
-        super("Invoking " + command
-                + " on a function which can not cope with an entry: " + message);
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message the message
+     */
+    public Bst2GroovyException(String message) {
+
+        super(message);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message
+     * @param cause
+     */
+    public Bst2GroovyException(String message, Throwable cause) {
+
+        super(message, cause);
+        // TODO gene: Bst2GroovyException constructor unimplemented
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param cause
+     */
+    public Bst2GroovyException(Throwable cause) {
+
+        super(cause);
+        // TODO gene: Bst2GroovyException constructor unimplemented
     }
 
 }

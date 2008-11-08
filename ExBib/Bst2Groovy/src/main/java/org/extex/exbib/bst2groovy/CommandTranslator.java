@@ -245,9 +245,11 @@ public class CommandTranslator {
                 throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithReturnException("execute", literal
+                    .getValue());
             } else if (state.getLocals().size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithArgumentsException("execute", literal
+                    .getValue());
             }
             code.addAll(state.getCode());
         }

@@ -24,7 +24,7 @@ package org.extex.exbib.bst2groovy.exception;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ComplexFunctionException extends RuntimeException {
+public class ComplexFunctionException extends Bst2GroovyException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for

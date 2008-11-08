@@ -34,6 +34,7 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
@@ -207,13 +208,13 @@ public class IfCompiler implements Compiler {
         if (t instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) t).getToken(), entry, thenState);
         } else {
-            throw new RuntimeException("syntax error in then for if$");
+            throw new IfSyntaxException("then");
         }
         ProcessorState elseState = new ProcessorState();
         if (e instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) e).getToken(), entry, elseState);
         } else {
-            throw new RuntimeException("syntax error in else for if$");
+            throw new IfSyntaxException("else");
         }
         //
         int size = adjustStackSize(thenState, elseState);

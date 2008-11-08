@@ -24,7 +24,7 @@ package org.extex.exbib.bst2groovy.exception;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CommandWithoutEntryException extends Bst2GroovyException {
+public class ChrToIntLengthException extends Bst2GroovyException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,13 +35,11 @@ public class CommandWithoutEntryException extends Bst2GroovyException {
     /**
      * Creates a new object.
      * 
-     * @param command the name of the command
-     * @param message the name of the variable
+     * @param message the length
      */
-    public CommandWithoutEntryException(String command, String message) {
+    public ChrToIntLengthException(String message) {
 
-        super("Invoking " + command
-                + " on a function which can not cope with an entry: " + message);
+        super("Argument of chr.to.int$ has wrong length: " + message);
     }
 
 }

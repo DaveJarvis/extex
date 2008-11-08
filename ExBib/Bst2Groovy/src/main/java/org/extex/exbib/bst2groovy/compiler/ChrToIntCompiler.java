@@ -31,6 +31,7 @@ import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.exception.ChrToIntLengthException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
@@ -104,8 +105,7 @@ public class ChrToIntCompiler implements Compiler {
         if (a instanceof GStringConstant) {
             String s = ((GStringConstant) a).getValue();
             if (s.length() != 1) {
-                throw new RuntimeException(
-                    "Argument of chr.to.int$ has wrong length: " + s);
+                throw new ChrToIntLengthException(s);
             }
             state.push(new GIntegerConstant(s.charAt(0)));
 

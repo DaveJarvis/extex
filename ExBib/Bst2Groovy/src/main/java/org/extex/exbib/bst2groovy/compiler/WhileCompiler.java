@@ -33,6 +33,8 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.exception.WhileComplexException;
+import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
@@ -129,12 +131,11 @@ public class WhileCompiler implements Compiler {
             evaluator.evaluate(((CodeBlock) cond).getToken(), entryRefernce,
                 condState);
         } else {
-            throw new RuntimeException("syntax error in condition for while$");
+            throw new WhileSyntaxException(true);
         }
         GCode condExpr;
         if (condState.size() - condState.getLocals().size() != 1) {
-            throw new RuntimeException("complex condition for while$ "
-                    + condState.toString());
+            throw new WhileComplexException(true, condState.toString());
         }
         condExpr = condState.pop();
         ProcessorState bodyState = new ProcessorState();
@@ -142,13 +143,12 @@ public class WhileCompiler implements Compiler {
             evaluator.evaluate(((CodeBlock) body).getToken(), entryRefernce,
                 bodyState);
         } else {
-            throw new RuntimeException("syntax error in body for while$");
+            throw new WhileSyntaxException(false);
         }
 
         List<GLocal> bl = bodyState.getLocals();
         if (bodyState.size() > bl.size()) {
-            throw new RuntimeException("complex body for while$ "
-                    + bodyState.toString());
+            throw new WhileComplexException(false, bodyState.toString());
         }
         for (GLocal x : bl) {
             bodyState.add(new SetLocal(x, bodyState.pop()));

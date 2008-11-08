@@ -24,7 +24,7 @@ package org.extex.exbib.bst2groovy.exception;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnknownVariableException extends RuntimeException {
+public class UnknownVariableException extends Bst2GroovyException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
