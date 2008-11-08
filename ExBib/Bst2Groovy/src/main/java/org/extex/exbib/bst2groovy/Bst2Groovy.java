@@ -182,7 +182,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
          */
         public void visitInteger(TInteger integer, Object... args) {
 
-            ((ProcessorState) args[1]).push(new GIntegerConstant(integer.getInt()));
+            ((ProcessorState) args[1]).push(new GIntegerConstant(integer
+                .getInt()));
         }
 
         /**
@@ -319,7 +320,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                  */
                 public void visitInteger(TInteger integer, Object... args) {
 
-                    ((ProcessorState) args[1]).push(new GIntegerConstant(integer.getInt()));
+                    ((ProcessorState) args[1]).push(new GIntegerConstant(
+                        integer.getInt()));
                 }
 
                 /**
@@ -573,7 +575,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         GFunction function = new GFunction(returnValue, //
             GFunction.translate(name), //
-            state.getLocals(), state.getCode(), entry.isUsed());
+            state.getLocals(), state.getCode(), entry);
         functionList.add(function);
         compilers.put(name, function);
         if (function.needsEntry() && function.getType() == null) {
@@ -674,7 +676,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         CodeWriter w = new CodeWriter(writer);
         functionList.add(new GFunction(null, "run", new ArrayList<GLocal>(),
-            new CommandTranslator(this).translate(this), false));
+            new CommandTranslator(this).translate(this), new EntryRefernce(
+                "entry")));
 
         writeImports(w);
         writeHead(w);

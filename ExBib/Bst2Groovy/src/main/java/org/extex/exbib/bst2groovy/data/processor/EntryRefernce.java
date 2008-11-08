@@ -50,7 +50,17 @@ public class EntryRefernce {
     }
 
     /**
-     * Getter for the name.
+     * Getter for the name. The usage is not recorded.
+     * 
+     * @return the name
+     */
+    public String get() {
+
+        return name;
+    }
+
+    /**
+     * Getter for the name. The usage is recorded.
      * 
      * @return the name
      */

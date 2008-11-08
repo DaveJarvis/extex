@@ -111,7 +111,7 @@ public class GFunction implements Compiler, GCode {
             }
             writer.write(name, "(");
             boolean first = true;
-            if (needsEntry) {
+            if (entry.isUsed()) {
                 first = false;
                 writer.write(entryName);
             }
@@ -146,7 +146,7 @@ public class GFunction implements Compiler, GCode {
             buffer.append(name);
             buffer.append("(");
             boolean first = true;
-            if (needsEntry) {
+            if (entry.isUsed()) {
                 first = false;
                 buffer.append(entryName);
             }
@@ -232,8 +232,8 @@ public class GFunction implements Compiler, GCode {
         t = "_" + value.replaceAll("[^a-zA-Z0-9]", "_");
         String result = t;
         int i = 2;
-        while (!translationMap.containsValue(result)) {
-            result = t + Integer.toString(i);
+        while (translationMap.containsValue(result)) {
+            result = t + Integer.toString(i++);
         }
         translationMap.put(value, result);
         return t;
@@ -243,12 +243,6 @@ public class GFunction implements Compiler, GCode {
      * The field <tt>name</tt> contains the method name.
      */
     private String name;
-
-    /**
-     * The field <tt>needsEntry</tt> contains the indicator whether the entry is
-     * needed.
-     */
-    private boolean needsEntry;
 
     /**
      * The field <tt>code</tt> contains the body code.
@@ -266,22 +260,27 @@ public class GFunction implements Compiler, GCode {
     private List<GLocal> parameters;
 
     /**
+     * The field <tt>entry</tt> contains the the entry.
+     */
+    private EntryRefernce entry;
+
+    /**
      * Creates a new object.
      * 
      * @param returnValue the return value
      * @param name the name
      * @param parameters the list of parameters
      * @param code the body code
-     * @param needsEntry the indicator whether an entry is needed
+     * @param entry the indicator whether an entry is needed
      */
     public GFunction(GCode returnValue, String name, List<GLocal> parameters,
-            GCode code, boolean needsEntry) {
+            GCode code, EntryRefernce entry) {
 
         this.returnValue = returnValue;
         this.name = name;
         this.parameters = parameters;
         this.code = code;
-        this.needsEntry = needsEntry;
+        this.entry = entry;
     }
 
     /**
@@ -292,7 +291,7 @@ public class GFunction implements Compiler, GCode {
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entry, ProcessorState state,
+    public void evaluate(EntryRefernce entryRef, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         List<GCode> args;
@@ -305,11 +304,11 @@ public class GFunction implements Compiler, GCode {
         ReturnType t =
                 returnValue == null ? ReturnType.CODE : returnValue.getType();
         if (t == ReturnType.STRING || t == ReturnType.INT) {
-            state.push(new Call((needsEntry ? entry.getName() : null), false,
-                args));
+            state.push(new Call((entry.isUsed() ? entryRef.getName() : null),
+                false, args));
         } else if (t == ReturnType.CODE) {
-            state.add(new Call((needsEntry ? entry.getName() : null), true,
-                args));
+            state.add(new Call((entry.isUsed() ? entryRef.getName() : null),
+                true, args));
         } else {
             throw new UnknownReturnTypeException(name);
         }
@@ -372,7 +371,7 @@ public class GFunction implements Compiler, GCode {
      */
     public boolean needsEntry() {
 
-        return needsEntry;
+        return entry.isUsed();
     }
 
     /**
@@ -396,9 +395,9 @@ public class GFunction implements Compiler, GCode {
         ReturnType t = (returnValue == null ? null : returnValue.getType());
         writer.write(prefix, t == null ? "def" : t.toString(), " ", name, "(");
         boolean first = true;
-        if (needsEntry) {
+        if (entry.isUsed()) {
             first = false;
-            writer.write("entry"); // TODO use correct entry name
+            writer.write(entry.get());
         }
         for (GCode arg : parameters) {
             if (first) {

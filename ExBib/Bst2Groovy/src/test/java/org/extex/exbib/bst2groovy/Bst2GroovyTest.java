@@ -382,16 +382,10 @@ public class Bst2GroovyTest {
     @Test
     public void testEntry4() throws Exception {
 
-        run(
-            "entry{a}{b}{c}function{abc}{b}", //
-            PREFIX
-                    + "\n\n"
-                    + HEAD
-                    + "  }\n"
-                    + "\n"
-                    + "  int _abc(entry) {\n"
-                    + "    return Integer.parseInt(entry.getLocalString(\"b\"))\n"
-                    + "  }\n" + RUN + POST_RUN);
+        run("entry{a}{b}{c}function{abc}{b}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(entry) {\n"
+                    + "    return entry.getLocalInt(\"b\")\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
