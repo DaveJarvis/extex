@@ -174,9 +174,9 @@ public class GFunction implements Compiler, GCode {
     private static Map<String, String> translationMap = makeTranslationMap();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Make a translation map and initialize it.
      * 
-     * @return
+     * @return a new translation map
      */
     private static Map<String, String> makeTranslationMap() {
 
