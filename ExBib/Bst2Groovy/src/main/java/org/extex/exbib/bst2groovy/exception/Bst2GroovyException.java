@@ -19,7 +19,7 @@
 package org.extex.exbib.bst2groovy.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a base exception for Bst2Groovy.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -49,29 +49,6 @@ public class Bst2GroovyException extends RuntimeException {
     public Bst2GroovyException(String message) {
 
         super(message);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message
-     * @param cause
-     */
-    public Bst2GroovyException(String message, Throwable cause) {
-
-        super(message, cause);
-        // TODO gene: Bst2GroovyException constructor unimplemented
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param cause
-     */
-    public Bst2GroovyException(Throwable cause) {
-
-        super(cause);
-        // TODO gene: Bst2GroovyException constructor unimplemented
     }
 
 }
