@@ -19,9 +19,10 @@
 package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This interface describes some code in the target language.
@@ -39,6 +40,16 @@ public interface GCode {
     ReturnType getType();
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param list the list
+     * @param index the current index
+     * 
+     * @return the next index
+     */
+    int optimize(List<GCode> list, int index);
+
+    /**
      * Print the expression to a writer.
      * 
      * @param writer the target writer
@@ -46,6 +57,6 @@ public interface GCode {
      * 
      * @throws IOException in case of an I/O error
      */
-    void print(Writer writer, String prefix) throws IOException;
+    void print(CodeWriter writer, String prefix) throws IOException;
 
 }

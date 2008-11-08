@@ -20,9 +20,11 @@ package org.extex.exbib.bst2groovy.data.local;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class implements something like a Prolog variable. It has a name and an
@@ -47,9 +49,8 @@ public class GLocal implements GCode {
     private String name;
 
     /**
-     * The field <tt>value</tt> contains the vale to determine the type.
+     * The field <tt>type</tt> contains the return type.
      */
-    // private GCode value = null;
     private ReturnType type;
 
     /**
@@ -98,10 +99,20 @@ public class GLocal implements GCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         if (reference != null) {
             reference.print(writer, prefix);
@@ -131,7 +142,7 @@ public class GLocal implements GCode {
     /**
      * Setter for the type.
      * 
-     * @param type
+     * @param type the type
      */
     public void setType(ReturnType type) {
 
@@ -157,6 +168,28 @@ public class GLocal implements GCode {
      * @param other the other instance to bind to
      */
     public void unify(GLocal other) {
+
+        if (other == this) {
+            return;
+        }
+        if (other.name.compareTo(name) < 0) {
+            other.unifyMe(this);
+            return;
+        }
+
+        if (reference != null) {
+            reference.unify(other);
+        }
+
+        reference = other;
+    }
+
+    /**
+     * Bind this instance to another one.
+     * 
+     * @param other the other instance to bind to
+     */
+    protected void unifyMe(GLocal other) {
 
         if (reference != null) {
             reference.unify(other);

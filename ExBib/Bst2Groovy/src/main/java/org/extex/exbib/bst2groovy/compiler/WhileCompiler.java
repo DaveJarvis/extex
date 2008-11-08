@@ -19,13 +19,12 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.local.InitLocal;
@@ -34,6 +33,8 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for a while instruction.
@@ -47,7 +48,7 @@ public class WhileCompiler implements Compiler {
      * This inner class is the expression for a while loop in the target
      * program.
      */
-    private static class While extends VoidGCode {
+    private static final class While extends VoidGCode {
 
         /**
          * The field <tt>cond</tt> contains the condition code.
@@ -74,10 +75,28 @@ public class WhileCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.VoidGCode#optimize(java.util.List,
+         *      int)
+         */
+        @Override
+        public int optimize(List<GCode> list, int index) {
+
+            if (cond instanceof GCodeContainer) {
+                ((GCodeContainer) cond).optimize();
+            }
+            if (body instanceof GCodeContainer) {
+                ((GCodeContainer) body).optimize();
+            }
+            return index + 1;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
             String prefix2 = prefix + Bst2Groovy.INDENT;
             writer.write(prefix);
@@ -96,7 +115,7 @@ public class WhileCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {

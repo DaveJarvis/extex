@@ -2,11 +2,8 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
-import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
@@ -14,8 +11,11 @@ import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GQuote;
-import org.extex.exbib.bst2groovy.data.types.GString;
+import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.core.bst.FunctionContainer;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.token.Token;
@@ -71,16 +71,13 @@ public final class AssignCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(entry);
-            writer.write(".set(");
-            writer.write(GString.translate(name));
-            writer.write(", ");
+            writer.write(prefix, entry, ".set(", GStringConstant
+                .translate(name), ", ");
             value.print(writer, prefix);
             writer.write(")");
         }
@@ -117,14 +114,12 @@ public final class AssignCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(GFunction.translate(name));
-            writer.write(" = ");
+            writer.write(prefix, GFunction.translate(name), " = ");
             value.print(writer, prefix);
         }
     }
@@ -167,16 +162,13 @@ public final class AssignCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(entry);
-            writer.write(".setLocal(");
-            writer.write(GString.translate(name));
-            writer.write(", ");
+            writer.write(prefix, entry, ".setLocal(", GStringConstant
+                .translate(name), ", ");
             value.print(writer, prefix);
             writer.write(")");
         }
@@ -220,16 +212,13 @@ public final class AssignCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(entry);
-            writer.write(".setLocal(");
-            writer.write(GString.translate(name));
-            writer.write(", ");
+            writer.write(prefix, entry, ".setLocal(", GStringConstant
+                .translate(name), ", ");
             value.print(writer, prefix);
             writer.write(")");
         }
@@ -266,10 +255,10 @@ public final class AssignCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix);
             writer.write(GFunction.translate(name));
@@ -279,18 +268,19 @@ public final class AssignCompiler implements Compiler {
     }
 
     /**
-     * The field <tt>bst2Groovy</tt> contains the reference to the compiler.
+     * The field <tt>functionContainer</tt> contains the reference to the
+     * compiler.
      */
-    private final Bst2Groovy bst2Groovy;
+    private final FunctionContainer functionContainer;
 
     /**
      * Creates a new object.
      * 
-     * @param bst2Groovy
+     * @param functionContainer reference object for getting information
      */
-    public AssignCompiler(Bst2Groovy bst2Groovy) {
+    public AssignCompiler(FunctionContainer functionContainer) {
 
-        this.bst2Groovy = bst2Groovy;
+        this.functionContainer = functionContainer;
     }
 
     /**
@@ -299,7 +289,7 @@ public final class AssignCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
@@ -310,7 +300,7 @@ public final class AssignCompiler implements Compiler {
             throw new UnknownVariableException(q.toString());
         }
         String v = ((GQuote) q).getToken().getValue();
-        Code f = this.bst2Groovy.getFunction(v);
+        Code f = functionContainer.getFunction(v);
 
         if (f instanceof Token) {
             makeAssignment((Token) f, entryRefernce, state, value, v);
@@ -348,4 +338,5 @@ public final class AssignCompiler implements Compiler {
             throw new UnknownVariableException(v);
         }
     }
+
 }

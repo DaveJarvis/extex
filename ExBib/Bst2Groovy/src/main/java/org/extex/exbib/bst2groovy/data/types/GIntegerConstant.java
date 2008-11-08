@@ -16,30 +16,42 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy;
+package org.extex.exbib.bst2groovy.data.types;
 
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
-import org.extex.exbib.bst2groovy.data.processor.Evaluator;
-import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 
 /**
- * This interface describes a compiler.
+ * This class represents an integer constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Compiler {
+public class GIntegerConstant extends GenericCode {
 
     /**
-     * Evaluate in a certain context.
-     * 
-     * @param entryRefernce the entry reference indicator
-     * @param state the state
-     * @param evaluator the evaluator
-     * @param linkData the link data container
+     * The field <tt>value</tt> contains the value.
      */
-    void evaluate(EntryRefernce entryRefernce, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData);
+    private int value;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param value the value
+     */
+    public GIntegerConstant(int value) {
+
+        super(ReturnType.INT, Integer.toString(value), false);
+        this.value = value;
+    }
+
+    /**
+     * Getter for the value.
+     * 
+     * @return the value
+     */
+    public int getValue() {
+
+        return value;
+    }
 
 }

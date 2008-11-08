@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.extex.exbib.bst2groovy.compiler.AddPeriodCompiler;
 import org.extex.exbib.bst2groovy.compiler.AssignCompiler;
@@ -50,6 +51,7 @@ import org.extex.exbib.bst2groovy.compiler.MinusCompiler;
 import org.extex.exbib.bst2groovy.compiler.MissingCompiler;
 import org.extex.exbib.bst2groovy.compiler.NewlineCompiler;
 import org.extex.exbib.bst2groovy.compiler.NumNamesCompiler;
+import org.extex.exbib.bst2groovy.compiler.OptionCompiler;
 import org.extex.exbib.bst2groovy.compiler.PlusCompiler;
 import org.extex.exbib.bst2groovy.compiler.PopCompiler;
 import org.extex.exbib.bst2groovy.compiler.PreambleCompiler;
@@ -71,9 +73,14 @@ import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
-import org.extex.exbib.bst2groovy.data.types.GInt;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GQuote;
-import org.extex.exbib.bst2groovy.data.types.GString;
+import org.extex.exbib.bst2groovy.data.types.GStringConstant;
+import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
+import org.extex.exbib.bst2groovy.exception.ImpossibleException;
+import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.core.bst.BstInterpreterCore;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
@@ -125,11 +132,17 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private Map<String, Compiler> compilers = null;
 
     /**
-     * The field <tt>EVALUATE_TOKEN_VISITOR</tt> contains the token visitor for
+     * The field <tt>evaluateTokenVisitor</tt> contains the token visitor for
      * evaluation.
      */
-    private TokenVisitor EVALUATE_TOKEN_VISITOR = new TokenVisitor() {
+    private TokenVisitor evaluateTokenVisitor = new TokenVisitor() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
+         *      java.lang.Object[])
+         */
         public void visitBlock(TBlock block, Object... args) {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
@@ -139,152 +152,258 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             }
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
+         *      java.lang.Object[])
+         */
         public void visitChar(TChar c, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitChar()");
+            throw new ImpossibleException("visitChar()");
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
+         *      java.lang.Object[])
+         */
         public void visitField(TField field, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitField()");
+            throw new ImpossibleException("visitField()");
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
+         *      java.lang.Object[])
+         */
         public void visitInteger(TInteger integer, Object... args) {
 
-            ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new GInt(integer.getInt()));
+            ((ProcessorState) args[1]).push(new GIntegerConstant(integer.getInt()));
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
+         *      java.lang.Object[])
+         */
         public void visitLiteral(TLiteral literal, Object... args) {
 
-            String name = literal.getValue().toString();
+            String name = literal.getValue();
             Compiler compiler = compilers.get(name);
             if (compiler == null) {
-                throw new RuntimeException(name + " is unknown");
+                throw new UnknownFunctionException(name);
             }
 
             compiler.evaluate((EntryRefernce) args[0],
                 (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
+         *      java.lang.Object[])
+         */
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitLocalInteger()");
+            throw new ImpossibleException("visitLocalInteger()");
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
+         *      java.lang.Object[])
+         */
         public void visitLocalString(TLocalString string, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitLocalString()");
+            throw new ImpossibleException("visitLocalString()");
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
+         *      java.lang.Object[])
+         */
         public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
             String name = qliteral.getValue();
             Compiler compiler = compilers.get(name);
             if (compiler == null) {
-                throw new RuntimeException(name + " is unknown");
+                throw new UnknownFunctionException(name);
             }
 
             compiler.evaluate((EntryRefernce) args[0],
                 (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
+         *      java.lang.Object[])
+         */
         public void visitString(TString string, Object... args) {
 
             ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new GString(string.getValue()));
+            stack.push(new GStringConstant(string.getValue()));
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
+         *      java.lang.Object[])
+         */
         public void visitTokenList(TokenList list, Object... args) {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
             ProcessorState state = (ProcessorState) args[1];
             for (Token t : list) {
                 evaluatePartially(t, entryRefernce, state);
-
             }
         }
     };
 
     /**
-     * The field <tt>EVALUATE_PARTIALLY_TOKEN_VISITOR</tt> contains the token
+     * The field <tt>evaluatePartiallyTokenVisitor</tt> contains the token
      * visitor for partial evaluation.
      */
-    private TokenVisitor EVALUATE_PARTIALLY_TOKEN_VISITOR = new TokenVisitor() {
+    private final TokenVisitor evaluatePartiallyTokenVisitor =
+            new TokenVisitor() {
 
-        public void visitBlock(TBlock block, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
+                 *      java.lang.Object[])
+                 */
+                public void visitBlock(TBlock block, Object... args) {
 
-            ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new CodeBlock(block));
-        }
+                    ((ProcessorState) args[1]).push(new CodeBlock(block));
+                }
 
-        public void visitChar(TChar c, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
+                 *      java.lang.Object[])
+                 */
+                public void visitChar(TChar c, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitChar()");
-        }
+                    throw new ImpossibleException("visitChar()");
+                }
 
-        public void visitField(TField field, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
+                 *      java.lang.Object[])
+                 */
+                public void visitField(TField field, Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitField()");
-        }
+                    throw new ImpossibleException("visitField()");
+                }
 
-        public void visitInteger(TInteger integer, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
+                 *      java.lang.Object[])
+                 */
+                public void visitInteger(TInteger integer, Object... args) {
 
-            ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new GInt(integer.getInt()));
-        }
+                    ((ProcessorState) args[1]).push(new GIntegerConstant(integer.getInt()));
+                }
 
-        public void visitLiteral(TLiteral literal, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
+                 *      java.lang.Object[])
+                 */
+                public void visitLiteral(TLiteral literal, Object... args) {
 
-            String name = literal.getValue().toString();
-            Compiler compiler = compilers.get(name);
-            if (compiler == null) {
-                throw new RuntimeException(name + " is unknown");
-            }
+                    String name = literal.getValue();
+                    Compiler compiler = compilers.get(name);
+                    if (compiler == null) {
+                        throw new UnknownFunctionException(name);
+                    }
 
-            compiler.evaluate((EntryRefernce) args[0],
-                (ProcessorState) args[1], (Evaluator) args[2], linkData);
-        }
+                    compiler
+                        .evaluate((EntryRefernce) args[0],
+                            (ProcessorState) args[1], (Evaluator) args[2],
+                            linkData);
+                }
 
-        public void visitLocalInteger(TLocalInteger integer, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
+                 *      java.lang.Object[])
+                 */
+                public void visitLocalInteger(TLocalInteger integer,
+                        Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitLocalInteger()");
-        }
+                    throw new ImpossibleException("visitLocalInteger()");
+                }
 
-        public void visitLocalString(TLocalString string, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
+                 *      java.lang.Object[])
+                 */
+                public void visitLocalString(TLocalString string,
+                        Object... args) {
 
-            // this does should happen
-            throw new RuntimeException("visitLocalString()");
-        }
+                    throw new ImpossibleException("visitLocalString()");
+                }
 
-        public void visitQLiteral(TQLiteral qliteral, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
+                 *      java.lang.Object[])
+                 */
+                public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
-            ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new GQuote(qliteral));
-        }
+                    ((ProcessorState) args[1]).push(new GQuote(qliteral));
+                }
 
-        public void visitString(TString string, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
+                 *      java.lang.Object[])
+                 */
+                public void visitString(TString string, Object... args) {
 
-            ProcessorState stack = (ProcessorState) args[1];
-            stack.push(new GString(string.getValue()));
-        }
+                    ((ProcessorState) args[1]).push(new GStringConstant(string
+                        .getValue()));
+                }
 
-        public void visitTokenList(TokenList list, Object... args) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
+                 *      java.lang.Object[])
+                 */
+                public void visitTokenList(TokenList list, Object... args) {
 
-            EntryRefernce entryRefernce = (EntryRefernce) args[0];
-            ProcessorState state = (ProcessorState) args[1];
-            for (Token t : list) {
-                evaluatePartially(t, entryRefernce, state);
-            }
-        }
-    };
+                    EntryRefernce entry = (EntryRefernce) args[0];
+                    ProcessorState state = (ProcessorState) args[1];
+                    for (Token t : list) {
+                        evaluatePartially(t, entry, state);
+                    }
+                }
+            };
 
     /**
      * The field <tt>functionList</tt> contains the list of functions.
@@ -337,13 +456,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
              * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
              *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
              *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-             *      org.extex.exbib.bst2groovy.LinkContainer)
+             *      org.extex.exbib.bst2groovy.linker.LinkContainer)
              */
             public void evaluate(EntryRefernce entryRefernce,
                     ProcessorState state, Evaluator evaluator,
-                    LinkContainer linkData) {
+                    LinkContainer linker) {
 
-                state.push(new GString("\""));
+                state.push(new GStringConstant("\""));
             }
         });
         compilers.put("skip$", new SkipCompiler());
@@ -358,40 +477,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         compilers.put("while$", new WhileCompiler());
         compilers.put("width$", new WidthCompiler());
         compilers.put("write$", new WriteCompiler());
-        compilers.put("global.max$", new Compiler() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
-             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
-             *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-             *      org.extex.exbib.bst2groovy.LinkContainer)
-             */
-            public void evaluate(EntryRefernce entryRefernce,
-                    ProcessorState state, Evaluator evaluator,
-                    LinkContainer linkData) {
-
-                state.push(new GInt(0xffff));
-            }
-        });
-        compilers.put("entry.max$", new Compiler() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
-             *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
-             *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-             *      org.extex.exbib.bst2groovy.LinkContainer)
-             */
-            public void evaluate(EntryRefernce entryRefernce,
-                    ProcessorState state, Evaluator evaluator,
-                    LinkContainer linkData) {
-
-                state.push(new GInt(0xffff));
-            }
-        });
+        compilers.put("global.max$", new OptionCompiler("GLOBAL_MAX", 0xffff));
+        compilers.put("entry.max$", new OptionCompiler("ENTRY_MAX", 0xffff));
         compilers.put("crossref", new GetFieldCompiler("crossref"));
     }
 
@@ -402,7 +489,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public Bst2Groovy() throws ExBibImpossibleException {
 
-        linkData = new LinkContainer();
+        this.linkData = new LinkContainer();
         setDB(new DBImpl());
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/')
@@ -416,44 +503,47 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
      */
     @Override
-    public void addFunction(String name, Code body, Locator locator)
+    public void addFunction(String name, Code code, Locator locator)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
 
         if (compilers == null) {
             compilers = new HashMap<String, Compiler>();
         }
-        Code code = body;
 
         if (code instanceof MacroCode) {
-            Token token = ((MacroCode) code).getToken();
-            if (token instanceof TokenList) {
-                analyzeFunction(name, (TokenList) token);
-            } else if (token instanceof TField) {
-                compilers.put(name, new GetFieldCompiler(name));
-            } else if (token instanceof TInteger) {
-                compilers.put(name, //
-                    new GetIntegerCompiler(GFunction.translate(name)));
-            } else if (token instanceof TString) {
-                compilers.put(name, //
-                    new GetStringCompiler(GFunction.translate(name)));
-            } else if (token instanceof TLocalInteger) {
-                compilers.put(name, new GetLocalIntegerCompiler(name));
-            } else if (token instanceof TLocalString) {
-                compilers.put(name, new GetLocalStringCompiler(name));
-            }
-        } else if (code instanceof TField) {
-            compilers.put(name, new GetFieldCompiler(name));
-        } else if (code instanceof TInteger) {
-            compilers.put(name, new GetIntegerCompiler(name));
-        } else if (code instanceof TString) {
-            compilers.put(name, new GetStringCompiler(name));
-        } else if (code instanceof TLocalInteger) {
-            compilers.put(name, new GetLocalIntegerCompiler(name));
-        } else if (code instanceof TLocalString) {
-            compilers.put(name, new GetLocalStringCompiler(name));
+            addFunction(name, ((MacroCode) code).getToken());
+        } else if (code instanceof Token) {
+            addFunction(name, (Token) code);
         }
         super.addFunction(name, code, locator);
+    }
+
+    /**
+     * Add a function from a token.
+     * 
+     * @param name the name
+     * @param token the body
+     */
+    private void addFunction(String name, Token token) {
+
+        if (token instanceof TokenList) {
+            analyzeFunction(name, (TokenList) token);
+        } else if (token instanceof TField) {
+            compilers.put(name, new GetFieldCompiler(name));
+        } else if (token instanceof TInteger) {
+            compilers.put(name, //
+                new GetIntegerCompiler(GFunction.translate(name)));
+        } else if (token instanceof TString) {
+            compilers.put(name, //
+                new GetStringCompiler(GFunction.translate(name)));
+        } else if (token instanceof TLocalInteger) {
+            compilers.put(name, //
+                new GetLocalIntegerCompiler(name));
+        } else if (token instanceof TLocalString) {
+            compilers.put(name, //
+                new GetLocalStringCompiler(name));
+        }
     }
 
     /**
@@ -476,14 +566,14 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         } else if (stack.size() == 1) {
             returnValue = stack.get(0);
         } else {
-            throw new RuntimeException("function " + name
-                    + ": complex return values unimplemented "
-                    + stack.toString());
+            throw new ComplexFunctionException(name, stack.toString());
         }
 
-        GFunction function =
-                new GFunction(returnValue, GFunction.translate(name), state
-                    .getLocals(), state.getCode(), entry.isUsed());
+        state.optimize();
+
+        GFunction function = new GFunction(returnValue, //
+            GFunction.translate(name), //
+            state.getLocals(), state.getCode(), entry.isUsed());
         functionList.add(function);
         compilers.put(name, function);
         if (function.needsEntry() && function.getType() == null) {
@@ -502,7 +592,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             ProcessorState state) {
 
         try {
-            token.visit(EVALUATE_TOKEN_VISITOR, entryRefernce, state, this);
+            token.visit(evaluateTokenVisitor, entryRefernce, state, this);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
         }
@@ -519,7 +609,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             ProcessorState state) {
 
         try {
-            token.visit(EVALUATE_PARTIALLY_TOKEN_VISITOR, entryRefernce, state,
+            token.visit(evaluatePartiallyTokenVisitor, entryRefernce, state,
                 this);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
@@ -582,94 +672,128 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public void write(Writer writer) throws IOException {
 
+        CodeWriter w = new CodeWriter(writer);
         functionList.add(new GFunction(null, "run", new ArrayList<GLocal>(),
             new CommandTranslator(this).translate(this), false));
 
-        linkData.addImports("org.extex.exbib.core.db.DB");
-        linkData.addImports("org.extex.exbib.core.io.*");
-        linkData.addImports("org.extex.exbib.core.*");
-        linkData.writeImports(writer);
-        write(writer, //
-            "class Style {\n", //
+        writeImports(w);
+        writeHead(w);
+
+        for (String name : getIntegers()) {
+            w.write("  private int ", GFunction.translate(name), " = 0\n");
+        }
+        w.write("\n");
+        for (String name : getStrings()) {
+            w.write("  private String ", GFunction.translate(name), //
+                " = \"\"\n");
+        }
+        w.write("\n");
+        writeTypes(w);
+        writeConstructor(w);
+
+        linkData.writeMethods(w);
+
+        for (GFunction fct : functionList) {
+            fct.print(w, "\n" + INDENT);
+        }
+
+        w.write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).run()\n");
+    }
+
+    /**
+     * Write the constructor for the style.
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void writeConstructor(CodeWriter writer) throws IOException {
+
+        writer.write("\n\n", //
+            "  Style(bibDB, bibWriter, bibProcessor) {\n", //
+            "    this.bibDB = bibDB\n", //
+            "    this.bibWriter = bibWriter\n", //
+            "    this.bibProcessor = bibProcessor\n");
+        List<String> strings = this.getMacroNames();
+        if (!strings.isEmpty()) {
+            writer.write("    [\n");
+            for (String s : strings) {
+                writer.write(INDENT, INDENT, INDENT, //
+                    "'", s, "'", ": ", //
+                    GStringConstant.translate(getMacro(s)), //
+                    ",\n");
+            }
+            writer.write(INDENT, INDENT, //
+                "].each { name, value ->\n", //
+                INDENT, INDENT, //
+                INDENT, //
+                "bibDB.storeString(name, value)\n", //
+                INDENT, INDENT, //
+                "}\n");
+        }
+        writer.write("  }\n");
+    }
+
+    /**
+     * Write the beginning of the style class.
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void writeHead(CodeWriter writer) throws IOException {
+
+        writer.write("class Style {\n", //
             "  private DB bibDB\n", //
             "  private Writer bibWriter\n", //
             "  private Processor bibProcessor\n", //
             "\n");
-
-        for (String name : getIntegers()) {
-            writer.write("  private int ");
-            writer.write(GFunction.translate(name));
-            writer.write(" = 0\n");
-        }
-        writer.write("\n");
-        for (String name : getStrings()) {
-            writer.write("  private String ");
-            writer.write(GFunction.translate(name));
-            writer.write(" = \"\"\n");
-        }
-        write(writer, //
-            "\n" //
-        );
-        for (String type : types.keySet()) {
-            GFunction fct = types.get(type);
-            write(writer, //
-                "\n  '", //
-                type, //
-                "' : {\n  ", //
-                "\n  ", //
-                "},");
-        }
-
-        write(writer, //
-            "\n\n", //
-            "  Style(bibDB, bibWriter, bibProcessor) {\n", //
-            "    this.bibDB = bibDB\n", //
-            "    this.bibWriter = bibWriter\n", //
-            "    this.bibProcessor = bibProcessor\n", //
-            "  }\n");
-
-        linkData.writeMethods(writer);
-
-        for (GFunction fct : functionList) {
-            fct.print(writer, "\n" + INDENT);
-        }
-
-        List<String> strings = this.getMacroNames();
-        if (!strings.isEmpty()) {
-            writer.write("  {\n");
-            for (String s : strings) {
-                write(writer, //
-                    INDENT, INDENT, //
-                    s, // TODO ?
-                    ": ", //
-                    GString.translate(getMacro(s)), //
-                    ",\n");
-            }
-            write(writer, //
-                INDENT, //
-                "].each { name, value ->\n", //
-                INDENT, //
-                INDENT, //
-                "bibDB.bst_storeString(name, value)\n", //
-                INDENT, //
-                "}\n");
-        }
-        writer
-            .write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).run()\n");
     }
 
     /**
-     * Write several arguments to a writer.
+     * Write the imports.
      * 
      * @param writer the writer
-     * @param args the arguments to write
      * 
      * @throws IOException in case of an I/O error
      */
-    private void write(Writer writer, String... args) throws IOException {
+    private void writeImports(CodeWriter writer) throws IOException {
 
-        for (String a : args) {
-            writer.write(a);
+        linkData.addImports("org.extex.exbib.core.db.DB");
+        linkData.addImports("org.extex.exbib.core.db.Entry");
+        linkData.addImports("org.extex.exbib.core.io.*");
+        linkData.addImports("org.extex.exbib.core.*");
+        linkData.writeImports(writer);
+    }
+
+    /**
+     * Write the types.
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void writeTypes(CodeWriter writer) throws IOException {
+
+        Set<String> keySet = types.keySet();
+        if (keySet.size() != 0) {
+            writer.write("\n", INDENT, "def types = [");
+            for (String type : keySet) {
+                GFunction function = types.get(type);
+                writer.write("\n", INDENT, INDENT, "'", //
+                    type, //
+                    "' : { entry -> ");
+                writer.write(function.getName(), "(entry");
+                for (GLocal x : function.getParameters()) {
+                    writer.write(", ", x.getType().getArg());
+                }
+                writer.write(")");
+                writer.write(
+                // "\n", INDENT, INDENT, //
+                    " },");
+            }
+            writer.write("\n", INDENT, "]\n" //
+            );
         }
     }
 

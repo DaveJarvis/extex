@@ -19,7 +19,6 @@
 package org.extex.exbib.bst2groovy.data.types;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,16 +26,17 @@ import java.util.Map;
 
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.exception.UnknownReturnTypeException;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a function.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -90,28 +90,43 @@ public class GFunction implements Compiler, GCode {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List,
+         *      int)
+         */
+        public int optimize(List<GCode> list, int index) {
+
+            return index + 1;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
             if (proc) {
                 writer.write(prefix);
             }
-            writer.write(name);
-            writer.write("(");
+            writer.write(name, "(");
             boolean first = true;
             if (needsEntry) {
                 first = false;
                 writer.write(entryName);
             }
+            StringBuilder buffer = new StringBuilder(prefix);
+            for (int i = writer.getColumn() - prefix.length() - 2; i > 0; i--) {
+                buffer.append(' ');
+            }
+            String indent = buffer.toString();
             for (GCode arg : args) {
                 if (first) {
                     first = false;
                 } else {
-                    writer.write(", ");
+                    writer.write(",", indent);
                 }
-                arg.print(writer, prefix);
+                arg.print(writer, indent);
             }
             writer.write(")");
         }
@@ -149,15 +164,57 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
-     * The field <tt>useCount</tt> contains the ...
+     * The field <tt>useCount</tt> contains the use count.
      */
     private int useCount = 0;
 
     /**
      * The field <tt>translationMap</tt> contains the already mapped names.
      */
-    private static Map<String, String> translationMap =
-            new HashMap<String, String>();
+    private static Map<String, String> translationMap = makeTranslationMap();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    private static Map<String, String> makeTranslationMap() {
+
+        Map<String, String> map = new HashMap<String, String>();
+
+        map.put("%boolean", "boolean");
+        map.put("%break", "break");
+        map.put("%byte", "byte");
+        map.put("%char", "char");
+        map.put("%class", "class");
+        map.put("%continue", "continue");
+        map.put("%do", "do");
+        map.put("%else", "else");
+        map.put("%false", "false");
+        map.put("%float", "float");
+        map.put("%for", "for");
+        map.put("%if", "if");
+        map.put("%int", "int");
+        map.put("%new", "new");
+        map.put("%null", "null");
+        map.put("%private", "private");
+        map.put("%protected", "protected");
+        map.put("%public", "public");
+        map.put("%return", "return");
+        map.put("%static", "static");
+        map.put("%super", "super");
+        map.put("%synchronized", "synchronized");
+        map.put("%this", "this");
+        map.put("%true", "true");
+        map.put("%void", "void");
+        map.put("%while", "while");
+
+        map.put("%Style", "Style");
+        map.put("%run", "run");
+        map.put("%addPeriod", "addPeriod");
+        map.put("%callType", "callType");
+        return map;
+    }
 
     /**
      * Translate a bst name int a groovy name for functions and variables.
@@ -173,7 +230,12 @@ public class GFunction implements Compiler, GCode {
             return t;
         }
         t = "_" + value.replaceAll("[^a-zA-Z0-9]", "_");
-        translationMap.put(value, t);
+        String result = t;
+        int i = 2;
+        while (!translationMap.containsValue(result)) {
+            result = t + Integer.toString(i);
+        }
+        translationMap.put(value, result);
         return t;
     }
 
@@ -210,7 +272,7 @@ public class GFunction implements Compiler, GCode {
      * @param name the name
      * @param parameters the list of parameters
      * @param code the body code
-     * @param needsEntry
+     * @param needsEntry the indicator whether an entry is needed
      */
     public GFunction(GCode returnValue, String name, List<GLocal> parameters,
             GCode code, boolean needsEntry) {
@@ -228,9 +290,9 @@ public class GFunction implements Compiler, GCode {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         List<GCode> args;
@@ -243,14 +305,24 @@ public class GFunction implements Compiler, GCode {
         ReturnType t =
                 returnValue == null ? ReturnType.CODE : returnValue.getType();
         if (t == ReturnType.STRING || t == ReturnType.INT) {
-            state.push(new Call((needsEntry ? entryRefernce.getName() : null),
-                false, args));
+            state.push(new Call((needsEntry ? entry.getName() : null), false,
+                args));
         } else if (t == ReturnType.CODE) {
-            state.add(new Call((needsEntry ? entryRefernce.getName() : null),
-                true, args));
+            state.add(new Call((needsEntry ? entry.getName() : null), true,
+                args));
         } else {
             throw new UnknownReturnTypeException(name);
         }
+    }
+
+    /**
+     * Getter for the code.
+     * 
+     * @return the code
+     */
+    public GCode getCode() {
+
+        return code;
     }
 
     /**
@@ -261,6 +333,16 @@ public class GFunction implements Compiler, GCode {
     public String getName() {
 
         return name;
+    }
+
+    /**
+     * Getter for the parameters.
+     * 
+     * @return the parameters
+     */
+    public List<GLocal> getParameters() {
+
+        return parameters;
     }
 
     /**
@@ -284,9 +366,9 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the indicator that en entry is needed.
      * 
-     * @return
+     * @return the indicator that en entry is needed
      */
     public boolean needsEntry() {
 
@@ -296,17 +378,23 @@ public class GFunction implements Compiler, GCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
-        writer.write(prefix);
         ReturnType t = (returnValue == null ? null : returnValue.getType());
-        writer.write(t == null ? "def" : t.toString());
-        writer.write(' ');
-        writer.write(name);
-        writer.write('(');
+        writer.write(prefix, t == null ? "def" : t.toString(), " ", name, "(");
         boolean first = true;
         if (needsEntry) {
             first = false;
@@ -324,12 +412,10 @@ public class GFunction implements Compiler, GCode {
         code.print(writer, prefix + Bst2Groovy.INDENT);
 
         if (returnValue != null) {
-            writer.write(prefix);
-            writer.write("  return ");
+            writer.write(prefix, "  return ");
             returnValue.print(writer, prefix);
         }
-        writer.write(prefix);
-        writer.write("}\n");
+        writer.write(prefix, "}\n");
     }
 
     /**
@@ -344,8 +430,7 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Increment the use count.
      */
     public void use() {
 

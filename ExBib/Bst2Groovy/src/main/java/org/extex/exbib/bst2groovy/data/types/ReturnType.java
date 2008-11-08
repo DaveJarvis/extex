@@ -34,6 +34,17 @@ public enum ReturnType {
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "0";
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
@@ -47,6 +58,17 @@ public enum ReturnType {
      * The field <tt>STRING</tt> contains the indicator for a String.
      */
     STRING {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "\"\"";
+        }
 
         /**
          * {@inheritDoc}
@@ -68,6 +90,17 @@ public enum ReturnType {
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "null";
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
@@ -81,6 +114,17 @@ public enum ReturnType {
      * The field <tt>CODE</tt> contains the indicator for a definition.
      */
     CODE {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "null";
+        }
 
         /**
          * {@inheritDoc}
@@ -102,6 +146,17 @@ public enum ReturnType {
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "null";
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
          */
         @Override
@@ -112,4 +167,10 @@ public enum ReturnType {
 
     };
 
+    /**
+     * Getter for the neutral element.
+     * 
+     * @return the neutral argument
+     */
+    public abstract String getArg();
 }

@@ -16,30 +16,32 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy;
-
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
-import org.extex.exbib.bst2groovy.data.processor.Evaluator;
-import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.linker.LinkContainer;
+package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This interface describes a compiler.
+ * This exception signals that the code passed to a command is not proper.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Compiler {
+public class CommandWithReturnException extends RuntimeException {
 
     /**
-     * Evaluate in a certain context.
-     * 
-     * @param entryRefernce the entry reference indicator
-     * @param state the state
-     * @param evaluator the evaluator
-     * @param linkData the link data container
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    void evaluate(EntryRefernce entryRefernce, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData);
+    private static final long serialVersionUID = 2008L;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param command the name of the command
+     * @param message the name of the variable
+     */
+    public CommandWithReturnException(String command, String message) {
+
+        super("Invoking " + command + " on a function which returns a value: "
+                + message);
+    }
 
 }

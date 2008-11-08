@@ -16,70 +16,47 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.types;
+package org.extex.exbib.bst2groovy.linker;
 
 import java.io.IOException;
-import java.io.Writer;
 
-import org.extex.exbib.bst2groovy.data.StringGCode;
+import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
- * This class represents a string constant.
+ * This code is added to the linking container.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GString extends StringGCode {
+public class LinkingCode extends VoidGCode {
 
     /**
-     * Translate a String into a printable representation for Java/Groovy.
-     * 
-     * @param s the string
-     * 
-     * @return the translated string
+     * The field <tt>text</tt> contains the text.
      */
-    public static String translate(String s) {
-
-        return "\""
-                + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("$",
-                    "\\$") + "\"";
-    }
-
-    /**
-     * The field <tt>value</tt> contains the value.
-     */
-    private String value;
+    private String text;
 
     /**
      * Creates a new object.
      * 
-     * @param value the value
+     * @param text the text
      */
-    public GString(String value) {
+    public LinkingCode(String text) {
 
-        this.value = value;
+        super();
+        this.text = text;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
-        writer.write(translate(value));
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return translate(value);
+        writer.write(prefix);
+        writer.write(text);
     }
 
 }

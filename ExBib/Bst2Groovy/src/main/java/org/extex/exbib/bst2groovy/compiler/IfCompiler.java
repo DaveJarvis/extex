@@ -19,13 +19,11 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
@@ -36,6 +34,8 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for an if-then-else instruction.
@@ -49,7 +49,7 @@ public class IfCompiler implements Compiler {
      * This inner class is the expression for a if-then-else in the target
      * program.
      */
-    private static class If extends VoidGCode {
+    private static final class If extends VoidGCode {
 
         /**
          * The field <tt>arg</tt> contains the condition.
@@ -73,7 +73,7 @@ public class IfCompiler implements Compiler {
          * @param thenBranch the then branch
          * @param elseBranch the else branch
          */
-        private If(GCode cond, GCode thenBranch, GCode elseBranch) {
+        public If(GCode cond, GCode thenBranch, GCode elseBranch) {
 
             this.cond = cond;
             this.thenBranch = thenBranch;
@@ -83,10 +83,28 @@ public class IfCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.VoidGCode#optimize(java.util.List,
+         *      int)
+         */
+        @Override
+        public int optimize(List<GCode> list, int index) {
+
+            if (thenBranch instanceof GCodeContainer) {
+                ((GCodeContainer) thenBranch).optimize();
+            }
+            if (elseBranch instanceof GCodeContainer) {
+                ((GCodeContainer) elseBranch).optimize();
+            }
+            return index + 1;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
             String prefix2 = prefix + Bst2Groovy.INDENT;
             writer.write(prefix);
@@ -97,7 +115,7 @@ public class IfCompiler implements Compiler {
             writer.write(prefix);
             if (elseBranch instanceof GCodeContainer
                     && !((GCodeContainer) elseBranch).isEmpty()) {
-                writer.write("} {");
+                writer.write("} else {");
                 elseBranch.print(writer, prefix2);
                 writer.write(prefix);
             }
@@ -175,7 +193,7 @@ public class IfCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
@@ -225,28 +243,50 @@ public class IfCompiler implements Compiler {
             for (GLocal x : os.getLocals()) {
                 GCode tsi = ts.get(i);
                 GCode esi = es.get(i);
-                if (tsi instanceof GLocal) {
-                    ((GLocal) tsi).unify(x);
-                    // if (esi instanceof GLocal) {
-                    // ((GLocal) esi).unify(x);
-                    // } else {
-                    elseState.add(new SetLocal(x, esi));
-                    // }
-                } else if (esi instanceof GLocal) {
-                    ((GLocal) esi).unify(x);
-                    thenState.add(new SetLocal(x, tsi));
-                } else {
-                    state.add(new InitLocal(x, null));
-                    thenState.add(new SetLocal(x, tsi));
-                    elseState.add(new SetLocal(x, esi));
-                }
+                // if (tsi instanceof GLocal) {
+                // ((GLocal) tsi).unify(x);
+                // if (esi instanceof GLocal) {
+                // ((GLocal) esi).unify(x);
+                // } else {
+                // elseState.add(new SetLocal(x, esi));
+                // // }
+                // } else if (esi instanceof GLocal) {
+                // ((GLocal) esi).unify(x);
+                // thenState.add(new SetLocal(x, tsi));
+                // } else {
+                state.add(new InitLocal(x, null));
+                thenState.add(new SetLocal(x, tsi));
+                elseState.add(new SetLocal(x, esi));
+                // }
             }
         }
+
+        optimize(thenState);
+        optimize(elseState);
 
         state.add(new If(cond, thenState.getCode(), elseState.getCode()));
 
         for (GLocal x : os.getLocals()) {
             state.push(x);
+        }
+    }
+
+    /**
+     * This methods performs some optimizations.
+     * 
+     * @param state the state
+     */
+    private void optimize(ProcessorState state) {
+
+        GCodeContainer code = state.getCode();
+        if (code.size() == 2 && code.get(0) instanceof InitLocal
+                && code.get(1) instanceof SetLocal) {
+            InitLocal il = (InitLocal) code.get(0);
+            SetLocal sl = (SetLocal) code.get(1);
+            if (il.getVar() == sl.getValue()) {
+                sl.setValue(il.getValue());
+                code.remove(0);
+            }
         }
     }
 

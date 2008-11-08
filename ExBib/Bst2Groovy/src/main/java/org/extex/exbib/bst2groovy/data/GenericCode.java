@@ -19,9 +19,11 @@
 package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.StringWriter;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class is a base class which handles a broad range of possible code
@@ -54,6 +56,25 @@ public class GenericCode implements GCode {
     private String entry = null;
 
     /**
+     * The field <tt>showArgs</tt> contains the indicator that argument braces
+     * are needed.
+     */
+    private boolean showArgs;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param type the type
+     * @param name the name
+     * @param args the argument indicator
+     */
+    public GenericCode(ReturnType type, String name, boolean args) {
+
+        this(type, name);
+        this.showArgs = args;
+    }
+
+    /**
      * Creates a new object.
      * 
      * @param type the type
@@ -64,7 +85,8 @@ public class GenericCode implements GCode {
 
         this.type = type;
         this.name = name;
-        this.args = args;
+        this.args = args.clone();
+        this.showArgs = true;
     }
 
     /**
@@ -80,6 +102,19 @@ public class GenericCode implements GCode {
 
         this(type, name, args);
         this.entry = entry;
+        this.showArgs = true;
+    }
+
+    /**
+     * Getter for a named argument.
+     * 
+     * @param index the index
+     * 
+     * @return the argument
+     */
+    public GCode getArg(int index) {
+
+        return args[index];
     }
 
     /**
@@ -95,28 +130,47 @@ public class GenericCode implements GCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         if (type == ReturnType.VOID) {
             writer.write(prefix);
         }
         writer.write(name);
+
+        if (!showArgs) {
+            return;
+        }
         writer.write('(');
         boolean first = true;
         if (entry != null) {
             writer.write(entry);
             first = false;
         }
+        StringBuilder buffer = new StringBuilder(prefix);
+        for (int i = writer.getColumn() - prefix.length() - 2; i > 0; i--) {
+            buffer.append(' ');
+        }
+        String indent = buffer.toString();
         for (GCode arg : args) {
             if (first) {
                 first = false;
             } else {
-                writer.write(", ");
+                writer.write(",", indent);
             }
-            arg.print(writer, prefix);
+            arg.print(writer, indent);
         }
         writer.write(')');
     }
@@ -129,24 +183,13 @@ public class GenericCode implements GCode {
     @Override
     public String toString() {
 
-        StringBuilder buffer = new StringBuilder();
-        buffer.append(name);
-        buffer.append('(');
-        boolean first = true;
-        if (entry != null) {
-            buffer.append(entry);
-            first = false;
+        StringWriter writer = new StringWriter();
+        try {
+            print(new CodeWriter(writer), "");
+        } catch (IOException e) {
+            //
         }
-        for (GCode arg : args) {
-            if (first) {
-                first = false;
-            } else {
-                buffer.append(", ");
-            }
-            buffer.append(arg.toString());
-        }
-        buffer.append(')');
-        return buffer.toString();
+        return writer.toString();
     }
 
 }

@@ -18,18 +18,14 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.StringGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for the format.name$ builtin.
@@ -43,7 +39,7 @@ public class FormatNameCompiler implements Compiler {
      * This inner class is the expression for the format.name$ builtin in the
      * target program.
      */
-    private class FormatName extends GenericCode {
+    private static class FormatName extends GenericCode {
 
         /**
          * Creates a new object.
@@ -54,22 +50,10 @@ public class FormatNameCompiler implements Compiler {
          */
         public FormatName(GCode name, GCode index, GCode format) {
 
-            super(ReturnType.STRING, "format_name", name, index, format);
+            super(ReturnType.STRING, "FormatName.formatName", name, index,
+                format);
         }
     }
-
-    /**
-     * The field <tt>FORMAT_NAME</tt> contains the link code.
-     */
-    private static final GCode FORMAT_NAME = new StringGCode() {
-
-        public void print(Writer writer, String prefix) throws IOException {
-
-            writer
-                .write("String format_name(String name, int index, String format) {\n"
-                        + "}\n");
-        }
-    };
 
     /**
      * {@inheritDoc}
@@ -77,7 +61,7 @@ public class FormatNameCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
@@ -87,7 +71,7 @@ public class FormatNameCompiler implements Compiler {
         GCode name = state.pop();
 
         state.push(new FormatName(name, index, format));
-        linkData.add(FORMAT_NAME);
+        linkData.addImports("org.extex.exbib.core.bst.code.impl.FormatName");
     }
 
 }

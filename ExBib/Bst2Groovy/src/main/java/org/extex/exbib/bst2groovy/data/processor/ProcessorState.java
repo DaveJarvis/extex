@@ -25,8 +25,8 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.local.InitLocal;
-import org.extex.exbib.bst2groovy.data.types.GInt;
-import org.extex.exbib.bst2groovy.data.types.GString;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
+import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 
 /**
  * This class implements a stack of GCode which returns new instances of GLocal
@@ -86,22 +86,20 @@ public class ProcessorState {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Eliminate the side effects by introducing intermediary variables.
      */
     public void eliminateSideEffects() {
 
         int stackSize = stack.size();
         for (int i = 0; i < stackSize; i++) {
             GCode si = stack.get(i);
-            if (!(si instanceof GLocal) && !(si instanceof GInt)
-                    && !(si instanceof GString)) {
+            if (!(si instanceof GLocal) && !(si instanceof GIntegerConstant)
+                    && !(si instanceof GStringConstant)) {
                 GLocal v = new GLocal(localPrefix + Integer.toString(no++));
                 code.add(new InitLocal(v, si));
                 stack.remove(i);
                 stack.add(i, v);
             }
-
         }
     }
 
@@ -136,6 +134,17 @@ public class ProcessorState {
     }
 
     /**
+     * Optimize the code contained herein.
+     * 
+     */
+    public void optimize() {
+
+        for (int i = 0; i < code.size();) {
+            i = code.get(i).optimize(code, i);
+        }
+    }
+
+    /**
      * Pop the topmost element from the stack. If the stack is empty a new
      * future element is created.
      * 
@@ -154,11 +163,11 @@ public class ProcessorState {
     /**
      * Push some code to the stack.
      * 
-     * @param code the code to push
+     * @param gcode the code to push
      */
-    public void push(GCode code) {
+    public void push(GCode gcode) {
 
-        stack.add(code);
+        stack.add(gcode);
     }
 
     /**

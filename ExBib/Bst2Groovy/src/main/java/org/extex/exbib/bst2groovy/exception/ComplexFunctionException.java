@@ -16,56 +16,31 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.types;
-
-import java.io.IOException;
-import java.io.Writer;
-
-import org.extex.exbib.bst2groovy.data.IntGCode;
+package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This class represents an integer constant.
+ * This exception signals that the code passed to a command is not proper.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GInt extends IntGCode {
+public class ComplexFunctionException extends RuntimeException {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private int value;
+    private static final long serialVersionUID = 2008L;
 
     /**
      * Creates a new object.
      * 
-     * @param value the value
+     * @param name the name of the function
+     * @param message the name of the variable
      */
-    public GInt(int value) {
+    public ComplexFunctionException(String name, String message) {
 
-        this.value = value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-     *      java.lang.String)
-     */
-    public void print(Writer writer, String prefix) throws IOException {
-
-        writer.write(Integer.toString(value));
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return Integer.toString(value);
+        super("Function " + name + " has too complex return values: " + message);
     }
 
 }

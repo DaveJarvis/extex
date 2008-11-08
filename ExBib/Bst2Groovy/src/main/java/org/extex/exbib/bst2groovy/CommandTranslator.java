@@ -19,7 +19,6 @@
 package org.extex.exbib.bst2groovy;
 
 import java.io.IOException;
-import java.io.Writer;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
@@ -29,6 +28,12 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
+import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
+import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
+import org.extex.exbib.bst2groovy.exception.ImpossibleException;
+import org.extex.exbib.bst2groovy.exception.WrappingException;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
@@ -82,17 +87,17 @@ public class CommandTranslator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        public void print(Writer writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix);
             writer.write(pre);
             writer.write(" {");
             body.print(writer, prefix + Bst2Groovy.INDENT);
             writer.write(prefix);
-            writer.write(")");
+            writer.write("}");
         }
 
         /**
@@ -110,9 +115,10 @@ public class CommandTranslator {
     }
 
     /**
-     * The field <tt>CV</tt> contains the command visitor for printing.
+     * The field <tt>commandVisitor</tt> contains the command visitor for
+     * printing.
      */
-    private final CommandVisitor COMMAND_VISITOR = new CommandVisitor() {
+    private final CommandVisitor commandVisitor = new CommandVisitor() {
 
         /**
          * {@inheritDoc}
@@ -122,8 +128,7 @@ public class CommandTranslator {
          */
         public void visitBlock(TBlock block, Object... args) throws IOException {
 
-            // this does should happen
-            throw new RuntimeException("block");
+            throw new ImpossibleException("block");
         }
 
         /**
@@ -134,8 +139,7 @@ public class CommandTranslator {
          */
         public void visitChar(TChar c, Object... args) throws IOException {
 
-            // this does should happen
-            throw new RuntimeException("char");
+            throw new ImpossibleException("char");
         }
 
         /**
@@ -154,20 +158,17 @@ public class CommandTranslator {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
                     command.getLocator()), entryRefernce, state);
             } catch (ExBibEmptyFunctionNameException e) {
-                throw new RuntimeException(e);
+                throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new RuntimeException(
-                    "Invoking EXECUTE on a function which return a value: "
-                            + command.getValue().getValue());
+                throw new CommandWithReturnException("EXECUTE", command
+                    .getValue().getValue());
             } else if (state.getLocals().size() != 0) {
-                throw new RuntimeException(
-                    "Invoking EXECUTE on a function which needs arguments: "
-                            + command.getValue().getValue());
+                throw new CommandWithArgumentsException("EXECUTE", command
+                    .getValue().getValue());
             } else if (entryRefernce.isUsed()) {
-                throw new RuntimeException(
-                    "Invoking EXECUTE on a function which needs an entry: "
-                            + command.getValue().getValue());
+                throw new CommandWithEntryException("EXECUTE", command
+                    .getValue().getValue());
             }
             code.add(state.getCode());
         }
@@ -180,8 +181,7 @@ public class CommandTranslator {
          */
         public void visitField(TField field, Object... args) throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("field");
+            throw new ImpossibleException("field");
         }
 
         /**
@@ -193,8 +193,7 @@ public class CommandTranslator {
         public void visitInteger(TInteger integer, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("integer");
+            throw new ImpossibleException("integer");
         }
 
         /**
@@ -213,12 +212,14 @@ public class CommandTranslator {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
                     command.getLocator()), entryRefernce, state);
             } catch (ExBibEmptyFunctionNameException e) {
-                throw new RuntimeException(e);
+                throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithReturnException("ITERATE", command
+                    .toString());
             } else if (state.getLocals().size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithArgumentsException("ITERATE", command
+                    .toString());
             }
             code.add(new GLoop("bibDB.each", state.getCode()));
         }
@@ -241,7 +242,7 @@ public class CommandTranslator {
                 evaluator.evaluate(new TLiteral(literal.getValue(), literal
                     .getLocator()), entryRefernce, state);
             } catch (ExBibEmptyFunctionNameException e) {
-                throw new RuntimeException(e);
+                throw new WrappingException(e);
             }
             if (state.size() != 0) {
                 throw new RuntimeException("*** error ***");
@@ -260,8 +261,7 @@ public class CommandTranslator {
         public void visitLocalInteger(TLocalInteger integer, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("local integer");
+            throw new ImpossibleException("local integer");
         }
 
         /**
@@ -273,8 +273,7 @@ public class CommandTranslator {
         public void visitLocalString(TLocalString string, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("local string");
+            throw new ImpossibleException("local string");
         }
 
         /**
@@ -286,8 +285,7 @@ public class CommandTranslator {
         public void visitQLiteral(TQLiteral qliteral, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("qliteral");
+            throw new ImpossibleException("qliteral");
         }
 
         /**
@@ -319,12 +317,14 @@ public class CommandTranslator {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
                     command.getLocator()), entryRefernce, state);
             } catch (ExBibEmptyFunctionNameException e) {
-                throw new RuntimeException(e);
+                throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithReturnException("ITERATE", command
+                    .toString());
             } else if (state.getLocals().size() != 0) {
-                throw new RuntimeException("*** error ***");
+                throw new CommandWithArgumentsException("ITERATE", command
+                    .toString());
             }
             code.add(new GLoop("bibDB.getEntries().reverse().each", state
                 .getCode()));
@@ -352,8 +352,7 @@ public class CommandTranslator {
         public void visitString(TString string, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("string");
+            throw new ImpossibleException("string");
         }
 
         /**
@@ -365,8 +364,7 @@ public class CommandTranslator {
         public void visitTokenList(TokenList list, Object... args)
                 throws IOException {
 
-            // this should not happen
-            throw new RuntimeException("token list");
+            throw new ImpossibleException("token list");
         }
 
     };
@@ -392,17 +390,15 @@ public class CommandTranslator {
      * @param it the iterable
      * 
      * @return the translated code
+     * 
+     * @throws IOException in case of an I/O error
      */
-    public GCodeContainer translate(Iterable<Command> it) {
+    public GCodeContainer translate(Iterable<Command> it) throws IOException {
 
         GCodeContainer code = new GCodeContainer();
 
-        try {
-            for (Command c : it) {
-                c.visit(COMMAND_VISITOR, code);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        for (Command c : it) {
+            c.visit(commandVisitor, code);
         }
 
         return code;

@@ -19,12 +19,12 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
-import org.extex.exbib.bst2groovy.data.GenericEntryCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for the type builtin.
@@ -38,7 +38,7 @@ public class TypeCompiler implements Compiler {
      * This inner class is the expression for the type builtin in the target
      * program.
      */
-    private class Type extends GenericEntryCode {
+    private static final class Type extends GenericCode {
 
         /**
          * Creates a new object.
@@ -47,7 +47,7 @@ public class TypeCompiler implements Compiler {
          */
         public Type(String entry) {
 
-            super(ReturnType.STRING, ".getType", entry);
+            super(ReturnType.STRING, entry + ".getType");
         }
     }
 
@@ -57,7 +57,7 @@ public class TypeCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {

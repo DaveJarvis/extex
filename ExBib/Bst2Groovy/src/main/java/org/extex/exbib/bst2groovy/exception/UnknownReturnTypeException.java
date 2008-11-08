@@ -35,7 +35,7 @@ public class UnknownReturnTypeException extends RuntimeException {
     /**
      * Creates a new object.
      * 
-     * @param message
+     * @param message the variable name
      */
     public UnknownReturnTypeException(String message) {
 

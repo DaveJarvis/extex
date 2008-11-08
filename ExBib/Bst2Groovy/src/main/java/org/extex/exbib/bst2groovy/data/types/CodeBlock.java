@@ -19,13 +19,13 @@
 package org.extex.exbib.bst2groovy.data.types;
 
 import java.io.IOException;
-import java.io.Writer;
 
 import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.core.bst.token.Token;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class wraps a token and acts like void Code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -60,13 +60,14 @@ public class CodeBlock extends VoidGCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
-        // TODO gene: print unimplemented
-        throw new RuntimeException("unimplemented");
+        writer.write("<<<");
+        writer.write(t.toString());
+        writer.write(">>>");
     }
 
     /**

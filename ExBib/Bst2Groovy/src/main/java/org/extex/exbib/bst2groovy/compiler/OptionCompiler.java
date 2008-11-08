@@ -18,37 +18,57 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
+import java.io.IOException;
+
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the cite$ builtin.
+ * This class implements the analyzer for option constants.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CiteCompiler implements Compiler {
+public class OptionCompiler extends VoidGCode implements Compiler {
 
     /**
-     * This inner class is the expression for the cite$ builtin in the target
-     * program.
+     * The field <tt>init</tt> contains the initializer.
      */
-    private static class Cite extends GenericCode {
+    private String init;
 
-        /**
-         * Creates a new object.
-         * 
-         * @param entry the name of the entry
-         */
-        public Cite(String entry) {
+    /**
+     * The field <tt>INIT</tt> contains the linking code.
+     */
+    private final GCode initCode = new VoidGCode() {
 
-            super(ReturnType.STRING, entry + ".getKey");
+        public void print(CodeWriter writer, String prefix) throws IOException {
+
+            writer.write(prefix, "private static final int ", init, "\n");
         }
+
+    };
+
+    /**
+     * The field <tt>name</tt> contains the name.
+     */
+    private String name;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the name
+     * @param value the value
+     */
+    public OptionCompiler(String name, int value) {
+
+        this.name = name;
+        this.init = name + " = " + Integer.toString(value);
     }
 
     /**
@@ -59,10 +79,22 @@ public class CiteCompiler implements Compiler {
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entry, ProcessorState state,
+    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        state.push(new Cite(entry.getName()));
+        state.push(this);
+        linkData.add(initCode);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
+     *      java.lang.String)
+     */
+    public void print(CodeWriter writer, String prefix) throws IOException {
+
+        writer.write(name);
     }
 
 }

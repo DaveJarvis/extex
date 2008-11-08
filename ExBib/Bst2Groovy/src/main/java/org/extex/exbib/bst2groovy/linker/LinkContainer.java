@@ -16,14 +16,15 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy;
+package org.extex.exbib.bst2groovy.linker;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class is a container for any information needed for linking. This
@@ -71,12 +72,10 @@ public class LinkContainer {
      * 
      * @throws IOException in case of an I/O error
      */
-    public void writeImports(Writer writer) throws IOException {
+    public void writeImports(CodeWriter writer) throws IOException {
 
         for (String s : imports) {
-            writer.write("import ");
-            writer.write(s);
-            writer.write("\n");
+            writer.write("import ", s, "\n");
         }
         writer.write("\n");
     }
@@ -88,7 +87,7 @@ public class LinkContainer {
      * 
      * @throws IOException in case of an I/O error
      */
-    public void writeMethods(Writer writer) throws IOException {
+    public void writeMethods(CodeWriter writer) throws IOException {
 
         for (GCode fct : linked) {
             fct.print(writer, "\n" + Bst2Groovy.INDENT);

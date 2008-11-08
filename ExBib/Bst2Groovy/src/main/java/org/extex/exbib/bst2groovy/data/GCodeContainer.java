@@ -19,10 +19,11 @@
 package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class represents a container of target code which exposes the methods
@@ -50,12 +51,38 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     }
 
     /**
+     * Optimize the code contained.
+     * 
+     */
+    public void optimize() {
+
+        for (int i = 0; i < size();) {
+            i = get(i).optimize(this, i);
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        optimize();
+        if (size() == 0) {
+            list.remove(index);
+            return index;
+        }
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         for (GCode c : this) {
             c.print(writer, prefix);

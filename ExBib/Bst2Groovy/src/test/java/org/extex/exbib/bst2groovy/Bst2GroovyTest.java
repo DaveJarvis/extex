@@ -28,6 +28,10 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
+import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
+import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
+import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -45,7 +49,8 @@ import org.junit.Test;
 public class Bst2GroovyTest {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This is the resource finder to inject some contents without external
+     * files.
      * 
      */
     public static final class TestResourceFinder implements ResourceFinder {
@@ -90,19 +95,21 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * The field <tt>POST_RUN</tt> contains the ...
+     * The field <tt>POST_RUN</tt> contains the piece of code after the run
+     * function.
      */
     private static final String POST_RUN =
             "  }\n" + "\n" + "}\n" + "\n"
                     + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
 
     /**
-     * The field <tt>RUN</tt> contains the ...
+     * The field <tt>RUN</tt> contains the piece of code starting the run
+     * function.
      */
     private static final String RUN = "\n" + "  def run() {\n";
 
     /**
-     * The field <tt>HEAD</tt> contains the ...
+     * The field <tt>HEAD</tt> contains the head of the style definition.
      */
     private static final String HEAD =
             "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n"
@@ -116,10 +123,11 @@ public class Bst2GroovyTest {
     private static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
 
     /**
-     * The field <tt>PREFIX</tt> contains the ...
+     * The field <tt>PREFIX</tt> contains the prefix code.
      */
     private static final String PREFIX =
-            "import org.extex.exbib.core.db.DB\n"
+            "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.*\n"
                     + "import org.extex.exbib.core.io.*\n" + "\n"
                     + "class Style {\n" + "  private DB bibDB\n"
@@ -166,6 +174,50 @@ public class Bst2GroovyTest {
     public void test1() throws Exception {
 
         run("", PREFIX + "\n\n" + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that add.period$ adds proper code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAddPeriod1() throws Exception {
+
+        run(
+            "function{abc}{add.period$}", //
+            PREFIX
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n\n"
+                    + "  String addPeriod(String s) {\n"
+                    + "    return s == null ? \"\" : s.matches(\".*[.!?]\") ? s : s + \".\"\n"
+                    + "  }\n" + "\n" + "  String _abc(v1) {\n"
+                    + "    return addPeriod(v1)\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for change.case$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testChangeCase1() throws Exception {
+
+        run("function{abc}{change.case$}", //
+            "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n"
+                    + "import org.extex.exbib.core.bst.code.impl.ChangeCase\n"
+                    + "\n" + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n" + "  String _abc(v1, v2) {\n"
+                    + "    return ChangeCase.changeCase(v1,"
+                    + "\n                            v2)\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -248,6 +300,21 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that the code for duplicate$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDuplicate3() throws Exception {
+
+        run("function{abc}{#2 #3 + duplicate$ -}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc() {\n"
+                    + "    return (2 + 3) - (2 + 3)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that empty$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -286,7 +353,8 @@ public class Bst2GroovyTest {
         run("entry{a}{b}{c}function{abc}{a}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
                     + "  String _abc(entry) {\n"
-                    + "    return entry.get(\"a\")\n" + "  }\n" + RUN
+                    + "    return entry.getExpanded(\"a\","
+                    + "\n                        bibDB)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -314,10 +382,16 @@ public class Bst2GroovyTest {
     @Test
     public void testEntry4() throws Exception {
 
-        run("entry{a}{b}{c}function{abc}{b}", //
-            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int _abc(entry) {\n"
-                    + "    return entry.getLocal(\"b\").getValue()\n" + "  }\n"
-                    + RUN + POST_RUN);
+        run(
+            "entry{a}{b}{c}function{abc}{b}", //
+            PREFIX
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  int _abc(entry) {\n"
+                    + "    return Integer.parseInt(entry.getLocalString(\"b\"))\n"
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -348,7 +422,7 @@ public class Bst2GroovyTest {
         run("entry{a}{b}{c}function{abc}{c}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
                     + "  String _abc(entry) {\n"
-                    + "    return entry.getLocal(\"c\").getValue()\n" + "  }\n"
+                    + "    return entry.getLocalString(\"c\")\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -391,6 +465,58 @@ public class Bst2GroovyTest {
 
         run("entry {a b c}{}{}\nexecute{skip$}",//
             PREFIX + "\n\n" + HEAD + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithReturnException.class)
+    public void testExecuteError1() throws Exception {
+
+        run("execute{+}", null);
+    }
+
+    /**
+     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithArgumentsException.class)
+    public void testExecuteError2() throws Exception {
+
+        run("execute{write$}", null);
+    }
+
+    /**
+     * <testcase> Test that EXECUTE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithEntryException.class)
+    public void testExecuteError3() throws Exception {
+
+        run("execute{call.type$}", null);
+    }
+
+    /**
+     * <testcase> Test that the code for format.name$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFormatName1() throws Exception {
+
+        run("function{abc}{format.name$}", //
+            "import org.extex.exbib.core.bst.code.impl.FormatName\n" + PREFIX
+                    + "\n\n" + HEAD + "  }\n\n"
+                    + "  String _abc(v1, v2, v3) {\n"
+                    + "    return FormatName.formatName(v3,\n"
+                    + "                            v2,\n"
+                    + "                            v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -451,6 +577,18 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that a function with multiple return values leads to an
+     * error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ComplexFunctionException.class)
+    public void testFunction5() throws Exception {
+
+        run("function{abc}{#1 #2}", null);
+    }
+
+    /**
      * <testcase> Test that > is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -493,8 +631,29 @@ public class Bst2GroovyTest {
                     + "\n"
                     + "  int _abc() {\n"
                     + "    int v1\n"
-                    + "    if (1) {\n      v1 = 2\n    } {\n      v1 = 3\n    }\n"
+                    + "    if (1) {\n      v1 = 2\n    } else {\n      v1 = 3\n    }\n"
                     + "    return v1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf3() throws Exception {
+
+        run(
+            "function{abc}{#1 {pop$ #2} {} if$}", //
+            PREFIX
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  int _abc(v3) {\n"
+                    + "    int v4\n"
+                    + "    if (1) {\n      v4 = 2\n    } else {\n      v4 = v3\n    }\n"
+                    + "    return v4\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -560,8 +719,8 @@ public class Bst2GroovyTest {
 
         run("function{abc}{int.to.chr$}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc(v1) {\n"
-                    + "    return Character.toString(v1)\n" + "  }\n" + RUN
-                    + POST_RUN);
+                    + "    return Character.toString((char)(v1))\n" + "  }\n"
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -590,11 +749,33 @@ public class Bst2GroovyTest {
         run("iterate{call.type$}",//
             PREFIX + "\n\n" + HEAD + "  }\n\n"
                     + "  def callType(Entry entry) {\n"
-                    + "      var t = types.get(entry.getType())\n"
-                    + "      if (t == null) {\n"
-                    + "        t = types.get('default.type')\n" + "      }\n"
-                    + "      t(entry)\n" + "  }\n" + RUN + "    bibDB.each {\n"
-                    + "      callType(it)\n" + "    )\n" + POST_RUN);
+                    + "    def t = types[entry.getType()]\n"
+                    + "    if (t == null) {\n"
+                    + "      t = types['default.type']\n" + "    }\n"
+                    + "    t(entry)\n" + "  }\n" + RUN + "    bibDB.each {\n"
+                    + "      callType(it)\n" + "    }\n" + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithReturnException.class)
+    public void testIterateError1() throws Exception {
+
+        run("iterate{+}", null);
+    }
+
+    /**
+     * <testcase> Test that ITERATE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithArgumentsException.class)
+    public void testIterateError2() throws Exception {
+
+        run("iterate{write$}", null);
     }
 
     /**
@@ -663,6 +844,29 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that the code for num.names$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNumNames1() throws Exception {
+
+        run("function{abc}{num.names$}", //
+            "import org.extex.exbib.core.bst.code.impl.NumNames\n"
+                    + "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n" + "  String _abc(v1) {\n"
+                    + "    return NumNames.numNames(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that + is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -698,8 +902,8 @@ public class Bst2GroovyTest {
 
         run("function{abc}{preamble$}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc() {\n"
-                    + "    return bibDB.getPreamble()\n" + "  }\n" + RUN
-                    + POST_RUN);
+                    + "    return bibDB.getPreambleExpanded()\n" + "  }\n"
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -713,16 +917,15 @@ public class Bst2GroovyTest {
 
         run("function{abc}{purify$}", //
             "import org.extex.exbib.core.bst.code.impl.Purify\n"
+                    + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.*\n"
                     + "import org.extex.exbib.core.io.*\n" + "\n"
                     + "class Style {\n" + "  private DB bibDB\n"
                     + "  private Writer bibWriter\n"
                     + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
-                    + "  }\n\n"
-                    + "  private static Purify purifyCode = new Purify()\n"
-                    + "\n" + "  String _abc(v1) {\n"
-                    + "    return purifyCode.purify(v1)\n" + "  }\n" + RUN
+                    + "  }\n\n" + "  String _abc(v1) {\n"
+                    + "    return Purify.purify(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -749,12 +952,34 @@ public class Bst2GroovyTest {
         run("reverse{call.type$}",//
             PREFIX + "\n\n" + HEAD + "  }\n\n"
                     + "  def callType(Entry entry) {\n"
-                    + "      var t = types.get(entry.getType())\n"
-                    + "      if (t == null) {\n"
-                    + "        t = types.get('default.type')\n" + "      }\n"
-                    + "      t(entry)\n" + "  }\n" + RUN
+                    + "    def t = types[entry.getType()]\n"
+                    + "    if (t == null) {\n"
+                    + "      t = types['default.type']\n" + "    }\n"
+                    + "    t(entry)\n" + "  }\n" + RUN
                     + "    bibDB.getEntries().reverse().each {\n"
-                    + "      callType(it)\n" + "    )\n" + POST_RUN);
+                    + "      callType(it)\n" + "    }\n" + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that REVERSE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithReturnException.class)
+    public void testReverseError1() throws Exception {
+
+        run("reverse{+}", null);
+    }
+
+    /**
+     * <testcase> Test that REVERSE adds code to the main program. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = CommandWithArgumentsException.class)
+    public void testReverseError2() throws Exception {
+
+        run("reverse{write$}", null);
     }
 
     /**
@@ -824,6 +1049,31 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that the code for substring$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSubstring1() throws Exception {
+
+        run("function{abc}{substring$}", //
+            "import org.extex.exbib.core.bst.code.impl.Substring\n"
+                    + "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n" + "  String _abc(v1, v2, v3) {\n"
+                    + "    return Substring.substring(v3,\n"
+                    + "                          v2,\n"
+                    + "                          v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that the code for swap$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -847,6 +1097,58 @@ public class Bst2GroovyTest {
         run("function{abc}{\"1\" \"2\" swap$ *}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String _abc() {\n"
                     + "    return \"2\" + \"1\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for text.length$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testTextLength1() throws Exception {
+
+        run("function{abc}{text.length$}", //
+            "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.bst.code.impl.TextLength\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n" + "\n"
+                    + "class Style {\n" + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
+                    + "  }\n\n" + "  int _abc(v1) {\n"
+                    + "    return TextLength.textLength(v1)\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for text.prefix$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testTextPrefix1() throws Exception {
+
+        run(
+            "function{abc}{text.prefix$}", //
+            "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.*\n"
+                    + "import org.extex.exbib.core.io.*\n"
+                    + "import org.extex.exbib.core.bst.code.impl.TextPrefix\n"
+                    + "\n"
+                    + "class Style {\n"
+                    + "  private DB bibDB\n"
+                    + "  private Writer bibWriter\n"
+                    + "  private Processor bibProcessor\n\n"
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n\n"
+                    + "  String _abc(v1, v2) {\n"
+                    + "    return TextPrefix.textPrefix(v1,\n                            v2)\n"
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -878,6 +1180,19 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile1() throws Exception {
+
+        run("function{abc}{{#1} 'skip$ while$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def _abc() {\n"
+                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that the code for width$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -887,16 +1202,15 @@ public class Bst2GroovyTest {
 
         run("function{abc}{width$}", //
             "import org.extex.exbib.core.bst.code.impl.Width\n"
+                    + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.*\n"
                     + "import org.extex.exbib.core.io.*\n" + "\n"
                     + "class Style {\n" + "  private DB bibDB\n"
                     + "  private Writer bibWriter\n"
                     + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
-                    + "  }\n\n"
-                    + "  private static Width widthCode = new Width()\n" + "\n"
-                    + "  int _abc(v1) {\n" + "    return widthCode.width(v1)\n"
-                    + "  }\n" + RUN + POST_RUN);
+                    + "  }\n\n" + "  int _abc(v1) {\n"
+                    + "    return Width.width(v1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**

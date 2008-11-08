@@ -18,10 +18,6 @@
 
 package org.extex.exbib.bst2groovy.data;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 
 /**
@@ -30,33 +26,17 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class IntGCode implements GCode {
+public abstract class IntGCode extends VoidGCode {
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
+    @Override
     public ReturnType getType() {
 
         return ReturnType.INT;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        Writer w = new StringWriter();
-        try {
-            print(w, "");
-        } catch (IOException e) {
-            //
-        }
-        return w.toString();
     }
 
 }

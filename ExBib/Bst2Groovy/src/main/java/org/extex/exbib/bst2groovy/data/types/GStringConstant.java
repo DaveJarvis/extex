@@ -16,58 +16,56 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data;
+package org.extex.exbib.bst2groovy.data.types;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.List;
-
-import org.extex.exbib.bst2groovy.data.types.ReturnType;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 
 /**
- * This is an abstract base class for GCode with the type void.
+ * This class represents a string constant.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class VoidGCode implements GCode {
+public class GStringConstant extends GenericCode {
 
     /**
-     * {@inheritDoc}
+     * Translate a String into a printable representation for Java/Groovy.
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
+     * @param s the string
+     * 
+     * @return the translated string
      */
-    public ReturnType getType() {
+    public static String translate(String s) {
 
-        return ReturnType.VOID;
+        return "\""
+                + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("$",
+                    "\\$") + "\"";
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     * The field <tt>value</tt> contains the value.
      */
-    public int optimize(List<GCode> list, int index) {
+    private String value;
 
-        return index + 1;
+    /**
+     * Creates a new object.
+     * 
+     * @param value the value
+     */
+    public GStringConstant(String value) {
+
+        super(ReturnType.STRING, translate(value), false);
+        this.value = value;
     }
 
     /**
-     * {@inheritDoc}
+     * Getter for the value.
      * 
-     * @see java.lang.Object#toString()
+     * @return the value
      */
-    @Override
-    public String toString() {
+    public String getValue() {
 
-        StringWriter writer = new StringWriter();
-        try {
-            print(new CodeWriter(writer), "");
-        } catch (IOException e) {
-            //
-        }
-        return writer.toString();
+        return value;
     }
 
 }

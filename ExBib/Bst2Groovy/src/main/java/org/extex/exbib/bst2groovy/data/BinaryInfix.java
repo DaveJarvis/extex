@@ -19,7 +19,8 @@
 package org.extex.exbib.bst2groovy.data;
 
 import java.io.IOException;
-import java.io.Writer;
+
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This is an abstract base class for binary infix operators.
@@ -68,10 +69,10 @@ public abstract class BinaryInfix extends IntGCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         printSave(writer, prefix, b);
         writer.write(" ");
@@ -89,7 +90,7 @@ public abstract class BinaryInfix extends IntGCode {
      * 
      * @throws IOException in case of an I/O error
      */
-    private void printSave(Writer writer, String prefix, GCode x)
+    private void printSave(CodeWriter writer, String prefix, GCode x)
             throws IOException {
 
         if (x instanceof BinaryInfix && ((BinaryInfix) x).level <= level) {

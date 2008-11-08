@@ -19,10 +19,10 @@
 package org.extex.exbib.bst2groovy.data.local;
 
 import java.io.IOException;
-import java.io.Writer;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class represents the setter for a local variable in the target language.
@@ -56,16 +56,46 @@ public class SetLocal extends VoidGCode {
     }
 
     /**
+     * Getter for the name.
+     * 
+     * @return the name
+     */
+    public GLocal getName() {
+
+        return name;
+    }
+
+    /**
+     * Getter for the value.
+     * 
+     * @return the value
+     */
+    public GCode getValue() {
+
+        return value;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);
         name.print(writer, prefix);
         writer.write(" = ");
         value.print(writer, prefix);
+    }
+
+    /**
+     * Setter for the value.
+     * 
+     * @param value the value to set
+     */
+    public void setValue(GCode value) {
+
+        this.value = value;
     }
 }

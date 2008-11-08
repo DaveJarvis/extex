@@ -19,12 +19,12 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.BinaryInfix;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for the - builtin.
@@ -38,7 +38,7 @@ public class MinusCompiler implements Compiler {
      * This inner class is the expression for the - builtin in the target
      * program.
      */
-    private class Minus extends BinaryInfix {
+    private static final class Minus extends BinaryInfix {
 
         /**
          * Creates a new object.
@@ -58,7 +58,7 @@ public class MinusCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {

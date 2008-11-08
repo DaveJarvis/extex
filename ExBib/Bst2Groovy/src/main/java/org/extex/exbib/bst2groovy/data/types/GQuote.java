@@ -18,13 +18,10 @@
 
 package org.extex.exbib.bst2groovy.data.types;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a quoted literal. It is used intermediary only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,41 +36,6 @@ public class GQuote extends CodeBlock {
     public GQuote(TQLiteral qliteral) {
 
         super(qliteral);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-     */
-    @Override
-    public ReturnType getType() {
-
-        // This should not happen
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * Getter for the value.
-     * 
-     * @return the value
-     */
-    public String getValue() {
-
-        return getToken().getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-     *      java.lang.String)
-     */
-    @Override
-    public void print(Writer writer, String prefix) throws IOException {
-
-        // This should not happen
-        throw new RuntimeException("unimplemented");
     }
 
 }

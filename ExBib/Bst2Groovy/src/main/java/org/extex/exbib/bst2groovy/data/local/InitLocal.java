@@ -19,10 +19,10 @@
 package org.extex.exbib.bst2groovy.data.local;
 
 import java.io.IOException;
-import java.io.Writer;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This class represents the initialization of a variable in the target
@@ -59,12 +59,32 @@ public class InitLocal extends VoidGCode {
     }
 
     /**
+     * Getter for the value.
+     * 
+     * @return the value
+     */
+    public GCode getValue() {
+
+        return value;
+    }
+
+    /**
+     * Getter for the var.
+     * 
+     * @return the var
+     */
+    public GLocal getVar() {
+
+        return var;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    public void print(Writer writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);
 

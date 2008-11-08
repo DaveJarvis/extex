@@ -18,16 +18,14 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.LinkContainer;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.IntGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class implements the analyzer for the num.names$ builtin.
@@ -41,12 +39,7 @@ public class NumNamesCompiler implements Compiler {
      * This inner class is the expression for the num.names$ builtin in the
      * target program.
      */
-    private class NumNames extends IntGCode {
-
-        /**
-         * The field <tt>arg</tt> contains the argument.
-         */
-        private GCode arg;
+    private static final class NumNames extends GenericCode {
 
         /**
          * Creates a new object.
@@ -55,22 +48,8 @@ public class NumNamesCompiler implements Compiler {
          */
         public NumNames(GCode arg) {
 
-            this.arg = arg;
+            super(ReturnType.STRING, "NumNames.numNames", arg);
         }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(java.io.Writer,
-         *      java.lang.String)
-         */
-        public void print(Writer writer, String prefix) throws IOException {
-
-            writer.write("num_names(");
-            arg.print(writer, prefix);
-            writer.write(")");
-        }
-
     }
 
     /**
@@ -79,13 +58,13 @@ public class NumNamesCompiler implements Compiler {
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
-     *      org.extex.exbib.bst2groovy.LinkContainer)
+     *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode a = state.pop();
-        state.push(new NumNames(a));
+        state.push(new NumNames(state.pop()));
+        linkData.addImports("org.extex.exbib.core.bst.code.impl.NumNames");
     }
 
 }

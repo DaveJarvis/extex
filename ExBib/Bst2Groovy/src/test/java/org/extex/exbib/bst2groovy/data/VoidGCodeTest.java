@@ -16,30 +16,38 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy;
+package org.extex.exbib.bst2groovy.data;
 
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
-import org.extex.exbib.bst2groovy.data.processor.Evaluator;
-import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.junit.Test;
 
 /**
- * This interface describes a compiler.
+ * This is a test suite for VoidGCode.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Compiler {
+public class VoidGCodeTest {
 
     /**
-     * Evaluate in a certain context.
+     * <testcase> toString() returns the empty string. </testcase>
      * 
-     * @param entryRefernce the entry reference indicator
-     * @param state the state
-     * @param evaluator the evaluator
-     * @param linkData the link data container
      */
-    void evaluate(EntryRefernce entryRefernce, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData);
+    @Test
+    public void test1() {
+
+        String s = new VoidGCode() {
+
+            public void print(CodeWriter writer, String prefix) throws IOException {
+
+                //
+            }
+        }.toString();
+        assertEquals("", s);
+    }
 
 }
