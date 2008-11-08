@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bibio;
@@ -50,8 +49,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a class to implement a reader for B<small>IB</small>T<sub>E</sub>X
- * files. This reader is compatible with B<small>IB</small>T<sub>E</sub>X
- * 0.99c.
+ * files. This reader is compatible with B<small>IB</small>T<sub>E</sub>X 0.99c.
  * <p>
  * This incarnation is characterized as follows:
  * </p>
@@ -80,15 +78,15 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             Pattern.compile("[^= \t\n\r\b\f]*");
 
     /**
-     * The constant <tt>RECORD_PATTERN</tt> contains the pattern for the name
-     * of a record.
+     * The constant <tt>RECORD_PATTERN</tt> contains the pattern for the name of
+     * a record.
      */
     private static final Pattern RECORD_PATTERN =
             Pattern.compile("[a-zA-Z_.:0-9-]*");
 
     /**
-     * The constant <tt>KEY_PATTERN</tt> contains the pattern for the key of
-     * an entry.
+     * The constant <tt>KEY_PATTERN</tt> contains the pattern for the key of an
+     * entry.
      */
     private static final Pattern KEY_PATTERN =
             Pattern.compile("[^ \t\n\r\f\b,(){}]*");
@@ -387,8 +385,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     /**
      * Reads ahead until a non-space character is found.
      * 
-     * @param lookahead if <code>true</code> then the character found is left
-     *        in the input for the next read
+     * @param lookahead if <code>true</code> then the character found is left in
+     *        the input for the next read
      * 
      * @return the next character or '\0' if none can be acquired
      */
@@ -468,7 +466,8 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                     i++;
                 }
 
-                ret.add(new VNumber(buffer.substring(0, i)));
+                String s = buffer.substring(0, i);
+                ret.add(new VNumber(Integer.parseInt(s), s));
                 buffer.delete(0, i);
             } else if (c == '=' || c == '#' || c == '}' || c == '(' || c == ')') {
                 throw new ExBibUnexpectedException(Character.toString(c), null,

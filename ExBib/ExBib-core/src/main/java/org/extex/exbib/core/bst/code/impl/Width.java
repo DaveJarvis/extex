@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -51,15 +50,15 @@ import org.extex.exbib.core.io.Locator;
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops the top (string) literal and pushes the integer that represents its
+ * <dd>Pops the top (string) literal and pushes the integer that represents its
  * width in some relative units (currently, hundredths of a point, as specified
  * by the June 1987 version of the <i>cmr10</i> font; the only white-space
  * character with nonzero width is the space). This function takes the literal
  * literally; that is, it assumes each character in the string is to be printed
- * as is, regardless of whether the character has a special meaning to T<sub>E</sub>X,
- * except that ``special characters'' (even without their right braces) are
- * handled specially. This is meant to be used for comparing widths of label
- * strings. </dd>
+ * as is, regardless of whether the character has a special meaning to
+ * T<sub>E</sub>X, except that ``special characters'' (even without their right
+ * braces) are handled specially. This is meant to be used for comparing widths
+ * of label strings.</dd>
  * </dl>
  * 
  * 
@@ -74,8 +73,8 @@ import org.extex.exbib.core.io.Locator;
 public class Width extends AbstractCode {
 
     /**
-     * The constant <tt>WIDTH</tt> contains the static array of character
-     * widths taken from cmr10.
+     * The constant <tt>WIDTH</tt> contains the static array of character widths
+     * taken from cmr10.
      */
     private static final int[] WIDTH = {0, // 0
             0, // 001
@@ -207,8 +206,8 @@ public class Width extends AbstractCode {
             };
 
     /**
-     * The constant <tt>SPECIAL</tt> contains the mapping of the special T<sub>E</sub>X
-     * sequences with positive width.
+     * The constant <tt>SPECIAL</tt> contains the mapping of the special
+     * T<sub>E</sub>X sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
 
@@ -238,37 +237,21 @@ public class Width extends AbstractCode {
     }
 
     /**
-     * Create a new object.
-     */
-    public Width() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
+     * Find the next non-space character.
      * 
-     * @param name the function name in the processor context
-     */
-    public Width(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
+     * @param s the string
+     * @param length the maximal length
+     * @param p the pointer
      * 
-     * This implementation follows quite closely the section 451--453 of the
-     * BibTeX sources.
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     * @return the new pointer
      */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
+    private static int skipWhitespace(String s, int length, int p) {
 
-        String s = processor.popString(locator).getValue();
-        processor.push(new TInteger(width(s), locator));
+        int ptr = p;
+        while (ptr < length && Character.isWhitespace(s.charAt(ptr))) {
+            ptr++;
+        }
+        return ptr;
     }
 
     /**
@@ -278,7 +261,7 @@ public class Width extends AbstractCode {
      * 
      * @return the width in pk units
      */
-    public int width(String s) {
+    public static int width(String s) {
 
         int width = 0;
         int length = s.length();
@@ -348,21 +331,37 @@ public class Width extends AbstractCode {
     }
 
     /**
-     * Find the next non-space character.
-     * 
-     * @param s the string
-     * @param length the maximal length
-     * @param p the pointer
-     * 
-     * @return the new pointer
+     * Create a new object.
      */
-    private int skipWhitespace(String s, int length, int p) {
+    public Width() {
 
-        int ptr = p;
-        while (ptr < length && Character.isWhitespace(s.charAt(ptr))) {
-            ptr++;
-        }
-        return ptr;
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the function name in the processor context
+     */
+    public Width(String name) {
+
+        super(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * This implementation follows quite closely the section 451--453 of the
+     * BibTeX sources.
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     */
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
+            throws ExBibException {
+
+        String s = processor.popString(locator).getValue();
+        processor.push(new TInteger(width(s), locator));
     }
 
 }

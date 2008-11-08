@@ -115,7 +115,8 @@ public class BstInterpreterCore extends BibliographyCore
         implements
             BstProcessor,
             ResourceAware,
-            Iterable<Command> {
+            Iterable<Command>,
+            FunctionContainer {
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -270,18 +271,10 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
-     * Define a new function if not already defined in the processor context. If
-     * the function has been defined already then a exception is thrown. The add
-     * function observers are informed about the new function.
+     * {@inheritDoc}
      * 
-     * @param name name of the function; it can not be null or empty
-     * @param body code to be executed in case it is called
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionExistsException in case that the named function
-     *         already exists
+     * @see org.extex.exbib.core.bst.FunctionContainer#addFunction(java.lang.String,
+     *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
      */
     public void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
@@ -302,17 +295,10 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
-     * Change the meaning of a function definition. If the function does not
-     * exist then an exception is thrown.
+     * {@inheritDoc}
      * 
-     * @param name the name of the function to change
-     * @param body the new code for the function
-     * @param locator the locator
-     * 
-     * @throws ExBibIllegalValueException in case that the name is
-     *         <code>null</code> or empty
-     * @throws ExBibFunctionUndefinedException in case that the function isn't
-     *         defined yet
+     * @see org.extex.exbib.core.bst.FunctionContainer#changeFunction(java.lang.String,
+     *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
      */
     public void changeFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
@@ -417,11 +403,9 @@ public class BstInterpreterCore extends BibliographyCore
     }
 
     /**
-     * Getter for function code.
+     * {@inheritDoc}
      * 
-     * @param name the name of the function to retrieve
-     * 
-     * @return the code for the function or null if none is found
+     * @see org.extex.exbib.core.bst.FunctionContainer#getFunction(java.lang.String)
      */
     public Code getFunction(String name) {
 
@@ -431,7 +415,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.BstProcessor#getFunctionNames()
+     * @see org.extex.exbib.core.bst.FunctionContainer#getFunctionNames()
      */
     public List<String> getFunctionNames() {
 

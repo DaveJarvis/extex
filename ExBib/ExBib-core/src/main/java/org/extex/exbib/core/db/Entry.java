@@ -193,6 +193,39 @@ public class Entry implements Iterable<String> {
     }
 
     /**
+     * Getter for a local value. The local values are stored independently from
+     * the normal values. This means that they have a name-space of their own.
+     * 
+     * @param key the key of the local value
+     * 
+     * @return the local value for key or <code>null</code> if it does not
+     *         exist.
+     * 
+     * @throws NullPointerException in case that the local variable isn't
+     *         defined
+     * @throws ClassCastException in case that the local variable isn't a number
+     */
+    public int getLocalInt(String key) {
+
+        ValueItem value = local.get(key);
+        return ((VNumber) value).getValue();
+    }
+
+    /**
+     * Getter for a local value. The local values are stored independently from
+     * the normal values. This means that they have a name-space of their own.
+     * 
+     * @param key the key of the local value
+     * 
+     * @return the local value for key or <code>null</code> if it does not
+     *         exist.
+     */
+    public String getLocalString(String key) {
+
+        return local.get(key).getContent();
+    }
+
+    /**
      * Getter for the locator for this Entry. The locator allows you to
      * determine where this Entry is coming from.
      * 
@@ -285,7 +318,7 @@ public class Entry implements Iterable<String> {
      */
     public void setLocal(String key, int value) {
 
-        local.put(key, new VNumber(Integer.toString(value)));
+        local.put(key, new VNumber(value, Integer.toString(value)));
     }
 
     /**

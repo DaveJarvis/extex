@@ -126,6 +126,16 @@ public abstract class BibReaderTester {
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.exbib.core.db.DB#getPreambleExpanded()
+         */
+        public String getPreambleExpanded() {
+
+            return null;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.core.db.DB#getSorter()
          */
         public Sorter getSorter() {

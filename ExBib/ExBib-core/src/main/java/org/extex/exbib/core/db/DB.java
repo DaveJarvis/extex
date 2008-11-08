@@ -119,6 +119,13 @@ public interface DB extends Iterable<Entry> {
     Value getPreamble();
 
     /**
+     * Getter for the preamble as String.
+     * 
+     * @return the preamble
+     */
+    String getPreambleExpanded();
+
+    /**
      * Getter for the sorter.
      * 
      * @return the sorter

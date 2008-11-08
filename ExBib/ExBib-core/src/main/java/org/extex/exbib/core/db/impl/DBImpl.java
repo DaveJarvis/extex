@@ -224,6 +224,16 @@ public class DBImpl implements DB, Configurable, Observable {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.core.db.DB#getPreambleExpanded()
+     */
+    public String getPreambleExpanded() {
+
+        return preamble.expand(this);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.db.DB#getSorter()
      */
     public Sorter getSorter() {

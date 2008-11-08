@@ -141,6 +141,27 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class Purify extends AbstractCode {
 
     /**
+     * The field <tt>instance</tt> contains the instance for the static method.
+     */
+    private static Purify instance = null;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s the argument to purify
+     * 
+     * @return the purified string
+     */
+    public static String purify(String s) {
+
+        if (instance == null) {
+            instance = new Purify();
+        }
+
+        return instance.purifyIt(s);
+    }
+
+    /**
      * The field <tt>macro</tt> contains the mapping of macro characters.
      */
     private Map<String, String> macro = new HashMap<String, String>();
@@ -210,7 +231,7 @@ public class Purify extends AbstractCode {
             throws ExBibException {
 
         String value = processor.popString(locator).getValue();
-        processor.push(new TString(purify(value), locator));
+        processor.push(new TString(purifyIt(value), locator));
     }
 
     /**
@@ -221,7 +242,7 @@ public class Purify extends AbstractCode {
      * 
      * @return the purified value
      */
-    public String purify(String value) {
+    public String purifyIt(String value) {
 
         StringBuilder sb = new StringBuilder(value);
         int level = 0;
@@ -263,8 +284,7 @@ public class Purify extends AbstractCode {
             }
         }
 
-        String result = sb.toString();
-        return result;
+        return sb.toString();
     }
 
 }

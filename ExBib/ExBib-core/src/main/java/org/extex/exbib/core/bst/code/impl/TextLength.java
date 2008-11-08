@@ -60,37 +60,6 @@ import org.extex.exbib.core.io.Locator;
 public class TextLength extends AbstractCode {
 
     /**
-     * Create a new object.
-     */
-    public TextLength() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param name the function name in the processor context
-     */
-    public TextLength(String name) {
-
-        super(name);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
-     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
-     */
-    public void execute(BstProcessor processor, Entry entry, Locator locator)
-            throws ExBibException {
-
-        String s = processor.pop(locator).getValue();
-        processor.push(new TInteger(textLength(s), locator));
-    }
-
-    /**
      * Compute the text length like the B<small>IB</small>T<sub>E</sub>X
      * built-in function <code>text.length$</code>.
      * 
@@ -98,7 +67,7 @@ public class TextLength extends AbstractCode {
      * 
      * @return the length
      */
-    public int textLength(String s) {
+    public static int textLength(String s) {
 
         int result = 0;
 
@@ -129,5 +98,28 @@ public class TextLength extends AbstractCode {
             }
         }
         return result;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the function name in the processor context
+     */
+    public TextLength(String name) {
+
+        super(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
+     *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
+     */
+    public void execute(BstProcessor processor, Entry entry, Locator locator)
+            throws ExBibException {
+
+        String s = processor.pop(locator).getValue();
+        processor.push(new TInteger(textLength(s), locator));
     }
 }

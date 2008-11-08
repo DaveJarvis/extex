@@ -18,8 +18,6 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import java.util.List;
-
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibNoNameException;
@@ -30,7 +28,6 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.io.Locator;
-import org.extex.exbib.core.name.Name;
 import org.extex.exbib.core.name.NameFactory;
 
 /**
@@ -73,6 +70,45 @@ import org.extex.exbib.core.name.NameFactory;
 public class NumNames extends AbstractCode {
 
     /**
+     * Perform the numbering without the need for an processor context.
+     * 
+     * @param value the value
+     * 
+     * @return the number of names
+     * 
+     * @throws ExBibSyntaxException in case of a syntax error
+     * @throws ExBibNoNameException in case of an error
+     * @throws ExBibImpossibleException in case of an impossible error
+     */
+    public static int numNames(String value)
+            throws ExBibSyntaxException,
+                ExBibNoNameException,
+                ExBibImpossibleException {
+
+        return numNames(value, new Locator("?", 0));
+    }
+
+    /**
+     * Perform the numbering without the need for an processor context.
+     * 
+     * @param value the value
+     * @param locator the locator
+     * 
+     * @return the number of names
+     * 
+     * @throws ExBibSyntaxException in case of a syntax error
+     * @throws ExBibNoNameException in case of an error
+     * @throws ExBibImpossibleException in case of an impossible error
+     */
+    public static int numNames(String value, Locator locator)
+            throws ExBibSyntaxException,
+                ExBibNoNameException,
+                ExBibImpossibleException {
+
+        return NameFactory.getFactory().getNames(value, locator).size();
+    }
+
+    /**
      * Create a new object.
      */
     public NumNames() {
@@ -106,43 +142,4 @@ public class NumNames extends AbstractCode {
                 : new TInteger(n, locator)));
     }
 
-    /**
-     * Perform the numbering without the need for an processor context.
-     * 
-     * @param value the value
-     * 
-     * @return the number of names
-     * 
-     * @throws ExBibSyntaxException in case of a syntax error
-     * @throws ExBibNoNameException in case of an error
-     * @throws ExBibImpossibleException in case of an impossible error
-     */
-    public int numNames(String value)
-            throws ExBibSyntaxException,
-                ExBibNoNameException,
-                ExBibImpossibleException {
-
-        return numNames(value, new Locator("?", 0));
-    }
-
-    /**
-     * Perform the numbering without the need for an processor context.
-     * 
-     * @param value the value
-     * @param locator the locator
-     * 
-     * @return the number of names
-     * 
-     * @throws ExBibSyntaxException in case of a syntax error
-     * @throws ExBibNoNameException in case of an error
-     * @throws ExBibImpossibleException in case of an impossible error
-     */
-    public int numNames(String value, Locator locator)
-            throws ExBibSyntaxException,
-                ExBibNoNameException,
-                ExBibImpossibleException {
-
-        List<Name> namelist = NameFactory.getFactory().getNames(value, locator);
-        return namelist.size();
-    }
 }

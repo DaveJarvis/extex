@@ -859,7 +859,34 @@ public class FormatName extends AbstractCode implements Serializable {
     /**
      * The field <tt>tie</tt> contains the string used as tie.
      */
-    protected String tie;
+    protected String tie = "~";
+
+    /**
+     * The field <tt>instance</tt> contains the ...
+     */
+    private static FormatName instance = null;
+
+    /**
+     * Format a name like the B<small>IB</small>T<sub>E</sub>X built-in function
+     * <code>format.name$</code>.
+     * 
+     * @param names the names string
+     * @param index the index of the name
+     * @param fmt the format
+     * 
+     * @return the formatted name
+     * 
+     * @throws ExBibException in case that no initial is found
+     */
+    public static String formatName(String names, int index, String fmt)
+            throws ExBibException {
+
+        if (instance == null) {
+            instance = new FormatName();
+        }
+
+        return instance.format(names, index, fmt);
+    }
 
     /**
      * Create a new object.
@@ -877,7 +904,6 @@ public class FormatName extends AbstractCode implements Serializable {
     public FormatName(String name) {
 
         super(name);
-        tie = "~";
     }
 
     /**
@@ -1005,9 +1031,8 @@ public class FormatName extends AbstractCode implements Serializable {
             formatCache.put(fmt, format);
         }
 
-        TString result = process(format.format(namelist.get(index - 1), //
-            locator));
-        processor.push(result);
+        String s = format.format(namelist.get(index - 1), locator);
+        processor.push(process(s));
     }
 
     /**
@@ -1092,37 +1117,34 @@ public class FormatName extends AbstractCode implements Serializable {
     }
 
     /**
-     * Format a name like the B<small>IB</small>T<sub>E</sub>X built-in function
-     * <code>format.name$</code>.
+     * TODO gene: missing JavaDoc
      * 
-     * @param names the names string
-     * @param index the index of the name
-     * @param fmt the format
-     * 
-     * @return the formatted name
-     * 
-     * @throws ExBibException in case that no initial is found
+     * @param names
+     * @param index
+     * @param fmt
+     * @return
+     * @throws ExBibException
      */
-    public String formatName(String names, int index, String fmt)
+    protected String format(String names, int index, String fmt)
             throws ExBibException {
 
-        List<Name> namelist =
-                NameFactory.getFactory().getNames(names, new Locator("?", 0));
+        Locator locator = new Locator("", 0);
+        List<Name> namelist = NameFactory.getFactory().getNames(names, locator);
 
         if (index < 1 || index > namelist.size()) {
-            throw new IndexOutOfBoundsException(Integer.toString(index));
+            throw new ExBibIndexOutOfBoundsException(Integer.toString(index),
+                locator);
         }
 
         Format format = formatCache.get(fmt);
 
         if (format == null) {
-            format = new Format(fmt, new Locator("?", 0));
+            format = new Format(fmt, locator);
             formatCache.put(fmt, format);
         }
 
-        TString result = process(format.format(namelist.get(index - 1), //
-            new Locator("?", 0)));
-        return result.getValue();
+        return format.format(namelist.get(index - 1), locator);
+
     }
 
     /**
