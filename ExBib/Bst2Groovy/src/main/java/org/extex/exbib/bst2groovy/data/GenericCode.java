@@ -118,6 +118,26 @@ public class GenericCode implements GCode {
     }
 
     /**
+     * Getter for the entry.
+     * 
+     * @return the entry
+     */
+    public String getEntry() {
+
+        return entry;
+    }
+
+    /**
+     * Getter for the name.
+     * 
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
@@ -153,26 +173,24 @@ public class GenericCode implements GCode {
         if (!showArgs) {
             return;
         }
-        writer.write('(');
+        writer.write("(");
+        int col = writer.getColumn();
         boolean first = true;
         if (entry != null) {
             writer.write(entry);
             first = false;
         }
-        StringBuilder buffer = new StringBuilder(prefix);
-        for (int i = writer.getColumn() - prefix.length() - 2; i > 0; i--) {
-            buffer.append(' ');
-        }
-        String indent = buffer.toString();
+
         for (GCode arg : args) {
             if (first) {
                 first = false;
             } else {
-                writer.write(",", indent);
+                writer.write(",");
+                writer.nl(col);
             }
-            arg.print(writer, indent);
+            arg.print(writer, prefix);
         }
-        writer.write(')');
+        writer.write(")");
     }
 
     /**

@@ -108,8 +108,7 @@ public class IfCompiler implements Compiler {
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             String prefix2 = prefix + Bst2Groovy.INDENT;
-            writer.write(prefix);
-            writer.write("if (");
+            writer.write(prefix, "if (");
             cond.print(writer, prefix);
             writer.write(") {");
             thenBranch.print(writer, prefix2);

@@ -42,7 +42,9 @@ public class VoidGCodeTest {
 
         String s = new VoidGCode() {
 
-            public void print(CodeWriter writer, String prefix) throws IOException {
+            @Override
+            public void print(CodeWriter writer, String prefix)
+                    throws IOException {
 
                 //
             }

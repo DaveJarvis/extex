@@ -18,15 +18,13 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.data.IntGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -41,32 +39,18 @@ public class GetLocalIntegerCompiler implements Compiler {
      * This inner class is the expression for a getter of a local String in the
      * target program.
      */
-    private class GetLocalInteger extends IntGCode {
-
-        /**
-         * The field <tt>entry</tt> contains the name of the entry.
-         */
-        private String entry;
+    private class GetLocalInteger extends GenericCode {
 
         /**
          * Creates a new object.
          * 
          * @param entry the name of the entry
+         * @param name the name
          */
-        public GetLocalInteger(String entry) {
+        public GetLocalInteger(String entry, String name) {
 
-            this.entry = entry;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
-         */
-        public void print(CodeWriter writer, String prefix) throws IOException {
-
-            writer.write(entry, ".getLocalInt(", GStringConstant.translate(name), ")");
+            super(ReturnType.INT, entry + ".getLocalString",
+                new GStringConstant(name));
         }
     }
 
@@ -96,7 +80,7 @@ public class GetLocalIntegerCompiler implements Compiler {
     public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        state.push(new GetLocalInteger(entry.getName()));
+        state.push(new GetLocalInteger(entry.getName(), name));
     }
 
 }

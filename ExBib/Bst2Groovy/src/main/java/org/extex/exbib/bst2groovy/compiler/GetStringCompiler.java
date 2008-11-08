@@ -18,14 +18,12 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.data.StringGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -40,19 +38,17 @@ public class GetStringCompiler implements Compiler {
      * This inner class is the expression for a getter of a global String in the
      * target program.
      */
-    private class GetString extends StringGCode {
+    private class GetString extends GenericCode {
 
         /**
-         * {@inheritDoc}
+         * Creates a new object.
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+         * @param name the name of the variable
          */
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public GetString(String name) {
 
-            writer.write(name);
+            super(ReturnType.STRING, name, false);
         }
-
     }
 
     /**
@@ -81,7 +77,7 @@ public class GetStringCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        state.push(new GetString());
+        state.push(new GetString(name));
     }
 
 }

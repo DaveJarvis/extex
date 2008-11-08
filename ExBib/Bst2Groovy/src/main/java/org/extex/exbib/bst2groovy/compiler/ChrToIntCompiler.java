@@ -24,7 +24,6 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
@@ -34,6 +33,7 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.exception.ChrToIntLengthException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
  * This class implements the analyzer for the chr.to.int$ builtin.
@@ -63,7 +63,7 @@ public class ChrToIntCompiler implements Compiler {
     /**
      * The field <tt>CHR_TO_INT</tt> contains the linker code.
      */
-    private static final GCode CHR_TO_INT = new VoidGCode() {
+    private static final LinkingCode CHR_TO_INT = new LinkingCode() {
 
         /**
          * {@inheritDoc}
@@ -71,22 +71,20 @@ public class ChrToIntCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             String in = prefix + Bst2Groovy.INDENT;
-            writer.write(prefix);
-            writer.write("int chrToInt(String s) {");
-            writer.write(in);
-            writer.write("if (s.length() != 1) {");
-            writer.write(in + Bst2Groovy.INDENT);
             writer
-                .write("bstProcessor.warning(\"argument to chrToInt has wrong length\")");
-            writer.write(in);
-            writer.write("}");
-            writer.write(in);
-            writer.write("return s.charAt(0)");
-            writer.write(prefix);
-            writer.write("}\n");
+                .write(
+                    prefix,
+                    "int chrToInt(String s) {",
+                    in,
+                    "if (s.length() != 1) {",
+                    in,
+                    Bst2Groovy.INDENT,
+                    "bstProcessor.warning(\"argument to chrToInt has wrong length\")",
+                    in, "}", in, "return s.charAt(0)", prefix, "}\n");
         }
     };
 

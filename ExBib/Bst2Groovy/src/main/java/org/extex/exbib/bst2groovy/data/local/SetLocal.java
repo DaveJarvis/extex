@@ -56,16 +56,6 @@ public class SetLocal extends VoidGCode {
     }
 
     /**
-     * Getter for the name.
-     * 
-     * @return the name
-     */
-    public GLocal getName() {
-
-        return name;
-    }
-
-    /**
      * Getter for the value.
      * 
      * @return the value
@@ -81,6 +71,7 @@ public class SetLocal extends VoidGCode {
      * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
+    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);

@@ -18,12 +18,7 @@
 
 package org.extex.exbib.bst2groovy.data;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.List;
-
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
  * This is an abstract base class for GCode with the type void.
@@ -31,43 +26,13 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class VoidGCode implements GCode {
+public abstract class VoidGCode extends GenericCode {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
+     * Creates a new object.
      */
-    public ReturnType getType() {
+    public VoidGCode() {
 
-        return ReturnType.VOID;
+        super(ReturnType.VOID, "");
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
-
-        return index + 1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        StringWriter writer = new StringWriter();
-        try {
-            print(new CodeWriter(writer), "");
-        } catch (IOException e) {
-            //
-        }
-        return writer.toString();
-    }
-
 }

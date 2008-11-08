@@ -40,7 +40,7 @@ public interface GCode {
     ReturnType getType();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Optimize a code list.
      * 
      * @param list the list
      * @param index the current index

@@ -53,6 +53,7 @@ public class LinkingCode extends VoidGCode {
      * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
+    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);

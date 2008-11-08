@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a writer which keeps track of the current column.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -85,6 +85,22 @@ public class CodeWriter extends Writer {
     }
 
     /**
+     * Write a newline and indent to a certain column.
+     * 
+     * @param n the target column
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void nl(int n) throws IOException {
+
+        writer.write('\n');
+        for (int i = 0; i < n; i++) {
+            writer.write(' ');
+        }
+        column = n;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.io.Writer#write(char[], int, int)
@@ -110,7 +126,20 @@ public class CodeWriter extends Writer {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write some strings.
+     * 
+     * @param arg the arguments
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Override
+    public void write(String arg) throws IOException {
+
+        super.write(arg);
+    }
+
+    /**
+     * Write some strings.
      * 
      * @param args the arguments
      * 

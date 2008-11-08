@@ -19,7 +19,6 @@
 package org.extex.exbib.bst2groovy.data.types;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +26,7 @@ import java.util.Map;
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
@@ -46,120 +46,20 @@ public class GFunction implements Compiler, GCode {
     /**
      * This inner class represents the invocation of a function.
      */
-    private class Call implements GCode {
-
-        /**
-         * The field <tt>args</tt> contains the argument.
-         */
-        private List<GCode> args;
-
-        /**
-         * The field <tt>entryName</tt> contains the name of the entry.
-         */
-        private String entryName;
-
-        /**
-         * The field <tt>proc</tt> contains the the procedure indicator.
-         */
-        private boolean proc;
+    private class Call extends GenericCode {
 
         /**
          * Creates a new object.
          * 
+         * @param type the return type
          * @param entryName the name of the entry to use or <code>null</code>
          * @param proc the procedure indicator
          * @param args the arguments
          */
-        public Call(String entryName, boolean proc, List<GCode> args) {
+        public Call(ReturnType type, String entryName, boolean proc,
+                GCode... args) {
 
-            this.entryName = entryName;
-            this.args = args;
-            this.proc = proc;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#getType()
-         */
-        public ReturnType getType() {
-
-            return returnValue.getType();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List,
-         *      int)
-         */
-        public int optimize(List<GCode> list, int index) {
-
-            return index + 1;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
-         */
-        public void print(CodeWriter writer, String prefix) throws IOException {
-
-            if (proc) {
-                writer.write(prefix);
-            }
-            writer.write(name, "(");
-            boolean first = true;
-            if (entry.isUsed()) {
-                first = false;
-                writer.write(entryName);
-            }
-            StringBuilder buffer = new StringBuilder(prefix);
-            for (int i = writer.getColumn() - prefix.length() - 2; i > 0; i--) {
-                buffer.append(' ');
-            }
-            String indent = buffer.toString();
-            for (GCode arg : args) {
-                if (first) {
-                    first = false;
-                } else {
-                    writer.write(",", indent);
-                }
-                arg.print(writer, indent);
-            }
-            writer.write(")");
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            StringBuilder buffer = new StringBuilder();
-            if (proc) {
-                buffer.append("\n");
-            }
-            buffer.append(name);
-            buffer.append("(");
-            boolean first = true;
-            if (entry.isUsed()) {
-                first = false;
-                buffer.append(entryName);
-            }
-            for (GCode arg : args) {
-                if (first) {
-                    first = false;
-                } else {
-                    buffer.append(", ");
-                }
-                buffer.append(arg.toString());
-            }
-            buffer.append(")");
-            return buffer.toString();
+            super(type, "", entryName, args);
         }
     }
 
@@ -188,11 +88,15 @@ public class GFunction implements Compiler, GCode {
         map.put("%char", "char");
         map.put("%class", "class");
         map.put("%continue", "continue");
+        map.put("%def", "def");
         map.put("%do", "do");
+        map.put("%double", "double");
+        map.put("%each", "each");
         map.put("%else", "else");
         map.put("%false", "false");
         map.put("%float", "float");
         map.put("%for", "for");
+        map.put("%foreach", "foreach");
         map.put("%if", "if");
         map.put("%int", "int");
         map.put("%new", "new");
@@ -206,8 +110,13 @@ public class GFunction implements Compiler, GCode {
         map.put("%synchronized", "synchronized");
         map.put("%this", "this");
         map.put("%true", "true");
+        map.put("%var", "var");
         map.put("%void", "void");
         map.put("%while", "while");
+
+        map.put("%bibDB", "bibDB");
+        map.put("%bibProcessor", "bibProcessor");
+        map.put("%bibWriter", "bibWriter");
 
         map.put("%Style", "Style");
         map.put("%run", "run");
@@ -229,12 +138,36 @@ public class GFunction implements Compiler, GCode {
         if (t != null) {
             return t;
         }
-        t = "_" + value.replaceAll("[^a-zA-Z0-9]", "_");
+
+        StringBuilder buffer = new StringBuilder();
+        boolean upper = false;
+
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (Character.isUpperCase(c)) {
+                buffer.append(c);
+                upper = false;
+            } else if (Character.isLowerCase(c)) {
+                buffer.append(upper ? Character.toUpperCase(c) : c);
+                upper = false;
+            } else if (Character.isDigit(c)) {
+                buffer.append(c);
+                upper = true;
+            } else {
+                upper = true;
+            }
+        }
+
+        t = buffer.toString();
         String result = t;
+        if (t.matches("v[0-9]+")) {
+            t = t + "_";
+        }
         int i = 2;
         while (translationMap.containsValue(result)) {
             result = t + Integer.toString(i++);
         }
+
         translationMap.put(value, result);
         return t;
     }
@@ -294,21 +227,20 @@ public class GFunction implements Compiler, GCode {
     public void evaluate(EntryRefernce entryRef, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        List<GCode> args;
         int size = parameters.size();
-        args = new ArrayList<GCode>(size);
+        GCode[] args = new GCode[size];
         for (int i = size - 1; i >= 0; i--) {
-            args.add(0, state.pop());
+            args[i] = state.pop();
         }
 
         ReturnType t =
                 returnValue == null ? ReturnType.CODE : returnValue.getType();
         if (t == ReturnType.STRING || t == ReturnType.INT) {
-            state.push(new Call((entry.isUsed() ? entryRef.getName() : null),
-                false, args));
+            state.push(new Call(t,
+                (entry.isUsed() ? entryRef.getName() : null), false, args));
         } else if (t == ReturnType.CODE) {
-            state.add(new Call((entry.isUsed() ? entryRef.getName() : null),
-                true, args));
+            state.add(new Call(ReturnType.VOID, //
+                (entry.isUsed() ? entryRef.getName() : null), true, args));
         } else {
             throw new UnknownReturnTypeException(name);
         }

@@ -90,14 +90,12 @@ public class CommandTranslator {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(pre);
-            writer.write(" {");
+            writer.write(prefix, pre, " {");
             body.print(writer, prefix + Bst2Groovy.INDENT);
-            writer.write(prefix);
-            writer.write("}");
+            writer.write(prefix, "}");
         }
 
         /**

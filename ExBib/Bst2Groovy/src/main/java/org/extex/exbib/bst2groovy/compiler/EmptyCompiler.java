@@ -24,13 +24,13 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
  * This class implements the analyzer for the empty$ builtin.
@@ -60,7 +60,7 @@ public class EmptyCompiler implements Compiler {
     /**
      * The field <tt>IS_EMPTY</tt> contains the code for the is_empty method.
      */
-    private static final GCode IS_EMPTY = new VoidGCode() {
+    private static final LinkingCode IS_EMPTY = new LinkingCode() {
 
         /**
          * {@inheritDoc}
@@ -68,14 +68,12 @@ public class EmptyCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write("boolean isEmpty(String s) {");
-            writer.write(prefix + Bst2Groovy.INDENT);
-            writer.write("return s == null || s.trim().equals(\"\")");
-            writer.write(prefix);
-            writer.write("}\n");
+            writer.write(prefix, "boolean isEmpty(String s) {", prefix,
+                Bst2Groovy.INDENT, "return s == null || s.trim().equals(\"\")",
+                prefix, "}\n");
         }
     };
 

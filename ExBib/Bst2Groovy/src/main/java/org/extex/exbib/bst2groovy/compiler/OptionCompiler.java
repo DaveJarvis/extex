@@ -21,13 +21,13 @@ package org.extex.exbib.bst2groovy.compiler;
 import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
  * This class implements the analyzer for option constants.
@@ -45,8 +45,15 @@ public class OptionCompiler extends VoidGCode implements Compiler {
     /**
      * The field <tt>INIT</tt> contains the linking code.
      */
-    private final GCode initCode = new VoidGCode() {
+    private final LinkingCode initCode = new LinkingCode() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
+         *      java.lang.String)
+         */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, "private static final int ", init, "\n");
@@ -92,6 +99,7 @@ public class OptionCompiler extends VoidGCode implements Compiler {
      * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
+    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(name);

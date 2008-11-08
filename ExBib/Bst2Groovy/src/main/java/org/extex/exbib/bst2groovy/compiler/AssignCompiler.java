@@ -74,6 +74,7 @@ public final class AssignCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, entry, ".set(", GStringConstant
@@ -117,6 +118,7 @@ public final class AssignCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, GFunction.translate(name), " = ");
@@ -165,6 +167,7 @@ public final class AssignCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, entry, ".setLocal(", GStringConstant
@@ -215,6 +218,7 @@ public final class AssignCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, entry, ".setLocal(", GStringConstant
@@ -258,11 +262,10 @@ public final class AssignCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix);
-            writer.write(GFunction.translate(name));
-            writer.write(" = ");
+            writer.write(prefix, GFunction.translate(name), " = ");
             value.print(writer, prefix);
         }
     }

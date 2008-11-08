@@ -18,18 +18,14 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -50,14 +46,8 @@ public class GetFieldCompiler implements Compiler {
          * The field <tt>BIBDB</tt> contains the code to reference to the
          * database.
          */
-        private static final GCode BIBDB = new VoidGCode() {
-
-            public void print(CodeWriter writer, String prefix)
-                    throws IOException {
-
-                writer.write("bibDB");
-            }
-        };
+        private static final GCode BIBDB =
+                new GenericCode(ReturnType.UNKNOWN, "bibDB", false);
 
         /**
          * Creates a new object.

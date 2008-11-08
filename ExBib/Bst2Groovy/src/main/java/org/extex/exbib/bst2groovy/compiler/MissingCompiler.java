@@ -22,10 +22,11 @@ import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.IntGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
@@ -41,12 +42,7 @@ public class MissingCompiler implements Compiler {
      * This inner class is the expression for the missing$ builtin in the target
      * program.
      */
-    private static final class Missing extends IntGCode {
-
-        /**
-         * The field <tt>arg</tt> contains the argument.
-         */
-        private GCode arg;
+    private static final class Missing extends GenericCode {
 
         /**
          * Creates a new object.
@@ -55,7 +51,7 @@ public class MissingCompiler implements Compiler {
          */
         public Missing(GCode arg) {
 
-            this.arg = arg;
+            super(ReturnType.INT, "", arg);
         }
 
         /**
@@ -64,9 +60,10 @@ public class MissingCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            arg.print(writer, prefix);
+            getArg(0).print(writer, prefix);
             writer.write(" == null");
         }
 

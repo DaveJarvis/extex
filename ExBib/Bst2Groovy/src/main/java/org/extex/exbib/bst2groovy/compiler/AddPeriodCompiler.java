@@ -24,13 +24,13 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
  * This class implements the analyzer for the add.period$ builtin.
@@ -61,7 +61,7 @@ public class AddPeriodCompiler implements Compiler {
      * The field <tt>ADD_PERIOD</tt> contains the code for the add_period
      * method.
      */
-    private static final GCode ADD_PERIOD = new VoidGCode() {
+    private static final LinkingCode ADD_PERIOD = new LinkingCode() {
 
         /**
          * {@inheritDoc}
@@ -69,6 +69,7 @@ public class AddPeriodCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer

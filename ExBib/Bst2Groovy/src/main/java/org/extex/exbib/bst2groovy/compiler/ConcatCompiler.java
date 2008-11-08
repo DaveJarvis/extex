@@ -22,10 +22,11 @@ import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.StringGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
@@ -41,17 +42,7 @@ public class ConcatCompiler implements Compiler {
      * This inner class is the expression for the * builtin in the target
      * program.
      */
-    private static class Concat extends StringGCode {
-
-        /**
-         * The field <tt>a</tt> contains the first argument.
-         */
-        private GCode a;
-
-        /**
-         * The field <tt>b</tt> contains the second argument.
-         */
-        private GCode b;
+    private static class Concat extends GenericCode {
 
         /**
          * Creates a new object.
@@ -61,8 +52,7 @@ public class ConcatCompiler implements Compiler {
          */
         public Concat(GCode a, GCode b) {
 
-            this.a = a;
-            this.b = b;
+            super(ReturnType.STRING, "", a, b);
         }
 
         /**
@@ -71,22 +61,12 @@ public class ConcatCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            a.print(writer, prefix);
+            getArg(0).print(writer, prefix);
             writer.write(" + ");
-            b.print(writer, prefix);
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return a.toString() + " + " + b.toString();
+            getArg(1).print(writer, prefix);
         }
     }
 

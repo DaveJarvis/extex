@@ -18,15 +18,13 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
-
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.StringGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -40,19 +38,8 @@ public class PreambleCompiler implements Compiler {
     /**
      * The field <tt>PREAMBLE</tt> contains the singleton instance.
      */
-    private static final GCode PREAMBLE = new StringGCode() {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
-         */
-        public void print(CodeWriter writer, String prefix) throws IOException {
-
-            writer.write("bibDB.getPreambleExpanded()");
-        }
-    };
+    private static final GCode PREAMBLE =
+            new GenericCode(ReturnType.STRING, "bibDB.getPreambleExpanded");
 
     /**
      * {@inheritDoc}
@@ -62,7 +49,7 @@ public class PreambleCompiler implements Compiler {
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         state.push(PREAMBLE);

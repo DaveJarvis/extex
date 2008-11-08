@@ -98,12 +98,12 @@ public class WhileCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             String prefix2 = prefix + Bst2Groovy.INDENT;
-            writer.write(prefix);
-            writer.write("while (");
-            cond.print(writer, prefix);
+            writer.write(prefix, "while (");
+            cond.print(writer, prefix2);
             writer.write(") {");
             body.print(writer, prefix2);
             writer.write(prefix);
