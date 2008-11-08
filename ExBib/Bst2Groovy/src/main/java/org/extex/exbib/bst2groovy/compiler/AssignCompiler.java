@@ -291,7 +291,7 @@ public final class AssignCompiler implements Compiler {
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         GCode q = state.pop();
@@ -301,39 +301,26 @@ public final class AssignCompiler implements Compiler {
         }
         String v = ((GQuote) q).getToken().getValue();
         Code f = functionContainer.getFunction(v);
+        Token t;
 
         if (f instanceof Token) {
-            makeAssignment((Token) f, entryRefernce, state, value, v);
+            t = (Token) f;
         } else if (f instanceof MacroCode) {
-            makeAssignment(((MacroCode) f).getToken(), entryRefernce, state,
-                value, v);
+            t = ((MacroCode) f).getToken();
         } else {
             throw new UnknownVariableException(v);
         }
-    }
-
-    /**
-     * Analyze a token and generate a setter accordingly.
-     * 
-     * @param t the token
-     * @param entry the entry reference
-     * @param code the code
-     * @param value the value
-     * @param v the variable
-     */
-    private void makeAssignment(Token t, EntryRefernce entry,
-            ProcessorState code, GCode value, String v) {
 
         if (t instanceof TField) {
-            code.add(new SetField(entry.getName(), v, value));
+            state.add(new SetField(entry.getName(), v, value));
         } else if (t instanceof TString) {
-            code.add(new SetString(v, value));
+            state.add(new SetString(v, value));
         } else if (t instanceof TInteger) {
-            code.add(new SetInteger(v, value));
+            state.add(new SetInteger(v, value));
         } else if (t instanceof TLocalString) {
-            code.add(new SetLocalString(entry.getName(), v, value));
+            state.add(new SetLocalString(entry.getName(), v, value));
         } else if (t instanceof TLocalInteger) {
-            code.add(new SetLocalInteger(entry.getName(), v, value));
+            state.add(new SetLocalInteger(entry.getName(), v, value));
         } else {
             throw new UnknownVariableException(v);
         }

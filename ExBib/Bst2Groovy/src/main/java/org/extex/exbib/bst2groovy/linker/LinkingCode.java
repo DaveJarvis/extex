@@ -34,14 +34,14 @@ public class LinkingCode extends VoidGCode {
     /**
      * The field <tt>text</tt> contains the text.
      */
-    private String text;
+    private String[] text;
 
     /**
      * Creates a new object.
      * 
      * @param text the text
      */
-    public LinkingCode(String text) {
+    public LinkingCode(String... text) {
 
         super();
         this.text = text;
