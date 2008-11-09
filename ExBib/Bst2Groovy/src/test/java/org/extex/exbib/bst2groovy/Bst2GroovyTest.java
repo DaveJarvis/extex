@@ -323,10 +323,11 @@ public class Bst2GroovyTest {
 
         run("function{abc}{empty$}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
-                    + "  int isEmpty(String s) {\n"
-                    + "    return s == null || s.trim().equals(\"\") ? 1 : 0\n"
+                    + "  boolean isEmpty(String s) {\n"
+                    + "    return s == null || s.trim().equals(\"\")\n"
                     + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return isEmpty(v1)\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return isEmpty(v1) ? 1 : 0\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -633,7 +634,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ 'skip$ if$}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  def abc() {\n"
-                    + "    if (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    if (! 1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -644,17 +645,9 @@ public class Bst2GroovyTest {
     @Test
     public void testIf2() throws Exception {
 
-        run(
-            "function{abc}{#1 {#2} {#3} if$}", //
-            PREFIX
-                    + "\n\n"
-                    + HEAD
-                    + "  }\n"
-                    + "\n"
-                    + "  int abc() {\n"
-                    + "    int v1\n"
-                    + "    if (1) {\n      v1 = 2\n    } else {\n      v1 = 3\n    }\n"
-                    + "    return v1\n" + "  }\n" + RUN + POST_RUN);
+        run("function{abc}{#1 {#2} {#3} if$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    return ( 1 ? 2 : 3 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -665,17 +658,9 @@ public class Bst2GroovyTest {
     @Test
     public void testIf3() throws Exception {
 
-        run(
-            "function{abc}{#1 {pop$ #2} {} if$}", //
-            PREFIX
-                    + "\n\n"
-                    + HEAD
-                    + "  }\n"
-                    + "\n"
-                    + "  int abc(v3) {\n"
-                    + "    int v4\n"
-                    + "    if (1) {\n      v4 = 2\n    } else {\n      v4 = v3\n    }\n"
-                    + "    return v4\n" + "  }\n" + RUN + POST_RUN);
+        run("function{abc}{#1 {pop$ #2} {} if$}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
+                    + "    return ( 1 ? 2 : v3 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
