@@ -23,10 +23,10 @@ import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
-import org.extex.exbib.bst2groovy.data.local.GLocal;
-import org.extex.exbib.bst2groovy.data.local.InitLocal;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
+import org.extex.exbib.bst2groovy.data.var.GLocal;
+import org.extex.exbib.bst2groovy.data.var.InitLocal;
 
 /**
  * This class implements a stack of GCode which returns new instances of GLocal

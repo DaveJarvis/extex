@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.local;
+package org.extex.exbib.bst2groovy.data.var;
 
 import java.io.IOException;
 
@@ -25,37 +25,34 @@ import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
- * This class represents the initialization of a variable in the target
- * language.
+ * This class represents the setter for a local variable in the target language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InitLocal extends VoidGCode {
+public class SetLocal extends VoidGCode {
 
     /**
-     * The field <tt>var</tt> contains the variable.
+     * The field <tt>var</tt> contains the name of the local variable.
      */
     private GLocal var;
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field <tt>value</tt> contains the the new value.
      */
     private GCode value;
 
     /**
      * Creates a new object.
      * 
-     * @param var the variable
+     * @param var the name of the filed
      * @param value the new value
      */
-    public InitLocal(GLocal var, GCode value) {
+    public SetLocal(GLocal var, GCode value) {
 
         this.var = var;
         this.value = value;
-        if (value != null) {
-            var.setType(value.getType());
-        }
+        var.setType(value.getType());
     }
 
     /**
@@ -88,16 +85,9 @@ public class InitLocal extends VoidGCode {
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);
-
-        // if (!var.isBound()) {
-        var.printType(writer, prefix);
-        writer.write(" ");
-        // }
         var.print(writer, prefix);
-        if (value != null) {
-            writer.write(" = ");
-            value.print(writer, prefix);
-        }
+        writer.write(" = ");
+        value.print(writer, prefix);
     }
 
     /**
@@ -108,8 +98,5 @@ public class InitLocal extends VoidGCode {
     public void setValue(GCode value) {
 
         this.value = value;
-        if (value != null) {
-            var.setType(value.getType());
-        }
     }
 }

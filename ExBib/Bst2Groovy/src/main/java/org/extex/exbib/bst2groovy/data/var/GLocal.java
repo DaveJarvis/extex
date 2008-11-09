@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.local;
+package org.extex.exbib.bst2groovy.data.var;
 
 import java.io.IOException;
 import java.io.Writer;

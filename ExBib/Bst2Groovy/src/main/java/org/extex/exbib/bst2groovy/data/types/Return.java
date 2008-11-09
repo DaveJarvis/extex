@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.local.GLocal;
-import org.extex.exbib.bst2groovy.data.local.InitLocal;
+import org.extex.exbib.bst2groovy.data.var.GLocal;
+import org.extex.exbib.bst2groovy.data.var.InitLocal;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
