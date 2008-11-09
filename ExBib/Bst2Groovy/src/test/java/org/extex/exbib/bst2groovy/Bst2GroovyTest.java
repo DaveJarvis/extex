@@ -215,8 +215,8 @@ public class Bst2GroovyTest {
                     + "  private Writer bibWriter\n"
                     + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
                     + "  }\n\n" + "  String abc(v1, v2) {\n"
-                    + "    return ChangeCase.changeCase(v1,"
-                    + "\n                               v2)\n" + "  }\n" + RUN
+                    + "    return ChangeCase.changeCase(v1,\n"
+                    + "                                 v2)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -323,8 +323,8 @@ public class Bst2GroovyTest {
 
         run("function{abc}{empty$}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n"
-                    + "  boolean isEmpty(String s) {\n"
-                    + "    return s == null || s.trim().equals(\"\")\n"
+                    + "  int isEmpty(String s) {\n"
+                    + "    return s == null || s.trim().equals(\"\") ? 1 : 0\n"
                     + "  }\n" + "\n" + "  int abc(v1) {\n"
                     + "    return isEmpty(v1)\n" + "  }\n" + RUN + POST_RUN);
     }
@@ -351,8 +351,8 @@ public class Bst2GroovyTest {
 
         run("entry{a}{b}{c}function{abc}{a}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String abc(entry) {\n"
-                    + "    return entry.getExpanded(\"a\","
-                    + "\n                           bibDB)\n" + "  }\n" + RUN
+                    + "    return entry.getExpanded(\"a\",\n"
+                    + "                             bibDB)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -442,7 +442,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 =}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return v1 == 1\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return v1 == 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -504,8 +504,8 @@ public class Bst2GroovyTest {
                     + "\n\n" + HEAD + "  }\n\n"
                     + "  String abc(v1, v2, v3) {\n"
                     + "    return FormatName.formatName(v3,\n"
-                    + "                               v2,\n"
-                    + "                               v1)\n" + "  }\n" + RUN
+                    + "                                 v2,\n"
+                    + "                                 v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -579,6 +579,25 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that a function with two arguments is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction6() throws Exception {
+
+        run("function{a}{pop$}function{abc}{a a}", //
+            PREFIX + "\n\n" + HEAD + "  }\n\n" //
+                    + "  def a(v1) {\n" //
+                    + "  }\n\n" //
+                    + "  def abc(v1, v2) {\n" //
+                    + "    a(v1)\n" //
+                    + "    a(v2)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that > is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -588,7 +607,20 @@ public class Bst2GroovyTest {
 
         run("function{abc}{>}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc(v1, v2) {\n"
-                    + "    return v1 > v2\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return v2 > v1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that > is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGt2() throws Exception {
+
+        run("function{abc}{#2 #1 >}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    return 2 > 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -778,7 +810,20 @@ public class Bst2GroovyTest {
 
         run("function{abc}{<}", //
             PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc(v1, v2) {\n"
-                    + "    return v1 < v2\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return v2 < v1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that < is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLt2() throws Exception {
+
+        run("function{abc}{#1 #2 <}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    return 1 < 2 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1058,8 +1103,8 @@ public class Bst2GroovyTest {
                     + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
                     + "  }\n\n" + "  String abc(v1, v2, v3) {\n"
                     + "    return Substring.substring(v3,\n"
-                    + "                             v2,\n"
-                    + "                             v1)\n" + "  }\n" + RUN
+                    + "                               v2,\n"
+                    + "                               v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1127,13 +1172,18 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.*\n"
                     + "import org.extex.exbib.core.io.*\n"
                     + "import org.extex.exbib.core.bst.code.impl.TextPrefix\n"
-                    + "\n" + "class Style {\n" + "  private DB bibDB\n"
+                    + "\n" //
+                    + "class Style {\n" //
+                    + "  private DB bibDB\n" //
                     + "  private Writer bibWriter\n"
-                    + "  private Processor bibProcessor\n\n" + "\n\n" + HEAD
-                    + "  }\n\n" + "  String abc(v1, v2) {\n"
+                    + "  private Processor bibProcessor\n\n"
+                    + "\n\n"
+                    + HEAD
+                    + "  }\n\n" //
+                    + "  String abc(v1, v2) {\n"
                     + "    return TextPrefix.textPrefix(v1,\n"
-                    + "                               v2)\n" + "  }\n" + RUN
-                    + POST_RUN);
+                    + "                                 v2)\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**

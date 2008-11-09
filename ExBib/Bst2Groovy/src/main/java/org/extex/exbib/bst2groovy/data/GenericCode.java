@@ -150,6 +150,16 @@ public class GenericCode implements GCode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
+     */
+    public GCode optimize() {
+
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
      */
     public int optimize(List<GCode> list, int index) {
@@ -194,6 +204,17 @@ public class GenericCode implements GCode {
     }
 
     /**
+     * Setter for the arguments.
+     * 
+     * @param index the index
+     * @param value the value
+     */
+    public void setArg(int index, GCode value) {
+
+        args[index] = value;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -203,7 +224,7 @@ public class GenericCode implements GCode {
 
         StringWriter writer = new StringWriter();
         try {
-            print(new CodeWriter(writer), "");
+            print(new CodeWriter(writer), "\n");
         } catch (IOException e) {
             //
         }

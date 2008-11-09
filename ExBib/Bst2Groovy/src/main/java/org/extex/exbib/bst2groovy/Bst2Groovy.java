@@ -571,11 +571,14 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throw new ComplexFunctionException(name, stack.toString());
         }
 
-        state.optimize();
+        // state.optimize();
 
         GFunction function = new GFunction(returnValue, //
             GFunction.translate(name), //
             state.getLocals(), state.getCode(), entry);
+
+        function.optimize();
+
         functionList.add(function);
         compilers.put(name, function);
         if (function.needsEntry() && function.getType() == null) {

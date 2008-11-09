@@ -51,14 +51,16 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     }
 
     /**
-     * Optimize the code contained.
+     * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
      */
-    public void optimize() {
+    public GCode optimize() {
 
         for (int i = 0; i < size();) {
             i = get(i).optimize(this, i);
         }
+        return this;
     }
 
     /**

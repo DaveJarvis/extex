@@ -26,6 +26,7 @@ import java.util.Map;
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
@@ -57,72 +58,10 @@ public class GFunction implements Compiler, GCode {
          * @param args the arguments
          */
         public Call(ReturnType type, String entryName, boolean proc,
-                GCode... args) {
+                GCode[] args) {
 
-            super(type, "", entryName, args);
+            super(type, name, entryName, args);
         }
-    }
-
-    /**
-     * The field <tt>useCount</tt> contains the use count.
-     */
-    private int useCount = 0;
-
-    /**
-     * The field <tt>translationMap</tt> contains the already mapped names.
-     */
-    private static Map<String, String> translationMap = makeTranslationMap();
-
-    /**
-     * Make a translation map and initialize it.
-     * 
-     * @return a new translation map
-     */
-    private static Map<String, String> makeTranslationMap() {
-
-        Map<String, String> map = new HashMap<String, String>();
-
-        map.put("%boolean", "boolean");
-        map.put("%break", "break");
-        map.put("%byte", "byte");
-        map.put("%char", "char");
-        map.put("%class", "class");
-        map.put("%continue", "continue");
-        map.put("%def", "def");
-        map.put("%do", "do");
-        map.put("%double", "double");
-        map.put("%each", "each");
-        map.put("%else", "else");
-        map.put("%false", "false");
-        map.put("%float", "float");
-        map.put("%for", "for");
-        map.put("%foreach", "foreach");
-        map.put("%if", "if");
-        map.put("%int", "int");
-        map.put("%new", "new");
-        map.put("%null", "null");
-        map.put("%private", "private");
-        map.put("%protected", "protected");
-        map.put("%public", "public");
-        map.put("%return", "return");
-        map.put("%static", "static");
-        map.put("%super", "super");
-        map.put("%synchronized", "synchronized");
-        map.put("%this", "this");
-        map.put("%true", "true");
-        map.put("%var", "var");
-        map.put("%void", "void");
-        map.put("%while", "while");
-
-        map.put("%bibDB", "bibDB");
-        map.put("%bibProcessor", "bibProcessor");
-        map.put("%bibWriter", "bibWriter");
-
-        map.put("%Style", "Style");
-        map.put("%run", "run");
-        map.put("%addPeriod", "addPeriod");
-        map.put("%callType", "callType");
-        return map;
     }
 
     /**
@@ -173,6 +112,73 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
+     * The field <tt>useCount</tt> contains the use count.
+     */
+    private int useCount = 0;
+
+    /**
+     * The field <tt>translationMap</tt> contains the already mapped names.
+     */
+    private static Map<String, String> translationMap = makeTranslationMap();
+
+    /**
+     * Make a translation map and initialize it.
+     * 
+     * @return a new translation map
+     */
+    private static Map<String, String> makeTranslationMap() {
+
+        Map<String, String> map = new HashMap<String, String>();
+
+        map.put("%boolean", "boolean");
+        map.put("%break", "break");
+        map.put("%byte", "byte");
+        map.put("%char", "char");
+        map.put("%class", "class");
+        map.put("%constant", "constant");
+        map.put("%continue", "continue");
+        map.put("%def", "def");
+        map.put("%do", "do");
+        map.put("%double", "double");
+        map.put("%each", "each");
+        map.put("%else", "else");
+        map.put("%false", "false");
+        map.put("%float", "float");
+        map.put("%for", "for");
+        map.put("%foreach", "foreach");
+        map.put("%if", "if");
+        map.put("%inline", "inline");
+        map.put("%int", "int");
+        map.put("%interface", "interface");
+        map.put("%new", "new");
+        map.put("%null", "null");
+        map.put("%private", "private");
+        map.put("%protected", "protected");
+        map.put("%public", "public");
+        map.put("%return", "return");
+        map.put("%static", "static");
+        map.put("%super", "super");
+        map.put("%synchronized", "synchronized");
+        map.put("%this", "this");
+        map.put("%ransient", "ransient");
+        map.put("%true", "true");
+        map.put("%var", "var");
+        map.put("%void", "void");
+        map.put("%volatile", "volatile");
+        map.put("%while", "while");
+
+        map.put("%bibDB", "bibDB");
+        map.put("%bibProcessor", "bibProcessor");
+        map.put("%bibWriter", "bibWriter");
+
+        map.put("%Style", "Style");
+        map.put("%run", "run");
+        map.put("%addPeriod", "addPeriod");
+        map.put("%callType", "callType");
+        return map;
+    }
+
+    /**
      * The field <tt>name</tt> contains the method name.
      */
     private String name;
@@ -180,12 +186,12 @@ public class GFunction implements Compiler, GCode {
     /**
      * The field <tt>code</tt> contains the body code.
      */
-    private GCode code;
+    private GCodeContainer code;
 
     /**
      * The field <tt>returnValue</tt> contains the return value.
      */
-    private GCode returnValue;
+    private ReturnType returnType;
 
     /**
      * The field <tt>parameters</tt> contains the parameters.
@@ -207,13 +213,17 @@ public class GFunction implements Compiler, GCode {
      * @param entry the indicator whether an entry is needed
      */
     public GFunction(GCode returnValue, String name, List<GLocal> parameters,
-            GCode code, EntryRefernce entry) {
+            GCodeContainer code, EntryRefernce entry) {
 
-        this.returnValue = returnValue;
         this.name = name;
         this.parameters = parameters;
         this.code = code;
         this.entry = entry;
+        if (returnValue != null) {
+            code.add(new Return(returnValue));
+        }
+        returnType =
+                returnValue == null ? ReturnType.CODE : returnValue.getType();
     }
 
     /**
@@ -230,15 +240,13 @@ public class GFunction implements Compiler, GCode {
         int size = parameters.size();
         GCode[] args = new GCode[size];
         for (int i = size - 1; i >= 0; i--) {
-            args[i] = state.pop();
+            args[size - 1 - i] = state.pop();
         }
 
-        ReturnType t =
-                returnValue == null ? ReturnType.CODE : returnValue.getType();
-        if (t == ReturnType.STRING || t == ReturnType.INT) {
-            state.push(new Call(t,
+        if (returnType == ReturnType.STRING || returnType == ReturnType.INT) {
+            state.push(new Call(returnType, //
                 (entry.isUsed() ? entryRef.getName() : null), false, args));
-        } else if (t == ReturnType.CODE) {
+        } else if (returnType == ReturnType.CODE) {
             state.add(new Call(ReturnType.VOID, //
                 (entry.isUsed() ? entryRef.getName() : null), true, args));
         } else {
@@ -283,7 +291,7 @@ public class GFunction implements Compiler, GCode {
      */
     public ReturnType getType() {
 
-        return returnValue == null ? null : returnValue.getType();
+        return returnType;
     }
 
     /**
@@ -309,6 +317,17 @@ public class GFunction implements Compiler, GCode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
+     */
+    public GCode optimize() {
+
+        code.optimize();
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
      */
     public int optimize(List<GCode> list, int index) {
@@ -324,7 +343,7 @@ public class GFunction implements Compiler, GCode {
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
-        ReturnType t = (returnValue == null ? null : returnValue.getType());
+        ReturnType t = getType();
         writer.write(prefix, t == null ? "def" : t.toString(), " ", name, "(");
         boolean first = true;
         if (entry.isUsed()) {
@@ -341,11 +360,6 @@ public class GFunction implements Compiler, GCode {
         }
         writer.write(") {");
         code.print(writer, prefix + Bst2Groovy.INDENT);
-
-        if (returnValue != null) {
-            writer.write(prefix, "  return ");
-            returnValue.print(writer, prefix);
-        }
         writer.write(prefix, "}\n");
     }
 

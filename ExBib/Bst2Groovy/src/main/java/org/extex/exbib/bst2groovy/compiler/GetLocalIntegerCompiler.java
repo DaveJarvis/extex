@@ -49,8 +49,8 @@ public class GetLocalIntegerCompiler implements Compiler {
          */
         public GetLocalInteger(String entry, String name) {
 
-            super(ReturnType.INT, entry + ".getLocalString",
-                new GStringConstant(name));
+            super(ReturnType.INT, entry + ".getLocalInt", new GStringConstant(
+                name));
         }
     }
 

@@ -7,6 +7,7 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -21,7 +22,7 @@ public class LessCompiler implements Compiler {
      * This inner class is the expression for the < builtin in the target
      * program.
      */
-    private static final class Less extends BinaryInfix {
+    public static final class Less extends BinaryInfix {
 
         /**
          * Creates a new object.
@@ -33,7 +34,24 @@ public class LessCompiler implements Compiler {
 
             super(a, b, "<", 700);
         }
+    }
 
+    /**
+     * This inner class is the expression for the < builtin in the target
+     * program.
+     */
+    public static final class LessEqual extends BinaryInfix {
+
+        /**
+         * Creates a new object.
+         * 
+         * @param a the first argument
+         * @param b the second argument
+         */
+        public LessEqual(GCode a, GCode b) {
+
+            super(a, b, "<=", 700);
+        }
     }
 
     /**
@@ -47,8 +65,8 @@ public class LessCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode b = state.pop();
         GCode a = state.pop();
-        state.push(new Less(a, b));
+        GCode b = state.pop();
+        state.push(new GBoolean(new Less(a, b)));
     }
 }

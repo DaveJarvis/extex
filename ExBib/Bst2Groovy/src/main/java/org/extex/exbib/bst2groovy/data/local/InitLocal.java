@@ -99,4 +99,17 @@ public class InitLocal extends VoidGCode {
             value.print(writer, prefix);
         }
     }
+
+    /**
+     * Setter for the value.
+     * 
+     * @param value the value to set
+     */
+    public void setValue(GCode value) {
+
+        this.value = value;
+        if (value != null) {
+            var.setType(value.getType());
+        }
+    }
 }

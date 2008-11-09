@@ -40,6 +40,13 @@ public interface GCode {
     ReturnType getType();
 
     /**
+     * Optimize this code.
+     * 
+     * @return the optimized code or <code>null</code>
+     */
+    GCode optimize();
+
+    /**
      * Optimize a code list.
      * 
      * @param list the list

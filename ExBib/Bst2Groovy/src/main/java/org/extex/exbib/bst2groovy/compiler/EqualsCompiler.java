@@ -7,6 +7,7 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -21,7 +22,7 @@ public class EqualsCompiler implements Compiler {
      * This inner class is the expression for the = builtin in the target
      * program.
      */
-    private static class Equals extends BinaryInfix {
+    public static class Equals extends BinaryInfix {
 
         /**
          * Creates a new object.
@@ -33,7 +34,23 @@ public class EqualsCompiler implements Compiler {
 
             super(a, b, "==", 700);
         }
+    }
 
+    /**
+     * This inner class is the expression for the != in the target program.
+     */
+    public static class NotEquals extends BinaryInfix {
+
+        /**
+         * Creates a new object.
+         * 
+         * @param a the first argument
+         * @param b the second argument
+         */
+        public NotEquals(GCode a, GCode b) {
+
+            super(a, b, "!=", 700);
+        }
     }
 
     /**
@@ -49,6 +66,6 @@ public class EqualsCompiler implements Compiler {
 
         GCode a = state.pop();
         GCode b = state.pop();
-        state.push(new Equals(a, b));
+        state.push(new GBoolean(new Equals(a, b)));
     }
 }

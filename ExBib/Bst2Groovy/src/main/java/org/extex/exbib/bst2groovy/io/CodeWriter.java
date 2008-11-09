@@ -110,7 +110,7 @@ public class CodeWriter extends Writer {
 
         int i = off;
         for (int no = len; no > 0; no--) {
-            char c = cbuf[i];
+            char c = cbuf[i++];
             switch (c) {
                 case '\n':
                     column = 0;

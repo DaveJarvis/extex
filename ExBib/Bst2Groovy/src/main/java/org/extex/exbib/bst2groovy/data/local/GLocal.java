@@ -99,6 +99,16 @@ public class GLocal implements GCode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
+     */
+    public GCode optimize() {
+
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
      */
     public int optimize(List<GCode> list, int index) {

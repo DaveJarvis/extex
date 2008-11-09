@@ -16,87 +16,88 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.data.local;
+package org.extex.exbib.bst2groovy.data.types;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
- * This class represents the setter for a local variable in the target language.
+ * This class represents a boolean expression which is casted to int by need.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SetLocal extends VoidGCode {
+public class GBoolean implements GCode {
 
     /**
-     * The field <tt>var</tt> contains the name of the local variable.
+     * The field <tt>code</tt> contains the code.
      */
-    private GLocal var;
-
-    /**
-     * The field <tt>value</tt> contains the the new value.
-     */
-    private GCode value;
+    private GCode code;
 
     /**
      * Creates a new object.
      * 
-     * @param var the name of the filed
-     * @param value the new value
+     * @param code the code
      */
-    public SetLocal(GLocal var, GCode value) {
+    public GBoolean(GCode code) {
 
-        this.var = var;
-        this.value = value;
-        var.setType(value.getType());
+        this.code = code;
     }
 
     /**
-     * Getter for the value.
+     * Getter for the code.
      * 
-     * @return the value
+     * @return the code
      */
-    public GCode getValue() {
+    public GCode getCode() {
 
-        return value;
-    }
-
-    /**
-     * Getter for the var.
-     * 
-     * @return the var
-     */
-    public GLocal getVar() {
-
-        return var;
+        return code;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
-    @Override
-    public void print(CodeWriter writer, String prefix) throws IOException {
+    public ReturnType getType() {
 
-        writer.write(prefix);
-        var.print(writer, prefix);
-        writer.write(" = ");
-        value.print(writer, prefix);
+        return ReturnType.INT;
     }
 
     /**
-     * Setter for the value.
+     * {@inheritDoc}
      * 
-     * @param value the value to set
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
      */
-    public void setValue(GCode value) {
+    public GCode optimize() {
 
-        this.value = value;
+        code = code.optimize();
+        return this;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
+     *      java.lang.String)
+     */
+    public void print(CodeWriter writer, String prefix) throws IOException {
+
+        code.print(writer, prefix);
+        writer.write(" ? 1 : 0");
+    }
+
 }

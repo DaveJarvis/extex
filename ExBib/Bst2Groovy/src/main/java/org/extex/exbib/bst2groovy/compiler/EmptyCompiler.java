@@ -27,6 +27,7 @@ import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -71,8 +72,10 @@ public class EmptyCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix, "boolean isEmpty(String s) {", prefix,
-                Bst2Groovy.INDENT, "return s == null || s.trim().equals(\"\")",
+            writer.write(prefix,
+                "boolean isEmpty(String s) {", //
+                prefix, Bst2Groovy.INDENT,
+                "return s == null || s.trim().equals(\"\")", //
                 prefix, "}\n");
         }
     };
@@ -88,7 +91,7 @@ public class EmptyCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        state.push(new Empty(state.pop()));
+        state.push(new GBoolean(new Empty(state.pop())));
         linkData.add(IS_EMPTY);
     }
 

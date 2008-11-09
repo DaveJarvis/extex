@@ -20,7 +20,6 @@ package org.extex.exbib.bst2groovy.linker;
 
 import java.io.IOException;
 
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -29,7 +28,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LinkingCode extends VoidGCode {
+public class LinkingCode {
 
     /**
      * The field <tt>text</tt> contains the text.
@@ -48,12 +47,13 @@ public class LinkingCode extends VoidGCode {
     }
 
     /**
-     * {@inheritDoc}
+     * Print the linking code.
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-     *      java.lang.String)
+     * @param writer the writer
+     * @param prefix the prefix
+     * 
+     * @throws IOException in case of an I/O error
      */
-    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix);

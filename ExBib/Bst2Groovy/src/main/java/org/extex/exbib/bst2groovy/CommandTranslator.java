@@ -97,19 +97,6 @@ public class CommandTranslator {
             body.print(writer, prefix + Bst2Groovy.INDENT);
             writer.write(prefix, "}");
         }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            String prefix = "\n";
-            return prefix + pre + " {" + prefix + body.toString() + prefix
-                    + ")";
-        }
     }
 
     /**

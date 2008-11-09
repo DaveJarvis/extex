@@ -37,9 +37,62 @@ public class GStringConstant extends GenericCode {
      */
     public static String translate(String s) {
 
-        return "\""
-                + s.replace("\\", "\\\\").replace("\"", "\\\"").replace("$",
-                    "\\$") + "\"";
+        StringBuilder buffer = new StringBuilder();
+        buffer.append('"');
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '\t':
+                    buffer.append("\\t");
+                    break;
+                case '\n':
+                    buffer.append("\\n");
+                    break;
+                case '\r':
+                    buffer.append("\\r");
+                    break;
+                case '\b':
+                    buffer.append("\\b");
+                    break;
+                case '\f':
+                    buffer.append("\\f");
+                    break;
+                case '\0':
+                    buffer.append('\\');
+                    buffer.append('0');
+                    break;
+                case '\1':
+                case '\2':
+                case '\3':
+                case '\4':
+                case '\5':
+                case '\6':
+                case '\7':
+                case '\13':
+                case '\16':
+                case '\17':
+                case '\20':
+                case '\21':
+                case '\22':
+                case '\23':
+                case '\24':
+                case '\25':
+                case '\26':
+                case '\27':
+                    buffer.append('\\');
+                    buffer.append(Integer.toOctalString(c));
+                    break;
+                case '\\':
+                case '$':
+                case '"':
+                    buffer.append('\\');
+                    buffer.append(c);
+                    break;
+                default:
+                    buffer.append(c);
+            }
+        }
+        buffer.append('"');
+        return buffer.toString();
     }
 
     /**

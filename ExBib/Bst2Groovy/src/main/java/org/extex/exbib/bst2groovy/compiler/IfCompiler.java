@@ -26,7 +26,9 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.bool.And;
+import org.extex.exbib.bst2groovy.data.bool.Not;
 import org.extex.exbib.bst2groovy.data.local.GLocal;
 import org.extex.exbib.bst2groovy.data.local.InitLocal;
 import org.extex.exbib.bst2groovy.data.local.SetLocal;
@@ -34,6 +36,8 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -50,7 +54,7 @@ public class IfCompiler implements Compiler {
      * This inner class is the expression for a if-then-else in the target
      * program.
      */
-    private static final class If extends VoidGCode {
+    public static final class If extends GenericCode {
 
         /**
          * The field <tt>arg</tt> contains the condition.
@@ -60,12 +64,12 @@ public class IfCompiler implements Compiler {
         /**
          * The field <tt>thenBranch</tt> contains the then branch.
          */
-        private GCode thenBranch;
+        private GCodeContainer thenBranch;
 
         /**
          * The field <tt>elseBranch</tt> contains the else branch.
          */
-        private GCode elseBranch;
+        private GCodeContainer elseBranch;
 
         /**
          * Creates a new object.
@@ -74,11 +78,42 @@ public class IfCompiler implements Compiler {
          * @param thenBranch the then branch
          * @param elseBranch the else branch
          */
-        public If(GCode cond, GCode thenBranch, GCode elseBranch) {
+        public If(GCode cond, GCodeContainer thenBranch,
+                GCodeContainer elseBranch) {
 
+            super(ReturnType.VOID, "");
             this.cond = cond;
             this.thenBranch = thenBranch;
             this.elseBranch = elseBranch;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
+         */
+        @Override
+        public GCode optimize() {
+
+            thenBranch.optimize();
+            elseBranch.optimize();
+
+            if (thenBranch.isEmpty()) {
+                GCodeContainer x = thenBranch;
+                thenBranch = elseBranch;
+                elseBranch = x;
+                cond = new Not(cond).optimize();
+            } else {
+                cond = cond.optimize();
+            }
+            if (elseBranch.isEmpty() && thenBranch.size() == 1) {
+                GCode code = thenBranch.get(0);
+                if (code instanceof If && ((If) code).elseBranch.isEmpty()) {
+                    thenBranch = ((If) code).thenBranch;
+                    cond = new And(cond, ((If) code).cond);
+                }
+            }
+            return this;
         }
 
         /**
@@ -90,12 +125,25 @@ public class IfCompiler implements Compiler {
         @Override
         public int optimize(List<GCode> list, int index) {
 
-            if (thenBranch instanceof GCodeContainer) {
-                ((GCodeContainer) thenBranch).optimize();
+            optimize();
+
+            if (index > 0 && list.get(index - 1) instanceof InitLocal
+                    && thenBranch.size() == 1 && elseBranch.size() == 1
+                    && thenBranch.get(0) instanceof SetLocal
+                    && elseBranch.get(0) instanceof SetLocal) {
+                InitLocal init = (InitLocal) list.get(index - 1);
+                SetLocal setThen = (SetLocal) thenBranch.get(0);
+                SetLocal setElse = (SetLocal) elseBranch.get(0);
+                GLocal var = init.getVar();
+                if (init.getValue() == null && var == setThen.getVar()
+                        && var == setElse.getVar()) {
+                    init.setValue(new IfInline(cond, setThen.getValue(),
+                        setElse.getValue()));
+                    list.remove(index);
+                    return index;
+                }
             }
-            if (elseBranch instanceof GCodeContainer) {
-                ((GCodeContainer) elseBranch).optimize();
-            }
+
             return index + 1;
         }
 
@@ -105,6 +153,7 @@ public class IfCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             String prefix2 = prefix + Bst2Groovy.INDENT;
@@ -113,14 +162,50 @@ public class IfCompiler implements Compiler {
             writer.write(") {");
             thenBranch.print(writer, prefix2);
             writer.write(prefix);
-            if (elseBranch instanceof GCodeContainer
-                    && !((GCodeContainer) elseBranch).isEmpty()) {
+            if (!elseBranch.isEmpty()) {
                 writer.write("} else {");
                 elseBranch.print(writer, prefix2);
                 writer.write(prefix);
             }
             writer.write("}");
         }
+    }
+
+    /**
+     * This class represents an inline conditional.
+     */
+    public static final class IfInline extends GenericCode {
+
+        /**
+         * Creates a new object.
+         * 
+         * @param cond the condition
+         * @param thenBranch the then branch
+         * @param elseBranch the else branch
+         */
+        public IfInline(GCode cond, GCode thenBranch, GCode elseBranch) {
+
+            super(thenBranch.getType(), "if", cond, thenBranch, elseBranch);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
+         *      java.lang.String)
+         */
+        @Override
+        public void print(CodeWriter writer, String prefix) throws IOException {
+
+            writer.write("( ");
+            getArg(0).print(writer, prefix);
+            writer.write(" ? ");
+            getArg(1).print(writer, prefix);
+            writer.write(" : ");
+            getArg(2).print(writer, prefix);
+            writer.write(" )");
+        }
+
     }
 
     /**
@@ -202,7 +287,6 @@ public class IfCompiler implements Compiler {
         GCode t = state.pop();
         GCode cond = state.pop();
 
-        //
         ProcessorState thenState = new ProcessorState();
         if (t instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) t).getToken(), entry, thenState);
@@ -215,9 +299,9 @@ public class IfCompiler implements Compiler {
         } else {
             throw new IfSyntaxException("else");
         }
-        //
+
         int size = adjustStackSize(thenState, elseState);
-        //
+
         List<GLocal> locals =
                 unify(elseState.getLocals(), thenState.getLocals());
         for (GLocal x : locals) {
@@ -263,6 +347,10 @@ public class IfCompiler implements Compiler {
 
         optimize(thenState);
         optimize(elseState);
+        cond = cond.optimize();
+        if (cond instanceof GBoolean) {
+            cond = ((GBoolean) cond).getCode();
+        }
 
         state.add(new If(cond, thenState.getCode(), elseState.getCode()));
 

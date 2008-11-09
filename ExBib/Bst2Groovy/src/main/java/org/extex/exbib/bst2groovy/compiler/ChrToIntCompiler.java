@@ -19,6 +19,7 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
@@ -58,6 +59,29 @@ public class ChrToIntCompiler implements Compiler {
 
             super(ReturnType.INT, "chrToInt", a);
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
+         *      int)
+         */
+        @Override
+        public int optimize(List<GCode> list, int index) {
+
+            GCode code = list.get(index);
+            if (code instanceof GenericCode) {
+                code = ((GenericCode) code).getArg(0);
+                if (code instanceof GStringConstant) {
+                    String s = ((GStringConstant) code).getName();
+                    if (s.length() == 1) {
+                        list.remove(index);
+                        list.add(index, new GIntegerConstant(s.charAt(0)));
+                    }
+                }
+            }
+            return super.optimize(list, index);
+        }
     }
 
     /**
@@ -74,17 +98,19 @@ public class ChrToIntCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            String in = prefix + Bst2Groovy.INDENT;
             writer
                 .write(
                     prefix,
                     "int chrToInt(String s) {",
-                    in,
+                    prefix,
+                    Bst2Groovy.INDENT,
                     "if (s.length() != 1) {",
-                    in,
+                    prefix,
+                    Bst2Groovy.INDENT,
                     Bst2Groovy.INDENT,
                     "bstProcessor.warning(\"argument to chrToInt has wrong length\")",
-                    in, "}", in, "return s.charAt(0)", prefix, "}\n");
+                    prefix, Bst2Groovy.INDENT, "}", prefix, Bst2Groovy.INDENT,
+                    "return s.charAt(0)", prefix, "}\n");
         }
     };
 

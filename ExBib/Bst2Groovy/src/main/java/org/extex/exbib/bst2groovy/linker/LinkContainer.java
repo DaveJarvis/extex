@@ -23,7 +23,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.extex.exbib.bst2groovy.Bst2Groovy;
-import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -38,7 +37,7 @@ public class LinkContainer {
     /**
      * The field <tt>linked</tt> contains the list of methods to be linked in.
      */
-    private Set<GCode> linked = new HashSet<GCode>();
+    private Set<LinkingCode> linked = new HashSet<LinkingCode>();
 
     /**
      * The field <tt>imports</tt> contains the set of imports.
@@ -50,7 +49,7 @@ public class LinkContainer {
      * 
      * @param e the code
      */
-    public void add(GCode e) {
+    public void add(LinkingCode e) {
 
         linked.add(e);
     }
@@ -89,7 +88,7 @@ public class LinkContainer {
      */
     public void writeMethods(CodeWriter writer) throws IOException {
 
-        for (GCode fct : linked) {
+        for (LinkingCode fct : linked) {
             fct.print(writer, "\n" + Bst2Groovy.INDENT);
         }
     }

@@ -7,6 +7,7 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -21,7 +22,7 @@ public class GreaterCompiler implements Compiler {
      * This inner class is the expression for the > builtin in the target
      * program.
      */
-    private static class Greater extends BinaryInfix {
+    public static class Greater extends BinaryInfix {
 
         /**
          * Creates a new object.
@@ -36,6 +37,23 @@ public class GreaterCompiler implements Compiler {
     }
 
     /**
+     * This inner class is the expression for >= in the target program.
+     */
+    public static class GreaterEqual extends BinaryInfix {
+
+        /**
+         * Creates a new object.
+         * 
+         * @param a the first argument
+         * @param b the second argument
+         */
+        public GreaterEqual(GCode a, GCode b) {
+
+            super(a, b, ">=", 700);
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
@@ -46,8 +64,8 @@ public class GreaterCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode b = state.pop();
         GCode a = state.pop();
-        state.push(new Greater(a, b));
+        GCode b = state.pop();
+        state.push(new GBoolean(new Greater(a, b)));
     }
 }

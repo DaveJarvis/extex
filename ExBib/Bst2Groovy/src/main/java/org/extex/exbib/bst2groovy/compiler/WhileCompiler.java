@@ -33,6 +33,7 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
+import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
@@ -133,11 +134,10 @@ public class WhileCompiler implements Compiler {
         } else {
             throw new WhileSyntaxException(true);
         }
-        GCode condExpr;
         if (condState.size() - condState.getLocals().size() != 1) {
             throw new WhileComplexException(true, condState.toString());
         }
-        condExpr = condState.pop();
+        cond = condState.pop();
         ProcessorState bodyState = new ProcessorState();
         if (body instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) body).getToken(), entryRefernce,
@@ -167,7 +167,12 @@ public class WhileCompiler implements Compiler {
         state.add(condState.getCode());
         bodyState.getCode().add(condState.getCode());
 
-        state.add(new While(condExpr, bodyState.getCode()));
+        cond = cond.optimize();
+        if (cond instanceof GBoolean) {
+            cond = ((GBoolean) cond).getCode();
+        }
+
+        state.add(new While(cond, bodyState.getCode()));
         for (int i = bl.size() - 1; i >= 0; i--) {
             state.push(bl.get(i));
         }
