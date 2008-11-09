@@ -862,7 +862,8 @@ public class FormatName extends AbstractCode implements Serializable {
     protected String tie = "~";
 
     /**
-     * The field <tt>instance</tt> contains the ...
+     * The field <tt>instance</tt> contains the one instance used for the static
+     * method.
      */
     private static FormatName instance = null;
 
@@ -1117,13 +1118,15 @@ public class FormatName extends AbstractCode implements Serializable {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Format a name.
      * 
-     * @param names
-     * @param index
-     * @param fmt
-     * @return
-     * @throws ExBibException
+     * @param names the names field
+     * @param index the number of the name to format
+     * @param fmt the format specification
+     * 
+     * @return the formatted name
+     * 
+     * @throws ExBibException in case of an error
      */
     protected String format(String names, int index, String fmt)
             throws ExBibException {
