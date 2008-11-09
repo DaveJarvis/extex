@@ -30,12 +30,12 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SetLocal extends VoidGCode {
+public class AssignVar extends VoidGCode {
 
     /**
      * The field <tt>var</tt> contains the name of the local variable.
      */
-    private GLocal var;
+    private Var var;
 
     /**
      * The field <tt>value</tt> contains the the new value.
@@ -48,7 +48,7 @@ public class SetLocal extends VoidGCode {
      * @param var the name of the filed
      * @param value the new value
      */
-    public SetLocal(GLocal var, GCode value) {
+    public AssignVar(Var var, GCode value) {
 
         this.var = var;
         this.value = value;
@@ -70,7 +70,7 @@ public class SetLocal extends VoidGCode {
      * 
      * @return the var
      */
-    public GLocal getVar() {
+    public Var getVar() {
 
         return var;
     }

@@ -41,7 +41,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GLocal implements GCode {
+public class Var implements GCode {
 
     /**
      * The field <tt>name</tt> contains the name.
@@ -57,14 +57,14 @@ public class GLocal implements GCode {
      * The field <tt>reference</tt> contains the reference to another variable
      * if this one is bound.
      */
-    private GLocal reference = null;
+    private Var reference = null;
 
     /**
      * Creates a new object.
      * 
      * @param name the name
      */
-    public GLocal(String name) {
+    public Var(String name) {
 
         this.name = name;
     }
@@ -177,7 +177,7 @@ public class GLocal implements GCode {
      * 
      * @param other the other instance to bind to
      */
-    public void unify(GLocal other) {
+    public void unify(Var other) {
 
         if (other == this) {
             return;
@@ -199,7 +199,7 @@ public class GLocal implements GCode {
      * 
      * @param other the other instance to bind to
      */
-    protected void unifyMe(GLocal other) {
+    protected void unifyMe(Var other) {
 
         if (reference != null) {
             reference.unify(other);

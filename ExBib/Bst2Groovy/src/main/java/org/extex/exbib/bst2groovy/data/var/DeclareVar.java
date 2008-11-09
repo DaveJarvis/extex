@@ -31,12 +31,12 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InitLocal extends VoidGCode {
+public class DeclareVar extends VoidGCode {
 
     /**
      * The field <tt>var</tt> contains the variable.
      */
-    private GLocal var;
+    private Var var;
 
     /**
      * The field <tt>value</tt> contains the value.
@@ -49,7 +49,7 @@ public class InitLocal extends VoidGCode {
      * @param var the variable
      * @param value the new value
      */
-    public InitLocal(GLocal var, GCode value) {
+    public DeclareVar(Var var, GCode value) {
 
         this.var = var;
         this.value = value;
@@ -73,7 +73,7 @@ public class InitLocal extends VoidGCode {
      * 
      * @return the var
      */
-    public GLocal getVar() {
+    public Var getVar() {
 
         return var;
     }

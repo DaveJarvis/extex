@@ -31,7 +31,7 @@ import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.UnknownReturnTypeException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -196,7 +196,7 @@ public class GFunction implements Compiler, GCode {
     /**
      * The field <tt>parameters</tt> contains the parameters.
      */
-    private List<GLocal> parameters;
+    private List<Var> parameters;
 
     /**
      * The field <tt>entry</tt> contains the the entry.
@@ -212,7 +212,7 @@ public class GFunction implements Compiler, GCode {
      * @param code the body code
      * @param entry the indicator whether an entry is needed
      */
-    public GFunction(GCode returnValue, String name, List<GLocal> parameters,
+    public GFunction(GCode returnValue, String name, List<Var> parameters,
             GCodeContainer code, EntryRefernce entry) {
 
         this.name = name;
@@ -279,7 +279,7 @@ public class GFunction implements Compiler, GCode {
      * 
      * @return the parameters
      */
-    public List<GLocal> getParameters() {
+    public List<Var> getParameters() {
 
         return parameters;
     }

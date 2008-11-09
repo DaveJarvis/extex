@@ -25,11 +25,11 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
-import org.extex.exbib.bst2groovy.data.var.InitLocal;
+import org.extex.exbib.bst2groovy.data.var.DeclareVar;
+import org.extex.exbib.bst2groovy.data.var.Var;
 
 /**
- * This class implements a stack of GCode which returns new instances of GLocal
+ * This class implements a stack of GCode which returns new instances of Var
  * when an attempt is made to pop an element and the stack is empty. In addition
  * some code can be stored in the processor state.
  * 
@@ -59,11 +59,11 @@ public class ProcessorState {
     /**
      * The field <tt>locals</tt> contains the list of future items.
      */
-    private List<GLocal> locals = new ArrayList<GLocal>();
+    private List<Var> locals = new ArrayList<Var>();
 
     /**
      * The field <tt>localPrefix</tt> contains the prefix for the name of new
-     * instances of GLocal.
+     * instances of Var.
      */
     private String localPrefix = "v";
 
@@ -93,10 +93,10 @@ public class ProcessorState {
         int stackSize = stack.size();
         for (int i = 0; i < stackSize; i++) {
             GCode si = stack.get(i);
-            if (!(si instanceof GLocal) && !(si instanceof GIntegerConstant)
+            if (!(si instanceof Var) && !(si instanceof GIntegerConstant)
                     && !(si instanceof GStringConstant)) {
-                GLocal v = new GLocal(localPrefix + Integer.toString(no++));
-                code.add(new InitLocal(v, si));
+                Var v = new Var(localPrefix + Integer.toString(no++));
+                code.add(new DeclareVar(v, si));
                 stack.remove(i);
                 stack.add(i, v);
             }
@@ -118,7 +118,7 @@ public class ProcessorState {
      * 
      * @return the locals
      */
-    public List<GLocal> getLocals() {
+    public List<Var> getLocals() {
 
         return locals;
     }
@@ -155,7 +155,7 @@ public class ProcessorState {
         if (!stack.isEmpty()) {
             return stack.remove(stack.size() - 1);
         }
-        GLocal ret = new GLocal(localPrefix + Integer.toString(no++));
+        Var ret = new Var(localPrefix + Integer.toString(no++));
         locals.add(ret);
         return ret;
     }
@@ -203,7 +203,7 @@ public class ProcessorState {
         StringBuilder buffer = new StringBuilder();
         buffer.append("<");
         boolean first = true;
-        for (GLocal c : locals) {
+        for (Var c : locals) {
             if (first) {
                 first = false;
                 buffer.append("\t");

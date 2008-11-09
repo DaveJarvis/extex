@@ -75,7 +75,7 @@ import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GQuote;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
 import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
@@ -678,7 +678,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     public void write(Writer writer) throws IOException {
 
         CodeWriter w = new CodeWriter(writer);
-        functionList.add(new GFunction(null, "run", new ArrayList<GLocal>(),
+        functionList.add(new GFunction(null, "run", new ArrayList<Var>(),
             new CommandTranslator(this).translate(this), new EntryRefernce(
                 "entry")));
 
@@ -790,7 +790,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                     type, //
                     "' : { entry -> ");
                 writer.write(function.getName(), "(entry");
-                for (GLocal x : function.getParameters()) {
+                for (Var x : function.getParameters()) {
                     writer.write(", ", x.getType().getArg());
                 }
                 writer.write(")");

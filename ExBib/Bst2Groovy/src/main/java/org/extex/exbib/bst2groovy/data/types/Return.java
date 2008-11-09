@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
-import org.extex.exbib.bst2groovy.data.var.InitLocal;
+import org.extex.exbib.bst2groovy.data.var.DeclareVar;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -37,11 +37,12 @@ public final class Return extends GenericCode {
     @Override
     public int optimize(List<GCode> list, int index) {
 
-        if (index > 0 && getArg(0) instanceof GLocal) {
-            GLocal var = (GLocal) getArg(0);
+        if (index > 0 && getArg(0) instanceof Var) {
+            Var var = (Var) getArg(0);
             GCode code = list.get(index - 1);
-            if (code instanceof InitLocal && ((InitLocal) code).getVar() == var) {
-                setArg(0, ((InitLocal) code).getValue());
+            if (code instanceof DeclareVar
+                    && ((DeclareVar) code).getVar() == var) {
+                setArg(0, ((DeclareVar) code).getValue());
                 list.remove(index - 1);
                 return index;
             }

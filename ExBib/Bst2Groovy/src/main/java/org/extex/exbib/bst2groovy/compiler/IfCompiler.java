@@ -35,9 +35,9 @@ import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
-import org.extex.exbib.bst2groovy.data.var.InitLocal;
-import org.extex.exbib.bst2groovy.data.var.SetLocal;
+import org.extex.exbib.bst2groovy.data.var.AssignVar;
+import org.extex.exbib.bst2groovy.data.var.DeclareVar;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -127,14 +127,14 @@ public class IfCompiler implements Compiler {
 
             optimize();
 
-            if (index > 0 && list.get(index - 1) instanceof InitLocal
+            if (index > 0 && list.get(index - 1) instanceof DeclareVar
                     && thenBranch.size() == 1 && elseBranch.size() == 1
-                    && thenBranch.get(0) instanceof SetLocal
-                    && elseBranch.get(0) instanceof SetLocal) {
-                InitLocal init = (InitLocal) list.get(index - 1);
-                SetLocal setThen = (SetLocal) thenBranch.get(0);
-                SetLocal setElse = (SetLocal) elseBranch.get(0);
-                GLocal var = init.getVar();
+                    && thenBranch.get(0) instanceof AssignVar
+                    && elseBranch.get(0) instanceof AssignVar) {
+                DeclareVar init = (DeclareVar) list.get(index - 1);
+                AssignVar setThen = (AssignVar) thenBranch.get(0);
+                AssignVar setElse = (AssignVar) elseBranch.get(0);
+                Var var = init.getVar();
                 if (init.getValue() == null && var == setThen.getVar()
                         && var == setElse.getVar()) {
                     init.setValue(new IfInline(cond, setThen.getValue(),
@@ -256,7 +256,7 @@ public class IfCompiler implements Compiler {
      * 
      * @return the longer list
      */
-    public static List<GLocal> unify(List<GLocal> l1, List<GLocal> l2) {
+    public static List<Var> unify(List<Var> l1, List<Var> l2) {
 
         int s1 = l1.size();
         int s2 = l2.size();
@@ -302,14 +302,13 @@ public class IfCompiler implements Compiler {
 
         int size = adjustStackSize(thenState, elseState);
 
-        List<GLocal> locals =
-                unify(elseState.getLocals(), thenState.getLocals());
-        for (GLocal x : locals) {
+        List<Var> locals = unify(elseState.getLocals(), thenState.getLocals());
+        for (Var x : locals) {
             GCode v = state.pop();
-            if (v instanceof GLocal) {
-                ((GLocal) v).unify(x);
+            if (v instanceof Var) {
+                ((Var) v).unify(x);
             } else {
-                state.add(new InitLocal(x, v));
+                state.add(new DeclareVar(x, v));
             }
         }
 
@@ -324,23 +323,23 @@ public class IfCompiler implements Compiler {
                 os.pop();
             }
             int i = 0;
-            for (GLocal x : os.getLocals()) {
+            for (Var x : os.getLocals()) {
                 GCode tsi = ts.get(i);
                 GCode esi = es.get(i);
-                // if (tsi instanceof GLocal) {
-                // ((GLocal) tsi).unify(x);
-                // if (esi instanceof GLocal) {
-                // ((GLocal) esi).unify(x);
+                // if (tsi instanceof Var) {
+                // ((Var) tsi).unify(x);
+                // if (esi instanceof Var) {
+                // ((Var) esi).unify(x);
                 // } else {
                 // elseState.add(new SetLocal(x, esi));
                 // // }
-                // } else if (esi instanceof GLocal) {
-                // ((GLocal) esi).unify(x);
+                // } else if (esi instanceof Var) {
+                // ((Var) esi).unify(x);
                 // thenState.add(new SetLocal(x, tsi));
                 // } else {
-                state.add(new InitLocal(x, null));
-                thenState.add(new SetLocal(x, tsi));
-                elseState.add(new SetLocal(x, esi));
+                state.add(new DeclareVar(x, null));
+                thenState.add(new AssignVar(x, tsi));
+                elseState.add(new AssignVar(x, esi));
                 // }
             }
         }
@@ -354,7 +353,7 @@ public class IfCompiler implements Compiler {
 
         state.add(new If(cond, thenState.getCode(), elseState.getCode()));
 
-        for (GLocal x : os.getLocals()) {
+        for (Var x : os.getLocals()) {
             state.push(x);
         }
     }
@@ -367,10 +366,10 @@ public class IfCompiler implements Compiler {
     private void optimize(ProcessorState state) {
 
         GCodeContainer code = state.getCode();
-        if (code.size() == 2 && code.get(0) instanceof InitLocal
-                && code.get(1) instanceof SetLocal) {
-            InitLocal il = (InitLocal) code.get(0);
-            SetLocal sl = (SetLocal) code.get(1);
+        if (code.size() == 2 && code.get(0) instanceof DeclareVar
+                && code.get(1) instanceof AssignVar) {
+            DeclareVar il = (DeclareVar) code.get(0);
+            AssignVar sl = (AssignVar) code.get(1);
             if (il.getVar() == sl.getValue()) {
                 sl.setValue(il.getValue());
                 code.remove(0);

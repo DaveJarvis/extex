@@ -31,9 +31,9 @@ import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GBoolean;
-import org.extex.exbib.bst2groovy.data.var.GLocal;
-import org.extex.exbib.bst2groovy.data.var.InitLocal;
-import org.extex.exbib.bst2groovy.data.var.SetLocal;
+import org.extex.exbib.bst2groovy.data.var.AssignVar;
+import org.extex.exbib.bst2groovy.data.var.DeclareVar;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
@@ -146,21 +146,21 @@ public class WhileCompiler implements Compiler {
             throw new WhileSyntaxException(false);
         }
 
-        List<GLocal> bl = bodyState.getLocals();
+        List<Var> bl = bodyState.getLocals();
         if (bodyState.size() > bl.size()) {
             throw new WhileComplexException(false, bodyState.toString());
         }
-        for (GLocal x : bl) {
-            bodyState.add(new SetLocal(x, bodyState.pop()));
+        for (Var x : bl) {
+            bodyState.add(new AssignVar(x, bodyState.pop()));
         }
 
-        List<GLocal> locals = IfCompiler.unify(condState.getLocals(), bl);
-        for (GLocal x : locals) {
+        List<Var> locals = IfCompiler.unify(condState.getLocals(), bl);
+        for (Var x : locals) {
             GCode v = state.pop();
-            if (v instanceof GLocal) {
-                ((GLocal) v).unify(x);
+            if (v instanceof Var) {
+                ((Var) v).unify(x);
             } else {
-                state.add(new InitLocal(x, v));
+                state.add(new DeclareVar(x, v));
             }
         }
 
