@@ -41,7 +41,7 @@ public final class Return extends GenericCode {
             Var var = (Var) getArg(0);
             GCode code = list.get(index - 1);
             if (code instanceof DeclareVar
-                    && ((DeclareVar) code).getVar() == var) {
+                    && var.eq(((DeclareVar) code).getVar())) {
                 setArg(0, ((DeclareVar) code).getValue());
                 list.remove(index - 1);
                 return index;

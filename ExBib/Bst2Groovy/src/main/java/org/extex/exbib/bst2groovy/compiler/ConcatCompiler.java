@@ -81,9 +81,9 @@ public class ConcatCompiler implements Compiler {
     public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode a = state.pop();
         GCode b = state.pop();
-        state.push(new Concat(b, a));
+        GCode a = state.pop();
+        state.push(new Concat(a, b));
     }
 
 }

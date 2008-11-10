@@ -19,6 +19,7 @@
 package org.extex.exbib.bst2groovy.data.var;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.VoidGCode;
@@ -73,6 +74,28 @@ public class AssignVar extends VoidGCode {
     public Var getVar() {
 
         return var;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
+     *      int)
+     */
+    @Override
+    public int optimize(List<GCode> list, int index) {
+
+        int size = list.size();
+        if (size >= 2 && index == size - 1 && value instanceof Var) {
+            GCode code = list.get(index - 1);
+            if (code instanceof DeclareVar
+                    && ((Var) value).eq(((DeclareVar) code).getVar())) {
+                value = ((DeclareVar) code).getValue();
+                list.remove(index - 1);
+                return index;
+            }
+        }
+        return super.optimize(list, index);
     }
 
     /**

@@ -422,6 +422,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private Map<String, GFunction> types = new HashMap<String, GFunction>();
 
+    /**
+     * The field <tt>optimizeFlag</tt> contains the indicator to perform
+     * optimizations.
+     */
+    private boolean optimizeFlag = true;
+
     {
         if (compilers == null) {
             compilers = new HashMap<String, Compiler>();
@@ -571,13 +577,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throw new ComplexFunctionException(name, stack.toString());
         }
 
-        // state.optimize();
-
         GFunction function = new GFunction(returnValue, //
             GFunction.translate(name), //
             state.getLocals(), state.getCode(), entry);
 
-        function.optimize();
+        if (optimizeFlag) {
+            function.optimize();
+        }
 
         functionList.add(function);
         compilers.put(name, function);
@@ -622,6 +628,16 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
+     * Getter for the optimizeFlag.
+     * 
+     * @return the optimizeFlag
+     */
+    public boolean isOptimizeFlag() {
+
+        return optimizeFlag;
+    }
+
+    /**
      * Load the named styles into memory.
      * 
      * @throws ExBibBstNotFoundException
@@ -658,6 +674,16 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
+     * Setter for the optimizeFlag.
+     * 
+     * @param optimizeFlag the optimizeFlag to set
+     */
+    public void setOptimizeFlag(boolean optimizeFlag) {
+
+        this.optimizeFlag = optimizeFlag;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -677,11 +703,11 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public void write(Writer writer) throws IOException {
 
-        CodeWriter w = new CodeWriter(writer);
         functionList.add(new GFunction(null, "run", new ArrayList<Var>(),
             new CommandTranslator(this).translate(this), new EntryRefernce(
                 "entry")));
 
+        CodeWriter w = new CodeWriter(writer);
         writeImports(w);
         writeHead(w);
 
@@ -793,10 +819,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 for (Var x : function.getParameters()) {
                     writer.write(", ", x.getType().getArg());
                 }
-                writer.write(")");
-                writer.write(
-                // "\n", INDENT, INDENT, //
-                    " },");
+                writer.write(")", " },");
             }
             writer.write("\n", INDENT, "]\n" //
             );

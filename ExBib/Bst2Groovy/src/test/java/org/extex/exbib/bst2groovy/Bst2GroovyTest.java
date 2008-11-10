@@ -271,6 +271,19 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat2() throws Exception {
+
+        run("function{abc}{\"a\" \"b\" *}", //
+            PREFIX + "\n\n" + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"a\" + \"b\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that the code for duplicate$ is created properly.
      * </testcase>
      * 

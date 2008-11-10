@@ -70,6 +70,27 @@ public class Var implements GCode {
     }
 
     /**
+     * Check whether this variable is bound to the same base as another one.
+     * 
+     * @param other the other variable
+     * 
+     * @return <code>true</code> if this variable is bound to the same base as
+     *         another one
+     */
+    public boolean eq(Var other) {
+
+        Var v = this;
+        while (v.reference != null) {
+            v = v.reference;
+        }
+        Var w = other;
+        while (w.reference != null) {
+            w = w.reference;
+        }
+        return v == w;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()

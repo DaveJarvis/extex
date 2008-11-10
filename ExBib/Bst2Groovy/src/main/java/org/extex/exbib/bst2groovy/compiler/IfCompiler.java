@@ -81,7 +81,7 @@ public class IfCompiler implements Compiler {
         public If(GCode cond, GCodeContainer thenBranch,
                 GCodeContainer elseBranch) {
 
-            super(ReturnType.VOID, "");
+            super(ReturnType.VOID, "if");
             this.cond = cond;
             this.thenBranch = thenBranch;
             this.elseBranch = elseBranch;
@@ -94,6 +94,11 @@ public class IfCompiler implements Compiler {
          */
         @Override
         public GCode optimize() {
+
+            cond = cond.optimize();
+            if (cond instanceof GBoolean) {
+                cond = ((GBoolean) cond).getCode();
+            }
 
             thenBranch.optimize();
             elseBranch.optimize();
@@ -135,8 +140,8 @@ public class IfCompiler implements Compiler {
                 AssignVar setThen = (AssignVar) thenBranch.get(0);
                 AssignVar setElse = (AssignVar) elseBranch.get(0);
                 Var var = init.getVar();
-                if (init.getValue() == null && var == setThen.getVar()
-                        && var == setElse.getVar()) {
+                if (init.getValue() == null && var.eq(setThen.getVar())
+                        && var.eq(setElse.getVar())) {
                     init.setValue(new IfInline(cond, setThen.getValue(),
                         setElse.getValue()));
                     list.remove(index);
@@ -156,18 +161,38 @@ public class IfCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            String prefix2 = prefix + Bst2Groovy.INDENT;
-            writer.write(prefix, "if (");
+            writer.write(prefix);
+            print(writer, prefix, prefix + Bst2Groovy.INDENT);
+        }
+
+        /**
+         * Write an if-then-else cascade.
+         * 
+         * @param writer the writer
+         * @param prefix the prefix
+         * @param prefix2 the deeper prefix
+         * 
+         * @throws IOException in case of an I/O error
+         */
+        public void print(CodeWriter writer, String prefix, String prefix2)
+                throws IOException {
+
+            writer.write("if (");
             cond.print(writer, prefix);
             writer.write(") {");
             thenBranch.print(writer, prefix2);
             writer.write(prefix);
-            if (!elseBranch.isEmpty()) {
+            if (elseBranch.isEmpty()) {
+                writer.write("}");
+            } else if (elseBranch.size() == 1
+                    && elseBranch.get(0) instanceof If) {
+                writer.write("} else ");
+                ((If) (elseBranch.get(0))).print(writer, prefix, prefix2);
+            } else {
                 writer.write("} else {");
                 elseBranch.print(writer, prefix2);
-                writer.write(prefix);
+                writer.write(prefix, "}");
             }
-            writer.write("}");
         }
     }
 
@@ -175,6 +200,12 @@ public class IfCompiler implements Compiler {
      * This class represents an inline conditional.
      */
     public static final class IfInline extends GenericCode {
+
+        /**
+         * The field <tt>LINE_BREAKING_THESHOLD</tt> contains the line breaking
+         * theshold.
+         */
+        private static final int LINE_BREAKING_THESHOLD = 40;
 
         /**
          * Creates a new object.
@@ -198,9 +229,21 @@ public class IfCompiler implements Compiler {
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write("( ");
+            int col = writer.getColumn() - 1;
             getArg(0).print(writer, prefix);
+            if (writer.getColumn() >= LINE_BREAKING_THESHOLD) {
+                writer.nl(col);
+            } else {
+                col = writer.getColumn() - 1;
+                if (col < LINE_BREAKING_THESHOLD) {
+                    col = -1;
+                }
+            }
             writer.write(" ? ");
             getArg(1).print(writer, prefix);
+            if (col > 0) {
+                writer.nl(col);
+            }
             writer.write(" : ");
             getArg(2).print(writer, prefix);
             writer.write(" )");
@@ -319,7 +362,7 @@ public class IfCompiler implements Compiler {
             elseState.eliminateSideEffects();
             List<GCode> ts = thenState.getStack();
             List<GCode> es = elseState.getStack();
-            for (GCode x : ts) {
+            for (int i = ts.size(); i > 0; i--) {
                 os.pop();
             }
             int i = 0;
@@ -344,14 +387,7 @@ public class IfCompiler implements Compiler {
             }
         }
 
-        optimize(thenState);
-        optimize(elseState);
-        cond = cond.optimize();
-        if (cond instanceof GBoolean) {
-            cond = ((GBoolean) cond).getCode();
-        }
-
-        state.add(new If(cond, thenState.getCode(), elseState.getCode()));
+        state.add(new If(cond, optimize(thenState), optimize(elseState)));
 
         for (Var x : os.getLocals()) {
             state.push(x);
@@ -362,8 +398,10 @@ public class IfCompiler implements Compiler {
      * This methods performs some optimizations.
      * 
      * @param state the state
+     * 
+     * @return the code
      */
-    private void optimize(ProcessorState state) {
+    private GCodeContainer optimize(ProcessorState state) {
 
         GCodeContainer code = state.getCode();
         if (code.size() == 2 && code.get(0) instanceof DeclareVar
@@ -375,6 +413,7 @@ public class IfCompiler implements Compiler {
                 code.remove(0);
             }
         }
+        return code;
     }
 
 }
