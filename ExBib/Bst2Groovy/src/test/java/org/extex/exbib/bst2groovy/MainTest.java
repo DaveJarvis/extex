@@ -129,6 +129,17 @@ public class MainTest {
     }
 
     /**
+     * <testcase> Test that ...</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test04() throws IOException {
+
+        run(null, null, "I couldn't open style file \n", CLI.EXIT_FAIL, "-=");
+    }
+
+    /**
      * <testcase> Test that an empty file is compiled correctly.</testcase>
      * 
      * @throws IOException in case of an I/O error
@@ -728,6 +739,25 @@ public class MainTest {
         File out = new File("target", "testout.gy");
         try {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString());
+        } finally {
+            assertTrue(out.toString() + ": file does not exist", out.exists());
+            out.delete();
+        }
+    }
+
+    /**
+     * <testcase> Test that ...</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testOutput4() throws IOException {
+
+        File out = new File("target", "testout.gy");
+        try {
+            run("", "", "This is " + Main.PROGNAME + ", Version "
+                    + Main.VERSION + "\n", CLI.EXIT_OK, "{file}", "--verbose",
+                "--out", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
             out.delete();
