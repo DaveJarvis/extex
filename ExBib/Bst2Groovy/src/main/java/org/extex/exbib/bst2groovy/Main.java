@@ -25,7 +25,6 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.text.MessageFormat;
-import java.util.List;
 import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -62,7 +61,7 @@ public class Main extends CLI {
     /**
      * The field <tt>VERSION</tt> contains the version number.
      */
-    protected static final String VERSION = "0.1";
+    protected static final String VERSION = "1.0";
 
     /**
      * Process the command line options and return the exit code.
@@ -155,6 +154,11 @@ public class Main extends CLI {
     private boolean banner = false;
 
     /**
+     * The field <tt>verbose</tt> contains the indicator for the verbosity.
+     */
+    private boolean verbose = false;
+
+    /**
      * The field <tt>COPYING_RESOURCE</tt> contains the name of the resource for
      * the copyright file (in the jar).
      */
@@ -179,17 +183,6 @@ public class Main extends CLI {
                 }
                 in = arg;
                 return CLI.EXIT_CONTINUE;
-            }
-
-            @Override
-            public int run(String a, String arg, List<String> args)
-                    throws UnusedArgumentCliException,
-                        UnknownOptionCliException {
-
-                if (a.startsWith("-")) {
-                    throw new UnknownOptionCliException(a);
-                }
-                return super.run(a, arg, args);
             }
         });
         declareOption("", new NoArgOption(null) {
@@ -246,9 +239,8 @@ public class Main extends CLI {
                     } finally {
                         if (r != null) {
                             r.close();
-                        } else {
-                            is.close();
                         }
+                        is.close();
                     }
                 } catch (IOException e) {
                     // shit happens
@@ -284,6 +276,7 @@ public class Main extends CLI {
             protected int run(String arg) {
 
                 traceFinder = true;
+                verbose = true;
                 return EXIT_CONTINUE;
             }
         });
@@ -319,11 +312,10 @@ public class Main extends CLI {
     private int log(Level level, String tag, Object... args) {
 
         try {
-            logger
-                .log(level, MessageFormat.format(bundle.getString(tag), args));
+            logger.log(level, //
+                MessageFormat.format(bundle.getString(tag), args));
         } catch (MissingResourceException e) {
-            logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
-                tag));
+            logger.severe("???" + tag + "???");
         }
         return EXIT_FAIL;
     }
@@ -353,6 +345,9 @@ public class Main extends CLI {
      */
     private int run(Properties properties) {
 
+        if (verbose) {
+            logBanner(Level.SEVERE);
+        }
         try {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             ResourceFinderFactory rff = new ResourceFinderFactory();
