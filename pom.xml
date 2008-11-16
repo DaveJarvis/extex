@@ -242,15 +242,15 @@
         </executions>
       </plugin>
 -->
-
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>develop/eclipse/checkstyle42.cfg</configLocation>
+          <configLocation>${project.build.directory}develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
-
+-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
