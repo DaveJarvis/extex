@@ -41,19 +41,19 @@ public class DuplicateCompiler implements Compiler {
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    public void evaluate(EntryRefernce entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         GCode a = state.pop();
-        // if (a instanceof GString || a instanceof GInt || a instanceof GLocal)
-        // {
+        // if (a instanceof GStringConstant || a instanceof GIntegerConstant
+        // || a instanceof Var) {
         state.push(a);
         state.push(a);
         // } else {
-        // TODO make local variable
-        // state.push(a);
-        // state.push(a);
+        // Var x = state.makeVar();
+        // state.push(new DeclareVar(x, a));
+        // state.push(x);
+        // state.push(x);
         // }
     }
-
 }

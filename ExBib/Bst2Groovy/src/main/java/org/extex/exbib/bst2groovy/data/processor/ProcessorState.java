@@ -95,7 +95,7 @@ public class ProcessorState {
             GCode si = stack.get(i);
             if (!(si instanceof Var) && !(si instanceof GIntegerConstant)
                     && !(si instanceof GStringConstant)) {
-                Var v = new Var(localPrefix + Integer.toString(no++));
+                Var v = makeVar();
                 code.add(new DeclareVar(v, si));
                 stack.remove(i);
                 stack.add(i, v);
@@ -134,6 +134,16 @@ public class ProcessorState {
     }
 
     /**
+     * Create a new local variable.
+     * 
+     * @return a new local variable
+     */
+    public Var makeVar() {
+
+        return new Var(localPrefix + Integer.toString(no++));
+    }
+
+    /**
      * Optimize the code contained herein.
      * 
      */
@@ -155,7 +165,7 @@ public class ProcessorState {
         if (!stack.isEmpty()) {
             return stack.remove(stack.size() - 1);
         }
-        Var ret = new Var(localPrefix + Integer.toString(no++));
+        Var ret = makeVar();
         locals.add(ret);
         return ret;
     }

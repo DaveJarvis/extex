@@ -52,7 +52,7 @@ public class ConcatCompiler implements Compiler {
          */
         public Concat(GCode a, GCode b) {
 
-            super(ReturnType.STRING, "", a, b);
+            super(ReturnType.STRING, "++", a, b);
         }
 
         /**
