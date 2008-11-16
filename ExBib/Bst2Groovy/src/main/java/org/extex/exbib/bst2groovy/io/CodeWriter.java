@@ -40,6 +40,12 @@ public class CodeWriter extends Writer {
     private int column = 0;
 
     /**
+     * The field <tt>inLine</tt> contains the number of nl characters already
+     * encountered.
+     */
+    private int inLine = 3;
+
+    /**
      * Creates a new object.
      * 
      * @param writer the writer
@@ -93,11 +99,14 @@ public class CodeWriter extends Writer {
      */
     public void nl(int n) throws IOException {
 
-        writer.write('\n');
+        if (inLine < 2) {
+            writer.write('\n');
+        }
         for (int i = 0; i < n; i++) {
             writer.write(' ');
         }
         column = n;
+        inLine = 0;
     }
 
     /**
@@ -106,23 +115,38 @@ public class CodeWriter extends Writer {
      * @see java.io.Writer#write(char[], int, int)
      */
     @Override
-    public void write(char[] cbuf, int off, int len) throws IOException {
+    public void write(char[] cbuf, int offset, int length) throws IOException {
 
+        int off = offset;
+        int len = length;
         int i = off;
-        for (int no = len; no > 0; no--) {
+        for (int no = length; no > 0; no--) {
             char c = cbuf[i++];
             switch (c) {
                 case '\n':
+                    if (inLine >= 2) {
+                        int n = i - off - 1;
+                        if (n > 0) {
+                            writer.write(cbuf, off, n);
+                        }
+                        off = i;
+                        len -= n + 1;
+                    }
                     column = 0;
+                    inLine++;
                     break;
                 case '\t':
                     column = ((column + 8) / 8) * 8;
+                    inLine = 0;
                     break;
                 default:
                     column++;
+                    inLine = 0;
             }
         }
-        writer.write(cbuf, off, len);
+        if (len > 0) {
+            writer.write(cbuf, off, len);
+        }
     }
 
     /**

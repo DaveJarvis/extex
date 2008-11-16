@@ -142,12 +142,12 @@ public class MainTest {
                 + "import org.extex.exbib.core.io.*\n" + "\n"
                 + "class Style {\n" + "  private DB bibDB\n"
                 + "  private Writer bibWriter\n"
-                + "  private Processor bibProcessor\n" + "\n" + "\n" + "\n"
-                + "\n" + "\n" + "  Style(bibDB, bibWriter, bibProcessor) {\n"
+                + "  private Processor bibProcessor\n\n"
+                + "  Style(bibDB, bibWriter, bibProcessor) {\n"
                 + "    this.bibDB = bibDB\n"
                 + "    this.bibWriter = bibWriter\n"
-                + "    this.bibProcessor = bibProcessor\n" + "  }\n" + "\n"
-                + "  def run() {\n" + "  }\n" + "\n" + "}\n" + "\n"
+                + "    this.bibProcessor = bibProcessor\n" + "  }\n\n"
+                + "  def run() {\n" + "  }\n\n" + "}\n\n"
                 + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
             CLI.EXIT_OK, "{file}");
     }
