@@ -40,7 +40,6 @@ import java.util.logging.Logger;
 
 import org.extex.cli.CLI;
 import org.extex.cli.NoArgOption;
-import org.extex.cli.Option;
 import org.extex.cli.StringOption;
 import org.extex.cli.StringPropertyOption;
 import org.extex.cli.exception.MissingArgumentCliException;
@@ -657,31 +656,6 @@ public abstract class AbstractMain extends CLI {
             logger.throwing("", "", e);
         }
         return EXIT_FAIL;
-    }
-
-    /**
-     * Declare an option for the argument given and one with a hyphen prefixed
-     * for each name given.
-     * 
-     * @param shortcut the character to be used as shortcut or <code>null</code>
-     *        for none
-     * @param name the name of the option
-     * @param opt the option
-     * @param aliases the list of alias names
-     */
-    protected void option(String shortcut, String name, Option opt,
-            String... aliases) {
-
-        if (shortcut != null) {
-            declareOption(shortcut, opt);
-        }
-        if (name != null) {
-            declareOption(name, opt);
-        }
-
-        for (String a : aliases) {
-            declareOption(a, opt);
-        }
     }
 
     /**

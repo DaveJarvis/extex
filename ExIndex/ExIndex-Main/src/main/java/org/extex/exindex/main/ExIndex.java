@@ -399,6 +399,14 @@ public class ExIndex extends Indexer {
                 InvocationTargetException {
 
         super();
+        logger = Logger.getLogger(ExIndex.class.getName());
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.INFO);
+        consoleHandler = new ConsoleHandler();
+        consoleHandler.setFormatter(new LogFormatter());
+        consoleHandler.setLevel(Level.INFO);
+        logger.addHandler(consoleHandler);
+
         config = ConfigurationFactory.newInstance("path/indexer");
         ResourceFinder f =
                 new ResourceFinderFactory().createResourceFinder(config, //
@@ -412,14 +420,6 @@ public class ExIndex extends Indexer {
         setResourceFinder(f);
         charset = Charset.defaultCharset();
         banner = true;
-
-        logger = Logger.getLogger(ExIndex.class.getName());
-        logger.setUseParentHandlers(false);
-        logger.setLevel(Level.INFO);
-        consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new LogFormatter());
-        consoleHandler.setLevel(Level.INFO);
-        logger.addHandler(consoleHandler);
 
         myParserFactory = new FilteringParserFactory();
         myParserFactory.setResourceFinder(f);
