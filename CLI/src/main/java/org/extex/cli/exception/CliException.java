@@ -18,13 +18,17 @@
 
 package org.extex.cli.exception;
 
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
+
 /**
- * This exception signals an unknown option.
+ * This exception signals that something in the command line processing went
+ * wrong.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnknownOptionCliException extends CliException {
+public class CliException extends Exception {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,11 +39,23 @@ public class UnknownOptionCliException extends CliException {
     /**
      * Creates a new object.
      * 
-     * @param optionName the name of the option
+     * @param arg the name of the option
      */
-    public UnknownOptionCliException(String optionName) {
+    public CliException(String arg) {
 
-        super(optionName);
+        super(arg);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
+        return MessageFormat.format(bundle.getString("message"), getMessage());
     }
 
 }

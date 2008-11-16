@@ -131,10 +131,11 @@ public class CLI {
      * 
      * @param bundle the resource bundle for the descriptions
      * @param tagBefore the tag of the resource bundle entry to be inserted at
-     * the beginning; it can be <code>null</code>; then nothing is inserted at
-     * the beginning
+     *        the beginning; it can be <code>null</code>; then nothing is
+     *        inserted at the beginning
      * @param tagAfter the tag of the resource bundle entry to be inserted at
-     * the end; it can be <code>null</code>; then nothing is inserted at the end
+     *        the end; it can be <code>null</code>; then nothing is inserted at
+     *        the end
      * @param args additional arguments for the before and after text
      * 
      * @return the description
@@ -211,6 +212,31 @@ public class CLI {
     }
 
     /**
+     * Declare an option for the argument given and one with a hyphen prefixed
+     * for each name given.
+     * 
+     * @param shortcut the character to be used as shortcut or <code>null</code>
+     *        for none
+     * @param name the name of the option
+     * @param opt the option
+     * @param aliases the list of alias names
+     */
+    public void option(String shortcut, String name, Option opt,
+            String... aliases) {
+
+        if (shortcut != null) {
+            declareOption(shortcut, opt);
+        }
+        if (name != null) {
+            declareOption(name, opt);
+        }
+
+        for (String a : aliases) {
+            declareOption(a, opt);
+        }
+    }
+
+    /**
      * Parse the options from a list of strings and run the callback handlers
      * upon the options found.
      * 
@@ -222,7 +248,7 @@ public class CLI {
      * @throws MissingArgumentCliException in case of a missing argument
      * @throws UnusedArgumentCliException in case of an superfluous argument
      * @throws NonNumericArgumentCliException in case of a non-numeric value for
-     * a numeric option
+     *         a numeric option
      */
     public int run(List<String> args)
             throws UnknownOptionCliException,
@@ -270,7 +296,7 @@ public class CLI {
      * @throws MissingArgumentCliException in case of a missing argument
      * @throws UnusedArgumentCliException in case of an superfluous argument
      * @throws NonNumericArgumentCliException in case of a non-numeric value for
-     * a numeric option
+     *         a numeric option
      */
     public int run(String[] argv)
             throws UnknownOptionCliException,
