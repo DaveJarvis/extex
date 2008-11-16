@@ -19,8 +19,12 @@
 package org.extex.exbib.bst2groovy;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Locale;
 
@@ -39,70 +43,150 @@ public class MainTest {
      * Run a test.
      * 
      * @param bst the content of the bst file
-     * @param expectedErr the expected error output
+     * @param expectedOut the expected output stream
+     * @param expectedErr the expected error stream
      * @param exitCode the exit code
      * @param args the arguments
+     * 
+     * @throws IOException in case of an I/O error
      */
-    private static void run(String bst, String expectedErr, int exitCode,
-            String... args) {
+    private static void run(String bst, String expectedOut, String expectedErr,
+            int exitCode, String... args) throws IOException {
 
+        File file = null;
+        if (bst != null) {
+            file = File.createTempFile("bst2groovyTest", ".bst");
+            FileWriter w = new FileWriter(file);
+            w.write(bst);
+            w.close();
+
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("{file}")) {
+                    args[i] = file.getAbsolutePath();
+                }
+            }
+        }
         Locale.setDefault(Locale.ENGLISH);
         PrintStream err = System.err;
         ByteArrayOutputStream errStream = new ByteArrayOutputStream();
         System.setErr(new PrintStream(errStream));
+        PrintStream out = System.err;
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outStream));
         try {
             assertEquals(exitCode, Main.commandLine(args));
         } finally {
             System.err.close();
             System.setErr(err);
+            System.out.close();
+            System.setOut(out);
+            if (file != null) {
+                file.delete();
+            }
         }
         if (expectedErr != null) {
             assertEquals(expectedErr, errStream.toString());
         }
+        if (expectedOut != null) {
+            assertEquals(expectedOut, outStream.toString());
+        }
     }
 
     /**
      * <testcase> Test that a unreadable input file is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void test1() {
+    public void test01() throws IOException {
 
-        run(null, "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL,
-            "xyzzy.bst");
+        run(null, null, "I couldn't open style file xyzzy.bst\n",
+            CLI.EXIT_FAIL, "xyzzy.bst");
     }
 
     /**
      * <testcase> Test that a unreadable input file is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void test2() {
+    public void test02() throws IOException {
 
-        run(null, "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL, "-",
-            "xyzzy.bst");
+        run(null, null, "I couldn't open style file xyzzy.bst\n",
+            CLI.EXIT_FAIL, "-", "xyzzy.bst");
     }
 
     /**
      * <testcase> Test that a unreadable input file is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void test3() {
+    public void test03() throws IOException {
 
-        run(null, "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL,
+        run(null, "", "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL,
             "--", "xyzzy.bst");
+    }
+
+    /**
+     * <testcase> Test that an empty file is compiled correctly.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test10() throws IOException {
+
+        run("", "import org.extex.exbib.core.db.Entry\n"
+                + "import org.extex.exbib.core.db.DB\n"
+                + "import org.extex.exbib.core.*\n"
+                + "import org.extex.exbib.core.io.*\n" + "\n"
+                + "class Style {\n" + "  private DB bibDB\n"
+                + "  private Writer bibWriter\n"
+                + "  private Processor bibProcessor\n" + "\n" + "\n" + "\n"
+                + "\n" + "\n" + "  Style(bibDB, bibWriter, bibProcessor) {\n"
+                + "    this.bibDB = bibDB\n"
+                + "    this.bibWriter = bibWriter\n"
+                + "    this.bibProcessor = bibProcessor\n" + "  }\n" + "\n"
+                + "  def run() {\n" + "  }\n" + "\n" + "}\n" + "\n"
+                + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
+            CLI.EXIT_OK, "{file}");
+    }
+
+    /**
+     * <testcase> Test that an unreadable configuration is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testConfig1() throws IOException {
+
+        run(null, "", "Missing argument for option --config\n", CLI.EXIT_FAIL,
+            "--config");
+    }
+
+    /**
+     * <testcase> Test that a unknown configuration .</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testConfig2() throws IOException {
+
+        run(null, "", "Configuration `xyzzy' not found.\n", CLI.EXIT_FAIL,
+            "--config", "xyzzy");
     }
 
     /**
      * <testcase>Test that the version is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testCopying() {
+    public void testCopying() throws IOException {
 
         run(
             null,
+            "",
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n"
                     + "                      Version 2.1, February 1999\n"
                     + "Copyright (C) 1991, 1999 Free Software Foundation, Inc.\n"
@@ -538,34 +622,38 @@ public class MainTest {
     /**
      * <testcase> Test that an input file is required.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testEmpty() {
+    public void testEmpty() throws IOException {
 
-        run(null, "I couldn't open style file \n", CLI.EXIT_FAIL);
+        run(null, "", "I couldn't open style file \n", CLI.EXIT_FAIL);
     }
 
     /**
      * <testcase>Test that an empty option is ignored and an unknown option is
      * reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testEmptyOption() {
+    public void testEmptyOption() throws IOException {
 
-        run(null, "The option -xyzzy is not known\n", CLI.EXIT_FAIL, "",
+        run(null, "", "The option -xyzzy is not known\n", CLI.EXIT_FAIL, "",
             "-xyzzy");
     }
 
     /**
      * <testcase>Test that an unknown option is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testHelp1() {
+    public void testHelp1() throws IOException {
 
         run(
             null,
+            "",
             "Usage: bst2groovy <options> file\n"
                     + "The following options are supported:\n"
                     + "\t-[-] <file>\n"
@@ -591,43 +679,82 @@ public class MainTest {
      * <testcase>A <code>null</code> argument leads to a
      * {@link NullPointerException}</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testNull() {
+    public void testNull() throws IOException {
 
-        run(null, "java.lang.NullPointerException\n", CLI.EXIT_FAIL,
+        run(null, "", "java.lang.NullPointerException\n", CLI.EXIT_FAIL,
             (String[]) null);
     }
 
     /**
      * <testcase>Test that an missing option argument is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testOutput1() {
+    public void testOutput1() throws IOException {
 
-        run(null, "Missing argument for option --output\n", CLI.EXIT_FAIL,
+        run(null, "", "Missing argument for option --output\n", CLI.EXIT_FAIL,
             "--output");
+    }
+
+    /**
+     * <testcase> Test that the output can be redirected.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testOutput2() throws IOException {
+
+        File out = new File("target", "testout.gy");
+        try {
+            run("", "", "", CLI.EXIT_OK, "{file}", "-o", out.toString());
+        } finally {
+            assertTrue(out.toString() + ": file does not exist", out.exists());
+            out.delete();
+        }
+    }
+
+    /**
+     * <testcase> Test that the output can be redirected.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testOutput3() throws IOException {
+
+        File out = new File("target", "testout.gy");
+        try {
+            run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString());
+        } finally {
+            assertTrue(out.toString() + ": file does not exist", out.exists());
+            out.delete();
+        }
     }
 
     /**
      * <testcase>Test that an unknown option is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testUnknownOption() {
+    public void testUnknownOption() throws IOException {
 
-        run(null, "The option -xyzzy is not known\n", CLI.EXIT_FAIL, "-xyzzy");
+        run(null, "", "The option -xyzzy is not known\n", CLI.EXIT_FAIL,
+            "-xyzzy");
     }
 
     /**
      * <testcase>Test that the version is reported.</testcase>
      * 
+     * @throws IOException in case of an I/O error
      */
     @Test
-    public void testVersion() {
+    public void testVersion() throws IOException {
 
-        run(null, "This is " + Main.PROGNAME + ", Version " + Main.VERSION
+        run(null, "", "This is " + Main.PROGNAME + ", Version " + Main.VERSION
                 + "\n", CLI.EXIT_FAIL, "--version");
     }
 

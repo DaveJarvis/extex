@@ -298,21 +298,6 @@ public class Main extends CLI {
     }
 
     /**
-     * Close the instance and release the logger.
-     */
-    public void close() {
-
-        if (logger == null) {
-            return;
-        }
-        for (Handler h : logger.getHandlers()) {
-            h.close();
-            logger.removeHandler(h);
-        }
-        logger = null;
-    }
-
-    /**
      * Getter for bundle.
      * 
      * @return the bundle
