@@ -18,7 +18,7 @@
   -
   -->
 <Resource>
-  <Finder class="org.extex.resource.FileFinder"
+  <Finder class="org.extex.resource.UrlFinder"
           default="default">
     <default>
       <path>.</path>
