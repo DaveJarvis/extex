@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.resource;
@@ -39,12 +38,11 @@ import org.extex.resource.io.NamedInputStream;
  * This file finder searches for the file in different directories and with
  * several extensions.
  * 
- * <h2>Configuration</h2>
- * The file finder can be configured to influence its actions. The following
- * example shows a configuration for a file finder:
+ * <h2>Configuration</h2> The file finder can be configured to influence its
+ * actions. The following example shows a configuration for a file finder:
  * 
  * <pre>
- * &lt;Finder class="de.dante.util.resource.FileFinder"
+ * &lt;Finder class="org.extex.resource.FileFinder"
  *         trace="false"
  *         default="default"&gt;
  *   &lt;tex&gt;
@@ -80,39 +78,37 @@ import org.extex.resource.io.NamedInputStream;
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
  * exists then this sub-configuration is used. For instance if the resource
- * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
- * sub-configuration <tt>fmt</tt> determines how to find this file.
+ * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the sub-configuration
+ * <tt>fmt</tt> determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
  * <tt>default</tt> is used to find the default sub-configuration. In the
  * example given above this default configuration is called <tt>default</tt>.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is
- * mandatory.
+ * another existing configuration. The attribute <tt>default</tt> is mandatory.
  * </p>
  * <p>
- * Each sub-configuration takes the tags <tt>path</tt> and <tt>extension</tt>
- * in arbitrary number. <tt>path</tt> contains the path prepended before the
+ * Each sub-configuration takes the tags <tt>path</tt> and <tt>extension</tt> in
+ * arbitrary number. <tt>path</tt> contains the path prepended before the
  * resource name. <tt>extension</tt> contains the extension appended after the
  * resource name.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case
- * the value is ignored and the value is taken from the property named in the
+ * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case the
+ * value is ignored and the value is taken from the property named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the property can contain several paths. They are separated by the
  * separator specified for the platform. For instance on windows the separator
  * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the
- * value is ignored and the value is taken from the environment variable named
- * in the attribute. Otherwise the value of the tag is taken as path. The value
- * taken from the environment variable can contain several paths. They are
- * separated by the separator specified for the platform. For instance on
- * windows the separator <tt>;</tt> is used and on Unix the separator
- * <tt>:</tt> is used.
+ * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the value is
+ * ignored and the value is taken from the environment variable named in the
+ * attribute. Otherwise the value of the tag is taken as path. The value taken
+ * from the environment variable can contain several paths. They are separated
+ * by the separator specified for the platform. For instance on windows the
+ * separator <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
  * When the full file name contains the string <tt>{type}</tt> this string is
@@ -125,8 +121,8 @@ import org.extex.resource.io.NamedInputStream;
  * used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions
- * in the log file. The tracing is performed only if a logger is present when
+ * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
  * <tt>trace</tt> is optional.
  * </p>
@@ -183,15 +179,13 @@ public class FileFinder extends AbstractFinder
     private NamedInputStream find(String name, List<String> paths,
             Configuration cfg, String type) {
 
-        NamedInputStream stream = null;
-        Iterator<String> iterator = paths.iterator();
-
-        while (stream == null && iterator.hasNext()) {
-            String p = iterator.next();
-            stream = find(name, p, cfg, type);
+        for (String p : paths) {
+            NamedInputStream stream = find(name, p, cfg, type);
+            if (stream != null) {
+                return stream;
+            }
         }
-
-        return stream;
+        return null;
     }
 
     /**
@@ -314,8 +308,7 @@ public class FileFinder extends AbstractFinder
     }
 
     /**
-     * @see org.extex.resource.PropertyAware#setProperties(
-     *      java.util.Properties)
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties properties) {
 
