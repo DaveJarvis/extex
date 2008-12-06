@@ -344,7 +344,7 @@ public class UrlFinder extends AbstractFinder
         try {
             url = new URL(n);
         } catch (MalformedURLException e) {
-            trace("Malformed", n, null);
+            trace("Malformed", n + ": " + e.getLocalizedMessage(), null);
             return null;
         }
 
