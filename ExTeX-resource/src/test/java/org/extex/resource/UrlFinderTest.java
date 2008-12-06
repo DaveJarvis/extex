@@ -18,12 +18,19 @@
 
 package org.extex.resource;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationLoader;
@@ -40,6 +47,59 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class UrlFinderTest {
+
+    private class LoggingHandler extends Handler {
+
+        /**
+         * The field <tt>buffer</tt> contains the ...
+         */
+        private StringBuilder buffer = new StringBuilder();
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#close()
+         */
+        @Override
+        public void close() throws SecurityException {
+
+            //
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#flush()
+         */
+        @Override
+        public void flush() {
+
+            //
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
+         */
+        @Override
+        public void publish(LogRecord record) {
+
+            buffer.append(record.getMessage());
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            return buffer.toString();
+        }
+
+    }
 
     /**
      * The constant <tt>CFG</tt> contains the configuration.
@@ -210,6 +270,38 @@ public class UrlFinderTest {
     public void test001() {
 
         new UrlFinder(null);
+    }
+
+    /**
+     * <testcase> Test an unknown protocol. </testcase>
+     * 
+     */
+    @Test
+    public void test002() {
+
+        Locale.setDefault(Locale.ENGLISH);
+        UrlFinder finder = new UrlFinder(CFG);
+        Logger logger = Logger.getLogger("xxx");
+        logger.setLevel(Level.ALL);
+        Handler handler = new LoggingHandler();
+        handler.setLevel(Level.ALL);
+        logger.addHandler(handler);
+        finder.enableLogging(logger);
+        finder.enableTracing(true);
+        NamedInputStream s = finder.findResource("xx://abc", "tex");
+        assertNull(s);
+        String sep = System.getProperty("file.separator");
+        assertEquals(
+            "UrlFinder: Searching xx://abc [tex]\n"
+                    + "UrlFinder: Trying file xx:"
+                    + sep
+                    + "abc\n"
+                    + "UrlFinder: Not a valid URL: xx://abc: unknown protocol: xx\n"
+                    + "UrlFinder: Trying file xx:"
+                    + sep
+                    + "abc.tex\n"
+                    + "UrlFinder: Not a valid URL: xx://abc.tex: unknown protocol: xx\n",
+            handler.toString().replaceAll("\r", ""));
     }
 
     /**
