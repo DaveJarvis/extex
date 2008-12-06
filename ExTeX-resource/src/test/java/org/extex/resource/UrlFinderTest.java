@@ -288,20 +288,24 @@ public class UrlFinderTest {
         logger.addHandler(handler);
         finder.enableLogging(logger);
         finder.enableTracing(true);
-        NamedInputStream s = finder.findResource("xx://abc", "tex");
-        assertNull(s);
-        String sep = System.getProperty("file.separator");
-        assertEquals(
-            "UrlFinder: Searching xx://abc [tex]\n"
-                    + "UrlFinder: Trying file xx:"
-                    + sep
-                    + "abc\n"
-                    + "UrlFinder: Not a valid URL: xx://abc: unknown protocol: xx\n"
-                    + "UrlFinder: Trying file xx:"
-                    + sep
-                    + "abc.tex\n"
-                    + "UrlFinder: Not a valid URL: xx://abc.tex: unknown protocol: xx\n",
-            handler.toString().replaceAll("\r", ""));
+        try {
+            NamedInputStream s = finder.findResource("xx://abc", "tex");
+            assertNull(s);
+            String sep = System.getProperty("file.separator");
+            assertEquals(
+                "UrlFinder: Searching xx://abc [tex]\n"
+                        + "UrlFinder: Trying file xx:"
+                        + sep
+                        + "abc\n"
+                        + "UrlFinder: Not a valid URL: xx://abc: unknown protocol: xx\n"
+                        + "UrlFinder: Trying file xx:"
+                        + sep
+                        + "abc.tex\n"
+                        + "UrlFinder: Not a valid URL: xx://abc.tex: unknown protocol: xx\n",
+                handler.toString().replaceAll("\r", ""));
+        } finally {
+            logger.removeHandler(handler);
+        }
     }
 
     /**
