@@ -245,8 +245,10 @@ public class UrlFinder extends AbstractFinder
             trace("ConfigurationNotFound", type, t);
         }
 
+        if (name.matches("^[a-z0-9]+://.+")) {
+            return find(name, "", cfg, type);
+        }
         if (new File(name).isAbsolute()) {
-
             return find(name, "", cfg, type);
         }
 
