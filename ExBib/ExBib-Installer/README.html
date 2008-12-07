@@ -1,107 +1,101 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>ExBib Installer</title>
-  <meta name="Author" content="Gerd Neugebauer">
-  <style>
+<title>ExBib Installer</title>
+<meta name="Author" content="Gerd Neugebauer">
+<style>
 body {
-  background-color:white;
-  font-family: sans-serif;
-  margin-left:150px;
-  margin-right:2em;
-  background: url(src/installer/images/side.png) repeat-y;
+	background-color: white;
+	font-family: sans-serif;
+	margin-left: 150px;
+	margin-right: 2em;
+	background: url(src/installer/images/side.png) repeat-y;
 }
+
 .e {
-  text-transform:uppercase;
-  font-size:85%;
-  vertical-align: -0.5ex;
-  margin-left: -0.2em;
-  margin-right: -0.1em;
-  line-height: 0;
+	text-transform: uppercase;
+	font-size: 85%;
+	vertical-align: -0.5ex;
+	margin-left: -0.2em;
+	margin-right: -0.1em;
+	line-height: 0;
 }
+
 .a {
-  text-transform:uppercase;
-  font-size:75%;
-  vertical-align: 0.45ex;
-  margin-left: -0.36em;
-  margin-right: -0.15em;
+	text-transform: uppercase;
+	font-size: 75%;
+	vertical-align: 0.45ex;
+	margin-left: -0.36em;
+	margin-right: -0.15em;
 }
+
 .t {
-  margin-left: -0.15em;
+	margin-left: -0.15em;
 }
+
 .left {
-  position:absolute;
-  top:0;
-  left:0;
-  width:121;
-  height:346;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 121;
+	height: 346;
 }
+
 h1,h2,h3 {
-  color:firebrick;
+	color: firebrick;
 }
+
 address {
-  font-size:70%;
-  margin-top:2.5em;
-  padding-top:.5em;
-  border-top:1px solid gray;
+	font-size: 70%;
+	margin-top: 2.5em;
+	padding-top: .5em;
+	border-top: 1px solid gray;
 }
+
 pre {
-  background-color:#eeeeee;
-  border: 1px solid #999999;
-  padding:.15em;
+	background-color: #eeeeee;
+	border: 1px solid #999999;
+	padding: .15em;
 }
-  </style>
+</style>
 </head>
 <body>
-<img class="left" src="src/installer/images/ExBib-side.png"/>
+<img class="left" src="src/installer/images/ExBib-side.png" />
 
 <h1>The &epsilon;&chi;Bib Installer</h1>
 
-<p>
- &epsilon;&chi;Bib is a bibliography processor in the spirit of
- B<small>IB</small><span class="t">T</span><span class="e">e</span>X.
- &epsilon;&chi;Bib is delivered in form of an installer. This installer
- is created with the help of <a href="http://izpack.org">IzPack</a>.
-</p>
-<p>
- IzPack is included in the folder <tt>src/izPack-install-*</tt> since
- currently no reliable Maven2 package for IzPack could be found.
-</p>
+<p>&epsilon;&chi;Bib is a bibliography processor in the spirit of B<small>IB</small><span
+	class="t">T</span><span class="e">e</span>X. &epsilon;&chi;Bib is
+delivered in form of an installer. This installer is created with the
+help of <a href="http://izpack.org">IzPack</a>.</p>
+<p>IzPack is included in the folder <tt>src/izPack-install-*</tt>
+since currently no reliable Maven2 package for IzPack could be found.</p>
 
 <h2>Creating the &epsilon;&chi;Bib Installer</h2>
 
-<p>
- The &epsilon;&chi;Bib installer can be created in this directory with the help
- of Maven2:
-</p>
+<p>The &epsilon;&chi;Bib installer can be created in this directory
+with the help of Maven2:</p>
 <pre>
   # <b>mvn package</b>
 </pre>
-<p>
-This command requires that <a
-href="http://maven.apache.org">Maven2</a> is properly installed on
-your system and the executable can be found on the search path.
-</p>
-<p>
-After a successful completion of the command the installer can be found
-as the file <tt>target/ExBib-setup.jar</tt>. This installer includes
-everything needed to get started. It just requires a proper Java
-installation (Java 5 or higher).
-</p>
-<p>
-If the build fails the verbose log messages of Maven can be used to
-determine the problem. Usually just reading the messages leads you
-into the right direction.
-</p>
+<p>This command requires that <a href="http://maven.apache.org">Maven2</a>
+is properly installed on your system and the executable can be found on
+the search path.</p>
+<p>After a successful completion of the command the installer can be
+found as the file <a href="target/ExBib-setup-0.1.jar"><tt>target/ExBib-setup-0.1.jar</tt></a>.
+This installer includes everything needed to get started. It just
+requires a proper Java installation (Java 5 or higher).</p>
+<p>If the build fails the verbose log messages of Maven can be used
+to determine the problem. Usually just reading the messages leads you
+into the right direction.</p>
 
 <h2>License</h2>
 
-The &epsilon;&chi;Bib installer is released under the 
+The &epsilon;&chi;Bib installer is released under the
 <a href="LICENSE.html">GNU Library Public License</a>. The installer utilizes
 software distributed under the Apache License 2.0.
 
-<address>
-© 2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
-</address>
+<address>© 2008 <a href="mailto:extex@dante.de">The
+&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a></address>
 </body>
 </html>
