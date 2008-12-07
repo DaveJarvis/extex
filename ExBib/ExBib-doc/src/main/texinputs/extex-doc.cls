@@ -4,12 +4,24 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[12pt,fleqn,a4paper,bibtotoc]{scrbook}
 
-\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{booktabs}
-\usepackage{multicol}
-\usepackage{listings}
-\usepackage{graphicx,pgf}
+\newif\ifdraft
+
+\DeclareOption{final}{%
+  \let\INCOMPLETE\par
+  \let\Incomplete\par
+  \draftfalse
+}
+\DeclareOption*{\PassOptoinsToClass{\CurrentOption}{scrbook}}
+
+\ProcessOptions
+
+
+\RequirePackage[latin1]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{booktabs}
+\RequirePackage{multicol}
+\RequirePackage{listings}
+\RequirePackage{graphicx,pgf}
 
 \definecolor{hellmagenta}{rgb}{1,0.75,0.9}
 \definecolor{hellcyan}{rgb}{0.75,1,0.9}
@@ -195,9 +207,8 @@
 
 \providecommand\eTeX{\ensuremath{\varepsilon}-\TeX}
 
-\newif\ifdraft
 
-\newcommand\INCOMPLETE{\bigskip\par
+\providecommand\INCOMPLETE{\bigskip\par
   {\unitlength=1pt
   \begin{tikzpicture}[scale=.08]\normalsize\sf\bfseries
     \shade[top color=white!99!red,bottom color=white!20!red,draw=red!40!black,thick]
@@ -208,7 +219,7 @@
   \immediate\write\@auxout{\string\global\string\drafttrue}%
   \bigskip\par
 }
-\newcommand\Incomplete{\bigskip\par
+\providecommand\Incomplete{\bigskip\par
   {\unitlength=1pt
   \begin{tikzpicture}[scale=.06]\small\sf\bfseries
     \shade[top color=white!99!red,bottom color=white!20!red,draw=red!40!black,thick]
