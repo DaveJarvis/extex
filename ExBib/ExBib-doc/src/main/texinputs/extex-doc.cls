@@ -252,5 +252,5 @@
   \nopagebreak
 }
 
-\ProvidesClass{extex-doc}
+\ProvidesClass{extex-doc}[2008/12/07 gene]
 

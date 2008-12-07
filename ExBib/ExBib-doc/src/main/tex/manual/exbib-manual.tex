@@ -12,9 +12,12 @@
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
-\documentclass{extex-doc}
+\documentclass%
+    [final]%
+    {extex-doc}
 
 \def\Version{0.1}
+
 \title{Reference Manual}
 \author{Gerd Neugebauer}
 
@@ -154,9 +157,9 @@ Im Lerchelsb\"ohl 5\\
 \input{database}
 \input{sorting}
 \input{styles}
-\input{tools}
+\ifdraft\else\input{tools}\fi
 \input{bst-language}
-\input{bsf}
+\ifdraft\else\input{bsf}\fi
 \input{tex-aux}
 \input{configuration}
 \input{finder}

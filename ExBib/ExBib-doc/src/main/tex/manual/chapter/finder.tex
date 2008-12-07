@@ -130,6 +130,97 @@ Note that the messages are subject to internationalization. Thus a
 translated version can appear for other user languages than English.
 
 
+\subsection{Network-transparent Search}
+
+The search strategy described here can be configured to search
+resources in the network. A URL is utilized for tis purpose. As
+fallback s directory search is performed. A list of directories and a
+list of extensions are composed until a suitable resource is found.
+This strategy is implemented in the class
+\texttt{org.extex.resource.UrlFinder}.
+
+\subsubsection*{Example}
+
+\begin{lstlisting}[language=XML]
+  <Finder class="org.extex.resource.UrlFinder"
+          default="default">
+    <default>
+      <path>.</path>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path env="EXTEX_TEXINPUTS"/>
+      <path env="TEXINPUTS"/>
+      <extension>.{type}</extension>
+      <extension/>
+    </default>
+  </Finder>
+\end{lstlisting}
+
+\subsubsection*{Attributes}
+\begin{description}
+\item[class] The attribute \texttt{class} has the value
+  \texttt{org.extex.resource.FileFinder} for the search in
+  archives. It is mandatory.
+\item[default] The attribute \texttt{default} names the type shich
+  should be used if no special section for the type at hand is
+  present. This attribute is mandatory.
+\item[trace] The attribute \texttt{trace} can be used to turn on the
+  tracing from within the configuration. It takes a boolean value as
+  argument (\texttt{true} or \texttt{false}). The tracing can be
+  overwritten at runtime. This attribute is optional. The default
+  value is \texttt{false}.
+\end{description}
+
+\subsubsection*{Nested Elements}
+
+The nested elements are used to select the parameters for the type of
+the resource in question. The nested element with the same name as the
+type is used. If no such nested element is found then the value of the
+\texttt{default} attribute is used to read this nested element
+instead. 
+
+The nested element found must contain nested elements with the name
+\texttt{extension}. The values of those nested \texttt{extension}
+elements are appended to the resource name when it is sought.
+
+The nested element found must contain a nested element named
+\texttt{path}. It is treated as follows:
+\begin{itemize}
+\item If the attribute \texttt{property} is given then the body is
+  ignored and the directory read from the named property.
+\item If the attribute \texttt{env} is given then the body is ignored
+  and the directory read from the named environment variable.
+\item Otherwise the body is used as directory.
+\end{itemize}
+
+The file is constructed from the path, the resource name, and the
+extension. The string \verb|{.type}| in the constructed resource name
+is replaced by the currently sought resource. This value can occur in
+the extension or the path. The first readable resource wins.
+
+\subsubsection*{Tracing Output}
+
+The following messages might be written to the log:
+
+{\small
+\begin{itemize}
+\item{\tt UrlFinder: Searching \LogArg{name} [\LogArg{type}]}
+\item{\tt UrlFinder: Trying file \LogArg{full name}}
+\item{\tt UrlFinder: Trying URL \LogArg{full name}}
+\item{\tt UrlFinder: Found \LogArg{full name}}
+\item{\tt UrlFinder: Not found \LogArg{name}}
+\item{\tt UrlFinder: Not a valid URL: \LogArg{full name}}
+\item{\tt UrlFinder: Failed for \LogArg{name}}
+\item{\tt UrlFinder: Property \LogArg{property name} is undefined.}
+\item{\tt UrlFinder: Environment variable \LogArg{env} is undefined.}
+\item{\tt UrlFinder: Configuration for `\LogArg{type}' not found;
+    Using default `\LogArg{element name}'}
+\end{itemize}}
+
+Note that the messages are subject to internationalization. Thus a
+translated version can appear for other user languages than English.
+
+
 \subsection{Searching in texmf Trees}
 
 The search in texmf utilizes the index file \File{ls-R}. If this file

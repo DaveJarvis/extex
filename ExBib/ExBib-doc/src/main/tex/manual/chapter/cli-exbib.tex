@@ -119,6 +119,12 @@ The following properties are recognized in a dot file:
   This property contains the specification for the sorter to be used
   for the given output type. The fallback is taken from the property
   \Property{exbib.sort}.
+\item[\Property{http.proxyHost}] \ \\
+  This property contains the name of the proxy host to be used for
+  HTTP connections. The default is not to use an proxy.
+\item[\Property{http.proxyPort}] \ \\
+  This property contains the name of the proxy port to be used for
+  HTTP connections. The default is not to use an proxy.
 \item[\Property{texinputs}] \ \\
   This property contains a path for searching resources. The
   environment variable \Env{TEXINPUTS} is put into this property.
@@ -671,6 +677,7 @@ For details on the format refer to section~\ref{sec:csf}
 ...
 \end{lstlisting}
 
+\ifdraft\else
 \item[\CLi{7}]
 \item[\CLI{traditional}]\ \\
 %        	arbeite im originalen 7-Bit-Modus.
@@ -679,7 +686,9 @@ For details on the format refer to section~\ref{sec:csf}
 # exbib --traditional doc.aux
 ...
 \end{lstlisting}
+\fi
 
+\ifdraft\else
 \item[\CLi{8}]
 \item[\CLI{8bit}]\ \\
 %        	Erzwinge  8-Bit-Modus, es wird keine CS-Datei eingesetzt.
@@ -688,6 +697,8 @@ For details on the format refer to section~\ref{sec:csf}
 # exbib --8bit doc.aux
 ...
 \end{lstlisting}
+\fi
+
 \end{description}
 \index{csf|)}
 

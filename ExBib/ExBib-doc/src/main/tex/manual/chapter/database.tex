@@ -80,7 +80,28 @@ entry in the database.
   }
 \end{lstlisting}
 
-\INCOMPLETE
+Any entry has a type. This type determines which field names are
+known. In addition it determines the form of output produced for this
+entry. 
+
+Each entry is uniquely identified by a reference key. This key is
+composed of any non-empty sequence of non-special characters.
+
+In addition the entry contains any number of field name-value pairs.
+The field name is a sequence of non-special characters. The field name
+is followed by an equals sign and the value.
+
+The value is either an atomic value or it can be a composition of
+atomic values. Atomic values are constants enclosed in double-quotes
+or in braces or numbers. The composition consists of atomic values or
+macro names separated by a hash mark (\#).
+
+The field name-value pairs are separated by commas. In extension to the
+formal description of the \BibTeX\ format a trailing comma is silently
+ignored. 
+
+The order of the field definitions is not relevant. But any field can
+occur in a definition only once. Fields not known are silently ignored.
 
 The formal syntax of this instruction is as follows:
 \begin{syntax}
