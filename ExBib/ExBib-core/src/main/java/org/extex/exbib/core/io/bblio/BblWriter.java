@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bblio;
@@ -29,16 +28,34 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This writer performs line breaking. For this purpose some characters are
  * inserted into the output stream.
  * 
+ * <p>
+ * The line breaking tries its best to achieve the given line length.
+ * Nevertheless it is is not too eager. Thus a line might be longer of no proper
+ * breaking point could be found. Especially it does <em>not</em> emulate the
+ * B<small>IB</small>T<sub>E</sub>X behavior of inserting percent signs in the
+ * output just to force a line break.
+ * </p>
+ * 
+ * <p>
+ * This class buffers the output to find a possible place to break the lines.
+ * The buffered characters are sent to the underlying writer as soon as
+ * possible.
+ * </p>
+ * 
+ * <p>
+ * This class is configurable. See {@link #configure(Configuration)} for the
+ * available configuration options.
+ * </p>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
 public class BblWriter implements Writer {
 
     /**
-     * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line
-     * length.
+     * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line length.
      */
-    private static final int DEFAULT_LINE_LENGTH = 79;
+    public static final int DEFAULT_LINE_LENGTH = 79;
 
     /**
      * The field <tt>indent</tt> contains the string which is inserted at the
@@ -71,11 +88,14 @@ public class BblWriter implements Writer {
     /**
      * Creates a new object.
      * 
-     * @param writer the target writer
+     * @param writer the target writer; it can not be <code>null</code>
      */
     public BblWriter(Writer writer) {
 
         super();
+        if (writer == null) {
+            throw new IllegalArgumentException(getClass().getName() + "(null)");
+        }
         this.writer = writer;
     }
 
@@ -86,25 +106,48 @@ public class BblWriter implements Writer {
      */
     public void close() throws IOException {
 
-        flush();
-        writer.close();
+        if (writer != null) {
+            flush();
+            writer.close();
+        }
+        writer = null;
     }
 
     /**
-     * {@inheritDoc}
+     * This method extracts some configuration parameters from a given
+     * configuration. The following parameters are used:
+     * <dl>
+     * <dt>indent</dt>
+     * <dd>This string argument contains the prefix to be used for indentation
+     * of continuation lines. The default is a string with two spaces.</dd>
+     * <dt>lineLength</dt>
+     * <dd>This numeric argument contains the line length after which line
+     * breaking should be tried. The default is the value of
+     * {@link #DEFAULT_LINE_LENGTH}. It is used when the parameter is not given
+     * or the parameter contains no number. A number less than 1 is silently
+     * ignored.</dd>
+     * </dl>
+     * <p>
+     * The following example shows how a configuration may look like.
+     * </p>
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * <pre>
+     *   &lt;bblWriter&gt;
+     *     &lt;indent&gt;  &lt;/indent&gt;
+     *     &lt;lineLength&gt;79&lt;/lineLength&gt;
+     *   &lt;/bblWriter&gt;
+     * </pre>
+     * 
+     * @param cfg the configuration object to consider
+     * 
+     * @throws ConfigurationException in case that something went wrong
+     * 
+     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration cfg) throws ConfigurationException {
 
-        String in = cfg.getValue("indent");
-
-        if (in != null) {
-            indent = in;
-        }
-
-        lineLength = cfg.getValueAsInteger("lineLength", DEFAULT_LINE_LENGTH);
+        setIndent(cfg.getValue("indent"));
+        setLineLength(cfg.getValueAsInteger("lineLength", DEFAULT_LINE_LENGTH));
     }
 
     /**
@@ -135,16 +178,19 @@ public class BblWriter implements Writer {
             c = buffer.charAt(i);
 
             if (c == '\n') {
-                int sp = i;
+                int endPointer = i;
 
-                while (sp > 0 && Character.isWhitespace(buffer.charAt(sp - 1))) {
-                    sp--;
+                while (endPointer > 0
+                        && Character
+                            .isWhitespace(buffer.charAt(endPointer - 1))) {
+                    endPointer--;
                 }
 
-                writer.println(buffer.substring(0, sp));
+                writer.println(buffer.substring(0, endPointer));
                 buffer.delete(0, i + 1);
                 space = -1;
                 i = 0;
+                continue;
             } else if (Character.isWhitespace(c)) {
                 if (c != ' ') {
                     if (space == i - 1) {
@@ -153,18 +199,18 @@ public class BblWriter implements Writer {
                         buffer.replace(i, i + 1, " ");
                     }
                 }
-
                 space = i;
             }
 
             if (i >= lineLength && space >= 0) {
-                int sp = space;
+                int endPointer = space;
 
-                while (sp >= 0 && Character.isWhitespace(buffer.charAt(sp))) {
-                    sp--;
+                while (endPointer >= 0
+                        && Character.isWhitespace(buffer.charAt(endPointer))) {
+                    endPointer--;
                 }
 
-                writer.println(buffer.substring(0, sp + 1));
+                writer.println(buffer.substring(0, endPointer + 1));
                 buffer.delete(0, space + 1);
                 buffer.insert(0, indent);
                 space = -1;
@@ -174,21 +220,10 @@ public class BblWriter implements Writer {
     }
 
     /**
-     * Write a string to the output buffer and keep track of lines. Long lines
-     * are broken at whitespace. Complete lines are shipped to the output
+     * Write some strings to the output buffer and keep track of lines. Long
+     * lines are broken at whitespace. Complete lines are shipped to the output
      * writer.
      * 
-     * @param s the String to write to the output stream
-     * 
-     * @throws IOException in case of an IO problem
-     */
-    private void linebreaking(String s) throws IOException {
-
-        buffer.append(s);
-        linebreaking();
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
@@ -196,20 +231,19 @@ public class BblWriter implements Writer {
     public void print(String... args) throws IOException {
 
         for (String s : args) {
-            linebreaking(s);
+            buffer.append(s);
+            linebreaking();
         }
     }
 
     /**
-     * {@inheritDoc}
+     * Print a newline.
+     * 
+     * @throws IOException in case of an I/O error
      * 
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void println(String... args) throws IOException {
-
-        for (String s : args) {
-            linebreaking(s);
-        }
+    public void println() throws IOException {
 
         // delete trailing spaces
         for (int i = buffer.length() - 1; i >= 0
@@ -223,23 +257,58 @@ public class BblWriter implements Writer {
     }
 
     /**
-     * Setter for indent.
+     * Write some strings to the output buffer and keep track of lines. Long
+     * lines are broken at whitespace. Complete lines are shipped to the output
+     * writer. Finally a newline is written.
      * 
-     * @param indent the indent to set
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
-    public void setIndent(String indent) {
+    public void println(String... args) throws IOException {
 
-        this.indent = indent;
+        for (String s : args) {
+            buffer.append(s);
+            linebreaking();
+        }
+        println();
     }
 
     /**
-     * Setter for lineLength.
+     * Setter for indent.
      * 
-     * @param lineLength the lineLength to set
+     * @param indent the indent to set; a <code>null</code> value is silently
+     *        ignored
+     */
+    public void setIndent(String indent) {
+
+        if (indent != null) {
+            this.indent = indent;
+        }
+    }
+
+    /**
+     * Setter for the line length.
+     * 
+     * @param lineLength the line length to set; a value less than 1 is silently
+     *        ignored
      */
     public void setLineLength(int lineLength) {
 
-        this.lineLength = lineLength;
+        if (lineLength > 0) {
+            this.lineLength = lineLength;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return Integer.toString(lineLength) + " >" + buffer.toString() + "<";
     }
 
     /**
