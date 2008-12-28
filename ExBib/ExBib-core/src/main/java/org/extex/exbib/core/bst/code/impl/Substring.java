@@ -95,7 +95,7 @@ import org.extex.exbib.core.io.Locator;
 public class Substring extends AbstractCode {
 
     /**
-     * compute a substring according to the definition of
+     * Compute a substring according to the definition of
      * B<small>IB</small>T<sub>E</sub>X.
      * 
      * @param s the string
