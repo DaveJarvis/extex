@@ -202,9 +202,8 @@ public class BsfProcessor extends BibliographyCore
             manager.declareBean("bibWriter", outWriter, Writer.class);
             manager.declareBean("bibProcessor", this, Processor.class);
 
-            manager.eval(script, "Test", 0, 0, "mainxx()");
-            for (String sty : getBibliographyStyles()) {
-                manager.exec(script, sty, 0, 0, load(sty));
+            for (String style : getBibliographyStyles()) {
+                manager.exec(script, style, 0, 0, load(style));
             }
 
         } catch (BSFException e) {
@@ -231,11 +230,12 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#warning(java.lang.String)
      */
+    @Override
     public void warning(String message) {
 
         Logger logger = getLogger();
         if (logger != null) {
-            logger.warning(message);
+            logger.warning(message + "\n");
         }
         warnings++;
     }
