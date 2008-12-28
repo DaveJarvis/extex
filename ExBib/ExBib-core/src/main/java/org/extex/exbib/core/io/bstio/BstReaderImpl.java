@@ -379,6 +379,11 @@ public class BstReaderImpl extends AbstractFileReader
     private Configuration configuration;
 
     /**
+     * The field <tt>comments</tt> contains the optionla buffer for comments.
+     */
+    private StringBuilder comments = null;
+
+    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException in case of a configuration error
@@ -656,6 +661,10 @@ public class BstReaderImpl extends AbstractFileReader
             }
 
             if (buffer.charAt(0) == '%') {
+                if (comments != null) {
+                    comments.append(buffer);
+                    comments.append('\n');
+                }
                 buffer.delete(0, buffer.length());
             } else if ((matcher = NUMBER_PATTERN.matcher(buffer)).lookingAt()) {
                 String val = matcher.group(1);
@@ -946,4 +955,13 @@ public class BstReaderImpl extends AbstractFileReader
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.io.bstio.BstReader#setSaveComment(java.lang.StringBuilder)
+     */
+    public void setSaveComment(StringBuilder save) {
+
+        this.comments = save;
+    }
 }
