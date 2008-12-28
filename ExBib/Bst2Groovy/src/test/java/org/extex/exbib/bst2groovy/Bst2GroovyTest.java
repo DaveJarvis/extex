@@ -123,17 +123,22 @@ public class Bst2GroovyTest {
     private static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
 
     /**
+     * The field <tt>CLASS_PREFIX</tt> contains the prefix code for the class.
+     */
+    private static final String CLASS_PREFIX = "\n" //
+            + "class Style {\n\n" //
+            + "  DB bibDB\n" //
+            + "  Writer bibWriter\n" //
+            + "  Processor bibProcessor";
+
+    /**
      * The field <tt>PREFIX</tt> contains the prefix code.
      */
     private static final String PREFIX =
             "import org.extex.exbib.core.Processor\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                    + "class Style {\n" //
-                    + "  DB bibDB\n" //
-                    + "  Writer bibWriter\n" //
-                    + "  Processor bibProcessor";
+                    + "import org.extex.exbib.core.io.Writer\n" + CLASS_PREFIX;
 
     /**
      * Run a test.
@@ -210,12 +215,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.ChangeCase\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n"
-                    + "\n"
-                    + "class Style {\n" //
-                    + "  DB bibDB\n" //
-                    + "  Writer bibWriter\n" //
-                    + "  Processor bibProcessor" + HEAD + "  }\n\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n"
                     + "  String abc(v1, v2) {\n"
                     + "    return ChangeCase.changeCase(v1,\n"
                     + "                                 v2)\n" + "  }\n" + RUN
@@ -337,7 +338,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{empty$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  boolean isEmpty(String s) {\n"
-                    + "    return s == null || s.trim().equals('')\n" + "  }\n"
+                    + "    return s == null || s.trim() == ''\n" + "  }\n"
                     + "\n" + "  int abc(v1) {\n"
                     + "    return isEmpty(v1) ? 1 : 0\n" + "  }\n" + RUN
                     + POST_RUN);
@@ -516,10 +517,9 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.FormatName\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n"
-                    + "\nclass Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  String abc(v1, v2, v3) {\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n"
+                    + "  String abc(v1, v2, v3) {\n"
                     + "    return FormatName.formatName(v3,\n"
                     + "                                 v2,\n"
                     + "                                 v1)\n" + "  }\n" + RUN
@@ -897,10 +897,7 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
-                    + "\n" //
-                    + "class Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  String abc(v1) {\n"
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
                     + "    return NumNames.numNames(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
@@ -959,10 +956,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.Purify\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                    + "class Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  String abc(v1) {\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
                     + "    return Purify.purify(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
@@ -1100,10 +1095,9 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.Substring\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                    + "class Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  String abc(v1, v2, v3) {\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n"
+                    + "  String abc(v1, v2, v3) {\n"
                     + "    return Substring.substring(v3,\n"
                     + "                               v2,\n"
                     + "                               v1)\n" + "  }\n" + RUN
@@ -1150,10 +1144,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.TextLength\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                    + "class Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  int abc(v1) {\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(v1) {\n"
                     + "    return TextLength.textLength(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
@@ -1172,12 +1164,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.TextPrefix\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n"
-                    + "\n" //
-                    + "class Style {\n" //
-                    + "  DB bibDB\n" //
-                    + "  Writer bibWriter\n"
-                    + "  Processor bibProcessor"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX
                     + HEAD
                     + "  }\n\n" //
                     + "  String abc(v1, v2) {\n"
@@ -1239,10 +1227,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.bst.code.impl.Width\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                    + "class Style {\n" + "  DB bibDB\n"
-                    + "  Writer bibWriter\n" + "  Processor bibProcessor"
-                    + HEAD + "  }\n\n" + "  int abc(v1) {\n"
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(v1) {\n"
                     + "    return Width.width(v1)\n" + "  }\n" + RUN + POST_RUN);
     }
 

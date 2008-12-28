@@ -71,12 +71,13 @@ public class EmptyCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in)
+                throws IOException {
 
             writer.write(prefix,
                 "boolean isEmpty(String s) {", //
                 prefix, Bst2Groovy.INDENT,
-                "return s == null || s.trim().equals('')", //
+                "return s == null || s.trim() == ''", //
                 prefix, "}\n");
         }
     };

@@ -33,6 +33,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.cli.BooleanOption;
 import org.extex.cli.CLI;
 import org.extex.cli.NoArgOption;
 import org.extex.cli.StringOption;
@@ -154,6 +155,11 @@ public class Main extends CLI {
     private boolean banner = false;
 
     /**
+     * The field <tt>optimizing</tt> contains the optimizing flag.
+     */
+    private boolean optimizing = true;
+
+    /**
      * The field <tt>verbose</tt> contains the indicator for the verbosity.
      */
     private boolean verbose = false;
@@ -270,6 +276,15 @@ public class Main extends CLI {
                 return CLI.EXIT_CONTINUE;
             }
         });
+        option("-O", "--optimizing", new BooleanOption("opt.optimizing") {
+
+            @Override
+            protected int run(String a, boolean arg) {
+
+                optimizing = arg;
+                return EXIT_CONTINUE;
+            }
+        });
         option("-v", "--verbose", new NoArgOption("opt.verbose") {
 
             @Override
@@ -350,10 +365,10 @@ public class Main extends CLI {
         }
         try {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
-            ResourceFinderFactory rff = new ResourceFinderFactory();
+            bst2Groovy.setOptimizing(optimizing);
             ResourceFinder finder =
-                    rff.createResourceFinder(ConfigurationFactory
-                        .newInstance(config), logger, //
+                    new ResourceFinderFactory().createResourceFinder(
+                        ConfigurationFactory.newInstance(config), logger, //
                         properties, null);
             finder.enableTracing(traceFinder);
             bst2Groovy.setResourceFinder(finder);

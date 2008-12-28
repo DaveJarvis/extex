@@ -812,7 +812,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void writeHead(CodeWriter writer) throws IOException {
 
-        writer.write("class Style {\n", //
+        writer.write("class Style {\n\n", //
             "  DB bibDB\n", //
             "  Writer bibWriter\n", //
             "  Processor bibProcessor\n", //
@@ -881,4 +881,5 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             );
         }
     }
+
 }

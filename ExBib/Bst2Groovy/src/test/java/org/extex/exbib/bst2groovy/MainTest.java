@@ -129,7 +129,8 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that ...</testcase>
+     * <testcase> Test that a <code>null</code> input file is
+     * reported.</testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -150,14 +151,17 @@ public class MainTest {
         run("", "import org.extex.exbib.core.Processor\n"
                 + "import org.extex.exbib.core.db.DB\n"
                 + "import org.extex.exbib.core.db.Entry\n"
-                + "import org.extex.exbib.core.io.Writer\n" + "\n"
-                + "class Style {\n" + "  DB bibDB\n" + "  Writer bibWriter\n"
+                + "import org.extex.exbib.core.io.Writer\n"
+                + "\n"
+                + "class Style {\n\n" //
+                + "  DB bibDB\n" //
+                + "  Writer bibWriter\n" //
                 + "  Processor bibProcessor\n\n"
                 + "  Style(bibDB, bibWriter, bibProcessor) {\n"
                 + "    this.bibDB = bibDB\n"
                 + "    this.bibWriter = bibWriter\n"
                 + "    this.bibProcessor = bibProcessor\n" + "  }\n\n"
-                + "  def run() {\n" + "  }\n\n" + "}\n\n"
+                + "  void run() {\n" + "  }\n\n" + "}\n\n"
                 + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
             CLI.EXIT_OK, "{file}");
     }
@@ -674,6 +678,8 @@ public class MainTest {
                     + "\t\tDisplay the copyright conditions.\n"
                     + "\t--h[elp] | -? | -h\n"
                     + "\t\tShow a short list of command line arguments.\n"
+                    + "\t--op[timizing] | -O <true|false>\n"
+                    + "\t\tTurn on or off the optimization of the code.\n"
                     + "\t--o[utput-file] | -o <file>\n"
                     + "\t\tRedirect the output to the file given.\n"
                     + "\t\tThe file name - can be used to redirect to stdout\n"
