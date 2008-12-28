@@ -54,7 +54,7 @@ public class OptionCompiler extends VoidGCode implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in) throws IOException {
 
             writer.write(prefix, "private static final int ", init, "\n");
         }

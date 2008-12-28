@@ -33,7 +33,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the add.period$ builtin.
+ * This class implements the analyzer for the add.period$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -41,7 +41,7 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
 public class AddPeriodCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the add.period$ builtin in the
+     * This inner class is the expression for the add.period$ built-in in the
      * target program.
      */
     private static class AddPeriod extends GenericCode {
@@ -70,16 +70,12 @@ public class AddPeriodCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in) throws IOException {
 
-            writer
-                .write(
-                    prefix,
-                    "String addPeriod(String s) {",
-                    prefix,
-                    Bst2Groovy.INDENT,
-                    "return s == null ? \"\" : s.matches(\".*[.!?]\") ? s : s + \".\"",
-                    prefix, "}\n");
+            writer.write(prefix, "String addPeriod(String s) {", //
+                prefix, Bst2Groovy.INDENT, "return s == null || s == '' ? '' "
+                        + ": s.matches(\".*[.!?]\") ? s : s + \".\"", //
+                prefix, "}\n");
         }
 
     };

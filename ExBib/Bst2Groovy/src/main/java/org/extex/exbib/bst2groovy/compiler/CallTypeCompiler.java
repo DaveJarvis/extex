@@ -20,7 +20,6 @@ package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
@@ -32,7 +31,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the call.type$ builtin.
+ * This class implements the analyzer for the call.type$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,7 +39,7 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
 public class CallTypeCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the call.type$ builtin in the
+     * This inner class is the expression for the call.type$ built-in in the
      * target program.
      */
     private static class CallType extends GenericCode {
@@ -64,19 +63,25 @@ public class CallTypeCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
+         *      java.lang.String, java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in)
+                throws IOException {
 
-            String in = prefix + Bst2Groovy.INDENT;
-            writer.write(prefix, "def callType(Entry entry) {", //
-                in, "def t = types[entry.getType()]", //
-                in, "if (t == null) {", //
-                in, "  t = types['default.type']", //
-                in, "}", //
-                in, "t(entry)", //
+            String nl = prefix + in;
+            String in2 = nl + in;
+            writer.write(prefix, "void callType(Entry entry) {", //
+                nl, "def typeFunction = types[entry.getType()]", //
+                nl, "if (typeFunction == null) {", //
+                in2, "typeFunction = types['default.type']", //
+                nl, "}", //
+                nl, "if (typeFunction == null) {", //
+                in2, "bstProcessor.warning('missing default.type')", //
+                nl, "} else {", //
+                in2, "typeFunction(entry)", //
+                nl, "}", //
                 prefix, "}\n");
         }
     };

@@ -32,7 +32,7 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the write$ builtin.
+ * This class implements the analyzer for the write$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,7 +40,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 public class WriteCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the write$ builtin in the target
+     * This inner class is the expression for the write$ built-in in the target
      * program.
      */
     private static final class Write extends GenericCode {
@@ -85,7 +85,6 @@ public class WriteCompiler implements Compiler {
             while (index < list.size()) {
                 next = list.get(index);
                 if (next instanceof Newline) {
-                    list.remove(index + 1);
                     list.remove(index);
                     list.add(index, new Writeln(a.toArray(new GCode[]{})));
                     return index + 1;
@@ -103,7 +102,7 @@ public class WriteCompiler implements Compiler {
     }
 
     /**
-     * This inner class is the expression for the write$ builtin in the target
+     * This inner class is the expression for the write$ built-in in the target
      * program.
      */
     private static final class Writeln extends GenericCode {

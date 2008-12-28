@@ -19,10 +19,10 @@
 package org.extex.exbib.bst2groovy.linker;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -73,7 +73,9 @@ public class LinkContainer {
      */
     public void writeImports(CodeWriter writer) throws IOException {
 
-        for (String s : imports) {
+        String[] importsArray = imports.toArray(new String[0]);
+        Arrays.sort(importsArray);
+        for (String s : importsArray) {
             writer.write("import ", s, "\n");
         }
         writer.write("\n");
@@ -83,13 +85,16 @@ public class LinkContainer {
      * Write the linked code
      * 
      * @param writer the writer
+     * @param prefix the newline and prefix for any line
+     * @param in the indentation amount
      * 
      * @throws IOException in case of an I/O error
      */
-    public void writeMethods(CodeWriter writer) throws IOException {
+    public void writeMethods(CodeWriter writer, String prefix, String in)
+            throws IOException {
 
         for (LinkingCode fct : linked) {
-            fct.print(writer, "\n" + Bst2Groovy.INDENT);
+            fct.print(writer, prefix, in);
         }
     }
 

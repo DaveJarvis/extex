@@ -147,13 +147,12 @@ public class MainTest {
     @Test
     public void test10() throws IOException {
 
-        run("", "import org.extex.exbib.core.db.Entry\n"
+        run("", "import org.extex.exbib.core.Processor\n"
                 + "import org.extex.exbib.core.db.DB\n"
-                + "import org.extex.exbib.core.*\n"
-                + "import org.extex.exbib.core.io.*\n" + "\n"
-                + "class Style {\n" + "  private DB bibDB\n"
-                + "  private Writer bibWriter\n"
-                + "  private Processor bibProcessor\n\n"
+                + "import org.extex.exbib.core.db.Entry\n"
+                + "import org.extex.exbib.core.io.Writer\n" + "\n"
+                + "class Style {\n" + "  DB bibDB\n" + "  Writer bibWriter\n"
+                + "  Processor bibProcessor\n\n"
                 + "  Style(bibDB, bibWriter, bibProcessor) {\n"
                 + "    this.bibDB = bibDB\n"
                 + "    this.bibWriter = bibWriter\n"

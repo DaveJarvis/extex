@@ -103,6 +103,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
 
         for (GCode c : this) {
             buffer.append(c.toString());
+            buffer.append('\n');
         }
         return buffer.toString();
     }

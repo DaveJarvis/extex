@@ -34,7 +34,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the empty$ builtin.
+ * This class implements the analyzer for the empty$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -42,7 +42,7 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
 public class EmptyCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the empty$ builtin in the target
+     * This inner class is the expression for the empty$ built-in in the target
      * program.
      */
     private static class Empty extends GenericCode {
@@ -56,6 +56,7 @@ public class EmptyCompiler implements Compiler {
 
             super(ReturnType.INT, "isEmpty", arg);
         }
+
     }
 
     /**
@@ -70,12 +71,12 @@ public class EmptyCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in) throws IOException {
 
             writer.write(prefix,
                 "boolean isEmpty(String s) {", //
                 prefix, Bst2Groovy.INDENT,
-                "return s == null || s.trim().equals(\"\")", //
+                "return s == null || s.trim().equals('')", //
                 prefix, "}\n");
         }
     };

@@ -139,6 +139,8 @@ public class CodeWriter extends Writer {
                     column = ((column + 8) / 8) * 8;
                     inLine = 0;
                     break;
+                case '\r':
+                    break;
                 default:
                     column++;
                     inLine = 0;

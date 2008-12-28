@@ -1,3 +1,4 @@
+
 package org.extex.exbib.bst2groovy.data.bool;
 
 import java.io.IOException;
@@ -5,20 +6,16 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.compiler.EqualsCompiler;
 import org.extex.exbib.bst2groovy.compiler.GreaterCompiler;
 import org.extex.exbib.bst2groovy.compiler.LessCompiler;
-import org.extex.exbib.bst2groovy.compiler.EqualsCompiler.Equals;
-import org.extex.exbib.bst2groovy.compiler.EqualsCompiler.NotEquals;
-import org.extex.exbib.bst2groovy.compiler.GreaterCompiler.Greater;
-import org.extex.exbib.bst2groovy.compiler.GreaterCompiler.GreaterEqual;
-import org.extex.exbib.bst2groovy.compiler.LessCompiler.Less;
-import org.extex.exbib.bst2groovy.compiler.LessCompiler.LessEqual;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
- * This inner class represents a negation.
+ * This class represents a negation.
  * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
  */
 public final class Not extends GenericCode {
 
@@ -51,9 +48,8 @@ public final class Not extends GenericCode {
                 ((LessCompiler.Less) code).getArg(0),
                 ((LessCompiler.Less) code).getArg(1));
         } else if (code instanceof EqualsCompiler.Equals) {
-            return new EqualsCompiler.NotEquals(
-                ((EqualsCompiler.Equals) code).getArg(0),
-                ((EqualsCompiler.Equals) code).getArg(1));
+            return new EqualsCompiler.NotEquals(((EqualsCompiler.Equals) code)
+                .getArg(0), ((EqualsCompiler.Equals) code).getArg(1));
         }
         return this;
     }

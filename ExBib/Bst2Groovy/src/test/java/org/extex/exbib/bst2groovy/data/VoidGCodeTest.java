@@ -40,7 +40,7 @@ public class VoidGCodeTest {
     @Test
     public void test1() {
 
-        String s = new VoidGCode() {
+        VoidGCode code = new VoidGCode() {
 
             @Override
             public void print(CodeWriter writer, String prefix)
@@ -48,8 +48,8 @@ public class VoidGCodeTest {
 
                 //
             }
-        }.toString();
-        assertEquals("", s);
+        };
+        assertEquals("", code.toString());
     }
 
 }

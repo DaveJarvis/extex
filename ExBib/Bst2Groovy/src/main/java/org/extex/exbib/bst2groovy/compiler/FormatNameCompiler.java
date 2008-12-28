@@ -28,7 +28,7 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the format.name$ builtin.
+ * This class implements the analyzer for the format.name$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,7 +36,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 public class FormatNameCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the format.name$ builtin in the
+     * This inner class is the expression for the format.name$ built-in in the
      * target program.
      */
     private static class FormatName extends GenericCode {

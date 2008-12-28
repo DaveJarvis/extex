@@ -37,7 +37,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
 
 /**
- * This class implements the analyzer for the chr.to.int$ builtin.
+ * This class implements the analyzer for the chr.to.int$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -45,7 +45,7 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
 public class ChrToIntCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the chr.to.int$ builtin in the
+     * This inner class is the expression for the chr.to.int$ built-in in the
      * target program.
      */
     private static class ChrToInt extends GenericCode {
@@ -96,7 +96,7 @@ public class ChrToIntCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in) throws IOException {
 
             writer
                 .write(

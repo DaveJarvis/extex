@@ -172,7 +172,6 @@ public class GFunction implements Compiler, GCode {
         map.put("%bibWriter", "bibWriter");
 
         map.put("%Style", "Style");
-        map.put("%run", "run");
         map.put("%addPeriod", "addPeriod");
         map.put("%callType", "callType");
         return map;
@@ -215,15 +214,19 @@ public class GFunction implements Compiler, GCode {
     public GFunction(GCode returnValue, String name, List<Var> parameters,
             GCodeContainer code, EntryRefernce entry) {
 
-        this.name = name;
+        this.name = GFunction.translate(name);
         this.parameters = parameters;
         this.code = code;
         this.entry = entry;
-        if (returnValue != null) {
+        if (returnValue == null) {
+            returnType = ReturnType.VOID;
+        } else {
             code.add(new Return(returnValue));
+            returnType = returnValue.getType();
+            if (returnType == null) {
+                returnType = ReturnType.CODE;
+            }
         }
-        returnType =
-                returnValue == null ? ReturnType.CODE : returnValue.getType();
     }
 
     /**
@@ -246,9 +249,15 @@ public class GFunction implements Compiler, GCode {
         if (returnType == ReturnType.STRING || returnType == ReturnType.INT) {
             state.push(new Call(returnType, //
                 (entry.isUsed() ? entryRef.getName() : null), false, args));
+            useCount++;
         } else if (returnType == ReturnType.CODE) {
             state.add(new Call(ReturnType.VOID, //
                 (entry.isUsed() ? entryRef.getName() : null), true, args));
+            useCount++;
+        } else if (returnType == ReturnType.VOID) {
+            state.add(new Call(ReturnType.VOID, //
+                (entry.isUsed() ? entryRef.getName() : null), true, args));
+            useCount++;
         } else {
             throw new UnknownReturnTypeException(name);
         }
@@ -343,12 +352,11 @@ public class GFunction implements Compiler, GCode {
      */
     public void print(CodeWriter writer, String prefix) throws IOException {
 
-        ReturnType t = getType();
-        writer.write(prefix, t == null ? "def" : t.toString(), " ", name, "(");
+        writer.write(prefix, getType().toString(), " ", name, "(");
         boolean first = true;
         if (entry.isUsed()) {
-            first = false;
             writer.write(entry.get());
+            first = false;
         }
         for (GCode arg : parameters) {
             if (first) {

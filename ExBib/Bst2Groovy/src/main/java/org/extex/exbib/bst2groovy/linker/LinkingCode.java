@@ -51,10 +51,10 @@ public class LinkingCode {
      * 
      * @param writer the writer
      * @param prefix the prefix
-     * 
+     * @param in TODO
      * @throws IOException in case of an I/O error
      */
-    public void print(CodeWriter writer, String prefix) throws IOException {
+    public void print(CodeWriter writer, String prefix, String in) throws IOException {
 
         writer.write(prefix);
         writer.write(text);

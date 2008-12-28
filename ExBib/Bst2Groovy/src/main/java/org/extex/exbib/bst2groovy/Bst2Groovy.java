@@ -21,6 +21,7 @@ package org.extex.exbib.bst2groovy;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,6 +76,7 @@ import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GQuote;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
 import org.extex.exbib.bst2groovy.exception.ImpossibleException;
@@ -121,15 +123,26 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     public static final String INDENT = "  ";
 
     /**
-     * The field <tt>factory</tt> contains the factory for bst readers.
+     * The field <tt>NL_INDENT</tt> contains the newline character followed by a
+     * single indentation.
      */
-    private BstReaderFactory factory = null;
+    public static final String NL_INDENT = "\n" + INDENT;
+
+    /**
+     * The field <tt>comments</tt> contains the comments.
+     */
+    private StringBuilder comments = new StringBuilder();
 
     /**
      * The field <tt>infos</tt> contains the infos on functions, fields, and
      * variables.
      */
     private Map<String, Compiler> compilers = null;
+
+    /**
+     * The field <tt>factory</tt> contains the factory for bst readers.
+     */
+    private BstReaderFactory factory = null;
 
     /**
      * The field <tt>evaluateTokenVisitor</tt> contains the token visitor for
@@ -426,7 +439,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * The field <tt>optimizeFlag</tt> contains the indicator to perform
      * optimizations.
      */
-    private boolean optimizeFlag = true;
+    private boolean optimizing = true;
 
     {
         if (compilers == null) {
@@ -577,17 +590,16 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throw new ComplexFunctionException(name, stack.toString());
         }
 
-        GFunction function = new GFunction(returnValue, //
-            GFunction.translate(name), //
+        GFunction function = new GFunction(returnValue, name, //
             state.getLocals(), state.getCode(), entry);
 
-        if (optimizeFlag) {
+        if (optimizing) {
             function.optimize();
         }
 
         functionList.add(function);
         compilers.put(name, function);
-        if (function.needsEntry() && function.getType() == null) {
+        if (function.needsEntry() && function.getType() == ReturnType.VOID) {
             types.put(name, function);
         }
     }
@@ -628,19 +640,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * Getter for the optimizeFlag.
+     * Getter for the optimizing flag.
      * 
-     * @return the optimizeFlag
+     * @return the optimizing flag
      */
-    public boolean isOptimizeFlag() {
+    public boolean isOptimizing() {
 
-        return optimizeFlag;
+        return optimizing;
     }
 
     /**
      * Load the named styles into memory.
      * 
-     * @throws ExBibBstNotFoundException
+     * @throws ExBibBstNotFoundException in case the BST could not be found
      * @throws ExBibException in case of an error
      */
     public void load() throws ExBibBstNotFoundException, ExBibException {
@@ -650,6 +662,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 getConfiguration().getConfiguration("BstReader"), getFinder());
         }
         BstReader reader = factory.newInstance();
+        reader.setSaveComment(comments);
         reader.parse(this);
     }
 
@@ -674,13 +687,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * Setter for the optimizeFlag.
+     * Setter for the optimizing flag.
      * 
-     * @param optimizeFlag the optimizeFlag to set
+     * @param optimizing the new value of the optimizing flag
      */
-    public void setOptimizeFlag(boolean optimizeFlag) {
+    public void setOptimizing(boolean optimizing) {
 
-        this.optimizeFlag = optimizeFlag;
+        this.optimizing = optimizing;
     }
 
     /**
@@ -703,33 +716,57 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public void write(Writer writer) throws IOException {
 
-        functionList.add(new GFunction(null, "run", new ArrayList<Var>(),
-            new CommandTranslator(this).translate(this), new EntryRefernce(
-                "entry")));
+        GFunction run =
+                new GFunction(null, "run",
+                    new ArrayList<Var>(), //
+                    new CommandTranslator(this).translate(this),
+                    new EntryRefernce("entry"));
+        run.use();
+        functionList.add(run);
+
+        writeComments(writer);
 
         CodeWriter w = new CodeWriter(writer);
+
         writeImports(w);
         writeHead(w);
 
         for (String name : getIntegers()) {
-            w.write("  private int ", GFunction.translate(name), " = 0\n");
+            w.write("  int ", GFunction.translate(name), " = 0\n");
         }
         w.write("\n");
         for (String name : getStrings()) {
-            w.write("  private String ", GFunction.translate(name), //
-                " = \"\"\n");
+            w.write("  String ", GFunction.translate(name), " = ''\n");
         }
         w.write("\n");
         writeTypes(w);
         writeConstructor(w);
 
-        linkData.writeMethods(w);
+        linkData.writeMethods(w, "\n" + INDENT, INDENT);
 
         for (GFunction fct : functionList) {
-            fct.print(w, "\n" + INDENT);
+            fct.print(w, NL_INDENT);
         }
 
-        w.write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).run()\n");
+        w.write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).", //
+            run.getName(), "()\n");
+    }
+
+    /**
+     * Write the comments to the output stream.
+     * 
+     * @param w the target writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void writeComments(Writer w) throws IOException {
+
+        if (comments.length() > 0) {
+            w.write("// ");
+            w.write(comments.toString().replaceAll("\n", "\n// ").replaceAll(
+                "// % ", "// "));
+            w.write('\n');
+        }
     }
 
     /**
@@ -750,9 +787,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         if (!strings.isEmpty()) {
             writer.write("    [\n");
             for (String s : strings) {
-                writer.write(INDENT, INDENT, INDENT, //
-                    "'", s, "'", ": ", //
-                    GStringConstant.translate(getMacro(s)), //
+                writer.write(INDENT, INDENT, INDENT);
+                writeMapKey(writer, s);
+                writer.write(": ", GStringConstant.translate(getMacro(s)),
                     ",\n");
             }
             writer.write(INDENT, INDENT, //
@@ -776,9 +813,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void writeHead(CodeWriter writer) throws IOException {
 
         writer.write("class Style {\n", //
-            "  private DB bibDB\n", //
-            "  private Writer bibWriter\n", //
-            "  private Processor bibProcessor\n", //
+            "  DB bibDB\n", //
+            "  Writer bibWriter\n", //
+            "  Processor bibProcessor\n", //
             "\n");
     }
 
@@ -793,9 +830,26 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         linkData.addImports("org.extex.exbib.core.db.DB");
         linkData.addImports("org.extex.exbib.core.db.Entry");
-        linkData.addImports("org.extex.exbib.core.io.*");
-        linkData.addImports("org.extex.exbib.core.*");
+        linkData.addImports("org.extex.exbib.core.io.Writer");
+        linkData.addImports("org.extex.exbib.core.Processor");
         linkData.writeImports(writer);
+    }
+
+    /**
+     * Write a map key optionally enclosed in quotes.
+     * 
+     * @param writer the writer
+     * @param key the key
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void writeMapKey(CodeWriter writer, String key) throws IOException {
+
+        if (key.matches("^[a-z]+$")) {
+            writer.write(key);
+        } else {
+            writer.write("'", key, "'");
+        }
     }
 
     /**
@@ -809,21 +863,22 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         Set<String> keySet = types.keySet();
         if (keySet.size() != 0) {
-            writer.write("\n", INDENT, "def types = [");
-            for (String type : keySet) {
-                GFunction function = types.get(type);
-                writer.write("\n", INDENT, INDENT, "'", //
-                    type, //
-                    "' : { entry -> ");
+            writer.write(NL_INDENT, "Map types = [");
+            String[] keys = keySet.toArray(new String[0]);
+            Arrays.sort(keys);
+            for (String key : keys) {
+                GFunction function = types.get(key);
+                writer.write(NL_INDENT, INDENT);
+                writeMapKey(writer, key);
+                writer.write(" : { entry -> ");
                 writer.write(function.getName(), "(entry");
                 for (Var x : function.getParameters()) {
                     writer.write(", ", x.getType().getArg());
                 }
                 writer.write(")", " },");
             }
-            writer.write("\n", INDENT, "]\n" //
+            writer.write(NL_INDENT, "]\n" //
             );
         }
     }
-
 }

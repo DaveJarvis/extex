@@ -20,6 +20,7 @@ package org.extex.exbib.bst2groovy;
 
 import java.io.OutputStreamWriter;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,23 +45,26 @@ public class Bst2GroovyAlphaTest {
     @Test
     public void test1() throws Exception {
 
-        Bst2Groovy bst2Groovy = new Bst2Groovy();
-        ResourceFinderFactory rff = new ResourceFinderFactory();
         Logger logger = Logger.getLogger(getClass().getName());
         logger.setLevel(Level.SEVERE);
-        ConsoleHandler handler = new ConsoleHandler();
+        Handler handler = new ConsoleHandler();
         handler.setLevel(Level.ALL);
         logger.addHandler(handler);
-        ResourceFinder finder =
-                rff.createResourceFinder(ConfigurationFactory
-                    .newInstance("config/path/testFinder"), logger, System
-                    .getProperties(), null);
-        finder.enableTracing(true);
-        bst2Groovy.setResourceFinder(finder);
-        bst2Groovy.addBibliographyStyle("alpha.bst");
-        bst2Groovy.load();
-        OutputStreamWriter w = new OutputStreamWriter(System.out);
-        bst2Groovy.write(w);
-        w.flush();
+        try {
+            ResourceFinder finder =
+                    new ResourceFinderFactory().createResourceFinder(
+                        ConfigurationFactory
+                            .newInstance("config/path/testFinder"), logger,
+                        System.getProperties(), null);
+            // finder.enableTracing(true);
+
+            Bst2Groovy bst2Groovy = new Bst2Groovy();
+            bst2Groovy.setResourceFinder(finder);
+            OutputStreamWriter w = new OutputStreamWriter(System.out);
+            bst2Groovy.run(w, "alpha.bst");
+            w.flush();
+        } finally {
+            logger.removeHandler(handler);
+        }
     }
 }

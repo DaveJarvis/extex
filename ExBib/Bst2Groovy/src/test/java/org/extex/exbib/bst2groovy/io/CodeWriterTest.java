@@ -36,8 +36,8 @@ public class CodeWriterTest {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param in
-     * @param expected
+     * @param in the input
+     * @param expected the expected output
      * 
      * @throws IOException in case of an I/O error
      */

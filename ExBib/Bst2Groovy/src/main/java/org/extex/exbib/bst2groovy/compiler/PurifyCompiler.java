@@ -28,7 +28,7 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the purify$ builtin.
+ * This class implements the analyzer for the purify$ built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,7 +36,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 public class PurifyCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the purify$ builtin in the target
+     * This inner class is the expression for the purify$ built-in in the target
      * program.
      */
     private static final class Purify extends GenericCode {

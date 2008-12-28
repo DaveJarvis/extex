@@ -11,7 +11,7 @@ import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
- * This class implements the analyzer for the > builtin.
+ * This class implements the analyzer for the > built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -19,7 +19,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 public class GreaterCompiler implements Compiler {
 
     /**
-     * This inner class is the expression for the > builtin in the target
+     * This inner class is the expression for the > built-in in the target
      * program.
      */
     public static class Greater extends BinaryInfix {

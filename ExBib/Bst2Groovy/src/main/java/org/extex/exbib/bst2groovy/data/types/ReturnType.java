@@ -95,7 +95,7 @@ public enum ReturnType {
         @Override
         public String getArg() {
 
-            return "null";
+            return "\"\"";
         }
 
         /**
@@ -123,7 +123,7 @@ public enum ReturnType {
         @Override
         public String getArg() {
 
-            return "null";
+            return "\"\"";
         }
 
         /**
@@ -151,7 +151,7 @@ public enum ReturnType {
         @Override
         public String getArg() {
 
-            return "null";
+            return "''";
         }
 
         /**

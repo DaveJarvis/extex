@@ -26,7 +26,7 @@ import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TString;
 
 /**
- * This class implements the analyzer for the := builtin.
+ * This class implements the analyzer for the := built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
