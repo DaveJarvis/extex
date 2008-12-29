@@ -146,6 +146,7 @@
    <module>../CLI</module>
    <module>ExBib-bsf</module>
    <module>ExBib-groovy</module>
+   <module>ExBib-bst2gy</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
    <module>ExBib-texmf</module>
