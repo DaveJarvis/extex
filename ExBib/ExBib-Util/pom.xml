@@ -26,6 +26,11 @@
       <artifactId>ExBib-Main</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
