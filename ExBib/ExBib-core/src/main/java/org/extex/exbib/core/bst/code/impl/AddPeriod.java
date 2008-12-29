@@ -27,6 +27,7 @@ import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -75,7 +76,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class AddPeriod extends AbstractCode {
+public class AddPeriod extends AbstractCode implements Configurable {
 
     /**
      * The field <tt>omitPattern</tt> contains the pattern to determine when not
@@ -102,14 +103,27 @@ public class AddPeriod extends AbstractCode {
     }
 
     /**
+     * Attach a period if feasible.
+     * 
+     * @param value the value to attach a period to
+     * 
+     * @return the result
+     */
+    public String addPeriod(String value) {
+
+        if (!value.equals("") && !omitPattern.matcher(value).matches()) {
+            return value + ".";
+        }
+        return value;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
-        super.configure(config);
         String op = config.getValue("omitPattern");
         if (op != null) {
             omitPattern = Pattern.compile(op);
@@ -127,21 +141,6 @@ public class AddPeriod extends AbstractCode {
 
         Token a = processor.pop(locator);
         processor.push(new TString(addPeriod(a.getValue()), locator));
-    }
-
-    /**
-     * Attach a period if feasible.
-     * 
-     * @param value the value to attach a period to
-     * 
-     * @return the result
-     */
-    public String addPeriod(String value) {
-
-        if (!value.equals("") && !omitPattern.matcher(value).matches()) {
-            return value + ".";
-        }
-        return value;
     }
 
 }

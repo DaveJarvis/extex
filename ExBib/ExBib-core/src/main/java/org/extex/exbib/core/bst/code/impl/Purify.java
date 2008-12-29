@@ -28,6 +28,7 @@ import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -138,7 +139,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class Purify extends AbstractCode {
+public class Purify extends AbstractCode implements Configurable {
 
     /**
      * The field <tt>instance</tt> contains the instance for the static method.
@@ -146,7 +147,8 @@ public class Purify extends AbstractCode {
     private static Purify instance = null;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Purify the string according to the definition of
+     * B<small>IB</small>T<sub>E</sub>X.
      * 
      * @param s the argument to purify
      * 
@@ -200,12 +202,9 @@ public class Purify extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    @Override
     public void configure(Configuration config) throws ConfigurationException {
-
-        super.configure(config);
 
         if (config == null) {
             return;

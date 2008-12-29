@@ -664,10 +664,12 @@ public class ExBib {
         } catch (ExBibException e) {
             return error("verbatim", e.getLocalizedMessage());
         } catch (ConfigurationWrapperException e) {
+            e.printStackTrace();
             return error(e.getCause(), "installation.error");
         } catch (ConfigurationException e) {
             return error("verbatim", e.getLocalizedMessage());
         } catch (NoClassDefFoundError e) {
+            e.printStackTrace();
             return error(e, "installation.error");
         } catch (NotObservableException e) {
             return error(e, "internal.error");

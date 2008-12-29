@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -26,12 +25,12 @@ import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>call.type$</code>
+ * B<small>IB</small>T<sub>E</sub>X built-in function <code>call.type$</code>
  * <p>
  * This function looks at the current entry and calls the function with the same
  * name as the type. The name is normalized; i.e. translated to lower case.
@@ -53,19 +52,19 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
- * <dd> Executes the function whose name is the entry type of an entry. For
- * example if an entry is of type <code>book</code>, this function executes
- * the <code>book</code> function. When given as an argument to the
- * <code>ITERATE</code> command, <code>call.type$</code> actually produces
- * the output for the entries. For an entry with an unknown type, it executes
- * the function <code>default.type</code>. Thus you should define (before the
- * <code>READ</code> command) one function for each standard entry type as
- * well as a <code>default.type</code> function. </dd>
+ * <dd>Executes the function whose name is the entry type of an entry. For
+ * example if an entry is of type <code>book</code>, this function executes the
+ * <code>book</code> function. When given as an argument to the
+ * <code>ITERATE</code> command, <code>call.type$</code> actually produces the
+ * output for the entries. For an entry with an unknown type, it executes the
+ * function <code>default.type</code>. Thus you should define (before the
+ * <code>READ</code> command) one function for each standard entry type as well
+ * as a <code>default.type</code> function.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <i>built_in</i> function <code>call.type$</code> executes the
+ * <dd>The <i>built_in</i> function <code>call.type$</code> executes the
  * function specified in <code>type_list</code> for this entry unless it's
  * <code>undefined</code>, in which case it executes the default function
  * <code>default.type</code> defined in the <i>.bst</i> file, or unless it's
@@ -75,9 +74,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <h3>Configuration</h3>
  * <p>
- * The configuration can take an embedded element with the name <tt>default</tt>.
- * The text contained in this element is taken as the name of the function to be
- * called when no appropriate function is found. The default is
+ * The configuration can take an embedded element with the name <tt>default</tt>
+ * . The text contained in this element is taken as the name of the function to
+ * be called when no appropriate function is found. The default is
  * <tt>default.type</tt>.
  * </p>
  * 
@@ -93,7 +92,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class CallType extends AbstractCode {
+public class CallType extends AbstractCode implements Configurable {
 
     /**
      * The field <tt>defaultType</tt> contains the name of the default type.
@@ -121,13 +120,10 @@ public class CallType extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
-        super.configure(config);
         String dt = config.getValue("default");
         if (dt != null && !dt.equals("")) {
             defaultType = dt;
@@ -137,7 +133,7 @@ public class CallType extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
