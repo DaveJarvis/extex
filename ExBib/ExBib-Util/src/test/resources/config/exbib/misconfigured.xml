@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  This file is part of ExBib a BibTeX compatible database.
+  Copyright (C) 2003-2008 Gerd Neugebauer
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+  02111-1307 USA
+-->
+<exbib>
+  
+  <Resource src="path/exbibFinder"/>
+
+  <Writers />
+  
+  <Processor base="exbib/processor/" default="undefined"/>
+  
+  <BblWriter class="org.extex.exbib.core.io.bblio.BblWriter">
+    <linelength>79</linelength>
+    <indent>  </indent>
+  </BblWriter>
+
+  <DB class="org.extex.exbib.core.db.impl.DBImpl"/>
+
+  <Sorter base="exbib/sorter/" default="locale"/>
+
+  <AuxReader class="org.extex.exbib.core.io.auxio.AuxReaderImpl"/>
+
+  <BstReader class="org.extex.exbib.core.io.bstio.BstReaderExtImpl"/>
+
+  <BibReader class="org.extex.exbib.core.io.bibio.BibReaderImpl"/>
+
+  <BibPrinter base="exbib/printer/" default="bib"/>
+
+
+</exbib>
+  
