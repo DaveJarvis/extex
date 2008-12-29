@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core;
@@ -74,10 +73,19 @@ public class ExBibTest {
      */
     private ExBib makeTestInstance(Properties p) throws IOException {
 
-        ExBib exBib = new ExBib(p);
-        Logger logger = Logger.getLogger("test");
+        Logger logger = Logger.getLogger(getClass().getName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.SEVERE);
+
+        // for (Handler h : logger.getHandlers()) {
+        // logger.removeHandler(h);
+        // }
+        //
+        // Handler h = new ConsoleHandler();
+        // h.setLevel(Level.ALL);
+        // logger.addHandler(h);
+
+        ExBib exBib = new ExBib(p);
         exBib.setLogger(logger);
         return exBib;
     }
@@ -99,13 +107,16 @@ public class ExBibTest {
             Properties p = new Properties();
             p.setProperty(ExBib.PROP_FILE, "target/test.aux");
             ExBib exBib = makeTestInstance(p);
-            assertTrue(exBib.run());
+            assertTrue("ExBib.run() failed", exBib.run());
             assertNotNull(exBib.getDebug());
             assertEquals("[]", exBib.getDebug().toString());
             assertEquals("target/test.aux", exBib.getProperty(ExBib.PROP_FILE));
         } finally {
-            assertTrue(new File(aux).delete());
-            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
     }
 
@@ -127,12 +138,15 @@ public class ExBibTest {
             p.setProperty(ExBib.PROP_FILE, "target/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.SEARCH);
-            assertTrue(exBib.run());
+            assertTrue("ExBib.run() failed", exBib.run());
             assertNotNull(exBib.getDebug());
             assertEquals("[SEARCH]", exBib.getDebug().toString());
         } finally {
-            assertTrue(new File(aux).delete());
-            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
     }
 
@@ -258,20 +272,11 @@ public class ExBibTest {
             assertFalse(exBib.run());
         } finally {
             new File(aux).delete();
-            new File(aux.replaceAll(".aux$", ".bbl")).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
-    }
-
-    /**
-     * <testcase> ... </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testExBib1() throws Exception {
-
-        ExBib exBib = new ExBib();
-        assertEquals(System.getProperties(), exBib.getProperties());
     }
 
     /**
@@ -320,10 +325,13 @@ public class ExBibTest {
             p.setProperty(ExBib.PROP_FILE, "target/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.TRACE);
-            assertTrue(exBib.run());
+            assertTrue("ExBib.run() failed", exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
-            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
     }
 
@@ -348,7 +356,8 @@ public class ExBibTest {
             exBib.setDebug(ExBibDebug.TRACE);
             assertFalse(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
 
@@ -373,8 +382,11 @@ public class ExBibTest {
             exBib.setDebug(ExBibDebug.TRACE);
             assertTrue(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
-            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
     }
 
@@ -440,8 +452,11 @@ public class ExBibTest {
             assertNotNull(exBib.getDebug());
             assertEquals("[TRACE]", exBib.getDebug().toString());
         } finally {
-            assertTrue(new File(aux).delete());
-            assertTrue(new File(aux.replaceAll(".aux$", ".bbl")).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            String bbl = aux.replaceAll(".aux$", ".bbl");
+            new File(bbl).delete();
+            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
     }
 
@@ -462,7 +477,8 @@ public class ExBibTest {
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
 
@@ -484,7 +500,8 @@ public class ExBibTest {
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
 
@@ -506,7 +523,8 @@ public class ExBibTest {
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
 
@@ -528,7 +546,8 @@ public class ExBibTest {
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
-            assertTrue(new File(aux).delete());
+            new File(aux).delete();
+            // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
 
