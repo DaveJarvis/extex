@@ -101,6 +101,14 @@ public class TextLength extends AbstractCode {
     }
 
     /**
+     * Create a new object.
+     */
+    public TextLength() {
+
+        super();
+    }
+
+    /**
      * Creates a new object.
      * 
      * @param name the function name in the processor context
