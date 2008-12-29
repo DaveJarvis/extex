@@ -293,11 +293,11 @@ public abstract class BibReaderTester {
      */
     private boolean commentSpace;
 
-/**
+    /**
      * Creates a new object.
      * 
-     * @param commentSpace the indicator for extra space after {@literal
-     *        @comment}
+     * @param commentSpace the indicator for extra space after a comment started
+     *        with {@literal @comment}
      */
     public BibReaderTester(boolean commentSpace) {
 

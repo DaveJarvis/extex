@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io;
@@ -25,6 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
@@ -76,8 +76,7 @@ public class WriterFactory extends AbstractFactory {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.AbstractFactory#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.AbstractFactory#configure(org.extex.framework.configuration.Configuration)
      */
     @Override
     public void configure(Configuration configuration)
@@ -102,7 +101,9 @@ public class WriterFactory extends AbstractFactory {
     public Writer newInstance() throws ConfigurationException {
 
         Writer writer = new NullWriter();
-        writer.configure(getConfiguration());
+        if (writer instanceof Configurable) {
+            ((Configurable) writer).configure(getConfiguration());
+        }
         return writer;
     }
 
@@ -125,7 +126,9 @@ public class WriterFactory extends AbstractFactory {
                 (stream == null
                         ? (Writer) new NullWriter()
                         : (Writer) new StreamWriter(stream, encoding));
-        writer.configure(getConfiguration());
+        if (writer instanceof Configurable) {
+            ((Configurable) writer).configure(getConfiguration());
+        }
         return writer;
     }
 
@@ -151,7 +154,9 @@ public class WriterFactory extends AbstractFactory {
         }
 
         Writer writer = new StreamWriter(file, encoding);
-        writer.configure(getConfiguration());
+        if (writer instanceof Configurable) {
+            ((Configurable) writer).configure(getConfiguration());
+        }
         return writer;
     }
 
@@ -168,7 +173,9 @@ public class WriterFactory extends AbstractFactory {
             throws ConfigurationException {
 
         Writer writer = new StringBufferWriter(buffer);
-        writer.configure(getConfiguration());
+        if (writer instanceof Configurable) {
+            ((Configurable) writer).configure(getConfiguration());
+        }
         return writer;
     }
 
@@ -178,9 +185,9 @@ public class WriterFactory extends AbstractFactory {
      * @param a the first writer
      * @param b the second writer
      * 
-     * @return a new multi writer if both writers are not <code>null</code>;
-     *         one of the writers if the other one is <code>null</code>; a
-     *         new {@link NullWriter} if both are <code>null</code>
+     * @return a new multi writer if both writers are not <code>null</code>; one
+     *         of the writers if the other one is <code>null</code>; a new
+     *         {@link NullWriter} if both are <code>null</code>
      * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -196,7 +203,9 @@ public class WriterFactory extends AbstractFactory {
         }
 
         Writer writer = new MultiWriter(a, b);
-        writer.configure(getConfiguration());
+        if (writer instanceof Configurable) {
+            ((Configurable) writer).configure(getConfiguration());
+        }
         return writer;
     }
 

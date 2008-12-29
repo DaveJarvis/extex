@@ -21,6 +21,7 @@ package org.extex.exbib.core.io.bblio;
 import java.io.IOException;
 
 import org.extex.exbib.core.io.Writer;
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -50,7 +51,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class BblWriter implements Writer {
+public class BblWriter implements Writer, Configurable {
 
     /**
      * The field <tt>DEFAULT_LINE_LENGTH</tt> contains the default line length.
@@ -142,7 +143,7 @@ public class BblWriter implements Writer {
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration cfg) throws ConfigurationException {
 

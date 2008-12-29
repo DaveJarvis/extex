@@ -206,7 +206,7 @@ public class TestBblWriter {
     private void runTest(String in, String res) throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.print(in);
         w.close();
@@ -394,7 +394,7 @@ public class TestBblWriter {
     public void testPrintln01() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.println();
         w.close();
@@ -411,7 +411,7 @@ public class TestBblWriter {
     public void testPrintln02() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.print("abc  ");
         w.println();
@@ -429,7 +429,7 @@ public class TestBblWriter {
     public void testPrintln11() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.println("abc  ");
         w.close();
@@ -446,7 +446,7 @@ public class TestBblWriter {
     public void testPrintln12() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.println("ab\nc  ");
         w.close();
@@ -463,7 +463,7 @@ public class TestBblWriter {
     public void testPrintln13() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.println("ab  \nc  ");
         w.close();
@@ -493,7 +493,7 @@ public class TestBblWriter {
     public void testWrite1() throws Exception {
 
         StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
+        BblWriter w = new BblWriter(new StringBufferWriter(sb));
         w.configure(new DummyConfig());
         w.write('a');
         w.close();

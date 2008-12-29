@@ -38,8 +38,8 @@ import org.extex.exbib.core.bst.token.impl.TokenList;
  * Consider t is a {@link Token Token} of some kind and a class wants to act
  * differently for the different subtypes. Then this class implements this
  * interface and invokes the method
- * <tt>{@link Token#visit(TokenVisitor) visit}</tt>. The appropriate visit
- * method will be invoked then.
+ * <tt>{@link Token#visit(TokenVisitor,Object[]) visit}</tt>. The appropriate
+ * visit method will be invoked then.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -51,6 +51,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>block</tt> tokens.
      * 
      * @param block the block visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -60,6 +61,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>character</tt> tokens.
      * 
      * @param c the character visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -69,6 +71,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>field</tt> tokens.
      * 
      * @param field the field visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -78,6 +81,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>integer</tt> tokens.
      * 
      * @param integer the integer visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -87,6 +91,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>literal</tt> tokens.
      * 
      * @param literal the literal visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -96,6 +101,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>local integers</tt> tokens.
      * 
      * @param integer the local integer visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -106,6 +112,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>local string</tt> tokens.
      * 
      * @param string the local string visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -116,6 +123,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>qliteral</tt> tokens.
      * 
      * @param qliteral the qliteral visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -125,6 +133,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>string</tt> tokens.
      * 
      * @param string the string visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -134,6 +143,7 @@ public interface TokenVisitor {
      * Visitor method invoked by <tt>token list</tt> tokens.
      * 
      * @param list the list visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */

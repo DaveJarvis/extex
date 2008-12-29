@@ -35,6 +35,7 @@ public interface CommandVisitor extends TokenVisitor {
      * Visitor method invoked by <tt>execute</tt> commands.
      * 
      * @param command the <tt>Execute</tt> Command which is visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -44,6 +45,7 @@ public interface CommandVisitor extends TokenVisitor {
      * Visitor method invoked by <tt>iterate</tt> commands.
      * 
      * @param command the <tt>Iterate</tt> Command which is visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -53,6 +55,7 @@ public interface CommandVisitor extends TokenVisitor {
      * Visitor method invoked by <tt>read</tt> commands.
      * 
      * @param command the <tt>Read</tt> Command which is visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -62,6 +65,7 @@ public interface CommandVisitor extends TokenVisitor {
      * Visitor method invoked by <tt>reverse</tt> commands.
      * 
      * @param command the <tt>Reverse</tt> Command which is visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */
@@ -71,6 +75,7 @@ public interface CommandVisitor extends TokenVisitor {
      * Visitor method invoked by <tt>sort</tt> commands.
      * 
      * @param command the <tt>Sort</tt> Command which is visited
+     * @param args the arguments
      * 
      * @throws IOException just in case
      */

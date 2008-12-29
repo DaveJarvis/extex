@@ -20,6 +20,7 @@ package org.extex.exbib.core.io;
 
 import java.io.IOException;
 
+import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -29,12 +30,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class MultiWriter implements Writer {
+public class MultiWriter implements Writer, Configurable {
 
-    /** the first writer */
+    /**
+     * The field <tt>w1</tt> contains the first writer.
+     */
     private Writer w1;
 
-    /** the second writer */
+    /**
+     * The field <tt>w2</tt> contains the second writer.
+     */
     private Writer w2;
 
     /**
@@ -64,12 +69,16 @@ public class MultiWriter implements Writer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#configure(org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        w1.configure(config);
-        w2.configure(config);
+        if (w1 instanceof Configurable) {
+            ((Configurable) w1).configure(config);
+        }
+        if (w2 instanceof Configurable) {
+            ((Configurable) w2).configure(config);
+        }
     }
 
     /**
