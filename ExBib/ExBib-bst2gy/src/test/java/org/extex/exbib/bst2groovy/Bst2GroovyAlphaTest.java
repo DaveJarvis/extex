@@ -18,7 +18,7 @@
 
 package org.extex.exbib.bst2groovy;
 
-import java.io.OutputStreamWriter;
+import java.io.FileWriter;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -38,12 +38,13 @@ import org.junit.Test;
 public class Bst2GroovyAlphaTest {
 
     /**
-     * <testcase> ... </testcase>
+     * TODO gene: missing JavaDoc
+     * 
+     * @param name
      * 
      * @throws Exception in case of an error
      */
-    @Test
-    public void test1() throws Exception {
+    private void run(String name) throws Exception {
 
         Logger logger = Logger.getLogger(getClass().getName());
         logger.setLevel(Level.SEVERE);
@@ -60,11 +61,59 @@ public class Bst2GroovyAlphaTest {
 
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             bst2Groovy.setResourceFinder(finder);
-            OutputStreamWriter w = new OutputStreamWriter(System.out);
-            bst2Groovy.run(w, "alpha.bst");
-            w.flush();
+            FileWriter w = new FileWriter("target/" + name + ".gy");
+            try {
+                bst2Groovy.run(w, name + ".bst");
+            } finally {
+                w.close();
+            }
         } finally {
             logger.removeHandler(handler);
         }
     }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAbbrv() throws Exception {
+
+        run("abbrv");
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAlpha() throws Exception {
+
+        run("alpha");
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPlain() throws Exception {
+
+        run("plain");
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testUnsrt() throws Exception {
+
+        run("unsrt");
+    }
+
 }

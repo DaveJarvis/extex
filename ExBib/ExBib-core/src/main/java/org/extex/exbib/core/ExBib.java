@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core;
@@ -67,15 +66,15 @@ import org.extex.resource.ResourceFinderFactory;
  * parameters are provided as symbolic constants in this file:
  * </p>
  * <ul>
- * <li> {@link #PROP_BIB_ENCODING} </li>
- * <li> {@link #PROP_CONFIG} </li>
- * <li> {@link #PROP_CSF_ENCODING} </li>
- * <li> {@link #PROP_ENCODING} </li>
- * <li> {@link #PROP_FILE} </li>
- * <li> {@link #PROP_MIN_CROSSREF} </li>
- * <li> {@link #PROP_OUTFILE} </li>
- * <li> {@link #PROP_PROCESSOR} </li>
- * <li> {@link #PROP_SORT} </li>
+ * <li> {@link #PROP_BIB_ENCODING}</li>
+ * <li> {@link #PROP_CONFIG}</li>
+ * <li> {@link #PROP_CSF_ENCODING}</li>
+ * <li> {@link #PROP_ENCODING}</li>
+ * <li> {@link #PROP_FILE}</li>
+ * <li> {@link #PROP_MIN_CROSSREF}</li>
+ * <li> {@link #PROP_OUTFILE}</li>
+ * <li> {@link #PROP_PROCESSOR}</li>
+ * <li> {@link #PROP_SORT}</li>
  * </ul>
  * 
  * <h2>Invocation</h2>
@@ -189,26 +188,26 @@ public class ExBib {
     private static final String CONFIGURATION_DEFAULT = "exbib";
 
     /**
-     * The field <tt>AUX_FILE_EXTENSION</tt> contains the extension of aux
-     * files (in lower case).
+     * The field <tt>AUX_FILE_EXTENSION</tt> contains the extension of aux files
+     * (in lower case).
      */
     private static final String AUX_FILE_EXTENSION = ".aux";
 
     /**
-     * The field <tt>BLG_FILE_EXTENSION</tt> contains the extension of log
-     * files (in lower case).
+     * The field <tt>BLG_FILE_EXTENSION</tt> contains the extension of log files
+     * (in lower case).
      */
     private static final String BLG_FILE_EXTENSION = ".blg";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the name of the property to
-     * carry the configuration. The default value is <tt>"extex"</tt>.
+     * The field <tt>PROP_CONFIG</tt> contains the name of the property to carry
+     * the configuration. The default value is <tt>"extex"</tt>.
      */
     public static final String PROP_CONFIG = "exbib.config";
 
     /**
-     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the property
-     * to carry the encoding for bib files.
+     * The field <tt>PROP_BIB_ENCODING</tt> contains the name of the property to
+     * carry the encoding for bib files.
      */
     public static final String PROP_BIB_ENCODING = "exbib.bib.encoding";
 
@@ -218,8 +217,8 @@ public class ExBib {
     public static final String PROP_SORT = "exbib.sort";
 
     /**
-     * The field <tt>PROP_CSF_ENCODING</tt> contains the name of the property
-     * to carry the encoding for csf files.
+     * The field <tt>PROP_CSF_ENCODING</tt> contains the name of the property to
+     * carry the encoding for csf files.
      */
     public static final String PROP_CSF_ENCODING = "exbib.csf.encoding";
 
@@ -242,8 +241,8 @@ public class ExBib {
     public static final String PROP_MIN_CROSSREF = "exbib.min.crossref";
 
     /**
-     * The field <tt>PROP_OUTFILE</tt> contains the name of the property for
-     * the output.
+     * The field <tt>PROP_OUTFILE</tt> contains the name of the property for the
+     * output.
      */
     public static final String PROP_OUTFILE = "exbib.output";
 
@@ -284,8 +283,8 @@ public class ExBib {
     private ResourceBundle bundle;
 
     /**
-     * The field <tt>resourceFinder</tt> contains the fallback resource
-     * finder. If not set then a new one is created from the configuration.
+     * The field <tt>resourceFinder</tt> contains the fallback resource finder.
+     * If not set then a new one is created from the configuration.
      */
     private ResourceFinder resourceFinder = null;
 
@@ -554,8 +553,7 @@ public class ExBib {
                         /**
                          * {@inheritDoc}
                          * 
-                         * @see org.extex.exbib.core.ProcessorContainer#prepareProcessor(
-                         *      org.extex.exbib.core.Processor,
+                         * @see org.extex.exbib.core.ProcessorContainer#prepareProcessor(org.extex.exbib.core.Processor,
                          *      org.extex.exbib.core.db.DB)
                          */
                         @Override
@@ -803,7 +801,7 @@ public class ExBib {
      */
     public void setProperties(Properties properties) {
 
-        this.properties = properties;
+        this.properties = (Properties) properties.clone();
         propertyDefault(PROP_BIB_ENCODING, null);
         propertyDefault(PROP_CSF_ENCODING, null);
         propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
