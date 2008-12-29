@@ -803,7 +803,7 @@ public class ExBib {
      */
     public void setProperties(Properties properties) {
 
-        this.properties = (Properties) properties.clone();
+        this.properties = properties;
         propertyDefault(PROP_BIB_ENCODING, null);
         propertyDefault(PROP_CSF_ENCODING, null);
         propertyDefault(PROP_CONFIG, CONFIGURATION_DEFAULT);
