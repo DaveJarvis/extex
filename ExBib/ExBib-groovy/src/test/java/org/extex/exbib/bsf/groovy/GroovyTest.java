@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bsf;
+package org.extex.exbib.bsf.groovy;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,6 +33,8 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.bsf.BsfProcessor;
+import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.core.ExBib;
 import org.junit.Test;
 
