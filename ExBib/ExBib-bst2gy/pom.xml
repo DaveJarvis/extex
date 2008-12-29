@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>Bst2Groovy</artifactId>
-  <name>ExBib Bst to Groovy Compiler</name>
+  <artifactId>ExBib-bst2gy</artifactId>
+  <name>ExBib BST to Groovy Compiler</name>
   <description>
-    This is the ExBib Bst to Groovy Compiler. It tages a BST files and
+    This is the ExBib BST to Groovy Compiler. It tages a BST files and
     produces an equivalet Groovy file which can be used for further
     development in a higher programming language.
   </description>
