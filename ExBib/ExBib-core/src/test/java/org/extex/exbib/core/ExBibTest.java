@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Properties;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,6 +65,11 @@ public class ExBibTest {
     }
 
     /**
+     * The field <tt>trace</tt> contains the tracing flag.
+     */
+    private boolean trace = false;
+
+    /**
      * Make a test instance.
      * 
      * @param p the properties
@@ -77,13 +84,15 @@ public class ExBibTest {
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.SEVERE);
 
-        // for (Handler h : logger.getHandlers()) {
-        // logger.removeHandler(h);
-        // }
-        //
-        // Handler h = new ConsoleHandler();
-        // h.setLevel(Level.ALL);
-        // logger.addHandler(h);
+        if (trace) {
+            for (Handler h : logger.getHandlers()) {
+                logger.removeHandler(h);
+            }
+
+            Handler h = new ConsoleHandler();
+            h.setLevel(Level.ALL);
+            logger.addHandler(h);
+        }
 
         ExBib exBib = new ExBib(p);
         exBib.setLogger(logger);
@@ -280,7 +289,7 @@ public class ExBibTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> If a file is not found then run() fails. </testcase>
      * 
      * @throws Exception in case of an error
      */
