@@ -22,21 +22,12 @@ import java.io.IOException;
 
 /**
  * The NullWriter acts like a {@link Writer Writer} but does not perform any
- * action beside invoking the "next" Writers. It can be used as a neutral
- * element in a Writer chain.
+ * action.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.2 $
  */
 public class NullWriter implements Writer {
-
-    /**
-     * Creates a new object.
-     */
-    public NullWriter() {
-
-        super();
-    }
 
     /**
      * {@inheritDoc}
