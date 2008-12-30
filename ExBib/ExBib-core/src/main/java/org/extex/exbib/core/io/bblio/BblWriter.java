@@ -93,6 +93,11 @@ public class BblWriter implements Writer, Configurable {
     private int space = -1;
 
     /**
+     * The field <tt>collapseSpaces</tt> contains the flag to collapse spaces.
+     */
+    private boolean collapseSpaces = false;
+
+    /**
      * Creates a new object.
      * 
      * @param writer the target writer; it can not be <code>null</code>
@@ -202,7 +207,7 @@ public class BblWriter implements Writer, Configurable {
 
         char c;
 
-        for (int i = space + 1; i < buffer.length(); i++) {
+        for (int i = (space < -1 ? 0 : space + 1); i < buffer.length(); i++) {
             c = buffer.charAt(i);
 
             if (c == '\n') {
@@ -210,7 +215,7 @@ public class BblWriter implements Writer, Configurable {
                 i = 0;
             } else {
                 if (Character.isWhitespace(c)) {
-                    if (space == i - 1) {
+                    if (space == i - 1 && collapseSpaces) {
                         buffer.deleteCharAt(i--);
                     } else if (c != ' ') {
                         buffer.replace(i, i + 1, " ");
@@ -272,6 +277,16 @@ public class BblWriter implements Writer, Configurable {
             linebreaking();
         }
         println();
+    }
+
+    /**
+     * Setter for the collapseSpaces.
+     * 
+     * @param collapseSpaces the collapseSpaces to set
+     */
+    public void setCollapseSpaces(boolean collapseSpaces) {
+
+        this.collapseSpaces = collapseSpaces;
     }
 
     /**
