@@ -97,7 +97,7 @@ public class JythonTest {
             logger.addHandler(consoleHandler);
             exBib.setLogger(logger);
             assertTrue(exBib.run());
-            assertEquals("xx[@book{abc,...}]\n", outStream.toString().replaceAll(
+            assertEquals("[@book{abc,...}]\n", outStream.toString().replaceAll(
                 "\r", ""));
         } finally {
             System.setOut(out);
