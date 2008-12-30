@@ -44,20 +44,20 @@ pre {
 <p>
  &epsilon;&chi;Bib (or <tt>ExBib</tt> in pure ASCII) is a bibliography processor.
  It provides a compatibility mode which makes it possible to use it as a
- replacement for B<small>IB</small><span class="t">T</span><span class="e">e</span>X 0.99c or
- B<small>IB</small><span class="t">T</span><span class="e">e</span>X8.
+ replacement for B<small>IB</small>T<sub>E</sub>X 0.99c or
+ B<small>IB</small>T<sub>E</sub>X8.
 </p>
 <p>
  &epsilon;&chi;Bib is a re-implementation. As such &epsilon;&chi;Bib contains
- some extensions to B<small>IB</small><span class="t">T</span><span class="e">e</span>X. For instance some feature
- which are announced for B<small>IB</small><span class="t">T</span><span class="e">e</span>X 1.0 are already included.
+ some extensions to B<small>IB</small>T<sub>E</sub>X. For instance some feature
+ which are announced for B<small>IB</small>T<sub>E</sub>X 1.0 are already included.
  Details can be found in the documentation.
 </p>
 
 <h1>Homepage</h1>
 <p>
-&epsilon;&chi;Bib is developed within the scope of the &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X project.
-&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is present on the Web. On the Homepage you can find additional
+&epsilon;&chi;Bib is developed within the scope of the &epsilon;&chi;T<sub>E</sub>X project.
+&epsilon;&chi;T<sub>E</sub>X is present on the Web. On the Homepage you can find additional
 information:
 </p>
 <p>
@@ -67,7 +67,7 @@ information:
 <hr>
 
 <address>
-© 2003-2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+© 2003-2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;T<sub>E</sub>X Group</a>
 </address>
 </body>
 </html>

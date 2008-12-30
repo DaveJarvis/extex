@@ -43,26 +43,31 @@ pre {
 <h1>Willkommen bei &epsilon;&chi;Bib</h1>
 <p>
  &epsilon;&chi;Bib (oder <tt>ExBib</tt> in ASCII) ist ein Bibliographie-Prozessor.
- &epsilon;&chi;Bib bietet einen Kompatibilitätsmodus zu
- B<small>IB</small><span class="t">T</span><span class="e">e</span>X.
+ &epsilon;&chi;Bib bietet einen Kompatibilit&auml;tsmodus zu
+ B<small>IB</small>T<sub>E</sub>X.
  Als solches kann &epsilon;&chi;Bib an Stelle von 
- B<small>IB</small><span class="t">T</span><span class="e">e</span>X 0.99c oder B<small>IB</small><span class="t">T</span><span class="e">e</span>X8
+ B<small>IB</small>T<sub>E</sub>X 0.99c
+ oder B<small>IB</small>T<sub>E</sub>X8
  verwendet werden.
 </p>
 <p>
- &epsilon;&chi;Bib ist eine Neuimplementierung. Als solche enthält
- &epsilon;&chi;Bib einige Erweiterungen, gegenüber 
- B<small>IB</small><span class="t">T</span><span class="e">e</span>X. So sind beispielsweise Möglichkeiten, die
- für B<small>IB</small><span class="t">T</span><span class="e">e</span>X 1.0 angekündigt sind bereits umgesetzt.
- Details sind in der Dokumentation zu finden.
+ &epsilon;&chi;Bib ist eine Neuimplementierung. Als solche enth&auml;lt
+ &epsilon;&chi;Bib einige Erweiterungen, gegen&uuml;ber 
+ B<small>IB</small>T<sub>E</sub>X. So sind 
+ beispielsweise M&ouml;glichkeiten, die f&uuml;r 
+ B<small>IB</small>T<sub>E</sub>X 1.0 
+ angek&uuml;ndigt sind bereits umgesetzt. Details sind in der Dokumentation zu
+ finden.
 </p>
 
 <h1>Homepage</h1>
 <p>
-&epsilon;&chi;Bib wird im Kontext des &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X-Projektes
+&epsilon;&chi;Bib wird im Kontext des 
+&epsilon;&chi;T<sub>E</sub>X-Projektes
 entwickelt.
-&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X ist im Web präsent. Auf der Homepage kann man
-zusätzliche Informationen finden:
+&epsilon;&chi;T<sub>E</sub>X ist im 
+Web pr&auml;sent. Auf der Homepage kann man
+zus&auml;tzliche Informationen finden:
 </p>
 <p>
 <a href="http://www.extex.org">http://www.extex.org</a>
@@ -71,7 +76,7 @@ zusätzliche Informationen finden:
 <hr>
 
 <address>
-© 2003-2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+© 2003-2008 <a href="mailto:extex@dante.de">The &epsilon;&chi;T<sub>E</sub>X Group</a>
 </address>
 </body>
 </html>
