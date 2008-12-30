@@ -7,6 +7,11 @@
   <str id="exbib-core.description"
        txt="Das Basispaket enthält eine BibTeX-kompatible Implementierung eines Bibliogrphie-Prozessors."/>
 
+  <str id="exbib-util"
+       txt="ExBib-Hilfsprogramm"/>
+  <str id="exbib-util.description"
+       txt="Das Hilfs-Programm für ExBib-Dateien."/>
+
   <str id="exbib-styles"
        txt="ExBib-Stile"/>
   <str id="exbib-styles.description"
@@ -31,6 +36,11 @@
        txt="ExBib-Groovy"/>
   <str id="exbib-groovy.description"
        txt="Dieses Paket enthält Groovy als Erweiterungssprache für ExBib."/>
+
+  <str id="exbib-jython"
+       txt="ExBib-Jython"/>
+  <str id="exbib-jython.description"
+       txt="Dieses Paket enthält Python durch die Implementieruing Jython als Erweiterungssprache für ExBib."/>
 
   <str id="settings"
        txt="Nutzer-Einstellungen"/>
