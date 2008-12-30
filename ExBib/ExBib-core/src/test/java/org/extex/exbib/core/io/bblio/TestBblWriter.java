@@ -222,7 +222,7 @@ public class TestBblWriter {
     @Test
     public void testA00() throws Exception {
 
-        runTest(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
+        runTest(" abc xxxxxxxxx1xxxxxxx", "abc\n  xxxxxxxxx1xxxxxxx");
     }
 
     /**
@@ -331,7 +331,7 @@ public class TestBblWriter {
         w.print(" abc xxxxxxxxx1xxxxxxx");
         w.close();
 
-        assertEquals(" abc\n___xxxxxxxxx1xxxxxxx", sb.toString());
+        assertEquals("abc\n___xxxxxxxxx1xxxxxxx", sb.toString());
     }
 
     /**
