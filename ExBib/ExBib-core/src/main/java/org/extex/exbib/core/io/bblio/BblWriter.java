@@ -166,7 +166,7 @@ public class BblWriter implements Writer, Configurable {
 
         writer.print(buffer.toString());
         buffer.delete(0, buffer.length());
-        space = -1;
+        space = -2;
         writer.flush();
     }
 
@@ -188,7 +188,7 @@ public class BblWriter implements Writer, Configurable {
 
         writer.println(buffer.substring(0, endPointer));
         buffer.delete(0, i + 1);
-        space = -1;
+        space = -2;
     }
 
     /**
