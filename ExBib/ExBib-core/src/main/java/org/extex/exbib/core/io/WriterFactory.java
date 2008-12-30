@@ -18,7 +18,7 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -140,12 +140,12 @@ public class WriterFactory extends AbstractFactory {
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
      *         file is <code>null</code>
      * 
-     * @throws FileNotFoundException in case that the file could not be opened
+     * @throws IOException in case that the file could not be opened
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
     public Writer newInstance(String file)
-            throws FileNotFoundException,
+            throws IOException,
                 UnsupportedEncodingException,
                 ConfigurationException {
 

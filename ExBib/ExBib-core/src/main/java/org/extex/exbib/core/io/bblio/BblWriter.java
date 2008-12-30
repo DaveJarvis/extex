@@ -38,6 +38,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * <p>
+ * In the course of line breaking all whitespace characters except the newline
+ * character are replaced by simple spaces. Trailing spaces are omitted and
+ * multiple spaces collapsed into one.
+ * </p>
+ * 
+ * <p>
  * This class buffers the output to find a possible place to break the lines.
  * The buffered characters are sent to the underlying writer as soon as
  * possible.
@@ -110,8 +116,8 @@ public class BblWriter implements Writer, Configurable {
         if (writer != null) {
             flush();
             writer.close();
+            writer = null;
         }
-        writer = null;
     }
 
     /**
@@ -159,9 +165,30 @@ public class BblWriter implements Writer, Configurable {
     public void flush() throws IOException {
 
         writer.print(buffer.toString());
+        buffer.delete(0, buffer.length());
+        space = -1;
         writer.flush();
-        buffer.setLength(0);
-        space = 0;
+    }
+
+    /**
+     * Insert a newline near a column. Trailing spaces are omitted.
+     * 
+     * @param i the target index
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void foldAt(int i) throws IOException {
+
+        int endPointer = i;
+
+        while (endPointer > 0
+                && Character.isWhitespace(buffer.charAt(endPointer - 1))) {
+            endPointer--;
+        }
+
+        writer.println(buffer.substring(0, endPointer));
+        buffer.delete(0, i + 1);
+        space = -1;
     }
 
     /**
@@ -169,7 +196,7 @@ public class BblWriter implements Writer, Configurable {
      * are broken at whitespace. Multiple whitespace characters are translated
      * to a single space. Complete lines are shipped to the output writer.
      * 
-     * @throws IOException in case of an IO problem
+     * @throws IOException in case of an I/O problem
      */
     private void linebreaking() throws IOException {
 
@@ -179,43 +206,23 @@ public class BblWriter implements Writer, Configurable {
             c = buffer.charAt(i);
 
             if (c == '\n') {
-                int endPointer = i;
-
-                while (endPointer > 0
-                        && Character
-                            .isWhitespace(buffer.charAt(endPointer - 1))) {
-                    endPointer--;
-                }
-
-                writer.println(buffer.substring(0, endPointer));
-                buffer.delete(0, i + 1);
-                space = -1;
+                foldAt(i);
                 i = 0;
-                continue;
-            } else if (Character.isWhitespace(c)) {
-                if (c != ' ') {
+            } else {
+                if (Character.isWhitespace(c)) {
                     if (space == i - 1) {
                         buffer.deleteCharAt(i--);
-                    } else {
+                    } else if (c != ' ') {
                         buffer.replace(i, i + 1, " ");
                     }
-                }
-                space = i;
-            }
-
-            if (i >= lineLength && space >= 0) {
-                int endPointer = space;
-
-                while (endPointer >= 0
-                        && Character.isWhitespace(buffer.charAt(endPointer))) {
-                    endPointer--;
+                    space = i;
                 }
 
-                writer.println(buffer.substring(0, endPointer + 1));
-                buffer.delete(0, space + 1);
-                buffer.insert(0, indent);
-                space = -1;
-                i = 0;
+                if (i >= lineLength && space >= 0) {
+                    foldAt(space);
+                    buffer.insert(0, indent);
+                    i = 0;
+                }
             }
         }
     }
@@ -246,15 +253,7 @@ public class BblWriter implements Writer, Configurable {
      */
     public void println() throws IOException {
 
-        // delete trailing spaces
-        for (int i = buffer.length() - 1; i >= 0
-                && Character.isWhitespace(buffer.charAt(i)); i--) {
-            buffer.deleteCharAt(i);
-        }
-
-        writer.println(buffer.toString());
-        buffer.setLength(0);
-        space = -1;
+        foldAt(buffer.length());
     }
 
     /**

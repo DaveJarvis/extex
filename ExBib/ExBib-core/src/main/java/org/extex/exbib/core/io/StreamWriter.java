@@ -18,29 +18,28 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
-import org.extex.framework.configuration.Configurable;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
-
 /**
- * This class provides a writer with a target in an outputStream.
+ * This class provides a writer with a target in a {@link PrintStream} or a
+ * {@link File}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.4 $
  */
-public class StreamWriter implements Writer, Configurable {
+public class StreamWriter implements Writer {
 
     /**
      * The field <tt>writer</tt> contains the output writer.
      */
-    private OutputStreamWriter writer = null;
+    private java.io.Writer writer = null;
 
     /**
      * Creates a new object.
@@ -51,7 +50,7 @@ public class StreamWriter implements Writer, Configurable {
      * @throws UnsupportedEncodingException in case that the given encoding is
      *         undefined
      */
-    public StreamWriter(PrintStream stream, String encoding)
+    public StreamWriter(OutputStream stream, String encoding)
             throws UnsupportedEncodingException {
 
         super();
@@ -69,22 +68,16 @@ public class StreamWriter implements Writer, Configurable {
      * @param file the name of the file to write to
      * @param encoding the encoding to use for writing
      * 
-     * @throws FileNotFoundException in case that the file could not be opened
-     *         for writing
-     * @throws UnsupportedEncodingException in case that the given encoding is
-     *         undefined
+     * @throws IOException in case of an I/O error
      */
-    public StreamWriter(String file, String encoding)
-            throws FileNotFoundException,
-                UnsupportedEncodingException {
+    public StreamWriter(String file, String encoding) throws IOException {
 
         super();
 
-        FileOutputStream stream = new FileOutputStream(file);
-
         if (encoding == null) {
-            writer = new OutputStreamWriter(stream);
+            writer = new FileWriter(file);
         } else {
+            FileOutputStream stream = new FileOutputStream(file);
             writer = new OutputStreamWriter(stream, encoding);
         }
     }
@@ -97,16 +90,6 @@ public class StreamWriter implements Writer, Configurable {
     public void close() throws IOException {
 
         writer.close();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration cfg) throws ConfigurationException {
-
-        //
     }
 
     /**
@@ -141,7 +124,7 @@ public class StreamWriter implements Writer, Configurable {
         for (String s : args) {
             writer.write(s);
         }
-        writer.write("\n");
+        writer.write('\n');
     }
 
     /**
