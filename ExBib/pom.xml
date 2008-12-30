@@ -147,9 +147,11 @@
    <module>ExBib-bsf</module>
    <module>ExBib-groovy</module>
    <module>ExBib-bst2gy</module>
+   <module>ExBib-jython</module>
    <module>ExBib-ant</module>
    <module>ExBib-doc</module>
    <module>ExBib-texmf</module>
+   <module>ExBib-Util</module>
    <module>ExBib-Installer</module>
   </modules>
 
