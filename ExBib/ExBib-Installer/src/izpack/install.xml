@@ -28,6 +28,7 @@
       <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
     </authors>
     <url>http://www.extex.org/</url>
+    <webdir>http://www.extex.org/download/exbib/</webdir>
     <javaversion>1.5</javaversion>
   </info>
 
