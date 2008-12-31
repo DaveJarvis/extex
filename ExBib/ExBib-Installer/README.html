@@ -9,7 +9,7 @@ body {
 	font-family: sans-serif;
 	margin-left: 150px;
 	margin-right: 2em;
-	background: url(src/installer/images/side.png) repeat-y;
+	background: url(src/izpack/images/side.png) repeat-y;
 }
 
 .e {
@@ -60,16 +60,18 @@ pre {
 </style>
 </head>
 <body>
-<img class="left" src="src/installer/images/ExBib-side.png" />
+<img class="left" src="src/izpack/images/ExBib-side.png" />
 
 <h1>The &epsilon;&chi;Bib Installer</h1>
 
-<p>&epsilon;&chi;Bib is a bibliography processor in the spirit of B<small>IB</small><span
-	class="t">T</span><span class="e">e</span>X. &epsilon;&chi;Bib is
-delivered in form of an installer. This installer is created with the
-help of <a href="http://izpack.org">IzPack</a>.</p>
-<p>IzPack is included in the folder <tt>src/izPack-install-*</tt>
-since currently no reliable Maven2 package for IzPack could be found.</p>
+<p>&epsilon;&chi;Bib is a bibliography processor in the spirit of
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X. 
+ &epsilon;&chi;Bib is delivered in form of an installer. This installer is
+ created with the help of <a href="http://izpack.org">IzPack</a>.</p>
+<p>IzPack is used via the Maven2 plug-in
+ <a href="http://izpack.codehaus.org/izpack-maven-plugin/">izpack-maven-plugin</a>
+ which downloads the required files from the net when needed. Thus a working
+ connection to the Internet might be necessary to create the installer.</p>
 
 <h2>Creating the &epsilon;&chi;Bib Installer</h2>
 
@@ -79,23 +81,25 @@ with the help of Maven2:</p>
   # <b>mvn package</b>
 </pre>
 <p>This command requires that <a href="http://maven.apache.org">Maven2</a>
-is properly installed on your system and the executable can be found on
-the search path.</p>
-<p>After a successful completion of the command the installer can be
-found as the file <a href="target/ExBib-setup-0.1.jar"><tt>target/ExBib-setup-0.1.jar</tt></a>.
-This installer includes everything needed to get started. It just
-requires a proper Java installation (Java 5 or higher).</p>
+ is properly installed on your system and the executable can be found on
+ the search path.</p>
+<p>After a successful completion of the command the installer can be found as 
+ the file <a href="target/ExBib-installer-0.1.jar"><tt>target/ExBib-installer-0.1.jar</tt></a>.
+ This installer includes everything needed to get started. It just
+ requires a proper Java installation (Java 5 or higher).</p>
 <p>If the build fails the verbose log messages of Maven can be used
-to determine the problem. Usually just reading the messages leads you
-into the right direction.</p>
+ to determine the problem. Usually just reading the messages leads you
+ into the right direction.</p>
 
 <h2>License</h2>
 
 The &epsilon;&chi;Bib installer is released under the
 <a href="LICENSE.html">GNU Library Public License</a>. The installer utilizes
-software distributed under the Apache License 2.0.
+software distributed under the 
+<a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.
 
 <address>© 2008 <a href="mailto:extex@dante.de">The
-&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a></address>
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
 </body>
 </html>
