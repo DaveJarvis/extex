@@ -1,5 +1,0 @@
-;!@Install@!UTF-8!
-Title="IzPack"
-Progress="yes"
-ExecuteFile="IzPack-install-4.0.0.jar"
-;!@InstallEnd@!

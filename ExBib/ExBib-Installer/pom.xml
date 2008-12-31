@@ -38,67 +38,61 @@
       <artifactId>ExTeX-resource</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-standalone-compiler</artifactId>
+      <version>4.2.0</version>
+      <optional>true</optional>
+    </dependency>
+
   </dependencies>
+
+  <properties>
+    <staging.dir>${project.build.directory}/staging</staging.dir>
+  </properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.1</version>
         <executions>
           <execution>
-            <phase>package</phase>
+            <id>create-staging-area</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
             <configuration>
               <tasks>
-                <mkdir dir="target"/>
-                <echo message="Running IzPack" />
-                <taskdef name="izpack"
-                         classpath="${basedir}/src/izPack-install-4.0.0/lib/compiler.jar"
-                         classname="com.izforge.izpack.ant.IzPackTask" />
+                <copy todir="${staging.dir}">
+                  <fileset dir="${basedir}/src/installer" />
+                </copy>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-                <izpack input="${basedir}/src/installer/install.xml"
-                        output="${project.build.directory}/ExBib-installer-${project.version}.jar"
-                        installerType="standard"
-                        basedir="${basedir}/src/installer" 
-                        izPackDir="${basedir}/src/izPack-install-4.0.0/" />
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-<!--
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
+        <groupId>org.codehaus.izpack</groupId>
+        <artifactId>izpack-maven-plugin</artifactId>
+        <version>1.0-alpha-4</version>
+        <configuration>
+          <izpackBasedir>${staging.dir}</izpackBasedir>
+          <installerFile>${project.build.directory}/${pom.artifactId}-${project.version}.jar</installerFile>
+        </configuration>
         <executions>
           <execution>
+            <id>standard-installer</id>
             <phase>package</phase>
-            <configuration>
-              <tasks>
-                <taskdef name="izpack"
-                         classname="com.izforge.izpack.ant.IzPackTask" />
-                <izpack  input="${basedir}/src/installer/install.xml"
-                         output="${project.build.directory}/ExBib-installer-${project.version}.jar"
-                         basedir="${basedir}/src/installer" />
-              </tasks>
-            </configuration>
             <goals>
-              <goal>run</goal>
+              <goal>izpack</goal>
             </goals>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>izpack</groupId>
-            <artifactId>standalone-compiler</artifactId>
-            <version>3.8.0</version>
-          </dependency>
-        </dependencies>
       </plugin>
--->
+    
     </plugins>
   </build>
 
