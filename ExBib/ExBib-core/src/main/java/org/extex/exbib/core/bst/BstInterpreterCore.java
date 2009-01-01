@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -341,10 +341,10 @@ public class BstInterpreterCore extends BibliographyCore
         Locator locator = new Locator(getClass().getName() + "#configure()", 0);
         int i = configuration.getValueAsInteger("globalMax", -1);
 
-        if (i >= 0) {
+        if (i >= 0 && i != globalMax) {
             try {
-                changeFunction("global.max$", new TInteger(i, locator), locator);
                 globalMax = i;
+                changeFunction("global.max$", new TInteger(i, locator), locator);
             } catch (ExBibException e) {
                 throw new ConfigurationWrapperException(e);
             }
@@ -352,7 +352,7 @@ public class BstInterpreterCore extends BibliographyCore
 
         i = configuration.getValueAsInteger("entryMax", -1);
 
-        if (i >= 0) {
+        if (i >= 0 && i != entryMax) {
             try {
                 entryMax = i;
                 changeFunction("entry.max$", new TInteger(i, locator), locator);
