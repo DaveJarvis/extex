@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,9 +18,8 @@
 
 package org.extex.exbib.core.bst.command;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.bst.token.TokenVisitor;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This interface implements the visitor pattern for commands. The visitor
@@ -37,9 +36,9 @@ public interface CommandVisitor extends TokenVisitor {
      * @param command the <tt>Execute</tt> Command which is visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitExecute(Command command, Object... args) throws IOException;
+    void visitExecute(Command command, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>iterate</tt> commands.
@@ -47,9 +46,9 @@ public interface CommandVisitor extends TokenVisitor {
      * @param command the <tt>Iterate</tt> Command which is visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitIterate(Command command, Object... args) throws IOException;
+    void visitIterate(Command command, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>read</tt> commands.
@@ -57,9 +56,9 @@ public interface CommandVisitor extends TokenVisitor {
      * @param command the <tt>Read</tt> Command which is visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitRead(Command command, Object... args) throws IOException;
+    void visitRead(Command command, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>reverse</tt> commands.
@@ -67,9 +66,9 @@ public interface CommandVisitor extends TokenVisitor {
      * @param command the <tt>Reverse</tt> Command which is visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitReverse(Command command, Object... args) throws IOException;
+    void visitReverse(Command command, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>sort</tt> commands.
@@ -77,7 +76,8 @@ public interface CommandVisitor extends TokenVisitor {
      * @param command the <tt>Sort</tt> Command which is visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitSort(Command command, Object... args) throws IOException;
+    void visitSort(Command command, Object... args) throws ExBibException;
+
 }

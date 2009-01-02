@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,18 +18,19 @@
 
 package org.extex.exbib.core.bst.token;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
 import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This interface implements the visitor pattern for tokens. The visitor pattern
@@ -53,9 +54,9 @@ public interface TokenVisitor {
      * @param block the block visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitBlock(TBlock block, Object... args) throws IOException;
+    void visitBlock(TBlock block, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>character</tt> tokens.
@@ -63,9 +64,9 @@ public interface TokenVisitor {
      * @param c the character visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitChar(TChar c, Object... args) throws IOException;
+    void visitChar(TChar c, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>field</tt> tokens.
@@ -73,9 +74,9 @@ public interface TokenVisitor {
      * @param field the field visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitField(TField field, Object... args) throws IOException;
+    void visitField(TField field, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>integer</tt> tokens.
@@ -83,9 +84,20 @@ public interface TokenVisitor {
      * @param integer the integer visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitInteger(TInteger integer, Object... args) throws IOException;
+    void visitInteger(TInteger integer, Object... args) throws ExBibException;
+
+    /**
+     * Visitor method invoked by <tt>option integer</tt> tokens.
+     * 
+     * @param option the integer option visited
+     * @param args the arguments
+     * 
+     * @throws ExBibException in case of an error
+     */
+    void visitIntegerOption(TIntegerOption option, Object... args)
+            throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>literal</tt> tokens.
@@ -93,9 +105,9 @@ public interface TokenVisitor {
      * @param literal the literal visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitLiteral(TLiteral literal, Object... args) throws IOException;
+    void visitLiteral(TLiteral literal, Object... args) throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>local integers</tt> tokens.
@@ -103,10 +115,10 @@ public interface TokenVisitor {
      * @param integer the local integer visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
     void visitLocalInteger(TLocalInteger integer, Object... args)
-            throws IOException;
+            throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>local string</tt> tokens.
@@ -114,10 +126,10 @@ public interface TokenVisitor {
      * @param string the local string visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
     void visitLocalString(TLocalString string, Object... args)
-            throws IOException;
+            throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>qliteral</tt> tokens.
@@ -125,9 +137,10 @@ public interface TokenVisitor {
      * @param qliteral the qliteral visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitQLiteral(TQLiteral qliteral, Object... args) throws IOException;
+    void visitQLiteral(TQLiteral qliteral, Object... args)
+            throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>string</tt> tokens.
@@ -135,9 +148,20 @@ public interface TokenVisitor {
      * @param string the string visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitString(TString string, Object... args) throws IOException;
+    void visitString(TString string, Object... args) throws ExBibException;
+
+    /**
+     * Visitor method invoked by <tt>option string</tt> tokens.
+     * 
+     * @param option the integer option visited
+     * @param args the arguments
+     * 
+     * @throws ExBibException in case of an error
+     */
+    void visitStringOption(TStringOption option, Object... args)
+            throws ExBibException;
 
     /**
      * Visitor method invoked by <tt>token list</tt> tokens.
@@ -145,8 +169,8 @@ public interface TokenVisitor {
      * @param list the list visited
      * @param args the arguments
      * 
-     * @throws IOException just in case
+     * @throws ExBibException in case of an error
      */
-    void visitTokenList(TokenList list, Object... args) throws IOException;
+    void visitTokenList(TokenList list, Object... args) throws ExBibException;
 
 }

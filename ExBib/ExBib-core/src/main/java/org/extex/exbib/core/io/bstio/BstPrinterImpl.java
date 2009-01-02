@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,26 +19,33 @@
 package org.extex.exbib.core.io.bstio;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.command.Command;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
 import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
+import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.io.Writer;
 
 /**
@@ -70,19 +77,12 @@ public class BstPrinterImpl implements CommandVisitor {
     private boolean nl = true;
 
     /**
-     * The field <tt>processor</tt> contains the processor. It is only used
-     * during printing to transport the processor to the visitor methods
-     */
-    private BstProcessor processor = null;
-
-    /**
      * Creates a new object.
      * 
      * @param writer the target writer
      */
     public BstPrinterImpl(Writer writer) {
 
-        super();
         this.writer = writer;
     }
 
@@ -99,68 +99,10 @@ public class BstPrinterImpl implements CommandVisitor {
             throws IOException,
                 ExBibException {
 
-        this.processor = processor;
-        writer.println("ENTRY {");
-
-        for (String entry : processor.getEntries()) {
-            writer.println(in, entry);
-        }
-
-        writer.print("  } {");
-
-        List<String> integers = processor.getEntryIntegers();
-
-        if (!integers.isEmpty()) {
-            writer.println();
-
-            for (String ints : integers) {
-                writer.println(in, ints);
-            }
-
-            writer.print("  ");
-        }
-
-        writer.print("} {");
-
-        List<String> strings = processor.getEntryStrings();
-
-        if (!strings.isEmpty()) {
-            writer.println();
-            Collections.sort(strings);
-
-            for (String s : strings) {
-                writer.println(in, s);
-            }
-
-            writer.print("  ");
-        }
-
-        writer.println("}\n");
-
-        integers = processor.getIntegers();
-
-        if (!integers.isEmpty()) {
-            writer.print("INTEGERS {");
-            Collections.sort(integers);
-            for (String key : integers) {
-                writer.print("\n", in, key);
-            }
-
-            writer.println("\n}\n");
-        }
-
-        strings = processor.getStrings();
-
-        if (!strings.isEmpty()) {
-            writer.print("STRINGS {");
-            Collections.sort(strings);
-
-            for (String key : strings) {
-                writer.print("\n", in, key);
-            }
-
-            writer.println("\n}\n");
-        }
+        writeEntry(processor);
+        write("INTEGERS", processor.getIntegers());
+        write("STRINGS", processor.getStrings());
+        writeOptions(processor);
 
         List<String> functionVector = processor.getFunctionNames();
         Collections.sort(functionVector);
@@ -169,7 +111,7 @@ public class BstPrinterImpl implements CommandVisitor {
             Code code = processor.getFunction(function);
             writer.print("FUNCTION { ", function, " }{\n", in);
             this.nl = true;
-            ((MacroCode) code).getToken().visit(this);
+            ((MacroCode) code).getToken().visit(this, processor);
             writer.println("}\n");
         }
 
@@ -191,11 +133,9 @@ public class BstPrinterImpl implements CommandVisitor {
         writer.println();
 
         for (Command command : processor) {
-            command.visit(this);
+            command.visit(this, processor);
             writer.println();
         }
-
-        this.processor = null;
     }
 
     /**
@@ -204,22 +144,25 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
      *      java.lang.Object[])
      */
-    public void visitBlock(TBlock block, Object... args) throws IOException {
+    public void visitBlock(TBlock block, Object... args) throws ExBibException {
 
-        String i = this.in;
+        String indent = this.in;
         if (!this.nl) {
-            writer.print("\n", in);
+            write("\n");
+            write(in);
         }
         this.in = this.in + "    ";
-        writer.print("{");
+        write("{");
         this.nl = false;
 
         for (Token t : block) {
-            t.visit(this);
+            t.visit(this, args);
         }
-        writer.print(i, "}\n", in);
+        write(indent);
+        write("}\n");
+        write(in);
         this.nl = true;
-        this.in = i;
+        this.in = indent;
     }
 
     /**
@@ -228,7 +171,7 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
      *      java.lang.Object[])
      */
-    public void visitChar(TChar c, Object... args) throws IOException {
+    public void visitChar(TChar c, Object... args) {
 
         //
     }
@@ -240,12 +183,12 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitExecute(Command command, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        writer.print("EXECUTE {");
+        write("EXECUTE {");
         this.nl = false;
-        command.getValue().visit(this);
-        writer.print(" }");
+        command.getValue().visit(this, args);
+        write(" }");
         this.nl = false;
     }
 
@@ -255,12 +198,10 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
      *      java.lang.Object[])
      */
-    public void visitField(TField field, Object... args) throws IOException {
+    public void visitField(TField field, Object... args) throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print(field.getValue());
+        writeSpace();
+        write(field.getValue());
         this.nl = false;
     }
 
@@ -271,13 +212,24 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitInteger(TInteger integer, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print("#", integer.getValue());
+        writeSpace();
+        write("#");
+        write(integer.getValue());
         this.nl = false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+     *      java.lang.Object[])
+     */
+    public void visitIntegerOption(TIntegerOption option, Object... args)
+            throws ExBibException {
+
+        write(option.getValue());
     }
 
     /**
@@ -287,12 +239,12 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitIterate(Command command, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        writer.print("ITERATE {");
+        write("ITERATE {");
         this.nl = false;
-        command.getValue().visit(this);
-        writer.print(" }");
+        command.getValue().visit(this, args);
+        write(" }");
     }
 
     /**
@@ -302,15 +254,14 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitLiteral(TLiteral literal, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print(literal.getValue());
-        Code code = processor.getFunction(literal.getValue());
+        writeSpace();
+        write(literal.getValue());
+        Code code = ((BstProcessor) args[0]).getFunction(literal.getValue());
         if (code != null && !(code instanceof MacroCode)) {
-            writer.print("\n", in);
+            write("\n");
+            write(in);
             this.nl = true;
         } else {
             this.nl = false;
@@ -324,12 +275,10 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitLocalInteger(TLocalInteger integer, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print(integer.getValue());
+        writeSpace();
+        write(integer.getValue());
         this.nl = false;
     }
 
@@ -340,12 +289,10 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitLocalString(TLocalString string, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print(string.getValue());
+        writeSpace();
+        write(string.getValue());
         this.nl = false;
     }
 
@@ -356,12 +303,11 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitQLiteral(TQLiteral qliteral, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print("'", qliteral.getValue());
+        writeSpace();
+        write("'");
+        write(qliteral.getValue());
         this.nl = false;
     }
 
@@ -371,9 +317,10 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.command.CommandVisitor#visitRead(org.extex.exbib.core.bst.command.Command,
      *      java.lang.Object[])
      */
-    public void visitRead(Command command, Object... args) throws IOException {
+    public void visitRead(Command command, Object... args)
+            throws ExBibException {
 
-        writer.print("READ");
+        write("READ");
     }
 
     /**
@@ -383,12 +330,12 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitReverse(Command command, Object... args)
-            throws IOException {
+            throws ExBibException {
 
-        writer.print("REVERSE {");
+        write("REVERSE {");
         this.nl = false;
-        command.getValue().visit(this);
-        writer.print(" }");
+        command.getValue().visit(this, args);
+        write(" }");
     }
 
     /**
@@ -397,9 +344,10 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.command.CommandVisitor#visitSort(org.extex.exbib.core.bst.command.Command,
      *      java.lang.Object[])
      */
-    public void visitSort(Command command, Object... args) throws IOException {
+    public void visitSort(Command command, Object... args)
+            throws ExBibException {
 
-        writer.print("SORT");
+        write("SORT");
     }
 
     /**
@@ -408,13 +356,26 @@ public class BstPrinterImpl implements CommandVisitor {
      * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
      *      java.lang.Object[])
      */
-    public void visitString(TString string, Object... args) throws IOException {
+    public void visitString(TString string, Object... args)
+            throws ExBibException {
 
-        if (!this.nl) {
-            writer.print(" ");
-        }
-        writer.print("\"", string.getValue(), "\"");
+        writeSpace();
+        write("\"");
+        write(string.getValue());
+        write("\"");
         this.nl = false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+     *      java.lang.Object[])
+     */
+    public void visitStringOption(TStringOption option, Object... args)
+            throws ExBibException {
+
+        write(option.getValue());
     }
 
     /**
@@ -424,10 +385,133 @@ public class BstPrinterImpl implements CommandVisitor {
      *      java.lang.Object[])
      */
     public void visitTokenList(TokenList list, Object... args)
-            throws IOException {
+            throws ExBibException {
 
         for (Token t : list) {
-            t.visit(this);
+            t.visit(this, args);
+        }
+    }
+
+    /**
+     * Print a string to the output writer.
+     * 
+     * @param s the string to be printed
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     */
+    private void write(String s) throws ExBibIoException {
+
+        try {
+            writer.print(s);
+        } catch (IOException e) {
+            throw new ExBibIoException(e);
+        }
+    }
+
+    /**
+     * Write a list with a tag.
+     * 
+     * @param tag the tag
+     * @param list the list
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     */
+    private void write(String tag, List<String> list) throws ExBibIoException {
+
+        if (!list.isEmpty()) {
+            write(tag);
+            write(" {");
+            Collections.sort(list);
+
+            for (String key : list) {
+                write("\n");
+                write(in);
+                write(key);
+            }
+
+            write("\n}\n\n");
+        }
+    }
+
+    /**
+     * Write an entry
+     * 
+     * @param processor the processor
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     * @throws ExBibIllegalValueException in case of an illegal value
+     * @throws ExBibFunctionExistsException in case of an existing function
+     */
+    private void writeEntry(BstProcessor processor)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException,
+                ExBibIoException {
+
+        write("ENTRY {");
+
+        for (String entry : processor.getEntries()) {
+            write("\n");
+            write(in);
+            write(entry);
+        }
+        write("\n  } {");
+        writeList(processor.getEntryIntegers());
+        write("} {");
+        writeList(processor.getEntryStrings());
+        write("}\n\n");
+    }
+
+    /**
+     * Write a list.
+     * 
+     * @param values the list
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     */
+    private void writeList(List<String> values) throws ExBibIoException {
+
+        if (!values.isEmpty()) {
+            Collections.sort(values);
+
+            for (String s : values) {
+                write("\n");
+                write(in);
+                write(s);
+            }
+            write("\n  ");
+        }
+    }
+
+    /**
+     * Write the options.
+     * 
+     * @param processor the processor
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     */
+    private void writeOptions(BstProcessor processor) throws ExBibIoException {
+
+        Map<String, Token> ops = processor.getOptions();
+        String[] ks = ops.keySet().toArray(new String[0]);
+        Arrays.sort(ks);
+        for (String key : ks) {
+            write("OPTION{");
+            write(key);
+            write("}{");
+            write(ops.get(key).getValue());
+            write("}\n");
+        }
+    }
+
+    /**
+     * Write a space if one is required.
+     * 
+     * @throws ExBibIoException in case of an I/O error
+     */
+    private void writeSpace() throws ExBibIoException {
+
+        if (!this.nl) {
+            write(" ");
         }
     }
 

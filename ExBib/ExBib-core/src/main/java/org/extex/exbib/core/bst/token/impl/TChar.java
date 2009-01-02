@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,8 +17,6 @@
  */
 
 package org.extex.exbib.core.bst.token.impl;
-
-import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.token.AbstractToken;
@@ -68,7 +66,8 @@ public class TChar extends AbstractToken {
      * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
      *      java.lang.Object[])
      */
-    public void visit(TokenVisitor visitor, Object... args) throws IOException {
+    public void visit(TokenVisitor visitor, Object... args)
+            throws ExBibException {
 
         visitor.visitChar(this, args);
     }

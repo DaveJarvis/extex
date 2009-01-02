@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst.code.impl;
@@ -23,10 +22,19 @@ import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenVisitor;
+import org.extex.exbib.core.bst.token.impl.TBlock;
+import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
+import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
-import org.extex.exbib.core.bst.token.impl.TLiteral;
+import org.extex.exbib.core.bst.token.impl.TQLiteral;
+import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
+import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
@@ -59,14 +67,203 @@ import org.extex.exbib.core.io.Locator;
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
- * <dd> Pops the top two literals and assigns to the first (which must be a
- * global or entry variable) the value of the second. </dd>
+ * <dd>Pops the top two literals and assigns to the first (which must be a
+ * global or entry variable) the value of the second.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
 public class Set extends AbstractCode {
+
+    /**
+     * The field <tt>TV</tt> contains the visitor for tokens.
+     */
+    private static final TokenVisitor TV = new TokenVisitor() {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
+         *      java.lang.Object[])
+         */
+        public void visitBlock(TBlock block, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
+         *      java.lang.Object[])
+         */
+        public void visitChar(TChar c, Object... args) throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
+         *      java.lang.Object[])
+         */
+        public void visitField(TField field, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Entry entry = (Entry) args[1];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            entry.set(var, processor.popString(locator).getValue());
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
+         *      java.lang.Object[])
+         */
+        public void visitInteger(TInteger integer, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+         *      java.lang.Object[])
+         */
+        public void visitIntegerOption(TIntegerOption option, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
+         *      java.lang.Object[])
+         */
+        public void visitLiteral(TLiteral literal, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
+         *      java.lang.Object[])
+         */
+        public void visitLocalInteger(TLocalInteger integer, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Entry entry = (Entry) args[1];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            entry.setLocal(var, processor.popInteger(locator).getInt());
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
+         *      java.lang.Object[])
+         */
+        public void visitLocalString(TLocalString string, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Entry entry = (Entry) args[1];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            entry.setLocal(var, processor.popString(locator).getValue());
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
+         *      java.lang.Object[])
+         */
+        public void visitQLiteral(TQLiteral qliteral, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
+         *      java.lang.Object[])
+         */
+        public void visitString(TString string, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+         *      java.lang.Object[])
+         */
+        public void visitStringOption(TStringOption option, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
+         *      java.lang.Object[])
+         */
+        public void visitTokenList(TokenList list, Object... args)
+                throws ExBibException {
+
+            BstProcessor processor = (BstProcessor) args[0];
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            processor.changeFunction(var, processor.pop(locator), locator);
+        }
+
+    };
 
     /**
      * Create a new object.
@@ -89,28 +286,24 @@ public class Set extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
-        Token a = processor.pop(locator);
+        Token arg = processor.pop(locator);
 
-        if (!(a instanceof TLiteral)) {
-            throw new ExBibMissingLiteralException(a.toString(), locator);
+        if (!(arg instanceof TLiteral)) {
+            throw new ExBibMissingLiteralException(arg.toString(), locator);
         }
-        String var = a.getValue();
-        Code code = processor.getFunction(var);
+        String name = arg.getValue();
+        Code code = processor.getFunction(name);
 
-        if (code instanceof TLocalString) {
-            entry.setLocal(var, processor.popString(locator).getValue());
-        } else if (code instanceof TLocalInteger) {
-            entry.setLocal(var, processor.popInteger(locator).getInt());
-        } else if (code instanceof TField) {
-            entry.set(var, processor.popString(locator).getValue());
+        if (code instanceof Token) {
+            ((Token) code).visit(TV, processor, entry, locator, name);
         } else {
-            processor.changeFunction(var, processor.pop(locator), locator);
+            processor.changeFunction(name, processor.pop(locator), locator);
         }
     }
 

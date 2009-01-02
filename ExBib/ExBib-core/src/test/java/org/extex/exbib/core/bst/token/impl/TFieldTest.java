@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -126,7 +126,23 @@ public class TFieldTest {
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
-            return null;
+            return new Iterator<Configuration>() {
+
+                public boolean hasNext() {
+
+                    return false;
+                }
+
+                public Configuration next() {
+
+                    return null;
+                }
+
+                public void remove() {
+
+                    //
+                }
+            };
         }
 
         public void setConfigurationLoader(ConfigurationLoader loader) {

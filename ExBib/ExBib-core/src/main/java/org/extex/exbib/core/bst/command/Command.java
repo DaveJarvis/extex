@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -75,7 +75,10 @@ public interface Command {
      * @param args the additional arguments
      * 
      * @throws IOException in case of an I/O error
+     * @throws ExBibException in case of an error
      */
-    void visit(CommandVisitor visitor, Object... args) throws IOException;
+    void visit(CommandVisitor visitor, Object... args)
+            throws IOException,
+                ExBibException;
 
 }

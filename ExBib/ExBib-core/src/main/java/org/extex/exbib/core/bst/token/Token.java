@@ -18,8 +18,6 @@
 
 package org.extex.exbib.core.bst.token;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -88,8 +86,8 @@ public interface Token extends Code {
      * @param visitor the visitor
      * @param args the arguments
      * 
-     * @throws IOException in case of an I/O error
+     * @throws ExBibException in case of an error
      */
-    void visit(TokenVisitor visitor, Object... args) throws IOException;
+    void visit(TokenVisitor visitor, Object... args) throws ExBibException;
 
 }

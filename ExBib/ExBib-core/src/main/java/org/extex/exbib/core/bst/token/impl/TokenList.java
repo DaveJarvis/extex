@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,7 +18,6 @@
 
 package org.extex.exbib.core.bst.token.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -102,6 +101,20 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     }
 
     /**
+     * Getter for an element.
+     * 
+     * @param index the index of the element
+     * 
+     * @return the element
+     * 
+     * @see java.util.List#get(int)
+     */
+    public Token get(int index) {
+
+        return value.get(index);
+    }
+
+    /**
      * Compute a printable representation of this object.
      * 
      * @return the printable representation
@@ -155,6 +168,17 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
     }
 
     /**
+     * Getter for the size.
+     * 
+     * @return the size
+     * @see java.util.List#size()
+     */
+    public int size() {
+
+        return value.size();
+    }
+
+    /**
      * Transform the TokenList into a {@link List List<String>} if the elements
      * are of type {@link TLiteral TLiteral} only. If some other elements are
      * found then an exception is thrown.
@@ -185,7 +209,8 @@ public class TokenList extends AbstractToken implements Iterable<Token> {
      * @see org.extex.exbib.core.bst.token.Token#visit(org.extex.exbib.core.bst.token.TokenVisitor,
      *      java.lang.Object[])
      */
-    public void visit(TokenVisitor visitor, Object... args) throws IOException {
+    public void visit(TokenVisitor visitor, Object... args)
+            throws ExBibException {
 
         visitor.visitTokenList(this, args);
     }

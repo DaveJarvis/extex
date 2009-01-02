@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.core.token.impl;
+package org.extex.exbib.core.bst.token.impl;
 
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
@@ -24,11 +24,13 @@ import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
 import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
 
 /**
@@ -113,6 +115,20 @@ public class RecordingTokenVisitor implements TokenVisitor {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+     *      java.lang.Object[])
+     */
+    public void visitIntegerOption(TIntegerOption option, Object... args) {
+
+        if (t != null) {
+            throw new IllegalStateException();
+        }
+        t = option;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
      *      java.lang.Object[])
      */
@@ -178,6 +194,20 @@ public class RecordingTokenVisitor implements TokenVisitor {
             throw new IllegalStateException();
         }
         t = string;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+     *      java.lang.Object[])
+     */
+    public void visitStringOption(TStringOption option, Object... args) {
+
+        if (t != null) {
+            throw new IllegalStateException();
+        }
+        t = option;
     }
 
     /**

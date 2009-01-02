@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,22 +21,29 @@ package org.extex.exbib.core.bst;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
 import org.extex.exbib.core.util.ObserverList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -84,6 +91,12 @@ public class BibliographyCore implements Bibliography, Observable {
     private ObserverList startReadObservers = new ObserverList();
 
     /**
+     * The field <tt>setOptionObservers</tt> contains the list of observers
+     * triggered when an option is set.
+     */
+    private ObserverList setOptionObservers = new ObserverList();
+
+    /**
      * The field <tt>bibliographyDatabases</tt> contains the list of
      * bibliography databases to consider.
      */
@@ -104,6 +117,11 @@ public class BibliographyCore implements Bibliography, Observable {
      * The field <tt>logger</tt> contains the writer for logging purposes.
      */
     private Logger logger = null;
+
+    /**
+     * The field <tt>options</tt> contains the options.
+     */
+    private Map<String, Token> options = new HashMap<String, Token>();
 
     /**
      * Create a new {@link Bibliography} object.
@@ -170,7 +188,7 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Add an entry.
      * 
      * @param entry the name of the entry
      */
@@ -193,7 +211,18 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
-     * Configure the current instance.
+     * Configure the current instance. Here the configuration data is shuffled
+     * into the options. For this purpose the tags with the name
+     * <code>option</code> contains the value. The attribute <code>name</code>
+     * determines the name of the option.
+     * 
+     * <pre>
+     *   &lt;config&gt;
+     *     &lt;option name="name<sub>1</sub>"&gt;value<sub>1</sub>&lt;/option&gt;
+     *     &lt;option name="name<sub>2</sub>"&gt;value<sub>2</sub>&lt;/option&gt;
+     *     &lt;option name="name<sub>3</sub>"&gt;value<sub>3</sub>&lt;/option&gt;
+     *   &lt;/config&gt;
+     * </pre>
      * 
      * @param config the configuration to consult
      * 
@@ -201,7 +230,20 @@ public class BibliographyCore implements Bibliography, Observable {
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        // nothing to do
+        Iterator<Configuration> it = config.iterator("option");
+        while (it.hasNext()) {
+            Configuration cfg = it.next();
+            String name = cfg.getAttribute("name");
+            if (name == null) {
+                throw new ConfigurationMissingAttributeException("name", cfg);
+            }
+            String value = cfg.getValue();
+            try {
+                setOption(name, value);
+            } catch (ExBibException e) {
+                throw new ConfigurationWrapperException(e);
+            }
+        }
     }
 
     /**
@@ -302,6 +344,42 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
+     * Getter for an option.
+     * 
+     * @param key the key
+     * 
+     * @return the option value or <code>null</code>
+     */
+    public Token getOption(String key) {
+
+        return options.get(key);
+    }
+
+    /**
+     * Getter for an option.
+     * 
+     * @param key the key
+     * @param defaultValue the value in case that the option is not defined
+     * 
+     * @return the option value or the default fallback
+     */
+    public Token getOption(String key, Token defaultValue) {
+
+        Token value = options.get(key);
+        return value != null ? value : defaultValue;
+    }
+
+    /**
+     * Getter for the options.
+     * 
+     * @return the options
+     */
+    public Map<String, Token> getOptions() {
+
+        return options;
+    }
+
+    /**
      * Load all databases named in the processor context in turn.
      * 
      * @throws ExBibException in case that something went wrong
@@ -337,6 +415,8 @@ public class BibliographyCore implements Bibliography, Observable {
             endParseObservers.add(observer);
         } else if (name.equals("startRead")) {
             startReadObservers.add(observer);
+        } else if (name.equals("setOption")) {
+            setOptionObservers.add(observer);
         } else {
             throw new NotObservableException(name);
         }
@@ -353,6 +433,7 @@ public class BibliographyCore implements Bibliography, Observable {
         bibliographyStyles = new ArrayList<String>();
         bibliographyDatabases = new ArrayList<String>();
         theEntries = new ArrayList<String>();
+        options = new HashMap<String, Token>();
     }
 
     /**
@@ -381,20 +462,45 @@ public class BibliographyCore implements Bibliography, Observable {
      * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
      *      java.lang.String)
      */
-    public void setOption(String name, String value) {
+    public boolean setOption(String name, String value)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException {
+
+        return setOption(name, (value.matches("-?[0-9]+") //
+                ? new TInteger(value, null)
+                : new TString(value, null)));
+    }
+
+    /**
+     * Setter for an options.
+     * 
+     * @param name the name
+     * @param value the value
+     * 
+     * @return <code>true</code> iff the option is known and has been set
+     * 
+     * @throws ExBibIllegalValueException in case of an illegal value
+     * @throws ExBibFunctionExistsException in case of a redefinition
+     */
+    public boolean setOption(String name, Token value)
+            throws ExBibIllegalValueException,
+                ExBibFunctionExistsException {
+
+        options.put(name, value);
+
+        setOptionObservers.update(this, name);
 
         if ("min.crossref".equals(name)) {
-            try {
-                db.setMinCrossrefs(Integer.parseInt(value));
-            } catch (NumberFormatException e) {
+            if (value instanceof TInteger) {
+                db.setMinCrossrefs(((TInteger) value).getInt());
+            } else {
                 warning(LocalizerFactory.getLocalizer(BibliographyCore.class)
-                    .format("number.format.error", name, value));
+                    .format("number.format.error", name, value.getValue()));
             }
-            return;
+            return true;
         }
 
-        warning(LocalizerFactory.getLocalizer(BibliographyCore.class).format(
-            "unused.option", name, value));
+        return false;
     }
 
     /**
