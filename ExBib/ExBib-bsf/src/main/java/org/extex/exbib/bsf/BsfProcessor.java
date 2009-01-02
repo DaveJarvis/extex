@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -74,7 +74,7 @@ public class BsfProcessor extends BibliographyCore
     private ResourceFinder finder;
 
     /**
-     * Creates a new object without database and logger. Thoise have to be
+     * Creates a new object without database and logger. Those have to be
      * provided via setters.
      */
     public BsfProcessor() {
@@ -208,7 +208,7 @@ public class BsfProcessor extends BibliographyCore
 
         } catch (BSFException e) {
             throw new ExBibException(e.getLocalizedMessage().replaceFirst(
-                "^exception from Groovy: ", ""));
+                "^exception from [a-zA-Z:]* ", ""));
         } catch (IOException e) {
             throw new ExBibIoException(e);
         }
