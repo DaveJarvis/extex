@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -42,6 +42,8 @@ import org.extex.exbib.bst2groovy.compiler.GetFieldCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetIntegerCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetLocalIntegerCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetLocalStringCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetOptionIntegerCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetOptionStringCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetStringCompiler;
 import org.extex.exbib.bst2groovy.compiler.GreaterCompiler;
 import org.extex.exbib.bst2groovy.compiler.IfCompiler;
@@ -94,11 +96,13 @@ import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
 import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -199,6 +203,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 .getInt()));
         }
 
+        public void visitIntegerOption(TIntegerOption option, Object... args) {
+
+            // TODO gene: visitIntegerOption unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
         /**
          * {@inheritDoc}
          * 
@@ -267,6 +277,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
             ProcessorState stack = (ProcessorState) args[1];
             stack.push(new GStringConstant(string.getValue()));
+        }
+
+        public void visitStringOption(TStringOption option, Object... args) {
+
+            // TODO gene: visitStringOption unimplemented
+            throw new RuntimeException("unimplemented");
         }
 
         /**
@@ -340,6 +356,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 /**
                  * {@inheritDoc}
                  * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+                 *      java.lang.Object[])
+                 */
+                public void visitIntegerOption(TIntegerOption option,
+                        Object... args) {
+
+                    // TODO gene: visitIntegerOption unimplemented
+                    throw new RuntimeException("unimplemented");
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
                  * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
                  *      java.lang.Object[])
                  */
@@ -402,6 +431,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
                     ((ProcessorState) args[1]).push(new GStringConstant(string
                         .getValue()));
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+                 *      java.lang.Object[])
+                 */
+                public void visitStringOption(TStringOption option,
+                        Object... args) {
+
+                    // TODO gene: visitStringOption unimplemented
+                    throw new RuntimeException("unimplemented");
                 }
 
                 /**
@@ -564,6 +606,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         } else if (token instanceof TLocalString) {
             compilers.put(name, //
                 new GetLocalStringCompiler(name));
+        } else if (token instanceof TStringOption) {
+            compilers.put(name, //
+                new GetOptionStringCompiler(name));
+        } else if (token instanceof TIntegerOption) {
+            compilers.put(name, //
+                new GetOptionIntegerCompiler(name));
         }
     }
 
@@ -616,7 +664,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         try {
             token.visit(evaluateTokenVisitor, entryRefernce, state, this);
-        } catch (IOException e) {
+        } catch (ExBibException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
         }
     }
@@ -634,7 +682,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         try {
             token.visit(evaluatePartiallyTokenVisitor, entryRefernce, state,
                 this);
-        } catch (IOException e) {
+        } catch (ExBibException e) {
             throw new IllegalArgumentException(e.getLocalizedMessage());
         }
     }
@@ -713,8 +761,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * @param writer the target writer
      * 
      * @throws IOException in case of an I/O error
+     * @throws ExBibException in case of an error
      */
-    public void write(Writer writer) throws IOException {
+    public void write(Writer writer) throws IOException, ExBibException {
 
         GFunction run =
                 new GFunction(null, "run",
@@ -783,9 +832,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             "    this.bibDB = bibDB\n", //
             "    this.bibWriter = bibWriter\n", //
             "    this.bibProcessor = bibProcessor\n");
+
         List<String> strings = this.getMacroNames();
         if (!strings.isEmpty()) {
-            writer.write("    [\n");
+            writer.write(INDENT, INDENT, "[\n");
             for (String s : strings) {
                 writer.write(INDENT, INDENT, INDENT);
                 writeMapKey(writer, s);
@@ -800,6 +850,28 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 INDENT, INDENT, //
                 "}\n");
         }
+
+        Map<String, Token> options = this.getOptions();
+        if (!options.isEmpty()) {
+            writer.write(INDENT, INDENT, "[\n");
+            for (String s : options.keySet()) {
+                writer.write(INDENT, INDENT, INDENT);
+                writeMapKey(writer, s);
+                writer.write(": ", GStringConstant.translate(getOption(s)
+                    .getValue()), ",\n");
+            }
+            writer.write(INDENT,
+                INDENT, //
+                "].each { name, value ->\n", INDENT, INDENT,
+                INDENT, //
+                "if (bibProcessor.getOption(name) == null) {\n", INDENT,
+                INDENT, INDENT, INDENT,//
+                "bibProcessor.setOption(name, value)\n", //
+                INDENT, INDENT, INDENT,//
+                "}\n", INDENT, INDENT, //
+                "}\n");
+        }
+
         writer.write("  }\n");
     }
 

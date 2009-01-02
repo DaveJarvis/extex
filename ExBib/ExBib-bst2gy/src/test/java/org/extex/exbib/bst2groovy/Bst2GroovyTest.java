@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -163,8 +163,10 @@ public class Bst2GroovyTest {
         ConsoleHandler handler = new ConsoleHandler();
         handler.setLevel(Level.ALL);
         logger.addHandler(handler);
+
         ResourceFinder finder = new TestResourceFinder(input);
         bst2Groovy.setResourceFinder(finder);
+
         Writer w = new StringWriter();
         bst2Groovy.run(w, "test");
         w.flush();
@@ -900,6 +902,51 @@ public class Bst2GroovyTest {
                     + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
                     + "    return NumNames.numNames(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that "OPTION INTEGER" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOptionInteger1() throws Exception {
+
+        run(
+            "option integer {xxx}{#42}\n" + "function{abc}{xxx write$}", //
+            PREFIX
+                    + HEAD
+                    + "    [\n"
+                    + "      xxx: \"42\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      if (bibProcessor.getOption(name) == null) {\n"
+                    + "        bibProcessor.setOption(name, value)\n"
+                    + "      }\n"
+                    + "    }\n"
+                    + "  }\n"
+                    + "\n"
+                    + "  void abc() {\n"
+                    + "    bibWriter.print(bibProcessor.getOption(\"xxx\").getInt())\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that "OPTION STRING" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOptionString1() throws Exception {
+
+        run("option string {xxx}{d e f}\n" + "function{abc}{xxx write$}", //
+            PREFIX + HEAD + "    [\n" + "      xxx: \"def\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      if (bibProcessor.getOption(name) == null) {\n"
+                    + "        bibProcessor.setOption(name, value)\n"
+                    + "      }\n" + "    }\n" + "  }\n" + "\n"
+                    + "  void abc() {\n"
+                    + "    bibWriter.print(bibProcessor.getOption(\"xxx\"))\n"
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**

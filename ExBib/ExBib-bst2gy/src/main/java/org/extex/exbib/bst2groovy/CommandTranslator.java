@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -41,12 +41,15 @@ import org.extex.exbib.core.bst.token.impl.TBlock;
 import org.extex.exbib.core.bst.token.impl.TChar;
 import org.extex.exbib.core.bst.token.impl.TField;
 import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
+import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This class is a compiler from a list of commands to a code container.
@@ -111,7 +114,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
          *      java.lang.Object[])
          */
-        public void visitBlock(TBlock block, Object... args) throws IOException {
+        public void visitBlock(TBlock block, Object... args) {
 
             throw new ImpossibleException("block");
         }
@@ -122,7 +125,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitChar(org.extex.exbib.core.bst.token.impl.TChar,
          *      java.lang.Object[])
          */
-        public void visitChar(TChar c, Object... args) throws IOException {
+        public void visitChar(TChar c, Object... args) {
 
             throw new ImpossibleException("char");
         }
@@ -133,8 +136,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitExecute(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitExecute(Command command, Object... args)
-                throws IOException {
+        public void visitExecute(Command command, Object... args) {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();
@@ -164,7 +166,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitField(org.extex.exbib.core.bst.token.impl.TField,
          *      java.lang.Object[])
          */
-        public void visitField(TField field, Object... args) throws IOException {
+        public void visitField(TField field, Object... args) {
 
             throw new ImpossibleException("field");
         }
@@ -175,10 +177,21 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitInteger(org.extex.exbib.core.bst.token.impl.TInteger,
          *      java.lang.Object[])
          */
-        public void visitInteger(TInteger integer, Object... args)
-                throws IOException {
+        public void visitInteger(TInteger integer, Object... args) {
 
             throw new ImpossibleException("integer");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+         *      java.lang.Object[])
+         */
+        public void visitIntegerOption(TIntegerOption option, Object... args) {
+
+            // TODO gene: visitIntegerOption unimplemented
+            throw new RuntimeException("unimplemented");
         }
 
         /**
@@ -187,8 +200,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitIterate(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitIterate(Command command, Object... args)
-                throws IOException {
+        public void visitIterate(Command command, Object... args) {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();
@@ -215,8 +227,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
          *      java.lang.Object[])
          */
-        public void visitLiteral(TLiteral literal, Object... args)
-                throws IOException {
+        public void visitLiteral(TLiteral literal, Object... args) {
 
             // this should not happen
 
@@ -245,8 +256,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalInteger(org.extex.exbib.core.bst.token.impl.TLocalInteger,
          *      java.lang.Object[])
          */
-        public void visitLocalInteger(TLocalInteger integer, Object... args)
-                throws IOException {
+        public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
             throw new ImpossibleException("local integer");
         }
@@ -257,8 +267,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalString(org.extex.exbib.core.bst.token.impl.TLocalString,
          *      java.lang.Object[])
          */
-        public void visitLocalString(TLocalString string, Object... args)
-                throws IOException {
+        public void visitLocalString(TLocalString string, Object... args) {
 
             throw new ImpossibleException("local string");
         }
@@ -269,8 +278,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
          *      java.lang.Object[])
          */
-        public void visitQLiteral(TQLiteral qliteral, Object... args)
-                throws IOException {
+        public void visitQLiteral(TQLiteral qliteral, Object... args) {
 
             throw new ImpossibleException("qliteral");
         }
@@ -281,8 +289,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitRead(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitRead(Command command, Object... args)
-                throws IOException {
+        public void visitRead(Command command, Object... args) {
 
             ((GCodeContainer) args[0]).add(new GenericCode(ReturnType.VOID,
                 "// read"));
@@ -294,8 +301,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitReverse(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitReverse(Command command, Object... args)
-                throws IOException {
+        public void visitReverse(Command command, Object... args) {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();
@@ -323,8 +329,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitSort(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitSort(Command command, Object... args)
-                throws IOException {
+        public void visitSort(Command command, Object... args) {
 
             ((GCodeContainer) args[0]).add(new GenericCode(ReturnType.VOID,
                 "bibDB.sort"));
@@ -336,10 +341,21 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitString(org.extex.exbib.core.bst.token.impl.TString,
          *      java.lang.Object[])
          */
-        public void visitString(TString string, Object... args)
-                throws IOException {
+        public void visitString(TString string, Object... args) {
 
             throw new ImpossibleException("string");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+         *      java.lang.Object[])
+         */
+        public void visitStringOption(TStringOption option, Object... args) {
+
+            // TODO gene: visitStringOption unimplemented
+            throw new RuntimeException("unimplemented");
         }
 
         /**
@@ -348,8 +364,7 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
          *      java.lang.Object[])
          */
-        public void visitTokenList(TokenList list, Object... args)
-                throws IOException {
+        public void visitTokenList(TokenList list, Object... args) {
 
             throw new ImpossibleException("token list");
         }
@@ -379,8 +394,11 @@ public class CommandTranslator {
      * @return the translated code
      * 
      * @throws IOException in case of an I/O error
+     * @throws ExBibException in case of an error
      */
-    public GCodeContainer translate(Iterable<Command> it) throws IOException {
+    public GCodeContainer translate(Iterable<Command> it)
+            throws IOException,
+                ExBibException {
 
         GCodeContainer code = new GCodeContainer();
 
