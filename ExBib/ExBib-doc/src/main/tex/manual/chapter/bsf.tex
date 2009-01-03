@@ -1,8 +1,19 @@
 %%*****************************************************************************
+%% Copyright (c) 2008-2009 Gerd Neugebauer
+%%
+%% Permission is granted to copy, distribute and/or modify this document
+%% under the terms of the GNU Free Documentation License, Version 1.2
+%% or any later version published by the Free Software Foundation;
+%% with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%%
+%%*****************************************************************************
 %% $Id: bsf.tex,v 0.00 2008/09/07 09:30:45 gene Exp $
 %%*****************************************************************************
 %% Author: Gerd Neugebauer
 %%-----------------------------------------------------------------------------
+
+\newenvironment{methods}{\begin{description}\def\method##1{\item[##1]\ \\}%
+}{\end{description}}
 
 \section{Groovy as Style Language}
 
@@ -70,13 +81,13 @@ The global variable \Var{bibWriter} contains an instance of a class
 implementing the interface \texttt{org.extex.exbib.core.io.Writer}.
 This writer can be used to write to the output file.
 
-It has a method \texttt{print} to print some strings:
+It has a method \Method{print} to print some strings:
 
 \begin{lstlisting}[language=Java]
   bibWriter.print("{\em ", series, "\/}" )
 \end{lstlisting}
 
-It has a method \texttt{println} to print some strings followed by a
+It has a method \Method{println} to print some strings followed by a
 newline character:
 
 \begin{lstlisting}[language=Java]
@@ -86,21 +97,57 @@ newline character:
 
 \subsection{The Processor Context}
 
+The processor context is defined in the interface \texttt{Processor}.
 The processor can be accesed through the global variable
 \Var{bibProcessor}. This gives access to additional features like the
 log file.
+
+\begin{methods}
+
+  \method{String getCite(String key)}\MethodIndex{getCite}%
+    Get the original cite key for a given key. I.e. the casing might be
+    different.
+
+  \method{DB getDB()}\MethodIndex{getDB}%
+    Getter for the database.
+
+  \method{List<String> getEntries()}\MethodIndex{getEntries}%
+    Getter for the entries.
+
+  \method{Logger getLogger()}\MethodIndex{getLogger}%
+    Getter for the logger.
+
+  \method{String getMacro(String name)}\MethodIndex{getMacro}%
+    Getter for a certain macro. If the requested macro is not defined
+    \texttt{null} is returned.
+
+  \method{List<String> getMacroNames()}\MethodIndex{getMacroNames}%
+    Getter for the list of all defined macro names.
+
+  \method{long getNumberOfWarnings()}\MethodIndex{getNumberOfWarnings}%
+    Getter for the number of warnings issued.
+
+  \method{Writer getOutWriter()}\MethodIndex{getOutWriter}%
+    Getter for the output writer. This is the same value as the one provided in
+    the variable \Var{bibWriter}.
+
+  \method{boolean isKnown(String type)}\MethodIndex{isKnown}%
+    Check if the entry type is known.
+
+  \method{void warning(String message)}\MethodIndex{warning}%
+    This method can be used to issue a warning message.
+
+\end{methods}
 
 
 \subsection{Methods of the DB}
 
 The important methods of the DB provide reading access to the stored
-information. They are described below.
-
-\newenvironment{methods}{\begin{description}\def\method##1{\item[##1]\ \\}%
-}{\end{description}}
+information. The DB is defined in the interface \texttt{org.extex.exbib.core.db.DB}.
+The important methods are described below.
 
 \begin{methods}
-  \method{Entry getEntry(String key} %
+  \method{Entry getEntry(String key}\MethodIndex{getEntry}%
     Get a single entry stored under the given reference key. The key
     is normalized before the entry is sought, i.e. the search is case
     insensitive.
@@ -108,7 +155,7 @@ information. They are described below.
     If no record is stored under the given key then <code>null</code>
     is returned.
 
-  \method{String getExpandedMacro(String key)} %
+  \method{String getExpandedMacro(String key)}\MethodIndex{getExpandedMacro} %
     Compute the expanded representation of a macro. The expansion is
     performed by recursively replacing macro names by the definitions
     and concatenating the resulting list of values.
@@ -119,10 +166,13 @@ information. They are described below.
     If the named macro the expansion is started with does not exist
     then \texttt{null} is returned.
 
-  \method{Value getMacro(String name)}%
+  \method{Value getMacro(String name)}\MethodIndex{getMacro}%
     Retrieve the definition of a macro.
 
-  \method{int getMinCrossrefs()}%
+  \method{List<String> getMacroNames()}\MethodIndex{getMacroNames}%
+    Retrieve the list of macro names.
+
+  \method{int getMinCrossrefs()}\MethodIndex{getMinCrossrefs}%
     Getter for minCrossrefs.
     
     The parameter minCrossrefs determines when an entry which is
@@ -131,16 +181,17 @@ information. They are described below.
     in a collection. Here the collection is shown as separate entry
     only if at least minCrossref entries in the result reference it.
 
-  \method{Value getPreamble()}%
+  \method{Value getPreamble()}\MethodIndex{getPreamble}%
     Getter for the preamble.
 
-  \method{Iterator<Entry> iterator()}%
-    Get the iterator to iterate over the entries in the current order.
+  \method{String getPreambleExpanded()}\MethodIndex{getPreambleExpanded}%
+    Getter for the preamble with all constituents expanded and combined into
+    one string.
 
-  \method{void setMinCrossrefs(int minCrossref)}%
+  \method{void setMinCrossrefs(int minCrossref)}\MethodIndex{setMinCrossrefs}%
     Setter for minCrossrefs.
 
-  \method{void sort() throws ConfigurationException}%
+  \method{void sort() throws ConfigurationException}\MethodIndex{sort}%
     Sort the entries according to the configured sorter.
     Initially the entries are in the order in which they are read in.
 
@@ -148,72 +199,87 @@ information. They are described below.
 
 \subsection{Methods of the Entry}
 
+The entry is define din the class \texttt{org.extex.exbib.core.db.Entry}. 
+The important methods are describe below.
+
 \begin{methods}
-  \method{Value get(String key, DB db) throws ExBibException}%
+  \method{Value get(String key, DB db) throws ExBibException}\MethodIndex{get}%
     Getter for the Value stored under a given key in the Entry. If the
     value is not found locally and the field crossref is present then
     the value is requested from the entry stored under the crossref key
     in the database.
 
-  \method{String getExpandedValue(String key, DB db) throws ExBibException}%
+  \method{String getExpanded(String key, DB db) throws ExBibException}\MethodIndex{getExpanded}%
     This method searches for a normal value and concatenates all
     expanded constituents. Macros are looked up in the database given and
     their values are inserted.
 
-  \method{String getKey()}%
+  \method{String getKey()}\MethodIndex{getKey}%
     Getter for the reference key for this Entry.
 
-  \method{ValueItem getLocal(String key)}%
+  \method{List<String> getKeys()}\MethodIndex{getKeys}%
+    Getter for the list of keys for "normal" values. Note that those keys may
+    lead to \texttt{null} values..
+
+  \method{ValueItem getLocal(String key)}\MethodIndex{getLocal}%
     Getter for a local value. The local values are stored independently from
     the normal values. This means that they have a name-space of their own.
 
-  \method{Locator getLocator()}%
+  \method{int getLocalInt(String key)}\MethodIndex{getLocalInt}%
+    Getter for a local value. The local values are stored independently from
+    the normal values. This means that they have a name-space of their own.
+
+  \method{String getLocalString(String key)}\MethodIndex{getLocalString}%
+    Getter for a local value. The local values are stored independently from
+    the normal values. This means that they have a name-space of their own.
+
+  \method{Locator getLocator()}\MethodIndex{geLocatort}%
     Getter for the locator for this Entry. The locator allows you to
     determine where this Entry is coming from.
 
-  \method{String getSortKey()}%
+  \method{String getSortKey()}\MethodIndex{getSortKey}%
     Getter for the sort key of this Entry. The sort key is stored as local
     value under the key \texttt{sort.key\$}.
 
-  \method{String getType()}%
+  \method{String getType()}\MethodIndex{getType}%
     Getter for the type of this Entry.
 
-  \method{Iterator<String> iterator()}%
+  \method{Iterator<String> iterator()}\MethodIndex{iterator}%
     Getter for an iterator over all keys of normal values.
 
-  \method{set(String key, String value)}%
+  \method{void set(String key, String value)}\MethodIndex{set}%
     Setter for the Value stored under a given key in the Entry. The String
     valued parameter is wrapped into a  Value before it is stored.
 
-  \method{void set(String key, Value value)}%
+  \method{void set(String key, Value value)}\MethodIndex{set}%
     Setter for the Value stored under a given key in the Entry. An already
     existing value is overwritten silently.
 
-  \method{setKey(String string)}%
+  \method{setKey(String key)}\MethodIndex{setKey}%
     Setter for the reference key for this Entry.
 
-  \method{void setLocal(String key, int value)}%
+  \method{void setLocal(String key, int value)}\MethodIndex{setLocal}%
      Setter for a local value. The local values are stored independently from
      the normal values. This means that they have a namespace of their own.
 
     This method wraps its int argument into a VNumber before it is stored.
 
-  \method{void setLocal(String key, String value)}%
+  \method{void setLocal(String key, String value)}\MethodIndex{setLocal}%
      Setter for a local value. The local values are stored independently from
      the normal values. This means that they have a namespace of their own.
 
      This method wraps its int argument into a VString before it is stored.
 
-  \method{void setLocal(String key, ValueItem value)}%
+  \method{void setLocal(String key, ValueItem value)}\MethodIndex{setLocal}%
     Setter for a local value. The local values are stored independently
     from the normal values. This means that they have a name-space of
     their own.
 
-  \method{void setSortKey(String sortKey)}%
+  \method{void setSortKey(String sortKey)}\MethodIndex{setSortKey}%
     Setter for the sort key of this Entry. The sort key is stored as
     local value under the key \texttt{sort.key\$}.
 
-  \method{void setType(String t)}%
+  \method{void setType(String t)}\MethodIndex{setType}%
     Setter for the type of this Entry.
 
   \method{String toString()}%
@@ -221,21 +287,24 @@ information. They are described below.
 
 \subsection{Methods of the Value}
 
+The values are used as the right hand side of a entry item. It is a list of
+\texttt{ValueItem}s.
+
 \begin{methods}
-  \method{void add(Value item)}%
+  \method{void add(Value item)}\MethodIndex{add}%
     Add all value items contained in a value to the current value.
 
-  \method{void add(ValueItem item)}%
+  \method{void add(ValueItem item)}\MethodIndex{add}%
     Add a new value item to the end of the value.
 
-  \method{String expand(DB db)}%
+  \method{String expand(DB db)}\MethodIndex{expand}%
     Expand the whole value into a single String. All macros are replaced by
     their values and delimiting braces or quotes are omitted.
 
-  \method{boolean isEmpty()}%
+  \method{boolean isEmpty()}\MethodIndex{isEmpty}%
     Tests whether the value is empty.
 
-  \method{Iterator<ValueItem> iterator()}%
+  \method{Iterator<ValueItem> iterator()}\MethodIndex{iterator}%
     Getter for an Iterator for all elements.
 
 \end{methods}
@@ -243,21 +312,44 @@ information. They are described below.
 
 \subsection{Methods of the ValueItem}
 
+A ValueItem is an object stored as a part of a \texttt{Value}. It is an
+interface for which the implementations \texttt{VBlock}, \texttt{VMacro},
+\texttt{VNumber}, and \texttt{VString} are present. 
+
 \begin{methods}
 
-  \method{void expand(StringBuilder sb, DB db)}%
+  \method{void expand(StringBuilder sb, DB db)}\MethodIndex{expand}%
     This method expands the ValueItem and appends the expansion to the given
     StringBuilder. Macros are looked up in the database given and their
     values are inserted.
 
-  \method{String getContent()}%
+  \method{String getContent()}\MethodIndex{getContent}%
     The getter for the content.
 
-  \method{void setContent(String value)}%
+  \method{void setContent(String value)}\MethodIndex{setContent}%
     Setter for the content.
 
 \end{methods}
 
+
+\subsection{Methods of the Locator}
+
+The locator is a means to determine where something is coming from.
+
+\begin{methods}
+
+  \method{int getLineNumber()}\MethodIndex{getLineNumber}%
+    Getter for the line number.
+
+  \method{int getLinePointer()}\MethodIndex{getLinePointer}%
+    Getter for the position in the line.
+
+  \method{String getResourceName()}\MethodIndex{getResourceName}%
+    Getter for the resource name. The resource can be a file or the content of
+    a URL or a member of an archive or something else. It is a general concept
+    whch can be used as needed.
+
+\end{methods}
 
 
 \endinput%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
