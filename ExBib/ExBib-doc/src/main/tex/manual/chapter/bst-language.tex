@@ -410,6 +410,36 @@ is raised.
 \end{lstlisting}
 
 
+\subsection{The \texttt{option} Declaration}
+\cmdIndex{option}
+
+The command takes three arguments. The first one is the type
+indicator. It takes the values \texttt{integer} or \texttt{string}. In
+the first case an integer-valued option is defined and in the second
+case a string-valued option. The second argument is the name of the
+option. it is enclosed on braces. Finally the third argument is the
+value. It is also enclosed in braces. In the case of an integer it has
+to be an integer constant as allowed in other placed of a BST file as
+well. If the option is a string-valued option then all characters in
+the balenced braces make up the value.\IM{x}
+
+The following example shows both forms:
+
+\begin{lstlisting}[language=bst]
+  OPTION INTEGER{the-name}{#-123}
+  OPTION STRING{the-other-name}{the value of the option}
+\end{lstlisting}
+
+The option declaration provides access from the BST program to the
+options declared with \verb|\biboptions|. The value provided in the
+declaration is a fallback which is used in case that the option is not
+provided from outside.
+
+In a function the value of an option can be pushed to the stack with
+the name given to it. Thus the name must not be identical to the name
+of a function or variable of some kind.
+
+
 %------------------------------------------------------------------------------
 \def\BstArg#1#2#3{
   \begin{scope}[shift={(#1,#2)}]
