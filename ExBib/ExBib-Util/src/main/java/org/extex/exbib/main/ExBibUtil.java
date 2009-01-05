@@ -109,7 +109,7 @@ import org.extex.resource.ResourceFinderFactory;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public final class ExBibUtil extends AbstractMain {
 
