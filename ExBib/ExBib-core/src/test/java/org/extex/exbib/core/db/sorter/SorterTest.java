@@ -16,15 +16,16 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.core.io.bblio;
+package org.extex.exbib.core.db.sorter;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.exbib.core.io.StringBufferWriter;
-import org.extex.exbib.core.io.Writer;
+import org.extex.exbib.core.db.Entry;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationLoader;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -32,20 +33,26 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link BblWriter}.
+ * This is a test suite for the {@link RbcSorter}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  */
-public class TestBblWriter {
+public class SorterTest {
 
     /**
-     * This is a dummy configuration.
+     * This is a dummy configuration for the tests.
      */
     private static class DummyConfig implements Configuration {
+
+        /**
+         * The field <tt>order</tt> contains the order value.
+         */
+        private String order = null;
 
         /**
          * {@inheritDoc}
@@ -115,8 +122,7 @@ public class TestBblWriter {
          */
         public String getValue() throws ConfigurationException {
 
-            // getValue unimplemented
-            return null;
+            return order;
         }
 
         /**
@@ -126,7 +132,7 @@ public class TestBblWriter {
          */
         public String getValue(String key) throws ConfigurationException {
 
-            return null;
+            return order;
         }
 
         /**
@@ -193,312 +199,239 @@ public class TestBblWriter {
 
             // setConfigurationLoader unimplemented
         }
+
+        /**
+         * Setter for the order.
+         * 
+         * @param order the order
+         */
+        public void setOrder(String order) {
+
+            this.order = order;
+        }
+
     }
 
     /**
-     * Run a test and compare the result.
-     * 
-     * @param in the input string
-     * @param res the expected result string
+     * The field <tt>s</tt> contains the instance to be tested.
+     */
+    private RbcSorter s = new RbcSorter();
+
+    /**
+     * The field <tt>a</tt> contains an entry.
+     */
+    private Entry a;
+
+    /**
+     * The field <tt>b</tt> contains another entry.
+     */
+    private Entry b;
+
+    /**
+     * The field <tt>c</tt> contains yet another entry.
+     */
+    private Entry c;
+
+    /**
+     * Set-up the test case.
      * 
      * @throws Exception in case of an error
      */
-    private void runTest(String in, String res) throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.print(in);
-        w.close();
+        DummyConfig cfg = new DummyConfig();
+        cfg.setOrder("< a,A< b,B< c,C< d,D< e,E< f,F< g,G< h,H< i,I< j,J"
+                + "< k,K< l,L< m,M< n,N< o,O< p,P< q,Q< r,R< s,S< t,T"
+                + "< u,U< v,V< w,W< x,X< y,Y< z,Z");
+        s.configure(cfg);
 
-        assertEquals(res, sb.toString());
+        a = new Entry(null);
+        a.setKey("abc");
+        b = new Entry(null);
+        b.setKey("def");
+        c = new Entry(null);
+        c.setKey("ghi");
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA00() throws Exception {
-
-        runTest(" abc xxxxxxxxx1xxxxxxx", " abc\n  xxxxxxxxx1xxxxxxx");
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA01() throws Exception {
-
-        runTest("z abc xxxxxxxxx1xxxxxxx", "z abc\n  xxxxxxxxx1xxxxxxx");
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA02() throws Exception {
-
-        runTest("zz abc xxxxxxxxx1xxxxxxx", "zz abc\n  xxxxxxxxx1xxxxxxx");
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA03() throws Exception {
-
-        runTest("zzz abc xxxxxxxxx1xxxxxxx", "zzz abc\n  xxxxxxxxx1xxxxxxx");
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> The empty list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA04() throws Exception {
+    public void test0() throws Exception {
 
-        runTest("zzzz abc xxxxxxxxx1xxxxxxx", "zzzz abc\n  xxxxxxxxx1xxxxxxx");
+        List<Entry> list = new ArrayList<Entry>();
+        s.sort(list);
+        assertEquals(0, list.size());
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> A one-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA05() throws Exception {
+    public void test1() throws Exception {
 
-        runTest("zzzzn abc xxxxxxxxx1xxxxxxx", "zzzzn abc\n  xxxxxxxxx1xxxxxxx");
+        List<Entry> list = new ArrayList<Entry>();
+        list.add(a);
+        s.sort(list);
+        assertEquals(1, list.size());
+        assertEquals(a, list.get(0));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> A sorted two-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA15() throws Exception {
+    public void test21() throws Exception {
 
-        runTest("zzzznzzzznzzzzn abc xxxxxxxxx1",
-            "zzzznzzzznzzzzn abc\n  xxxxxxxxx1");
+        List<Entry> list = new ArrayList<Entry>();
+        list.add(a);
+        list.add(b);
+        s.sort(list);
+        assertEquals(2, list.size());
+        assertEquals(a, list.get(0));
+        assertEquals(b, list.get(1));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> A unsorted two-element list is reversed. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA16() throws Exception {
+    public void test22() throws Exception {
 
-        runTest("zzzznzzzznzzzznz abc xxxxxxxxx1",
-            "zzzznzzzznzzzznz abc\n  xxxxxxxxx1");
+        List<Entry> list = new ArrayList<Entry>();
+        list.add(b);
+        list.add(a);
+        s.sort(list);
+        assertEquals(2, list.size());
+        assertEquals(a, list.get(0));
+        assertEquals(b, list.get(1));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> A sorted three-element list is sorted to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA17() throws Exception {
+    public void test31() throws Exception {
 
-        runTest("zzzznzzzznzzzznzz abc xxxxxxxxx1",
-            "zzzznzzzznzzzznzz\n  abc xxxxxxxxx1");
+        List<Entry> list = new ArrayList<Entry>();
+        list.add(c);
+        list.add(b);
+        list.add(a);
+        s.sort(list);
+        assertEquals(3, list.size());
+        assertEquals(a, list.get(0));
+        assertEquals(b, list.get(1));
+        assertEquals(c, list.get(2));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA20() throws Exception {
-
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.setIndent("___");
-        w.configure(new DummyConfig());
-        w.print(" abc xxxxxxxxx1xxxxxxx");
-        w.close();
-
-        assertEquals(" abc\n___xxxxxxxxx1xxxxxxx", sb.toString());
-    }
-
-    /**
-     * <testcase> Test the line breaking: Whitespace in unusable positions doies
-     * no harm. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testA30() throws Exception {
-
-        runTest("zzzz zzzz zzzznzz abc xxxxxxxxx1",
-            "zzzz zzzz zzzznzz\n  abc xxxxxxxxx1");
-    }
-
-    /**
-     * <testcase> Test the line breaking: Whitespace are translated to space.
+     * <testcase> Identical elements are compared equal when no sort key is set.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA31() throws Exception {
+    public void testSorter0() throws Exception {
 
-        runTest("zzzz\tzzzz zzzznzz abc xxxxxxxxx1",
-            "zzzz zzzz zzzznzz\n  abc xxxxxxxxx1");
+        assertEquals(0, s.compare(a, a));
     }
 
     /**
-     * <testcase> Test the line breaking: multiple spaces are reduced to one.
+     * <testcase> a < b </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSorter1() throws Exception {
+
+        assertTrue(0 > s.compare(a, b));
+    }
+
+    /**
+     * <testcase> Identical elements are compared equal when a sort key is set.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testA32() throws Exception {
+    public void testSorter10() throws Exception {
 
-        runTest("zzzz \tzzzz zzzznzz abc xxxxxxxxx1",
-            "zzzz  zzzz zzzznzz\n  abc xxxxxxxxx1");
+        a.setSortKey("ghi");
+        assertEquals(0, s.compare(a, a));
     }
 
     /**
-     * <testcase> A <code>null</code> argument to the constructor leads to an
-     * exception. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void testNull() throws Exception {
-
-        new BblWriter(null);
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> a[ghi] < b </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testPrintln01() throws Exception {
+    public void testSorter11() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.println();
-        w.close();
-
-        assertEquals("\n", sb.toString());
+        a.setSortKey("ghi");
+        assertTrue(0 < s.compare(a, b));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> b > a[ghi] </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testPrintln02() throws Exception {
+    public void testSorter12() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.print("abc  ");
-        w.println();
-        w.close();
-
-        assertEquals("abc\n", sb.toString());
+        a.setSortKey("ghi");
+        assertTrue(0 > s.compare(b, a));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> b > a </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testPrintln11() throws Exception {
+    public void testSorter2() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.println("abc  ");
-        w.close();
-
-        assertEquals("abc\n", sb.toString());
+        assertTrue(0 < s.compare(b, a));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> a[ac] > b[aa] </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testPrintln12() throws Exception {
+    public void testSorter21() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.println("ab\nc  ");
-        w.close();
-
-        assertEquals("ab\nc\n", sb.toString());
+        a.setSortKey("ac");
+        b.setSortKey("aa");
+        assertTrue(0 < s.compare(a, b));
     }
 
     /**
-     * <testcase> Test the line breaking. </testcase>
+     * <testcase> b[aa] < a[ac] </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testPrintln13() throws Exception {
+    public void testSorter22() throws Exception {
 
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.println("ab  \nc  ");
-        w.close();
-
-        assertEquals("ab\nc\n", sb.toString());
+        a.setSortKey("ac");
+        b.setSortKey("aa");
+        assertTrue(0 > s.compare(b, a));
     }
 
-    /**
-     * <testcase> Test toString() methos. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testToString1() throws Exception {
-
-        StringBuffer sb = new StringBuffer();
-        Writer w = new BblWriter(new StringBufferWriter(sb));
-        assertEquals("79 ><", w.toString());
-    }
-
-    /**
-     * <testcase> Test the line breaking. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testWrite1() throws Exception {
-
-        StringBuffer sb = new StringBuffer();
-        BblWriter w = new BblWriter(new StringBufferWriter(sb));
-        w.configure(new DummyConfig());
-        w.write('a');
-        w.close();
-
-        assertEquals("a", sb.toString());
-    }
+    // TODO: more test cases for collating sequences
 
 }

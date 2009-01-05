@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestSorter099 {
+public class Sorter099Test {
 
     /**
      * The field <tt>s</tt> contains the instance to be tested.
