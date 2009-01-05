@@ -19,17 +19,18 @@
 package org.extex.exbib.core.bst.token.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.db.VString;
-import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -37,12 +38,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link TField}.
+ * This is a test suite for {@link TString}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTField {
+public class TStringTest {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -71,90 +72,80 @@ public class TestTField {
     }
 
     /**
-     * <testcase> An exception is raised when used outside an entry context.
-     * </testcase>
+     * <testcase> A TString can be executed and returns itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = ExBibMissingEntryException.class)
-    public void testExecute1() throws Exception {
+    @Test
+    public void testExecute() throws Exception {
 
-        TField t = new TField("aaa", null);
+        TString t = new TString("987", null);
         t.execute(p, null, null);
+        assertEquals("987", p.popString(null).getValue());
+        assertNull(p.popUnchecked());
     }
 
     /**
-     * <testcase> A Literal executes to an exception if the field is undefined.
+     * <testcase> getValue() of a null value returns the empty string.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExecute2() throws Exception {
+    public void testGetValue1() throws Exception {
 
-        TField t = new TField("abc", null);
-        Entry entry = new Entry(null);
-        t.execute(p, entry, null);
-
-        Token x = p.pop(null);
-        assertNull(p.popUnchecked());
-        assertTrue(x instanceof TString);
-        assertEquals("", x.getValue());
+        TString t = new TString(null, null);
+        assertEquals("", t.getValue());
     }
 
     /**
-     * <testcase> A Field for an undefined macro expands to the identical
-     * string??? </testcase>
+     * <testcase> A TString can be stored in a Hash and retrieved with another
+     * instance. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExpand1() throws Exception {
+    public void testHash1() throws Exception {
 
-        TField t = new TField("aaa", null);
-        String s = t.expand(p);
-
-        assertNull(p.popUnchecked());
-        assertEquals("aaa", s);
+        TString t = new TString("abc", null);
+        Map<Token, String> map = new HashMap<Token, String>();
+        map.put(t, "value");
+        String s = map.get(new TString("abc", null));
+        assertNotNull(s);
+        assertEquals("value", s);
     }
 
     /**
-     * <testcase> A Field for an defined macro expands to the name???
-     * </testcase>
+     * <testcase> isNull() can detect a null value. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExpand2() throws Exception {
+    public void testIsNull1() throws Exception {
 
-        p.getDB().storeString("def", new Value(new VString("D E F")));
-        TField t = new TField("def", null);
-        String s = t.expand(p);
-
-        assertNull(p.popUnchecked());
-        assertEquals("def", s);
+        assertTrue(new TString(null, null).isNull());
     }
 
     /**
-     * <testcase> toString() works. </testcase>
+     * <testcase> isNull() can detect a null value. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testToString() throws Exception {
+    public void testIsNull2() throws Exception {
 
-        assertEquals("abc", new TField("abc", null).toString());
+        assertFalse(new TString("", null).isNull());
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     * <testcase> Test the visiting. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TField t = new TField("acd", null);
+        TString t = new TString("x-1", null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

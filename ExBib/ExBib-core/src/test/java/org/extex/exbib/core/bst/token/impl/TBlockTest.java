@@ -20,9 +20,12 @@ package org.extex.exbib.core.bst.token.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -30,12 +33,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test case for {@link TChar}.
+ * This is a test suite for {@link TBlock}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTChar {
+public class TBlockTest {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -51,6 +54,7 @@ public class TestTChar {
     public void setUp() throws Exception {
 
         p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
+        p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 
     /**
@@ -63,17 +67,36 @@ public class TestTChar {
     }
 
     /**
-     * <testcase> A character evaluates to itself. </testcase>
+     * <testcase> A Literal executes to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testExecute2() throws Exception {
+
+        TLiteral l = new TLiteral("abc", null);
+        TBlock t = new TBlock(null);
+        t.add(l);
+        t.execute(p, null, null);
+
+        Token x = p.pop(null);
+        assertNull(p.popUnchecked());
+        assertTrue(x instanceof TInteger);
+        assertEquals("1", x.getValue());
+    }
+
+    /**
+     * <testcase> An empty block expands to the empty string. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testExecute() throws Exception {
+    public void testExpand1() throws Exception {
 
-        TChar t = new TChar('a', null);
-        t.execute(p, null, null);
-        assertEquals("a", p.pop(null).getValue());
+        TBlock t = new TBlock(null);
+        String s = t.expand(p);
+
         assertNull(p.popUnchecked());
+        assertEquals("", s);
     }
 
     /**
@@ -84,18 +107,18 @@ public class TestTChar {
     @Test
     public void testToString() throws Exception {
 
-        assertEquals("a", new TChar('a', null).toString());
+        assertEquals("{}", new TBlock(null).toString());
     }
 
     /**
-     * <testcase> Visiting a char calls the correct method. </testcase>
+     * <testcase> The token visitor invokes the correct method. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TChar t = new TChar('.', null);
+        TBlock t = new TBlock(null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

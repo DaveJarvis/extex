@@ -42,7 +42,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTLiteral {
+public class TLiteralTest {
 
     /**
      * The field <tt>p</tt> contains the processor.

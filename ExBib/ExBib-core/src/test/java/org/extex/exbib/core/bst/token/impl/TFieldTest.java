@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,192 +18,146 @@
 
 package org.extex.exbib.core.bst.token.impl;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.StringReader;
-import java.util.Iterator;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
-import org.extex.exbib.core.bst.exception.ExBibUndefinedFieldException;
-import org.extex.exbib.core.db.DB;
+import org.extex.exbib.core.bst.BstProcessor;
+import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
+import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.bst.token.TokenFactory;
+import org.extex.exbib.core.db.Entry;
+import org.extex.exbib.core.db.VString;
+import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
-import org.extex.exbib.core.io.bibio.BibReader;
-import org.extex.exbib.core.io.bibio.BibReader099Impl;
-import org.extex.exbib.core.io.bibio.BibReaderFactory;
-import org.extex.exbib.core.io.bstio.BstReaderImpl;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationLoader;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.resource.ResourceFinder;
-import org.extex.resource.io.NamedInputStream;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * This is a test suite for {@link TField}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 1.1 $
  */
 public class TFieldTest {
 
     /**
-     * The field <tt>config</tt> contains the dummy configuration.
+     * The field <tt>p</tt> contains the processor.
      */
-    private Configuration config = new Configuration() {
-
-        public Configuration findConfiguration(String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
-
-            return this;
-        }
-
-        public Configuration findConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return this;
-        }
-
-        public String getAttribute(String name) {
-
-            if (name.equals("class")) {
-                return BstReaderImpl.class.getName();
-            }
-            return null;
-        }
-
-        public Configuration getConfiguration(String key)
-                throws ConfigurationException {
-
-            return this;
-        }
-
-        public Configuration getConfiguration(String key, String attribute)
-                throws ConfigurationException {
-
-            return this;
-        }
-
-        public String getValue() throws ConfigurationException {
-
-            return null;
-        }
-
-        public String getValue(String key) throws ConfigurationException {
-
-            return null;
-        }
-
-        public int getValueAsInteger(String key, int defaultValue)
-                throws ConfigurationException {
-
-            return 0;
-        }
-
-        public void getValues(List<String> list, String key) {
-
-            //
-        }
-
-        public List<String> getValues(String key) {
-
-            return null;
-        }
-
-        public Iterator<Configuration> iterator() throws ConfigurationException {
-
-            return null;
-        }
-
-        public Iterator<Configuration> iterator(String key)
-                throws ConfigurationException {
-
-            return new Iterator<Configuration>() {
-
-                public boolean hasNext() {
-
-                    return false;
-                }
-
-                public Configuration next() {
-
-                    return null;
-                }
-
-                public void remove() {
-
-                    //
-                }
-            };
-        }
-
-        public void setConfigurationLoader(ConfigurationLoader loader) {
-
-            //
-        }
-
-    };
+    private BstProcessor p = null;
 
     /**
-     * <testcase> An undefined field leads to an error.</testcase>
+     * Set-up method.
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = ExBibUndefinedFieldException.class)
-    public void test1() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-        DB db = new DBImpl();
-        db.setBibReaderFactory(new BibReaderFactory(config, null, null, null) {
+        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
+        p.addFunction("abc", TokenFactory.T_ONE, null);
+    }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bibio.BibReaderFactory#newInstance(java.lang.String)
-             */
-            @Override
-            public BibReader newInstance(String file)
-                    throws ConfigurationException,
-                        FileNotFoundException {
+    /**
+     * Tear-down method.
+     */
+    @After
+    public void tearDown() {
 
-                BibReader099Impl r = new BibReader099Impl();
-                r.open("xxx", new StringReader(
-                    "@book{abc, title=\"The Bible\"}\n"));
-                return r;
-            }
+        p = null;
+    }
 
-        });
-        BstInterpreter099c p =
-                new BstInterpreter099c(db, new NullWriter(), null);
-        p.configure(config);
-        p.setResourceFinder(new ResourceFinder() {
+    /**
+     * <testcase> An exception is raised when used outside an entry context.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingEntryException.class)
+    public void testExecute1() throws Exception {
 
-            public void enableTracing(boolean flag) {
+        TField t = new TField("aaa", null);
+        t.execute(p, null, null);
+    }
 
-                //
-            }
+    /**
+     * <testcase> A Literal executes to an exception if the field is undefined.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExecute2() throws Exception {
 
-            public NamedInputStream findResource(String name, String type)
-                    throws ConfigurationException {
+        TField t = new TField("abc", null);
+        Entry entry = new Entry(null);
+        t.execute(p, entry, null);
 
-                return new NamedInputStream(new ByteArrayInputStream(
-                    ("entry{abc}{}{}\n" + "function{book}{}\n"
-                            + "function{xxx}{\n" + "  abc\n" + "  write$\n"
-                            + "  newline$\n" + "}\n" + "\n" + "read\n"
-                            + "iterate{xxx}\n").getBytes()), "");
-            }
-        });
-        p.addBibliographyDatabase(". . .");
-        p.addBibliographyStyle("target/test.bst");
-        p.addCitation("*");
-        p.process(new NullWriter());
+        Token x = p.pop(null);
+        assertNull(p.popUnchecked());
+        assertTrue(x instanceof TString);
+        assertEquals("", x.getValue());
+    }
+
+    /**
+     * <testcase> A Field for an undefined macro expands to the identical
+     * string??? </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExpand1() throws Exception {
+
+        TField t = new TField("aaa", null);
+        String s = t.expand(p);
+
+        assertNull(p.popUnchecked());
+        assertEquals("aaa", s);
+    }
+
+    /**
+     * <testcase> A Field for an defined macro expands to the name???
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExpand2() throws Exception {
+
+        p.getDB().storeString("def", new Value(new VString("D E F")));
+        TField t = new TField("def", null);
+        String s = t.expand(p);
+
+        assertNull(p.popUnchecked());
+        assertEquals("def", s);
+    }
+
+    /**
+     * <testcase> toString() works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString() throws Exception {
+
+        assertEquals("abc", new TField("abc", null).toString());
+    }
+
+    /**
+     * <testcase> The token visitor invokes the correct method. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVisit() throws Exception {
+
+        TField t = new TField("acd", null);
+        RecordingTokenVisitor tv = new RecordingTokenVisitor();
+        t.visit(tv);
+        assertEquals(t, tv.getVisited());
     }
 
 }

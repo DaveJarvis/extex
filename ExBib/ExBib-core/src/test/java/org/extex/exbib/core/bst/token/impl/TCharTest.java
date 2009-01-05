@@ -20,13 +20,9 @@ package org.extex.exbib.core.bst.token.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
-import org.extex.exbib.core.bst.token.Token;
-import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
 import org.junit.After;
@@ -34,12 +30,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link TQLiteral}.
+ * Test case for {@link TChar}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTQLiteral {
+public class TCharTest {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -55,7 +51,6 @@ public class TestTQLiteral {
     public void setUp() throws Exception {
 
         p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-        p.addFunction("abc", TokenFactory.T_ONE, null);
     }
 
     /**
@@ -68,57 +63,17 @@ public class TestTQLiteral {
     }
 
     /**
-     * <testcase> A QLiteral can nor have an <code>null</code> name. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibEmptyFunctionNameException.class)
-    public void testError1() throws Exception {
-
-        new TQLiteral(null, null);
-    }
-
-    /**
-     * <testcase> A QLiteral can nor have an empty name. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibEmptyFunctionNameException.class)
-    public void testError2() throws Exception {
-
-        new TQLiteral("", null);
-    }
-
-    /**
-     * <testcase> A QLiteral executes to itself. </testcase>
+     * <testcase> A character evaluates to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testExecute() throws Exception {
 
-        TQLiteral t = new TQLiteral("aaa", null);
+        TChar t = new TChar('a', null);
         t.execute(p, null, null);
-
-        Token x = p.pop(null);
+        assertEquals("a", p.pop(null).getValue());
         assertNull(p.popUnchecked());
-        assertTrue(x instanceof TLiteral);
-        assertEquals("aaa", x.getValue());
-    }
-
-    /**
-     * <testcase> A QLiteral executes to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testExpand() throws Exception {
-
-        TQLiteral t = new TQLiteral("aaa", null);
-        String s = t.expand(p);
-
-        assertNull(p.popUnchecked());
-        assertEquals("aaa", s);
     }
 
     /**
@@ -129,18 +84,18 @@ public class TestTQLiteral {
     @Test
     public void testToString() throws Exception {
 
-        assertEquals("'abc", new TQLiteral("abc", null).toString());
+        assertEquals("a", new TChar('a', null).toString());
     }
 
     /**
-     * <testcase> The token visitor invokes the correct method. </testcase>
+     * <testcase> Visiting a char calls the correct method. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TQLiteral t = new TQLiteral("acd", null);
+        TChar t = new TChar('.', null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

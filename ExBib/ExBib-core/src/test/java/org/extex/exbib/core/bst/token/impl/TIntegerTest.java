@@ -19,17 +19,10 @@
 package org.extex.exbib.core.bst.token.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
-import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
@@ -38,11 +31,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Test case for {@link TInteger}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTString {
+public class TIntegerTest {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -71,80 +65,136 @@ public class TestTString {
     }
 
     /**
-     * <testcase> A TString can be executed and returns itself. </testcase>
+     * <testcase> A positive number evaluates to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testExecute() throws Exception {
 
-        TString t = new TString("987", null);
+        TInteger t = new TInteger("987", null);
         t.execute(p, null, null);
-        assertEquals("987", p.popString(null).getValue());
+        assertEquals(987, p.popInteger(null).getInt());
         assertNull(p.popUnchecked());
     }
 
     /**
-     * <testcase> getValue() of a null value returns the empty string.
+     * <testcase> Zero evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt0() throws Exception {
+
+        TInteger t = TokenFactory.T_ZERO;
+        assertEquals(0, t.getInt());
+    }
+
+    /**
+     * <testcase> Zero evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt0s() throws Exception {
+
+        TInteger t = new TInteger("0", null);
+        assertEquals(0, t.getInt());
+    }
+
+    /**
+     * <testcase> One evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt1() throws Exception {
+
+        TInteger t = TokenFactory.T_ONE;
+        assertEquals(1, t.getInt());
+    }
+
+    /**
+     * <testcase> 123 evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt123() throws Exception {
+
+        TInteger t = new TInteger(123, null);
+        assertEquals(123, t.getInt());
+    }
+
+    /**
+     * <testcase> 123 evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt123s() throws Exception {
+
+        TInteger t = new TInteger("123", null);
+        assertEquals(123, t.getInt());
+    }
+
+    /**
+     * <testcase> One evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetInt1s() throws Exception {
+
+        TInteger t = new TInteger("1", null);
+        assertEquals(1, t.getInt());
+    }
+
+    /**
+     * <testcase> A negative number evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetIntMinus1() throws Exception {
+
+        TInteger t = new TInteger(-1, null);
+        assertEquals(-1, t.getInt());
+    }
+
+    /**
+     * <testcase> A negative number evaluates to itself. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGetIntMinus1s() throws Exception {
+
+        TInteger t = new TInteger("-1", null);
+        assertEquals(-1, t.getInt());
+    }
+
+    /**
+     * <testcase> toString() works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString() throws Exception {
+
+        assertEquals("#-42", new TInteger(-42, null).toString());
+    }
+
+    /**
+     * <testcase> Visiting a negative number calls the correct method.
      * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetValue1() throws Exception {
-
-        TString t = new TString(null, null);
-        assertEquals("", t.getValue());
-    }
-
-    /**
-     * <testcase> A TString can be stored in a Hash and retrieved with another
-     * instance. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHash1() throws Exception {
-
-        TString t = new TString("abc", null);
-        Map<Token, String> map = new HashMap<Token, String>();
-        map.put(t, "value");
-        String s = map.get(new TString("abc", null));
-        assertNotNull(s);
-        assertEquals("value", s);
-    }
-
-    /**
-     * <testcase> isNull() can detect a null value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull1() throws Exception {
-
-        assertTrue(new TString(null, null).isNull());
-    }
-
-    /**
-     * <testcase> isNull() can detect a null value. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIsNull2() throws Exception {
-
-        assertFalse(new TString("", null).isNull());
-    }
-
-    /**
-     * <testcase> Test the visiting. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TString t = new TString("x-1", null);
+        TInteger t = new TInteger("-1", null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

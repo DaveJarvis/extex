@@ -20,9 +20,12 @@ package org.extex.exbib.core.bst.token.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
+import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
+import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenFactory;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.io.NullWriter;
@@ -31,12 +34,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test case for {@link TInteger}.
+ * This is a test suite for {@link TQLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.1 $
  */
-public class TestTInteger {
+public class TQLiteralTest {
 
     /**
      * The field <tt>p</tt> contains the processor.
@@ -65,113 +68,57 @@ public class TestTInteger {
     }
 
     /**
-     * <testcase> A positive number evaluates to itself. </testcase>
+     * <testcase> A QLiteral can nor have an <code>null</code> name. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError1() throws Exception {
+
+        new TQLiteral(null, null);
+    }
+
+    /**
+     * <testcase> A QLiteral can nor have an empty name. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEmptyFunctionNameException.class)
+    public void testError2() throws Exception {
+
+        new TQLiteral("", null);
+    }
+
+    /**
+     * <testcase> A QLiteral executes to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testExecute() throws Exception {
 
-        TInteger t = new TInteger("987", null);
+        TQLiteral t = new TQLiteral("aaa", null);
         t.execute(p, null, null);
-        assertEquals(987, p.popInteger(null).getInt());
+
+        Token x = p.pop(null);
         assertNull(p.popUnchecked());
+        assertTrue(x instanceof TLiteral);
+        assertEquals("aaa", x.getValue());
     }
 
     /**
-     * <testcase> Zero evaluates to itself. </testcase>
+     * <testcase> A QLiteral executes to itself. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testGetInt0() throws Exception {
+    public void testExpand() throws Exception {
 
-        TInteger t = TokenFactory.T_ZERO;
-        assertEquals(0, t.getInt());
-    }
+        TQLiteral t = new TQLiteral("aaa", null);
+        String s = t.expand(p);
 
-    /**
-     * <testcase> Zero evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetInt0s() throws Exception {
-
-        TInteger t = new TInteger("0", null);
-        assertEquals(0, t.getInt());
-    }
-
-    /**
-     * <testcase> One evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetInt1() throws Exception {
-
-        TInteger t = TokenFactory.T_ONE;
-        assertEquals(1, t.getInt());
-    }
-
-    /**
-     * <testcase> 123 evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetInt123() throws Exception {
-
-        TInteger t = new TInteger(123, null);
-        assertEquals(123, t.getInt());
-    }
-
-    /**
-     * <testcase> 123 evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetInt123s() throws Exception {
-
-        TInteger t = new TInteger("123", null);
-        assertEquals(123, t.getInt());
-    }
-
-    /**
-     * <testcase> One evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetInt1s() throws Exception {
-
-        TInteger t = new TInteger("1", null);
-        assertEquals(1, t.getInt());
-    }
-
-    /**
-     * <testcase> A negative number evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetIntMinus1() throws Exception {
-
-        TInteger t = new TInteger(-1, null);
-        assertEquals(-1, t.getInt());
-    }
-
-    /**
-     * <testcase> A negative number evaluates to itself. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGetIntMinus1s() throws Exception {
-
-        TInteger t = new TInteger("-1", null);
-        assertEquals(-1, t.getInt());
+        assertNull(p.popUnchecked());
+        assertEquals("aaa", s);
     }
 
     /**
@@ -182,19 +129,18 @@ public class TestTInteger {
     @Test
     public void testToString() throws Exception {
 
-        assertEquals("#-42", new TInteger(-42, null).toString());
+        assertEquals("'abc", new TQLiteral("abc", null).toString());
     }
 
     /**
-     * <testcase> Visiting a negative number calls the correct method.
-     * </testcase>
+     * <testcase> The token visitor invokes the correct method. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testVisit() throws Exception {
 
-        TInteger t = new TInteger("-1", null);
+        TQLiteral t = new TQLiteral("acd", null);
         RecordingTokenVisitor tv = new RecordingTokenVisitor();
         t.visit(tv);
         assertEquals(t, tv.getVisited());

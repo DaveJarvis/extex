@@ -28,22 +28,16 @@ import org.junit.runners.Suite;
  * @version $Revision: 1.1 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestTBlock.class, //
-        TestTChar.class, //
-        TestTField.class, //
-        TestTInteger.class, //
-        TestTLiteral.class, //
-        TestTQLiteral.class, //
-        TestTString.class //
+@Suite.SuiteClasses({TBlockTest.class, //
+        TCharTest.class, //
+        TFieldTest.class, //
+        TField2Test.class, //
+        TIntegerTest.class, //
+        TLiteralTest.class, //
+        TQLiteralTest.class, //
+        TStringTest.class //
 })
 public final class AllTests {
 
-    /**
-     * Creates a new object.
-     */
-    private AllTests() {
-
-        super();
-    }
-
+    // using annotations only
 }
