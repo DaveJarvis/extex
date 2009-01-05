@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -51,10 +51,12 @@ public class LinkingCode {
      * 
      * @param writer the writer
      * @param prefix the prefix
-     * @param in TODO
+     * @param in the indentation
+     * 
      * @throws IOException in case of an I/O error
      */
-    public void print(CodeWriter writer, String prefix, String in) throws IOException {
+    public void print(CodeWriter writer, String prefix, String in)
+            throws IOException {
 
         writer.write(prefix);
         writer.write(text);
