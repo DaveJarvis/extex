@@ -29,7 +29,7 @@ import org.junit.Test;
  * Test suite for built-ins.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public class TestBuiltin {
 

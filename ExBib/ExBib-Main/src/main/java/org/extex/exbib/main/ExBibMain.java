@@ -107,7 +107,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public class ExBibMain extends AbstractMain {
 

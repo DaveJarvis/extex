@@ -28,7 +28,7 @@ import org.junit.Test;
  * This is a test suite for the BibteX base styles.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public class BibTeXBaseTest {
 
