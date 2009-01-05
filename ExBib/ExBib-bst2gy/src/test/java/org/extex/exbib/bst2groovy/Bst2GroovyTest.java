@@ -807,6 +807,39 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that "location.line$" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLocationLine1() throws Exception {
+
+        run("function{abc}{locator.line$ write$}", //
+            PREFIX + "\n\n  Map types = [\n"
+                    + "    abc : { entry -> abc(entry) },\n" + "  ]" + HEAD
+                    + "  }\n" + "\n" + "  void abc(entry) {\n"
+                    + "    bibWriter.print(entry.getLocator().getLine())\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that "location.resource$" is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLocationResource1() throws Exception {
+
+        run("function{abc}{locator.resource$ write$}", //
+            PREFIX + "\n\n  Map types = [\n"
+                    + "    abc : { entry -> abc(entry) },\n" + "  ]" + HEAD
+                    + "  }\n" + "\n" + "  void abc(entry) {\n"
+                    + "    bibWriter.print(entry.getLocator().getResource())\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that < is created properly. </testcase>
      * 
      * @throws Exception in case of an error

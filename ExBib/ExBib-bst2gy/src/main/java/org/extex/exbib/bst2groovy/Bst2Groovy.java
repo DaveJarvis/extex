@@ -42,6 +42,7 @@ import org.extex.exbib.bst2groovy.compiler.GetFieldCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetIntegerCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetLocalIntegerCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetLocalStringCompiler;
+import org.extex.exbib.bst2groovy.compiler.GetLocatorCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetOptionIntegerCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetOptionStringCompiler;
 import org.extex.exbib.bst2groovy.compiler.GetStringCompiler;
@@ -569,6 +570,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         compilers.put("write$", new WriteCompiler());
         compilers.put("global.max$", new OptionCompiler("GLOBAL_MAX", 0xffff));
         compilers.put("entry.max$", new OptionCompiler("ENTRY_MAX", 0xffff));
+        compilers.put("locator.resource$", new GetLocatorCompiler(
+            TLocalLocator.LocatorField.RESOURCE));
+        compilers.put("locator.line$", new GetLocatorCompiler(
+            TLocalLocator.LocatorField.LINE));
         compilers.put("crossref", new GetFieldCompiler("crossref"));
     }
 
