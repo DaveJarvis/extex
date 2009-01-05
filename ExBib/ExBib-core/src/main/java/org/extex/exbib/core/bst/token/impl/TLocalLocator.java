@@ -39,25 +39,57 @@ public class TLocalLocator extends TLiteral {
      */
     public enum LocatorField {
         /**
-         * 
+         * The resource of the locator.
          */
         RESOURCE {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#get(org.extex.exbib.core.db.Entry)
+             */
             @Override
             String get(Entry entry) {
 
                 return entry.getLocator().getResourceName();
             }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#getGetter()
+             */
+            @Override
+            String getGetter() {
+
+                return "getResource";
+            }
         },
         /**
-         * 
+         * The line of the locator.
          */
         LINE {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#get(org.extex.exbib.core.db.Entry)
+             */
             @Override
             String get(Entry entry) {
 
                 return Integer.toString(entry.getLocator().getLineNumber());
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField#getGetter()
+             */
+            @Override
+            String getGetter() {
+
+                return "getLine";
             }
         };
 
@@ -69,6 +101,13 @@ public class TLocalLocator extends TLiteral {
          * @return the value of the field as String
          */
         abstract String get(Entry entry);
+
+        /**
+         * Get the getter method.
+         * 
+         * @return the name of the getter
+         */
+        abstract String getGetter();
     }
 
     /**
