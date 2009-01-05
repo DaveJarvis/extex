@@ -68,9 +68,31 @@ section~\ref{sec:entry}).
 \subsubsection{The Variable \texttt{sort.key\$}}%
 \varIndex{sort.key\$}
 
-One entry local variable is predefined. This is the string-valued
-variable \texttt{sort.key\$}. It is used to sort the entries with the
-command \texttt{sort} (see section~\ref{sec:sort}).
+One entry local variable predefined is the string-valued variable
+\texttt{sort.key\$}. It is used to sort the entries with the command
+\texttt{sort} (see section~\ref{sec:sort}).
+
+
+\subsubsection{The Variable \texttt{locator.resource\$}}%
+\varIndex{locator.resource\$}
+
+\IM{x}%
+Each entry carries the information where it has been defined. The
+string-valued variable \texttt{locator.resource\$}. it contains the
+name of the resource this entry is coming from. The string contained
+is the name as given in the \Macro{bibdata} declaration in the aux
+file. This means it doe not reflect the actual resource resolution as
+performed by the resource loading. Thus this variable is not
+implementation dependant.
+
+
+\subsubsection{The Variable \texttt{locator.line\$}}%
+\varIndex{locator.line\$}
+
+\IM{x}%
+Each entry carries the information where it has been defined. The
+string-valued variable \texttt{locator.line\$}. it contains the line
+number in the resource from which this entry is coming from.
 
 
 \subsection{Global Integers}
