@@ -30,7 +30,7 @@ import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
  * the data read, i.e. a {@link org.extex.exbib.core.db.DB DB}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public interface Bibliography {
 

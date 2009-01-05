@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,7 +26,7 @@ import org.extex.exbib.core.io.Locator;
  * found because of too many commas.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public class ExBibNoNameCommasException extends ExBibNoNameException {
 

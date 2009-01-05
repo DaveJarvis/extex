@@ -50,7 +50,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This is the core implementation of a bibliography.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class BibliographyCore implements Bibliography, Observable {
 

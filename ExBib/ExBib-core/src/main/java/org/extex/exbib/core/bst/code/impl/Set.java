@@ -21,6 +21,7 @@ package org.extex.exbib.core.bst.code.impl;
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.code.Code;
+import org.extex.exbib.core.bst.exception.ExBibImmutableException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.bst.token.impl.TBlock;
@@ -30,6 +31,7 @@ import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -72,7 +74,7 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class Set extends AbstractCode {
 
@@ -185,6 +187,20 @@ public class Set extends AbstractCode {
             Locator locator = (Locator) args[2];
             String var = (String) args[3];
             entry.setLocal(var, processor.popInteger(locator).getInt());
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+         *      java.lang.Object[])
+         */
+        public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
+                throws ExBibException {
+
+            Locator locator = (Locator) args[2];
+            String var = (String) args[3];
+            throw new ExBibImmutableException(var, var, locator);
         }
 
         /**

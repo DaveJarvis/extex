@@ -33,7 +33,7 @@ import org.extex.exbib.core.io.Locator;
  * This class represents a list of values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class TBlock extends AbstractToken implements Iterable<Token> {
 

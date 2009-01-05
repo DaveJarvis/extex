@@ -27,7 +27,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * not merely for internal debugging.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class Locator {
 

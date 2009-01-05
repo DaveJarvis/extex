@@ -26,7 +26,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * pattern shows how to avoid explicit switches over the class of an object.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public interface CommandVisitor extends TokenVisitor {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,6 +21,7 @@ package org.extex.exbib.core.bst;
 import java.util.Iterator;
 
 import org.extex.exbib.core.bst.code.Code;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.Configurable;
@@ -41,7 +42,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public class BstInterpreter extends BstInterpreterCore {
 
@@ -90,6 +91,27 @@ public class BstInterpreter extends BstInterpreterCore {
                 System.err.println(name + " " + className);
                 throw new ConfigurationWrapperException(e);
             }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.Bibliography#reset()
+     */
+    @Override
+    public void reset() {
+
+        super.reset();
+        Locator locator = new Locator(getClass().getName() + "#reset()", 0);
+        try {
+            addFunction("locator.resource$", new TLocalLocator(
+                "locator.resource$", locator,
+                TLocalLocator.LocatorField.RESOURCE), locator);
+            addFunction("locator.line$", new TLocalLocator("locator.line$",
+                locator, TLocalLocator.LocatorField.RESOURCE), locator);
+        } catch (ExBibException e) {
+            throw new ConfigurationWrapperException(e);
         }
     }
 

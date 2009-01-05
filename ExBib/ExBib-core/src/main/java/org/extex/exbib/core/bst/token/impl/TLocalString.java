@@ -32,7 +32,7 @@ import org.extex.exbib.core.io.Locator;
  * not related to externally stored values but used internally only.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class TLocalString extends TLiteral {
 

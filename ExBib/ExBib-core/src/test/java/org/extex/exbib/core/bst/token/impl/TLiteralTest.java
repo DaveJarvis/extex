@@ -40,7 +40,7 @@ import org.junit.Test;
  * This is a test suite for {@link TLiteral}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class TLiteralTest {
 

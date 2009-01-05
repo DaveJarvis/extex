@@ -29,7 +29,7 @@ import org.extex.exbib.core.io.Locator;
  * This interface represents the top-level executable Commands of a BST file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.2 $
+ * @version $Revision$
  */
 public interface Command {
 

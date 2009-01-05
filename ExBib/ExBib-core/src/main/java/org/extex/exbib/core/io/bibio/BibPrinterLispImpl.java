@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -38,7 +38,7 @@ import org.extex.exbib.core.io.Writer;
  * This class implements a writer for databases in Lisp format.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class BibPrinterLispImpl implements BibPrinter, ValueVisitor {
 

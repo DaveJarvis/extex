@@ -99,6 +99,7 @@ import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -236,6 +237,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
             throw new ImpossibleException("visitLocalInteger()");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+         *      java.lang.Object[])
+         */
+        public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
+                throws ExBibException {
+
+            // TODO gene: visitLocalLocator unimplemented
+            throw new RuntimeException("unimplemented");
         }
 
         /**
@@ -396,6 +410,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                         Object... args) {
 
                     throw new ImpossibleException("visitLocalInteger()");
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+                 *      java.lang.Object[])
+                 */
+                public void visitLocalLocator(TLocalLocator localLocator,
+                        Object[] args) throws ExBibException {
+
+                    // TODO gene: visitLocalLocator unimplemented
+                    throw new RuntimeException("unimplemented");
                 }
 
                 /**

@@ -31,7 +31,7 @@ import org.extex.exbib.core.io.Locator;
  * should not make it into the processing cycle.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class TChar extends AbstractToken {
 

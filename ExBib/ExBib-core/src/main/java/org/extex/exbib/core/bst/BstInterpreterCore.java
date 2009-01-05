@@ -109,7 +109,7 @@ import org.extex.resource.ResourceFinder;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class BstInterpreterCore extends BibliographyCore
         implements
@@ -712,12 +712,12 @@ public class BstInterpreterCore extends BibliographyCore
             functions = new HashMap<String, Code>();
         }
         try {
-            addFunction("global.max$", new TInteger(globalMax, locator),
-                locator);
-            addFunction("entry.max$", new TInteger(entryMax, locator), locator);
             addFunction("sort.key$", new TLocalString("sort.key$", locator),
                 locator);
             addFunction("crossref", new TField("crossref", locator), locator);
+            addFunction("global.max$", new TInteger(globalMax, locator),
+                locator);
+            addFunction("entry.max$", new TInteger(entryMax, locator), locator);
         } catch (ExBibException e) {
             throw new ConfigurationWrapperException(e);
         }

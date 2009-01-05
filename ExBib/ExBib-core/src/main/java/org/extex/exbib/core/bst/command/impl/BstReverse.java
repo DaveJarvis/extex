@@ -47,7 +47,7 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class BstReverse extends AbstractCommand {
 

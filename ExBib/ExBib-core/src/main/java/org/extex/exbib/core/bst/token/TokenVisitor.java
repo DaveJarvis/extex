@@ -25,6 +25,7 @@ import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -44,7 +45,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.4 $
+ * @version $Revision$
  */
 public interface TokenVisitor {
 
@@ -118,6 +119,17 @@ public interface TokenVisitor {
      * @throws ExBibException in case of an error
      */
     void visitLocalInteger(TLocalInteger integer, Object... args)
+            throws ExBibException;
+
+    /**
+     * Visitor method invoked by accessors to the locator.
+     * 
+     * @param localLocator the accessors visited
+     * @param args the arguments
+     * 
+     * @throws ExBibException in case of an error
+     */
+    void visitLocalLocator(TLocalLocator localLocator, Object[] args)
             throws ExBibException;
 
     /**

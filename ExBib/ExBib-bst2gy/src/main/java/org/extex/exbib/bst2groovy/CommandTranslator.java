@@ -44,6 +44,7 @@ import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -190,8 +191,7 @@ public class CommandTranslator {
          */
         public void visitIntegerOption(TIntegerOption option, Object... args) {
 
-            // TODO gene: visitIntegerOption unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new ImpossibleException("integer option");
         }
 
         /**
@@ -259,6 +259,18 @@ public class CommandTranslator {
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
             throw new ImpossibleException("local integer");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+         *      java.lang.Object[])
+         */
+        public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
+                throws ExBibException {
+
+            throw new ImpossibleException("local locator");
         }
 
         /**
@@ -354,8 +366,7 @@ public class CommandTranslator {
          */
         public void visitStringOption(TStringOption option, Object... args) {
 
-            // TODO gene: visitStringOption unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new ImpossibleException("string option");
         }
 
         /**

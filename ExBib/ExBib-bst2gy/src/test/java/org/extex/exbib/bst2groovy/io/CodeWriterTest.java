@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -34,7 +34,7 @@ import org.junit.Test;
 public class CodeWriterTest {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Run the test case.
      * 
      * @param in the input
      * @param expected the expected output
@@ -51,7 +51,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -62,7 +62,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -73,7 +73,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -84,7 +84,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -95,7 +95,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */
@@ -106,7 +106,7 @@ public class CodeWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> ... </testcase>
      * 
      * @throws IOException in case of an I/O error
      */

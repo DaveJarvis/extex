@@ -38,6 +38,7 @@ import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.bst.token.impl.TLocalLocator;
 import org.extex.exbib.core.bst.token.impl.TLocalString;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -54,7 +55,7 @@ import org.extex.exbib.core.io.Writer;
  * B<small>IB</small>T<sub>E<c/sub>X notation of bst files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.3 $
+ * @version $Revision$
  */
 public class BstPrinterImpl implements CommandVisitor {
 
@@ -279,6 +280,20 @@ public class BstPrinterImpl implements CommandVisitor {
 
         writeSpace();
         write(integer.getValue());
+        this.nl = false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+     *      java.lang.Object[])
+     */
+    public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
+            throws ExBibIoException {
+
+        writeSpace();
+        write(localLocator.getValue());
         this.nl = false;
     }
 

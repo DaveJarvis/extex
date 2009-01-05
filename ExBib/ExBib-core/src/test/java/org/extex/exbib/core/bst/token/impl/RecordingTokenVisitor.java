@@ -20,24 +20,12 @@ package org.extex.exbib.core.bst.token.impl;
 
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
-import org.extex.exbib.core.bst.token.impl.TBlock;
-import org.extex.exbib.core.bst.token.impl.TChar;
-import org.extex.exbib.core.bst.token.impl.TField;
-import org.extex.exbib.core.bst.token.impl.TInteger;
-import org.extex.exbib.core.bst.token.impl.TIntegerOption;
-import org.extex.exbib.core.bst.token.impl.TLiteral;
-import org.extex.exbib.core.bst.token.impl.TLocalInteger;
-import org.extex.exbib.core.bst.token.impl.TLocalString;
-import org.extex.exbib.core.bst.token.impl.TQLiteral;
-import org.extex.exbib.core.bst.token.impl.TString;
-import org.extex.exbib.core.bst.token.impl.TStringOption;
-import org.extex.exbib.core.bst.token.impl.TokenList;
 
 /**
  * This is a {@link TokenVisitor} for the tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class RecordingTokenVisitor implements TokenVisitor {
 
@@ -152,6 +140,20 @@ public class RecordingTokenVisitor implements TokenVisitor {
             throw new IllegalStateException();
         }
         t = integer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLocalLocator(org.extex.exbib.core.bst.token.impl.TLocalLocator,
+     *      java.lang.Object[])
+     */
+    public void visitLocalLocator(TLocalLocator localLocator, Object[] args) {
+
+        if (t != null) {
+            throw new IllegalStateException();
+        }
+        t = localLocator;
     }
 
     /**

@@ -38,7 +38,7 @@ import org.extex.exbib.core.io.Locator;
  * {@link Token Token} itself to act as one.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 public class TokenList extends AbstractToken implements Iterable<Token> {
 
