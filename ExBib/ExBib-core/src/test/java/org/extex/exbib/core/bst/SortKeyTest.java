@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.bst;
@@ -32,22 +31,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test suite for sort.key$.
+ * Test suite for <code>sort.key$</code>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 1.3 $
  */
-public class TestSortKey {
+public class SortKeyTest {
 
     /**
-     * The field <tt>e</tt> contains the entry.
+     * The field <tt>entry</tt> contains the entry.
      */
-    private Entry e;
+    private Entry entry;
 
     /**
-     * The field <tt>p</tt> contains the processor.
+     * The field <tt>processor</tt> contains the processor.
      */
-    private BstProcessor p = null;
+    private BstProcessor processor = null;
 
     /**
      * Set-up method.
@@ -57,9 +56,10 @@ public class TestSortKey {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
-        p.addFunction("abc", TokenFactory.T_ONE, null);
-        e = p.getDB().makeEntry("book", "k1", null);
+        processor =
+                new BstInterpreter099c(new DBImpl(), new NullWriter(), null);
+        processor.addFunction("abc", TokenFactory.T_ONE, null);
+        entry = processor.getDB().makeEntry("book", "k1", null);
     }
 
     /**
@@ -68,8 +68,8 @@ public class TestSortKey {
     @After
     public void tearDown() {
 
-        p = null;
-        e = null;
+        processor = null;
+        entry = null;
     }
 
     /**
@@ -81,9 +81,9 @@ public class TestSortKey {
     @Test
     public void testNoSortKey() throws Exception {
 
-        new TLocalString("sort.key$", null).execute(p, e, null);
-        assertEquals("", p.popString(null).getValue());
-        assertNull(p.popUnchecked());
+        new TLocalString("sort.key$", null).execute(processor, entry, null);
+        assertEquals("", processor.popString(null).getValue());
+        assertNull(processor.popUnchecked());
     }
 
     /**
@@ -94,8 +94,8 @@ public class TestSortKey {
     @Test
     public void testSortKey1() throws Exception {
 
-        e.setSortKey("xyz");
-        assertEquals("xyz", e.getSortKey());
+        entry.setSortKey("xyz");
+        assertEquals("xyz", entry.getSortKey());
     }
 
     /**
@@ -107,10 +107,10 @@ public class TestSortKey {
     @Test
     public void testSortKey11() throws Exception {
 
-        e.setSortKey("xyz");
-        new TLocalString("sort.key$", null).execute(p, e, null);
-        assertEquals("xyz", p.popString(null).getValue());
-        assertNull(p.popUnchecked());
+        entry.setSortKey("xyz");
+        new TLocalString("sort.key$", null).execute(processor, entry, null);
+        assertEquals("xyz", processor.popString(null).getValue());
+        assertNull(processor.popUnchecked());
     }
 
 }
