@@ -73,7 +73,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that abbrv.bst can be compiled without errors.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -84,7 +85,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that alpha.bst can be compiled without errors.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -95,7 +97,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that plain.bst can be compiled without errors.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -106,7 +109,8 @@ public class Bst2GroovyAlphaTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that unsrt.bst can be compiled without errors.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
