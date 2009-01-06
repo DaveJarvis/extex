@@ -32,6 +32,7 @@ import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
 import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
 import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
+import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -812,7 +813,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testLocationLine1() throws Exception {
+    public void testLocatorLine1() throws Exception {
 
         run("function{abc}{locator.line$ write$}", //
             PREFIX + "\n\n  Map types = [\n"
@@ -823,13 +824,25 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that assigning to locator.line$ is not possible.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testLocatorLine2() throws Exception {
+
+        run("function{abc}{\"\" locator.line$ :=}", "");
+    }
+
+    /**
      * <testcase> Test that "location.resource$" is created properly.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testLocationResource1() throws Exception {
+    public void testLocatorResource1() throws Exception {
 
         run("function{abc}{locator.resource$ write$}", //
             PREFIX + "\n\n  Map types = [\n"
@@ -837,6 +850,18 @@ public class Bst2GroovyTest {
                     + "  }\n" + "\n" + "  void abc(entry) {\n"
                     + "    bibWriter.print(entry.getLocator().getResource())\n"
                     + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that assigning to locator.resource$ is not possible.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testLocatorResource2() throws Exception {
+
+        run("function{abc}{\"\" locator.resource$ :=}", "");
     }
 
     /**
@@ -983,6 +1008,18 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that assigning an "OPTION STRING" is not possible.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testOptionString2() throws Exception {
+
+        run("option string {xxx}{d e f}\n" + "function{abc}{xxx 'x :=}", "");
+    }
+
+    /**
      * <testcase> Test that + is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1095,6 +1132,17 @@ public class Bst2GroovyTest {
     public void testReverseError2() throws Exception {
 
         run("reverse{write$}", null);
+    }
+
+    /**
+     * <testcase> Test that assigning to a number is not possible. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testSet1() throws Exception {
+
+        run("function{abc}{'x #1 :=}", "");
     }
 
     /**
