@@ -205,10 +205,15 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 .getInt()));
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitIntegerOption(org.extex.exbib.core.bst.token.impl.TIntegerOption,
+         *      java.lang.Object[])
+         */
         public void visitIntegerOption(TIntegerOption option, Object... args) {
 
-            // TODO gene: visitIntegerOption unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new ImpossibleException("visitIntegerOption()");
         }
 
         /**
@@ -249,8 +254,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         public void visitLocalLocator(TLocalLocator localLocator, Object[] args)
                 throws ExBibException {
 
-            // TODO gene: visitLocalLocator unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new ImpossibleException("visitLocalLocator()");
         }
 
         /**
@@ -294,10 +298,15 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             stack.push(new GStringConstant(string.getValue()));
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.token.TokenVisitor#visitStringOption(org.extex.exbib.core.bst.token.impl.TStringOption,
+         *      java.lang.Object[])
+         */
         public void visitStringOption(TStringOption option, Object... args) {
 
-            // TODO gene: visitStringOption unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new ImpossibleException("visitStringOption()");
         }
 
         /**
@@ -589,6 +598,17 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/')
                 + ".config"));
+        // try {
+        // setOption("global.max$", new TInteger(0xffff, new Locator("", 0)));
+        // } catch (ExBibIllegalValueException e) {
+        // // TODO gene: error handling unimplemented
+        // e.printStackTrace();
+        // throw new RuntimeException("unimplemented");
+        // } catch (ExBibFunctionExistsException e) {
+        // // TODO gene: error handling unimplemented
+        // e.printStackTrace();
+        // throw new RuntimeException("unimplemented");
+        // }
     }
 
     /**
