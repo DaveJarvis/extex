@@ -28,6 +28,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.bst2groovy.exception.ChrToIntLengthException;
 import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
 import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
 import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
@@ -250,6 +251,44 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that the code for chr.to.int$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testChrToInt2() throws Exception {
+
+        run("function{abc}{\"x\" chr.to.int$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    return 120\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for chr.to.int$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ChrToIntLengthException.class)
+    public void testChrToInt3() throws Exception {
+
+        run("function{abc}{\"\" chr.to.int$}", null);
+    }
+
+    /**
+     * <testcase> Test that the code for chr.to.int$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ChrToIntLengthException.class)
+    public void testChrToInt4() throws Exception {
+
+        run("function{abc}{\"xx\" chr.to.int$}", null);
+    }
+
+    /**
      * <testcase> Test that the code for cite$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -414,8 +453,8 @@ public class Bst2GroovyTest {
 
         run("entry{a}{b}{c}function{abc}{'b := #0}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.setLocal(\"b\", v1)\n" + "    return 0\n"
-                    + "  }\n" + RUN + POST_RUN);
+                    + "    entry.setLocal(\"b\",\n                   v1)\n"
+                    + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -444,8 +483,8 @@ public class Bst2GroovyTest {
 
         run("entry{a}{b}{c}function{abc}{'c := #0}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.setLocal(\"c\", v1)\n" + "    return 0\n"
-                    + "  }\n" + RUN + POST_RUN);
+                    + "    entry.setLocal(\"c\",\n                   v1)\n"
+                    + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -989,6 +1028,32 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that "OPTION INTEGER" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOptionInteger2() throws Exception {
+
+        run(
+            "option integer {xxx}{#42}\n" + "function{abc}{#7 'xxx :=}", //
+            PREFIX
+                    + HEAD
+                    + "    [\n"
+                    + "      xxx: \"42\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      if (bibProcessor.getOption(name) == null) {\n"
+                    + "        bibProcessor.setOption(name, value)\n"
+                    + "      }\n"
+                    + "    }\n"
+                    + "  }\n"
+                    + "\n"
+                    + "  void abc() {\n"
+                    + "    bibProcessor.setOption(\"xxx\",\n                           7)\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that "OPTION STRING" is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1017,6 +1082,27 @@ public class Bst2GroovyTest {
     public void testOptionString2() throws Exception {
 
         run("option string {xxx}{d e f}\n" + "function{abc}{xxx 'x :=}", "");
+    }
+
+    /**
+     * <testcase> Test that "OPTION STRING" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOptionString3() throws Exception {
+
+        run("option string {xxx}{d e f}\n" + "function{abc}{\"\" 'xxx :=}", //
+            PREFIX + HEAD + "    [\n" + "      xxx: \"def\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      if (bibProcessor.getOption(name) == null) {\n"
+                    + "        bibProcessor.setOption(name, value)\n"
+                    + "      }\n" + "    }\n" + "  }\n"
+                    + "\n"
+                    + "  void abc() {\n"
+                    + "    bibProcessor.setOption(\"xxx\",\n" //
+                    + "                           \"\")\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -1143,6 +1229,28 @@ public class Bst2GroovyTest {
     public void testSet1() throws Exception {
 
         run("function{abc}{'x #1 :=}", "");
+    }
+
+    /**
+     * <testcase> Test that assigning to a string is not possible. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testSet2() throws Exception {
+
+        run("function{abc}{'x \".\" :=}", "");
+    }
+
+    /**
+     * <testcase> Test that assigning to a block is not possible. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownVariableException.class)
+    public void testSet3() throws Exception {
+
+        run("function{abc}{'x {} :=}", "");
     }
 
     /**
@@ -1371,6 +1479,79 @@ public class Bst2GroovyTest {
         run("function{abc}{write$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
                     + "    bibWriter.print(v1)\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite2() throws Exception {
+
+        run("function{abc}{write$ write$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1, v2) {\n"
+                    + "    bibWriter.print(v1,\n                    v2)\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite3() throws Exception {
+
+        run("function{abc}{write$ write$ write$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1, v2, v3) {\n"
+                    + "    bibWriter.print(v1,\n" //
+                    + "                    v2,\n" //
+                    + "                    v3)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite4() throws Exception {
+
+        run("function{abc}{write$ #42}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+                    + "    bibWriter.print(v1)\n" //
+                    + "    return 42\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWriteNewline1() throws Exception {
+
+        run("function{abc}{write$ newline$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
+                    + "    bibWriter.println(v1)\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWriteNewline2() throws Exception {
+
+        run("function{abc}{write$ write$ newline$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1, v2) {\n"
+                    + "    bibWriter.println(v1,\n" //
+                    + "                      v2)\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
 }
