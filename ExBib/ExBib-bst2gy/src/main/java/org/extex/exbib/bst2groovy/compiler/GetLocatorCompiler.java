@@ -54,9 +54,9 @@ public class GetLocatorCompiler implements Compiler {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Construct the name of the getter for a given attribute.
      * 
-     * @param name the name
+     * @param name the name of the attribute
      * 
      * @return the name of the getter
      */
