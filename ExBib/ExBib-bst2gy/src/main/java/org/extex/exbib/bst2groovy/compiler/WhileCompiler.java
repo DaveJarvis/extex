@@ -25,12 +25,14 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GBoolean;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.AssignVar;
 import org.extex.exbib.bst2groovy.data.var.DeclareVar;
 import org.extex.exbib.bst2groovy.data.var.Var;
@@ -38,6 +40,9 @@ import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.core.bst.token.impl.TInteger;
+import org.extex.exbib.core.bst.token.impl.TIntegerOption;
+import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 
 /**
  * This class implements the analyzer for a while instruction.
@@ -51,7 +56,7 @@ public class WhileCompiler implements Compiler {
      * This inner class is the expression for a while loop in the target
      * program.
      */
-    private static final class While extends VoidGCode {
+    private static final class While extends GenericCode {
 
         /**
          * The field <tt>cond</tt> contains the condition code.
@@ -71,6 +76,7 @@ public class WhileCompiler implements Compiler {
          */
         private While(GCode cond, GCode body) {
 
+            super(ReturnType.VOID, "");
             this.cond = cond;
             this.body = body;
         }
@@ -131,6 +137,10 @@ public class WhileCompiler implements Compiler {
         if (cond instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) cond).getToken(), entryRefernce,
                 condState);
+        } else if (cond instanceof GIntegerConstant
+                || cond instanceof TLocalInteger || cond instanceof TInteger
+                || cond instanceof TIntegerOption) {
+            condState.push(cond);
         } else {
             throw new WhileSyntaxException(true);
         }

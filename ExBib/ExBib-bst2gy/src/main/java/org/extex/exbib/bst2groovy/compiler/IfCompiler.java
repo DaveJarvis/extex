@@ -115,7 +115,7 @@ public class IfCompiler implements Compiler {
                 GCode code = thenBranch.get(0);
                 if (code instanceof If && ((If) code).elseBranch.isEmpty()) {
                     thenBranch = ((If) code).thenBranch;
-                    cond = new And(cond, ((If) code).cond);
+                    cond = new And(cond, ((If) code).cond).optimize();
                 }
             }
             return this;

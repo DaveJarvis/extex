@@ -33,7 +33,10 @@ import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
 import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
 import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
+import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
+import org.extex.exbib.bst2groovy.exception.WhileComplexException;
+import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -699,6 +702,28 @@ public class Bst2GroovyTest {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = IfSyntaxException.class)
+    public void testIf10() throws Exception {
+
+        run("function{abc}{#1 newline$ {newline$} if$}", null);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IfSyntaxException.class)
+    public void testIf11() throws Exception {
+
+        run("function{abc}{#1 {newline$} newline$ if$}", null);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
     @Test
     public void testIf2() throws Exception {
 
@@ -718,6 +743,89 @@ public class Bst2GroovyTest {
         run("function{abc}{#1 {pop$ #2} {} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
                     + "    return ( 1 ? 2 : v3 )\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf4() throws Exception {
+
+        run("function{abc}{#1 {#2} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
+                    + "    return ( 1 ? 2 : v2 )\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf5() throws Exception {
+
+        run("function{abc}{#1 {newline$} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (1) {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf6() throws Exception {
+
+        run("function{abc}{#1 'skip$ {newline$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1) {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf7() throws Exception {
+
+        run("function{abc}{#1 {newline$} {newline$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (1) {\n" + "      bibWriter.println()\n"
+                    + "    } else {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf8() throws Exception {
+
+        run("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf9() throws Exception {
+
+        run("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1 && ! 1) {\n" + "    }\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -1448,6 +1556,120 @@ public class Bst2GroovyTest {
         run("function{abc}{{#1} 'skip$ while$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
                     + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile10() throws Exception {
+
+        run("function{abc}{#2 {#1 #1 =} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    int v1 = 2\n" + "    while (1 == 1) {\n"
+                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile2() throws Exception {
+
+        run("function{abc}{{#1} {} while$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileSyntaxException.class)
+    public void testWhile3() throws Exception {
+
+        run("function{abc}{{#1} #1 while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileComplexException.class)
+    public void testWhile4() throws Exception {
+
+        run("function{abc}{{#1} {#1} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileSyntaxException.class)
+    public void testWhile5() throws Exception {
+
+        run("function{abc}{\"\" {} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileComplexException.class)
+    public void testWhile6() throws Exception {
+
+        run("function{abc}{{#1 #2} {} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile7() throws Exception {
+
+        run("function{abc}{#1 {} while$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile8() throws Exception {
+
+        run("function{abc}{{#1} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
+                    + "    while (1) {\n" + "      v2 = 12\n" + "    }\n"
+                    + "    return v2\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile9() throws Exception {
+
+        run("function{abc}{#2 {#1} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    int v1 = 2\n" + "    while (1) {\n"
+                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
