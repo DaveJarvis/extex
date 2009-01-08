@@ -35,15 +35,6 @@ public class Bst2GroovyException extends RuntimeException {
     /**
      * Creates a new object.
      * 
-     */
-    public Bst2GroovyException() {
-
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
      * @param message the message
      */
     public Bst2GroovyException(String message) {
