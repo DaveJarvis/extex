@@ -589,7 +589,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testFunction1() throws Exception {
+    public void testFunction01() throws Exception {
 
         run("function{abc}{}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n" + "  }\n" + RUN
@@ -603,7 +603,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testFunction2() throws Exception {
+    public void testFunction02() throws Exception {
 
         run("function{abc}{pop$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n" + "  }\n"
@@ -617,7 +617,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testFunction3() throws Exception {
+    public void testFunction03() throws Exception {
 
         run("function{abc}{#123}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n    return 123\n"
@@ -631,7 +631,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testFunction4() throws Exception {
+    public void testFunction04() throws Exception {
 
         run("function{abc}{\"abc\"}", //
             PREFIX + HEAD + "  }\n" + "\n"
@@ -646,7 +646,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test(expected = ComplexFunctionException.class)
-    public void testFunction5() throws Exception {
+    public void testFunction05() throws Exception {
 
         run("function{abc}{#1 #2}", null);
     }
@@ -658,7 +658,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testFunction6() throws Exception {
+    public void testFunction06() throws Exception {
 
         run("function{a}{pop$}function{abc}{a a}", //
             PREFIX + HEAD + "  }\n\n" //
@@ -667,6 +667,75 @@ public class Bst2GroovyTest {
                     + "  void abc(v1, v2) {\n" //
                     + "    a(v1)\n" //
                     + "    a(v2)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction07() throws Exception {
+
+        run(
+            "function{a.123}{pop$}function{v123}{pop$}function{aB_C}{a.123 v123}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  void a123(v1) {\n" //
+                    + "  }\n\n" //
+                    + "  void v123_(v1) {\n" //
+                    + "  }\n\n" //
+                    + "  void abC(v1, v2) {\n" //
+                    + "    a123(v1)\n" //
+                    + "    v123_(v2)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction08() throws Exception {
+
+        run("function{public}{pop$}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  void public1(v1) {\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction09() throws Exception {
+
+        run("function{h}{#1}function{f}{h}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  int h() {\n" //
+                    + "    return 1\n" //
+                    + "  }\n\n" //
+                    + "  int f() {\n" //
+                    + "    return h()\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction10() throws Exception {
+
+        run("entry{x}{}{}function{f}{x}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  String f(entry) {\n" //
+                    + "    return entry.getExpanded(\"x\",\n" //
+                    + "                             bibDB)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 

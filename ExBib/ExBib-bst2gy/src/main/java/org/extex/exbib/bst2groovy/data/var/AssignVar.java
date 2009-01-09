@@ -22,7 +22,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -31,7 +32,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AssignVar extends VoidGCode {
+public class AssignVar extends GenericCode {
 
     /**
      * The field <tt>var</tt> contains the name of the local variable.
@@ -51,6 +52,7 @@ public class AssignVar extends VoidGCode {
      */
     public AssignVar(Var var, GCode value) {
 
+        super(ReturnType.VOID, ":=");
         this.var = var;
         this.value = value;
         var.setType(value.getType());

@@ -21,7 +21,8 @@ package org.extex.exbib.bst2groovy.data.var;
 import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -31,7 +32,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DeclareVar extends VoidGCode {
+public class DeclareVar extends GenericCode {
 
     /**
      * The field <tt>var</tt> contains the variable.
@@ -51,6 +52,7 @@ public class DeclareVar extends VoidGCode {
      */
     public DeclareVar(Var var, GCode value) {
 
+        super(ReturnType.VOID, "");
         this.var = var;
         this.value = value;
         if (value != null) {

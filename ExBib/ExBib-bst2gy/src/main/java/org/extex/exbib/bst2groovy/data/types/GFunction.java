@@ -54,11 +54,9 @@ public class GFunction implements Compiler, GCode {
          * 
          * @param type the return type
          * @param entryName the name of the entry to use or <code>null</code>
-         * @param proc the procedure indicator
          * @param args the arguments
          */
-        public Call(ReturnType type, String entryName, boolean proc,
-                GCode[] args) {
+        public Call(ReturnType type, String entryName, GCode[] args) {
 
             super(type, name, entryName, args);
         }
@@ -81,13 +79,12 @@ public class GFunction implements Compiler, GCode {
         StringBuilder buffer = new StringBuilder();
         boolean upper = false;
 
-        for (int i = 0; i < value.length(); i++) {
-            char c = value.charAt(i);
-            if (Character.isUpperCase(c)) {
-                buffer.append(c);
-                upper = false;
-            } else if (Character.isLowerCase(c)) {
+        for (char c : value.toCharArray()) {
+            if (Character.isLowerCase(c)) {
                 buffer.append(upper ? Character.toUpperCase(c) : c);
+                upper = false;
+            } else if (Character.isUpperCase(c)) {
+                buffer.append(c);
                 upper = false;
             } else if (Character.isDigit(c)) {
                 buffer.append(c);
@@ -100,15 +97,15 @@ public class GFunction implements Compiler, GCode {
         t = buffer.toString();
         String result = t;
         if (t.matches("v[0-9]+")) {
-            t = t + "_";
+            result = t + "_";
         }
-        int i = 2;
+        int i = 1;
         while (translationMap.containsValue(result)) {
             result = t + Integer.toString(i++);
         }
 
         translationMap.put(value, result);
-        return t;
+        return result;
     }
 
     /**
@@ -122,7 +119,8 @@ public class GFunction implements Compiler, GCode {
     private static Map<String, String> translationMap = makeTranslationMap();
 
     /**
-     * Make a translation map and initialize it.
+     * Make a translation map and initialize it. All the reserved words of
+     * Groovy are put in to force a renaming of equal function names.
      * 
      * @return a new translation map
      */
@@ -246,21 +244,20 @@ public class GFunction implements Compiler, GCode {
             args[size - 1 - i] = state.pop();
         }
 
-        if (returnType == ReturnType.STRING || returnType == ReturnType.INT) {
-            state.push(new Call(returnType, //
-                (entry.isUsed() ? entryRef.getName() : null), false, args));
-            useCount++;
-        } else if (returnType == ReturnType.CODE) {
-            state.add(new Call(ReturnType.VOID, //
-                (entry.isUsed() ? entryRef.getName() : null), true, args));
-            useCount++;
-        } else if (returnType == ReturnType.VOID) {
-            state.add(new Call(ReturnType.VOID, //
-                (entry.isUsed() ? entryRef.getName() : null), true, args));
-            useCount++;
+        Call cal =
+                new Call(returnType == ReturnType.CODE
+                        ? ReturnType.VOID
+                        : returnType, //
+                    (entry.isUsed() ? entryRef.getName() : null), args);
+        if (returnType == ReturnType.VOID || returnType == ReturnType.CODE) {
+            state.add(cal);
+        } else if (returnType == ReturnType.STRING
+                || returnType == ReturnType.INT) {
+            state.push(cal);
         } else {
             throw new UnknownReturnTypeException(name);
         }
+        useCount++;
     }
 
     /**
