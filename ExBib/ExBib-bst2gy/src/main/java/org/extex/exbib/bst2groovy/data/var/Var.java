@@ -57,7 +57,7 @@ public class Var implements GCode {
      * The field <tt>reference</tt> contains the reference to another variable
      * if this one is bound.
      */
-    private Var reference = null;
+    private GCode reference = null;
 
     /**
      * Creates a new object.
@@ -79,13 +79,13 @@ public class Var implements GCode {
      */
     public boolean eq(Var other) {
 
-        Var v = this;
-        while (v.reference != null) {
-            v = v.reference;
+        GCode v = this;
+        while (v instanceof Var && ((Var) v).reference != null) {
+            v = ((Var) v).reference;
         }
-        Var w = other;
-        while (w.reference != null) {
-            w = w.reference;
+        GCode w = other;
+        while (w instanceof Var && ((Var) w).reference != null) {
+            w = ((Var) w).reference;
         }
         return v == w;
     }
@@ -124,7 +124,7 @@ public class Var implements GCode {
      */
     public GCode optimize() {
 
-        return this;
+        return (reference != null ? reference.optimize() : this);
     }
 
     /**
@@ -198,21 +198,41 @@ public class Var implements GCode {
      * 
      * @param other the other instance to bind to
      */
-    public void unify(Var other) {
+    public void unify(GCode other) {
 
         if (other == this) {
             return;
         }
-        if (other.name.compareTo(name) < 0) {
-            other.unifyMe(this);
-            return;
-        }
+        if (other instanceof Var) {
+            if (((Var) other).name.compareTo(name) < 0) {
+                ((Var) other).unifyMe(this);
+                return;
+            }
 
-        if (reference != null) {
-            reference.unify(other);
-        }
+            if (reference instanceof Var) {
+                ((Var) reference).unify(other);
+            }
 
-        reference = other;
+            reference = other;
+        } else if (reference == null) {
+            reference = other;
+        } else {
+            GCode v = this;
+            while (v instanceof Var && ((Var) v).reference != null) {
+                v = ((Var) v).reference;
+            }
+            GCode w = other;
+            while (w instanceof Var && ((Var) w).reference != null) {
+                w = ((Var) w).reference;
+            }
+
+            if (v == w) {
+                return;
+            }
+
+            // TODO gene: unify unimplemented
+            throw new RuntimeException("unimplemented");
+        }
     }
 
     /**
@@ -222,8 +242,8 @@ public class Var implements GCode {
      */
     protected void unifyMe(Var other) {
 
-        if (reference != null) {
-            reference.unify(other);
+        if (reference instanceof Var) {
+            ((Var) reference).unify(other);
         }
 
         reference = other;

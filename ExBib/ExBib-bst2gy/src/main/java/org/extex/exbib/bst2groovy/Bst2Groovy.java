@@ -851,6 +851,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         w.write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).", //
             run.getName(), "()\n");
+        w.flush();
     }
 
     /**

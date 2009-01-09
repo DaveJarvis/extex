@@ -69,8 +69,8 @@ public class AddPeriodCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        @Override
-        public void print(CodeWriter writer, String prefix, String in) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in)
+                throws IOException {
 
             writer.write(prefix, "String addPeriod(String s) {", //
                 prefix, Bst2Groovy.INDENT, "return s == null || s == '' ? '' "

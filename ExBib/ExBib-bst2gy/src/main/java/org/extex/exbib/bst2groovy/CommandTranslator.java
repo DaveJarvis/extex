@@ -23,7 +23,6 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
@@ -64,17 +63,7 @@ public class CommandTranslator {
      * This internal class represents a loop construction as used by the
      * commands ITERATE and REVERSE.
      */
-    private static class GLoop extends VoidGCode {
-
-        /**
-         * The field <tt>pre</tt> contains the loop driver code.
-         */
-        private String pre;
-
-        /**
-         * The field <tt>body</tt> contains the loop body code.
-         */
-        private GCode body;
+    private static class GLoop extends GenericCode {
 
         /**
          * Creates a new object.
@@ -84,8 +73,7 @@ public class CommandTranslator {
          */
         public GLoop(String pre, GCode body) {
 
-            this.pre = pre;
-            this.body = body;
+            super(ReturnType.VOID, pre, body);
         }
 
         /**
@@ -97,8 +85,8 @@ public class CommandTranslator {
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            writer.write(prefix, pre, " {");
-            body.print(writer, prefix + Bst2Groovy.INDENT);
+            writer.write(prefix, getName(), " {");
+            getArg(0).print(writer, prefix + Bst2Groovy.INDENT);
             writer.write(prefix, "}");
         }
     }

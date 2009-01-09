@@ -100,4 +100,15 @@ public class GBoolean implements GCode {
         writer.write(" ? 1 : 0");
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "(Boolean) " + code.toString();
+    }
+
 }

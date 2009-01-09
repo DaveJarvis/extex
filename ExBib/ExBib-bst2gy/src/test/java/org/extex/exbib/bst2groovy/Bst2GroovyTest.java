@@ -34,6 +34,7 @@ import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
 import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
 import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
+import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
@@ -426,8 +427,8 @@ public class Bst2GroovyTest {
 
         run("entry{a}{b}{c}function{abc}{'a := #0}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.set(\"a\", v1)\n" + "    return 0\n" + "  }\n"
-                    + RUN + POST_RUN);
+                    + "    entry.set(\"a\",\n              v1)\n"
+                    + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -572,6 +573,17 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that an unknown function leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = UnknownFunctionException.class)
+    public void testFunction0() throws Exception {
+
+        run("function{abc}{xxx}", null);
+    }
+
+    /**
      * <testcase> Test that an empty function is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -659,6 +671,21 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that global.max$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGlobalMax1() throws Exception {
+
+        run("function{abc}{global.max$}", //
+            PREFIX + HEAD + "  }\n" + "\n"
+                    + "  private static final int GLOBAL_MAX = 65535\n\n"
+                    + "  int abc() {\n" + "    return GLOBAL_MAX\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that > is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -682,6 +709,115 @@ public class Bst2GroovyTest {
         run("function{abc}{#2 #1 >}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
                     + "    return 2 > 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf02() throws Exception {
+
+        run("function{abc}{#1 {#2} {#3} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    return ( 1 ? 2 : 3 )\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf03() throws Exception {
+
+        run("function{abc}{#1 {pop$ #2} {} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
+                    + "    return ( 1 ? 2 : v3 )\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf04() throws Exception {
+
+        run("function{abc}{#1 {#2} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
+                    + "    return ( 1 ? 2 : v2 )\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf05() throws Exception {
+
+        run("function{abc}{#1 {newline$} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (1) {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf06() throws Exception {
+
+        run("function{abc}{#1 'skip$ {newline$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1) {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf07() throws Exception {
+
+        run("function{abc}{#1 {newline$} {newline$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (1) {\n" + "      bibWriter.println()\n"
+                    + "    } else {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf08() throws Exception {
+
+        run("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf09() throws Exception {
+
+        run("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (! 1 && ! 1) {\n" + "    }\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -720,111 +856,44 @@ public class Bst2GroovyTest {
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     * <testcase> Test that not is treated properly. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf2() throws Exception {
+    public void testIf12() throws Exception {
 
-        run("function{abc}{#1 {#2} {#3} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    return ( 1 ? 2 : 3 )\n" + "  }\n" + RUN + POST_RUN);
+        run("function{abc}{{>} {#3} {#2} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3, v4) {\n"
+                    + "    return ( v4 > v3 ? 3 : 2 )\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     * <testcase> Test that not is treated properly. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf3() throws Exception {
+    public void testIf13() throws Exception {
 
-        run("function{abc}{#1 {pop$ #2} {} if$}", //
+        run("function{abc}{#1 {>} {#3} {#2} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
-                    + "    return ( 1 ? 2 : v3 )\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return ( v3 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
-     * <testcase> Test that if$ is created properly. </testcase>
+     * <testcase> Test that not is treated properly. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf4() throws Exception {
+    public void testIf14() throws Exception {
 
-        run("function{abc}{#1 {#2} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
-                    + "    return ( 1 ? 2 : v2 )\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf5() throws Exception {
-
-        run("function{abc}{#1 {newline$} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (1) {\n" + "      bibWriter.println()\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf6() throws Exception {
-
-        run("function{abc}{#1 'skip$ {newline$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1) {\n" + "      bibWriter.println()\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf7() throws Exception {
-
-        run("function{abc}{#1 {newline$} {newline$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (1) {\n" + "      bibWriter.println()\n"
-                    + "    } else {\n" + "      bibWriter.println()\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf8() throws Exception {
-
-        run("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf9() throws Exception {
-
-        run("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1 && ! 1) {\n" + "    }\n" + "  }\n" + RUN
+        run("function{abc}{\"\" {=} {#3} {#2} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
+                    + "    return ( v3 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1038,6 +1107,36 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that @macro works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro1() throws Exception {
+
+        run("macro{xxx}{\"y y y\"}", //
+            PREFIX + HEAD + "    [\n" + "      xxx: \"y y y\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      bibDB.storeString(name, value)\n" + "    }\n  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that @macro works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMacro2() throws Exception {
+
+        run("macro{x.x.x}{\"y y y\"}", //
+            PREFIX + HEAD + "    [\n" + "      'x.x.x': \"y y y\",\n"
+                    + "    ].each { name, value ->\n"
+                    + "      bibDB.storeString(name, value)\n" + "    }\n  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that - is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1087,6 +1186,51 @@ public class Bst2GroovyTest {
         run("function{abc}{newline$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
                     + "    bibWriter.println()\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot1() throws Exception {
+
+        run("integers{x} function{abc}{{>} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(v3, v4) {\n"
+                    + "    if (v4 >= v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot2() throws Exception {
+
+        run("integers{x} function{abc}{{<} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(v3, v4) {\n"
+                    + "    if (v4 <= v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot3() throws Exception {
+
+        run("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(v3, v4) {\n"
+                    + "    if (v4 != v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -1271,6 +1415,19 @@ public class Bst2GroovyTest {
                     + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
                     + "    return Purify.purify(v1)\n" + "  }\n" + RUN
                     + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that quote$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testQuote1() throws Exception {
+
+        run("function{abc}{quote$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"\\\"\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**

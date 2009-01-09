@@ -19,18 +19,20 @@
 package org.extex.exbib.bst2groovy.data.types;
 
 import java.io.IOException;
+import java.util.List;
 
-import org.extex.exbib.bst2groovy.data.VoidGCode;
+import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.core.bst.token.Token;
 
 /**
- * This class wraps a token and acts like void Code.
+ * This class wraps a token and acts like void code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CodeBlock extends VoidGCode {
+public class CodeBlock implements GCode {
 
     /**
      * The field <tt>t</tt> contains the token.
@@ -60,15 +62,42 @@ public class CodeBlock extends VoidGCode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#getType()
+     */
+    public ReturnType getType() {
+
+        return ReturnType.VOID;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
+     */
+    public GCode optimize() {
+
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
+     */
+    public int optimize(List<GCode> list, int index) {
+
+        return index + 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
-    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
-        writer.write("<<<");
-        writer.write(t.toString());
-        writer.write(">>>");
+        throw new ImpossibleException(t.toString());
     }
 
     /**

@@ -28,23 +28,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LinkingCode {
-
-    /**
-     * The field <tt>text</tt> contains the text.
-     */
-    private String[] text;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param text the text
-     */
-    public LinkingCode(String... text) {
-
-        super();
-        this.text = text;
-    }
+public abstract class LinkingCode {
 
     /**
      * Print the linking code.
@@ -55,11 +39,7 @@ public class LinkingCode {
      * 
      * @throws IOException in case of an I/O error
      */
-    public void print(CodeWriter writer, String prefix, String in)
-            throws IOException {
-
-        writer.write(prefix);
-        writer.write(text);
-    }
+    public abstract void print(CodeWriter writer, String prefix, String in)
+            throws IOException;
 
 }

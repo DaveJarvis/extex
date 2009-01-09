@@ -43,7 +43,7 @@ public final class Not extends GenericCode {
      */
     public Not(GCode code) {
 
-        super(ReturnType.INT, "", code);
+        super(ReturnType.INT, "!", code);
     }
 
     /**

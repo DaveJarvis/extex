@@ -66,7 +66,6 @@ public class CallTypeCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
          *      java.lang.String, java.lang.String)
          */
-        @Override
         public void print(CodeWriter writer, String prefix, String in)
                 throws IOException {
 

@@ -21,10 +21,10 @@ package org.extex.exbib.bst2groovy.compiler;
 import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.Compiler;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.bst2groovy.linker.LinkingCode;
@@ -35,7 +35,7 @@ import org.extex.exbib.bst2groovy.linker.LinkingCode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OptionCompiler extends VoidGCode implements Compiler {
+public class OptionCompiler extends GIntegerConstant implements Compiler {
 
     /**
      * The field <tt>init</tt> contains the initializer.
@@ -53,8 +53,8 @@ public class OptionCompiler extends VoidGCode implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
          *      java.lang.String)
          */
-        @Override
-        public void print(CodeWriter writer, String prefix, String in) throws IOException {
+        public void print(CodeWriter writer, String prefix, String in)
+                throws IOException {
 
             writer.write(prefix, "private static final int ", init, "\n");
         }
@@ -74,6 +74,7 @@ public class OptionCompiler extends VoidGCode implements Compiler {
      */
     public OptionCompiler(String name, int value) {
 
+        super(value);
         this.name = name;
         this.init = name + " = " + Integer.toString(value);
     }

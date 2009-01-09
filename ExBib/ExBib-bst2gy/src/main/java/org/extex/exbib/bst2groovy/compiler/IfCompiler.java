@@ -34,6 +34,8 @@ import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GBoolean;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
+import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.AssignVar;
 import org.extex.exbib.bst2groovy.data.var.DeclareVar;
@@ -316,6 +318,27 @@ public class IfCompiler implements Compiler {
     }
 
     /**
+     * Create a new processor state and evaluate some code in it.
+     * 
+     * @param evaluator the evaluator
+     * @param entry the entry reference
+     * @param code the code to evaluate
+     * @param message the message for the error
+     * 
+     * @return the processor state
+     */
+    private ProcessorState compileBlock(Evaluator evaluator,
+            EntryRefernce entry, GCode code, String message) {
+
+        if (!(code instanceof CodeBlock)) {
+            throw new IfSyntaxException(message);
+        }
+        ProcessorState state = new ProcessorState();
+        evaluator.evaluate(((CodeBlock) code).getToken(), entry, state);
+        return state;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
@@ -330,22 +353,37 @@ public class IfCompiler implements Compiler {
         GCode t = state.pop();
         GCode cond = state.pop();
 
-        ProcessorState thenState = new ProcessorState();
-        if (t instanceof CodeBlock) {
-            evaluator.evaluate(((CodeBlock) t).getToken(), entry, thenState);
+        ProcessorState condState = new ProcessorState();
+        if (cond instanceof GIntegerConstant) {
+            // nothing to do
+        } else if (cond instanceof CodeBlock) {
+            evaluator.evaluate(((CodeBlock) cond).getToken(), entry, condState);
+            if (condState.size() != 1) {
+                // TODO gene: complex condition unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+            state.add(condState.getCode());
+            cond = condState.pop();
+            for (Var x : condState.getLocals()) {
+                GCode v = state.pop();
+                if (v instanceof Var) {
+                    ((Var) v).unify(x);
+                } else if (v instanceof GIntegerConstant
+                        || v instanceof GStringConstant) {
+                    x.unify(v);
+                } else {
+                    state.add(new DeclareVar(x, v));
+                }
+            }
         } else {
-            throw new IfSyntaxException("then");
-        }
-        ProcessorState elseState = new ProcessorState();
-        if (e instanceof CodeBlock) {
-            evaluator.evaluate(((CodeBlock) e).getToken(), entry, elseState);
-        } else {
-            throw new IfSyntaxException("else");
+            throw new IfSyntaxException("?" + cond.getClass().getName());
         }
 
+        ProcessorState thenState = compileBlock(evaluator, entry, t, "then");
+        ProcessorState elseState = compileBlock(evaluator, entry, e, "else");
         int size = adjustStackSize(thenState, elseState);
-
         List<Var> locals = unify(elseState.getLocals(), thenState.getLocals());
+
         for (Var x : locals) {
             GCode v = state.pop();
             if (v instanceof Var) {

@@ -70,7 +70,6 @@ public class EmptyCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
-        @Override
         public void print(CodeWriter writer, String prefix, String in)
                 throws IOException {
 

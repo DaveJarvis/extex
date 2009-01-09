@@ -23,7 +23,6 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.VoidGCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
@@ -68,51 +67,21 @@ public final class AssignCompiler implements Compiler {
      * This inner class is the expression for the setter of a field in the
      * target program.
      */
-    private static class SetField extends VoidGCode {
-
-        /**
-         * The field <tt>name</tt> contains the name of the field.
-         */
-        private String name;
-
-        /**
-         * The field <tt>value</tt> contains the the new value.
-         */
-        private GCode value;
-
-        /**
-         * The field <tt>entry</tt> contains name of the entry variable.
-         */
-        private String entry;
+    private static class SetField extends GenericCode {
 
         /**
          * Creates a new object.
          * 
          * @param entry the name of the variable for the entry
-         * @param name the name of the filed
+         * @param name the name of the field
          * @param value the new value
          */
         public SetField(String entry, String name, GCode value) {
 
-            this.entry = entry;
-            this.name = name;
-            this.value = value;
+            super(ReturnType.VOID, entry + ".set", new GStringConstant(name),
+                value);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
-         */
-        @Override
-        public void print(CodeWriter writer, String prefix) throws IOException {
-
-            writer.write(prefix, entry, ".set(", GStringConstant
-                .translate(name), ", ");
-            value.print(writer, prefix);
-            writer.write(")");
-        }
     }
 
     /**
