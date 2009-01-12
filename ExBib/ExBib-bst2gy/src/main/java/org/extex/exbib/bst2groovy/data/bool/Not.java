@@ -25,6 +25,7 @@ import org.extex.exbib.bst2groovy.compiler.GreaterCompiler;
 import org.extex.exbib.bst2groovy.compiler.LessCompiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
@@ -67,6 +68,10 @@ public final class Not extends GenericCode {
         } else if (code instanceof EqualsCompiler.Equals) {
             return new EqualsCompiler.NotEquals(((EqualsCompiler.Equals) code)
                 .getArg(0), ((EqualsCompiler.Equals) code).getArg(1));
+        } else if (code instanceof GIntegerConstant) {
+            return (((GIntegerConstant) code).getValue() == 0
+                    ? new GIntegerConstant(1)
+                    : new GIntegerConstant(0));
         }
         return this;
     }

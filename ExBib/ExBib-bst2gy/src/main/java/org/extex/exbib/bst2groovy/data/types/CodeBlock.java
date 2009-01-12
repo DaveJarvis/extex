@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.core.bst.token.Token;
@@ -109,6 +110,21 @@ public class CodeBlock implements GCode {
     public String toString() {
 
         return t.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
+     */
+    public boolean unify(GCode other) {
+
+        if (other instanceof Var) {
+            return other.unify(this);
+        } else if (!(other instanceof CodeBlock)) {
+            return false;
+        }
+        return ((CodeBlock) other).getToken() == t;
     }
 
 }

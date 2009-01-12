@@ -40,7 +40,7 @@ public class ComplexFunctionException extends Bst2GroovyException {
      */
     public ComplexFunctionException(String name, String message) {
 
-        super("Function " + name + " has too complex return values: " + message);
+        super("Message", name, message);
     }
 
 }

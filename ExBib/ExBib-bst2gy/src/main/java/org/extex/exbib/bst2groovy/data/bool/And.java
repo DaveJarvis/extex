@@ -52,9 +52,10 @@ public final class And extends GenericCode {
     public GCode optimize() {
 
         GCode arg = getArg(0);
-        if (arg instanceof GIntegerConstant
-                && ((GIntegerConstant) arg).getValue() != 0) {
-            return getArg(1);
+        if (arg instanceof GIntegerConstant) {
+            return (((GIntegerConstant) arg).getValue() != 0
+                    ? getArg(1)
+                    : new GIntegerConstant(0));
         }
         arg = getArg(1);
         if (arg instanceof GIntegerConstant

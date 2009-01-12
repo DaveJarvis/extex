@@ -18,6 +18,9 @@
 
 package org.extex.exbib.bst2groovy.exception;
 
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
  * This is a base exception for Bst2Groovy.
  * 
@@ -33,13 +36,63 @@ public class Bst2GroovyException extends RuntimeException {
     private static final long serialVersionUID = 2008L;
 
     /**
+     * The field <tt>tag</tt> contains the tag for the resource bundle.
+     */
+    private String tag;
+
+    /**
+     * The field <tt>arg</tt> contains the additional argument.
+     */
+    private String arg = "";
+
+    /**
      * Creates a new object.
      * 
+     * @param tag the tag for the localizer
      * @param message the message
      */
-    public Bst2GroovyException(String message) {
+    public Bst2GroovyException(String tag, String message) {
 
         super(message);
+        this.tag = tag;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param tag the tag for the localizer
+     * @param message the message
+     * @param arg the additional argument
+     */
+    public Bst2GroovyException(String tag, String message, String arg) {
+
+        super(message);
+        this.tag = tag;
+        this.arg = arg;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        Throwable cause = getCause();
+
+        return getLocalizer().format(tag, super.getMessage(),
+            cause != null ? cause.toString() : "", arg);
+    }
+
+    /**
+     * Acquire the localizer for the current class.
+     * 
+     * @return the localizer
+     */
+    protected Localizer getLocalizer() {
+
+        return LocalizerFactory.getLocalizer(getClass());
     }
 
 }

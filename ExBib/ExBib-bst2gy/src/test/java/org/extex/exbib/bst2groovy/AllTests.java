@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,30 +16,23 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exbib.bst2groovy.exception;
+package org.extex.exbib.bst2groovy;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
- * This exception signals that the return type could not be determined.
+ * Run all tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 7609 $
  */
-public class UnknownReturnTypeException extends Bst2GroovyException {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({Bst2GroovyTest.class, //
+        MainTest.class //
+})
+public final class AllTests {
 
-    /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message the variable name
-     */
-    public UnknownReturnTypeException(String message) {
-
-        super("Message", message);
-    }
+    // using annotations only
 
 }

@@ -19,6 +19,7 @@
 package org.extex.exbib.bst2groovy.data.processor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.GCode;
@@ -39,19 +40,6 @@ import org.extex.exbib.bst2groovy.data.var.Var;
 public class ProcessorState {
 
     /**
-     * The field <tt>no</tt> contains the counter for next items.
-     */
-    private static int no = 1;
-
-    /**
-     * Reset the internal numbering for generated locals.
-     */
-    public static void reset() {
-
-        no = 1;
-    }
-
-    /**
      * The field <tt>stack</tt> contains the current stack.
      */
     private List<GCode> stack = new ArrayList<GCode>();
@@ -60,12 +48,6 @@ public class ProcessorState {
      * The field <tt>locals</tt> contains the list of future items.
      */
     private List<Var> locals = new ArrayList<Var>();
-
-    /**
-     * The field <tt>localPrefix</tt> contains the prefix for the name of new
-     * instances of Var.
-     */
-    private String localPrefix = "v";
 
     /**
      * The field <tt>code</tt> contains the finished code.
@@ -95,10 +77,30 @@ public class ProcessorState {
             GCode si = stack.get(i);
             if (!(si instanceof Var) && !(si instanceof GIntegerConstant)
                     && !(si instanceof GStringConstant)) {
-                Var v = makeVar();
+                Var v = Var.makeVar();
                 code.add(new DeclareVar(v, si));
                 stack.remove(i);
                 stack.add(i, v);
+            }
+        }
+    }
+
+    /**
+     * For a list of variables get the corresponding element from the stack.
+     * This element is unified with the variable it it is a variable or a
+     * declaration is added to the code.
+     * 
+     * @param list the list of variables to fix
+     */
+    public void fix(List<Var> list) {
+
+        Collections.reverse(list);
+        for (Var x : list) {
+            GCode v = pop();
+            if (v instanceof Var) {
+                ((Var) v).unify(x);
+            } else {
+                add(new DeclareVar(x, v));
             }
         }
     }
@@ -134,16 +136,6 @@ public class ProcessorState {
     }
 
     /**
-     * Create a new local variable.
-     * 
-     * @return a new local variable
-     */
-    public Var makeVar() {
-
-        return new Var(localPrefix + Integer.toString(no++));
-    }
-
-    /**
      * Optimize the code contained herein.
      * 
      */
@@ -165,7 +157,7 @@ public class ProcessorState {
         if (!stack.isEmpty()) {
             return stack.remove(stack.size() - 1);
         }
-        Var ret = makeVar();
+        Var ret = Var.makeVar();
         locals.add(ret);
         return ret;
     }
@@ -178,16 +170,6 @@ public class ProcessorState {
     public void push(GCode gcode) {
 
         stack.add(gcode);
-    }
-
-    /**
-     * Setter for the localPrefix.
-     * 
-     * @param localPrefix the localPrefix to set
-     */
-    public void setLocalPrefix(String localPrefix) {
-
-        this.localPrefix = localPrefix;
     }
 
     /**

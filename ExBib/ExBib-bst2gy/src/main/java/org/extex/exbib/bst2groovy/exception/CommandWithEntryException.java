@@ -40,8 +40,7 @@ public class CommandWithEntryException extends Bst2GroovyException {
      */
     public CommandWithEntryException(String command, String message) {
 
-        super("Invoking " + command + " on a function which needs an entry: "
-                + message);
+        super("Message", command, message);
     }
 
 }

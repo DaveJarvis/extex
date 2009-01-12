@@ -4,10 +4,10 @@ package org.extex.exbib.bst2groovy.compiler;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.BinaryInfix;
 import org.extex.exbib.bst2groovy.data.GCode;
+import org.extex.exbib.bst2groovy.data.bool.GBoolean;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**

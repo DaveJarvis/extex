@@ -26,15 +26,14 @@ import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.bool.GBoolean;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
-import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.AssignVar;
-import org.extex.exbib.bst2groovy.data.var.DeclareVar;
 import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
@@ -43,6 +42,7 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 import org.extex.exbib.core.bst.token.impl.TInteger;
 import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TLocalInteger;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This class implements the analyzer for a while instruction.
@@ -84,7 +84,7 @@ public class WhileCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.VoidGCode#optimize(java.util.List,
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize(java.util.List,
          *      int)
          */
         @Override
@@ -127,12 +127,11 @@ public class WhileCompiler implements Compiler {
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData) {
+            Evaluator evaluator, LinkContainer linkData) throws ExBibException {
 
         GCode body = state.pop();
         GCode cond = state.pop();
 
-        //
         ProcessorState condState = new ProcessorState();
         if (cond instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) cond).getToken(), entryRefernce,
@@ -156,24 +155,16 @@ public class WhileCompiler implements Compiler {
             throw new WhileSyntaxException(false);
         }
 
-        List<Var> bl = bodyState.getLocals();
-        if (bodyState.size() > bl.size()) {
+        List<Var> bodyLocals = bodyState.getLocals();
+        if (bodyState.size() > bodyLocals.size()) {
             throw new WhileComplexException(false, bodyState.toString());
         }
-        for (Var x : bl) {
+        for (Var x : bodyLocals) {
             bodyState.add(new AssignVar(x, bodyState.pop()));
         }
 
-        List<Var> locals = IfCompiler.unify(condState.getLocals(), bl);
-        for (Var x : locals) {
-            GCode v = state.pop();
-            if (v instanceof Var) {
-                ((Var) v).unify(x);
-            } else {
-                state.add(new DeclareVar(x, v));
-            }
-        }
-
+        List<Var> locals = Var.unify(condState.getLocals(), bodyLocals);
+        state.fix(locals);
         state.add(condState.getCode());
         bodyState.getCode().add(condState.getCode());
 
@@ -183,8 +174,8 @@ public class WhileCompiler implements Compiler {
         }
 
         state.add(new While(cond, bodyState.getCode()));
-        for (int i = bl.size() - 1; i >= 0; i--) {
-            state.push(bl.get(i));
+        for (int i = bodyLocals.size() - 1; i >= 0; i--) {
+            state.push(bodyLocals.get(i));
         }
     }
 

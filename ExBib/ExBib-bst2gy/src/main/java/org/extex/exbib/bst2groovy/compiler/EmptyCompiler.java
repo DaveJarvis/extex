@@ -24,10 +24,10 @@ import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
+import org.extex.exbib.bst2groovy.data.bool.GBoolean;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.data.types.GBoolean;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -70,6 +70,7 @@ public class EmptyCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
          *      java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix, String in)
                 throws IOException {
 

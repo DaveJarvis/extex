@@ -73,8 +73,9 @@ public class MainTest {
         PrintStream out = System.err;
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outStream));
+        int ex;
         try {
-            assertEquals(exitCode, Main.commandLine(args));
+            ex = Main.commandLine(args);
         } finally {
             System.err.close();
             System.setErr(err);
@@ -87,6 +88,7 @@ public class MainTest {
         if (expectedErr != null) {
             assertEquals(expectedErr, errStream.toString());
         }
+        assertEquals(exitCode, ex);
         if (expectedOut != null) {
             assertEquals(expectedOut, outStream.toString());
         }
@@ -702,6 +704,42 @@ public class MainTest {
 
         run(null, "", "java.lang.NullPointerException\n", CLI.EXIT_FAIL,
             (String[]) null);
+    }
+
+    /**
+     * <testcase>Test that an optimizing argument is consumed.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testOptimizing1() throws IOException {
+
+        File out = new File("target", "testout.gy");
+        try {
+            run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString(),
+                "-O");
+        } finally {
+            assertTrue(out.toString() + ": file does not exist", out.exists());
+            out.delete();
+        }
+    }
+
+    /**
+     * <testcase>Test that an optimizing argument is consumed.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testOptimizing2() throws IOException {
+
+        File out = new File("target", "testout.gy");
+        try {
+            run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString(),
+                "-O=false");
+        } finally {
+            assertTrue(out.toString() + ": file does not exist", out.exists());
+            out.delete();
+        }
     }
 
     /**

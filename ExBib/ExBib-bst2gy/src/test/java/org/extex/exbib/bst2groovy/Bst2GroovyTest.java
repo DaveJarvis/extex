@@ -33,6 +33,7 @@ import org.extex.exbib.bst2groovy.exception.CommandWithArgumentsException;
 import org.extex.exbib.bst2groovy.exception.CommandWithEntryException;
 import org.extex.exbib.bst2groovy.exception.CommandWithReturnException;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
+import org.extex.exbib.bst2groovy.exception.IfComplexException;
 import org.extex.exbib.bst2groovy.exception.IfSyntaxException;
 import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
@@ -306,6 +307,43 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that a comment does not add code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testComments1() throws Exception {
+
+        run("% This is a comment", //
+            "// This is a comment\n// \n" + PREFIX + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that a comment does not add code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testComments2() throws Exception {
+
+        run("%This is a comment", //
+            "// This is a comment\n// \n" + PREFIX + POSTFIX);
+    }
+
+    /**
+     * <testcase> Test that a comment does not add code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testComments3() throws Exception {
+
+        run("%This is a comment\n% and another one", //
+            "// This is a comment\n// and another one\n// \n" + PREFIX
+                    + POSTFIX);
+    }
+
+    /**
      * <testcase> Test that * is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -328,7 +366,33 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"a\" \"b\" *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
-                    + "    return \"a\" + \"b\"\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return \"ab\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat3() throws Exception {
+
+        run("function{abc}{\"\" \"b\" *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"b\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat4() throws Exception {
+
+        run("function{abc}{\"a\" \"\" *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"a\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -356,7 +420,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"2\" duplicate$ *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
-                    + "    return \"2\" + \"2\"\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return \"22\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -740,6 +804,206 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction11() throws Exception {
+
+        run("entry{x}{}{}function{f}{x pop$}function{g}{x pop$}", //
+            PREFIX + "\n\n  Map types = [\n"
+                    + "    f : { entry -> f(entry) },\n"
+                    + "    g : { entry -> g(entry) },\n" + "  ]" + HEAD
+                    + "  }\n\n" //
+                    + "  void f(entry) {\n" //
+                    + "  }\n\n" //
+                    + "  void g(entry) {\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that a function name created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction12() throws Exception {
+
+        run("entry{x}{}{}" + "function{f}{x pop$ pop$}"
+                + "function{g}{x pop$ pop$ pop$}", //
+            PREFIX + "\n\n  Map types = [\n"
+                    + "    f : { entry -> f(entry, '') },\n"
+                    + "    g : { entry -> g(entry, '', '') },\n" + "  ]" + HEAD
+                    + "  }\n\n" //
+                    + "  void f(entry, v1) {\n" //
+                    + "  }\n\n" //
+                    + "  void g(entry, v1, v2) {\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the function arguments are created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction13() throws Exception {
+
+        run("function{a}{write$ write$}" //
+                + "function{b}{a}" //
+                + "function{c}{\"A\" \"B\" a}" //
+                + "function{d}{\"A\" \"B\" b}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  void a(v1, v2) {\n" //
+                    + "    bibWriter.print(v1,\n" //
+                    + "                    v2)\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void b(v1, v2) {\n" //
+                    + "    a(v1,\n" //
+                    + "      v2)\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void c() {\n" //
+                    + "    a(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void d() {\n" //
+                    + "    b(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the parameters of a function and the call are in the
+     * correct order. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunctionA1() throws Exception {
+
+        run(
+            "STRINGS { s }\n" //
+                    + "\n"
+                    + "FUNCTION {output.nonnull}\n" //
+                    + "{ 's :=\n"
+                    + "  #1 #2 =\n"
+                    + "    { \", \" * write$ }\n"
+                    + "    { #1 #3 =\n"
+                    + "        { add.period$ write$\n"
+                    + "          newline$\n"
+                    + "          \"\\newblock \" write$\n"
+                    + "        }\n"
+                    + "        { #1 #4 =\n"
+                    + "            'write$\n"
+                    + "            { add.period$ \" \" * write$ }\n"
+                    + "          if$\n" + "        }\n"
+                    + "      if$\n"
+                    + "    }\n"
+                    + "  if$\n" //
+                    + "  s\n" //
+                    + "}\n" //
+                    + "\n" //
+                    + "FUNCTION {output}\n"
+                    + "{ duplicate$ empty$\n"
+                    + "    'pop$\n" + "    'output.nonnull\n" //
+                    + "  if$\n" //
+                    + "}\n", //
+            PREFIX
+                    + "\n\n  String s = ''"
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  String addPeriod(String s) {\n"
+                    + "    return s == null || s == '' ? '' : s.matches(\".*[.!?]\") ? s : s + \".\"\n"
+                    + "  }\n" //
+                    + "\n" //
+                    + "  boolean isEmpty(String s) {\n"
+                    + "    return s == null || s.trim() == ''\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  String outputNonnull(v1, v2) {\n"
+                    + "    s = v1\n" //
+                    + "    if (1 == 2) {\n"
+                    + "      bibWriter.print(v2 + \", \")\n"
+                    + "    } else if (1 == 3) {\n"
+                    + "      bibWriter.println(addPeriod(v2))\n"
+                    + "      bibWriter.print(\"\\\\newblock \")\n"
+                    + "    } else if (1 == 4) {\n"
+                    + "      bibWriter.print(v2)\n"
+                    + "    } else {\n"
+                    + "      bibWriter.print(addPeriod(v2) + \" \")\n"
+                    + "    }\n" //
+                    + "    return s\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  String output(v1, v2) {\n"
+                    + "    return ( isEmpty(v1) ? v1 : outputNonnull(v1,\n"
+                    + "                                              v2) )\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the parameters of a function and the call are in the
+     * correct order. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunctionA2() throws Exception {
+
+        run("STRINGS { s t }\n" //
+                + "\n" //
+                + "FUNCTION {f}\n" //
+                + "{ \n" //
+                + "  #1 #2 =\n" //
+                + "    { 't :=\n" //
+                + "      's :=\n" //
+                + "    }\n" //
+                + "    { 't :=\n" //
+                + "      's :=\n" //
+                + "    }\n" //
+                + "  if$\n" //
+                + "}\n" //
+                + "\n" //
+                + "FUNCTION {g}\n" //
+                + "{ 't :=\n" //
+                + "  's :=\n" //
+                + "}\n" //
+                + "\n" //
+                + "FUNCTION {h}\n" //
+                + "{ \n" //
+                + "  \"A\" \"B\" f\n" //
+                + "}\n", //
+            PREFIX + "\n\n  String s = ''" + "\n  String t = ''" + HEAD
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void f(v2, v1) {\n" //
+                    + "    if (1 == 2) {\n" //
+                    + "      t = v1\n" //
+                    + "      s = v2\n" //
+                    + "    } else {\n" //
+                    + "      t = v1\n" //
+                    + "      s = v2\n" //
+                    + "    }\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void g(v1, v2) {\n" //
+                    + "    t = v1\n" //
+                    + "    s = v2\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void h() {\n" //
+                    + "    f(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that global.max$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -786,6 +1050,19 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
+    public void testIf01() throws Exception {
+
+        run("function{abc}{#1 'skip$ 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
+                    + "    if (0) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
     public void testIf02() throws Exception {
 
         run("function{abc}{#1 {#2} {#3} if$}", //
@@ -802,8 +1079,8 @@ public class Bst2GroovyTest {
     public void testIf03() throws Exception {
 
         run("function{abc}{#1 {pop$ #2} {} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
-                    + "    return ( 1 ? 2 : v3 )\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+                    + "    return ( 1 ? 2 : v1 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -815,8 +1092,8 @@ public class Bst2GroovyTest {
     public void testIf04() throws Exception {
 
         run("function{abc}{#1 {#2} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
-                    + "    return ( 1 ? 2 : v2 )\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+                    + "    return ( 1 ? 2 : v1 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -843,7 +1120,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ {newline$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1) {\n" + "      bibWriter.println()\n"
+                    + "    if (0) {\n" + "      bibWriter.println()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -872,7 +1149,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    if (0) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -885,21 +1162,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1 && ! 1) {\n" + "    }\n" + "  }\n" + RUN
-                    + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that if$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIf1() throws Exception {
-
-        run("function{abc}{#1 'skip$ 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (! 1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    if (0) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -933,8 +1196,8 @@ public class Bst2GroovyTest {
     public void testIf12() throws Exception {
 
         run("function{abc}{{>} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3, v4) {\n"
-                    + "    return ( v4 > v3 ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1, v2) {\n"
+                    + "    return ( v2 > v1 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -947,8 +1210,8 @@ public class Bst2GroovyTest {
     public void testIf13() throws Exception {
 
         run("function{abc}{#1 {>} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
-                    + "    return ( v3 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
+                    + "    return ( v2 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -961,9 +1224,83 @@ public class Bst2GroovyTest {
     public void testIf14() throws Exception {
 
         run("function{abc}{\"\" {=} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
-                    + "    return ( v3 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
+                    + "    return ( v2 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IfComplexException.class)
+    public void testIf15() throws Exception {
+
+        run("function{abc}{{pop$ pop$} {} {newline$} if$}", null);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf16() throws Exception {
+
+        run("function{a}{#1}function{abc}{{a} {} {newline$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n"
+                    + "  int a() {\n    return 1\n  }\n\n" + "  void abc() {\n"
+                    + "    if (! a()) {\n" + "      bibWriter.println()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf17() throws Exception {
+
+        run("function{abc}{{#2} {write$ #3} {pop$ #4} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+                    + "    int v4\n" + "    if (2) {\n"
+                    + "      bibWriter.print(v1)\n" + "      v4 = 3\n"
+                    + "    } else {\n" + "      v4 = 4\n" + "    }\n"
+                    + "    return v4\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf18() throws Exception {
+
+        run("function{abc}{{#1} {write$} {{#2} {write$} {write$} if$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
+                    + "    if (1) {\n" + "      bibWriter.print(v1)\n"
+                    + "    } else if (2) {\n" + "      bibWriter.print(v1)\n"
+                    + "    } else {\n" + "      bibWriter.print(v1)\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf19() throws Exception {
+
+        String s = "....,....,....,....,....,....";
+        run("function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
+                    + "    return ( \"" + s
+                    + "\" == \"\"\n             ? 2\n             : v3 )\n"
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1057,14 +1394,17 @@ public class Bst2GroovyTest {
     public void testIterate1() throws Exception {
 
         run("iterate{call.type$}",//
-            PREFIX + HEAD + "  }\n\n" + "  void callType(Entry entry) {\n"
+            PREFIX + HEAD + "  }\n\n"
+                    + "  void callType(Entry entry) {\n"
                     + "    def typeFunction = types[entry.getType()]\n"
                     + "    if (typeFunction == null) {\n"
                     + "      typeFunction = types['default.type']\n"
-                    + "    }\n" + "    if (typeFunction == null) {\n"
-                    + "      bstProcessor.warning('missing default.type')\n"
-                    + "    } else {\n" + "      typeFunction(entry)\n"
+                    + "      if (typeFunction == null) {\n"
+                    + "        bstProcessor.warning('missing default.type')\n"
+                    + "        return\n" //
+                    + "      }\n" //
                     + "    }\n"
+                    + "    typeFunction(entry)\n" //
                     + "  }\n\n" //
                     + "  void run() {\n" + "    bibDB.each {\n"
                     + "      callType(it)\n" + "    }\n" + POST_RUN);
@@ -1109,13 +1449,27 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that "location.line$" is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLocatorLine2() throws Exception {
+
+        run("function{abc}{locator.line$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(entry) {\n"
+                    + "    return entry.getLocator().getLine()\n" + "  }\n"
+                    + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that assigning to locator.line$ is not possible.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = UnknownVariableException.class)
-    public void testLocatorLine2() throws Exception {
+    public void testLocatorLine3() throws Exception {
 
         run("function{abc}{\"\" locator.line$ :=}", "");
     }
@@ -1267,8 +1621,8 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{>} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v3, v4) {\n"
-                    + "    if (v4 >= v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + "  void abc(v1, v2) {\n"
+                    + "    if (v2 >= v1) {\n      x = 2\n    }\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -1282,8 +1636,8 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{<} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v3, v4) {\n"
-                    + "    if (v4 <= v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + "  void abc(v1, v2) {\n"
+                    + "    if (v2 <= v1) {\n      x = 2\n    }\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -1297,8 +1651,8 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v3, v4) {\n"
-                    + "    if (v4 != v3) {\n      x = 2\n    }\n" + "  }\n"
+                    + "  void abc(v1, v2) {\n"
+                    + "    if (v2 != v1) {\n      x = 2\n    }\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -1487,6 +1841,19 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that ' is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = RuntimeException.class)
+    public void testQ1() throws Exception {
+
+        run("integers{a}function{abc}{'a}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"\\\"\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that quote$ is created properly. </testcase>
      * 
      * @throws Exception in case of an error
@@ -1520,15 +1887,19 @@ public class Bst2GroovyTest {
     public void testReverse1() throws Exception {
 
         run("reverse{call.type$}",//
-            PREFIX + HEAD + "  }\n\n" + "  void callType(Entry entry) {\n"
+            PREFIX + HEAD + "  }\n\n"
+                    + "  void callType(Entry entry) {\n"
                     + "    def typeFunction = types[entry.getType()]\n"
                     + "    if (typeFunction == null) {\n"
                     + "      typeFunction = types['default.type']\n"
-                    + "    }\n" + "    if (typeFunction == null) {\n"
-                    + "      bstProcessor.warning('missing default.type')\n"
-                    + "    } else {\n" + "      typeFunction(entry)\n    }\n"
-                    + "  }\n" + RUN
-                    + "    bibDB.getEntries().reverse().each {\n"
+                    + "      if (typeFunction == null) {\n"
+                    + "        bstProcessor.warning('missing default.type')\n"
+                    + "        return\n" //
+                    + "      }\n" //
+                    + "    }\n"
+                    + "    typeFunction(entry)\n" //
+                    + "  }\n" //
+                    + RUN + "    bibDB.getEntries().reverse().each {\n"
                     + "      callType(it)\n" + "    }\n" + POST_RUN);
     }
 
@@ -1697,7 +2068,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"1\" \"2\" swap$ *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
-                    + "    return \"2\" + \"1\"\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return \"21\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1878,9 +2249,9 @@ public class Bst2GroovyTest {
     public void testWhile8() throws Exception {
 
         run("function{abc}{{#1} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
-                    + "    while (1) {\n" + "      v2 = 12\n" + "    }\n"
-                    + "    return v2\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+                    + "    while (1) {\n" + "      v1 = 12\n" + "    }\n"
+                    + "    return v1\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**

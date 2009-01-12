@@ -39,7 +39,7 @@ public class UnknownVariableException extends Bst2GroovyException {
      */
     public UnknownVariableException(String message) {
 
-        super("Unable to determine variable type for " + message);
+        super("Message", message);
     }
 
 }

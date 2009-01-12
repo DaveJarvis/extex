@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -38,7 +39,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2008L;
+    private static final long serialVersionUID = 2009L;
 
     /**
      * {@inheritDoc}
@@ -58,7 +59,7 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     public GCode optimize() {
 
         for (int i = 0; i < size();) {
-            i = get(i).optimize(this, i);
+            i = get(i).optimize().optimize(this, i);
         }
         return this;
     }
@@ -107,4 +108,27 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
         }
         return buffer.toString();
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
+     */
+    public boolean unify(GCode other) {
+
+        int size = size();
+        if (other instanceof Var) {
+            return other.unify(this);
+        } else if (!(other instanceof GCodeContainer)
+                || ((GCodeContainer) other).size() != size) {
+            return false;
+        }
+        for (int i = 0; i < size;) {
+            if (!get(i).unify(((GCodeContainer) other).get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

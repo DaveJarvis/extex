@@ -41,8 +41,7 @@ public class WhileComplexException extends Bst2GroovyException {
      */
     public WhileComplexException(boolean cond, String message) {
 
-        super("complex " + (cond ? "condition" : "body") + " for while$: "
-                + message);
+        super(cond ? "MessageCondition" : "MessageBody", message);
     }
 
 }

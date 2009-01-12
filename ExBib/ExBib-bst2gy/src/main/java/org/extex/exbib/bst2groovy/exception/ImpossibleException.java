@@ -19,7 +19,8 @@
 package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This exception signals that the variable type could not be determined.
+ * This exception signals that something has happened which should not be
+ * possible according to the preconditions in the program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,16 +31,26 @@ public class ImpossibleException extends Bst2GroovyException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2008L;
+    private static final long serialVersionUID = 2009L;
 
     /**
      * Creates a new object.
      * 
-     * @param message the name of the variable
+     * @param message the message
      */
     public ImpossibleException(String message) {
 
-        super("Impossible: " + message);
+        super("Message", message);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param cause the cause
+     */
+    public ImpossibleException(Throwable cause) {
+
+        super("Message", cause.toString());
     }
 
 }

@@ -25,7 +25,8 @@ import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
- * This interface describes some code in the target language.
+ * This interface describes some code in the target language. It is a node in
+ * the tree making up the program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,26 +34,30 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
 public interface GCode {
 
     /**
-     * Determine the type of the expression.
+     * Determine the type of the expression. The unknown type is represented by
+     * the constant {@link ReturnType#UNKNOWN}.
      * 
-     * @return the type
+     * @return the type which is never <code>null</code>
      */
     ReturnType getType();
 
     /**
-     * Optimize this code.
+     * Optimize this code. This optimization does involve the current node only.
+     * See {@link #optimize(List, int)} for an optimization in the context.
      * 
-     * @return the optimized code or <code>null</code>
+     * @return the optimized code which is never <code>null</code>
      */
     GCode optimize();
 
     /**
-     * Optimize a code list.
+     * Optimize this code in the context of a code list. The optimization may
+     * inspect the surrounding elements and modify the list as needed.
      * 
      * @param list the list
      * @param index the current index
      * 
-     * @return the next index
+     * @return the next index of the element which should be optimized next.
+     *         This is usually the value <code>index + 1</code>
      */
     int optimize(List<GCode> list, int index);
 
@@ -60,10 +65,19 @@ public interface GCode {
      * Print the expression to a writer.
      * 
      * @param writer the target writer
-     * @param prefix the prefix to be added at the begin of a new line
+     * @param prefix the prefix to be added at the begin of each new line
      * 
      * @throws IOException in case of an I/O error
      */
     void print(CodeWriter writer, String prefix) throws IOException;
+
+    /**
+     * Unify the current instance with another object.
+     * 
+     * @param other the other code to unify with
+     * 
+     * @return <code>true</code> upon success
+     */
+    boolean unify(GCode other);
 
 }

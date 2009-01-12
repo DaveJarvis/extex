@@ -53,11 +53,11 @@ public class ChrToIntCompiler implements Compiler {
         /**
          * Creates a new object.
          * 
-         * @param a the argument
+         * @param arg the argument
          */
-        public ChrToInt(GCode a) {
+        public ChrToInt(GCode arg) {
 
-            super(ReturnType.INT, "chrToInt", a);
+            super(ReturnType.INT, "chrToInt", arg);
         }
 
         /**
@@ -92,9 +92,10 @@ public class ChrToIntCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
+         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
+         *      java.lang.String, java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix, String in)
                 throws IOException {
 

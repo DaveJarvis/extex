@@ -31,7 +31,6 @@ import org.extex.exbib.bst2groovy.data.types.GQuote;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.exception.ImmutableException;
-import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -412,13 +411,15 @@ public final class AssignCompiler implements Compiler {
     /**
      * {@inheritDoc}
      * 
+     * @throws ExBibException this should not happen
+     * 
      * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
     public void evaluate(EntryRefernce entry, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData) {
+            Evaluator evaluator, LinkContainer linkData) throws ExBibException {
 
         GCode q = state.pop();
         GCode value = state.pop();
@@ -437,11 +438,7 @@ public final class AssignCompiler implements Compiler {
             throw new UnknownVariableException(v);
         }
 
-        try {
-            t.visit(TV, state, entry, v, value);
-        } catch (ExBibException e) {
-            throw new ImpossibleException(e.toString());
-        }
+        t.visit(TV, state, entry, v, value);
     }
 
 }

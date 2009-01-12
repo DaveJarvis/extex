@@ -19,6 +19,7 @@
 package org.extex.exbib.bst2groovy.data.processor;
 
 import org.extex.exbib.core.bst.token.Token;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
  * This interface describes a (partial) evaluator.
@@ -34,8 +35,11 @@ public interface Evaluator {
      * @param token the token to evaluate
      * @param entryRefernce the entry reference
      * @param state the state
+     * 
+     * @throws ExBibException just in case
      */
-    void evaluate(Token token, EntryRefernce entryRefernce, ProcessorState state);
+    void evaluate(Token token, EntryRefernce entryRefernce, ProcessorState state)
+            throws ExBibException;
 
     /**
      * Partially evaluate a token.
@@ -43,8 +47,10 @@ public interface Evaluator {
      * @param token the token to evaluate
      * @param entryRefernce the entry reference
      * @param state the state
+     * 
+     * @throws ExBibException just in case
      */
     void evaluatePartially(Token token, EntryRefernce entryRefernce,
-            ProcessorState state);
+            ProcessorState state) throws ExBibException;
 
 }

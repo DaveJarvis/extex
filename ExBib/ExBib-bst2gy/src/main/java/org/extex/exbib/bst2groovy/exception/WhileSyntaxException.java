@@ -40,8 +40,7 @@ public class WhileSyntaxException extends Bst2GroovyException {
      */
     public WhileSyntaxException(boolean cond) {
 
-        super("syntax error in " + (cond ? "condition" : "body")
-                + " for while$");
+        super(cond ? "MessageCondition" : "MessageBody", "");
     }
 
 }

@@ -35,11 +35,11 @@ public class IfSyntaxException extends Bst2GroovyException {
     /**
      * Creates a new object.
      * 
-     * @param message the name of the branch
+     * @param then the name of the branch
      */
-    public IfSyntaxException(String message) {
+    public IfSyntaxException(boolean then) {
 
-        super("syntax error in " + message + " for if$");
+        super(then ? "MessageThen" : "MessageElse", "");
     }
 
 }

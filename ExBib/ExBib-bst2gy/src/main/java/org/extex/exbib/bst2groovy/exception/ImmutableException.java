@@ -39,7 +39,7 @@ public class ImmutableException extends Bst2GroovyException {
      */
     public ImmutableException(String message) {
 
-        super("Attempt to modify an immutable object: " + message);
+        super("Message", message);
     }
 
 }

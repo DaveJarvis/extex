@@ -66,21 +66,23 @@ public class CallTypeCompiler implements Compiler {
          * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
          *      java.lang.String, java.lang.String)
          */
+        @Override
         public void print(CodeWriter writer, String prefix, String in)
                 throws IOException {
 
-            String nl = prefix + in;
-            String in2 = nl + in;
+            String in1 = prefix + in;
+            String in2 = in1 + in;
+            String in3 = in2 + in;
             writer.write(prefix, "void callType(Entry entry) {", //
-                nl, "def typeFunction = types[entry.getType()]", //
-                nl, "if (typeFunction == null) {", //
+                in1, "def typeFunction = types[entry.getType()]", //
+                in1, "if (typeFunction == null) {", //
                 in2, "typeFunction = types['default.type']", //
-                nl, "}", //
-                nl, "if (typeFunction == null) {", //
-                in2, "bstProcessor.warning('missing default.type')", //
-                nl, "} else {", //
-                in2, "typeFunction(entry)", //
-                nl, "}", //
+                in2, "if (typeFunction == null) {", //
+                in3, "bstProcessor.warning('missing default.type')", //
+                in3, "return", //
+                in2, "}", //
+                in1, "}", //
+                in1, "typeFunction(entry)", //
                 prefix, "}\n");
         }
     };

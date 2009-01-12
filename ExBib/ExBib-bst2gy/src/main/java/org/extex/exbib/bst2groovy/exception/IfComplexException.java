@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,12 +19,12 @@
 package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This exception signals that the return type could not be determined.
+ * This exception signals that the code passed to a command is not proper.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 7609 $
  */
-public class UnknownReturnTypeException extends Bst2GroovyException {
+public class IfComplexException extends Bst2GroovyException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -35,11 +35,13 @@ public class UnknownReturnTypeException extends Bst2GroovyException {
     /**
      * Creates a new object.
      * 
-     * @param message the variable name
+     * @param cond the indicator whether the exception applies to the condition
+     *        or the body
+     * @param message the message
      */
-    public UnknownReturnTypeException(String message) {
+    public IfComplexException(boolean cond, String message) {
 
-        super("Message", message);
+        super(cond ? "MessageCondition" : "MessageBody", message);
     }
 
 }

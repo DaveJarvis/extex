@@ -26,6 +26,7 @@ import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -53,6 +54,30 @@ public class ConcatCompiler implements Compiler {
         public Concat(GCode a, GCode b) {
 
             super(ReturnType.STRING, "++", a, b);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
+         */
+        @Override
+        public GCode optimize() {
+
+            GCode a = getArg(0).optimize();
+            GCode b = getArg(1).optimize();
+            if (a instanceof GStringConstant
+                    && ((GStringConstant) a).getValue().equals("")) {
+                return b.optimize();
+            } else if (b instanceof GStringConstant
+                    && ((GStringConstant) b).getValue().equals("")) {
+                return a.optimize();
+            } else if (a instanceof GStringConstant
+                    && b instanceof GStringConstant) {
+                return new GStringConstant(((GStringConstant) a).getValue()
+                        + ((GStringConstant) b).getValue());
+            }
+            return this;
         }
 
         /**

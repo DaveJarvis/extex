@@ -40,8 +40,7 @@ public class CommandWithReturnException extends Bst2GroovyException {
      */
     public CommandWithReturnException(String command, String message) {
 
-        super("Invoking " + command + " on a function which returns a value: "
-                + message);
+        super("Message", command, message);
     }
 
 }

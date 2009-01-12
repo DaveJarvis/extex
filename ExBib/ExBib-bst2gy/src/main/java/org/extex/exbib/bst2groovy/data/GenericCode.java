@@ -23,6 +23,7 @@ import java.io.StringWriter;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
+import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
 /**
@@ -154,6 +155,9 @@ public class GenericCode implements GCode {
      */
     public GCode optimize() {
 
+        for (int i = 0; i < args.length; i++) {
+            args[i] = args[i].optimize();
+        }
         return this;
     }
 
@@ -229,6 +233,32 @@ public class GenericCode implements GCode {
             //
         }
         return writer.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
+     */
+    public boolean unify(GCode other) {
+
+        int size = args.length;
+        if (other instanceof Var) {
+            return other.unify(this);
+        } else if (!(other instanceof GenericCode)
+                || !((GenericCode) other).name.equals(name)
+                || !(((GenericCode) other).type == type)
+                || (entry == null && ((GenericCode) other).entry != null)
+                || (entry != null && !entry.equals(((GenericCode) other).entry))
+                || ((GenericCode) other).args.length != size) {
+            return false;
+        }
+        for (int i = 0; i < size;) {
+            if (!args[i].unify(((GenericCode) other).args[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

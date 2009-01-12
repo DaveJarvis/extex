@@ -22,9 +22,12 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
- * This interface describes a compiler.
+ * This interface describes a compiler. A compiler is able to partially evaluate
+ * itself. In this course the processor state is adapted and optionally linking
+ * code is added.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,8 +41,10 @@ public interface Compiler {
      * @param state the state
      * @param evaluator the evaluator
      * @param linkData the link data container
+     * 
+     * @throws ExBibException just in case
      */
     void evaluate(EntryRefernce entryRefernce, ProcessorState state,
-            Evaluator evaluator, LinkContainer linkData);
+            Evaluator evaluator, LinkContainer linkData) throws ExBibException;
 
 }

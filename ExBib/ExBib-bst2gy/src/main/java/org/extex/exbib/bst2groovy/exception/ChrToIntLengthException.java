@@ -19,7 +19,7 @@
 package org.extex.exbib.bst2groovy.exception;
 
 /**
- * This exception signals that the code passed to a command is not proper.
+ * This exception signals that the string passed to chr.to.int$ is not proper.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,7 +39,7 @@ public class ChrToIntLengthException extends Bst2GroovyException {
      */
     public ChrToIntLengthException(String message) {
 
-        super("Argument of chr.to.int$ has wrong length: " + message);
+        super("Message", message);
     }
 
 }

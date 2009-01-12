@@ -125,28 +125,17 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitExecute(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitExecute(Command command, Object... args) {
+        public void visitExecute(Command command, Object... args)
+                throws ExBibException {
 
-            GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = new ProcessorState();
-            EntryRefernce entryRefernce = new EntryRefernce("it");
+            TLiteral literal;
             try {
-                evaluator.evaluate(new TLiteral(command.getValue().getValue(),
-                    command.getLocator()), entryRefernce, state);
+                literal = new TLiteral(command.getValue().getValue(), //
+                    command.getLocator());
             } catch (ExBibEmptyFunctionNameException e) {
                 throw new WrappingException(e);
             }
-            if (state.size() != 0) {
-                throw new CommandWithReturnException("EXECUTE", command
-                    .getValue().getValue());
-            } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("EXECUTE", command
-                    .getValue().getValue());
-            } else if (entryRefernce.isUsed()) {
-                throw new CommandWithEntryException("EXECUTE", command
-                    .getValue().getValue());
-            }
-            code.add(state.getCode());
+            visitLiteral(literal, args);
         }
 
         /**
@@ -188,7 +177,8 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitIterate(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitIterate(Command command, Object... args) {
+        public void visitIterate(Command command, Object... args)
+                throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();
@@ -215,25 +205,22 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
          *      java.lang.Object[])
          */
-        public void visitLiteral(TLiteral literal, Object... args) {
-
-            // this should not happen
+        public void visitLiteral(TLiteral literal, Object... args)
+                throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();
             EntryRefernce entryRefernce = new EntryRefernce("it");
-            try {
-                evaluator.evaluate(new TLiteral(literal.getValue(), literal
-                    .getLocator()), entryRefernce, state);
-            } catch (ExBibEmptyFunctionNameException e) {
-                throw new WrappingException(e);
-            }
+            evaluator.evaluate(literal, entryRefernce, state);
             if (state.size() != 0) {
-                throw new CommandWithReturnException("execute", literal
-                    .getValue());
+                throw new CommandWithReturnException("EXECUTE", //
+                    literal.getValue());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("execute", literal
-                    .getValue());
+                throw new CommandWithArgumentsException("EXECUTE", //
+                    literal.getValue());
+            } else if (entryRefernce.isUsed()) {
+                throw new CommandWithEntryException("EXECUTE", //
+                    literal.getValue());
             }
             code.addAll(state.getCode());
         }
@@ -301,7 +288,8 @@ public class CommandTranslator {
          * @see org.extex.exbib.core.bst.command.CommandVisitor#visitReverse(org.extex.exbib.core.bst.command.Command,
          *      java.lang.Object[])
          */
-        public void visitReverse(Command command, Object... args) {
+        public void visitReverse(Command command, Object... args)
+                throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
             ProcessorState state = new ProcessorState();

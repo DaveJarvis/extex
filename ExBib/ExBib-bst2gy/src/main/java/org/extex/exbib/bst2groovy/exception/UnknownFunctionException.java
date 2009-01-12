@@ -40,7 +40,7 @@ public class UnknownFunctionException extends Bst2GroovyException {
      */
     public UnknownFunctionException(String message) {
 
-        super("Unknown function: " + message);
+        super("Message", message);
     }
 
 }

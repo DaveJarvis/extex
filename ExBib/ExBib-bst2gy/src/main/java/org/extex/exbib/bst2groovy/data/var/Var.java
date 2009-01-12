@@ -33,7 +33,7 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * is present, i.e. the variable is bound, then those variable is used instead.
  * 
  * <p>
- * As in Prolog the occurs check is omitted. Thus it is possible to create
+ * As in Prolog the occurs check is omitted. Thus it is possible to create a
  * cyclic structure leading to an infinite loop. The using code has to take care
  * of this.
  * </p>
@@ -41,7 +41,71 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Var implements GCode {
+public final class Var implements GCode {
+
+    /**
+     * The field <tt>no</tt> contains the counter for next items.
+     */
+    private static int no = 1;
+
+    /**
+     * The field <tt>localPrefix</tt> contains the prefix for the name of new
+     * instances of Var.
+     */
+    private static String localPrefix = "v";
+
+    /**
+     * Create a new local variable.
+     * 
+     * @return a new local variable
+     */
+    public static Var makeVar() {
+
+        String name = Integer.toString(no);
+        return new Var(localPrefix + name, no++);
+    }
+
+    /**
+     * Reset the internal numbering for generated locals.
+     */
+    public static void reset() {
+
+        no = 1;
+    }
+
+    /**
+     * Setter for the localPrefix.
+     * 
+     * @param prefix the localPrefix to set
+     */
+    public static void setLocalPrefix(String prefix) {
+
+        localPrefix = prefix;
+    }
+
+    /**
+     * Unify two lists of variables.
+     * 
+     * @param l1 the first list
+     * @param l2 the second list
+     * 
+     * @return the longer list
+     */
+    public static List<Var> unify(List<Var> l1, List<Var> l2) {
+
+        int s1 = l1.size();
+        int s2 = l2.size();
+        if (s1 >= s2) {
+            for (int i = 0; i < s2; i++) {
+                l1.get(i).unify(l2.get(i));
+            }
+            return l1;
+        }
+        for (int i = 0; i < s1; i++) {
+            l2.get(i).unify(l1.get(i));
+        }
+        return l2;
+    }
 
     /**
      * The field <tt>name</tt> contains the name.
@@ -60,13 +124,21 @@ public class Var implements GCode {
     private GCode reference = null;
 
     /**
+     * The field <tt>age</tt> contains the age of the variable. It helps to
+     * determine which variable to bind when two unbound variables are unified.
+     */
+    private int age;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name
+     * @param age the age
      */
-    public Var(String name) {
+    private Var(String name, int age) {
 
         this.name = name;
+        this.age = age;
     }
 
     /**
@@ -105,16 +177,6 @@ public class Var implements GCode {
         }
         return ReturnType.UNKNOWN;
 
-    }
-
-    /**
-     * Check whether this variable is an alias for another one.
-     * 
-     * @return the result of the check
-     */
-    public boolean isBound() {
-
-        return reference != null;
     }
 
     /**
@@ -162,12 +224,7 @@ public class Var implements GCode {
      */
     public void printType(Writer writer, String prefix) throws IOException {
 
-        String t = getType().toString();
-        if (t != null) {
-            writer.write(t);
-        } else {
-            writer.write("var");
-        }
+        writer.write(getType().toString());
     }
 
     /**
@@ -197,56 +254,25 @@ public class Var implements GCode {
      * Bind this instance to another one.
      * 
      * @param other the other instance to bind to
-     */
-    public void unify(GCode other) {
-
-        if (other == this) {
-            return;
-        }
-        if (other instanceof Var) {
-            if (((Var) other).name.compareTo(name) < 0) {
-                ((Var) other).unifyMe(this);
-                return;
-            }
-
-            if (reference instanceof Var) {
-                ((Var) reference).unify(other);
-            }
-
-            reference = other;
-        } else if (reference == null) {
-            reference = other;
-        } else {
-            GCode v = this;
-            while (v instanceof Var && ((Var) v).reference != null) {
-                v = ((Var) v).reference;
-            }
-            GCode w = other;
-            while (w instanceof Var && ((Var) w).reference != null) {
-                w = ((Var) w).reference;
-            }
-
-            if (v == w) {
-                return;
-            }
-
-            // TODO gene: unify unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-    }
-
-    /**
-     * Bind this instance to another one.
      * 
-     * @param other the other instance to bind to
+     *        {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
      */
-    protected void unifyMe(Var other) {
+    public boolean unify(GCode other) {
 
-        if (reference instanceof Var) {
-            ((Var) reference).unify(other);
+        if (reference != null) {
+            return reference.unify(other);
+        } else if (other == this) {
+            return true;
+        } else if (other instanceof Var //
+                && ((Var) other).reference == null //
+                && ((Var) other).age > age) {
+            ((Var) other).reference = this;
+            return true;
         }
-
         reference = other;
+        return true;
     }
 
 }

@@ -40,8 +40,7 @@ public class CommandWithoutEntryException extends Bst2GroovyException {
      */
     public CommandWithoutEntryException(String command, String message) {
 
-        super("Invoking " + command
-                + " on a function which can not cope with an entry: " + message);
+        super("Message", command, message);
     }
 
 }

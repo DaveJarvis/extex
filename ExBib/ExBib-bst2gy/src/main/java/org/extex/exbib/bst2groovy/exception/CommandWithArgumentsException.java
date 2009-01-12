@@ -40,8 +40,7 @@ public class CommandWithArgumentsException extends Bst2GroovyException {
      */
     public CommandWithArgumentsException(String command, String message) {
 
-        super("Invoking " + command + " on a function which needs arguments: "
-                + message);
+        super("Message", command, message);
     }
 
 }

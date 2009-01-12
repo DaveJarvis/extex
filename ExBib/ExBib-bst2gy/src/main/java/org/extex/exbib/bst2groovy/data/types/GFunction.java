@@ -42,12 +42,12 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GFunction implements Compiler, GCode {
+public class GFunction extends GCodeContainer implements Compiler {
 
     /**
      * This inner class represents the invocation of a function.
      */
-    private class Call extends GenericCode {
+    public class Call extends GenericCode {
 
         /**
          * Creates a new object.
@@ -63,55 +63,10 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
-     * Translate a bst name int a groovy name for functions and variables.
-     * 
-     * @param value the value to translate
-     * 
-     * @return the translated string
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    public static String translate(String value) {
-
-        String t = translationMap.get(value);
-        if (t != null) {
-            return t;
-        }
-
-        StringBuilder buffer = new StringBuilder();
-        boolean upper = false;
-
-        for (char c : value.toCharArray()) {
-            if (Character.isLowerCase(c)) {
-                buffer.append(upper ? Character.toUpperCase(c) : c);
-                upper = false;
-            } else if (Character.isUpperCase(c)) {
-                buffer.append(c);
-                upper = false;
-            } else if (Character.isDigit(c)) {
-                buffer.append(c);
-                upper = true;
-            } else {
-                upper = true;
-            }
-        }
-
-        t = buffer.toString();
-        String result = t;
-        if (t.matches("v[0-9]+")) {
-            result = t + "_";
-        }
-        int i = 1;
-        while (translationMap.containsValue(result)) {
-            result = t + Integer.toString(i++);
-        }
-
-        translationMap.put(value, result);
-        return result;
-    }
-
-    /**
-     * The field <tt>useCount</tt> contains the use count.
-     */
-    private int useCount = 0;
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The field <tt>translationMap</tt> contains the already mapped names.
@@ -176,14 +131,60 @@ public class GFunction implements Compiler, GCode {
     }
 
     /**
+     * Translate a bst name into a groovy name for functions and variables.
+     * 
+     * @param value the value to translate
+     * 
+     * @return the translated string
+     */
+    public static String translate(String value) {
+
+        String t = translationMap.get(value);
+        if (t != null) {
+            return t;
+        }
+
+        StringBuilder buffer = new StringBuilder();
+        boolean upper = false;
+
+        for (char c : value.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                buffer.append(upper ? Character.toUpperCase(c) : c);
+                upper = false;
+            } else if (Character.isUpperCase(c)) {
+                buffer.append(c);
+                upper = false;
+            } else if (Character.isDigit(c)) {
+                buffer.append(c);
+                upper = true;
+            } else {
+                upper = true;
+            }
+        }
+
+        t = buffer.toString();
+        String result = t;
+        if (t.matches("v[0-9]+")) {
+            result = t + "_";
+        }
+        int i = 1;
+        while (translationMap.containsValue(result)) {
+            result = t + Integer.toString(i++);
+        }
+
+        translationMap.put(value, result);
+        return result;
+    }
+
+    /**
      * The field <tt>name</tt> contains the method name.
      */
     private String name;
 
     /**
-     * The field <tt>code</tt> contains the body code.
+     * The field <tt>useCount</tt> contains the use count.
      */
-    private GCodeContainer code;
+    private int useCount = 0;
 
     /**
      * The field <tt>returnValue</tt> contains the return value.
@@ -214,12 +215,12 @@ public class GFunction implements Compiler, GCode {
 
         this.name = GFunction.translate(name);
         this.parameters = parameters;
-        this.code = code;
+        addAll(code);
         this.entry = entry;
         if (returnValue == null) {
             returnType = ReturnType.VOID;
         } else {
-            code.add(new Return(returnValue));
+            add(new Return(returnValue));
             returnType = returnValue.getType();
             if (returnType == null) {
                 returnType = ReturnType.CODE;
@@ -240,8 +241,8 @@ public class GFunction implements Compiler, GCode {
 
         int size = parameters.size();
         GCode[] args = new GCode[size];
-        for (int i = size - 1; i >= 0; i--) {
-            args[size - 1 - i] = state.pop();
+        for (int i = 0; i < size; i++) {
+            args[size - i - 1] = state.pop();
         }
 
         Call cal =
@@ -258,16 +259,6 @@ public class GFunction implements Compiler, GCode {
             throw new UnknownReturnTypeException(name);
         }
         useCount++;
-    }
-
-    /**
-     * Getter for the code.
-     * 
-     * @return the code
-     */
-    public GCode getCode() {
-
-        return code;
     }
 
     /**
@@ -295,6 +286,7 @@ public class GFunction implements Compiler, GCode {
      * 
      * @see org.extex.exbib.bst2groovy.data.GCode#getType()
      */
+    @Override
     public ReturnType getType() {
 
         return returnType;
@@ -323,30 +315,10 @@ public class GFunction implements Compiler, GCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
-     */
-    public GCode optimize() {
-
-        code.optimize();
-        return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GCode#optimize(java.util.List, int)
-     */
-    public int optimize(List<GCode> list, int index) {
-
-        return index + 1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
      *      java.lang.String)
      */
+    @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
         writer.write(prefix, getType().toString(), " ", name, "(");
@@ -364,7 +336,7 @@ public class GFunction implements Compiler, GCode {
             arg.print(writer, prefix);
         }
         writer.write(") {");
-        code.print(writer, prefix + Bst2Groovy.INDENT);
+        super.print(writer, prefix + Bst2Groovy.INDENT);
         writer.write(prefix, "}\n");
     }
 
@@ -377,6 +349,24 @@ public class GFunction implements Compiler, GCode {
     public String toString() {
 
         return "<" + name + ">";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#unify(org.extex.exbib.bst2groovy.data.GCode)
+     */
+    @Override
+    public boolean unify(GCode other) {
+
+        if (other instanceof Var) {
+            return other.unify(this);
+        } else if (!(other instanceof GFunction)
+                || ((GFunction) other).name != name) {
+            return false;
+        }
+
+        return super.unify(other);
     }
 
     /**

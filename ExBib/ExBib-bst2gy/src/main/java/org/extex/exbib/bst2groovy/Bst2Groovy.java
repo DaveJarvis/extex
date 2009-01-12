@@ -90,7 +90,6 @@ import org.extex.exbib.core.bst.BstInterpreterCore;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
-import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.TokenVisitor;
 import org.extex.exbib.core.bst.token.impl.TBlock;
@@ -108,7 +107,6 @@ import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.db.impl.DBImpl;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.io.bstio.BstReader;
@@ -162,7 +160,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitBlock(org.extex.exbib.core.bst.token.impl.TBlock,
          *      java.lang.Object[])
          */
-        public void visitBlock(TBlock block, Object... args) {
+        public void visitBlock(TBlock block, Object... args)
+                throws ExBibException {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
             ProcessorState state = (ProcessorState) args[1];
@@ -222,7 +221,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
          *      java.lang.Object[])
          */
-        public void visitLiteral(TLiteral literal, Object... args) {
+        public void visitLiteral(TLiteral literal, Object... args)
+                throws ExBibException {
 
             String name = literal.getValue();
             Compiler compiler = compilers.get(name);
@@ -274,7 +274,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitQLiteral(org.extex.exbib.core.bst.token.impl.TQLiteral,
          *      java.lang.Object[])
          */
-        public void visitQLiteral(TQLiteral qliteral, Object... args) {
+        public void visitQLiteral(TQLiteral qliteral, Object... args)
+                throws ExBibException {
 
             String name = qliteral.getValue();
             Compiler compiler = compilers.get(name);
@@ -315,7 +316,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
          * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
          *      java.lang.Object[])
          */
-        public void visitTokenList(TokenList list, Object... args) {
+        public void visitTokenList(TokenList list, Object... args)
+                throws ExBibException {
 
             EntryRefernce entryRefernce = (EntryRefernce) args[0];
             ProcessorState state = (ProcessorState) args[1];
@@ -386,8 +388,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 public void visitIntegerOption(TIntegerOption option,
                         Object... args) {
 
-                    // TODO gene: visitIntegerOption unimplemented
-                    throw new RuntimeException("unimplemented");
+                    throw new ImpossibleException("visitLocalInteger()");
                 }
 
                 /**
@@ -396,7 +397,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                  * @see org.extex.exbib.core.bst.token.TokenVisitor#visitLiteral(org.extex.exbib.core.bst.token.impl.TLiteral,
                  *      java.lang.Object[])
                  */
-                public void visitLiteral(TLiteral literal, Object... args) {
+                public void visitLiteral(TLiteral literal, Object... args)
+                        throws ExBibException {
 
                     String name = literal.getValue();
                     Compiler compiler = compilers.get(name);
@@ -431,8 +433,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 public void visitLocalLocator(TLocalLocator localLocator,
                         Object[] args) throws ExBibException {
 
-                    // TODO gene: visitLocalLocator unimplemented
-                    throw new RuntimeException("unimplemented");
+                    throw new ImpossibleException("visitLocalInteger()");
                 }
 
                 /**
@@ -479,8 +480,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 public void visitStringOption(TStringOption option,
                         Object... args) {
 
-                    // TODO gene: visitStringOption unimplemented
-                    throw new RuntimeException("unimplemented");
+                    throw new ImpossibleException("visitLocalInteger()");
                 }
 
                 /**
@@ -489,7 +489,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                  * @see org.extex.exbib.core.bst.token.TokenVisitor#visitTokenList(org.extex.exbib.core.bst.token.impl.TokenList,
                  *      java.lang.Object[])
                  */
-                public void visitTokenList(TokenList list, Object... args) {
+                public void visitTokenList(TokenList list, Object... args)
+                        throws ExBibException {
 
                     EntryRefernce entry = (EntryRefernce) args[0];
                     ProcessorState state = (ProcessorState) args[1];
@@ -598,17 +599,6 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/')
                 + ".config"));
-        // try {
-        // setOption("global.max$", new TInteger(0xffff, new Locator("", 0)));
-        // } catch (ExBibIllegalValueException e) {
-        // // TODO gene: error handling unimplemented
-        // e.printStackTrace();
-        // throw new RuntimeException("unimplemented");
-        // } catch (ExBibFunctionExistsException e) {
-        // // TODO gene: error handling unimplemented
-        // e.printStackTrace();
-        // throw new RuntimeException("unimplemented");
-        // }
     }
 
     /**
@@ -619,8 +609,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     @Override
     public void addFunction(String name, Code code, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibException {
 
         if (compilers == null) {
             compilers = new HashMap<String, Compiler>();
@@ -639,8 +628,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * 
      * @param name the name
      * @param token the body
+     * 
+     * @throws ExBibException just in case
      */
-    private void addFunction(String name, Token token) {
+    private void addFunction(String name, Token token) throws ExBibException {
 
         if (token instanceof TokenList) {
             analyzeFunction(name, (TokenList) token);
@@ -672,10 +663,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * 
      * @param name the name
      * @param body the BST code
+     * 
+     * @throws ExBibException just in case
      */
-    private void analyzeFunction(String name, TokenList body) {
+    private void analyzeFunction(String name, TokenList body)
+            throws ExBibException {
 
-        ProcessorState.reset();
+        Var.reset();
         ProcessorState state = new ProcessorState();
         EntryRefernce entry = new EntryRefernce("entry");
         evaluatePartially(body, entry, state);
@@ -686,6 +680,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             returnValue = null;
         } else if (stack.size() == 1) {
             returnValue = stack.get(0);
+            if (returnValue instanceof CodeBlock) {
+                // TODO gene: analyzeFunction unimplemented
+                throw new RuntimeException("unimplemented");
+            }
         } else {
             throw new ComplexFunctionException(name, stack.toString());
         }
@@ -707,36 +705,31 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     /**
      * {@inheritDoc}
      * 
+     * @throws ExBibException this should not happen
+     * 
      * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluate(org.extex.exbib.core.bst.token.Token,
      *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
      */
     public void evaluate(Token token, EntryRefernce entryRefernce,
-            ProcessorState state) {
+            ProcessorState state) throws ExBibException {
 
-        try {
-            token.visit(evaluateTokenVisitor, entryRefernce, state, this);
-        } catch (ExBibException e) {
-            throw new IllegalArgumentException(e.getLocalizedMessage());
-        }
+        token.visit(evaluateTokenVisitor, entryRefernce, state, this);
     }
 
     /**
      * {@inheritDoc}
+     * 
+     * @throws ExBibException this should not happen
      * 
      * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluatePartially(org.extex.exbib.core.bst.token.Token,
      *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
      */
     public void evaluatePartially(Token token, EntryRefernce entryRefernce,
-            ProcessorState state) {
+            ProcessorState state) throws ExBibException {
 
-        try {
-            token.visit(evaluatePartiallyTokenVisitor, entryRefernce, state,
-                this);
-        } catch (ExBibException e) {
-            throw new IllegalArgumentException(e.getLocalizedMessage());
-        }
+        token.visit(evaluatePartiallyTokenVisitor, entryRefernce, state, this);
     }
 
     /**
@@ -866,7 +859,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         if (comments.length() > 0) {
             w.write("// ");
             w.write(comments.toString().replaceAll("\n", "\n// ").replaceAll(
-                "// % ", "// "));
+                "// % ", "// ").replaceFirst("^% ?", ""));
             w.write('\n');
         }
     }

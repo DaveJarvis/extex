@@ -39,7 +39,7 @@ public class WrappingException extends Bst2GroovyException {
      */
     public WrappingException(Throwable t) {
 
-        super(t.getMessage());
+        super("Message", t.getMessage());
     }
 
 }
