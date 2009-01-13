@@ -278,7 +278,8 @@ public class BstInterpreterCore extends BibliographyCore
      */
     public void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+                ExBibFunctionExistsException,
+                ExBibException {
 
         if (name == null || name.equals("")) {
             throw new ExBibIllegalValueException("Illegal function name",
@@ -730,8 +731,7 @@ public class BstInterpreterCore extends BibliographyCore
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntries(List<String> entries, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibException {
 
         for (String entry : entries) {
             addEntry(entry);
@@ -746,8 +746,7 @@ public class BstInterpreterCore extends BibliographyCore
      *      org.extex.exbib.core.io.Locator)
      */
     public void setEntryIntegers(List<String> integers, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibException {
 
         for (String name : integers) {
             theEntryIntegers.add(name);
@@ -814,8 +813,7 @@ public class BstInterpreterCore extends BibliographyCore
      *      org.extex.exbib.core.io.Locator)
      */
     public void setStrings(TokenList list, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibException {
 
         for (Token t : list) {
             String name = t.getValue();

@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
+import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.exceptions.ExBibFunctionUndefinedException;
 import org.extex.exbib.core.io.Locator;
@@ -47,10 +48,12 @@ public interface FunctionContainer {
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
+     * @throws ExBibException just in case
      */
     void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+                ExBibFunctionExistsException,
+                ExBibException;
 
     /**
      * Change the meaning of a function definition. If the function does not

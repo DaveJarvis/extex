@@ -69,10 +69,12 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
+     * @throws ExBibException just in case
      */
     void addFunction(String name, Code body, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+                ExBibFunctionExistsException,
+                ExBibException;
 
     /**
      * Change the meaning of a function definition. If the function does not
@@ -242,10 +244,12 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
+     * @throws ExBibException just in case
      */
     void setEntries(List<String> entries, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+                ExBibFunctionExistsException,
+                ExBibException;
 
     /**
      * Setter for the local integers. The given arguments are added to the
@@ -300,10 +304,12 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      *         <code>null</code> or empty
      * @throws ExBibFunctionExistsException in case that the named function
      *         already exists
+     * @throws ExBibException just in case
      */
     void setStrings(TokenList list, Locator locator)
             throws ExBibIllegalValueException,
-                ExBibFunctionExistsException;
+                ExBibFunctionExistsException,
+                ExBibException;
 
     /**
      * This method should be invoked for every step in the execution to allow
